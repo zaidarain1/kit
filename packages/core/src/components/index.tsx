@@ -3,7 +3,9 @@ import React from 'react'
 export const TestComponent = () => {
   return (
     <div>
-      yooooo!!!!
+      yooooo!
     </div>
   )
 }
+
+export * from './EthConnectProvider'
