@@ -15,6 +15,18 @@
   "dependencies": {
     "@0xsequence/design-system": "^0.1.102"
   },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17",
+    "wagmi": ">=0.10.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "wagmi": "^0.10.14"
+  },
   "files": [
     "src",
     "dist"

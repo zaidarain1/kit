@@ -11,7 +11,8 @@ module.exports = {
         '@babel/plugin-transform-regenerator'
       ]
     }],
-    '@babel/preset-typescript'
+    '@babel/preset-typescript',
+    '@babel/preset-react'
   ],
   plugins: [
     ['@babel/plugin-proposal-class-properties', { loose: true }]

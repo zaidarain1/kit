@@ -1,15 +1,16 @@
 import React from 'react';
-import ethconnect from '@ethconnect/core'
+import ethconnect, { TestComponent } from '@ethconnect/core'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
 
-  console.log('ethconnec.t..', ethconnect)
+  console.log('ethconnec.t..', TestComponent)
 
   return (
     <div className="App">
       <header className="App-header">
+        {/* <TestComponent /> */}
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
