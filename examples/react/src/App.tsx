@@ -1,30 +1,56 @@
-import React from 'react';
-import ethconnect, { TestComponent } from '@ethconnect/core'
-import logo from './logo.svg';
-import './App.css';
+import { EthConnectProvider} from '@ethconnect/core'
+import Homepage from './components/Homepage'
+
+import { WagmiConfig, createClient, configureChains } from 'wagmi'
+import { publicProvider } from 'wagmi/providers/public'
+import { mainnet, polygon } from 'wagmi/chains'
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
+import { InjectedConnector } from 'wagmi/connectors/injected'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
 function App() {
+  const { chains, provider, webSocketProvider } = configureChains(
+    [mainnet, polygon],
+    [publicProvider()],
+  )
+  
+  const client = createClient({
+    autoConnect: false,
+    provider,
+    webSocketProvider,
+    connectors: [
+      new MetaMaskConnector({ chains }),
+      new CoinbaseWalletConnector({
+        chains,
+        options: {
+          appName: 'ethconnect example',
+        },
+      }),
+      new WalletConnectConnector({
+        chains,
+        options: {
+          qrcode: true,
+        },
+      }),
+      new InjectedConnector({
+        chains,
+        options: {
+          name: 'Injected',
+          shimDisconnect: true,
+        },
+      }),
+    ],
+  })
 
-  console.log('ethconnec.t..', TestComponent)
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <TestComponent />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WagmiConfig client={client}>
+      <EthConnectProvider>
+        <Homepage />
+      </EthConnectProvider>
+    </WagmiConfig>
+
   );
 }
 
