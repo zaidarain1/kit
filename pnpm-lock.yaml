@@ -26,6 +26,7 @@ importers:
       '@types/node': ^18.11.17
       '@typescript-eslint/eslint-plugin': ^5.43.0
       '@typescript-eslint/parser': ^5.43.0
+      '@vanilla-extract/babel-plugin': ^1.2.0
       ava: ^3.15.0
       chai: ^4.3.4
       chai-as-promised: ^7.1.1
@@ -47,6 +48,8 @@ importers:
       tsx: ^3.12.1
       typescript: ~4.9.4
       wait-on: ^6.0.1
+    dependencies:
+      '@vanilla-extract/babel-plugin': 1.2.0
     devDependencies:
       '@babel/core': 7.20.12
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.20.12
@@ -89,6 +92,7 @@ importers:
   examples/react:
     specifiers:
       0xsequence: ^0.43.10
+      '@0xsequence/wagmi-connector': ^1.0.2
       '@testing-library/jest-dom': ^5.16.5
       '@testing-library/react': ^13.4.0
       '@testing-library/user-event': ^13.5.0
@@ -107,6 +111,7 @@ importers:
       web-vitals: ^2.1.4
     dependencies:
       0xsequence: 0.43.10_ethers@5.7.2
+      '@0xsequence/wagmi-connector': 1.0.2_4oymnrbgqg52xqyam52jg44axi
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/user-event': 13.5.0
@@ -331,6 +336,18 @@ packages:
     dependencies:
       ethers: 5.7.2
       js-base64: 3.7.4
+    dev: false
+
+  /@0xsequence/wagmi-connector/1.0.2_4oymnrbgqg52xqyam52jg44axi:
+    resolution: {integrity: sha512-ZqG23pD4pl3n7o4Zv+DnRELGLxMQCdNP8Ay3lmSOC8j+xFhEVMTwrfQYmWjhZauwtaFOpP6U+eHdxVszOe6AFw==}
+    peerDependencies:
+      0xsequence: '>=0.43.0'
+      ethers: '>=5.5'
+      wagmi: '>=0.7.5'
+    dependencies:
+      0xsequence: 0.43.10_ethers@5.7.2
+      ethers: 5.7.2
+      wagmi: 0.10.14_wutjgtvd3hlq2o7t7fd5cmivry
     dev: false
 
   /@0xsequence/wallet/0.43.10_ethers@5.7.2:
@@ -4885,6 +4902,17 @@ packages:
       '@typescript-eslint/types': 5.49.0
       eslint-visitor-keys: 3.3.0
 
+  /@vanilla-extract/babel-plugin/1.2.0:
+    resolution: {integrity: sha512-4R+hqoyzoyJIrE+NgrYxZuL6GqGH28hiBrPUOxwtvqnJJ5WnUl2/WzItLDDH9YT1Auwl3cIR7pcbrV6HIchORA==}
+    deprecated: The features of this plugin are now built-in to all vanilla-extract bundler integrations — making this plugin no longer required. For more information about test environment integrations, see https://vanilla-extract.style/documentation/test-environments/
+    dependencies:
+      '@babel/core': 7.20.12
+      '@babel/template': 7.20.7
+      '@vanilla-extract/integration': 5.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@vanilla-extract/css/1.9.3:
     resolution: {integrity: sha512-vitcD8usEOTWDLAnbtnZ46YbHADAp3Es+3xyHsMDMZOEWk03FhD+PbR58kdwtGpr258+hMryCYtQPeFh5lWFbA==}
     dependencies:
@@ -4898,6 +4926,18 @@ packages:
       deep-object-diff: 1.1.9
       deepmerge: 4.2.2
       media-query-parser: 2.0.2
+      outdent: 0.8.0
+    dev: false
+
+  /@vanilla-extract/integration/5.0.1:
+    resolution: {integrity: sha512-HRV/HvC/lihb9wT3x5s7pf5qLjqxSd9nBePJ10juOuMB5cl2ZClEcts076m9BuRKM3wRK2h7KuwkNsaUtjujxQ==}
+    dependencies:
+      '@vanilla-extract/css': 1.9.3
+      esbuild: 0.11.23
+      eval: 0.1.6
+      find-up: 5.0.0
+      javascript-stringify: 2.1.0
+      lodash: 4.17.21
       outdent: 0.8.0
     dev: false
 
@@ -8518,6 +8558,12 @@ packages:
     dev: true
     optional: true
 
+  /esbuild/0.11.23:
+    resolution: {integrity: sha512-iaiZZ9vUF5wJV8ob1tl+5aJTrwDczlvGP0JoMmnpC2B0ppiMCu8n8gmy5ZTGl5bcG081XBVn+U+jP+mPFm5T5Q==}
+    hasBin: true
+    requiresBuild: true
+    dev: false
+
   /esbuild/0.15.18:
     resolution: {integrity: sha512-x/R72SmW3sSFRm5zrrIjAhCeQSAWoni3CmHEqfQrZIQTM3lVCdehdwuIqaOtfC2slvpdlLa62GYoN8SxT23m6Q==}
     engines: {node: '>=12'}
@@ -9128,6 +9174,13 @@ packages:
     dependencies:
       is-hex-prefixed: 1.0.0
       strip-hex-prefix: 1.0.0
+
+  /eval/0.1.6:
+    resolution: {integrity: sha512-o0XUw+5OGkXw4pJZzQoXUk+H87DHuC+7ZE//oSrRGtatTmr12oTnLfg6QOq9DyTt0c/p4TwzgmkKrBzWTSizyQ==}
+    engines: {node: '>= 0.8'}
+    dependencies:
+      require-like: 0.1.2
+    dev: false
 
   /event-target-shim/5.0.1:
     resolution: {integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==}
@@ -10715,6 +10768,10 @@ packages:
       chalk: 4.1.2
       filelist: 1.0.4
       minimatch: 3.1.2
+    dev: false
+
+  /javascript-stringify/2.1.0:
+    resolution: {integrity: sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg==}
     dev: false
 
   /jayson/3.7.0:
@@ -14314,6 +14371,10 @@ packages:
   /require-from-string/2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
+
+  /require-like/0.1.2:
+    resolution: {integrity: sha512-oyrU88skkMtDdauHDuKVrgR+zuItqr6/c//FXzvmxRGMexSDc6hNvJInGW3LL46n+8b50RykrvwSUIIQH2LQ5A==}
+    dev: false
 
   /require-main-filename/2.0.0:
     resolution: {integrity: sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==}

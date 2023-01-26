@@ -1,6 +1,7 @@
+import { SequenceConnector } from '@0xsequence/wagmi-connector'
 import { EthConnectProvider} from '@ethconnect/core'
 import Homepage from './components/Homepage'
-
+import * as wagmi from 'wagmi'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
@@ -20,11 +21,20 @@ function App() {
     provider,
     webSocketProvider,
     connectors: [
+      new SequenceConnector({
+        chains,
+        options: {
+          connect: {
+            app: 'Ethconnect example',
+            networkId: 137
+          }
+        }
+      }),
       new MetaMaskConnector({ chains }),
       new CoinbaseWalletConnector({
         chains,
         options: {
-          appName: 'ethconnect example',
+          appName: 'Ethconnect example',
         },
       }),
       new WalletConnectConnector({
@@ -46,7 +56,7 @@ function App() {
 
   return (
     <WagmiConfig client={client}>
-      <EthConnectProvider>
+      <EthConnectProvider wagmi={wagmi}>
         <Homepage />
       </EthConnectProvider>
     </WagmiConfig>
