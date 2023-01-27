@@ -33,7 +33,6 @@ export const EthConnectProvider = ({ children, wagmi }: EthConnectProvider) => {
   console.log('connect info...', connectInfo)
   console.log('account info...', accountInfo)
 
-
   useEffect(() => {
     if (!error || !pendingConnector) {
       setClickedGoBack(false)
@@ -47,9 +46,6 @@ export const EthConnectProvider = ({ children, wagmi }: EthConnectProvider) => {
   }, [accountInfo.isConnected, openConnectModal])
 
   const getModalContent = () => {
-    console.log('///////////////')
-    console.log('pending connector...', pendingConnector, 'error...', error, 'clicked go back....', clickedGoBack)
-
     if (pendingConnector && error && !clickedGoBack) {
       return (
         <Box flexDirection="column" justifyContent="center" alignItems="center" gap="6" marginTop="4">
