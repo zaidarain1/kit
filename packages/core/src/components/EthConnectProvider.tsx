@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Modal, Box, Image, Text, ThemeProvider } from '@0xsequence/design-system'
+import { Modal, Box, Text, ThemeProvider } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 // TODO: figure out the problem with the pnpm setup and use the wagmi hooks
 import { useConnect, useAccount, useClient } from 'wagmi'

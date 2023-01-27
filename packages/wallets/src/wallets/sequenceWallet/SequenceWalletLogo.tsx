@@ -14,10 +14,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
         <g
           transform="translate(0,38)"
           id="g1256"
-          clip-path="url(#clip0_5_131)">
+          clipPath="url(#clip0_5_131)">
           <g
             id="g1254"
-            clip-path="url(#clip1_5_131)">
+            clipPath="url(#clip1_5_131)">
             <path
               style={{ fill:"#111111" }}
               id="path1232"
@@ -75,10 +75,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint0_linear_5_131">
             <stop
               id="stop1258"
-              stop-color="#1D273D" />
+              stopColor="#1D273D" />
             <stop
               id="stop1260"
-              stop-color="#0D0F13"
+              stopColor="#0D0F13"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -90,10 +90,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint1_linear_5_131">
             <stop
               id="stop1263"
-              stop-color="#4462FE" />
+              stopColor="#4462FE" />
             <stop
               id="stop1265"
-              stop-color="#7D69FA"
+              stopColor="#7D69FA"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -105,10 +105,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint2_linear_5_131">
             <stop
               id="stop1268"
-              stop-color="#3757FD" />
+              stopColor="#3757FD" />
             <stop
               id="stop1270"
-              stop-color="#6980FA"
+              stopColor="#6980FA"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -120,10 +120,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint3_linear_5_131">
             <stop
               id="stop1273"
-              stop-color="#2447FF" />
+              stopColor="#2447FF" />
             <stop
               id="stop1275"
-              stop-color="#6980FA"
+              stopColor="#6980FA"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -135,10 +135,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint4_linear_5_131">
             <stop
               id="stop1278"
-              stop-color="#BC3EE6" />
+              stopColor="#BC3EE6" />
             <stop
               id="stop1280"
-              stop-color="#D972F1"
+              stopColor="#D972F1"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -150,10 +150,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint5_linear_5_131">
             <stop
               id="stop1283"
-              stop-color="#29BDFF" />
+              stopColor="#29BDFF" />
             <stop
               id="stop1285"
-              stop-color="#96E7FB"
+              stopColor="#96E7FB"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -165,10 +165,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint6_linear_5_131">
             <stop
               id="stop1288"
-              stop-color="#23BBFF" />
+              stopColor="#23BBFF" />
             <stop
               id="stop1290"
-              stop-color="#85E7FF"
+              stopColor="#85E7FF"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -180,10 +180,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint7_linear_5_131">
             <stop
               id="stop1293"
-              stop-color="#23BBFF" />
+              stopColor="#23BBFF" />
             <stop
               id="stop1295"
-              stop-color="#85E7FF"
+              stopColor="#85E7FF"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -195,10 +195,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint8_linear_5_131">
             <stop
               id="stop1298"
-              stop-color="#2447FF" />
+              stopColor="#2447FF" />
             <stop
               id="stop1300"
-              stop-color="#6980FA"
+              stopColor="#6980FA"
               offset="1" />
           </linearGradient>
           <linearGradient
@@ -210,10 +210,10 @@ export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
             id="paint9_linear_5_131">
             <stop
               id="stop1303"
-              stop-color="#6634FF" />
+              stopColor="#6634FF" />
             <stop
               id="stop1305"
-              stop-color="#9C6DFF"
+              stopColor="#9C6DFF"
               offset="1" />
           </linearGradient>
           <clipPath
