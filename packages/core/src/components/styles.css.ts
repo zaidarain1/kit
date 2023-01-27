@@ -8,3 +8,7 @@ export const networkButton = style({
     userSelect: 'none'
   }
 })
+
+export const modal = style({
+  transition: 'height 1s'
+})
