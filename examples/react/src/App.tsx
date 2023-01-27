@@ -6,16 +6,12 @@ import * as wagmi from 'wagmi'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
-import { InjectedConnector } from 'wagmi/connectors/injected'
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
 function App() {
   const { chains, provider, webSocketProvider } = configureChains(
     [mainnet, polygon],
     [publicProvider()],
   )
-
 
   const connectors = getEthConnectWallets([
     injectedWallet({
@@ -42,7 +38,7 @@ function App() {
 
   
   const client = createClient({
-    autoConnect: false,
+    autoConnect: true,
     provider,
     webSocketProvider,
     connectors
