@@ -1,11 +1,11 @@
 {
-  "name": "@ethconnect/core",
+  "name": "@ethconnect/wallets",
   "version": "0.0.1",
-  "description": "Core package for Ethconnect",
+  "description": "Wallets for Ethconnect",
   "repository": "https://github.com/0xsequence/ethconnect/tree/master/packages/ethconnect",
   "source": "src/index.ts",
-  "main": "dist/ethconnect-core.cjs.js",
-  "module": "dist/ethconnect-core.esm.js",
+  "main": "dist/ethconnect-wallets.cjs.js",
+  "module": "dist/ethconnect-wallets.esm.js",
   "author": "Horizon Blockchain Games",
   "license": "Apache-2.0",
   "scripts": {
@@ -13,11 +13,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/design-system": "^0.1.103",
+    "@0xsequence/provider": "^0.43.11",
     "@0xsequence/wagmi-connector": "^1.0.2",
-    "@vanilla-extract/css": "^1.9.3",
-    "@vanilla-extract/recipes": "^0.3.0",
-    "framer-motion": "^8.5.2"
+    "@types/react": "^18.0.27"
   },
   "peerDependencies": {
     "react": ">=17",
@@ -25,6 +23,7 @@
     "wagmi": ">=0.10.0"
   },
   "devDependencies": {
+    "@types/webextension-polyfill": "^0.10.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "react": "18.2.0",

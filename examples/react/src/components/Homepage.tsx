@@ -12,14 +12,14 @@ function Homepage() {
       <header className="App-header">
         {isConnected ? (
           <>
-            <button onClick={() => { disconnect() }}>
+            <button className="Button" onClick={() => { disconnect() }}>
               Disconnect
             </button>
             <div>Connected wallet: {connector?.name}</div>
             <div>Connected address: {address}</div>
           </>
         ) : (
-          <button onClick={() => { openConnectModal && openConnectModal(true) }}>
+          <button className="Button" onClick={() => { openConnectModal && openConnectModal(true) }}>
             Connect
           </button>
         )}

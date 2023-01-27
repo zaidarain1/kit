@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
-import { Modal, Box, Button, Text, ThemeProvider } from '@0xsequence/design-system'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Modal, Box, Image, Text, ThemeProvider } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
+// TODO: figure out the problem with the pnpm setup and use the wagmi hooks
 import { useConnect, useAccount, useClient } from 'wagmi'
 
 import { ConnectModalContext } from '../contexts'
@@ -36,26 +36,42 @@ export const EthConnectProvider = ({ children, wagmi }: EthConnectProvider) => {
               <Box paddingY="16" paddingX="8">
                 <Box justifyContent="center" alignItems="center"><Text variant="xlarge">EthConnect</Text></Box>
                 <Box marginY="4" justifyContent="center" alignItems="center"><Text variant="medium">Select a wallet to connect</Text></Box>
-                <Box gap="4" flexDirection="column">
+                <Box gap="4" flexDirection="column" justifyContent="center" alignItems="center">
                   {/* @ts-ignore-next-line */}
                   {connectInfo.connectors.map((connector) => {
+                      const Logo = connector._wallet.logo as React.FunctionComponent
+                      const walletName = connector._wallet.name
+
                       return (
                         <Box
                           key={connector.id}
                           as="button"
-                          width="full"
-                          background="backgroundSecondary"
+                          justifyContent="space-between"
+                          alignItems="center"
+                          background="buttonGlass"
                           color= "white"
                           borderRadius="circle"
-                          padding="4"
+                          paddingY="2"
+                          paddingX="10"
                           className={styles.networkButton}
                           onClick={() => connectInfo.connect({ connector })}
                         >
                           <Text variant="medium">
-                            {connector.name}
+                            {walletName}
                             {connectInfo.isLoading && connectInfo.pendingConnector?.id === connector.id
-                            && (' Connecting...')}
+                            && (' (Connecting...)')}
                           </Text>
+                          <Box
+                            width="16"
+                            justifyContent="center"
+                            alignItems="center"
+                            style={{ backgroundColor: connector._wallet.iconBackground }}
+                            borderRadius="md"
+                          >
+                            <Box width="12">
+                            <Logo />
+                            </Box>
+                          </Box>
                         </Box>
                       )
                     })

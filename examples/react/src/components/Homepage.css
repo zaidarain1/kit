@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.Button {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.Button:hover {
+  opacity: 0.8;
+}
