@@ -10,9 +10,11 @@ import {
   ThemeProvider,
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
-import { useConnect, useAccount, useClient, Connector } from 'wagmi'
+import { useConnect, useAccount } from 'wagmi'
 
 import { ConnectModalContext } from '../contexts'
+import { ExtendedConnector } from '../utils/getEthConnectWallets'
+
 import * as styles from './styles.css'
 
 import '@0xsequence/design-system/styles.css'
@@ -24,38 +26,36 @@ export type EthConnectProvider = {
 export const EthConnectProvider = ({ children }: EthConnectProvider) => {
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [clickedGoBack, setClickedGoBack] = useState(false)
-  const connectInfo = useConnect()
-  const accountInfo = useAccount()
-  const pendingConnector = connectInfo.pendingConnector
-  const error = connectInfo.isError
-  console.log('connect info...', connectInfo)
-  console.log('account info...', accountInfo)
+  const { connectors: baseConnectors, pendingConnector, isError, connect, isLoading } = useConnect()
+  const { isConnected } = useAccount()
+
+  const connectors = baseConnectors as ExtendedConnector[]
 
   useEffect(() => {
-    if (!error || !pendingConnector) {
+    if (!isError || !pendingConnector) {
       setClickedGoBack(false)
     }
-  }, [error, pendingConnector])
+  }, [isError, pendingConnector])
 
   useEffect(() => {
-    if (accountInfo.isConnected && openConnectModal) {
+    if (isConnected && openConnectModal) {
       setOpenConnectModal(false)
     }
-  }, [accountInfo.isConnected, openConnectModal])
+  }, [isConnected, openConnectModal])
 
   const getModalContent = () => {
-    if (pendingConnector && error && !clickedGoBack) {
+    if (pendingConnector && isError && !clickedGoBack) {
       return (
         <Box flexDirection="column" justifyContent="center" alignItems="center" gap="6" marginTop="4">
           <Text variant="medium">An error occurred while connecting to {pendingConnector.name}</Text>
           <Box><Badge value={<CloseIcon />} variant="error" size="lg" /></Box>
-          <Button onClick={() => connectInfo.connect({ connector: pendingConnector })} label="Retry" />
+          <Button onClick={() => connect({ connector: pendingConnector })} label="Retry" />
           <Button onClick={() => setClickedGoBack(true)} label="Go Back" />
         </Box>
       )
     }
 
-    if (pendingConnector && !error && !clickedGoBack) {
+    if (pendingConnector && !isError && !clickedGoBack) {
       return (
         <Box flexDirection="column" justifyContent="center" alignItems="center" gap="6" marginTop="4">
           <Text variant="medium">Connecting to {pendingConnector.name}...</Text>
@@ -69,11 +69,8 @@ export const EthConnectProvider = ({ children }: EthConnectProvider) => {
       <>
         <Box marginY="4" justifyContent="center" alignItems="center"><Text variant="medium">Select a wallet to connect</Text></Box>
         <Box gap="4" flexDirection="column" justifyContent="center" alignItems="center">
-          {/* @ts-ignore-next-line */}
-          {connectInfo.connectors.map((connector) => {
-              // @ts-ignore
+          {connectors.map((connector) => {
               const Logo = connector._wallet.logo as React.FunctionComponent
-              // @ts-ignore
               const walletName = connector._wallet.name
 
               return (
@@ -88,17 +85,16 @@ export const EthConnectProvider = ({ children }: EthConnectProvider) => {
                   paddingY="2"
                   paddingX="10"
                   className={styles.networkButton}
-                  onClick={() => connectInfo.connect({ connector })}
+                  onClick={() => connect({ connector })}
                 >
                   <Text variant="medium">
                     {walletName}
-                    {connectInfo.isLoading}
+                    {isLoading}
                   </Text>
                   <Box
                     width="16"
                     justifyContent="center"
                     alignItems="center"
-                    // @ts-ignore
                     style={{ backgroundColor: connector._wallet.iconBackground }}
                     borderRadius="md"
                   >
