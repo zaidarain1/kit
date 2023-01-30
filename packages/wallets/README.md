@@ -1,4 +1,4 @@
 @ethconnect/wallets
 ===============
 
-See [0xsequence project page](https://github.com/0xsequence/sequence.js).
+Official wallet integrations that work with Ethconnect.

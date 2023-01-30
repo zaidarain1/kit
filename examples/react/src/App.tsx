@@ -48,7 +48,6 @@ function App() {
         <Homepage />
       </EthConnectProvider>
     </WagmiConfig>
-
   );
 }
 

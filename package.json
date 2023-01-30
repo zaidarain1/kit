@@ -20,7 +20,8 @@
     "typecheck": "tsc --noEmit",
     "coverage": "rimraf ./coverage && rimraf ./.nyc_output && nyc pnpm test",
     "dev": "preconstruct dev",
-    "postinstall": "preconstruct dev"
+    "postinstall": "preconstruct dev",
+    "start:react": "pnpm --filter @ethconnect/examples-react start"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
