@@ -124,7 +124,7 @@ const MyReactComponent = () => {
 
 ## Packages
 
-- [@ethconnect/examples-react](./packages/examples-react)
+- [@ethconnect/examples-react](./examples/react)
 - [@ethconnect/core](./packages/core)
 - [@ethconnect/wallets](./packages/wallets)
 
