@@ -4,6 +4,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
 import { WalletConnectWalletLogo } from './WalletConnectWalletLogo'
 
+window.Buffer = window.Buffer || require("buffer").Buffer;
 
 export type WalletConnectWalletOptions = ConstructorParameters<
   typeof WalletConnectConnector

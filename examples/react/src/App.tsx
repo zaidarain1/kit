@@ -1,6 +1,5 @@
-// import { SequenceConnector } from '@0xsequence/wagmi-connector'
 import { EthConnectProvider, getEthConnectWallets } from '@ethconnect/core'
-import { sequenceWallet, metamaskWallet, injectedWallet } from '@ethconnect/wallets'
+import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@ethconnect/wallets'
 import Homepage from './components/Homepage'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
@@ -26,13 +25,12 @@ function App() {
     metamaskWallet({
       chains,
     }),
-    // TODO: integrate wallet connect
-    // walletConnectWallet({
-    //   chains,
-    //   options: {
-    //     qrcode: true,
-    //   },
-    // })
+    walletConnectWallet({
+      chains,
+      options: {
+        qrcode: true,
+      },
+    })
   ])
 
   
