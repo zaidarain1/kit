@@ -6,28 +6,28 @@ Ethconnect is a library enabling developers to easily integrate web3 wallets in 
 ## Usage
 ### Installing the Library
 
-`npm install @ethconnect/core wagmi`
+`npm install @ethconnect/core wagmi ethers`
 
 or
 
-`pnpm install @ethconnect/core wagmi`
+`pnpm install @ethconnect/core wagmi ethers`
 
 or
 
-`yarn add @ethconnect/core wagmi`
+`yarn add @ethconnect/core wagmi ethers`
 
 ### Installing Wallets
 Official wallets can be installed by running:
 
-`npm install @ethconnect/wallets wagmi`
+`npm install @ethconnect/wallets`
 
 or
 
-`pnpm install @ethconnect/wallets wagmi`
+`pnpm install @ethconnect/wallets`
 
 or
 
-`yarn add @ethconnect/wallets wagmi`
+`yarn add @ethconnect/wallets`
 
 ### Setting up the Library
 React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Ethconnect wrapper.
