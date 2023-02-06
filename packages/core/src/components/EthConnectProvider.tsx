@@ -19,11 +19,19 @@ import * as styles from './styles.css'
 
 import '@0xsequence/design-system/styles.css'
 
+export declare const THEME: readonly ["dark", "light"];
+export declare type Theme = typeof THEME[number];
+export const THEMES = {
+  dark: 'dark' as Theme,
+  light: 'light' as Theme
+};
+
 export type EthConnectProvider = {
   children: React.ReactNode,
+  theme?: Theme
 }
 
-export const EthConnectProvider = ({ children }: EthConnectProvider) => {
+export const EthConnectProvider = ({ children, theme }: EthConnectProvider) => {
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [clickedGoBack, setClickedGoBack] = useState(false)
   const { connectors: baseConnectors, pendingConnector, isError, connect, isLoading } = useConnect()
@@ -113,10 +121,10 @@ export const EthConnectProvider = ({ children }: EthConnectProvider) => {
 
   return (
     <ConnectModalContext.Provider value={{ setOpenConnectModal }}>
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <AnimatePresence>
           {openConnectModal && (
-            <Modal className={styles.modal} size="sm" onClose={() => setOpenConnectModal(false)}>
+            <Modal backdropColor="transparent" className={styles.modal} size="sm" onClose={() => setOpenConnectModal(false)}>
               <Box paddingY="16" paddingX="8">
                 <Box justifyContent="center" alignItems="center"><Text variant="xlarge">EthConnect</Text></Box>
                 {getModalContent()}

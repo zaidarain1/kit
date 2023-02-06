@@ -1,10 +1,14 @@
+import { useContext } from 'react'
 import { sequence } from '0xsequence' 
 import { ethers } from 'ethers'
 import { useOpenConnectModal } from '@ethconnect/core'
 import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
+import { ModalThemeContext } from '../contexts'
+
 import './Homepage.css';
 
 function Homepage() {
+  const { setIsDarkMode, isDarkMode } = useContext(ModalThemeContext)
   const { address, connector, isConnected } = useAccount()
   const openConnectModal = useOpenConnectModal()
   const { disconnect } = useDisconnect()
@@ -57,6 +61,8 @@ function Homepage() {
   return (
     <div className="App">
       <header className="App-header">
+        <button className="Button" onClick={() => { setIsDarkMode && setIsDarkMode(!isDarkMode) }}>Change Modal Theme</button>
+        <div>Modal theme: {isDarkMode ? 'dark' : 'light'}</div>
         {isConnected ? (
           <>
             <button className="Button" onClick={() => { disconnect() }}>
