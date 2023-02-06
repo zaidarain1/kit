@@ -1,9 +1,10 @@
 import React from 'react'
+import { vars } from '@0xsequence/design-system'
 
 export const InjectedWalletLogo: React.FunctionComponent  = ({...props}) => {
   return (
     <React.Fragment>
-      <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
+      <svg fill={vars.colors.text100} version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
         viewBox="0 0 76.304 76.304" xmlSpace="preserve"
         {...props}
       >

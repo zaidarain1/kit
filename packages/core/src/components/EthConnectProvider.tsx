@@ -88,7 +88,7 @@ export const EthConnectProvider = ({ children, theme }: EthConnectProvider) => {
                   justifyContent="space-between"
                   alignItems="center"
                   background="buttonGlass"
-                  color= "white"
+                  color="text100"
                   borderRadius="circle"
                   paddingY="2"
                   paddingX="10"
@@ -124,7 +124,7 @@ export const EthConnectProvider = ({ children, theme }: EthConnectProvider) => {
       <ThemeProvider theme={theme}>
         <AnimatePresence>
           {openConnectModal && (
-            <Modal backdropColor="transparent" className={styles.modal} size="sm" onClose={() => setOpenConnectModal(false)}>
+            <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenConnectModal(false)}>
               <Box paddingY="16" paddingX="8">
                 <Box justifyContent="center" alignItems="center"><Text variant="xlarge">EthConnect</Text></Box>
                 {getModalContent()}
