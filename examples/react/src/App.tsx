@@ -33,7 +33,7 @@ function App() {
     walletConnectWallet({
       chains,
       options: {
-        qrcode: true,
+        projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
       },
     })
   ])
