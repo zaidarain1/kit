@@ -1,7 +1,7 @@
-Ethconnect
-==========
+Sequence Connect
+================
 
-Ethconnect is a library enabling developers to easily integrate web3 wallets in their app. It is based on [wagmi](https://wagmi.sh/) and all functionality from wagmi, such as hooks, can be used.
+Sequence Connect (@0xsequence/connect) is a library enabling developers to easily integrate web3 wallets in their app. It is based on [wagmi](https://wagmi.sh/) and all functionality from wagmi, such as hooks, can be used.
 
 ## Usage
 ### Installing the Library
