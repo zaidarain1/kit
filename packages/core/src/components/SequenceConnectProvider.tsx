@@ -13,7 +13,7 @@ import { AnimatePresence } from 'framer-motion'
 import { useConnect, useAccount } from 'wagmi'
 
 import { ConnectModalContext } from '../contexts'
-import { ExtendedConnector } from '../utils/getEthConnectWallets'
+import { ExtendedConnector } from '../utils/getSequenceConnectWallets'
 
 import * as styles from './styles.css'
 
@@ -26,12 +26,12 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
-export type EthConnectProvider = {
+export type SequenceConnectProvider = {
   children: React.ReactNode,
   theme?: Theme
 }
 
-export const EthConnectProvider = ({ children, theme }: EthConnectProvider) => {
+export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProvider) => {
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [clickedGoBack, setClickedGoBack] = useState(false)
   const { connectors: baseConnectors, pendingConnector, isError, connect, isLoading } = useConnect()
@@ -126,7 +126,7 @@ export const EthConnectProvider = ({ children, theme }: EthConnectProvider) => {
           {openConnectModal && (
             <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenConnectModal(false)}>
               <Box paddingY="16" paddingX="8">
-                <Box justifyContent="center" alignItems="center"><Text variant="xlarge">EthConnect</Text></Box>
+                <Box justifyContent="center" alignItems="center"><Text variant="xlarge">SequenceConnect</Text></Box>
                 {getModalContent()}
               </Box>
             </Modal>

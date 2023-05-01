@@ -1,3 +1,3 @@
-# @ethconnect/core
+# @sequenceConnect/core
 
 ## 0.0.1

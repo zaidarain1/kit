@@ -1,12 +1,12 @@
 {
-  "name": "@ethconnect/examples-react",
+  "name": "@sequenceConnect/examples-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "0xsequence": "^0.43.10",
     "@0xsequence/wagmi-connector": "^1.0.3",
-    "@ethconnect/core": "workspace:*",
-    "@ethconnect/wallets": "workspace:*",
+    "@sequenceConnect/core": "workspace:*",
+    "@sequenceConnect/wallets": "workspace:*",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

@@ -34,10 +34,10 @@ importers:
       '@changesets/cli':
         specifier: ^2.25.2
         version: 2.26.0
-      '@ethconnect/core':
+      '@sequenceConnect/core':
         specifier: workspace:*
         version: link:packages/core
-      '@ethconnect/wallets':
+      '@sequenceConnect/wallets':
         specifier: workspace:*
         version: link:packages/wallets
       '@preconstruct/cli':
@@ -139,10 +139,10 @@ importers:
       '@0xsequence/wagmi-connector':
         specifier: ^1.0.3
         version: 1.0.3(0xsequence@0.43.13)(ethers@5.7.2)(wagmi@0.11.0)
-      '@ethconnect/core':
+      '@sequenceConnect/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@ethconnect/wallets':
+      '@sequenceConnect/wallets':
         specifier: workspace:*
         version: link:../../packages/wallets
       '@testing-library/jest-dom':

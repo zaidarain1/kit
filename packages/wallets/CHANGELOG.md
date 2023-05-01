@@ -1,3 +1,3 @@
-# @ethconnect/wallets
+# @sequenceConnect/wallets
 
 ## 0.0.1

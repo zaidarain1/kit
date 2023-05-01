@@ -1,11 +1,11 @@
 {
-  "name": "@ethconnect/core",
+  "name": "@sequenceConnect/core",
   "version": "0.0.1",
   "description": "Core package for Ethconnect",
-  "repository": "https://github.com/0xsequence/ethconnect/tree/master/packages/ethconnect",
-  "main": "dist/ethconnect-core.cjs.js",
-  "module": "dist/ethconnect-core.esm.js",
-  "types": "dist/ethconnect-core.cjs.d.ts",
+  "repository": "https://github.com/0xsequence/sequenceConnect/tree/master/packages/sequenceConnect",
+  "main": "dist/sequenceConnect-core.cjs.js",
+  "module": "dist/sequenceConnect-core.esm.js",
+  "types": "dist/sequenceConnect-core.cjs.d.ts",
   "author": "Horizon Blockchain Games",
   "license": "Apache-2.0",
   "scripts": {

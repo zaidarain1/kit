@@ -1,5 +1,5 @@
 {
-  "name": "ethconnect",
+  "name": "sequenceConnect",
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
@@ -21,7 +21,7 @@
     "coverage": "rimraf ./coverage && rimraf ./.nyc_output && nyc pnpm test",
     "dev": "preconstruct dev",
     "postinstall": "preconstruct dev",
-    "start:react": "pnpm --filter @ethconnect/examples-react start"
+    "start:react": "pnpm --filter @sequenceConnect/examples-react start"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
@@ -32,8 +32,8 @@
     "@babel/runtime": "^7.20.1",
     "@changesets/changelog-github": "^0.4.7",
     "@changesets/cli": "^2.25.2",
-    "@ethconnect/core": "workspace:*",
-    "@ethconnect/wallets": "workspace:*",
+    "@sequenceConnect/core": "workspace:*",
+    "@sequenceConnect/wallets": "workspace:*",
     "@preconstruct/cli": "^2.2.2",
     "@types/chai": "^4.2.22",
     "@types/chai-as-promised": "^7.1.4",

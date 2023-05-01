@@ -6,35 +6,35 @@ Ethconnect is a library enabling developers to easily integrate web3 wallets in 
 ## Usage
 ### Installing the Library
 
-`npm install @ethconnect/core wagmi ethers`
+`npm install @sequenceConnect/core wagmi ethers`
 
 or
 
-`pnpm install @ethconnect/core wagmi ethers`
+`pnpm install @sequenceConnect/core wagmi ethers`
 
 or
 
-`yarn add @ethconnect/core wagmi ethers`
+`yarn add @sequenceConnect/core wagmi ethers`
 
 ### Installing Wallets
 Official wallets can be installed by running:
 
-`npm install @ethconnect/wallets`
+`npm install @sequenceConnect/wallets`
 
 or
 
-`pnpm install @ethconnect/wallets`
+`pnpm install @sequenceConnect/wallets`
 
 or
 
-`yarn add @ethconnect/wallets`
+`yarn add @sequenceConnect/wallets`
 
 ### Setting up the Library
 React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Ethconnect wrapper.
 
 ```js
-import { EthConnectProvider, getEthConnectWallets } from '@ethconnect/core'
-import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@ethconnect/wallets'
+import { SequenceConnectProvider, getSequenceConnectWallets } from '@sequenceConnect/core'
+import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@sequenceConnect/wallets'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
@@ -47,7 +47,7 @@ function App() {
     [publicProvider()],
   )
 
-  const connectors = getEthConnectWallets([
+  const connectors = getSequenceConnectWallets([
     injectedWallet({
       chains
     }),
@@ -80,9 +80,9 @@ function App() {
 
   return (
     <WagmiConfig client={client}>
-      <EthConnectProvider>
+      <SequenceConnectProvider>
         <MyPage />
-      </EthConnectProvider>
+      </SequenceConnectProvider>
     </WagmiConfig>
   );
 }
@@ -93,7 +93,7 @@ function App() {
 Wallet selection is done through a modal which can be called programmatically.
 
 ```js
-import { useOpenConnectModal } from '@ethconnect/core'
+import { useOpenConnectModal } from '@sequenceConnect/core'
 import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
 
 
@@ -124,9 +124,9 @@ const MyReactComponent = () => {
 
 ## Packages
 
-- [@ethconnect/examples-react](./examples/react)
-- [@ethconnect/core](./packages/core)
-- [@ethconnect/wallets](./packages/wallets)
+- [@sequenceConnect/examples-react](./examples/react)
+- [@sequenceConnect/core](./packages/core)
+- [@sequenceConnect/wallets](./packages/wallets)
 
 
 ## Local Development

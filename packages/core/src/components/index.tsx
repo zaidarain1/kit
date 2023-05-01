@@ -1,1 +1,1 @@
-export * from './EthConnectProvider'
+export * from './SequenceConnectProvider'

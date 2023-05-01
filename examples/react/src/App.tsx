@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { EthConnectProvider, getEthConnectWallets, THEMES } from '@ethconnect/core'
-import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@ethconnect/wallets'
+import { SequenceConnectProvider, getSequenceConnectWallets, THEMES } from '@sequenceConnect/core'
+import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@sequenceConnect/wallets'
 import Homepage from './components/Homepage'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
@@ -16,7 +16,7 @@ function App() {
     [publicProvider()],
   )
 
-  const connectors = getEthConnectWallets([
+  const connectors = getSequenceConnectWallets([
     injectedWallet({
       chains
     }),
@@ -48,11 +48,11 @@ function App() {
 
   return (
     <WagmiConfig client={client}>
-      <EthConnectProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
+      <SequenceConnectProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
         <ModalThemeContext.Provider value={{ setIsDarkMode, isDarkMode }}>
           <Homepage />
         </ModalThemeContext.Provider>
-      </EthConnectProvider>
+      </SequenceConnectProvider>
     </WagmiConfig>
   );
 }

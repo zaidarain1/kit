@@ -1,1 +1,1 @@
-export * from './getEthConnectWallets'
+export * from './getSequenceConnectWallets'
