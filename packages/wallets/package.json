@@ -1,11 +1,11 @@
 {
-  "name": "@sequenceConnect/wallets",
+  "name": "@0xsequence/connect-connectors",
   "version": "0.0.1",
   "description": "Wallets for Ethconnect",
-  "repository": "https://github.com/0xsequence/sequenceConnect/tree/master/packages/sequenceConnect",
-  "main": "dist/sequenceConnect-wallets.cjs.js",
-  "module": "dist/sequenceConnect-wallets.esm.js",
-  "types": "dist/sequenceConnect-wallets.cjs.d.ts",
+  "repository": "https://github.com/0xsequence/connect/tree/master/packages/connectors",
+  "main": "dist/0xsequence-connect-connectors.cjs.js",
+  "module": "dist/0xsequence-connect-connectors.esm.js",
+  "types": "dist/0xsequence-connect-connectors.cjs.d.ts",
   "author": "Horizon Blockchain Games",
   "license": "Apache-2.0",
   "scripts": {

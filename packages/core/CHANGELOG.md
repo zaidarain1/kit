@@ -1,3 +1,3 @@
-# @sequenceConnect/core
+# @0xsequence/connect-core
 
 ## 0.0.1

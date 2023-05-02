@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { sequence } from '0xsequence' 
 import { ethers } from 'ethers'
-import { useOpenConnectModal } from '@sequenceConnect/core'
+import { useOpenConnectModal } from '@0xsequence/connect-core'
 import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
 import { ModalThemeContext } from '../contexts'
 

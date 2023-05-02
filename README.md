@@ -6,35 +6,35 @@ Sequence Connect (@0xsequence/connect) is a library enabling developers to easil
 ## Usage
 ### Installing the Library
 
-`npm install @sequenceConnect/core wagmi ethers`
+`npm install @0xsequence/connect-core wagmi ethers`
 
 or
 
-`pnpm install @sequenceConnect/core wagmi ethers`
+`pnpm install @0xsequence/connect-core wagmi ethers`
 
 or
 
-`yarn add @sequenceConnect/core wagmi ethers`
+`yarn add @0xsequence/connect-core wagmi ethers`
 
 ### Installing Wallets
 Official wallets can be installed by running:
 
-`npm install @sequenceConnect/wallets`
+`npm install @0xsequence/connect-connectors`
 
 or
 
-`pnpm install @sequenceConnect/wallets`
+`pnpm install @0xsequence/connect-connectors`
 
 or
 
-`yarn add @sequenceConnect/wallets`
+`yarn add @0xsequence/connect-connectors`
 
 ### Setting up the Library
 React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Ethconnect wrapper.
 
 ```js
-import { SequenceConnectProvider, getSequenceConnectWallets } from '@sequenceConnect/core'
-import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@sequenceConnect/wallets'
+import { SequenceConnectProvider, getSequenceConnectWallets } from '@0xsequence/connect-core'
+import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@0xsequence/connect-connectors'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
@@ -93,7 +93,7 @@ function App() {
 Wallet selection is done through a modal which can be called programmatically.
 
 ```js
-import { useOpenConnectModal } from '@sequenceConnect/core'
+import { useOpenConnectModal } from '@0xsequence/connect-core'
 import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
 
 
@@ -124,9 +124,9 @@ const MyReactComponent = () => {
 
 ## Packages
 
-- [@sequenceConnect/examples-react](./examples/react)
-- [@sequenceConnect/core](./packages/core)
-- [@sequenceConnect/wallets](./packages/wallets)
+- [@0xsequence/connect-example-react](./examples/react)
+- [@0xsequence/connect-core](./packages/core)
+- [@0xsequence/connect-connectors](./packages/wallets)
 
 
 ## Local Development

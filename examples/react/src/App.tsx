@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { SequenceConnectProvider, getSequenceConnectWallets, THEMES } from '@sequenceConnect/core'
-import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@sequenceConnect/wallets'
+import { SequenceConnectProvider, getSequenceConnectWallets, THEMES } from '@0xsequence/connect-core'
+import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@0xsequence/connect-connectors'
 import Homepage from './components/Homepage'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'

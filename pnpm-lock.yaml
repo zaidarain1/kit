@@ -37,10 +37,10 @@ importers:
       '@preconstruct/cli':
         specifier: ^2.2.2
         version: 2.2.2
-      '@sequenceConnect/core':
+      '@0xsequence/connect-core':
         specifier: workspace:*
         version: link:packages/core
-      '@sequenceConnect/wallets':
+      '@0xsequence/connect-connectors':
         specifier: workspace:*
         version: link:packages/wallets
       '@types/chai':
@@ -139,10 +139,10 @@ importers:
       '@0xsequence/wagmi-connector':
         specifier: ^1.0.6
         version: 1.0.6(0xsequence@0.43.26)(ethers@5.7.2)(wagmi@0.12.12)
-      '@sequenceConnect/core':
+      '@0xsequence/connect-core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@sequenceConnect/wallets':
+      '@0xsequence/connect-connectors':
         specifier: workspace:*
         version: link:../../packages/wallets
       '@testing-library/jest-dom':
