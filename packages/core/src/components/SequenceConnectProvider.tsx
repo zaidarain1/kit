@@ -126,7 +126,7 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
           {openConnectModal && (
             <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenConnectModal(false)}>
               <Box paddingY="16" paddingX="8">
-                <Box justifyContent="center" alignItems="center"><Text variant="xlarge">SequenceConnect</Text></Box>
+                <Box justifyContent="center" alignItems="center"><Text variant="xlarge">Connect Wallet</Text></Box>
                 {getModalContent()}
               </Box>
             </Modal>
