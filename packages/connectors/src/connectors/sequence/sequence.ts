@@ -2,16 +2,16 @@ import { Chain } from 'wagmi'
 import type { ConnectOptions } from '@0xsequence/provider';
 import { SequenceConnector } from '@0xsequence/wagmi-connector';
 
-import { SequenceWalletLogo } from './SequenceWalletLogo'
+import { SequenceLogo } from './SequenceLogo'
 
-export interface SequenceWalletOptions {
+export interface SequenceOptions {
   chains: Chain[];
   connect?: ConnectOptions
 }
 
-export const sequenceWallet = ({ chains, connect }: SequenceWalletOptions) => ({
+export const sequence = ({ chains, connect }: SequenceOptions) => ({
   id: 'sequence',
-  logo: SequenceWalletLogo,
+  logo: SequenceLogo,
   // iconBackground: '#777',
   name: 'Sequence',
   createConnector: () => {

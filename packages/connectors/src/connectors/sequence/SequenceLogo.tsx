@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const SequenceWalletLogo: React.FunctionComponent = ({...props}) => {
+export const SequenceLogo: React.FunctionComponent = ({...props}) => {
   return (
       <React.Fragment>
       <svg

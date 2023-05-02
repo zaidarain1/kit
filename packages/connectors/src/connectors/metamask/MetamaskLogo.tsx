@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const MetamaskWalletLogo: React.FunctionComponent  = ({...props}) => {
+export const MetamaskLogo: React.FunctionComponent  = ({...props}) => {
   return (
     <React.Fragment>
       <svg

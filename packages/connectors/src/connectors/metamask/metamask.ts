@@ -1,15 +1,15 @@
 import { Chain } from 'wagmi'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
-import { MetamaskWalletLogo } from './MetamaskWalletLogo'
+import { MetamaskLogo } from './MetamaskLogo'
 
-export interface MetamaskWalletOptions {
+export interface MetamaskOptions {
   chains: Chain[];
 }
 
-export const metamaskWallet = ({ chains }: MetamaskWalletOptions) => ({
+export const metamask = ({ chains }: MetamaskOptions) => ({
   id: 'metamask',
-  logo: MetamaskWalletLogo,
+  logo: MetamaskLogo,
   // iconBackground: '#fff',
   name: 'Metamask',
   createConnector: () => {

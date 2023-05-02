@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { SequenceConnectProvider, getSequenceConnectWallets, THEMES } from '@0xsequence/connect-core'
-import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@0xsequence/connect-connectors'
+import { sequence, metamask, injected, walletConnect } from '@0xsequence/connect-connectors'
 import Homepage from './components/Homepage'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
@@ -17,20 +17,20 @@ function App() {
   )
 
   const connectors = getSequenceConnectWallets([
-    injectedWallet({
+    injected({
       chains
     }),
-    sequenceWallet({
+    sequence({
       chains,
       connect: {
         app: 'Ethconnect example',
         networkId: 137
       }
     }),
-    metamaskWallet({
+    metamask({
       chains,
     }),
-    walletConnectWallet({
+    walletConnect({
       chains,
       options: {
         projectId: 'c65a6cb1aa83c4e24500130f23a437d8'

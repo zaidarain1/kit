@@ -2,7 +2,7 @@
 
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
-import { WalletConnectWalletLogo } from './WalletConnectWalletLogo'
+import { WalletConnectLogo } from './WalletConnectLogo'
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -10,9 +10,9 @@ export type WalletConnectWalletOptions = ConstructorParameters<
   typeof WalletConnectConnector
 >[0];
 
-export const walletConnectWallet = ({ chains, options }: WalletConnectWalletOptions) => ({
+export const walletConnect = ({ chains, options }: WalletConnectWalletOptions) => ({
   id: 'wallet-connect',
-  logo: WalletConnectWalletLogo,
+  logo: WalletConnectLogo,
   // iconBackground: '#fff',
   name: 'Wallet Connect',
   createConnector: () => {

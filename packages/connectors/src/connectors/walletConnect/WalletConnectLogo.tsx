@@ -1,7 +1,7 @@
 import React from 'react'
 import { vars } from '@0xsequence/design-system'
 
-export const WalletConnectWalletLogo: React.FunctionComponent  = ({...props}) => {
+export const WalletConnectLogo: React.FunctionComponent  = ({...props}) => {
   return (
     <React.Fragment>
       <svg 

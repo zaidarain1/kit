@@ -3,9 +3,9 @@ import { ethers } from 'ethers'
 import { Chain } from 'wagmi/chains'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
-import { InjectedWalletLogo } from './InjectedWalletLogo'
-import { MetamaskWalletLogo } from '../metamaskWallet/MetamaskWalletLogo'
-import { SequenceWalletLogo } from '../sequenceWallet/SequenceWalletLogo'
+import { InjectedLogo } from './InjectedLogo'
+import { MetamaskLogo } from '../metamask/MetamaskLogo'
+import { SequenceLogo } from '../sequence/SequenceLogo'
 
 export interface Window {
   ethereum?: ethers.providers.ExternalProvider;
@@ -15,7 +15,7 @@ export interface MoreExternalProviders {
   isSequence?: boolean
 }
 
-export interface InjectedWalletOptions {
+export interface InjectedOptions {
   chains: Chain[];
   shimDisconnect?: boolean;
 }
@@ -30,30 +30,30 @@ const getInjectedWalletInformation = (): InjectedWalletInformation => {
   if (window?.ethereum?.isMetaMask) {
     return {
       name: 'Metamask',
-      logo: MetamaskWalletLogo,
+      logo: MetamaskLogo,
       hideConnectorId: 'metamask'
     }
   /* @ts-ignore-next-line */
   } else if (window?.ethereum?.isSequence) {
     return {
       name: 'Sequence',
-      logo: SequenceWalletLogo,
+      logo: SequenceLogo,
       hideConnectorId: 'sequence'
     }
   } else {
     return {
       name: 'Injected Wallet',
-      logo: InjectedWalletLogo,
+      logo: InjectedLogo,
       hideConnectorId: null
     }
   }
 }
 
-export const injectedWallet = ({ chains, shimDisconnect }: InjectedWalletOptions) => {
+export const injected = ({ chains, shimDisconnect }: InjectedOptions) => {
   const { name, hideConnectorId, logo } = getInjectedWalletInformation()
 
   return ({
-    id: 'injected-wallet',
+    id: 'injected',
     hideConnectorId,
     logo,
     // iconBackground: '#fff',
