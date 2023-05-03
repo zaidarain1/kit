@@ -34,7 +34,7 @@
     "@changesets/cli": "^2.25.2",
     "@0xsequence/connect-core": "workspace:*",
     "@0xsequence/connect-connectors": "workspace:*",
-    "@preconstruct/cli": "^2.2.2",
+    "@preconstruct/cli": "^2.6.2",
     "@types/chai": "^4.2.22",
     "@types/chai-as-promised": "^7.1.4",
     "@types/mocha": "^10.0.0",
