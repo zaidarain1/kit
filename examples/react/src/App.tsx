@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { SequenceConnectProvider, getSequenceConnectWallets, THEMES } from '@0xsequence/connect-core'
 import { sequence, metamask, injected, walletConnect } from '@0xsequence/connect-connectors'
+import { SequenceConnectWalletProvider } from '@0xsequence/connect-wallet'
 import Homepage from './components/Homepage'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
@@ -23,7 +24,7 @@ function App() {
     sequence({
       chains,
       connect: {
-        app: 'Ethconnect example',
+        app: 'Sequence Connect example',
         networkId: 137
       }
     }),
@@ -49,9 +50,11 @@ function App() {
   return (
     <WagmiConfig client={client}>
       <SequenceConnectProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
-        <ModalThemeContext.Provider value={{ setIsDarkMode, isDarkMode }}>
-          <Homepage />
-        </ModalThemeContext.Provider>
+        <SequenceConnectWalletProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
+          <ModalThemeContext.Provider value={{ setIsDarkMode, isDarkMode }}>
+            <Homepage />
+          </ModalThemeContext.Provider>
+        </SequenceConnectWalletProvider>
       </SequenceConnectProvider>
     </WagmiConfig>
   );

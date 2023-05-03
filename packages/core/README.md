@@ -1,4 +1,4 @@
 @0xsequence/connect-core
 ===============
 
-Core package for Ethconnect.
+Core package for Sequence Connect.

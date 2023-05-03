@@ -1,7 +1,7 @@
 {
   "name": "@0xsequence/connect-connectors",
   "version": "0.0.1",
-  "description": "Wallets for Ethconnect",
+  "description": "Wallets for Sequence Connect",
   "repository": "https://github.com/0xsequence/connect/tree/master/packages/connectors",
   "main": "dist/0xsequence-connect-connectors.cjs.js",
   "module": "dist/0xsequence-connect-connectors.esm.js",

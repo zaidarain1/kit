@@ -30,7 +30,7 @@ or
 `yarn add @0xsequence/connect-connectors`
 
 ### Setting up the Library
-React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Ethconnect wrapper.
+React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Sequence Connect wrapper.
 
 ```js
 import { SequenceConnectProvider, getSequenceConnectWallets } from '@0xsequence/connect-core'
@@ -54,7 +54,7 @@ function App() {
     sequenceWallet({
       chains,
       connect: {
-        app: 'Ethconnect example',
+        app: 'Sequence Connect example',
         networkId: 137
       }
     }),

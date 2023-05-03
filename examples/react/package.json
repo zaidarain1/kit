@@ -7,6 +7,7 @@
     "@0xsequence/wagmi-connector": "^1.0.6",
     "@0xsequence/connect-core": "workspace:*",
     "@0xsequence/connect-connectors": "workspace:*",
+    "@0xsequence/connect-wallet": "workspace:*",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

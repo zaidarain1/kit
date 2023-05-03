@@ -136,5 +136,4 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
       {children}
     </ConnectModalContext.Provider>
   )
-
 }

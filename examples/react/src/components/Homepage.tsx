@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { sequence } from '0xsequence' 
 import { ethers } from 'ethers'
 import { useOpenConnectModal } from '@0xsequence/connect-core'
+import { useOpenWalletModal } from '@0xsequence/connect-wallet'
 import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
 import { ModalThemeContext } from '../contexts'
 
@@ -11,6 +12,7 @@ function Homepage() {
   const { setIsDarkMode, isDarkMode } = useContext(ModalThemeContext)
   const { address, connector, isConnected } = useAccount()
   const openConnectModal = useOpenConnectModal()
+  const openWalletModal = useOpenWalletModal()
   const { disconnect } = useDisconnect()
   const { data: signer } = useSigner()
   const provider = useProvider()
@@ -67,6 +69,9 @@ function Homepage() {
           <>
             <button className="Button" onClick={() => { disconnect() }}>
               Disconnect
+            </button>
+            <button className="Button" onClick={() => { openWalletModal && openWalletModal(true) }}>
+              Open Wallet UI
             </button>
             <button className="Button" onClick={() => { signMessage() }}>
               Sign Message

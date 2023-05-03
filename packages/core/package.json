@@ -1,7 +1,7 @@
 {
   "name": "@0xsequence/connect-core",
   "version": "0.0.1",
-  "description": "Core package for Ethconnect",
+  "description": "Core package for Sequence Connect",
   "repository": "https://github.com/0xsequence/connect/tree/master/packages/core",
   "main": "dist/0xsequence-connect-core.cjs.js",
   "module": "dist/0xsequence-connect-core.esm.js",
