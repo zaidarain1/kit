@@ -13,6 +13,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "0xsequence": "^0.43.26",
+    "@0xsequence/api": "^0.43.27",
+    "@0xsequence/indexer": "^0.43.27",
+    "@0xsequence/metadata": "^0.43.27",
+    "@0xsequence/network": "^0.43.27",
+    "@tanstack/react-query": "^4.29.5",
     "react-copy-to-clipboard": "^5.1.0"
   },
   "peerDependencies": {
