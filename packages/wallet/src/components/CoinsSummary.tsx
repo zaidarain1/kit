@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 
-import { CoinRow } from './CoinRow'
+import { CoinRow, CoinRowSkeleton } from './CoinRow'
 
 import { getNativeTokenInfoByChainId } from '../utils'
 import { useBalances } from '../hooks'
@@ -21,7 +21,18 @@ export const CoinsSummary = () => {
 
   const erc20Tokens = balances?.filter(b => b.contractType === 'ERC20')
 
-  // TODO: add skeleton loader
+  // TODO: limit max tokens to 2
+  // show a view all button
+  // create view all view
+
+  if (isLoading) {
+    return (
+      <Box width="full" flexDirection="column" gap="2">
+        <CoinRowSkeleton />
+        <CoinRowSkeleton />
+      </Box>
+    )
+  }
 
   return (
     <Box width="full" flexDirection="column" gap="2">
