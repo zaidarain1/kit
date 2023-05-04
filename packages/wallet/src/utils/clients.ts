@@ -1,10 +1,10 @@
 import { SequenceAPIClient } from '@0xsequence/api'
 import { SequenceIndexerClient } from '@0xsequence/indexer'
 import { SequenceMetadataClient } from '@0xsequence/metadata'
-import { findNetworkConfig, networks, indexerURL } from '@0xsequence/network'
+import { ChainId, networks, indexerURL } from '@0xsequence/network'
 
 export const getNetworkConfigAndClients = (chainID: number | string) => {
-  const network = networks[chainID]
+  const network = networks[chainID as ChainId]
   
   if (!network) {
     throw 'invalid network'

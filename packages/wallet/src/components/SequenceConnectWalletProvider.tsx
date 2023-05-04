@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   Modal,
   ThemeProvider,
@@ -24,18 +25,23 @@ export type SequenceConnectWalletProvider = {
 
 export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConnectWalletProvider) => {
   const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
+
+  const queryClient = new QueryClient()
+
   return (
-    <WalletModalContext.Provider value={{ setOpenWalletModal }}>
-      <ThemeProvider theme={theme}>
-        <AnimatePresence>
-          {openWalletModal && (
-            <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenWalletModal(false)}>
-              <WalletContent />
-            </Modal>
-          )}
-        </AnimatePresence>
-      </ThemeProvider>
-      {children}
-    </WalletModalContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <WalletModalContext.Provider value={{ setOpenWalletModal }}>
+        <ThemeProvider theme={theme}>
+          <AnimatePresence>
+            {openWalletModal && (
+              <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenWalletModal(false)}>
+                <WalletContent />
+              </Modal>
+            )}
+          </AnimatePresence>
+        </ThemeProvider>
+        {children}
+      </WalletModalContext.Provider>
+    </QueryClientProvider>
   )
 }

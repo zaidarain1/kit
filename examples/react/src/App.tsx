@@ -46,7 +46,6 @@ function App() {
     connectors
   })
 
-
   return (
     <WagmiConfig client={client}>
       <SequenceConnectProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>

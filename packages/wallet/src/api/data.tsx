@@ -1,29 +1,66 @@
-export const test = 1
+import { TokenBalance, ContractType } from '@0xsequence/indexer'
+import { ethers } from 'ethers'
 
-export interface Coin {
-  chainId: number
-  contractAddress: string,
+import { getNetworkConfigAndClients } from '../utils/clients'
+
+export interface GetTokenBalancesArgs {
   accountAddress: string,
-  balance: string,
+  chainId: number
 }
 
-export const fetchCoins = async () => {
-  // fetchAll = async (accountAddress?: string, chainId?: number): Promise<void> => {
-  //   accountAddress ||= this.store.get(WalletStore).accountAddress.get()
+export const getNativeToken = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
+  try {
+    const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
-  //   // All token balances
-  //   const tokenBalances = (
-  //     await Promise.all([
-  //       this.fetchNativeTokenBalances(accountAddress, chainId),
-  //       this.fetchTokenBalances(accountAddress, chainId)
-  //     ])
-  //   ).flat()
-  //   const contractStore = this.store.get(ContractStore)
+    const res = await indexerClient.getEtherBalance({ accountAddress })
+  
+    const tokenBalance: TokenBalance = {
+      chainId,
+      contractAddress: ethers.constants.AddressZero,
+      accountAddress,
+      balance: res?.balance.balanceWei || '0',
+      contractType: ContractType.UNKNOWN,
+      blockHash: '',
+      blockNumber: 0,
+      tokenID: '',
+    }
+    return [tokenBalance]
+  } catch(e) {
+    console.error(e)
+    return []
+  }
+}
 
-  //   await contractStore.fetchContractsFromTokenBalances(tokenBalances)
+export const getTokenBalances = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
+  try {
+    const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
-  //   this.tokenBalances.set(tokenBalances)
+    const res = await indexerClient.getTokenBalances({ accountAddress, includeMetadata: true})
+  
+    return res?.balances || []
+  } catch(e) {
+    console.error(e)
+    return []
+  }
+}
 
-  //   this.firstFetch.set(true)
-  // }
+export const fetchBalances = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
+  try {
+    const tokenBalances = (
+      await Promise.all([
+        getNativeToken({
+          accountAddress,
+          chainId
+        }),
+        getTokenBalances({
+          accountAddress,
+          chainId,
+        })
+      ])
+    ).flat()
+    return tokenBalances
+  } catch(e) {
+    console.error(e)
+    return []
+  }
 }

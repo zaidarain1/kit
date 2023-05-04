@@ -28,7 +28,8 @@
     "framer-motion": ">=8.5.2",
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": ">=0.10.0"
+    "wagmi": ">=0.10.0",
+    "ethers": ">=5.7.2"
   },
   "devDependencies": {
     "@0xsequence/design-system": "^1.0.1",
@@ -39,7 +40,8 @@
     "framer-motion": "^8.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "^0.12.12"
+    "wagmi": "^0.12.12",
+    "ethers": "^5.7.2"
   },
   "files": [
     "src",
