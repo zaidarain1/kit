@@ -6,7 +6,7 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { WalletContent } from './WalletContent'
+import { Home } from '../views/Home'
 import { WalletModalContext } from '../contexts'
 
 import '@0xsequence/design-system/styles.css'
@@ -35,7 +35,7 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
           <AnimatePresence>
             {openWalletModal && (
               <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenWalletModal(false)}>
-                <WalletContent />
+                <Home />
               </Modal>
             )}
           </AnimatePresence>
