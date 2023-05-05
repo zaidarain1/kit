@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 
 export interface Navigation {
-  location: 'home' | 'all-coins',
+  location: 'home' | 'all-coins' | 'all-collections' | 'all-collectibles',
   params?: any
 }
 

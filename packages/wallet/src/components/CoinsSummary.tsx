@@ -30,9 +30,14 @@ export const CoinsSummary = () => {
 
   if (isLoading) {
     return (
-      <Box width="full" flexDirection="column" gap="2">
-        <CoinRowSkeleton />
-        <CoinRowSkeleton />
+      <Box>
+        <Box marginBottom="1">
+          <Text variant="small" color="text50">{`Coins`}</Text>
+        </Box>
+        <Box width="full" flexDirection="column" gap="2">
+          <CoinRowSkeleton />
+          <CoinRowSkeleton />
+        </Box>
       </Box>
     )
   }

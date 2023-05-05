@@ -14,19 +14,25 @@ export const Header = () => {
   const { address } = useAccount()
 
   return (
-    <Box justifyContent="space-between" alignItems="center">
-      <Box gap="2" alignItems="center">
-        <GradientAvatar address={address || ''} />
-        <Box gap="1" flexDirection="column" alignItems="flex-start" justifyContent="center">
-          <Text variant="normal" marginLeft="2">
-            {`0x${truncateAtMiddle(address?.substring(2) || '', 8)}`}
-          </Text>
-          <CopyButton text={address || ''} />
+    <>
+      {/* 60px = total height of the X component which we cannot change */}
+      <Box gap="2" alignItems="center" style={{ height: "60px" }}>
+          <GradientAvatar address={address || ''} />
+          <Box width="full" alignItems="center" justifyContent="center" style={{ marginLeft: '-56px' }} >
+            <Text variant="normal">
+              {`0x${truncateAtMiddle(address?.substring(2) || '', 8)}`}
+            </Text>
+            <CopyButton marginLeft="2" text={address || ''} />
+          </Box>
+      </Box>
+      <Box marginTop="4" flexDirection="column" justifyContent="center" alignItems="center">
+        <Box>
+          <Text>Balance</Text>
+        </Box>
+        <Box>
+          <Text>12343132.11 $USD</Text>
         </Box>
       </Box>
-      <Box>
-        Balance: 12343132.11 $USD
-      </Box>
-    </Box>
+    </>
   )
 }

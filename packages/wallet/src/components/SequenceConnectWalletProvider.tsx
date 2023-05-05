@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   Modal,
@@ -6,7 +6,7 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { AllCoins, Home } from '../views'
+import { AllCoins, AllCollectibles, AllCollections, Home } from '../views'
 import { Navigation, NavigationContext, WalletModalContext } from '../contexts'
 
 import '@0xsequence/design-system/styles.css'
@@ -36,11 +36,21 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
     switch (location) {
       case 'all-coins':
         return <AllCoins />
+      case 'all-collections':
+        return <AllCollections />
+      case 'all-collectibles':
+        return <AllCollectibles />
       case 'home':
       default:
         return <Home />
     }
   }
+
+  useEffect(() => {
+    if (openWalletModal) {
+      setNavigation({ location: 'home' })
+    }
+  }, [openWalletModal])
 
   return (
     <QueryClientProvider client={queryClient}>
