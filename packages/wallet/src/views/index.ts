@@ -1,1 +1,2 @@
-export * './Home'
+export * from './Home'
+export * from './AllCoins'
