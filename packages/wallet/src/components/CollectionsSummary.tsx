@@ -57,7 +57,9 @@ export const CollectionsSummary = ({
       <Box gap="2" flexDirection="column">
         {getCollectionRowSkeleton()}
         {getCollectionRowSkeleton()}
-        <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ArrowRightIcon} />
+        {!showAll && (
+          <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ArrowRightIcon} />
+        )}
       </Box>
     )
   }
