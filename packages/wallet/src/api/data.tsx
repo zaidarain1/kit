@@ -64,3 +64,28 @@ export const fetchBalances = async ({ accountAddress, chainId }: GetTokenBalance
     return []
   }
 }
+
+export interface GetCollectionBalanceArgs {
+  accountAddress: string,
+  chainId: number,
+  collectionAddress: string
+}
+
+export const fetchCollectionBalance = async ({ accountAddress, chainId, collectionAddress }: GetCollectionBalanceArgs) => {
+  try {
+    const { indexerClient } = await getNetworkConfigAndClients(chainId) 
+
+    console.log('collection addersss......', collectionAddress)
+
+    const res = await indexerClient.getTokenBalances({
+      accountAddress,
+      includeMetadata: true,
+      contractAddress: collectionAddress,
+    })
+  
+    return res?.balances || []
+  } catch(e) {
+    console.error(e)
+    return []
+  }
+}

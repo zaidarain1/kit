@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
+  Box,
   Modal,
+  Scroll,
   ThemeProvider,
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
@@ -59,7 +61,7 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openWalletModal && (
-                <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenWalletModal(false)}>
+                <Modal  scroll={true} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
                   {getContent()}
                 </Modal>
               )}

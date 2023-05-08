@@ -1,5 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { fetchBalances, GetTokenBalancesArgs } from '../api/data'
+import {
+  fetchBalances,
+  GetTokenBalancesArgs,
+  fetchCollectionBalance,
+  GetCollectionBalanceArgs
+} from '../api/data'
 
 export const time = {
   oneSecond: 1 * 1000,
@@ -16,3 +21,11 @@ export const useBalances = (args: GetTokenBalancesArgs) =>
     enabled: !!args.chainId && !!args.accountAddress
   })
 
+export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
+  useQuery({
+    queryKey: ['collectionBalance', args],
+    queryFn: () => fetchCollectionBalance(args),
+    retry: true,
+    staleTime: 10 * time.oneMinute,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
+  })
