@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Button } from '@0xsequence/design-system'
 
+import { CollectionsSummary } from '../components/CollectionsSummary'
 import { useNavigation } from '../hooks'
 
 export const AllCollections = () => {
@@ -15,7 +16,7 @@ export const AllCollections = () => {
   const getContent = () => {
     return (
       <Box>
-        Content goes here for all collections....
+        <CollectionsSummary showAll />
       </Box>
     )
   }

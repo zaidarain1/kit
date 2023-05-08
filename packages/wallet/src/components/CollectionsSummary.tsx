@@ -7,7 +7,13 @@ import { CollectionRow } from './CollectionRow'
 import { DefaultIcon } from './DefaultIcon'
 import { useBalances, useCollectionBalance, useNavigation } from '../hooks'
 
-export const CollectionsSummary = () => {
+export interface CollectionsSummaryProps {
+  showAll?: boolean
+}
+
+export const CollectionsSummary = ({
+  showAll = false
+}: CollectionsSummaryProps) => {
   const { address } = useAccount()
   const { chain } = useNetwork()
   const chainId = chain?.id || 1
@@ -87,7 +93,7 @@ export const CollectionsSummary = () => {
           </Box>
         ) : (
           <>
-            {collections?.map(c => (
+            {collections?.slice(0, showAll ? collections.length : 2).map(c => (
               <Box key={c.contractAddress} flexDirection="column" borderRadius="md" paddingY="2" paddingX="3">
                 <Box cursor="pointer" onClick={() => onClickCollection(c.contractAddress)} justifyContent="space-between" alignItems="center" gap="2" marginBottom="2">
                   <Box alignItems="center" gap="2">
@@ -107,7 +113,9 @@ export const CollectionsSummary = () => {
                 </Box>
               </Box>
             ))}
-            <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ArrowRightIcon} />
+            {!showAll && (
+              <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ArrowRightIcon} />
+            )}
           </>
         )}
       </Box>
