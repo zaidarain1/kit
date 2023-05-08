@@ -5,6 +5,7 @@ import {
 
 import { Header } from '../components/Header'
 import { CoinsSummary } from '../components/CoinsSummary'
+import { CollectionsSummary } from '../components/CollectionsSummary'
 
 export const Home = () => {
   return (
@@ -15,7 +16,9 @@ export const Home = () => {
       <Box>
         <CoinsSummary />
       </Box>
-      <Box>Collection</Box>
+      <Box>
+        <CollectionsSummary />
+      </Box>
     </Box>
   )
 }

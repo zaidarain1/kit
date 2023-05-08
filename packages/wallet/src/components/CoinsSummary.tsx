@@ -1,4 +1,4 @@
-import { Box, Button, Text, vars } from '@0xsequence/design-system'
+import { Box, Button, Text, ArrowRightIcon } from '@0xsequence/design-system'
 import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount, useNetwork } from 'wagmi'
@@ -12,7 +12,7 @@ export const CoinsSummary = () => {
   const { address } = useAccount()
   const { chain } = useNetwork()
   const chainId = chain?.id || 1
-  const setNavigation = useNavigation()
+  const { setNavigation } = useNavigation()
 
   const { data: balances, isLoading } = useBalances({ accountAddress: address || '', chainId })
 
@@ -62,7 +62,7 @@ export const CoinsSummary = () => {
         {erc20Tokens && (
           erc20Tokens.slice(0, 1).map(token => (
             <CoinRow
-              imageUrl={token.contractInfo?.logoURI || ''}
+              imageUrl={token.contractInfo?.logoURI}
               decimals={token.contractInfo?.decimals || 18}
               name={token.contractInfo?.name || ''}
               symbol={token.contractInfo?.symbol || ''}
@@ -70,7 +70,7 @@ export const CoinsSummary = () => {
             />
           ))
         )}
-        <Button onClick={onClickViewAllCoins} variant="emphasis" label={`View All Coins`} />
+        <Button onClick={onClickViewAllCoins} variant="emphasis" label={`View All Coins`} rightIcon={ArrowRightIcon} />
       </Box>
     </Box>
   )

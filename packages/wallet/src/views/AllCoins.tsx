@@ -13,7 +13,7 @@ export const AllCoins = () => {
   const { address } = useAccount()
   const { chain } = useNetwork()
   const chainId = chain?.id || 1
-  const setNavigation = useNavigation()
+  const { setNavigation } = useNavigation()
 
   const { data: balances, isLoading } = useBalances({ accountAddress: address || '', chainId })
 
