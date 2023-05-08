@@ -1,12 +1,17 @@
 import React, { createContext } from 'react'
 
+export interface AllCollectiblesParams {
+  collectionAddress: string
+}
+
 export interface Navigation {
   location: 'home' | 'all-coins' | 'all-collections' | 'all-collectibles',
-  params?: any
+  params?: AllCollectiblesParams
 }
 
 type NavigationContext = {
-  setNavigation?: React.Dispatch<React.SetStateAction<Navigation>>
+  setNavigation?: React.Dispatch<React.SetStateAction<Navigation>>,
+  navigation?: Navigation,
 }
 
 export const NavigationContext = createContext<NavigationContext>({})
