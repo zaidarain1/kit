@@ -63,6 +63,7 @@ export const CoinsSummary = () => {
         {erc20Tokens && (
           erc20Tokens.slice(0, 1).map(token => (
             <CoinRow
+              key={token.contractAddress}
               imageUrl={token.contractInfo?.logoURI}
               decimals={token.contractInfo?.decimals || 18}
               name={token.contractInfo?.name || ''}

@@ -6,12 +6,12 @@ import { DefaultIcon } from '../DefaultIcon'
 import { formatAddress } from '../../utils'
 
 export interface CollectionHeaderProps {
-  image: string
-  logo: string
-  name: string
-  type: string
-  description: string
-  address: string
+  image?: string
+  logo?: string
+  name?: string
+  type?: string
+  description?: string
+  address?: string
   isLoading: boolean
 }
 
@@ -32,7 +32,7 @@ export const CollectionHeader = ({
           <Skeleton width={150} height={20} />
         </Box>
         <Box alignItems={"center"} justifyContent={"center"}>
-          <Skeleton height={300} width="66%" />
+          <Skeleton height={300} width="100%" />
         </Box>
         <Box gap="2" flexDirection="column">
           <Skeleton height={16} />
@@ -60,7 +60,7 @@ export const CollectionHeader = ({
       <Box alignItems="center" gap="2">
         {getImage(logo)}
         <Text variant="medium">
-          {name || formatAddress(address)}
+          {name || formatAddress(address || '')}
         </Text>
       </Box>
 
@@ -70,9 +70,11 @@ export const CollectionHeader = ({
       <Box>
         <Text>{description}</Text>
       </Box>
-      <Box>
-        <Badge value={type} />
-      </Box>
+      {type && (
+        <Box>
+          <Badge value={type} />
+        </Box>
+      )}
     </Card>
   )
 }

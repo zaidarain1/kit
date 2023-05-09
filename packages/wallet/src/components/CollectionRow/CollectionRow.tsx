@@ -4,6 +4,9 @@ import { Box, Card, Image, Text } from '@0xsequence/design-system'
 import { useAccount, useNetwork } from 'wagmi'
 
 import { CollectionHeader } from './CollectionHeader'
+
+import { Skeleton } from '../Skeleton'
+
 import { useCollectionBalance } from '../../hooks'
 import { formatDisplay } from '../../utils'
 
@@ -29,24 +32,49 @@ export const CollectionRow = ({ collectionAddress, showAll = false }: Collection
   const contractInfo = collectionBalanceData?.[0]?.contractInfo
 
   const getCollectionHeader = () => {
-    if (showAll && contractInfo) {
-
+    if (showAll) {
       return (
         <CollectionHeader
           isLoading={isLoadingCollectionBalance}
-          type={contractInfo.type}
-          image={contractInfo.extensions.ogImage}
-          description={contractInfo.extensions.description}
-          logo={contractInfo.logoURI}
-          name={contractInfo.name}
-          address={contractInfo.address}
+          type={contractInfo?.type}
+          image={contractInfo?.extensions.ogImage}
+          description={contractInfo?.extensions.description}
+          logo={contractInfo?.logoURI}
+          name={contractInfo?.name}
+          address={contractInfo?.address}
         />
       )
     }
     return null
   }
 
-  console.log('collection...', collectionBalanceData)
+  if (isLoadingCollectionBalance) {
+    const getSkeletonCard = () => {
+      return (
+        <Box gap="2" paddingBottom="4" flexDirection="column" alignItems="flex-start" justifyContent="center">
+          <Card padding="0" aspectRatio="1/1" justifyContent="center" alignItems="center" overflow="hidden" borderRadius="md" background="backgroundSecondary">
+            <Skeleton />
+          </Card>
+          <Skeleton width={50} height={16} />
+          <Skeleton width={100} height={16} />
+        </Box>
+      )
+    }
+
+    return (
+      <>
+        <Box marginBottom="4">
+          {getCollectionHeader()}
+        </Box>
+        <Box className={styles.collectibleGrid}>
+          {getSkeletonCard()}
+          {getSkeletonCard()}
+          {getSkeletonCard()}
+          {getSkeletonCard()}
+        </Box>
+      </>
+    )
+  }
 
   return (
     <>
@@ -62,7 +90,7 @@ export const CollectionRow = ({ collectionAddress, showAll = false }: Collection
         )
 
         return (
-          <Box paddingBottom="4" flexDirection="column" alignItems="flex-start" justifyContent="center">
+          <Box key={`${balance.contractAddress}-${balance.tokenID}`} paddingBottom="4" flexDirection="column" alignItems="flex-start" justifyContent="center">
             <Card padding="0" aspectRatio="1/1" justifyContent="center" alignItems="center" overflow="hidden" borderRadius="md" background="backgroundSecondary">
               <Image style={{ height: '100%' }} src={balance.tokenMetadata?.image} />
             </Card>
