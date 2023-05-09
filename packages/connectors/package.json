@@ -18,7 +18,7 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@0xsequence/design-system": "^1.0.3"
+    "@0xsequence/design-system": "^1.0.4"
   },
   "peerDependencies": {
     "@0xsequence/design-system": ">=1.0.2",

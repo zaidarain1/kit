@@ -214,14 +214,14 @@ importers:
         version: 0.12.12(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)
     devDependencies:
       '@0xsequence/design-system':
-        specifier: ^1.0.3
-        version: 1.0.3(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
 
   packages/core:
     dependencies:
       '@0xsequence/design-system':
-        specifier: ^1.0.3
-        version: 1.0.3(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/wagmi-connector':
         specifier: ^1.0.6
         version: 1.0.6(0xsequence@0.43.26)(ethers@5.7.2)(wagmi@0.12.12)
@@ -269,8 +269,8 @@ importers:
         version: 5.1.0(react@18.2.0)
     devDependencies:
       '@0xsequence/design-system':
-        specifier: ^1.0.3
-        version: 1.0.3(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
       '@types/react-copy-to-clipboard':
         specifier: ^5.0.4
         version: 5.0.4
@@ -361,8 +361,8 @@ packages:
       ethers: 5.7.2
     dev: false
 
-  /@0xsequence/design-system@1.0.3(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-4QLQf+2IfDHWhmLHCI8QeKc8T3ZoLXtAdmGlARBwYZLlllJswvN+mvZ96spmSKpWI7xtfXWiAqB0q+GlLc7ttA==}
+  /@0xsequence/design-system@1.0.4(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-3JDaZT/kmB+360MDkOZk++K+Y3ApLw4GIq2iSvlMOxzpmqQ2Ey+d8H1QOANTh1EEQgRAglcqDdh84kCH/YCAeg==}
     peerDependencies:
       framer-motion: '>=6'
       react: '>=17'
@@ -6379,7 +6379,7 @@ packages:
     resolution: {integrity: sha512-Cg7TFGpIr01vOQNODXOOaGz2NpCU5gl8x1qJFbb6hbZxR7XrcE2vtbAsTAbJ7/xwJtUuJEw8K8Zr/AE0LHlesg==}
     engines: {node: '>=10', npm: '>=6'}
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.21.5
       cosmiconfig: 7.1.0
       resolve: 1.22.2
     dev: false
