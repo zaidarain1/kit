@@ -10,7 +10,7 @@ export interface Navigation {
 }
 
 type NavigationContext = {
-  setNavigation?: React.Dispatch<React.SetStateAction<Navigation>>,
+  setNavigation?: (navigation:Navigation) => void,
   navigation?: Navigation,
 }
 
