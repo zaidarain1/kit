@@ -10,7 +10,7 @@ export const collectibleGrid = style({
 
   '@media': responsiveStyle({
     lg: {
-      gridTemplateColumns: 'repeat(3, minmax(0, 1fr))'
+      gridTemplateColumns: 'repeat(2, minmax(0, 1fr))'
     }
   })
 })

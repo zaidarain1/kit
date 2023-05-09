@@ -11,6 +11,9 @@ export const truncateAtMiddle = (text: string, truncateAt: number) => {
   return finalText
 }
 
+export const formatAddress = (text: string) => {
+  return `0x${truncateAtMiddle(text?.substring(2) || '', 8)}`
+}
 
 enum ValueType {
   VERY_LARGE,

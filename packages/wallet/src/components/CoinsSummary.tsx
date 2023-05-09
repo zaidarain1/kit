@@ -37,6 +37,7 @@ export const CoinsSummary = () => {
         <Box width="full" flexDirection="column" gap="2">
           <CoinRowSkeleton />
           <CoinRowSkeleton />
+          <Button onClick={onClickViewAllCoins} variant="emphasis" label={`View All Coins`} rightIcon={ArrowRightIcon} />
         </Box>
       </Box>
     )

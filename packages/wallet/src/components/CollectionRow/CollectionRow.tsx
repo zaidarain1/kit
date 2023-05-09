@@ -25,7 +25,7 @@ export const CollectionRow = ({ collectionAddress, total }: CollectionRowProps) 
 
   return (
     <Box className={styles.collectibleGrid}>
-      {collectionBalanceData?.slice(0, 3).map((balance) => {
+      {collectionBalanceData?.slice(0, 4).map((balance) => {
         return (
           <Box flexDirection="column" alignItems="flex-start" justifyContent="center">
             <Card padding="0" aspectRatio="1/1" justifyContent="center" alignItems="center" overflow="hidden" borderRadius="md" background="backgroundSecondary">

@@ -4,14 +4,14 @@ import { Box, BoxProps } from '@0xsequence/design-system'
 import * as styles from './styles.css'
 
 interface SkeletonProps {
-  width: number,
-  height: number,
+  width?: number|string,
+  height?: number|string,
   borderRadius?: BoxProps['borderRadius']
 }
 
 export const Skeleton = ({
-  width,
-  height,
+  width = '100%',
+  height = '100%',
   borderRadius = 'md'
 }: SkeletonProps) => {
   return (

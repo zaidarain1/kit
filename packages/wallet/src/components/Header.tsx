@@ -6,7 +6,7 @@ import {
 } from '@0xsequence/design-system'
 import { useAccount } from 'wagmi'
 
-import { truncateAtMiddle } from '../utils/helpers'
+import { formatAddress } from '../utils/helpers'
 
 import { CopyButton  } from './CopyButton'
 
@@ -20,7 +20,7 @@ export const Header = () => {
           <GradientAvatar address={address || ''} />
           <Box width="full" alignItems="center" justifyContent="center" style={{ marginLeft: '-56px' }} >
             <Text variant="normal">
-              {`0x${truncateAtMiddle(address?.substring(2) || '', 8)}`}
+              {formatAddress(address || '')}
             </Text>
             <CopyButton marginLeft="2" text={address || ''} />
           </Box>

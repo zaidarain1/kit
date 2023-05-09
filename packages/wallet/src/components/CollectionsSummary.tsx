@@ -1,11 +1,15 @@
 import React from 'react'
 import { Skeleton } from './Skeleton'
-import { ArrowRightIcon, Box, Button, Image, Text } from '@0xsequence/design-system'
+import { ArrowRightIcon, Box, Button, Card, Image, Text } from '@0xsequence/design-system'
 import { useAccount, useNetwork } from 'wagmi'
 
 import { CollectionRow } from './CollectionRow'
 import { DefaultIcon } from './DefaultIcon'
-import { useBalances, useCollectionBalance, useNavigation } from '../hooks'
+import { useBalances, useNavigation } from '../hooks'
+
+import { formatAddress } from '../utils'
+
+import * as styles from './CollectionRow/styles.css'
 
 export interface CollectionsSummaryProps {
   showAll?: boolean
@@ -32,19 +36,31 @@ export const CollectionsSummary = ({
 
   const getCollectionRowSkeleton = () => {
     return (
-      <Box gap="2" flexDirection="column" style={{ height: '290px' }}>
+      <Box marginBottom="2" gap="2" paddingY="2" paddingX="3" flexDirection="column">
         <Skeleton width={240} height={30} />
-        <Box gap="2">
-          <Box gap="2" flexDirection="column">
-            <Skeleton width={216} height={216} />
+        <Box className={styles.collectibleGrid} gap="2">
+          <Box height="full" gap="2" flexDirection="column">
+            <Card aspectRatio="1/1" padding="0" background="transparent" >
+              <Skeleton />
+            </Card>
             <Skeleton width={100} height={16} />
           </Box>
-          <Box gap="2" flexDirection="column">
-            <Skeleton width={216} height={216} />
+          <Box height="full" gap="2" flexDirection="column">
+            <Card aspectRatio="1/1" padding="0" background="transparent" >
+              <Skeleton />
+            </Card>
             <Skeleton width={100} height={16} />
           </Box>
-          <Box gap="2" flexDirection="column">
-            <Skeleton width={216} height={216} />
+          <Box height="full" gap="2" flexDirection="column">
+            <Card aspectRatio="1/1" padding="0" background="transparent" >
+              <Skeleton />
+            </Card>
+            <Skeleton width={100} height={16} />
+          </Box>
+          <Box height="full" gap="2" flexDirection="column">
+            <Card aspectRatio="1/1" padding="0" background="transparent" >
+              <Skeleton />
+            </Card>
             <Skeleton width={100} height={16} />
           </Box>
         </Box>
@@ -95,26 +111,28 @@ export const CollectionsSummary = ({
           </Box>
         ) : (
           <>
-            {collections?.slice(0, showAll ? collections.length : 2).map(c => (
-              <Box key={c.contractAddress} flexDirection="column" borderRadius="md" paddingY="2" paddingX="3">
-                <Box cursor="pointer" onClick={() => onClickCollection(c.contractAddress)} justifyContent="space-between" alignItems="center" gap="2" marginBottom="2">
-                  <Box alignItems="center" gap="2">
-                    {getImage(c.contractInfo?.logoURI)}
-                    <Text variant="medium">
-                      {c.contractInfo?.name || c.contractAddress}
-                    </Text>
+            {collections?.slice(0, showAll ? collections.length : 2).map(c => {
+              return (
+                <Box key={c.contractAddress} flexDirection="column" borderRadius="md" paddingY="2" paddingX="3">
+                  <Box cursor="pointer" onClick={() => onClickCollection(c.contractAddress)} alignItems="center" gap="2" marginBottom="2">
+                    <Box alignItems="center" gap="2">
+                      {getImage(c.contractInfo?.logoURI)}
+                      <Text variant="medium">
+                        {c.contractInfo?.name || formatAddress(c.contractAddress)}
+                      </Text>
+                    </Box>
+                    <Box marginLeft="2" color="text50" alignItems="center" gap="2">
+                      <Text variant="medium">{c.balance}</Text>
+                      <ArrowRightIcon style={{ position: 'relative', top: '-2px' }} />
+                    </Box>
                   </Box>
-                  <Box color="text50" alignItems="center" gap="2">
-                    <Text variant="medium">{c.balance}</Text>
-                    <ArrowRightIcon style={{ position: 'relative', top: '-2px' }} />
+  
+                  <Box>
+                    <CollectionRow total={Number(c.balance)} collectionAddress={c.contractAddress} />
                   </Box>
                 </Box>
-
-                <Box>
-                  <CollectionRow total={Number(c.balance)} collectionAddress={c.contractAddress} />
-                </Box>
-              </Box>
-            ))}
+              )
+            })}
             {!showAll && (
               <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ArrowRightIcon} />
             )}
