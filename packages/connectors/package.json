@@ -15,11 +15,11 @@
   "dependencies": {
     "@0xsequence/provider": "^0.43.26",
     "@0xsequence/wagmi-connector": "^1.0.6",
-    "@0xsequence/design-system": "^1.0.1",
+    "@0xsequence/design-system": "^1.0.2",
     "buffer": "^6.0.3"
   },
   "peerDependencies": {
-    "@0xsequence/design-system": ">=1.0.1",
+    "@0xsequence/design-system": ">=1.0.2",
     "react": ">=17",
     "react-dom": ">=17",
     "wagmi": ">=0.10.0"
