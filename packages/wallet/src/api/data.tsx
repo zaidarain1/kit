@@ -75,8 +75,6 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
-    console.log('collection addersss......', collectionAddress)
-
     const res = await indexerClient.getTokenBalances({
       accountAddress,
       includeMetadata: true,

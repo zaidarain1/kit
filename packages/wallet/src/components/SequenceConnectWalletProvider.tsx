@@ -41,7 +41,8 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
       case 'all-collections':
         return <AllCollections />
       case 'all-collectibles':
-        return <AllCollectibles />
+        const collectionAddress = navigation?.params?.collectionAddress || ''
+        return <AllCollectibles collectionAddress={collectionAddress} />
       case 'home':
       default:
         return <Home />

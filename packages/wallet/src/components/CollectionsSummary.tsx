@@ -101,7 +101,7 @@ export const CollectionsSummary = ({
 
   return (
     <Box>
-      <Box marginBottom="1">
+      <Box marginBottom="1" onClick={onClickViewAllCollections}>
         <Text variant="small" color="text50">{`Collections (${totalCollections})`}</Text>
       </Box>
       <Box width="full" flexDirection="column" gap="2">
@@ -128,7 +128,7 @@ export const CollectionsSummary = ({
                   </Box>
   
                   <Box>
-                    <CollectionRow total={Number(c.balance)} collectionAddress={c.contractAddress} />
+                    <CollectionRow collectionAddress={c.contractAddress} />
                   </Box>
                 </Box>
               )

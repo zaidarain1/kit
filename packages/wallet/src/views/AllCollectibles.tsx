@@ -1,10 +1,15 @@
 import React from 'react'
 import { Box, Button } from '@0xsequence/design-system'
 
+import { CollectionRow } from '../components/CollectionRow'
 import { useNavigation } from '../hooks'
 
-export const AllCollectibles = () => {
-  const { setNavigation, navigation } = useNavigation()
+interface AllCollectiblesProps {
+  collectionAddress: string
+}
+
+export const AllCollectibles = ({ collectionAddress }: AllCollectiblesProps) => {
+  const { setNavigation } = useNavigation()
 
   const onClickBack = () => {
     setNavigation && setNavigation({
@@ -15,7 +20,10 @@ export const AllCollectibles = () => {
   const getContent = () => {
     return (
       <Box>
-        Content goes here for collectibles of {navigation?.params?.collectionAddress}....
+        <CollectionRow
+          collectionAddress={collectionAddress}
+          showAll
+        />
       </Box>
     )
   }
