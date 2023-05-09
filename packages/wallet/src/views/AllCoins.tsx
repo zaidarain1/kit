@@ -1,4 +1,4 @@
-import { Box, Button, Text, vars } from '@0xsequence/design-system'
+import { Box, ChevronLeftIcon, Button, Text, vars } from '@0xsequence/design-system'
 import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount, useNetwork } from 'wagmi'
@@ -75,7 +75,7 @@ export const AllCoins = () => {
   return (
     <Box paddingX="4" paddingBottom="4">
       <Box alignItems="center" style={{ height: '60px' }}>
-        <Button onClick={onClickBack} label="back" />
+        <Button leftIcon={ChevronLeftIcon} onClick={onClickBack} label="Home" />
       </Box>
 
       {getContent()}

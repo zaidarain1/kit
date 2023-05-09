@@ -1,10 +1,11 @@
 import React from 'react'
+import { ethers } from 'ethers'
 import { Box, Card, Image, Text } from '@0xsequence/design-system'
 import { useAccount, useNetwork } from 'wagmi'
 
 import { CollectionHeader } from './CollectionHeader'
-import { DefaultIcon } from '../DefaultIcon'
-import { useBalances, useCollectionBalance, useNavigation } from '../../hooks'
+import { useCollectionBalance } from '../../hooks'
+import { formatDisplay } from '../../utils'
 
 import * as styles from './styles.css'
 
@@ -17,7 +18,6 @@ export const CollectionRow = ({ collectionAddress, showAll = false }: Collection
   const { address } = useAccount()
   const { chain } = useNetwork()
   const chainId = chain?.id || 1
-  const { setNavigation } = useNavigation()
   const { data: collectionBalanceData, isLoading: isLoadingCollectionBalance } = useCollectionBalance({
     chainId,
     accountAddress: address || '',
@@ -46,6 +46,7 @@ export const CollectionRow = ({ collectionAddress, showAll = false }: Collection
     return null
   }
 
+  console.log('collection...', collectionBalanceData)
 
   return (
     <>
@@ -54,11 +55,18 @@ export const CollectionRow = ({ collectionAddress, showAll = false }: Collection
     </Box>
     <Box className={styles.collectibleGrid}>
       {collectionBalanceData?.slice(0, collectiblesAmountToDisplay).map((balance) => {
+        const unformattedBalance = balance.balance
+        const decimals = balance.tokenMetadata?.decimals || 0 
+        const formattedBalance = formatDisplay(
+          ethers.utils.formatUnits(unformattedBalance, decimals)
+        )
+
         return (
-          <Box flexDirection="column" alignItems="flex-start" justifyContent="center">
+          <Box paddingBottom="4" flexDirection="column" alignItems="flex-start" justifyContent="center">
             <Card padding="0" aspectRatio="1/1" justifyContent="center" alignItems="center" overflow="hidden" borderRadius="md" background="backgroundSecondary">
               <Image style={{ height: '100%' }} src={balance.tokenMetadata?.image} />
             </Card>
+            <Text marginTop="1" marginLeft="2" variant="small">{formattedBalance} Owned</Text>
             <Text marginTop="1" marginLeft="2" variant="small">{balance.tokenMetadata?.name} {`#${balance.tokenID}`}</Text>
           </Box>
         )

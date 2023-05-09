@@ -1,6 +1,6 @@
 import React from 'react'
 import { Skeleton } from './Skeleton'
-import { ArrowRightIcon, Box, Button, Card, Image, Text } from '@0xsequence/design-system'
+import { ChevronRightIcon, Box, Button, Card, Image, Text } from '@0xsequence/design-system'
 import { useAccount, useNetwork } from 'wagmi'
 
 import { CollectionRow } from './CollectionRow'
@@ -74,7 +74,7 @@ export const CollectionsSummary = ({
         {getCollectionRowSkeleton()}
         {getCollectionRowSkeleton()}
         {!showAll && (
-          <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ArrowRightIcon} />
+          <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ChevronRightIcon} />
         )}
       </Box>
     )
@@ -101,7 +101,7 @@ export const CollectionsSummary = ({
 
   return (
     <Box>
-      <Box marginBottom="1" onClick={onClickViewAllCollections}>
+      <Box cursor="pointer" marginBottom="1" onClick={onClickViewAllCollections}>
         <Text variant="small" color="text50">{`Collections (${totalCollections})`}</Text>
       </Box>
       <Box width="full" flexDirection="column" gap="2">
@@ -123,7 +123,7 @@ export const CollectionsSummary = ({
                     </Box>
                     <Box marginLeft="2" color="text50" alignItems="center" gap="2">
                       <Text variant="medium">{c.balance}</Text>
-                      <ArrowRightIcon style={{ position: 'relative', top: '-2px' }} />
+                      <ChevronRightIcon />
                     </Box>
                   </Box>
   
@@ -134,7 +134,7 @@ export const CollectionsSummary = ({
               )
             })}
             {!showAll && (
-              <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ArrowRightIcon} />
+              <Button onClick={onClickViewAllCollections} variant="emphasis" label={`View All Collections`} rightIcon={ChevronRightIcon} />
             )}
           </>
         )}

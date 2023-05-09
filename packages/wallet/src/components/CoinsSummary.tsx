@@ -1,4 +1,4 @@
-import { Box, Button, Text, ArrowRightIcon } from '@0xsequence/design-system'
+import { Box, Button, Text, ChevronRightIcon } from '@0xsequence/design-system'
 import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount, useNetwork } from 'wagmi'
@@ -37,7 +37,7 @@ export const CoinsSummary = () => {
         <Box width="full" flexDirection="column" gap="2">
           <CoinRowSkeleton />
           <CoinRowSkeleton />
-          <Button onClick={onClickViewAllCoins} variant="emphasis" label={`View All Coins`} rightIcon={ArrowRightIcon} />
+          <Button onClick={onClickViewAllCoins} variant="emphasis" label={`View All Coins`} rightIcon={ChevronRightIcon} />
         </Box>
       </Box>
     )
@@ -47,7 +47,7 @@ export const CoinsSummary = () => {
 
   return (
     <Box>
-      <Box marginBottom="1">
+      <Box onClick={onClickViewAllCoins} cursor="pointer" marginBottom="1">
         <Text variant="small" color="text50">{`Coins (${totalTokens})`}</Text>
       </Box>
       <Box width="full" flexDirection="column" gap="2">
@@ -71,7 +71,7 @@ export const CoinsSummary = () => {
             />
           ))
         )}
-        <Button onClick={onClickViewAllCoins} variant="emphasis" label={`View All Coins`} rightIcon={ArrowRightIcon} />
+        <Button onClick={onClickViewAllCoins} variant="emphasis" label={`View All Coins`} rightIcon={ChevronRightIcon} />
       </Box>
     </Box>
   )
