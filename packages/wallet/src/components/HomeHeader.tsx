@@ -9,16 +9,18 @@ import {
 } from '@0xsequence/design-system'
 import { useAccount, useNetwork } from 'wagmi'
 
-import { useBalances, useCoinPrices } from '../hooks'
-import { formatAddress, compareAddress } from '../utils/helpers'
+import { useBalances, useCoinPrices, useModalTheme } from '../hooks'
+import { formatAddress, compareAddress, capitalize, getChainColor } from '../utils'
 
 import { Skeleton } from './Skeleton'
 import { CopyButton  } from './CopyButton'
 
 export const HomeHeader = () => {
+  const theme = useModalTheme()
   const { address } = useAccount()
   const { chain } = useNetwork()
   const chainId = chain?.id || 1
+  const chainName = chain?.name || ''
   const { data: balances = [], isLoading: isLoadingBalances } = useBalances({ accountAddress: address || '', chainId: chain?.id || 1 })
 
   const nativeTokenBalances = balances?.filter(b => b.contractAddress === ethers.constants.AddressZero)
@@ -89,16 +91,24 @@ export const HomeHeader = () => {
     )
   }
 
+  console.log('theme...', theme)
+
   return (
     <>
-      {/* 60px = total height of the X component which we cannot change */}
-      <Box gap="2" alignItems="center" style={{ height: "60px" }}>
-          <GradientAvatar address={address || ''} />
-          <Box width="full" alignItems="center" justifyContent="center" style={{ marginLeft: '-56px' }} >
-            <Text variant="normal">
-              {formatAddress(address || '')}
-            </Text>
-            <CopyButton marginLeft="2" text={address || ''} />
+      <GradientAvatar style={{ position: 'absolute', top: '14px' }} address={address || ''} />
+      <Box marginTop="3" gap="2" alignItems="center" style={{ height: "60px"}}>
+          <Box width="full" flexDirection="column" alignItems="center" justifyContent="center" >
+            <Box alignItems="center" justifyContent="center">
+              <Text variant="normal">
+                {formatAddress(address || '')}
+              </Text>
+              <CopyButton marginLeft="2" text={address || ''} />
+            </Box>
+            <Box style={{ marginTop: '-4px' }} >
+              <Text variant="small" style={{ color: getChainColor(chainId, theme) }}>
+                {`${capitalize(chainName)} - ${chainId}`}
+              </Text>
+            </Box>
           </Box>
       </Box>
       {getBalance()}

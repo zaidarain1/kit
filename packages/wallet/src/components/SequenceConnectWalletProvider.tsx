@@ -57,7 +57,7 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
 
   return (
     <QueryClientProvider client={queryClient}>
-      <WalletModalContext.Provider value={{ setOpenWalletModal }}>
+      <WalletModalContext.Provider value={{ setOpenWalletModal, theme }}>
         <NavigationContext.Provider value={{ setNavigation, navigation }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>
