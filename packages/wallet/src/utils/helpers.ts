@@ -1,3 +1,7 @@
+export const compareAddress = (a: string, b: string) => {
+  return a.toLowerCase() === b.toLowerCase()
+}
+
 export const truncateAtMiddle = (text: string, truncateAt: number) => {
   let finalText = text
 

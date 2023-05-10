@@ -1,3 +1,4 @@
+import { Token } from '@0xsequence/api'
 import { TokenBalance, ContractType } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
 
@@ -85,5 +86,27 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
   } catch(e) {
     console.error(e)
     return []
+  }
+}
+
+export interface GetCoinPricesArgs {
+  tokens: Token[]
+}
+
+export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
+  try {
+    if (tokens.length === 0) return []
+    const chainId = tokens[0].chainId
+  
+    const { apiClient } = await getNetworkConfigAndClients(chainId)
+  
+    const res = await apiClient.getCoinPrices({
+      tokens
+    })
+
+    return res?.tokenPrices || []
+  } catch(e) {
+    console.error(e)
+    return
   }
 }
