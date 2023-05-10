@@ -91,8 +91,6 @@ export const HomeHeader = () => {
     )
   }
 
-  console.log('theme...', theme)
-
   return (
     <>
       <GradientAvatar style={{ position: 'absolute', top: '14px' }} address={address || ''} />
