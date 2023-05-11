@@ -1,0 +1,50 @@
+{
+  "name": "@0xsequence/kit-checkout",
+  "version": "0.0.1",
+  "description": "Checkout UI for Sequence Kit",
+  "repository": "https://github.com/0xsequence/kit/tree/master/packages/checkout",
+  "main": "dist/0xsequence-kit-checkout.cjs.js",
+  "module": "dist/0xsequence-kit-checkout.esm.js",
+  "types": "dist/0xsequence-kit-checkout.cjs.d.ts",
+  "author": "Horizon Blockchain Games",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "echo",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "0xsequence": "^0.43.26",
+    "@0xsequence/api": "^0.43.27",
+    "@0xsequence/indexer": "^0.43.27",
+    "@0xsequence/metadata": "^0.43.27",
+    "@0xsequence/network": "^0.43.27",
+    "@tanstack/react-query": "^4.29.5",
+    "react-copy-to-clipboard": "^5.1.0"
+  },
+  "peerDependencies": {
+    "@0xsequence/design-system": ">=1.0.2",
+    "@vanilla-extract/css": ">=1.9.3",
+    "@vanilla-extract/recipes": ">=0.3.0",
+    "ethers": ">=5.7.2",
+    "framer-motion": ">=8.5.2",
+    "react": ">=17",
+    "react-dom": ">=17",
+    "wagmi": ">=0.10.0"
+  },
+  "devDependencies": {
+    "@0xsequence/design-system": "^1.0.4",
+    "@types/react-copy-to-clipboard": "^5.0.4",
+    "@vanilla-extract/css": "^1.9.3",
+    "@vanilla-extract/recipes": "^0.3.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "ethers": "^5.7.2",
+    "framer-motion": "^8.5.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "wagmi": "^0.12.12"
+  },
+  "files": [
+    "src",
+    "dist"
+  ]
+}

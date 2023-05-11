@@ -1,3 +1,3 @@
-# @0xsequence/kit-connectors
+# @0xsequence/kit-wallet
 
 ## 0.0.1
