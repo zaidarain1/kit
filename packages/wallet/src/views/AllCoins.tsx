@@ -105,7 +105,10 @@ export const AllCoins = () => {
             />
           )}
           {erc20TokensBalances && (
-            erc20TokensBalances.map(token => (
+            erc20TokensBalances.sort((a, b) => {
+              const isHigherFiat = Number(computeBalance(b, coinPrices)) - Number(computeBalance(a, coinPrices))
+              return isHigherFiat
+            }).map(token => (
               <CoinRow
                 imageUrl={token.contractInfo?.logoURI || ''}
                 decimals={token.contractInfo?.decimals || 18}
