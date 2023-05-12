@@ -1,4 +1,6 @@
 import { ChainId } from '@0xsequence/network'
+import { NetworkConfig } from '@0xsequence/network'
+import { capitalize } from './helpers'
 
 export const getChainColor = (
   chainId: number,
@@ -54,4 +56,11 @@ export const getChainBGColor = (
     default:
       return mode === 'light' ? '#C0D1FF' : '#002546'
   }
+}
+
+export const getPaperNetworkName = (network: NetworkConfig): string => {
+  if (network.chainId === 1) {
+    return 'Ethereum'
+  }
+  return (capitalize(network.name))
 }
