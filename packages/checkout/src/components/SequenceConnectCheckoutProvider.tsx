@@ -8,7 +8,7 @@ import {
 import { AnimatePresence } from 'framer-motion'
 
 import { Home } from '../views'
-import { Navigation, NavigationContext, CheckoutModalContext } from '../contexts'
+import { Navigation, NavigationContext, CheckoutModalContext, CheckoutSettings } from '../contexts'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -26,9 +26,19 @@ export type SequenceConnectCheckoutProvider = {
 
 export const SequenceConnectCheckoutProvider = ({ children, theme }: SequenceConnectCheckoutProvider) => {
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
+  const [settings, setSettings] = useState<CheckoutSettings>()
   const [navigation, setNavigation] = useState<Navigation>({
     location: 'home'
   })
+
+  const triggerCheckout = (settings: CheckoutSettings) => {
+    setSettings(settings)
+    setOpenCheckoutModal(true)
+  }
+
+  const closeCheckout = () => {
+    setOpenCheckoutModal(false)
+  }
 
   const queryClient = new QueryClient()
 
@@ -49,7 +59,7 @@ export const SequenceConnectCheckoutProvider = ({ children, theme }: SequenceCon
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CheckoutModalContext.Provider value={{ setOpenCheckoutModal, theme }}>
+      <CheckoutModalContext.Provider value={{ triggerCheckout, closeCheckout, settings, theme }}>
         <NavigationContext.Provider value={{ setNavigation, navigation }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>

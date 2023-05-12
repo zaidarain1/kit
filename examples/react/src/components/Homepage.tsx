@@ -3,7 +3,7 @@ import { sequence } from '0xsequence'
 import { ethers } from 'ethers'
 import { useOpenConnectModal } from '@0xsequence/kit-core'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
-import { useOpenCheckoutModal } from '@0xsequence/kit-checkout'
+import { useCheckoutModal, CheckoutSettings } from '@0xsequence/kit-checkout'
 import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
 import { ModalThemeContext } from '../contexts'
 
@@ -14,7 +14,7 @@ function Homepage() {
   const { address, connector, isConnected } = useAccount()
   const openConnectModal = useOpenConnectModal()
   const openWalletModal = useOpenWalletModal()
-  const openCheckoutModal = useOpenCheckoutModal()
+  const { triggerCheckout } = useCheckoutModal()
   const { disconnect } = useDisconnect()
   const { data: signer } = useSigner()
   const provider = useProvider()
@@ -62,6 +62,16 @@ function Homepage() {
     }
   }
 
+  const getCheckoutSettings = () => {
+    const checkoutSettings: CheckoutSettings = {
+      abi: 'abi',
+      method: 'method',
+      contractAddress: 'contractAddress',
+    }
+
+    return checkoutSettings
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -75,7 +85,7 @@ function Homepage() {
             <button className="Button" onClick={() => { openWalletModal && openWalletModal(true) }}>
               Open Wallet UI
             </button>
-            <button className="Button" onClick={() => { openCheckoutModal && openCheckoutModal(true) }}>
+            <button className="Button" onClick={() => { triggerCheckout && triggerCheckout(getCheckoutSettings()) }}>
               Open Checkout UI
             </button>
             <button className="Button" onClick={() => { signMessage() }}>

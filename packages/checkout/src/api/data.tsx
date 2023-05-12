@@ -1,8 +1,9 @@
 import { Token } from '@0xsequence/api'
+import { networks, ChainId } from '@0xsequence/network'
 import { TokenBalance, ContractType } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
 
-import { getNetworkConfigAndClients } from '../utils/clients'
+import { getNetworkConfigAndClients, getPaperNetworkName } from '../utils'
 
 export interface GetTokenBalancesArgs {
   accountAddress: string,
@@ -109,4 +110,73 @@ export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
     console.error(e)
     return
   }
+}
+
+export interface FetchPaperSecretArgs {
+  chainId: number,
+  email: string,
+  abi: string,
+  contractAddress: string,
+  recipientAddress: string,
+  receiptTitle: string,
+  collectionContractAddress?: string,
+  methodArguments: MethodArguments,
+  currency: string,
+  currencyAmount: string,
+  value: string,
+  methodName: string,
+}
+
+export interface MethodArguments {
+  [key: string]: any
+}
+
+export const fetchPaperSecret = async ({
+  chainId,
+  email,
+  contractAddress,
+  abi,
+  receiptTitle,
+  collectionContractAddress,
+  methodArguments,
+  currency,
+  currencyAmount,
+  methodName,
+  recipientAddress,
+}: FetchPaperSecretArgs) => {
+  const { network, apiClient } = await getNetworkConfigAndClients(chainId) 
+
+  const chainName = getPaperNetworkName(network)
+
+  const paramsJson = JSON.stringify({
+    title: receiptTitle,
+    email,
+    limitPerTransaction: 1,
+    quantity: 1,
+    mintMethod: {
+      args: methodArguments,
+      payment: {
+        currency,
+        value: `${currencyAmount} * $QUANTITY`,
+      },
+      name: methodName,
+    },
+    walletAddress: recipientAddress,
+    ...(collectionContractAddress ? {
+      contractArgs: {
+        collectionContractAddress
+      }
+    } : {}),
+  })
+
+
+  // const { secret } = CustomPaperSessionSecret({
+  //  chainName,
+  //  contractAddress,
+  //  abi,
+  //  paramsJson,
+  // })
+
+
+  return 'paper secret'
 }
