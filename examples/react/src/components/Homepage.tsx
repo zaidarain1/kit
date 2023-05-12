@@ -64,9 +64,17 @@ function Homepage() {
 
   const getCheckoutSettings = () => {
     const checkoutSettings: CheckoutSettings = {
+      chainId: 137,
+      receiptTitle: 'Custom Sequence Kit Checkout',
       abi: 'abi',
-      method: 'method',
-      contractAddress: 'contractAddress',
+      methodName: 'buyTokens',
+      methodArguments: {},
+      recipientAddress: address || '',
+      contractAddress: '0x967c902d4ea61b167fc56b27a36a546b266ac0fb',
+      currency: 'USDC',
+      currencyAmount: '0.1',
+      onSuccess: () => { console.log('success') },
+      onError: () => { console.log('error') },
     }
 
     return checkoutSettings

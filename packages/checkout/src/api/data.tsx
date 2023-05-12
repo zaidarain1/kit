@@ -123,7 +123,6 @@ export interface FetchPaperSecretArgs {
   methodArguments: MethodArguments,
   currency: string,
   currencyAmount: string,
-  value: string,
   methodName: string,
 }
 
