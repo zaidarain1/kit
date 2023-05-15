@@ -168,14 +168,12 @@ export const fetchPaperSecret = async ({
     } : {}),
   })
 
+  const { secret } = await apiClient.paperSessionSecret2({
+   chainName,
+   contractAddress,
+   abi,
+   paramsJson,
+  })
 
-  // const { secret } = CustomPaperSessionSecret({
-  //  chainName,
-  //  contractAddress,
-  //  abi,
-  //  paramsJson,
-  // })
-
-
-  return 'paper secret'
+  return secret
 }
