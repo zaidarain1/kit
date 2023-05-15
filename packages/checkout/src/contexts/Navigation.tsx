@@ -4,10 +4,34 @@ export interface TransactionPendingParams {
   transactionId: string
 }
 
-export interface Navigation {
-  location: 'transaction-form' | 'transaction-pending' | 'transaction-success' | 'transaction-error',
-  params?: TransactionPendingParams
+export interface TransactionSuccessParams {
+  transactionHash: string
 }
+
+export interface TransactionErrorParams {
+  error: Error
+}
+
+export interface TransactionFormNavigation {
+  location: 'transaction-form',
+}
+
+export interface TransactionSuccessNavigation {
+  location: 'transaction-success',
+  params: TransactionSuccessParams
+}
+
+export interface TransactionErrorNavigation {
+  location: 'transaction-error',
+  params: TransactionErrorParams
+}
+
+export interface TransactionPendingNavigation {
+  location: 'transaction-pending',
+  params: TransactionPendingParams
+}
+
+export type Navigation = TransactionFormNavigation | TransactionSuccessNavigation | TransactionErrorNavigation | TransactionPendingNavigation
 
 type NavigationContext = {
   setNavigation?: (navigation:Navigation) => void,

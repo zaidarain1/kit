@@ -13,8 +13,8 @@ export interface CheckoutSettings {
   currencyAmount: string
   collectionContractAddress?: string
   email?: string
-  onSuccess?: () => void
-  onError?: () => void
+  onSuccess?: (transactionHash: string) => void
+  onError?: (error: Error) => void
 }
 
 type CheckoutModalContext = {

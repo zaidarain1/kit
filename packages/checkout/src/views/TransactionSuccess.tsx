@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react'
 import { Box, CheckmarkIcon, Text } from '@0xsequence/design-system'
 
-import { useCheckoutModal } from '../hooks'
+import { useCheckoutModal, useNavigation } from '../hooks'
+import { TransactionSuccessNavigation } from '../contexts'
 
 export const TransactionSuccess = () => {
   const { closeCheckout, settings } = useCheckoutModal()
-
+  const nav = useNavigation()
+  const navigation = nav.navigation as TransactionSuccessNavigation
+  
   useEffect(() => {
     setTimeout(() => {
       closeCheckout && closeCheckout()
-      settings?.onSuccess && settings.onSuccess()
+      settings?.onSuccess && settings.onSuccess(navigation.params.transactionHash)
     }, 3000)
   }, [])
 

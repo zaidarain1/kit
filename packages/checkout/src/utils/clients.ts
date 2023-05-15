@@ -12,7 +12,7 @@ export const getNetworkConfigAndClients = (chainID: number | string) => {
 
   const metadataClient = new SequenceMetadataClient('https://metadata.sequence.app')
   const indexerClient = new SequenceIndexerClient(indexerURL(network.name))
-  const apiClient = new SequenceAPIClient('https://api.sequence.app')
+  const apiClient = new SequenceAPIClient('https://dev-api.sequence.app')
 
   return { network, metadataClient, indexerClient, apiClient }
 }

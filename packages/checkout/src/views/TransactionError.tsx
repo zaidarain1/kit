@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react'
 import { Box, CloseIcon, Text } from '@0xsequence/design-system'
 
-import { useCheckoutModal } from '../hooks'
+import { useCheckoutModal, useNavigation } from '../hooks'
+import { TransactionErrorNavigation } from '../contexts'
 
 export const TransactionError = () => {
   const { closeCheckout, settings } = useCheckoutModal()
+  const nav = useNavigation()
+  const navigation = nav.navigation as TransactionErrorNavigation
 
   useEffect(() => {
     setTimeout(() => {
       closeCheckout && closeCheckout()
-      settings?.onError && settings.onError()
+      settings?.onError && settings.onError(navigation.params.error)
     }, 3000)
   }, [])
 

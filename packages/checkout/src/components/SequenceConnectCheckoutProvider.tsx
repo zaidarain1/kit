@@ -51,11 +51,7 @@ export const SequenceConnectCheckoutProvider = ({ children, theme }: SequenceCon
     const { location } = navigation
     switch (location) {
       case 'transaction-pending':
-        const transactionId = navigation.params?.transactionId
-        if (!transactionId) {
-          return <TransactionError />
-        }
-        return <PendingTransaction transactionId={transactionId} />
+        return <PendingTransaction />
       case 'transaction-success':
         return <TransactionSuccess />
       case 'transaction-error':
