@@ -1,12 +1,12 @@
 import React, { createContext } from 'react'
 
-export interface AllCollectiblesParams {
-  collectionAddress: string
+export interface TransactionPendingParams {
+  transactionId: string
 }
 
 export interface Navigation {
-  location: 'home' | 'all-coins' | 'all-collections' | 'all-collectibles',
-  params?: AllCollectiblesParams
+  location: 'transaction-form' | 'transaction-pending' | 'transaction-success' | 'transaction-error',
+  params?: TransactionPendingParams
 }
 
 type NavigationContext = {

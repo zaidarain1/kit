@@ -7,7 +7,12 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { Home } from '../views'
+import {
+  PaperTransactionForm,
+  PendingTransaction,
+  TransactionError,
+  TransactionSuccess,
+} from '../views'
 import { Navigation, NavigationContext, CheckoutModalContext, CheckoutSettings } from '../contexts'
 
 import '@0xsequence/design-system/styles.css'
@@ -28,7 +33,7 @@ export const SequenceConnectCheckoutProvider = ({ children, theme }: SequenceCon
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
   const [navigation, setNavigation] = useState<Navigation>({
-    location: 'home'
+    location: 'transaction-form'
   })
 
   const triggerCheckout = (settings: CheckoutSettings) => {
@@ -45,15 +50,25 @@ export const SequenceConnectCheckoutProvider = ({ children, theme }: SequenceCon
   const getContent = () => {
     const { location } = navigation
     switch (location) {
-      case 'home':
+      case 'transaction-pending':
+        const transactionId = navigation.params?.transactionId
+        if (!transactionId) {
+          return <TransactionError />
+        }
+        return <PendingTransaction transactionId={transactionId} />
+      case 'transaction-success':
+        return <TransactionSuccess />
+      case 'transaction-error':
+        return <TransactionError />
+      case 'transaction-form':
       default:
-        return <Home />
+        return <PaperTransactionForm />
     }
   }
 
   useEffect(() => {
     if (openCheckoutModal) {
-      setNavigation({ location: 'home' })
+      setNavigation({ location: 'transaction-form' })
     }
   }, [openCheckoutModal])
 
