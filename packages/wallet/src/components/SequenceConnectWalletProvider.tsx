@@ -62,7 +62,7 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openWalletModal && (
-                <Modal scroll={true} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
+                <Modal contentProps={{ style: { maxWidth: '400px' } }} scroll={true} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
                   <Box id="sequence-kit-wallet-content">
                     {getContent()}
                   </Box>

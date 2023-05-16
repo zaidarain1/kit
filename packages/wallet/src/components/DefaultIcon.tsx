@@ -12,11 +12,13 @@ export const DefaultIcon = ({ size = 30 }: DefaultIconProps) => {
       justifyContent="center"
       borderRadius="circle"
       background="backgroundInverse"
+      flexShrink="0"
       style={{
         width: `${size}px`,
+        height: `${size}px`,
       }}
     >
-      <Text display="inline-block" variant="large" color="textInverse100">?</Text>
+      <Text variant="large" color="textInverse100">?</Text>
     </Box>
   )
 }
