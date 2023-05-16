@@ -1,5 +1,7 @@
 import React, { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Button, Text, TextInput } from '@0xsequence/design-system'
+import { Box, Button, Card, Spinner, Text, TextInput } from '@0xsequence/design-system'
+import { CheckoutWithCard, PaperSDKProvider } from '@paperxyz/react-client-sdk'
+import { useNavigation } from '../hooks'
 import { fetchPaperSecret } from '../api'
 import { CheckoutSettings } from '../contexts/CheckoutModal'
 
@@ -13,7 +15,7 @@ export const PaperTransaction = ({
   const [showEmailInputState, setShowEmailInputState] = useState(!settings.email)
   const [inputEmailAddress, setInputEmailAddress] = useState<string | undefined>(settings.email)
   const [paperSecret, setPaperSecret] = useState<string | null>(null)
-  const [transactionId, setTransactionId] = useState<string | null>(null)
+  const { setNavigation } = useNavigation()
 
   const onClickChangeEmail = () => {
     setInputEmailAddress(undefined)
@@ -34,6 +36,12 @@ export const PaperTransaction = ({
       setPaperSecret(secret)
     } catch(e) {
       console.error('Failed to fetch paper secret', e )
+      setNavigation({
+        location: 'transaction-error',
+        params: {
+          error: e
+        }
+      })
     }
   }
 
@@ -44,7 +52,7 @@ export const PaperTransaction = ({
   }, [showEmailInputState])
 
   const isValidEmailAddress = () => {
-    const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/
     const isValidEmail = emailRegEx.test(inputEmailAddress || '')
     return isValidEmail
   }
@@ -70,12 +78,48 @@ export const PaperTransaction = ({
           <Button
             disabled={!isValidEmailAddress()}
             onClick={() => {
+              setPaperSecret(null)
               setShowEmailInputState(false)
             }}
             label="Next"
           />
         </Box>
       )
+    }
+
+    if (!paperSecret) {
+      return (
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          width="full"
+          height="full"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Spinner size="lg" style={{ width: '60px', height: '60px' }} />
+        </Box>
+      )
+    }
+
+    const onPending = (transactionId: string) => {
+      setNavigation({
+        location: 'transaction-pending',
+        params: {
+          transactionId
+        }
+      })
+    }
+
+    const onError = (error: Error) => {
+      setNavigation({
+        location: 'transaction-error',
+        params: {
+          error
+        }
+      })
     }
 
     return (
@@ -99,6 +143,29 @@ export const PaperTransaction = ({
             />
           )}
         </Box>
+
+        <Card marginY="4" flexDirection="column">
+          {/* @ts-ignore-next-line */}
+          <PaperSDKProvider appName={settings.receiptTitle} chainName={capitalize(network.name)}>
+            <CheckoutWithCard
+              sdkClientSecret={paperSecret}
+              onReview={() => {}}
+              onPaymentSuccess={result => {
+                onPending(result.id)
+              }}
+              onError={error => {
+                console.error('Payment error:', error)
+                onError(error.error)
+              }}
+              options={{
+                // colorBackground: '#cce3de',
+                colorPrimary: '#447dd1',
+                colorText: '#ffffff',
+                borderRadius: 12
+              }}
+            />
+          </PaperSDKProvider>
+        </Card>
       </Box>
     )
   }
