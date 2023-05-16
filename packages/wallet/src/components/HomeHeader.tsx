@@ -93,7 +93,7 @@ export const HomeHeader = () => {
 
   return (
     <>
-      <GradientAvatar style={{ position: 'absolute', top: '14px' }} address={address || ''} />
+      <GradientAvatar style={{ float: 'left', marginTop: '16px' }} address={address || ''} />
       <Box marginTop="3" gap="2" alignItems="center" style={{ height: "60px"}}>
           <Box width="full" flexDirection="column" alignItems="center" justifyContent="center" >
             <Box alignItems="center" justifyContent="center">
