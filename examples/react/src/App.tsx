@@ -22,8 +22,6 @@ function App() {
     injected({
       chains
     }),
-    // TODO: fix type issue with connector
-    /* @ts-ignore-next-line */
     sequence({
       chains,
       connect: {

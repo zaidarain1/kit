@@ -1,6 +1,7 @@
 import { Chain } from 'wagmi'
 import type { ConnectOptions } from '@0xsequence/provider';
 import { SequenceConnector } from '@0xsequence/wagmi-connector';
+import type { Wallet } from '@0xsequence/kit-core'
 
 import { SequenceLogo } from './SequenceLogo'
 
@@ -9,6 +10,8 @@ export interface SequenceOptions {
   connect?: ConnectOptions
 }
 
+// TODO: fix type issue and remove ts ignore
+/* @ts-ignore-next-line */
 export const sequence = ({ chains, connect }: SequenceOptions) => ({
   id: 'sequence',
   logo: SequenceLogo,
@@ -23,4 +26,4 @@ export const sequence = ({ chains, connect }: SequenceOptions) => ({
     });
     return connector
   }
-})
+}) as Wallet
