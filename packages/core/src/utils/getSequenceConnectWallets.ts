@@ -10,7 +10,7 @@ export interface WalletProperties {
 }
 
 export type Wallet = WalletProperties & {
-  createConnector: () => Connector
+  createConnector: () => Connector<any, any>
 }
 
 export interface WalletField {

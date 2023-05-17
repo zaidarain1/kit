@@ -30,7 +30,7 @@
     "framer-motion": ">=8.5.2",
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": ">=0.10.0"
+    "wagmi": ">=1.0.0"
   },
   "devDependencies": {
     "@0xsequence/design-system": "^1.0.4",
@@ -42,7 +42,7 @@
     "framer-motion": "^8.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "^0.12.12"
+    "wagmi": "^1.0.5"
   },
   "files": [
     "src",

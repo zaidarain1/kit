@@ -1,10 +1,8 @@
 import { useContext } from 'react'
-import { sequence } from '0xsequence' 
-import { ethers } from 'ethers'
 import { useOpenConnectModal } from '@0xsequence/kit-core'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal, CheckoutSettings } from '@0xsequence/kit-checkout'
-import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
+import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
 import { ModalThemeContext } from '../contexts'
 
 import './Homepage.css';
@@ -16,11 +14,11 @@ function Homepage() {
   const openWalletModal = useOpenWalletModal()
   const { triggerCheckout } = useCheckoutModal()
   const { disconnect } = useDisconnect()
-  const { data: signer } = useSigner()
-  const provider = useProvider()
+  const { data: walletClient } = useWalletClient()
+  const publicClient = usePublicClient()
 
   const signMessage = async () => {
-    if (!signer) {
+    if (!walletClient) {
       return
     }
 
@@ -52,10 +50,19 @@ function Homepage() {
         And that has made all the difference.`
   
       // sign
-      const sig = await signer.signMessage(message)
+      const sig = await walletClient.signMessage({
+        message
+      })
       console.log('signature:', sig)
+
+      const [account] = await walletClient.getAddresses()
   
-      const isValid = await sequence.utils.isValidMessageSignature(await signer.getAddress(), message, sig, provider as ethers.providers.Web3Provider)
+      const isValid = await publicClient.verifyMessage({
+        address: account,
+        message,
+        signature: sig
+      })
+
       console.log('isValid?', isValid)
     } catch (e) {
       console.error(e)

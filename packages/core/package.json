@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@0xsequence/design-system": "^1.0.4",
-    "@0xsequence/wagmi-connector": "^1.0.6",
+    "@0xsequence/wagmi-connector": "^1.0.7",
     "@vanilla-extract/css": "^1.9.3",
     "@vanilla-extract/recipes": "^0.3.0",
     "framer-motion": "^8.5.2"
@@ -22,9 +22,12 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": ">=0.10.0"
+    "wagmi": ">=1.0.0",
+    "viem": ">=0.3.28"
   },
   "devDependencies": {
+    "wagmi": "1.0.5",
+    "viem": "0.3.28"
   },
   "files": [
     "src",

@@ -4,7 +4,7 @@ import { sequence, metamask, injected, walletConnect } from '@0xsequence/kit-con
 import { SequenceConnectWalletProvider } from '@0xsequence/kit-wallet'
 import { SequenceConnectCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
-import { WagmiConfig, createClient, configureChains } from 'wagmi'
+import { WagmiConfig, createConfig, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
 
@@ -13,7 +13,7 @@ import { ModalThemeContext } from './contexts'
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
 
-  const { chains, provider, webSocketProvider } = configureChains(
+  const { chains, publicClient, webSocketPublicClient } = configureChains(
     [mainnet, polygon],
     [publicProvider()],
   )
@@ -22,6 +22,8 @@ function App() {
     injected({
       chains
     }),
+    // TODO: fix type issue with connector
+    /* @ts-ignore-next-line */
     sequence({
       chains,
       connect: {
@@ -40,15 +42,15 @@ function App() {
     })
   ])
 
-  const client = createClient({
+  const config = createConfig({
     autoConnect: true,
-    provider,
-    webSocketProvider,
+    publicClient,
+    webSocketPublicClient,
     connectors
   })
 
   return (
-    <WagmiConfig client={client}>
+    <WagmiConfig config={config}>
       <SequenceConnectProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
         <SequenceConnectWalletProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
           <SequenceConnectCheckoutProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>

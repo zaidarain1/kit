@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "0xsequence": "^0.43.28",
-    "@0xsequence/wagmi-connector": "^1.0.6",
+    "@0xsequence/wagmi-connector": "^1.0.7",
     "@0xsequence/kit-core": "workspace:*",
     "@0xsequence/kit-connectors": "workspace:*",
     "@0xsequence/kit-wallet": "workspace:*",
@@ -18,7 +18,9 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^5.0.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "viem": "0.3.28",
+    "wagmi": "^1.0.5"
   },
   "devDependencies": {
     "@types/jest": "^27.5.2",

@@ -7,9 +7,13 @@ import { InjectedLogo } from './InjectedLogo'
 import { MetamaskLogo } from '../metamask/MetamaskLogo'
 import { SequenceLogo } from '../sequence/SequenceLogo'
 
-export interface Window {
-  ethereum?: ethers.providers.ExternalProvider;
+declare global {
+  interface Window {
+    ethereum?: ethers.providers.ExternalProvider;
+  }
 }
+
+window.ethereum = window.ethereum || {}
 
 export interface MoreExternalProviders {
   isSequence?: boolean
