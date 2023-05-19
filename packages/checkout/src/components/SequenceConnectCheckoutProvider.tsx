@@ -75,7 +75,7 @@ export const SequenceConnectCheckoutProvider = ({ children, theme }: SequenceCon
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openCheckoutModal && (
-                <Modal scroll={true} backdropColor="transparent" onClose={() => setOpenCheckoutModal(false)}>
+                <Modal contentProps={{ style: { maxWidth: '400px' } }} scroll={true} backdropColor="transparent" onClose={() => setOpenCheckoutModal(false)}>
                   <Box id="sequence-kit-checkout-content">
                     {getContent()}
                   </Box>

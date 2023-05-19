@@ -1,6 +1,8 @@
 import React, { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Button, Card, Spinner, Text, TextInput } from '@0xsequence/design-system'
+import { NetworkConfig, ChainId, networks } from '@0xsequence/network'
 import { CheckoutWithCard, PaperSDKProvider } from '@paperxyz/react-client-sdk'
+import { getPaperNetworkName } from '../utils'
 import { useNavigation } from '../hooks'
 import { fetchPaperSecret } from '../api'
 import { CheckoutSettings } from '../contexts/CheckoutModal'
@@ -16,6 +18,8 @@ export const PaperTransaction = ({
   const [inputEmailAddress, setInputEmailAddress] = useState<string | undefined>(settings.email)
   const [paperSecret, setPaperSecret] = useState<string | null>(null)
   const { setNavigation } = useNavigation()
+
+  const network = networks[settings.chainId as ChainId]
 
   const onClickChangeEmail = () => {
     setInputEmailAddress(undefined)
@@ -146,7 +150,7 @@ export const PaperTransaction = ({
 
         <Card marginY="4" flexDirection="column">
           {/* @ts-ignore-next-line */}
-          <PaperSDKProvider appName={settings.receiptTitle} chainName={capitalize(network.name)}>
+          <PaperSDKProvider appName={settings.receiptTitle} chainName={getPaperNetworkName(network)}>
             <CheckoutWithCard
               sdkClientSecret={paperSecret}
               onReview={() => {}}
