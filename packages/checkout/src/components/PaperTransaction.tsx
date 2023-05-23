@@ -50,6 +50,21 @@ export const PaperTransaction = ({
   }
 
   useEffect(() => {
+    const timer = setInterval(() => {
+      // This is a workaround for the KYC modal not becoming clickable
+      // The alternative of using the onReview callback does not work due
+      // to race conditions
+      const paperJsSdkModal = document.getElementById('paper-js-sdk-modal')
+      if (paperJsSdkModal) {
+        paperJsSdkModal.style.pointerEvents = 'visible'
+      }
+    }, 100)
+    return (() => {
+      clearInterval(timer)
+    })
+  }, [])
+
+  useEffect(() => {
     if (!showEmailInputState) {
       fetchSecret()
     }
