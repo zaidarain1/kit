@@ -23,10 +23,10 @@ export const getSequenceConnectWallets = (wallets: Wallet[]) => {
   const connectors: Connector[] = []
 
   // hide connector if there is an identical injected wallet
-  const injectedWallet = wallets.find(connector => connector.id === 'injected-wallet')
+  const injectedWallet = wallets.find(connector => connector.id === 'injected')
 
   const filteredWallets = wallets.filter((wallet) => {
-    if (!injectedWallet) {
+    if (!injectedWallet || !injectedWallet.hideConnectorId) {
       return true
     }
     return wallet.id !== injectedWallet.hideConnectorId

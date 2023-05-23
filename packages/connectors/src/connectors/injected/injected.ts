@@ -42,7 +42,7 @@ const getInjectedWalletInformation = (): InjectedWalletInformation => {
     return {
       name: 'Sequence',
       logo: SequenceLogo,
-      hideConnectorId: 'sequence'
+      hideConnectorId: null
     }
   } else {
     return {
