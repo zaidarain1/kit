@@ -83,7 +83,15 @@ export const PaperTransaction = ({
   const getContent = () => {
     if (showEmailInputState) {
       return (
-        <Box gap="2" flexDirection="column">
+        <Box
+          as="form"
+          gap="2"
+          flexDirection="column"
+          onSubmit={() => {
+            setPaperSecret(null)
+            setShowEmailInputState(false)
+          }}
+        >
           <Text variant="normal" color="text80">
             Enter Email Address. A receipt will be sent to this address.
           </Text>
@@ -95,11 +103,8 @@ export const PaperTransaction = ({
             onChange={emailAddressOnChange}
           />
           <Button
+            type="submit"
             disabled={!isValidEmailAddress()}
-            onClick={() => {
-              setPaperSecret(null)
-              setShowEmailInputState(false)
-            }}
             label="Next"
           />
         </Box>
