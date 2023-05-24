@@ -21,6 +21,7 @@ export const HomeHeader = () => {
   const { chain } = useNetwork()
   const chainId = chain?.id || 1
   const chainName = chain?.name || ''
+  console.log('chain', chain)
   const { data: balances = [], isLoading: isLoadingBalances } = useBalances({ accountAddress: address || '', chainId: chain?.id || 1 })
 
   const nativeTokenBalances = balances?.filter(b => b.contractAddress === ethers.constants.AddressZero)
@@ -91,6 +92,16 @@ export const HomeHeader = () => {
     )
   }
 
+  const getNetworkText = () => {
+    // if there is no network name
+    if (chainName === `Chain ${chainId}`) {
+      return chainName
+    }
+
+
+    return(`${capitalize(chainName)} - ${chainId}`)
+  }
+
   return (
     <>
       <GradientAvatar style={{ float: 'left', marginTop: '16px' }} address={address || ''} />
@@ -104,7 +115,7 @@ export const HomeHeader = () => {
             </Box>
             <Box style={{ marginTop: '-4px' }} >
               <Text variant="small" style={{ color: getChainColor(chainId, theme) }}>
-                {`${capitalize(chainName)} - ${chainId}`}
+                {getNetworkText()}
               </Text>
             </Box>
           </Box>
