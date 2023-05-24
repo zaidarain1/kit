@@ -10,7 +10,7 @@ export const History = () => {
         <HomeButton />
       </Box>
       <Box>
-        <Text as="h1" variant="normal" fontWeight="bold" color="text100" textAlign="center" marginTop="10" marginBottom="6">
+        <Text as="h1" variant="normal" fontWeight="bold" color="text100" textAlign="center">
           Transaction History
         </Text>
       </Box>

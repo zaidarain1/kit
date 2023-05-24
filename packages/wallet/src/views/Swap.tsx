@@ -1,4 +1,4 @@
-import { Button, Box, ChevronLeftIcon, Text } from '@0xsequence/design-system'
+import { Box, Text } from '@0xsequence/design-system'
 import React from 'react'
 import { HomeButton } from '../components/HomeButton'
 
@@ -10,7 +10,7 @@ export const Swap = () => {
         <HomeButton />
       </Box>
       <Box>
-        <Text as="h1" variant="normal" fontWeight="bold" color="text100" textAlign="center" marginTop="10" marginBottom="6">
+        <Text as="h1" variant="normal" fontWeight="bold" color="text100" textAlign="center">
           Swap
         </Text>
       </Box>
