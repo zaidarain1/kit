@@ -8,7 +8,15 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { AllCoins, AllCollectibles, AllCollections, Home } from '../views'
+import {
+  AllCoins,
+  AllCollectibles,
+  AllCollections,
+  Home,
+  Send,
+  Swap,
+  History
+} from '../views'
 import { Navigation, NavigationContext, WalletModalContext } from '../contexts'
 
 import '@0xsequence/design-system/styles.css'
@@ -41,8 +49,14 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
       case 'all-collections':
         return <AllCollections />
       case 'all-collectibles':
-        const collectionAddress = navigation?.params?.collectionAddress || ''
+        const collectionAddress = navigation.params.collectionAddress
         return <AllCollectibles collectionAddress={collectionAddress} />
+      case 'send':
+        return <Send />
+      case 'history':
+        return <History />
+      case 'swap':
+        return <Swap />
       case 'home':
       default:
         return <Home />
