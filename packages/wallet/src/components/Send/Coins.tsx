@@ -1,6 +1,6 @@
 import { TokenPrice } from '@0xsequence/api'
 import { TokenBalance } from '@0xsequence/indexer'
-import { Box, Button, NumericInput, Text, TextInput } from '@0xsequence/design-system'
+import { Box, Button, NumericInput, Text, TextInput, vars } from '@0xsequence/design-system'
 import { ethers } from 'ethers'
 import React, { useEffect, ChangeEvent } from 'react'
 import { useAccount, useNetwork, useWalletClient } from 'wagmi'
@@ -200,6 +200,7 @@ export const SendCoins = () => {
       <Box gap="2" flexDirection="column">
         <Text variant="small">Amount to Send</Text>
         <NumericInput
+          style={{ fontSize: vars.fontSizes.normal, fontWeight: vars.fontWeights.normal }}
           name="amount"
           value={amount}
           onChange={handleChangeAmount}
