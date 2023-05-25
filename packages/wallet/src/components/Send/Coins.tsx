@@ -172,7 +172,7 @@ export const SendCoins = () => {
       }).catch(e => console.error('User rejected transaction', e))
     } else {
       walletClient?.sendTransaction({
-        to: toAddress as `0x${string}}`,
+        to: selectedToken.contractAddress as `0x${string}}`,
         data: new ethers.utils.Interface(ERC_20_ABI).encodeFunctionData('transfer', [toAddress, sendAmount.toHexString()]) as `0x${string}`
       }).catch(e => console.error('User rejected transaction', e))
     }

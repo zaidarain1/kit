@@ -38,7 +38,7 @@ export type SequenceConnectWalletProvider = {
   theme?: Theme
 }
 
-const DEFAULT_LOCATION = 'send'
+const DEFAULT_LOCATION = 'home'
 
 export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConnectWalletProvider) => {
   // Wallet Modal Context
