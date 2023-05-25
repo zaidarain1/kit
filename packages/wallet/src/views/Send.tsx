@@ -28,12 +28,20 @@ export const Send = () => {
               {
                 value: 'coins',
                 label: 'Coins',
-                content: <SendCoins />,
+                content: (
+                  <Box marginTop="2">
+                    <SendCoins />
+                  </Box>
+                ),
               },
               {
                 value: 'collectibles',
                 label: 'Collectibles',
-                content: <SendCollectibles />,
+                content: (
+                  <Box marginTop="2">
+                    <SendCollectibles />
+                  </Box>
+                ),
               },
             ]
           }

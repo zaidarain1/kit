@@ -16,7 +16,7 @@ export const CoinsSummary = () => {
   const chainId = chain?.id || 1
   const { setNavigation } = useNavigation()
 
-  const { data: balances, isLoading } = useBalances({ accountAddress: address || '', chainId })
+  const { data: balances, isLoading: isLoadingBalances } = useBalances({ accountAddress: address || '', chainId })
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
 
@@ -72,6 +72,8 @@ export const CoinsSummary = () => {
       location: 'all-coins'
     })
   }
+
+  const isLoading = isLoadingBalances || isLoadingCoinPrices
 
   if (isLoading) {
     return (

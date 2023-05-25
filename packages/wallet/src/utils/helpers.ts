@@ -91,3 +91,18 @@ export const formatDisplay = (_val: number | string): string => {
 export const capitalize = (word: string) => {
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
+
+export const limitDecimals = (value: string, decimals: number) => {
+  const splitValue = value.split('.')
+  if (splitValue.length === 1) {
+    return value
+  }
+  return `${splitValue[0]}.${splitValue[1].slice(0, decimals)}`
+}
+
+export const isEthAddress = (value: string) => {
+  const ethAddressRegEx = /0x[a-fA-F0-9]{40}/
+  const isEthAddress = ethAddressRegEx.test(value)
+
+  return isEthAddress
+}

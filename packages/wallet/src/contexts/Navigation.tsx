@@ -4,7 +4,6 @@ export interface AllCollectiblesParams {
   collectionAddress: string
 }
 
-
 export interface AllCollectiblesNavigation {
   location: 'all-collectibles',
   params: AllCollectiblesParams
