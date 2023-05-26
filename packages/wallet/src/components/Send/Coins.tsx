@@ -140,11 +140,12 @@ export const SendCoins = () => {
   const imageUrl = isNativeToken ? nativeTokenInfo.logoURI : selectedToken.contractInfo?.logoURI
   const symbol = isNativeToken ? nativeTokenInfo.symbol : selectedToken.contractInfo?.symbol || ''
   const amountToSendFormatted = amount === '' ? '0' : amount
+  const amountToSendForCalculation = amountToSendFormatted.split('.').length === 1 ?  [amountToSendFormatted.split('.')[0], '0'].join('.') : amountToSendFormatted
 
-  const amountToSendFiat = computeFiatBalance(selectedToken.contractAddress, ethers.utils.parseUnits(amountToSendFormatted, decimals).toString(), decimals, coinPrices)
+  const amountToSendFiat = computeFiatBalance(selectedToken.contractAddress, ethers.utils.parseUnits(amountToSendForCalculation, decimals).toString(), decimals, coinPrices)
 
-  const insufficientFunds = ethers.utils.parseUnits(amountToSendFormatted, decimals).gt(selectedToken.balance) 
-  const isNonZeroAmount = ethers.BigNumber.from(amountToSendFormatted).gt(0)
+  const insufficientFunds = ethers.utils.parseUnits(amountToSendForCalculation, decimals).gt(selectedToken.balance) 
+  const isNonZeroAmount = ethers.BigNumber.from(ethers.utils.parseUnits(amountToSendForCalculation, decimals)).gt(0)
 
   const handleChangeAmount = (ev: ChangeEvent<HTMLInputElement>) => {
     const { value } = ev.target
@@ -163,7 +164,7 @@ export const SendCoins = () => {
 
   const executeTransaction = async () => {
     const isNative = selectedToken.contractAddress === ethers.constants.AddressZero
-    const sendAmount = ethers.utils.parseUnits(amountToSendFormatted, decimals)
+    const sendAmount = ethers.utils.parseUnits(amountToSendForCalculation, decimals)
 
     if (isNative) {
       walletClient?.sendTransaction({
