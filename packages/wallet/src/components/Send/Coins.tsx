@@ -88,49 +88,54 @@ export const SendCoins = () => {
 
   if (!selectedToken) {
     return (
-      <Box width="full" flexDirection="column" gap="2">
-        {nativeTokenBalance && (
-          <Box  
-            key={nativeTokenBalance.contractAddress}
-            onClick={() => setSelectedToken(nativeTokenBalance)}
-            className={styles.clickableRowItem}
-          >
-            <CoinRow
-              imageUrl={nativeTokenInfo.logoURI}
-              decimals={nativeTokenInfo.decimals}
-              name={nativeTokenInfo.name}
-              symbol={nativeTokenInfo.symbol}
-              balance={nativeTokenBalance?.balance || '0'}
-              fiatValue={computeFiatBalance(nativeTokenBalance.contractAddress, nativeTokenBalance.balance, nativeTokenInfo.decimals, coinPrices)}
-              priceChangePercentage={getPercentagePriceChange(nativeTokenBalance, coinPrices)}
-            />
-          </Box>
-        )}
-          {erc20Tokens && (
-            erc20TokensBalances.sort((a, b) => {
-              const isHigherFiat = Number(computeFiatBalance(b.contractAddress, b.balance, b.contractInfo?.decimals || 0 , coinPrices))
-                - Number(computeFiatBalance(a.contractAddress, a.balance, a.contractInfo?.decimals || 0 , coinPrices))
-              return isHigherFiat
-            })
-            .map(token => (
-              <Box
-                onClick={() => setSelectedToken(token)}
-                className={styles.clickableRowItem}
-                key={token.contractAddress}
-              >
-                <CoinRow
-                  imageUrl={token.contractInfo?.logoURI}
-                  decimals={token.contractInfo?.decimals || 18}
-                  name={token.contractInfo?.name || ''}
-                  symbol={token.contractInfo?.symbol || ''}
-                  balance={token.balance}
-                  fiatValue={computeFiatBalance(token.contractAddress, token.balance, token.contractInfo?.decimals || 0, coinPrices)}
-                  priceChangePercentage={getPercentagePriceChange(token, coinPrices)}
-                />
-              </Box>
-            ))
+      <>
+        <Box cursor="pointer" marginBottom="1">
+          <Text variant="normal">Select a coin</Text>
+        </Box>
+        <Box width="full" flexDirection="column" gap="2">
+          {nativeTokenBalance && (
+            <Box  
+              key={nativeTokenBalance.contractAddress}
+              onClick={() => setSelectedToken(nativeTokenBalance)}
+              className={styles.clickableRowItem}
+            >
+              <CoinRow
+                imageUrl={nativeTokenInfo.logoURI}
+                decimals={nativeTokenInfo.decimals}
+                name={nativeTokenInfo.name}
+                symbol={nativeTokenInfo.symbol}
+                balance={nativeTokenBalance?.balance || '0'}
+                fiatValue={computeFiatBalance(nativeTokenBalance.contractAddress, nativeTokenBalance.balance, nativeTokenInfo.decimals, coinPrices)}
+                priceChangePercentage={getPercentagePriceChange(nativeTokenBalance, coinPrices)}
+              />
+            </Box>
           )}
-      </Box>
+            {erc20Tokens && (
+              erc20TokensBalances.sort((a, b) => {
+                const isHigherFiat = Number(computeFiatBalance(b.contractAddress, b.balance, b.contractInfo?.decimals || 0 , coinPrices))
+                  - Number(computeFiatBalance(a.contractAddress, a.balance, a.contractInfo?.decimals || 0 , coinPrices))
+                return isHigherFiat
+              })
+              .map(token => (
+                <Box
+                  onClick={() => setSelectedToken(token)}
+                  className={styles.clickableRowItem}
+                  key={token.contractAddress}
+                >
+                  <CoinRow
+                    imageUrl={token.contractInfo?.logoURI}
+                    decimals={token.contractInfo?.decimals || 18}
+                    name={token.contractInfo?.name || ''}
+                    symbol={token.contractInfo?.symbol || ''}
+                    balance={token.balance}
+                    fiatValue={computeFiatBalance(token.contractAddress, token.balance, token.contractInfo?.decimals || 0, coinPrices)}
+                    priceChangePercentage={getPercentagePriceChange(token, coinPrices)}
+                  />
+                </Box>
+              ))
+            )}
+        </Box>
+      </>
     )
   }
 
