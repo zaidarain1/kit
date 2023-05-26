@@ -1,55 +1,57 @@
 import React from 'react'
-import { Box, Image, Text } from '@0xsequence/design-system'
+import { Box, Card, Image, Text } from '@0xsequence/design-system'
 
 import { DefaultIcon } from '../DefaultIcon'
 
 interface CollectionSelectorProps {
   imageUrl?: string,
-  name: string,
+  name?: string,
   quantity: string,
+  tokenId: string,
+  isSelected: boolean,
 }
 
-export const CollectionSelector = ({
+export const CollectibleSelector = ({
   imageUrl,
   name,
-  quantity
+  quantity,
+  tokenId,
+  isSelected,
 }: CollectionSelectorProps) => {
-  const getImage = (logoURI?: string) => {
-    if (logoURI) {
-      return (
-        <Image src={logoURI} borderRadius="circle" style={{ width: '30px' }} />
-      )
-    }
 
-    return <DefaultIcon size={30} />
-  }
-  
+
   return (
     <Box
       height="14"
       alignItems="center"
-      justifyContent="flex-start"
+      justifyContent="space-between"
       background="backgroundSecondary"
-      borderRadius="md"
+      borderRadius="sm"
       paddingY="2"
       paddingX="3"
     >
       <Box justifyContent="center" alignItems="center" gap="2">
-        {getImage(imageUrl)}
+        <Card height="12" padding="0" aspectRatio="1/1" justifyContent="center" alignItems="center" overflow="hidden" borderRadius="md" background="backgroundSecondary">
+          <Image style={{ height: '100%' }} src={imageUrl} />
+        </Card>
+
         <Box flexDirection="column" alignItems="flex-start">
           <Text
             variant="medium"
             style={{
               whiteSpace: 'nowrap',
-              width: '275px',
+              width: '200px',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
             }}
           >
-            {name}
+            {name || tokenId}
           </Text>
-          <Text color="text50" variant="normal"> {`${quantity} items`}</Text>
+          <Text color="text50" variant="normal"> {`x ${quantity}`}</Text>
         </Box>
+      </Box>
+      <Box>
+        selected
       </Box>
     </Box>
   )

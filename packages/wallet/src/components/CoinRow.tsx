@@ -19,7 +19,7 @@ interface CoinRowProps {
 
 export const CoinRowSkeleton = () => {
   return (
-    <Box height="12" alignItems="center" justifyContent="space-between" background="backgroundSecondary" borderRadius="md" paddingY="2" paddingX="3">
+    <Box height="14" alignItems="center" justifyContent="space-between" background="backgroundSecondary" borderRadius="md" paddingY="2" paddingX="3">
       <Box justifyContent="center" alignItems="center" gap="2">
         <Skeleton width={30} height={30} borderRadius="circle" />
         <Box flexDirection="column" gap="2" alignItems="flex-start">
@@ -68,7 +68,7 @@ export const CoinRow = ({
   }
 
   return (
-    <Box height="12" alignItems="center" justifyContent="space-between" background="backgroundSecondary" borderRadius="md" paddingY="2" paddingX="3">
+    <Box height="14" alignItems="center" justifyContent="space-between" background="backgroundSecondary" borderRadius="md" paddingY="2" paddingX="3">
       <Box justifyContent="center" alignItems="center" gap="2">
         {getImage(imageUrl)}
         <Box flexDirection="column" alignItems="flex-start">

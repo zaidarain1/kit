@@ -21,7 +21,6 @@ export const HomeHeader = () => {
   const { chain } = useNetwork()
   const chainId = chain?.id || 1
   const chainName = chain?.name || ''
-  console.log('chain', chain)
   const { data: balances = [], isLoading: isLoadingBalances } = useBalances({ accountAddress: address || '', chainId: chain?.id || 1 })
 
   const nativeTokenBalances = balances?.filter(b => b.contractAddress === ethers.constants.AddressZero)

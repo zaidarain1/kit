@@ -1,4 +1,3 @@
-import { TokenBalance } from '@0xsequence/indexer'
 import React, { useState, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
@@ -21,7 +20,6 @@ import {
   Navigation,
   NavigationContext,
   WalletModalContext,
-  SendCoinContext,
 } from '../contexts'
 
 import '@0xsequence/design-system/styles.css'
@@ -38,7 +36,7 @@ export type SequenceConnectWalletProvider = {
   theme?: Theme
 }
 
-const DEFAULT_LOCATION = 'home'
+const DEFAULT_LOCATION = 'send'
 
 export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConnectWalletProvider) => {
   // Wallet Modal Context
@@ -49,10 +47,7 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
     location: DEFAULT_LOCATION
   })
 
-  // Send Context
-  const [amountToSend, setAmountToSend] = useState<string>('')
-  const [toAddressSend, setToAddressSend] = useState<string>('')
-  const [selectedTokenSend, setSelectedTokenSend] = useState<TokenBalance>()
+
 
   const queryClient = new QueryClient()
 
@@ -88,16 +83,7 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
     <QueryClientProvider client={queryClient}>
       <WalletModalContext.Provider value={{ setOpenWalletModal, theme }}>
         <NavigationContext.Provider value={{ setNavigation, navigation }}>
-          <SendCoinContext.Provider
-            value={{
-              amount: amountToSend,
-              setAmount: setAmountToSend,
-              toAddress: toAddressSend,
-              setToAddress: setToAddressSend,
-              selectedToken: selectedTokenSend,
-              setSelectedToken: setSelectedTokenSend,
-            }}
-          >
+
             <ThemeProvider theme={theme}>
               <AnimatePresence>
                 {openWalletModal && (
@@ -110,7 +96,6 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
               </AnimatePresence>
             </ThemeProvider>
             {children}
-          </SendCoinContext.Provider>
         </NavigationContext.Provider>
       </WalletModalContext.Provider>
     </QueryClientProvider>
