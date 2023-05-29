@@ -17,17 +17,10 @@ export const ActionButtons = () => {
     })
   }
 
-  const onClickSwap = () => {
-    setNavigation({
-      location: 'swap'
-    })
-  }
-  
   return (
     <Box gap="2" justifyContent="center" marginY="2">
       <Button onClick={onClickSend} leftIcon={SendIcon} label="Send" />
       <Button onClick={onClickHistory} leftIcon={TransactionIcon} label="History" />
-      <Button onClick={onClickSwap} leftIcon={SwapIcon} label="Swap" />
     </Box>
   )
 }

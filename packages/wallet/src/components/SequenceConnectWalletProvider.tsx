@@ -13,7 +13,6 @@ import {
   AllCollections,
   Home,
   Send,
-  Swap,
   History
 } from '../views'
 import {
@@ -65,8 +64,6 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
         return <Send />
       case 'history':
         return <History />
-      case 'swap':
-        return <Swap />
       case 'home':
       default:
         return <Home />
