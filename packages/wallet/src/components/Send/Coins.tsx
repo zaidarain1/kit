@@ -167,7 +167,9 @@ export const SendCoins = () => {
     setAmount(maxAmount)
   }
 
-  const executeTransaction = async () => {
+  const executeTransaction = async (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
     const isNative = selectedToken.contractAddress === ethers.constants.AddressZero
     const sendAmount = ethers.utils.parseUnits(amountToSendForCalculation, decimals)
 
@@ -188,7 +190,7 @@ export const SendCoins = () => {
 
   return (
     <Box as="form" gap="4" flexDirection="column" onSubmit={executeTransaction}>
-      <Button label="Change Token" onClick={() => {
+      <Button label="Change Coin" onClick={() => {
         setSelectedToken(undefined)
         setAmount('')
       }} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Card, Image, Text } from '@0xsequence/design-system'
+import { Box, Icon, CheckmarkIcon, Card, Image, Text } from '@0xsequence/design-system'
 
 import { DefaultIcon } from '../DefaultIcon'
 
@@ -18,8 +18,6 @@ export const CollectibleSelector = ({
   tokenId,
   isSelected,
 }: CollectionSelectorProps) => {
-
-
   return (
     <Box
       height="14"
@@ -51,7 +49,7 @@ export const CollectibleSelector = ({
         </Box>
       </Box>
       <Box>
-        selected
+        {isSelected && <CheckmarkIcon size="sm" />}
       </Box>
     </Box>
   )
