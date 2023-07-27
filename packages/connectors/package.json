@@ -18,10 +18,10 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@0xsequence/design-system": "^1.0.4"
+    "@0xsequence/design-system": "^1.0.11"
   },
   "peerDependencies": {
-    "@0xsequence/design-system": ">=1.0.2",
+    "@0xsequence/design-system": ">=1.0.11",
     "react": ">=17",
     "react-dom": ">=17",
     "wagmi": ">=1.0.0"

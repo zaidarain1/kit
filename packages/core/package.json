@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/design-system": "^1.0.4",
+    "@0xsequence/design-system": "^1.0.11",
     "@0xsequence/wagmi-connector": "^1.0.7",
     "@vanilla-extract/css": "^1.9.3",
     "@vanilla-extract/recipes": "^0.3.0",

@@ -6,15 +6,15 @@ Sequence Kit (@0xsequence/kit) is a library enabling developers to easily integr
 ## Usage
 ### Installing the Library
 
-`npm install @0xsequence/kit-core wagmi ethers`
+`npm install @0xsequence/kit-core wagmi ethers viem 0xsequence`
 
 or
 
-`pnpm install @0xsequence/kit-core wagmi ethers`
+`pnpm install @0xsequence/kit-core wagmi ethers viem 0xsequence`
 
 or
 
-`yarn add @0xsequence/kit-core wagmi ethers`
+`yarn add @0xsequence/kit-core wagmi ethers viem 0xsequence`
 
 ### Installing Wallets
 Official wallets can be installed by running:
