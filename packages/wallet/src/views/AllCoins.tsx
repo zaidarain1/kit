@@ -8,7 +8,7 @@ import { useAccount, useNetwork } from 'wagmi'
 import { CoinRow, CoinRowSkeleton } from '../shared/CoinRow'
 import { HomeButton } from '../shared/HomeButton'
 
-import { getNativeTokenInfoByChainId, compareAddress } from '../utils'
+import { getNativeTokenInfoByChainId, getPercentagePriceChange, computeBalance } from '../utils'
 import { useBalances, useNavigation, useCoinPrices } from '../hooks'
 
 
@@ -43,37 +43,11 @@ export const AllCoins = () => {
     tokens: [nativeToken, ...erc20Tokens]
   });
 
-  const computeBalance = (balance: TokenBalance, prices: TokenPrice[]): string => {
-      let totalUsd = 0
-
-      const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))
-      if (!priceForToken) {
-        return '0.00';
-      }
-      const priceFiat = priceForToken.price?.value || 0
-      const decimals = balance.contractInfo?.decimals || 18
-      const valueFormatted = ethers.utils.formatUnits(balance.balance, decimals)
-      const usdValue = parseFloat(valueFormatted) * priceFiat
-      totalUsd += usdValue
-    
-    return `${totalUsd.toFixed(2)}`
-  }
-
 
   const onClickBack = () => {
     setNavigation && setNavigation({
       location: 'home'
     })
-  }
-
-  const getPercentagePriceChange = (balance: TokenBalance, prices: TokenPrice[]) => {
-    const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))
-    if (!priceForToken) {
-      return 0;
-    }
-
-    const price24HourChange = priceForToken?.price24hChange?.value || 0
-    return price24HourChange
   }
 
   const isLoading = isLoadingBalances || isLoadingCoinPrices

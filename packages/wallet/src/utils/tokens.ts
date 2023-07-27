@@ -1,3 +1,10 @@
+import { ethers } from 'ethers'
+import { TokenBalance } from '@0xsequence/indexer'
+import { TokenPrice } from '@0xsequence/api'
+
+import { vars } from '@0xsequence/design-system'
+
+import { compareAddress } from './helpers'
 export interface NativeTokenInfo {
   name: string,
   symbol: string,
@@ -38,4 +45,40 @@ export const getNativeTokenInfoByChainId = (chainId: number) => {
   }
 
   return tokenInfos[chainId] || tokenInfos[1]
+}
+
+export const getPercentageColor = (value: number) => {
+  if(value > 0) {
+    return vars.colors.positive
+  } else if (value < 0) {
+    return vars.colors.negative
+ } else {
+  return vars.colors.text50
+ }
+}
+
+export const getPercentagePriceChange = (balance: TokenBalance, prices: TokenPrice[]) => {
+  const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))
+  if (!priceForToken) {
+    return 0;
+  }
+
+  const price24HourChange = priceForToken?.price24hChange?.value || 0
+  return price24HourChange
+}
+
+export const computeBalance = (balance: TokenBalance, prices: TokenPrice[]): string => {
+  let totalUsd = 0
+
+  const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))
+  if (!priceForToken) {
+    return '0.00';
+  }
+  const priceFiat = priceForToken.price?.value || 0
+  const decimals = balance.contractInfo?.decimals || 18
+  const valueFormatted = ethers.utils.formatUnits(balance.balance, decimals)
+  const usdValue = parseFloat(valueFormatted) * priceFiat
+  totalUsd += usdValue
+
+return `${totalUsd.toFixed(2)}`
 }

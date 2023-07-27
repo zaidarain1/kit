@@ -10,6 +10,7 @@ import { Loader } from '../../shared/Loader'
 import { useBalances, useNavigation, useCoinPrices, useSendCoin, useOpenWalletModal } from '../../hooks'
 import { getNativeTokenInfoByChainId, compareAddress, limitDecimals, isEthAddress } from '../../utils'
 import { ERC_20_ABI } from '../../constants'
+import { getPercentagePriceChange } from '../../utils'
 
 import * as styles from './styles.css'
 
@@ -60,16 +61,6 @@ export const SendCoins = () => {
     totalUsd += usdValue
   
     return `${totalUsd.toFixed(2)}`
-  }
-
-  const getPercentagePriceChange = (balance: TokenBalance, prices: TokenPrice[]) => {
-    const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))
-    if (!priceForToken) {
-      return 0;
-    }
-
-    const price24HourChange = priceForToken?.price24hChange?.value || 0
-    return price24HourChange
   }
 
   useEffect(() => {

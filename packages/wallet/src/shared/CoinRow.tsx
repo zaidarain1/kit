@@ -5,7 +5,7 @@ import { Skeleton } from '../shared/Skeleton'
 import { ethers } from 'ethers'
 
 import { DefaultIcon } from './DefaultIcon'
-import { formatDisplay } from '../utils'
+import { formatDisplay, getPercentageColor } from '../utils'
 
 interface CoinRowProps {
   name: string,
@@ -55,16 +55,6 @@ export const CoinRow = ({
     }
 
     return <DefaultIcon size={30} />
-  }
-
-  const getPercentageColor = (value: number) => {
-    if(value > 0) {
-      return vars.colors.positive
-    } else if (value < 0) {
-      return vars.colors.negative
-   } else {
-    return vars.colors.text50
-   }
   }
 
   return (
