@@ -32,12 +32,15 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
   })
 
-  export const useCoinPrices = (args: GetCoinPricesArgs) =>
+  export const useCoinPrices = ({
+    disabled,
+    ...args
+  }: GetCoinPricesArgs & { disabled?: boolean } ) =>
     useQuery({
       queryKey: ['coinPrices', args],
       queryFn: () => getCoinPrices(args),
       retry: true,
       staleTime: 1 * time.oneMinute,
-      enabled: args.tokens.length > 0
+      enabled: args.tokens.length > 0 && !disabled
     })
     

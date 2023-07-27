@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box, Text } from '@0xsequence/design-system'
 
-import { getPercentageColor } from '../../../../utils'
-import { CoinIcon } from '../../../../shared/CoinIcon'
+import { getPercentageColor } from '../../../../../utils'
+import { CoinIcon } from '../../../../../shared/CoinIcon'
 
 interface CoinTileContentProps {
   logoUrl?: string

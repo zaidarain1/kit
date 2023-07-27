@@ -4,7 +4,8 @@ import { TokenBalance } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
 import { useAccount, useNetwork } from 'wagmi'
 
-import { CoinTile } from '../CoinTile'
+import { CoinTile } from './CoinTile'
+import { CollectibleTile } from './CollectibleTile'
 import { SkeletonTiles } from './SkeletonTiles'
 
 import { useBalances } from '../../../../hooks'
@@ -60,10 +61,13 @@ export const AssetSummary = () => {
               width: `calc(50% - ${vars.space[2]})`
             }}
           >
-            {ethers.utils.formatUnits(balance.balance, balance.contractInfo?.decimals || 18)}
+            <CoinTile balance={balance} />
           </Box>
         )
       })}
+        {/* TODO: from the collection get the collectibles
+         maybe 2 max per collection to avoid overcrowding  
+
       {collectibles.map((balance) => {
         return (
           <Box
@@ -73,10 +77,10 @@ export const AssetSummary = () => {
               width: `calc(50% - ${vars.space[2]})`
             }}
           >
-            {ethers.utils.formatUnits(balance.balance, balance.contractInfo?.decimals || 18)}
+            <CollectibleTile balance={balance} />
           </Box>
         )
-      })}
+      })} */}
     </Box>
   )
 }

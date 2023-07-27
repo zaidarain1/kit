@@ -8,6 +8,7 @@ export const SkeletonTiles = () => {
       {Array(6).fill(null).map((_, i) => (
         (
           <Box
+            key={i}
             style={{
               width: `calc(50% - ${vars.space[2]})`
             }}
