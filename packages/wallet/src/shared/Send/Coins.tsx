@@ -6,7 +6,7 @@ import React, { useEffect, ChangeEvent } from 'react'
 import { useAccount, useNetwork, useWalletClient } from 'wagmi'
 
 import { CoinRow } from '../CoinRow'
-import { Loader } from '../Loader'
+import { Loader } from '../../shared/Loader'
 import { useBalances, useNavigation, useCoinPrices, useSendCoin, useOpenWalletModal } from '../../hooks'
 import { getNativeTokenInfoByChainId, compareAddress, limitDecimals, isEthAddress } from '../../utils'
 import { ERC_20_ABI } from '../../constants'

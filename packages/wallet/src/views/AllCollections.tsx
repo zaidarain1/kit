@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box } from '@0xsequence/design-system'
 
-import { HomeButton } from '../components/HomeButton'
-import { CollectionsSummary } from '../components/CollectionsSummary'
+import { HomeButton } from './Home/components/HomeButton'
+import { CollectionsSummary } from '../shared/CollectionsSummary'
 import { useNavigation } from '../hooks'
 
 export const AllCollections = () => {

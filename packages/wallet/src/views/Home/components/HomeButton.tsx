@@ -1,6 +1,6 @@
 import { Box, Button, ChevronLeftIcon } from '@0xsequence/design-system'
 import React from 'react'
-import { useNavigation } from '../hooks'
+import { useNavigation } from '../../../hooks'
 
 export const HomeButton = () => {
   const { setNavigation } = useNavigation()

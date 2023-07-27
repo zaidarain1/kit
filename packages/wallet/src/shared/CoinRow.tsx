@@ -1,7 +1,7 @@
 import { Box, Image, Text, vars } from '@0xsequence/design-system'
 
 import React from 'react'
-import { Skeleton } from './Skeleton'
+import { Skeleton } from '../shared/Skeleton'
 import { ethers } from 'ethers'
 
 import { DefaultIcon } from './DefaultIcon'

@@ -5,7 +5,7 @@ import { useAccount, useNetwork } from 'wagmi'
 
 import { CollectionHeader } from './CollectionHeader'
 
-import { Skeleton } from '../Skeleton'
+import { Skeleton } from '../../shared/Skeleton'
 
 import { useCollectionBalance } from '../../hooks'
 import { formatDisplay } from '../../utils'

@@ -9,11 +9,11 @@ import {
 } from '@0xsequence/design-system'
 import { useAccount, useNetwork } from 'wagmi'
 
-import { useBalances, useCoinPrices, useModalTheme } from '../hooks'
-import { formatAddress, compareAddress, capitalize, getChainColor } from '../utils'
+import { useBalances, useCoinPrices, useModalTheme } from '../../../hooks'
+import { formatAddress, compareAddress, capitalize, getChainColor } from '../../../utils'
 
-import { Skeleton } from './Skeleton'
-import { CopyButton  } from './CopyButton'
+import { Skeleton } from '../../../shared/Skeleton'
+import { CopyButton  } from '../../../shared/CopyButton'
 
 export const HomeHeader = () => {
   const theme = useModalTheme()

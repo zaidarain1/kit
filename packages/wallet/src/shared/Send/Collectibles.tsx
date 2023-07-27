@@ -7,7 +7,7 @@ import { ERC_1155_ABI, ERC_721_ABI } from '../../constants'
 import { CollectibleSelector } from './CollectibleSelector'
 import { CollectionSelector } from './CollectionSelector'
 
-import { Loader } from '../Loader'
+import { Loader } from '../../shared/Loader'
 
 import {
   useSendCollectibles,

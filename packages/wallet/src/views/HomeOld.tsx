@@ -3,7 +3,7 @@ import {
   Box,
 } from '@0xsequence/design-system'
 
-import { HomeHeader } from '../components/HomeHeader'
+import { HomeHeader } from './Home/components/HomeHeader'
 import { ActionButtons } from '../components/ActionButtons'
 import { CoinsSummary } from '../components/CoinsSummary'
 import { CollectionsSummary } from '../components/CollectionsSummary'

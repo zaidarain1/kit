@@ -5,8 +5,8 @@ import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 
-import { CoinRow, CoinRowSkeleton } from '../components/CoinRow'
-import { HomeButton } from '../components/HomeButton'
+import { CoinRow, CoinRowSkeleton } from '../shared/CoinRow'
+import { HomeButton } from './Home/components/HomeButton'
 
 import { getNativeTokenInfoByChainId, compareAddress } from '../utils'
 import { useBalances, useNavigation, useCoinPrices } from '../hooks'

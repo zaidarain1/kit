@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box } from '@0xsequence/design-system'
 
-import { HomeButton } from '../components/HomeButton'
-import { CollectionRow } from '../components/CollectionRow'
+import { HomeButton } from './Home/components/HomeButton'
+import { CollectionRow } from '../shared/CollectionRow'
 import { useNavigation } from '../hooks'
 
 interface AllCollectiblesProps {

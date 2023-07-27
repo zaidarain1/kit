@@ -1,5 +1,5 @@
 import React from 'react'
-import { Skeleton } from './Skeleton'
+import { Skeleton } from '../shared/Skeleton'
 import { ChevronRightIcon, Box, Button, Card, Image, Text } from '@0xsequence/design-system'
 import { useAccount, useNetwork } from 'wagmi'
 

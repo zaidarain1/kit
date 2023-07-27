@@ -1,7 +1,7 @@
 import React from 'react'
 import { Badge, Box, Card, Image, Text } from '@0xsequence/design-system'
 
-import { Skeleton } from '../Skeleton'
+import { Skeleton } from '../../shared/Skeleton'
 import { DefaultIcon } from '../DefaultIcon'
 import { formatAddress } from '../../utils'
 
