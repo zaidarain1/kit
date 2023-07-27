@@ -4,9 +4,9 @@ import {
 } from '@0xsequence/design-system'
 
 import { HomeHeader } from './Home/components/HomeHeader'
-import { ActionButtons } from '../components/ActionButtons'
-import { CoinsSummary } from '../components/CoinsSummary'
-import { CollectionsSummary } from '../components/CollectionsSummary'
+import { ActionButtons } from '../shared/ActionButtons'
+import { CoinsSummary } from '../shared/CoinsSummary'
+import { CollectionsSummary } from '../shared/CollectionsSummary'
 
 export const Home = () => {
   return (
