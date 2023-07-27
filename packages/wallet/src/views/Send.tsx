@@ -1,7 +1,7 @@
 import { TokenBalance } from '@0xsequence/indexer'
 import { Box, Tabs, Text } from '@0xsequence/design-system'
 import React, { useState } from 'react'
-import { HomeButton } from './Home/components/HomeButton'
+import { HomeButton } from '../shared/HomeButton'
 import { SendCoins, SendCollectibles } from '../shared/Send'
 import { SendCoinContext, SendCollectiblesContext, CollectiblesToSend, CollectionToSend } from '../contexts'
 

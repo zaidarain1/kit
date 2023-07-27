@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@0xsequence/design-system'
 
-import { HomeButton } from './Home/components/HomeButton'
+import { HomeButton } from '../shared/HomeButton'
 import { CollectionsSummary } from '../shared/CollectionsSummary'
 import { useNavigation } from '../hooks'
 
