@@ -49,7 +49,6 @@ export const WalletList = ({
               <Box
                 key={connector.id}
                 as="button"
-                marginTop="3"
                 flexDirection="column"
                 alignItems="center"
                 justifyContent="space-between"
@@ -65,15 +64,14 @@ export const WalletList = ({
                 onClick={() => connect({ connector })}
               >
                 <Box
-                  width="16"
+                  marginTop="3"
                   justifyContent="center"
                   alignItems="center"
                   style={{ backgroundColor: connector._wallet.iconBackground }}
                   borderRadius="md"
+                  className={styles.walletLogoContainer}
                 >
-                  <Box width="12">
-                    <Logo />
-                  </Box>
+                  <Logo />
                 </Box>
                 <Text variant="medium">
                   {walletName}

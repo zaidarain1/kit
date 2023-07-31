@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css'
+import { globalStyle, style } from '@vanilla-extract/css'
 
 export const networkButton = style({
   maxWidth: '400px',
@@ -8,4 +8,10 @@ export const networkButton = style({
     opacity: '0.8',
     userSelect: 'none'
   }
+})
+
+export const walletLogoContainer = style({}) 
+
+globalStyle (`${walletLogoContainer} svg`, {
+  width: '40px'
 })

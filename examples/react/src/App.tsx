@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { SequenceConnectProvider, getSequenceConnectWallets, THEMES } from '@0xsequence/kit-core'
 import {
-    injected,
+    apple,
+    email,
+    facebook,
     google,
+    // injected,
     metamask,
     sequence,
     walletConnect } from '@0xsequence/kit-connectors'
@@ -24,8 +27,29 @@ function App() {
   )
 
   const connectors = getSequenceConnectWallets([
-    injected({
+    // injected({
+    //   chains
+    // }),
+    google({
       chains
+    }),
+    facebook({
+      chains
+    }),
+    apple({
+      chains
+    }),
+    email({
+      chains
+    }), 
+    walletConnect({
+      chains,
+      options: {
+        projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
+      },
+    }),
+    metamask({
+      chains,
     }),
     sequence({
       chains,
@@ -34,18 +58,6 @@ function App() {
         networkId: 137
       }
     }),
-    metamask({
-      chains,
-    }),
-    google({
-      chains
-    }),
-    walletConnect({
-      chains,
-      options: {
-        projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
-      },
-    })
   ])
 
   const config = createConfig({
