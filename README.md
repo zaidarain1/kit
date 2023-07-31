@@ -132,9 +132,9 @@ const MyReactComponent = () => {
 ## Local Development
 The React example can be used to test the library locally.
 
-1. pnpm install
-2. pnpm watch
-3. pnpm start:react
+1. `pnpm install`
+2. From the root folder, run `pnpm watch` to build the package in watch mode in one console. 
+3. From the root folder, run `pnpm start:react` to run the react example in another console.
 
 
 ## LICENSE
