@@ -27,39 +27,44 @@ export interface InjectedOptions {
 export interface InjectedWalletInformation {
   hideConnectorId: string | null;
   name: string;
-  logo: React.FunctionComponent
+  logoDark: React.FunctionComponent;
+  logoLight: React.FunctionComponent
 }
 
 const getInjectedWalletInformation = (): InjectedWalletInformation => {
   if (window?.ethereum?.isMetaMask) {
     return {
       name: 'Metamask',
-      logo: MetamaskLogo,
+      logoDark: MetamaskLogo,
+      logoLight: MetamaskLogo,
       hideConnectorId: 'metamask'
     }
   /* @ts-ignore-next-line */
   } else if (window?.ethereum?.isSequence) {
     return {
       name: 'Sequence',
-      logo: SequenceLogo,
+      logoDark: SequenceLogo,
+      logoLight: SequenceLogo,
       hideConnectorId: null
     }
   } else {
     return {
       name: 'Injected Wallet',
-      logo: InjectedLogo,
+      logoDark: InjectedLogo,
+      logoLight: InjectedLogo,
       hideConnectorId: null
     }
   }
 }
 
 export const injected = ({ chains, shimDisconnect }: InjectedOptions) => {
-  const { name, hideConnectorId, logo } = getInjectedWalletInformation()
+  const { name, hideConnectorId, logoDark, logoLight } = getInjectedWalletInformation()
 
   return ({
     id: 'injected',
     hideConnectorId,
-    logo,
+    logoDark,
+    logoLight,
     // iconBackground: '#fff',
     name,
     createConnector: () => {

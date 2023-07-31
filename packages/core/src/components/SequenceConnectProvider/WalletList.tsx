@@ -3,16 +3,19 @@ import React from 'react'
 import { Box, Image, Text, vars } from '@0xsequence/design-system'
 import { useConnect } from 'wagmi'
 
+import { Theme } from '../index'
 import { ExtendedConnector } from '../../utils/getSequenceConnectWallets'
 
 import * as styles from '../styles.css'
 
 interface WalletListProps {
   logoUrl?: string
+  theme: Theme
 }
 
 export const WalletList = ({
-  logoUrl
+  logoUrl,
+  theme
 }: WalletListProps) => {
   const { connectors: baseConnectors, connect, isLoading } = useConnect()
   const connectors = baseConnectors as ExtendedConnector[]
@@ -20,11 +23,13 @@ export const WalletList = ({
   return (
     <>
       {logoUrl && (
-        <Image
-          src={logoUrl}
-          alt="logo"
-          marginTop="4"
-        />
+        <Box justifyContent="center" alignItems="center">
+          <Image
+            src={logoUrl}
+            alt="logo"
+            marginTop="4"
+          />
+        </Box>
       )}
       <Box
         gap="4"
@@ -35,7 +40,9 @@ export const WalletList = ({
         marginTop="4"
       >
         {connectors.map((connector) => {
-            const Logo = connector._wallet.logo as React.FunctionComponent
+            const Logo = theme === 'dark'
+              ? connector._wallet.logoDark as React.FunctionComponent
+              : connector._wallet.logoLight as React.FunctionComponent
             const walletName = connector._wallet.name
 
             return (

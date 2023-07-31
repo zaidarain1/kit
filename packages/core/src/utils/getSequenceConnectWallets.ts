@@ -3,7 +3,8 @@ import { Connector } from 'wagmi'
 
 export interface WalletProperties {
   id: string,
-  logo: React.FunctionComponent,
+  logoDark: React.FunctionComponent,
+  logoLight: React.FunctionComponent,
   name: string,
   iconBackground?: string,
   hideConnectorId?: string | null

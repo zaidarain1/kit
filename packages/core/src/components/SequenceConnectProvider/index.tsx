@@ -15,8 +15,6 @@ import { useConnect, useAccount } from 'wagmi'
 import { ConnectModalContext } from '../../contexts'
 import { WalletList } from './WalletList'
 
-import * as styles from '../styles.css'
-
 import '@0xsequence/design-system/styles.css'
 
 export declare const THEME: readonly ["dark", "light"];
@@ -81,6 +79,7 @@ export const SequenceConnectProvider = ({ children, config = {}}: SequenceConnec
 
     return (
       <WalletList
+        theme={theme}
         logoUrl={logoUrl}
       />
     )

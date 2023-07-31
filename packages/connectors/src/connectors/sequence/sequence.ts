@@ -14,7 +14,8 @@ export interface SequenceOptions {
 /* @ts-ignore-next-line */
 export const sequence = ({ chains, connect }: SequenceOptions) => ({
   id: 'sequence',
-  logo: SequenceLogo,
+  logoDark: SequenceLogo,
+  logoLight: SequenceLogo,
   // iconBackground: '#777',
   name: 'Sequence',
   createConnector: () => {

@@ -12,7 +12,8 @@ export type WalletConnectWalletOptions = ConstructorParameters<
 
 export const walletConnect = ({ chains, options }: WalletConnectWalletOptions) => ({
   id: 'wallet-connect',
-  logo: WalletConnectLogo,
+  logoDark: WalletConnectLogo,
+  logoLight: WalletConnectLogo,
   // iconBackground: '#fff',
   name: 'Wallet Connect',
   createConnector: () => {

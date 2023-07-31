@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { SequenceConnectProvider, getSequenceConnectWallets, THEMES } from '@0xsequence/kit-core'
-import { sequence, metamask, injected, walletConnect } from '@0xsequence/kit-connectors'
+import {
+    injected,
+    google,
+    metamask,
+    sequence,
+    walletConnect } from '@0xsequence/kit-connectors'
 import { SequenceConnectWalletProvider } from '@0xsequence/kit-wallet'
 import { SequenceConnectCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
@@ -32,6 +37,9 @@ function App() {
     metamask({
       chains,
     }),
+    google({
+      chains
+    }),
     walletConnect({
       chains,
       options: {
@@ -50,7 +58,7 @@ function App() {
   const kitConfig = {
     theme: isDarkMode ? THEMES.dark : THEMES.light,
     signIn: {
-      logoUrl: '/sw-logo-white.svg'
+      logoUrl: isDarkMode ? '/sw-logo-white.svg' : '/sw-logo-black.svg'
     }
   }
 

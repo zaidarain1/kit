@@ -1,24 +1,26 @@
 import { Chain } from 'wagmi'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
-import { MetamaskLogo } from './MetamaskLogo'
+import { GoogleLogo } from './GoogleLogo'
 
-export interface MetamaskOptions {
+window.Buffer = window.Buffer || require("buffer").Buffer;
+
+export interface GoogleOptions {
   chains: Chain[];
 }
 
-export const metamask = ({ chains }: MetamaskOptions) => ({
-  id: 'metamask',
-  logoDark: MetamaskLogo,
-  logoLight: MetamaskLogo,
+export const google = ({ chains }: GoogleOptions) => ({
+  id: 'google',
+  logoDark: GoogleLogo,
+  logoLight: GoogleLogo,
   // iconBackground: '#fff',
-  name: 'Metamask',
+  name: 'Google',
   createConnector: () => {
     const connector = new MetaMaskConnector({
       chains,
       options: {
         shimDisconnect: true,
-      }
+      },
     });
     return connector
   }
