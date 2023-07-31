@@ -12,10 +12,10 @@ import {
 import { AnimatePresence } from 'framer-motion'
 import { useConnect, useAccount } from 'wagmi'
 
-import { ConnectModalContext } from '../contexts'
-import { ExtendedConnector } from '../utils/getSequenceConnectWallets'
+import { ConnectModalContext } from '../../contexts'
+import { WalletList } from './WalletList'
 
-import * as styles from './styles.css'
+import * as styles from '../styles.css'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -36,8 +36,6 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
   const [clickedGoBack, setClickedGoBack] = useState(false)
   const { connectors: baseConnectors, pendingConnector, isError, connect, isLoading } = useConnect()
   const { isConnected } = useAccount()
-
-  const connectors = baseConnectors as ExtendedConnector[]
 
   useEffect(() => {
     if (!isError || !pendingConnector) {
@@ -74,48 +72,7 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
     }
 
     return (
-      <>
-        <Box marginY="4" justifyContent="center" alignItems="center"><Text variant="medium">Select a wallet to connect</Text></Box>
-        <Box gap="4" flexDirection="column" justifyContent="center" alignItems="center">
-          {connectors.map((connector) => {
-              const Logo = connector._wallet.logo as React.FunctionComponent
-              const walletName = connector._wallet.name
-
-              return (
-                <Box
-                  key={connector.id}
-                  as="button"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  background="buttonGlass"
-                  color="text100"
-                  borderRadius="circle"
-                  paddingY="2"
-                  paddingX="10"
-                  className={styles.networkButton}
-                  onClick={() => connect({ connector })}
-                >
-                  <Text variant="medium">
-                    {walletName}
-                    {isLoading}
-                  </Text>
-                  <Box
-                    width="16"
-                    justifyContent="center"
-                    alignItems="center"
-                    style={{ backgroundColor: connector._wallet.iconBackground }}
-                    borderRadius="md"
-                  >
-                    <Box width="12">
-                    <Logo />
-                    </Box>
-                  </Box>
-                </Box>
-              )
-            })
-          }
-        </Box>
-      </>
+      <WalletList />
     )
   }
 
@@ -124,9 +81,28 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
       <ThemeProvider theme={theme}>
         <AnimatePresence>
           {openConnectModal && (
-            <Modal scroll={false} backdropColor="transparent" size="sm" onClose={() => setOpenConnectModal(false)}>
-              <Box paddingY="16" paddingX="8">
-                <Box justifyContent="center" alignItems="center"><Text variant="xlarge">Connect Wallet</Text></Box>
+            <Modal
+              scroll={false}
+              backdropColor="transparent"
+              size="sm"
+              contentProps={{ style: {
+                  width: '364px',
+                }
+              }}
+              onClose={() => setOpenConnectModal(false)}
+            >
+              <Box padding="4">
+                <Box
+                  justifyContent="center"
+                  color="text100"
+                  alignItems="center"
+                  fontWeight="medium"
+                  style={{
+                    marginTop: '4px'
+                  }}
+                >
+                    <Text>Sign in</Text>
+                  </Box>
                 {getModalContent()}
               </Box>
             </Modal>
