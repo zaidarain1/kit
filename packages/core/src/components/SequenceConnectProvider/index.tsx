@@ -26,15 +26,23 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
-export type SequenceConnectProvider = {
+export type SequenceConnectProviderProps = {
   children: React.ReactNode,
-  theme?: Theme
+  config?: {
+    theme?: Theme,
+    signIn?: {
+      logoUrl?: string
+    }
+  },
 }
 
-export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProvider) => {
+export const SequenceConnectProvider = ({ children, config = {}}: SequenceConnectProviderProps) => {
+  const { theme = 'dark', signIn = {} } = config
+  const { logoUrl } = signIn
+
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [clickedGoBack, setClickedGoBack] = useState(false)
-  const { connectors: baseConnectors, pendingConnector, isError, connect, isLoading } = useConnect()
+  const { pendingConnector, isError, connect } = useConnect()
   const { isConnected } = useAccount()
 
   useEffect(() => {
@@ -72,7 +80,9 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
     }
 
     return (
-      <WalletList />
+      <WalletList
+        logoUrl={logoUrl}
+      />
     )
   }
 
@@ -82,11 +92,12 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
         <AnimatePresence>
           {openConnectModal && (
             <Modal
-              scroll={false}
+              scroll={true}
               backdropColor="transparent"
               size="sm"
-              contentProps={{ style: {
-                  width: '364px',
+              contentProps={{
+                style: {
+                  maxWidth: '364px',
                 }
               }}
               onClose={() => setOpenConnectModal(false)}
@@ -101,8 +112,8 @@ export const SequenceConnectProvider = ({ children, theme }: SequenceConnectProv
                     marginTop: '4px'
                   }}
                 >
-                    <Text>Sign in</Text>
-                  </Box>
+                  <Text>Sign in</Text>
+                </Box>
                 {getModalContent()}
               </Box>
             </Modal>

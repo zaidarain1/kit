@@ -47,9 +47,16 @@ function App() {
     connectors
   })
 
+  const kitConfig = {
+    theme: isDarkMode ? THEMES.dark : THEMES.light,
+    signIn: {
+      logoUrl: '/sw-logo-white.svg'
+    }
+  }
+
   return (
     <WagmiConfig config={config}>
-      <SequenceConnectProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
+      <SequenceConnectProvider config={kitConfig} >
         <SequenceConnectWalletProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
           <SequenceConnectCheckoutProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
             <ModalThemeContext.Provider value={{ setIsDarkMode, isDarkMode }}>

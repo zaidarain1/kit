@@ -1,19 +1,31 @@
 import React from 'react'
 
-import { Box, Text, vars } from '@0xsequence/design-system'
+import { Box, Image, Text, vars } from '@0xsequence/design-system'
 import { useConnect } from 'wagmi'
 
 import { ExtendedConnector } from '../../utils/getSequenceConnectWallets'
 
 import * as styles from '../styles.css'
 
-export const WalletList = () => {
+interface WalletListProps {
+  logoUrl?: string
+}
+
+export const WalletList = ({
+  logoUrl
+}: WalletListProps) => {
   const { connectors: baseConnectors, connect, isLoading } = useConnect()
   const connectors = baseConnectors as ExtendedConnector[]
 
   return (
     <>
-      <Text>TODO: logo here as config... + create empty connector for social</Text>
+      {logoUrl && (
+        <Image
+          src={logoUrl}
+          alt="logo"
+          marginTop="4"
+        />
+      )}
       <Box
         gap="4"
         justifyContent="flex-start"
