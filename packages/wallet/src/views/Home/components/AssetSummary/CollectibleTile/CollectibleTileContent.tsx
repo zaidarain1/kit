@@ -11,17 +11,7 @@ export const CollectibleTileContent = ({
 }: CollectibleTileContentProps) => {
   const imageUrl = balance?.tokenMetadata?.image
 
-  console.log('balance...', balance)
-
   return (
-    // <Box
-    //   width="full"
-    //   height="full"
-    //   background="backgroundSecondary"
-    //   borderRadius="md"
-    // >
-    //   <Image src={imageUrl} alt="collectible" />
-    // </Box>
       <Card
         padding="0"
         aspectRatio="1/1"

@@ -165,8 +165,8 @@ export const fetchBalancesAssetsSummary = async ({ accountAddress, chainId }: Ge
       const aPrice = aPriceData?.price ? aPriceData.price.value : 0
       const bPrice = bPriceData?.price ? bPriceData.price.value : 0
 
-      const aFormattedBalance = Number(ethers.utils.formatUnits(a.balance, a.tokenMetadata?.decimals || 0))
-      const bFormattedBalance = Number(ethers.utils.formatUnits(b.balance, b.tokenMetadata?.decimals || 0))      
+      const aFormattedBalance = Number(ethers.utils.formatUnits(a.balance, a.contractInfo?.decimals || 0))
+      const bFormattedBalance = Number(ethers.utils.formatUnits(b.balance, b.contractInfo?.decimals || 0))      
 
       const aValue = aFormattedBalance * aPrice
       const bValue = bFormattedBalance * bPrice
