@@ -30,21 +30,25 @@ export const CoinTileContent = ({
       height="full"
       borderRadius="md"
       padding="4"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="flex-start"
+      gap="1"
     >
-      <Box>
-        <CoinIcon imageUrl={logoUrl} />
+      <Box marginBottom="1">
+        <CoinIcon size={36} imageUrl={logoUrl} />
+      </Box>
+      <Box marginBottom="3">
+        <Box flexDirection="row" gap="1" justifyContent="flex-start" alignItems="center">
+          <Text fontWeight="bold" whiteSpace="nowrap">{tokenName}</Text>
+          <CoinIcon size={12} imageUrl={logoUrl} />
+        </Box>
+        <Text color="text50" whiteSpace="nowrap">{`${balance} ${symbol}`}</Text>
       </Box>
       <Box>
         <Box>
-          <Text>{tokenName}</Text>
-          <CoinIcon imageUrl={logoUrl} />
+          <Text fontWeight="bold">{`$${balanceFiat}`}</Text>
         </Box>
-        <Text>{`${balance} ${symbol}`}</Text>
-      </Box>
-      <Box>
-        {`$${balanceFiat}`}
-      </Box>
-      <Box>
         <Text
           style={{ color: getPercentageColor(priceChangePercentage) }}
         >
