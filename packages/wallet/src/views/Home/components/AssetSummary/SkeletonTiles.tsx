@@ -5,7 +5,7 @@ import { Skeleton } from '../../../../shared/Skeleton'
 export const SkeletonTiles = () => {
   return (
     <Box flexDirection="row" gap="2" flexWrap="wrap" style={{flexBasis: '50%'}}>
-      {Array(6).fill(null).map((_, i) => (
+      {Array(12).fill(null).map((_, i) => (
         (
           <Box
             key={i}

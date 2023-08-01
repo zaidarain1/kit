@@ -29,6 +29,7 @@ export const CoinTileContent = ({
       width="full"
       height="full"
       borderRadius="md"
+      padding="4"
     >
       <Box>
         <CoinIcon imageUrl={logoUrl} />

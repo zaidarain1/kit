@@ -12,6 +12,6 @@ export const CollectibleTile = ({
 }: CollectibleTileProps) => {
 
   return (
-    <CollectibleTileContent />
+    <CollectibleTileContent balance={balance} />
   )
 }

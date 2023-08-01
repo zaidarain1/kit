@@ -12,7 +12,6 @@ import { useAccount, useNetwork } from 'wagmi'
 import { useBalances, useCoinPrices, useModalTheme } from '../../../hooks'
 import { formatAddress, compareAddress, capitalize, getChainColor } from '../../../utils'
 
-import { Skeleton } from '../../../shared/Skeleton'
 import { CopyButton  } from '../../../shared/CopyButton'
 
 export const HomeHeader = () => {
@@ -65,32 +64,6 @@ export const HomeHeader = () => {
 
   const balance = computeBalance(tokenBalances, coinPrices)
 
-  const getBalance = () => {
-    if (isLoading) {
-      return (
-        <Box marginTop="4" flexDirection="column" justifyContent="center" alignItems="center">
-          <Box >
-            <Text color="text50" variant="small">Balance</Text>
-          </Box>
-          <Box>
-            <Skeleton width="100px" height="36px" />
-          </Box>
-        </Box>
-      )
-    }
-
-    return (
-      <Box marginTop="4" flexDirection="column" justifyContent="center" alignItems="center">
-        <Box>
-          <Text color="text50" variant="small">Balance</Text>
-        </Box>
-        <Box>
-          <Text variant="xlarge">${balance}</Text>
-        </Box>
-      </Box>
-    )
-  }
-
   const getNetworkText = () => {
     // if there is no network name
     if (chainName === `Chain ${chainId}`) {
@@ -119,7 +92,6 @@ export const HomeHeader = () => {
             </Box>
           </Box>
       </Box>
-      {getBalance()}
     </>
   )
 }
