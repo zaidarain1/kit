@@ -8,13 +8,14 @@ import { CoinTile } from './CoinTile'
 import { CollectibleTile } from './CollectibleTile'
 import { SkeletonTiles } from './SkeletonTiles'
 
-import { useBalances } from '../../../../hooks'
+import { sortBalancesByType } from '../../../../utils'
+import { useBalances, useBalancesAssetsSummary } from '../../../../hooks'
 
 export const AssetSummary = () => {
   const { address } = useAccount()
   const { chain } = useNetwork()
 
-  const { data: balances = [], isLoading: isLoadingBalances } = useBalances({ accountAddress: address || '', chainId: chain?.id || 1 })
+  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainId: chain?.id || 1 })
 
   if (isLoadingBalances) {
     return (
@@ -22,20 +23,7 @@ export const AssetSummary = () => {
     )
   }
 
-  const nativeTokens: TokenBalance[] = []
-  const erc20Tokens: TokenBalance[] = []
-  const collectibles: TokenBalance[] = []
-
-  balances.forEach((balance) => {
-    // Note: contractType for the native token should be "UNKNOWN"
-    if (balance.contractAddress === ethers.constants.AddressZero) {
-      nativeTokens.push(balance)
-    } else if (balance.contractType === 'ERC20') {
-      erc20Tokens.push(balance)
-    } else if (balance.contractType === 'ERC721' || balance.contractType === 'ERC1155') {
-      collectibles.push(balance)
-    }
-  })
+  const { nativeTokens, erc20Tokens, collectibles } = sortBalancesByType(balances)
 
   return (
     <Box flexDirection="row" gap="2" flexWrap="wrap">

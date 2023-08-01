@@ -82,3 +82,33 @@ export const computeBalance = (balance: TokenBalance, prices: TokenPrice[]): str
 
 return `${totalUsd.toFixed(2)}`
 }
+
+
+interface SortBalancesByTypeReturn {
+  nativeTokens: TokenBalance[],
+  erc20Tokens: TokenBalance[],
+  collectibles: TokenBalance[]
+}
+
+export const sortBalancesByType = (balances: TokenBalance[]): SortBalancesByTypeReturn => {
+  const nativeTokens: TokenBalance[] = []
+  const erc20Tokens: TokenBalance[] = []
+  const collectibles: TokenBalance[] = []
+  
+  balances.forEach((balance) => {
+    // Note: contractType for the native token should be "UNKNOWN"
+    if (balance.contractAddress === ethers.constants.AddressZero) {
+      nativeTokens.push(balance)
+    } else if (balance.contractType === 'ERC20') {
+      erc20Tokens.push(balance)
+    } else if (balance.contractType === 'ERC721' || balance.contractType === 'ERC1155') {
+      collectibles.push(balance)
+    }
+  })
+
+  return {
+    nativeTokens,
+    erc20Tokens,
+    collectibles
+  }
+}

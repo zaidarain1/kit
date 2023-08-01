@@ -5,7 +5,8 @@ import {
   fetchCollectionBalance,
   GetCollectionBalanceArgs,
   getCoinPrices,
-  GetCoinPricesArgs
+  GetCoinPricesArgs,
+  fetchBalancesAssetsSummary
 } from '../api/data'
 
 export const time = {
@@ -44,3 +45,12 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
       enabled: args.tokens.length > 0 && !disabled
     })
     
+    export const useBalancesAssetsSummary = (args: GetTokenBalancesArgs) => (
+      useQuery({
+        queryKey: ['balancesAssetsSummary', args],
+        queryFn: () => fetchBalancesAssetsSummary(args),
+        retry: true,
+        staleTime: 10 * time.oneMinute,
+        enabled: !!args.chainId && !!args.accountAddress
+      })
+    )
