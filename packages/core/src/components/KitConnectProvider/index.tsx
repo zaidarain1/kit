@@ -21,22 +21,25 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
+export interface KitConfig {
+  useOneTimeClickModal?: boolean,
+  theme?: Theme,
+  signIn?: {
+    logoUrl?: string
+    projectName?: string
+  }
+}
+
 export type KitConnectProviderProps = {
   children: React.ReactNode,
-  config?: {
-    useOneTimeClickModal?: boolean,
-    theme?: Theme,
-    signIn?: {
-      logoUrl?: string
-    }
-  },
+  config?: KitConfig
 }
 
 export const KitConnectProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
-  const { useOneTimeClickModal = false, theme } = config
+  const { useOneTimeClickModal = true, theme, signIn = {} } = config
+  const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
-
 
   const getConnectModal = () => {
     if (useOneTimeClickModal) {
@@ -83,7 +86,7 @@ export const KitConnectProvider = (props: KitConnectProviderProps) => {
                     marginTop: '4px'
                   }}
                 >
-                  <Text>Sign in</Text>
+                  <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
                 </Box>
                     {openConnectModal && getConnectModal()}
                 </Box>

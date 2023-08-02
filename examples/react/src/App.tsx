@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { KitConnectProvider, getSequenceConnectWallets, THEMES } from '@0xsequence/kit-core'
+import { KitConnectProvider, getSequenceConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
 import {
     apple,
     email,
@@ -68,11 +68,11 @@ function App() {
     connectors
   })
 
-  const kitConfig = {
+  const kitConfig: KitConfig = {
     useOneTimeClickModal: useOneTimeClickModal,
     theme: isDarkMode ? THEMES.dark : THEMES.light,
     signIn: {
-      appName: 'SkyWeaver',
+      projectName: 'SkyWeaver',
       logoUrl: isDarkMode ? '/sw-logo-white.svg' : '/sw-logo-black.svg'
     }
   }
