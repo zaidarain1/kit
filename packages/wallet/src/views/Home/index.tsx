@@ -3,7 +3,6 @@ import {
   Box,
 } from '@0xsequence/design-system'
 
-import { HomeHeader } from './components/HomeHeader'
 import { AssetSummary } from './components/AssetSummary'
 
 export const Home = () => {

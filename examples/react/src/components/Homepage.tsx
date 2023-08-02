@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { useOpenConnectModal } from '@0xsequence/kit-core'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal, CheckoutSettings } from '@0xsequence/kit-checkout'
@@ -7,7 +7,15 @@ import { ModalThemeContext } from '../contexts'
 
 import './Homepage.css';
 
-function Homepage() {
+interface HomepageProps {
+  setUseOneTimeClickModal: React.Dispatch<React.SetStateAction<boolean>>
+  useOneTimeClickModal: boolean
+}
+
+function Homepage({
+  setUseOneTimeClickModal,
+  useOneTimeClickModal
+}: HomepageProps) {
   const { setIsDarkMode, isDarkMode } = useContext(ModalThemeContext)
   const { address, connector, isConnected } = useAccount()
   const openConnectModal = useOpenConnectModal()
@@ -175,9 +183,30 @@ function Homepage() {
             <div>Connected address: {address}</div>
           </>
         ) : (
-          <button className="Button" onClick={() => { openConnectModal && openConnectModal(true) }}>
-            Connect
-          </button>
+          <div>
+            <div>
+              <button
+                className="Button"
+                onClick={() => {
+                  setUseOneTimeClickModal(false)
+                  openConnectModal && openConnectModal(true)
+                }}
+              >
+                Connect with Dapp modal
+              </button>
+            </div>
+            <div>
+              <button
+                className="Button"
+                onClick={() => {
+                  setUseOneTimeClickModal(true)
+                  openConnectModal && openConnectModal(true)
+                }}
+                >
+                Connect with One Time Click modal
+              </button>
+            </div>
+          </div>
         )}
 
       </header>

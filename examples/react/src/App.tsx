@@ -19,6 +19,7 @@ import { mainnet, polygon } from 'wagmi/chains'
 import { ModalThemeContext } from './contexts'
 
 function App() {
+  const [useOneTimeClickModal, setUseOneTimeClickModal] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(true)
 
   const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -68,6 +69,7 @@ function App() {
   })
 
   const kitConfig = {
+    useOneTimeClickModal: useOneTimeClickModal,
     theme: isDarkMode ? THEMES.dark : THEMES.light,
     signIn: {
       logoUrl: isDarkMode ? '/sw-logo-white.svg' : '/sw-logo-black.svg'
@@ -80,7 +82,10 @@ function App() {
         <SequenceConnectWalletProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
           <SequenceConnectCheckoutProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
             <ModalThemeContext.Provider value={{ setIsDarkMode, isDarkMode }}>
-              <Homepage />
+              <Homepage
+                setUseOneTimeClickModal={setUseOneTimeClickModal}
+                useOneTimeClickModal={useOneTimeClickModal}
+              />
             </ModalThemeContext.Provider>
           </SequenceConnectCheckoutProvider>
         </SequenceConnectWalletProvider>

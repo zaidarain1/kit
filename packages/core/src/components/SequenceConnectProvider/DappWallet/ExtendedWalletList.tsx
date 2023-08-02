@@ -4,9 +4,9 @@ import { Box, Image, Text, vars, ChevronLeftIcon, ChevronRightIcon } from '@0xse
 import { useConnect } from 'wagmi'
 
 import { Theme } from '../index'
-import { ExtendedConnector } from '../../utils/getSequenceConnectWallets'
+import { ExtendedConnector } from '../../../utils/getSequenceConnectWallets'
 
-import * as styles from '../styles.css'
+import * as styles from '../../styles.css'
 
 interface ExtendedWalletListProps {
   theme: Theme

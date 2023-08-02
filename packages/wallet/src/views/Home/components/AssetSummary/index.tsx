@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box, vars } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { ethers } from 'ethers'
 import { useAccount, useNetwork } from 'wagmi'
 
 import { CoinTile } from './CoinTile'

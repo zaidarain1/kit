@@ -5,9 +5,9 @@ import { useConnect } from 'wagmi'
 
 import { Theme } from '../index'
 import { ExtendedWalletList } from './ExtendedWalletList'
-import { ExtendedConnector } from '../../utils/getSequenceConnectWallets'
+import { ExtendedConnector } from '../../../utils/getSequenceConnectWallets'
 
-import * as styles from '../styles.css'
+import * as styles from '../../styles.css'
 
 interface WalletListProps {
   logoUrl?: string
