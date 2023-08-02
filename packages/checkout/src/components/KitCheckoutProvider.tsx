@@ -24,12 +24,12 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
-export type SequenceConnectCheckoutProvider = {
+export type KitCheckoutProvider = {
   children: React.ReactNode,
   theme?: Theme
 }
 
-export const SequenceConnectCheckoutProvider = ({ children, theme }: SequenceConnectCheckoutProvider) => {
+export const KitCheckoutProvider = ({ children, theme }: KitCheckoutProvider) => {
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
   const [navigation, setNavigation] = useState<Navigation>({

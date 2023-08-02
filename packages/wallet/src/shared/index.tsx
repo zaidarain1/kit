@@ -1,1 +1,1 @@
-export * from './SequenceConnectWalletProvider'
+export * from './KitWalletProvider'

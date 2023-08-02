@@ -1,1 +1,1 @@
-export * from './SequenceConnectCheckoutProvider'
+export * from './KitCheckoutProvider'

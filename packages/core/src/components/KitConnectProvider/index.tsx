@@ -21,7 +21,7 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
-export type SequenceConnectProviderProps = {
+export type KitConnectProviderProps = {
   children: React.ReactNode,
   config?: {
     useOneTimeClickModal?: boolean,
@@ -32,7 +32,7 @@ export type SequenceConnectProviderProps = {
   },
 }
 
-export const SequenceConnectProvider = (props: SequenceConnectProviderProps) => {
+export const KitConnectProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
   const { useOneTimeClickModal = false, theme } = config
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)

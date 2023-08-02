@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box } from '@0xsequence/design-system'
 
-import { SequenceConnectProviderProps } from '../index'
+import { KitConnectProviderProps } from '../index'
 
-interface OneTimeClickWalletProps extends SequenceConnectProviderProps {
+interface OneTimeClickWalletProps extends KitConnectProviderProps {
   openConnectModal: boolean
   setOpenConnectModal: React.Dispatch<React.SetStateAction<boolean>>
 }

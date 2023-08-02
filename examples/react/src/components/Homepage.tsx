@@ -9,12 +9,10 @@ import './Homepage.css';
 
 interface HomepageProps {
   setUseOneTimeClickModal: React.Dispatch<React.SetStateAction<boolean>>
-  useOneTimeClickModal: boolean
 }
 
 function Homepage({
   setUseOneTimeClickModal,
-  useOneTimeClickModal
 }: HomepageProps) {
   const { setIsDarkMode, isDarkMode } = useContext(ModalThemeContext)
   const { address, connector, isConnected } = useAccount()

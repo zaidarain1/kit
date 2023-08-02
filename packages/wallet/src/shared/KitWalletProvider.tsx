@@ -32,14 +32,14 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
-export type SequenceConnectWalletProvider = {
+export type KitWalletProvider = {
   children: React.ReactNode,
   theme?: Theme
 }
 
 const DEFAULT_LOCATION = 'home'
 
-export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConnectWalletProvider) => {
+export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
   // Wallet Modal Context
   const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
  

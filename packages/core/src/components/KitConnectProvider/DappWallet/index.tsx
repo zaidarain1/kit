@@ -16,9 +16,9 @@ import { ConnectModalContext } from '../../../contexts'
 import { WalletList } from '../DappWallet/WalletList'
 
 import '@0xsequence/design-system/styles.css'
-import { SequenceConnectProviderProps } from '../index'
+import { KitConnectProviderProps } from '../index'
 
-interface DappWalletProps extends SequenceConnectProviderProps {
+interface DappWalletProps extends KitConnectProviderProps {
   openConnectModal: boolean
   setOpenConnectModal: React.Dispatch<React.SetStateAction<boolean>>
 }

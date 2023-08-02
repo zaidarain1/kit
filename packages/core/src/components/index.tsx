@@ -1,1 +1,1 @@
-export * from './SequenceConnectProvider'
+export * from './KitConnectProvider'
