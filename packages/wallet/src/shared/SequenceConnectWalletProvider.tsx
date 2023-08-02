@@ -4,6 +4,7 @@ import {
   Box,
   Modal,
   ThemeProvider,
+  Scroll,
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
@@ -15,6 +16,7 @@ import {
   Send,
   History
 } from '../views'
+import { HomeHeader } from '../views/Home/components/HomeHeader'
 import {
   Navigation,
   NavigationContext,
@@ -46,7 +48,7 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
     location: DEFAULT_LOCATION
   })
 
-
+  const isHome = navigation.location === 'home'
 
   const queryClient = new QueryClient()
 
@@ -84,9 +86,14 @@ export const SequenceConnectWalletProvider = ({ children, theme }: SequenceConne
             <ThemeProvider theme={theme}>
               <AnimatePresence>
                 {openWalletModal && (
-                  <Modal contentProps={{ style: { maxWidth: '400px' } }} scroll={true} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
-                    <Box id="sequence-kit-wallet-content">
-                      {getContent()}
+                  <Modal contentProps={{ style: { maxWidth: '400px' } }} scroll={!isHome} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
+                    <Box id="sequence-kit-wallet-content" style={{ height: '800px' }}>
+                      {isHome && (
+                        <HomeHeader />
+                      )}
+                      <Scroll paddingTop="16">
+                        {getContent()}
+                      </Scroll>
                     </Box>
                   </Modal>
                 )}

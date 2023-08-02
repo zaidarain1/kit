@@ -26,31 +26,33 @@ export const HomeHeader = () => {
 
   return (
     <>
-      <IconButton
-        onClick={onClickSearch}
-        icon={SearchIcon}
-        style={{ float: 'left', marginTop: '8px', backgroundColor: vars.colors.backgroundPrimary }}
-      />
-      <Box gap="2" alignItems="center" style={{ height: "60px"}}>
-          <Box width="full" flexDirection="column" alignItems="center" justifyContent="center" >
-            <Box
-              onClick={onClickAccount}
-              gap="2"
-              alignItems="center"
-              justifyContent="center"
-              className={styles.clickable}
-              position="relative"
-              style={{
-                marginLeft: '-22px'
-              }}
-            >
-              <GradientAvatar size="sm" address={address || ''} />
-              <Text color="text100" fontWeight="medium" variant="normal">
-                {formatAddress(address || '')}
-              </Text>
-              <ChevronDownIcon />
+      <Box background="backgroundPrimary" zIndex="20" position="fixed" width="full">
+        <IconButton
+          onClick={onClickSearch}
+          icon={SearchIcon}
+          style={{ float: 'left', marginTop: '8px', backgroundColor: vars.colors.backgroundPrimary }}
+        />
+        <Box gap="2" alignItems="center" style={{ height: "60px"}}>
+            <Box width="full" flexDirection="column" alignItems="center" justifyContent="center" >
+              <Box
+                onClick={onClickAccount}
+                gap="2"
+                alignItems="center"
+                justifyContent="center"
+                className={styles.clickable}
+                position="relative"
+                style={{
+                  left: '-44px'
+                }}
+              >
+                <GradientAvatar size="sm" address={address || ''} />
+                <Text color="text100" fontWeight="medium" variant="normal">
+                  {formatAddress(address || '')}
+                </Text>
+                <ChevronDownIcon />
+              </Box>
             </Box>
-          </Box>
+        </Box>
       </Box>
     </>
   )
