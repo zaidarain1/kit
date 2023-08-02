@@ -29,3 +29,9 @@ export const walletLogoContainerExtended = style({})
 globalStyle (`${walletLogoContainerExtended} svg`, {
   width: '30px'
 })
+
+export const walletLogoContainerOtc = style({}) 
+
+globalStyle (`${walletLogoContainerOtc} svg`, {
+  width: '40px'
+})

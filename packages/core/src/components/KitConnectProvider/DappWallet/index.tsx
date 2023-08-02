@@ -23,7 +23,6 @@ export const DappWallet = (props: DappWalletProps) => {
   const {
     openConnectModal,
     setOpenConnectModal,
-    children,
     config = {}
   } = props
   const { theme = 'dark', signIn = {} } = config

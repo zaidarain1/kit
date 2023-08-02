@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
-import { GoogleLogo } from './GoogleLogo'
+import { GoogleLogo, getOtcGoogleLogo } from './GoogleLogo'
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -13,6 +13,8 @@ export const google = ({ chains }: GoogleOptions) => ({
   id: 'google',
   logoDark: GoogleLogo,
   logoLight: GoogleLogo,
+  otcLogoDark: getOtcGoogleLogo({ isDarkMode: true }),
+  otcLogoLight: getOtcGoogleLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Google',
   createConnector: () => {

@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
-import { EmailLogoDark, EmailLogoLight } from './EmailLogo'
+import { getEmailLogo } from './EmailLogo'
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -11,8 +11,8 @@ export interface EmailOptions {
 
 export const email = ({ chains }: EmailOptions) => ({
   id: 'email',
-  logoDark: EmailLogoDark,
-  logoLight: EmailLogoLight,
+  logoDark: getEmailLogo({ isDarkMode: true }),
+  logoLight: getEmailLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Email',
   createConnector: () => {

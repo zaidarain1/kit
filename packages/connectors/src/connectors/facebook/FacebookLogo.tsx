@@ -21,3 +21,31 @@ export const FacebookLogo: React.FunctionComponent = ({...props}) => {
     </React.Fragment>
   )
 }
+
+
+interface GetFacebookOtcLogo {
+  isDarkMode: boolean
+}
+
+export const getFacebookOtcLogo = ({
+  isDarkMode
+}: GetFacebookOtcLogo) => {
+  const fillColor = isDarkMode ? '#FFFFFF' : '#000000'
+
+  const FacebookOtcLogo: React.FunctionComponent = ({...props}) => {
+    return (
+      <React.Fragment>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 41 40"
+          fill="none"
+          {...props}
+        >
+          <path d="M25.8582 10.4398C24.1222 10.4398 23.6288 11.2098 23.6288 12.9073V15.709H28.246L27.791 20.2476H23.6279V34H18.1024V20.2468H14.375V15.7081H18.1042V12.9851C18.1042 8.40625 19.9399 6 25.0891 6C26.1942 6 27.5163 6.0875 28.3055 6.19775V10.459" fill={fillColor} />
+        </svg>
+      </React.Fragment>
+    )
+  }
+
+  return FacebookOtcLogo
+}
