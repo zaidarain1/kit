@@ -1,1 +1,2 @@
-export * from './getSequenceConnectWallets'
+export * from './getKitConnectWallets'
+export * from './helpers'

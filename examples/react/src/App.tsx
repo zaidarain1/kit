@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { KitConnectProvider, getSequenceConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
+import { KitConnectProvider, getKitConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
 import {
     apple,
     email,
@@ -27,7 +27,7 @@ function App() {
     [publicProvider()],
   )
 
-  const connectors = getSequenceConnectWallets([
+  const connectorsDapp = getKitConnectWallets([
     // injected({
     //   chains
     // }),
@@ -60,6 +60,23 @@ function App() {
       }
     }),
   ])
+
+  const otcConnectors = getKitConnectWallets([
+    email({
+      chains
+    }),
+    google({
+      chains
+    }),
+    facebook({
+      chains
+    }),
+    apple({
+      chains
+    })
+  ])
+
+  const connectors = useOneTimeClickModal ? otcConnectors : connectorsDapp
 
   const config = createConfig({
     autoConnect: true,

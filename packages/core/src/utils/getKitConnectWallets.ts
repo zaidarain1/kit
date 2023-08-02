@@ -20,7 +20,7 @@ export interface WalletField {
 
 export type ExtendedConnector = Connector & WalletField
 
-export const getSequenceConnectWallets = (wallets: Wallet[]) => {
+export const getKitConnectWallets = (wallets: Wallet[]) => {
   const connectors: Connector[] = []
 
   // hide connector if there is an identical injected wallet

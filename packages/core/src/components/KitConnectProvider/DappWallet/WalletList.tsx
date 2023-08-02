@@ -5,7 +5,7 @@ import { useConnect } from 'wagmi'
 
 import { Theme } from '../index'
 import { ExtendedWalletList } from './ExtendedWalletList'
-import { ExtendedConnector } from '../../../utils/getSequenceConnectWallets'
+import { ExtendedConnector } from '../../../utils/getKitConnectWallets'
 
 import * as styles from '../../styles.css'
 
@@ -32,7 +32,7 @@ export const WalletList = ({
           position="absolute"
           style={{ top: '20px' }}
           onClick={() => setShowExtendedList(false)}
-          className={styles.button}
+          className={styles.clickable}
         >
           <ChevronLeftIcon />
         </Box>
@@ -114,7 +114,7 @@ export const WalletList = ({
           borderRadius="md"
           color="text100"
           as="button"
-          className={styles.button}
+          className={styles.clickable}
           onClick={() => setShowExtendedList(true)}
         >
           <Text variant="medium">More options</Text>

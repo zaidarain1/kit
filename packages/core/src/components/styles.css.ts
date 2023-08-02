@@ -10,7 +10,7 @@ export const networkButton = style({
   }
 })
 
-export const button = style({
+export const clickable = style({
   ':hover': {
     cursor: 'pointer',
     opacity: '0.8',

@@ -33,7 +33,7 @@ or
 React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Sequence Kit wrapper.
 
 ```js
-import { SequenceConnectProvider, getSequenceConnectWallets } from '@0xsequence/kit-core'
+import { SequenceConnectProvider, getKitConnectWallets } from '@0xsequence/kit-core'
 import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@0xsequence/kit-connectors'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
@@ -47,7 +47,7 @@ function App() {
     [publicProvider()],
   )
 
-  const connectors = getSequenceConnectWallets([
+  const connectors = getKitConnectWallets([
     injectedWallet({
       chains
     }),

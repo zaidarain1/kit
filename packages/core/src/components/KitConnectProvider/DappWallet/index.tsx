@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Modal,
   Badge,
   Button,
   Box,
   CloseIcon,
   Spinner,
   Text,
-  ThemeProvider,
 } from '@0xsequence/design-system'
-import { AnimatePresence } from 'framer-motion'
 import { useConnect, useAccount } from 'wagmi'
 
-import { ConnectModalContext } from '../../../contexts'
 import { WalletList } from '../DappWallet/WalletList'
 
 import '@0xsequence/design-system/styles.css'
