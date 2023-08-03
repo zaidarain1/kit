@@ -13,18 +13,12 @@ import {
   Chain,
 } from 'wagmi'
 
-interface SocialOptions {
-  id: SignInOption
-  name: string
-}
-
-interface Options {
+export interface SocialConnectorOptions {
   defaultNetwork?: sequence.network.ChainIdLike,
-  connect?: sequence.provider.ConnectOptions & { walletAppURL?: string }
-  socialConfig?: SocialOptions
+  connect?: sequence.provider.ConnectOptions
 }
 
-export class SocialConnector extends Connector<sequence.provider.SequenceProvider, Options | undefined> {
+export class SocialConnector extends Connector<sequence.provider.SequenceProvider, SocialConnectorOptions | undefined> {
   id = 'google'
   name = 'google'
 
@@ -34,20 +28,21 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
 
   constructor({ chains, options = {} }: {
     chains?: Chain[],
-    options?: Options
+    options?: SocialConnectorOptions
   }) {
     super({ chains, options })
 
-    const id = options?.socialConfig?.id || 'google'
-    const name = options?.socialConfig?.name || 'Google'
-
+    const signInOptions = options?.connect?.settings?.signInOptions || ['google']
+    const id = signInOptions[0]
+    const name = `${id[0].toUpperCase()}${id.slice(1)}` 
+    
     this.id = id
     this.name = name
 
     this.provider = sequence.initWallet({
       defaultNetwork: options?.defaultNetwork,
       transports: {
-        walletAppURL: options?.connect?.walletAppURL,
+        walletAppURL: 'https://sequence.app',
       },
     })
 
@@ -77,7 +72,7 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
         signInOptions: [this.id as SignInOption]
       }
 
-      const e = await this.provider.connect(this.options?.connect ?? { app: 'app' })
+      const e = await this.provider.connect(connectOptions)
       if (e.error) {
         throw new UserRejectedRequestError(new Error(e.error))
       }

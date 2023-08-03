@@ -1,5 +1,5 @@
 import { Chain } from 'wagmi'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
 import { GoogleLogo, getOtcGoogleLogo } from './GoogleLogo'
 
@@ -7,9 +7,10 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 export interface GoogleOptions {
   chains: Chain[];
+  options?: SocialConnectorOptions;
 }
 
-export const google = ({ chains }: GoogleOptions) => ({
+export const google = ({ chains, options = {} }: GoogleOptions) => ({
   id: 'google',
   logoDark: GoogleLogo,
   logoLight: GoogleLogo,
@@ -18,11 +19,19 @@ export const google = ({ chains }: GoogleOptions) => ({
   // iconBackground: '#fff',
   name: 'Google',
   createConnector: () => {
-    const connector = new MetaMaskConnector({
+    const connector = new SocialConnector({
       chains,
       options: {
-        shimDisconnect: true,
-      },
+        ...options,
+        // @ts-ignore
+        connect: {
+          ...options?.connect,
+          settings: {
+            ...options?.connect?.settings,
+            signInOptions: ['google']
+          }
+        }
+      }
     });
     return connector
   }

@@ -1,5 +1,5 @@
 import { Chain } from 'wagmi'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
 import { getAppleLogo, getAppleOtcLogo } from './AppleLogo'
 
@@ -7,9 +7,10 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 export interface AppleOptions {
   chains: Chain[];
+  options?: SocialConnectorOptions;
 }
 
-export const apple = ({ chains }: AppleOptions) => ({
+export const apple = ({ chains, options = {} }: AppleOptions) => ({
   id: 'apple',
   logoDark: getAppleLogo({ isDarkMode: true }),
   logoLight: getAppleLogo({ isDarkMode: false }),
@@ -18,11 +19,19 @@ export const apple = ({ chains }: AppleOptions) => ({
   // iconBackground: '#fff',
   name: 'Apple',
   createConnector: () => {
-    const connector = new MetaMaskConnector({
+    const connector = new SocialConnector({
       chains,
       options: {
-        shimDisconnect: true,
-      },
+        ...options,
+        // @ts-ignore
+        connect: {
+          ...options?.connect,
+          settings: {
+            ...options?.connect?.settings,
+            signInOptions: ['apple']
+          }
+        }
+      }
     });
     return connector
   }

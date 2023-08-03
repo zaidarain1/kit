@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "0xsequence": "^1.1.0",
-    "@0xsequence/wagmi-connector": "^1.0.7",
+    "@0xsequence/wagmi-connector": "^2.1.0",
     "@0xsequence/kit-core": "workspace:*",
     "@0xsequence/kit-connectors": "workspace:*",
     "@0xsequence/kit-wallet": "workspace:*",

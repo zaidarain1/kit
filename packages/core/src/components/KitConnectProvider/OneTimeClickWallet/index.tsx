@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Button, Card, ChevronRightIcon, Divider, Image, Text, TextInput } from '@0xsequence/design-system'
-import { useConnect } from 'wagmi'
+import { useConnect, useAccount } from 'wagmi'
 
 import { isEmailValid } from '../../../utils'
 import { KitConnectProviderProps } from '../index'
@@ -14,11 +14,14 @@ interface OneTimeClickWalletProps extends KitConnectProviderProps {
 }
 
 export const OneTimeClickWallet = (props: OneTimeClickWalletProps) => {
+  const { isConnected } = useAccount()
+
   const {
     openConnectModal,
     setOpenConnectModal,
     config = {}
   } = props
+  
   const { theme = 'dark', signIn = {} } = config
 
   const [email, setEmail] = useState('')
@@ -32,6 +35,12 @@ export const OneTimeClickWallet = (props: OneTimeClickWalletProps) => {
     /* @ts-ignore-next-line */
     setEmail(ev.target.value)
   }
+
+  useEffect(() => {
+    if (isConnected && openConnectModal) {
+      setOpenConnectModal(false)
+    }
+  }, [isConnected, openConnectModal])
 
   return (
     <Box marginTop="5">

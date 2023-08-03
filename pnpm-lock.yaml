@@ -153,8 +153,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/wallet
       '@0xsequence/wagmi-connector':
-        specifier: ^1.0.7
-        version: 1.0.7(0xsequence@1.1.0)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9)
+        specifier: ^2.1.0
+        version: 2.1.0(0xsequence@1.1.0)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9)
       '@testing-library/jest-dom':
         specifier: ^5.16.5
         version: 5.16.5
@@ -272,8 +272,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(ethers@5.7.2)
       '@0xsequence/wagmi-connector':
-        specifier: ^2.0.3
-        version: 2.0.3(0xsequence@1.1.0)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9)
+        specifier: ^2.1.0
+        version: 2.1.0(0xsequence@1.1.0)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9)
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
@@ -303,8 +303,8 @@ importers:
         specifier: ^1.0.11
         version: 1.0.11(@types/react-dom@18.0.10)(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/wagmi-connector':
-        specifier: ^1.0.7
-        version: 1.0.7(0xsequence@1.1.2)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9)
+        specifier: ^2.1.0
+        version: 2.1.0(0xsequence@1.1.2)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9)
       '@vanilla-extract/css':
         specifier: ^1.9.3
         version: 1.9.3
@@ -853,10 +853,10 @@ packages:
       js-base64: 3.7.5
     dev: false
 
-  /@0xsequence/wagmi-connector@1.0.7(0xsequence@1.1.0)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9):
-    resolution: {integrity: sha512-HwKRoYkNoGY5jko2IUadLE6M4JiiVKB8CmJ34c9GV+3CghvLngHFXsVHLHyHmZr0jz8AHneRf4rGy792FcaCNQ==}
+  /@0xsequence/wagmi-connector@2.1.0(0xsequence@1.1.0)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9):
+    resolution: {integrity: sha512-/W+VSyvFAQ2/x4hVrwTuoZc/nXavwXsrAIY8ZQRp0xqq5iLeQaZZd6zCeqtmnfldWXqsazl1J41f8Y2bvnutBw==}
     peerDependencies:
-      0xsequence: '>=0.43.0'
+      0xsequence: '>=1.1.0 <2.0.0'
       ethers: '>=5.5'
       viem: '>=0.3.28'
       wagmi: '>=1.0.0'
@@ -871,33 +871,15 @@ packages:
       - zod
     dev: false
 
-  /@0xsequence/wagmi-connector@1.0.7(0xsequence@1.1.2)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9):
-    resolution: {integrity: sha512-HwKRoYkNoGY5jko2IUadLE6M4JiiVKB8CmJ34c9GV+3CghvLngHFXsVHLHyHmZr0jz8AHneRf4rGy792FcaCNQ==}
+  /@0xsequence/wagmi-connector@2.1.0(0xsequence@1.1.2)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9):
+    resolution: {integrity: sha512-/W+VSyvFAQ2/x4hVrwTuoZc/nXavwXsrAIY8ZQRp0xqq5iLeQaZZd6zCeqtmnfldWXqsazl1J41f8Y2bvnutBw==}
     peerDependencies:
-      0xsequence: '>=0.43.0'
+      0xsequence: '>=1.1.0 <2.0.0'
       ethers: '>=5.5'
       viem: '>=0.3.28'
       wagmi: '>=1.0.0'
     dependencies:
       0xsequence: 1.1.2(ethers@5.7.2)
-      abitype: 0.8.2(typescript@5.0.4)
-      ethers: 5.7.2
-      viem: 1.4.1(typescript@5.0.4)
-      wagmi: 1.3.9(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.4.1)
-    transitivePeerDependencies:
-      - typescript
-      - zod
-    dev: false
-
-  /@0xsequence/wagmi-connector@2.0.3(0xsequence@1.1.0)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9):
-    resolution: {integrity: sha512-NzzFujXSsVJ/j47tmXiJe04fV+d165Y0JEkks6ncW55Z0680VcM9+MPwAte1OTUOgIx7e9aaGO9kQBGUo8IEmQ==}
-    peerDependencies:
-      0xsequence: '>=1.0.0'
-      ethers: '>=5.5'
-      viem: '>=0.3.28'
-      wagmi: '>=1.0.0'
-    dependencies:
-      0xsequence: 1.1.0(ethers@5.7.2)
       abitype: 0.8.2(typescript@5.0.4)
       ethers: 5.7.2
       viem: 1.4.1(typescript@5.0.4)

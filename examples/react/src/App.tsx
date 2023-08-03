@@ -9,7 +9,8 @@ import {
     // injected,
     metamask,
     sequence,
-    walletConnect } from '@0xsequence/kit-connectors'
+    walletConnect
+  } from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
@@ -33,13 +34,22 @@ function App() {
     //   chains
     // }),
     google({
-      chains
+      chains,
+      options: {
+        defaultNetwork: 137
+      }
     }),
     facebook({
-      chains
+      chains,
+      options: {
+        defaultNetwork: 137
+      }
     }),
     apple({
-      chains
+      chains,
+      options: {
+        defaultNetwork: 137
+      }
     }),
     email({
       chains
@@ -66,16 +76,28 @@ function App() {
       chains
     }),
     google({
-      chains
+      chains,
+      options: {
+        defaultNetwork: 137
+      }
     }),
     discord({
-      chains
+      chains,
+      options: {
+        defaultNetwork: 137
+      }
     }),
     facebook({
-      chains
+      chains,
+      options: {
+        defaultNetwork: 137
+      }
     }),
     apple({
-      chains
+      chains,
+      options: {
+        defaultNetwork: 137
+      }
     })
   ])
 

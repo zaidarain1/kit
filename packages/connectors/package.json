@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@0xsequence/provider": "^1.1.0",
-    "@0xsequence/wagmi-connector": "^2.0.3",
+    "@0xsequence/wagmi-connector": "^2.1.0",
     "buffer": "^6.0.3"
   },
   "devDependencies": {

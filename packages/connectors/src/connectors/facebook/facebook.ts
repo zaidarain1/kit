@@ -1,5 +1,5 @@
 import { Chain } from 'wagmi'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
 import { FacebookLogo, getFacebookOtcLogo } from './FacebookLogo'
 
@@ -7,9 +7,10 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 export interface FacebookOptions {
   chains: Chain[];
+  options?: SocialConnectorOptions;
 }
 
-export const facebook = ({ chains }: FacebookOptions) => ({
+export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
   id: 'facebook',
   logoDark: FacebookLogo,
   logoLight: FacebookLogo,
@@ -18,11 +19,19 @@ export const facebook = ({ chains }: FacebookOptions) => ({
   // iconBackground: '#fff',
   name: 'Facebook',
   createConnector: () => {
-    const connector = new MetaMaskConnector({
+    const connector = new SocialConnector({
       chains,
       options: {
-        shimDisconnect: true,
-      },
+        ...options,
+        // @ts-ignore
+        connect: {
+          ...options?.connect,
+          settings: {
+            ...options?.connect?.settings,
+            signInOptions: ['facebook']
+          }
+        }
+      }
     });
     return connector
   }
