@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { KitConnectProvider, getKitConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
 import {
     apple,
+    discord,
     email,
     facebook,
     google,
@@ -56,7 +57,6 @@ function App() {
       chains,
       connect: {
         app: 'Sequence Kit example',
-        networkId: 137
       }
     }),
   ])
@@ -66,6 +66,9 @@ function App() {
       chains
     }),
     google({
+      chains
+    }),
+    discord({
       chains
     }),
     facebook({
