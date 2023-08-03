@@ -10,10 +10,12 @@ import * as styles from '../../styles.css'
 
 interface ExtendedWalletListProps {
   theme: Theme
+  onConnect: (connector: ExtendedConnector) => void
 }
 
 export const ExtendedWalletList = ({
-  theme
+  theme,
+  onConnect,
 }: ExtendedWalletListProps) => {
   const { connectors: baseConnectors, connect, isLoading } = useConnect()
   const connectors = baseConnectors as ExtendedConnector[]
@@ -45,7 +47,7 @@ export const ExtendedWalletList = ({
               height: '60px',
             }}
             className={styles.networkButton}
-            onClick={() => connect({ connector })}
+            onClick={() => onConnect(connector)}
           >
             <Text variant="medium">
               {walletName}

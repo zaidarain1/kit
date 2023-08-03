@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 import { Box, Image, Text, vars, ChevronLeftIcon, ChevronRightIcon } from '@0xsequence/design-system'
 import { useConnect } from 'wagmi'
 
@@ -24,6 +25,14 @@ export const WalletList = ({
   const connectors = baseConnectors as ExtendedConnector[]
   const displayExtendedListButton = connectors.length > 6
 
+  const onConnect = (connector: ExtendedConnector) => {
+    if (connector._wallet.id === 'email') {
+      const email = prompt('Auto-email login, please specify the email address:')
+      localStorage.setItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY, email || '')
+    }
+    connect({ connector })
+  }
+
   if (showExtendedList) {
     return (
       <>
@@ -36,7 +45,7 @@ export const WalletList = ({
         >
           <ChevronLeftIcon />
         </Box>
-        <ExtendedWalletList theme={theme} />
+        <ExtendedWalletList onConnect={onConnect} theme={theme} />
       </>
     )
   }
@@ -82,7 +91,7 @@ export const WalletList = ({
                   width: `calc(50% - ${vars.space[2]})`
                 }}
                 className={styles.networkButton}
-                onClick={() => connect({ connector })}
+                onClick={() => onConnect(connector)}
               >
                 <Box
                   marginTop="3"

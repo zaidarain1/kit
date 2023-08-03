@@ -302,6 +302,9 @@ importers:
       '@0xsequence/design-system':
         specifier: ^1.0.11
         version: 1.0.11(@types/react-dom@18.0.10)(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
+      '@0xsequence/kit-connectors':
+        specifier: workspace:*
+        version: link:../connectors
       '@0xsequence/wagmi-connector':
         specifier: ^2.1.0
         version: 2.1.0(0xsequence@1.1.2)(ethers@5.7.2)(typescript@5.0.4)(viem@1.4.1)(wagmi@1.3.9)
