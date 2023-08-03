@@ -1,5 +1,4 @@
 import { sequence } from '0xsequence'
-import { SignInOption } from '@0xsequence/provider'
 
 import {
   createWalletClient,
