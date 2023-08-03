@@ -32,12 +32,20 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
   }) {
     super({ chains, options })
 
-    const signInOptions = options?.connect?.settings?.signInOptions || ['google']
-    const id = signInOptions[0]
-    const name = `${id[0].toUpperCase()}${id.slice(1)}` 
+    const signInOptions = options?.connect?.settings?.signInOptions || []
     
-    this.id = id
-    this.name = name
+    // If there are no sign in options
+    // Then it must mean we are connecting with email
+    if (signInOptions.length > 0) {
+      const id = signInOptions[0]
+      const name = `${id[0].toUpperCase()}${id.slice(1)}` 
+      
+      this.id = id
+      this.name = name
+    } else {
+      this.id = 'email'
+      this.name = 'Email'
+    }
 
     this.provider = sequence.initWallet({
       defaultNetwork: options?.defaultNetwork,
@@ -67,10 +75,6 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
       this?.emit('message', { type: 'connecting' })
       // inject the signInOptions into the connect options
       const connectOptions = this.options?.connect ?? { app: 'app' }
-      connectOptions.settings = {
-        ...(connectOptions?.settings || {}),
-        signInOptions: [this.id as SignInOption]
-      }
 
       const e = await this.provider.connect(connectOptions)
       if (e.error) {

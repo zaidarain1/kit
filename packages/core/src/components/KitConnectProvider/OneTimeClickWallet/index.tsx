@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Button, Card, ChevronRightIcon, Divider, Image, Text, TextInput } from '@0xsequence/design-system'
 import { useConnect, useAccount } from 'wagmi'
+import{ EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 
 import { isEmailValid } from '../../../utils'
 import { KitConnectProviderProps } from '../index'
@@ -42,12 +43,18 @@ export const OneTimeClickWallet = (props: OneTimeClickWalletProps) => {
     }
   }, [isConnected, openConnectModal])
 
+  const onConnect = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    localStorage.setItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY, email)
+    connect({ connector: emailConnector })
+  }
+
   return (
     <Box marginTop="5">
       {emailConnector && (
         <>
           <form
-            onSubmit={() => connect({ connector: emailConnector })}
+            onSubmit={onConnect}
           >
             <TextInput
               /* @ts-ignore-next-line */
