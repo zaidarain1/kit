@@ -1,4 +1,4 @@
-import { Button, CopyIcon, CheckmarkIcon } from '@0xsequence/design-system'
+import { Button, CopyIcon, CheckmarkIcon, Icon, IconButton } from '@0xsequence/design-system'
 import React, { useEffect, useState, ComponentProps } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
@@ -26,7 +26,12 @@ export const CopyButton = (props: CopyButtonProps) => {
 
   return (
     <CopyToClipboard text={text} onCopy={handleCopy}>
-      <Button size={size} leftIcon={isCopied ? CheckmarkIcon : CopyIcon} label={isCopied ? 'Copied' : 'Copy'} {...rest} />
+      <IconButton
+        size={size}
+        icon={isCopied ? CheckmarkIcon : CopyIcon}
+        {...rest}
+        style={{ background: 'rgba(0,0,0,0)', ...props?.style }}
+      />
     </CopyToClipboard>
   )
 }

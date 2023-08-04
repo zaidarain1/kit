@@ -48,7 +48,7 @@ export const HomeHeader = () => {
               side="bottom"
               align="start"
             >
-              <WalletDropdownContent />
+              <WalletDropdownContent setOpenWalletDropdown={setOpenWalletDropdown} />
             </PopoverPrimitive.Content>
           </PopoverPrimitive.Portal>
         )}

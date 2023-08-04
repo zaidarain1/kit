@@ -2,12 +2,9 @@ import React, { forwardRef } from 'react'
 
 import {
   Box,
-  IconButton,
   Text,
   GradientAvatar,
-  SearchIcon,
   ChevronDownIcon,
-  vars,
 } from '@0xsequence/design-system'
 
 import { useAccount } from 'wagmi'
@@ -23,7 +20,6 @@ export const AccountInformation = forwardRef(({
   onClickAccount,
 }: AccountInformationProps, ref) => {
   const { address } = useAccount()
-
 
   return (
     <Box gap="2" alignItems="center" style={{ height: "60px"}}>
