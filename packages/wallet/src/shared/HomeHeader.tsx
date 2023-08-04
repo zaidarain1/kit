@@ -10,8 +10,8 @@ import {
 } from '@0xsequence/design-system'
 import { useAccount } from 'wagmi'
 
-import { formatAddress } from '../../../utils'
-import * as styles from '../../../shared/styles.css'
+import { formatAddress } from '../utils'
+import * as styles from './styles.css'
 
 export const HomeHeader = () => {
   const { address } = useAccount()

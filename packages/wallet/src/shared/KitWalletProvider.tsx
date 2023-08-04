@@ -16,7 +16,7 @@ import {
   Send,
   History
 } from '../views'
-import { HomeHeader } from '../views/Home/components/HomeHeader'
+import { HomeHeader } from './HomeHeader'
 import {
   Navigation,
   NavigationContext,
