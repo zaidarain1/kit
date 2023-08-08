@@ -44,8 +44,8 @@ export type KitWalletProvider = {
   theme?: Theme
 }
 
-// const DEFAULT_LOCATION = 'home'
-const DEFAULT_LOCATION = 'settings'
+const DEFAULT_LOCATION = 'home'
+// const DEFAULT_LOCATION = 'settings'
 
 export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
   // Wallet Modal Context
@@ -57,6 +57,7 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
   })
 
   const isHome = navigation.location === 'home'
+  const displayScrollbar = isHome
 
   const queryClient = new QueryClient()
 
@@ -126,16 +127,23 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
     <QueryClientProvider client={queryClient}>
       <WalletModalContext.Provider value={{ setOpenWalletModal, theme }}>
         <NavigationContext.Provider value={{ setNavigation, navigation }}>
-
             <ThemeProvider theme={theme}>
               <AnimatePresence>
                 {openWalletModal && (
-                  <Modal contentProps={{ style: { maxWidth: '400px' } }} scroll={!isHome} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
-                    <Box id="sequence-kit-wallet-content" style={{ height: '800px' }}>
+                  <Modal contentProps={{
+                    style: { maxWidth: '400px', height: 'fit-content' }
+                  }} scroll={false} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
+                    <Box id="sequence-kit-wallet-content">
                       {getHeader()}
-                      <Scroll style={{ paddingTop: HEADER_HEIGHT }}>
-                        {getContent()}
-                      </Scroll>
+                    
+                      {displayScrollbar ? (
+                        <Scroll style={{ paddingTop: HEADER_HEIGHT, height: '800px' }}>
+                          {getContent()}
+                        </Scroll>
+                      ) : (
+                        getContent()
+                      )}
+
                     </Box>
                   </Modal>
                 )}
