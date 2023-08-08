@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css'
+import { style, globalStyle } from '@vanilla-extract/css'
 
 export const clickable = style({
   ':hover': {
@@ -8,7 +8,15 @@ export const clickable = style({
   }
 })
 
+export const walletContent = style({
+})
 
-export const modal = style({
-  backgroundColor: 'red'
+// Will affect the close button in the modal
+globalStyle(`${walletContent} + button`, {
+  backgroundColor: 'transparent',
+})
+
+globalStyle(`${walletContent} + button > svg`, {
+  width: '20px',
+  height: '20px'
 })

@@ -167,9 +167,8 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
                     scroll={false}
                     backdropColor="transparent"
                     onClose={() => setOpenWalletModal(false)}
-                    className={styles.modal}
                   >
-                    <Box id="sequence-kit-wallet-content">
+                    <Box className={styles.walletContent} id="sequence-kit-wallet-content">
                       {getHeader()}
                     
                       {displayScrollbar ? (
