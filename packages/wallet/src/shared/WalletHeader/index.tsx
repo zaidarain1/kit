@@ -37,7 +37,10 @@ export const WalletHeader = () => {
           alignItems="center"
           justifyContent="space-between"
           width="full"
-          style={{ height: HEADER_HEIGHT, paddingTop: '6px'}}
+          style={{
+            height: HEADER_HEIGHT,
+            paddingTop: '6px'
+          }}
         >
           <IconButton
             onClick={onClickSearch}

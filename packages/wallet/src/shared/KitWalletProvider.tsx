@@ -29,6 +29,7 @@ import {
 } from '../contexts'
 
 import { HEADER_HEIGHT } from '../constants'
+import * as styles from './styles.css'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -157,9 +158,17 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
             <ThemeProvider theme={theme}>
               <AnimatePresence>
                 {openWalletModal && (
-                  <Modal contentProps={{
-                    style: { maxWidth: '400px', height: 'fit-content' }
-                  }} scroll={false} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
+                  <Modal
+                    contentProps={{
+                      style: {
+                        maxWidth: '400px', height: 'fit-content',
+                      },
+                    }}
+                    scroll={false}
+                    backdropColor="transparent"
+                    onClose={() => setOpenWalletModal(false)}
+                    className={styles.modal}
+                  >
                     <Box id="sequence-kit-wallet-content">
                       {getHeader()}
                     

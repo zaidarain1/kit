@@ -5,7 +5,7 @@ import { HEADER_HEIGHT } from '../../constants'
 export const SettingsCurrency = () => {
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
-      <Box padding="5">
+      <Box padding="5" paddingTop="3">
         {'Settings => Currency'}
       </Box>
     </Box>

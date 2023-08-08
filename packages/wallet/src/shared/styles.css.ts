@@ -7,3 +7,8 @@ export const clickable = style({
     userSelect: 'none'
   }
 })
+
+
+export const modal = style({
+  backgroundColor: 'red'
+})
