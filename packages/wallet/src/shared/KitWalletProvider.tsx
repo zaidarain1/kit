@@ -44,8 +44,8 @@ export type KitWalletProvider = {
   theme?: Theme
 }
 
-const DEFAULT_LOCATION = 'home'
-// const DEFAULT_LOCATION = 'settings'
+// const DEFAULT_LOCATION = 'home'
+const DEFAULT_LOCATION = 'settings'
 
 export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
   // Wallet Modal Context
@@ -67,11 +67,41 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
       case 'settings':
         return (
           <NavigationHeader
-            primaryText="Settings"
             secondaryText="Wallet / "
+            primaryText="Settings"
             backLocation={{
               location: 'home'
             }}
+          />
+        )
+      case 'settings-general':
+        return (
+          <NavigationHeader
+            secondaryText="Wallet / Settings / "
+            primaryText="General"
+            backLocation={{
+              location: 'settings'
+            }}
+          />
+        )
+      case 'settings-currency':
+        return (
+          <NavigationHeader
+            secondaryText="Wallet / Settings / "
+            primaryText="Currency"
+            backLocation={{
+              location: 'settings'
+            }}
+          />
+        )
+      case 'settings-networks':
+        return (
+          <NavigationHeader
+            secondaryText="Wallet / Settings / "
+              primaryText="Networks"
+              backLocation={{
+                location: 'settings'
+              }}
           />
         )
       case 'all-coins':
@@ -79,9 +109,6 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
       case 'all-collectibles':
       case 'send':
       case 'history':
-      case 'settings-general':
-      case 'settings-currency':
-      case 'settings-networks':
       case 'home':
       default:
         return <WalletHeader />
