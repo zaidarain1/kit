@@ -44,8 +44,8 @@ export type KitWalletProvider = {
   theme?: Theme
 }
 
-// const DEFAULT_LOCATION = 'home'
-const DEFAULT_LOCATION = 'settings'
+const DEFAULT_LOCATION = 'home'
+// const DEFAULT_LOCATION = 'settings'
 
 export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
   // Wallet Modal Context
