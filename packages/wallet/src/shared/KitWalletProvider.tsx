@@ -14,14 +14,21 @@ import {
   AllCollections,
   Home,
   Send,
-  History
+  History,
+  SettingsMenu,
+  SettingsCurrency,
+  SettingsNetwork,
+  SettingsGeneral
 } from '../views'
-import { HomeHeader } from './HomeHeader'
+import { WalletHeader } from './WalletHeader'
+import { NavigationHeader } from './NavigationHeader'
 import {
   Navigation,
   NavigationContext,
   WalletModalContext,
 } from '../contexts'
+
+import { HEADER_HEIGHT } from '../constants'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -37,7 +44,8 @@ export type KitWalletProvider = {
   theme?: Theme
 }
 
-const DEFAULT_LOCATION = 'home'
+// const DEFAULT_LOCATION = 'home'
+const DEFAULT_LOCATION = 'settings'
 
 export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
   // Wallet Modal Context
@@ -52,8 +60,36 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
 
   const queryClient = new QueryClient()
 
+  const getHeader = () => {
+    const { location } = navigation
+    switch (location) {
+      case 'settings':
+        return (
+          <NavigationHeader
+            primaryText="Settings"
+            secondaryText="Wallet / "
+            backLocation={{
+              location: 'home'
+            }}
+          />
+        )
+      case 'all-coins':
+      case 'all-collections':
+      case 'all-collectibles':
+      case 'send':
+      case 'history':
+      case 'settings-general':
+      case 'settings-currency':
+      case 'settings-networks':
+      case 'home':
+      default:
+        return <WalletHeader />
+    }
+  }
+ 
   const getContent = () => {
     const { location } = navigation
+
     switch (location) {
       case 'all-coins':
         return <AllCoins />
@@ -66,6 +102,14 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
         return <Send />
       case 'history':
         return <History />
+      case 'settings':
+        return <SettingsMenu />
+      case 'settings-general':
+        return <SettingsGeneral />
+      case 'settings-currency':
+        return <SettingsCurrency />
+      case 'settings-networks':
+        return <SettingsNetwork />
       case 'home':
       default:
         return <Home />
@@ -88,10 +132,8 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
                 {openWalletModal && (
                   <Modal contentProps={{ style: { maxWidth: '400px' } }} scroll={!isHome} backdropColor="transparent" onClose={() => setOpenWalletModal(false)}>
                     <Box id="sequence-kit-wallet-content" style={{ height: '800px' }}>
-                      {isHome && (
-                        <HomeHeader />
-                      )}
-                      <Scroll paddingTop="16">
+                      {getHeader()}
+                      <Scroll style={{ paddingTop: HEADER_HEIGHT }}>
                         {getContent()}
                       </Scroll>
                     </Box>

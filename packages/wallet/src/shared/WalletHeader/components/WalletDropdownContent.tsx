@@ -15,8 +15,9 @@ import {
   vars
 } from '@0xsequence/design-system'
 
+import { useNavigation } from '../../../hooks'
 import { useOpenWalletModal } from '../../../hooks/useOpenWalletModal'
-import { CopyButton } from '../../../shared/CopyButton'
+import { CopyButton } from '../../CopyButton'
 import { formatAddress } from '../../../utils'
 
 interface WalletDropdownContentProps {
@@ -29,20 +30,30 @@ export const WalletDropdownContent = forwardRef((
   }: WalletDropdownContentProps,
   ref: any
 ) => {
+  const { setNavigation } = useNavigation()
   const setOpenWalletModal = useOpenWalletModal()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
 
   const onClickReceive = () => {
     setOpenWalletDropdown(false)
+    setNavigation({
+      location: 'receive'
+    })
   }
 
   const onClickHistory = () => {
     setOpenWalletDropdown(false)
+    setNavigation({
+      location: 'history'
+    })
   }
 
   const onClickSettings = () => {
     setOpenWalletDropdown(false)
+    setNavigation({
+      location: 'settings'
+    })
   }
 
   const onClickSignout = () => {

@@ -9,6 +9,7 @@ import {
 
 import { useAccount } from 'wagmi'
 
+import { HEADER_HEIGHT } from '../../../constants'
 import { formatAddress } from '../../../utils'
 import * as styles from '../../styles.css'
 
@@ -22,7 +23,7 @@ export const AccountInformation = forwardRef(({
   const { address } = useAccount()
 
   return (
-    <Box gap="2" alignItems="center" style={{ height: "60px"}}>
+    <Box gap="2" alignItems="center">
       <Box width="full" flexDirection="column" alignItems="center" justifyContent="center" >
         <Box
           onClick={onClickAccount}
@@ -31,9 +32,6 @@ export const AccountInformation = forwardRef(({
           justifyContent="center"
           className={styles.clickable}
           position="relative"
-          style={{
-            left: '-22px'
-          }}
           // @ts-ignore-next-line
           ref={ref}
         >

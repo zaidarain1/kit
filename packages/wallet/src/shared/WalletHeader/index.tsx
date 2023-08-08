@@ -12,8 +12,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { AccountInformation } from './components/AccountInformation'
 import { WalletDropdownContent } from './components/WalletDropdownContent'
 
+import { HEADER_HEIGHT } from '../../constants'
 
-export const HomeHeader = () => {
+export const WalletHeader = () => {
   const [openWalletDropdown, setOpenWalletDropdown] = useState<boolean>(false)
 
   const onClickAccount = () => {
@@ -28,15 +29,28 @@ export const HomeHeader = () => {
     <Box as={motion.div}>
       <PopoverPrimitive.Root open={openWalletDropdown}>
         <PopoverPrimitive.Anchor />
-        <Box background="backgroundPrimary" zIndex="20" position="fixed" width="full">
+        <Box
+          background="backgroundPrimary"
+          zIndex="20"
+          position="fixed"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+          width="full"
+          style={{ height: HEADER_HEIGHT, paddingTop: '6px'}}
+        >
           <IconButton
             onClick={onClickSearch}
             icon={SearchIcon}
-            style={{ float: 'left', marginTop: '8px', backgroundColor: vars.colors.backgroundPrimary }}
+            style={{
+              backgroundColor: vars.colors.backgroundPrimary,
+              width: '44px'
+            }}
           />
           <PopoverPrimitive.Trigger asChild>
             <AccountInformation onClickAccount={onClickAccount} />
           </PopoverPrimitive.Trigger>
+          <Box style={{ width: '44px' }} />
         </Box>
 
         <AnimatePresence>
