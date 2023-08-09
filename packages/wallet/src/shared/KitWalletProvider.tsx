@@ -13,6 +13,7 @@ import {
   AllCollectibles,
   AllCollections,
   Home,
+  Receive,
   Send,
   History,
   SettingsMenu,
@@ -105,11 +106,30 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
               }}
           />
         )
+      case 'receive':
+        return (
+          <NavigationHeader
+            secondaryText="Wallet / "
+              primaryText="Receive"
+              backLocation={{
+                location: 'home'
+              }}
+          />
+        )
+      case 'history':
+        return (
+          <NavigationHeader
+            secondaryText="Wallet / "
+              primaryText="History"
+              backLocation={{
+                location: 'home'
+              }}
+          />
+        )
       case 'all-coins':
       case 'all-collections':
       case 'all-collectibles':
       case 'send':
-      case 'history':
       case 'home':
       default:
         return <WalletHeader />
@@ -129,6 +149,8 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
         return <AllCollectibles collectionAddress={collectionAddress} />
       case 'send':
         return <Send />
+      case 'receive':
+        return <Receive />
       case 'history':
         return <History />
       case 'settings':

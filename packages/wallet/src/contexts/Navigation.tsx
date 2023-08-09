@@ -10,7 +10,19 @@ export interface AllCollectiblesNavigation {
 }
 
 export interface BasicNavigation {
-  location: 'home' | 'all-coins' | 'all-collections' | 'send' | 'history' | 'receive' | 'history-details' | 'settings' | 'settings-general' | 'settings-currency' | 'settings-networks', 
+  location:
+    'home' |
+    'all-coins' |
+    'all-collections' |
+    'send' |
+    'receive' |
+    'history' |
+    'receive' |
+    'history-details' |
+    'settings' |
+    'settings-general' |
+    'settings-currency' |
+    'settings-networks', 
 }
 
 export type Navigation = BasicNavigation | AllCollectiblesNavigation

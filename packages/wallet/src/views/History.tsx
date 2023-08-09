@@ -1,15 +1,12 @@
 import { Box, Text } from '@0xsequence/design-system'
 import React from 'react'
-import { HomeButton } from '../shared/HomeButton'
+import { HEADER_HEIGHT } from '../constants'
 
 export const History = () => {
 
   return (
-    <Box padding="4"gap="4" flexDirection="column">
-      <Box style={{ float: 'left', marginTop: '-16px' }}>
-        <HomeButton />
-      </Box>
-      <Box>
+    <Box style={{ paddingTop: HEADER_HEIGHT }}>
+      <Box padding="5" paddingTop="3">
         <Text as="h1" variant="normal" fontWeight="bold" color="text100" textAlign="center">
           Transaction History
         </Text>
