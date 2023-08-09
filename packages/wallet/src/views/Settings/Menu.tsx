@@ -7,11 +7,11 @@ import { HEADER_HEIGHT } from '../../constants'
 export const SettingsMenu = () => {
   const { setNavigation } = useNavigation()
 
-  // const onClickGeneral = () => {
-  //   setNavigation({
-  //     location: 'settings-general'
-  //   })
-  // }
+  const onClickGeneral = () => {
+    setNavigation({
+      location: 'settings-general'
+    })
+  }
 
   const onClickCurrency = () => {
     setNavigation({
@@ -29,7 +29,7 @@ export const SettingsMenu = () => {
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
       <Box padding="5" paddingTop="3">
         <Box flexDirection="column" gap="2">
-          {/* <Button
+          <Button
             onClick={onClickGeneral}
             leftIcon={SettingsIcon}
             rightIcon={ChevronRightIcon}
@@ -39,7 +39,7 @@ export const SettingsMenu = () => {
               height: '52px',
               borderRadius: vars.radii.md
             }}
-          /> */}
+          />
           <Button
             onClick={onClickCurrency}
             leftIcon={CurrencyIcon}
