@@ -1,1 +1,1 @@
-export * from './KitConnectProvider'
+export * from './KitCoreProvider'

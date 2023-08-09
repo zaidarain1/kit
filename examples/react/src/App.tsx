@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { KitConnectProvider, getKitConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
+import { KitCoreProvider, getKitConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
 import {
     apple,
     discord,
@@ -18,11 +18,8 @@ import { WagmiConfig, createConfig, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
 
-import { ModalThemeContext } from './contexts'
-
 function App() {
   const [useOneTimeClickModal, setUseOneTimeClickModal] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(true)
 
   const { chains, publicClient, webSocketPublicClient } = configureChains(
     [mainnet, polygon],
@@ -112,26 +109,25 @@ function App() {
 
   const kitConfig: KitConfig = {
     useOneTimeClickModal: useOneTimeClickModal,
-    theme: isDarkMode ? THEMES.dark : THEMES.light,
+    defaultTheme: THEMES.dark,
     signIn: {
       projectName: 'SkyWeaver',
-      logoUrl: isDarkMode ? '/sw-logo-white.svg' : '/sw-logo-black.svg'
+      logoUrlDarkMode: '/sw-logo-white.svg',
+      logoUrlLightMode: '/sw-logo-black.svg'
     }
   }
 
   return (
     <WagmiConfig config={config}>
-      <KitConnectProvider config={kitConfig} >
-        <KitWalletProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
-          <KitCheckoutProvider theme={isDarkMode ? THEMES.dark : THEMES.light}>
-            <ModalThemeContext.Provider value={{ setIsDarkMode, isDarkMode }}>
-              <Homepage
-                setUseOneTimeClickModal={setUseOneTimeClickModal}
-              />
-            </ModalThemeContext.Provider>
+      <KitCoreProvider config={kitConfig} >
+        <KitWalletProvider>
+          <KitCheckoutProvider>
+            <Homepage
+              setUseOneTimeClickModal={setUseOneTimeClickModal}
+            />
           </KitCheckoutProvider>
         </KitWalletProvider>
-      </KitConnectProvider>
+      </KitCoreProvider>
     </WagmiConfig>
   );
 }

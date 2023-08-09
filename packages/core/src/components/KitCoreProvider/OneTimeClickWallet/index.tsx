@@ -3,6 +3,7 @@ import { Box, Button, Card, ChevronRightIcon, Divider, Image, Text, TextInput } 
 import { useConnect, useAccount } from 'wagmi'
 import{ EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 
+import { useTheme } from '../../../hooks'
 import { isEmailValid } from '../../../utils'
 import { KitConnectProviderProps } from '../index'
 import { ExtendedConnector } from '../../../utils/getKitConnectWallets'
@@ -16,15 +17,13 @@ interface OneTimeClickWalletProps extends KitConnectProviderProps {
 
 export const OneTimeClickWallet = (props: OneTimeClickWalletProps) => {
   const { isConnected } = useAccount()
+  const { theme } = useTheme()
 
   const {
     openConnectModal,
     setOpenConnectModal,
-    config = {}
   } = props
   
-  const { theme = 'dark', signIn = {} } = config
-
   const [email, setEmail] = useState('')
   const { connectors: baseConnectors, connect, isLoading } = useConnect()
   const connectors = baseConnectors as ExtendedConnector[]

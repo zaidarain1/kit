@@ -1,9 +1,8 @@
-import React, { useContext } from 'react'
-import { useOpenConnectModal } from '@0xsequence/kit-core'
+import React from 'react'
+import { useOpenConnectModal, useTheme } from '@0xsequence/kit-core'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal, CheckoutSettings } from '@0xsequence/kit-checkout'
 import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
-import { ModalThemeContext } from '../contexts'
 
 import './Homepage.css';
 
@@ -14,7 +13,7 @@ interface HomepageProps {
 function Homepage({
   setUseOneTimeClickModal,
 }: HomepageProps) {
-  const { setIsDarkMode, isDarkMode } = useContext(ModalThemeContext)
+  const { theme, setTheme } = useTheme()
   const { address, connector, isConnected } = useAccount()
   const openConnectModal = useOpenConnectModal()
   const openWalletModal = useOpenWalletModal()
@@ -158,11 +157,15 @@ function Homepage({
     return checkoutSettings
   }
 
+  const onClickChangeTheme = () => {
+    setTheme && setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <button className="Button" onClick={() => { setIsDarkMode && setIsDarkMode(!isDarkMode) }}>Change Modal Theme</button>
-        <div>Modal theme: {isDarkMode ? 'dark' : 'light'}</div>
+        <button className="Button" onClick={onClickChangeTheme}>Change Modal Theme</button>
+        <div>Modal theme: {theme === 'dark' ? 'dark' : 'light'}</div>
         {isConnected ? (
           <>
             <button className="Button" onClick={() => { disconnect() }}>

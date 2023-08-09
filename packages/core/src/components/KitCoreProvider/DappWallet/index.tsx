@@ -9,9 +9,10 @@ import {
 } from '@0xsequence/design-system'
 import { useConnect, useAccount } from 'wagmi'
 
-import { WalletList } from '../DappWallet/WalletList'
+import { WalletList } from './WalletList'
 
 import '@0xsequence/design-system/styles.css'
+import { useTheme } from '../../../hooks'
 import { KitConnectProviderProps } from '../index'
 
 interface DappWalletProps extends KitConnectProviderProps {
@@ -25,8 +26,10 @@ export const DappWallet = (props: DappWalletProps) => {
     setOpenConnectModal,
     config = {}
   } = props
-  const { theme = 'dark', signIn = {} } = config
-  const { logoUrl } = signIn
+  const { theme } = useTheme()
+  const { signIn = {} } = config
+  const { logoUrlDarkMode, logoUrlLightMode } = signIn
+  const logoUrl = theme === 'dark' ? logoUrlDarkMode : logoUrlLightMode
 
   const [clickedGoBack, setClickedGoBack] = useState(false)
   const { pendingConnector, isError, connect } = useConnect()

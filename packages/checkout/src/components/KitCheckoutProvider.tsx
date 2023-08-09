@@ -7,6 +7,8 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
+import { useTheme } from '@0xsequence/kit-core'
+
 import {
   PaperTransactionForm,
   PendingTransaction,
@@ -17,19 +19,12 @@ import { Navigation, NavigationContext, CheckoutModalContext, CheckoutSettings }
 
 import '@0xsequence/design-system/styles.css'
 
-export declare const THEME: readonly ["dark", "light"];
-export declare type Theme = typeof THEME[number];
-export const THEMES = {
-  dark: 'dark' as Theme,
-  light: 'light' as Theme
-};
-
 export type KitCheckoutProvider = {
   children: React.ReactNode,
-  theme?: Theme
 }
 
-export const KitCheckoutProvider = ({ children, theme }: KitCheckoutProvider) => {
+export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
+  const { theme } = useTheme()
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
   const [navigation, setNavigation] = useState<Navigation>({

@@ -7,6 +7,7 @@ import {
   ThemeProvider,
   Scroll,
 } from '@0xsequence/design-system'
+import { useTheme } from '@0xsequence/kit-core'
 import { AnimatePresence } from 'framer-motion'
 
 import {
@@ -35,22 +36,16 @@ import * as styles from './styles.css'
 
 import '@0xsequence/design-system/styles.css'
 
-export declare const THEME: readonly ["dark", "light"];
-export declare type Theme = typeof THEME[number];
-export const THEMES = {
-  dark: 'dark' as Theme,
-  light: 'light' as Theme
-};
-
 export type KitWalletProvider = {
   children: React.ReactNode,
-  theme?: Theme
 }
 
 const DEFAULT_LOCATION = 'home'
 // const DEFAULT_LOCATION = 'settings-networks'
 
-export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
+export const KitWalletProvider = ({ children }: KitWalletProvider) => {
+  const { theme } = useTheme()
+  
   // Wallet Modal Context
   const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
  
@@ -176,7 +171,7 @@ export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <WalletModalContext.Provider value={{ setOpenWalletModal, theme }}>
+      <WalletModalContext.Provider value={{ setOpenWalletModal }}>
         <NavigationContext.Provider value={{ setNavigation, navigation }}>
             <ThemeProvider theme={theme}>
               <AnimatePresence>
