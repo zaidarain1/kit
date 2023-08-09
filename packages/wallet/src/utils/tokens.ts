@@ -12,6 +12,10 @@ export interface NativeTokenInfo {
   decimals: number
 }
 
+export const getChainIdList = () => {
+  return [1,137,56,43114]
+}
+
 export const getNativeTokenInfoByChainId = (chainId: number) => {
   interface TokenInfos {
     [key: number]: NativeTokenInfo

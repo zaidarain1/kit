@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   Box,
+  Card,
   Modal,
   ThemeProvider,
   Scroll,
@@ -46,8 +47,8 @@ export type KitWalletProvider = {
   theme?: Theme
 }
 
-const DEFAULT_LOCATION = 'home'
-// const DEFAULT_LOCATION = 'settings'
+// const DEFAULT_LOCATION = 'home'
+const DEFAULT_LOCATION = 'settings-networks'
 
 export const KitWalletProvider = ({ children, theme }: KitWalletProvider) => {
   // Wallet Modal Context

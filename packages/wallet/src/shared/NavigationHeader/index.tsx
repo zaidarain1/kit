@@ -18,7 +18,6 @@ export const NavigationHeader = ({
   const { setNavigation } = useNavigation()
 
   const onClickBack = () => {
-    console.log('backLocation', backLocation)
     setNavigation(backLocation)
   }
 
