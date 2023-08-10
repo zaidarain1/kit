@@ -28,22 +28,38 @@ export const AssetSummary = () => {
 
   const onClickItem = (balance: TokenBalance) => {
     if (balance.contractType === 'ERC1155' || balance.contractType === 'ERC721') {
-      // TODO: replace with individual asset detail view
       setNavigation && setNavigation({
-        location: 'all-collectibles',
+        location: 'collectible-details',
         params: {
-          collectionAddress: balance.contractAddress
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId,
+          tokenId: balance.tokenID,
+          backLocation: {
+            location: 'home',
+          }
         }
       })
     } else if (balance.contractType === 'ERC20') {
-      // TODO: replace with individual asset detail view
       setNavigation && setNavigation({
-        location: 'all-coins',
+        location: 'coin-details',
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId,
+          backLocation: {
+            location: 'home',
+          }
+        }
       })
     } else {
-      // TODO: replace with individual asset detail view
       setNavigation && setNavigation({
-        location: 'all-coins',
+        location: 'coin-details',
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId,
+          backLocation: {
+            location: 'home',
+          }
+        }
       })
     }
   }

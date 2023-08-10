@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import {
   Box,
   Button,
+  ChevronLeftIcon,
   IconButton,
   SearchIcon,
   vars,
@@ -13,12 +14,27 @@ import { AccountInformation } from './components/AccountInformation'
 import { WalletDropdownContent } from './components/WalletDropdownContent'
 
 import { HEADER_HEIGHT } from '../../constants'
+import { useNavigation } from '../../hooks'
+import { Navigation } from '../../contexts'
 
-export const WalletHeader = () => {
+interface WalletHeaderProps {
+  backLocation?: Navigation
+}
+
+export const WalletHeader = ({
+  backLocation,
+}: WalletHeaderProps) => {
   const [openWalletDropdown, setOpenWalletDropdown] = useState<boolean>(false)
+  const { setNavigation } = useNavigation()
 
   const onClickAccount = () => {
     setOpenWalletDropdown(true)
+  }
+
+  const onClickBack = () => {
+    if (backLocation) {
+      setNavigation(backLocation)
+    }
   }
 
   const onClickSearch = () => {
@@ -42,14 +58,25 @@ export const WalletHeader = () => {
             paddingTop: '6px'
           }}
         >
-          <IconButton
-            onClick={onClickSearch}
-            icon={SearchIcon}
-            style={{
-              backgroundColor: vars.colors.backgroundPrimary,
-              width: '44px'
-            }}
-          />
+          {backLocation ? (
+            <IconButton
+              onClick={onClickBack}
+              icon={ChevronLeftIcon}
+              style={{
+                backgroundColor: vars.colors.backgroundPrimary,
+                width: '44px'
+              }}
+            />
+          ) : (
+            <IconButton
+              onClick={onClickSearch}
+              icon={SearchIcon}
+              style={{
+                backgroundColor: vars.colors.backgroundPrimary,
+                width: '44px'
+              }}
+            />
+          )}
           <PopoverPrimitive.Trigger asChild>
             <AccountInformation onClickAccount={onClickAccount} />
           </PopoverPrimitive.Trigger>

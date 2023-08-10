@@ -9,6 +9,29 @@ export interface AllCollectiblesNavigation {
   params: AllCollectiblesParams
 }
 
+export interface CoinDetailsParams {
+  contractAddress: string
+  chainId: number
+  backLocation: Navigation
+}
+
+export interface CoinDetailsNavigation {
+  location: 'coin-details',
+  params: CoinDetailsParams
+}
+
+export interface CollectibleDetailsParams {
+  contractAddress: string
+  chainId: number
+  tokenId: string
+  backLocation: Navigation
+}
+
+export interface CollectibleDetailsNavigation {
+  location: 'collectible-details',
+  params: CollectibleDetailsParams
+}
+
 export interface BasicNavigation {
   location:
     'home' |
@@ -25,7 +48,11 @@ export interface BasicNavigation {
     'settings-networks', 
 }
 
-export type Navigation = BasicNavigation | AllCollectiblesNavigation
+export type Navigation =
+  BasicNavigation |
+  AllCollectiblesNavigation |
+  CoinDetailsNavigation |
+  CollectibleDetailsNavigation
 
 type NavigationContext = {
   setNavigation?: (navigation:Navigation) => void,
