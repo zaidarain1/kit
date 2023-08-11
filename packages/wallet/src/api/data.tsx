@@ -1,5 +1,5 @@
 import { Token, TokenPrice } from '@0xsequence/api'
-import { TokenBalance, ContractType } from '@0xsequence/indexer'
+import { TokenBalance, ContractType, Page } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
 
 import { compareAddress, sortBalancesByType } from '../utils'
@@ -249,4 +249,34 @@ export const getCollectiblePrices = async ({ tokens }: GetCollectiblePricesArgs)
     console.error(e)
     return
   }
+}
+
+export interface GetTransactionHistoryArgs {
+  chainId: number,
+  accountAddress: string,
+  contractAddress?: string,
+  tokenId?: string
+  page?: Page
+}
+
+export const getTransactionHistory = async ({
+  chainId,
+  contractAddress,
+  accountAddress,
+  tokenId,
+  page
+}: GetTransactionHistoryArgs) => {
+  const { indexerClient } = getNetworkConfigAndClients(chainId) 
+
+  const response = indexerClient.getTransactionHistory({
+    includeMetadata: true,
+    page,
+    filter: {
+      accountAddress,
+      contractAddress,
+      tokenID: tokenId,
+    }
+  })
+
+  return response
 }

@@ -1,6 +1,7 @@
 import { ethers } from 'ethers'
-import { TokenBalance } from '@0xsequence/indexer'
+import { TokenBalance, GetTransactionHistoryReturn, Transaction } from '@0xsequence/indexer'
 import { TokenPrice } from '@0xsequence/api'
+import { InfiniteData } from '@tanstack/react-query'
 
 import { vars } from '@0xsequence/design-system'
 
@@ -118,4 +119,16 @@ export const sortBalancesByType = (balances: TokenBalance[]): SortBalancesByType
     erc20Tokens,
     collectibles
   }
+}
+
+export const flattenPaginatedTransactionHistory = (
+  transactionHistoryData: InfiniteData<GetTransactionHistoryReturn> | undefined
+) => {
+  const transactionHistory: Transaction[] = []
+
+  transactionHistoryData?.pages.forEach(page => {
+    transactionHistory.push(...page.transactions)
+  })
+
+  return transactionHistory
 }

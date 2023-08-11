@@ -145,6 +145,7 @@ export const fetchPaperSecret = async ({
 }: FetchPaperSecretArgs) => {
   const { network, apiClient } = await getNetworkConfigAndClients(chainId) 
 
+  // @ts-ignore-next-line
   const chainName = getPaperNetworkName(network)
 
   const paramsJson = JSON.stringify({

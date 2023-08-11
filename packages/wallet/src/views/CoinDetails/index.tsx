@@ -10,7 +10,8 @@ import { NetworkBadge } from '../../shared/NetworkBadge'
 import {
   useCoinBalance,
   useSettings,
-  useCoinPrices
+  useCoinPrices,
+  useTransactionHistory
 } from '../../hooks'
 import { HEADER_HEIGHT } from '../../constants'
 import {
@@ -19,7 +20,8 @@ import {
   getNetworkConfigAndClients,
   getFiatCurrencyById,
   computeBalanceFiat,
-  formatDisplay
+  formatDisplay,
+  flattenPaginatedTransactionHistory
 } from '../../utils'
 
 export interface CoinDetailsProps {
@@ -31,11 +33,26 @@ export const CoinDetails = ({
   contractAddress,
   chainId
 }: CoinDetailsProps) => {
+
   const { fiatCurrency } = useSettings()
 
   const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
   
   const { address: accountAddress } = useAccount()
+
+  const {
+    data: dataTransactionHistory,
+    isLoading: isLoadingTransactionHistory,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useTransactionHistory({
+    chainId,
+    accountAddress: accountAddress || '',
+    contractAddress,
+  })
+
+  const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory)
 
   const { data: dataCoinBalance , isLoading: isLoadingCoinBalance } = useCoinBalance({
     accountAddress: accountAddress || '',

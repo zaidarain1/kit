@@ -1,6 +1,6 @@
 import { TokenBalance } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
 import {
   fetchBalances,
   GetTokenBalancesArgs,
@@ -14,7 +14,9 @@ import {
   getCollectibleBalance,
   GetCollectibleBalanceArgs,
   getCollectiblePrices,
-  GetCollectiblePricesArgs
+  GetCollectiblePricesArgs,
+  getTransactionHistory,
+  GetTransactionHistoryArgs,
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -101,3 +103,25 @@ export const useCollectibleBalance = (args: GetCollectibleBalanceArgs) => (
       staleTime: 5 * time.oneMinute,
       enabled: args.tokens.length > 0 
     }))
+
+  export const useTransactionHistory = (
+    arg: Omit<GetTransactionHistoryArgs, 'page'> & { disabled?: boolean }
+  ) =>
+    useInfiniteQuery({
+      queryKey: ['transactionHistory', arg],
+      queryFn: ({ pageParam }: { pageParam?: number }) => {
+        return getTransactionHistory({
+          ...(arg as Omit<GetTransactionHistoryArgs, 'page'> ),
+          ...(pageParam && { page: { page: pageParam } }),
+        })
+      },
+      getNextPageParam: ({ page }) => {
+        // Note: must return undefined instead of null to stop the infinite scroll
+        if (!page.more) return undefined
+  
+        return (page?.page || 0) + 1
+      },
+      retry: true,
+      staleTime: 10 * time.oneMinute,
+      enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
+    })

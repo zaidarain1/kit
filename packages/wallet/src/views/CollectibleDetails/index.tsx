@@ -11,12 +11,14 @@ import {
   getNetworkConfigAndClients,
   getFiatCurrencyById,
   computeBalanceFiat,
-  formatDisplay
+  formatDisplay,
+  flattenPaginatedTransactionHistory
 } from '../../utils'
 import {
   useCollectiblePrices,
   useCollectibleBalance,
-  useSettings
+  useSettings,
+  useTransactionHistory
 } from '../../hooks'
 import { CollectibleTileImage } from '../../shared/CollectibleTileImage'
 import { HEADER_HEIGHT } from '../../constants'
@@ -35,6 +37,21 @@ export const CollectibleDetails = ({
   const { address: accountAddress } = useAccount()
   const { fiatCurrency } = useSettings()
   const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
+
+  const {
+    data: dataTransactionHistory,
+    isLoading: isLoadingTransactionHistory,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useTransactionHistory({
+    chainId,
+    accountAddress: accountAddress || '',
+    contractAddress,
+    tokenId
+  })
+
+  const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory)
 
   const { data: dataCollectibleBalance, isLoading: isLoadingCollectibleBalance } = useCollectibleBalance({
     accountAddress: accountAddress || '',
