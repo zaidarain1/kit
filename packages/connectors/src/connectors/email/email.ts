@@ -21,10 +21,6 @@ export const email = ({ chains, options = {} }: EmailOptions) => ({
   createConnector: () => {
     const email = localStorage.getItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY)
 
-    if (!email) {
-      console.error('Email not found in local storage')
-    }
-
     const connector = new SocialConnector({
       chains,
       options: {

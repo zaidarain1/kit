@@ -201,3 +201,52 @@ export const fetchBalancesAssetsSummary = async ({ accountAddress, chainId }: Ge
     return []
   }
 }
+
+export interface GetCollectibleBalanceArgs {
+  accountAddress: string,
+  chainId: number,
+  collectionAddress: string
+  tokenId: string
+}
+
+export const getCollectibleBalance = async ({
+  accountAddress,
+  chainId,
+  collectionAddress,
+  tokenId
+}: GetCollectibleBalanceArgs) => {
+  const { indexerClient } = await getNetworkConfigAndClients(chainId) 
+
+  const res = await indexerClient.getTokenBalances({
+    accountAddress,
+    includeMetadata: true,
+    contractAddress: collectionAddress,
+    tokenID: tokenId
+  })
+  const tokenBalance = res.balances[0]
+
+  return tokenBalance
+}
+
+
+export interface GetCollectiblePricesArgs {
+  tokens: Token[]
+}
+
+export const getCollectiblePrices = async ({ tokens }: GetCollectiblePricesArgs) => {
+  try {
+    if (tokens.length === 0) return []
+    const chainId = tokens[0].chainId
+  
+    const { apiClient } = await getNetworkConfigAndClients(chainId)
+  
+    const res = await apiClient.getCollectiblePrices({
+      tokens
+    })
+
+    return res?.tokenPrices || []
+  } catch(e) {
+    console.error(e)
+    return
+  }
+}

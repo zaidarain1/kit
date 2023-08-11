@@ -1,0 +1,142 @@
+import React from 'react'
+import { ethers } from 'ethers'
+import { useAccount } from 'wagmi'
+import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
+
+import {
+  getNativeTokenInfoByChainId,
+  compareAddress,
+  getNetworkConfigAndClients,
+  getFiatCurrencyById,
+  computeBalanceFiat,
+  formatDisplay
+} from '../../utils'
+
+import {
+  useCollectiblePrices,
+  useCollectibleBalance,
+  useSettings
+} from '../../hooks'
+import { CollectibleTileImage } from '../../shared/CollectibleTileImage'
+import { HEADER_HEIGHT } from '../../constants'
+
+export interface CollectibleDetailsProps {
+  contractAddress: string
+  chainId: number
+  tokenId: string
+}
+
+export const CollectibleDetails = ({
+  contractAddress,
+  chainId,
+  tokenId,
+}: CollectibleDetailsProps) => {
+  const { address: accountAddress } = useAccount()
+  const { fiatCurrency } = useSettings()
+  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
+
+  const { data: dataCollectibleBalance, isLoading: isLoadingCollectibleBalance } = useCollectibleBalance({
+    accountAddress: accountAddress || '',
+    collectionAddress: contractAddress,
+    chainId,
+    tokenId,
+  })
+
+  const { data: dataCollectiblePrices, isLoading: isLoadingCollectiblePrices } = useCollectiblePrices({
+    tokens: [{
+      chainId,
+      contractAddress,
+      tokenId
+    }]
+  })
+
+  console.log('dataCoinPrices...', dataCollectiblePrices)
+
+  if (isLoadingCollectibleBalance) {
+    return null
+  }
+
+  const onClickSend = () => {
+    console.log('clicked send')
+  }
+
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
+  const collectionLogo = dataCollectibleBalance?.contractInfo?.logoURI
+  const collectionName = dataCollectibleBalance?.contractInfo?.name
+
+  const decimals = dataCollectibleBalance?.tokenMetadata?.decimals || 0
+  const rawBalance = dataCollectibleBalance?.balance || '0'
+  const balance = ethers.utils.formatUnits(rawBalance, decimals)
+  const formattedBalance = formatDisplay(Number(balance))
+
+  const valueFiat = dataCollectibleBalance ? computeBalanceFiat(dataCollectibleBalance, dataCollectiblePrices || []) : '0'
+  
+  return (
+    <Box style={{ paddingTop: HEADER_HEIGHT }}>
+      <Box flexDirection="column" gap="10" padding="5" paddingTop="3" style={{ marginTop: '-20px' }}>
+        <Box gap="3" alignItems="center" justifyContent="center" flexDirection="column">
+          <Box flexDirection="row" gap="2" justifyContent="center" alignItems="center">
+            <Image
+              borderRadius="circle"
+              width="8"
+              src={collectionLogo}
+              alt="collection logo"
+              style={{
+                objectFit: 'cover'
+              }}
+            />
+            <Box gap="1" flexDirection="row" justifyContent="center" alignItems="center">
+              <Text fontWeight="bold" fontSize="small">{collectionName}</Text>
+              <Image width="3" src={nativeTokenInfo.logoURI} alt="collection logo" />
+            </Box>
+          </Box>
+          <Box flexDirection="column" justifyContent="center" alignItems="center">
+            <Text
+              color="text100"
+              fontWeight="bold"
+              fontSize="large"
+            >
+              {dataCollectibleBalance?.tokenMetadata?.name}
+            </Text>
+            <Text color="text50" fontSize="small" fontWeight="medium">
+              {`#${tokenId}`}
+            </Text>
+          </Box>
+        </Box>
+        <Box>
+          <CollectibleTileImage imageUrl={dataCollectibleBalance?.tokenMetadata?.image} />
+        </Box>
+        <Box>
+          {/* balance */}
+          <Box>
+            <Text fontWeight="medium" color="text50" fontSize="normal">Balance</Text>
+            <Box flexDirection="row" alignItems="flex-end" justifyContent="space-between">
+              <Text
+                fontWeight='bold'
+                color='text100'
+                fontSize='xlarge'
+              >
+                {formattedBalance}
+              </Text>
+              {dataCollectiblePrices && dataCollectiblePrices[0].price?.value &&(
+                <Text fontWeight="medium" color="text50" fontSize="normal">{`${fiatCurrencyInfo.symbol}${valueFiat}`}</Text>
+              )}
+            </Box>
+          </Box>
+          <Button
+            marginTop="4"
+            width="full"
+            variant="primary"
+            leftIcon={SendIcon}
+            label="Send"
+            onClick={onClickSend}
+          />
+        </Box>
+        <Box>
+          <Text fontSize="normal" color="text50" fontWeight="medium">This week</Text>
+          <Box>TODO: history</Box>
+        </Box>
+      </Box>
+    </Box>
+  )
+}

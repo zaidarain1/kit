@@ -79,7 +79,10 @@ export const computeBalanceFiat = (balance: TokenBalance, prices: TokenPrice[]):
     return '0.00';
   }
   const priceFiat = priceForToken.price?.value || 0
-  const decimals = balance.contractInfo?.decimals || 18
+  let decimals = balance.contractInfo?.decimals || 18
+  if (balance.contractType === 'ERC721' || balance.contractType === 'ERC1155') {
+    decimals = balance.tokenMetadata?.decimals || 0
+  }
   const valueFormatted = ethers.utils.formatUnits(balance.balance, decimals)
   const usdValue = parseFloat(valueFormatted) * priceFiat
   totalUsd += usdValue

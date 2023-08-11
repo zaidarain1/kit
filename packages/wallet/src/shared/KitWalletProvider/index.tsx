@@ -44,6 +44,18 @@ const DEFAULT_LOCATION: Navigation = {
 //   }
 // }
 
+// const DEFAULT_LOCATION: Navigation = {
+//   location: 'collectible-details',
+//   params: {
+//     contractAddress: '0x624e4fa6980afcf8ea27bfe08e2fb5979b64df1c',
+//     chainId: 137,
+//     tokenId: '14641',
+//     backLocation: {
+//       location: 'home'
+//     }
+//   }
+// }
+
 export const KitWalletProvider = ({ children }: KitWalletProvider) => {
   const { theme } = useTheme()
   
@@ -58,8 +70,7 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
   const [hideCollectibles, setHideCollectibles] = useState<boolean>(false)
   const [fiatCurrency, setFiatCurrency] = useState<FiatCurrency>('USD')
 
-  const isHome = navigation.location === 'home'
-  const displayScrollbar = isHome
+  const displayScrollbar = navigation.location === 'home' || navigation.location === 'collectible-details' || navigation.location === 'coin-details'
 
   const queryClient = new QueryClient()
 

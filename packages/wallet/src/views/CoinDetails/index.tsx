@@ -66,7 +66,6 @@ export const CoinDetails = ({
   const formattedBalance = ethers.utils.formatUnits(dataCoinBalance?.balance || '0', decimals)
   const balanceDisplayed = formatDisplay(formattedBalance)
 
-  
   const coinBalanceFiat = dataCoinBalance? computeBalanceFiat(dataCoinBalance, dataCoinPrices || []) : '0'
 
   const onClickSend = () => {

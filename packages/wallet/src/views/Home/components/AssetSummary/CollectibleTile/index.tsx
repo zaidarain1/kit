@@ -1,7 +1,7 @@
 import React from 'react'
 import { TokenBalance } from '@0xsequence/indexer'
 
-import { CollectibleTileContent } from './CollectibleTileContent'
+import { CollectibleTileImage } from '../../../../../shared/CollectibleTileImage'
 
 interface CollectibleTileProps {
   balance: TokenBalance
@@ -12,6 +12,6 @@ export const CollectibleTile = ({
 }: CollectibleTileProps) => {
 
   return (
-    <CollectibleTileContent balance={balance} />
+    <CollectibleTileImage imageUrl={balance?.tokenMetadata?.image} />
   )
 }

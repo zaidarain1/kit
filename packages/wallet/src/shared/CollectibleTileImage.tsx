@@ -1,15 +1,13 @@
 import React from 'react'
-import { Box, Card, Image } from '@0xsequence/design-system'
-import { TokenBalance } from '@0xsequence/indexer'
+import { Card, Image } from '@0xsequence/design-system'
 
-interface CollectibleTileContentProps {
-  balance: TokenBalance
+interface CollectibleTileImageProps {
+  imageUrl?: string
 }
 
-export const CollectibleTileContent = ({
-  balance
-}: CollectibleTileContentProps) => {
-  const imageUrl = balance?.tokenMetadata?.image
+export const CollectibleTileImage = ({
+  imageUrl
+}: CollectibleTileImageProps) => {
 
   return (
       <Card

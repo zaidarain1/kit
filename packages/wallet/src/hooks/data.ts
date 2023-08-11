@@ -11,6 +11,10 @@ import {
   fetchBalancesAssetsSummary,
   getNativeToken,
   getTokenBalances,
+  getCollectibleBalance,
+  GetCollectibleBalanceArgs,
+  getCollectiblePrices,
+  GetCollectiblePricesArgs
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -79,3 +83,21 @@ export const useCoinBalance = (args: GetTokenBalancesArgs) =>
     staleTime: 1 * time.oneMinute,
     enabled: !!args.chainId && !!args.accountAddress
 })
+
+export const useCollectibleBalance = (args: GetCollectibleBalanceArgs) => (
+  useQuery({
+    queryKey: ['collectibleBalance', args],
+    queryFn: () => getCollectibleBalance(args),
+    retry: true,
+    staleTime: 5 * time.oneMinute,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress && !!args.tokenId
+  }))
+
+  export const useCollectiblePrices = (args: GetCollectiblePricesArgs) => (
+    useQuery({
+      queryKey: ['useCollectiblePrices', args],
+      queryFn: () => getCollectiblePrices(args),
+      retry: true,
+      staleTime: 5 * time.oneMinute,
+      enabled: args.tokens.length > 0 
+    }))
