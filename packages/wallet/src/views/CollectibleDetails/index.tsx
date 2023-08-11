@@ -3,6 +3,8 @@ import { ethers } from 'ethers'
 import { useAccount } from 'wagmi'
 import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
 
+import { CollectibleDetailsSkeleton } from './Skeleton'
+
 import {
   getNativeTokenInfoByChainId,
   compareAddress,
@@ -11,7 +13,6 @@ import {
   computeBalanceFiat,
   formatDisplay
 } from '../../utils'
-
 import {
   useCollectiblePrices,
   useCollectibleBalance,
@@ -50,10 +51,12 @@ export const CollectibleDetails = ({
     }]
   })
 
-  console.log('dataCoinPrices...', dataCollectiblePrices)
+  const isLoading = isLoadingCollectibleBalance || isLoadingCollectiblePrices
 
-  if (isLoadingCollectibleBalance) {
-    return null
+  if (isLoading) {
+    return (
+      <CollectibleDetailsSkeleton />
+    )
   }
 
   const onClickSend = () => {
@@ -62,7 +65,7 @@ export const CollectibleDetails = ({
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
   const collectionLogo = dataCollectibleBalance?.contractInfo?.logoURI
-  const collectionName = dataCollectibleBalance?.contractInfo?.name
+  const collectionName = dataCollectibleBalance?.contractInfo?.name || 'Unknown Collection'
 
   const decimals = dataCollectibleBalance?.tokenMetadata?.decimals || 0
   const rawBalance = dataCollectibleBalance?.balance || '0'
@@ -73,7 +76,7 @@ export const CollectibleDetails = ({
   
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
-      <Box flexDirection="column" gap="10" padding="5" paddingTop="3" style={{ marginTop: '-20px' }}>
+      <Box flexDirection="column" gap="10" padding="5" paddingTop="0" style={{ marginTop: '-20px' }}>
         <Box gap="3" alignItems="center" justifyContent="center" flexDirection="column">
           <Box flexDirection="row" gap="2" justifyContent="center" alignItems="center">
             <Image
@@ -96,7 +99,7 @@ export const CollectibleDetails = ({
               fontWeight="bold"
               fontSize="large"
             >
-              {dataCollectibleBalance?.tokenMetadata?.name}
+              {dataCollectibleBalance?.tokenMetadata?.name || 'Unknown Collectible'}
             </Text>
             <Text color="text50" fontSize="small" fontWeight="medium">
               {`#${tokenId}`}

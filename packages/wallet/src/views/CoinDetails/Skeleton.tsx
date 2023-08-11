@@ -15,7 +15,7 @@ export const CoinDetailsSkeleton = ({
 }: CoinDetailsSkeletonProps) => {
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
-      <Box padding="5" paddingTop="3" marginBottom="10">
+      <Box flexDirection="column" gap="10" padding="5" paddingTop="0" style={{ marginTop: '-20px' }}>
         <Box marginBottom="10" gap="2" alignItems="center" justifyContent="center" flexDirection="column">
           <Skeleton width="32px" height="32px" />
           <Skeleton height="24px" width="70px" />

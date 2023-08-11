@@ -74,7 +74,7 @@ export const CoinDetails = ({
 
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
-      <Box padding="5" paddingTop="3" marginBottom="10">
+      <Box flexDirection="column" gap="10" padding="5" paddingTop="0" style={{ marginTop: '-20px' }}>
         <Box marginBottom="10" gap="2" alignItems="center" justifyContent="center" flexDirection="column">
           <Image width="8" src={logo} alt="logo" />
           <Text
