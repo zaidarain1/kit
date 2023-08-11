@@ -6,7 +6,7 @@ import { TokenBalance } from '@0xsequence/indexer'
 import { CoinTileContent } from './CoinTileContent'
 import { CoinIcon } from '../../../../../shared/CoinIcon'
 import {
-  computeBalance,
+  computeBalanceFiat,
   formatDisplay,
   getNativeTokenInfoByChainId,
   getPercentagePriceChange,
@@ -48,7 +48,7 @@ export const CoinTile = ({
   if (isNativeToken) {
     const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
 
-    const computedBalance = computeBalance(balance, dataCoinPrices)
+    const computedBalance = computeBalanceFiat(balance, dataCoinPrices)
     const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
     const formattedBalance = ethers.utils.formatUnits(balance.balance, nativeTokenInfo.decimals)
     const balanceDisplayed = formatDisplay(formattedBalance)
@@ -65,7 +65,7 @@ export const CoinTile = ({
     )
   }
 
-  const computedBalance = computeBalance(balance, dataCoinPrices)
+  const computedBalance = computeBalanceFiat(balance, dataCoinPrices)
   const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
   
   const decimals = balance.contractInfo?.decimals ?? 18

@@ -8,7 +8,8 @@ import sampleSize from 'lodash/sampleSize'
 
 export interface GetTokenBalancesArgs {
   accountAddress: string,
-  chainId: number
+  chainId: number,
+  contractAddress?: string
 }
 
 export const getNativeToken = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
@@ -34,11 +35,19 @@ export const getNativeToken = async ({ accountAddress, chainId }: GetTokenBalanc
   }
 }
 
-export const getTokenBalances = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
+export const getTokenBalances = async ({
+  accountAddress,
+  chainId,
+  contractAddress
+}: GetTokenBalancesArgs) => {
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
-    const res = await indexerClient.getTokenBalances({ accountAddress, includeMetadata: true})
+    const res = await indexerClient.getTokenBalances({
+      accountAddress,
+      includeMetadata: true,
+      ...(contractAddress ? { contractAddress } : {})
+    })
   
     return res?.balances || []
   } catch(e) {

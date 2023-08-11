@@ -8,7 +8,7 @@ export const getChainColor = (
     case ChainId.MAINNET:
       return mode === 'light' ? '#0087FF' : '#C6D6FE'
     case ChainId.POLYGON:
-      return mode === 'light' ? '#8E4DC5' : '#8564E6'
+      return mode === 'light' ? '#C7A6FF' : '#C7A6FF'
     case ChainId.ARBITRUM:
       return mode === 'light' ? '#52A7E6' : '#52A7E6'
     case ChainId.OPTIMISM:
@@ -36,7 +36,7 @@ export const getChainBGColor = (
     case ChainId.MAINNET: // #C6D6FE
       return mode === 'light' ? '#E7EDFF' : '#002546'
     case ChainId.POLYGON:
-      return mode === 'light' ? '#F9F1FE' : '#2D1654'
+      return mode === 'light' ? '#350881' : '#350881'
     case ChainId.ARBITRUM:
       return mode === 'light' ? '#EDF7FF' : '#0C3754'
     case ChainId.OPTIMISM:

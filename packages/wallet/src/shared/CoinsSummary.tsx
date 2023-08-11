@@ -5,7 +5,7 @@ import { useAccount, useNetwork } from 'wagmi'
 
 import { CoinRow, CoinRowSkeleton } from './CoinRow'
 
-import { getNativeTokenInfoByChainId, getPercentagePriceChange, computeBalance } from '../utils'
+import { getNativeTokenInfoByChainId, getPercentagePriceChange, computeBalanceFiat } from '../utils'
 import { useBalances, useNavigation, useCoinPrices } from '../hooks'
 
 export const CoinsSummary = () => {
@@ -77,13 +77,13 @@ export const CoinsSummary = () => {
             name={nativeTokenInfo.name}
             symbol={nativeTokenInfo.symbol}
             balance={nativeTokenBalance?.balance || '0'}
-            fiatValue={computeBalance(nativeTokenBalance, coinPrices)}
+            fiatValue={computeBalanceFiat(nativeTokenBalance, coinPrices)}
             priceChangePercentage={getPercentagePriceChange(nativeTokenBalance, coinPrices)}
           />
         )}
         {erc20Tokens && (
           erc20TokensBalances.sort((a, b) => {
-            const isHigherFiat = Number(computeBalance(b, coinPrices)) - Number(computeBalance(a, coinPrices))
+            const isHigherFiat = Number(computeBalanceFiat(b, coinPrices)) - Number(computeBalanceFiat(a, coinPrices))
             return isHigherFiat
           })
           .slice(0, 1).map(token => (
@@ -94,7 +94,7 @@ export const CoinsSummary = () => {
               name={token.contractInfo?.name || ''}
               symbol={token.contractInfo?.symbol || ''}
               balance={token.balance}
-              fiatValue={computeBalance(token, coinPrices)}
+              fiatValue={computeBalanceFiat(token, coinPrices)}
               priceChangePercentage={getPercentagePriceChange(token, coinPrices)}
             />
           ))

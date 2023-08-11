@@ -71,7 +71,7 @@ export const getPercentagePriceChange = (balance: TokenBalance, prices: TokenPri
   return price24HourChange
 }
 
-export const computeBalance = (balance: TokenBalance, prices: TokenPrice[]): string => {
+export const computeBalanceFiat = (balance: TokenBalance, prices: TokenPrice[]): string => {
   let totalUsd = 0
 
   const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))

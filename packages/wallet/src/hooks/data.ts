@@ -1,3 +1,5 @@
+import { TokenBalance } from '@0xsequence/indexer'
+import { ethers } from 'ethers'
 import { useQuery } from '@tanstack/react-query'
 import {
   fetchBalances,
@@ -6,8 +8,12 @@ import {
   GetCollectionBalanceArgs,
   getCoinPrices,
   GetCoinPricesArgs,
-  fetchBalancesAssetsSummary
+  fetchBalancesAssetsSummary,
+  getNativeToken,
+  getTokenBalances,
 } from '../api/data'
+
+import { compareAddress } from '../utils/helpers'
 
 export const time = {
   oneSecond: 1 * 1000,
@@ -45,12 +51,31 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
       enabled: args.tokens.length > 0 && !disabled
     })
     
-    export const useBalancesAssetsSummary = (args: GetTokenBalancesArgs) => (
-      useQuery({
-        queryKey: ['balancesAssetsSummary', args],
-        queryFn: () => fetchBalancesAssetsSummary(args),
-        retry: true,
-        staleTime: 10 * time.oneMinute,
-        enabled: !!args.chainId && !!args.accountAddress
-      })
-    )
+  export const useBalancesAssetsSummary = (args: GetTokenBalancesArgs) => (
+    useQuery({
+      queryKey: ['balancesAssetsSummary', args],
+      queryFn: () => fetchBalancesAssetsSummary(args),
+      retry: true,
+      staleTime: 10 * time.oneMinute,
+      enabled: !!args.chainId && !!args.accountAddress
+    }))
+
+
+export const useCoinBalance = (args: GetTokenBalancesArgs) =>
+  useQuery({
+    queryKey: ['coinBalance', args],
+    queryFn: (): Promise<TokenBalance> => {
+      if (compareAddress(args?.contractAddress || '', ethers.constants.AddressZero)) {
+        const response = getNativeToken({
+          accountAddress: args.accountAddress,
+          chainId: args.chainId,
+        }).then(response => response[0])
+        return response
+      }
+      const response = getTokenBalances(args).then(response => response[0])
+      return response
+    },
+    retry: true,
+    staleTime: 1 * time.oneMinute,
+    enabled: !!args.chainId && !!args.accountAddress
+})
