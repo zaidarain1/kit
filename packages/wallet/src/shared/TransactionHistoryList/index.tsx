@@ -1,7 +1,10 @@
 import React from 'react'
 import { Transaction } from '@0xsequence/indexer'
 
-import { Box, Text } from '@0xsequence/design-system'
+import { TransactionHistoryItem } from './TransactionHistoryItem'
+import { Box } from '@0xsequence/design-system'
+
+import { TransactionHistorySkeleton } from './TransactionHistorySkeleton'
 
 interface TransactionHistoryListProps {
   transactions: Transaction[]
@@ -30,13 +33,27 @@ export const TransactionHistoryList = ({
     month: [],
     year: []
   }
+  
+  if (isLoading) {
+    return (
+      <Box
+        flexDirection="column"
+        gap="2"
+      >
+        <TransactionHistorySkeleton />
+      </Box>
+    )
+  }
 
   return (
-    <Box>
+    <Box
+      flexDirection="column"
+      gap="2"
+    >
       {transactions.map((transaction) => {
         return (
           <Box key={transaction.txnHash}>
-            <Text>{transaction.txnHash}</Text>
+            <TransactionHistoryItem transaction={transaction} />
           </Box>
         )
       })}

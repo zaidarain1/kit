@@ -30,7 +30,7 @@ export type KitWalletProvider = {
 }
 
 const DEFAULT_LOCATION: Navigation = {
-  location: 'home',
+  location: 'history',
 }
 
 // const DEFAULT_LOCATION: Navigation = {
@@ -70,7 +70,11 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
   const [hideCollectibles, setHideCollectibles] = useState<boolean>(false)
   const [fiatCurrency, setFiatCurrency] = useState<FiatCurrency>('USD')
 
-  const displayScrollbar = navigation.location === 'home' || navigation.location === 'collectible-details' || navigation.location === 'coin-details'
+  const displayScrollbar =
+    navigation.location === 'home' ||
+    navigation.location === 'collectible-details' ||
+    navigation.location === 'coin-details' ||
+    navigation.location === 'history'
 
   const queryClient = new QueryClient()
 
