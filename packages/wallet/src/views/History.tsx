@@ -3,6 +3,7 @@ import React from 'react'
 
 import { useNetwork, useAccount } from 'wagmi'
 
+import { InfiniteScroll } from '../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../shared/TransactionHistoryList'
 import { flattenPaginatedTransactionHistory } from '../utils'
 import { useTransactionHistory } from '../hooks'
@@ -26,14 +27,19 @@ export const History = () => {
   const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory)
 
   return (
-    <Box style={{ paddingTop: HEADER_HEIGHT }}>
-      <Box padding="5" paddingTop="3">
-        <TransactionHistoryList
-          transactions={transactionHistory}
-          isLoading={isLoadingTransactionHistory}
-          isFetchingNextPage={isFetchingNextPage}
-          hasNextPage={hasNextPage}
-        />
+    <Box>
+      <Box padding="5" paddingTop="0">
+        <InfiniteScroll
+          onLoad={() => fetchNextPage()}
+          hasMore={hasNextPage}
+        >
+          <TransactionHistoryList
+            transactions={transactionHistory}
+            isLoading={isLoadingTransactionHistory}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+          />
+        </InfiniteScroll>
       </Box>
     </Box>
   )

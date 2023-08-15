@@ -9,7 +9,7 @@ import {
     // injected,
     metamask,
     sequence,
-    walletConnect
+    // walletConnect
   } from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
@@ -51,12 +51,12 @@ function App() {
     email({
       chains
     }), 
-    walletConnect({
-      chains,
-      options: {
-        projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
-      },
-    }),
+    // walletConnect({
+    //   chains,
+    //   options: {
+    //     projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
+    //   },
+    // }),
     metamask({
       chains,
     }),

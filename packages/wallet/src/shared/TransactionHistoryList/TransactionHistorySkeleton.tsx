@@ -21,22 +21,25 @@ export const TransactionHistorySkeleton = () => {
   }
 
   return (
-    <Box flexDirection="column" gap="2">
-      {Array(8).fill(null).map((_, index) => {
-        return (
-          <Box
-            borderRadius="md"
-            padding="4"
-            gap="2"
-            alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
-            background="backgroundSecondary" key={index}
-          >
-            {getTransactionItem()}
-          </Box>
-        )
-      })}
+    <Box flexDirection="column" gap="3">
+      <Skeleton width="70px" height="17px" />
+      <Box flexDirection="column" gap="2">
+        {Array(8).fill(null).map((_, index) => {
+          return (
+            <Box
+              borderRadius="md"
+              padding="4"
+              gap="2"
+              alignItems="center"
+              justifyContent="center"
+              flexDirection="column"
+              background="backgroundSecondary" key={index}
+            >
+              {getTransactionItem()}
+            </Box>
+          )
+        })}
+      </Box>
     </Box>
   )
 }

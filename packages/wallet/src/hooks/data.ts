@@ -112,14 +112,14 @@ export const useCollectibleBalance = (args: GetCollectibleBalanceArgs) => (
       queryFn: ({ pageParam }: { pageParam?: number }) => {
         return getTransactionHistory({
           ...(arg as Omit<GetTransactionHistoryArgs, 'page'> ),
-          ...(pageParam && { page: { page: pageParam } }),
+          ...(pageParam ? { page: { page: pageParam } }: { page: { page: 1 } }),
         })
       },
       getNextPageParam: ({ page }) => {
         // Note: must return undefined instead of null to stop the infinite scroll
         if (!page.more) return undefined
   
-        return (page?.page || 0) + 1
+        return (page?.page || 1)
       },
       retry: true,
       staleTime: 10 * time.oneMinute,

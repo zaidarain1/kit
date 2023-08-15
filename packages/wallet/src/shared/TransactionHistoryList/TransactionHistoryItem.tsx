@@ -90,7 +90,15 @@ export const TransactionHistoryItem = ({
     )
   }
 
-  const getTransfer = (transfer: TxnTransfer)  => {
+  interface GetTransfer {
+    transfer: TxnTransfer
+    isFirstItem: boolean
+  }
+
+  const getTransfer = ({
+    transfer,
+    isFirstItem
+  }: GetTransfer)  => {
     const { amounts } = transfer
     const date = dayjs(transaction.timestamp).format('MMM DD, YYYY')
     return (
@@ -101,22 +109,27 @@ export const TransactionHistoryItem = ({
             <Text fontWeight="medium" fontSize="normal">{getTansactionLabelByType(transfer.transferType)}</Text>
             <Image src={nativeTokenInfo.logoURI} width="3" />
           </Box>
-          <Box>
-            <Text fontWeight="medium" fontSize="normal" color="text50">{date}</Text>
-          </Box>
+          {isFirstItem && (
+            <Box>
+              <Text fontWeight="medium" fontSize="normal" color="text50">{date}</Text>
+            </Box>
+          )}
+
         </Box>
         {amounts.map((amount, index) => {
           const decimals = transfer.contractInfo?.decimals || 0
           const amountValue = ethers.utils.formatUnits(amount, decimals)
           const symbol = transfer.contractInfo?.symbol || ''
-          const tokenLogoUri = transfer.contractInfo?.logoURI || ''
+          const tokenLogoUri = transfer.contractInfo?.logoURI
 
           const fiatConversionRate = coinPrices.find((coinPrice) => compareAddress(coinPrice.token.contractAddress, transfer.contractAddress))?.price?.value
 
           return (
             <Box key={index} flexDirection="row" justifyContent="space-between">
               <Box flexDirection="row" gap="2" justifyContent="center" alignItems="center">
-                <Image src={tokenLogoUri} width="5" alt="token logo" />
+                {tokenLogoUri && (
+                  <Image src={tokenLogoUri} width="5" alt="token logo" />
+                )}
                 {getTransferAmountLabel(formatDisplay(amountValue), symbol, transfer.transferType)}
               </Box>
               {isLoadingCoinPrices && (
@@ -142,11 +155,15 @@ export const TransactionHistoryItem = ({
       gap="2"
       alignItems="center"
       justifyContent="center"
+      flexDirection="column"
     >
       {transfers?.map((transfer, position) => {
         return (
           <Box  key={`${transaction.txnHash}-${position}`} width="full">
-            {getTransfer(transfer)}
+            {getTransfer({
+              transfer,
+              isFirstItem: position === 0
+            })}
           </Box>
         )
       })}
