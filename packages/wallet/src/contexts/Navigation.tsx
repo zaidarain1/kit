@@ -1,4 +1,5 @@
 import React, { createContext } from 'react'
+import { Transaction } from '@0xsequence/indexer'
 
 export interface AllCollectiblesParams {
   collectionAddress: string
@@ -32,6 +33,15 @@ export interface CollectibleDetailsNavigation {
   params: CollectibleDetailsParams
 }
 
+export interface TransactionDetailsParams {
+  transaction: Transaction
+}
+
+export interface TransactionDetailsNavigation {
+  location: 'transaction-details',
+  params: TransactionDetailsParams
+}
+
 export interface BasicNavigation {
   location:
     'home' |
@@ -41,7 +51,6 @@ export interface BasicNavigation {
     'receive' |
     'history' |
     'receive' |
-    'history-details' |
     'settings' |
     'settings-general' |
     'settings-currency' |
@@ -52,7 +61,8 @@ export type Navigation =
   BasicNavigation |
   AllCollectiblesNavigation |
   CoinDetailsNavigation |
-  CollectibleDetailsNavigation
+  CollectibleDetailsNavigation |
+  TransactionDetailsNavigation
 
 type NavigationContext = {
   setNavigation?: (navigation:Navigation) => void,

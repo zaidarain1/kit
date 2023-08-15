@@ -12,7 +12,8 @@ import {
   SettingsMenu,
   SettingsCurrency,
   SettingsNetwork,
-  SettingsGeneral
+  SettingsGeneral,
+  TransactionDetails,
 } from '../../../views'
 import { WalletHeader } from '../../WalletHeader'
 import { NavigationHeader } from '../../NavigationHeader'
@@ -52,7 +53,9 @@ export const getContent = (navigation: Navigation) => {
         contractAddress={navigation.params.contractAddress}
         chainId={navigation.params.chainId}
         tokenId={navigation.params.tokenId}
-      />        
+      />
+    case 'transaction-details':
+      return <TransactionDetails transaction={navigation.params.transaction} />
     case 'home':
     default:
       return <Home />
@@ -126,10 +129,21 @@ export const getHeader = (navigation: Navigation) => {
         return <WalletHeader backLocation={navigation.params.backLocation} />
     case 'collectible-details':
       return <WalletHeader backLocation={navigation.params.backLocation} />
+    case 'transaction-details':
+      return (
+        <NavigationHeader
+          secondaryText=""
+            primaryText=""
+            backLocation={{
+              location: 'history'
+            }}
+        />
+      )
     case 'all-coins':
     case 'all-collections':
     case 'all-collectibles':
     case 'send':
+      
     case 'home':
     default:
       return <WalletHeader />

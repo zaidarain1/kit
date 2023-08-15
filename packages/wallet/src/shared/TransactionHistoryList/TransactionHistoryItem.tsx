@@ -4,13 +4,14 @@ import { Transaction, TxnTransfer, TxnTransferType } from '@0xsequence/indexer'
 import { Box, Text, Image, SendIcon, ReceiveIcon, TransactionIcon, vars } from '@0xsequence/design-system'
 import dayjs from 'dayjs'
 
+import * as sharedStyles from '../../shared/styles.css'
 import { Skeleton } from '../../shared/Skeleton'
-import { useCoinPrices, useSettings } from '../../hooks'
+import { useCoinPrices, useSettings, useNavigation } from '../../hooks'
 import {
   formatDisplay,
   getNativeTokenInfoByChainId,
   compareAddress,
-  getFiatCurrencyById
+  getFiatCurrencyById,
 } from '../../utils'
 
 interface TransactionHistoryItemProps {
@@ -22,6 +23,16 @@ export const TransactionHistoryItem = ({
 }: TransactionHistoryItemProps) => {
   const { fiatCurrency } = useSettings()
   const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
+  const { setNavigation } = useNavigation()
+
+  const onClickTransaction = () => {
+    setNavigation({
+      location: 'transaction-details',
+      params: {
+        transaction
+      }
+    });
+  }
 
   let tokenContractAddresses: string[] = []
     
@@ -46,17 +57,7 @@ export const TransactionHistoryItem = ({
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
 
-  const getTansactionLabelByType = (transferType: TxnTransferType) => {
-    switch(transferType) {
-      case TxnTransferType.SEND:
-        return 'Sent'
-      case TxnTransferType.RECEIVE:
-        return 'Received'
-      case TxnTransferType.UNKNOWN:
-      default:
-        return 'Transacted'
-    }
-  }
+
 
   const getTransactionIconByType = (transferType: TxnTransferType) => {
     switch(transferType) {
@@ -69,6 +70,19 @@ export const TransactionHistoryItem = ({
         return <TransactionIcon style={{ width: '14px' }} />
     }
   }
+
+  const getTansactionLabelByType = (transferType: TxnTransferType) => {
+    switch(transferType) {
+      case TxnTransferType.SEND:
+        return 'Sent'
+      case TxnTransferType.RECEIVE:
+        return 'Received'
+      case TxnTransferType.UNKNOWN:
+      default:
+        return 'Transacted'
+    }
+  }
+  
 
   const getTransferAmountLabel = (amount: string, symbol: string, transferType: TxnTransferType) => {
     let sign = ''
@@ -158,6 +172,8 @@ export const TransactionHistoryItem = ({
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
+      className={sharedStyles.clickable}
+      onClick={() => onClickTransaction()}
     >
       {transfers?.map((transfer, position) => {
         return (

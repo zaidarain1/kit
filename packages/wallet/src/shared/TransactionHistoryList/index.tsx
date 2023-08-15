@@ -6,6 +6,8 @@ import { Box, Spinner, Text } from '@0xsequence/design-system'
 
 import { TransactionHistorySkeleton } from './TransactionHistorySkeleton'
 
+import * as sharedStyles from '../styles.css'
+
 interface TransactionHistoryListProps {
   transactions: Transaction[]
   isLoading: boolean
