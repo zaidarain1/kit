@@ -117,10 +117,12 @@ export const TransactionHistoryItem = ({
 
         </Box>
         {amounts.map((amount, index) => {
-          const decimals = transfer.contractInfo?.decimals || 0
+          const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
+          const isNativeToken = compareAddress(transfer.contractAddress, ethers.constants.AddressZero)
+          const decimals = isNativeToken ? nativeTokenInfo.decimals : transfer.contractInfo?.decimals || 0
           const amountValue = ethers.utils.formatUnits(amount, decimals)
-          const symbol = transfer.contractInfo?.symbol || ''
-          const tokenLogoUri = transfer.contractInfo?.logoURI
+          const symbol = isNativeToken ? nativeTokenInfo.symbol : transfer.contractInfo?.symbol || ''
+          const tokenLogoUri = isNativeToken ? nativeTokenInfo.logoURI : transfer.contractInfo?.logoURI
 
           const fiatConversionRate = coinPrices.find((coinPrice) => compareAddress(coinPrice.token.contractAddress, transfer.contractAddress))?.price?.value
 

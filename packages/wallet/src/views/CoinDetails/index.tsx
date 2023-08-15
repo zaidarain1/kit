@@ -6,7 +6,9 @@ import { useAccount } from 'wagmi'
 
 import { CoinDetailsSkeleton } from './Skeleton'
 
+import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { NetworkBadge } from '../../shared/NetworkBadge'
+import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import {
   useCoinBalance,
   useSettings,
@@ -124,8 +126,17 @@ export const CoinDetails = ({
           onClick={onClickSend}
         />
         <Box>
-          <Text fontSize="normal" color="text50" fontWeight="medium">This week</Text>
-          <Box>TODO: history</Box>
+          <InfiniteScroll
+            onLoad={() => fetchNextPage()}
+            hasMore={hasNextPage}
+          >
+            <TransactionHistoryList
+              transactions={transactionHistory}
+              isLoading={isLoadingTransactionHistory}
+              isFetchingNextPage={isFetchingNextPage}
+              hasNextPage={hasNextPage}
+            />
+          </InfiniteScroll>
         </Box>
       </Box>
     </Box>

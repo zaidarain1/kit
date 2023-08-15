@@ -7,8 +7,6 @@ import { CollectibleDetailsSkeleton } from './Skeleton'
 
 import {
   getNativeTokenInfoByChainId,
-  compareAddress,
-  getNetworkConfigAndClients,
   getFiatCurrencyById,
   computeBalanceFiat,
   formatDisplay,
@@ -20,6 +18,8 @@ import {
   useSettings,
   useTransactionHistory
 } from '../../hooks'
+import { InfiniteScroll } from '../../shared/InfiniteScroll'
+import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import { CollectibleTileImage } from '../../shared/CollectibleTileImage'
 import { HEADER_HEIGHT } from '../../constants'
 
@@ -153,8 +153,17 @@ export const CollectibleDetails = ({
           />
         </Box>
         <Box>
-          <Text fontSize="normal" color="text50" fontWeight="medium">This week</Text>
-          <Box>TODO: history</Box>
+          <InfiniteScroll
+            onLoad={() => fetchNextPage()}
+            hasMore={hasNextPage}
+          >
+            <TransactionHistoryList
+              transactions={transactionHistory}
+              isLoading={isLoadingTransactionHistory}
+              isFetchingNextPage={isFetchingNextPage}
+              hasNextPage={hasNextPage}
+            />
+          </InfiniteScroll>
         </Box>
       </Box>
     </Box>

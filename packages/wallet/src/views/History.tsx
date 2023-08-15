@@ -27,8 +27,8 @@ export const History = () => {
   const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory)
 
   return (
-    <Box>
-      <Box padding="5" paddingTop="0">
+    <Box style={{ paddingTop: HEADER_HEIGHT }}>
+      <Box padding="5" paddingTop="3">
         <InfiniteScroll
           onLoad={() => fetchNextPage()}
           hasMore={hasNextPage}

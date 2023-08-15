@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Button, SendIcon, Text } from '@0xsequence/design-system'
 
 import { Skeleton } from '../../shared/Skeleton'
+import { TransactionHistorySkeleton } from '../../shared/TransactionHistoryList/TransactionHistorySkeleton'
 
 import { HEADER_HEIGHT } from '../../constants'
 
@@ -36,7 +37,7 @@ export const CollectibleDetailsSkeleton = () => {
         </Box>
         <Box>
           <Text fontSize="normal" color="text50" fontWeight="medium">This week</Text>
-          <Box>TODO: history</Box>
+          <TransactionHistorySkeleton />
         </Box>
       </Box>
     </Box>

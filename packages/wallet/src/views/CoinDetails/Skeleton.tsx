@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Button, SendIcon, Text } from '@0xsequence/design-system'
 
+import { TransactionHistorySkeleton } from '../../shared/TransactionHistoryList/TransactionHistorySkeleton'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { Skeleton } from '../../shared/Skeleton'
 
@@ -39,8 +40,7 @@ export const CoinDetailsSkeleton = ({
           onClick={() => {}}
         />
         <Box>
-          <Text fontSize="normal" color="text50" fontWeight="medium">This week</Text>
-          <Box>TODO: history</Box>
+          <TransactionHistorySkeleton />
         </Box>
       </Box>
     </Box>
