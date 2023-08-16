@@ -1,12 +1,24 @@
 import React from 'react'
+import { ethers } from 'ethers'
+import { Token } from '@0xsequence/api'
 import { Transaction, TxnTransfer } from '@0xsequence/indexer'
-import { Box, Button, Image, LinkIcon, Divider, Text } from '@0xsequence/design-system'
+import {
+  ArrowRightIcon,
+  Box,
+  Button,
+  Divider,
+  GradientAvatar,
+  Image,
+  LinkIcon,
+  Text,
+ } from '@0xsequence/design-system'
 import dayjs from 'dayjs'
 
+import { DefaultIcon } from '../../shared/DefaultIcon'
 import { CopyButton } from '../../shared/CopyButton'
 import { NetworkBadge } from '../../shared/NetworkBadge'
-import { HEADER_HEIGHT } from '../../constants'
-import { getNativeTokenInfoByChainId } from '../../utils'
+import { compareAddress, formatDisplay, getNativeTokenInfoByChainId } from '../../utils'
+import { useCoinPrices, useCollectiblePrices } from '../../hooks'
 
 interface TransactionDetailProps {
   transaction: Transaction
@@ -15,6 +27,55 @@ interface TransactionDetailProps {
 export const TransactionDetails = ({
   transaction
 }: TransactionDetailProps) => {
+  const coins: Token[] = []
+  const collectibles: Token[]= []
+  transaction.transfers?.forEach(transfer => {
+    if (transfer.contractInfo?.type === 'ERC721' || transfer.contractInfo?.type === 'ERC1155') {
+      transfer.tokenIds?.forEach(tokenId => {
+        const foundCollectible = collectibles.find(collectible => (
+          collectible.chainId === transaction.chainId &&
+          compareAddress(collectible.contractAddress, transfer.contractInfo?.address || '') &&
+          collectible.tokenId === tokenId
+        ))
+        if (!foundCollectible) {
+          collectibles.push({
+            chainId: transaction.chainId,
+            contractAddress: transfer.contractInfo?.address || '',
+            tokenId,
+          })
+        }
+      })
+    } else {
+      const contractAddress = transfer?.contractInfo?.address || ethers.constants.AddressZero
+      const foundCoin = coins.find(coin => (
+        coin.chainId === transaction.chainId &&
+        compareAddress(coin.contractAddress, contractAddress)
+      ))
+      if (!foundCoin) {
+        coins.push({
+          chainId: transaction.chainId,
+          contractAddress,
+        })
+      }
+    }
+  })
+
+  const { data: coinPricesData, isLoading: coinPricesIsLoading } = useCoinPrices({
+    tokens: coins
+  })
+
+  const { data: collectiblePricesData, isLoading: collectiblePricesIsLoading } = useCollectiblePrices({
+    tokens: collectibles
+  })
+
+  console.log('coin...', coinPricesData)
+  console.log('collecitbles...', collectiblePricesData)
+
+  const arePricesLoading = coinPricesIsLoading || collectiblePricesIsLoading
+
+  // TODO: convert to fiat
+  // TODO: skeleton loaders if loading
+
   const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
 
   const date = dayjs(transaction.timestamp).format('ddd MMM DD YYYY, h:m:s a')
@@ -27,13 +88,63 @@ export const TransactionDetails = ({
     transfer: TxnTransfer
   }
   const Transfer = ({ transfer }: TransferProps) => {
+    const recipientAddress = transfer.to
+    const recipientAddressFormatted = recipientAddress.substring(0, 10) + '...' + recipientAddress.substring(transfer.to.length - 4, transfer.to.length )
+    const isNativeToken = compareAddress(transfer?.contractInfo?.address || '', ethers.constants.AddressZero)
+    const logoURI = isNativeToken ? nativeTokenInfo.logoURI : transfer?.contractInfo?.logoURI
+    const decimals = isNativeToken ? nativeTokenInfo.decimals : transfer?.contractInfo?.decimals || 0
+    const symbol = isNativeToken ? nativeTokenInfo.symbol : transfer?.contractInfo?.symbol || ''
+
     return (
       <>
-        {transfer.amounts?.map((amount, index) => (
-          <Box>
-            transfer box
-          </Box>
-        ))}
+        {transfer.amounts?.map((amount, index) => {
+          const formattedBalance = ethers.utils.formatUnits(amount, decimals)
+          const balanceDisplayed = formatDisplay(formattedBalance)          
+          return (
+            <Box key={index} width="full" flexDirection="row" gap="2" justifyContent="space-between" alignItems="center">
+              <Box
+                flexDirection="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                gap="2"
+                height="12"
+                borderRadius="md"
+                background="buttonGlass"
+                padding="2"
+                style={{ flexBasis: '100%' }}
+              >
+                {logoURI ? (
+                  <Image src={logoURI} alt="token logo" style={{ width: '20px' }} />
+                ) : (
+                  <DefaultIcon size={20} />
+                )}
+                <Box flexDirection="column" alignItems="flex-start" justifyContent="center">
+                  <Text fontWeight="bold" fontSize="xsmall" color="text100">
+                    {`${balanceDisplayed} ${symbol}`}
+                  </Text>
+                  <Text fontWeight="bold" fontSize="xsmall" color="text50">
+                    Value Fiat
+                  </Text>
+                </Box>
+              </Box>
+              <ArrowRightIcon color="text50" style={{ width: '16px' }} />
+              <Box
+                flexDirection="row"
+                justifyContent="flex-start"
+                alignItems="center"
+                gap="2"
+                height="12"
+                borderRadius="md"
+                background="buttonGlass"
+                padding="2"
+                style={{ flexBasis: '100%' }}
+              >
+                <GradientAvatar address={recipientAddress} style={{ width: '20px' }} />
+                <Text fontWeight="bold" fontSize="xsmall" color="text100">{recipientAddressFormatted}</Text>
+              </Box>
+            </Box>
+          )
+        })}
       </>
     )
   }
@@ -53,13 +164,29 @@ export const TransactionDetails = ({
         <Text marginBottom="1" fontSize="small" fontWeight="medium" color="text50">{date}</Text>
         <NetworkBadge chainId={transaction.chainId} />
       </Box>
-      <Box width="full" padding="4" background="backgroundSecondary" borderRadius="md">
+      <Box
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        gap="4"
+        width="full"
+        padding="4"
+        background="backgroundSecondary"
+        borderRadius="md"
+      >
         <Box width="full" gap="1" flexDirection="row" alignItems="center" justifyContent="flex-start">
           <Text fontSize="normal" fontWeight="medium" color="text50">Transfer</Text>
           <Image width="3" src={nativeTokenInfo.logoURI} alt="network logo" />
         </Box>
         {transaction.transfers?.map((transfer, index) => (
-          <Box key={`transfer-${index}`}>
+          <Box
+            width="full"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            gap="4"
+            key={`transfer-${index}`}
+          >
             <Transfer transfer={transfer} />
           </Box>
         ))}
