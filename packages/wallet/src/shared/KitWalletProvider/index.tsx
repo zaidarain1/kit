@@ -13,6 +13,7 @@ import { AnimatePresence } from 'framer-motion'
 import { getHeader, getContent } from './utils'
 
 import {
+  History,
   Navigation,
   NavigationContext,
   WalletModalContext,
@@ -38,9 +39,6 @@ const DEFAULT_LOCATION: Navigation = {
 //   params: {
 //     contractAddress: ethers.constants.AddressZero,
 //     chainId: 137,
-//     backLocation: {
-//       location: 'home'
-//     }
 //   }
 // }
 
@@ -50,9 +48,6 @@ const DEFAULT_LOCATION: Navigation = {
 //     contractAddress: '0x624e4fa6980afcf8ea27bfe08e2fb5979b64df1c',
 //     chainId: 137,
 //     tokenId: '14641',
-//     backLocation: {
-//       location: 'home'
-//     }
 //   }
 // }
 
@@ -63,7 +58,8 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
   const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
  
   // Navigation Context
-  const [navigation, setNavigation] = useState<Navigation>(DEFAULT_LOCATION)
+  const [history, setHistory] = useState<History>([])
+  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION
 
   // Settings Context
   const [hideUnlistedTokens, setHideUnlistedTokens] = useState<boolean>(true)
@@ -80,7 +76,7 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
 
   useEffect(() => {
     if (openWalletModal) {
-      setNavigation(DEFAULT_LOCATION)
+      setHistory([])
     }
   }, [openWalletModal])
 
@@ -95,7 +91,7 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
         setFiatCurrency,
       }}>
         <WalletModalContext.Provider value={{ setOpenWalletModal }}>
-          <NavigationContext.Provider value={{ setNavigation, navigation }}>
+          <NavigationContext.Provider value={{ setHistory, history }}>
               <ThemeProvider theme={theme}>
                 <AnimatePresence>
                   {openWalletModal && (

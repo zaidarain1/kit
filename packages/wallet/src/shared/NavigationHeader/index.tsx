@@ -5,7 +5,6 @@ import { HEADER_HEIGHT } from '../../constants'
 import { Navigation } from '../../contexts/Navigation'
 
 interface NavigationHeaderProps {
-  backLocation: Navigation
   primaryText?: string
   secondaryText?: string
 }
@@ -13,12 +12,11 @@ interface NavigationHeaderProps {
 export const NavigationHeader = ({
   secondaryText,
   primaryText,
-  backLocation
 }: NavigationHeaderProps) => {
-  const { setNavigation } = useNavigation()
+  const { goBack, history } = useNavigation()
 
   const onClickBack = () => {
-    setNavigation(backLocation)
+    goBack()
   }
 
   return (
@@ -36,15 +34,17 @@ export const NavigationHeader = ({
         backgroundColor: vars.colors.backgroundPrimary
       }}
     >
-      <IconButton
-        onClick={onClickBack}
-        icon={ChevronLeftIcon}
-        size="sm"
-        style={{ 
-          background: 'rgba(0,0,0,0)',
-          width: '44px',
-        }}
-      />
+      {history.length > 0 && (
+        <IconButton
+          onClick={onClickBack}
+          icon={ChevronLeftIcon}
+          size="sm"
+          style={{ 
+            background: 'rgba(0,0,0,0)',
+            width: '44px',
+          }}
+        />
+      )}
       <Box>
         <Text fontWeight="medium" variant="small" color="text50">
           {secondaryText}

@@ -70,9 +70,6 @@ export const getHeader = (navigation: Navigation) => {
         <NavigationHeader
           secondaryText="Wallet / "
           primaryText="Settings"
-          backLocation={{
-            location: 'home'
-          }}
         />
       )
     case 'settings-general':
@@ -80,9 +77,6 @@ export const getHeader = (navigation: Navigation) => {
         <NavigationHeader
           secondaryText="Wallet / Settings / "
           primaryText="General"
-          backLocation={{
-            location: 'settings'
-          }}
         />
       )
     case 'settings-currency':
@@ -90,9 +84,6 @@ export const getHeader = (navigation: Navigation) => {
         <NavigationHeader
           secondaryText="Wallet / Settings / "
           primaryText="Currency"
-          backLocation={{
-            location: 'settings'
-          }}
         />
       )
     case 'settings-networks':
@@ -100,9 +91,6 @@ export const getHeader = (navigation: Navigation) => {
         <NavigationHeader
           secondaryText="Wallet / Settings / "
             primaryText="Networks"
-            backLocation={{
-              location: 'settings'
-            }}
         />
       )
     case 'receive':
@@ -110,9 +98,6 @@ export const getHeader = (navigation: Navigation) => {
         <NavigationHeader
           secondaryText="Wallet / "
             primaryText="Receive"
-            backLocation={{
-              location: 'home'
-            }}
         />
       )
     case 'history':
@@ -120,23 +105,17 @@ export const getHeader = (navigation: Navigation) => {
         <NavigationHeader
           secondaryText="Wallet / "
             primaryText="History"
-            backLocation={{
-              location: 'home'
-            }}
         />
       )
     case 'coin-details':
-        return <WalletHeader backLocation={navigation.params.backLocation} />
+        return <WalletHeader />
     case 'collectible-details':
-      return <WalletHeader backLocation={navigation.params.backLocation} />
+      return <WalletHeader />
     case 'transaction-details':
       return (
         <NavigationHeader
           secondaryText=""
             primaryText=""
-            backLocation={{
-              location: 'history'
-            }}
         />
       )
     case 'all-coins':

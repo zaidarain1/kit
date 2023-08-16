@@ -15,26 +15,21 @@ import { WalletDropdownContent } from './components/WalletDropdownContent'
 
 import { HEADER_HEIGHT } from '../../constants'
 import { useNavigation } from '../../hooks'
-import { Navigation } from '../../contexts'
 
 interface WalletHeaderProps {
-  backLocation?: Navigation
 }
 
 export const WalletHeader = ({
-  backLocation,
 }: WalletHeaderProps) => {
   const [openWalletDropdown, setOpenWalletDropdown] = useState<boolean>(false)
-  const { setNavigation } = useNavigation()
+  const { goBack, history } = useNavigation()
 
   const onClickAccount = () => {
     setOpenWalletDropdown(true)
   }
 
   const onClickBack = () => {
-    if (backLocation) {
-      setNavigation(backLocation)
-    }
+    goBack()
   }
 
   const onClickSearch = () => {
@@ -58,7 +53,7 @@ export const WalletHeader = ({
             paddingTop: '6px'
           }}
         >
-          {backLocation ? (
+          {(history.length > 0) ? (
             <IconButton
               onClick={onClickBack}
               icon={ChevronLeftIcon}

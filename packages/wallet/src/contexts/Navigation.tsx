@@ -13,7 +13,6 @@ export interface AllCollectiblesNavigation {
 export interface CoinDetailsParams {
   contractAddress: string
   chainId: number
-  backLocation: Navigation
 }
 
 export interface CoinDetailsNavigation {
@@ -25,7 +24,6 @@ export interface CollectibleDetailsParams {
   contractAddress: string
   chainId: number
   tokenId: string
-  backLocation: Navigation
 }
 
 export interface CollectibleDetailsNavigation {
@@ -64,9 +62,13 @@ export type Navigation =
   CollectibleDetailsNavigation |
   TransactionDetailsNavigation
 
+export type History = Navigation[]
+
 type NavigationContext = {
-  setNavigation?: (navigation:Navigation) => void,
-  navigation?: Navigation,
+  setHistory?: (history: History) => void
+  history: History,
 }
 
-export const NavigationContext = createContext<NavigationContext>({})
+export const NavigationContext = createContext<NavigationContext>({
+  history: []
+})

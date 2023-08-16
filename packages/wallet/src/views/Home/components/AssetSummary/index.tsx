@@ -34,9 +34,6 @@ export const AssetSummary = () => {
           contractAddress: balance.contractAddress,
           chainId: balance.chainId,
           tokenId: balance.tokenID,
-          backLocation: {
-            location: 'home',
-          }
         }
       })
     } else if (balance.contractType === 'ERC20') {
@@ -45,9 +42,6 @@ export const AssetSummary = () => {
         params: {
           contractAddress: balance.contractAddress,
           chainId: balance.chainId,
-          backLocation: {
-            location: 'home',
-          }
         }
       })
     } else {
@@ -56,9 +50,6 @@ export const AssetSummary = () => {
         params: {
           contractAddress: balance.contractAddress,
           chainId: balance.chainId,
-          backLocation: {
-            location: 'home',
-          }
         }
       })
     }
