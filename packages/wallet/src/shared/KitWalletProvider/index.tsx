@@ -30,7 +30,7 @@ export type KitWalletProvider = {
 }
 
 const DEFAULT_LOCATION: Navigation = {
-  location: 'history',
+  location: 'home',
 }
 
 // const DEFAULT_LOCATION: Navigation = {

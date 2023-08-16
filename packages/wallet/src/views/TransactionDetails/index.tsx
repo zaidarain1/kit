@@ -17,8 +17,14 @@ import dayjs from 'dayjs'
 import { DefaultIcon } from '../../shared/DefaultIcon'
 import { CopyButton } from '../../shared/CopyButton'
 import { NetworkBadge } from '../../shared/NetworkBadge'
-import { compareAddress, formatDisplay, getNativeTokenInfoByChainId } from '../../utils'
-import { useCoinPrices, useCollectiblePrices } from '../../hooks'
+import { Skeleton } from '../../shared/Skeleton'
+import {
+  compareAddress,
+  formatDisplay,
+  getNativeTokenInfoByChainId,
+  getFiatCurrencyById
+} from '../../utils'
+import { useCoinPrices, useCollectiblePrices, useSettings } from '../../hooks'
 
 interface TransactionDetailProps {
   transaction: Transaction
@@ -27,6 +33,9 @@ interface TransactionDetailProps {
 export const TransactionDetails = ({
   transaction
 }: TransactionDetailProps) => {
+  const { fiatCurrency } = useSettings()
+  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
+
   const coins: Token[] = []
   const collectibles: Token[]= []
   transaction.transfers?.forEach(transfer => {
@@ -68,13 +77,7 @@ export const TransactionDetails = ({
     tokens: collectibles
   })
 
-  console.log('coin...', coinPricesData)
-  console.log('collecitbles...', collectiblePricesData)
-
-  const arePricesLoading = coinPricesIsLoading || collectiblePricesIsLoading
-
-  // TODO: convert to fiat
-  // TODO: skeleton loaders if loading
+  const arePricesLoading = (coins.length > 0 && coinPricesIsLoading) || (collectibles.length > 0 && collectiblePricesIsLoading)
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
 
@@ -99,7 +102,21 @@ export const TransactionDetails = ({
       <>
         {transfer.amounts?.map((amount, index) => {
           const formattedBalance = ethers.utils.formatUnits(amount, decimals)
-          const balanceDisplayed = formatDisplay(formattedBalance)          
+          const balanceDisplayed = formatDisplay(formattedBalance)
+          const isCollectible = transfer.contractType === 'ERC721' || transfer.contractType === 'ERC1155'
+          const fiatPrice = isCollectible ?
+            collectiblePricesData?.find(collectible => (
+              compareAddress(collectible.token.contractAddress, transfer.contractInfo?.address || '') &&
+              collectible.token.tokenId === transfer.tokenIds?.[index] &&
+              collectible.token.chainId === transaction.chainId
+            ))?.price?.value :
+            coinPricesData?.find(coin => (
+              compareAddress(coin.token.contractAddress, transfer.contractInfo?.address || ethers.constants.AddressZero) &&
+              coin.token.chainId === transaction.chainId
+            ))?.price?.value
+
+          const fiatValue = (parseFloat(formattedBalance) * (fiatPrice || 0)).toFixed(2)
+
           return (
             <Box key={index} width="full" flexDirection="row" gap="2" justifyContent="space-between" alignItems="center">
               <Box
@@ -118,13 +135,17 @@ export const TransactionDetails = ({
                 ) : (
                   <DefaultIcon size={20} />
                 )}
-                <Box flexDirection="column" alignItems="flex-start" justifyContent="center">
+                <Box gap="0.5" flexDirection="column" alignItems="flex-start" justifyContent="center">
                   <Text fontWeight="bold" fontSize="xsmall" color="text100">
                     {`${balanceDisplayed} ${symbol}`}
                   </Text>
-                  <Text fontWeight="bold" fontSize="xsmall" color="text50">
-                    Value Fiat
-                  </Text>
+                  {arePricesLoading ? (
+                    <Skeleton width="44px" height="12px"/>
+                  ) : (
+                    <Text fontWeight="bold" fontSize="xsmall" color="text50">
+                      {fiatPrice ? `${fiatCurrencyInfo.symbol}${fiatValue}` : ''}
+                    </Text>
+                  )}
                 </Box>
               </Box>
               <ArrowRightIcon color="text50" style={{ width: '16px' }} />
