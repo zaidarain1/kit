@@ -7,7 +7,6 @@ import { InfiniteScroll } from '../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../shared/TransactionHistoryList'
 import { flattenPaginatedTransactionHistory } from '../utils'
 import { useTransactionHistory } from '../hooks'
-import { HEADER_HEIGHT } from '../constants'
 
 export const History = () => {
   const { chain } = useNetwork() 

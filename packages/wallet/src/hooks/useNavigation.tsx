@@ -3,7 +3,7 @@ import { NavigationContext, Navigation, History } from '../contexts/Navigation'
 
 
 interface UseNavigation {
-  setNavigation: (navigation:Navigation) => void,
+  setNavigation: (navigation: Navigation) => void,
   setHistory?: (history: History) => void
   history: History,
   goBack: () => void
@@ -11,8 +11,6 @@ interface UseNavigation {
 
 export const useNavigation = (): UseNavigation => {
   const {
-    // setNavigation: setNavigationFunction,
-    // navigation,
     setHistory,
     history
   } = useContext(NavigationContext)
@@ -32,7 +30,6 @@ export const useNavigation = (): UseNavigation => {
     newHistory.pop()
     setHistory && setHistory(newHistory)
   }
-
 
   return { setNavigation, history, setHistory, goBack }
 }

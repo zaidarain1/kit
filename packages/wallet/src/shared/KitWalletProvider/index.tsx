@@ -35,6 +35,10 @@ const DEFAULT_LOCATION: Navigation = {
 }
 
 // const DEFAULT_LOCATION: Navigation = {
+//   location: 'search',
+// }
+
+// const DEFAULT_LOCATION: Navigation = {
 //   location: 'coin-details',
 //   params: {
 //     contractAddress: ethers.constants.AddressZero,
@@ -70,7 +74,9 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
     navigation.location === 'home' ||
     navigation.location === 'collectible-details' ||
     navigation.location === 'coin-details' ||
-    navigation.location === 'history'
+    navigation.location === 'history' ||
+    navigation.location === 'search' ||
+    navigation.location === 'search-view-all'
 
   const queryClient = new QueryClient()
 

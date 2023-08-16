@@ -9,6 +9,8 @@ import {
   Receive,
   Send,
   History,
+  SearchWallet,
+  SearchWalletViewAll,
   SettingsMenu,
   SettingsCurrency,
   SettingsNetwork,
@@ -35,6 +37,12 @@ export const getContent = (navigation: Navigation) => {
       return <Receive />
     case 'history':
       return <History />
+    case 'search':
+      return <SearchWallet />
+    case 'search-view-all':
+      return <SearchWalletViewAll
+        defaultTab={navigation.params.defaultTab}
+      />
     case 'settings':
       return <SettingsMenu />
     case 'settings-general':
@@ -65,6 +73,19 @@ export const getContent = (navigation: Navigation) => {
 export const getHeader = (navigation: Navigation) => {
   const { location } = navigation
   switch (location) {
+    case 'search':
+      return (
+        <NavigationHeader
+          primaryText="Search wallet"
+        />
+      )
+    case 'search-view-all':
+      return (
+        <NavigationHeader
+          secondaryText="Search wallet / "
+          primaryText="View all"
+        />
+      )
     case 'settings':
       return (
         <NavigationHeader
@@ -122,7 +143,6 @@ export const getHeader = (navigation: Navigation) => {
     case 'all-collections':
     case 'all-collectibles':
     case 'send':
-      
     case 'home':
     default:
       return <WalletHeader />

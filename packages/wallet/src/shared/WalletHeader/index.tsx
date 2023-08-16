@@ -22,7 +22,7 @@ interface WalletHeaderProps {
 export const WalletHeader = ({
 }: WalletHeaderProps) => {
   const [openWalletDropdown, setOpenWalletDropdown] = useState<boolean>(false)
-  const { goBack, history } = useNavigation()
+  const { goBack, history, setNavigation } = useNavigation()
 
   const onClickAccount = () => {
     setOpenWalletDropdown(true)
@@ -33,7 +33,9 @@ export const WalletHeader = ({
   }
 
   const onClickSearch = () => {
-    console.log('clicked search')
+    setNavigation({
+      location: 'search'
+    })
   }
 
   return (

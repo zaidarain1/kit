@@ -40,6 +40,15 @@ export interface TransactionDetailsNavigation {
   params: TransactionDetailsParams
 }
 
+export interface SearchViewAllParams {
+  defaultTab: 'coins' | 'collectibles'
+}
+
+export interface SearchViewAllNavigation {
+  location: 'search-view-all',
+  params: SearchViewAllParams
+}
+
 export interface BasicNavigation {
   location:
     'home' |
@@ -52,7 +61,8 @@ export interface BasicNavigation {
     'settings' |
     'settings-general' |
     'settings-currency' |
-    'settings-networks', 
+    'settings-networks' |
+    'search'
 }
 
 export type Navigation =
@@ -60,7 +70,8 @@ export type Navigation =
   AllCollectiblesNavigation |
   CoinDetailsNavigation |
   CollectibleDetailsNavigation |
-  TransactionDetailsNavigation
+  TransactionDetailsNavigation |
+  SearchViewAllNavigation
 
 export type History = Navigation[]
 

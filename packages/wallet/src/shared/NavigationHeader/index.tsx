@@ -34,7 +34,7 @@ export const NavigationHeader = ({
         backgroundColor: vars.colors.backgroundPrimary
       }}
     >
-      {history.length > 0 && (
+      {history.length > 0 ? (
         <IconButton
           onClick={onClickBack}
           icon={ChevronLeftIcon}
@@ -44,7 +44,7 @@ export const NavigationHeader = ({
             width: '44px',
           }}
         />
-      )}
+      ) : <Box/>}
       <Box>
         <Text fontWeight="medium" variant="small" color="text50">
           {secondaryText}
