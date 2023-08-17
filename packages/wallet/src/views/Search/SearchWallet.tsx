@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { ethers } from 'ethers'
 import { Box, SearchIcon, Text, TextInput } from '@0xsequence/design-system'
+import Fuse from 'fuse.js'
+import { useAccount, useChainId } from 'wagmi'
+
 import { BalanceItem } from './components/BalanceItem'
 import { WalletLink } from './components/WalletLink'
-import { useAccount, useChainId } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
 import { useBalances, useCoinPrices } from '../../hooks'
-import { compareAddress, computeBalanceFiat } from '../../utils'
+import { compareAddress, computeBalanceFiat, getNativeTokenInfoByChainId } from '../../utils'
 
 export const SearchWallet = () => {
   const [search, setSearch] = useState('')
   const { address: accountAddress } = useAccount()
   const chainId = useChainId()
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
 
   const { data: tokenBalancesData, isLoading: tokenBalancesIsLoading } = useBalances({
     accountAddress: accountAddress || '',
@@ -41,13 +44,46 @@ export const SearchWallet = () => {
     return Number(b.balance) - Number(a.balance)
   })
 
-  const displayedCoinBalances = coinBalances.slice(0, 5)
-  const displayedCollectionBalances = collectionBalances.slice(0, 5)
+  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices
+
+  interface IndexedData {
+    index: number,
+    name: string,
+  }
+  const indexedCollectionBalances: IndexedData[] = collectionBalances.map((balance, index) => {
+    return {
+      index,
+      name: balance.contractInfo?.name || 'Unknown'
+    }
+  })
+
+  const indexedCoinBalances: IndexedData[] = coinBalances.map((balance, index) => {
+    if (compareAddress(balance.contractAddress, ethers.constants.AddressZero)) {
+      return {
+        index,
+        name: nativeTokenInfo.name
+      }
+    } else {
+      return {
+        index,
+        name: balance.contractInfo?.name || 'Unknown'
+      }
+    }
+  })
 
   const coinBalancesAmount = coinBalances.length
   const collectionBalancesAmount = collectionBalances.length
 
-  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices
+  const fuzzySearchCoinBalances = new Fuse(indexedCoinBalances, {
+    keys: ['name'],
+  })
+
+  const fuzzySearchCollections = new Fuse(indexedCollectionBalances, {
+    keys: ['name']
+  })
+
+  const foundCoinBalances = (search === '' ? indexedCoinBalances : fuzzySearchCoinBalances.search(search).map(result => result.item)).slice(0, 5)
+  const foundCollectionBalances = (search === '' ? indexedCollectionBalances : fuzzySearchCollections.search(search).map(result => result.item)).slice(0, 5)
 
   return (
     <Box
@@ -85,15 +121,18 @@ export const SearchWallet = () => {
         />
         {isLoading ?
           Array(5).fill(null).map((_, i) => (
-            <Skeleton width="100%" height="32px" />
+            <Skeleton key={i} width="100%" height="32px" />
           ))
         : (
-          displayedCollectionBalances.length === 0 ? (
+          foundCollectionBalances.length === 0 ? (
             <Text>No collections found</Text>
           ) : (
-            displayedCollectionBalances.map((collectionBalances) => (
-              <BalanceItem balance={collectionBalances} />
-            ))
+            foundCollectionBalances.map((indexedItem) => {
+              const balance = collectionBalances[indexedItem.index]
+              return (
+                <BalanceItem key={balance.contractAddress} balance={balance} />
+              )
+            })
           ))
         }
       </Box>
@@ -115,15 +154,18 @@ export const SearchWallet = () => {
         />
         {(isLoading) ?
           Array(5).fill(null).map((_, i) => (
-            <Skeleton width="100%" height="32px" />
+            <Skeleton key={i} width="100%" height="32px" />
           ))
         : (
-          displayedCoinBalances.length === 0 ? (
+          foundCoinBalances.length === 0 ? (
             <Text>No coins found</Text>
           ) : (
-            displayedCoinBalances.map((balance) => (
-              <BalanceItem balance={balance} />
-            ))
+            foundCoinBalances.map((indexItem) => {
+              const balance = coinBalances[indexItem.index]
+              return (
+                <BalanceItem key={balance.contractAddress} balance={balance} />
+              )
+            })
           ))
         }
       </Box>
