@@ -5,6 +5,7 @@ import {
   AllCollections,
   CoinDetails,
   CollectibleDetails,
+  CollectionDetails,
   Home,
   Receive,
   Send,
@@ -62,6 +63,13 @@ export const getContent = (navigation: Navigation) => {
         chainId={navigation.params.chainId}
         tokenId={navigation.params.tokenId}
       />
+    case 'collection-details':
+      return (
+        <CollectionDetails
+          contractAddress={navigation.params.contractAddress}
+          chainId={navigation.params.chainId}
+        />
+      )
     case 'transaction-details':
       return <TransactionDetails transaction={navigation.params.transaction} />
     case 'home':

@@ -6,8 +6,8 @@ import { WalletLink } from './components/WalletLink'
 import { useAccount, useChainId } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances } from '../../hooks'
-import { compareAddress } from '../../utils'
+import { useBalances, useCoinPrices } from '../../hooks'
+import { compareAddress, computeBalanceFiat } from '../../utils'
 
 export const SearchWallet = () => {
   const [search, setSearch] = useState('')
@@ -19,8 +19,35 @@ export const SearchWallet = () => {
     chainId
   })
 
-  const coinBalances = tokenBalancesData?.filter(b => b.contractType === 'ERC20' || compareAddress(b.contractAddress, ethers.constants.AddressZero)).slice(0, 5) || []
-  const tokenBalances = tokenBalancesData?.filter(b => b.contractType === 'ERC721' || b.contractType === 'ERC1155').slice(0, 5) || []
+  const coinBalancesUnordered = tokenBalancesData?.filter(b => b.contractType === 'ERC20' || compareAddress(b.contractAddress, ethers.constants.AddressZero)) || []
+
+  const {
+    data: coinPrices = [],
+    isLoading: isLoadingCoinPrices
+  } = useCoinPrices({
+    tokens: coinBalancesUnordered.map(token => ({
+      chainId: token.chainId,
+      contractAddress: token.contractAddress
+    }))
+  });
+
+  const coinBalances = coinBalancesUnordered.sort((a, b) => {
+    const isHigherFiat = Number(computeBalanceFiat(b, coinPrices)) - Number(computeBalanceFiat(a, coinPrices))
+    return isHigherFiat
+  })
+
+  const collectionBalancesUnordered = tokenBalancesData?.filter(b => b.contractType === 'ERC721' || b.contractType === 'ERC1155') || []
+  const collectionBalances = collectionBalancesUnordered.sort((a, b) => {
+    return Number(b.balance) - Number(a.balance)
+  })
+
+  const displayedCoinBalances = coinBalances.slice(0, 5)
+  const displayedCollectionBalances = collectionBalances.slice(0, 5)
+
+  const coinBalancesAmount = coinBalances.length
+  const collectionBalancesAmount = collectionBalances.length
+
+  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices
 
   return (
     <Box
@@ -51,21 +78,21 @@ export const SearchWallet = () => {
           toLocation={{
             location: 'search-view-all',
             params: {
-              defaultTab: 'collectibles'
+              defaultTab: 'collections'
             }
           }}
-          label="Collectibles"
+          label={`Collections (${collectionBalancesAmount})`}
         />
-        {tokenBalancesIsLoading ?
+        {isLoading ?
           Array(5).fill(null).map((_, i) => (
-            <Skeleton width="full" height="32px" />
+            <Skeleton width="100%" height="32px" />
           ))
         : (
-          tokenBalances.length === 0 ? (
-            <Text>No collectibles found</Text>
+          displayedCollectionBalances.length === 0 ? (
+            <Text>No collections found</Text>
           ) : (
-            tokenBalances.map((tokenBalance) => (
-              <BalanceItem tokenBalance={tokenBalance} />
+            displayedCollectionBalances.map((collectionBalances) => (
+              <BalanceItem balance={collectionBalances} />
             ))
           ))
         }
@@ -84,18 +111,18 @@ export const SearchWallet = () => {
               defaultTab: 'coins'
             }
           }}
-          label="Coins"
+          label={`Coins (${coinBalancesAmount})`}
         />
-        {tokenBalancesIsLoading ?
+        {(isLoading) ?
           Array(5).fill(null).map((_, i) => (
-            <Skeleton width="full" height="32px" />
+            <Skeleton width="100%" height="32px" />
           ))
         : (
-          coinBalances.length === 0 ? (
+          displayedCoinBalances.length === 0 ? (
             <Text>No coins found</Text>
           ) : (
-            coinBalances.map((tokenBalance) => (
-              <BalanceItem tokenBalance={tokenBalance} />
+            displayedCoinBalances.map((balance) => (
+              <BalanceItem balance={balance} />
             ))
           ))
         }

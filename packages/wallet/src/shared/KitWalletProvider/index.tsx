@@ -72,6 +72,7 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
 
   const displayScrollbar =
     navigation.location === 'home' ||
+    navigation.location === 'collection-details' ||
     navigation.location === 'collectible-details' ||
     navigation.location === 'coin-details' ||
     navigation.location === 'history' ||

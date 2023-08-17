@@ -10,6 +10,17 @@ export interface AllCollectiblesNavigation {
   params: AllCollectiblesParams
 }
 
+export interface CollectionDetailsParams {
+  contractAddress: string
+  chainId: number
+}
+
+export interface CollectionDetailsNavigation {
+  location: 'collection-details',
+  params: CollectionDetailsParams
+}
+
+
 export interface CoinDetailsParams {
   contractAddress: string
   chainId: number
@@ -41,7 +52,7 @@ export interface TransactionDetailsNavigation {
 }
 
 export interface SearchViewAllParams {
-  defaultTab: 'coins' | 'collectibles'
+  defaultTab: 'coins' | 'collections'
 }
 
 export interface SearchViewAllNavigation {
@@ -70,6 +81,7 @@ export type Navigation =
   AllCollectiblesNavigation |
   CoinDetailsNavigation |
   CollectibleDetailsNavigation |
+  CollectionDetailsNavigation |
   TransactionDetailsNavigation |
   SearchViewAllNavigation
 
