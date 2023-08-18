@@ -4,6 +4,8 @@ import { ethers } from 'ethers'
 import { Box, Image, Text, vars } from '@0xsequence/design-system'
 import { useAccount } from 'wagmi'
 
+import { CollectionDetailsSkeleton } from './Skeleton'
+
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { DefaultIcon } from '../../shared/DefaultIcon'
 import { useCollectionBalance, useNavigation } from '../../hooks'
@@ -32,9 +34,7 @@ export const CollectionDetails = ({
   const collectionLogoURI = contractInfo?.logoURI
 
   if (isLoadingCollectionBalance) {
-    return <Box>
-      loading
-    </Box>
+    return <CollectionDetailsSkeleton chainId={chainId} />
   }
 
   const onClickItem = (balance: TokenBalance) => {
