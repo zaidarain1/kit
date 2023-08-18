@@ -13,7 +13,8 @@ import {
   useCoinBalance,
   useSettings,
   useCoinPrices,
-  useTransactionHistory
+  useTransactionHistory,
+  useNavigation
 } from '../../hooks'
 import { HEADER_HEIGHT } from '../../constants'
 import {
@@ -35,7 +36,7 @@ export const CoinDetails = ({
   contractAddress,
   chainId
 }: CoinDetailsProps) => {
-
+  const { setNavigation } = useNavigation()
   const { fiatCurrency } = useSettings()
 
   const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
@@ -88,7 +89,13 @@ export const CoinDetails = ({
   const coinBalanceFiat = dataCoinBalance? computeBalanceFiat(dataCoinBalance, dataCoinPrices || []) : '0'
 
   const onClickSend = () => {
-    console.log('clicked send!')
+    setNavigation({
+      location: 'send-coin',
+      params: {
+        chainId,
+        contractAddress,
+      }
+    })
   }
 
   return (

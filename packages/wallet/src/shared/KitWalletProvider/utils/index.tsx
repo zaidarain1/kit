@@ -5,7 +5,8 @@ import {
   CollectionDetails,
   Home,
   Receive,
-  Send,
+  SendCoin,
+  SendCollectible,
   History,
   SearchWallet,
   SearchWalletViewAll,
@@ -23,8 +24,21 @@ export const getContent = (navigation: Navigation) => {
   const { location } = navigation
 
   switch (location) {
-    case 'send':
-      return <Send />
+    case 'send-coin':
+      return (
+        <SendCoin
+          chainId={navigation.params.chainId}
+          contractAddress={navigation.params.contractAddress}
+        />
+      )
+    case 'send-collectible':
+      return (
+        <SendCollectible
+          chainId={navigation.params.chainId}
+          contractAddress={navigation.params.contractAddress}
+          tokenId={navigation.params.tokenId}
+        />
+      ) 
     case 'receive':
       return <Receive />
     case 'history':
@@ -138,7 +152,14 @@ export const getHeader = (navigation: Navigation) => {
             primaryText=""
         />
       )
-    case 'send':
+    case 'send-collectible':
+    case 'send-coin':
+      return (
+        <NavigationHeader
+          secondaryText="Wallet /"
+          primaryText="Send"
+        />
+      )
     case 'home':
     default:
       return <WalletHeader />

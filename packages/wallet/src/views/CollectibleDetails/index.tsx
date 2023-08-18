@@ -16,7 +16,8 @@ import {
   useCollectiblePrices,
   useCollectibleBalance,
   useSettings,
-  useTransactionHistory
+  useTransactionHistory,
+  useNavigation
 } from '../../hooks'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
@@ -37,6 +38,7 @@ export const CollectibleDetails = ({
   const { address: accountAddress } = useAccount()
   const { fiatCurrency } = useSettings()
   const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
+  const { setNavigation } = useNavigation()
 
   const {
     data: dataTransactionHistory,
@@ -77,7 +79,14 @@ export const CollectibleDetails = ({
   }
 
   const onClickSend = () => {
-    console.log('clicked send')
+    setNavigation({
+      location: 'send-collectible',
+      params: {
+        chainId,
+        contractAddress,
+        tokenId,
+      }
+    })
   }
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)

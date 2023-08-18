@@ -52,10 +52,30 @@ export interface SearchViewAllNavigation {
   params: SearchViewAllParams
 }
 
+export interface SendCoinParams {
+  chainId: number,
+  contractAddress: string,
+}
+
+export interface SendCoinNavigation {
+  location: 'send-coin',
+  params: SendCoinParams
+}
+
+export interface SendCollectibleParams {
+  chainId: number,
+  contractAddress: string,
+  tokenId: string,
+}
+
+export interface SendCollectibleNavigation {
+  location: 'send-collectible',
+  params: SendCollectibleParams
+}
+
 export interface BasicNavigation {
   location:
     'home' |
-    'send' |
     'receive' |
     'history' |
     'receive' |
@@ -72,7 +92,9 @@ export type Navigation =
   CollectibleDetailsNavigation |
   CollectionDetailsNavigation |
   TransactionDetailsNavigation |
-  SearchViewAllNavigation
+  SearchViewAllNavigation |
+  SendCoinNavigation |
+  SendCollectibleNavigation
 
 export type History = Navigation[]
 
