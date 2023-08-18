@@ -129,6 +129,7 @@ export const SearchWalletViewAll = ({
     >
       <Box width="full">
         <TextInput
+          autoFocus
           name="search wallet"
           leftIcon={SearchIcon}
           value={search}
