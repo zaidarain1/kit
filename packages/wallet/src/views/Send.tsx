@@ -1,7 +1,6 @@
 import { TokenBalance } from '@0xsequence/indexer'
 import { Box, Tabs, Text } from '@0xsequence/design-system'
 import React, { useState } from 'react'
-import { HomeButton } from '../shared/HomeButton'
 import { SendCoins, SendCollectibles } from '../shared/Send'
 import { SendCoinContext, SendCollectiblesContext, CollectiblesToSend, CollectionToSend } from '../contexts'
 
@@ -25,9 +24,6 @@ export const Send = () => {
   return (
 
       <Box padding="4"gap="4" flexDirection="column">
-        <Box style={{ float: 'left', marginTop: '-16px' }}>
-          <HomeButton />
-        </Box>
         <Box>
           <Text as="h1" variant="normal" fontWeight="bold" color="text100" textAlign="center">
             Send

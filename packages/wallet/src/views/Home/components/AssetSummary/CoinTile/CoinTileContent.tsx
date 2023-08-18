@@ -5,6 +5,7 @@ import { getPercentageColor } from '../../../../../utils'
 import { CoinIcon } from '../../../../../shared/CoinIcon'
 
 interface CoinTileContentProps {
+  networkLogoUrl: string
   logoUrl?: string
   tokenName: string
   balance: string
@@ -14,6 +15,7 @@ interface CoinTileContentProps {
 }
 
 export const CoinTileContent = ({
+  networkLogoUrl,
   logoUrl,
   tokenName,
   balance,
@@ -41,7 +43,7 @@ export const CoinTileContent = ({
       <Box marginBottom="3">
         <Box flexDirection="row" gap="1" justifyContent="flex-start" alignItems="center">
           <Text fontWeight="bold" whiteSpace="nowrap">{tokenName}</Text>
-          <CoinIcon size={12} imageUrl={logoUrl} />
+          <CoinIcon size={12} imageUrl={networkLogoUrl} />
         </Box>
         <Text color="text50" whiteSpace="nowrap">{`${balance} ${symbol}`}</Text>
       </Box>

@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Box, Image, Text, ChevronRightIcon } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
 
-import { DefaultIcon } from '../../../shared/DefaultIcon'
+import { CoinIcon } from '../../../shared/CoinIcon'
 import { useNavigation } from '../../../hooks'
 import {
   compareAddress,
@@ -12,7 +12,6 @@ import {
 } from '../../../utils'
 
 import * as sharedStyles from '../../../shared/styles.css'
-import { SendCollectibles } from '~/shared/Send'
 
 interface BalanceItemProps {
   balance: TokenBalance
@@ -71,16 +70,7 @@ export const BalanceItem = ({
       className={sharedStyles.clickable}
     >
       <Box gap="3" flexDirection="row" alignItems="center" justifyContent="center">
-        {logoURI ? (
-          <Image
-            src={logoURI}
-            alt="logo"
-            borderRadius="circle"
-            style={{ width: '30px', height: "30px" }}
-          />
-        ) : (
-          <DefaultIcon size={30} />
-        )}
+        <CoinIcon imageUrl={logoURI} size={30} />
         <Box gap="1" flexDirection="row" alignItems="center" justifyContent="center">
           <Text
             color="text100"

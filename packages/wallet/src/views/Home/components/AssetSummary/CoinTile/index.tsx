@@ -4,13 +4,11 @@ import { Box, Text } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
 
 import { CoinTileContent } from './CoinTileContent'
-import { CoinIcon } from '../../../../../shared/CoinIcon'
 import {
   computeBalanceFiat,
   formatDisplay,
   getNativeTokenInfoByChainId,
   getPercentagePriceChange,
-  getPercentageColor,
   compareAddress,
 } from '../../../../../utils'
 import { useCoinPrices } from '../../../../../hooks'
@@ -23,6 +21,7 @@ export const CoinTile = ({
   balance
 }: CoinTileProps) => {
   const isNativeToken = compareAddress(balance.contractAddress, ethers.constants.AddressZero)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
 
   const { data: dataCoinPrices = [], isLoading: isLoadingCoinPrice } = useCoinPrices({
     tokens: [{
@@ -46,7 +45,6 @@ export const CoinTile = ({
 
 
   if (isNativeToken) {
-    const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
 
     const computedBalance = computeBalanceFiat(balance, dataCoinPrices)
     const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
@@ -55,6 +53,7 @@ export const CoinTile = ({
   
     return (
       <CoinTileContent
+        networkLogoUrl={nativeTokenInfo.logoURI}
         logoUrl={nativeTokenInfo.logoURI}
         tokenName={nativeTokenInfo.name}
         balance={balanceDisplayed}
@@ -78,6 +77,7 @@ export const CoinTile = ({
 
   return (
     <CoinTileContent
+      networkLogoUrl={nativeTokenInfo.logoURI}
       logoUrl={url}
       tokenName={name}
       balance={balanceDisplayed}

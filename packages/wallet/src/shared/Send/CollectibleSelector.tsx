@@ -1,8 +1,6 @@
 import React from 'react'
 import { Box, Icon, CheckmarkIcon, Card, Image, Text } from '@0xsequence/design-system'
 
-import { DefaultIcon } from '../DefaultIcon'
-
 interface CollectionSelectorProps {
   imageUrl?: string,
   name?: string,

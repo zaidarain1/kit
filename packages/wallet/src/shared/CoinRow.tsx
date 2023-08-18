@@ -4,7 +4,7 @@ import React from 'react'
 import { Skeleton } from '../shared/Skeleton'
 import { ethers } from 'ethers'
 
-import { DefaultIcon } from './DefaultIcon'
+import { CoinIcon } from './CoinIcon'
 import { formatDisplay, getPercentageColor } from '../utils'
 
 interface CoinRowProps {
@@ -47,20 +47,10 @@ export const CoinRow = ({
   const formattedBalance = ethers.utils.formatUnits(balance, decimals)
   const balanceDisplayed = formatDisplay(formattedBalance)
 
-  const getImage = (logoURI?: string) => {
-    if (logoURI) {
-      return (
-        <Image src={logoURI} borderRadius="circle" style={{ width: '30px' }} />
-      )
-    }
-
-    return <DefaultIcon size={30} />
-  }
-
   return (
     <Box height="14" alignItems="center" justifyContent="space-between" background="backgroundSecondary" borderRadius="md" paddingY="2" paddingX="3">
       <Box justifyContent="center" alignItems="center" gap="2">
-        {getImage(imageUrl)}
+        <CoinIcon imageUrl={imageUrl} size={30} />
         <Box flexDirection="column" alignItems="flex-start">
           <Text variant="medium">{name}</Text>
           <Text color="text50" variant="normal"> {`${balanceDisplayed} ${symbol}`}</Text>

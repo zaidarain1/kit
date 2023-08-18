@@ -1,8 +1,5 @@
 import React from 'react'
 import {
-  AllCoins,
-  AllCollectibles,
-  AllCollections,
   CoinDetails,
   CollectibleDetails,
   CollectionDetails,
@@ -26,12 +23,6 @@ export const getContent = (navigation: Navigation) => {
   const { location } = navigation
 
   switch (location) {
-    case 'all-coins':
-      return <AllCoins />
-    case 'all-collections':
-      return <AllCollections />
-    case 'all-collectibles':
-      return <AllCollectibles collectionAddress={navigation.params.collectionAddress} />
     case 'send':
       return <Send />
     case 'receive':
@@ -147,9 +138,6 @@ export const getHeader = (navigation: Navigation) => {
             primaryText=""
         />
       )
-    case 'all-coins':
-    case 'all-collections':
-    case 'all-collectibles':
     case 'send':
     case 'home':
     default:

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Image, Text } from '@0xsequence/design-system'
 
-import { DefaultIcon } from '../DefaultIcon'
+import { CoinIcon } from '../CoinIcon'
 
 interface CollectionSelectorProps {
   imageUrl?: string,
@@ -14,15 +14,6 @@ export const CollectionSelector = ({
   name,
   quantity
 }: CollectionSelectorProps) => {
-  const getImage = (logoURI?: string) => {
-    if (logoURI) {
-      return (
-        <Image src={logoURI} borderRadius="circle" style={{ width: '30px' }} />
-      )
-    }
-
-    return <DefaultIcon size={30} />
-  }
   
   return (
     <Box
@@ -35,7 +26,7 @@ export const CollectionSelector = ({
       paddingX="3"
     >
       <Box justifyContent="center" alignItems="center" gap="2">
-        {getImage(imageUrl)}
+        <CoinIcon imageUrl={imageUrl} size={30} />
         <Box flexDirection="column" alignItems="flex-start">
           <Text
             variant="medium"

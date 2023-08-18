@@ -1,8 +1,8 @@
 import React from 'react'
 import { Badge, Box, Card, Image, Text } from '@0xsequence/design-system'
 
+import { CoinIcon } from '../../shared/CoinIcon'
 import { Skeleton } from '../../shared/Skeleton'
-import { DefaultIcon } from '../DefaultIcon'
 import { formatAddress } from '../../utils'
 
 export interface CollectionHeaderProps {
@@ -45,20 +45,10 @@ export const CollectionHeader = ({
     )
   }
 
-  const getImage = (logoURI?: string) => {
-    if (logoURI) {
-      return (
-        <Image src={logoURI} borderRadius="circle" style={{ width: '30px' }} />
-      )
-    }
-
-    return <DefaultIcon size={30} />
-  }
-
   return (
     <Card gap="2" flexDirection="column">
       <Box alignItems="center" gap="2">
-        {getImage(logo)}
+        <CoinIcon imageUrl={logo} size={30} />
         <Text variant="medium">
           {name || formatAddress(address || '')}
         </Text>

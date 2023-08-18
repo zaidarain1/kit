@@ -14,7 +14,7 @@ import {
  } from '@0xsequence/design-system'
 import dayjs from 'dayjs'
 
-import { DefaultIcon } from '../../shared/DefaultIcon'
+import { CoinIcon } from '../../shared/CoinIcon'
 import { CopyButton } from '../../shared/CopyButton'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { Skeleton } from '../../shared/Skeleton'
@@ -130,11 +130,7 @@ export const TransactionDetails = ({
                 padding="2"
                 style={{ flexBasis: '100%' }}
               >
-                {logoURI ? (
-                  <Image src={logoURI} alt="token logo" style={{ width: '20px' }} />
-                ) : (
-                  <DefaultIcon size={20} />
-                )}
+                <CoinIcon imageUrl={logoURI} size={20} />
                 <Box gap="0.5" flexDirection="column" alignItems="flex-start" justifyContent="center">
                   <Text fontWeight="bold" fontSize="xsmall" color="text100">
                     {`${balanceDisplayed} ${symbol}`}

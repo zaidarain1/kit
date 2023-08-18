@@ -7,7 +7,7 @@ import { useAccount } from 'wagmi'
 import { CollectionDetailsSkeleton } from './Skeleton'
 
 import { NetworkBadge } from '../../shared/NetworkBadge'
-import { DefaultIcon } from '../../shared/DefaultIcon'
+import { CoinIcon } from '../../shared/CoinIcon'
 import { useCollectionBalance, useNavigation } from '../../hooks'
 import { formatDisplay } from '../../utils'
 
@@ -64,11 +64,7 @@ export const CollectionDetails = ({
         justifyContent="center"
         alignItems="center"
       >
-        {collectionLogoURI ? (
-          <Image style={{ width: '32px', height: '32px' }} src={collectionLogoURI} alt="collection logo" />
-        ) : (
-          <DefaultIcon size={32} />
-        )}
+        <CoinIcon imageUrl={collectionLogoURI} size={32} />
         <Text fontWeight="bold" fontSize="large" color="text100">{contractInfo?.name || 'Unknown'}</Text>
         <NetworkBadge chainId={chainId} />
         <Text fontWeight="medium" fontSize="normal" color="text50">{`${collectionBalanceData?.length || 0} Unique Collectibles`}</Text>
@@ -87,7 +83,6 @@ export const CollectionDetails = ({
           flexWrap="wrap"
           width="full"
           marginTop="3"
-          
         >
           {collectionBalanceData?.map((balance) => {
             const unformattedBalance = balance.balance
