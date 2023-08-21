@@ -14,7 +14,7 @@ export const CoinIcon = ({
 }: CoinIconProps) => {
   if (imageUrl) {
     return (
-      <Image src={imageUrl} borderRadius="circle" style={{ width: `${size}px` }} />
+      <Image src={imageUrl} borderRadius="circle" style={{ width: `${size}px`, height: `${size}px` }} />
     )
   }
 

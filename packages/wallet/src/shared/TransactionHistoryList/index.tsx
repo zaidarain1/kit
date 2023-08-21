@@ -98,7 +98,6 @@ export const TransactionHistoryList = ({
       <Box
         flexDirection="column"
         gap="2"
-        marginTop="5"
       >
         <TransactionHistorySkeleton />
       </Box>
@@ -155,7 +154,6 @@ export const TransactionHistoryList = ({
     <Box
       flexDirection="column"
       gap="5"
-      marginTop="5"
     >
       {transactionPeriods.map((period) => {
         const txs = transactionsByTime[period.id]

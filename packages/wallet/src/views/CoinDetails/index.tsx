@@ -124,8 +124,6 @@ export const CoinDetails = ({
           </Box>
         </Box>
         <Button
-          marginTop="4"
-          marginBottom="10"
           width="full"
           variant="primary"
           leftIcon={SendIcon}
