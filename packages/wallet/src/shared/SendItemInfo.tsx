@@ -7,6 +7,7 @@ import { ethers } from 'ethers'
 import { CoinIcon } from './CoinIcon'
 import { formatDisplay, getFiatCurrencyById, getNativeTokenInfoByChainId } from '../utils'
 import { useSettings } from '../hooks'
+import { CollectibleTileImage } from '../shared/CollectibleTileImage'
 
 interface SendItemInfoProps {
   name: string,
@@ -14,8 +15,9 @@ interface SendItemInfoProps {
   decimals: number,
   balance: string,
   imageUrl?: string,
-  fiatValue: string,
-  chainId: number
+  fiatValue?: string,
+  chainId: number,
+  showSquareImage?: boolean,
 }
 
 export const SendItemInfoSkeleton = () => {
@@ -44,6 +46,7 @@ export const SendItemInfo = ({
   symbol,
   fiatValue,
   chainId,
+  showSquareImage,
 }: SendItemInfoProps) => {
   const { fiatCurrency } = useSettings()
   const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
@@ -54,7 +57,13 @@ export const SendItemInfo = ({
   return (
     <Box alignItems="flex-end" justifyContent="space-between">
       <Box justifyContent="space-between" alignItems="center" gap="2">
-        <CoinIcon imageUrl={imageUrl} size={40} />
+        {showSquareImage ? (
+          <Box style={{ width: '40px' }}>
+            <CollectibleTileImage imageUrl={imageUrl} />
+          </Box>
+        ) : (
+          <CoinIcon imageUrl={imageUrl} size={40} />
+        )}
         <Box flexDirection="column" alignItems="flex-start">
           <Box flexDirection="row" alignItems="center" gap="1">
             <Text variant="medium">{name}</Text>
@@ -64,7 +73,9 @@ export const SendItemInfo = ({
         </Box>
       </Box>
       <Box flexDirection="column" alignItems="flex-end" justifyContent="flex-end">
-        <Text variant="normal">{`${fiatCurrencyInfo.symbol}${fiatValue}`}</Text>
+        {fiatValue && (
+          <Text variant="normal">{`${fiatCurrencyInfo.symbol}${fiatValue}`}</Text>
+        )}
       </Box>
     </Box>
   )

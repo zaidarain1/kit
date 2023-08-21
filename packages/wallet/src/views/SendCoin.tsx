@@ -237,6 +237,7 @@ export const SendCoin = ({
         type="submit"
         disabled={!isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds}
         label="Send"
+        rightIcon={ChevronRightIcon}
         style={{ height: '52px', borderRadius: vars.radii.md }}
       />
     </Box>
