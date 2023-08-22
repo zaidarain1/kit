@@ -77,7 +77,7 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
                     }
                   }}
                   scroll={true}
-                  backdropColor="transparent"
+                  backdropColor="backgroundBackdrop"
                   onClose={() => setOpenCheckoutModal(false)}
                 >
                   <Box id="sequence-kit-checkout-content">

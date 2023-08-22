@@ -1,10 +1,23 @@
 import React from 'react'
 import { useOpenConnectModal, useTheme } from '@0xsequence/kit-core'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
-import { useCheckoutModal, CheckoutSettings } from '@0xsequence/kit-checkout'
+import { useCheckoutModal } from '@0xsequence/kit-checkout'
 import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
+import {
+  Box,
+  Button,
+  Card,
+  GradientAvatar,
+  Text,
+  Image,
+  SunIcon,
+  MoonIcon,
+  SignoutIcon
+} from '@0xsequence/design-system'
 
-import './Homepage.css';
+import { bottomPageLinks, messageToSign } from '../constants'
+import { formatAddress, getCheckoutSettings } from '../utils'
+import *  as sharedStyles from '../shared/styles.css'
 
 interface HomepageProps {
   setUseOneTimeClickModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -28,31 +41,7 @@ function Homepage({
     }
 
     try {
-      const message = `Two roads diverged in a yellow wood,
-        Robert Frost poet
-        
-        And sorry I could not travel both
-        And be one traveler, long I stood
-        And looked down one as far as I could
-        To where it bent in the undergrowth;
-        
-        Then took the other, as just as fair,
-        And having perhaps the better claim,
-        Because it was grassy and wanted wear;
-        Though as for that the passing there
-        Had worn them really about the same,
-        
-        And both that morning equally lay
-        In leaves no step had trodden black.
-        Oh, I kept the first for another day!
-        Yet knowing how way leads on to way,
-        I doubted if I should ever come back.
-        
-        I shall be telling this with a sigh
-        Somewhere ages and ages hence:
-        Two roads diverged in a wood, and I—
-        I took the one less traveled by,
-        And that has made all the difference.`
+      const message = messageToSign
   
       // sign
       const sig = await walletClient.signMessage({
@@ -74,144 +63,147 @@ function Homepage({
     }
   }
 
-  const abi = [
-    {
-      "inputs": [
-        {
-          "internalType": "uint256[]",
-          "name": "_tokenIds",
-          "type": "uint256[]"
-        },
-        {
-          "internalType": "uint256[]",
-          "name": "_tokensBoughtAmounts",
-          "type": "uint256[]"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_maxCurrency",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_deadline",
-          "type": "uint256"
-        },
-        {
-          "internalType": "address",
-          "name": "_recipient",
-          "type": "address"
-        },
-        {
-          "internalType": "address[]",
-          "name": "_extraFeeRecipients",
-          "type": "address[]"
-        },
-        {
-          "internalType": "uint256[]",
-          "name": "_extraFeeAmounts",
-          "type": "uint256[]"
-        }
-      ],
-      "name": "buyTokens",
-      "outputs": [
-        {
-          "internalType": "uint256[]",
-          "name": "",
-          "type": "uint256[]"
-        }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-  ]
-
-  const getCheckoutSettings = () => {
-    const deadline = String(Math.round(new Date().getTime()/ 1000) + 3600)
-
-    const usdcAmount = '3'
-
-    const checkoutSettings: CheckoutSettings = {
-      chainId: 137,
-      receiptTitle: 'Custom Sequence Kit Checkout Demo',
-      abi: JSON.stringify(abi),
-      methodName: 'buyTokens',
-      methodArguments: {
-        "_recipient":"$WALLET",
-        "_deadline": deadline,
-        "_maxCurrency": `${Number(usdcAmount) * 10 ** 6}`,
-        "_tokenIds":["66616"],
-        "_tokensBoughtAmounts":["100"],
-        "_extraFeeRecipients":[],
-        "_extraFeeAmounts":[]
-      },
-      recipientAddress: address || '',
-      contractAddress: '0x8bb759bb68995343ff1e9d57ac85ff5c5fb79334',
-      currency: 'USDC',
-      currencyAmount: `${usdcAmount}`,
-      collectionContractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
-      onSuccess: () => { console.log('success') },
-      onError: () => { console.log('error') },
-    }
-
-    return checkoutSettings
-  }
-
   const onClickChangeTheme = () => {
     setTheme && setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <button className="Button" onClick={onClickChangeTheme}>Change Modal Theme</button>
-        <div>Modal theme: {theme === 'dark' ? 'dark' : 'light'}</div>
-        {isConnected ? (
-          <>
-            <button className="Button" onClick={() => { disconnect() }}>
-              Disconnect
-            </button>
-            <button className="Button" onClick={() => { openWalletModal && openWalletModal(true) }}>
-              Open Wallet UI
-            </button>
-            <button className="Button" onClick={() => { triggerCheckout && triggerCheckout(getCheckoutSettings()) }}>
-              Open Checkout UI
-            </button>
-            <button className="Button" onClick={() => { signMessage() }}>
-              Sign Message
-            </button>
-            <div>Connected wallet: {connector?.name}</div>
-            <div>Connected address: {address}</div>
-          </>
-        ) : (
-          <div>
-            <div>
-              <button
-                className="Button"
-                onClick={() => {
-                  setUseOneTimeClickModal(false)
-                  openConnectModal && openConnectModal(true)
-                }}
-              >
-                Connect with Dapp modal
-              </button>
-            </div>
-            <div>
-              <button
-                className="Button"
-                onClick={() => {
-                  setUseOneTimeClickModal(true)
-                  openConnectModal && openConnectModal(true)
-                }}
-                >
-                Connect with One Time Click modal
-              </button>
-            </div>
-          </div>
-        )}
 
-      </header>
-    </div>
+  const getHeaderContent = () => {
+    if (!isConnected) {
+      return null
+    }
+    return (
+      <Box padding="5" justifyContent="space-between">
+        <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
+          <Image style={{ width: '36px' }} src='/kit-logo.svg' />
+          <Image
+            style={{
+              width: '24px',
+              filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
+            }}
+            src='/kit-logo-text.svg'
+          />
+        </Box>
+        <Box>
+          <Box flexDirection="column">
+            <Box flexDirection="row" gap="2" justifyContent="flex-end" alignItems="center">
+              <GradientAvatar address={address || ''} style={{ width: '20px' }} />
+              <Text fontWeight="medium" fontSize="normal" color="text100">{formatAddress(address || '')}</Text>
+            </Box>
+            <Box alignItems="center" justifyContent="flex-end" flexDirection="row">
+              <Text fontWeight="medium" fontSize="normal" color="text50">
+                {connector?.name}
+              </Text>
+            </Box>
+          </Box>          
+        </Box>
+      </Box>
+    )
+  }
+
+  interface ClickableCardProps {
+    title: string,
+    description: string,
+    onClick: () => void
+  }
+
+  const ClickableCard = ({
+    title, description, onClick
+  }: ClickableCardProps) => {
+    return (
+      <Card style={{ width: '332px' }} clickable onClick={onClick}>
+        <Text lineHeight="5" fontSize="normal" fontWeight="bold">
+          {title}
+        </Text>
+        <Box marginTop="1">
+          <Text fontWeight="medium" lineHeight="5" color="text50" fontSize="normal" >
+            {description}
+          </Text>
+        </Box>
+      </Card>
+    )
+  }
+
+  const onClickConnectOTC = () => {
+    setUseOneTimeClickModal(true)
+    openConnectModal && openConnectModal(true)
+  }
+
+  const onClickConnectDapp = () => {
+    setUseOneTimeClickModal(false)
+    openConnectModal && openConnectModal(true)
+  }
+
+  const onClickLinkUrl = (url: string) => {
+    window.open(url)
+  }
+
+  const onClickCheckout = () => {
+    triggerCheckout && triggerCheckout(getCheckoutSettings(address))
+  }
+
+
+  return (
+    <Box background="backgroundPrimary">
+      <Box style={{ height: '72px' }} position="fixed" width="full" top="0">
+        {getHeaderContent()}
+      </Box>
+      <Box style={{  height: '100vh'}} flexDirection="column" justifyContent="center" alignItems="center">
+        {isConnected ? (
+          <Box flexDirection="column" gap="4">
+            <Box flexDirection="column" gap="2">
+              <Text color="text50" fontSize="small" fontWeight="medium">Demos</Text>
+              <ClickableCard
+                title="Embed wallet"
+                description="Connect a Sequence wallet to view, swap, send, and receive collections"
+                onClick={() => openWalletModal && openWalletModal(true)}
+              />
+              <ClickableCard
+                title="Checkout"
+                description="Checkout screen before placing a purchase on coins or collections"
+                onClick={onClickCheckout}
+              />
+              <ClickableCard
+                title="Sign transaction"
+                description="Sign transaction screen before placing a purchase on coins or collections"
+                onClick={signMessage}
+              />
+            </Box>
+            <Box width="full" gap="2" flexDirection="row" justifyContent="flex-end" >
+              <Button onClick={onClickChangeTheme} leftIcon={theme === 'dark' ? SunIcon : MoonIcon} label={theme === 'dark' ? 'Light mode' : 'Dark mode'} />
+              <Button onClick={() => disconnect()} leftIcon={SignoutIcon} label="Sign out" />
+            </Box>
+          </Box>
+      ) : (
+          <Box>
+            <Box flexDirection="column" alignItems="center" justifyContent="center" gap="5">
+              <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
+                <Image style={{ width: '48px' }} src='/kit-logo.svg' />
+                <Image
+                  style={{
+                    width: '32px',
+                    filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
+                  }}
+                  src='/kit-logo-text.svg' />
+              </Box>
+              <Box gap="2" flexDirection="row" alignItems="center">
+                <Button onClick={onClickConnectOTC} variant="feature" label="Connect OTC modal" />
+                <Button onClick={onClickConnectDapp} variant="feature" label="Connect Dapp modal" />
+              </Box>
+            </Box>
+          </Box>
+        )}
+      </Box>
+      <Box padding="5" style={{ height: '60px' }} position="fixed" bottom="0" width="full" justifyContent="space-between">
+        <Box flexDirection="row" gap="4">
+          {bottomPageLinks.map((link, index) => (
+            <Box onClick={() => onClickLinkUrl(link.url)} className={sharedStyles.clickable} key={index} gap="4">
+              <Text fontWeight="normal" fontSize="small" color="text50">{link.label}</Text>
+            </Box>
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
 }
 

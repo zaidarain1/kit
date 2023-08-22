@@ -126,7 +126,7 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
                       },
                     }}
                     scroll={false}
-                    backdropColor="transparent"
+                    backdropColor="backgroundBackdrop"
                     onClose={() => setOpenWalletModal(false)}
                   >
                     <Box className={styles.walletContent} id="sequence-kit-wallet-content">

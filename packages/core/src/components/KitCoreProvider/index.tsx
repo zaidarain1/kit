@@ -70,7 +70,7 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
             {openConnectModal && (
               <Modal
                 scroll={true}
-                backdropColor="transparent"
+                backdropColor="backgroundBackdrop"
                 size="sm"
                 contentProps={{
                   style: {

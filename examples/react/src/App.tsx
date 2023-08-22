@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ThemeProvider } from '@0xsequence/design-system'
 import { KitCoreProvider, getKitConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
 import {
     apple,
@@ -17,6 +18,8 @@ import Homepage from './components/Homepage'
 import { WagmiConfig, createConfig, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
+
+import '@0xsequence/design-system/styles.css'
 
 function App() {
   const [useOneTimeClickModal, setUseOneTimeClickModal] = useState(false)
@@ -118,17 +121,19 @@ function App() {
   }
 
   return (
-    <WagmiConfig config={config}>
-      <KitCoreProvider config={kitConfig} >
-        <KitWalletProvider>
-          <KitCheckoutProvider>
-            <Homepage
-              setUseOneTimeClickModal={setUseOneTimeClickModal}
-            />
-          </KitCheckoutProvider>
-        </KitWalletProvider>
-      </KitCoreProvider>
-    </WagmiConfig>
+    <ThemeProvider theme='dark'>
+      <WagmiConfig config={config}>
+        <KitCoreProvider config={kitConfig} >
+          <KitWalletProvider>
+            <KitCheckoutProvider>
+              <Homepage
+                setUseOneTimeClickModal={setUseOneTimeClickModal}
+              />
+            </KitCheckoutProvider>
+          </KitWalletProvider>
+        </KitCoreProvider>
+      </WagmiConfig>
+    </ThemeProvider>
   );
 }
 
