@@ -32,6 +32,7 @@ import {
 } from '../utils'
 import { HEADER_HEIGHT } from '../constants'
 import * as sharedStyles from '../shared/styles.css'
+import { set } from "lodash"
 
 interface SendCollectibleProps {
   chainId: number
@@ -85,13 +86,19 @@ export const SendCollectible = ({
   }
 
   const handleSubtractOne = () => {
-    // TODO: handle subtract one
-    // disable button when amount is 0
+    const decrementedAmount = Number(amount) - 1
+
+    const newAmount = Math.max(decrementedAmount, 0).toString()
+    setAmount(newAmount)
   }
 
   const handleAddOne = () => {
-    // TODO: handle add one
-    // disable button when amount is max
+    const incrementedAmount = Number(amount) + 1
+    const maxAmount = Number(ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals))
+
+    const newAmount = Math.min(incrementedAmount, maxAmount).toString()
+
+    setAmount(newAmount)
   }
 
   const handleMax = () => {
@@ -143,6 +150,11 @@ export const SendCollectible = ({
     setOpenWalletModal && setOpenWalletModal(false)
   }
 
+  const maxAmount = ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals).toString()
+
+  const isMinimum = Number(amount) === 0
+  const isMaximum = Number(amount) >= Number(maxAmount)
+
   return (
     <Box
       padding="5"
@@ -178,8 +190,8 @@ export const SendCollectible = ({
           onChange={handleChangeAmount}
           controls={
             <Box gap="2">
-              <Button size="xs" onClick={handleSubtractOne} leftIcon={SubtractIcon} />
-              <Button size="xs" onClick={handleAddOne} leftIcon={AddIcon} />
+              <Button disabled={isMinimum} size="xs" onClick={handleSubtractOne} leftIcon={SubtractIcon} />
+              <Button disabled={isMaximum} size="xs" onClick={handleAddOne} leftIcon={AddIcon} />
               <Button size="xs" shape="square" label="Max" onClick={handleMax} data-id="maxCoin" flexShrink="0" />
             </Box>
           }

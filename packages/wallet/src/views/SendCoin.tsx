@@ -131,6 +131,9 @@ export const SendCoin = ({
     setOpenWalletModal && setOpenWalletModal(false)
   }
 
+  const maxAmount = ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals).toString()
+  const isMaximum = Number(amount) >= Number(maxAmount)  
+
   return (
     <Box
       padding="5"
