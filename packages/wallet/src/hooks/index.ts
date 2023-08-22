@@ -1,6 +1,4 @@
 export * from './useOpenWalletModal'
 export * from './data'
 export * from './useNavigation'
-export * from './useSendCoin'
-export * from './useSendCollectibles'
 export * from './useSettings'

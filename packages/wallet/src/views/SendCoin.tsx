@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react"
+import React, { useState, ChangeEvent, useRef } from "react"
 import { ethers } from 'ethers'
 import {
   Box,
@@ -39,6 +39,7 @@ export const SendCoin = ({
   chainId,
   contractAddress
 }: SendCoinProps) => {
+  const amountInputRef = useRef<HTMLInputElement>(null)
   const setOpenWalletModal = useOpenWalletModal()
   const { fiatCurrency } = useSettings()
   const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
@@ -98,6 +99,7 @@ export const SendCoin = ({
   }
 
   const handleMax = () => {
+    amountInputRef.current?.focus()
     const maxAmount = ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals).toString()
     
     setAmount(maxAmount)
@@ -131,9 +133,6 @@ export const SendCoin = ({
     setOpenWalletModal && setOpenWalletModal(false)
   }
 
-  const maxAmount = ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals).toString()
-  const isMaximum = Number(amount) >= Number(maxAmount)  
-
   return (
     <Box
       padding="5"
@@ -163,6 +162,7 @@ export const SendCoin = ({
           chainId={chainId}
         />
         <NumericInput
+          ref={amountInputRef}
           style={{ fontSize: vars.fontSizes.xlarge, fontWeight: vars.fontWeights.bold }}
           name="amount"
           value={amount}

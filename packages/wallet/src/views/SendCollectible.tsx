@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react"
+import React, { useRef, useState, ChangeEvent } from "react"
 import { ethers } from 'ethers'
 import {
   Box,
@@ -21,7 +21,6 @@ import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_1155_ABI, ERC_721_ABI } from '../constants'
 import {
   useCollectibleBalance,
-  useSettings,
   useOpenWalletModal
 } from '../hooks'
 import {
@@ -32,7 +31,6 @@ import {
 } from '../utils'
 import { HEADER_HEIGHT } from '../constants'
 import * as sharedStyles from '../shared/styles.css'
-import { set } from "lodash"
 
 interface SendCollectibleProps {
   chainId: number
@@ -45,8 +43,8 @@ export const SendCollectible = ({
   contractAddress,
   tokenId
 }: SendCollectibleProps) => {
+  const amountInputRef = useRef<HTMLInputElement>(null)
   const setOpenWalletModal = useOpenWalletModal()
-  const { fiatCurrency } = useSettings()
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')
   const { data: walletClient } = useWalletClient()
@@ -86,6 +84,7 @@ export const SendCollectible = ({
   }
 
   const handleSubtractOne = () => {
+    amountInputRef.current?.focus()
     const decrementedAmount = Number(amount) - 1
 
     const newAmount = Math.max(decrementedAmount, 0).toString()
@@ -93,6 +92,7 @@ export const SendCollectible = ({
   }
 
   const handleAddOne = () => {
+    amountInputRef.current?.focus()
     const incrementedAmount = Number(amount) + 1
     const maxAmount = Number(ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals))
 
@@ -102,6 +102,7 @@ export const SendCollectible = ({
   }
 
   const handleMax = () => {
+    amountInputRef.current?.focus()
     const maxAmount = ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals).toString()
     
     setAmount(maxAmount)
@@ -184,6 +185,7 @@ export const SendCollectible = ({
           chainId={chainId}
         />
         <NumericInput
+          ref={amountInputRef}
           style={{ fontSize: vars.fontSizes.xlarge, fontWeight: vars.fontWeights.bold }}
           name="amount"
           value={amount}
