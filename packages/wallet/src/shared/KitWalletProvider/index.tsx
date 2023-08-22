@@ -26,7 +26,7 @@ import * as styles from '../styles.css'
 
 import '@0xsequence/design-system/styles.css'
 
-export type KitWalletProvider = {
+export type KitWalletProviderProps = {
   children: React.ReactNode,
 }
 
@@ -63,7 +63,18 @@ const DEFAULT_LOCATION: Navigation = {
 //   }
 // }
 
-export const KitWalletProvider = ({ children }: KitWalletProvider) => {
+
+export const KitWalletProvider = (props: KitWalletProviderProps) => {
+  const queryClient = new QueryClient()
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <KitWalletContent  {...props} />
+    </QueryClientProvider>
+  )
+}
+
+export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
   const { theme } = useTheme()
   
   // Wallet Modal Context
@@ -87,7 +98,6 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
     navigation.location === 'search' ||
     navigation.location === 'search-view-all'
 
-  const queryClient = new QueryClient()
 
   useEffect(() => {
     if (openWalletModal) {
@@ -96,50 +106,48 @@ export const KitWalletProvider = ({ children }: KitWalletProvider) => {
   }, [openWalletModal])
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SettingsContext.Provider value={{
-        hideUnlistedTokens,
-        setHideUnlistedTokens,
-        hideCollectibles,
-        setHideCollectibles,
-        fiatCurrency,
-        setFiatCurrency,
-      }}>
-        <WalletModalContext.Provider value={{ setOpenWalletModal }}>
-          <NavigationContext.Provider value={{ setHistory, history }}>
-              <ThemeProvider theme={theme}>
-                <AnimatePresence>
-                  {openWalletModal && (
-                    <Modal
-                      contentProps={{
-                        style: {
-                          maxWidth: '400px', height: 'fit-content',
-                        },
-                      }}
-                      scroll={false}
-                      backdropColor="transparent"
-                      onClose={() => setOpenWalletModal(false)}
-                    >
-                      <Box className={styles.walletContent} id="sequence-kit-wallet-content">
-                        {getHeader(navigation)}
-                      
-                        {displayScrollbar ? (
-                          <Scroll style={{ paddingTop: HEADER_HEIGHT, height: '800px' }}>
-                            {getContent(navigation)}
-                          </Scroll>
-                        ) : (
-                          getContent(navigation)
-                        )}
+    <SettingsContext.Provider value={{
+      hideUnlistedTokens,
+      setHideUnlistedTokens,
+      hideCollectibles,
+      setHideCollectibles,
+      fiatCurrency,
+      setFiatCurrency,
+    }}>
+      <WalletModalContext.Provider value={{ setOpenWalletModal }}>
+        <NavigationContext.Provider value={{ setHistory, history }}>
+            <ThemeProvider theme={theme}>
+              <AnimatePresence>
+                {openWalletModal && (
+                  <Modal
+                    contentProps={{
+                      style: {
+                        maxWidth: '400px', height: 'fit-content',
+                      },
+                    }}
+                    scroll={false}
+                    backdropColor="transparent"
+                    onClose={() => setOpenWalletModal(false)}
+                  >
+                    <Box className={styles.walletContent} id="sequence-kit-wallet-content">
+                      {getHeader(navigation)}
+                    
+                      {displayScrollbar ? (
+                        <Scroll style={{ paddingTop: HEADER_HEIGHT, height: '800px' }}>
+                          {getContent(navigation)}
+                        </Scroll>
+                      ) : (
+                        getContent(navigation)
+                      )}
 
-                      </Box>
-                    </Modal>
-                  )}
-                </AnimatePresence>
-              </ThemeProvider>
-              {children}
-          </NavigationContext.Provider>
-        </WalletModalContext.Provider>
-      </SettingsContext.Provider>
-    </QueryClientProvider>
+                    </Box>
+                  </Modal>
+                )}
+              </AnimatePresence>
+            </ThemeProvider>
+            {children}
+        </NavigationContext.Provider>
+      </WalletModalContext.Provider>
+    </SettingsContext.Provider>
   )
 }
