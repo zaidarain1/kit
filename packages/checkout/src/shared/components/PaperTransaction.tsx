@@ -2,10 +2,10 @@ import React, { useState, useEffect, ChangeEvent } from 'react'
 import { Box, Button, Card, Spinner, Text, TextInput } from '@0xsequence/design-system'
 import { NetworkConfig, ChainId, networks } from '@0xsequence/network'
 import { CheckoutWithCard, PaperSDKProvider } from '@paperxyz/react-client-sdk'
-import { getPaperNetworkName } from '../utils'
-import { useNavigation } from '../hooks'
-import { fetchPaperSecret } from '../api'
-import { CheckoutSettings } from '../contexts/CheckoutModal'
+import { getPaperNetworkName } from '../../utils'
+import { useNavigation } from '../../hooks'
+import { fetchPaperSecret } from '../../api'
+import { CheckoutSettings } from '../../contexts/CheckoutModal'
 
 export interface PaperTransactionProps {
   settings: CheckoutSettings
@@ -19,7 +19,7 @@ export const PaperTransaction = ({
   const [paperSecret, setPaperSecret] = useState<string | null>(null)
   const { setNavigation } = useNavigation()
 
-  const network = networks[settings.chainId as ChainId]
+  // const network = networks[settings.chainId as ChainId]
 
   const onClickChangeEmail = () => {
     setInputEmailAddress(undefined)
@@ -169,26 +169,25 @@ export const PaperTransaction = ({
         </Box>
 
         <Card marginY="4" flexDirection="column">
-          {/* @ts-ignore-next-line */}
-          <PaperSDKProvider appName={settings.receiptTitle} chainName={getPaperNetworkName(network)}>
-            <CheckoutWithCard
-              sdkClientSecret={paperSecret}
-              onReview={() => {}}
-              onPaymentSuccess={result => {
-                onPending(result.id)
-              }}
-              onError={error => {
-                console.error('Payment error:', error)
-                onError(error.error)
-              }}
-              options={{
-                // colorBackground: '#cce3de',
-                colorPrimary: '#447dd1',
-                colorText: '#ffffff',
-                borderRadius: 12
-              }}
-            />
-          </PaperSDKProvider>
+          <CheckoutWithCard
+            sdkClientSecret={paperSecret}
+            appName={settings.receiptTitle}
+            onReview={() => {}}
+            onPaymentSuccess={result => {
+              // @ts-ignore-next-line
+              onPending(result.id)
+            }}
+            onError={error => {
+              console.error('Payment error:', error)
+              onError(error.error)
+            }}
+            options={{
+              // colorBackground: '#cce3de',
+              colorPrimary: '#447dd1',
+              colorText: '#ffffff',
+              borderRadius: 12
+            }}
+          />
         </Card>
       </Box>
     )

@@ -4,7 +4,7 @@ import { abi } from '../constants'
 export const getCheckoutSettings = (address?: string) => {
   const deadline = String(Math.round(new Date().getTime()/ 1000) + 3600)
 
-  const usdcAmount = '3'
+  const usdcAmount = '1'
 
   const checkoutSettings: CheckoutSettings = {
     chainId: 137,
@@ -15,7 +15,7 @@ export const getCheckoutSettings = (address?: string) => {
       "_recipient":"$WALLET",
       "_deadline": deadline,
       "_maxCurrency": `${Number(usdcAmount) * 10 ** 6}`,
-      "_tokenIds":["66616"],
+      "_tokenIds":["65570"],
       "_tokensBoughtAmounts":["100"],
       "_extraFeeRecipients":[],
       "_extraFeeAmounts":[]

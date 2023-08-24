@@ -17,7 +17,7 @@ export const TransactionError = () => {
   }, [])
 
   return (
-    <Box>
+    <Box style={{ height: '500px' }}>
       <Box
         flexDirection="column"
         alignItems="center"
@@ -26,7 +26,7 @@ export const TransactionError = () => {
       >
         <NotificationErrorIcon />
         <Text fontSize="xlarge">Error</Text>
-        <Text variant="normal" color="text80">
+        <Text textAlign="center" variant="normal" color="text80">
           An error occurred while processing the transaction.
         </Text>
       </Box>
@@ -45,6 +45,6 @@ export const NotificationErrorIcon = () => (
     marginBottom="2"
     background="negative"
   >
-    <CloseIcon />
+    <CloseIcon size="xl" />
   </Box>
 )

@@ -4,7 +4,7 @@ import {
   Text,
 } from '@0xsequence/design-system'
 import { useCheckoutModal } from '../hooks/useCheckoutModal'
-import { PaperTransaction } from '../components/PaperTransaction'
+import { PaperTransaction } from '../shared/components/PaperTransaction'
 
 export const PaperTransactionForm = () => {
   const { settings } = useCheckoutModal()

@@ -17,7 +17,7 @@ export const TransactionSuccess = () => {
   }, [])
 
   return (
-    <Box>
+    <Box style={{ height: '500px' }}>
       <Box
         flexDirection="column"
         alignItems="center"
@@ -26,7 +26,7 @@ export const TransactionSuccess = () => {
       >
         <NotificationSuccessIcon />
         <Text fontSize="xlarge">Success!</Text>
-        <Text variant="normal" color="text80">
+        <Text textAlign="center" variant="normal" color="text80">
           The transaction was successful.
         </Text>
       </Box>
@@ -45,6 +45,6 @@ export const NotificationSuccessIcon = () => (
     borderRadius="circle"
     marginBottom="2"
   >
-    <CheckmarkIcon />
+    <CheckmarkIcon size="xl" />
   </Box>
 )

@@ -14,8 +14,17 @@ import {
   PendingTransaction,
   TransactionError,
   TransactionSuccess,
-} from '../views'
-import { Navigation, NavigationContext, CheckoutModalContext, CheckoutSettings } from '../contexts'
+} from '../../views'
+import {
+  History,
+  Navigation,
+  NavigationContext,
+  CheckoutModalContext,
+  CheckoutSettings
+} from '../../contexts'
+
+import { NavigationHeader } from '../../shared/components/NavigationHeader'
+import * as sharedStyles from '../../shared/styles.css'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -23,13 +32,37 @@ export type KitCheckoutProvider = {
   children: React.ReactNode,
 }
 
+export const DEFAULT_LOCATION: Navigation = {
+  location: 'transaction-form',
+}
+
+// export const DEFAULT_LOCATION: Navigation = {
+//   location: 'transaction-pending',
+//   params: {
+//     transactionId: '48a47f94-475b-41f2-8370-7b3d279ba662'
+//   }
+// }
+
+// export const DEFAULT_LOCATION: Navigation = {
+//   location: 'transaction-success',
+//   params: {
+//     transactionHash: '0x48a47f94-475b-41f2-8370-7b3d279ba662'
+//   }
+// }
+
+// export const DEFAULT_LOCATION: Navigation = {
+//   location: 'transaction-error',
+//   params: {
+//     error: new Error('an error occurred'),
+//   }
+// }
+
 export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
   const { theme } = useTheme()
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
-  const [navigation, setNavigation] = useState<Navigation>({
-    location: 'transaction-form'
-  })
+  const [history, setHistory] = useState<History>([])
+  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION
 
   const triggerCheckout = (settings: CheckoutSettings) => {
     setSettings(settings)
@@ -57,30 +90,48 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
     }
   }
 
+  const getHeader = () => {
+    const { location } = navigation
+    switch (location) {
+      case 'transaction-pending':
+      case 'transaction-error':
+      case 'transaction-pending':
+      case 'transaction-form':
+      default: 
+        return <NavigationHeader primaryText="Checkout" />
+    }
+  }
+
   useEffect(() => {
     if (openCheckoutModal) {
-      setNavigation({ location: 'transaction-form' })
+      setHistory([])
     }
   }, [openCheckoutModal])
+
 
   return (
     <QueryClientProvider client={queryClient}>
       <CheckoutModalContext.Provider value={{ triggerCheckout, closeCheckout, settings, theme }}>
-        <NavigationContext.Provider value={{ setNavigation, navigation }}>
+        <NavigationContext.Provider value={{ history, setHistory }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openCheckoutModal && (
                 <Modal
                   contentProps={{
                     style: {
-                      maxWidth: '400px'
+                      maxWidth: '400px',
+                      height: 'auto'
                     }
                   }}
-                  scroll={true}
+                  scroll={false}
                   backdropColor="backgroundBackdrop"
                   onClose={() => setOpenCheckoutModal(false)}
                 >
-                  <Box id="sequence-kit-checkout-content">
+                  <Box
+                    id="sequence-kit-checkout-content"
+                    className={sharedStyles.walletContent}
+                  >
+                    {getHeader()}
                     {getContent()}
                   </Box>
                 </Modal>
