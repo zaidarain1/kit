@@ -1,12 +1,20 @@
 import React, { useState, useEffect, ChangeEvent } from 'react'
-import { Box, Button, Card, Spinner, Text, TextInput } from '@0xsequence/design-system'
+import {
+  Box,
+  Button,
+  Card,
+  Spinner,
+  Text,
+  TextInput,
+  EditIcon,
+  CheckmarkIcon
+} from '@0xsequence/design-system'
 import { NetworkConfig, ChainId, networks } from '@0xsequence/network'
-import { CheckoutWithCard, PaperSDKProvider } from '@paperxyz/react-client-sdk'
+import { CheckoutWithCard } from '@paperxyz/react-client-sdk'
 import { getPaperNetworkName } from '../../utils'
 import { useNavigation } from '../../hooks'
 import { fetchPaperSecret } from '../../api'
 import { CheckoutSettings } from '../../contexts/CheckoutModal'
-
 export interface PaperTransactionProps {
   settings: CheckoutSettings
 }
@@ -14,19 +22,25 @@ export interface PaperTransactionProps {
 export const PaperTransaction = ({
   settings
 }: PaperTransactionProps) => {
-  const [showEmailInputState, setShowEmailInputState] = useState(!settings.email)
+  const [emailEditState, setEmailEditState] = useState(true)
   const [inputEmailAddress, setInputEmailAddress] = useState<string | undefined>(settings.email)
+  const [email, setEmail] = useState<string>('')
   const [paperSecret, setPaperSecret] = useState<string | null>(null)
+  const [paperSecretLoading, setPaperSecretLoading] = useState(false)
   const { setNavigation } = useNavigation()
 
-  // const network = networks[settings.chainId as ChainId]
-
-  const onClickChangeEmail = () => {
-    setInputEmailAddress(undefined)
-    setShowEmailInputState(true)
+  const onClickEditEmail = () => {
+    if (emailEditState) {
+      setEmail(inputEmailAddress || '')
+    }
+    if (!emailEditState) {
+      setInputEmailAddress(email)
+    }
+    setEmailEditState(!emailEditState)
   }
 
   const fetchSecret = async () => {
+    setPaperSecretLoading(true)
     try {
       if (!inputEmailAddress) {
         throw 'No email address found'
@@ -47,6 +61,7 @@ export const PaperTransaction = ({
         }
       })
     }
+    setPaperSecretLoading(false)
   }
 
   useEffect(() => {
@@ -65,10 +80,10 @@ export const PaperTransaction = ({
   }, [])
 
   useEffect(() => {
-    if (!showEmailInputState) {
+    if (email !== '') {
       fetchSecret()
     }
-  }, [showEmailInputState])
+  }, [email])
 
   const isValidEmailAddress = () => {
     const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/
@@ -80,94 +95,120 @@ export const PaperTransaction = ({
     setInputEmailAddress(ev.target.value)
   }
 
-  const getContent = () => {
-    if (showEmailInputState) {
+  const onPending = (transactionId: string) => {
+    setNavigation({
+      location: 'transaction-pending',
+      params: {
+        transactionId
+      }
+    })
+  }
+
+  const onError = (error: Error) => {
+    setNavigation({
+      location: 'transaction-error',
+      params: {
+        error
+      }
+    })
+  }
+
+  const getEmailInput = () => {
+    if (emailEditState) {
       return (
         <Box
           as="form"
-          gap="2"
-          flexDirection="column"
-          onSubmit={() => {
-            setPaperSecret(null)
-            setShowEmailInputState(false)
-          }}
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="flex-start"
+          onSubmit={onClickEditEmail}
         >
-          <Text variant="normal" color="text80">
-            Enter Email Address. A receipt will be sent to this address.
-          </Text>
-          <TextInput
-            name="email"
-            type="email"
-            placeholder="Email Address"
-            value={inputEmailAddress}
-            onChange={emailAddressOnChange}
-          />
+          <Box
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="flex-start"
+            gap="2"
+          >
+            <Text
+              fontSize="normal"
+              fontWeight="normal"
+              color="text50"
+            >
+              Receipt email address
+            </Text>
+            <TextInput
+              autoFocus
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              value={inputEmailAddress}
+              onChange={emailAddressOnChange}
+            />
+          </Box>
           <Button
-            type="submit"
+            size="xs"
+            label={'Save'}
+            leftIcon={CheckmarkIcon}
             disabled={!isValidEmailAddress()}
-            label="Next"
+            type="submit"
           />
         </Box>
       )
     }
 
-    if (!paperSecret) {
-      return (
+    return (
+      <Box
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="flex-start"
+      >
         <Box
-          position="absolute"
-          top="0"
-          left="0"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="flex-start"
+          gap="2"
+        >
+          <Text
+            fontSize="normal"
+            fontWeight="normal"
+            color="text50"
+          >
+            Receipt email address
+          </Text>
+          <Text
+            fontSize="normal"
+            fontWeight="bold"
+            color="text100"
+          >
+            {email}
+          </Text>
+        </Box>
+        <Button
+          size="xs"
+          label={"Edit"}
+          leftIcon={EditIcon}
+          onClick={onClickEditEmail}
+        />
+      </Box>
+    )
+  }
+
+  return (
+    <Box>
+      {getEmailInput()}
+      {paperSecretLoading && (
+        <Box
           width="full"
           height="full"
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
+          style={{ height: '200px' }}
         >
           <Spinner size="lg" style={{ width: '60px', height: '60px' }} />
         </Box>
-      )
-    }
-
-    const onPending = (transactionId: string) => {
-      setNavigation({
-        location: 'transaction-pending',
-        params: {
-          transactionId
-        }
-      })
-    }
-
-    const onError = (error: Error) => {
-      setNavigation({
-        location: 'transaction-error',
-        params: {
-          error
-        }
-      })
-    }
-
-    return (
-      <Box>
-        <Box gap="2" alignItems="center">
-          <Box>
-            <Text variant="normal" color="text80">
-              Receipt Email Address: 
-            </Text>
-            {' '}
-            <Text variant="normal" fontWeight="bold" color="text80">
-              {inputEmailAddress}
-            </Text>
-          </Box>
-          {!settings.email && (
-            <Button
-              onClick={() => {
-                onClickChangeEmail()
-              }}
-              label="Change Email"
-            />
-          )}
-        </Box>
-
+      )}
+      {paperSecret && !paperSecretLoading && (
         <Card marginY="4" flexDirection="column">
           <CheckoutWithCard
             sdkClientSecret={paperSecret}
@@ -189,13 +230,7 @@ export const PaperTransaction = ({
             }}
           />
         </Card>
-      </Box>
-    )
-  }
-
-  return (
-    <Box>
-      {getContent()}
+      )}
     </Box>
   )
 }

@@ -32,12 +32,12 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
   })
 
-  export const useCoinPrices = (args: GetCoinPricesArgs) =>
-    useQuery({
-      queryKey: ['coinPrices', args],
-      queryFn: () => getCoinPrices(args),
-      retry: true,
-      staleTime: 1 * time.oneMinute,
-      enabled: args.tokens.length > 0
-    })
-    
+export const useCoinPrices = (args: GetCoinPricesArgs) =>
+  useQuery({
+    queryKey: ['coinPrices', args],
+    queryFn: () => getCoinPrices(args),
+    retry: true,
+    staleTime: 1 * time.oneMinute,
+    enabled: args.tokens.length > 0
+  })
+  

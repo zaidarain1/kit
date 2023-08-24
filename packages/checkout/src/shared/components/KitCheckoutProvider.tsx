@@ -14,6 +14,7 @@ import {
   PendingTransaction,
   TransactionError,
   TransactionSuccess,
+  CheckoutSelection,
 } from '../../views'
 import {
   History,
@@ -78,6 +79,8 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
   const getContent = () => {
     const { location } = navigation
     switch (location) {
+      case 'select-method-checkout':
+        return <CheckoutSelection />
       case 'transaction-pending':
         return <PendingTransaction />
       case 'transaction-success':
@@ -93,12 +96,15 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
   const getHeader = () => {
     const { location } = navigation
     switch (location) {
+      case 'select-method-checkout':
+        <NavigationHeader primaryText="Checkout" />
       case 'transaction-pending':
       case 'transaction-error':
       case 'transaction-pending':
+        return <NavigationHeader disableBack primaryText="Pay with credit or debit card" />
       case 'transaction-form':
       default: 
-        return <NavigationHeader primaryText="Checkout" />
+        return <NavigationHeader primaryText="Pay with credit or debit card" />
     }
   }
 

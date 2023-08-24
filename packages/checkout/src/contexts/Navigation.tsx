@@ -1,5 +1,9 @@
 import React, { createContext } from 'react'
 
+export interface SelectCheckoutNavigation {
+  location: 'select-method-checkout',
+}
+
 export interface TransactionFormNavigation {
   location: 'transaction-form',
 }
@@ -31,7 +35,7 @@ export interface TransactionPendingNavigation {
   params: TransactionPendingParams
 }
 
-export type Navigation = TransactionFormNavigation | TransactionSuccessNavigation | TransactionErrorNavigation | TransactionPendingNavigation
+export type Navigation = TransactionFormNavigation | TransactionSuccessNavigation | TransactionErrorNavigation | TransactionPendingNavigation | SelectCheckoutNavigation
 
 export type History = Navigation[]
 
