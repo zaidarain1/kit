@@ -102,7 +102,7 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
     switch (location) {
       case 'select-method-checkout':
         return <NavigationHeader primaryText="Checkout" />
-      case 'transaction-pending':
+      case 'transaction-success':
       case 'transaction-error':
       case 'transaction-pending':
         return <NavigationHeader disableBack primaryText="Pay with credit or debit card" />
@@ -117,7 +117,6 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
       setHistory([])
     }
   }, [openCheckoutModal])
-
 
   return (
     <QueryClientProvider client={queryClient}>

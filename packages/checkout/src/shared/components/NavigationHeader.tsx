@@ -16,8 +16,6 @@ export const NavigationHeader = ({
 }: NavigationHeaderProps) => {
   const { goBack, history } = useNavigation()
 
-  console.log('history....', history)
-
   const onClickBack = () => {
     goBack()
   }
