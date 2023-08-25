@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import { Box, Card, Image, Text } from '@0xsequence/design-system'
 
 import { CoinIcon } from '../../../shared/components/CoinIcon'
+import { Skeleton } from '../../../shared/components/Skeleton'
 
 import { useTokenMetadata, useContractInfo } from '../../../hooks'
 import { getNativeTokenInfoByChainId, formatDisplay } from '../../../utils'
@@ -38,6 +39,13 @@ export const OrderSummaryItem = ({
   })
 
   const isLoading = isTokenMetadataLoading || isContractInfoLoading
+
+  if (isLoading) {
+    return (
+      <OrderSummarySkeleton />
+    )
+  }
+
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
   const { name = 'unknown', image, decimals = 0 } = tokenMetadata || {}
 
@@ -51,7 +59,13 @@ export const OrderSummaryItem = ({
   return (
     <Card flexDirection="row" alignItems="flex-start" justifyContent="space-between">
       <Box flexDirection="row" alignItems="center" justifyContent="center" gap="2">
-        <Box aspectRatio="1/1" height="full" width="full" justifyContent="center" alignItems="center">
+        <Box
+          aspectRatio="1/1"
+          height="full"
+          justifyContent="center"
+          alignItems="center"
+          style={{ width: '80px' }}
+        >
           <Image src={image} borderRadius="md" style={{ height: '80px' }} />
         </Box>
         <Box flexDirection="column" alignItems="flex-start" justifyContent="center" gap="2">
@@ -78,6 +92,21 @@ export const OrderSummaryItem = ({
       <Box height="full" fontSize="small" color="text50" fontWeight="bold">
         {`x${formatDisplay(balanceFormatted)}`}
       </Box>
+    </Card>
+  )
+}
+
+export const OrderSummarySkeleton = () => {
+  return (
+    <Card flexDirection="row" alignItems="flex-start" justifyContent="space-between">
+      <Box flexDirection="row" alignItems="center" justifyContent="center" gap="2">
+        <Skeleton height="80px" width="80px" />
+        <Box flexDirection="column" alignItems="flex-start" justifyContent="center" gap="2">
+          <Skeleton width="100px" height="14px" />
+          <Skeleton width="180px" height="34px" />
+        </Box>
+      </Box>
+      <Skeleton height="14px" width="14px" />
     </Card>
   )
 }
