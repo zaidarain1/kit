@@ -1,11 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
+import { GetContractInfoArgs } from '@0xsequence/metadata'
 import {
   fetchBalances,
   GetTokenBalancesArgs,
   fetchCollectionBalance,
   GetCollectionBalanceArgs,
   getCoinPrices,
-  GetCoinPricesArgs
+  GetCoinPricesArgs,
+  fetchTokenMetadata,
+  GetTokenMetadataArgs,
+  fetchContractInfo,
 } from '../api/data'
 
 export const time = {
@@ -41,3 +45,20 @@ export const useCoinPrices = (args: GetCoinPricesArgs) =>
     enabled: args.tokens.length > 0
   })
   
+export const useTokenMetadata = (args: GetTokenMetadataArgs) =>
+  useQuery({
+    queryKey: ['useTokenMetadata', args],
+    queryFn: () => fetchTokenMetadata(args),
+    retry: true,
+    staleTime: 10 * time.oneMinute,
+    enabled: !!args.chainId && !!args.contractAddress
+  })
+
+export const useContractInfo = (args: GetContractInfoArgs) =>
+  useQuery({
+    queryKey: ['useContractInfo', args],
+    queryFn: () => fetchContractInfo(args),
+    retry: true,
+    staleTime: 60 * time.oneMinute,
+    enabled: !!args.chainID && !!args.contractAddress
+  })

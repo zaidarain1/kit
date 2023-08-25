@@ -1,6 +1,7 @@
 import { Token } from '@0xsequence/api'
 import { networks, ChainId } from '@0xsequence/network'
 import { TokenBalance, ContractType } from '@0xsequence/indexer'
+import { GetContractInfoArgs } from '@0xsequence/metadata'
 import { ethers } from 'ethers'
 
 import { getNetworkConfigAndClients, getPaperNetworkName } from '../utils'
@@ -131,7 +132,21 @@ export const fetchTokenMetadata = async ({
     tokenIDs: [tokenId],
   })
 
-  /// TODO: finish metadata endpoint
+  return response.tokenMetadata[0]
+}
+
+export const fetchContractInfo = async ({
+  chainID,
+  contractAddress,
+}: GetContractInfoArgs) => {
+  const { metadataClient } = await getNetworkConfigAndClients(chainID)
+  
+  const response = await metadataClient.getContractInfo({
+    chainID,
+    contractAddress,
+  })
+
+  return response.contractInfo
 }
 
 export interface FetchPaperSecretArgs {
