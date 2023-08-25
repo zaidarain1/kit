@@ -4,8 +4,10 @@ import React from 'react'
 import { Skeleton } from './Skeleton'
 import { ethers } from 'ethers'
 
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+
 import { CoinIcon } from './CoinIcon'
-import { formatDisplay, getFiatCurrencyById, getNativeTokenInfoByChainId } from '../utils'
+import { formatDisplay, getFiatCurrencyById } from '../utils'
 import { useSettings } from '../hooks'
 import { CollectibleTileImage } from '../shared/CollectibleTileImage'
 

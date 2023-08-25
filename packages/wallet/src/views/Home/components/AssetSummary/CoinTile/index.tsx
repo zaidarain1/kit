@@ -4,13 +4,16 @@ import { Box, Text } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
 
 import { CoinTileContent } from './CoinTileContent'
+
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+
 import {
   computeBalanceFiat,
   formatDisplay,
-  getNativeTokenInfoByChainId,
   getPercentagePriceChange,
   compareAddress,
 } from '../../../../../utils'
+
 import { useCoinPrices } from '../../../../../hooks'
 
 interface CoinTileProps {

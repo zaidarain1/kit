@@ -36,18 +36,19 @@ export const getCheckoutSettings = (address?: string) => {
         contractAddress: '0x71c7656ec7ab88b098defb751b7401b5f6d8976f',
         amountRequiredRaw: '10000000000'
       },
-      orderSummaryItems: [
-        {
-          contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
-          tokenId: '66597',
-          quantityRaw: '100'
-        },
-        {
-          contractAddress: '0x71c7656ec7ab88b098defb751b7401b5f6d8976f',
-          quantityRaw: '100'
-        }
-      ]
-    }
+    },
+    orderSummaryItems: [
+      {
+        contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
+        tokenId: '66597',
+        quantityRaw: '100'
+      },
+      {
+        contractAddress: '0x624e4fa6980afcf8ea27bfe08e2fb5979b64df1c',
+        tokenId: '1741',
+        quantityRaw: '100'
+      },
+    ]
   }
 
   return checkoutSettings

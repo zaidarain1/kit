@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { ethers } from 'ethers'
 import { Box, SearchIcon, Text, TextInput } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
 import Fuse from 'fuse.js'
 import { useAccount, useChainId } from 'wagmi'
 
@@ -9,7 +10,7 @@ import { WalletLink } from './components/WalletLink'
 
 import { Skeleton } from '../../shared/Skeleton'
 import { useBalances, useCoinPrices } from '../../hooks'
-import { compareAddress, computeBalanceFiat, getNativeTokenInfoByChainId } from '../../utils'
+import { compareAddress, computeBalanceFiat } from '../../utils'
 
 export const SearchWallet = () => {
   const [search, setSearch] = useState('')

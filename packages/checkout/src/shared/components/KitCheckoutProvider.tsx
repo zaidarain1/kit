@@ -101,7 +101,7 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
     const { location } = navigation
     switch (location) {
       case 'select-method-checkout':
-        <NavigationHeader primaryText="Checkout" />
+        return <NavigationHeader primaryText="Checkout" />
       case 'transaction-pending':
       case 'transaction-error':
       case 'transaction-pending':

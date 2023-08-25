@@ -1,66 +1,11 @@
 import { ethers } from 'ethers'
-import { TxnTransferType, TokenBalance, GetTransactionHistoryReturn, Transaction } from '@0xsequence/indexer'
+import { TokenBalance, GetTransactionHistoryReturn, Transaction } from '@0xsequence/indexer'
 import { TokenPrice } from '@0xsequence/api'
 import { InfiniteData } from '@tanstack/react-query'
 
 import { vars } from '@0xsequence/design-system'
 
 import { compareAddress } from './helpers'
-export interface NativeTokenInfo {
-  name: string,
-  symbol: string,
-  logoURI: string,
-  decimals: number,
-  blockExplorerUrl: string
-  blockExplorerName: string
-}
-
-export const getChainIdList = () => {
-  return [1,137,56,43114]
-}
-
-export const getNativeTokenInfoByChainId = (chainId: number) => {
-  interface TokenInfos {
-    [key: number]: NativeTokenInfo
-  }
-
-  const tokenInfos: TokenInfos = {
-    1: {
-      name: 'Ethereum',
-      symbol: 'ETH',
-      logoURI: 'https://assets.coingecko.com/coins/images/279/thumb/ethereum.png',
-      decimals: 18,
-      blockExplorerName: 'Etherscan',
-      blockExplorerUrl: 'https://etherscan.io'
-    },
-    137: {
-      name: 'Polygon',
-      symbol: 'MATIC',
-      logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
-      decimals: 18,
-      blockExplorerName: 'Polyscan',
-      blockExplorerUrl: 'https://polygonscan.com'
-    },
-    56: {
-      name: 'BNB',
-      symbol: 'BNB',
-      logoURI: 'https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png',
-      decimals: 18,
-      blockExplorerName: 'BscScan',
-      blockExplorerUrl: 'https://bscscan.com'
-    },
-    43114: {
-      name: 'Avalanche',
-      symbol: 'AVAX',
-      logoURI: 'https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png',
-      decimals: 18,
-      blockExplorerName: 'Snowtrace',
-      blockExplorerUrl: 'https://snowtrace.io'
-    },
-  }
-
-  return tokenInfos[chainId] || tokenInfos[1]
-}
 
 export const getPercentageColor = (value: number) => {
   if(value > 0) {

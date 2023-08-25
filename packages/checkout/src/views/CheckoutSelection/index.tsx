@@ -8,9 +8,13 @@ import {
   PaymentsIcon,
   vars
 } from '@0xsequence/design-system'
-import { CoinIcon } from '../shared/components/CoinIcon'
-import { HEADER_HEIGHT } from '../constants'
-import { useNavigation, useCheckoutModal } from '../hooks'
+
+import { OrderSummaryItem } from './component/OrderSummaryItem'
+
+import { CoinIcon } from '../../shared/components/CoinIcon'
+import { HEADER_HEIGHT } from '../../constants'
+import { useNavigation, useCheckoutModal } from '../../hooks'
+import { getNativeTokenInfoByChainId } from '../../utils'
 
 export const CheckoutSelection = () => {
   const { setNavigation } = useNavigation()
@@ -18,6 +22,9 @@ export const CheckoutSelection = () => {
 
   const displayCryptoCheckout = !!settings?.cryptoCheckout
   const displayCreditCardCheckout = !!settings?.creditCardCheckout
+  const orderSummaryItems = settings?.orderSummaryItems || []
+
+  const chainId = settings?.cryptoCheckout?.chainId || settings?.creditCardCheckout?.chainId || 1
 
   const onClickPayWithCard = () => {
     setNavigation({
@@ -42,18 +49,29 @@ export const CheckoutSelection = () => {
       style={{
         marginTop: HEADER_HEIGHT
       }}
+      flexDirection="column"
+      gap="3"
     >
-      <Text>
-        Order summary
-      </Text>      
-      <Box>
-        Summary item box
-      </Box>
-      <Divider />
+      {orderSummaryItems.length > 0 && (
+        <>
+          <Text fontWeight="normal" fontSize="normal" color="text50">
+            Order summary
+          </Text>      
+          <Box flexDirection="column" gap="2">
+            {orderSummaryItems.map((orderSummaryItem, index) => {
+              return (
+                <OrderSummaryItem key={index} {...orderSummaryItem} chainId={chainId} />
+              )
+            })}
+          </Box>
+          <Divider color="backgroundSecondary" />
+        </>
+      )}
+
 
       {displayCryptoCheckout && (
         <Box>
-          <Text>
+          <Text fontWeight="normal" fontSize="normal" color="text50">
             Total
           </Text>
           <Box>

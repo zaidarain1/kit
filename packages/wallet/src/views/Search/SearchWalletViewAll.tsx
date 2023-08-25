@@ -9,13 +9,14 @@ import {
   Text,
   TextInput,
 } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
 import { useAccount, useChainId } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
 import { useBalances, useCoinPrices } from '../../hooks'
-import { compareAddress, computeBalanceFiat, getNativeTokenInfoByChainId } from '../../utils'
+import { compareAddress, computeBalanceFiat } from '../../utils'
 
 interface SearchWalletViewAllProps {
   defaultTab: 'coins' | 'collections'

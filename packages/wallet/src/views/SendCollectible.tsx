@@ -14,6 +14,7 @@ import {
   TextInput,
   vars
 } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
 import { TokenBalance } from '@0xsequence/indexer'
 import { useAccount, useWalletClient } from 'wagmi'
 
@@ -24,7 +25,6 @@ import {
   useOpenWalletModal
 } from '../hooks'
 import {
-  getNativeTokenInfoByChainId,
   limitDecimals,
   isEthAddress,
   truncateAtMiddle

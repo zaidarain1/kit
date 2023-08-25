@@ -12,7 +12,8 @@ import {
   LinkIcon,
   Text,
  } from '@0xsequence/design-system'
-import dayjs from 'dayjs'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+ import dayjs from 'dayjs'
 
 import { CoinIcon } from '../../shared/CoinIcon'
 import { CopyButton } from '../../shared/CopyButton'
@@ -21,7 +22,6 @@ import { Skeleton } from '../../shared/Skeleton'
 import {
   compareAddress,
   formatDisplay,
-  getNativeTokenInfoByChainId,
   getFiatCurrencyById
 } from '../../utils'
 import { useCoinPrices, useCollectiblePrices, useSettings } from '../../hooks'

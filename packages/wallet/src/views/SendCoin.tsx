@@ -12,6 +12,7 @@ import {
   TextInput,
   vars
 } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
 import { TokenBalance } from '@0xsequence/indexer'
 import { useAccount, useWalletClient } from 'wagmi'
 
@@ -21,7 +22,6 @@ import { useBalances, useCoinPrices, useSettings, useOpenWalletModal } from '../
 import {
   compareAddress,
   computeBalanceFiat,
-  getNativeTokenInfoByChainId,
   limitDecimals,
   isEthAddress,
   getFiatCurrencyById,

@@ -9,7 +9,7 @@ interface CoinQuantity {
 interface OrderSummaryItem {
   contractAddress: string,
   quantityRaw: string,
-  tokenId?: string
+  tokenId: string
 }
 
 export interface CheckoutSettings {
@@ -32,8 +32,8 @@ export interface CheckoutSettings {
     chainId: number,
     triggerTransaction: () => void,
     coinQuantity: CoinQuantity,
-    orderSummaryItems: OrderSummaryItem[],
-  }
+  },
+  orderSummaryItems: OrderSummaryItem[]
 }
 
 type CheckoutModalContext = {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { Transaction, TxnTransfer, TxnTransferType } from '@0xsequence/indexer'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
 import { Box, Text, Image, SendIcon, ReceiveIcon, TransactionIcon, vars } from '@0xsequence/design-system'
 import dayjs from 'dayjs'
 
@@ -9,7 +10,6 @@ import { Skeleton } from '../../shared/Skeleton'
 import { useCoinPrices, useSettings, useNavigation } from '../../hooks'
 import {
   formatDisplay,
-  getNativeTokenInfoByChainId,
   compareAddress,
   getFiatCurrencyById,
 } from '../../utils'
