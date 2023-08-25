@@ -34,8 +34,12 @@ export type KitCheckoutProvider = {
 }
 
 export const DEFAULT_LOCATION: Navigation = {
-  location: 'transaction-form',
-}
+    location: 'select-method-checkout'
+  }
+
+// export const DEFAULT_LOCATION: Navigation = {
+//   location: 'transaction-form',
+// }
 
 // export const DEFAULT_LOCATION: Navigation = {
 //   location: 'transaction-pending',

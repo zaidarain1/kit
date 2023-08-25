@@ -9,9 +9,7 @@ import {
   EditIcon,
   CheckmarkIcon
 } from '@0xsequence/design-system'
-import { NetworkConfig, ChainId, networks } from '@0xsequence/network'
 import { CheckoutWithCard } from '@paperxyz/react-client-sdk'
-import { getPaperNetworkName } from '../../utils'
 import { useNavigation } from '../../hooks'
 import { fetchPaperSecret } from '../../api'
 import { CheckoutSettings } from '../../contexts/CheckoutModal'
@@ -23,8 +21,8 @@ export const PaperTransaction = ({
   settings
 }: PaperTransactionProps) => {
   const [emailEditState, setEmailEditState] = useState(true)
-  const [inputEmailAddress, setInputEmailAddress] = useState<string | undefined>(settings.email)
-  const [email, setEmail] = useState<string>('')
+  const [email, setEmail] = useState<string>(settings.creditCardCheckout?.email || '')
+  const [inputEmailAddress, setInputEmailAddress] = useState<string | undefined>(email)
   const [paperSecret, setPaperSecret] = useState<string | null>(null)
   const [paperSecretLoading, setPaperSecretLoading] = useState(false)
   const { setNavigation } = useNavigation()
@@ -42,13 +40,17 @@ export const PaperTransaction = ({
   const fetchSecret = async () => {
     setPaperSecretLoading(true)
     try {
-      if (!inputEmailAddress) {
+      if (!email) {
         throw 'No email address found'
       }
 
+      if (!settings.creditCardCheckout) {
+        throw 'No credit card checkout settings found'
+      }
+
       const secret = await fetchPaperSecret({
-        email: inputEmailAddress,
-        ...settings
+        email,
+        ...settings.creditCardCheckout
       })
 
       setPaperSecret(secret)
@@ -212,7 +214,7 @@ export const PaperTransaction = ({
         <Card marginY="4" flexDirection="column">
           <CheckoutWithCard
             sdkClientSecret={paperSecret}
-            appName={settings.receiptTitle}
+            appName={settings?.creditCardCheckout?.receiptTitle}
             onReview={() => {}}
             onPaymentSuccess={result => {
               // @ts-ignore-next-line
