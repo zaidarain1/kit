@@ -15,6 +15,7 @@ import { useAccount } from 'wagmi'
 import { OrderSummaryItem } from './component/OrderSummaryItem'
 
 import { CoinIcon } from '../../shared/components/CoinIcon'
+import { Skeleton } from '../../shared/components/Skeleton'
 import { HEADER_HEIGHT } from '../../constants'
 import {
   useNavigation,
@@ -72,10 +73,6 @@ export const CheckoutSelection = () => {
   const requestAmount = ethers.utils.formatUnits(requestedAmountRaw, coinDecimals)
   const isInsufficientBalance = ethers.BigNumber.from(userBalanceRaw).lt(ethers.BigNumber.from(requestedAmountRaw))
 
-  console.log('balances....', balancesData)
-  console.log('contractInfo....', contractInfoData)
-  console.log('accountAddress...', accountAddress)
-
   const orderSummaryItems = settings?.orderSummaryItems || []
 
   const chainId = settings?.cryptoCheckout?.chainId || settings?.creditCardCheckout?.chainId || 1
@@ -132,12 +129,16 @@ export const CheckoutSelection = () => {
           <Text fontWeight="normal" fontSize="normal" color="text50">
             Total
           </Text>
-          <Box flexDirection="row" gap="1" alignItems="center">
-            <CoinIcon imageUrl={coinImageUrl} size={12} />
-            <Text fontWeight="normal" fontSize="normal" color="text100">
-              {`${formatDisplay(requestAmount)} ${coinSymbol}`}
-            </Text>
-          </Box>
+          {isLoading ? (
+            <Skeleton width="100px" height="17px" />
+          ) : (
+            <Box flexDirection="row" gap="1" alignItems="center">
+              <CoinIcon imageUrl={coinImageUrl} size={12} />
+              <Text fontWeight="normal" fontSize="normal" color="text100">
+                {`${formatDisplay(requestAmount)} ${coinSymbol}`}
+              </Text>
+            </Box>
+          )}
         </Box>
       )}
 
@@ -162,7 +163,7 @@ export const CheckoutSelection = () => {
             onClick={onClickPayWithCard}
           />
         )}
-        {displayCryptoCheckout && !isInsufficientBalance && (
+        {displayCryptoCheckout && (!isInsufficientBalance && !isLoading) && (
           <Button
             style={{
               borderRadius: vars.radii.md,
@@ -176,7 +177,7 @@ export const CheckoutSelection = () => {
             onClick={onClickPayWithCrypto}
           />
         )}
-        {displayCryptoCheckout && isInsufficientBalance && (
+        {displayCryptoCheckout && (isInsufficientBalance || isLoading) && (
           <Button
             className={styles.insufficientBalanceButton}
             style={{
@@ -195,13 +196,18 @@ export const CheckoutSelection = () => {
       </Box>
       {displayCryptoCheckout && (
         <Box width="full" justifyContent="flex-end">
-          <Text
-            fontWeight="bold"
-            fontSize="small"
-            color="text50"
-          >
-            Balance: {`${formatDisplay(userBalance)} ${coinSymbol}`}
-          </Text>
+          {isLoading ? (
+            <Skeleton width="102px" height="14px" />
+          ) : (
+            <Text
+              fontWeight="bold"
+              fontSize="small"
+              color="text50"
+            >
+              Balance: {`${formatDisplay(userBalance)} ${coinSymbol}`}
+            </Text>
+          )}
+
         </Box>
       )}
     </Box>
