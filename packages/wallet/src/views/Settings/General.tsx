@@ -19,11 +19,11 @@ export const SettingsGeneral = () => {
   }
 
   const onChangeHideUnlistedTokens = () => {
-    setHideUnlistedTokens && setHideUnlistedTokens(!hideUnlistedTokens)
+    setHideUnlistedTokens(!hideUnlistedTokens)
   }
 
   const onChangeHideCollectibles = () => {
-    setHideCollectibles && setHideCollectibles(!hideCollectibles)
+    setHideCollectibles(!hideCollectibles)
   }
 
   return (

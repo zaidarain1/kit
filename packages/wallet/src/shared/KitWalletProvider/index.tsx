@@ -17,9 +17,11 @@ import {
   Navigation,
   NavigationContext,
   WalletModalContext,
-  SettingsContext,
-  FiatCurrency
 } from '../../contexts'
+
+import {
+  FiatCurrency
+} from '../../hooks'
 
 import { HEADER_HEIGHT } from '../../constants'
 import * as styles from '../styles.css'
@@ -84,11 +86,6 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
   const [history, setHistory] = useState<History>([])
   const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION
 
-  // Settings Context
-  const [hideUnlistedTokens, setHideUnlistedTokens] = useState<boolean>(true)
-  const [hideCollectibles, setHideCollectibles] = useState<boolean>(false)
-  const [fiatCurrency, setFiatCurrency] = useState<FiatCurrency>('USD')
-
   const displayScrollbar =
     navigation.location === 'home' ||
     navigation.location === 'collection-details' ||
@@ -106,48 +103,39 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
   }, [openWalletModal])
 
   return (
-    <SettingsContext.Provider value={{
-      hideUnlistedTokens,
-      setHideUnlistedTokens,
-      hideCollectibles,
-      setHideCollectibles,
-      fiatCurrency,
-      setFiatCurrency,
-    }}>
-      <WalletModalContext.Provider value={{ setOpenWalletModal }}>
-        <NavigationContext.Provider value={{ setHistory, history }}>
-            <ThemeProvider theme={theme}>
-              <AnimatePresence>
-                {openWalletModal && (
-                  <Modal
-                    contentProps={{
-                      style: {
-                        maxWidth: '400px', height: 'fit-content',
-                      },
-                    }}
-                    scroll={false}
-                    backdropColor="backgroundBackdrop"
-                    onClose={() => setOpenWalletModal(false)}
-                  >
-                    <Box className={styles.walletContent} id="sequence-kit-wallet-content">
-                      {getHeader(navigation)}
-                    
-                      {displayScrollbar ? (
-                        <Scroll style={{ paddingTop: HEADER_HEIGHT, height: '800px' }}>
-                          {getContent(navigation)}
-                        </Scroll>
-                      ) : (
-                        getContent(navigation)
-                      )}
+    <WalletModalContext.Provider value={{ setOpenWalletModal }}>
+      <NavigationContext.Provider value={{ setHistory, history }}>
+          <ThemeProvider theme={theme}>
+            <AnimatePresence>
+              {openWalletModal && (
+                <Modal
+                  contentProps={{
+                    style: {
+                      maxWidth: '400px', height: 'fit-content',
+                    },
+                  }}
+                  scroll={false}
+                  backdropColor="backgroundBackdrop"
+                  onClose={() => setOpenWalletModal(false)}
+                >
+                  <Box className={styles.walletContent} id="sequence-kit-wallet-content">
+                    {getHeader(navigation)}
+                  
+                    {displayScrollbar ? (
+                      <Scroll style={{ paddingTop: HEADER_HEIGHT, height: '800px' }}>
+                        {getContent(navigation)}
+                      </Scroll>
+                    ) : (
+                      getContent(navigation)
+                    )}
 
-                    </Box>
-                  </Modal>
-                )}
-              </AnimatePresence>
-            </ThemeProvider>
-            {children}
-        </NavigationContext.Provider>
-      </WalletModalContext.Provider>
-    </SettingsContext.Provider>
+                  </Box>
+                </Modal>
+              )}
+            </AnimatePresence>
+          </ThemeProvider>
+          {children}
+      </NavigationContext.Provider>
+    </WalletModalContext.Provider>
   )
 }
