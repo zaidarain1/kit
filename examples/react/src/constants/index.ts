@@ -103,3 +103,33 @@ export const bottomPageLinks: BottomPageLink[] = [
     url: 'https://docs.sequence.xyz',
   },
 ]
+
+
+interface SocialLinks {
+  id: string
+  url: string
+  icon: string
+}
+
+export const socialLinks: SocialLinks [] = [
+  {
+    id: 'discord',
+    url: 'https://discord.gg/sequence',
+    icon: '/img/social/discord.svg',
+  },
+  {
+    id: 'twitter',
+    url: 'https://www.twitter.com/0xsequence',
+    icon: '/img/social/twitter.svg',
+  },
+  {
+    id: 'youtube',
+    url: 'https://www.youtube.com/channel/UC1zHgUyV-doddTcnFNqt62Q',
+    icon: '/img/social/youtube.svg',
+  },
+  {
+    id: 'github',
+    url: 'https://github.com/0xsequence',
+    icon: '/img/social/github.svg',
+  },
+]

@@ -15,7 +15,7 @@ import {
   SignoutIcon
 } from '@0xsequence/design-system'
 
-import { bottomPageLinks, messageToSign } from '../constants'
+import { bottomPageLinks, messageToSign, socialLinks } from '../constants'
 import { formatAddress, getCheckoutSettings } from '../utils'
 import *  as sharedStyles from '../shared/styles.css'
 
@@ -201,6 +201,25 @@ function Homepage({
               <Text fontWeight="normal" fontSize="small" color="text50">{link.label}</Text>
             </Box>
           ))}
+        </Box>
+        <Box gap="4" justifyContent="center" alignItems="center">
+          {socialLinks.map(socialLink => {
+            return (
+              <Box
+                className={sharedStyles.clickable}
+                onClick={() => window.open(socialLink.url)}
+              >
+                <Image
+                  height="3"
+                  src={socialLink.icon}
+                  alt={socialLink.id}
+                  style={{
+                    filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
+                  }}
+                />
+              </Box>
+            )
+          })}
         </Box>
       </Box>
     </Box>
