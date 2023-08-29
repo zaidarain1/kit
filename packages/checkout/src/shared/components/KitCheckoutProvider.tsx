@@ -62,7 +62,17 @@ export const DEFAULT_LOCATION: Navigation = {
 //   }
 // }
 
-export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
+export const KitCheckoutProvider = (props: KitCheckoutProvider) => {
+  const queryClient = new QueryClient()
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <KitCheckoutContent  {...props} />
+    </QueryClientProvider>
+  )
+}
+
+export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
   const { theme } = useTheme()
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
@@ -77,8 +87,6 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
   const closeCheckout = () => {
     setOpenCheckoutModal(false)
   }
-
-  const queryClient = new QueryClient()
 
   const getContent = () => {
     const { location } = navigation
@@ -119,37 +127,35 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
   }, [openCheckoutModal])
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <CheckoutModalContextProvider value={{ triggerCheckout, closeCheckout, settings, theme }}>
-        <NavigationContextProvider value={{ history, setHistory }}>
-          <ThemeProvider theme={theme}>
-            <AnimatePresence>
-              {openCheckoutModal && (
-                <Modal
-                  contentProps={{
-                    style: {
-                      maxWidth: '400px',
-                      height: 'auto'
-                    }
-                  }}
-                  scroll={false}
-                  backdropColor="backgroundBackdrop"
-                  onClose={() => setOpenCheckoutModal(false)}
+    <CheckoutModalContextProvider value={{ triggerCheckout, closeCheckout, settings, theme }}>
+      <NavigationContextProvider value={{ history, setHistory }}>
+        <ThemeProvider theme={theme}>
+          <AnimatePresence>
+            {openCheckoutModal && (
+              <Modal
+                contentProps={{
+                  style: {
+                    maxWidth: '400px',
+                    height: 'auto'
+                  }
+                }}
+                scroll={false}
+                backdropColor="backgroundBackdrop"
+                onClose={() => setOpenCheckoutModal(false)}
+              >
+                <Box
+                  id="sequence-kit-checkout-content"
+                  className={sharedStyles.walletContent}
                 >
-                  <Box
-                    id="sequence-kit-checkout-content"
-                    className={sharedStyles.walletContent}
-                  >
-                    {getHeader()}
-                    {getContent()}
-                  </Box>
-                </Modal>
-              )}
-            </AnimatePresence>
-          </ThemeProvider>
-          {children}
-        </NavigationContextProvider>
-      </CheckoutModalContextProvider>
-    </QueryClientProvider>
+                  {getHeader()}
+                  {getContent()}
+                </Box>
+              </Modal>
+            )}
+          </AnimatePresence>
+        </ThemeProvider>
+        {children}
+      </NavigationContextProvider>
+    </CheckoutModalContextProvider>
   )
 }
