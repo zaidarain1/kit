@@ -1,7 +1,8 @@
-import React, { createContext } from 'react'
+import React from 'react'
+import { createGenericContext } from '@0xsequence/kit-core'
 
 type WalletModalContext = {
-  setOpenWalletModal?: React.Dispatch<React.SetStateAction<boolean>>
+  setOpenWalletModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const WalletModalContext = createContext<WalletModalContext>({})
+export const [useWalletModalContext,WalletModalContextProvider] = createGenericContext<WalletModalContext>()

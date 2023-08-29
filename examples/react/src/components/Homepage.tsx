@@ -154,9 +154,9 @@ function Homepage({
             <Box flexDirection="column" gap="2">
               <Text color="text50" fontSize="small" fontWeight="medium">Demos</Text>
               <ClickableCard
-                title="Embed wallet"
+                title="Embedded wallet"
                 description="Connect a Sequence wallet to view, swap, send, and receive collections"
-                onClick={() => openWalletModal && openWalletModal(true)}
+                onClick={() => openWalletModal(true)}
               />
               <ClickableCard
                 title="Checkout"

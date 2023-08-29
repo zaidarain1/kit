@@ -15,13 +15,9 @@ import { getHeader, getContent } from './utils'
 import {
   History,
   Navigation,
-  NavigationContext,
-  WalletModalContext,
+  NavigationContextProvider,
+  WalletModalContextProvider,
 } from '../../contexts'
-
-import {
-  FiatCurrency
-} from '../../hooks'
 
 import { HEADER_HEIGHT } from '../../constants'
 import * as styles from '../styles.css'
@@ -103,8 +99,8 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
   }, [openWalletModal])
 
   return (
-    <WalletModalContext.Provider value={{ setOpenWalletModal }}>
-      <NavigationContext.Provider value={{ setHistory, history }}>
+    <WalletModalContextProvider value={{ setOpenWalletModal }}>
+      <NavigationContextProvider value={{ setHistory, history }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openWalletModal && (
@@ -135,7 +131,7 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
             </AnimatePresence>
           </ThemeProvider>
           {children}
-      </NavigationContext.Provider>
-    </WalletModalContext.Provider>
+      </NavigationContextProvider>
+    </WalletModalContextProvider>
   )
 }

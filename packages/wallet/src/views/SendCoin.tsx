@@ -142,7 +142,7 @@ export const SendCoin = ({
         data: new ethers.utils.Interface(ERC_20_ABI).encodeFunctionData('transfer', [toAddress, sendAmount.toHexString()]) as `0x${string}`
       }).catch(e => console.error('User rejected transaction', e))
     }
-    setOpenWalletModal && setOpenWalletModal(false)
+    setOpenWalletModal(false)
   }
 
   return (

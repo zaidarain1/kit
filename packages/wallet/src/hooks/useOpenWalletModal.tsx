@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { WalletModalContext } from '../contexts/WalletModal'
+import { useWalletModalContext } from '../contexts/WalletModal'
 
 export const useOpenWalletModal = () => {
-  const { setOpenWalletModal } = useContext(WalletModalContext)
+  const { setOpenWalletModal } = useWalletModalContext()
 
   return setOpenWalletModal
 }

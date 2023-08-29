@@ -57,7 +57,7 @@ export const WalletDropdownContent = forwardRef((
   }
 
   const onClickSignout = () => {
-    setOpenWalletModal && setOpenWalletModal(false)
+    setOpenWalletModal(false)
     setOpenWalletDropdown(false)
     disconnect()
   }
@@ -96,6 +96,7 @@ export const WalletDropdownContent = forwardRef((
             {formatAddress(address || '')}
           </Text>
           <CopyButton
+            buttonVariant="icon"
             size="md"
             text={address || ''}
             style={{ marginLeft: '-16px' }}

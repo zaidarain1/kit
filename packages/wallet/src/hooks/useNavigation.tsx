@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavigationContext, Navigation, History } from '../contexts/Navigation'
+import { useNavigationContext, Navigation, History } from '../contexts/Navigation'
 
 
 interface UseNavigation {
@@ -13,7 +13,7 @@ export const useNavigation = (): UseNavigation => {
   const {
     setHistory,
     history
-  } = useContext(NavigationContext)
+  } = useNavigationContext()
 
   const setNavigation = (navigation: Navigation) => {
     // Scroll to top of page when navigating to a new page
@@ -22,13 +22,13 @@ export const useNavigation = (): UseNavigation => {
     parentElement?.scrollTo(0, 0)
 
     const newHistory = [...history, navigation]
-    setHistory && setHistory(newHistory)
+    setHistory(newHistory)
   }
 
   const goBack = () => {
     const newHistory = [...history]
     newHistory.pop()
-    setHistory && setHistory(newHistory)
+    setHistory(newHistory)
   }
 
   return { setNavigation, history, setHistory, goBack }

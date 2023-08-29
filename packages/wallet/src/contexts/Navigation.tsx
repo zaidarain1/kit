@@ -1,6 +1,6 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import { Transaction } from '@0xsequence/indexer'
-
+import { createGenericContext } from '@0xsequence/kit-core'
 
 export interface CollectionDetailsParams {
   contractAddress: string
@@ -99,10 +99,8 @@ export type Navigation =
 export type History = Navigation[]
 
 type NavigationContext = {
-  setHistory?: (history: History) => void
+  setHistory: (history: History) => void
   history: History,
 }
 
-export const NavigationContext = createContext<NavigationContext>({
-  history: []
-})
+export const [useNavigationContext, NavigationContextProvider] = createGenericContext<NavigationContext>()

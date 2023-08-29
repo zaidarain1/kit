@@ -148,7 +148,7 @@ export const SendCollectible = ({
           ]) as `0x${string}`
         }).catch(e => console.error('User rejected transaction', e))
     }
-    setOpenWalletModal && setOpenWalletModal(false)
+    setOpenWalletModal(false)
   }
 
   const maxAmount = ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals).toString()
