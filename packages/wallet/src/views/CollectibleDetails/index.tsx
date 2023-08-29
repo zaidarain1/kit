@@ -16,7 +16,8 @@ import {
   useCollectibleBalance,
   useSettings,
   useTransactionHistory,
-  useNavigation
+  useNavigation,
+  useConversionRate,
 } from '../../hooks'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
@@ -68,7 +69,14 @@ export const CollectibleDetails = ({
     }]
   })
 
-  const isLoading = isLoadingCollectibleBalance || isLoadingCollectiblePrices
+  const {
+    data: conversionRate = 1,
+    isLoading: isLoadingConversionRate
+  } = useConversionRate({
+    toCurrency: fiatCurrency.symbol
+  })
+
+  const isLoading = isLoadingCollectibleBalance || isLoadingCollectiblePrices || isLoadingConversionRate
 
   if (isLoading) {
     return (
@@ -96,7 +104,7 @@ export const CollectibleDetails = ({
   const balance = ethers.utils.formatUnits(rawBalance, decimals)
   const formattedBalance = formatDisplay(Number(balance))
 
-  const valueFiat = dataCollectibleBalance ? computeBalanceFiat(dataCollectibleBalance, dataCollectiblePrices || []) : '0'
+  const valueFiat = dataCollectibleBalance ? computeBalanceFiat(dataCollectibleBalance, dataCollectiblePrices || [], conversionRate) : '0'
   
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>

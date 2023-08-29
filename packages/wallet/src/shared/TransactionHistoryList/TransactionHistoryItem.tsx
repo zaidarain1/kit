@@ -7,7 +7,12 @@ import dayjs from 'dayjs'
 
 import * as sharedStyles from '../../shared/styles.css'
 import { Skeleton } from '../../shared/Skeleton'
-import { useCoinPrices, useSettings, useNavigation } from '../../hooks'
+import {
+  useCoinPrices,
+  useSettings,
+  useNavigation,
+  useConversionRate
+} from '../../hooks'
 import {
   formatDisplay,
   compareAddress,
@@ -51,11 +56,15 @@ export const TransactionHistoryItem = ({
     }))
   })
 
+  const { data: conversionRate = 1, isLoading: isLoadingConversionRate } = useConversionRate({
+    toCurrency: fiatCurrency.symbol
+  })
+  
+  const isLoading = isLoadingCoinPrices || isLoadingConversionRate
+
   const { transfers } = transaction
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
-
-
 
   const getTransactionIconByType = (transferType: TxnTransferType) => {
     switch(transferType) {
@@ -146,12 +155,12 @@ export const TransactionHistoryItem = ({
                 )}
                 {getTransferAmountLabel(formatDisplay(amountValue), symbol, transfer.transferType)}
               </Box>
-              {isLoadingCoinPrices && (
+              {isLoading && (
                 <Skeleton width="35px" height="20px" />
               )}
               {fiatConversionRate && (
                 <Text fontWeight="medium" fontSize="normal" color="text50">
-                  {`${fiatCurrency.sign}${(Number(amountValue) * fiatConversionRate).toFixed(2)}`}
+                  {`${fiatCurrency.sign}${(Number(amountValue) * fiatConversionRate * conversionRate).toFixed(2)}`}
                 </Text>
               )}
             </Box>

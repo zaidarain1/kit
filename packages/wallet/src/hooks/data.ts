@@ -17,6 +17,8 @@ import {
   GetCollectiblePricesArgs,
   getTransactionHistory,
   GetTransactionHistoryArgs,
+  fetchFiatConversionRate,
+  FetchFiatConversionRateArgs,
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -45,27 +47,26 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
   })
 
-  export const useCoinPrices = ({
-    disabled,
-    ...args
-  }: GetCoinPricesArgs & { disabled?: boolean } ) =>
-    useQuery({
-      queryKey: ['coinPrices', args],
-      queryFn: () => getCoinPrices(args),
-      retry: true,
-      staleTime: 1 * time.oneMinute,
-      enabled: args.tokens.length > 0 && !disabled
-    })
+export const useCoinPrices = ({
+  disabled,
+  ...args
+}: GetCoinPricesArgs & { disabled?: boolean } ) =>
+  useQuery({
+    queryKey: ['coinPrices', args],
+    queryFn: () => getCoinPrices(args),
+    retry: true,
+    staleTime: 1 * time.oneMinute,
+    enabled: args.tokens.length > 0 && !disabled
+  })
     
-  export const useBalancesAssetsSummary = (args: GetTokenBalancesArgs) => (
-    useQuery({
-      queryKey: ['balancesAssetsSummary', args],
-      queryFn: () => fetchBalancesAssetsSummary(args),
-      retry: true,
-      staleTime: 10 * time.oneMinute,
-      enabled: !!args.chainId && !!args.accountAddress
-    }))
-
+export const useBalancesAssetsSummary = (args: GetTokenBalancesArgs) => (
+  useQuery({
+    queryKey: ['balancesAssetsSummary', args],
+    queryFn: () => fetchBalancesAssetsSummary(args),
+    retry: true,
+    staleTime: 10 * time.oneMinute,
+    enabled: !!args.chainId && !!args.accountAddress
+  }))
 
 export const useCoinBalance = (args: GetTokenBalancesArgs) =>
   useQuery({
@@ -95,33 +96,41 @@ export const useCollectibleBalance = (args: GetCollectibleBalanceArgs) => (
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress && !!args.tokenId
   }))
 
-  export const useCollectiblePrices = (args: GetCollectiblePricesArgs) => (
-    useQuery({
-      queryKey: ['useCollectiblePrices', args],
-      queryFn: () => getCollectiblePrices(args),
-      retry: true,
-      staleTime: 5 * time.oneMinute,
-      enabled: args.tokens.length > 0 
-    }))
+export const useCollectiblePrices = (args: GetCollectiblePricesArgs) => (
+  useQuery({
+    queryKey: ['useCollectiblePrices', args],
+    queryFn: () => getCollectiblePrices(args),
+    retry: true,
+    staleTime: 5 * time.oneMinute,
+    enabled: args.tokens.length > 0 
+  }))
 
-  export const useTransactionHistory = (
-    arg: Omit<GetTransactionHistoryArgs, 'page'> & { disabled?: boolean }
-  ) =>
-    useInfiniteQuery({
-      queryKey: ['transactionHistory', arg],
-      queryFn: ({ pageParam }: { pageParam?: number }) => {
-        return getTransactionHistory({
-          ...(arg as Omit<GetTransactionHistoryArgs, 'page'> ),
-          ...(pageParam ? { page: { page: pageParam } }: { page: { page: 1 } }),
-        })
-      },
-      getNextPageParam: ({ page }) => {
-        // Note: must return undefined instead of null to stop the infinite scroll
-        if (!page.more) return undefined
-  
-        return (page?.page || 1)
-      },
-      retry: true,
-      staleTime: 10 * time.oneMinute,
-      enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
-    })
+export const useTransactionHistory = (
+  arg: Omit<GetTransactionHistoryArgs, 'page'> & { disabled?: boolean }
+) =>
+  useInfiniteQuery({
+    queryKey: ['transactionHistory', arg],
+    queryFn: ({ pageParam }: { pageParam?: number }) => {
+      return getTransactionHistory({
+        ...(arg as Omit<GetTransactionHistoryArgs, 'page'> ),
+        ...(pageParam ? { page: { page: pageParam } }: { page: { page: 1 } }),
+      })
+    },
+    getNextPageParam: ({ page }) => {
+      // Note: must return undefined instead of null to stop the infinite scroll
+      if (!page.more) return undefined
+
+      return (page?.page || 1)
+    },
+    retry: true,
+    staleTime: 10 * time.oneMinute,
+    enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
+  })
+
+export const useConversionRate = (args: FetchFiatConversionRateArgs) => (
+  useQuery({
+    queryKey: ['useConversionRate', args],
+    queryFn: () => fetchFiatConversionRate(args),
+    retry: true,
+    staleTime: 60 * time.oneMinute,
+  }))

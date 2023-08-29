@@ -9,10 +9,16 @@ import { BalanceItem } from './components/BalanceItem'
 import { WalletLink } from './components/WalletLink'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances, useCoinPrices } from '../../hooks'
+import {
+  useBalances,
+  useCoinPrices,
+  useConversionRate,
+  useSettings,
+} from '../../hooks'
 import { compareAddress, computeBalanceFiat } from '../../utils'
 
 export const SearchWallet = () => {
+  const { fiatCurrency } = useSettings()
   const [search, setSearch] = useState('')
   const { address: accountAddress } = useAccount()
   const chainId = useChainId()
@@ -35,8 +41,15 @@ export const SearchWallet = () => {
     }))
   });
 
+  const {
+    data: conversionRate = 1,
+    isLoading: isLoadingConversionRate
+  } = useConversionRate({
+    toCurrency: fiatCurrency.symbol
+  })
+
   const coinBalances = coinBalancesUnordered.sort((a, b) => {
-    const isHigherFiat = Number(computeBalanceFiat(b, coinPrices)) - Number(computeBalanceFiat(a, coinPrices))
+    const isHigherFiat = Number(computeBalanceFiat(b, coinPrices, conversionRate)) - Number(computeBalanceFiat(a, coinPrices, conversionRate))
     return isHigherFiat
   })
 
@@ -45,7 +58,7 @@ export const SearchWallet = () => {
     return Number(b.balance) - Number(a.balance)
   })
 
-  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices
+  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices || isLoadingConversionRate
 
   interface IndexedData {
     index: number,

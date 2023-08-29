@@ -23,7 +23,12 @@ import {
   compareAddress,
   formatDisplay,
 } from '../../utils'
-import { useCoinPrices, useCollectiblePrices, useSettings } from '../../hooks'
+import {
+  useCoinPrices,
+  useConversionRate,
+  useCollectiblePrices,
+  useSettings
+} from '../../hooks'
 
 interface TransactionDetailProps {
   transaction: Transaction
@@ -75,7 +80,14 @@ export const TransactionDetails = ({
     tokens: collectibles
   })
 
-  const arePricesLoading = (coins.length > 0 && coinPricesIsLoading) || (collectibles.length > 0 && collectiblePricesIsLoading)
+  const {
+    data: conversionRate = 1,
+    isLoading: isLoadingConversionRate
+  } = useConversionRate({
+    toCurrency: fiatCurrency.symbol
+  })
+
+  const arePricesLoading = (coins.length > 0 && coinPricesIsLoading) || (collectibles.length > 0 && collectiblePricesIsLoading) || isLoadingConversionRate
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
 
@@ -113,7 +125,7 @@ export const TransactionDetails = ({
               coin.token.chainId === transaction.chainId
             ))?.price?.value
 
-          const fiatValue = (parseFloat(formattedBalance) * (fiatPrice || 0)).toFixed(2)
+          const fiatValue = (parseFloat(formattedBalance) * (conversionRate * (fiatPrice || 0))).toFixed(2)
 
           return (
             <Box key={index} width="full" flexDirection="row" gap="2" justifyContent="space-between" alignItems="center">

@@ -12,6 +12,7 @@ import { NetworkBadge } from '../../shared/NetworkBadge'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import {
   useCoinBalance,
+  useConversionRate,
   useSettings,
   useCoinPrices,
   useTransactionHistory,
@@ -66,7 +67,13 @@ export const CoinDetails = ({
     }]
   })
 
-  const isLoading = isLoadingCoinBalance || isLoadingCoinPrices
+  const {
+    data: conversionRate = 1, isLoading: isLoadingConversionRate
+  } = useConversionRate({
+    toCurrency: fiatCurrency.symbol
+  })
+
+  const isLoading = isLoadingCoinBalance || isLoadingCoinPrices || isLoadingConversionRate
 
   if (isLoading) {
     return (
@@ -82,7 +89,7 @@ export const CoinDetails = ({
   const formattedBalance = ethers.utils.formatUnits(dataCoinBalance?.balance || '0', decimals)
   const balanceDisplayed = formatDisplay(formattedBalance)
 
-  const coinBalanceFiat = dataCoinBalance? computeBalanceFiat(dataCoinBalance, dataCoinPrices || []) : '0'
+  const coinBalanceFiat = dataCoinBalance? computeBalanceFiat(dataCoinBalance, dataCoinPrices || [], conversionRate) : '0'
 
   const onClickSend = () => {
     setNavigation({

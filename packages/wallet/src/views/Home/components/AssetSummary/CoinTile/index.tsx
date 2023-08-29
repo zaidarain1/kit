@@ -14,7 +14,11 @@ import {
   compareAddress,
 } from '../../../../../utils'
 
-import { useCoinPrices } from '../../../../../hooks'
+import {
+  useCoinPrices,
+  useConversionRate ,
+  useSettings
+} from '../../../../../hooks'
 
 interface CoinTileProps {
   balance: TokenBalance
@@ -23,6 +27,7 @@ interface CoinTileProps {
 export const CoinTile = ({
   balance
 }: CoinTileProps) => {
+  const { fiatCurrency } = useSettings()
   const isNativeToken = compareAddress(balance.contractAddress, ethers.constants.AddressZero)
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
 
@@ -33,7 +38,14 @@ export const CoinTile = ({
     }]
   })
 
-  const isLoading = isLoadingCoinPrice
+  const {
+    data: conversionRate = 1,
+    isLoading: isLoadingConversionRate
+  } = useConversionRate({
+    toCurrency: fiatCurrency.symbol
+  })
+
+  const isLoading = isLoadingCoinPrice || isLoadingConversionRate
   if (isLoading) {
     return (
       <Box
@@ -46,7 +58,7 @@ export const CoinTile = ({
   }
 
   if (isNativeToken) {
-    const computedBalance = computeBalanceFiat(balance, dataCoinPrices)
+    const computedBalance = computeBalanceFiat(balance, dataCoinPrices, conversionRate)
     const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
     const formattedBalance = ethers.utils.formatUnits(balance.balance, nativeTokenInfo.decimals)
     const balanceDisplayed = formatDisplay(formattedBalance)
@@ -64,7 +76,7 @@ export const CoinTile = ({
     )
   }
 
-  const computedBalance = computeBalanceFiat(balance, dataCoinPrices)
+  const computedBalance = computeBalanceFiat(balance, dataCoinPrices, conversionRate)
   const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
   
   const decimals = balance.contractInfo?.decimals ?? 18

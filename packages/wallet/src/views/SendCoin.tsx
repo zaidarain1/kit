@@ -18,7 +18,13 @@ import { useAccount, useWalletClient } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_20_ABI } from '../constants'
-import { useBalances, useCoinPrices, useSettings, useOpenWalletModal } from '../hooks'
+import {
+  useBalances,
+  useCoinPrices,
+  useConversionRate,
+  useSettings,
+  useOpenWalletModal
+} from '../hooks'
 import {
   compareAddress,
   computeBalanceFiat,
@@ -62,7 +68,12 @@ export const SendCoin = ({
     }]
   });
 
-  const isLoading =  isLoadingBalances || isLoadingCoinPrices
+  const {
+    data: conversionRate = 1,
+    isLoading: isLoadingConversionRate
+  } = useConversionRate({ toCurrency: fiatCurrency.symbol})
+
+  const isLoading =  isLoadingBalances || isLoadingCoinPrices || isLoadingConversionRate
 
   if (isLoading) {
     return (
@@ -80,9 +91,12 @@ export const SendCoin = ({
 
 
   const amountToSendFiat = computeBalanceFiat({
-    ...tokenBalance as TokenBalance,
-    balance: amountRaw.toString()
-  },coinPrices)
+      ...tokenBalance as TokenBalance,
+      balance: amountRaw.toString(),
+    },
+    coinPrices,
+    conversionRate
+  )
 
   const insufficientFunds = amountRaw.gt(tokenBalance?.balance || '0') 
   const isNonZeroAmount = amountRaw.gt(0)
@@ -156,7 +170,7 @@ export const SendCoin = ({
           name={name}
           symbol={symbol}
           balance={tokenBalance?.balance || '0'}
-          fiatValue={computeBalanceFiat(tokenBalance as TokenBalance, coinPrices)}
+          fiatValue={computeBalanceFiat(tokenBalance as TokenBalance, coinPrices, conversionRate)}
           chainId={chainId}
         />
         <NumericInput

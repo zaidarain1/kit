@@ -115,8 +115,6 @@ export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
       tokens
     })
 
-    // const convertionRate = await apiClient.getExchangeRate({
-
     return res?.tokenPrices || []
   } catch(e) {
     console.error(e)
@@ -281,4 +279,24 @@ export const getTransactionHistory = async ({
   })
 
   return response
+}
+
+export interface FetchFiatConversionRateArgs {
+  toCurrency: string
+}
+
+export const fetchFiatConversionRate = async ({
+  toCurrency
+}: FetchFiatConversionRateArgs) => {
+  if (toCurrency === 'USD') {
+    return 1
+  }  
+
+  const { apiClient } = getNetworkConfigAndClients(137) 
+
+  const response = await apiClient.getExchangeRate({
+    toCurrency,
+  })
+
+  return response.exchangeRate.value
 }

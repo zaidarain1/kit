@@ -15,7 +15,12 @@ import Fuse from 'fuse.js'
 import { useAccount, useChainId } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances, useCoinPrices } from '../../hooks'
+import {
+  useBalances,
+  useCoinPrices,
+  useConversionRate,
+  useSettings,
+} from '../../hooks'
 import { compareAddress, computeBalanceFiat } from '../../utils'
 
 interface SearchWalletViewAllProps {
@@ -25,6 +30,7 @@ interface SearchWalletViewAllProps {
 export const SearchWalletViewAll = ({
   defaultTab
 }: SearchWalletViewAllProps) => {
+  const { fiatCurrency } = useSettings()
   const [search, setSearch] = useState('')
   const [selectedTab, setSelectedTab] = useState(defaultTab)
 
@@ -53,8 +59,15 @@ export const SearchWalletViewAll = ({
     }))
   });
 
+  const {
+    data: conversionRate = 1,
+    isLoading: isLoadingConversionRate
+  } = useConversionRate({
+    toCurrency: fiatCurrency.symbol
+  })
+
   const coinBalances = coinBalancesUnordered.sort((a, b) => {
-    const isHigherFiat = Number(computeBalanceFiat(b, coinPrices)) - Number(computeBalanceFiat(a, coinPrices))
+    const isHigherFiat = Number(computeBalanceFiat(b, coinPrices, conversionRate)) - Number(computeBalanceFiat(a, coinPrices, conversionRate))
     return isHigherFiat
   })
 
@@ -66,7 +79,7 @@ export const SearchWalletViewAll = ({
   const coinBalancesAmount = coinBalances.length
   const collectionBalancesAmount = collectionBalances.length
 
-  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices
+  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices || isLoadingConversionRate
   interface IndexedData {
     index: number,
     name: string,

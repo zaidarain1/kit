@@ -27,7 +27,7 @@ export const getPercentagePriceChange = (balance: TokenBalance, prices: TokenPri
   return price24HourChange
 }
 
-export const computeBalanceFiat = (balance: TokenBalance, prices: TokenPrice[]): string => {
+export const computeBalanceFiat = (balance: TokenBalance, prices: TokenPrice[], conversionRate: number): string => {
   let totalUsd = 0
 
   const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))
@@ -43,7 +43,9 @@ export const computeBalanceFiat = (balance: TokenBalance, prices: TokenPrice[]):
   const usdValue = parseFloat(valueFormatted) * priceFiat
   totalUsd += usdValue
 
-return `${totalUsd.toFixed(2)}`
+  const fiatValue = totalUsd * conversionRate
+
+  return `${fiatValue.toFixed(2)}`
 }
 
 
