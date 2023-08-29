@@ -1,7 +1,9 @@
-import React, { createContext } from 'react'
+import React from 'react'
+import { createGenericContext } from '../utils'
 
 type ConnectModalContext = {
-  setOpenConnectModal?: React.Dispatch<React.SetStateAction<boolean>>
+  setOpenConnectModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const ConnectModalContext = createContext<ConnectModalContext>({})
+const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext<ConnectModalContext>()
+export { useConnectModalContext, ConnectModalContextProvider }

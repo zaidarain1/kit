@@ -10,7 +10,7 @@ import { AnimatePresence } from 'framer-motion'
 
 import { DappWallet } from './DappWallet'
 import { OneTimeClickWallet } from './OneTimeClickWallet'
-import { ConnectModalContext, ThemeContext } from '../../contexts'
+import { ConnectModalContextProvider, ThemeContextProvider } from '../../contexts'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -63,8 +63,8 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <ConnectModalContext.Provider value={{ setOpenConnectModal }}>
+    <ThemeContextProvider value={{ theme, setTheme }}>
+      <ConnectModalContextProvider value={{ setOpenConnectModal }}>
         <ThemeProvider theme={theme}>
           <AnimatePresence>
             {openConnectModal && (
@@ -91,14 +91,14 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
                   >
                     <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
                   </Box>
-                      {openConnectModal && getConnectModal()}
+                      {getConnectModal()}
                   </Box>
                 </Modal>
               )}
             </AnimatePresence>
           </ThemeProvider>
           {children}
-        </ConnectModalContext.Provider>
-    </ThemeContext.Provider>
+        </ConnectModalContextProvider>
+    </ThemeContextProvider>
   )
 }

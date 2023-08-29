@@ -64,7 +64,7 @@ function Homepage({
   }
 
   const onClickChangeTheme = () => {
-    setTheme && setTheme(theme === 'dark' ? 'light' : 'dark')
+    setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
 
@@ -126,12 +126,12 @@ function Homepage({
 
   const onClickConnectOTC = () => {
     setUseOneTimeClickModal(true)
-    openConnectModal && openConnectModal(true)
+    openConnectModal(true)
   }
 
   const onClickConnectDapp = () => {
     setUseOneTimeClickModal(false)
-    openConnectModal && openConnectModal(true)
+    openConnectModal(true)
   }
 
   const onClickLinkUrl = (url: string) => {
