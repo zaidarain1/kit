@@ -1,4 +1,5 @@
-import React, { createContext } from 'react'
+import React from 'react'
+import { createGenericContext } from '@0xsequence/kit-core'
 
 export interface SelectCheckoutNavigation {
   location: 'select-method-checkout',
@@ -40,10 +41,8 @@ export type Navigation = TransactionFormNavigation | TransactionSuccessNavigatio
 export type History = Navigation[]
 
 type NavigationContext = {
-  setHistory?: (history: History) => void
+  setHistory: (history: History) => void
   history: History,
 }
 
-export const NavigationContext = createContext<NavigationContext>({
-  history: []
-})
+export const [useNavigationContext,NavigationContextProvider] = createGenericContext<NavigationContext>()

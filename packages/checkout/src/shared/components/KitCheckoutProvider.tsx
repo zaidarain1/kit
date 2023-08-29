@@ -19,8 +19,8 @@ import {
 import {
   History,
   Navigation,
-  NavigationContext,
-  CheckoutModalContext,
+  NavigationContextProvider,
+  CheckoutModalContextProvider,
   CheckoutSettings
 } from '../../contexts'
 
@@ -120,8 +120,8 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CheckoutModalContext.Provider value={{ triggerCheckout, closeCheckout, settings, theme }}>
-        <NavigationContext.Provider value={{ history, setHistory }}>
+      <CheckoutModalContextProvider value={{ triggerCheckout, closeCheckout, settings, theme }}>
+        <NavigationContextProvider value={{ history, setHistory }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openCheckoutModal && (
@@ -148,8 +148,8 @@ export const KitCheckoutProvider = ({ children }: KitCheckoutProvider) => {
             </AnimatePresence>
           </ThemeProvider>
           {children}
-        </NavigationContext.Provider>
-      </CheckoutModalContext.Provider>
+        </NavigationContextProvider>
+      </CheckoutModalContextProvider>
     </QueryClientProvider>
   )
 }

@@ -139,7 +139,7 @@ function Homepage({
   }
 
   const onClickCheckout = () => {
-    triggerCheckout && triggerCheckout(getCheckoutSettings(address))
+    triggerCheckout(getCheckoutSettings(address))
   }
 
 

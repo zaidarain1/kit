@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { CheckoutModalContext } from '../contexts/CheckoutModal'
+import { useCheckoutModalContext } from '../contexts/CheckoutModal'
 
 export const useModalTheme = () => {
-  const { theme } = useContext(CheckoutModalContext)
+  const { theme } = useCheckoutModalContext()
 
   return theme
 }

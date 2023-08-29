@@ -1,5 +1,6 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import { MethodArguments } from '../api'
+import { createGenericContext } from '@0xsequence/kit-core'
 
 interface CoinQuantity {
   contractAddress: string,
@@ -37,10 +38,10 @@ export interface CheckoutSettings {
 }
 
 type CheckoutModalContext = {
-  triggerCheckout?: (settings: CheckoutSettings) => void
-  closeCheckout?: () => void
+  triggerCheckout: (settings: CheckoutSettings) => void
+  closeCheckout: () => void
   settings?: CheckoutSettings
-  theme?: 'light'|'dark'
+  theme: 'light'|'dark'
 }
 
-export const CheckoutModalContext = createContext<CheckoutModalContext>({})
+export const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericContext<CheckoutModalContext>()

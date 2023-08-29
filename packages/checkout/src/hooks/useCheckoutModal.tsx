@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { CheckoutModalContext } from '../contexts/CheckoutModal'
+import { useCheckoutModalContext } from '../contexts/CheckoutModal'
 
 export const useCheckoutModal = () => {
-  const { triggerCheckout, closeCheckout, settings } = useContext(CheckoutModalContext)
+  const { triggerCheckout, closeCheckout, settings } = useCheckoutModalContext()
 
   return { triggerCheckout, closeCheckout, settings }
 }

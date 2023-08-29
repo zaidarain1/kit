@@ -87,7 +87,7 @@ export const CheckoutSelection = () => {
     console.log('trigger transaction')
     const transaction = settings?.cryptoCheckout?.triggerTransaction
     transaction && transaction()
-    closeCheckout && closeCheckout()
+    closeCheckout()
   }
   
   return (

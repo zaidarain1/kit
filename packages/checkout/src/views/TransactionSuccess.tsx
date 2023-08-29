@@ -11,7 +11,7 @@ export const TransactionSuccess = () => {
   
   useEffect(() => {
     setTimeout(() => {
-      closeCheckout && closeCheckout()
+      closeCheckout()
       settings?.creditCardCheckout?.onSuccess && settings?.creditCardCheckout?.onSuccess(navigation.params.transactionHash)
     }, 3000)
   }, [])
