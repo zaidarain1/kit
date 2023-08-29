@@ -7,7 +7,6 @@ import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
 import { CollectibleDetailsSkeleton } from './Skeleton'
 
 import {
-  getFiatCurrencyById,
   computeBalanceFiat,
   formatDisplay,
   flattenPaginatedTransactionHistory
@@ -37,7 +36,6 @@ export const CollectibleDetails = ({
 }: CollectibleDetailsProps) => {
   const { address: accountAddress } = useAccount()
   const { fiatCurrency } = useSettings()
-  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
   const { setNavigation } = useNavigation()
 
   const {
@@ -148,7 +146,7 @@ export const CollectibleDetails = ({
                 {formattedBalance}
               </Text>
               {dataCollectiblePrices && dataCollectiblePrices[0].price?.value &&(
-                <Text fontWeight="medium" color="text50" fontSize="normal">{`${fiatCurrencyInfo.symbol}${valueFiat}`}</Text>
+                <Text fontWeight="medium" color="text50" fontSize="normal">{`${fiatCurrency.symbol} ${valueFiat}`}</Text>
               )}
             </Box>
           </Box>

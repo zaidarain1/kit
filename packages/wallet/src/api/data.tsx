@@ -115,6 +115,8 @@ export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
       tokens
     })
 
+    // const convertionRate = await apiClient.getExchangeRate({
+
     return res?.tokenPrices || []
   } catch(e) {
     console.error(e)

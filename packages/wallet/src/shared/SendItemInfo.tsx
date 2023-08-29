@@ -7,7 +7,7 @@ import { ethers } from 'ethers'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
 
 import { CoinIcon } from './CoinIcon'
-import { formatDisplay, getFiatCurrencyById } from '../utils'
+import { formatDisplay } from '../utils'
 import { useSettings } from '../hooks'
 import { CollectibleTileImage } from '../shared/CollectibleTileImage'
 
@@ -51,7 +51,6 @@ export const SendItemInfo = ({
   showSquareImage,
 }: SendItemInfoProps) => {
   const { fiatCurrency } = useSettings()
-  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
   const formattedBalance = ethers.utils.formatUnits(balance, decimals)
   const balanceDisplayed = formatDisplay(formattedBalance)
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
@@ -76,7 +75,7 @@ export const SendItemInfo = ({
       </Box>
       <Box flexDirection="column" alignItems="flex-end" justifyContent="flex-end">
         {fiatValue && (
-          <Text variant="normal">{`${fiatCurrencyInfo.symbol}${fiatValue}`}</Text>
+          <Text variant="normal">{`${fiatCurrency.sign}${fiatValue}`}</Text>
         )}
       </Box>
     </Box>

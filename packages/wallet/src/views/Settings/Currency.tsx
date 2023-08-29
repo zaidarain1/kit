@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Text } from '@0xsequence/design-system'
 
 import { SelectButton } from '../../shared/SelectButton'
-import { HEADER_HEIGHT, supportedCurrencies } from '../../constants'
+import { HEADER_HEIGHT, supportedFiatCurrencies } from '../../constants'
 import { useSettings } from '../../hooks'
 
 export const SettingsCurrency = () => {
@@ -14,20 +14,20 @@ export const SettingsCurrency = () => {
           flexDirection="column"
           gap="2"
         >
-          {supportedCurrencies.map((currency) => {
+          {supportedFiatCurrencies.map((currency) => {
             return (
               <SelectButton
-                key={currency.id}
-                value={currency.id}
-                selected={currency.id === fiatCurrency}
-                onClick={() => setFiatCurrency && setFiatCurrency(currency.id)}
+                key={currency.symbol}
+                value={currency.symbol}
+                selected={currency.symbol === fiatCurrency.symbol}
+                onClick={() => setFiatCurrency && setFiatCurrency(currency)}
               >
                 <Box gap="2" justifyContent="flex-start" alignItems="center">
                   <Text color="text100" fontWeight="bold">
-                    {currency.shortName}
+                    {currency.symbol}
                   </Text>
                   <Text color="text50">
-                    {currency.name}
+                    {currency.name.message}
                   </Text>
                 </Box>
               </SelectButton>

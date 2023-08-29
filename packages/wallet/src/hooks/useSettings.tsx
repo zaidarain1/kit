@@ -1,13 +1,12 @@
 import { LocalStorageKey } from '@0xsequence/kit-core'
 import { useState } from 'react'
-
-export type FiatCurrency = 'USD' | 'CAD' | 'EUR'
+import { FiatCurrency, defaultFiatCurrency } from '../constants'
 
 interface Settings {
   hideCollectibles: boolean
   hideUnlistedTokens: boolean
-  fiatCurrency: string
-  setFiatCurrency: (newFiatCurrency: string) => void,
+  fiatCurrency: FiatCurrency
+  setFiatCurrency: (newFiatCurrency: FiatCurrency) => void,
   setHideCollectibles: (newState: boolean) => void,
   setHideUnlistedTokens: (newState: boolean) => void,
 }
@@ -18,7 +17,7 @@ export const useSettings = ():Settings => {
   const getSettingsFromStorage = ():SettingsItems => {
     let hideUnlistedTokens = true
     let hideCollectibles = false
-    let fiatCurrency = 'USD'
+    let fiatCurrency = defaultFiatCurrency
 
     try {
       const settingsStorage = localStorage.getItem(LocalStorageKey.Settings)
@@ -31,7 +30,7 @@ export const useSettings = ():Settings => {
         hideCollectibles = settings?.hideCollectibles
       }
       if (settings?.fiatCurrency !== undefined) {
-        fiatCurrency = settings?.fiatCurrency
+        fiatCurrency = settings?.fiatCurrency as FiatCurrency
       }
   
     } catch(e) {
@@ -68,7 +67,7 @@ export const useSettings = ():Settings => {
     setSettings(newSettings)
   }
 
-  const setFiatCurrency = (newFiatCurrency: string) => {
+  const setFiatCurrency = (newFiatCurrency: FiatCurrency) => {
     const oldSettings = getSettingsFromStorage()
     const newSettings = {
       ...oldSettings,

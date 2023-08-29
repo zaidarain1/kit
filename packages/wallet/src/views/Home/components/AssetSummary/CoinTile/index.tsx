@@ -45,10 +45,7 @@ export const CoinTile = ({
     )
   }
 
-
-
   if (isNativeToken) {
-
     const computedBalance = computeBalanceFiat(balance, dataCoinPrices)
     const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
     const formattedBalance = ethers.utils.formatUnits(balance.balance, nativeTokenInfo.decimals)

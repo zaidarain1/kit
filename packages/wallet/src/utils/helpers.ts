@@ -1,6 +1,3 @@
-import { supportedCurrencies } from "../constants"
-import { FiatCurrency } from "../contexts/Settings"
-
 export const compareAddress = (a: string, b: string) => {
   return a.toLowerCase() === b.toLowerCase()
 }
@@ -108,8 +105,4 @@ export const isEthAddress = (value: string) => {
   const isEthAddress = ethAddressRegEx.test(value)
 
   return isEthAddress
-}
-
-export const getFiatCurrencyById = (id: FiatCurrency) => {
-  return supportedCurrencies.find(currency => currency.id === id) || supportedCurrencies[0]
 }

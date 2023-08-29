@@ -3,6 +3,7 @@ import { Box, Text } from '@0xsequence/design-system'
 
 import { getPercentageColor } from '../../../../../utils'
 import { CoinIcon } from '../../../../../shared/CoinIcon'
+import { useSettings } from '../../../../../hooks'
 
 interface CoinTileContentProps {
   networkLogoUrl: string
@@ -23,6 +24,7 @@ export const CoinTileContent = ({
   priceChangePercentage,
   symbol,
 }: CoinTileContentProps) => {
+  const { fiatCurrency } = useSettings()
   const priceChangeSymbol =  priceChangePercentage > 0 ? '+' : ''
 
   return (
@@ -49,7 +51,7 @@ export const CoinTileContent = ({
       </Box>
       <Box>
         <Box>
-          <Text fontWeight="bold">{`$${balanceFiat}`}</Text>
+          <Text fontWeight="bold">{`${fiatCurrency.sign}${balanceFiat}`}</Text>
         </Box>
         <Text
           style={{ color: getPercentageColor(priceChangePercentage) }}

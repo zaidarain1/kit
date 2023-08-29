@@ -11,7 +11,6 @@ import { useCoinPrices, useSettings, useNavigation } from '../../hooks'
 import {
   formatDisplay,
   compareAddress,
-  getFiatCurrencyById,
 } from '../../utils'
 
 interface TransactionHistoryItemProps {
@@ -22,7 +21,6 @@ export const TransactionHistoryItem = ({
   transaction
 }: TransactionHistoryItemProps) => {
   const { fiatCurrency } = useSettings()
-  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
   const { setNavigation } = useNavigation()
 
   const onClickTransaction = () => {
@@ -153,7 +151,7 @@ export const TransactionHistoryItem = ({
               )}
               {fiatConversionRate && (
                 <Text fontWeight="medium" fontSize="normal" color="text50">
-                  {`${fiatCurrencyInfo.symbol}${(Number(amountValue) * fiatConversionRate).toFixed(2)}`}
+                  {`${fiatCurrency.sign}${(Number(amountValue) * fiatConversionRate).toFixed(2)}`}
                 </Text>
               )}
             </Box>

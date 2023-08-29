@@ -24,7 +24,6 @@ import {
   computeBalanceFiat,
   limitDecimals,
   isEthAddress,
-  getFiatCurrencyById,
   truncateAtMiddle
 } from '../utils'
 import { HEADER_HEIGHT } from '../constants'
@@ -42,7 +41,6 @@ export const SendCoin = ({
   const amountInputRef = useRef<HTMLInputElement>(null)
   const setOpenWalletModal = useOpenWalletModal()
   const { fiatCurrency } = useSettings()
-  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')
   const { data: walletClient } = useWalletClient()
@@ -170,7 +168,7 @@ export const SendCoin = ({
           controls={
             <>
               <Text variant="small" color="text50" whiteSpace="nowrap">
-                {`~${fiatCurrencyInfo.symbol}${amountToSendFiat}`}
+                {`~${fiatCurrency.sign}${amountToSendFiat}`}
               </Text>
               <Button size="xs" shape="square" label="Max" onClick={handleMax} data-id="maxCoin" flexShrink="0" />
               <Text fontSize="xlarge" fontWeight="bold">{symbol}</Text>

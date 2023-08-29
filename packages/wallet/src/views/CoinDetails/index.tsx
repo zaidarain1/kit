@@ -20,7 +20,6 @@ import {
 import { HEADER_HEIGHT } from '../../constants'
 import {
   compareAddress,
-  getFiatCurrencyById,
   computeBalanceFiat,
   formatDisplay,
   flattenPaginatedTransactionHistory
@@ -38,8 +37,6 @@ export const CoinDetails = ({
   const { setNavigation } = useNavigation()
   const { fiatCurrency } = useSettings()
 
-  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
-  
   const { address: accountAddress } = useAccount()
 
   const {
@@ -119,7 +116,7 @@ export const CoinDetails = ({
               color='text100'
               fontSize='xlarge'
             >{`${balanceDisplayed} ${symbol}`}</Text>
-            <Text fontWeight="medium" color="text50" fontSize="normal">{`${fiatCurrencyInfo.symbol}${coinBalanceFiat}`}</Text>
+            <Text fontWeight="medium" color="text50" fontSize="normal">{`${fiatCurrency.sign}${coinBalanceFiat}`}</Text>
           </Box>
         </Box>
         <Button

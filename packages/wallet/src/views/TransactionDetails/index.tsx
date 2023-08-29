@@ -22,7 +22,6 @@ import { Skeleton } from '../../shared/Skeleton'
 import {
   compareAddress,
   formatDisplay,
-  getFiatCurrencyById
 } from '../../utils'
 import { useCoinPrices, useCollectiblePrices, useSettings } from '../../hooks'
 
@@ -34,7 +33,6 @@ export const TransactionDetails = ({
   transaction
 }: TransactionDetailProps) => {
   const { fiatCurrency } = useSettings()
-  const fiatCurrencyInfo = getFiatCurrencyById(fiatCurrency)
 
   const coins: Token[] = []
   const collectibles: Token[]= []
@@ -139,7 +137,7 @@ export const TransactionDetails = ({
                     <Skeleton width="44px" height="12px"/>
                   ) : (
                     <Text fontWeight="bold" fontSize="xsmall" color="text50">
-                      {fiatPrice ? `${fiatCurrencyInfo.symbol}${fiatValue}` : ''}
+                      {fiatPrice ? `${fiatCurrency.sign}${fiatValue}` : ''}
                     </Text>
                   )}
                 </Box>
