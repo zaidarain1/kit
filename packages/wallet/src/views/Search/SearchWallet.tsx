@@ -18,7 +18,7 @@ import {
 import { compareAddress, computeBalanceFiat } from '../../utils'
 
 export const SearchWallet = () => {
-  const { fiatCurrency } = useSettings()
+  const { fiatCurrency, hideUnlistedTokens } = useSettings()
   const [search, setSearch] = useState('')
   const { address: accountAddress } = useAccount()
   const chainId = useChainId()
@@ -27,7 +27,7 @@ export const SearchWallet = () => {
   const { data: tokenBalancesData, isLoading: tokenBalancesIsLoading } = useBalances({
     accountAddress: accountAddress || '',
     chainId
-  })
+  }, { hideUnlistedTokens })
 
   const coinBalancesUnordered = tokenBalancesData?.filter(b => b.contractType === 'ERC20' || compareAddress(b.contractAddress, ethers.constants.AddressZero)) || []
 

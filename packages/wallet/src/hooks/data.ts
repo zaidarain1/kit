@@ -19,6 +19,7 @@ import {
   GetTransactionHistoryArgs,
   fetchFiatConversionRate,
   FetchFiatConversionRateArgs,
+  GetTokenBalancesOptions,
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -29,10 +30,10 @@ export const time = {
   oneHour: 60 * 60 * 1000
 }
 
-export const useBalances = (args: GetTokenBalancesArgs) =>
+export const useBalances = (args: GetTokenBalancesArgs, options: GetTokenBalancesOptions) =>
   useQuery({
-    queryKey: ['balances', args],
-    queryFn: () => fetchBalances(args),
+    queryKey: ['balances', args, options],
+    queryFn: () => fetchBalances(args, options),
     retry: true,
     staleTime: 10 * time.oneMinute,
     enabled: !!args.chainId && !!args.accountAddress
@@ -59,18 +60,18 @@ export const useCoinPrices = ({
     enabled: args.tokens.length > 0 && !disabled
   })
     
-export const useBalancesAssetsSummary = (args: GetTokenBalancesArgs) => (
+export const useBalancesAssetsSummary = (args: GetTokenBalancesArgs, options: GetTokenBalancesOptions) => (
   useQuery({
-    queryKey: ['balancesAssetsSummary', args],
-    queryFn: () => fetchBalancesAssetsSummary(args),
+    queryKey: ['balancesAssetsSummary', args, options],
+    queryFn: () => fetchBalancesAssetsSummary(args, options),
     retry: true,
     staleTime: 10 * time.oneMinute,
     enabled: !!args.chainId && !!args.accountAddress
   }))
 
-export const useCoinBalance = (args: GetTokenBalancesArgs) =>
+export const useCoinBalance = (args: GetTokenBalancesArgs, options: GetTokenBalancesOptions) =>
   useQuery({
-    queryKey: ['coinBalance', args],
+    queryKey: ['coinBalance', args, options],
     queryFn: (): Promise<TokenBalance> => {
       if (compareAddress(args?.contractAddress || '', ethers.constants.AddressZero)) {
         const response = getNativeToken({
@@ -79,7 +80,7 @@ export const useCoinBalance = (args: GetTokenBalancesArgs) =>
         }).then(response => response[0])
         return response
       }
-      const response = getTokenBalances(args).then(response => response[0])
+      const response = getTokenBalances(args, options).then(response => response[0])
       return response
     },
     retry: true,

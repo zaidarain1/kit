@@ -36,7 +36,7 @@ export const CoinDetails = ({
   chainId
 }: CoinDetailsProps) => {
   const { setNavigation } = useNavigation()
-  const { fiatCurrency } = useSettings()
+  const { fiatCurrency, hideUnlistedTokens } = useSettings()
 
   const { address: accountAddress } = useAccount()
 
@@ -58,7 +58,7 @@ export const CoinDetails = ({
     accountAddress: accountAddress || '',
     contractAddress,
     chainId
-  })
+  }, { hideUnlistedTokens })
 
   const { data: dataCoinPrices, isLoading: isLoadingCoinPrices } = useCoinPrices({
     tokens: [{

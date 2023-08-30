@@ -35,11 +35,39 @@ export const getNativeToken = async ({ accountAddress, chainId }: GetTokenBalanc
   }
 }
 
+export interface GetCoinPricesArgs {
+  tokens: Token[]
+}
+
+export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
+  try {
+    if (tokens.length === 0) return []
+    const chainId = tokens[0].chainId
+  
+    const { apiClient } = await getNetworkConfigAndClients(chainId)
+  
+    const res = await apiClient.getCoinPrices({
+      tokens
+    })
+
+    return res?.tokenPrices || []
+  } catch(e) {
+    console.error(e)
+    return
+  }
+}
+
+export interface GetTokenBalancesOptions {
+  hideUnlistedTokens: boolean
+}
+
 export const getTokenBalances = async ({
   accountAddress,
   chainId,
   contractAddress
-}: GetTokenBalancesArgs) => {
+}: GetTokenBalancesArgs, {
+  hideUnlistedTokens
+}: GetTokenBalancesOptions) => {
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
@@ -48,15 +76,39 @@ export const getTokenBalances = async ({
       includeMetadata: true,
       ...(contractAddress ? { contractAddress } : {})
     })
+
+    let returnedBalances  = res?.balances || []
+    if (hideUnlistedTokens && returnedBalances.length > 0) {
+      const coinPrices = await getCoinPrices({ tokens: returnedBalances.map(balance => ({
+        chainId: balance.chainId,
+        contractAddress: balance.contractAddress,
+        tokenId: balance.tokenID
+        }))
+      })
+
+      returnedBalances = returnedBalances.filter(balance => {
+        const price = coinPrices?.find(price => (
+          compareAddress(price.token.contractAddress, balance.contractAddress) &&
+          price.token.chainId === balance.chainId
+        ))
+        return balance.contractType !== 'ERC20' || (!!price && price.price !== null)
+      })
+    }
   
-    return res?.balances || []
+    return returnedBalances
   } catch(e) {
     console.error(e)
     return []
   }
 }
 
-export const fetchBalances = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
+export interface FetchBalancesOptions {
+  hideUnlistedTokens: boolean
+}
+
+export const fetchBalances = async (
+  { accountAddress, chainId }: GetTokenBalancesArgs,
+  { hideUnlistedTokens } : FetchBalancesOptions) => {
   try {
     const tokenBalances = (
       await Promise.all([
@@ -67,7 +119,7 @@ export const fetchBalances = async ({ accountAddress, chainId }: GetTokenBalance
         getTokenBalances({
           accountAddress,
           chainId,
-        })
+        }, { hideUnlistedTokens })
       ])
     ).flat()
     return tokenBalances
@@ -100,31 +152,15 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
   }
 }
 
-export interface GetCoinPricesArgs {
-  tokens: Token[]
-}
-
-export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
-  try {
-    if (tokens.length === 0) return []
-    const chainId = tokens[0].chainId
-  
-    const { apiClient } = await getNetworkConfigAndClients(chainId)
-  
-    const res = await apiClient.getCoinPrices({
-      tokens
-    })
-
-    return res?.tokenPrices || []
-  } catch(e) {
-    console.error(e)
-    return
-  }
-}
-
 // Will show a condensed view of owned assets
 // Only show the highest valued tokens and a sample of the collectibles
-export const fetchBalancesAssetsSummary = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {  
+export interface FetchBalancesAssetsSummaryOptions {
+  hideUnlistedTokens: boolean
+}
+
+export const fetchBalancesAssetsSummary = async (
+  { accountAddress, chainId }: GetTokenBalancesArgs,
+  { hideUnlistedTokens }: FetchBalancesAssetsSummaryOptions) => {  
   const MAX_COLLECTIBLES_AMOUNTS = 10
   
   try {
@@ -137,7 +173,7 @@ export const fetchBalancesAssetsSummary = async ({ accountAddress, chainId }: Ge
         getTokenBalances({
           accountAddress,
           chainId,
-        })
+        }, { hideUnlistedTokens })
       ])
     ).flat()
 

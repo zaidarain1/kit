@@ -55,7 +55,7 @@ export const SendCoin = ({
     accountAddress: accountAddress,
     chainId,
     contractAddress,
-  })
+  }, { hideUnlistedTokens: false })
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
   const tokenBalance = balances.find(b => b.contractAddress === contractAddress)
   const {

@@ -8,15 +8,16 @@ import { CollectibleTile } from './CollectibleTile'
 import { SkeletonTiles } from './SkeletonTiles'
 
 import { sortBalancesByType } from '../../../../utils'
-import { useBalancesAssetsSummary, useNavigation } from '../../../../hooks'
+import { useBalancesAssetsSummary, useNavigation, useSettings } from '../../../../hooks'
 import * as sharedStyles from '../../../../shared/styles.css'
 
 export const AssetSummary = () => {
   const { address } = useAccount()
   const { chain } = useNetwork()
   const { setNavigation } = useNavigation()
+  const { hideUnlistedTokens } = useSettings()
 
-  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainId: chain?.id || 1 })
+  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainId: chain?.id || 1 }, { hideUnlistedTokens })
 
   if (isLoadingBalances) {
     return (
