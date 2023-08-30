@@ -140,7 +140,14 @@ export const TransactionHistoryItem = ({
         {amounts.map((amount, index) => {
           const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
           const isNativeToken = compareAddress(transfer.contractAddress, ethers.constants.AddressZero)
-          const decimals = isNativeToken ? nativeTokenInfo.decimals : transfer.contractInfo?.decimals || 0
+          const isCollectible = transfer.contractInfo?.type === 'ERC721' || transfer.contractInfo?.type === 'ERC1155'
+          let decimals
+          const tokenId = transfer.tokenIds?.[index]
+          if (isCollectible && tokenId) {
+            decimals = transfer.tokenMetadata?.[tokenId]?.decimals || 0
+          } else {
+            decimals = isNativeToken ? nativeTokenInfo.decimals : transfer.contractInfo?.decimals
+          }
           const amountValue = ethers.utils.formatUnits(amount, decimals)
           const symbol = isNativeToken ? nativeTokenInfo.symbol : transfer.contractInfo?.symbol || ''
           const tokenLogoUri = isNativeToken ? nativeTokenInfo.logoURI : transfer.contractInfo?.logoURI
