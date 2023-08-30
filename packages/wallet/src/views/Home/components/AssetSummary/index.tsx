@@ -15,9 +15,9 @@ export const AssetSummary = () => {
   const { address } = useAccount()
   const { chain } = useNetwork()
   const { setNavigation } = useNavigation()
-  const { hideUnlistedTokens } = useSettings()
+  const { hideUnlistedTokens, hideCollectibles } = useSettings()
 
-  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainId: chain?.id || 1 }, { hideUnlistedTokens })
+  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainId: chain?.id || 1 }, { hideUnlistedTokens, hideCollectibles })
 
   if (isLoadingBalances) {
     return (

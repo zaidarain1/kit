@@ -58,7 +58,8 @@ export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
 }
 
 export interface GetTokenBalancesOptions {
-  hideUnlistedTokens: boolean
+  hideUnlistedTokens: boolean,
+  hideCollectibles?: boolean,
 }
 
 export const getTokenBalances = async ({
@@ -66,7 +67,8 @@ export const getTokenBalances = async ({
   chainId,
   contractAddress
 }: GetTokenBalancesArgs, {
-  hideUnlistedTokens
+  hideUnlistedTokens,
+  hideCollectibles
 }: GetTokenBalancesOptions) => {
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId) 
@@ -94,6 +96,10 @@ export const getTokenBalances = async ({
         return balance.contractType !== 'ERC20' || (!!price && price.price !== null)
       })
     }
+
+    if (hideCollectibles && returnedBalances.length > 0) {
+      returnedBalances = returnedBalances.filter(balance => (balance.contractType !== 'ERC721' && balance.contractType !== 'ERC1155'))
+    }
   
     return returnedBalances
   } catch(e) {
@@ -103,12 +109,13 @@ export const getTokenBalances = async ({
 }
 
 export interface FetchBalancesOptions {
-  hideUnlistedTokens: boolean
+  hideUnlistedTokens: boolean,
+  hideCollectibles?: boolean,
 }
 
 export const fetchBalances = async (
   { accountAddress, chainId }: GetTokenBalancesArgs,
-  { hideUnlistedTokens } : FetchBalancesOptions) => {
+  { hideUnlistedTokens, hideCollectibles } : FetchBalancesOptions) => {
   try {
     const tokenBalances = (
       await Promise.all([
@@ -119,7 +126,7 @@ export const fetchBalances = async (
         getTokenBalances({
           accountAddress,
           chainId,
-        }, { hideUnlistedTokens })
+        }, { hideUnlistedTokens, hideCollectibles })
       ])
     ).flat()
     return tokenBalances
@@ -156,11 +163,12 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
 // Only show the highest valued tokens and a sample of the collectibles
 export interface FetchBalancesAssetsSummaryOptions {
   hideUnlistedTokens: boolean
+  hideCollectibles?: boolean
 }
 
 export const fetchBalancesAssetsSummary = async (
   { accountAddress, chainId }: GetTokenBalancesArgs,
-  { hideUnlistedTokens }: FetchBalancesAssetsSummaryOptions) => {  
+  { hideUnlistedTokens, hideCollectibles }: FetchBalancesAssetsSummaryOptions) => {  
   const MAX_COLLECTIBLES_AMOUNTS = 10
   
   try {
@@ -173,7 +181,7 @@ export const fetchBalancesAssetsSummary = async (
         getTokenBalances({
           accountAddress,
           chainId,
-        }, { hideUnlistedTokens })
+        }, { hideUnlistedTokens, hideCollectibles })
       ])
     ).flat()
 
@@ -224,6 +232,16 @@ export const fetchBalancesAssetsSummary = async (
         return a.contractAddress.localeCompare(b.contractAddress)
       }
     )
+
+    if (hideCollectibles) {
+      const summaryBalances: TokenBalance[] = [
+        ...(nativeTokens.length > 0 ? [nativeTokens[0]] : []),
+        // the spots normally occupied by collectibles will be filled by erc20 tokens
+        ...(erc20HighestValue.length > 0 ? erc20HighestValue.slice(0, MAX_COLLECTIBLES_AMOUNTS + 1) : []),
+      ]
+  
+      return summaryBalances 
+    }
 
     const summaryBalances: TokenBalance[] = [
       ...(nativeTokens.length > 0 ? [nativeTokens[0]] : []),
