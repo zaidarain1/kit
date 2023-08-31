@@ -22,8 +22,8 @@ import *  as sharedStyles from '../shared/styles.css'
 function Homepage() {
   const { theme, setTheme } = useTheme()
   const { address, connector, isConnected } = useAccount()
-  const openConnectModal = useOpenConnectModal()
-  const openWalletModal = useOpenWalletModal()
+  const { setOpenConnectModal } = useOpenConnectModal()
+  const { setOpenWalletModal } = useOpenWalletModal()
   const { triggerCheckout } = useCheckoutModal()
   const { disconnect } = useDisconnect()
   const { data: walletClient } = useWalletClient()
@@ -119,7 +119,7 @@ function Homepage() {
   }
 
   const onClickConnect = () => {
-    openConnectModal(true)
+    setOpenConnectModal(true)
   }
 
   const onClickLinkUrl = (url: string) => {
@@ -144,7 +144,7 @@ function Homepage() {
               <ClickableCard
                 title="Embedded wallet"
                 description="Connect a Sequence wallet to view, swap, send, and receive collections"
-                onClick={() => openWalletModal(true)}
+                onClick={() => setOpenWalletModal(true)}
               />
               <ClickableCard
                 title="Checkout"

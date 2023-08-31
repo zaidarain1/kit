@@ -12,27 +12,36 @@ import {
 
 interface GetDefaultConnectors {
   chains: Chain[],
-  walletConnectProjectId: string
+  walletConnectProjectId: string,
+  defaultChainId?: number
 }
 
 export const getDefaultConnectors = ({
   chains,
   walletConnectProjectId,
+  defaultChainId,
 }: GetDefaultConnectors): Connector<any, any>[] => {
-  const defaultChainId = chains[0].id
+  let defaultChain = chains[0].id
   
+  if (defaultChainId) {
+    const chain = chains.find(c => c.id === defaultChainId)
+    if (chain) {
+      defaultChain = chain.id
+    }
+  }
+
   const connectors = getKitConnectWallets([
     email({ chains }),
     google({
       chains,
       options: {
-        defaultNetwork: defaultChainId
+        defaultNetwork: defaultChain
       }
     }),
     facebook({
       chains,
       options: {
-        defaultNetwork: 137
+        defaultNetwork: defaultChain
       }
     }),
     metamask({

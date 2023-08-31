@@ -20,7 +20,8 @@ function App() {
 
   const connectors = getDefaultConnectors({
     chains,
-    walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8'
+    walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
+    defaultChainId: 137
   })
 
   const config = createConfig({

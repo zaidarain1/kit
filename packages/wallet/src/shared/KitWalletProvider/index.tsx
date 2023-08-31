@@ -99,7 +99,7 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
   }, [openWalletModal])
 
   return (
-    <WalletModalContextProvider value={{ setOpenWalletModal }}>
+    <WalletModalContextProvider value={{ setOpenWalletModal, openWalletModalState: openWalletModal }}>
       <NavigationContextProvider value={{ setHistory, history }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>

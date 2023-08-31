@@ -45,7 +45,7 @@ export const SendCoin = ({
   contractAddress
 }: SendCoinProps) => {
   const amountInputRef = useRef<HTMLInputElement>(null)
-  const setOpenWalletModal = useOpenWalletModal()
+  const { setOpenWalletModal } = useOpenWalletModal()
   const { fiatCurrency } = useSettings()
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')

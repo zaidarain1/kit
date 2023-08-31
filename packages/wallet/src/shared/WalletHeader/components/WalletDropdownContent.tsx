@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useEffect, useRef, useState } from 'react'
 import { useDisconnect, useAccount } from 'wagmi'
 
 import {
@@ -31,7 +31,7 @@ export const WalletDropdownContent = forwardRef((
   ref: any
 ) => {
   const { setNavigation } = useNavigation()
-  const setOpenWalletModal = useOpenWalletModal()
+  const { setOpenWalletModal } = useOpenWalletModal()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
 

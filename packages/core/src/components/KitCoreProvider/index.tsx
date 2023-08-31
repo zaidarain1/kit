@@ -44,7 +44,7 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
 
   return (
     <ThemeContextProvider value={{ theme, setTheme }}>
-      <ConnectModalContextProvider value={{ setOpenConnectModal }}>
+      <ConnectModalContextProvider value={{ setOpenConnectModal, openConnectModalState: openConnectModal }}>
         <ThemeProvider theme={theme}>
           <AnimatePresence>
             {openConnectModal && (

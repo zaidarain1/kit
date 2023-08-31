@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import {
   Box,
-  Button,
   ChevronLeftIcon,
   IconButton,
   SearchIcon,
@@ -14,15 +13,37 @@ import { AccountInformation } from './components/AccountInformation'
 import { WalletDropdownContent } from './components/WalletDropdownContent'
 
 import { HEADER_HEIGHT } from '../../constants'
-import { useNavigation } from '../../hooks'
+import { useNavigation, useOpenWalletModal } from '../../hooks'
 
 interface WalletHeaderProps {
 }
 
 export const WalletHeader = ({
 }: WalletHeaderProps) => {
+  const { openWalletModalState } = useOpenWalletModal()
+
   const [openWalletDropdown, setOpenWalletDropdown] = useState<boolean>(false)
   const { goBack, history, setNavigation } = useNavigation()
+  const hasDropdownOpened = useRef<boolean>(false)
+
+  useEffect(() => {
+    if (!openWalletModalState) {
+      setOpenWalletDropdown(false)
+    }
+  }, [openWalletModalState])
+
+  // Close dropdown when navigating to a new page
+  useEffect(() => {
+    if (openWalletDropdown) {
+      if (!hasDropdownOpened.current) {
+        hasDropdownOpened.current = true
+      } else {
+        setOpenWalletDropdown(false)
+      }
+    } else {
+      hasDropdownOpened.current = false
+    }
+  }, [history.length, openWalletDropdown])
 
   const onClickAccount = () => {
     setOpenWalletDropdown(true)

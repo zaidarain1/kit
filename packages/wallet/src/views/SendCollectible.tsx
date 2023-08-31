@@ -44,7 +44,7 @@ export const SendCollectible = ({
   tokenId
 }: SendCollectibleProps) => {
   const amountInputRef = useRef<HTMLInputElement>(null)
-  const setOpenWalletModal = useOpenWalletModal()
+  const { setOpenWalletModal } = useOpenWalletModal()
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')
   const { data: walletClient } = useWalletClient()
