@@ -1,12 +1,8 @@
 import { ThemeProvider } from '@0xsequence/design-system'
-import { KitCoreProvider, getKitConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
+import { KitCoreProvider, THEMES, KitConfig } from '@0xsequence/kit-core'
 import {
-    email,
-    facebook,
-    google,
-    metamask,
-    walletConnect
-  } from '@0xsequence/kit-connectors'
+  getDefaultConnectors,
+} from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
@@ -18,36 +14,14 @@ import '@0xsequence/design-system/styles.css'
 
 function App() {
   const { chains, publicClient, webSocketPublicClient } = configureChains(
-    [mainnet, polygon],
+    [polygon, mainnet],
     [publicProvider()],
   )
 
-  const connectors = getKitConnectWallets([
-    email({
-      chains
-    }),
-    google({
-      chains,
-      options: {
-        defaultNetwork: 137
-      }
-    }),
-    facebook({
-      chains,
-      options: {
-        defaultNetwork: 137
-      }
-    }),
-    metamask({
-      chains,
-    }),
-    walletConnect({
-      chains,
-      options: {
-        projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
-      },
-    }),
-  ])
+  const connectors = getDefaultConnectors({
+    chains,
+    walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8'
+  })
 
   const config = createConfig({
     autoConnect: true,
