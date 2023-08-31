@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
 import {
-  Modal,
   Box,
+  Image,
+  Modal,
   Text,
   ThemeProvider,
 } from '@0xsequence/design-system'
@@ -37,7 +38,7 @@ export type KitConnectProviderProps = {
 export const KitCoreProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
   const { defaultTheme, signIn = {} } = config
-  const { projectName } = signIn
+  const { projectName, logoUrlDarkMode, logoUrlLightMode } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
 
@@ -70,14 +71,24 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
                   >
                     <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
                   </Box>
-                    <ConnectWalletContent
-                      openConnectModal={openConnectModal}
-                      setOpenConnectModal={setOpenConnectModal}
-                      {...props}
-                    />
-                  </Box>
-                </Modal>
-              )}
+                  {theme === 'dark' && logoUrlDarkMode && (
+                    <Box marginTop="5" justifyContent="center" alignItems="center">
+                      <Image src={logoUrlDarkMode} width="full" />
+                    </Box>
+                  )}
+                  {theme === 'light' && logoUrlLightMode && (
+                    <Box marginTop="5" justifyContent="center" alignItems="center">
+                      <Image src={logoUrlLightMode} width="full" />
+                    </Box>
+                  )}
+                  <ConnectWalletContent
+                    openConnectModal={openConnectModal}
+                    setOpenConnectModal={setOpenConnectModal}
+                    {...props}
+                  />
+                </Box>
+              </Modal>
+            )}
             </AnimatePresence>
           </ThemeProvider>
           {children}
