@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
-import { getAppleLogo, getAppleOtcLogo } from './AppleLogo'
+import { getAppleLogo } from './AppleLogo'
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -14,8 +14,6 @@ export const apple = ({ chains, options = {} }: AppleOptions) => ({
   id: 'apple',
   logoDark: getAppleLogo({ isDarkMode: true }),
   logoLight: getAppleLogo({ isDarkMode: false }),
-  otcLogoDark: getAppleOtcLogo({ isDarkMode: true }),
-  otcLogoLight: getAppleOtcLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Apple',
   createConnector: () => {

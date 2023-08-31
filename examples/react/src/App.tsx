@@ -1,16 +1,11 @@
-import { useState } from 'react'
 import { ThemeProvider } from '@0xsequence/design-system'
 import { KitCoreProvider, getKitConnectWallets, THEMES, KitConfig } from '@0xsequence/kit-core'
 import {
-    apple,
-    discord,
     email,
     facebook,
     google,
-    // injected,
     metamask,
-    sequence,
-    // walletConnect
+    walletConnect
   } from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
@@ -22,17 +17,15 @@ import { mainnet, polygon } from 'wagmi/chains'
 import '@0xsequence/design-system/styles.css'
 
 function App() {
-  const [useOneTimeClickModal, setUseOneTimeClickModal] = useState(false)
-
   const { chains, publicClient, webSocketPublicClient } = configureChains(
     [mainnet, polygon],
     [publicProvider()],
   )
 
-  const connectorsDapp = getKitConnectWallets([
-    // injected({
-    //   chains
-    // }),
+  const connectors = getKitConnectWallets([
+    email({
+      chains
+    }),
     google({
       chains,
       options: {
@@ -45,63 +38,16 @@ function App() {
         defaultNetwork: 137
       }
     }),
-    apple({
-      chains,
-      options: {
-        defaultNetwork: 137
-      }
-    }),
-    email({
-      chains
-    }), 
-    // walletConnect({
-    //   chains,
-    //   options: {
-    //     projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
-    //   },
-    // }),
     metamask({
       chains,
     }),
-    sequence({
+    walletConnect({
       chains,
-      connect: {
-        app: 'Sequence Kit example',
-      }
+      options: {
+        projectId: 'c65a6cb1aa83c4e24500130f23a437d8'
+      },
     }),
   ])
-
-  const otcConnectors = getKitConnectWallets([
-    email({
-      chains
-    }),
-    google({
-      chains,
-      options: {
-        defaultNetwork: 137
-      }
-    }),
-    discord({
-      chains,
-      options: {
-        defaultNetwork: 137
-      }
-    }),
-    facebook({
-      chains,
-      options: {
-        defaultNetwork: 137
-      }
-    }),
-    apple({
-      chains,
-      options: {
-        defaultNetwork: 137
-      }
-    })
-  ])
-
-  const connectors = useOneTimeClickModal ? otcConnectors : connectorsDapp
 
   const config = createConfig({
     autoConnect: true,
@@ -111,12 +57,11 @@ function App() {
   })
 
   const kitConfig: KitConfig = {
-    useOneTimeClickModal: useOneTimeClickModal,
     defaultTheme: THEMES.dark,
     signIn: {
       projectName: 'SkyWeaver',
       logoUrlDarkMode: '/sw-logo-white.svg',
-      logoUrlLightMode: '/sw-logo-black.svg'
+      logoUrlLightMode: '/sw-logo-black.svg',
     }
   }
 
@@ -126,9 +71,7 @@ function App() {
         <KitCoreProvider config={kitConfig} >
           <KitWalletProvider>
             <KitCheckoutProvider>
-              <Homepage
-                setUseOneTimeClickModal={setUseOneTimeClickModal}
-              />
+              <Homepage />
             </KitCheckoutProvider>
           </KitWalletProvider>
         </KitCoreProvider>

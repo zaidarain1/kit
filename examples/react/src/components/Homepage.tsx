@@ -19,13 +19,7 @@ import { bottomPageLinks, messageToSign, socialLinks } from '../constants'
 import { formatAddress, getCheckoutSettings } from '../utils'
 import *  as sharedStyles from '../shared/styles.css'
 
-interface HomepageProps {
-  setUseOneTimeClickModal: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-function Homepage({
-  setUseOneTimeClickModal,
-}: HomepageProps) {
+function Homepage() {
   const { theme, setTheme } = useTheme()
   const { address, connector, isConnected } = useAccount()
   const openConnectModal = useOpenConnectModal()
@@ -124,13 +118,7 @@ function Homepage({
     )
   }
 
-  const onClickConnectOTC = () => {
-    setUseOneTimeClickModal(true)
-    openConnectModal(true)
-  }
-
-  const onClickConnectDapp = () => {
-    setUseOneTimeClickModal(false)
+  const onClickConnect = () => {
     openConnectModal(true)
   }
 
@@ -187,8 +175,7 @@ function Homepage({
                   src='/kit-logo-text.svg' />
               </Box>
               <Box gap="2" flexDirection="row" alignItems="center">
-                <Button onClick={onClickConnectOTC} variant="feature" label="Connect OTC modal" />
-                <Button onClick={onClickConnectDapp} variant="feature" label="Connect Dapp modal" />
+                <Button onClick={onClickConnect} variant="feature" label="Connect" />
               </Box>
             </Box>
           </Box>

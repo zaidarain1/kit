@@ -28,7 +28,7 @@ interface GetAppleOtcLogo {
   isDarkMode: boolean
 }
 
-export const getAppleOtcLogo = ({
+export const getAlternateAppleLogo = ({
   isDarkMode
 }: GetAppleOtcLogo) => {
   const fillColor = isDarkMode ? '#FFFFFF' : '#000000'

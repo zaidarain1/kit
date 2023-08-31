@@ -21,17 +21,11 @@ export const clickable = style({
 export const walletLogoContainer = style({}) 
 
 globalStyle (`${walletLogoContainer} svg`, {
-  width: '40px'
+  height: '40px'
 })
 
 export const walletLogoContainerExtended = style({}) 
 
 globalStyle (`${walletLogoContainerExtended} svg`, {
   width: '30px'
-})
-
-export const walletLogoContainerOtc = style({}) 
-
-globalStyle (`${walletLogoContainerOtc} svg`, {
-  width: '40px'
 })

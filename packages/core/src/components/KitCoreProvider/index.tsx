@@ -8,8 +8,7 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { DappWallet } from './DappWallet'
-import { OneTimeClickWallet } from './OneTimeClickWallet'
+import { ConnectWalletContent } from './ConnectWalletContent'
 import { ConnectModalContextProvider, ThemeContextProvider } from '../../contexts'
 
 import '@0xsequence/design-system/styles.css'
@@ -22,7 +21,6 @@ export const THEMES = {
 };
 
 export interface KitConfig {
-  useOneTimeClickModal?: boolean,
   defaultTheme?: Theme,
   signIn?: {
     logoUrlDarkMode?: string,
@@ -38,29 +36,10 @@ export type KitConnectProviderProps = {
 
 export const KitCoreProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
-  const { useOneTimeClickModal = true, defaultTheme, signIn = {} } = config
+  const { defaultTheme, signIn = {} } = config
   const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
-
-  const getConnectModal = () => {
-    if (useOneTimeClickModal) {
-      return (
-        <OneTimeClickWallet
-          openConnectModal={openConnectModal}
-          setOpenConnectModal={setOpenConnectModal}
-          {...props}
-        />
-      )
-    }
-    return (
-      <DappWallet
-        openConnectModal={openConnectModal}
-        setOpenConnectModal={setOpenConnectModal}
-        {...props}
-      />
-    )
-  }
 
   return (
     <ThemeContextProvider value={{ theme, setTheme }}>
@@ -91,7 +70,11 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
                   >
                     <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
                   </Box>
-                      {getConnectModal()}
+                    <ConnectWalletContent
+                      openConnectModal={openConnectModal}
+                      setOpenConnectModal={setOpenConnectModal}
+                      {...props}
+                    />
                   </Box>
                 </Modal>
               )}

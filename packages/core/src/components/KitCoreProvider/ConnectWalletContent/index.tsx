@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Button, Card, ChevronRightIcon, Divider, Image, Text, TextInput } from '@0xsequence/design-system'
+import { Box, Button, Card, ChevronRightIcon, Divider, Text, TextInput, vars } from '@0xsequence/design-system'
 import { useConnect, useAccount } from 'wagmi'
 import{ EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 
@@ -10,12 +10,12 @@ import { ExtendedConnector } from '../../../utils/getKitConnectWallets'
 
 import * as styles from '../../styles.css'
 
-interface OneTimeClickWalletProps extends KitConnectProviderProps {
+interface ConnectWalletContentProps extends KitConnectProviderProps {
   openConnectModal: boolean
   setOpenConnectModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const OneTimeClickWallet = (props: OneTimeClickWalletProps) => {
+export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   const { isConnected } = useAccount()
   const { theme } = useTheme()
 
@@ -78,26 +78,50 @@ export const OneTimeClickWallet = (props: OneTimeClickWalletProps) => {
       )}
       {otherConnectors.length > 0 && (
         <>
-          <Box justifyContent="center" alignItems="center">
-            <Text variant="small" color="text50">or sign in via</Text>
-          </Box>
-          <Box marginTop="3" gap="3" flexDirection="row" justifyContent="space-between" alignItems="center">
+          {emailConnector && (
+            <Box justifyContent="center" alignItems="center">
+              <Text variant="small" color="text50">or sign in via</Text>
+            </Box>
+          )}
+          <Box
+            marginTop="3"
+            gap="3"
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            flexWrap="wrap"
+          >
             {otherConnectors.map(connector => {
               const Logo =
                 theme === 'dark'
-                  ? connector._wallet.otcLogoDark as React.FunctionComponent
-                  : connector._wallet.otcLogoLight as React.FunctionComponent
+                  ? connector._wallet.logoDark as React.FunctionComponent
+                  : connector._wallet.logoLight as React.FunctionComponent
               return (
-                <Card
+                  <Card
                   key={connector._wallet.id}
                   className={styles.clickable}
-                  aspectRatio="1/1"
                   justifyContent="center"
                   alignItems="center"
                   onClick={() => connect({ connector })}
+                  style={{
+                    height: '110px',
+                    width: `calc(50% - ${vars.space[2]})`
+                  }}
                 >
-                  <Box className={styles.walletLogoContainerOtc}>
+                  <Box
+                    className={styles.walletLogoContainer}
+                    flexDirection="column"
+                    gap="4"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
                     <Logo />
+                    <Text
+                      fontSize="normal"
+                      fontWeight="bold"
+                    >
+                      {connector._wallet.name}
+                    </Text>
                   </Box>
                 </Card>
               )

@@ -23,13 +23,13 @@ export const FacebookLogo: React.FunctionComponent = ({...props}) => {
 }
 
 
-interface GetFacebookOtcLogo {
+interface GetAlternateFacebookLogo {
   isDarkMode: boolean
 }
 
-export const getFacebookOtcLogo = ({
+export const getFacebookAlternateLogo = ({
   isDarkMode
-}: GetFacebookOtcLogo) => {
+}: GetAlternateFacebookLogo) => {
   const fillColor = isDarkMode ? '#FFFFFF' : '#000000'
 
   const FacebookOtcLogo: React.FunctionComponent = ({...props}) => {

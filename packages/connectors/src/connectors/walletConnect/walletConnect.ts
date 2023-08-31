@@ -15,7 +15,7 @@ export const walletConnect = ({ chains, options }: WalletConnectWalletOptions) =
   logoDark: WalletConnectLogo,
   logoLight: WalletConnectLogo,
   // iconBackground: '#fff',
-  name: 'Wallet Connect',
+  name: 'Walletconnect',
   createConnector: () => {
     const connector = new WalletConnectConnector({
       chains,
