@@ -7,7 +7,10 @@ import {
   facebook,
   google,
   metamask,
-  walletConnect
+  walletConnect,
+  sequence,
+  discord,
+  apple
 } from './connectors'
 
 interface GetDefaultConnectors {
@@ -53,6 +56,21 @@ export const getDefaultConnectors = ({
         projectId: walletConnectProjectId
       },
     }),
+    // sequence({
+    //   chains,
+    //   connect: {
+    //     app: 'demo'
+    //   }
+    // }),
+    // discord({
+    //   chains
+    // }),
+    // apple({
+    //   chains
+    // }),
+    // email({
+    //   chains
+    // })
   ]) 
 
   return connectors

@@ -71,16 +71,6 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
                   >
                     <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
                   </Box>
-                  {theme === 'dark' && logoUrlDarkMode && (
-                    <Box marginTop="5" justifyContent="center" alignItems="center">
-                      <Image src={logoUrlDarkMode} width="full" />
-                    </Box>
-                  )}
-                  {theme === 'light' && logoUrlLightMode && (
-                    <Box marginTop="5" justifyContent="center" alignItems="center">
-                      <Image src={logoUrlLightMode} width="full" />
-                    </Box>
-                  )}
                   <ConnectWalletContent
                     openConnectModal={openConnectModal}
                     setOpenConnectModal={setOpenConnectModal}
