@@ -26,7 +26,10 @@ export interface KitConfig {
   signIn?: {
     logoUrlDarkMode?: string,
     logoUrlLightMode?: string,
-    projectName?: string
+    projectName?: string,
+    showEmailInput?: boolean,
+    miniAuthOptions?: string[]
+    authOptions?: string[]
   }
 }
 
@@ -38,7 +41,7 @@ export type KitConnectProviderProps = {
 export const KitCoreProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
   const { defaultTheme, signIn = {} } = config
-  const { projectName, logoUrlDarkMode, logoUrlLightMode } = signIn
+  const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
 

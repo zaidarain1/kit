@@ -24,13 +24,13 @@ export const getAppleLogo = ({ isDarkMode }: GetAppleLogo) => {
   return AppleLogo
 }
 
-interface GetAppleOtcLogo {
+interface GetAppleMiniLogo {
   isDarkMode: boolean
 }
 
-export const getAlternateAppleLogo = ({
+export const getAppleMiniLogo = ({
   isDarkMode
-}: GetAppleOtcLogo) => {
+}: GetAppleMiniLogo) => {
   const fillColor = isDarkMode ? '#FFFFFF' : '#000000'
 
   const AppleOtcLogo: React.FunctionComponent = ({...props}) => {

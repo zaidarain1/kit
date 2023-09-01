@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
-import { FacebookLogo } from './FacebookLogo'
+import { FacebookLogo, getFacebookMiniLogo } from './FacebookLogo'
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -14,6 +14,8 @@ export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
   id: 'facebook',
   logoDark: FacebookLogo,
   logoLight: FacebookLogo,
+  miniLogoDark: getFacebookMiniLogo({ isDarkMode: true }),
+  miniLogoLight: getFacebookMiniLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Facebook',
   createConnector: () => {

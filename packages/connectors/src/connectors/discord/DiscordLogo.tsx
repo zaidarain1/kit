@@ -7,7 +7,7 @@ interface GetDiscordLogo {
 export const getDiscordLogo = ({ isDarkMode }: GetDiscordLogo) => {
   const fillColor = isDarkMode ? 'white' : 'black'
 
-  const AppleLogo: React.FunctionComponent = ({...props}) => {
+  const DiscordLogo: React.FunctionComponent = ({...props}) => {
     return (
       <React.Fragment>
         <svg viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,5 +23,5 @@ export const getDiscordLogo = ({ isDarkMode }: GetDiscordLogo) => {
       </React.Fragment>
     )
   }
-  return AppleLogo
+  return DiscordLogo
 }

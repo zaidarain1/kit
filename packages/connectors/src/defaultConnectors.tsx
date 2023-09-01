@@ -8,7 +8,6 @@ import {
   google,
   metamask,
   walletConnect,
-  sequence,
   discord,
   apple
 } from './connectors'
@@ -47,6 +46,12 @@ export const getDefaultConnectors = ({
         defaultNetwork: defaultChain
       }
     }),
+    discord({
+      chains
+    }),
+    apple({
+      chains
+    }),
     metamask({
       chains,
     }),
@@ -56,21 +61,6 @@ export const getDefaultConnectors = ({
         projectId: walletConnectProjectId
       },
     }),
-    // sequence({
-    //   chains,
-    //   connect: {
-    //     app: 'demo'
-    //   }
-    // }),
-    // discord({
-    //   chains
-    // }),
-    // apple({
-    //   chains
-    // }),
-    // email({
-    //   chains
-    // })
   ]) 
 
   return connectors

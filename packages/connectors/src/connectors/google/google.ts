@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
-import { GoogleLogo } from './GoogleLogo'
+import { GoogleLogo, getMiniGoogleLogo } from './GoogleLogo'
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -14,6 +14,8 @@ export const google = ({ chains, options = {} }: GoogleOptions) => ({
   id: 'google',
   logoDark: GoogleLogo,
   logoLight: GoogleLogo,
+  miniLogoDark: getMiniGoogleLogo({ isDarkMode: true }),
+  miniLogoLight: getMiniGoogleLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Google',
   createConnector: () => {

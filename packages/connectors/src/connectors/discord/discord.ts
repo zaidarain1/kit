@@ -14,6 +14,8 @@ export const discord = ({ chains, options = {} }: DiscordOptions) => ({
   id: 'discord',
   logoDark: getDiscordLogo({ isDarkMode: true }),
   logoLight: getDiscordLogo({ isDarkMode: false }),
+  miniLogoDark: getDiscordLogo({ isDarkMode: true }),
+  miniLogoLight: getDiscordLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Discord',
   createConnector: () => {

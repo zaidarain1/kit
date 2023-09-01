@@ -22,16 +22,16 @@ export const GoogleLogo: React.FunctionComponent = ({...props}) => {
   )
 }
 
-interface GetAlternateGoogleLogo {
+interface GetGoogleMiniLogo {
   isDarkMode: boolean
 }
 
-export const getAlternateGoogleLogo = ({
+export const getMiniGoogleLogo = ({
   isDarkMode
-}: GetAlternateGoogleLogo) => {
+}: GetGoogleMiniLogo) => {
   const fillColor = isDarkMode ? 'white' : 'black'
 
-  const GoogleAlternateLogo: React.FunctionComponent = ({...props}) => {
+  const GoogleMiniLogo: React.FunctionComponent = ({...props}) => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -44,5 +44,5 @@ export const getAlternateGoogleLogo = ({
     )
   }
 
-  return GoogleAlternateLogo
+  return GoogleMiniLogo
 }

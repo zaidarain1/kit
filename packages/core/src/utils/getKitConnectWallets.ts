@@ -5,6 +5,8 @@ export interface WalletProperties {
   id: string,
   logoDark: React.FunctionComponent,
   logoLight: React.FunctionComponent,
+  miniLogoDark?: React.FunctionComponent,
+  miniLogoLight?: React.FunctionComponent,
   name: string,
   iconBackground?: string,
   hideConnectorId?: string | null
