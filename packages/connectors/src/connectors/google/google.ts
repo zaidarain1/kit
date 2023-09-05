@@ -28,7 +28,7 @@ export const google = ({ chains, options = {} }: GoogleOptions) => ({
           ...options?.connect,
           settings: {
             ...options?.connect?.settings,
-            signInOptions: ['google']
+            signInWith: 'google'
           }
         }
       }

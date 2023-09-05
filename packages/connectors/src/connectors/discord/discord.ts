@@ -28,7 +28,7 @@ export const discord = ({ chains, options = {} }: DiscordOptions) => ({
           ...options?.connect,
           settings: {
             ...options?.connect?.settings,
-            signInOptions: ['discord']
+            signInWith: 'discord'
           }
         }
       }

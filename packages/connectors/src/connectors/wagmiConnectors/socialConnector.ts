@@ -1,4 +1,5 @@
 import { sequence } from '0xsequence'
+import { ConnectOptions } from '@0xsequence/provider'
 
 import {
   createWalletClient,
@@ -14,7 +15,7 @@ import {
 
 export interface SocialConnectorOptions {
   defaultNetwork?: sequence.network.ChainIdLike,
-  connect?: sequence.provider.ConnectOptions
+  connect?: ConnectOptions
 }
 
 export class SocialConnector extends Connector<sequence.provider.SequenceProvider, SocialConnectorOptions | undefined> {
@@ -32,10 +33,14 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
     super({ chains, options })
 
     const signInOptions = options?.connect?.settings?.signInOptions || []
+    const signInWith = options?.connect?.settings?.signInWith
     
     // If there are no sign in options
     // Then it must mean we are connecting with email
-    if (signInOptions.length > 0) {
+    if (signInWith) {
+      this.id = signInWith
+      this.name = `${signInWith[0].toUpperCase()}${signInWith.slice(1)}` 
+    } else if (signInOptions.length > 0) {
       const id = signInOptions[0]
       const name = `${id[0].toUpperCase()}${id.slice(1)}` 
       

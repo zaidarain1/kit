@@ -28,7 +28,7 @@ export const apple = ({ chains, options = {} }: AppleOptions) => ({
           ...options?.connect,
           settings: {
             ...options?.connect?.settings,
-            signInOptions: ['apple']
+            signInWith: 'apple'
           }
         }
       }

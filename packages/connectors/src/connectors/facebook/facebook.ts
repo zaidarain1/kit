@@ -28,7 +28,7 @@ export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
           ...options?.connect,
           settings: {
             ...options?.connect?.settings,
-            signInOptions: ['facebook']
+            signInWith: 'facebook'
           }
         }
       }
