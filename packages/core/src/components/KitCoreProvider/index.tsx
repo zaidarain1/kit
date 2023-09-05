@@ -14,6 +14,8 @@ import { ConnectModalContextProvider, ThemeContextProvider } from '../../context
 
 import '@0xsequence/design-system/styles.css'
 
+import * as sharedStyles from '../styles.css'
+
 export declare const THEME: readonly ["dark", "light"];
 export declare type Theme = typeof THEME[number];
 export const THEMES = {
@@ -52,7 +54,7 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
           <AnimatePresence>
             {openConnectModal && (
               <Modal
-                scroll={true}
+                scroll={false}
                 backdropColor="backgroundBackdrop"
                 size="sm"
                 contentProps={{
@@ -62,7 +64,10 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
                 }}
                 onClose={() => setOpenConnectModal(false)}
               >
-                <Box padding="4">
+                <Box
+                  padding="4"
+                  className={sharedStyles.walletContent}
+                >
                   <Box
                     justifyContent="center"
                     color="text100"

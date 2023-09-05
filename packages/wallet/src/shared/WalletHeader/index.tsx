@@ -15,6 +15,8 @@ import { WalletDropdownContent } from './components/WalletDropdownContent'
 import { HEADER_HEIGHT } from '../../constants'
 import { useNavigation, useOpenWalletModal } from '../../hooks'
 
+import * as styles from './styles.css'
+
 interface WalletHeaderProps {
 }
 
@@ -89,6 +91,7 @@ export const WalletHeader = ({
             <IconButton
               onClick={onClickSearch}
               icon={SearchIcon}
+              className={styles.searchButton}
               style={{
                 backgroundColor: vars.colors.backgroundPrimary,
                 width: '44px'

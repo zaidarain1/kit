@@ -2,7 +2,16 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { Transaction, TxnTransfer, TxnTransferType } from '@0xsequence/indexer'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
-import { Box, Text, Image, SendIcon, ReceiveIcon, TransactionIcon, vars } from '@0xsequence/design-system'
+import {
+  ArrowRightIcon,
+  Box,
+  Text,
+  Image,
+  SendIcon,
+  ReceiveIcon,
+  TransactionIcon,
+  vars
+} from '@0xsequence/design-system'
 import dayjs from 'dayjs'
 
 import * as sharedStyles from '../../shared/styles.css'
@@ -21,6 +30,7 @@ import {
 interface TransactionHistoryItemProps {
   transaction: Transaction
 }
+
 
 export const TransactionHistoryItem = ({
   transaction
@@ -69,9 +79,23 @@ export const TransactionHistoryItem = ({
   const getTransactionIconByType = (transferType: TxnTransferType) => {
     switch(transferType) {
       case TxnTransferType.SEND:
-        return <SendIcon style={{ width: '14px' }} />
+        return (
+          <ArrowRightIcon
+            style={{
+              transform: 'rotate(270deg)',
+              width: '16px'
+            }}
+          />
+        )
       case TxnTransferType.RECEIVE:
-        return <ReceiveIcon style={{ width: '14px' }} />
+        return (
+          <ArrowRightIcon
+            style={{
+              transform: 'rotate(90deg)',
+              width: '16px'
+            }}
+          />
+        )
       case TxnTransferType.UNKNOWN:
       default:
         return <TransactionIcon style={{ width: '14px' }} />
