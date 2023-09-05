@@ -44,10 +44,22 @@ export const CoinTileContent = ({
       </Box>
       <Box marginBottom="3">
         <Box flexDirection="row" gap="1" justifyContent="flex-start" alignItems="center">
-          <Text fontWeight="bold" whiteSpace="nowrap">{tokenName}</Text>
+          <Text
+            fontWeight="bold"
+            whiteSpace="nowrap"
+            style={{ maxWidth: '130px', textOverflow: 'ellipsis', overflow: 'hidden' }}
+          >
+            {tokenName}
+          </Text>
           <CoinIcon size={12} imageUrl={networkLogoUrl} />
         </Box>
-        <Text color="text50" whiteSpace="nowrap">{`${balance} ${symbol}`}</Text>
+        <Text
+          color="text50"
+          whiteSpace="nowrap"
+          style={{ display: 'block', maxWidth: '150px', textOverflow: 'ellipsis', overflow: 'hidden' }}
+        >
+          {`${balance} ${symbol}`}
+        </Text>
       </Box>
       <Box>
         <Box>
