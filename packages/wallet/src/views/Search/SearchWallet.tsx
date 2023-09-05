@@ -116,6 +116,7 @@ export const SearchWallet = () => {
           value={search}
           onChange={ev => setSearch(ev.target.value)}
           placeholder="Search your wallet"
+          data-1p-ignore
         />
       </Box>
       <Box

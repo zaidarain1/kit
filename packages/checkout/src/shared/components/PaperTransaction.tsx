@@ -145,6 +145,7 @@ export const PaperTransaction = ({
               placeholder="Email Address"
               value={inputEmailAddress}
               onChange={emailAddressOnChange}
+              data-1p-ignore
             />
           </Box>
           <Button

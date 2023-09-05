@@ -239,6 +239,7 @@ export const SendCollectible = ({
             onChange={ev => setToAddress(ev.target.value)}
             placeholder={`${nativeTokenInfo.name} Address (0x...)`}
             name="to-address"
+            data-1p-ignore
             controls={
               <Button
                 size="xs"

@@ -110,6 +110,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                 value={email}
                 name="email"
                 placeholder="Enter email"
+                data-1p-ignore
               />
               <Button
                 type="submit"
