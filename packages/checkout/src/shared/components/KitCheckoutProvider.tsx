@@ -7,7 +7,7 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { useTheme } from '@0xsequence/kit-core'
+import { useTheme, getModalPositionCss } from '@0xsequence/kit-core'
 
 import {
   PaperTransactionForm,
@@ -73,7 +73,7 @@ export const KitCheckoutProvider = (props: KitCheckoutProvider) => {
 }
 
 export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
-  const { theme } = useTheme()
+  const { theme, position } = useTheme()
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
   const [history, setHistory] = useState<History>([])
@@ -136,7 +136,8 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
                 contentProps={{
                   style: {
                     maxWidth: '400px',
-                    height: 'auto'
+                    height: 'auto',
+                    ...getModalPositionCss(position)
                   }
                 }}
                 scroll={false}

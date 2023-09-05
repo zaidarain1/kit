@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { useThemeContext } from '../contexts/Theme'
 
 export const useTheme = () => {
-  const { setTheme, theme } = useThemeContext()
+  const { setTheme, theme, position, setPosition } = useThemeContext()
 
   return {
     setTheme,
-    theme
+    theme,
+    position,
+    setPosition
   }
 }

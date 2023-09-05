@@ -11,6 +11,7 @@ import { AnimatePresence } from 'framer-motion'
 
 import { ConnectWalletContent } from './ConnectWalletContent'
 import { ConnectModalContextProvider, ThemeContextProvider } from '../../contexts'
+import { ModalPosition, getModalPositionCss } from '../../utils'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -25,6 +26,7 @@ export const THEMES = {
 
 export interface KitConfig {
   defaultTheme?: Theme,
+  position?: ModalPosition,
   signIn?: {
     logoUrlDarkMode?: string,
     logoUrlLightMode?: string,
@@ -42,13 +44,21 @@ export type KitConnectProviderProps = {
 
 export const KitCoreProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
-  const { defaultTheme, signIn = {} } = config
+  const { defaultTheme, signIn = {}, position = 'center' } = config
   const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
+  const [modalPosition, setModalPosition] = useState<ModalPosition>(position)
 
   return (
-    <ThemeContextProvider value={{ theme, setTheme }}>
+    <ThemeContextProvider
+      value={{
+        theme,
+        setTheme,
+        position: modalPosition,
+        setPosition: setModalPosition
+      }}
+    >
       <ConnectModalContextProvider value={{ setOpenConnectModal, openConnectModalState: openConnectModal }}>
         <ThemeProvider theme={theme}>
           <AnimatePresence>
@@ -60,6 +70,7 @@ export const KitCoreProvider = (props: KitConnectProviderProps) => {
                 contentProps={{
                   style: {
                     maxWidth: '364px',
+                    ...getModalPositionCss(position)
                   }
                 }}
                 onClose={() => setOpenConnectModal(false)}

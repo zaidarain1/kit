@@ -7,7 +7,7 @@ import {
   ThemeProvider,
   Scroll,
 } from '@0xsequence/design-system'
-import { useTheme } from '@0xsequence/kit-core'
+import { useTheme, getModalPositionCss } from '@0xsequence/kit-core'
 import { AnimatePresence } from 'framer-motion'
 
 import { getHeader, getContent } from './utils'
@@ -73,7 +73,7 @@ export const KitWalletProvider = (props: KitWalletProviderProps) => {
 }
 
 export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
-  const { theme } = useTheme()
+  const { theme, position } = useTheme()
   
   // Wallet Modal Context
   const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
@@ -107,7 +107,9 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
                 <Modal
                   contentProps={{
                     style: {
-                      maxWidth: '400px', height: 'fit-content',
+                      maxWidth: '400px',
+                      height: 'fit-content',
+                      ...getModalPositionCss(position)
                     },
                   }}
                   scroll={false}
