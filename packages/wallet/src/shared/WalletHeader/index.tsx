@@ -74,6 +74,7 @@ export const WalletHeader = ({
           justifyContent="space-between"
           width="full"
           style={{
+            marginTop: `-${HEADER_HEIGHT}`,
             height: HEADER_HEIGHT,
             paddingTop: '6px'
           }}

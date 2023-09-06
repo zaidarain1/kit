@@ -26,7 +26,7 @@ export const SettingsMenu = () => {
   }
 
   return (
-    <Box style={{ paddingTop: HEADER_HEIGHT }}>
+    <Box>
       <Box padding="5" paddingTop="3">
         <Box flexDirection="column" gap="2">
           <Button

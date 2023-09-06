@@ -16,7 +16,7 @@ export const SettingsNetwork = () => {
   }
 
   return (
-    <Box style={{ paddingTop: HEADER_HEIGHT }}>
+    <Box>
       <Box padding="5" paddingTop="3">
         <Text variant="small" color="text50">
           Networks

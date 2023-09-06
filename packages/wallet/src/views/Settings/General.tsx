@@ -27,7 +27,7 @@ export const SettingsGeneral = () => {
   }
 
   return (
-    <Box style={{ paddingTop: HEADER_HEIGHT }}>
+    <Box>
       <Box gap="2" padding="5" paddingTop="3" flexDirection="column">
         <Card
           flexDirection="row"

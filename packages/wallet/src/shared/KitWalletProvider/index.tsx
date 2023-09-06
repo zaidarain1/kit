@@ -108,25 +108,16 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
                   contentProps={{
                     style: {
                       maxWidth: '400px',
-                      height: 'fit-content',
-                      ...getModalPositionCss(position)
+                      ...getModalPositionCss(position),
+                      paddingTop: HEADER_HEIGHT,
                     },
                   }}
-                  scroll={false}
                   backdropColor="backgroundBackdrop"
                   onClose={() => setOpenWalletModal(false)}
                 >
+                  {getHeader(navigation)}
                   <Box className={styles.walletContent} id="sequence-kit-wallet-content">
-                    {getHeader(navigation)}
-                  
-                    {displayScrollbar ? (
-                      <Scroll style={{ paddingTop: HEADER_HEIGHT, height: '800px' }}>
-                        {getContent(navigation)}
-                      </Scroll>
-                    ) : (
-                      getContent(navigation)
-                    )}
-
+                    {getContent(navigation)}
                   </Box>
                 </Modal>
               )}

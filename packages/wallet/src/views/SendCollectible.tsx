@@ -160,9 +160,6 @@ export const SendCollectible = ({
     <Box
       padding="5"
       paddingTop="3"
-      style={{
-        marginTop: HEADER_HEIGHT
-      }}
       gap="2"
       flexDirection="column"
       as="form"
