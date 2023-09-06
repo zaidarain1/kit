@@ -105,15 +105,17 @@ export const TransactionDetails = ({
     const recipientAddressFormatted = recipientAddress.substring(0, 10) + '...' + recipientAddress.substring(transfer.to.length - 4, transfer.to.length )
     const isNativeToken = compareAddress(transfer?.contractInfo?.address || '', ethers.constants.AddressZero)
     const logoURI = isNativeToken ? nativeTokenInfo.logoURI : transfer?.contractInfo?.logoURI
-    const decimals = isNativeToken ? nativeTokenInfo.decimals : transfer?.contractInfo?.decimals || 0
     const symbol = isNativeToken ? nativeTokenInfo.symbol : transfer?.contractInfo?.symbol || ''
 
     return (
       <>
         {transfer.amounts?.map((amount, index) => {
+          const isCollectible = transfer.contractType === 'ERC721' || transfer.contractType === 'ERC1155'
+          const collectibleDecimals = transfer?.tokenMetadata?.decimals
+          const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : transfer?.contractInfo?.decimals || 0
+          const decimals = isCollectible ? collectibleDecimals : coinDecimals
           const formattedBalance = ethers.utils.formatUnits(amount, decimals)
           const balanceDisplayed = formatDisplay(formattedBalance)
-          const isCollectible = transfer.contractType === 'ERC721' || transfer.contractType === 'ERC1155'
           const fiatPrice = isCollectible ?
             collectiblePricesData?.find(collectible => (
               compareAddress(collectible.token.contractAddress, transfer.contractInfo?.address || '') &&
