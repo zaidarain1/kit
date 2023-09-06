@@ -8,7 +8,7 @@ import { useSettings } from '../../hooks'
 export const SettingsCurrency = () => {
   const { fiatCurrency, setFiatCurrency } = useSettings()
   return (
-    <Box style={{ paddingTop: HEADER_HEIGHT }}>
+    <Box>
       <Box padding="5" paddingTop="3">
         <Box
           flexDirection="column"

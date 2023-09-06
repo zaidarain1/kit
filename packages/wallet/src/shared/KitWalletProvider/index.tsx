@@ -89,7 +89,8 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
     navigation.location === 'coin-details' ||
     navigation.location === 'history' ||
     navigation.location === 'search' ||
-    navigation.location === 'search-view-all'
+    navigation.location === 'search-view-all' ||
+    navigation.location === 'settings-currency'
 
 
   useEffect(() => {
