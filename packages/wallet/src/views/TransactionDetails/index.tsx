@@ -111,7 +111,8 @@ export const TransactionDetails = ({
       <>
         {transfer.amounts?.map((amount, index) => {
           const isCollectible = transfer.contractType === 'ERC721' || transfer.contractType === 'ERC1155'
-          const collectibleDecimals = transfer?.tokenMetadata?.decimals
+          const tokenId = transfer.tokenIds?.[index] || '0'
+          const collectibleDecimals = transfer?.tokenMetadata?.[tokenId]?.decimals || 0
           const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : transfer?.contractInfo?.decimals || 0
           const decimals = isCollectible ? collectibleDecimals : coinDecimals
           const formattedBalance = ethers.utils.formatUnits(amount, decimals)
