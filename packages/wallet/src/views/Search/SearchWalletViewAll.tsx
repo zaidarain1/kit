@@ -9,7 +9,7 @@ import {
   Text,
   TextInput,
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
 import { useAccount, useChainId } from 'wagmi'

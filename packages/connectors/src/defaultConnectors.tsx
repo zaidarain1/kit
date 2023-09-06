@@ -1,6 +1,6 @@
 import { Chain } from 'wagmi/chains'
 import { Connector } from 'wagmi'
-import { getKitConnectWallets } from '@0xsequence/kit-core'
+import { getKitConnectWallets } from '@0xsequence/kit'
 
 import {
   email,

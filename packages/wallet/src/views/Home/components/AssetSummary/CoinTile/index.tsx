@@ -5,7 +5,7 @@ import { TokenBalance } from '@0xsequence/indexer'
 
 import { CoinTileContent } from './CoinTileContent'
 
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import {
   computeBalanceFiat,

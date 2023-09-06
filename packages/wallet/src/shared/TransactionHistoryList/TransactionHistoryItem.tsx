@@ -1,7 +1,7 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { Transaction, TxnTransfer, TxnTransferType } from '@0xsequence/indexer'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import {
   ArrowRightIcon,
   Box,

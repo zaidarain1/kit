@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Card, Switch, Text } from '@0xsequence/design-system'
-import { useTheme } from '@0xsequence/kit-core'
+import { useTheme } from '@0xsequence/kit'
 
 import { HEADER_HEIGHT } from '../../constants'
 import { useSettings } from '../../hooks'

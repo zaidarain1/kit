@@ -7,7 +7,7 @@
     "@0xsequence/design-system": "^1.0.14",
     "@0xsequence/kit-checkout": "workspace:*",
     "@0xsequence/kit-connectors": "workspace:*",
-    "@0xsequence/kit-core": "workspace:*",
+    "@0xsequence/kit": "workspace:*",
     "@0xsequence/kit-wallet": "workspace:*",
     "@0xsequence/wagmi-connector": "^2.1.0",
     "@testing-library/jest-dom": "^5.16.5",

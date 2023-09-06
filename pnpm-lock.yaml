@@ -14,12 +14,12 @@ importers:
 
   .:
     devDependencies:
+      '@0xsequence/kit':
+        specifier: workspace:*
+        version: link:packages/kit
       '@0xsequence/kit-connectors':
         specifier: workspace:*
         version: link:packages/connectors
-      '@0xsequence/kit-core':
-        specifier: workspace:*
-        version: link:packages/core
       '@babel/core':
         specifier: ^7.20.2
         version: 7.20.2
@@ -143,15 +143,15 @@ importers:
       '@0xsequence/design-system':
         specifier: ^1.0.14
         version: 1.0.14(@types/react-dom@18.0.10)(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
+      '@0xsequence/kit':
+        specifier: workspace:*
+        version: link:../../packages/kit
       '@0xsequence/kit-checkout':
         specifier: workspace:*
         version: link:../../packages/checkout
       '@0xsequence/kit-connectors':
         specifier: workspace:*
         version: link:../../packages/connectors
-      '@0xsequence/kit-core':
-        specifier: workspace:*
-        version: link:../../packages/core
       '@0xsequence/kit-wallet':
         specifier: workspace:*
         version: link:../../packages/wallet
@@ -250,9 +250,9 @@ importers:
       '@0xsequence/design-system':
         specifier: ^1.0.11
         version: 1.0.11(@types/react-dom@18.0.10)(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
-      '@0xsequence/kit-core':
+      '@0xsequence/kit':
         specifier: workspace:*
-        version: link:../core
+        version: link:../kit
       '@types/react-copy-to-clipboard':
         specifier: ^5.0.4
         version: 5.0.4
@@ -314,11 +314,11 @@ importers:
       '@0xsequence/design-system':
         specifier: ^1.0.11
         version: 1.0.11(@types/react-dom@18.0.10)(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
-      '@0xsequence/kit-core':
+      '@0xsequence/kit':
         specifier: workspace:*
-        version: link:../core
+        version: link:../kit
 
-  packages/core:
+  packages/kit:
     dependencies:
       '@0xsequence/design-system':
         specifier: ^1.0.14
@@ -397,9 +397,9 @@ importers:
       '@0xsequence/design-system':
         specifier: ^1.0.11
         version: 1.0.11(@types/react-dom@18.0.10)(@types/react@18.0.27)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
-      '@0xsequence/kit-core':
+      '@0xsequence/kit':
         specifier: workspace:*
-        version: link:../core
+        version: link:../kit
       '@types/lodash':
         specifier: ^4.14.196
         version: 4.14.196
@@ -6978,7 +6978,7 @@ packages:
   /@vanilla-extract/integration@5.0.1:
     resolution: {integrity: sha512-HRV/HvC/lihb9wT3x5s7pf5qLjqxSd9nBePJ10juOuMB5cl2ZClEcts076m9BuRKM3wRK2h7KuwkNsaUtjujxQ==}
     dependencies:
-      '@vanilla-extract/css': 1.9.3
+      '@vanilla-extract/css': 1.13.0
       esbuild: 0.11.23
       eval: 0.1.6
       find-up: 5.0.0

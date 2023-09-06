@@ -2,7 +2,7 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { useAccount } from 'wagmi'
 import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import { CollectibleDetailsSkeleton } from './Skeleton'
 

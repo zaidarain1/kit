@@ -2,7 +2,7 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { Box, Image, Text, ChevronRightIcon } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import { CoinIcon } from '../../../shared/CoinIcon'
 import { useNavigation } from '../../../hooks'

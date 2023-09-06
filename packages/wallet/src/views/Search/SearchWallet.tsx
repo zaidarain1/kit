@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ethers } from 'ethers'
 import { Box, SearchIcon, Text, TextInput } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import Fuse from 'fuse.js'
 import { useAccount, useChainId } from 'wagmi'
 

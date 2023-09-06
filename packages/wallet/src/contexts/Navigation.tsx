@@ -1,6 +1,6 @@
 import React from 'react'
 import { Transaction } from '@0xsequence/indexer'
-import { createGenericContext } from '@0xsequence/kit-core'
+import { createGenericContext } from '@0xsequence/kit'
 
 export interface CollectionDetailsParams {
   contractAddress: string

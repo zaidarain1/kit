@@ -5,7 +5,7 @@ import QRCode from 'qrcode.react'
 import { useAccount, useNetwork } from 'wagmi'
 
 import { HEADER_HEIGHT } from '../constants'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 export const Receive = () => {
   const { address } = useAccount()

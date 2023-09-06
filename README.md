@@ -6,15 +6,15 @@ Sequence Kit (@0xsequence/kit) is a library enabling developers to easily integr
 ## Usage
 ### Installing the Library
 
-`npm install @0xsequence/kit-core wagmi ethers viem 0xsequence`
+`npm install @0xsequence/kit wagmi ethers viem 0xsequence`
 
 or
 
-`pnpm install @0xsequence/kit-core wagmi ethers viem 0xsequence`
+`pnpm install @0xsequence/kit wagmi ethers viem 0xsequence`
 
 or
 
-`yarn add @0xsequence/kit-core wagmi ethers viem 0xsequence`
+`yarn add @0xsequence/kit wagmi ethers viem 0xsequence`
 
 ### Installing Wallets
 Official wallets can be installed by running:
@@ -33,7 +33,7 @@ or
 React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Sequence Kit wrapper.
 
 ```js
-import { SequenceConnectProvider, getKitConnectWallets } from '@0xsequence/kit-core'
+import { SequenceConnectProvider, getKitConnectWallets } from '@0xsequence/kit'
 import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@0xsequence/kit-connectors'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
@@ -93,7 +93,7 @@ function App() {
 Wallet selection is done through a modal which can be called programmatically.
 
 ```js
-import { useOpenConnectModal } from '@0xsequence/kit-core'
+import { useOpenConnectModal } from '@0xsequence/kit'
 import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
 
 
@@ -125,7 +125,7 @@ const MyReactComponent = () => {
 ## Packages
 
 - [@0xsequence/kit-example-react](./examples/react)
-- [@0xsequence/kit-core](./packages/core)
+- [@0xsequence/kit](./packages/core)
 - [@0xsequence/kit-connectors](./packages/wallets)
 
 

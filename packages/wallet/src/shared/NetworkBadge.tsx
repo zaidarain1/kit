@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Image, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import {
   getNetworkConfigAndClients,

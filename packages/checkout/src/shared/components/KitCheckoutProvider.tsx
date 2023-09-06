@@ -7,7 +7,7 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { useTheme, getModalPositionCss } from '@0xsequence/kit-core'
+import { useTheme, getModalPositionCss } from '@0xsequence/kit'
 
 import {
   PaperTransactionForm,

@@ -32,7 +32,7 @@
     "@babel/runtime": "^7.20.1",
     "@changesets/changelog-github": "^0.4.7",
     "@changesets/cli": "^2.25.2",
-    "@0xsequence/kit-core": "workspace:*",
+    "@0xsequence/kit": "workspace:*",
     "@0xsequence/kit-connectors": "workspace:*",
     "@preconstruct/cli": "^2.6.2",
     "@types/chai": "^4.2.22",

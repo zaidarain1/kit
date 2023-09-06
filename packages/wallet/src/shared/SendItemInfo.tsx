@@ -4,7 +4,7 @@ import React from 'react'
 import { Skeleton } from './Skeleton'
 import { ethers } from 'ethers'
 
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import { CoinIcon } from './CoinIcon'
 import { formatDisplay } from '../utils'

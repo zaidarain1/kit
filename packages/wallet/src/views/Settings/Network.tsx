@@ -4,7 +4,7 @@ import { useNetwork, useSwitchNetwork } from 'wagmi'
 
 import { SelectButton } from '../../shared/SelectButton'
 import { HEADER_HEIGHT } from '../../constants'
-import { getChainIdList, getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getChainIdList, getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 export const SettingsNetwork = () => {
   const chainIds = getChainIdList()

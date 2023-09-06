@@ -1,5 +1,5 @@
 import React from 'react'
-import { useOpenConnectModal, useTheme } from '@0xsequence/kit-core'
+import { useOpenConnectModal, useTheme } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
 import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
@@ -7,7 +7,6 @@ import {
   Box,
   Button,
   Card,
-  GradientAvatar,
   Text,
   Image,
   SunIcon,
@@ -91,7 +90,6 @@ function Homepage() {
               <Box style={{ marginRight: '-12px' }}>
                 <SwitchThemeButton />
               </Box>
-              {/* <GradientAvatar address={address || ''} style={{ width: '20px' }} /> */}
               <Text fontWeight="medium" fontSize="normal" color="text100">{formatAddress(address || '')}</Text>
             </Box>
             <Box alignItems="center" justifyContent="flex-end" flexDirection="row">

@@ -12,7 +12,7 @@ import {
   LinkIcon,
   Text,
  } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit-core'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
  import dayjs from 'dayjs'
 
 import { CoinIcon } from '../../shared/CoinIcon'

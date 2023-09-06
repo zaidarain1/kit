@@ -7,7 +7,7 @@ import {
   ThemeProvider,
   Scroll,
 } from '@0xsequence/design-system'
-import { useTheme, getModalPositionCss } from '@0xsequence/kit-core'
+import { useTheme, getModalPositionCss } from '@0xsequence/kit'
 import { AnimatePresence } from 'framer-motion'
 
 import { getHeader, getContent } from './utils'

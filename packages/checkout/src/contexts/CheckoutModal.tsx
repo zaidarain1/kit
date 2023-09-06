@@ -1,6 +1,6 @@
 import React from 'react'
 import { MethodArguments } from '../api'
-import { createGenericContext } from '@0xsequence/kit-core'
+import { createGenericContext } from '@0xsequence/kit'
 
 interface CoinQuantity {
   contractAddress: string,

@@ -42,7 +42,7 @@ export type KitConnectProviderProps = {
   config?: KitConfig
 }
 
-export const KitCoreProvider = (props: KitConnectProviderProps) => {
+export const KitProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
   const { defaultTheme, signIn = {}, position = 'center' } = config
   const { projectName } = signIn

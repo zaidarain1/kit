@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@0xsequence/design-system'
-import { KitCoreProvider, THEMES, KitConfig } from '@0xsequence/kit-core'
+import { KitProvider, THEMES, KitConfig } from '@0xsequence/kit'
 import {
   getDefaultConnectors,
 } from '@0xsequence/kit-connectors'
@@ -43,13 +43,13 @@ function App() {
   return (
     <ThemeProvider theme='dark'>
       <WagmiConfig config={config}>
-        <KitCoreProvider config={kitConfig} >
+        <KitProvider config={kitConfig} >
           <KitWalletProvider>
             <KitCheckoutProvider>
               <Homepage />
             </KitCheckoutProvider>
           </KitWalletProvider>
-        </KitCoreProvider>
+        </KitProvider>
       </WagmiConfig>
     </ThemeProvider>
   );

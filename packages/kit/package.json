@@ -1,11 +1,11 @@
 {
-  "name": "@0xsequence/kit-core",
+  "name": "@0xsequence/kit",
   "version": "0.0.1",
   "description": "Core package for Sequence Kit",
-  "repository": "https://github.com/0xsequence/kit/tree/master/packages/core",
-  "main": "dist/0xsequence-kit-core.cjs.js",
-  "module": "dist/0xsequence-kit-core.esm.js",
-  "types": "dist/0xsequence-kit-core.cjs.d.ts",
+  "repository": "https://github.com/0xsequence/kit/tree/master/packages/kit",
+  "main": "dist/0xsequence-kit.cjs.js",
+  "module": "dist/0xsequence-kit.esm.js",
+  "types": "dist/0xsequence-kit.cjs.d.ts",
   "author": "Horizon Blockchain Games",
   "license": "Apache-2.0",
   "scripts": {

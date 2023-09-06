@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import type { ConnectOptions } from '@0xsequence/provider';
 import { SequenceConnector } from '@0xsequence/wagmi-connector';
-import type { Wallet } from '@0xsequence/kit-core'
+import type { Wallet } from '@0xsequence/kit'
 
 import { SequenceLogo } from './SequenceLogo'
 

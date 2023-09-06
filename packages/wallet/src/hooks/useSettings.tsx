@@ -1,4 +1,4 @@
-import { LocalStorageKey } from '@0xsequence/kit-core'
+import { LocalStorageKey } from '@0xsequence/kit'
 import { useState } from 'react'
 import { FiatCurrency, defaultFiatCurrency } from '../constants'
 
