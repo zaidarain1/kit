@@ -62,10 +62,17 @@ function Homepage() {
   }
 
 
-  const getHeaderContent = () => {
+  const HeaderContent = () => {
     if (!isConnected) {
-      return null
+      return (
+        <Box padding="5" justifyContent="flex-end">
+          <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
+            <SwitchThemeButton />
+          </Box>
+        </Box>
+      )
     }
+
     return (
       <Box padding="5" justifyContent="space-between">
         <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
@@ -81,7 +88,10 @@ function Homepage() {
         <Box>
           <Box flexDirection="column">
             <Box flexDirection="row" gap="2" justifyContent="flex-end" alignItems="center">
-              <GradientAvatar address={address || ''} style={{ width: '20px' }} />
+              <Box style={{ marginRight: '-12px' }}>
+                <SwitchThemeButton />
+              </Box>
+              {/* <GradientAvatar address={address || ''} style={{ width: '20px' }} /> */}
               <Text fontWeight="medium" fontSize="normal" color="text100">{formatAddress(address || '')}</Text>
             </Box>
             <Box alignItems="center" justifyContent="flex-end" flexDirection="row">
@@ -131,10 +141,16 @@ function Homepage() {
   }
 
 
+  const SwitchThemeButton = () => {
+    return (
+      <Button variant="base" onClick={onClickChangeTheme} leftIcon={theme === 'dark' ? SunIcon : MoonIcon} />
+    )
+  }
+
   return (
     <Box background="backgroundPrimary">
       <Box style={{ height: '72px' }} position="fixed" width="full" top="0">
-        {getHeaderContent()}
+        <HeaderContent />
       </Box>
       <Box style={{  height: '100vh'}} flexDirection="column" justifyContent="center" alignItems="center">
         {isConnected ? (
@@ -158,7 +174,6 @@ function Homepage() {
               />
             </Box>
             <Box width="full" gap="2" flexDirection="row" justifyContent="flex-end" >
-              <Button onClick={onClickChangeTheme} leftIcon={theme === 'dark' ? SunIcon : MoonIcon} label={theme === 'dark' ? 'Light mode' : 'Dark mode'} />
               <Button onClick={() => disconnect()} leftIcon={SignoutIcon} label="Sign out" />
             </Box>
           </Box>
