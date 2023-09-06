@@ -14,6 +14,7 @@ import {
   TransactionIcon,
   vars
 } from '@0xsequence/design-system'
+import { useTheme } from '@0xsequence/kit-core'
 
 import { useNavigation } from '../../../hooks'
 import { useOpenWalletModal } from '../../../hooks/useOpenWalletModal'
@@ -34,7 +35,7 @@ export const WalletDropdownContent = forwardRef((
   const { setOpenWalletModal } = useOpenWalletModal()
   const { address } = useAccount()
   const { disconnect } = useDisconnect()
-
+  const { theme } = useTheme()
   const onClickReceive = () => {
     setOpenWalletDropdown(false)
     setNavigation({
@@ -75,7 +76,7 @@ export const WalletDropdownContent = forwardRef((
         backdropFilter: 'blur(12.5px)',
         top: '16px',
         left: '16px',
-        background: "rgba(38, 38, 38, 0.85)"
+        background: theme === 'dark' ? "rgba(38, 38, 38, 0.85)" : "rgba(217, 217, 217, 0.85)" 
       }}
 
     >
