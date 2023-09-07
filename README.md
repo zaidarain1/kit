@@ -1,13 +1,4 @@
-<style>
-  .logo-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-  }
-
-</style>
-<div class="logo-container">
+<div style="display:flex;align-items:center;justify-content:flex-start;gap:10px;">
   <img src="public/docs/kit-logo.svg">
   <img src="public/docs/kit-logo-text.svg">
 </div>
