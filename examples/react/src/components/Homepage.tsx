@@ -81,7 +81,7 @@ function Homepage() {
               width: '24px',
               filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
             }}
-            src='/kit-logo-text.svg'
+            src='kit-logo-text.svg'
           />
         </Box>
         <Box>
@@ -185,7 +185,7 @@ function Homepage() {
                     width: '32px',
                     filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
                   }}
-                  src='/kit-logo-text.svg' />
+                  src='kit-logo-text.svg' />
               </Box>
               <Box gap="2" flexDirection="row" alignItems="center">
                 <Button onClick={onClickConnect} variant="feature" label="Connect" />
