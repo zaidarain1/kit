@@ -2,6 +2,7 @@
   "name": "@0xsequence/kit-example-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "kit",
   "dependencies": {
     "0xsequence": "^1.1.13",
     "@0xsequence/design-system": "^1.0.14",
