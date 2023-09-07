@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "wagmi": "1.3.9",
-    "viem": "1.4.1"
+    "viem": "1.10.7"
   },
   "files": [
     "src",
