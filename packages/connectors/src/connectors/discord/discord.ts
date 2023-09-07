@@ -3,8 +3,6 @@ import {  SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
 import { getDiscordLogo } from './DiscordLogo'
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
 export interface DiscordOptions {
   chains: Chain[];
   options?: SocialConnectorOptions;

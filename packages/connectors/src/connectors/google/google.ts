@@ -3,8 +3,6 @@ import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
 import { GoogleLogo, getMiniGoogleLogo } from './GoogleLogo'
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
 export interface GoogleOptions {
   chains: Chain[];
   options?: SocialConnectorOptions;

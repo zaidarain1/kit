@@ -3,8 +3,6 @@ import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
 import { FacebookLogo, getFacebookMiniLogo } from './FacebookLogo'
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
 export interface FacebookOptions {
   chains: Chain[];
   options?: SocialConnectorOptions;

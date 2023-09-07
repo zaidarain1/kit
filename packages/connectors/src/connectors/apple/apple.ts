@@ -3,8 +3,6 @@ import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
 
 import { getAppleLogo, getAppleMiniLogo } from './AppleLogo'
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
 export interface AppleOptions {
   chains: Chain[];
   options?: SocialConnectorOptions;
