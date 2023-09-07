@@ -21,7 +21,8 @@
     "coverage": "rimraf ./coverage && rimraf ./.nyc_output && nyc pnpm test",
     "dev": "preconstruct dev",
     "postinstall": "preconstruct dev",
-    "start:react": "pnpm --filter @0xsequence/kit-example-react start"
+    "start:react": "pnpm --filter @0xsequence/kit-example-react start",
+    "build:react": "pnpm --filter @0xsequence/kit-example-react build"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
