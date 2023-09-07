@@ -28,11 +28,11 @@ Sequence Kit 🧰 is a library enabling developers to easily integrate web3 wall
 To install this package:
 
 ```bash
-npm install @0xsequence/kit wagmi ethers viem 0xsequence
+npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
 # or
-npm install @0xsequence/kit wagmi ethers viem 0xsequence
+npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
 # or
-yarn add @0xsequence/kit wagmi ethers viem 0xsequence
+yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
 ```
 
 
@@ -43,6 +43,7 @@ React apps must be wrapped by a Wagmi client and the KitWalletProvider component
 ```js
 import MyPage from './components/MyPage'
 import { KitProvider } from '@0xsequence/kit'
+import { getDefaultConnectors } from '@0xsequence/kit-connectors'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
 
@@ -107,28 +108,6 @@ const MyReactComponent = () => {
 }
 ```
 
-### Installing Connectors
-Official connectors can be installed by running:
-
-```bash
-npm install @0xsequence/kit-connectors
-# or
-npm install @0xsequence/kit-connectors
-# or
-yarn add @0xsequence/kit-connectors
-```
-
-## Installing the embedded wallet
-### Installing Connectors
-Official connectors can be installed by running:
-
-```bash
-npm install @0xsequence/kit-wallet
-# or
-npm install @0xsequence/kit-wallet
-# or
-yarn add @0xsequence/kit-wallet
-```
 
 ## Packages
 
