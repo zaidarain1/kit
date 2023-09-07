@@ -1,5 +1,10 @@
 Sequence Kit Checkout
 ==========================
+
+<div align="center">
+  <img src="../../public/docs/checkout-modal.png">
+</div>
+
 Checkout modal for Sequence Kit.
 Will display a list of collectibles and allows either checking out with a credit card or through crypto directly.
 
