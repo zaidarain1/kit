@@ -75,7 +75,7 @@ function Homepage() {
     return (
       <Box padding="5" justifyContent="space-between">
         <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
-          <Image style={{ width: '36px' }} src='/kit-logo.svg' />
+          <Image style={{ width: '36px' }} src='kit-logo.svg' />
           <Image
             style={{
               width: '24px',
@@ -179,7 +179,7 @@ function Homepage() {
           <Box>
             <Box flexDirection="column" alignItems="center" justifyContent="center" gap="5">
               <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
-                <Image style={{ width: '48px' }} src='/kit-logo.svg' />
+                <Image style={{ width: '48px' }} src='kit-logo.svg' />
                 <Image
                   style={{
                     width: '32px',
