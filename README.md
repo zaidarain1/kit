@@ -12,6 +12,9 @@ Sequence Kit 🧰 is a library enabling developers to easily integrate web3 wall
 - Full-fledged embedded wallet for coins and collectibles  👛 🖼️ 🪙 
 - Fiat onramp 💵 💶 💴 💷
 
+
+View the [demo](https://0xsequence.github.io/kit)! 👀
+
 ## Quick Start
 ### Installing the Library
 `@0xsequence/kit` is the core package. Any extra modules require this package to be installed first.
@@ -24,7 +27,6 @@ npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xseque
 # or
 yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
 ```
-
 
 ### Setting up the Library
 React apps must be wrapped by a Wagmi client and the KitWalletProvider components. It is important that the Wagmi wrapper comes before the Sequence Kit wrapper.
