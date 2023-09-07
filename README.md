@@ -67,8 +67,9 @@ function App() {
 }
 ```
 ### Opening the Sign in Modal
-
-<img src="public/docs/sign-in-modal.png">
+<div align="center">
+  <img src="public/docs/sign-in-modal.png">
+</div>
 
 Wallet selection is done through a modal which can be called programmatically.
 
@@ -111,7 +112,9 @@ const MyReactComponent = () => {
 
 
 ## Local Development
-<img src="public/docs/kit-demo.png">
+<div align="center">
+  <img src="public/docs/kit-demo.png">
+</div>
 
 The React example can be used to test the library locally.
 
