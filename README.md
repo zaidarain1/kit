@@ -1,5 +1,5 @@
-<div>
-  <img align="center" src="public/docs/kit-logo-in-one.svg">
+<div align="center">
+  <img src="public/docs/kit-logo-in-one.svg">
 </div>
 
 Sequence Kit 🧰
