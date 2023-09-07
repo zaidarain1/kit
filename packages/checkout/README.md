@@ -1,4 +1,73 @@
-@0xsequence/kit-checkout
+Sequence Kit Checkout
 ==========================
- 
-Official checkout integration that work with Sequence Kit.
+Checkout modal for Sequence Kit.
+Will display a list of collectibles and allows either checking out with a credit card or through crypto directly.
+
+
+## Open the checkout modal
+The `useCheckoutModal` hook must be used to open the modal.
+Furthermore, it is necessary to pass a settings object.
+
+```js
+  import { useCheckoutModal } from '@0xsequence/kit-checkout'
+
+  const { triggerCheckout } = useCheckoutModal()
+  
+  const checkoutSettings = {...}
+  
+  triggerCheckout(checkoutSettings)
+```
+
+
+## Configuration
+The react example has an example configuration for setting up the checkout.
+
+Example [settings](../../examples/react/src/utils/settings.ts)
+
+```js
+const checkoutSettings = {
+  creditCardCheckout: {...},
+  cryptoCheckout: {...},
+  orderSummaryItems: {...}
+}
+```
+
+### creditCardCheckout
+The `creditCardCheckout` setting of the settings object contains information that will be passed to [Paper](https://getpaper.xyz/).
+
+View the paper documentation for [more information](https://docs.withpaper.com/reference/create-checkout-elements-client-secret).
+
+If this field is empty the credit card checkout button will not be visible.
+
+### cryptoCheckout
+The `cryptoCheckout` specifies settings regarding checking out with crypto.
+An example usecase might be interacting with a minting contract.
+
+The actual cryptoTransaction must be passed down to the `triggerTransaction` field.
+
+```js
+cons checkoutConfig = {
+  {...},
+  cryptoCheckout: {
+    chainId: 137,
+    triggerTransaction: async () => { console.log('triggered transaction') },
+    coinQuantity: {
+      contractAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+      amountRequiredRaw: '10000000000'
+    },
+  },
+}
+```
+
+### orderSummaryItems
+This field specific the list of collectibles that will show up in the order summary.
+
+```js
+    orderSummaryItems: [
+      {
+        contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
+        tokenId: '66597',
+        quantityRaw: '100'
+      },
+    ]
+```
