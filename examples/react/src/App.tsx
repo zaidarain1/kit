@@ -32,9 +32,9 @@ function App() {
   const kitConfig: KitConfig = {
     defaultTheme: THEMES.dark,
     signIn: {
-      projectName: 'SkyWeaver',
-      logoUrlDarkMode: '/sw-logo-white.svg',
-      logoUrlLightMode: '/sw-logo-black.svg',
+      projectName: 'Skyweaver',
+      // logoUrlDarkMode: 'sw-logo-white.svg',
+      // logoUrlLightMode: 'sw-logo-black.svg',
     }
   }
 
