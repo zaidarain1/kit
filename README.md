@@ -1,95 +1,84 @@
-Sequence Kit
+<style>
+  .logo-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+
+</style>
+<div class="logo-container">
+  <img src="public/docs/kit-logo.svg">
+  <img src="public/docs/kit-logo-text.svg">
+</div>
+
+Sequence Kit 🧰
 ============
 
-Sequence Kit (@0xsequence/kit) is a library enabling developers to easily integrate web3 wallets in their app. It is based on [wagmi](https://wagmi.sh/) and all functionality from wagmi, such as hooks, can be used.
+Sequence Kit 🧰 is a library enabling developers to easily integrate web3 wallets in their app. It is based on [wagmi](https://wagmi.sh/) and supports all wagmi features.
 
-## Usage
+- Connect via social logins eg: facebook, google, discord, etc...! 🔐🪪
+- Connect to popular web3 wallets eg: walletConnect, metamask ! 🦊 ⛓️
+- Full-fledged embedded wallet for coins and collectibles  👛 🖼️ 🪙 
+- Fiat onramp 💵 💶 💴 💷
+
+## Quick Start
 ### Installing the Library
+`@0xsequence/kit` is the core package. Any extra modules require this package to be installed first.
+To install this package:
 
-`npm install @0xsequence/kit wagmi ethers viem 0xsequence`
+```bash
+npm install @0xsequence/kit wagmi ethers viem 0xsequence
+# or
+npm install @0xsequence/kit wagmi ethers viem 0xsequence
+# or
+yarn add @0xsequence/kit wagmi ethers viem 0xsequence
+```
 
-or
-
-`pnpm install @0xsequence/kit wagmi ethers viem 0xsequence`
-
-or
-
-`yarn add @0xsequence/kit wagmi ethers viem 0xsequence`
-
-### Installing Wallets
-Official wallets can be installed by running:
-
-`npm install @0xsequence/kit-connectors`
-
-or
-
-`pnpm install @0xsequence/kit-connectors`
-
-or
-
-`yarn add @0xsequence/kit-connectors`
 
 ### Setting up the Library
-React apps must be wrapped by a Wagmi client and the EthConnnectProvider components. It is important that the Wagmi wrapper comes before the Sequence Kit wrapper.
+React apps must be wrapped by a Wagmi client and the KitWalletProvider components. It is important that the Wagmi wrapper comes before the Sequence Kit wrapper.
+
 
 ```js
-import { SequenceConnectProvider, getKitConnectWallets } from '@0xsequence/kit'
-import { sequenceWallet, metamaskWallet, injectedWallet, walletConnectWallet } from '@0xsequence/kit-connectors'
-import { WagmiConfig, createClient, configureChains } from 'wagmi'
+import MyPage from './components/MyPage'
+import { KitProvider } from '@0xsequence/kit'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
 
-import MyPage from './components/MyPage'
-
 function App() {
-  const { chains, provider, webSocketProvider } = configureChains(
-    [mainnet, polygon],
+  const { chains, publicClient, webSocketPublicClient } = configureChains(
+    [polygon, mainnet],
     [publicProvider()],
   )
 
-  const connectors = getKitConnectWallets([
-    injectedWallet({
-      chains
-    }),
-    sequenceWallet({
-      chains,
-      connect: {
-        app: 'Sequence Kit example',
-        networkId: 137
-      }
-    }),
-    metamaskWallet({
-      chains,
-    }),
-    walletConnectWallet({
-      chains,
-      options: {
-        qrcode: true,
-      },
-    })
-  ])
+  const connectors = getDefaultConnectors({
+    chains,
+    walletConnectProjectId: 'project_id',
+    defaultChainId: 137
+  })
 
   
-  const client = createClient({
+  const config = createConfig({
     autoConnect: true,
-    provider,
-    webSocketProvider,
+    publicClient,
+    webSocketPublicClient,
     connectors
   })
 
-
   return (
     <WagmiConfig client={client}>
-      <SequenceConnectProvider>
+      <KitProvider>
         <MyPage />
-      </SequenceConnectProvider>
+      </KitProvider>
     </WagmiConfig>
   );
 }
-
 ```
+### Opening the Sign in Modal
 
-### Opening the Modal
+<img src="public/docs/sign-in-modal.png">
+
 Wallet selection is done through a modal which can be called programmatically.
 
 ```js
@@ -98,38 +87,63 @@ import { useDisconnect, useAccount, useSigner, useProvider } from 'wagmi'
 
 
 const MyReactComponent = () => {
-    const openConnectModal = useOpenConnectModal()
+  const { setOpenConnectModal } = useOpenConnectModal()
 
-      const { isConnected } = useAccount()
+  const { isConnected } = useAccount()
 
-    const openTheModal = () => {
-      if (openConnectModal) {
-        openConnectModal(true)
-      }
-    }
+  const onClick = () => {
+    setOpenConnectModal(true)
+  }
 
-    return (
-      <>
-        {!isConnected && (
-          <button onClick={openTheModal}>
-            Open Modal
-          </button>
-        )}
-      </>
-    )
+  return (
+    <>
+      {!isConnected && (
+        <button onClick={onClick}>
+          Sign in
+        </button>
+      )}
+    </>
+  )
 }
 ```
 
+### Installing Connectors
+Official connectors can be installed by running:
 
+```bash
+npm install @0xsequence/kit-connectors
+# or
+npm install @0xsequence/kit-connectors
+# or
+yarn add @0xsequence/kit-connectors
+```
+
+## Installing the embedded wallet
+### Installing Connectors
+Official connectors can be installed by running:
+
+```bash
+npm install @0xsequence/kit-wallet
+# or
+npm install @0xsequence/kit-wallet
+# or
+yarn add @0xsequence/kit-wallet
+```
 
 ## Packages
 
-- [@0xsequence/kit-example-react](./examples/react)
-- [@0xsequence/kit](./packages/core)
-- [@0xsequence/kit-connectors](./packages/wallets)
+| Package  | Description | Docs |
+| ------------- | ------------- | ------------- |
+| [@0xsequence/kit](./packages/kit)  | Core package for Sequence Kit  | [Read more](./packages/kit/README.md)  |
+| [@0xsequence/kit-connectors](./packages/connectors)  | Connectors for sequence kit including popular web3 wallets and social logins  | [Read more](./packages/connectors/README.md)  |
+| [@0xsequence/kit-wallet](./packages/wallet)  | Embedded wallets for viewing and sending coins and collectibles   | [Read more](./packages/wallet/README.md)  |
+| [@0xsequence/kit-checkout](./packages/checkout)  | Checkout modal with fiat onramp | [Read more](./packages/checkout/README.md)  |
+| [@0xsequence/kit-example-react](./examples/react)  | Example application showing sign in, wallet and checkout  | [Read more](./examples/react/README.md)  |
 
 
 ## Local Development
+<img src="public/docs/kit-demo.png">
+
 The React example can be used to test the library locally.
 
 1. `pnpm install`

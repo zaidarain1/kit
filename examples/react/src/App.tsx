@@ -1,8 +1,6 @@
 import { ThemeProvider } from '@0xsequence/design-system'
 import { KitProvider, THEMES, KitConfig } from '@0xsequence/kit'
-import {
-  getDefaultConnectors,
-} from '@0xsequence/kit-connectors'
+import { getDefaultConnectors } from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
