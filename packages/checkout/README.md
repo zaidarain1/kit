@@ -8,6 +8,36 @@ Sequence Kit Checkout
 Checkout modal for Sequence Kit.
 Will display a list of collectibles and allows either checking out with a credit card or through crypto directly.
 
+# Installing the module
+First install the package:
+
+```bash
+npm install @0xsequence/kit-checkout
+# or
+npm install @0xsequence/kit-checkout
+# or
+yarn add @0xsequence/kit-checkout
+```
+
+Then the wallet provider module must placed below the Sequence Kit Core provider.
+
+```js
+import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
+
+
+const App = () => {
+  return (
+    <WagmiConfig config={config}>
+      <KitProvider>
+        <KitCheckoutProvider>
+          <Page />
+        </KitCheckoutProvider>
+      </KitProvider>
+    </WagmiConfig>
+  )
+}
+```
+
 
 ## Open the checkout modal
 The `useCheckoutModal` hook must be used to open the modal.
