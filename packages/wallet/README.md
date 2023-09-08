@@ -44,6 +44,16 @@ The embedded wallet modal can be summoded with the `useOpenWalletModal` hook.
 ```js
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 
-const { setOpenWalletModal } = useOpenWalletModal()
-setOpenWalletModal(true)
+const MyComponent = () => {
+  const { setOpenWalletModal } = useOpenWalletModal()
+
+  const onClick = () => {
+    setOpenWalletModal(true)
+  }
+
+  return (
+    <button onClick={onClick}>open wallet</button>
+  )
+}
+
 ```

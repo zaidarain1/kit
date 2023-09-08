@@ -46,11 +46,20 @@ Furthermore, it is necessary to pass a settings object.
 ```js
   import { useCheckoutModal } from '@0xsequence/kit-checkout'
 
-  const { triggerCheckout } = useCheckoutModal()
+
+  const MyComponent = () => {
+    const { triggerCheckout } = useCheckoutModal()
   
-  const checkoutSettings = {...}
-  
-  triggerCheckout(checkoutSettings)
+    const onClick = () => {
+      const checkoutSettings = {...}
+      triggerCheckout(checkoutSettings)
+    }
+
+    return (
+      <button onClick={onClick}>checkout</button>
+    )
+  }
+
 ```
 
 
