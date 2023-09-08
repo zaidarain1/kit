@@ -4,14 +4,13 @@ import { useNetwork, useSwitchNetwork } from 'wagmi'
 
 import { SelectButton } from '../../shared/SelectButton'
 import { HEADER_HEIGHT } from '../../constants'
-import { getChainIdList, getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 export const SettingsNetwork = () => {
-  const chainIds = getChainIdList()
-  const { chain } = useNetwork()
+  const { chain: connectedChain, chains } = useNetwork()
   const { switchNetwork } = useSwitchNetwork() 
 
-  const onChainNetwork = (chainId: number) => {
+  const onClickChainNetwork = (chainId: number) => {
     switchNetwork && switchNetwork(chainId)
   }
 
@@ -25,14 +24,14 @@ export const SettingsNetwork = () => {
           flexDirection="column"
           gap="2"
         >
-          {chainIds.map((chainId) => {
-            const networkInfo = getNativeTokenInfoByChainId(chainId)
+          {chains.map((chain) => {
+            const networkInfo = getNativeTokenInfoByChainId(chain.id)
             return (
               <SelectButton
-                key={chainId}
-                selected={chainId === chain?.id}
-                onClick={onChainNetwork}
-                value={chainId}
+                key={chain.id}
+                selected={chain.id === connectedChain?.id}
+                onClick={onClickChainNetwork}
+                value={chain.id}
               >
                 <Box
                   gap="2"
