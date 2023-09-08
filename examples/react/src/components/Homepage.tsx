@@ -166,8 +166,8 @@ function Homepage() {
                 onClick={onClickCheckout}
               />
               <ClickableCard
-                title="Sign transaction"
-                description="Sign transaction screen before placing a purchase on coins or collections"
+                title="Sign message"
+                description="Sign a message with your wallet"
                 onClick={signMessage}
               />
             </Box>
