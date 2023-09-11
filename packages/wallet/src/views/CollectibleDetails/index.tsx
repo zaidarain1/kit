@@ -176,7 +176,6 @@ export const CollectibleDetails = ({
               transactions={transactionHistory}
               isLoading={isLoadingTransactionHistory}
               isFetchingNextPage={isFetchingNextPage}
-              hasNextPage={hasNextPage}
             />
           </InfiniteScroll>
         </Box>

@@ -142,7 +142,6 @@ export const CoinDetails = ({
               transactions={transactionHistory}
               isLoading={isLoadingTransactionHistory}
               isFetchingNextPage={isFetchingNextPage}
-              hasNextPage={hasNextPage}
             />
           </InfiniteScroll>
         </Box>
