@@ -1,23 +1,30 @@
 import { LocalStorageKey } from '@0xsequence/kit'
 import { useState } from 'react'
+import { useNetwork } from 'wagmi'
 import { FiatCurrency, defaultFiatCurrency } from '../constants'
 
 interface Settings {
-  hideCollectibles: boolean
-  hideUnlistedTokens: boolean
-  fiatCurrency: FiatCurrency
+  hideCollectibles: boolean,
+  hideUnlistedTokens: boolean,
+  fiatCurrency: FiatCurrency,
+  selectedNetworks: number[],
   setFiatCurrency: (newFiatCurrency: FiatCurrency) => void,
   setHideCollectibles: (newState: boolean) => void,
   setHideUnlistedTokens: (newState: boolean) => void,
+  setSelectedNetworks: (newNetworks: number[]) => void,
 }
 
-type SettingsItems = Pick<Settings, 'hideCollectibles' | 'hideUnlistedTokens' | 'fiatCurrency'> 
+type SettingsItems = Pick<Settings, 'hideCollectibles' | 'hideUnlistedTokens' | 'fiatCurrency' | 'selectedNetworks'> 
 
 export const useSettings = ():Settings => {
+  const { chains } = useNetwork()
+
   const getSettingsFromStorage = ():SettingsItems => {
+
     let hideUnlistedTokens = true
     let hideCollectibles = false
     let fiatCurrency = defaultFiatCurrency
+    let selectedNetworks = chains.map((chain) => chain.id)
 
     try {
       const settingsStorage = localStorage.getItem(LocalStorageKey.Settings)
@@ -32,6 +39,18 @@ export const useSettings = ():Settings => {
       if (settings?.fiatCurrency !== undefined) {
         fiatCurrency = settings?.fiatCurrency as FiatCurrency
       }
+
+      if (settings?.selectedNetworks !== undefined) {
+        let areSelectedNetworksValid = true
+        settings.selectedNetworks.forEach((chainId: number) => {
+          if (chains.find(chain => chain.id === chainId) ===  undefined) {
+            areSelectedNetworksValid = false
+          }
+        })
+        if (areSelectedNetworksValid) {
+          selectedNetworks = settings?.selectedNetworks as number[]
+        }
+      }
   
     } catch(e) {
       console.error(e, 'Failed to fetch settings')
@@ -41,6 +60,7 @@ export const useSettings = ():Settings => {
       hideUnlistedTokens,
       hideCollectibles,
       fiatCurrency,
+      selectedNetworks,
     }
   }
   const defaultSettings = getSettingsFromStorage()
@@ -77,10 +97,21 @@ export const useSettings = ():Settings => {
     setSettings(newSettings)
   }
 
+  const setSelectedNetworks = (newSelectedNetworks: number[]) => {
+    const oldSettings = getSettingsFromStorage()
+    const newSettings = {
+      ...oldSettings,
+      selectedNetworks: newSelectedNetworks,
+    }
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings))
+    setSettings(newSettings)
+  }
+
   return {
     ...settings,
     setFiatCurrency,
     setHideCollectibles,
     setHideUnlistedTokens,
+    setSelectedNetworks,
   }
 }

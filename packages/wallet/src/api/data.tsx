@@ -2,10 +2,10 @@ import { Token, TokenPrice } from '@0xsequence/api'
 import { TokenBalance, ContractType, Page } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
 
+import { useSettings } from '../hooks'
 import { compareAddress, sortBalancesByType } from '../utils'
 import { getNetworkConfigAndClients } from '../utils/clients'
 import sampleSize from 'lodash/sampleSize'
-import { transactions } from '0xsequence/dist/declarations/src/transactions'
 
 export interface GetTokenBalancesArgs {
   accountAddress: string,
@@ -349,13 +349,12 @@ export const getTransactionHistorySummary = async ({
   accountAddress
 }: GetTransactionHistorySummaryArgs) => {
   const histories = await Promise.all([...chainIds.map(chainId => getTransactionHistory({
-      chainId,
-      accountAddress,
-      page: {
-        page: 1
-      }
-    }))]
-  )
+    chainId,
+    accountAddress,
+    page: {
+      page: 1
+    }
+  }))])
 
   const unorderedTransactions = histories.map(history => history.transactions).flat()
   const orderedTransactions = unorderedTransactions.sort((a, b) => {

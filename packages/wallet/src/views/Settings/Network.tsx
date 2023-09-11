@@ -1,17 +1,27 @@
 import React from 'react'
 import { Box, Image, Text } from '@0xsequence/design-system'
-import { useNetwork, useSwitchNetwork } from 'wagmi'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+
+import { useNetwork } from 'wagmi'
 
 import { SelectButton } from '../../shared/SelectButton'
 import { HEADER_HEIGHT } from '../../constants'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { useSettings } from '../../hooks'
 
 export const SettingsNetwork = () => {
-  const { chain: connectedChain, chains } = useNetwork()
-  const { switchNetwork } = useSwitchNetwork() 
+  const { selectedNetworks, setSelectedNetworks } = useSettings()
+  const { chains } = useNetwork()
 
-  const onClickChainNetwork = (chainId: number) => {
-    switchNetwork && switchNetwork(chainId)
+
+  const onClickNetwork = (chainId: number) => {
+    if (selectedNetworks.includes(chainId)) {
+      if (selectedNetworks.length === 1) {
+        return
+      }
+      setSelectedNetworks(selectedNetworks.filter((id) => id !== chainId))
+    } else {
+      setSelectedNetworks([...selectedNetworks, chainId])
+    }
   }
 
   return (
@@ -28,10 +38,12 @@ export const SettingsNetwork = () => {
             const networkInfo = getNativeTokenInfoByChainId(chain.id)
             return (
               <SelectButton
+                disabled={selectedNetworks.length === 1 && selectedNetworks.includes(chain.id)}
                 key={chain.id}
-                selected={chain.id === connectedChain?.id}
-                onClick={onClickChainNetwork}
+                selected={selectedNetworks.includes(chain.id)}
+                onClick={() => onClickNetwork(chain.id)}
                 value={chain.id}
+                squareIndicator
               >
                 <Box
                   gap="2"

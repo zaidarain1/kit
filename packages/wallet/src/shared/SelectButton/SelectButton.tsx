@@ -13,10 +13,11 @@ export interface SelectButtonProps extends BoxProps {
   selected: boolean
   disabled?: boolean
   hideIndicator?: boolean
+  squareIndicator?: boolean
 }
 
 export const SelectButton = (props: SelectButtonProps) => {
-  const { value, selected, children, disabled, onClick, className, hideIndicator, ...rest } = props
+  const { value, selected, children, disabled, onClick, className, hideIndicator, squareIndicator = false, ...rest } = props
 
   return (
     <Card
@@ -37,7 +38,7 @@ export const SelectButton = (props: SelectButtonProps) => {
     >
       {children}
 
-      {!hideIndicator && <SelectedIndicator selected={selected} />}
+      {!hideIndicator && <SelectedIndicator selected={selected} squareIndicator={squareIndicator} />}
     </Card>
   )
 }

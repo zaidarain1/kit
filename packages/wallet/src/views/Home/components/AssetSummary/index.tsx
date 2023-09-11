@@ -13,11 +13,10 @@ import * as sharedStyles from '../../../../shared/styles.css'
 
 export const AssetSummary = () => {
   const { address } = useAccount()
-  const { chain, chains } = useNetwork()
   const { setNavigation } = useNavigation()
-  const { hideUnlistedTokens, hideCollectibles } = useSettings()
+  const { hideUnlistedTokens, hideCollectibles, selectedNetworks } = useSettings()
 
-  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainIds: chains.map(chain => chain.id) }, { hideUnlistedTokens, hideCollectibles })
+  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainIds: selectedNetworks }, { hideUnlistedTokens, hideCollectibles })
 
   if (isLoadingBalances) {
     return (

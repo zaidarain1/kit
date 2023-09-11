@@ -1,21 +1,17 @@
 import { Box} from '@0xsequence/design-system'
-import { Transaction } from '@0xsequence/indexer'
-import React from 'react'
-
-import { useTransactionHistorySummary } from '../hooks'
+import React, { useSyncExternalStore } from 'react'
 import { useNetwork, useAccount } from 'wagmi'
 
+import { useSettings, useTransactionHistorySummary } from '../hooks'
 import { TransactionHistoryList } from '../shared/TransactionHistoryList'
 
 export const History = () => {
-  console.log('in history...')
-
-  const { chains } = useNetwork() 
+  const { selectedNetworks } = useSettings() 
   const { address: accountAddress } = useAccount()
 
   const { data: transactionHistory = [], isLoading: isLoadingTransactionHistory } = useTransactionHistorySummary({
     accountAddress: accountAddress || '',
-    chainIds: chains.map(chain => chain.id)
+    chainIds: selectedNetworks
   })
 
   return (
