@@ -10,6 +10,7 @@ export interface FacebookOptions {
 
 export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
   id: 'facebook',
+  isSequenceBased: true,
   logoDark: FacebookLogo,
   logoLight: FacebookLogo,
   miniLogoDark: getFacebookMiniLogo({ isDarkMode: true }),

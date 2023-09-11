@@ -13,6 +13,7 @@ export interface EmailOptions {
 
 export const email = ({ chains, options = {} }: EmailOptions) => ({
   id: 'email',
+  isSequenceBased: true,
   logoDark: getEmailLogo({ isDarkMode: true }),
   logoLight: getEmailLogo({ isDarkMode: false }),
   // iconBackground: '#fff',

@@ -10,6 +10,7 @@ export interface AppleOptions {
 
 export const apple = ({ chains, options = {} }: AppleOptions) => ({
   id: 'apple',
+  isSequenceBased: true,
   logoDark: getAppleLogo({ isDarkMode: true }),
   logoLight: getAppleLogo({ isDarkMode: false }),
   miniLogoDark: getAppleMiniLogo({ isDarkMode: true }),

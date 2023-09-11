@@ -10,6 +10,7 @@ export interface DiscordOptions {
 
 export const discord = ({ chains, options = {} }: DiscordOptions) => ({
   id: 'discord',
+  isSequenceBased: true,
   logoDark: getDiscordLogo({ isDarkMode: true }),
   logoLight: getDiscordLogo({ isDarkMode: false }),
   miniLogoDark: getDiscordLogo({ isDarkMode: true }),

@@ -14,6 +14,7 @@ export interface SequenceOptions {
 /* @ts-ignore-next-line */
 export const sequence = ({ chains, connect }: SequenceOptions) => ({
   id: 'sequence',
+  isSequenceBased: true,
   logoDark: SequenceLogo,
   logoLight: SequenceLogo,
   // iconBackground: '#777',

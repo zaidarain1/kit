@@ -14,7 +14,12 @@ import {
 } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useAccount, useWalletClient } from 'wagmi'
+import {
+  useAccount,
+  useChainId,
+  useSwitchNetwork,
+  useWalletClient
+} from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_20_ABI } from '../constants'
@@ -44,13 +49,19 @@ export const SendCoin = ({
   chainId,
   contractAddress
 }: SendCoinProps) => {
+  const connectedChainId = useChainId()
+  const { address: accountAddress = '', connector } = useAccount()
+  /* @ts-ignore-next-line */
+  const isConnectorSequenceBased = !!connector?._wallet?.isSequenceBased
+  const isCorrectChainId = connectedChainId === chainId
+  const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased
+  const { switchNetwork } = useSwitchNetwork()
   const amountInputRef = useRef<HTMLInputElement>(null)
   const { setOpenWalletModal } = useOpenWalletModal()
   const { fiatCurrency } = useSettings()
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')
   const { data: walletClient } = useWalletClient()
-  const { address: accountAddress = '' } = useAccount()
   const { data: balances = [], isLoading: isLoadingBalances } = useBalances({
     accountAddress: accountAddress,
     chainId,
@@ -89,7 +100,6 @@ export const SendCoin = ({
   const amountToSendFormatted = amount === '' ? '0' : amount
   const amountRaw = ethers.utils.parseUnits(amountToSendFormatted, decimals)
 
-
   const amountToSendFiat = computeBalanceFiat({
       ...tokenBalance as TokenBalance,
       balance: amountRaw.toString(),
@@ -127,6 +137,10 @@ export const SendCoin = ({
   }
 
   const executeTransaction = async (e: ChangeEvent<HTMLFormElement>) => {
+    if (!isCorrectChainId && isConnectorSequenceBased) {
+      switchNetwork && switchNetwork(chainId)
+    }
+
     e.preventDefault()
 
     const sendAmount = ethers.utils.parseUnits(amountToSendFormatted, decimals)
@@ -246,12 +260,32 @@ export const SendCoin = ({
         )}
       </Box>
 
+      {
+        showSwitchNetwork && (
+          <Box
+            marginTop="3"
+          >
+            <Text color="negative">The wallet is connected to the wrong network. Please switch network before proceeding</Text>
+            <Button
+              marginTop="2"
+              width="full"
+              variant="primary"
+              type="button"
+              label="Switch Network"
+              onClick={() => switchNetwork && switchNetwork(chainId)}
+              disabled={isCorrectChainId}
+              style={{ height: '52px', borderRadius: vars.radii.md }}
+            />
+          </Box>
+        )
+      }
+
       <Button
         marginTop="3"
         width="full"
         variant="primary"
         type="submit"
-        disabled={!isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds}
+        disabled={!isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || (!isCorrectChainId && !isConnectorSequenceBased)}
         label="Send"
         rightIcon={ChevronRightIcon}
         style={{ height: '52px', borderRadius: vars.radii.md }}

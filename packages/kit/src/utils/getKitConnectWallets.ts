@@ -9,7 +9,8 @@ export interface WalletProperties {
   miniLogoLight?: React.FunctionComponent,
   name: string,
   iconBackground?: string,
-  hideConnectorId?: string | null
+  hideConnectorId?: string | null,
+  isSequenceBased?: boolean,
 }
 
 export type Wallet = WalletProperties & {

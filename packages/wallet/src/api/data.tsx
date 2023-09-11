@@ -158,30 +158,36 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
     return []
   }
 }
+export interface FetchBalancesAssetsArgs {
+    accountAddress: string,
+    chainIds: number[],
+}
 
-// Will show a condensed view of owned assets
-// Only show the highest valued tokens and a sample of the collectibles
+
 export interface FetchBalancesAssetsSummaryOptions {
   hideUnlistedTokens: boolean
   hideCollectibles?: boolean
 }
 
 export const fetchBalancesAssetsSummary = async (
-  { accountAddress, chainId }: GetTokenBalancesArgs,
+  { accountAddress, chainIds }: FetchBalancesAssetsArgs,
   { hideUnlistedTokens, hideCollectibles }: FetchBalancesAssetsSummaryOptions) => {  
   const MAX_COLLECTIBLES_AMOUNTS = 10
   
   try {
+
+
+
     const tokenBalances = (
       await Promise.all([
-        getNativeToken({
+        ...chainIds.map(chainId => getNativeToken({
           accountAddress,
           chainId
-        }),
-        getTokenBalances({
+        })),
+        ...chainIds.map(chainId => getTokenBalances({
           accountAddress,
           chainId,
-        }, { hideUnlistedTokens, hideCollectibles })
+        }, { hideUnlistedTokens, hideCollectibles }))
       ])
     ).flat()
 
@@ -203,7 +209,7 @@ export const fetchBalancesAssetsSummary = async (
     const fetchCollectiblesPromises = collectionBalances.map(async collectionBalance => {
       const balance = await fetchCollectionBalance({
         accountAddress,
-        chainId,
+        chainId: collectionBalance.chainId,
         collectionAddress: collectionBalance.contractAddress
       })
 

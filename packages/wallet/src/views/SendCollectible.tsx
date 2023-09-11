@@ -16,7 +16,7 @@ import {
 } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useAccount, useWalletClient } from 'wagmi'
+import { useAccount, useChainId, useSwitchNetwork, useWalletClient } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_1155_ABI, ERC_721_ABI } from '../constants'
@@ -31,6 +31,7 @@ import {
 } from '../utils'
 import { HEADER_HEIGHT } from '../constants'
 import * as sharedStyles from '../shared/styles.css'
+import { chain } from "lodash"
 
 interface SendCollectibleProps {
   chainId: number
@@ -43,12 +44,18 @@ export const SendCollectible = ({
   contractAddress,
   tokenId
 }: SendCollectibleProps) => {
+  const connectedChainId = useChainId()
+  const { address: accountAddress = '', connector } = useAccount()
+  /* @ts-ignore-next-line */
+  const isConnectorSequenceBased = !!connector?._wallet?.isSequenceBased
+  const isCorrectChainId = connectedChainId === chainId
+  const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased
+  const { switchNetwork } = useSwitchNetwork()
   const amountInputRef = useRef<HTMLInputElement>(null)
   const { setOpenWalletModal } = useOpenWalletModal()
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')
   const { data: walletClient } = useWalletClient()
-  const { address: accountAddress = '' } = useAccount()
   const { data: tokenBalance, isLoading: isLoadingBalances } = useCollectibleBalance({
     accountAddress: accountAddress,
     chainId,
@@ -119,6 +126,11 @@ export const SendCollectible = ({
 
   const executeTransaction = async (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (!isCorrectChainId && isConnectorSequenceBased) {
+      switchNetwork && switchNetwork(chainId)
+    }
+
     const sendAmount = ethers.utils.parseUnits(amountToSendFormatted, decimals)
     const { contractType } = tokenBalance as TokenBalance
 
@@ -255,12 +267,32 @@ export const SendCollectible = ({
         )}
       </Box>
 
+      {
+        showSwitchNetwork && (
+          <Box
+            marginTop="3"
+          >
+            <Text color="negative">The wallet is connected to the wrong network. Please switch network before proceeding</Text>
+            <Button
+              marginTop="2"
+              width="full"
+              variant="primary"
+              type="button"
+              label="Switch Network"
+              onClick={() => switchNetwork && switchNetwork(chainId)}
+              disabled={isCorrectChainId}
+              style={{ height: '52px', borderRadius: vars.radii.md }}
+            />
+          </Box>
+        )
+      }
+
       <Button
         marginTop="3"
         width="full"
         variant="primary"
         type="submit"
-        disabled={!isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds}
+        disabled={!isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || (!isCorrectChainId && !isConnectorSequenceBased)}
         label="Send"
         rightIcon={ChevronRightIcon}
         style={{ height: '52px', borderRadius: vars.radii.md }}

@@ -10,6 +10,7 @@ export interface GoogleOptions {
 
 export const google = ({ chains, options = {} }: GoogleOptions) => ({
   id: 'google',
+  isSequenceBased: true,
   logoDark: GoogleLogo,
   logoLight: GoogleLogo,
   miniLogoDark: getMiniGoogleLogo({ isDarkMode: true }),
