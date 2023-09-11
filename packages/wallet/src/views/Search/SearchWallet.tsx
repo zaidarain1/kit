@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Box, SearchIcon, Text, TextInput } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import Fuse from 'fuse.js'
-import { useAccount, useChainId } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 import { BalanceItem } from './components/BalanceItem'
 import { WalletLink } from './components/WalletLink'
@@ -18,15 +18,14 @@ import {
 import { compareAddress, computeBalanceFiat } from '../../utils'
 
 export const SearchWallet = () => {
+  const { chains } = useNetwork()
   const { fiatCurrency, hideUnlistedTokens } = useSettings()
   const [search, setSearch] = useState('')
   const { address: accountAddress } = useAccount()
-  const chainId = useChainId()
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
 
   const { data: tokenBalancesData, isLoading: tokenBalancesIsLoading } = useBalances({
     accountAddress: accountAddress || '',
-    chainId
+    chainIds: chains.map(chain => chain.id)
   }, { hideUnlistedTokens })
 
   const coinBalancesUnordered = tokenBalancesData?.filter(b => b.contractType === 'ERC20' || compareAddress(b.contractAddress, ethers.constants.AddressZero)) || []
@@ -73,6 +72,8 @@ export const SearchWallet = () => {
 
   const indexedCoinBalances: IndexedData[] = coinBalances.map((balance, index) => {
     if (compareAddress(balance.contractAddress, ethers.constants.AddressZero)) {
+      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
+
       return {
         index,
         name: nativeTokenInfo.name

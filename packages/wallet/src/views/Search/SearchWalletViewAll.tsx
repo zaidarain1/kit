@@ -12,7 +12,7 @@ import {
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
-import { useAccount, useChainId } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
 import {
@@ -39,12 +39,11 @@ export const SearchWalletViewAll = ({
   }, [selectedTab])
 
   const { address: accountAddress } = useAccount()
-  const chainId = useChainId()
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
+  const { chains } = useNetwork()
 
   const { data: tokenBalancesData, isLoading: tokenBalancesIsLoading } = useBalances({
     accountAddress: accountAddress || '',
-    chainId
+    chainIds: chains.map(chain => chain.id)
   }, { hideUnlistedTokens})
 
   const coinBalancesUnordered = tokenBalancesData?.filter(b => b.contractType === 'ERC20' || compareAddress(b.contractAddress, ethers.constants.AddressZero)) || []
@@ -93,6 +92,8 @@ export const SearchWalletViewAll = ({
 
   const indexedCoinBalances: IndexedData[] = coinBalances.map((balance, index) => {
     if (compareAddress(balance.contractAddress, ethers.constants.AddressZero)) {
+      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
+
       return {
         index,
         name: nativeTokenInfo.name

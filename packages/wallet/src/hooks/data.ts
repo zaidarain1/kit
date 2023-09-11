@@ -31,13 +31,25 @@ export const time = {
   oneHour: 60 * 60 * 1000
 }
 
-export const useBalances = (args: GetTokenBalancesArgs, options: GetTokenBalancesOptions) =>
+export interface UseBalancesArgs extends Omit<GetTokenBalancesArgs, "chainId"> {
+  chainIds: number[]
+}
+
+export const useBalances = (args: UseBalancesArgs, options: GetTokenBalancesOptions) =>
   useQuery({
     queryKey: ['balances', args, options],
-    queryFn: () => fetchBalances(args, options),
+    queryFn: async () => {
+      const { chainIds, ...restArgs } = args
+      const balances = await Promise.all(
+        chainIds.map(chainId => (
+          fetchBalances({...restArgs, chainId}, options)
+        ))
+      )
+      return balances.flat()
+    },
     retry: true,
     staleTime: 10 * time.oneMinute,
-    enabled: !!args.chainId && !!args.accountAddress
+    enabled: args.chainIds.length > 0 && !!args.accountAddress
   })
 
 export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>

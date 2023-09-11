@@ -175,9 +175,6 @@ export const fetchBalancesAssetsSummary = async (
   const MAX_COLLECTIBLES_AMOUNTS = 10
   
   try {
-
-
-
     const tokenBalances = (
       await Promise.all([
         ...chainIds.map(chainId => getNativeToken({

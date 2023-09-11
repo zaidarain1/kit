@@ -64,7 +64,7 @@ export const SendCoin = ({
   const { data: walletClient } = useWalletClient()
   const { data: balances = [], isLoading: isLoadingBalances } = useBalances({
     accountAddress: accountAddress,
-    chainId,
+    chainIds: [chainId],
     contractAddress,
   }, { hideUnlistedTokens: false })
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
