@@ -6,20 +6,16 @@ import { Box, Spinner, Text } from '@0xsequence/design-system'
 
 import { TransactionHistorySkeleton } from './TransactionHistorySkeleton'
 
-import * as sharedStyles from '../styles.css'
-
 interface TransactionHistoryListProps {
   transactions: Transaction[]
   isLoading: boolean
   isFetchingNextPage: boolean
-  hasNextPage: undefined | boolean
 }
 
 export const TransactionHistoryList = ({
   transactions,
   isLoading,
   isFetchingNextPage,
-  hasNextPage
 }: TransactionHistoryListProps) => {
   type TransactionPeriodId = 'today' | 'yesterday' | 'week' | 'month' | 'year' | 'years'
 

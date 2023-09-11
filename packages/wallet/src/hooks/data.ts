@@ -21,6 +21,8 @@ import {
   FetchFiatConversionRateArgs,
   GetTokenBalancesOptions,
   FetchBalancesAssetsArgs,
+  getTransactionHistorySummary,
+  GetTransactionHistorySummaryArgs
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -140,6 +142,17 @@ export const useTransactionHistory = (
     staleTime: 10 * time.oneMinute,
     enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
   })
+
+  export const useTransactionHistorySummary = (
+    args: GetTransactionHistorySummaryArgs
+  ) =>
+    useQuery({
+      queryKey: ['transactionHistorySummary', args],
+      queryFn: () => getTransactionHistorySummary(args),
+      retry: true,
+      staleTime: 10 * time.oneMinute,
+      enabled: args.chainIds.length > 0 && !!args.accountAddress
+    })
 
 export const useConversionRate = (args: FetchFiatConversionRateArgs) => (
   useQuery({

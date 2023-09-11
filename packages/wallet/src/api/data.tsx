@@ -5,6 +5,7 @@ import { ethers } from 'ethers'
 import { compareAddress, sortBalancesByType } from '../utils'
 import { getNetworkConfigAndClients } from '../utils/clients'
 import sampleSize from 'lodash/sampleSize'
+import { transactions } from '0xsequence/dist/declarations/src/transactions'
 
 export interface GetTokenBalancesArgs {
   accountAddress: string,
@@ -336,6 +337,34 @@ export const getTransactionHistory = async ({
   })
 
   return response
+}
+
+export interface GetTransactionHistorySummaryArgs {
+  chainIds: number[],
+  accountAddress: string,
+}
+
+export const getTransactionHistorySummary = async ({
+  chainIds,
+  accountAddress
+}: GetTransactionHistorySummaryArgs) => {
+  const histories = await Promise.all([...chainIds.map(chainId => getTransactionHistory({
+      chainId,
+      accountAddress,
+      page: {
+        page: 1
+      }
+    }))]
+  )
+
+  const unorderedTransactions = histories.map(history => history.transactions).flat()
+  const orderedTransactions = unorderedTransactions.sort((a, b) => {
+    const firstDate  = new Date(a.timestamp).getTime()
+    const secondDate = new Date(b.timestamp).getTime()
+    return secondDate - firstDate
+  })
+
+  return orderedTransactions
 }
 
 export interface FetchFiatConversionRateArgs {

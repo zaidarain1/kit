@@ -1,44 +1,31 @@
-import { Box, Text } from '@0xsequence/design-system'
+import { Box} from '@0xsequence/design-system'
+import { Transaction } from '@0xsequence/indexer'
 import React from 'react'
 
+import { useTransactionHistorySummary } from '../hooks'
 import { useNetwork, useAccount } from 'wagmi'
 
-import { InfiniteScroll } from '../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../shared/TransactionHistoryList'
-import { flattenPaginatedTransactionHistory } from '../utils'
-import { useTransactionHistory } from '../hooks'
 
 export const History = () => {
-  const { chain } = useNetwork() 
+  console.log('in history...')
+
+  const { chains } = useNetwork() 
   const { address: accountAddress } = useAccount()
 
-  const {
-    data: dataTransactionHistory,
-    isLoading: isLoadingTransactionHistory,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useTransactionHistory({
-    chainId: chain?.id || 137,
+  const { data: transactionHistory = [], isLoading: isLoadingTransactionHistory } = useTransactionHistorySummary({
     accountAddress: accountAddress || '',
+    chainIds: chains.map(chain => chain.id)
   })
-
-  const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory)
 
   return (
     <Box>
       <Box padding="5" paddingTop="3">
-        <InfiniteScroll
-          onLoad={() => fetchNextPage()}
-          hasMore={hasNextPage}
-        >
           <TransactionHistoryList
             transactions={transactionHistory}
             isLoading={isLoadingTransactionHistory}
-            isFetchingNextPage={isFetchingNextPage}
-            hasNextPage={hasNextPage}
+            isFetchingNextPage={false}
           />
-        </InfiniteScroll>
       </Box>
     </Box>
   )
