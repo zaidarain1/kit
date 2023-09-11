@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/provider": "^1.1.13",
+    "@0xsequence/provider": "^1.2.1",
     "@0xsequence/wagmi-connector": "^2.1.0"
   },
   "devDependencies": {
