@@ -10,8 +10,6 @@ export interface SequenceOptions {
   connect?: ConnectOptions
 }
 
-// TODO: fix type issue and remove ts ignore
-/* @ts-ignore-next-line */
 export const sequence = ({ chains, connect }: SequenceOptions) => ({
   id: 'sequence',
   isSequenceBased: true,

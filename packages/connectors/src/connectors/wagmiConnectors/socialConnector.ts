@@ -56,6 +56,7 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
       transports: {
         walletAppURL: 'https://sequence.app',
       },
+      defaultEIP6492: true,
     })
 
     this.provider.on('chainChanged', (chainIdHex: string) => {
