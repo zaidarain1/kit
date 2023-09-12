@@ -3,6 +3,7 @@ import { Box, vars } from '@0xsequence/design-system'
 
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { Skeleton } from '../../shared/Skeleton'
+import { SCROLLBAR_WIDTH } from '../../constants'
 
 interface CollectionDetailsSkeletonProps {
   chainId: number
@@ -13,13 +14,15 @@ export const CollectionDetailsSkeleton = ({
 }: CollectionDetailsSkeletonProps) => {
   return (
     <Box
-      padding="5"
+      paddingLeft="5"
+      paddingBottom="5"
       paddingTop="3"
       marginTop="8"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       gap="10"
+      style={{ paddingRight: `calc(${vars.space[5]} - ${SCROLLBAR_WIDTH})`}}
     >
       <Box
         flexDirection="column"
@@ -35,14 +38,16 @@ export const CollectionDetailsSkeleton = ({
       <Box width="full">
         <Skeleton width="168px" height="20px" />
         <Box
-          flexDirection="row"
-          gap="2"
-          flexWrap="wrap"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+            gap: vars.space[2]
+          }}
           width="full"
           marginTop="3"
         >
           {Array(8).fill(null).map((_, i) => (
-            <Skeleton width={`calc(50% - ${vars.space[2]})`} height="211px" />
+            <Skeleton width="full" aspectRatio="1/1" />
           ))}
         </Box>
       </Box>

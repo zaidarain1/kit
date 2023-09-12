@@ -6,7 +6,7 @@ export const getChainColor = (
     case 1:
       return mode === 'light' ? '#abf' : '#abf'
     case 137:
-      return mode === 'light' ? '#8E4DC5' : '#8564E6'
+      return mode === 'light' ? '#c7a6ff' : '#c7a6ff'
     case 42161:
       return mode === 'light' ? '#52A7E6' : '#52A7E6'
     case 10:
@@ -34,7 +34,7 @@ export const getChainBGColor = (
     case 1: 
       return mode === 'light' ? '#132362' : '#132362'
     case 137:
-      return mode === 'light' ? '#F9F1FE' : '#2D1654'
+      return mode === 'light' ? '#350881' : '#350881'
     case 42161:
       return mode === 'light' ? '#EDF7FF' : '#0C3754'
     case 10:

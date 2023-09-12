@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, vars } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useAccount, useNetwork } from 'wagmi'
+import { useAccount } from 'wagmi'
 
 import { CoinTile } from './CoinTile'
 import { CollectibleTile } from './CollectibleTile'
@@ -56,16 +56,19 @@ export const AssetSummary = () => {
   }
 
   return (
-    <Box flexDirection="row" gap="2" flexWrap="wrap">
+    <Box
+      style={{
+        display: 'grid',
+        gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+        gap: vars.space[2]
+      }}
+    >
       {nativeTokens.map((balance) => {
         return (
           <Box
             key={balance.contractAddress}
             className={sharedStyles.clickable}
             aspectRatio='1/1'
-            style={{
-              width: `calc(50% - ${vars.space[2]})`
-            }}
             onClick={() => onClickItem(balance)}
           >
             <CoinTile balance={balance} />
@@ -78,9 +81,6 @@ export const AssetSummary = () => {
             className={sharedStyles.clickable}
             key={balance.contractAddress}
             aspectRatio='1/1'
-            style={{
-              width: `calc(50% - ${vars.space[2]})`
-            }}
             onClick={() => onClickItem(balance)}
           >
             <CoinTile balance={balance} />
@@ -93,9 +93,6 @@ export const AssetSummary = () => {
             className={sharedStyles.clickable}
             aspectRatio='1/1'
             key={`${balance.contractAddress}-${balance.tokenID}}`}
-            style={{
-              width: `calc(50% - ${vars.space[2]})`
-            }}
             onClick={() => onClickItem(balance)}
           >
             <CollectibleTile balance={balance} />

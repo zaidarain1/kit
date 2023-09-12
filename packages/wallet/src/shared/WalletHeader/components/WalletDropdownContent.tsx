@@ -75,7 +75,7 @@ export const WalletDropdownContent = forwardRef((
         width: '370px',
         backdropFilter: 'blur(12.5px)',
         top: '16px',
-        left: '16px',
+        left: '15px',
         background: theme === 'dark' ? "rgba(38, 38, 38, 0.85)" : "rgba(217, 217, 217, 0.85)" 
       }}
 

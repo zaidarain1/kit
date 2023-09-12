@@ -8,6 +8,7 @@ import {
   TabsRoot,
   Text,
   TextInput,
+  vars,
 } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
@@ -15,6 +16,7 @@ import Fuse from 'fuse.js'
 import { useAccount } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
+import { SCROLLBAR_WIDTH } from '../../constants'
 import {
   useBalances,
   useCoinPrices,
@@ -134,12 +136,16 @@ export const SearchWalletViewAll = ({
 
   return (
     <Box
-      padding="5"
+      paddingLeft="5"
+      paddingBottom="5"
       paddingTop="3"
       flexDirection="column"
       gap="5"
       alignItems="center"
-      justifyContent="center"  
+      justifyContent="center"
+      style={{
+        paddingRight: `calc(${vars.space[5]} - ${SCROLLBAR_WIDTH})`
+      }}
     >
       <Box width="full">
         <TextInput

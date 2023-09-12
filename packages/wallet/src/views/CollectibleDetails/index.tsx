@@ -1,7 +1,7 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { useAccount } from 'wagmi'
-import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
+import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import { CollectibleDetailsSkeleton } from './Skeleton'
@@ -22,7 +22,7 @@ import {
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import { CollectibleTileImage } from '../../shared/CollectibleTileImage'
-import { HEADER_HEIGHT } from '../../constants'
+import { HEADER_HEIGHT, SCROLLBAR_WIDTH } from '../../constants'
 
 export interface CollectibleDetailsProps {
   contractAddress: string
@@ -108,7 +108,17 @@ export const CollectibleDetails = ({
   
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
-      <Box flexDirection="column" gap="10" padding="5" paddingTop="0" style={{ marginTop: '-20px' }}>
+      <Box
+        flexDirection="column"
+        gap="10"
+        paddingBottom="5"
+        paddingLeft="5"
+        paddingTop="0"
+        style={{
+          marginTop: '-20px',
+          paddingRight: `calc(${vars.space[5]} - ${SCROLLBAR_WIDTH})`
+        }}
+      >
         <Box gap="3" alignItems="center" justifyContent="center" flexDirection="column">
           <Box flexDirection="row" gap="2" justifyContent="center" alignItems="center">
             <Image

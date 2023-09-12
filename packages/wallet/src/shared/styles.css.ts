@@ -1,3 +1,4 @@
+import { vars } from '@0xsequence/design-system'
 import { style, globalStyle } from '@vanilla-extract/css'
 
 export const clickable = style({
@@ -6,6 +7,30 @@ export const clickable = style({
     opacity: '0.8',
     userSelect: 'none'
   }
+})
+
+export const scrollbar = style({
+  /* @ts-ignore-next-line */
+  '> div': {
+    overflowY: 'scroll',
+  },
+})
+
+// globalStyle(`html:not(.is-apple) ${scrollbar} > div`, {
+//   '-webkit-transition': 'background-color 5s linear',
+//   transition: '5s'
+// })
+
+globalStyle(`html:not(.is-apple) ${scrollbar} > div::-webkit-scrollbar-thumb`, {
+  background: 'none',
+  backgroundClip: 'content-box',
+  // The transition doesn't work. It might possibly be a chrome issue
+  transition: 'background 0.5s linear',
+})
+
+globalStyle(`html:not(.is-apple) ${scrollbar} > div:hover::-webkit-scrollbar-thumb`, {
+  background: vars.colors.text50,
+  backgroundClip: 'content-box',
 })
 
 export const walletContent = style({

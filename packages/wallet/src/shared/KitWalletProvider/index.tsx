@@ -121,7 +121,7 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
                     {getHeader(navigation)}
                   
                     {displayScrollbar ? (
-                      <Scroll style={{ paddingTop: HEADER_HEIGHT, height: 'min(800px, 80vh)' }}>
+                      <Scroll className={styles.scrollbar} style={{ paddingTop: HEADER_HEIGHT, height: 'min(800px, 80vh)' }}>
                         {getContent(navigation)}
                       </Scroll>
                     ) : (

@@ -1,7 +1,8 @@
-import { Box} from '@0xsequence/design-system'
-import React, { useSyncExternalStore } from 'react'
-import { useNetwork, useAccount } from 'wagmi'
+import { Box, vars } from '@0xsequence/design-system'
+import React from 'react'
+import { useAccount } from 'wagmi'
 
+import { SCROLLBAR_WIDTH } from '../constants'
 import { useSettings, useTransactionHistorySummary } from '../hooks'
 import { TransactionHistoryList } from '../shared/TransactionHistoryList'
 
@@ -16,7 +17,14 @@ export const History = () => {
 
   return (
     <Box>
-      <Box padding="5" paddingTop="3">
+      <Box
+        paddingLeft="5"
+        paddingBottom="5"
+        paddingTop="3"
+        style={{
+          paddingRight: `calc(${vars.space[5]} - ${SCROLLBAR_WIDTH})`
+        }}
+      >
           <TransactionHistoryList
             transactions={transactionHistory}
             isLoading={isLoadingTransactionHistory}
