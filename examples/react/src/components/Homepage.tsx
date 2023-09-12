@@ -2,7 +2,7 @@ import React from 'react'
 import { useOpenConnectModal, useTheme } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
-import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
+import { useDisconnect, useAccount, useWalletClient, usePublicClient, useNetwork } from 'wagmi'
 import {
   Box,
   Button,
@@ -38,6 +38,7 @@ function Homepage() {
   
       // sign
       const sig = await walletClient.signMessage({
+        account: address || '' as `0x${string}`,
         message
       })
       console.log('signature:', sig)
