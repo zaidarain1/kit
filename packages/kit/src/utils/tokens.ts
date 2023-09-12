@@ -20,13 +20,21 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'Etherscan',
     blockExplorerUrl: 'https://etherscan.io'
   },
-  137: {
-    name: 'Polygon',
-    symbol: 'MATIC',
-    logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
+  5: {
+    name: 'Goerli',
+    symbol: 'ETH',
     decimals: 18,
-    blockExplorerName: 'Polyscan',
-    blockExplorerUrl: 'https://polygonscan.com'
+    logoURI: 'https://assets.coingecko.com/coins/images/279/thumb/ethereum.png',
+    blockExplorerName: 'Etherscan (Goerli)',
+    blockExplorerUrl: 'https://goerli.etherscan.io',
+  },
+  10: {
+    name: 'Optimism',
+    symbol: 'OP',
+    logoURI: 'https://assets.coingecko.com/coins/images/25244/small/Optimism.png',
+    decimals: 18,
+    blockExplorerName: 'Etherscan (Optimism)',
+    blockExplorerUrl: 'https://optimistic.etherscan.io',
   },
   56: {
     name: 'BNB',
@@ -36,6 +44,39 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'BscScan',
     blockExplorerUrl: 'https://bscscan.com'
   },
+  100: {
+    name: 'Gnosis',
+    symbol: 'GNO',
+    logoURI: 'https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png',
+    decimals: 18,
+    blockExplorerUrl: 'https://gnosisscan.io',
+    blockExplorerName: 'Gnosis Scan',
+  },
+  137: {
+    name: 'Polygon',
+    symbol: 'MATIC',
+    logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
+    decimals: 18,
+    blockExplorerName: 'Polyscan',
+    blockExplorerUrl: 'https://polygonscan.com'
+  },
+  1101: {
+    name: 'Polygon zkEVM',
+    symbol: 'ETH',
+    logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
+    decimals: 18,
+    blockExplorerName: 'PolygonScan',
+    blockExplorerUrl: 'https://zkevm.polygonscan.com',
+  },
+  42161: {
+    name: 'Arbitrum',
+    symbol: 'ARB',
+    logoURI:'https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png',
+    decimals: 18,
+    blockExplorerName: 'Arbiscan',
+    blockExplorerUrl: 'https://arbiscan.io',
+
+  },
   43114: {
     name: 'Avalanche',
     symbol: 'AVAX',
@@ -43,6 +84,14 @@ export const nativeTokenInfos: TokenInfos = {
     decimals: 18,
     blockExplorerName: 'Snowtrace',
     blockExplorerUrl: 'https://snowtrace.io'
+  },
+  80001: {
+    name: 'Mumbai',
+    symbol: 'MATIC',
+    logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
+    decimals: 18,
+    blockExplorerName: 'Polyscan (Mumbai)',
+    blockExplorerUrl: 'https://mumbai.polygonscan.com',
   },
 }
 

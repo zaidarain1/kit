@@ -10,6 +10,8 @@ import {
   vars
 } from '@0xsequence/design-system'
 
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+
 import { useAccount } from 'wagmi'
 
 import { OrderSummaryItem } from './component/OrderSummaryItem'
@@ -25,7 +27,6 @@ import {
 } from '../../hooks'
 import {
   compareAddress,
-  getNativeTokenInfoByChainId,
   formatDisplay
 } from '../../utils'
 import * as styles from './styles.css'
