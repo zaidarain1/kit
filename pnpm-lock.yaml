@@ -156,8 +156,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/wallet
       '@0xsequence/wagmi-connector':
-        specifier: ^2.1.0
-        version: 2.1.0(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9)
+        specifier: ^2.1.2
+        version: 2.1.2(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9)
       '@vanilla-extract/css':
         specifier: ^1.9.3
         version: 1.9.3
@@ -278,8 +278,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1(ethers@5.7.2)
       '@0xsequence/wagmi-connector':
-        specifier: ^2.1.0
-        version: 2.1.0(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9)
+        specifier: ^2.1.2
+        version: 2.1.2(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9)
       ethers:
         specifier: '>=5.7.2'
         version: 5.7.2
@@ -312,8 +312,8 @@ importers:
         specifier: workspace:*
         version: link:../connectors
       '@0xsequence/wagmi-connector':
-        specifier: ^2.1.0
-        version: 2.1.0(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9)
+        specifier: ^2.1.2
+        version: 2.1.2(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9)
       '@vanilla-extract/css':
         specifier: ^1.9.3
         version: 1.9.3
@@ -679,8 +679,8 @@ packages:
       ethers: 5.7.2
       js-base64: 3.7.5
 
-  /@0xsequence/wagmi-connector@2.1.0(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9):
-    resolution: {integrity: sha512-/W+VSyvFAQ2/x4hVrwTuoZc/nXavwXsrAIY8ZQRp0xqq5iLeQaZZd6zCeqtmnfldWXqsazl1J41f8Y2bvnutBw==}
+  /@0xsequence/wagmi-connector@2.1.2(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.0.4)(viem@1.10.7)(wagmi@1.3.9):
+    resolution: {integrity: sha512-yD6+U8nD3CABbdT0QlJCPgCw0Y3bSfl1p0HX7L8sn918u6FO/r9KHvXIoOMpqQWGbUQJE7IVk3IdEvohd0JDrw==}
     peerDependencies:
       0xsequence: '>=1.1.0 <2.0.0'
       ethers: '>=5.5'
@@ -5163,6 +5163,7 @@ packages:
 
   /@tanstack/query-core@4.29.5:
     resolution: {integrity: sha512-xXIiyQ/4r9KfaJ3k6kejqcaqFXXBTzN2aOJ5H1J6aTJE9hl/nbgAdfF6oiIu0CD5xowejJEJ6bBg8TO7BN4NuQ==}
+    dev: false
 
   /@tanstack/query-core@4.35.0:
     resolution: {integrity: sha512-4GMcKQuLZQi6RFBiBZNsLhl+hQGYScRZ5ZoVq8QAzfqz9M7vcGin/2YdSESwl7WaV+Qzsb5CZOAbMBes4lNTnA==}
@@ -5177,13 +5178,13 @@ packages:
     dependencies:
       '@tanstack/query-persist-client-core': 4.35.0
 
-  /@tanstack/react-query-persist-client@4.35.0(@tanstack/react-query@4.29.5):
+  /@tanstack/react-query-persist-client@4.35.0(@tanstack/react-query@4.35.0):
     resolution: {integrity: sha512-hcFyWjDIKqaRH38MMPKOXqRzxqAHSRrWV9N2vqo6N1LbMaIdbwvL1sZQ9vfUuBXSoyq1kbhSLVdoz6Kpx/gA8A==}
     peerDependencies:
       '@tanstack/react-query': ^4.35.0
     dependencies:
       '@tanstack/query-persist-client-core': 4.35.0
-      '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-query': 4.35.0(react-dom@18.2.0)(react@18.2.0)
 
   /@tanstack/react-query@4.29.5(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-F87cibC3s3eG0Q90g2O+hqntpCrudKFnR8P24qkH9uccEhXErnJxBC/AAI4cJRV2bfMO8IeGZQYf3WyYgmSg0w==}
@@ -5198,6 +5199,24 @@ packages:
         optional: true
     dependencies:
       '@tanstack/query-core': 4.29.5
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/react-query@4.35.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-LLYDNnM9ewYHgjm2rzhk4KG/puN2rdoqCUD+N9+V7SwlsYwJk5ypX58rpkoZAhFyZ+KmFUJ7Iv2lIEOoUqydIg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      '@tanstack/query-core': 4.35.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
@@ -5247,7 +5266,7 @@ packages:
   /@types/connect@3.4.36:
     resolution: {integrity: sha512-P63Zd/JUGq+PdrM1lv0Wv5SBYeA2+CORvbrXbngriYY0jzLUWfQMQQxOhjONEz/wlHOAxOdY7CY65rgQdTjq2w==}
     dependencies:
-      '@types/node': 18.17.15
+      '@types/node': 16.18.11
 
   /@types/debug@4.1.8:
     resolution: {integrity: sha512-/vPO1EPOs306Cvhwv7KfVfYvOJqA/S/AXjaHQiJboCZzcNDb+TIJFN9/2C9DZ//ijSKWioNyUxD792QmDJ+HKQ==}
@@ -5304,9 +5323,6 @@ packages:
   /@types/node@18.11.17:
     resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
     dev: true
-
-  /@types/node@18.17.15:
-    resolution: {integrity: sha512-2yrWpBk32tvV/JAd3HNHWuZn/VDN1P+72hWirHnvsvTGSqbANi+kSeuQR9yAHnbvaBvHDsoTdXV0Fe+iRtHLKA==}
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -5379,7 +5395,7 @@ packages:
   /@types/ws@7.4.7:
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
     dependencies:
-      '@types/node': 18.17.15
+      '@types/node': 16.18.11
 
   /@types/ws@8.5.5:
     resolution: {integrity: sha512-lwhs8hktwxSjf9UaZ9tG5M03PGogvFaH8gUgLNbN9HKIg0dvv6q+gkSuJ8HN4/VbyxkuLzCjlN7GquQ0gUJfIg==}
@@ -11569,8 +11585,8 @@ packages:
         optional: true
     dependencies:
       '@tanstack/query-sync-storage-persister': 4.35.0
-      '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
-      '@tanstack/react-query-persist-client': 4.35.0(@tanstack/react-query@4.29.5)
+      '@tanstack/react-query': 4.35.0(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-query-persist-client': 4.35.0(@tanstack/react-query@4.35.0)
       '@wagmi/core': 1.3.8(@types/react@18.0.27)(react@18.2.0)(typescript@5.0.4)(viem@1.10.7)
       abitype: 0.8.7(typescript@5.0.4)
       react: 18.2.0
