@@ -16,11 +16,6 @@ export const scrollbar = style({
   },
 })
 
-// globalStyle(`html:not(.is-apple) ${scrollbar} > div`, {
-//   '-webkit-transition': 'background-color 5s linear',
-//   transition: '5s'
-// })
-
 globalStyle(`html:not(.is-apple) ${scrollbar} > div::-webkit-scrollbar-thumb`, {
   background: 'none',
   backgroundClip: 'content-box',
