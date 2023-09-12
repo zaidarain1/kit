@@ -1,12 +1,13 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { Box, Card, Image, Text } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import { CoinIcon } from '../../../shared/components/CoinIcon'
 import { Skeleton } from '../../../shared/components/Skeleton'
 
 import { useTokenMetadata, useContractInfo } from '../../../hooks'
-import { getNativeTokenInfoByChainId, formatDisplay } from '../../../utils'
+import { formatDisplay } from '../../../utils'
 
 interface OrderSummaryItem {
   contractAddress: string,
