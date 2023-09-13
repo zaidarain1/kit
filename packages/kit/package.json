@@ -1,6 +1,6 @@
 {
   "name": "@0xsequence/kit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Core package for Sequence Kit",
   "keywords": ["sequence", "kit", "wallet"],
   "repository": "https://github.com/0xsequence/kit/tree/master/packages/kit",
