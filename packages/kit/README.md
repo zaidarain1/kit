@@ -9,11 +9,11 @@ The core package is required to in order to use the other Kit modules such as th
 To install this package:
 
 ```bash
-npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
+npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
 # or
-pnpm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
+pnpm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
 # or
-yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
+yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
 ```
 
 ### Setting up the Library
