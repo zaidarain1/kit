@@ -14,7 +14,7 @@ First install the package:
 ```bash
 npm install @0xsequence/kit-checkout
 # or
-npm install @0xsequence/kit-checkout
+pnpm install @0xsequence/kit-checkout
 # or
 yarn add @0xsequence/kit-checkout
 ```

@@ -14,7 +14,7 @@ First install the package:
 ```bash
 npm install @0xsequence/kit-wallet
 # or
-npm install @0xsequence/kit-wallet
+pnpm install @0xsequence/kit-wallet
 # or
 yarn add @0xsequence/kit-wallet
 ```

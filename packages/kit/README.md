@@ -11,7 +11,7 @@ To install this package:
 ```bash
 npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
 # or
-npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
+pnpm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
 # or
 yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
 ```
