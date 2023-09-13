@@ -1,4 +1,5 @@
 import { sequence } from '0xsequence'
+import { LocalStorageKey } from '@0xsequence/kit'
 import { ConnectOptions } from '@0xsequence/provider'
 
 import {
@@ -81,7 +82,16 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
       // inject the signInOptions into the connect options
       const connectOptions = this.options?.connect ?? { app: 'app' }
 
-      const e = await this.provider.connect(connectOptions)
+      const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme)
+      
+      const connectOptionsWithTheme = {
+        ...connectOptions,
+        settings: {
+          theme: localStorageTheme || 'dark',
+          ...connectOptions.settings,
+        }
+      }
+      const e = await this.provider.connect(connectOptionsWithTheme)
       if (e.error) {
         throw new UserRejectedRequestError(new Error(e.error))
       }

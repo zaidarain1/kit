@@ -5,7 +5,6 @@ import { getEmailLogo } from './EmailLogo'
 
 export const EMAIL_CONNECTOR_LOCAL_STORAGE_KEY = '@sequence.kit.connector.email'
 
-
 export interface EmailOptions {
   chains: Chain[];
   options?: SocialConnectorOptions;
