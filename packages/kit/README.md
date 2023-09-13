@@ -1,7 +1,19 @@
-Sequence Kit Core Package 
+<div align="center">
+  <img src="public/docs/kit-logo-in-one.svg">
+</div>
+
+Sequence Kit 🧰
 ============
 
-The core package is required to in order to use the other Kit modules such as the embedded wallet.
+Sequence Kit 🧰 is a library enabling developers to easily integrate web3 wallets in their app. It is based on [wagmi](https://wagmi.sh/) and supports all wagmi features.
+
+- Connect via social logins eg: facebook, google, discord, etc...! 🔐🪪
+- Connect to popular web3 wallets eg: walletConnect, metamask ! 🦊 ⛓️
+- Full-fledged embedded wallet for coins and collectibles  👛 🖼️ 🪙 
+- Fiat onramp 💵 💶 💴 💷
+
+
+View the [demo](https://0xsequence.github.io/kit)! 👀
 
 ## Quick Start
 ### Installing the Library
@@ -89,7 +101,6 @@ const MyReactComponent = () => {
   )
 }
 ```
-
 ## Hooks
 ### useOpenConnectModal
 Use the `useOpenConnectModal` to change to open or close the connection modal.
@@ -134,9 +145,30 @@ The `KitProvider` wrapper can accept an optional config object.
   <KitProvider>
 ```
 
-## What to do next?
-Now that the core packge is installed, you can install the [embedded wallet](../wallet) or take a look at the [checkout](../checkout/).
+## Packages
 
+| Package  | Description | Docs |
+| ------------- | ------------- | ------------- |
+| [@0xsequence/kit](./packages/kit)  | Core package for Sequence Kit  | [Read more](./packages/kit/README.md)  |
+| [@0xsequence/kit-connectors](./packages/connectors)  | Connectors for sequence kit including popular web3 wallets and social logins  | [Read more](./packages/connectors/README.md)  |
+| [@0xsequence/kit-wallet](./packages/wallet)  | Embedded wallets for viewing and sending coins and collectibles   | [Read more](./packages/wallet/README.md)  |
+| [@0xsequence/kit-checkout](./packages/checkout)  | Checkout modal with fiat onramp | [Read more](./packages/checkout/README.md)  |
+| [@0xsequence/kit-example-react](./examples/react)  | Example application showing sign in, wallet and checkout  | [Read more](./examples/react/README.md)  |
+
+
+## Local Development
+<div align="center">
+  <img src="public/docs/kit-demo.png">
+</div>
+
+The React example can be used to test the library locally.
+
+1. `pnpm install`
+2. From the root folder, run `pnpm watch` to build the package in watch mode in one console. 
+3. From the root folder, run `pnpm start:react` to run the react example in another console.
+
+## What to do next?
+Now that the core package is installed, you can install the [embedded wallet](https://github.com/0xsequence/kit/tree/master/packages/wallet) or take a look at the [checkout](https://github.com/0xsequence/kit/tree/master/packages/checkout).
 
 ## LICENSE
 

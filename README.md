@@ -21,11 +21,11 @@ View the [demo](https://0xsequence.github.io/kit)! 👀
 To install this package:
 
 ```bash
-npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
+npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
 # or
-pnpm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
+pnpm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
 # or
-yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers viem 0xsequence
+yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
 ```
 
 ### Setting up the Library
@@ -36,6 +36,7 @@ React apps must be wrapped by a Wagmi client and the KitWalletProvider component
 import MyPage from './components/MyPage'
 import { KitProvider } from '@0xsequence/kit'
 import { getDefaultConnectors } from '@0xsequence/kit-connectors'
+import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
 
@@ -100,7 +101,49 @@ const MyReactComponent = () => {
   )
 }
 ```
+## Hooks
+### useOpenConnectModal
+Use the `useOpenConnectModal` to change to open or close the connection modal.
 
+```js
+import { useOpenConnectModal } from '@0xsequence/kit'
+// ...
+  const { setOpenConnectModal } = useOpenConnectModal()
+  setOpenConnectModal(true)
+
+```
+
+### useTheme
+Use the `useTheme` hook to get information about the current theme, such as light or dark, or set it to something else.
+
+```js
+import { useTheme } from '@0xsequence/kit'
+  const { theme, setTheme } = useTheme()
+
+  setTheme('light')
+```
+
+## Customization
+The `KitProvider` wrapper can accept an optional config object.
+```js
+
+  const kitConfig =  {
+    defaultTheme: 'light',
+    position: 'top-left',
+    signIn: {
+      logoUrlDarkMode: 'https://logo-dark-mode.svg',
+      logoUrlLightMode: 'https://logo-light-mode.svg',
+      projectName: 'my app',
+      showEmailInput: true,
+      miniAuthOptions: ['google', 'discord', 'facebook', 'apple'],
+      authOptions: ['metamask', 'wallet-connect']
+    };
+  }
+
+  <KitProvider config={kitConfig}>
+    <App />
+  <KitProvider>
+```
 
 ## Packages
 
@@ -124,6 +167,8 @@ The React example can be used to test the library locally.
 2. From the root folder, run `pnpm watch` to build the package in watch mode in one console. 
 3. From the root folder, run `pnpm start:react` to run the react example in another console.
 
+## What to do next?
+Now that the core package is installed, you can install the [embedded wallet](https://github.com/0xsequence/kit/tree/master/packages/wallet) or take a look at the [checkout](https://github.com/0xsequence/kit/tree/master/packages/checkout).
 
 ## LICENSE
 
