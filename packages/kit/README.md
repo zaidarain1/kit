@@ -24,6 +24,7 @@ React apps must be wrapped by a Wagmi client and the KitWalletProvider component
 import MyPage from './components/MyPage'
 import { KitProvider } from '@0xsequence/kit'
 import { getDefaultConnectors } from '@0xsequence/kit-connectors'
+import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
 import { mainnet, polygon } from 'wagmi/chains'
 
