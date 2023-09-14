@@ -14,9 +14,9 @@ import {
   SignoutIcon
 } from '@0xsequence/design-system'
 
-import { bottomPageLinks, messageToSign, socialLinks } from '../constants'
+import { Footer } from './Footer'
+import { messageToSign } from '../constants'
 import { formatAddress, getCheckoutSettings } from '../utils'
-import *  as sharedStyles from '../shared/styles.css'
 
 function Homepage() {
   const { theme, setTheme } = useTheme()
@@ -131,10 +131,6 @@ function Homepage() {
     setOpenConnectModal(true)
   }
 
-  const onClickLinkUrl = (url: string) => {
-    window.open(url)
-  }
-
   const onClickCheckout = () => {
     triggerCheckout(getCheckoutSettings(address))
   }
@@ -195,34 +191,7 @@ function Homepage() {
           </Box>
         )}
       </Box>
-      <Box padding="5" style={{ height: '60px' }} position="fixed" bottom="0" width="full" justifyContent="space-between">
-        <Box flexDirection="row" gap="4">
-          {bottomPageLinks.map((link, index) => (
-            <Box onClick={() => onClickLinkUrl(link.url)} className={sharedStyles.clickable} key={index} gap="4">
-              <Text fontWeight="normal" fontSize="small" color="text50">{link.label}</Text>
-            </Box>
-          ))}
-        </Box>
-        <Box gap="4" justifyContent="center" alignItems="center">
-          {socialLinks.map(socialLink => {
-            return (
-              <Box
-                className={sharedStyles.clickable}
-                onClick={() => window.open(socialLink.url)}
-              >
-                <Image
-                  height="3"
-                  src={socialLink.icon}
-                  alt={socialLink.id}
-                  style={{
-                    filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
-                  }}
-                />
-              </Box>
-            )
-          })}
-        </Box>
-      </Box>
+      <Footer />
     </Box>
   );
 }
