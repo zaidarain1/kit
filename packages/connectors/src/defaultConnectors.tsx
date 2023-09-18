@@ -33,7 +33,12 @@ export const getDefaultConnectors = ({
   }
 
   const connectors = getKitConnectWallets([
-    email({ chains }),
+    email({
+      chains,
+      options: {
+        defaultNetwork: defaultChain
+      }
+    }),
     google({
       chains,
       options: {
@@ -47,10 +52,16 @@ export const getDefaultConnectors = ({
       }
     }),
     discord({
-      chains
+      chains,
+      options: {
+        defaultNetwork: defaultChain
+      }
     }),
     apple({
-      chains
+      chains,
+      options: {
+        defaultNetwork: defaultChain
+      }
     }),
     metamask({
       chains,

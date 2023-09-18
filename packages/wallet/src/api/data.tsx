@@ -1,8 +1,8 @@
 import { Token, TokenPrice } from '@0xsequence/api'
 import { TokenBalance, ContractType, Page } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
+import { RecommendedAsset } from '@0xsequence/kit'
 
-import { useSettings } from '../hooks'
 import { compareAddress, sortBalancesByType } from '../utils'
 import { getNetworkConfigAndClients } from '../utils/clients'
 import sampleSize from 'lodash/sampleSize'
@@ -162,8 +162,8 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
 export interface FetchBalancesAssetsArgs {
     accountAddress: string,
     chainIds: number[],
+    displayAssets: RecommendedAsset[]
 }
-
 
 export interface FetchBalancesAssetsSummaryOptions {
   hideUnlistedTokens: boolean
@@ -171,23 +171,66 @@ export interface FetchBalancesAssetsSummaryOptions {
 }
 
 export const fetchBalancesAssetsSummary = async (
-  { accountAddress, chainIds }: FetchBalancesAssetsArgs,
+  { accountAddress, chainIds, displayAssets }: FetchBalancesAssetsArgs,
   { hideUnlistedTokens, hideCollectibles }: FetchBalancesAssetsSummaryOptions) => {  
   const MAX_COLLECTIBLES_AMOUNTS = 10
   
+  let tokenBalances: TokenBalance[] = []
+
   try {
-    const tokenBalances = (
-      await Promise.all([
-        ...chainIds.map(chainId => getNativeToken({
-          accountAddress,
-          chainId
-        })),
-        ...chainIds.map(chainId => getTokenBalances({
-          accountAddress,
-          chainId,
-        }, { hideUnlistedTokens, hideCollectibles }))
-      ])
-    ).flat()
+    if (displayAssets.length > 0) {
+      const nativeTokens = displayAssets.filter(asset => compareAddress(asset.contractAddress, ethers.constants.AddressZero))
+      const otherAssets = displayAssets.filter(asset => !compareAddress(asset.contractAddress, ethers.constants.AddressZero))
+
+      interface AssetsByChainId {
+        [chainId: number]: RecommendedAsset[]
+      }
+
+      const nativeTokensByChainId: AssetsByChainId = {}
+      const otherAssetsByChainId: AssetsByChainId = {}
+
+      nativeTokens.forEach(asset => {
+        if (!nativeTokensByChainId[asset.chainId]) {
+          nativeTokensByChainId[asset.chainId] = []
+        }
+        nativeTokensByChainId[asset.chainId].push(asset)
+      })
+
+      otherAssets.forEach(asset => {
+        if (!otherAssetsByChainId[asset.chainId]) {
+          otherAssetsByChainId[asset.chainId] = []
+        }
+        otherAssetsByChainId[asset.chainId].push(asset)
+      })
+
+      tokenBalances = (
+        await Promise.all([
+          ...Object.keys(nativeTokensByChainId).map(chainId => getNativeToken({
+            accountAddress,
+            chainId: Number(chainId)
+          })),
+          ...Object.keys(otherAssetsByChainId).map(chainId => otherAssetsByChainId[Number(chainId)].map(asset => getTokenBalances({
+              accountAddress,
+              chainId: Number(chainId),
+              contractAddress: asset.contractAddress
+            }, { hideUnlistedTokens, hideCollectibles }
+          ))).flat()
+        ])
+      ).flat()
+    } else {
+      tokenBalances = (
+        await Promise.all([
+          ...chainIds.map(chainId => getNativeToken({
+            accountAddress,
+            chainId
+          })),
+          ...chainIds.map(chainId => getTokenBalances({
+            accountAddress,
+            chainId,
+          }, { hideUnlistedTokens, hideCollectibles }))
+        ])
+      ).flat()
+    }
 
     const { nativeTokens, erc20Tokens, collectibles: collectionBalances } = sortBalancesByType(tokenBalances)
 

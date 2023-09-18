@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, vars } from '@0xsequence/design-system'
+import { useWalletSettings } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
 import { useAccount } from 'wagmi'
 
@@ -14,9 +15,14 @@ import * as sharedStyles from '../../../../shared/styles.css'
 export const AssetSummary = () => {
   const { address } = useAccount()
   const { setNavigation } = useNavigation()
+  const { recommendedAssets } = useWalletSettings()
   const { hideUnlistedTokens, hideCollectibles, selectedNetworks } = useSettings()
 
-  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({ accountAddress: address || '', chainIds: selectedNetworks }, { hideUnlistedTokens, hideCollectibles })
+  const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({
+    accountAddress: address || '',
+    chainIds: selectedNetworks,
+    displayAssets: recommendedAssets,
+  }, { hideUnlistedTokens, hideCollectibles })
 
   if (isLoadingBalances) {
     return (

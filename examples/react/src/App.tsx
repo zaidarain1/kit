@@ -1,3 +1,4 @@
+import { ethers } from 'ethers'
 import { ThemeProvider } from '@0xsequence/design-system'
 import { KitProvider, THEMES, KitConfig } from '@0xsequence/kit'
 import { getDefaultConnectors } from '@0xsequence/kit-connectors'
@@ -35,7 +36,24 @@ function App() {
       projectName: 'Skyweaver',
       // logoUrlDarkMode: 'sw-logo-white.svg',
       // logoUrlLightMode: 'sw-logo-black.svg',
-    }
+    },
+    // recommendedAssets: [
+    //   // Matic token
+    //   {
+    //     contractAddress: ethers.constants.AddressZero,
+    //     chainId: 137,
+    //   },
+    //   // USDC token
+    //   {
+    //     contractAddress: '0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
+    //     chainId: 137,
+    //   },
+    //   // skyweaver collectibles
+    //   {
+    //     contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
+    //     chainId: 137
+    //   }
+    // ],
   }
 
   return (

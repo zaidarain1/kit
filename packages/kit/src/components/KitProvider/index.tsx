@@ -10,7 +10,7 @@ import { AnimatePresence } from 'framer-motion'
 
 import { ConnectWalletContent } from './ConnectWalletContent'
 import { LocalStorageKey } from '../../constants'
-import { ConnectModalContextProvider, ThemeContextProvider } from '../../contexts'
+import { ConnectModalContextProvider, ThemeContextProvider, WalletConfigContextProvider} from '../../contexts'
 import { ModalPosition, getModalPositionCss } from '../../utils'
 
 import '@0xsequence/design-system/styles.css'
@@ -24,6 +24,11 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
+export interface RecommendedAsset {
+  contractAddress: string,
+  chainId: number,
+}
+
 export interface KitConfig {
   defaultTheme?: Theme,
   position?: ModalPosition,
@@ -34,7 +39,8 @@ export interface KitConfig {
     showEmailInput?: boolean,
     miniAuthOptions?: string[]
     authOptions?: string[]
-  }
+  },
+  recommendedAssets?: RecommendedAsset[]
 }
 
 export type KitConnectProviderProps = {
@@ -44,16 +50,26 @@ export type KitConnectProviderProps = {
 
 export const KitProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
-  const { defaultTheme = 'dark', signIn = {}, position = 'center' } = config
+  const {
+    defaultTheme = 'dark',
+    signIn = {},
+    position = 'center',
+    recommendedAssets: recommendedAssetsSetting = []
+  } = config
   const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
   const [modalPosition, setModalPosition] = useState<ModalPosition>(position)
+  const [recommendedAssets, setRecommendedAssets] = useState<RecommendedAsset[]>(recommendedAssetsSetting)
 
   // Write theme in local storage for retrieval in connectors
   useEffect(() => {
     localStorage.setItem(LocalStorageKey.Theme, theme)
   }, [theme])
+
+  useEffect(() => {
+    setRecommendedAssets(recommendedAssets)
+  }, [recommendedAssetsSetting])
 
   return (
     <ThemeContextProvider
@@ -65,47 +81,49 @@ export const KitProvider = (props: KitConnectProviderProps) => {
       }}
     >
       <ConnectModalContextProvider value={{ setOpenConnectModal, openConnectModalState: openConnectModal }}>
-        <ThemeProvider theme={theme}>
-          <AnimatePresence>
-            {openConnectModal && (
-              <Modal
-                scroll={false}
-                backdropColor="backgroundBackdrop"
-                size="sm"
-                contentProps={{
-                  style: {
-                    maxWidth: '364px',
-                    ...getModalPositionCss(position)
-                  }
-                }}
-                onClose={() => setOpenConnectModal(false)}
-              >
-                <Box
-                  padding="4"
-                  className={sharedStyles.walletContent}
+        <WalletConfigContextProvider value={{ setRecommendedAssets, recommendedAssets }}>
+          <ThemeProvider theme={theme}>
+            <AnimatePresence>
+              {openConnectModal && (
+                <Modal
+                  scroll={false}
+                  backdropColor="backgroundBackdrop"
+                  size="sm"
+                  contentProps={{
+                    style: {
+                      maxWidth: '364px',
+                      ...getModalPositionCss(position)
+                    }
+                  }}
+                  onClose={() => setOpenConnectModal(false)}
                 >
                   <Box
-                    justifyContent="center"
-                    color="text100"
-                    alignItems="center"
-                    fontWeight="medium"
-                    style={{
-                      marginTop: '4px'
-                    }}
+                    padding="4"
+                    className={sharedStyles.walletContent}
                   >
-                    <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
+                    <Box
+                      justifyContent="center"
+                      color="text100"
+                      alignItems="center"
+                      fontWeight="medium"
+                      style={{
+                        marginTop: '4px'
+                      }}
+                    >
+                      <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
+                    </Box>
+                    <ConnectWalletContent
+                      openConnectModal={openConnectModal}
+                      setOpenConnectModal={setOpenConnectModal}
+                      {...props}
+                    />
                   </Box>
-                  <ConnectWalletContent
-                    openConnectModal={openConnectModal}
-                    setOpenConnectModal={setOpenConnectModal}
-                    {...props}
-                  />
-                </Box>
-              </Modal>
-            )}
-            </AnimatePresence>
-          </ThemeProvider>
-          {children}
+                </Modal>
+              )}
+              </AnimatePresence>
+            </ThemeProvider>
+            {children}
+          </WalletConfigContextProvider>
         </ConnectModalContextProvider>
     </ThemeContextProvider>
   )
