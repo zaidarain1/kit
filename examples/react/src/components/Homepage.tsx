@@ -135,7 +135,6 @@ function Homepage() {
     triggerCheckout(getCheckoutSettings(address))
   }
 
-
   const SwitchThemeButton = () => {
     return (
       <Button variant="base" onClick={onClickChangeTheme} leftIcon={theme === 'dark' ? SunIcon : MoonIcon} />
