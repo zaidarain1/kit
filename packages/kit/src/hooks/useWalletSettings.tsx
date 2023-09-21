@@ -2,10 +2,10 @@ import React from 'react'
 import { useWalletConfigContext } from '../contexts/WalletSettings'
 
 export const useWalletSettings = () => {
-  const { setRecommendedAssets, recommendedAssets } = useWalletConfigContext()
+  const { setDisplayedAssets, displayedAssets } = useWalletConfigContext()
 
   return {
-    recommendedAssets,
-    setRecommendedAssets,
+    displayedAssets,
+    setDisplayedAssets,
   }
 }

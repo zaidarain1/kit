@@ -15,13 +15,13 @@ import * as sharedStyles from '../../../../shared/styles.css'
 export const AssetSummary = () => {
   const { address } = useAccount()
   const { setNavigation } = useNavigation()
-  const { recommendedAssets } = useWalletSettings()
+  const { displayedAssets } = useWalletSettings()
   const { hideUnlistedTokens, hideCollectibles, selectedNetworks } = useSettings()
 
   const { data: balances = [], isLoading: isLoadingBalances } = useBalancesAssetsSummary({
     accountAddress: address || '',
     chainIds: selectedNetworks,
-    displayAssets: recommendedAssets,
+    displayAssets: displayedAssets,
   }, { hideUnlistedTokens, hideCollectibles })
 
   if (isLoadingBalances) {

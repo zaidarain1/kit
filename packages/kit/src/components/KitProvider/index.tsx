@@ -24,7 +24,7 @@ export const THEMES = {
   light: 'light' as Theme
 };
 
-export interface RecommendedAsset {
+export interface DisplayedAsset {
   contractAddress: string,
   chainId: number,
 }
@@ -40,7 +40,7 @@ export interface KitConfig {
     miniAuthOptions?: string[]
     authOptions?: string[]
   },
-  recommendedAssets?: RecommendedAsset[]
+  displayedAssets?: DisplayedAsset[]
 }
 
 export type KitConnectProviderProps = {
@@ -54,13 +54,13 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     defaultTheme = 'dark',
     signIn = {},
     position = 'center',
-    recommendedAssets: recommendedAssetsSetting = []
+    displayedAssets: displayedAssetsSetting = []
   } = config
   const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
   const [modalPosition, setModalPosition] = useState<ModalPosition>(position)
-  const [recommendedAssets, setRecommendedAssets] = useState<RecommendedAsset[]>(recommendedAssetsSetting)
+  const [displayedAssets, setDisplayedAssets] = useState<DisplayedAsset[]>(displayedAssetsSetting)
 
   // Write theme in local storage for retrieval in connectors
   useEffect(() => {
@@ -68,8 +68,8 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   }, [theme])
 
   useEffect(() => {
-    setRecommendedAssets(recommendedAssets)
-  }, [recommendedAssetsSetting])
+    setDisplayedAssets(displayedAssets)
+  }, [displayedAssetsSetting])
 
   return (
     <ThemeContextProvider
@@ -81,7 +81,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
       }}
     >
       <ConnectModalContextProvider value={{ setOpenConnectModal, openConnectModalState: openConnectModal }}>
-        <WalletConfigContextProvider value={{ setRecommendedAssets, recommendedAssets }}>
+      <WalletConfigContextProvider value={{ setDisplayedAssets, displayedAssets }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openConnectModal && (

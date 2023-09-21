@@ -1,7 +1,7 @@
 import { Token, TokenPrice } from '@0xsequence/api'
 import { TokenBalance, ContractType, Page } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
-import { RecommendedAsset } from '@0xsequence/kit'
+import { DisplayedAsset } from '@0xsequence/kit'
 
 import { compareAddress, sortBalancesByType } from '../utils'
 import { getNetworkConfigAndClients } from '../utils/clients'
@@ -162,7 +162,7 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
 export interface FetchBalancesAssetsArgs {
     accountAddress: string,
     chainIds: number[],
-    displayAssets: RecommendedAsset[]
+    displayAssets: DisplayedAsset[]
 }
 
 export interface FetchBalancesAssetsSummaryOptions {
@@ -183,7 +183,7 @@ export const fetchBalancesAssetsSummary = async (
       const otherAssets = displayAssets.filter(asset => !compareAddress(asset.contractAddress, ethers.constants.AddressZero))
 
       interface AssetsByChainId {
-        [chainId: number]: RecommendedAsset[]
+        [chainId: number]: DisplayedAsset[]
       }
 
       const nativeTokensByChainId: AssetsByChainId = {}
