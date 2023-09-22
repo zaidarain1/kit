@@ -1,4 +1,5 @@
 import React from 'react'
+import qs from 'query-string'
 import { useOpenConnectModal, useTheme } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
@@ -27,6 +28,10 @@ function Homepage() {
   const { disconnect } = useDisconnect()
   const { data: walletClient } = useWalletClient()
   const publicClient = usePublicClient()
+
+  // append ?debug=true to url to enable debug mode 
+  const { debug } = qs.parse(location.search)
+  const isDebugMode = debug === 'true'
 
   const signMessage = async () => {
     if (!walletClient) {
@@ -143,6 +148,11 @@ function Homepage() {
 
   return (
     <Box background="backgroundPrimary">
+      {isDebugMode && (
+        <Box justifyContent="center" alignItems="center">
+          <Text>Debug mode</Text>
+        </Box>
+      )}
       <Box style={{ height: '72px' }} position="fixed" width="full" top="0">
         <HeaderContent />
       </Box>

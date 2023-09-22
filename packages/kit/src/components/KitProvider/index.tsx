@@ -29,6 +29,15 @@ export interface DisplayedAsset {
   chainId: number,
 }
 
+export interface EthAuthSettings {
+  app?: string,
+  /** expiry number (in seconds) that is used for ETHAuth proof. Default is 1 week in seconds. */
+  expiry?: number,
+  /** origin hint of the dapp's host opening the wallet. This value will automatically
+   * be determined and verified for integrity, and can be omitted. */
+  origin?: string
+}
+
 export interface KitConfig {
   defaultTheme?: Theme,
   position?: ModalPosition,
@@ -40,7 +49,8 @@ export interface KitConfig {
     miniAuthOptions?: string[]
     authOptions?: string[]
   },
-  displayedAssets?: DisplayedAsset[]
+  displayedAssets?: DisplayedAsset[],
+  ethAuth?: EthAuthSettings
 }
 
 export type KitConnectProviderProps = {
@@ -54,18 +64,31 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     defaultTheme = 'dark',
     signIn = {},
     position = 'center',
-    displayedAssets: displayedAssetsSetting = []
+    displayedAssets: displayedAssetsSetting = [],
+    ethAuth = {} as EthAuthSettings
   } = config
+
+  const defaultAppName = signIn.projectName || 'app'
+
+  const { expiry = 60 * 60 * 24 * 7, app = defaultAppName, origin = location.origin } = ethAuth
+
   const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
   const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
   const [modalPosition, setModalPosition] = useState<ModalPosition>(position)
   const [displayedAssets, setDisplayedAssets] = useState<DisplayedAsset[]>(displayedAssetsSetting)
 
-  // Write theme in local storage for retrieval in connectors
+  // Write data in local storage for retrieval in connectors
   useEffect(() => {
+    // Theme
     localStorage.setItem(LocalStorageKey.Theme, theme)
-  }, [theme])
+    // EthAuth
+    // note: keep an eye out for potential race-conditions, though they shouldn't occur.
+    // If there are race conditions, the settings could be a function executed prior to being passed to wagmi
+    localStorage.setItem(LocalStorageKey.EthAuthProofSettings, JSON.stringify({
+      expiry, app, origin
+    }))
+  }, [theme, ethAuth])
 
   useEffect(() => {
     setDisplayedAssets(displayedAssets)
@@ -81,7 +104,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
       }}
     >
       <ConnectModalContextProvider value={{ setOpenConnectModal, openConnectModalState: openConnectModal }}>
-      <WalletConfigContextProvider value={{ setDisplayedAssets, displayedAssets }}>
+        <WalletConfigContextProvider value={{ setDisplayedAssets, displayedAssets }}>
           <ThemeProvider theme={theme}>
             <AnimatePresence>
               {openConnectModal && (

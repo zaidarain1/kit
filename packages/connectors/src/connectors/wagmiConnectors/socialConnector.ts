@@ -1,5 +1,5 @@
 import { sequence } from '0xsequence'
-import { LocalStorageKey } from '@0xsequence/kit'
+import { LocalStorageKey, EthAuthSettings } from '@0xsequence/kit'
 import { ConnectOptions } from '@0xsequence/provider'
 
 import {
@@ -80,23 +80,40 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
       // @ts-ignore-next-line
       this?.emit('message', { type: 'connecting' })
       // inject the signInOptions into the connect options
-      const connectOptions = this.options?.connect ?? { app: 'app' }
+      const connectOptions = this.options?.connect
 
       const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme)
-      
+
+      const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthProofSettings)
+      const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {} as EthAuthSettings
+
       const connectOptionsWithTheme = {
+        authorize: true,
+        ...parseEthAuthSettings,
         ...connectOptions,
         settings: {
           theme: localStorageTheme || 'dark',
-          ...connectOptions.settings,
+          ...connectOptions?.settings,
         }
       }
       const e = await this.provider.connect(connectOptionsWithTheme)
+
       if (e.error) {
         throw new UserRejectedRequestError(new Error(e.error))
       }
       if (!e.connected) {
         throw new UserRejectedRequestError(new Error('Wallet connection rejected'))
+      }
+
+      const proofString = e.proof?.proofString
+      const proofTypedData = e.proof?.typedData
+      if (proofString) {
+        const jsonEthAuthProof = JSON.stringify({
+          proofString,
+          typedData: proofTypedData,
+        })
+
+        localStorage.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
       }
     }
 
@@ -135,6 +152,7 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
   }
 
   async disconnect() {
+    localStorage.removeItem(LocalStorageKey.EthAuthProof)
     this.provider.disconnect()
   }
 
