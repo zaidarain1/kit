@@ -2,7 +2,11 @@
   "name": "@0xsequence/kit",
   "version": "0.0.6",
   "description": "Core package for Sequence Kit",
-  "keywords": ["sequence", "kit", "wallet"],
+  "keywords": [
+    "sequence",
+    "kit",
+    "wallet"
+  ],
   "repository": "https://github.com/0xsequence/kit/tree/master/packages/kit",
   "main": "dist/0xsequence-kit.cjs.js",
   "module": "dist/0xsequence-kit.esm.js",
@@ -14,8 +18,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/kit-connectors": "workspace:*",
+    "@0xsequence/auth": "1.2.3",
     "@0xsequence/design-system": "^1.0.16",
+    "@0xsequence/ethauth": "^0.8.1",
+    "@0xsequence/kit-connectors": "workspace:*",
+    "@0xsequence/utils": "1.2.3",
     "@0xsequence/wagmi-connector": "^2.1.2",
     "@vanilla-extract/css": "^1.9.3",
     "@vanilla-extract/recipes": "^0.3.0",
@@ -23,15 +30,17 @@
   },
   "peerDependencies": {
     "0xsequence": ">=1.1.0",
+    "ethers": ">=5.7.2",
     "react": ">=17",
     "react-dom": ">=17",
-    "wagmi": ">=1.3.9",
-    "viem": ">=1.4.1"
+    "viem": ">=1.4.1",
+    "wagmi": ">=1.3.9"
   },
   "devDependencies": {
+    "ethers": "5.7.2",
     "0xsequence": "^1.2.1",
-    "wagmi": "1.3.9",
-    "viem": "1.10.7"
+    "viem": "1.10.7",
+    "wagmi": "1.3.9"
   },
   "files": [
     "src",

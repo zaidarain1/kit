@@ -9,7 +9,7 @@ import {
 import { AnimatePresence } from 'framer-motion'
 
 import { ConnectWalletContent } from './ConnectWalletContent'
-import { LocalStorageKey } from '../../constants'
+import { DEFAULT_SESSION_EXPIRATION, LocalStorageKey } from '../../constants'
 import { ConnectModalContextProvider, ThemeContextProvider, WalletConfigContextProvider} from '../../contexts'
 import { ModalPosition, getModalPositionCss } from '../../utils'
 
@@ -35,7 +35,9 @@ export interface EthAuthSettings {
   expiry?: number,
   /** origin hint of the dapp's host opening the wallet. This value will automatically
    * be determined and verified for integrity, and can be omitted. */
-  origin?: string
+  origin?: string,
+  /** authorizeNonce is an optional number to be passed as ETHAuth's nonce claim for replay protection. **/
+  nonce?: number
 }
 
 export interface KitConfig {
@@ -70,7 +72,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
 
   const defaultAppName = signIn.projectName || 'app'
 
-  const { expiry = 60 * 60 * 24 * 7, app = defaultAppName, origin = location.origin } = ethAuth
+  const { expiry = DEFAULT_SESSION_EXPIRATION, app = defaultAppName, origin = location.origin, nonce } = ethAuth
 
   const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
@@ -85,8 +87,8 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     // EthAuth
     // note: keep an eye out for potential race-conditions, though they shouldn't occur.
     // If there are race conditions, the settings could be a function executed prior to being passed to wagmi
-    localStorage.setItem(LocalStorageKey.EthAuthProofSettings, JSON.stringify({
-      expiry, app, origin
+    localStorage.setItem(LocalStorageKey.EthAuthSettings, JSON.stringify({
+      expiry, app, origin, nonce
     }))
   }, [theme, ethAuth])
 

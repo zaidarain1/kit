@@ -1,6 +1,6 @@
 import React from 'react'
 import qs from 'query-string'
-import { useOpenConnectModal, useTheme } from '@0xsequence/kit'
+import { useOpenConnectModal, useTheme, getEthAuthProof, validateEthProof } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
 import { useDisconnect, useAccount, useWalletClient, usePublicClient, useNetwork } from 'wagmi'
@@ -32,6 +32,22 @@ function Homepage() {
   // append ?debug=true to url to enable debug mode 
   const { debug } = qs.parse(location.search)
   const isDebugMode = debug === 'true'
+
+  const generateEthAuthProof = async () => {
+    if (!walletClient || !publicClient) {
+      return
+    }
+
+    try {
+      const proof = await getEthAuthProof(walletClient)
+      console.log('proof:', proof)
+
+      const isValid = await validateEthProof(walletClient, publicClient, proof)
+      console.log('isValid?:', isValid)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   const signMessage = async () => {
     if (!walletClient) {
@@ -176,6 +192,13 @@ function Homepage() {
                 description="Sign a message with your wallet"
                 onClick={signMessage}
               />
+              {isDebugMode && (
+                <ClickableCard
+                  title="Generate EthAuth proof"
+                  description="Generate EthAuth proof"
+                  onClick={generateEthAuthProof}
+                />
+              )}
             </Box>
             <Box width="full" gap="2" flexDirection="row" justifyContent="flex-end" >
               <Button onClick={() => disconnect()} leftIcon={SignoutIcon} label="Sign out" />

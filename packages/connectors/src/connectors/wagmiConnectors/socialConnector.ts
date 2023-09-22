@@ -84,7 +84,7 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
 
       const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme)
 
-      const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthProofSettings)
+      const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthSettings)
       const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {} as EthAuthSettings
 
       const connectOptionsWithTheme = {
