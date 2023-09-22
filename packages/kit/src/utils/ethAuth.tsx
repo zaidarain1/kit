@@ -9,7 +9,7 @@ import { publicClientToProvider, walletClientToSigner } from './adapters'
 import { LocalStorageKey, DEFAULT_SESSION_EXPIRATION } from "../constants"
 import { EthAuthSettings } from "../components/KitProvider"
 
-export const getEthAuthProof = async (walletClient: WalletClient): Promise<ETHAuthProof> => {
+export const signEthAuthProof = async (walletClient: WalletClient): Promise<ETHAuthProof> => {
   const proofInformation = localStorage.getItem(LocalStorageKey.EthAuthProof)
   // if proof information was generated and saved upon wallet connection, use that
   if (proofInformation) {

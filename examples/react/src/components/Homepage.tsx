@@ -1,6 +1,6 @@
 import React from 'react'
 import qs from 'query-string'
-import { useOpenConnectModal, useTheme, getEthAuthProof, validateEthProof } from '@0xsequence/kit'
+import { useOpenConnectModal, useTheme, signEthAuthProof, validateEthProof } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
 import { useDisconnect, useAccount, useWalletClient, usePublicClient, useNetwork } from 'wagmi'
@@ -39,7 +39,7 @@ function Homepage() {
     }
 
     try {
-      const proof = await getEthAuthProof(walletClient)
+      const proof = await signEthAuthProof(walletClient)
       console.log('proof:', proof)
 
       const isValid = await validateEthProof(walletClient, publicClient, proof)
