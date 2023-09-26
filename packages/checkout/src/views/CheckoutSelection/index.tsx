@@ -12,7 +12,7 @@ import {
 
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 import { OrderSummaryItem } from './component/OrderSummaryItem'
 
@@ -32,6 +32,7 @@ import {
 import * as styles from './styles.css'
 
 export const CheckoutSelection = () => {
+  const { chains = [] } = useNetwork()
   const { setNavigation } = useNavigation()
   const { closeCheckout, settings } = useCheckoutModal()
   const { address: accountAddress } = useAccount()
@@ -60,7 +61,7 @@ export const CheckoutSelection = () => {
   const isLoading = (contractInfoLoading || balancesLoading) && cryptoCheckoutSettings
 
   const isNativeToken  = compareAddress(cryptoCheckoutSettings?.coinQuantity?.contractAddress || '', ethers.constants.AddressZero)
-  const nativeTokenInfo = getNativeTokenInfoByChainId(cryptoCheckoutSettings?.chainId || 1)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(cryptoCheckoutSettings?.chainId || 1, chains)
 
   const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : contractInfoData?.decimals || 0
   const coinSymbol = isNativeToken ? nativeTokenInfo.symbol : contractInfoData?.symbol || 'COIN'

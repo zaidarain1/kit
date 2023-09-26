@@ -1,5 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers'
+import { useNetwork } from 'wagmi'
 import { Box, Text } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
 
@@ -27,9 +28,10 @@ interface CoinTileProps {
 export const CoinTile = ({
   balance
 }: CoinTileProps) => {
+  const { chains = [] } = useNetwork()
   const { fiatCurrency } = useSettings()
   const isNativeToken = compareAddress(balance.contractAddress, ethers.constants.AddressZero)
-  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains)
 
   const { data: dataCoinPrices = [], isLoading: isLoadingCoinPrice } = useCoinPrices({
     tokens: [{

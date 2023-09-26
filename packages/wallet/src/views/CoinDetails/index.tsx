@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 import { CoinDetailsSkeleton } from './Skeleton'
 
@@ -35,6 +35,7 @@ export const CoinDetails = ({
   contractAddress,
   chainId
 }: CoinDetailsProps) => {
+  const { chains = [] } = useNetwork()
   const { setNavigation } = useNavigation()
   const { fiatCurrency, hideUnlistedTokens } = useSettings()
 
@@ -82,10 +83,10 @@ export const CoinDetails = ({
   }
 
   const isNativeToken = compareAddress(contractAddress, ethers.constants.AddressZero)
-  const logo = isNativeToken ? getNativeTokenInfoByChainId(chainId).logoURI : dataCoinBalance?.contractInfo?.logoURI
-  const symbol = isNativeToken ? getNativeTokenInfoByChainId(chainId).symbol : dataCoinBalance?.contractInfo?.symbol
-  const name = isNativeToken ? getNativeTokenInfoByChainId(chainId).name : dataCoinBalance?.contractInfo?.name
-  const decimals = isNativeToken ? getNativeTokenInfoByChainId(chainId).decimals : dataCoinBalance?.contractInfo?.decimals
+  const logo = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains).logoURI : dataCoinBalance?.contractInfo?.logoURI
+  const symbol = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains).symbol : dataCoinBalance?.contractInfo?.symbol
+  const name = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains).name : dataCoinBalance?.contractInfo?.name
+  const decimals = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains).decimals : dataCoinBalance?.contractInfo?.decimals
   const formattedBalance = ethers.utils.formatUnits(dataCoinBalance?.balance || '0', decimals)
   const balanceDisplayed = formatDisplay(formattedBalance)
 

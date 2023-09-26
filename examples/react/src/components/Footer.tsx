@@ -28,9 +28,10 @@ export const Footer = () => {
   const Socials = () => {
     return (
       <Box gap="4" justifyContent="center" alignItems="center">
-        {socialLinks.map(socialLink => {
+        {socialLinks.map((socialLink, index) => {
           return (
             <Box
+              key={index}
               className={sharedStyles.clickable}
               onClick={() => window.open(socialLink.url)}
             >

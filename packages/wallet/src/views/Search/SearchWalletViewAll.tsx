@@ -13,7 +13,7 @@ import {
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
 import { SCROLLBAR_WIDTH } from '../../constants'
@@ -32,6 +32,7 @@ interface SearchWalletViewAllProps {
 export const SearchWalletViewAll = ({
   defaultTab
 }: SearchWalletViewAllProps) => {
+  const { chains = [] } = useNetwork()
   const { fiatCurrency, hideUnlistedTokens, selectedNetworks } = useSettings()
   const [search, setSearch] = useState('')
   const [selectedTab, setSelectedTab] = useState(defaultTab)
@@ -93,7 +94,7 @@ export const SearchWalletViewAll = ({
 
   const indexedCoinBalances: IndexedData[] = coinBalances.map((balance, index) => {
     if (compareAddress(balance.contractAddress, ethers.constants.AddressZero)) {
-      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
+      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains)
 
       return {
         index,

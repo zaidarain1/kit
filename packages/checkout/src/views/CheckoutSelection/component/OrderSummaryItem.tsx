@@ -1,8 +1,8 @@
 import React from 'react'
 import { ethers } from 'ethers'
+import { useNetwork } from 'wagmi'
 import { Box, Card, Image, Text } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
-
 import { CoinIcon } from '../../../shared/components/CoinIcon'
 import { Skeleton } from '../../../shared/components/Skeleton'
 
@@ -22,6 +22,7 @@ export const OrderSummaryItem = ({
   quantityRaw,
   chainId,
 }: OrderSummaryItem) => {
+  const { chains = [] } = useNetwork()
   const {
     data: tokenMetadata,
     isLoading: isTokenMetadataLoading,
@@ -47,7 +48,7 @@ export const OrderSummaryItem = ({
     )
   }
 
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const { name = 'unknown', image, decimals = 0 } = tokenMetadata || {}
 
   const {

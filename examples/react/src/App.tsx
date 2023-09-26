@@ -7,7 +7,7 @@ import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
 import { WagmiConfig, createConfig, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
-import { mainnet, polygon } from 'wagmi/chains'
+import { mainnet, polygon, arbitrumGoerli } from 'wagmi/chains'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -37,23 +37,23 @@ function App() {
       // logoUrlDarkMode: 'sw-logo-white.svg',
       // logoUrlLightMode: 'sw-logo-black.svg',
     },
-    displayedAssets: [
-      // Matic token
-      {
-        contractAddress: ethers.constants.AddressZero,
-        chainId: 137,
-      },
-      // USDC token
-      {
-        contractAddress: '0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
-        chainId: 137,
-      },
-      // skyweaver collectibles
-      {
-        contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
-        chainId: 137
-      }
-    ],
+    // displayedAssets: [
+    //   // Matic token
+    //   {
+    //     contractAddress: ethers.constants.AddressZero,
+    //     chainId: 137,
+    //   },
+    //   // USDC token
+    //   {
+    //     contractAddress: '0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
+    //     chainId: 137,
+    //   },
+    //   // skyweaver collectibles
+    //   {
+    //     contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
+    //     chainId: 137
+    //   }
+    // ],
   }
 
   return (

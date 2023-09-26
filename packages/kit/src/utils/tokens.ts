@@ -1,3 +1,5 @@
+import { Chain } from 'wagmi'
+
 export interface NativeTokenInfo {
   name: string,
   symbol: string,
@@ -99,6 +101,24 @@ export const getChainIdList = () => {
   return Object.keys(nativeTokenInfos).map(chainId => parseInt(chainId))
 }
 
-export const getNativeTokenInfoByChainId = (chainId: number) => {
-  return nativeTokenInfos[chainId] || nativeTokenInfos[1]
+
+export const defaultNativeTokenInfo = (chainId: number, wagmiChains: Chain[]) => {
+  const foundChain = wagmiChains.find(chain => chain.id === chainId)
+
+  if (foundChain) {
+    return {
+      name: foundChain.name,
+      symbol: foundChain.nativeCurrency.symbol,
+      decimals: foundChain.nativeCurrency.decimals,
+      logoURI: nativeTokenInfos[1].logoURI,
+      blockExplorerName: foundChain.blockExplorers?.default.name,
+      blockExplorerUrl: foundChain.blockExplorers?.default.url
+    }
+  }
+
+  return
+}
+
+export const getNativeTokenInfoByChainId = (chainId: number, wagmiChains: Chain[]) => {
+  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[1]
 }

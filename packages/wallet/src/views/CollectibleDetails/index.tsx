@@ -1,6 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
@@ -35,6 +35,7 @@ export const CollectibleDetails = ({
   chainId,
   tokenId,
 }: CollectibleDetailsProps) => {
+  const { chains = [] } = useNetwork()
   const { address: accountAddress } = useAccount()
   const { fiatCurrency } = useSettings()
   const { setNavigation } = useNavigation()
@@ -95,7 +96,7 @@ export const CollectibleDetails = ({
     })
   }
 
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const collectionLogo = dataCollectibleBalance?.contractInfo?.logoURI
   const collectionName = dataCollectibleBalance?.contractInfo?.name || 'Unknown Collection'
 

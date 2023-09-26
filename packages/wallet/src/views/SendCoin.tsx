@@ -18,7 +18,8 @@ import {
   useAccount,
   useChainId,
   useSwitchNetwork,
-  useWalletClient
+  useWalletClient,
+  useNetwork
 } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
@@ -49,6 +50,7 @@ export const SendCoin = ({
   chainId,
   contractAddress
 }: SendCoinProps) => {
+  const { chains = [] } = useNetwork()
   const connectedChainId = useChainId()
   const { address: accountAddress = '', connector } = useAccount()
   /* @ts-ignore-next-line */
@@ -67,7 +69,7 @@ export const SendCoin = ({
     chainIds: [chainId],
     contractAddress,
   }, { hideUnlistedTokens: false })
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const tokenBalance = balances.find(b => b.contractAddress === contractAddress)
   const {
     data: coinPrices = [],

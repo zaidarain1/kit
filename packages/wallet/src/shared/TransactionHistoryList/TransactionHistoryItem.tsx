@@ -13,6 +13,7 @@ import {
   vars
 } from '@0xsequence/design-system'
 import dayjs from 'dayjs'
+import { useNetwork } from 'wagmi'
 
 import * as sharedStyles from '../../shared/styles.css'
 import { Skeleton } from '../../shared/Skeleton'
@@ -35,6 +36,7 @@ interface TransactionHistoryItemProps {
 export const TransactionHistoryItem = ({
   transaction
 }: TransactionHistoryItemProps) => {
+  const { chains = [] } = useNetwork()
   const { fiatCurrency } = useSettings()
   const { setNavigation } = useNavigation()
 
@@ -74,7 +76,7 @@ export const TransactionHistoryItem = ({
 
   const { transfers } = transaction
 
-  const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId, chains)
 
   const getTransactionIconByType = (transferType: TxnTransferType) => {
     switch(transferType) {
@@ -162,7 +164,7 @@ export const TransactionHistoryItem = ({
 
         </Box>
         {amounts.map((amount, index) => {
-          const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
+          const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId, chains)
           const isNativeToken = compareAddress(transfer.contractAddress, ethers.constants.AddressZero)
           const isCollectible = transfer.contractInfo?.type === 'ERC721' || transfer.contractInfo?.type === 'ERC1155'
           let decimals

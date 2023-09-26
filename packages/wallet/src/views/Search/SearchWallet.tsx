@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Box, SearchIcon, Text, TextInput, vars } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import Fuse from 'fuse.js'
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 
 import { BalanceItem } from './components/BalanceItem'
 import { WalletLink } from './components/WalletLink'
@@ -19,6 +19,7 @@ import {
 import { compareAddress, computeBalanceFiat } from '../../utils'
 
 export const SearchWallet = () => {
+  const { chains = [] } = useNetwork()
   const { fiatCurrency, hideUnlistedTokens, selectedNetworks } = useSettings()
   const [search, setSearch] = useState('')
   const { address: accountAddress } = useAccount()
@@ -72,7 +73,7 @@ export const SearchWallet = () => {
 
   const indexedCoinBalances: IndexedData[] = coinBalances.map((balance, index) => {
     if (compareAddress(balance.contractAddress, ethers.constants.AddressZero)) {
-      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId)
+      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains)
 
       return {
         index,

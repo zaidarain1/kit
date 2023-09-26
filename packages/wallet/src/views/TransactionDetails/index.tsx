@@ -13,7 +13,8 @@ import {
   Text,
  } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
- import dayjs from 'dayjs'
+import dayjs from 'dayjs'
+import { useNetwork } from 'wagmi'
 
 import { CoinIcon } from '../../shared/CoinIcon'
 import { CopyButton } from '../../shared/CopyButton'
@@ -37,6 +38,7 @@ interface TransactionDetailProps {
 export const TransactionDetails = ({
   transaction
 }: TransactionDetailProps) => {
+  const { chains = [] } = useNetwork()
   const { fiatCurrency } = useSettings()
 
   const coins: Token[] = []
@@ -89,7 +91,7 @@ export const TransactionDetails = ({
 
   const arePricesLoading = (coins.length > 0 && coinPricesIsLoading) || (collectibles.length > 0 && collectiblePricesIsLoading) || isLoadingConversionRate
 
-  const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(transaction.chainId, chains)
 
   const date = dayjs(transaction.timestamp).format('ddd MMM DD YYYY, h:m:s a')
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Image, Text } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId, getChainColor, getChainBGColor } from '@0xsequence/kit'
+import { useNetwork } from 'wagmi'
 
 import {
   getNetworkConfigAndClients,
@@ -14,8 +15,9 @@ interface NetworkBadgeProps {
 export const NetworkBadge = ({
   chainId
 }: NetworkBadgeProps) => {
+  const { chains = [] }  = useNetwork()
   const { network } = getNetworkConfigAndClients(chainId)
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const chainColor = getChainColor(chainId)
   const chainBGColor = getChainBGColor(chainId)
 

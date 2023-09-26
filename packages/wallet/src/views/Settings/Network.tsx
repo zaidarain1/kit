@@ -10,7 +10,7 @@ import { useSettings } from '../../hooks'
 
 export const SettingsNetwork = () => {
   const { selectedNetworks, setSelectedNetworks } = useSettings()
-  const { chains } = useNetwork()
+  const { chains = [] } = useNetwork()
 
 
   const onClickNetwork = (chainId: number) => {
@@ -35,7 +35,7 @@ export const SettingsNetwork = () => {
           gap="2"
         >
           {chains.map((chain) => {
-            const networkInfo = getNativeTokenInfoByChainId(chain.id)
+            const networkInfo = getNativeTokenInfoByChainId(chain.id, chains)
             return (
               <SelectButton
                 disabled={selectedNetworks.length === 1 && selectedNetworks.includes(chain.id)}

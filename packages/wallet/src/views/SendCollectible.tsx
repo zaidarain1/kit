@@ -16,7 +16,7 @@ import {
 } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useAccount, useChainId, useSwitchNetwork, useWalletClient } from 'wagmi'
+import { useAccount, useChainId, useSwitchNetwork, useWalletClient, useNetwork } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_1155_ABI, ERC_721_ABI } from '../constants'
@@ -44,6 +44,7 @@ export const SendCollectible = ({
   contractAddress,
   tokenId
 }: SendCollectibleProps) => {
+  const { chains = [] } = useNetwork()
   const connectedChainId = useChainId()
   const { address: accountAddress = '', connector } = useAccount()
   /* @ts-ignore-next-line */
@@ -62,7 +63,7 @@ export const SendCollectible = ({
     collectionAddress: contractAddress,
     tokenId,
   })
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
 
   const isLoading =  isLoadingBalances
 

@@ -9,10 +9,10 @@ import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 export const Receive = () => {
   const { address } = useAccount()
-  const { chain } = useNetwork()
+  const { chain, chains = [] } = useNetwork()
   const [isCopied, setCopied] = useState<boolean>(false)
 
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chain?.id || 1)
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chain?.id || 1, chains)
 
   useEffect(() => {
     if (isCopied) {
