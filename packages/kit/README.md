@@ -140,18 +140,18 @@ The settings are described in more detailed in the Sequence Kit documentation.
       showEmailInput: true,
       miniAuthOptions: ['google', 'discord', 'facebook', 'apple'],
       authOptions: ['metamask', 'wallet-connect'],
-      // limits the digital assets displayed on the assets summary screen
-      displayedAssets: [
-        {
-          contractAddress: ethers.constants.AddressZero,
-          chainId: 137,
-        },
-        {
-          contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
-          chainId: 137
-        }
-      ],
-    };
+    },
+    // limits the digital assets displayed on the assets summary screen
+    displayedAssets: [
+      {
+        contractAddress: ethers.constants.AddressZero,
+        chainId: 137,
+      },
+      {
+        contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
+        chainId: 137
+      }
+    ],
   }
 
   <KitProvider config={kitConfig}>
