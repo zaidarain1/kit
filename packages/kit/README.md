@@ -126,7 +126,7 @@ import { useTheme } from '@0xsequence/kit'
 ## Customization
 The `KitProvider` wrapper can accept an optional config object.
 
-The settings are described in more detailed in the sequence
+The settings are described in more detailed in the Sequence Kit documentation.
 
 ```js
 
