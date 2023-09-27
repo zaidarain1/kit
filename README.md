@@ -61,7 +61,7 @@ function App() {
   })
 
   return (
-    <WagmiConfig client={client}>
+    <WagmiConfig config={config}>
       <KitProvider>
         <MyPage />
       </KitProvider>
