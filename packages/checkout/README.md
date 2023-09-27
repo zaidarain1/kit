@@ -5,8 +5,7 @@ Sequence Kit Checkout
   <img src="../../public/docs/checkout-modal.png">
 </div>
 
-Checkout modal for Sequence Kit.
-Will display a list of collectibles and allows either checking out with a credit card or through crypto directly.
+Checkout modal for Sequence Kit. Displays a list a summary of collectibles to be purchased
 
 # Installing the module
 First install the package:
@@ -70,18 +69,10 @@ Example [settings](../../examples/react/src/utils/settings.ts)
 
 ```js
 const checkoutSettings = {
-  creditCardCheckout: {...},
   cryptoCheckout: {...},
   orderSummaryItems: {...}
 }
 ```
-
-### creditCardCheckout
-The `creditCardCheckout` setting of the settings object contains information that will be passed to [Paper](https://getpaper.xyz/).
-
-View the paper documentation for [more information](https://docs.withpaper.com/reference/create-checkout-elements-client-secret).
-
-If this field is empty the credit card checkout button will not be visible.
 
 ### cryptoCheckout
 The `cryptoCheckout` specifies settings regarding checking out with crypto.

@@ -14,21 +14,21 @@ interface OrderSummaryItem {
 }
 
 export interface CheckoutSettings {
-  creditCardCheckout?: {
-    chainId: number
-    abi: string
-    methodName: string
-    contractAddress: string
-    recipientAddress: string
-    receiptTitle: string
-    methodArguments: MethodArguments
-    currency: string
-    currencyAmount: string
-    collectionContractAddress?: string
-    email?: string
-    onSuccess?: (transactionHash: string) => void
-    onError?: (error: Error) => void
-  },
+  // creditCardCheckout?: {
+  //   chainId: number
+  //   abi: string
+  //   methodName: string
+  //   contractAddress: string
+  //   recipientAddress: string
+  //   receiptTitle: string
+  //   methodArguments: MethodArguments
+  //   currency: string
+  //   currencyAmount: string
+  //   collectionContractAddress?: string
+  //   email?: string
+  //   onSuccess?: (transactionHash: string) => void
+  //   onError?: (error: Error) => void
+  // },
   cryptoCheckout?: {
     chainId: number,
     triggerTransaction: () => void,

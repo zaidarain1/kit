@@ -10,8 +10,6 @@ Sequence Kit 🧰 is a library enabling developers to easily integrate web3 wall
 - Connect via social logins eg: facebook, google, discord, etc...! 🔐🪪
 - Connect to popular web3 wallets eg: walletConnect, metamask ! 🦊 ⛓️
 - Full-fledged embedded wallet for coins and collectibles  👛 🖼️ 🪙 
-- Fiat onramp 💵 💶 💴 💷
-
 
 View the [demo](https://0xsequence.github.io/kit)! 👀
 

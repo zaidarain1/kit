@@ -38,9 +38,9 @@ export const CheckoutSelection = () => {
   const { address: accountAddress } = useAccount()
 
   const cryptoCheckoutSettings = settings?.cryptoCheckout
-  const creditCardCheckoutSettings = settings?.creditCardCheckout
+  // const creditCardCheckoutSettings = settings?.creditCardCheckout
   const displayCryptoCheckout = !!cryptoCheckoutSettings
-  const displayCreditCardCheckout = !!creditCardCheckoutSettings
+  // const displayCreditCardCheckout = !!creditCardCheckoutSettings
 
   const {
     data: contractInfoData,
@@ -77,7 +77,7 @@ export const CheckoutSelection = () => {
 
   const orderSummaryItems = settings?.orderSummaryItems || []
 
-  const chainId = settings?.cryptoCheckout?.chainId || settings?.creditCardCheckout?.chainId || 1
+  const chainId = settings?.cryptoCheckout?.chainId || 1
 
   const onClickPayWithCard = () => {
     setNavigation({
@@ -150,7 +150,7 @@ export const CheckoutSelection = () => {
         justifyContent="center"
         gap="2"
       >
-        {displayCreditCardCheckout && (
+        {/* {displayCreditCardCheckout && (
           <Button
             style={{
               borderRadius: vars.radii.md,
@@ -164,7 +164,7 @@ export const CheckoutSelection = () => {
             rightIcon={ChevronRightIcon}
             onClick={onClickPayWithCard}
           />
-        )}
+        )} */}
         {displayCryptoCheckout && (!isInsufficientBalance && !isLoading) && (
           <Button
             style={{
