@@ -1,6 +1,6 @@
 {
   "name": "@0xsequence/kit",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Core package for Sequence Kit",
   "keywords": [
     "sequence",
