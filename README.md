@@ -136,7 +136,7 @@ The settings are described in more detailed in the Sequence Kit documentation.
       logoUrlLightMode: 'https://logo-light-mode.svg',
       projectName: 'my app',
       showEmailInput: true,
-      miniAuthOptions: ['google', 'discord', 'facebook', 'apple'],
+      miniAuthOptions: ['google', 'facebook', 'twitch', 'apple'],
       authOptions: ['metamask', 'wallet-connect'],
     };
     // limits the digital assets displayed on the assets summary screen

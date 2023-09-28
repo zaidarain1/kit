@@ -8,8 +8,8 @@ import {
   google,
   metamask,
   walletConnect,
-  discord,
-  apple
+  apple,
+  twitch
 } from './connectors'
 
 interface GetDefaultConnectors {
@@ -51,7 +51,7 @@ export const getDefaultConnectors = ({
         defaultNetwork: defaultChain
       }
     }),
-    discord({
+    twitch({
       chains,
       options: {
         defaultNetwork: defaultChain

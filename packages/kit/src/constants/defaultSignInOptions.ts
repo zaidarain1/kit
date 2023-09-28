@@ -1,5 +1,5 @@
 export const defaultSignInOptions = {
   showEmailInput: true,
-  miniAuthOptions: ['google', 'discord', 'facebook', 'apple'],
+  miniAuthOptions: ['google', 'facebook', 'twitch','apple'],
   authOptions: ['metamask', 'wallet-connect']
 }
