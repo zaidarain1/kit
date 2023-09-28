@@ -139,11 +139,10 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
               marginTop="3"
               gap="2"
               flexDirection="row"
-              justifyContent="space-between"
+              justifyContent="flex-start"
               alignItems="center"
-              flexWrap="wrap"
             >
-              {miniConnectors.slice(0, 6).map(connector => {
+              {miniConnectors.map(connector => {
                 const Logo =
                   theme === 'dark'
                     ? connector._wallet.miniLogoDark as React.FunctionComponent || connector._wallet.logoDark as React.FunctionComponent
