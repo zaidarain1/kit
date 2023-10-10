@@ -155,9 +155,6 @@ importers:
       '@0xsequence/kit-wallet':
         specifier: workspace:*
         version: link:../../packages/wallet
-      '@0xsequence/wagmi-connector':
-        specifier: ^2.1.4
-        version: 2.1.4(0xsequence@1.2.1)(ethers@5.7.2)(typescript@5.2.2)(viem@1.10.7)(wagmi@1.3.9)
       '@vanilla-extract/css':
         specifier: ^1.9.3
         version: 1.9.3
