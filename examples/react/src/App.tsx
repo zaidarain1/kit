@@ -34,8 +34,7 @@ function App() {
     defaultTheme: THEMES.dark,
     signIn: {
       projectName: 'Skyweaver',
-      // logoUrlDarkMode: 'sw-logo-white.svg',
-      // logoUrlLightMode: 'sw-logo-black.svg',
+      // logoUrl: 'sw-logo-white.svg',
     },
     displayedAssets: [
       // Matic token

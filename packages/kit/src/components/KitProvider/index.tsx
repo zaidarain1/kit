@@ -44,8 +44,7 @@ export interface KitConfig {
   defaultTheme?: Theme,
   position?: ModalPosition,
   signIn?: {
-    logoUrlDarkMode?: string,
-    logoUrlLightMode?: string,
+    logoUrl?: string,
     projectName?: string,
     showEmailInput?: boolean,
     miniAuthOptions?: string[]

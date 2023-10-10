@@ -133,8 +133,7 @@ The settings are described in more detailed in the Sequence Kit documentation.
     defaultTheme: 'light',
     position: 'top-left',
     signIn: {
-      logoUrlDarkMode: 'https://logo-dark-mode.svg',
-      logoUrlLightMode: 'https://logo-light-mode.svg',
+      logoUrl: 'https://logo-dark-mode.svg',
       projectName: 'my app',
       showEmailInput: true,
       miniAuthOptions: ['google', 'facebook', 'twitch', 'apple'],

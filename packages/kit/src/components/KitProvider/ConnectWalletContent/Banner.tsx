@@ -12,19 +12,14 @@ export const Banner = ({
   config = {}
 }: BannerProps) => {
   const { signIn = {} } = config
-  const { logoUrlDarkMode, logoUrlLightMode } = signIn 
+  const { logoUrl } = signIn 
   const { theme } = useTheme()
 
   return (
     <>
-      {theme === 'dark' && logoUrlDarkMode && (
+      {logoUrl && (
         <Box marginTop="5" justifyContent="center" alignItems="center">
-          <Image src={logoUrlDarkMode} style={{ height: '110px' }} />
-        </Box>
-      )}
-      {theme === 'light' && logoUrlLightMode && (
-        <Box marginTop="5" justifyContent="center" alignItems="center">
-          <Image src={logoUrlLightMode} style={{ height: '110px' }} />
+          <Image src={logoUrl} style={{ height: '110px' }} />
         </Box>
       )}
     </>
