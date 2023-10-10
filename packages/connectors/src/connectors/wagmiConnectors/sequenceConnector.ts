@@ -14,14 +14,14 @@ import {
   Chain,
 } from 'wagmi'
 
-export interface SocialConnectorOptions {
+export interface BaseSequenceConnectorOptions {
   defaultNetwork?: sequence.network.ChainIdLike,
   connect?: ConnectOptions
 }
 
-export class SocialConnector extends Connector<sequence.provider.SequenceProvider, SocialConnectorOptions | undefined> {
-  id = 'google'
-  name = 'google'
+export class BaseSequenceConnector extends Connector<sequence.provider.SequenceProvider, BaseSequenceConnectorOptions | undefined> {
+  id = 'sequence'
+  name = 'Sequence'
 
   ready = true
 
@@ -29,27 +29,27 @@ export class SocialConnector extends Connector<sequence.provider.SequenceProvide
 
   constructor({ chains, options = {} }: {
     chains?: Chain[],
-    options?: SocialConnectorOptions
+    options?: BaseSequenceConnectorOptions
   }) {
     super({ chains, options })
 
     const signInOptions = options?.connect?.settings?.signInOptions || []
     const signInWith = options?.connect?.settings?.signInWith
+    const signInWithEmail = options?.connect?.settings?.signInWithEmail
     
     // If there are no sign in options
     // Then it must mean we are connecting with email
-    if (signInWith) {
+    if (signInWithEmail) {
+      this.id = 'email'
+      this.name = 'Email'
+    } else if (signInWith) {
       this.id = signInWith
       this.name = `${signInWith[0].toUpperCase()}${signInWith.slice(1)}` 
     } else if (signInOptions.length > 0) {
       const id = signInOptions[0]
       const name = `${id[0].toUpperCase()}${id.slice(1)}` 
-      
       this.id = id
       this.name = name
-    } else {
-      this.id = 'email'
-      this.name = 'Email'
     }
 
     this.provider = sequence.initWallet({

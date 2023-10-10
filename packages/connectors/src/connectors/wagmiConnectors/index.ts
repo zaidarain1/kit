@@ -1,1 +1,1 @@
-export * from './socialConnector'
+export * from './sequenceConnector'

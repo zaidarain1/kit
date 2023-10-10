@@ -1,11 +1,11 @@
 import { Chain } from 'wagmi'
-import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
+import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 import { getAppleLogo, getAppleMiniLogo } from './AppleLogo'
 
 export interface AppleOptions {
   chains: Chain[];
-  options?: SocialConnectorOptions;
+  options?: BaseSequenceConnectorOptions;
 }
 
 export const apple = ({ chains, options = {} }: AppleOptions) => ({
@@ -18,7 +18,7 @@ export const apple = ({ chains, options = {} }: AppleOptions) => ({
   // iconBackground: '#fff',
   name: 'Apple',
   createConnector: () => {
-    const connector = new SocialConnector({
+    const connector = new BaseSequenceConnector({
       chains,
       options: {
         ...options,

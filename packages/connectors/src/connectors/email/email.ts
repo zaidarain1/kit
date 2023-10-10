@@ -1,5 +1,5 @@
 import { Chain } from 'wagmi'
-import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
+import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 import { getEmailLogo } from './EmailLogo'
 
@@ -7,7 +7,7 @@ export const EMAIL_CONNECTOR_LOCAL_STORAGE_KEY = '@sequence.kit.connector.email'
 
 export interface EmailOptions {
   chains: Chain[];
-  options?: SocialConnectorOptions;
+  options?: BaseSequenceConnectorOptions;
 }
 
 export const email = ({ chains, options = {} }: EmailOptions) => ({
@@ -20,7 +20,7 @@ export const email = ({ chains, options = {} }: EmailOptions) => ({
   createConnector: () => {
     const email = localStorage.getItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY)
 
-    const connector = new SocialConnector({
+    const connector = new BaseSequenceConnector({
       chains,
       options: {
         ...options,
@@ -29,6 +29,7 @@ export const email = ({ chains, options = {} }: EmailOptions) => ({
           ...options?.connect,
           settings: {
             ...options?.connect?.settings,
+            signInOptions: ['email'],
             signInWithEmail: email || ''
           }
         }

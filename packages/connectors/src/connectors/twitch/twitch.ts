@@ -1,11 +1,11 @@
 import { Chain } from 'wagmi'
-import {  SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
+import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 import { getTwitchLogo } from './TwitchLogo'
 
 export interface TwitchOptions {
   chains: Chain[];
-  options?: SocialConnectorOptions;
+  options?: BaseSequenceConnectorOptions;
 }
 
 export const twitch = ({ chains, options = {} }: TwitchOptions) => ({
@@ -18,7 +18,7 @@ export const twitch = ({ chains, options = {} }: TwitchOptions) => ({
   // iconBackground: '#fff',
   name: 'Twitch',
   createConnector: () => {
-    const connector = new SocialConnector({
+    const connector = new BaseSequenceConnector({
       chains,
       options: {
         ...options,

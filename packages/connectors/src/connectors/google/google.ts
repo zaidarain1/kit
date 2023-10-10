@@ -1,11 +1,11 @@
 import { Chain } from 'wagmi'
-import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
+import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 import { GoogleLogo, getMiniGoogleLogo } from './GoogleLogo'
 
 export interface GoogleOptions {
   chains: Chain[];
-  options?: SocialConnectorOptions;
+  options?: BaseSequenceConnectorOptions;
 }
 
 export const google = ({ chains, options = {} }: GoogleOptions) => ({
@@ -18,7 +18,7 @@ export const google = ({ chains, options = {} }: GoogleOptions) => ({
   // iconBackground: '#fff',
   name: 'Google',
   createConnector: () => {
-    const connector = new SocialConnector({
+    const connector = new BaseSequenceConnector({
       chains,
       options: {
         ...options,

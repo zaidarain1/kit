@@ -1,11 +1,11 @@
 import { Chain } from 'wagmi'
-import { SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
+import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 import { FacebookLogo, getFacebookMiniLogo } from './FacebookLogo'
 
 export interface FacebookOptions {
   chains: Chain[];
-  options?: SocialConnectorOptions;
+  options?: BaseSequenceConnectorOptions;
 }
 
 export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
@@ -18,7 +18,7 @@ export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
   // iconBackground: '#fff',
   name: 'Facebook',
   createConnector: () => {
-    const connector = new SocialConnector({
+    const connector = new BaseSequenceConnector({
       chains,
       options: {
         ...options,

@@ -1,11 +1,11 @@
 import { Chain } from 'wagmi'
-import {  SocialConnector, SocialConnectorOptions } from '../wagmiConnectors';
+import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 import { getDiscordLogo } from './DiscordLogo'
 
 export interface DiscordOptions {
   chains: Chain[];
-  options?: SocialConnectorOptions;
+  options?: BaseSequenceConnectorOptions;
 }
 
 export const discord = ({ chains, options = {} }: DiscordOptions) => ({
@@ -18,7 +18,7 @@ export const discord = ({ chains, options = {} }: DiscordOptions) => ({
   // iconBackground: '#fff',
   name: 'Discord',
   createConnector: () => {
-    const connector = new SocialConnector({
+    const connector = new BaseSequenceConnector({
       chains,
       options: {
         ...options,
