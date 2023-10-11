@@ -84,8 +84,7 @@ export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs, options:
     queryKey: ['balancesAssetsSummary', args, options],
     queryFn: () => fetchBalancesAssetsSummary(args, options),
     retry: true,
-    staleTime: 1 * time.oneSecond,
-    // staleTime: 10 * time.oneMinute,
+    staleTime: 10 * time.oneMinute,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   }))
 
