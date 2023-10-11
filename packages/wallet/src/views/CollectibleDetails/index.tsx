@@ -105,7 +105,12 @@ export const CollectibleDetails = ({
   const balance = ethers.utils.formatUnits(rawBalance, decimals)
   const formattedBalance = formatDisplay(Number(balance))
 
-  const valueFiat = dataCollectibleBalance ? computeBalanceFiat(dataCollectibleBalance, dataCollectiblePrices || [], conversionRate) : '0'
+  const valueFiat = dataCollectibleBalance ? computeBalanceFiat({
+    balance: dataCollectibleBalance,
+    prices: dataCollectiblePrices || [],
+    conversionRate,
+    decimals: decimals
+  }) : '0'
   
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>

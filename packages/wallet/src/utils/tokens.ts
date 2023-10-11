@@ -27,7 +27,19 @@ export const getPercentagePriceChange = (balance: TokenBalance, prices: TokenPri
   return price24HourChange
 }
 
-export const computeBalanceFiat = (balance: TokenBalance, prices: TokenPrice[], conversionRate: number): string => {
+interface ComputeBalanceFiat {
+  balance: TokenBalance,
+  prices: TokenPrice[],
+  decimals: number,
+  conversionRate: number
+}
+
+export const computeBalanceFiat = ({
+  balance,
+  prices,
+  decimals,
+  conversionRate
+}: ComputeBalanceFiat): string => {
   let totalUsd = 0
 
   const priceForToken = prices.find(p => compareAddress(p.token.contractAddress, balance.contractAddress))
@@ -35,10 +47,6 @@ export const computeBalanceFiat = (balance: TokenBalance, prices: TokenPrice[], 
     return '0.00';
   }
   const priceFiat = priceForToken.price?.value || 0
-  let decimals = balance.contractInfo?.decimals || 18
-  if (balance.contractType === 'ERC721' || balance.contractType === 'ERC1155') {
-    decimals = balance.tokenMetadata?.decimals || 0
-  }
   const valueFormatted = ethers.utils.formatUnits(balance.balance, decimals)
   const usdValue = parseFloat(valueFormatted) * priceFiat
   totalUsd += usdValue

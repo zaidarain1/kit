@@ -1,3 +1,4 @@
+import { GetContractInfoArgs } from '@0xsequence/metadata'
 import { Token, TokenPrice } from '@0xsequence/api'
 import { TokenBalance, ContractType, Page } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
@@ -61,6 +62,7 @@ export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
 export interface GetTokenBalancesOptions {
   hideUnlistedTokens: boolean,
   hideCollectibles?: boolean,
+  includeMetadata?: boolean
 }
 
 export const getTokenBalances = async ({
@@ -69,14 +71,15 @@ export const getTokenBalances = async ({
   contractAddress
 }: GetTokenBalancesArgs, {
   hideUnlistedTokens,
-  hideCollectibles
+  hideCollectibles,
+  includeMetadata = true,
 }: GetTokenBalancesOptions) => {
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
     const res = await indexerClient.getTokenBalances({
       accountAddress,
-      includeMetadata: true,
+      includeMetadata,
       ...(contractAddress ? { contractAddress } : {})
     })
 
@@ -140,16 +143,22 @@ export const fetchBalances = async (
 export interface GetCollectionBalanceArgs {
   accountAddress: string,
   chainId: number,
-  collectionAddress: string
+  collectionAddress: string,
+  includeMetadata?: boolean
 }
 
-export const fetchCollectionBalance = async ({ accountAddress, chainId, collectionAddress }: GetCollectionBalanceArgs) => {
+export const fetchCollectionBalance = async ({
+  accountAddress,
+  chainId,
+  collectionAddress,
+  includeMetadata = true,
+}: GetCollectionBalanceArgs) => {
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
     const res = await indexerClient.getTokenBalances({
       accountAddress,
-      includeMetadata: true,
+      includeMetadata,
       contractAddress: collectionAddress,
     })
   
@@ -177,8 +186,10 @@ export const fetchBalancesAssetsSummary = async (
   
   let tokenBalances: TokenBalance[] = []
 
+  const customDisplayAssets = displayAssets.length > 0
+
   try {
-    if (displayAssets.length > 0) {
+    if (customDisplayAssets) {
       const nativeTokens = displayAssets.filter(asset => compareAddress(asset.contractAddress, ethers.constants.AddressZero))
       const otherAssets = displayAssets.filter(asset => !compareAddress(asset.contractAddress, ethers.constants.AddressZero))
 
@@ -213,7 +224,7 @@ export const fetchBalancesAssetsSummary = async (
               accountAddress,
               chainId: Number(chainId),
               contractAddress: asset.contractAddress
-            }, { hideUnlistedTokens, hideCollectibles }
+            }, { hideUnlistedTokens, hideCollectibles, includeMetadata: false }
           ))).flat()
         ])
       ).flat()
@@ -227,7 +238,7 @@ export const fetchBalancesAssetsSummary = async (
           ...chainIds.map(chainId => getTokenBalances({
             accountAddress,
             chainId,
-          }, { hideUnlistedTokens, hideCollectibles }))
+          }, { hideUnlistedTokens, hideCollectibles, includeMetadata: false }))
         ])
       ).flat()
     }
@@ -248,10 +259,14 @@ export const fetchBalancesAssetsSummary = async (
     })
 
     const fetchCollectiblesPromises = collectionBalances.map(async collectionBalance => {
+      if (customDisplayAssets) {
+        return collectionBalance
+      }
       const balance = await fetchCollectionBalance({
         accountAddress,
         chainId: collectionBalance.chainId,
-        collectionAddress: collectionBalance.contractAddress
+        collectionAddress: collectionBalance.contractAddress,
+        includeMetadata: false
       })
 
       return balance
@@ -427,4 +442,36 @@ export const fetchFiatConversionRate = async ({
   })
 
   return response.exchangeRate.value
+}
+
+interface Collectibles {
+  contractAddress: string,
+  chainId: number,
+  tokenIds: string[]
+}
+
+export interface FetchTokenMetadataArgs {
+  tokens: Collectibles
+}
+
+export const fetchTokenMetadata = async ({
+  tokens
+}: FetchTokenMetadataArgs) => {
+  const { metadataClient } = getNetworkConfigAndClients(tokens.chainId) 
+
+  const response = await metadataClient.getTokenMetadata({
+    chainID: tokens.chainId.toString(),
+    contractAddress: tokens.contractAddress,
+    tokenIDs: tokens.tokenIds
+  })
+
+  return response.tokenMetadata
+}
+
+export const getContractInfo = async (args: GetContractInfoArgs) => {
+  const { metadataClient } = getNetworkConfigAndClients(Number(args.chainID)) 
+
+  const response = await metadataClient.getContractInfo(args)
+
+  return response.contractInfo
 }

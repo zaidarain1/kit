@@ -1,8 +1,9 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { useNetwork } from 'wagmi'
-import { Box, Text } from '@0xsequence/design-system'
+import { Box } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
+import { useContractInfo } from '../../../../../hooks'
 
 import { CoinTileContent } from './CoinTileContent'
 
@@ -47,7 +48,15 @@ export const CoinTile = ({
     toCurrency: fiatCurrency.symbol
   })
 
-  const isLoading = isLoadingCoinPrice || isLoadingConversionRate
+  const {
+    data: contractInfo,
+    isLoading: isLoadingContractInfo
+  } = useContractInfo({
+    chainID: String(balance.chainId),
+    contractAddress: balance.contractAddress
+  })
+
+  const isLoading = isLoadingCoinPrice || isLoadingConversionRate || isLoadingContractInfo
   if (isLoading) {
     return (
       <Box
@@ -60,7 +69,12 @@ export const CoinTile = ({
   }
 
   if (isNativeToken) {
-    const computedBalance = computeBalanceFiat(balance, dataCoinPrices, conversionRate)
+    const computedBalance = computeBalanceFiat({
+      balance,
+      prices: dataCoinPrices,
+      conversionRate,
+      decimals: nativeTokenInfo.decimals
+    })
     const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
     const formattedBalance = ethers.utils.formatUnits(balance.balance, nativeTokenInfo.decimals)
     const balanceDisplayed = formatDisplay(formattedBalance)
@@ -78,16 +92,22 @@ export const CoinTile = ({
     )
   }
 
-  const computedBalance = computeBalanceFiat(balance, dataCoinPrices, conversionRate)
+  const decimals = contractInfo?.decimals ?? 18
+
+  const computedBalance = computeBalanceFiat({
+    balance,
+    prices: dataCoinPrices,
+    conversionRate,
+    decimals,
+  })
   const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices)
   
-  const decimals = balance.contractInfo?.decimals ?? 18
   const formattedBalance = ethers.utils.formatUnits(balance.balance, decimals)
   const balanceDisplayed = formatDisplay(formattedBalance)
 
-  const name = balance.contractInfo?.name || 'Unknown'
-  const symbol = balance.contractInfo?.name || 'TOKEN'
-  const url = balance.contractInfo?.logoURI
+  const name = contractInfo?.name || 'Unknown'
+  const symbol = contractInfo?.name || 'TOKEN'
+  const url = contractInfo?.logoURI
 
   return (
     <CoinTileContent

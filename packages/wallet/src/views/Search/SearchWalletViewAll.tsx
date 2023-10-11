@@ -68,7 +68,17 @@ export const SearchWalletViewAll = ({
   })
 
   const coinBalances = coinBalancesUnordered.sort((a, b) => {
-    const isHigherFiat = Number(computeBalanceFiat(b, coinPrices, conversionRate)) - Number(computeBalanceFiat(a, coinPrices, conversionRate))
+    const isHigherFiat = Number(computeBalanceFiat({
+      balance: b,
+      prices: coinPrices,
+      conversionRate,
+      decimals: b.contractInfo?.decimals || 18
+    })) - Number(computeBalanceFiat({
+      balance: a,
+      prices: coinPrices,
+      conversionRate,
+      decimals: a.contractInfo?.decimals || 18
+    }))
     return isHigherFiat
   })
 

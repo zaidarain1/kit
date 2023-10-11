@@ -44,7 +44,7 @@ function App() {
       },
       // USDC token
       {
-        contractAddress: '0x2791bca1f2de4661ed88a30c99a7a9449aa84174',
+        contractAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
         chainId: 137,
       },
       // skyweaver collectibles

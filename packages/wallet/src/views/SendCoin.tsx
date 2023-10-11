@@ -103,12 +103,14 @@ export const SendCoin = ({
   const amountRaw = ethers.utils.parseUnits(amountToSendFormatted, decimals)
 
   const amountToSendFiat = computeBalanceFiat({
+    balance: {
       ...tokenBalance as TokenBalance,
       balance: amountRaw.toString(),
     },
-    coinPrices,
-    conversionRate
-  )
+    prices: coinPrices,
+    conversionRate,
+    decimals
+  })
 
   const insufficientFunds = amountRaw.gt(tokenBalance?.balance || '0') 
   const isNonZeroAmount = amountRaw.gt(0)
@@ -186,7 +188,12 @@ export const SendCoin = ({
           name={name}
           symbol={symbol}
           balance={tokenBalance?.balance || '0'}
-          fiatValue={computeBalanceFiat(tokenBalance as TokenBalance, coinPrices, conversionRate)}
+          fiatValue={computeBalanceFiat({
+            balance: tokenBalance as TokenBalance,
+            prices: coinPrices,
+            conversionRate,
+            decimals
+          })}
           chainId={chainId}
         />
         <NumericInput

@@ -1,3 +1,4 @@
+import { GetContractInfoArgs } from '@0xsequence/metadata'
 import { TokenBalance } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
 import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
@@ -22,7 +23,10 @@ import {
   GetTokenBalancesOptions,
   FetchBalancesAssetsArgs,
   getTransactionHistorySummary,
-  GetTransactionHistorySummaryArgs
+  GetTransactionHistorySummaryArgs,
+  fetchTokenMetadata,
+  FetchTokenMetadataArgs,
+  getContractInfo
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -80,7 +84,8 @@ export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs, options:
     queryKey: ['balancesAssetsSummary', args, options],
     queryFn: () => fetchBalancesAssetsSummary(args, options),
     retry: true,
-    staleTime: 10 * time.oneMinute,
+    staleTime: 1 * time.oneSecond,
+    // staleTime: 10 * time.oneMinute,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   }))
 
@@ -160,4 +165,22 @@ export const useConversionRate = (args: FetchFiatConversionRateArgs) => (
     queryFn: () => fetchFiatConversionRate(args),
     retry: true,
     staleTime: 60 * time.oneMinute,
+  }))
+
+export const useTokenMetadata = (args: FetchTokenMetadataArgs) => (
+  useQuery({
+    queryKey: ['useTokenMetadata', args],
+    queryFn: () => fetchTokenMetadata(args),
+    retry: true,
+    staleTime: 60 * time.oneMinute,
+    enabled: !!args.tokens.chainId && !!args.tokens.contractAddress
+  }))
+
+export const useContractInfo = (args: GetContractInfoArgs) => (
+  useQuery({
+    queryKey: ['useContractInfo', args],
+    queryFn: () => getContractInfo(args),
+    retry: true,
+    staleTime: 60 * time.oneMinute,
+    enabled: !!args.chainID && !!args.contractAddress
   }))
