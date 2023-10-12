@@ -1,4 +1,4 @@
-import { GetContractInfoArgs } from '@0xsequence/metadata'
+import { GetContractInfoArgs, GetContractInfoBatchReturn } from '@0xsequence/metadata'
 import { Token, TokenPrice } from '@0xsequence/api'
 import { TokenBalance, ContractType, Page } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
@@ -254,7 +254,7 @@ export const fetchBalancesAssetsSummary = async (
         const prices = await getCoinPrices({ tokens }) || []
         resolve(prices)
       } else {
-        resolve([]) 
+        resolve([])
       }
     })
 
@@ -272,18 +272,57 @@ export const fetchBalancesAssetsSummary = async (
       return balance
     })
 
-    const [prices, ...collectionCollectibles] = await Promise.all([fetchPricesPromise, ...fetchCollectiblesPromises])
+    // We need to get metadata for erc20 contracts in order to get decimals and sort by price
+    interface ContractInfoMapByChainId {
+      [chainId: number]: GetContractInfoBatchReturn
+    }
+
+    const fetchErc20ContractInfoPromise = async () => {
+      interface Erc20BalanceByChainId {
+        [chainId: number]: TokenBalance[]
+      }
+
+      const contractInfoMapByChainId: ContractInfoMapByChainId = {}
+      const erc20BalanceByChainId: Erc20BalanceByChainId = {}
+
+      erc20Tokens.forEach(erc20Token => {
+        if (!erc20BalanceByChainId[erc20Token.chainId]) {
+          erc20BalanceByChainId[erc20Token.chainId] = [erc20Token]
+        } else {
+          erc20BalanceByChainId[erc20Token.chainId].push(erc20Token)
+        }
+      })
+
+      const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async chainId => {
+        const { metadataClient } = getNetworkConfigAndClients(chainId)
+        const tokenBalances = erc20BalanceByChainId[Number(chainId)]
+        const contractAddresses = tokenBalances.map(balance => balance.contractAddress) 
+        const result = await metadataClient.getContractInfoBatch({
+          chainID: String(chainId),
+          contractAddresses
+        })
+        contractInfoMapByChainId[Number(chainId)] = result
+      })
+      await Promise.all([...contractInfoPromises]) 
+      return contractInfoMapByChainId
+    }
+
+    const [prices, contractInfoMapByChainId, ...collectionCollectibles] = await Promise.all([fetchPricesPromise, fetchErc20ContractInfoPromise(), ...fetchCollectiblesPromises])
 
     const erc20HighestValue = erc20Tokens.sort((a, b) => {
       const aPriceData = prices.find(price => compareAddress(price.token.contractAddress, a.contractAddress))
       const bPriceData = prices.find(price => compareAddress(price.token.contractAddress, b.contractAddress))
+
       const aPrice = aPriceData?.price ? aPriceData.price.value : 0
       const bPrice = bPriceData?.price ? bPriceData.price.value : 0
 
-      const aFormattedBalance = Number(ethers.utils.formatUnits(a.balance, a.contractInfo?.decimals || 0))
-      const bFormattedBalance = Number(ethers.utils.formatUnits(b.balance, b.contractInfo?.decimals || 0))      
+      const aDecimals = contractInfoMapByChainId[a.chainId].contractInfoMap[a.contractAddress]?.decimals
+      const bDecimals = contractInfoMapByChainId[b.chainId].contractInfoMap[b.contractAddress]?.decimals
 
-      const aValue = aFormattedBalance * aPrice
+      const aFormattedBalance = aDecimals === undefined ? 0 : Number(ethers.utils.formatUnits(a.balance, aDecimals))
+      const bFormattedBalance = bDecimals === undefined ? 0 : Number(ethers.utils.formatUnits(b.balance, bDecimals))      
+
+      const aValue =aFormattedBalance * aPrice
       const bValue = bFormattedBalance * bPrice
 
       return bValue - aValue

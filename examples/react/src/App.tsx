@@ -36,23 +36,23 @@ function App() {
       projectName: 'Skyweaver',
       // logoUrl: 'sw-logo-white.svg',
     },
-    // displayedAssets: [
-    //   // Matic token
-    //   {
-    //     contractAddress: ethers.constants.AddressZero,
-    //     chainId: 137,
-    //   },
-    //   // USDC token
-    //   {
-    //     contractAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
-    //     chainId: 137,
-    //   },
-    //   // skyweaver collectibles
-    //   {
-    //     contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
-    //     chainId: 137
-    //   }
-    // ],
+    displayedAssets: [
+      // Matic token
+      {
+        contractAddress: ethers.constants.AddressZero,
+        chainId: 137,
+      },
+      // USDC token
+      {
+        contractAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+        chainId: 137,
+      },
+      // skyweaver collectibles
+      {
+        contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
+        chainId: 137
+      }
+    ],
   }
 
   return (
