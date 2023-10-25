@@ -9,6 +9,7 @@ import {
 import { AnimatePresence } from 'framer-motion'
 
 import { ConnectWalletContent } from './ConnectWalletContent'
+import { SequenceLogo } from './SequenceLogo'
 import { DEFAULT_SESSION_EXPIRATION, LocalStorageKey } from '../../constants'
 import { ConnectModalContextProvider, ThemeContextProvider, WalletConfigContextProvider} from '../../contexts'
 import { ModalPosition, getModalPositionCss } from '../../utils'
@@ -79,6 +80,10 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   const [modalPosition, setModalPosition] = useState<ModalPosition>(position)
   const [displayedAssets, setDisplayedAssets] = useState<DisplayedAsset[]>(displayedAssetsSetting)
 
+  const poweredBySequenceOnClick = () => {
+    window.open('https://sequence.xyz')
+  }
+
   // Write data in local storage for retrieval in connectors
   useEffect(() => {
     // Theme
@@ -141,6 +146,14 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                       setOpenConnectModal={setOpenConnectModal}
                       {...props}
                     />
+                    <Box onClick={poweredBySequenceOnClick} className={sharedStyles.clickable} gap="1" marginTop="2" flexDirection="row" alignItems="center" justifyContent="center">
+                        <Text fontSize="small">
+                          Powered by Sequence
+                        </Text>
+                        <Box height="5" width="5">
+                          <SequenceLogo/>
+                        </Box>
+                    </Box>
                   </Box>
                 </Modal>
               )}
