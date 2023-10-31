@@ -100,7 +100,7 @@ export const bottomPageLinks: BottomPageLink[] = [
   },
   {
     label: 'Docs',
-    url: 'https://docs.sequence.xyz',
+    url: 'https://docs.sequence.xyz/wallet/connectors/kit',
   },
 ]
 
