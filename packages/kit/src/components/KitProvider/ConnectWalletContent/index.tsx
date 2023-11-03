@@ -39,6 +39,8 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   const { connectors: baseConnectors, connect, isLoading } = useConnect()
   const connectors = baseConnectors as ExtendedConnector[]
   const [showExtendedList, setShowExtendedList] = useState<boolean>(false)
+  const mockConnector = connectors.find(connector => connector.id === 'mock')
+
 
   const emailConnector = connectors.find(c => c._wallet.id === 'email')
   const normalConnectors = connectors.filter(connector => {
@@ -64,7 +66,13 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
     }
   }, [isConnected, openConnectModal])
 
+
   const onConnect = (connector: ExtendedConnector) => {
+    if (signIn.useMock && mockConnector) {
+      connect({ connector: mockConnector })
+      return
+    }
+
     if (connector._wallet.id === 'email') {
       const email = prompt('Auto-email login, please specify the email address:')
       localStorage.setItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY, email || '')
@@ -73,6 +81,11 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   }
 
   const onConnectInlineEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    if (signIn.useMock && mockConnector) {
+      connect({ connector: mockConnector })
+      return
+    }
+ 
     e.preventDefault()
     localStorage.setItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY, email)
     connect({ connector: emailConnector })

@@ -1,27 +1,50 @@
 import { ethers } from 'ethers'
+import qs from 'query-string'
 import { ThemeProvider } from '@0xsequence/design-system'
-import { KitProvider, THEMES, KitConfig } from '@0xsequence/kit'
-import { getDefaultConnectors } from '@0xsequence/kit-connectors'
+import { KitProvider, THEMES, KitConfig, getKitConnectWallets } from '@0xsequence/kit'
+import { getDefaultConnectors, mock } from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
 import { WagmiConfig, createConfig, configureChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public'
-import { mainnet, polygon, arbitrumGoerli } from 'wagmi/chains'
+import { mainnet, polygon } from 'wagmi/chains'
+import { http } from 'viem'
 
 import '@0xsequence/design-system/styles.css'
 
 function App() {
+  // append ?debug=true to url to enable debug mode 
+  const { debug } = qs.parse(location.search)
+  const isDebugMode = debug === 'true'
+
   const { chains, publicClient, webSocketPublicClient } = configureChains(
     [polygon, mainnet],
     [publicProvider()],
   )
 
-  const connectors = getDefaultConnectors({
-    chains,
-    walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
-    defaultChainId: 137
-  })
+  const connectors = [
+    ...getDefaultConnectors({
+      chains,
+      walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
+      defaultChainId: 137
+    }),
+    ...(
+      isDebugMode
+      ?
+        getKitConnectWallets([
+          mock({
+            chains,
+            options: {
+              chain: polygon,
+              account: '0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9',
+              transport: http()
+            }
+          })
+        ])
+      : []
+    )
+  ]
 
   const config = createConfig({
     autoConnect: true,
@@ -35,6 +58,7 @@ function App() {
     signIn: {
       projectName: 'Skyweaver',
       // logoUrl: 'sw-logo-white.svg',
+      useMock: isDebugMode
     },
     displayedAssets: [
       // Matic token
