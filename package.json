@@ -1,6 +1,6 @@
 {
   "name": "kit",
-  "private": false,
+  "private": true,
   "license": "Apache-2.0",
   "scripts": {
     "build": "pnpm dev && pnpm typecheck && preconstruct build",
