@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@0xsequence/auth": "1.2.3",
-    "@0xsequence/design-system": "^1.0.16",
+    "@0xsequence/design-system": "^1.0.19",
     "@0xsequence/ethauth": "^0.8.1",
     "@0xsequence/kit-connectors": "workspace:*",
     "@0xsequence/utils": "1.2.3",
