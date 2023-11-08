@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Image, Text, useMediaQuery } from '@0xsequence/design-system'
-import { useTheme } from '@0xsequence/kit'
+import { useTheme } from '@0xsequence/design-system'
 
 import { bottomPageLinks, socialLinks } from '../constants'
 import *  as sharedStyles from '../shared/styles.css'

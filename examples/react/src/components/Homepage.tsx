@@ -1,9 +1,9 @@
 import React from 'react'
 import qs from 'query-string'
-import { useOpenConnectModal, useTheme, signEthAuthProof, validateEthProof } from '@0xsequence/kit'
+import { useOpenConnectModal, signEthAuthProof, validateEthProof } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
-import { useDisconnect, useAccount, useWalletClient, usePublicClient, useNetwork } from 'wagmi'
+import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
 import {
   Box,
   Button,
@@ -12,7 +12,9 @@ import {
   Image,
   SunIcon,
   MoonIcon,
-  SignoutIcon
+  SignoutIcon,
+  useTheme,
+  vars
 } from '@0xsequence/design-system'
 
 import { Footer } from './Footer'
@@ -136,7 +138,7 @@ function Homepage() {
   }: ClickableCardProps) => {
     return (
       <Card style={{ width: '332px' }} clickable onClick={onClick}>
-        <Text lineHeight="5" fontSize="normal" fontWeight="bold">
+        <Text color="text100" lineHeight="5" fontSize="normal" fontWeight="bold">
           {title}
         </Text>
         <Box marginTop="1">
@@ -158,7 +160,7 @@ function Homepage() {
 
   const SwitchThemeButton = () => {
     return (
-      <Button variant="base" onClick={onClickChangeTheme} leftIcon={theme === 'dark' ? SunIcon : MoonIcon} />
+      <Button variant="base" style={{ color: vars.colors.text100 }} onClick={onClickChangeTheme} leftIcon={theme === 'dark' ? SunIcon : MoonIcon} />
     )
   }
 

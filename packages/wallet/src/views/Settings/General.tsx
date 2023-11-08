@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Card, Switch, Text } from '@0xsequence/design-system'
-import { useTheme } from '@0xsequence/kit'
+import { useTheme } from '@0xsequence/design-system'
 
 import { HEADER_HEIGHT } from '../../constants'
 import { useSettings } from '../../hooks'
@@ -29,7 +29,7 @@ export const SettingsGeneral = () => {
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
       <Box gap="2" padding="5" paddingTop="3" flexDirection="column">
-        {/* <Card
+        <Card
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"
@@ -41,7 +41,7 @@ export const SettingsGeneral = () => {
             checked={theme === 'dark'}
             onCheckedChange={onChangeTheme}
           />
-        </Card> */}
+        </Card>
         <Card
           flexDirection="row"
           justifyContent="space-between"

@@ -1,8 +1,7 @@
 import React from 'react'
-import { Box, Image } from '@0xsequence/design-system'
+import { Box, Image, useTheme } from '@0xsequence/design-system'
 
 import { KitConfig } from '../index'
-import { useTheme } from '../../../hooks'
 
 interface BannerProps {
   config: KitConfig
@@ -13,7 +12,6 @@ export const Banner = ({
 }: BannerProps) => {
   const { signIn = {} } = config
   const { logoUrl } = signIn 
-  const { theme } = useTheme()
 
   return (
     <>

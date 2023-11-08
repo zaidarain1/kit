@@ -85,7 +85,7 @@ function App() {
         <KitWalletProvider>
           <KitCheckoutProvider>
             <div id="app">
-              <ThemeProvider root="#app" scope="app" >
+              <ThemeProvider root="#app" scope="app" theme="dark">
                 <Homepage />
               </ThemeProvider>
             </div>

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 
-import { Box, Image, Text, vars, ChevronLeftIcon, ChevronRightIcon } from '@0xsequence/design-system'
+import { Box, Text, useTheme } from '@0xsequence/design-system'
 import { useConnect } from 'wagmi'
 
 import { ExtendedConnector } from '../../../utils/getKitConnectWallets'
 
-import { useTheme } from '../../../hooks'
 import * as styles from '../../styles.css'
 
 interface ExtendedWalletListProps {
@@ -18,7 +17,7 @@ export const ExtendedWalletList = ({
   connectors,
 }: ExtendedWalletListProps) => {
   const { theme } = useTheme()
-  const { connectors: baseConnectors, connect, isLoading } = useConnect()
+  const { isLoading } = useConnect()
 
   return (
     <Box

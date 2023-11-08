@@ -7,7 +7,7 @@ import {
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
 
-import { useTheme, getModalPositionCss } from '@0xsequence/kit'
+import { getModalPositionCss, useKitTheme } from '@0xsequence/kit'
 
 import {
   PaperTransactionForm,
@@ -73,7 +73,7 @@ export const KitCheckoutProvider = (props: KitCheckoutProvider) => {
 }
 
 export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
-  const { theme, position } = useTheme()
+  const { theme, position } = useKitTheme()
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
   const [history, setHistory] = useState<History>([])
@@ -129,30 +129,32 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
   return (
     <CheckoutModalContextProvider value={{ triggerCheckout, closeCheckout, settings, theme }}>
       <NavigationContextProvider value={{ history, setHistory }}>
-        <AnimatePresence>
-          {openCheckoutModal && (
-            <Modal
-              contentProps={{
-                style: {
-                  maxWidth: '400px',
-                  height: 'auto',
-                  ...getModalPositionCss(position)
-                }
-              }}
-              scroll={false}
-              backdropColor="backgroundBackdrop"
-              onClose={() => setOpenCheckoutModal(false)}
-            >
-              <Box
-                id="sequence-kit-checkout-content"
-                className={sharedStyles.walletContent}
+        <ThemeProvider theme={theme}>
+          <AnimatePresence>
+            {openCheckoutModal && (
+              <Modal
+                contentProps={{
+                  style: {
+                    maxWidth: '400px',
+                    height: 'auto',
+                    ...getModalPositionCss(position)
+                  }
+                }}
+                scroll={false}
+                backdropColor="backgroundBackdrop"
+                onClose={() => setOpenCheckoutModal(false)}
               >
-                {getHeader()}
-                {getContent()}
-              </Box>
-            </Modal>
-          )}
-        </AnimatePresence>
+                <Box
+                  id="sequence-kit-checkout-content"
+                  className={sharedStyles.walletContent}
+                >
+                  {getHeader()}
+                  {getContent()}
+                </Box>
+              </Modal>
+            )}
+          </AnimatePresence>
+        </ThemeProvider>
         {children}
       </NavigationContextProvider>
     </CheckoutModalContextProvider>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Button, Card, ChevronLeftIcon, ChevronRightIcon, Divider, Text, TextInput, vars } from '@0xsequence/design-system'
+import { Box, Button, Card, ChevronLeftIcon, ChevronRightIcon, Divider, Text, TextInput, vars, useTheme } from '@0xsequence/design-system'
 import { useConnect, useAccount } from 'wagmi'
 import{ EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 
@@ -7,7 +7,6 @@ import { ExtendedWalletList } from './ExtendedWalletList'
 import { Banner } from './Banner'
 
 import { defaultSignInOptions } from '../../../constants'
-import { useTheme } from '../../../hooks'
 import { isEmailValid } from '../../../utils'
 import { KitConnectProviderProps } from '../index'
 import { ExtendedConnector } from '../../../utils/getKitConnectWallets'

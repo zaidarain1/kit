@@ -112,7 +112,7 @@ import { useOpenConnectModal } from '@0xsequence/kit'
 ```
 
 ### useTheme
-Use the `useTheme` hook to get information about the current theme, such as light or dark, or set it to something else.
+Use the `useTheme` hook to get information about the current theme, such as light or dark.
 
 ```js
 import { useTheme } from '@0xsequence/kit'

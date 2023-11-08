@@ -14,7 +14,7 @@ import {
   TransactionIcon,
   vars
 } from '@0xsequence/design-system'
-import { useTheme } from '@0xsequence/kit'
+import { useTheme } from '@0xsequence/design-system'
 
 import { useNavigation } from '../../../hooks'
 import { useOpenWalletModal } from '../../../hooks/useOpenWalletModal'
