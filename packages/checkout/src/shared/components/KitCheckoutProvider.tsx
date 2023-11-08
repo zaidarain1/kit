@@ -129,32 +129,30 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
   return (
     <CheckoutModalContextProvider value={{ triggerCheckout, closeCheckout, settings, theme }}>
       <NavigationContextProvider value={{ history, setHistory }}>
-        <ThemeProvider theme={theme}>
-          <AnimatePresence>
-            {openCheckoutModal && (
-              <Modal
-                contentProps={{
-                  style: {
-                    maxWidth: '400px',
-                    height: 'auto',
-                    ...getModalPositionCss(position)
-                  }
-                }}
-                scroll={false}
-                backdropColor="backgroundBackdrop"
-                onClose={() => setOpenCheckoutModal(false)}
+        <AnimatePresence>
+          {openCheckoutModal && (
+            <Modal
+              contentProps={{
+                style: {
+                  maxWidth: '400px',
+                  height: 'auto',
+                  ...getModalPositionCss(position)
+                }
+              }}
+              scroll={false}
+              backdropColor="backgroundBackdrop"
+              onClose={() => setOpenCheckoutModal(false)}
+            >
+              <Box
+                id="sequence-kit-checkout-content"
+                className={sharedStyles.walletContent}
               >
-                <Box
-                  id="sequence-kit-checkout-content"
-                  className={sharedStyles.walletContent}
-                >
-                  {getHeader()}
-                  {getContent()}
-                </Box>
-              </Modal>
-            )}
-          </AnimatePresence>
-        </ThemeProvider>
+                {getHeader()}
+                {getContent()}
+              </Box>
+            </Modal>
+          )}
+        </AnimatePresence>
         {children}
       </NavigationContextProvider>
     </CheckoutModalContextProvider>

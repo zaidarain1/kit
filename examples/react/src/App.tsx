@@ -80,17 +80,19 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme='dark'>
-      <WagmiConfig config={config}>
-        <KitProvider config={kitConfig} >
-          <KitWalletProvider>
-            <KitCheckoutProvider>
-              <Homepage />
-            </KitCheckoutProvider>
-          </KitWalletProvider>
-        </KitProvider>
-      </WagmiConfig>
-    </ThemeProvider>
+    <WagmiConfig config={config}>
+      <KitProvider config={kitConfig} >
+        <KitWalletProvider>
+          <KitCheckoutProvider>
+            <div id="app">
+              <ThemeProvider root="#app" scope="app" >
+                <Homepage />
+              </ThemeProvider>
+            </div>
+          </KitCheckoutProvider>
+        </KitWalletProvider>
+      </KitProvider>
+    </WagmiConfig>
   );
 }
 

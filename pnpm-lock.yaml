@@ -141,8 +141,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.9(ethers@5.7.2)
       '@0xsequence/design-system':
-        specifier: ^1.0.19
-        version: 1.0.19(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.20
+        version: 1.0.20(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/kit':
         specifier: workspace:*
         version: link:../../packages/kit
@@ -236,8 +236,8 @@ importers:
         version: 5.1.0(react@18.2.0)
     devDependencies:
       '@0xsequence/design-system':
-        specifier: ^1.0.19
-        version: 1.0.19(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.20
+        version: 1.0.20(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/kit':
         specifier: workspace:*
         version: link:../kit
@@ -297,8 +297,8 @@ importers:
         version: 1.3.9(@types/react@18.2.37)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)(viem@1.10.7)
     devDependencies:
       '@0xsequence/design-system':
-        specifier: ^1.0.19
-        version: 1.0.19(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.20
+        version: 1.0.20(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/kit':
         specifier: workspace:*
         version: link:../kit
@@ -309,8 +309,8 @@ importers:
         specifier: 1.2.3
         version: 1.2.3(ethers@5.7.2)
       '@0xsequence/design-system':
-        specifier: ^1.0.19
-        version: 1.0.19(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.20
+        version: 1.0.20(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/ethauth':
         specifier: ^0.8.1
         version: 0.8.1(ethers@5.7.2)
@@ -395,8 +395,8 @@ importers:
         version: 5.1.0(react@18.2.0)
     devDependencies:
       '@0xsequence/design-system':
-        specifier: ^1.0.19
-        version: 1.0.19(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.0.20
+        version: 1.0.20(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/kit':
         specifier: workspace:*
         version: link:../kit
@@ -569,8 +569,8 @@ packages:
       '@0xsequence/abi': 1.2.9
       ethers: 5.7.2
 
-  /@0xsequence/design-system@1.0.19(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-1j2RrJNgjfQ+Np6x4zVFCkHkdF3am6s8TfxmaTUkS/ypw7FLSMjIJBpOH/9qpDB1kkdpxVpEZ2R2uexmiq7YJg==}
+  /@0xsequence/design-system@1.0.20(@types/react-dom@18.2.15)(@types/react@18.2.37)(framer-motion@8.5.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9qLPU9snu4ImVjXX1k3ObWYX8UJVCZZMb5xSz+9IVERusqcRjcPlX+UDsG8TV8KlhwzTWYTbnTRC8oMjSLVH/A==}
     peerDependencies:
       framer-motion: '>=6'
       react: '>=17'
