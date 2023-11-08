@@ -106,8 +106,6 @@ export const WalletHeader = ({
 
         <AnimatePresence>
           {openWalletDropdown && (
-          <PopoverPrimitive.Portal
-          >
             <PopoverPrimitive.Content
               asChild
               side="bottom"
@@ -115,7 +113,6 @@ export const WalletHeader = ({
             >
               <WalletDropdownContent setOpenWalletDropdown={setOpenWalletDropdown} />
             </PopoverPrimitive.Content>
-          </PopoverPrimitive.Portal>
         )}
       </AnimatePresence>
       </PopoverPrimitive.Root>
