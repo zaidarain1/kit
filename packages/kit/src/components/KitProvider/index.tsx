@@ -85,6 +85,18 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     window.open('https://sequence.xyz')
   }
 
+  useEffect(() => {
+    if (theme !== defaultTheme) {
+      setTheme(defaultTheme)
+    }
+  }, [defaultTheme])
+
+  useEffect(() => {
+    if (modalPosition !== position) {
+      setModalPosition(position)
+    }
+  }, [position])
+
   // Write data in local storage for retrieval in connectors
   useEffect(() => {
     // Theme

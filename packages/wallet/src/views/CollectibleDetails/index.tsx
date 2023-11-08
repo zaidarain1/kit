@@ -137,7 +137,7 @@ export const CollectibleDetails = ({
               }}
             />
             <Box gap="1" flexDirection="row" justifyContent="center" alignItems="center">
-              <Text fontWeight="bold" fontSize="small">{collectionName}</Text>
+              <Text fontWeight="bold" fontSize="small" color="text100">{collectionName}</Text>
               <Image width="3" src={nativeTokenInfo.logoURI} alt="collection logo" />
             </Box>
           </Box>
