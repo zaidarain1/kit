@@ -1,6 +1,6 @@
 import React from 'react'
 import qs from 'query-string'
-import { useOpenConnectModal, signEthAuthProof, validateEthProof } from '@0xsequence/kit'
+import { useOpenConnectModal, signEthAuthProof, validateEthProof, useTheme as useKitTheme } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
 import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
@@ -23,6 +23,7 @@ import { formatAddress, getCheckoutSettings } from '../utils'
 
 function Homepage() {
   const { theme, setTheme } = useTheme()
+  const { setTheme: setKitTheme } = useKitTheme()
   const { address, connector, isConnected } = useAccount()
   const { setOpenConnectModal } = useOpenConnectModal()
   const { setOpenWalletModal } = useOpenWalletModal()
@@ -81,7 +82,10 @@ function Homepage() {
   }
 
   const onClickChangeTheme = () => {
+    // Change theme at the app level
     setTheme(theme === 'dark' ? 'light' : 'dark')
+    // Change the theme in kit. Theme can also be changed in the settings for kit only
+    setKitTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
 
