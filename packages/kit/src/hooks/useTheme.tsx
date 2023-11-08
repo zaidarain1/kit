@@ -1,7 +1,7 @@
 import React from 'react'
 import { useThemeContext } from '../contexts/Theme'
 
-export const useKitTheme = () => {
+export const useTheme = () => {
   const { setTheme, theme, position, setPosition } = useThemeContext()
 
   return {
@@ -11,5 +11,3 @@ export const useKitTheme = () => {
     setPosition
   }
 }
-
-export { useTheme } from '@0xsequence/design-system'

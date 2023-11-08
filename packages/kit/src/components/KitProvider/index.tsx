@@ -112,8 +112,8 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     >
       <ConnectModalContextProvider value={{ setOpenConnectModal, openConnectModalState: openConnectModal }}>
         <WalletConfigContextProvider value={{ setDisplayedAssets, displayedAssets }}>
-          <div id="kit">
-            <ThemeProvider root="#kit" scope="kit" theme={theme}>
+          <div id="kit-provider">
+            <ThemeProvider root="#kit-provider" scope="kit" theme={theme}>
               <AnimatePresence>
                 {openConnectModal && (
                   <Modal
