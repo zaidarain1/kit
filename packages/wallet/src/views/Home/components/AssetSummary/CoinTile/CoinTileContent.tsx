@@ -47,6 +47,7 @@ export const CoinTileContent = ({
           <Text
             fontWeight="bold"
             whiteSpace="nowrap"
+            color="text100"
             style={{ maxWidth: '130px', textOverflow: 'ellipsis', overflow: 'hidden' }}
           >
             {tokenName}
@@ -63,7 +64,7 @@ export const CoinTileContent = ({
       </Box>
       <Box>
         <Box>
-          <Text fontWeight="bold">{`${fiatCurrency.sign}${balanceFiat}`}</Text>
+          <Text fontWeight="bold" color="text100">{`${fiatCurrency.sign}${balanceFiat}`}</Text>
         </Box>
         <Text
           style={{ color: getPercentageColor(priceChangePercentage) }}

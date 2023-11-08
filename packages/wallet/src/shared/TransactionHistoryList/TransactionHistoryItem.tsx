@@ -153,7 +153,7 @@ export const TransactionHistoryItem = ({
         <Box flexDirection="row" justifyContent="space-between">
           <Box color="text50" gap="1" flexDirection="row" justifyContent="center" alignItems="center">
             {getTransactionIconByType(transfer.transferType)}
-            <Text fontWeight="medium" fontSize="normal">{getTansactionLabelByType(transfer.transferType)}</Text>
+            <Text fontWeight="medium" fontSize="normal" color="text100">{getTansactionLabelByType(transfer.transferType)}</Text>
             <Image src={nativeTokenInfo.logoURI} width="3" />
           </Box>
           {isFirstItem && (

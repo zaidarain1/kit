@@ -208,7 +208,7 @@ export const SendCoin = ({
                 {`~${fiatCurrency.sign}${amountToSendFiat}`}
               </Text>
               <Button size="xs" shape="square" label="Max" onClick={handleMax} data-id="maxCoin" flexShrink="0" />
-              <Text fontSize="xlarge" fontWeight="bold">{symbol}</Text>
+              <Text fontSize="xlarge" fontWeight="bold" color="text100">{symbol}</Text>
             </>
           }
         />

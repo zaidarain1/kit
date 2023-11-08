@@ -14,7 +14,7 @@ import {
   TransactionIcon,
   vars
 } from '@0xsequence/design-system'
-import { useTheme } from '@0xsequence/design-system'
+import { useTheme } from '@0xsequence/kit'
 
 import { useNavigation } from '../../../hooks'
 import { useOpenWalletModal } from '../../../hooks/useOpenWalletModal'
@@ -87,12 +87,13 @@ export const WalletDropdownContent = forwardRef((
           alignItems="center"
           gap="3"
           marginLeft="2"
+          color="text100"
         >
           <GradientAvatar style={{ width: '28px' }} size="md" address={address || ''} />
           <Text
             fontSize="large"
-            color="text100"
             style={{ fontWeight: '700' }}
+            color="text100"
           >
             {formatAddress(address || '')}
           </Text>
@@ -100,6 +101,7 @@ export const WalletDropdownContent = forwardRef((
             buttonVariant="icon"
             size="md"
             text={address || ''}
+            color="text100"
             style={{ marginLeft: '-16px' }}
           />
         </Box>

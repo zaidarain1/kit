@@ -173,7 +173,7 @@ export const TransactionHistoryList = ({
           gap="3"
         >
           <TimeLabel label={"History"} />
-          <Text>No Recent Transaction History Found</Text>
+          <Text color="text100">No Recent Transaction History Found</Text>
         </Box>
       )}
       {isFetchingNextPage && (

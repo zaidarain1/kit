@@ -48,7 +48,7 @@ export const ExtendedWalletList = ({
             className={styles.networkButton}
             onClick={() => onConnect(connector)}
           >
-            <Text variant="medium">
+            <Text variant="medium" color="text100">
               {walletName}
               {isLoading}
             </Text>

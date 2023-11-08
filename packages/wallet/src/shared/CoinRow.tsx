@@ -52,12 +52,12 @@ export const CoinRow = ({
       <Box justifyContent="center" alignItems="center" gap="2">
         <CoinIcon imageUrl={imageUrl} size={30} />
         <Box flexDirection="column" alignItems="flex-start">
-          <Text variant="medium">{name}</Text>
+          <Text variant="medium" color="text100">{name}</Text>
           <Text color="text50" variant="normal"> {`${balanceDisplayed} ${symbol}`}</Text>
         </Box>
       </Box>
       <Box flexDirection="column" alignItems="flex-end">
-        <Text variant="normal">{`$${fiatValue}`}</Text>
+        <Text variant="normal" color="text100">{`$${fiatValue}`}</Text>
         <Text
           variant="small"
           style={{ color: getPercentageColor(priceChangePercentage) }}

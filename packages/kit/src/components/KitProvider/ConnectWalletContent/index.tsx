@@ -233,6 +233,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                       <Text
                         fontSize="normal"
                         fontWeight="bold"
+                        color="text100"
                       >
                         {connector._wallet.name}
                       </Text>

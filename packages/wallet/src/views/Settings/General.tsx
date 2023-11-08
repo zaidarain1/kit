@@ -34,7 +34,7 @@ export const SettingsGeneral = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Text fontWeight="bold">
+          <Text color="text100" fontWeight="bold">
             Dark mode
           </Text>
           <Switch
@@ -47,7 +47,7 @@ export const SettingsGeneral = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Text fontWeight="bold">
+          <Text color="text100" fontWeight="bold">
             Hide unlisted tokens
           </Text>
           <Switch
@@ -60,7 +60,7 @@ export const SettingsGeneral = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Text fontWeight="bold">
+          <Text color="text100" fontWeight="bold">
             Hide collectibles
           </Text>
           <Switch

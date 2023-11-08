@@ -69,7 +69,7 @@ export const SendItemInfo = ({
         )}
         <Box flexDirection="column" alignItems="flex-start">
           <Box flexDirection="row" alignItems="center" gap="1">
-            <Text variant="medium">{name}</Text>
+            <Text variant="medium" color="text100">{name}</Text>
             <CoinIcon imageUrl={nativeTokenInfo.logoURI} size={12} />
           </Box>
           <Text color="text50" variant="normal"> {`${balanceDisplayed} ${symbol} available`}</Text>
@@ -77,7 +77,7 @@ export const SendItemInfo = ({
       </Box>
       <Box flexDirection="column" alignItems="flex-end" justifyContent="flex-end">
         {fiatValue && (
-          <Text variant="normal">{`${fiatCurrency.sign}${fiatValue}`}</Text>
+          <Text variant="normal" color="text100">{`${fiatCurrency.sign}${fiatValue}`}</Text>
         )}
       </Box>
     </Box>

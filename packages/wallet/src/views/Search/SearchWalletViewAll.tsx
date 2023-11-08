@@ -193,7 +193,7 @@ export const SearchWalletViewAll = ({
                 <ItemsSkeletons />
               )}
               {!isLoading && foundCollectionBalances.length === 0 && (
-                <Text>No Collectibles Found</Text>
+                <Text color="text100">No Collectibles Found</Text>
               )}
               {!isLoading && foundCollectionBalances.length > 0 && (
                 foundCollectionBalances.map((indexItem) => {
@@ -212,7 +212,7 @@ export const SearchWalletViewAll = ({
                 <ItemsSkeletons />
               )}
               {!isLoading && coinBalances.length == 0 && (
-                <Text>No Coins Found</Text>
+                <Text color="text100">No Coins Found</Text>
               )}
               {!isLoading && foundCoinBalances.length > 0 && (
                 foundCoinBalances.map((indexedItem) => {

@@ -155,7 +155,7 @@ export const SearchWallet = () => {
           ))
         : (
           foundCollectionBalances.length === 0 ? (
-            <Text>No collections found</Text>
+            <Text color="text100">No collections found</Text>
           ) : (
             foundCollectionBalances.map((indexedItem) => {
               const balance = collectionBalances[indexedItem.index]
@@ -188,7 +188,7 @@ export const SearchWallet = () => {
           ))
         : (
           foundCoinBalances.length === 0 ? (
-            <Text>No coins found</Text>
+            <Text color="text100">No coins found</Text>
           ) : (
             foundCoinBalances.map((indexItem) => {
               const balance = coinBalances[indexItem.index]

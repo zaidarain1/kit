@@ -237,7 +237,7 @@ export const TransactionDetails = ({
           <Text color="text50" fontSize="normal" fontWeight="medium">
             Status
           </Text>
-          <Text fontSize="normal" fontWeight="medium">
+          <Text fontSize="normal" fontWeight="medium" color="text100">
             Complete
           </Text>
         </Box>
@@ -246,7 +246,7 @@ export const TransactionDetails = ({
           <Text color="text50" fontSize="normal" fontWeight="medium">
             Transaction Hash
           </Text>
-          <Text fontSize="normal" fontWeight="medium" style={{ overflowWrap: 'anywhere' }}>
+          <Text color="text100" fontSize="normal" fontWeight="medium" style={{ overflowWrap: 'anywhere' }}>
             {transaction.txnHash}
           </Text>
           <CopyButton marginTop="2" buttonVariant="with-label" text={transaction.txnHash} />

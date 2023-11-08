@@ -78,6 +78,7 @@ export const Receive = () => {
         </Box>
         <Box justifyContent="center" alignItems="center" style={{ maxWidth: '260px', textAlign: 'center' }}>
           <Text
+            color="text100"
             variant="small" 
             style={{ 
               maxWidth: '260px',

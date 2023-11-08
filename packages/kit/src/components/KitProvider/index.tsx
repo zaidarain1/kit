@@ -149,7 +149,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                         {...props}
                       />
                       <Box onClick={poweredBySequenceOnClick} className={sharedStyles.clickable} gap="1" marginTop="2" flexDirection="row" alignItems="center" justifyContent="center">
-                          <Text fontSize="small">
+                          <Text fontSize="small" color="text100">
                             Powered by Sequence
                           </Text>
                           <Box height="5" width="5">
