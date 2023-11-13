@@ -1,6 +1,6 @@
 {
   "name": "@0xsequence/kit-connectors",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Wallets for Sequence Kit",
   "repository": "https://github.com/0xsequence/kit/tree/master/packages/connectors",
   "main": "dist/0xsequence-kit-connectors.cjs.js",
@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/provider": "^1.2.1",
+    "@0xsequence/provider": "^1.4.0",
     "@0xsequence/wagmi-connector": "^2.1.4"
   },
   "devDependencies": {

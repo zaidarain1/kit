@@ -1,6 +1,6 @@
 {
   "name": "@0xsequence/kit",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Core package for Sequence Kit",
   "keywords": [
     "sequence",
@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "ethers": "5.7.2",
-    "0xsequence": "^1.2.1",
+    "0xsequence": "^1.4.0",
     "viem": "1.10.7",
     "wagmi": "1.3.9"
   },
