@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import type { ComponentProps } from "react";
 
 import {
   Box,
@@ -23,7 +24,7 @@ import '@0xsequence/design-system/styles.css'
 import * as sharedStyles from '../styles.css'
 
 export declare const THEME: readonly ["dark", "light"];
-export declare type Theme = typeof THEME[number];
+export declare type Theme = ComponentProps<typeof ThemeProvider>['theme'];
 export const THEMES = {
   dark: 'dark' as Theme,
   light: 'light' as Theme
@@ -83,7 +84,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
 
   const { projectName } = signIn
   const [openConnectModal, setOpenConnectModal] = useState<boolean>(false)
-  const [theme, setTheme] = useState<Theme>(defaultTheme || THEMES.dark)
+  const [theme, setTheme] = useState<Exclude<Theme, undefined>>(defaultTheme || THEMES.dark)
   const [modalPosition, setModalPosition] = useState<ModalPosition>(position)
   const [displayedAssets, setDisplayedAssets] = useState<DisplayedAsset[]>(displayedAssetsSetting)
 
@@ -114,7 +115,12 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   // Write data in local storage for retrieval in connectors
   useEffect(() => {
     // Theme
-    localStorage.setItem(LocalStorageKey.Theme, theme)
+    // TODO: set the sequence theme once it is added to connect options
+    if (typeof theme === 'object') {
+      // localStorage.setItem(LocalStorageKey.Theme, JSON.stringify(theme))
+    } else {
+      localStorage.setItem(LocalStorageKey.Theme, theme)
+    }
     // EthAuth
     // note: keep an eye out for potential race-conditions, though they shouldn't occur.
     // If there are race conditions, the settings could be a function executed prior to being passed to wagmi

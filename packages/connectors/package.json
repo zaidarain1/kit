@@ -17,13 +17,13 @@
     "@0xsequence/wagmi-connector": "^2.1.4"
   },
   "devDependencies": {
-    "@0xsequence/design-system": "^1.0.20",
+    "@0xsequence/design-system": "^1.1.0",
     "@0xsequence/kit": "workspace:*"
   },
   "peerDependencies": {
     "0xsequence": ">=1.4.5",
     "ethers": ">=5.7.2",
-    "@0xsequence/design-system": ">=1.0.20",
+    "@0xsequence/design-system": ">=1.1.0",
     "react": ">=17",
     "react-dom": ">=17",
     "viem": ">=1.4.1",
