@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/provider": "^1.4.0",
+    "@0xsequence/provider": "^1.4.4",
     "@0xsequence/wagmi-connector": "^2.1.4"
   },
   "devDependencies": {
@@ -21,7 +21,7 @@
     "@0xsequence/kit": "workspace:*"
   },
   "peerDependencies": {
-    "0xsequence": ">=1.1.0",
+    "0xsequence": ">=1.4.4",
     "ethers": ">=5.7.2",
     "@0xsequence/design-system": ">=1.0.20",
     "react": ">=17",

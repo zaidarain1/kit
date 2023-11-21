@@ -1,4 +1,6 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, UseQueryResult } from '@tanstack/react-query'
+import { TokenPrice } from '@0xsequence/api'
+import { ContractInfo, TokenBalance, TokenMetadata } from '@0xsequence/indexer'
 import { GetContractInfoArgs } from '@0xsequence/metadata'
 import {
   fetchBalances,
@@ -18,7 +20,7 @@ export const time = {
   oneHour: 60 * 60 * 1000
 }
 
-export const useBalances = (args: GetTokenBalancesArgs) =>
+export const useBalances = (args: GetTokenBalancesArgs): UseQueryResult<TokenBalance[]> =>
   useQuery({
     queryKey: ['balances', args],
     queryFn: () => fetchBalances(args),
@@ -36,7 +38,7 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
   })
 
-export const useCoinPrices = (args: GetCoinPricesArgs) =>
+export const useCoinPrices = (args: GetCoinPricesArgs): UseQueryResult<TokenPrice> =>
   useQuery({
     queryKey: ['coinPrices', args],
     queryFn: () => getCoinPrices(args),
@@ -45,7 +47,7 @@ export const useCoinPrices = (args: GetCoinPricesArgs) =>
     enabled: args.tokens.length > 0
   })
   
-export const useTokenMetadata = (args: GetTokenMetadataArgs) =>
+export const useTokenMetadata = (args: GetTokenMetadataArgs): UseQueryResult<TokenMetadata> =>
   useQuery({
     queryKey: ['useTokenMetadata', args],
     queryFn: () => fetchTokenMetadata(args),
@@ -54,7 +56,7 @@ export const useTokenMetadata = (args: GetTokenMetadataArgs) =>
     enabled: !!args.chainId && !!args.contractAddress
   })
 
-export const useContractInfo = (args: GetContractInfoArgs) =>
+export const useContractInfo = (args: GetContractInfoArgs): UseQueryResult<ContractInfo> =>
   useQuery({
     queryKey: ['useContractInfo', args],
     queryFn: () => fetchContractInfo(args),

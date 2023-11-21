@@ -1,11 +1,10 @@
-import { GetContractInfoArgs, GetContractInfoBatchReturn } from '@0xsequence/metadata'
+import { ContractInfo, GetContractInfoArgs, GetContractInfoBatchReturn, TokenMetadata } from '@0xsequence/metadata'
 import { Token, TokenPrice } from '@0xsequence/api'
-import { TokenBalance, ContractType, Page } from '@0xsequence/indexer'
+import { TokenBalance, ContractType, Page, GetTransactionHistoryReturn, Transaction } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
-import { DisplayedAsset } from '@0xsequence/kit'
+import { getNetworkConfigAndClients, DisplayedAsset } from '@0xsequence/kit'
 
 import { compareAddress, sortBalancesByType } from '../utils'
-import { getNetworkConfigAndClients } from '../utils/clients'
 import sampleSize from 'lodash/sampleSize'
 
 export interface GetTokenBalancesArgs {
@@ -420,7 +419,7 @@ export const getTransactionHistory = async ({
   accountAddress,
   tokenId,
   page
-}: GetTransactionHistoryArgs) => {
+}: GetTransactionHistoryArgs): Promise<GetTransactionHistoryReturn> => {
   const { indexerClient } = getNetworkConfigAndClients(chainId) 
 
   const response = indexerClient.getTransactionHistory({
@@ -444,7 +443,7 @@ export interface GetTransactionHistorySummaryArgs {
 export const getTransactionHistorySummary = async ({
   chainIds,
   accountAddress
-}: GetTransactionHistorySummaryArgs) => {
+}: GetTransactionHistorySummaryArgs): Promise<Transaction[]> => {
   const histories = await Promise.all([...chainIds.map(chainId => getTransactionHistory({
     chainId,
     accountAddress,
@@ -495,7 +494,7 @@ export interface FetchTokenMetadataArgs {
 
 export const fetchTokenMetadata = async ({
   tokens
-}: FetchTokenMetadataArgs) => {
+}: FetchTokenMetadataArgs): Promise<TokenMetadata[]> => {
   const { metadataClient } = getNetworkConfigAndClients(tokens.chainId) 
 
   const response = await metadataClient.getTokenMetadata({
@@ -507,7 +506,7 @@ export const fetchTokenMetadata = async ({
   return response.tokenMetadata
 }
 
-export const getContractInfo = async (args: GetContractInfoArgs) => {
+export const getContractInfo = async (args: GetContractInfoArgs): Promise<ContractInfo> => {
   const { metadataClient } = getNetworkConfigAndClients(Number(args.chainID)) 
 
   const response = await metadataClient.getContractInfo(args)

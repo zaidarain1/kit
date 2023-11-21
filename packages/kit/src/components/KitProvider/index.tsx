@@ -11,7 +11,11 @@ import { AnimatePresence } from 'framer-motion'
 import { ConnectWalletContent } from './ConnectWalletContent'
 import { SequenceLogo } from './SequenceLogo'
 import { DEFAULT_SESSION_EXPIRATION, LocalStorageKey } from '../../constants'
-import { ConnectModalContextProvider, ThemeContextProvider, WalletConfigContextProvider} from '../../contexts'
+import {
+  ConnectModalContextProvider,
+  ThemeContextProvider,
+  WalletConfigContextProvider
+} from '../../contexts'
 import { ModalPosition, getModalPositionCss } from '../../utils'
 
 import '@0xsequence/design-system/styles.css'
@@ -42,6 +46,7 @@ export interface EthAuthSettings {
 }
 
 export interface KitConfig {
+  projectAccessKey?: string,
   defaultTheme?: Theme,
   position?: ModalPosition,
   signIn?: {
@@ -64,6 +69,7 @@ export type KitConnectProviderProps = {
 export const KitProvider = (props: KitConnectProviderProps) => {
   const { config = {}, children } = props
   const {
+    projectAccessKey,
     defaultTheme = 'dark',
     signIn = {},
     position = 'center',
@@ -84,6 +90,14 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   const poweredBySequenceOnClick = () => {
     window.open('https://sequence.xyz')
   }
+
+  useEffect(() => {
+    if (projectAccessKey) {
+      localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
+    } else {
+      localStorage.removeItem(LocalStorageKey.ProjectAccessKey)
+    }
+  }, [projectAccessKey])
 
   useEffect(() => {
     if (theme !== defaultTheme) {

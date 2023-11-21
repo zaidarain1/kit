@@ -54,6 +54,7 @@ function App() {
   })
 
   const kitConfig: KitConfig = {
+    projectAccessKey: '80DNYhTnQl6TEXyrvX6MEFHAAAAAAAAA',
     defaultTheme: THEMES.dark,
     signIn: {
       projectName: 'Skyweaver',

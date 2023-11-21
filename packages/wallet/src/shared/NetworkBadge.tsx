@@ -1,12 +1,14 @@
 import React from 'react'
 import { Box, Image, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, getChainColor, getChainBGColor } from '@0xsequence/kit'
+import {
+  getNativeTokenInfoByChainId,
+  getChainColor,
+  getChainBGColor,
+  getNetworkConfigAndClients
+} from '@0xsequence/kit'
 import { useNetwork } from 'wagmi'
 
-import {
-  getNetworkConfigAndClients,
-  capitalize
-} from '../utils'
+import { capitalize } from '../utils'
 
 interface NetworkBadgeProps {
   chainId: number

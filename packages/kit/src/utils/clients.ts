@@ -3,6 +3,8 @@ import { SequenceIndexer } from '@0xsequence/indexer'
 import { SequenceMetadataClient } from '@0xsequence/metadata'
 import { ChainId, networks, indexerURL } from '@0xsequence/network'
 
+import { LocalStorageKey } from '../constants'
+
 export const getNetworkConfigAndClients = (chainID: number | string) => {
   const network = networks[chainID as ChainId]
   
@@ -10,9 +12,11 @@ export const getNetworkConfigAndClients = (chainID: number | string) => {
     throw 'invalid network'
   }
 
-  const metadataClient = new SequenceMetadataClient('https://metadata.sequence.app')
-  const indexerClient = new SequenceIndexer(indexerURL(network.name))
-  const apiClient = new SequenceAPIClient('https://dev-api.sequence.app')
+  const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || undefined
+
+  const metadataClient = new SequenceMetadataClient('https://metadata.sequence.app', projectAccessKey)
+  const indexerClient = new SequenceIndexer(indexerURL(network.name), projectAccessKey)
+  const apiClient = new SequenceAPIClient('https://api.sequence.app', projectAccessKey)
 
   return { network, metadataClient, indexerClient, apiClient }
 }

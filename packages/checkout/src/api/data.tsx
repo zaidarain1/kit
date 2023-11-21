@@ -1,10 +1,10 @@
-import { Token } from '@0xsequence/api'
-import { networks, ChainId } from '@0xsequence/network'
-import { TokenBalance, ContractType } from '@0xsequence/indexer'
-import { GetContractInfoArgs } from '@0xsequence/metadata'
+import { Token, TokenPrice } from '@0xsequence/api'
+import { getNetworkConfigAndClients } from '@0xsequence/kit'
+import { TokenBalance, ContractType, TokenMetadata } from '@0xsequence/indexer'
+import { GetContractInfoArgs, ContractInfo } from '@0xsequence/metadata'
 import { ethers } from 'ethers'
 
-import { getNetworkConfigAndClients, getPaperNetworkName } from '../utils'
+import { getPaperNetworkName } from '../utils'
 
 export interface GetTokenBalancesArgs {
   accountAddress: string,
@@ -95,7 +95,7 @@ export interface GetCoinPricesArgs {
   tokens: Token[]
 }
 
-export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs) => {
+export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs): Promise<TokenPrice[] | undefined> => {
   try {
     if (tokens.length === 0) return []
     const chainId = tokens[0].chainId
@@ -123,7 +123,7 @@ export const fetchTokenMetadata = async ({
   chainId,
   tokenId,
   contractAddress,
-}: GetTokenMetadataArgs) => {
+}: GetTokenMetadataArgs): Promise<TokenMetadata> => {
   const { metadataClient } = await getNetworkConfigAndClients(chainId)
 
   const response = await metadataClient.getTokenMetadata({
@@ -138,7 +138,7 @@ export const fetchTokenMetadata = async ({
 export const fetchContractInfo = async ({
   chainID,
   contractAddress,
-}: GetContractInfoArgs) => {
+}: GetContractInfoArgs): Promise<ContractInfo> => {
   const { metadataClient } = await getNetworkConfigAndClients(chainID)
   
   const response = await metadataClient.getContractInfo({
