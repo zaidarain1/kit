@@ -2,11 +2,16 @@ import React from 'react'
 import { Box } from '@0xsequence/design-system'
 
 interface GetTwitchLogo {
-  isDarkMode: boolean
+  isDarkMode?: boolean
 }
 
 export const getTwitchLogo = ({ isDarkMode }: GetTwitchLogo) => {
-  const fillColor = isDarkMode ? 'white' : 'black'
+  let fillColor: string
+  if (isDarkMode === undefined) {
+    fillColor = '#9146FF'
+  } else {
+    fillColor = isDarkMode ? 'white' : 'black'
+  }
 
   const TwitchLogo: React.FunctionComponent = ({...props}) => {
     return (

@@ -3,7 +3,7 @@ import qs from 'query-string'
 import { useOpenConnectModal, signEthAuthProof, validateEthProof, useTheme as useKitTheme } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
-import { useDisconnect, useAccount, useWalletClient, usePublicClient } from 'wagmi'
+import { useDisconnect, useAccount, useWalletClient, usePublicClient, useSwitchNetwork, useChainId } from 'wagmi'
 import {
   Box,
   Button,
@@ -30,6 +30,9 @@ function Homepage() {
   const { triggerCheckout } = useCheckoutModal()
   const { disconnect } = useDisconnect()
   const { data: walletClient } = useWalletClient()
+  const { switchNetwork } = useSwitchNetwork()
+  const chainId = useChainId()
+
   const publicClient = usePublicClient()
 
   // append ?debug=true to url to enable debug mode 
@@ -168,6 +171,14 @@ function Homepage() {
     )
   }
 
+  const onSwitchNetwork = () => {
+    if (chainId === 1) {
+      switchNetwork(137)
+    } else {
+      switchNetwork(1)
+    }
+  }
+
   return (
     <Box background="backgroundPrimary">
       {isDebugMode && (
@@ -203,6 +214,13 @@ function Homepage() {
                   title="Generate EthAuth proof"
                   description="Generate EthAuth proof"
                   onClick={generateEthAuthProof}
+                />
+              )}
+              {isDebugMode && (
+                <ClickableCard
+                  title="Switch network"
+                  description="Switch network"
+                  onClick={onSwitchNetwork}
                 />
               )}
             </Box>

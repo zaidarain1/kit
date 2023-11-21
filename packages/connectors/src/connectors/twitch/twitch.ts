@@ -11,8 +11,8 @@ export interface TwitchOptions {
 export const twitch = ({ chains, options = {} }: TwitchOptions) => ({
   id: 'twitch',
   isSequenceBased: true,
-  logoDark: getTwitchLogo({ isDarkMode: true }),
-  logoLight: getTwitchLogo({ isDarkMode: false }),
+  logoDark: getTwitchLogo({}),
+  logoLight: getTwitchLogo({}),
   miniLogoDark: getTwitchLogo({ isDarkMode: true }),
   miniLogoLight: getTwitchLogo({ isDarkMode: false }),
   // iconBackground: '#fff',

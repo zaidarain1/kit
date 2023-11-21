@@ -25,8 +25,8 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   const { signIn = {} } = config
   const {
     showEmailInput = defaultSignInOptions.showEmailInput,
-    authOptions = defaultSignInOptions.authOptions,
-    miniAuthOptions = defaultSignInOptions.miniAuthOptions,
+    socialAuthOptions = defaultSignInOptions.socialAuthOptions,
+    walletAuthOptions = defaultSignInOptions.walletAuthOptions,
   } = signIn
   
   const {
@@ -42,17 +42,17 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
 
 
   const emailConnector = connectors.find(c => c._wallet.id === 'email')
-  const normalConnectors = connectors.filter(connector => {
-    const foundOption = authOptions.find(authOption => authOption === connector._wallet.id)
+  const walletConnectors = connectors.filter(connector => {
+    const foundOption = walletAuthOptions.find(authOption => authOption === connector._wallet.id)
     return !!foundOption
   })
 
-  const miniConnectors = connectors.filter(connector => {
-    const foundOption = miniAuthOptions.find(authOption => authOption === connector._wallet.id)
+  const socialAuthConnectors = connectors.filter(connector => {
+    const foundOption = socialAuthOptions.find(authOption => authOption === connector._wallet.id)
     return !!foundOption
   })
 
-  const displayExtendedListButton = normalConnectors.length > 6
+  const displayExtendedListButton = walletConnectors.length > 4
 
   const onChangeEmail = (ev: React.ChangeEventHandler<HTMLInputElement>) => {
     /* @ts-ignore-next-line */
@@ -102,7 +102,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
         >
           <ChevronLeftIcon />
         </Box>
-        <ExtendedWalletList connectors={normalConnectors} onConnect={onConnect} />
+        <ExtendedWalletList connectors={walletConnectors} onConnect={onConnect} />
       </>
     )
   }
@@ -135,9 +135,9 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
             </form>
           </>
         )}
-        {miniConnectors.length > 0 && (
+        {socialAuthConnectors.length > 0 && (
           <>
-            {emailConnector && showEmailInput && (
+            {((emailConnector && showEmailInput)) && (
               <>
                 <Box style={{ marginBottom: '-4px' }}>
                   <Divider color="backgroundSecondary" />
@@ -149,63 +149,13 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
             )}
             <Box
               marginTop="3"
-              gap="2"
-              flexDirection="row"
-              justifyContent="flex-start"
-              alignItems="center"
-            >
-              {miniConnectors.map(connector => {
-                const Logo =
-                  theme === 'dark'
-                    ? connector._wallet.miniLogoDark as React.FunctionComponent || connector._wallet.logoDark as React.FunctionComponent
-                    : connector._wallet.miniLogoLight as React.FunctionComponent || connector._wallet.logoLight as React.FunctionComponent
-                return (
-                    <Card
-                      key={connector._wallet.id}
-                      className={styles.clickable}
-                      justifyContent="center"
-                      alignItems="center"
-                      onClick={() => onConnect(connector)}
-                      aspectRatio='1/1'
-                      style={{
-                        width: `calc(25% - ${vars.space[2]})`
-                      }}
-                    >
-                    <Box
-                      className={styles.walletLogoContainer}
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
-                    >
-                      <Logo />
-                    </Box>
-                  </Card>
-                )
-              })}
-            </Box>
-          </>
-        )}
-        {normalConnectors.length > 0 && (
-          <>
-            {((emailConnector && showEmailInput) || (miniConnectors.length > 0)) && (
-              <>
-                <Box style={{ marginBottom: '-4px' }}>
-                  <Divider color="backgroundSecondary" />
-                </Box>
-                <Box justifyContent="center" alignItems="center">
-                  <Text variant="small" color="text50">or select a wallet</Text>
-                </Box>
-              </>
-            )}
-            <Box
-              marginTop="3"
               gap="3"
               flexDirection="row"
               justifyContent="space-between"
               alignItems="center"
               flexWrap="wrap"
             >
-              {normalConnectors.slice(0, 6).map(connector => {
+              {socialAuthConnectors.slice(0, 6).map(connector => {
                 const Logo =
                   theme === 'dark'
                     ? connector._wallet.logoDark as React.FunctionComponent
@@ -239,6 +189,85 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                       </Text>
                     </Box>
                   </Card>
+                )
+              })}
+            </Box>
+          </>
+        )}
+        {walletConnectors.length > 0 && (
+          <>
+            {((emailConnector && showEmailInput) || (socialAuthConnectors.length > 0)) && (
+              <>
+                <Box style={{ marginBottom: '-4px' }}>
+                  <Divider color="backgroundSecondary" />
+                </Box>
+                <Box justifyContent="center" alignItems="center">
+                  <Text variant="small" color="text50">or select a wallet</Text>
+                </Box>
+              </>
+            )}
+            <Box
+              marginTop="3"
+              gap="2"
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+              {walletConnectors.map(connector => {
+                const Logo =
+                  theme === 'dark'
+                    ? connector._wallet.logoDark as React.FunctionComponent || connector._wallet.logoDark as React.FunctionComponent
+                    : connector._wallet.logoLight as React.FunctionComponent || connector._wallet.logoLight as React.FunctionComponent
+                return (
+                  <Card
+                    key={connector._wallet.id}
+                    className={styles.clickable}
+                    justifyContent="center"
+                    alignItems="center"
+                    onClick={() => onConnect(connector)}
+                    style={{
+                      height: '110px',
+                      width: `calc(50% - ${vars.space[2]})`
+                    }}
+                  >
+                  <Box
+                    className={styles.walletLogoContainer}
+                    flexDirection="column"
+                    gap="4"
+                    alignItems="center"
+                    justifyContent="center"
+                  >
+                    <Logo />
+                    <Text
+                      fontSize="normal"
+                      fontWeight="bold"
+                      color="text100"
+                    >
+                      {connector._wallet.name}
+                    </Text>
+                  </Box>
+                </Card>
+                  //   mini auth options
+                  //   <Card
+                  //     key={connector._wallet.id}
+                  //     className={styles.clickable}
+                  //     justifyContent="center"
+                  //     alignItems="center"
+                  //     onClick={() => onConnect(connector)}
+                  //     aspectRatio='1/1'
+                  //     style={{
+                  //       width: `calc(25% - ${vars.space[2]})`
+                  //     }}
+                  //   >
+                  //   <Box
+                  //     className={styles.walletLogoContainer}
+                  //     flexDirection="column"
+                  //     alignItems="center"
+                  //     justifyContent="center"
+                  //   >
+                  //     <Logo />
+                  //   </Box>
+                  // </Card>
                 )
               })}
             </Box>

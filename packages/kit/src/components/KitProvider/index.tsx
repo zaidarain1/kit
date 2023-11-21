@@ -53,8 +53,8 @@ export interface KitConfig {
     logoUrl?: string,
     projectName?: string,
     showEmailInput?: boolean,
-    miniAuthOptions?: string[],
-    authOptions?: string[],
+    socialAuthOptions?: string[]
+    walletAuthOptions?: string[]
     useMock?: boolean
   },
   displayedAssets?: DisplayedAsset[],
