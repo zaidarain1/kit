@@ -24,7 +24,7 @@ import '@0xsequence/design-system/styles.css'
 import * as sharedStyles from '../styles.css'
 
 export declare const THEME: readonly ["dark", "light"];
-export declare type Theme = ComponentProps<typeof ThemeProvider>['theme'];
+export declare type Theme = Exclude<ComponentProps<typeof ThemeProvider>['theme'], undefined>;
 export const THEMES = {
   dark: 'dark' as Theme,
   light: 'light' as Theme
