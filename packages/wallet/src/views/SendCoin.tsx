@@ -290,6 +290,7 @@ export const SendCoin = ({
       }
 
       <Button
+        color="text100"
         marginTop="3"
         width="full"
         variant="primary"

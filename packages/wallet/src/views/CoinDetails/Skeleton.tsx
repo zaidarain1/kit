@@ -37,6 +37,7 @@ export const CoinDetailsSkeleton = ({
           </Box>
         </Box>
         <Button
+          color="text100"
           marginTop="4"
           marginBottom="10"
           width="full"

@@ -289,6 +289,7 @@ export const SendCollectible = ({
       }
 
       <Button
+        color="text100"
         marginTop="3"
         width="full"
         variant="primary"

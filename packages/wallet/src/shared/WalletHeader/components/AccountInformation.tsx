@@ -39,7 +39,7 @@ export const AccountInformation = forwardRef(({
           <Text color="text100" fontWeight="medium" variant="normal">
             {formatAddress(address || '')}
           </Text>
-          <ChevronDownIcon />
+          <ChevronDownIcon color="text100" />
         </Box>
       </Box>
     </Box>

@@ -55,7 +55,7 @@ function App() {
 
   const kitConfig: KitConfig = {
     projectAccessKey: 'iK0DPkHRt0IFo8o4M3fZIIOAAAAAAAAAA',
-    defaultTheme: THEMES.dark,
+    defaultTheme: 'dark',
     signIn: {
       projectName: 'Skyweaver',
       // logoUrl: 'sw-logo-white.svg',

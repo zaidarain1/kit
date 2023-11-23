@@ -63,6 +63,17 @@ export const WalletDropdownContent = forwardRef((
     disconnect()
   }
 
+  const getDropdownBackgroundColor = () => {
+    switch(theme) {
+      case 'dark':
+        return 'rgba(38, 38, 38, 0.85)'
+      case 'light':
+        return 'rgba(217, 217, 217, 0.85)'
+      default:
+        return vars.colors.transparent
+    }
+  }
+
   return (
     <Box
       padding="3"
@@ -76,7 +87,7 @@ export const WalletDropdownContent = forwardRef((
         backdropFilter: 'blur(12.5px)',
         top: '16px',
         left: '15px',
-        background: theme === 'dark' ? "rgba(38, 38, 38, 0.85)" : "rgba(217, 217, 217, 0.85)" 
+        background: getDropdownBackgroundColor() 
       }}
 
     >
@@ -109,6 +120,7 @@ export const WalletDropdownContent = forwardRef((
       </Box>
       <Box gap="2" marginTop="3" flexDirection="column">
         <Button
+          variant="glass"
           style={{ borderRadius: vars.radii.md }}
           width="full"
           leftIcon={QrCodeIcon}

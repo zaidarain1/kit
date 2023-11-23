@@ -143,6 +143,7 @@ export const CoinDetails = ({
           width="full"
           variant="primary"
           leftIcon={SendIcon}
+          color="text100"
           label="Send"
           onClick={onClickSend}
         />

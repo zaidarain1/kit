@@ -175,6 +175,7 @@ export const CollectibleDetails = ({
             </Box>
           </Box>
           <Button
+            color="text100"
             marginTop="4"
             width="full"
             variant="primary"
