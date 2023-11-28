@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "kit",
   "dependencies": {
-    "0xsequence": "^1.4.5",
+    "0xsequence": "^1.4.9",
     "@0xsequence/design-system": "^1.1.0",
     "@0xsequence/kit": "workspace:*",
     "@0xsequence/kit-checkout": "workspace:*",
