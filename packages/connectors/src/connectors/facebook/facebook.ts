@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
-import { FacebookLogo, getFacebookMiniLogo } from './FacebookLogo'
+import { FacebookLogo, getFacebookMonochromeLogo } from './FacebookLogo'
 
 export interface FacebookOptions {
   chains: Chain[];
@@ -13,8 +13,8 @@ export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
   isSequenceBased: true,
   logoDark: FacebookLogo,
   logoLight: FacebookLogo,
-  miniLogoDark: getFacebookMiniLogo({ isDarkMode: true }),
-  miniLogoLight: getFacebookMiniLogo({ isDarkMode: false }),
+  monochromeLogoDark: getFacebookMonochromeLogo({ isDarkMode: true }),
+  monochromeLogoLight: getFacebookMonochromeLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Facebook',
   createConnector: () => {

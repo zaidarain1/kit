@@ -23,16 +23,16 @@ export const FacebookLogo: React.FunctionComponent = ({...props}) => {
 }
 
 
-interface GetFacebookMiniLogo {
+interface GetFacebookMonochromeLogo {
   isDarkMode: boolean
 }
 
-export const getFacebookMiniLogo = ({
+export const getFacebookMonochromeLogo = ({
   isDarkMode
-}: GetFacebookMiniLogo) => {
+}: GetFacebookMonochromeLogo) => {
   const fillColor = isDarkMode ? '#FFFFFF' : '#000000'
 
-  const FacebookMiniLogo: React.FunctionComponent = ({...props}) => {
+  const FacebookMonochromeLogo: React.FunctionComponent = ({...props}) => {
     return (
       <React.Fragment>
         <svg
@@ -47,5 +47,5 @@ export const getFacebookMiniLogo = ({
     )
   }
 
-  return FacebookMiniLogo
+  return FacebookMonochromeLogo
 }

@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
-import { getAppleLogo, getAppleMiniLogo } from './AppleLogo'
+import { getAppleLogo, getAppleMonochromeLogo } from './AppleLogo'
 
 export interface AppleOptions {
   chains: Chain[];
@@ -13,8 +13,8 @@ export const apple = ({ chains, options = {} }: AppleOptions) => ({
   isSequenceBased: true,
   logoDark: getAppleLogo({ isDarkMode: true }),
   logoLight: getAppleLogo({ isDarkMode: false }),
-  miniLogoDark: getAppleMiniLogo({ isDarkMode: true }),
-  miniLogoLight: getAppleMiniLogo({ isDarkMode: false }),
+  monochromeLogoDark: getAppleMonochromeLogo({ isDarkMode: true }),
+  monochromeLogoLight: getAppleMonochromeLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Apple',
   createConnector: () => {

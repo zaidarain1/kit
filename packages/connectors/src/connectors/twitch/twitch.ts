@@ -13,8 +13,8 @@ export const twitch = ({ chains, options = {} }: TwitchOptions) => ({
   isSequenceBased: true,
   logoDark: getTwitchLogo({}),
   logoLight: getTwitchLogo({}),
-  miniLogoDark: getTwitchLogo({ isDarkMode: true }),
-  miniLogoLight: getTwitchLogo({ isDarkMode: false }),
+  monochromeLogoDark: getTwitchLogo({ isDarkMode: true }),
+  monochromeLogoLight: getTwitchLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Twitch',
   createConnector: () => {

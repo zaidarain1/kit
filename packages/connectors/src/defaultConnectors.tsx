@@ -3,13 +3,14 @@ import { Connector } from 'wagmi'
 import { getKitConnectWallets } from '@0xsequence/kit'
 
 import {
+  apple,
   email,
   facebook,
   google,
   metamask,
+  sequence,
+  twitch,
   walletConnect,
-  apple,
-  twitch
 } from './connectors'
 
 interface GetDefaultConnectors {
@@ -72,6 +73,12 @@ export const getDefaultConnectors = ({
         projectId: walletConnectProjectId
       },
     }),
+    sequence({
+      chains,
+      options: {
+        defaultNetwork: defaultChain
+      }
+    })
   ]) 
 
   return connectors

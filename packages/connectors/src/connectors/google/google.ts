@@ -1,7 +1,7 @@
 import { Chain } from 'wagmi'
 import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
-import { GoogleLogo, getMiniGoogleLogo } from './GoogleLogo'
+import { GoogleLogo, getMonochromeGoogleLogo } from './GoogleLogo'
 
 export interface GoogleOptions {
   chains: Chain[];
@@ -13,8 +13,8 @@ export const google = ({ chains, options = {} }: GoogleOptions) => ({
   isSequenceBased: true,
   logoDark: GoogleLogo,
   logoLight: GoogleLogo,
-  miniLogoDark: getMiniGoogleLogo({ isDarkMode: true }),
-  miniLogoLight: getMiniGoogleLogo({ isDarkMode: false }),
+  monochromeLogoDark: getMonochromeGoogleLogo({ isDarkMode: true }),
+  monochromeLogoLight: getMonochromeGoogleLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Google',
   createConnector: () => {

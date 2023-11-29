@@ -149,44 +149,36 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
             )}
             <Box
               marginTop="3"
-              gap="3"
+              gap="2"
               flexDirection="row"
-              justifyContent="space-between"
+              justifyContent="flex-start"
               alignItems="center"
               flexWrap="wrap"
             >
-              {socialAuthConnectors.slice(0, 6).map(connector => {
+              {socialAuthConnectors.map(connector => {
                 const Logo =
                   theme === 'dark'
-                    ? connector._wallet.logoDark as React.FunctionComponent
-                    : connector._wallet.logoLight as React.FunctionComponent
+                    ? connector._wallet.monochromeLogoDark as React.FunctionComponent
+                    : connector._wallet.monochromeLogoLight as React.FunctionComponent
                 return (
-                    <Card
-                      key={connector._wallet.id}
-                      className={styles.clickable}
-                      justifyContent="center"
-                      alignItems="center"
-                      onClick={() => onConnect(connector)}
-                      style={{
-                        height: '110px',
-                        width: `calc(50% - ${vars.space[2]})`
-                      }}
-                    >
+                  <Card
+                    key={connector._wallet.id}
+                    className={styles.clickable}
+                    justifyContent="center"
+                    alignItems="center"
+                    onClick={() => onConnect(connector)}
+                    aspectRatio='1/1'
+                    style={{
+                      width: `calc(25% - ${vars.space[2]})`
+                    }}
+                  >
                     <Box
                       className={styles.walletLogoContainer}
                       flexDirection="column"
-                      gap="4"
                       alignItems="center"
                       justifyContent="center"
                     >
                       <Logo />
-                      <Text
-                        fontSize="normal"
-                        fontWeight="bold"
-                        color="text100"
-                      >
-                        {connector._wallet.name}
-                      </Text>
                     </Box>
                   </Card>
                 )
@@ -210,7 +202,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
               marginTop="3"
               gap="2"
               flexDirection="row"
-              justifyContent="center"
+              justifyContent="flex-start"
               alignItems="center"
             >
               {walletConnectors.map(connector => {
@@ -225,71 +217,42 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                     justifyContent="center"
                     alignItems="center"
                     onClick={() => onConnect(connector)}
+                    aspectRatio='1/1'
                     style={{
-                      height: '110px',
-                      width: `calc(50% - ${vars.space[2]})`
+                      width: `calc(25% - ${vars.space[2]})`
                     }}
                   >
-                  <Box
-                    className={styles.walletLogoContainer}
-                    flexDirection="column"
-                    gap="4"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <Logo />
-                    <Text
-                      fontSize="normal"
-                      fontWeight="bold"
-                      color="text100"
+                    <Box
+                      className={styles.walletLogoContainer}
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
                     >
-                      {connector._wallet.name}
-                    </Text>
-                  </Box>
-                </Card>
-                  //   mini auth options
-                  //   <Card
-                  //     key={connector._wallet.id}
-                  //     className={styles.clickable}
-                  //     justifyContent="center"
-                  //     alignItems="center"
-                  //     onClick={() => onConnect(connector)}
-                  //     aspectRatio='1/1'
-                  //     style={{
-                  //       width: `calc(25% - ${vars.space[2]})`
-                  //     }}
-                  //   >
-                  //   <Box
-                  //     className={styles.walletLogoContainer}
-                  //     flexDirection="column"
-                  //     alignItems="center"
-                  //     justifyContent="center"
-                  //   >
-                  //     <Logo />
-                  //   </Box>
-                  // </Card>
-                )
-              })}
-            </Box>
-            {displayExtendedListButton && (
-              <Box
-                padding="4"
-                marginTop="3"
-                background="backgroundSecondary"
-                width="full"
-                justifyContent="space-between"
-                alignItems="center"
-                borderRadius="md"
-                color="text100"
-                as="button"
-                className={styles.clickable}
-                onClick={() => setShowExtendedList(true)}
-              >
-                <Text variant="medium">More options</Text>
-                <ChevronRightIcon />
+                      <Logo />
+                    </Box>
+                  </Card>
+                  )
+                })}
               </Box>
-            )}
-          </>
+              {/* {displayExtendedListButton && (
+                <Box
+                  padding="4"
+                  marginTop="3"
+                  background="backgroundSecondary"
+                  width="full"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  borderRadius="md"
+                  color="text100"
+                  as="button"
+                  className={styles.clickable}
+                  onClick={() => setShowExtendedList(true)}
+                >
+                  <Text variant="medium">More options</Text>
+                  <ChevronRightIcon />
+                </Box>
+              )} */}
+            </>
         )}
       </Box>
     </>
