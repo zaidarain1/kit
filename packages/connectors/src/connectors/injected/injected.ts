@@ -9,6 +9,7 @@ import { SequenceLogo } from '../sequence/SequenceLogo'
 
 declare global {
   interface Window {
+    /* @ts-ignore-next-line */
     ethereum?: ethers.providers.ExternalProvider;
   }
 }
