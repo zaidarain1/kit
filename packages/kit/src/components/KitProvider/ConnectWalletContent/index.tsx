@@ -45,11 +45,15 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   const walletConnectors = connectors.filter(connector => {
     const foundOption = walletAuthOptions.find(authOption => authOption === connector._wallet.id)
     return !!foundOption
+  }).sort((a, b) => {
+    return (walletAuthOptions.indexOf(a._wallet.id) - walletAuthOptions.indexOf(b._wallet.id))
   })
 
   const socialAuthConnectors = connectors.filter(connector => {
     const foundOption = socialAuthOptions.find(authOption => authOption === connector._wallet.id)
     return !!foundOption
+  }).sort((a, b) => {
+    return (socialAuthOptions.indexOf(a._wallet.id) - socialAuthOptions.indexOf(b._wallet.id))
   })
 
   const displayExtendedListButton = walletConnectors.length > 4

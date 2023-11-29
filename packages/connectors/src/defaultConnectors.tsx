@@ -4,6 +4,7 @@ import { getKitConnectWallets } from '@0xsequence/kit'
 
 import {
   apple,
+  coinbaseWallet,
   email,
   facebook,
   google,
@@ -34,6 +35,12 @@ export const getDefaultConnectors = ({
   }
 
   const connectors = getKitConnectWallets([
+    coinbaseWallet({
+      chains,
+      options: {
+        appName: 'app'
+      }
+    }),
     email({
       chains,
       options: {

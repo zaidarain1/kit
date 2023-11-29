@@ -136,7 +136,7 @@ The settings are described in more detailed in the Sequence Kit documentation.
       projectName: 'my app',
       showEmailInput: true,
       socialAuthOptions: ['google', 'facebook', 'twitch', 'apple'],
-      walletAuthOptions: ['metamask', 'wallet-connect'],
+      walletAuthOptions: ['sequence', 'metamask', 'wallet-connect', 'coinbase-wallet'],
     };
     // limits the digital assets displayed on the assets summary screen
     displayedAssets: [
