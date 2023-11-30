@@ -155,7 +155,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
               marginTop="3"
               gap="2"
               flexDirection="row"
-              justifyContent="flex-start"
+              justifyContent="center"
               alignItems="center"
               flexWrap="wrap"
             >
@@ -206,7 +206,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
               marginTop="3"
               gap="2"
               flexDirection="row"
-              justifyContent="flex-start"
+              justifyContent="center"
               alignItems="center"
             >
               {walletConnectors.map(connector => {
