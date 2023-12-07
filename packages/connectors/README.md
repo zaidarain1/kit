@@ -25,6 +25,7 @@ yarn add @0xsequence/kit-connectors
 - Sequence
 - Metamask
 - WalletConnect
+- Coinbase Wallet
 - injected providers
 
 ## Custom connectors
