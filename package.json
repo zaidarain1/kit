@@ -22,7 +22,9 @@
     "dev": "preconstruct dev",
     "postinstall": "preconstruct dev",
     "start:react": "pnpm --filter @0xsequence/kit-example-react start",
-    "build:react": "pnpm --filter @0xsequence/kit-example-react build"
+    "build:react": "pnpm --filter @0xsequence/kit-example-react build",
+    "start:nextjs": "pnpm --filter @0xsequence/kit-example-nextjs-pages dev",
+    "build:nextjs": "pnpm --filter @0xsequence/kit-example-nextjs-pages build"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
