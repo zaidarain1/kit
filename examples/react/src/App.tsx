@@ -27,7 +27,9 @@ function App() {
     ...getDefaultConnectors({
       chains,
       walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
-      defaultChainId: 137
+      defaultChainId: 137,
+      appName: 'demo app',
+      projectAccessKey: 'iK0DPkHRt0IFo8o4M3fZIIOAAAAAAAAAA'
     }),
     ...(
       isDebugMode

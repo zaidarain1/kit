@@ -17,6 +17,8 @@ import {
 interface GetDefaultConnectors {
   chains: Chain[],
   walletConnectProjectId: string,
+  projectAccessKey: string,
+  appName: string,
   defaultChainId?: number
 }
 
@@ -24,6 +26,8 @@ export const getDefaultConnectors = ({
   chains,
   walletConnectProjectId,
   defaultChainId,
+  projectAccessKey,
+  appName,
 }: GetDefaultConnectors): Connector<any, any>[] => {
   let defaultChain = chains[0].id
   
@@ -38,37 +42,57 @@ export const getDefaultConnectors = ({
     coinbaseWallet({
       chains,
       options: {
-        appName: 'app'
+        appName
       }
     }),
     email({
       chains,
       options: {
-        defaultNetwork: defaultChain
+        defaultNetwork: defaultChain,
+        connect: {
+          app: appName,
+          projectAccessKey
+        }
       }
     }),
     google({
       chains,
       options: {
-        defaultNetwork: defaultChain
+        defaultNetwork: defaultChain,
+        connect: {
+          app: appName,
+          projectAccessKey
+        }
       }
     }),
     facebook({
       chains,
       options: {
-        defaultNetwork: defaultChain
+        defaultNetwork: defaultChain,
+        connect: {
+          app: appName,
+          projectAccessKey
+        }
       }
     }),
     twitch({
       chains,
       options: {
-        defaultNetwork: defaultChain
+        defaultNetwork: defaultChain,
+        connect: {
+          app: appName,
+          projectAccessKey
+        }
       }
     }),
     apple({
       chains,
       options: {
-        defaultNetwork: defaultChain
+        defaultNetwork: defaultChain,
+        connect: {
+          app: appName,
+          projectAccessKey
+        }
       }
     }),
     metamask({
@@ -83,7 +107,11 @@ export const getDefaultConnectors = ({
     sequence({
       chains,
       options: {
-        defaultNetwork: defaultChain
+        defaultNetwork: defaultChain,
+        connect: {
+          app: appName,
+          projectAccessKey
+        }
       }
     })
   ]) 
