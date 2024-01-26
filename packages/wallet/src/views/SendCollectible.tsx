@@ -14,8 +14,9 @@ import {
   TextInput,
   vars
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useAnalyticsContext } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
+import { ExtendedConnector } from "@0xsequence/kit"
 import { useAccount, useChainId, useSwitchNetwork, useWalletClient, useNetwork } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
@@ -44,6 +45,7 @@ export const SendCollectible = ({
   contractAddress,
   tokenId
 }: SendCollectibleProps) => {
+  const { analytics } = useAnalyticsContext()
   const { chains = [] } = useNetwork()
   const connectedChainId = useChainId()
   const { address: accountAddress = '', connector } = useAccount()
@@ -137,6 +139,12 @@ export const SendCollectible = ({
 
     switch(contractType) {
       case 'ERC721':
+        analytics?.track({
+          event: 'SEND_TRANSACTION_REQUEST',
+          props: {
+            'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown'
+          }
+        })
         // _from, _to, _id
         walletClient?.sendTransaction({
           to: (tokenBalance as TokenBalance).contractAddress as `0x${string}}`,
@@ -149,6 +157,12 @@ export const SendCollectible = ({
         break;
       case 'ERC1155':
       default:
+        analytics?.track({
+          event: 'SEND_TRANSACTION_REQUEST',
+          props: {
+            'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown'
+          }
+        })
         // _from, _to, _ids, _amounts, _data
         walletClient?.sendTransaction({
           to: (tokenBalance as TokenBalance).contractAddress as `0x${string}}`,

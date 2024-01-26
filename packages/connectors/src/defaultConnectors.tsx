@@ -49,6 +49,7 @@ export const getDefaultConnectors = ({
       chains,
       options: {
         defaultNetwork: defaultChain,
+        projectAccessKey,
         connect: {
           app: appName,
           projectAccessKey
@@ -59,6 +60,7 @@ export const getDefaultConnectors = ({
       chains,
       options: {
         defaultNetwork: defaultChain,
+        projectAccessKey,
         connect: {
           app: appName,
           projectAccessKey
@@ -69,6 +71,7 @@ export const getDefaultConnectors = ({
       chains,
       options: {
         defaultNetwork: defaultChain,
+        projectAccessKey,
         connect: {
           app: appName,
           projectAccessKey
@@ -79,6 +82,7 @@ export const getDefaultConnectors = ({
       chains,
       options: {
         defaultNetwork: defaultChain,
+        projectAccessKey,
         connect: {
           app: appName,
           projectAccessKey
@@ -89,6 +93,7 @@ export const getDefaultConnectors = ({
       chains,
       options: {
         defaultNetwork: defaultChain,
+        projectAccessKey,
         connect: {
           app: appName,
           projectAccessKey
@@ -108,6 +113,7 @@ export const getDefaultConnectors = ({
       chains,
       options: {
         defaultNetwork: defaultChain,
+        projectAccessKey,
         connect: {
           app: appName,
           projectAccessKey

@@ -12,8 +12,9 @@ import {
   TextInput,
   vars
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useAnalyticsContext } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
+import { ExtendedConnector } from '@0xsequence/kit'
 import {
   useAccount,
   useChainId,
@@ -50,6 +51,7 @@ export const SendCoin = ({
   chainId,
   contractAddress
 }: SendCoinProps) => {
+  const { analytics } = useAnalyticsContext()
   const { chains = [] } = useNetwork()
   const connectedChainId = useChainId()
   const { address: accountAddress = '', connector } = useAccount()
@@ -150,11 +152,23 @@ export const SendCoin = ({
     const sendAmount = ethers.utils.parseUnits(amountToSendFormatted, decimals)
 
     if (isNativeCoin) {
+      analytics?.track({
+        event: 'SEND_TRANSACTION_REQUEST',
+        props: {
+          'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown'
+        }
+      })
       walletClient?.sendTransaction({
         to: toAddress as `0x${string}}`,
         value: BigInt(sendAmount.toString())
       }).catch(e => console.error('User rejected transaction', e))
     } else {
+      analytics?.track({
+        event: 'SEND_TRANSACTION_REQUEST',
+        props: {
+          'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown'
+        }
+      })
       walletClient?.sendTransaction({
         to: tokenBalance?.contractAddress as `0x${string}}`,
         data: new ethers.utils.Interface(ERC_20_ABI).encodeFunctionData('transfer', [toAddress, sendAmount.toHexString()]) as `0x${string}`

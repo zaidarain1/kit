@@ -7,10 +7,10 @@ export const EMAIL_CONNECTOR_LOCAL_STORAGE_KEY = '@sequence.kit.connector.email'
 
 export interface EmailOptions {
   chains: Chain[];
-  options?: BaseSequenceConnectorOptions;
+  options: BaseSequenceConnectorOptions;
 }
 
-export const email = ({ chains, options = {} }: EmailOptions) => ({
+export const email = ({ chains, options }: EmailOptions) => ({
   id: 'email',
   isSequenceBased: true,
   logoDark: getEmailLogo({ isDarkMode: true }),

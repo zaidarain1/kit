@@ -5,10 +5,10 @@ import { GoogleLogo, getMonochromeGoogleLogo } from './GoogleLogo'
 
 export interface GoogleOptions {
   chains: Chain[];
-  options?: BaseSequenceConnectorOptions;
+  options: BaseSequenceConnectorOptions;
 }
 
-export const google = ({ chains, options = {} }: GoogleOptions) => ({
+export const google = ({ chains, options }: GoogleOptions) => ({
   id: 'google',
   isSequenceBased: true,
   logoDark: GoogleLogo,

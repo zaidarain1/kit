@@ -5,10 +5,10 @@ import { FacebookLogo, getFacebookMonochromeLogo } from './FacebookLogo'
 
 export interface FacebookOptions {
   chains: Chain[];
-  options?: BaseSequenceConnectorOptions;
+  options: BaseSequenceConnectorOptions;
 }
 
-export const facebook = ({ chains, options = {} }: FacebookOptions) => ({
+export const facebook = ({ chains, options }: FacebookOptions) => ({
   id: 'facebook',
   isSequenceBased: true,
   logoDark: FacebookLogo,

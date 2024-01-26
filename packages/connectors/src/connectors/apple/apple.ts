@@ -5,10 +5,10 @@ import { getAppleLogo, getAppleMonochromeLogo } from './AppleLogo'
 
 export interface AppleOptions {
   chains: Chain[];
-  options?: BaseSequenceConnectorOptions;
+  options: BaseSequenceConnectorOptions;
 }
 
-export const apple = ({ chains, options = {} }: AppleOptions) => ({
+export const apple = ({ chains, options }: AppleOptions) => ({
   id: 'apple',
   isSequenceBased: true,
   logoDark: getAppleLogo({ isDarkMode: true }),
