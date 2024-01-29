@@ -6,6 +6,8 @@ import{ EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 import { ExtendedWalletList } from './ExtendedWalletList'
 import { Banner } from './Banner'
 
+import { useAnalyticsContext } from '../../../contexts'
+import { KitConfig } from '../../index'
 import { defaultSignInOptions } from '../../../constants'
 import { isEmailValid } from '../../../utils'
 import { KitConnectProviderProps } from '../index'
@@ -22,7 +24,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   const { isConnected } = useAccount()
   const { theme } = useTheme()
   const { config = {} } = props
-  const { signIn = {} } = config
+  const { signIn = {} } = config as KitConfig
   const {
     showEmailInput = defaultSignInOptions.showEmailInput,
     socialAuthOptions = defaultSignInOptions.socialAuthOptions,
@@ -113,7 +115,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
 
   return (
     <>
-      <Banner config={config} />
+      <Banner config={config as KitConfig} />
       <Box marginTop="5">
         {emailConnector && showEmailInput && (
           <>

@@ -6,7 +6,7 @@ import { SequenceLogo } from './SequenceLogo'
 
 export interface SequenceOptions {
   chains: Chain[];
-  options?: BaseSequenceConnectorOptions
+  options: BaseSequenceConnectorOptions
 }
 
 

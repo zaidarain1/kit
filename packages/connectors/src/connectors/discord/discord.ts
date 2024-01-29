@@ -5,10 +5,10 @@ import { getDiscordLogo } from './DiscordLogo'
 
 export interface DiscordOptions {
   chains: Chain[];
-  options?: BaseSequenceConnectorOptions;
+  options: BaseSequenceConnectorOptions;
 }
 
-export const discord = ({ chains, options = {} }: DiscordOptions) => ({
+export const discord = ({ chains, options }: DiscordOptions) => ({
   id: 'discord',
   isSequenceBased: true,
   logoDark: getDiscordLogo({ isDarkMode: true }),

@@ -15,6 +15,7 @@ import {
 } from 'wagmi'
 
 export interface BaseSequenceConnectorOptions {
+  projectAccessKey: string,
   defaultNetwork?: sequence.network.ChainIdLike,
   connect?: ConnectOptions
 }
@@ -27,9 +28,9 @@ export class BaseSequenceConnector extends Connector<sequence.provider.SequenceP
 
   provider: sequence.provider.SequenceProvider
 
-  constructor({ chains, options = {} }: {
+  constructor({ chains, options }: {
     chains?: Chain[],
-    options?: BaseSequenceConnectorOptions
+    options: BaseSequenceConnectorOptions
   }) {
     super({ chains, options })
 
@@ -52,13 +53,13 @@ export class BaseSequenceConnector extends Connector<sequence.provider.SequenceP
       this.name = name
     }
 
-    this.provider = sequence.initWallet({
+    this.provider = sequence.initWallet(options.projectAccessKey, {
       defaultNetwork: options?.defaultNetwork,
       transports: {
         walletAppURL: 'https://sequence.app',
       },
       defaultEIP6492: true,
-      projectAccessKey: options?.connect?.projectAccessKey
+      analytics: false,
     })
 
     this.provider.on('chainChanged', (chainIdHex: string) => {

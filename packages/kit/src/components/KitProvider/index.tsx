@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import type { ComponentProps } from "react";
+import { sequence } from '0xsequence'
 
 import {
   Box,
@@ -8,6 +9,7 @@ import {
   ThemeProvider,
 } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
+import { useAccount } from 'wagmi'
 
 import { ConnectWalletContent } from './ConnectWalletContent'
 import { SequenceLogo } from './SequenceLogo'
@@ -15,13 +17,15 @@ import { DEFAULT_SESSION_EXPIRATION, LocalStorageKey } from '../../constants'
 import {
   ConnectModalContextProvider,
   ThemeContextProvider,
-  WalletConfigContextProvider
+  WalletConfigContextProvider,
+  AnalyticsContextProvider
 } from '../../contexts'
 import { ModalPosition, getModalPositionCss } from '../../utils'
 
 import '@0xsequence/design-system/styles.css'
 
 import * as sharedStyles from '../styles.css'
+import { SequenceClient } from '0xsequence/dist/declarations/src/provider';
 
 export declare const THEME: readonly ["dark", "light"];
 export declare type Theme = Exclude<ComponentProps<typeof ThemeProvider>['theme'], undefined>;
@@ -47,7 +51,8 @@ export interface EthAuthSettings {
 }
 
 export interface KitConfig {
-  projectAccessKey?: string,
+  analytics?: SequenceClient["analytics"]
+  projectAccessKey: string,
   defaultTheme?: Theme,
   position?: ModalPosition,
   signIn?: {
@@ -64,18 +69,19 @@ export interface KitConfig {
 
 export type KitConnectProviderProps = {
   children: React.ReactNode,
-  config?: KitConfig
+  config: KitConfig
 }
 
 export const KitProvider = (props: KitConnectProviderProps) => {
-  const { config = {}, children } = props
+  const { config, children } = props
   const {
     projectAccessKey,
     defaultTheme = 'dark',
     signIn = {},
     position = 'center',
     displayedAssets: displayedAssetsSetting = [],
-    ethAuth = {} as EthAuthSettings
+    ethAuth = {} as EthAuthSettings,
+    analytics: analyticsParams,
   } = config
 
   const defaultAppName = signIn.projectName || 'app'
@@ -87,18 +93,37 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   const [theme, setTheme] = useState<Exclude<Theme, undefined>>(defaultTheme || THEMES.dark)
   const [modalPosition, setModalPosition] = useState<ModalPosition>(position)
   const [displayedAssets, setDisplayedAssets] = useState<DisplayedAsset[]>(displayedAssetsSetting)
+  const [analytics, setAnalytics] = useState<SequenceClient["analytics"]>()
+  const { address, isConnected } = useAccount()
+
+  const setupAnalytics = (projectAccessKey: string, analyticsObj?: SequenceClient["analytics"]) => {
+    if (analyticsObj) {
+      setAnalytics(analyticsObj)
+      return
+    }
+    const s = sequence.initWallet(projectAccessKey)
+    const sequenceAnalytics = s.client.analytics
+    setAnalytics(sequenceAnalytics)
+  }
+
+  useEffect(() => {
+    if (!isConnected) {
+      analytics?.reset()
+      return
+    }
+    if (address) {
+      analytics?.identify(address.toLowerCase())
+    }
+  },[analytics, address, isConnected])
 
   const poweredBySequenceOnClick = () => {
     window.open('https://sequence.xyz')
   }
 
   useEffect(() => {
-    if (projectAccessKey) {
-      localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
-    } else {
-      localStorage.removeItem(LocalStorageKey.ProjectAccessKey)
-    }
-  }, [projectAccessKey])
+    setupAnalytics(projectAccessKey, analyticsParams)
+    localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
+  }, [projectAccessKey, analyticsParams])
 
   useEffect(() => {
     if (theme !== defaultTheme) {
@@ -144,57 +169,59 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     >
       <ConnectModalContextProvider value={{ setOpenConnectModal, openConnectModalState: openConnectModal }}>
         <WalletConfigContextProvider value={{ setDisplayedAssets, displayedAssets }}>
-          <div id="kit-provider">
-            <ThemeProvider root="#kit-provider" scope="kit" theme={theme}>
-              <AnimatePresence>
-                {openConnectModal && (
-                  <Modal
-                    scroll={false}
-                    backdropColor="backgroundBackdrop"
-                    size="sm"
-                    contentProps={{
-                      style: {
-                        maxWidth: '364px',
-                        ...getModalPositionCss(position)
-                      }
-                    }}
-                    onClose={() => setOpenConnectModal(false)}
-                  >
-                    <Box
-                      padding="4"
-                      className={sharedStyles.walletContent}
+          <AnalyticsContextProvider value={{ setAnalytics, analytics }}>
+            <div id="kit-provider">
+              <ThemeProvider root="#kit-provider" scope="kit" theme={theme}>
+                <AnimatePresence>
+                  {openConnectModal && (
+                    <Modal
+                      scroll={false}
+                      backdropColor="backgroundBackdrop"
+                      size="sm"
+                      contentProps={{
+                        style: {
+                          maxWidth: '364px',
+                          ...getModalPositionCss(position)
+                        }
+                      }}
+                      onClose={() => setOpenConnectModal(false)}
                     >
                       <Box
-                        justifyContent="center"
-                        color="text100"
-                        alignItems="center"
-                        fontWeight="medium"
-                        style={{
-                          marginTop: '4px'
-                        }}
+                        padding="4"
+                        className={sharedStyles.walletContent}
                       >
-                        <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
+                        <Box
+                          justifyContent="center"
+                          color="text100"
+                          alignItems="center"
+                          fontWeight="medium"
+                          style={{
+                            marginTop: '4px'
+                          }}
+                        >
+                          <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
+                        </Box>
+                        <ConnectWalletContent
+                          openConnectModal={openConnectModal}
+                          setOpenConnectModal={setOpenConnectModal}
+                          {...props}
+                        />
+                        <Box onClick={poweredBySequenceOnClick} className={sharedStyles.clickable} gap="1" marginTop="2" flexDirection="row" alignItems="center" justifyContent="center">
+                            <Text fontSize="small" color="text100">
+                              Powered by Sequence
+                            </Text>
+                            <Box height="5" width="5">
+                              <SequenceLogo/>
+                            </Box>
+                        </Box>
                       </Box>
-                      <ConnectWalletContent
-                        openConnectModal={openConnectModal}
-                        setOpenConnectModal={setOpenConnectModal}
-                        {...props}
-                      />
-                      <Box onClick={poweredBySequenceOnClick} className={sharedStyles.clickable} gap="1" marginTop="2" flexDirection="row" alignItems="center" justifyContent="center">
-                          <Text fontSize="small" color="text100">
-                            Powered by Sequence
-                          </Text>
-                          <Box height="5" width="5">
-                            <SequenceLogo/>
-                          </Box>
-                      </Box>
-                    </Box>
-                  </Modal>
-                )}
-                </AnimatePresence>
-              </ThemeProvider>
-            </div>
-            {children}
+                    </Modal>
+                  )}
+                  </AnimatePresence>
+                </ThemeProvider>
+              </div>
+              {children}
+            </AnalyticsContextProvider>
           </WalletConfigContextProvider>
         </ConnectModalContextProvider>
     </ThemeContextProvider>
