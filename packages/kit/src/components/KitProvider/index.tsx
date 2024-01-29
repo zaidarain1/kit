@@ -101,7 +101,6 @@ export const KitProvider = (props: KitConnectProviderProps) => {
       setAnalytics(analyticsObj)
       return
     }
-    // TODO: replace with setupAnalytics
     const s = sequence.initWallet(projectAccessKey)
     const sequenceAnalytics = s.client.analytics
     setAnalytics(sequenceAnalytics)
