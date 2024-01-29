@@ -8,7 +8,7 @@ export interface TwitchOptions {
   options?: BaseSequenceConnectorOptions;
 }
 
-export const twitch = ({ chains, options = {} }: TwitchOptions) => ({
+export const twitch = ({ chains, options }: TwitchOptions) => ({
   id: 'twitch',
   isSequenceBased: true,
   logoDark: getTwitchLogo({}),
