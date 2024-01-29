@@ -7,10 +7,13 @@ import { getDefaultConnectors, mock } from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createConfig, http, WagmiProvider } from 'wagmi'
 import { mainnet, polygon, Chain } from 'wagmi/chains'
 
 import '@0xsequence/design-system/styles.css'
+
+const queryClient = new QueryClient() 
 
 function App() {
   // append ?debug=true to url to enable debug mode 
@@ -18,7 +21,6 @@ function App() {
   const isDebugMode = debug === 'true'
 
   const chains = [mainnet, polygon] as [Chain, ...Chain[]]
-
 
   const connectors = [
     ...getDefaultConnectors({
@@ -82,17 +84,19 @@ function App() {
 
   return (
     <WagmiProvider config={config}>
-      <KitProvider config={kitConfig} >
-        <KitWalletProvider>
-          <KitCheckoutProvider>
-            <div id="app">
-              <ThemeProvider root="#app" scope="app" theme="dark">
-                <Homepage />
-              </ThemeProvider>
-            </div>
-          </KitCheckoutProvider>
-        </KitWalletProvider>
-      </KitProvider>
+      <QueryClientProvider client={queryClient}> 
+        <KitProvider config={kitConfig} >
+          <KitWalletProvider>
+            <KitCheckoutProvider>
+              <div id="app">
+                <ThemeProvider root="#app" scope="app" theme="dark">
+                  <Homepage />
+                </ThemeProvider>
+              </div>
+            </KitCheckoutProvider>
+          </KitWalletProvider>
+        </KitProvider>
+      </QueryClientProvider>
     </WagmiProvider>
   );
 }

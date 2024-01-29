@@ -40,7 +40,9 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   /* @ts-ignore-next-line */
   const connectors = baseConnectors as ExtendedConnector[]
   const [showExtendedList, setShowExtendedList] = useState<boolean>(false)
-  const mockConnector = connectors.find(connector => connector._wallet.id === 'mock')
+  const mockConnector = connectors.find(connector => {
+    return connector._wallet.id === 'mock'
+  })
 
 
   const emailConnector = connectors.find(c => c._wallet.id === 'email')
