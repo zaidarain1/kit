@@ -1,14 +1,13 @@
-import { Chain } from 'wagmi'
-import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import type { Wallet } from '@0xsequence/kit'
 
 import { FacebookLogo, getFacebookMonochromeLogo } from './FacebookLogo'
+import { sequence } from '0xsequence';
 
-export interface FacebookOptions {
-  chains: Chain[];
-  options: BaseSequenceConnectorOptions;
+export interface FacebookOptions extends BaseSequenceConnectorOptions {
 }
 
-export const facebook = ({ chains, options }: FacebookOptions) => ({
+export const facebook = (options: FacebookOptions) => ({
   id: 'facebook',
   isSequenceBased: true,
   logoDark: FacebookLogo,
@@ -18,20 +17,16 @@ export const facebook = ({ chains, options }: FacebookOptions) => ({
   // iconBackground: '#fff',
   name: 'Facebook',
   createConnector: () => {
-    const connector = new BaseSequenceConnector({
-      chains,
-      options: {
-        ...options,
-        // @ts-ignore
-        connect: {
-          ...options?.connect,
-          settings: {
-            ...options?.connect?.settings,
-            signInWith: 'facebook'
-          }
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        ...options?.connect,
+        settings: {
+          ...options?.connect?.settings,
+          signInWith: 'facebook'
         }
       }
     });
     return connector
   }
-})
+}) as Wallet

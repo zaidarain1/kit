@@ -1,5 +1,5 @@
 import { Chain } from 'wagmi/chains'
-import { Connector } from 'wagmi'
+import { CreateConnectorFn } from 'wagmi'
 import { getKitConnectWallets } from '@0xsequence/kit'
 
 import {
@@ -23,104 +23,68 @@ interface GetDefaultConnectors {
 }
 
 export const getDefaultConnectors = ({
-  chains,
   walletConnectProjectId,
   defaultChainId,
   projectAccessKey,
   appName,
-}: GetDefaultConnectors): Connector<any, any>[] => {
-  let defaultChain = chains[0].id
-  
-  if (defaultChainId) {
-    const chain = chains.find(c => c.id === defaultChainId)
-    if (chain) {
-      defaultChain = chain.id
-    }
-  }
-
+}: GetDefaultConnectors): CreateConnectorFn<any, any, any>[] => {
   const connectors = getKitConnectWallets([
     coinbaseWallet({
-      chains,
-      options: {
-        appName
-      }
+      appName
     }),
     email({
-      chains,
-      options: {
-        defaultNetwork: defaultChain,
-        projectAccessKey,
-        connect: {
-          app: appName,
-          projectAccessKey
-        }
+      defaultNetwork: defaultChainId,
+      projectAccessKey,
+      connect: {
+        app: appName,
+        projectAccessKey
       }
     }),
     google({
-      chains,
-      options: {
-        defaultNetwork: defaultChain,
-        projectAccessKey,
-        connect: {
-          app: appName,
-          projectAccessKey
-        }
+      defaultNetwork: defaultChainId,
+      projectAccessKey,
+      connect: {
+        app: appName,
+        projectAccessKey
       }
     }),
     facebook({
-      chains,
-      options: {
-        defaultNetwork: defaultChain,
-        projectAccessKey,
-        connect: {
-          app: appName,
-          projectAccessKey
-        }
+      defaultNetwork: defaultChainId,
+      projectAccessKey,
+      connect: {
+        app: appName,
+        projectAccessKey
       }
     }),
     twitch({
-      chains,
-      options: {
-        defaultNetwork: defaultChain,
-        projectAccessKey,
-        connect: {
-          app: appName,
-          projectAccessKey
-        }
+      defaultNetwork: defaultChainId,
+      projectAccessKey,
+      connect: {
+        app: appName,
+        projectAccessKey
       }
     }),
     apple({
-      chains,
-      options: {
-        defaultNetwork: defaultChain,
-        projectAccessKey,
-        connect: {
-          app: appName,
-          projectAccessKey
-        }
+      defaultNetwork: defaultChainId,
+      projectAccessKey,
+      connect: {
+        app: appName,
+        projectAccessKey
       }
     }),
-    metamask({
-      chains,
-    }),
+    metamask(),
     walletConnect({
-      chains,
-      options: {
-        projectId: walletConnectProjectId
-      },
+      projectId: walletConnectProjectId
     }),
     sequence({
-      chains,
-      options: {
-        defaultNetwork: defaultChain,
-        projectAccessKey,
-        connect: {
-          app: appName,
-          projectAccessKey
-        }
+      defaultNetwork: defaultChainId,
+      projectAccessKey,
+      connect: {
+        app: appName,
+        projectAccessKey
       }
     })
-  ]) 
+  ])
 
   return connectors
 }

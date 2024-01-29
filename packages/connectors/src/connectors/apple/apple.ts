@@ -1,14 +1,12 @@
-import { Chain } from 'wagmi'
-import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import type { Wallet } from '@0xsequence/kit'
 
 import { getAppleLogo, getAppleMonochromeLogo } from './AppleLogo'
 
-export interface AppleOptions {
-  chains: Chain[];
-  options: BaseSequenceConnectorOptions;
+export interface AppleOptions extends BaseSequenceConnectorOptions {
 }
 
-export const apple = ({ chains, options }: AppleOptions) => ({
+export const apple = (options: AppleOptions) => ({
   id: 'apple',
   isSequenceBased: true,
   logoDark: getAppleLogo({ isDarkMode: true }),
@@ -18,20 +16,16 @@ export const apple = ({ chains, options }: AppleOptions) => ({
   // iconBackground: '#fff',
   name: 'Apple',
   createConnector: () => {
-    const connector = new BaseSequenceConnector({
-      chains,
-      options: {
-        ...options,
-        // @ts-ignore
-        connect: {
-          ...options?.connect,
-          settings: {
-            ...options?.connect?.settings,
-            signInWith: 'apple'
-          }
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        ...options?.connect,
+        settings: {
+          ...options?.connect?.settings,
+          signInWith: 'apple'
         }
       }
     });
     return connector
   }
-})
+}) as Wallet

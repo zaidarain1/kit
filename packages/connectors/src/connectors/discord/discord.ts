@@ -1,14 +1,12 @@
-import { Chain } from 'wagmi'
-import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import type { Wallet } from '@0xsequence/kit'
 
 import { getDiscordLogo } from './DiscordLogo'
 
-export interface DiscordOptions {
-  chains: Chain[];
-  options: BaseSequenceConnectorOptions;
+export interface DiscordOptions extends BaseSequenceConnectorOptions {
 }
 
-export const discord = ({ chains, options }: DiscordOptions) => ({
+export const discord = (options: DiscordOptions) => ({
   id: 'discord',
   isSequenceBased: true,
   logoDark: getDiscordLogo({ isDarkMode: true }),
@@ -18,20 +16,16 @@ export const discord = ({ chains, options }: DiscordOptions) => ({
   // iconBackground: '#fff',
   name: 'Discord',
   createConnector: () => {
-    const connector = new BaseSequenceConnector({
-      chains,
-      options: {
-        ...options,
-        // @ts-ignore
-        connect: {
-          ...options?.connect,
-          settings: {
-            ...options?.connect?.settings,
-            signInWith: 'discord'
-          }
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        ...options?.connect,
+        settings: {
+          ...options?.connect?.settings,
+          signInWith: 'discord'
         }
       }
     });
     return connector
   }
-})
+}) as Wallet

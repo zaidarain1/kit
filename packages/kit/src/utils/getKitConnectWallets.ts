@@ -1,5 +1,5 @@
 import React from 'react'
-import { Connector } from 'wagmi'
+import { CreateConnectorFn } from 'wagmi'
 
 export interface WalletProperties {
   id: string,
@@ -14,17 +14,17 @@ export interface WalletProperties {
 }
 
 export type Wallet = WalletProperties & {
-  createConnector: () => Connector<any, any>
+  createConnector: () => CreateConnectorFn<any, any, any>
 }
 
 export interface WalletField {
   _wallet: WalletProperties
 } 
 
-export type ExtendedConnector = Connector & WalletField
+export type ExtendedConnector = CreateConnectorFn<any, any, any> & WalletField
 
 export const getKitConnectWallets = (wallets: Wallet[]) => {
-  const connectors: Connector[] = []
+  const connectors: CreateConnectorFn<any, any, any>[] = []
 
   // hide connector if there is an identical injected wallet
   const injectedWallet = wallets.find(connector => connector.id === 'injected')
@@ -41,7 +41,7 @@ export const getKitConnectWallets = (wallets: Wallet[]) => {
     const connector = wallet.createConnector()
     const walletProperties = { ...metaProperties }
 
-    const convertToExtendedConnector = (connector: Connector, walletProperties: WalletProperties) => {
+    const convertToExtendedConnector = (connector: CreateConnectorFn<any, any, any>, walletProperties: WalletProperties) => {
       const result = connector as ExtendedConnector
       result._wallet = { ...walletProperties }
       return result

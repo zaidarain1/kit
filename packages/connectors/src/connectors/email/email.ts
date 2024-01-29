@@ -1,16 +1,14 @@
-import { Chain } from 'wagmi'
-import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import type { Wallet } from '@0xsequence/kit'
 
 import { getEmailLogo } from './EmailLogo'
 
 export const EMAIL_CONNECTOR_LOCAL_STORAGE_KEY = '@sequence.kit.connector.email'
 
-export interface EmailOptions {
-  chains: Chain[];
-  options: BaseSequenceConnectorOptions;
+export interface EmailOptions extends BaseSequenceConnectorOptions {
 }
 
-export const email = ({ chains, options }: EmailOptions) => ({
+export const email = (options: EmailOptions) => ({
   id: 'email',
   isSequenceBased: true,
   logoDark: getEmailLogo({ isDarkMode: true }),
@@ -20,22 +18,19 @@ export const email = ({ chains, options }: EmailOptions) => ({
   createConnector: () => {
     const email = localStorage.getItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY)
 
-    const connector = new BaseSequenceConnector({
-      chains,
-      options: {
-        ...options,
-        // @ts-ignore
-        connect: {
-          ...options?.connect,
-          settings: {
-            ...options?.connect?.settings,
-            signInOptions: ['email'],
-            signInWithEmail: email || ''
-          }
+    const connector = sequenceWallet({
+      ...options,
+      // @ts-ignore
+      connect: {
+        ...options?.connect,
+        settings: {
+          ...options?.connect?.settings,
+          signInOptions: ['email'],
+          signInWithEmail: email || ''
         }
       }
     });
 
     return connector
   }
-})
+}) as Wallet

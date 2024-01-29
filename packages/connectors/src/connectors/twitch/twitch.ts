@@ -1,14 +1,12 @@
-import { Chain } from 'wagmi'
-import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import type { Wallet } from '@0xsequence/kit'
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 import { getTwitchLogo } from './TwitchLogo'
 
-export interface TwitchOptions {
-  chains: Chain[];
-  options?: BaseSequenceConnectorOptions;
+export interface TwitchOptions extends BaseSequenceConnectorOptions {
 }
 
-export const twitch = ({ chains, options }: TwitchOptions) => ({
+export const twitch = (options: TwitchOptions) => ({
   id: 'twitch',
   isSequenceBased: true,
   logoDark: getTwitchLogo({}),
@@ -18,20 +16,16 @@ export const twitch = ({ chains, options }: TwitchOptions) => ({
   // iconBackground: '#fff',
   name: 'Twitch',
   createConnector: () => {
-    const connector = new BaseSequenceConnector({
-      chains,
-      options: {
-        ...options,
-        // @ts-ignore
-        connect: {
-          ...options?.connect,
-          settings: {
-            ...options?.connect?.settings,
-            signInWith: 'twitch'
-          }
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        ...options?.connect,
+        settings: {
+          ...options?.connect?.settings,
+          signInWith: 'twitch'
         }
       }
     });
     return connector
   }
-})
+}) as Wallet

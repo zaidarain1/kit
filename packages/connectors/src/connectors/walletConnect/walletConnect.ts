@@ -1,22 +1,18 @@
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { Wallet } from '@0xsequence/kit'
+import { walletConnect as walletConnectbase, WalletConnectParameters } from 'wagmi/connectors'
 
 import { WalletConnectLogo } from './WalletConnectLogo'
 
-export type WalletConnectWalletOptions = ConstructorParameters<
-  typeof WalletConnectConnector
->[0];
-
-export const walletConnect = ({ chains, options }: WalletConnectWalletOptions) => ({
+export const walletConnect = (options: WalletConnectParameters) => ({
   id: 'wallet-connect',
   logoDark: WalletConnectLogo,
   logoLight: WalletConnectLogo,
   // iconBackground: '#fff',
   name: 'Walletconnect',
   createConnector: () => {
-    const connector = new WalletConnectConnector({
-      chains,
-      options,
+    const connector = walletConnectbase({
+      ...options,
     });
     return connector
   }
-})
+}) as Wallet
