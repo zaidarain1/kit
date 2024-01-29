@@ -1,4 +1,4 @@
-import { Chain } from 'wagmi'
+import { Chain } from 'wagmi/chains'
 
 export interface NativeTokenInfo {
   name: string,
@@ -102,7 +102,7 @@ export const getChainIdList = () => {
 }
 
 
-export const defaultNativeTokenInfo = (chainId: number, wagmiChains: Chain[]) => {
+export const defaultNativeTokenInfo = (chainId: number, wagmiChains: readonly [Chain, ...Chain[]] ) => {
   const foundChain = wagmiChains.find(chain => chain.id === chainId)
 
   if (foundChain) {
@@ -119,6 +119,6 @@ export const defaultNativeTokenInfo = (chainId: number, wagmiChains: Chain[]) =>
   return
 }
 
-export const getNativeTokenInfoByChainId = (chainId: number, wagmiChains: Chain[]) => {
+export const getNativeTokenInfoByChainId = (chainId: number, wagmiChains: readonly [Chain, ...Chain[]]) => {
   return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[1]
 }

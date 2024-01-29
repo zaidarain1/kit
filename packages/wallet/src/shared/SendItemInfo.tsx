@@ -3,7 +3,7 @@ import { Box, Image, Text, vars } from '@0xsequence/design-system'
 import React from 'react'
 import { Skeleton } from './Skeleton'
 import { ethers } from 'ethers'
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
@@ -51,7 +51,7 @@ export const SendItemInfo = ({
   chainId,
   showSquareImage,
 }: SendItemInfoProps) => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { fiatCurrency } = useSettings()
   const formattedBalance = ethers.utils.formatUnits(balance, decimals)
   const balanceDisplayed = formatDisplay(formattedBalance)

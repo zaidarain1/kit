@@ -15,7 +15,6 @@ import {
 } from './connectors'
 
 interface GetDefaultConnectors {
-  chains: Chain[],
   walletConnectProjectId: string,
   projectAccessKey: string,
   appName: string,

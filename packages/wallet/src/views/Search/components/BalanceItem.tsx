@@ -1,6 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 import { Box, Image, Text, ChevronRightIcon } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
@@ -21,7 +21,7 @@ interface BalanceItemProps {
 export const BalanceItem = ({
   balance
 }: BalanceItemProps) => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { setNavigation } = useNavigation()
   const isNativeToken = compareAddress(balance.contractAddress, ethers.constants.AddressZero) 
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains)

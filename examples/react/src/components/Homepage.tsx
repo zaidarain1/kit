@@ -3,7 +3,14 @@ import qs from 'query-string'
 import { useOpenConnectModal, signEthAuthProof, validateEthProof, useTheme as useKitTheme } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
-import { useDisconnect, useAccount, useWalletClient, usePublicClient, useSwitchNetwork, useChainId } from 'wagmi'
+import {
+  useDisconnect,
+  useAccount,
+  useWalletClient,
+  usePublicClient,
+  useChainId,
+  useSwitchChain
+} from 'wagmi'
 import {
   Box,
   Button,
@@ -30,7 +37,8 @@ function Homepage() {
   const { triggerCheckout } = useCheckoutModal()
   const { disconnect } = useDisconnect()
   const { data: walletClient } = useWalletClient()
-  const { switchNetwork } = useSwitchNetwork()
+  const { switchChain } = useSwitchChain()
+
   const chainId = useChainId()
 
   const publicClient = usePublicClient()
@@ -173,9 +181,9 @@ function Homepage() {
 
   const onSwitchNetwork = () => {
     if (chainId === 1) {
-      switchNetwork(137)
+      switchChain({ chainId: 137 })
     } else {
-      switchNetwork(1)
+      switchChain({ chainId: 1 })
     }
   }
 

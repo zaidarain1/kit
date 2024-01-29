@@ -2,14 +2,14 @@ import { Box, Button, Text, CopyIcon, ShareIcon, Image } from '@0xsequence/desig
 import React, { useState, useEffect } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import QRCode from 'qrcode.react'
-import { useAccount, useNetwork } from 'wagmi'
+import { useAccount, useConfig } from 'wagmi'
 
 import { HEADER_HEIGHT } from '../constants'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 export const Receive = () => {
-  const { address } = useAccount()
-  const { chain, chains = [] } = useNetwork()
+  const { address, chain } = useAccount()
+  const { chains } = useConfig()
   const [isCopied, setCopied] = useState<boolean>(false)
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(chain?.id || 1, chains)

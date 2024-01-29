@@ -17,7 +17,7 @@ export const ExtendedWalletList = ({
   connectors,
 }: ExtendedWalletListProps) => {
   const { theme } = useTheme()
-  const { isLoading } = useConnect()
+  const { isPending } = useConnect()
 
   return (
     <Box
@@ -30,10 +30,11 @@ export const ExtendedWalletList = ({
           ? connector._wallet.logoDark as React.FunctionComponent
           : connector._wallet.logoLight as React.FunctionComponent
         const walletName = connector._wallet.name
+        const connectorId = connector._wallet.id
 
         return (
           <Box
-            key={connector.id}
+            key={connectorId}
             as="button"
             flexDirection="row"
             alignItems="center"
@@ -50,7 +51,7 @@ export const ExtendedWalletList = ({
           >
             <Text variant="medium" color="text100">
               {walletName}
-              {isLoading}
+              {isPending}
             </Text>
             <Box
               justifyContent="center"

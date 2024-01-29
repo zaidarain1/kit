@@ -18,9 +18,9 @@ import { ExtendedConnector } from '@0xsequence/kit'
 import {
   useAccount,
   useChainId,
-  useSwitchNetwork,
+  useSwitchChain,
   useWalletClient,
-  useNetwork
+  useConfig
 } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
@@ -52,14 +52,14 @@ export const SendCoin = ({
   contractAddress
 }: SendCoinProps) => {
   const { analytics } = useAnalyticsContext()
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const connectedChainId = useChainId()
   const { address: accountAddress = '', connector } = useAccount()
   /* @ts-ignore-next-line */
   const isConnectorSequenceBased = !!connector?._wallet?.isSequenceBased
   const isCorrectChainId = connectedChainId === chainId
   const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased
-  const { switchNetwork } = useSwitchNetwork()
+  const { switchChain } = useSwitchChain()
   const amountInputRef = useRef<HTMLInputElement>(null)
   const { setOpenWalletModal } = useOpenWalletModal()
   const { fiatCurrency } = useSettings()
@@ -72,7 +72,7 @@ export const SendCoin = ({
     contractAddress,
   }, { hideUnlistedTokens: false })
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
-  const tokenBalance = balances.find(b => b.contractAddress === contractAddress)
+  const tokenBalance = (balances as  TokenBalance[]).find(b => b.contractAddress === contractAddress)
   const {
     data: coinPrices = [],
     isLoading: isLoadingCoinPrices
@@ -144,7 +144,7 @@ export const SendCoin = ({
 
   const executeTransaction = async (e: ChangeEvent<HTMLFormElement>) => {
     if (!isCorrectChainId && isConnectorSequenceBased) {
-      switchNetwork && switchNetwork(chainId)
+      switchChain({ chainId })
     }
 
     e.preventDefault()
@@ -295,7 +295,7 @@ export const SendCoin = ({
               variant="primary"
               type="button"
               label="Switch Network"
-              onClick={() => switchNetwork && switchNetwork(chainId)}
+              onClick={() => switchChain({ chainId })}
               disabled={isCorrectChainId}
               style={{ height: '52px', borderRadius: vars.radii.md }}
             />

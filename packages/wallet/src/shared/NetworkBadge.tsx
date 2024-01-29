@@ -6,7 +6,7 @@ import {
   getChainBGColor,
   getNetworkConfigAndClients
 } from '@0xsequence/kit'
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 
 import { capitalize } from '../utils'
 
@@ -17,7 +17,7 @@ interface NetworkBadgeProps {
 export const NetworkBadge = ({
   chainId
 }: NetworkBadgeProps) => {
-  const { chains = [] }  = useNetwork()
+  const { chains }  = useConfig()
   const { network } = getNetworkConfigAndClients(chainId)
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const chainColor = getChainColor(chainId)

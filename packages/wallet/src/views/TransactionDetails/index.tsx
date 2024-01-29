@@ -14,7 +14,7 @@ import {
  } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import dayjs from 'dayjs'
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 
 import { CoinIcon } from '../../shared/CoinIcon'
 import { CopyButton } from '../../shared/CopyButton'
@@ -38,7 +38,7 @@ interface TransactionDetailProps {
 export const TransactionDetails = ({
   transaction
 }: TransactionDetailProps) => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { fiatCurrency } = useSettings()
 
   const coins: Token[] = []

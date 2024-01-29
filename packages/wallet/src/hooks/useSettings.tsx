@@ -1,6 +1,6 @@
 import { LocalStorageKey } from '@0xsequence/kit'
 import { useState } from 'react'
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 import { FiatCurrency, defaultFiatCurrency } from '../constants'
 
 interface Settings {
@@ -17,7 +17,7 @@ interface Settings {
 type SettingsItems = Pick<Settings, 'hideCollectibles' | 'hideUnlistedTokens' | 'fiatCurrency' | 'selectedNetworks'> 
 
 export const useSettings = ():Settings => {
-  const { chains } = useNetwork()
+  const { chains } = useConfig()
 
   const getSettingsFromStorage = ():SettingsItems => {
 

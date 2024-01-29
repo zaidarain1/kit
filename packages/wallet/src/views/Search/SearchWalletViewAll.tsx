@@ -13,7 +13,7 @@ import {
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
-import { useAccount, useNetwork } from 'wagmi'
+import { useAccount, useConfig } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
 import { SCROLLBAR_WIDTH } from '../../constants'
@@ -32,7 +32,7 @@ interface SearchWalletViewAllProps {
 export const SearchWalletViewAll = ({
   defaultTab
 }: SearchWalletViewAllProps) => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { fiatCurrency, hideUnlistedTokens, selectedNetworks } = useSettings()
   const [search, setSearch] = useState('')
   const [selectedTab, setSelectedTab] = useState(defaultTab)

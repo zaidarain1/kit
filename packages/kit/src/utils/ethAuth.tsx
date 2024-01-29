@@ -2,14 +2,15 @@ import { ethers } from 'ethers'
 import { ETHAuthProof } from "@0xsequence/auth"
 import { ETHAuth, Proof,  } from '@0xsequence/ethauth'
 import { sequence } from '0xsequence'
-import { PublicClient, WalletClient } from 'wagmi'
+import { UsePublicClientReturnType } from 'wagmi'
+import { GetWalletClientData } from 'wagmi/query'
 
 import { publicClientToProvider, walletClientToSigner } from './adapters'
 
 import { LocalStorageKey, DEFAULT_SESSION_EXPIRATION } from "../constants"
 import { EthAuthSettings } from "../components/KitProvider"
 
-export const signEthAuthProof = async (walletClient: WalletClient): Promise<ETHAuthProof> => {
+export const signEthAuthProof = async (walletClient: GetWalletClientData<any, any>): Promise<ETHAuthProof> => {
   const proofInformation = localStorage.getItem(LocalStorageKey.EthAuthProof)
   // if proof information was generated and saved upon wallet connection, use that
   if (proofInformation) {
@@ -58,8 +59,8 @@ export const signEthAuthProof = async (walletClient: WalletClient): Promise<ETHA
 }
 
 export const validateEthProof = async (
-  walletClient: WalletClient,
-  publicClient: PublicClient,
+  walletClient: GetWalletClientData<any, any>,
+  publicClient: UsePublicClientReturnType<any, any>,
   proof: ETHAuthProof,
 ): Promise<boolean> => {
   const walletAddress = walletClient.account.address

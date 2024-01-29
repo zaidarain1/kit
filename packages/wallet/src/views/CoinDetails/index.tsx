@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
-import { useAccount, useNetwork } from 'wagmi'
+import { useAccount, useConfig } from 'wagmi'
 
 import { CoinDetailsSkeleton } from './Skeleton'
 
@@ -35,7 +35,7 @@ export const CoinDetails = ({
   contractAddress,
   chainId
 }: CoinDetailsProps) => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { setNavigation } = useNavigation()
   const { fiatCurrency, hideUnlistedTokens } = useSettings()
 
