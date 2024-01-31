@@ -3,6 +3,7 @@ import { LocalStorageKey, EthAuthSettings } from '@0xsequence/kit'
 
 import {
   UserRejectedRequestError,
+  getAddress,
 } from 'viem'
 
 import {
@@ -110,10 +111,10 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         }
       }
 
-      const account = await this.getAccounts()
+      const accounts = await this.getAccounts()
 
       return {
-        accounts: [account],
+        accounts: [...accounts],
         chainId: provider.getChainId()
       }
     },
@@ -125,7 +126,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
     async getAccounts() {
       const provider = await this.getProvider()
 
-      const account = await provider.getSigner().getAddress() as `0x${string}`
+      const account = getAddress(await provider.getSigner().getAddress() as `0x${string}`)
 
       return [account]
     },
