@@ -38,18 +38,18 @@ export const getKitConnectWallets = (wallets: Wallet[]) => {
 
   filteredWallets.forEach(wallet => {
     const { createConnector, ...metaProperties } = wallet
-    const connector = wallet.createConnector()
     const walletProperties = { ...metaProperties }
 
-    const convertToExtendedConnector = (connector: CreateConnectorFn<any, any, any>, walletProperties: WalletProperties) => {
-      const result = connector as ExtendedConnector
-      result._wallet = { ...walletProperties }
-      return result
+    const createConnectorOverride = (config: any) => {
+      const connector = createConnector()
+
+      const res = connector(config)
+      res._wallet = { ...walletProperties }
+
+      return res
     }
 
-    const extendedConnector = convertToExtendedConnector(connector, walletProperties)
-
-    connectors.push(extendedConnector)
+    connectors.push(createConnectorOverride)
   })
 
   return connectors
