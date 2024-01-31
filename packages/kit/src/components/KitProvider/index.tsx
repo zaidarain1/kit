@@ -51,7 +51,7 @@ export interface EthAuthSettings {
 }
 
 export interface KitConfig {
-  analytics?: SequenceClient["analytics"]
+  disableAnalytics?: boolean,
   projectAccessKey: string,
   defaultTheme?: Theme,
   position?: ModalPosition,
@@ -64,7 +64,7 @@ export interface KitConfig {
     useMock?: boolean
   },
   displayedAssets?: DisplayedAsset[],
-  ethAuth?: EthAuthSettings
+  ethAuth?: EthAuthSettings,
 }
 
 export type KitConnectProviderProps = {
@@ -81,7 +81,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     position = 'center',
     displayedAssets: displayedAssetsSetting = [],
     ethAuth = {} as EthAuthSettings,
-    analytics: analyticsParams,
+    disableAnalytics = false,
   } = config
 
   const defaultAppName = signIn.projectName || 'app'
@@ -96,11 +96,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   const [analytics, setAnalytics] = useState<SequenceClient["analytics"]>()
   const { address, isConnected } = useAccount()
 
-  const setupAnalytics = (projectAccessKey: string, analyticsObj?: SequenceClient["analytics"]) => {
-    if (analyticsObj) {
-      setAnalytics(analyticsObj)
-      return
-    }
+  const setupAnalytics = (projectAccessKey: string) => {
     const s = sequence.initWallet(projectAccessKey)
     const sequenceAnalytics = s.client.analytics
     setAnalytics(sequenceAnalytics)
@@ -121,9 +117,11 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   }
 
   useEffect(() => {
-    setupAnalytics(projectAccessKey, analyticsParams)
+    if (!disableAnalytics) {
+      setupAnalytics(projectAccessKey)
+    }
     localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
-  }, [projectAccessKey, analyticsParams])
+  }, [projectAccessKey])
 
   useEffect(() => {
     if (theme !== defaultTheme) {

@@ -6,7 +6,6 @@ import{ EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 import { ExtendedWalletList } from './ExtendedWalletList'
 import { Banner } from './Banner'
 
-import { useAnalyticsContext } from '../../../contexts'
 import { KitConfig } from '../../index'
 import { defaultSignInOptions } from '../../../constants'
 import { isEmailValid } from '../../../utils'
