@@ -11,7 +11,6 @@ import {
 } from 'wagmi'
 
 export interface BaseSequenceConnectorOptions {
-  projectAccessKey: string,
   walletAppURL?: string
   defaultNetwork?: sequence.network.ChainIdLike,
   connect: sequence.provider.ConnectOptions,
@@ -23,7 +22,6 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
   const {  
     defaultNetwork,
     connect,
-    projectAccessKey,
     walletAppURL
   } = params
 
@@ -136,6 +134,12 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
         return provider
       } catch(e) {
+        const projectAccessKey = localStorage.get(LocalStorageKey.ProjectAccessKey)
+
+        if (!projectAccessKey) {
+          throw 'projectAccessKey not found'
+        }
+
         const provider = sequence.initWallet(projectAccessKey, {
           defaultNetwork,
           transports: {

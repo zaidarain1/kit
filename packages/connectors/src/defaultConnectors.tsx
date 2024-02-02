@@ -27,13 +27,12 @@ export const getDefaultConnectors = ({
   projectAccessKey,
   appName,
 }: GetDefaultConnectors): CreateConnectorFn<any, any, any>[] => {
-  const connectors = getKitConnectWallets([
+  const connectors = getKitConnectWallets(projectAccessKey, [
     coinbaseWallet({
       appName
     }),
     email({
       defaultNetwork: defaultChainId,
-      projectAccessKey,
       connect: {
         app: appName,
         projectAccessKey
@@ -41,7 +40,6 @@ export const getDefaultConnectors = ({
     }),
     google({
       defaultNetwork: defaultChainId,
-      projectAccessKey,
       connect: {
         app: appName,
         projectAccessKey
@@ -49,7 +47,6 @@ export const getDefaultConnectors = ({
     }),
     facebook({
       defaultNetwork: defaultChainId,
-      projectAccessKey,
       connect: {
         app: appName,
         projectAccessKey
@@ -57,18 +54,14 @@ export const getDefaultConnectors = ({
     }),
     twitch({
       defaultNetwork: defaultChainId,
-      projectAccessKey,
       connect: {
         app: appName,
-        projectAccessKey
       }
     }),
     apple({
       defaultNetwork: defaultChainId,
-      projectAccessKey,
       connect: {
         app: appName,
-        projectAccessKey
       }
     }),
     metamask(),
@@ -77,7 +70,6 @@ export const getDefaultConnectors = ({
     }),
     sequence({
       defaultNetwork: defaultChainId,
-      projectAccessKey,
       connect: {
         app: appName,
         projectAccessKey

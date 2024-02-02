@@ -1,6 +1,8 @@
 import React from 'react'
 import { CreateConnectorFn } from 'wagmi'
 
+import { LocalStorageKey } from '../constants'
+
 export interface WalletProperties {
   id: string,
   logoDark: React.FunctionComponent,
@@ -23,7 +25,9 @@ export interface WalletField {
 
 export type ExtendedConnector = CreateConnectorFn<any, any, any> & WalletField
 
-export const getKitConnectWallets = (wallets: Wallet[]) => {
+export const getKitConnectWallets = (projectAccessKey:string, wallets: Wallet[]) => {
+  localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
+
   const connectors: CreateConnectorFn<any, any, any>[] = []
 
   // hide connector if there is an identical injected wallet

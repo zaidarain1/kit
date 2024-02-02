@@ -22,17 +22,19 @@ function App() {
 
   const chains = [mainnet, polygon] as [Chain, ...Chain[]]
 
+  const projectAccessKey = 'iK0DPkHRt0IFo8o4M3fZIIOAAAAAAAAAA'
+
   const connectors = [
     ...getDefaultConnectors({
       walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
       defaultChainId: 137,
       appName: 'demo app',
-      projectAccessKey: 'iK0DPkHRt0IFo8o4M3fZIIOAAAAAAAAAA'
+      projectAccessKey
     }),
     ...(
       isDebugMode
       ?
-        getKitConnectWallets([
+        getKitConnectWallets(projectAccessKey, [
           mock({
             accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9'],
           })
@@ -56,7 +58,6 @@ function App() {
   })
 
   const kitConfig: KitConfig = {
-    projectAccessKey: 'iK0DPkHRt0IFo8o4M3fZIIOAAAAAAAAAA',
     defaultTheme: 'dark',
     signIn: {
       projectName: 'Skyweaver',
