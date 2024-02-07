@@ -1,206 +1,203 @@
 import { sequence } from '0xsequence'
 import { LocalStorageKey, EthAuthSettings } from '@0xsequence/kit'
-import { ConnectOptions } from '@0xsequence/provider'
 
 import {
-  createWalletClient,
-  custom,
-  UserRejectedRequestError
+  UserRejectedRequestError,
+  getAddress,
 } from 'viem'
 
 import {
-  Connector,
-  ConnectorData,
-  Chain,
+  createConnector
 } from 'wagmi'
 
 export interface BaseSequenceConnectorOptions {
-  projectAccessKey: string,
+  walletAppURL?: string
   defaultNetwork?: sequence.network.ChainIdLike,
-  connect?: ConnectOptions
+  connect: sequence.provider.ConnectOptions,
 }
 
-export class BaseSequenceConnector extends Connector<sequence.provider.SequenceProvider, BaseSequenceConnectorOptions | undefined> {
-  id = 'sequence'
-  name = 'Sequence'
+sequenceWallet.type = 'sequence' as const
 
-  ready = true
+export function sequenceWallet(params: BaseSequenceConnectorOptions) {
+  const {  
+    defaultNetwork,
+    connect,
+    walletAppURL
+  } = params
 
-  provider: sequence.provider.SequenceProvider
+    let id = 'sequence'
+    let name = 'Sequence'
 
-  constructor({ chains, options }: {
-    chains?: Chain[],
-    options: BaseSequenceConnectorOptions
-  }) {
-    super({ chains, options })
-
-    const signInOptions = options?.connect?.settings?.signInOptions || []
-    const signInWith = options?.connect?.settings?.signInWith
-    const signInWithEmail = options?.connect?.settings?.signInWithEmail
+    const signInOptions = params?.connect?.settings?.signInOptions || []
+    const signInWith = params?.connect?.settings?.signInWith
+    const signInWithEmail = params?.connect?.settings?.signInWithEmail
     
     // If there are no sign in options
     // Then it must mean we are connecting with email
     if (signInWithEmail) {
-      this.id = 'email'
-      this.name = 'Email'
+      id = 'email'
+      name = 'Email'
     } else if (signInWith) {
-      this.id = signInWith
-      this.name = `${signInWith[0].toUpperCase()}${signInWith.slice(1)}` 
+      id = signInWith
+      name = `${signInWith[0].toUpperCase()}${signInWith.slice(1)}` 
     } else if (signInOptions.length > 0) {
-      const id = signInOptions[0]
-      const name = `${id[0].toUpperCase()}${id.slice(1)}` 
-      this.id = id
-      this.name = name
+      const newId = signInOptions[0]
+      const newName = `${id[0].toUpperCase()}${id.slice(1)}` 
+      id = newId
+      name = newName
     }
 
-    this.provider = sequence.initWallet(options.projectAccessKey, {
-      defaultNetwork: options?.defaultNetwork,
-      transports: {
-        walletAppURL: 'https://sequence.app',
-      },
-      defaultEIP6492: true,
-      analytics: false,
-    })
 
-    this.provider.on('chainChanged', (chainIdHex: string) => {
-      // @ts-ignore-next-line
-      this?.emit('change', { chain: { id: normalizeChainId(chainIdHex), unsupported: false } })
-    })
+  type Provider = sequence.provider.SequenceProvider
+  type Properties = {}
 
-    this.provider.on('accountsChanged', (accounts: string[]) => {
-      // @ts-ignore-next-line
-      this?.emit('accountsChanged', this.onAccountsChanged(accounts))
-    })
+  return createConnector<Provider, Properties>(config => ({
+    id: 'sequence',
+    name: 'Sequence',
+    type: sequenceWallet.type,
+    async setup() {
+      const provider = await this.getProvider()
+      provider.on('chainChanged', (chainIdHex: string) => {
+        // @ts-ignore-next-line
+        config.emitter.emit('change', { chain: { id: normalizeChainId(chainIdHex), unsupported: false } })
+      })
 
-    this.provider.on('disconnect', () => {
-      this.onDisconnect()
-    })
-  }
+      provider.on('accountsChanged', (accounts: string[]) => {
+        // @ts-ignore-next-line
+        config.emitter.emit('accountsChanged', this.onAccountsChanged(accounts))
+      })
 
-  async connect(): Promise<Required<ConnectorData>> {
-    if (!this.provider.isConnected()) {
-      // @ts-ignore-next-line
-      this?.emit('message', { type: 'connecting' })
-      // inject the signInOptions into the connect options
-      const connectOptions = this.options?.connect
+      provider.on('disconnect', () => {
+        this.onDisconnect()
+      })
+    },
+    async connect() {
+      const provider = await this.getProvider() as sequence.provider.SequenceProvider
 
-      const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme)
+      if (!provider.isConnected()) {
+        const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme)
+        const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthSettings)
+        const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {} as EthAuthSettings
 
-      const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthSettings)
-      const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {} as EthAuthSettings
+        const connectOptionsWithTheme = {
+          authorize: true,
+          ...parseEthAuthSettings,
+          ...connect,
+          settings: {
+            theme: localStorageTheme || 'dark',
+            ...connect?.settings,
+          }
+        }
 
-      const connectOptionsWithTheme = {
-        authorize: true,
-        ...parseEthAuthSettings,
-        ...connectOptions,
-        settings: {
-          theme: localStorageTheme || 'dark',
-          ...connectOptions?.settings,
+        const e = await provider.connect(connectOptionsWithTheme)
+        if (e.error) {
+          throw new UserRejectedRequestError(new Error(e.error))
+        }
+        if (!e.connected) {
+          throw new UserRejectedRequestError(new Error('Wallet connection rejected'))
+        }
+
+        const proofString = e.proof?.proofString
+        const proofTypedData = e.proof?.typedData
+        if (proofString) {
+          const jsonEthAuthProof = JSON.stringify({
+            proofString,
+            typedData: proofTypedData,
+          })
+
+          localStorage.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
         }
       }
-      const e = await this.provider.connect(connectOptionsWithTheme)
 
-      if (e.error) {
-        throw new UserRejectedRequestError(new Error(e.error))
-      }
-      if (!e.connected) {
-        throw new UserRejectedRequestError(new Error('Wallet connection rejected'))
-      }
+      const accounts = await this.getAccounts()
 
-      const proofString = e.proof?.proofString
-      const proofTypedData = e.proof?.typedData
-      if (proofString) {
-        const jsonEthAuthProof = JSON.stringify({
-          proofString,
-          typedData: proofTypedData,
+      return {
+        accounts: [...accounts],
+        chainId: provider.getChainId()
+      }
+    },
+    async disconnect() {
+      const provider = await this.getProvider()
+
+      provider.disconnect()
+    },
+    async getAccounts() {
+      const provider = await this.getProvider()
+
+      const account = getAddress(await provider.getSigner().getAddress() as `0x${string}`)
+
+      return [account]
+    },
+    async getProvider(): Promise<sequence.provider.SequenceProvider> {
+      try {
+        const provider = sequence.getWallet()
+
+        return provider
+      } catch(e) {
+        const projectAccessKey = localStorage.get(LocalStorageKey.ProjectAccessKey)
+
+        if (!projectAccessKey) {
+          throw 'projectAccessKey not found'
+        }
+
+        const provider = sequence.initWallet(projectAccessKey, {
+          defaultNetwork,
+          transports: {
+            walletAppURL: walletAppURL || 'https://sequence.app',
+          },
+          defaultEIP6492: true,
+          analytics: false,
         })
 
-        localStorage.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
+        const chainId = await provider.getChainId()
+        config.emitter.emit('change', { chainId: normalizeChainId(chainId) })
+
+        return provider
       }
+    },
+    async isAuthorized() {
+      try {
+        const account = await this.getAccounts()
+        return !!account
+      } catch(e) {
+        return false
+      }
+    },
+    async switchChain({ chainId }) {
+      const provider = await this.getProvider()
+
+      const chain = config.chains.find(c => c.id === chainId) || config.chains[0]
+      provider.setDefaultChainId(normalizeChainId(chainId))
+
+      config.emitter.emit('change', { chainId })
+
+      return chain
+    },
+    async getChainId() {
+      const provider = await this.getProvider() as sequence.provider.SequenceProvider
+
+      const chainId = provider.getChainId()
+      return chainId
+    },
+    async onAccountsChanged(accounts) {
+      return { account: accounts[0] }
+    },
+    async onChainChanged(chain) {
+      const provider = await this.getProvider()
+
+      config.emitter.emit('change', { chainId: normalizeChainId(chain) })
+      provider.setDefaultChainId(normalizeChainId(chain))
+    },
+    async onConnect(connectinfo) {
+    },
+    async onDisconnect() {
+      localStorage.removeItem(LocalStorageKey.EthAuthProof)
+      config.emitter.emit('disconnect')
     }
-
-    const account = await this.getAccount()
-
-    return {
-      account,
-      chain: {
-        id: this.provider.getChainId(),
-        unsupported: this.isChainUnsupported(this.provider.getChainId()),
-      },
-    }
-  }
-
-  async getWalletClient({ chainId }: { chainId?: number } = {}): Promise<any> {
-    const chain = this.chains.find((x) => x.id === chainId)
-
-    return createWalletClient({
-      chain,
-      account: await this.getAccount(),
-      transport: custom(this.provider),
-    })
-  }
-
-  protected onChainChanged(chain: string | number): void {
-    this.provider.setDefaultChainId(normalizeChainId(chain))
-  }
-
-  async switchChain(chainId: number): Promise<Chain> {
-    if (this.isChainUnsupported(chainId)) {
-      throw new Error('Unsupported chain')
-    }
-
-    this.provider.setDefaultChainId(chainId)
-    return this.chains.find((x) => x.id === chainId) as Chain
-  }
-
-  async disconnect() {
-    localStorage.removeItem(LocalStorageKey.EthAuthProof)
-    this.provider.disconnect()
-  }
-
-  getAccount() {
-    return this.provider.getSigner().getAddress() as Promise<`0x${string}`>
-  }
-
-  async getChainId() {
-    return this.provider.getChainId()
-  }
-
-  async getProvider() {
-    return this.provider
-  }
-
-  async getSigner() {
-    return this.provider.getSigner()
-  }
-
-  async isAuthorized() {
-    try {
-      const account = await this.getAccount()
-      return !!account
-    } catch {
-      return false
-    }
-  }
-
-  protected onAccountsChanged = (accounts: string[]) => {
-    return { account: accounts[0] }
-  }
-
-  protected onDisconnect = () => {
-    // @ts-ignore-next-line
-    this?.emit('disconnect')
-  }
-
-  isChainUnsupported(chainId: number): boolean {
-    // @ts-ignore-next-line
-    return this.provider.networks.findIndex((x) => x.chainId === chainId) === -1
-  }
+  }))
 }
 
-
-
-const normalizeChainId = (chainId: string | number | bigint | { chainId: string }): number => {
+function normalizeChainId(chainId: string | number | bigint | { chainId: string }) {
   if (typeof chainId === 'object') return normalizeChainId(chainId.chainId)
   if (typeof chainId === 'string') return Number.parseInt(chainId, chainId.trim().substring(0, 2) === '0x' ? 16 : 10)
   if (typeof chainId === 'bigint') return Number(chainId)

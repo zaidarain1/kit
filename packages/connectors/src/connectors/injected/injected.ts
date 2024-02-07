@@ -1,7 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { Chain } from 'wagmi/chains'
-import { InjectedConnector } from 'wagmi/connectors/injected'
+import { injected as injectedBase } from 'wagmi/connectors'
 
 import { InjectedLogo } from './InjectedLogo'
 import { MetamaskLogo } from '../metamask/MetamaskLogo'
@@ -18,11 +17,6 @@ window.ethereum = window.ethereum || {}
 
 export interface MoreExternalProviders {
   isSequence?: boolean
-}
-
-export interface InjectedOptions {
-  chains: Chain[];
-  shimDisconnect?: boolean;
 }
 
 export interface InjectedWalletInformation {
@@ -58,7 +52,7 @@ const getInjectedWalletInformation = (): InjectedWalletInformation => {
   }
 }
 
-export const injected = ({ chains, shimDisconnect }: InjectedOptions) => {
+export const injected = () => {
   const { name, hideConnectorId, logoDark, logoLight } = getInjectedWalletInformation()
 
   return ({
@@ -69,10 +63,7 @@ export const injected = ({ chains, shimDisconnect }: InjectedOptions) => {
     // iconBackground: '#fff',
     name,
     createConnector: () => {
-      const connector = new InjectedConnector({
-        chains,
-        options: { shimDisconnect }
-      });
+      const connector = injectedBase();
       return connector
     }
   })

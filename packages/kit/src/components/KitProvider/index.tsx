@@ -52,7 +52,6 @@ export interface EthAuthSettings {
 
 export interface KitConfig {
   disableAnalytics?: boolean,
-  projectAccessKey: string,
   defaultTheme?: Theme,
   position?: ModalPosition,
   signIn?: {
@@ -75,7 +74,6 @@ export type KitConnectProviderProps = {
 export const KitProvider = (props: KitConnectProviderProps) => {
   const { config, children } = props
   const {
-    projectAccessKey,
     defaultTheme = 'dark',
     signIn = {},
     position = 'center',
@@ -117,11 +115,11 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   }
 
   useEffect(() => {
+    const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || ''
     if (!disableAnalytics) {
       setupAnalytics(projectAccessKey)
     }
-    localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
-  }, [projectAccessKey])
+  }, [])
 
   useEffect(() => {
     if (theme !== defaultTheme) {

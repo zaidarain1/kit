@@ -17,7 +17,7 @@ import {
 import { getNativeTokenInfoByChainId, useAnalyticsContext } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
 import { ExtendedConnector } from "@0xsequence/kit"
-import { useAccount, useChainId, useSwitchNetwork, useWalletClient, useNetwork } from 'wagmi'
+import { useAccount, useChainId, useSwitchChain, useWalletClient, useConfig } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_1155_ABI, ERC_721_ABI } from '../constants'
@@ -46,14 +46,14 @@ export const SendCollectible = ({
   tokenId
 }: SendCollectibleProps) => {
   const { analytics } = useAnalyticsContext()
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const connectedChainId = useChainId()
   const { address: accountAddress = '', connector } = useAccount()
   /* @ts-ignore-next-line */
   const isConnectorSequenceBased = !!connector?._wallet?.isSequenceBased
   const isCorrectChainId = connectedChainId === chainId
   const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased
-  const { switchNetwork } = useSwitchNetwork()
+  const { switchChain } = useSwitchChain()
   const amountInputRef = useRef<HTMLInputElement>(null)
   const { setOpenWalletModal } = useOpenWalletModal()
   const [amount, setAmount] = useState<string>('0')
@@ -131,7 +131,7 @@ export const SendCollectible = ({
     e.preventDefault()
 
     if (!isCorrectChainId && isConnectorSequenceBased) {
-      switchNetwork && switchNetwork(chainId)
+      switchChain({ chainId })
     }
 
     const sendAmount = ethers.utils.parseUnits(amountToSendFormatted, decimals)
@@ -294,7 +294,7 @@ export const SendCollectible = ({
               variant="primary"
               type="button"
               label="Switch Network"
-              onClick={() => switchNetwork && switchNetwork(chainId)}
+              onClick={() => switchChain({ chainId })}
               disabled={isCorrectChainId}
               style={{ height: '52px', borderRadius: vars.radii.md }}
             />

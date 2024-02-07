@@ -1,14 +1,12 @@
-import { Chain } from 'wagmi'
-import { BaseSequenceConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import type { Wallet } from '@0xsequence/kit'
 
 import { GoogleLogo, getMonochromeGoogleLogo } from './GoogleLogo'
 
-export interface GoogleOptions {
-  chains: Chain[];
-  options: BaseSequenceConnectorOptions;
+export interface GoogleOptions extends BaseSequenceConnectorOptions {
 }
 
-export const google = ({ chains, options }: GoogleOptions) => ({
+export const google = (options: GoogleOptions) => ({
   id: 'google',
   isSequenceBased: true,
   logoDark: GoogleLogo,
@@ -18,20 +16,17 @@ export const google = ({ chains, options }: GoogleOptions) => ({
   // iconBackground: '#fff',
   name: 'Google',
   createConnector: () => {
-    const connector = new BaseSequenceConnector({
-      chains,
-      options: {
-        ...options,
-        // @ts-ignore
-        connect: {
-          ...options?.connect,
-          settings: {
-            ...options?.connect?.settings,
-            signInWith: 'google'
-          }
+    const connector = sequenceWallet({
+      ...options,
+      // @ts-ignore
+      connect: {
+        ...options?.connect,
+        settings: {
+          ...options?.connect?.settings,
+          signInWith: 'google'
         }
       }
     });
     return connector
   }
-})
+}) as Wallet

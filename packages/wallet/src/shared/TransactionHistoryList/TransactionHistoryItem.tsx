@@ -1,4 +1,5 @@
 import React from 'react'
+import { TokenPrice } from '@0xsequence/api'
 import { ethers } from 'ethers'
 import { Transaction, TxnTransfer, TxnTransferType } from '@0xsequence/indexer'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
@@ -13,7 +14,7 @@ import {
   vars
 } from '@0xsequence/design-system'
 import dayjs from 'dayjs'
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 
 import * as sharedStyles from '../../shared/styles.css'
 import { Skeleton } from '../../shared/Skeleton'
@@ -36,7 +37,7 @@ interface TransactionHistoryItemProps {
 export const TransactionHistoryItem = ({
   transaction
 }: TransactionHistoryItemProps) => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { fiatCurrency } = useSettings()
   const { setNavigation } = useNavigation()
 
@@ -178,7 +179,7 @@ export const TransactionHistoryItem = ({
           const symbol = isNativeToken ? nativeTokenInfo.symbol : transfer.contractInfo?.symbol || ''
           const tokenLogoUri = isNativeToken ? nativeTokenInfo.logoURI : transfer.contractInfo?.logoURI
 
-          const fiatConversionRate = coinPrices.find((coinPrice) => compareAddress(coinPrice.token.contractAddress, transfer.contractAddress))?.price?.value
+          const fiatConversionRate = coinPrices.find((coinPrice: TokenPrice) => compareAddress(coinPrice.token.contractAddress, transfer.contractAddress))?.price?.value
 
           return (
             <Box key={index} flexDirection="row" justifyContent="space-between">

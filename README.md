@@ -19,11 +19,11 @@ View the [demo](https://0xsequence.github.io/kit)! 👀
 To install this package:
 
 ```bash
-npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
+npm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence @tanstack/react-query
 # or
-pnpm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
+pnpm install @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence @tanstack/react-query
 # or
-yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence
+yarn add @0xsequence/kit @0xsequence/kit-connectors wagmi ethers@5.7.2 viem 0xsequence @tanstack/react-query
 ```
 
 ### Setting up the Library
@@ -34,37 +34,43 @@ React apps must be wrapped by a Wagmi client and the KitWalletProvider component
 import MyPage from './components/MyPage'
 import { KitProvider } from '@0xsequence/kit'
 import { getDefaultConnectors } from '@0xsequence/kit-connectors'
-import { configureChains, createConfig, WagmiConfig } from 'wagmi'
-import { publicProvider } from 'wagmi/providers/public'
-import { mainnet, polygon } from 'wagmi/chains'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createConfig, http, WagmiProvider } from 'wagmi'
+import { mainnet, polygon, Chain } from 'wagmi/chains'
+
+const queryClient = new QueryClient() 
 
 function App() {
-  const { chains, publicClient, webSocketPublicClient } = configureChains(
-    [polygon, mainnet],
-    [publicProvider()],
-  )
+  const chains = [mainnet, polygon] as [Chain, ...Chain[]]
+  
+  const projectAccessKey = 'xyz'
 
   const connectors = getDefaultConnectors({
-    chains,
-    projectAccessKey: '<get your project key at https://sequence.build>',
-    walletConnectProjectId: '<your wallet connect project id goes here>',
+    walletConnectProjectId: 'wallet-connect-id',
     defaultChainId: 137,
-    appName: 'my app'
+    appName: 'demo app',
+    projectAccessKey
   })
 
+  const transports = {}
+
+  chains.forEach(chain => {
+    transports[chain.id] = http()
+  })
   
   const config = createConfig({
-    autoConnect: true,
-    publicClient,
-    webSocketPublicClient,
-    connectors
+    transports,
+    connectors,
+    chains
   })
 
   return (
     <WagmiConfig config={config}>
-      <KitProvider>
-        <MyPage />
-      </KitProvider>
+      <QueryClientProvider client={queryClient}> 
+        <KitProvider>
+          <MyPage />
+        </KitProvider>
+      </QueryClientProvider>
     </WagmiConfig>
   );
 }

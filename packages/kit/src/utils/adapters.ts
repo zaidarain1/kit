@@ -1,8 +1,8 @@
 import { providers } from 'ethers'
-import { type PublicClient, type WalletClient } from 'wagmi'
-import { type HttpTransport } from 'viem'
+import { type HttpTransport, Account, Chain, Client, Transport } from 'viem'
 
-export function walletClientToSigner(walletClient: WalletClient) {
+
+export function walletClientToSigner(walletClient: Client<Transport, Chain, Account>) {
   const { account, chain, transport } = walletClient
   const network = {
     chainId: chain.id,
@@ -14,7 +14,7 @@ export function walletClientToSigner(walletClient: WalletClient) {
   return signer
 }
 
-export function publicClientToProvider(publicClient: PublicClient) {
+export function publicClientToProvider(publicClient: Client<Transport, Chain>) {
   const { chain, transport } = publicClient
   const network = {
     chainId: chain.id,

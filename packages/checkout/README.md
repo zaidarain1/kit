@@ -27,11 +27,13 @@ import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 const App = () => {
   return (
     <WagmiConfig config={config}>
-      <KitProvider>
-        <KitCheckoutProvider>
-          <Page />
-        </KitCheckoutProvider>
-      </KitProvider>
+      <QueryClientProvider client={queryClient}> 
+        <KitProvider>
+          <KitCheckoutProvider>
+            <Page />
+          </KitCheckoutProvider>
+        </KitProvider>
+      </QueryClientProvider>
     </WagmiConfig>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 import { Box } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
 import { useContractInfo } from '../../../../../hooks'
@@ -29,7 +29,7 @@ interface CoinTileProps {
 export const CoinTile = ({
   balance
 }: CoinTileProps) => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { fiatCurrency } = useSettings()
   const isNativeToken = compareAddress(balance.contractAddress, ethers.constants.AddressZero)
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains)

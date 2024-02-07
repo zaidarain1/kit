@@ -12,7 +12,7 @@ import {
 
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
-import { useAccount, useNetwork } from 'wagmi'
+import { useAccount, useConfig } from 'wagmi'
 
 import { OrderSummaryItem } from './component/OrderSummaryItem'
 
@@ -32,7 +32,7 @@ import {
 import * as styles from './styles.css'
 
 export const CheckoutSelection = () => {
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
   const { setNavigation } = useNavigation()
   const { closeCheckout, settings } = useCheckoutModal()
   const { address: accountAddress } = useAccount()

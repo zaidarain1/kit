@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, Image, Text } from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
-import { useNetwork } from 'wagmi'
+import { useConfig } from 'wagmi'
 
 import { SelectButton } from '../../shared/SelectButton'
 import { HEADER_HEIGHT } from '../../constants'
@@ -10,7 +10,7 @@ import { useSettings } from '../../hooks'
 
 export const SettingsNetwork = () => {
   const { selectedNetworks, setSelectedNetworks } = useSettings()
-  const { chains = [] } = useNetwork()
+  const { chains } = useConfig()
 
 
   const onClickNetwork = (chainId: number) => {
