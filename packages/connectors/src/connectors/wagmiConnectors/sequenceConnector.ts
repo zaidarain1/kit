@@ -134,7 +134,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
         return provider
       } catch(e) {
-        const projectAccessKey = localStorage.get(LocalStorageKey.ProjectAccessKey)
+        const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey)
 
         if (!projectAccessKey) {
           throw 'projectAccessKey not found'
