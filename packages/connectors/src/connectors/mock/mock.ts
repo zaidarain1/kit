@@ -1,5 +1,5 @@
+import { CreateConnectorFn } from 'wagmi'
 import { mock as mockBase, MockParameters } from 'wagmi/connectors'
-import type { Wallet } from '@0xsequence/kit'
 
 import { SequenceLogo } from '../sequence/SequenceLogo'
 
@@ -10,8 +10,8 @@ export const mock = (options: MockParameters) => ({
   logoLight: SequenceLogo,
   // iconBackground: '#777',
   name: 'Mock',
-  createConnector: () => {
+  createConnector: (() => {
     const connector = mockBase(options);
     return connector
-  }
-}) as Wallet
+  }) as () => CreateConnectorFn<any, any, any>
+})

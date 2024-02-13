@@ -25,7 +25,7 @@ export interface WalletField {
 
 export type ExtendedConnector = CreateConnectorFn<any, any, any> & WalletField
 
-export const getKitConnectWallets = (projectAccessKey:string, wallets: Wallet[]) => {
+export const getKitConnectWallets = (projectAccessKey:string, wallets: any[]): CreateConnectorFn<any, any, any>[] => {
   localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
 
   const connectors: CreateConnectorFn<any, any, any>[] = []

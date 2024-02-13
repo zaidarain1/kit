@@ -1,7 +1,8 @@
-import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
-import type { Wallet } from '@0xsequence/kit'
+import { CreateConnectorFn } from 'wagmi'
 
 import { getEmailLogo } from './EmailLogo'
+
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 
 export const EMAIL_CONNECTOR_LOCAL_STORAGE_KEY = '@sequence.kit.connector.email'
 
@@ -15,7 +16,7 @@ export const email = (options: EmailOptions) => ({
   logoLight: getEmailLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Email',
-  createConnector: () => {
+  createConnector: (() => {
     const email = localStorage.getItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY)
 
     const connector = sequenceWallet({
@@ -32,5 +33,5 @@ export const email = (options: EmailOptions) => ({
     });
 
     return connector
-  }
-}) as Wallet
+  }) as () => CreateConnectorFn<any, any, any>
+})

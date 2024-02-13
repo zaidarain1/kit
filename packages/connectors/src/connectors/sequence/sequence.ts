@@ -1,6 +1,7 @@
-import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
+import { CreateConnectorFn } from 'wagmi'
 import type { Wallet } from '@0xsequence/kit'
 
+import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors';
 import { SequenceLogo } from './SequenceLogo'
 
 export interface SequenceOptions extends BaseSequenceConnectorOptions {
@@ -13,10 +14,10 @@ export const sequence = (options: SequenceOptions) => ({
   logoLight: SequenceLogo,
   // iconBackground: '#777',
   name: 'Sequence',
-  createConnector: () => {
+  createConnector: (() => {
     const connector = sequenceWallet({
       ...options,
     });
     return connector
-  }
-}) as Wallet
+  }) as CreateConnectorFn<any, any, any>
+})

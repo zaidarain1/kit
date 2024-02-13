@@ -1,4 +1,4 @@
-import { Wallet } from '@0xsequence/kit'
+import { CreateConnectorFn } from 'wagmi'
 import { walletConnect as walletConnectbase, WalletConnectParameters } from 'wagmi/connectors'
 
 import { WalletConnectLogo } from './WalletConnectLogo'
@@ -9,10 +9,10 @@ export const walletConnect = (options: WalletConnectParameters) => ({
   logoLight: WalletConnectLogo,
   // iconBackground: '#fff',
   name: 'Walletconnect',
-  createConnector: () => {
+  createConnector: (() => {
     const connector = walletConnectbase({
       ...options,
     });
     return connector
-  }
-}) as Wallet
+  }) as () => CreateConnectorFn<any, any, any>
+})

@@ -77,5 +77,6 @@ export const getDefaultConnectors = ({
     })
   ])
 
+  /* @ts-ignore-next-line */
   return connectors
 }
