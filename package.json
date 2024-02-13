@@ -22,6 +22,7 @@
     "dev": "preconstruct dev",
     "postinstall": "preconstruct dev",
     "start:react": "pnpm --filter @0xsequence/kit-example-react start",
+    "serve:react": "pnpm --filter @0xsequence/kit-example-react serve",
     "build:react": "pnpm --filter @0xsequence/kit-example-react build"
   },
   "devDependencies": {
