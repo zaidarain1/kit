@@ -56,6 +56,7 @@ function App() {
   const config = createConfig({
     transports,
     chains,
+    /* TODO: check connector typings. Might be related to wagmi problem */
     /* @ts-ignore-next-line */
     connectors,
   })
