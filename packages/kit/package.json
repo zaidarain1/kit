@@ -44,7 +44,7 @@
     "ethers": "5.7.2",
     "0xsequence": "^1.8.2",
     "viem": "^2.0.6",
-    "wagmi": "^2.5.4"
+    "wagmi": "^2.5.7"
   },
   "files": [
     "src",

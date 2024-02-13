@@ -64,7 +64,7 @@
     "ts-node": "^10.9.1",
     "tsx": "^3.12.1",
     "typescript": "~5.3.3",
-    "wagmi": "^2.5.4"
+    "wagmi": "^2.5.7"
   },
   "resolutions": {},
   "workspaces": [
