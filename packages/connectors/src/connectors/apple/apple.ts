@@ -29,5 +29,5 @@ export const apple = (options: AppleOptions) => ({
       }
     });
     return connector
-  }) as () => CreateConnectorFn<any, any, any>
+  }) as () => CreateConnectorFn
 })

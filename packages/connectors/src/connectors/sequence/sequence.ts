@@ -19,5 +19,5 @@ export const sequence = (options: SequenceOptions) => ({
       ...options,
     });
     return connector
-  }) as CreateConnectorFn<any, any, any>
+  }) as () => CreateConnectorFn
 })

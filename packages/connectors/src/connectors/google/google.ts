@@ -29,5 +29,5 @@ export const google = (options: GoogleOptions) => ({
       }
     });
     return connector
-  }) as () => CreateConnectorFn<any, any, any>
+  }) as () => CreateConnectorFn
 })

@@ -28,5 +28,5 @@ export const twitch = (options: TwitchOptions) => ({
       }
     });
     return connector
-  }) as () => CreateConnectorFn<any, any, any>
+  }) as () => CreateConnectorFn
 })

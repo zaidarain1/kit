@@ -8,8 +8,9 @@ import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { type Chain } from 'viem'
 import { createConfig, http, WagmiProvider } from 'wagmi'
-import { mainnet, polygon, Chain } from 'wagmi/chains'
+import { mainnet, polygon } from 'wagmi/chains'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -20,7 +21,8 @@ function App() {
   const { debug } = qs.parse(location.search)
   const isDebugMode = debug === 'true'
 
-  const chains = [mainnet, polygon] as [Chain, ...Chain[]]
+  /* typing error from wagmi? */
+  const chains: readonly [Chain, ...Chain[]] = [mainnet as Chain, polygon as Chain] 
 
   const projectAccessKey = 'iK0DPkHRt0IFo8o4M3fZIIOAAAAAAAAAA'
 
@@ -53,8 +55,9 @@ function App() {
 
   const config = createConfig({
     transports,
+    chains,
+    /* @ts-ignore-next-line */
     connectors,
-    chains
   })
 
   const kitConfig: KitConfig = {

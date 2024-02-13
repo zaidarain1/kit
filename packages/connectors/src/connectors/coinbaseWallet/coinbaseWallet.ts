@@ -13,5 +13,5 @@ export const coinbaseWallet = (params: CoinbaseWalletParameters) => ({
   createConnector: (() => {
     const connector = coinbaseWalletBase({...params});
     return connector
-  }) as () => CreateConnectorFn<any, any, any>
+  }) as () => CreateConnectorFn
 })

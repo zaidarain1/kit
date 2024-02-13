@@ -58,13 +58,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
     async setup() {
       const provider = await this.getProvider()
       provider.on('chainChanged', (chainIdHex: string) => {
-        // @ts-ignore-next-line
-        config.emitter.emit('change', { chain: { id: normalizeChainId(chainIdHex), unsupported: false } })
-      })
-
-      provider.on('accountsChanged', (accounts: string[]) => {
-        // @ts-ignore-next-line
-        config.emitter.emit('accountsChanged', this.onAccountsChanged(accounts))
+        config.emitter.emit('change', { chainId: normalizeChainId(chainIdHex) })
       })
 
       provider.on('disconnect', () => {

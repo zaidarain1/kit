@@ -1,4 +1,3 @@
-import { Chain } from 'wagmi/chains'
 import { CreateConnectorFn } from 'wagmi'
 import { getKitConnectWallets } from '@0xsequence/kit'
 
@@ -26,7 +25,7 @@ export const getDefaultConnectors = ({
   defaultChainId,
   projectAccessKey,
   appName,
-}: GetDefaultConnectors): CreateConnectorFn<any, any, any>[] => {
+}: GetDefaultConnectors): CreateConnectorFn[] => {
   const connectors = getKitConnectWallets(projectAccessKey, [
     coinbaseWallet({
       appName

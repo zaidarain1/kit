@@ -16,19 +16,19 @@ export interface WalletProperties {
 }
 
 export type Wallet = WalletProperties & {
-  createConnector: () => CreateConnectorFn<any, any, any>
+  createConnector: () => CreateConnectorFn
 }
 
 export interface WalletField {
   _wallet: WalletProperties
 } 
 
-export type ExtendedConnector = CreateConnectorFn<any, any, any> & WalletField
+export type ExtendedConnector = CreateConnectorFn & WalletField
 
-export const getKitConnectWallets = (projectAccessKey:string, wallets: any[]): CreateConnectorFn<any, any, any>[] => {
+export const getKitConnectWallets = (projectAccessKey:string, wallets: any[]): CreateConnectorFn[] => {
   localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
 
-  const connectors: CreateConnectorFn<any, any, any>[] = []
+  const connectors: CreateConnectorFn[] = []
 
   // hide connector if there is an identical injected wallet
   const injectedWallet = wallets.find(connector => connector.id === 'injected')

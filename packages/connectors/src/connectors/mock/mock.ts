@@ -13,5 +13,5 @@ export const mock = (options: MockParameters) => ({
   createConnector: (() => {
     const connector = mockBase(options);
     return connector
-  }) as () => CreateConnectorFn<any, any, any>
+  }) as () => CreateConnectorFn
 })

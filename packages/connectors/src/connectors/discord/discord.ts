@@ -28,5 +28,5 @@ export const discord = (options: DiscordOptions) => ({
       }
     });
     return connector
-  }) as () => CreateConnectorFn<any, any, any>
+  }) as () => CreateConnectorFn
 })
