@@ -182,9 +182,17 @@ The settings are described in more detailed in the Sequence Kit documentation.
 
 The React example can be used to test the library locally.
 
-1. `pnpm install`
-2. From the root folder, run `pnpm watch` to build the package in watch mode in one console. 
-3. From the root folder, run `pnpm start:react` to run the react example in another console.
+1. Replace the kit dependencies to the ones of the workspace in order to use hot reload.:
+```js
+"@0xsequence/kit": "workspace:*",
+"@0xsequence/kit-checkout": "workspace:*",
+"@0xsequence/kit-connectors": "workspace:*",
+"@0xsequence/kit-wallet": "workspace:*",
+```
+
+2. `pnpm install`
+3. From the root folder, run `pnpm watch` to build the package in watch mode in one console. 
+4. From the root folder, run `pnpm start:react` to run the react example in another console.
 
 ## What to do next?
 Now that the core package is installed, you can install the [embedded wallet](https://github.com/0xsequence/kit/tree/master/packages/wallet) or take a look at the [checkout](https://github.com/0xsequence/kit/tree/master/packages/checkout).
