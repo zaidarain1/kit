@@ -12,7 +12,7 @@ export const TransactionSuccess = () => {
   useEffect(() => {
     setTimeout(() => {
       closeCheckout()
-      settings?.creditCardCheckout?.onSuccess && settings?.creditCardCheckout?.onSuccess(navigation.params.transactionHash)
+      settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash)
     }, 3000)
   }, [])
 

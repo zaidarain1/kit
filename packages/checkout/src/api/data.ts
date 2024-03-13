@@ -158,71 +158,69 @@ export const fetchContractInfo = async ({ chainID, contractAddress }: GetContrac
   return response.contractInfo
 }
 
-export interface FetchPaperSecretArgs {
-  chainId: number
-  email: string
-  abi: string
-  contractAddress: string
-  recipientAddress: string
-  receiptTitle: string
-  collectionContractAddress?: string
-  methodArguments: MethodArguments
-  currency: string
-  currencyAmount: string
-  methodName: string
-}
+// export interface FetchPaperSecretArgs {
+//   chainId: number,
+//   email: string,
+//   abi: string,
+//   contractAddress: string,
+//   recipientAddress: string,
+//   receiptTitle: string,
+//   collectionContractAddress?: string,
+//   methodArguments: MethodArguments,
+//   currency: string,
+//   currencyAmount: string,
+//   methodName: string,
+// }
 
-export interface MethodArguments {
-  [key: string]: any
-}
+// export interface MethodArguments {
+//   [key: string]: any
+// }
 
-export const fetchPaperSecret = async ({
-  chainId,
-  email,
-  contractAddress,
-  abi,
-  receiptTitle,
-  collectionContractAddress,
-  methodArguments,
-  currency,
-  currencyAmount,
-  methodName,
-  recipientAddress
-}: FetchPaperSecretArgs) => {
-  const { network, apiClient } = await getNetworkConfigAndClients(chainId)
+// export const fetchPaperSecret = async ({
+//   chainId,
+//   email,
+//   contractAddress,
+//   abi,
+//   receiptTitle,
+//   collectionContractAddress,
+//   methodArguments,
+//   currency,
+//   currencyAmount,
+//   methodName,
+//   recipientAddress,
+// }: FetchPaperSecretArgs) => {
+//   const { network, apiClient } = await getNetworkConfigAndClients(chainId)
 
-  // @ts-ignore-next-line
-  const chainName = getPaperNetworkName(network)
+//   // @ts-ignore-next-line
+//   const chainName = getPaperNetworkName(network)
 
-  const paramsJson = JSON.stringify({
-    title: receiptTitle,
-    email,
-    limitPerTransaction: 1,
-    quantity: 1,
-    mintMethod: {
-      args: methodArguments,
-      payment: {
-        currency,
-        value: `${currencyAmount} * $QUANTITY`
-      },
-      name: methodName
-    },
-    walletAddress: recipientAddress,
-    ...(collectionContractAddress
-      ? {
-          contractArgs: {
-            collectionContractAddress
-          }
-        }
-      : {})
-  })
+//   const paramsJson = JSON.stringify({
+//     title: receiptTitle,
+//     email,
+//     limitPerTransaction: 1,
+//     quantity: 1,
+//     mintMethod: {
+//       args: methodArguments,
+//       payment: {
+//         currency,
+//         value: `${currencyAmount} * $QUANTITY`,
+//       },
+//       name: methodName,
+//     },
+//     walletAddress: recipientAddress,
+//     ...(collectionContractAddress ? {
+//       contractArgs: {
+//         collectionContractAddress
+//       }
+//     } : {}),
+//   })
 
-  const { secret } = await apiClient.paperSessionSecret2({
-    chainName,
-    contractAddress,
-    abi,
-    paramsJson
-  })
+//   const { secret } = await apiClient.paperSessionSecret2({
+//    chainName,
+//    contractAddress,
+//    abi,
+//    paramsJson,
+//   })
 
-  return secret
-}
+//   return secret
+// }

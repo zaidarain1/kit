@@ -5,7 +5,13 @@ import { AnimatePresence } from 'framer-motion'
 
 import { getModalPositionCss, useTheme } from '@0xsequence/kit'
 
-import { PaperTransactionForm, PendingTransaction, TransactionError, TransactionSuccess, CheckoutSelection } from '../../views'
+import {
+  // PaperTransactionForm,
+  PendingTransaction,
+  TransactionError,
+  TransactionSuccess,
+  CheckoutSelection
+} from '../../views'
 import { History, Navigation, NavigationContextProvider, CheckoutModalContextProvider, CheckoutSettings } from '../../contexts'
 
 import { NavigationHeader } from '../../shared/components/NavigationHeader'
@@ -84,8 +90,8 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
       case 'transaction-error':
         return <TransactionError />
       case 'transaction-form':
-      default:
-        return <PaperTransactionForm />
+      // default:
+      //   return <PaperTransactionForm />
     }
   }
 
