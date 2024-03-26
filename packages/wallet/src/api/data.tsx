@@ -79,6 +79,9 @@ export const getTokenBalances = async ({
     const res = await indexerClient.getTokenBalances({
       accountAddress,
       includeMetadata,
+      metadataOptions: {
+        verifiedOnly: true
+      },
       ...(contractAddress ? { contractAddress } : {})
     })
 
