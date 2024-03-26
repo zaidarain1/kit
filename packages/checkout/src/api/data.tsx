@@ -38,7 +38,13 @@ export const getTokenBalances = async ({ accountAddress, chainId }: GetTokenBala
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId) 
 
-    const res = await indexerClient.getTokenBalances({ accountAddress, includeMetadata: true})
+    const res = await indexerClient.getTokenBalances({
+      accountAddress,
+      includeMetadata: true,
+      metadataOptions: {
+        verifiedOnly: true
+      }
+    })
   
     return res?.balances || []
   } catch(e) {
@@ -82,6 +88,9 @@ export const fetchCollectionBalance = async ({ accountAddress, chainId, collecti
       accountAddress,
       includeMetadata: true,
       contractAddress: collectionAddress,
+      metadataOptions: {
+        verifiedOnly: true
+      }
     })
   
     return res?.balances || []
