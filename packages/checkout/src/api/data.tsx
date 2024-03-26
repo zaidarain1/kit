@@ -1,7 +1,7 @@
 import { Token, TokenPrice } from '@0xsequence/api'
 import { getNetworkConfigAndClients } from '@0xsequence/kit'
-import { TokenBalance, ContractType, TokenMetadata } from '@0xsequence/indexer'
-import { GetContractInfoArgs, ContractInfo } from '@0xsequence/metadata'
+import { TokenBalance, ContractType } from '@0xsequence/indexer'
+import { GetContractInfoArgs, ContractInfo, TokenMetadata } from '@0xsequence/metadata'
 import { ethers } from 'ethers'
 
 import { getPaperNetworkName } from '../utils'
