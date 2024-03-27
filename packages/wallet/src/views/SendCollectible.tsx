@@ -142,7 +142,8 @@ export const SendCollectible = ({
         analytics?.track({
           event: 'SEND_TRANSACTION_REQUEST',
           props: {
-            'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown'
+            'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown',
+            source: 'sequence-kit/wallet'
           }
         })
         // _from, _to, _id
@@ -160,7 +161,8 @@ export const SendCollectible = ({
         analytics?.track({
           event: 'SEND_TRANSACTION_REQUEST',
           props: {
-            'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown'
+            'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown',
+            source: 'sequence-kit/wallet'
           }
         })
         // _from, _to, _ids, _amounts, _data
