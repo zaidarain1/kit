@@ -83,6 +83,15 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
       const email = prompt('Auto-email login, please specify the email address:')
       localStorage.setItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY, email || '')
     }
+
+    if (connector._wallet.id === 'metamask' && typeof window !== 'undefined') {
+      const isMetamaskFound = !!window?.ethereum?._metamask
+      if (!isMetamaskFound) {
+        window.open('https://metamask.io/download/')
+        return
+      }
+    }
+
     connect({ connector })
   }
 
