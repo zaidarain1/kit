@@ -4,7 +4,8 @@ import { TokenBalance, ContractType } from '@0xsequence/indexer'
 import { GetContractInfoArgs, ContractInfo, TokenMetadata } from '@0xsequence/metadata'
 import { ethers } from 'ethers'
 
-import { getPaperNetworkName } from '../utils'
+import { SardineCheckout } from '..'
+import { ChainId, networks } from '@0xsequence/network'
 
 export interface GetTokenBalancesArgs {
   accountAddress: string
@@ -158,69 +159,61 @@ export const fetchContractInfo = async ({ chainID, contractAddress }: GetContrac
   return response.contractInfo
 }
 
-// export interface FetchPaperSecretArgs {
-//   chainId: number,
-//   email: string,
-//   abi: string,
-//   contractAddress: string,
-//   recipientAddress: string,
-//   receiptTitle: string,
-//   collectionContractAddress?: string,
-//   methodArguments: MethodArguments,
-//   currency: string,
-//   currencyAmount: string,
-//   methodName: string,
-// }
+export const fetchSardineClientToken = async (): Promise<string> => {
+  const { apiClient } = getNetworkConfigAndClients(1)
+  const res = await apiClient.getSardineClientToken()
 
-// export interface MethodArguments {
-//   [key: string]: any
-// }
+  return res.token
+}
 
-// export const fetchPaperSecret = async ({
-//   chainId,
-//   email,
-//   contractAddress,
-//   abi,
-//   receiptTitle,
-//   collectionContractAddress,
-//   methodArguments,
-//   currency,
-//   currencyAmount,
-//   methodName,
-//   recipientAddress,
-// }: FetchPaperSecretArgs) => {
-//   const { network, apiClient } = await getNetworkConfigAndClients(chainId)
+export const createSardineOrder = async (
+  authToken: string,
+  order: SardineCheckout,
+  tokenMetadata?: TokenMetadata
+): Promise<void> => {
+  const response = await fetch('https://api.sandbox.sardine.ai/v1/auth/client-tokens', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${authToken}`
+    },
+    body: JSON.stringify({
+      referenceId: 'test-0.24678085734dwedwedwed0dwedwedwed4dweddweddwedwedwfwrferfwedwed6884', // change or remove reference id?
+      expiresIn: 3600,
+      paymentMethodTypeConfig: {
+        enabled: ['us_debit', 'us_credit', 'international_debit', 'international_credit', 'ach'],
+        default: order.defaultPaymentMethodType
+      },
+      nft: {
+        name: tokenMetadata?.name || 'Unknown',
+        imageUrl: tokenMetadata?.image || '',
+        network: networks[order.chainId as ChainId].name,
+        recipientAddress: order.recipientAddress,
+        platform: 'horizon',
+        blockchainNftId: order.blockchainNftId,
+        contractAddress: order.contractAddress,
+        executionType: 'smart_contract',
+        quantity: Number(order.quantity),
+        decimals: Number(order.decimals)
+      }
+    })
+  })
 
-//   // @ts-ignore-next-line
-//   const chainName = getPaperNetworkName(network)
+  const json = await response.json()
 
-//   const paramsJson = JSON.stringify({
-//     title: receiptTitle,
-//     email,
-//     limitPerTransaction: 1,
-//     quantity: 1,
-//     mintMethod: {
-//       args: methodArguments,
-//       payment: {
-//         currency,
-//         value: `${currencyAmount} * $QUANTITY`,
-//       },
-//       name: methodName,
-//     },
-//     walletAddress: recipientAddress,
-//     ...(collectionContractAddress ? {
-//       contractArgs: {
-//         collectionContractAddress
-//       }
-//     } : {}),
-//   })
+  return json
+}
 
-//   const { secret } = await apiClient.paperSessionSecret2({
-//    chainName,
-//    contractAddress,
-//    abi,
-//    paramsJson,
-//   })
+export const fetchSardineOrderStatus = async (authToken: string, orderId: string) => {
+  const response = await fetch(`https://api.sandbox.sardine.ai/v1/orders/${orderId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Basic ${authToken}`
+    }
+  })
 
-//   return secret
-// }
+  const json = await response.json()
+  console.log('json:', json)
+  return json
+}

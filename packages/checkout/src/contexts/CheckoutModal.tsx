@@ -5,26 +5,28 @@ interface CoinQuantity {
   amountRequiredRaw: string
 }
 
-interface OrderSummaryItem {
+export interface OrderSummaryItem {
   chainId: number
   contractAddress: string
   tokenId: string
   quantityRaw: string
 }
 
+export interface SardineCheckout {
+  defaultPaymentMethodType: 'us_debit' | 'us_credit' | 'international_debit' | 'international_credit' | 'ach'
+  chainId: number
+  platform: string
+  contractAddress: string
+  blockchainNftId: string
+  recipientAddress: string
+  quantity: number
+  decimals?: number
+  onSuccess?: (transactionHash: string) => void
+  onError?: (error: Error) => void
+}
+
 export interface CheckoutSettings {
-  sardineCheckout?: {
-    defaultPaymentMethodType: 'us_debit' | 'us_credit' | 'international_debit' | 'international_credit' | 'ach'
-    chainId: number
-    platform: string
-    contractAddress: string
-    blockchainNftId: string
-    recipientAddress: string
-    quantity: string
-    decimals?: string
-    onSuccess?: (transactionHash: string) => void
-    onError?: (error: Error) => void
-  }
+  sardineCheckout?: SardineCheckout
   cryptoCheckout?: {
     chainId: number
     triggerTransaction: () => void

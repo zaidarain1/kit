@@ -14,6 +14,7 @@ import { HEADER_HEIGHT } from '../../constants'
 import { useNavigation, useCheckoutModal, useBalances, useContractInfo, useTokenMetadata } from '../../hooks'
 import { compareAddress, formatDisplay } from '../../utils'
 import * as styles from './styles.css'
+import { createSardineOrder, fetchSardineClientToken, fetchSardineOrderStatus } from '../../api'
 
 export const CheckoutSelection = () => {
   const { chains } = useConfig()
@@ -66,41 +67,22 @@ export const CheckoutSelection = () => {
   const triggerSardineTransaction = async () => {
     console.log('trigger sardine transaction')
 
-    const response = await fetch('https://api.sandbox.sardine.ai/v1/auth/client-tokens', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Basic ...' // add token
-      },
-      body: JSON.stringify({
-        referenceId: 'test-...', // add reference id
-        expiresIn: 3600,
-        paymentMethodTypeConfig: {
-          enabled: ['us_debit', 'us_credit', 'international_debit', 'international_credit', 'ach'],
-          default: 'us_debit'
-        },
-        nft: {
-          name: tokenMetadata?.name || 'Unknown',
-          imageUrl: tokenMetadata?.image || '',
-          network: 'polygon',
-          recipientAddress: '0xB62397749850CC20054a78737d8E3676a51e3e77',
-          platform: 'horizon',
-          blockchainNftId: '214',
-          contractAddress: '0xB537a160472183f2150d42EB1c3DD6684A55f74c',
-          executionType: 'smart_contract',
-          quantity: 1
-        }
-      })
-    })
+    // const token = await fetchSardineClientToken()
 
-    const json = await response.json()
-    console.log(response, json)
+    // console.log('token:', token)
+    const authToken = '' //TODO: replace
 
-    if (json.clientToken) {
-      const url = `https://crypto.sandbox.sardine.ai/?client_token=${json.clientToken}&show_features=true`
-      const windowName = 'SardineCrypto'
-      const windowSize = 'width=800,height=600'
-      window.open(url, windowName, windowSize)
+    if (settings?.sardineCheckout) {
+      const response = await createSardineOrder(authToken, settings.sardineCheckout, tokenMetadata)
+
+      if (response.clientToken) {
+        const url = `https://crypto.sandbox.sardine.ai/?client_token=${response.clientToken}&show_features=true`
+        const windowName = 'SardineCrypto'
+        const windowSize = 'width=800,height=600'
+        window.open(url, windowName, windowSize)
+
+        setNavigation({ location: 'transaction-pending', params: { orderId: response.orderId } })
+      }
     }
   }
 
