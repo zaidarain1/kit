@@ -73,10 +73,14 @@ export const sortBalancesByType = (balances: TokenBalance[]): SortBalancesByType
     }
   })
 
+  const sortedNativeTokens = nativeTokens.sort((a, b) => a.tokenID.localeCompare(b.tokenID))
+  const sortedErc20Tokens = erc20Tokens.sort((a, b) => a.tokenID.localeCompare(b.tokenID))
+  const sortedCollectibles = collectibles.sort((a, b) => a.tokenID.localeCompare(b.tokenID))
+
   return {
-    nativeTokens,
-    erc20Tokens,
-    collectibles
+    nativeTokens: sortedNativeTokens,
+    erc20Tokens: sortedErc20Tokens,
+    collectibles: sortedCollectibles
   }
 }
 

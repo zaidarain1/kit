@@ -3,14 +3,14 @@ import { ethers } from 'ethers'
 import qs from 'query-string'
 import { ThemeProvider } from '@0xsequence/design-system'
 import { KitProvider, KitConfig, getKitConnectWallets } from '@0xsequence/kit'
-import { getDefaultConnectors, mock } from '@0xsequence/kit-connectors'
+import { getDefaultConnectors, getDefaultWaasConnectors, mock } from '@0xsequence/kit-connectors'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import Homepage from './components/Homepage'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { type Chain } from 'viem'
 import { createConfig, http, WagmiProvider } from 'wagmi'
-import { mainnet, polygon } from 'wagmi/chains'
+import { arbitrumNova, arbitrumSepolia, mainnet, polygon } from 'wagmi/chains'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -22,14 +22,49 @@ function App() {
   const isDebugMode = debug === 'true'
 
   /* typing error from wagmi? */
-  const chains: readonly [Chain, ...Chain[]] = [mainnet as Chain, polygon as Chain]
+  const chains: readonly [Chain, ...Chain[]] = [
+    arbitrumNova as Chain,
+    arbitrumSepolia as Chain,
+    mainnet as Chain,
+    polygon as Chain
+  ]
 
-  const projectAccessKey = 'iK0DPkHRt0IFo8o4M3fZIIOAAAAAAAAAA'
+  const projectAccessKey = 'T3czhtWsTONJpbjFgAdLAuEAAAAAAAAA'
 
+  /// Use this to test the waas connectors
+
+  // WaaS config
+  // const waasConfigKey = 'eyJwcm9qZWN0SWQiOjc1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
+  // const googleClientId = '603294233249-6h5saeg2uiu8akpcbar3r2aqjp6j7oem.apps.googleusercontent.com'
+  // const appleClientId = 'com.horizon.sequence.waas'
+  // const appleRedirectURI = 'https://' + window.location.host
+
+  // const connectors = [
+  //   ...getDefaultWaasConnectors({
+  //     walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
+  //     defaultChainId: 42170,
+  //     waasConfigKey,
+  //     googleClientId,
+  //     appleClientId,
+  //     appleRedirectURI,
+  //     appName: 'Kit Demo',
+  //     projectAccessKey,
+  //     enableConfirmationModal: localStorage.getItem('confirmationEnabled') === 'true'
+  //   }),
+  //   ...(isDebugMode
+  //     ? getKitConnectWallets(projectAccessKey, [
+  //         mock({
+  //           accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9']
+  //         })
+  //       ])
+  //     : [])
+  // ]
+
+  /// Use this to test the universal connectors
   const connectors = [
     ...getDefaultConnectors({
       walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
-      defaultChainId: 137,
+      defaultChainId: 42170,
       appName: 'demo app',
       projectAccessKey
     }),
@@ -61,22 +96,32 @@ function App() {
   const kitConfig: KitConfig = {
     defaultTheme: 'dark',
     signIn: {
-      projectName: 'Skyweaver',
+      projectName: 'Kit Demo',
       // logoUrl: 'sw-logo-white.svg',
       useMock: isDebugMode
     },
     displayedAssets: [
-      // Matic token
+      // Native token
       {
         contractAddress: ethers.constants.AddressZero,
-        chainId: 137
+        chainId: 42170
       },
-      // USDC token
+      // Native token
       {
-        contractAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
-        chainId: 137
+        contractAddress: ethers.constants.AddressZero,
+        chainId: 421614
       },
-      // skyweaver collectibles
+      // Waas demo NFT
+      {
+        contractAddress: '0x0d402c63cae0200f0723b3e6fa0914627a48462e',
+        chainId: 42170
+      },
+      // Waas demo NFT
+      {
+        contractAddress: '0x0d402c63cae0200f0723b3e6fa0914627a48462e',
+        chainId: 421614
+      },
+      // Skyweaver assets
       {
         contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
         chainId: 137

@@ -14,7 +14,7 @@ export const CollectionDetailsSkeleton = ({ chainId }: CollectionDetailsSkeleton
 
   return (
     <Box
-      paddingLeft="5"
+      paddingX="4"
       paddingBottom="5"
       paddingTop="3"
       marginTop="8"
@@ -22,7 +22,6 @@ export const CollectionDetailsSkeleton = ({ chainId }: CollectionDetailsSkeleton
       alignItems="center"
       justifyContent="center"
       gap="10"
-      style={{ paddingRight: `calc(${vars.space[5]} - ${scrollbarWidth})` }}
     >
       <Box flexDirection="column" gap="2" justifyContent="center" alignItems="center">
         <Skeleton width="32px" height="32px" />
@@ -44,7 +43,7 @@ export const CollectionDetailsSkeleton = ({ chainId }: CollectionDetailsSkeleton
           {Array(8)
             .fill(null)
             .map((_, i) => (
-              <Skeleton width="full" aspectRatio="1/1" />
+              <Skeleton key={i} width="full" aspectRatio="1/1" />
             ))}
         </Box>
       </Box>

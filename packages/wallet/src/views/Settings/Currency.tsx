@@ -11,14 +11,7 @@ export const SettingsCurrency = () => {
   const scrollbarWidth = useScrollbarWidth()
 
   return (
-    <Box
-      paddingBottom="5"
-      paddingLeft="5"
-      paddingTop="3"
-      style={{
-        paddingRight: `calc(${vars.space[5]} - ${scrollbarWidth})`
-      }}
-    >
+    <Box paddingBottom="5" paddingX="4" paddingTop="3">
       <Box flexDirection="column" gap="2">
         {supportedFiatCurrencies.map(currency => {
           return (

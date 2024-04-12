@@ -10,18 +10,17 @@ import {
   Text,
   NumericInput,
   TextInput,
-  vars
+  vars,
+  Spinner
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useAnalyticsContext } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
-import { ExtendedConnector } from '@0xsequence/kit'
-import { useAccount, useChainId, useSwitchChain, useWalletClient, useConfig } from 'wagmi'
+import { useAccount, useChainId, useSwitchChain, useWalletClient, useConfig, useSendTransaction } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
-import { ERC_20_ABI } from '../constants'
-import { useBalances, useCoinPrices, useConversionRate, useSettings, useOpenWalletModal } from '../hooks'
+import { ERC_20_ABI, HEADER_HEIGHT } from '../constants'
+import { useBalances, useCoinPrices, useConversionRate, useSettings, useOpenWalletModal, useNavigation } from '../hooks'
 import { compareAddress, computeBalanceFiat, limitDecimals, isEthAddress, truncateAtMiddle } from '../utils'
-import { HEADER_HEIGHT } from '../constants'
 import * as sharedStyles from '../shared/styles.css'
 
 interface SendCoinProps {
@@ -30,6 +29,7 @@ interface SendCoinProps {
 }
 
 export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
+  const { setNavigation } = useNavigation()
   const { analytics } = useAnalyticsContext()
   const { chains } = useConfig()
   const connectedChainId = useChainId()
@@ -38,13 +38,14 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
   const isConnectorSequenceBased = !!connector?._wallet?.isSequenceBased
   const isCorrectChainId = connectedChainId === chainId
   const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased
-  const { switchChain } = useSwitchChain()
+  const { switchChainAsync } = useSwitchChain()
   const amountInputRef = useRef<HTMLInputElement>(null)
   const { setOpenWalletModal } = useOpenWalletModal()
   const { fiatCurrency } = useSettings()
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')
-  const { data: walletClient } = useWalletClient()
+  const { sendTransaction } = useSendTransaction()
+  const [isSendTxnPending, setIsSendTxnPending] = useState(false)
   const { data: balances = [], isLoading: isLoadingBalances } = useBalances(
     {
       accountAddress: accountAddress,
@@ -120,7 +121,7 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
 
   const executeTransaction = async (e: ChangeEvent<HTMLFormElement>) => {
     if (!isCorrectChainId && isConnectorSequenceBased) {
-      switchChain({ chainId })
+      await switchChainAsync({ chainId })
     }
 
     e.preventDefault()
@@ -131,35 +132,58 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
       analytics?.track({
         event: 'SEND_TRANSACTION_REQUEST',
         props: {
-          walletClient: (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown',
+          'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown',
           source: 'sequence-kit/wallet'
         }
       })
-      walletClient
-        ?.sendTransaction({
+      setIsSendTxnPending(true)
+      sendTransaction(
+        {
           to: toAddress as `0x${string}}`,
-          value: BigInt(sendAmount.toString())
-        })
-        .catch(e => console.error('User rejected transaction', e))
+          value: BigInt(sendAmount.toString()),
+          gas: null
+        },
+        {
+          onSettled: (result, error) => {
+            if (result) {
+              setNavigation({
+                location: 'home'
+              })
+            }
+            setIsSendTxnPending(false)
+          }
+        }
+      )
     } else {
       analytics?.track({
         event: 'SEND_TRANSACTION_REQUEST',
         props: {
-          walletClient: (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown',
+          'walletClient': (connector as ExtendedConnector | undefined)?._wallet?.id || 'unknown',
           source: 'sequence-kit/wallet'
         }
       })
-      walletClient
-        ?.sendTransaction({
+      setIsSendTxnPending(true)
+      sendTransaction(
+        {
           to: tokenBalance?.contractAddress as `0x${string}}`,
           data: new ethers.utils.Interface(ERC_20_ABI).encodeFunctionData('transfer', [
             toAddress,
             sendAmount.toHexString()
-          ]) as `0x${string}`
-        })
-        .catch(e => console.error('User rejected transaction', e))
+          ]) as `0x${string}`,
+          gas: null
+        },
+        {
+          onSettled: (result, error) => {
+            if (result) {
+              setNavigation({
+                location: 'home'
+              })
+            }
+            setIsSendTxnPending(false)
+          }
+        }
+      )
     }
-    setOpenWalletModal(false)
   }
 
   return (
@@ -173,6 +197,7 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
       flexDirection="column"
       as="form"
       onSubmit={executeTransaction}
+      pointerEvents={isSendTxnPending ? 'none' : 'auto'}
     >
       <Box background="backgroundSecondary" borderRadius="md" padding="4" gap="2" flexDirection="column">
         <SendItemInfo
@@ -260,33 +285,44 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
 
       {showSwitchNetwork && (
         <Box marginTop="3">
-          <Text color="negative">The wallet is connected to the wrong network. Please switch network before proceeding</Text>
+          <Text variant="small" color="negative" marginBottom="2">
+            The wallet is connected to the wrong network. Please switch network before proceeding
+          </Text>
           <Button
             marginTop="2"
             width="full"
             variant="primary"
             type="button"
             label="Switch Network"
-            onClick={() => switchChain({ chainId })}
+            onClick={async () => await switchChainAsync({ chainId })}
             disabled={isCorrectChainId}
             style={{ height: '52px', borderRadius: vars.radii.md }}
           />
         </Box>
       )}
 
-      <Button
-        color="text100"
-        marginTop="3"
-        width="full"
-        variant="primary"
-        type="submit"
-        disabled={
-          !isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || (!isCorrectChainId && !isConnectorSequenceBased)
-        }
-        label="Send"
-        rightIcon={ChevronRightIcon}
-        style={{ height: '52px', borderRadius: vars.radii.md }}
-      />
+      <Box style={{ height: '52px' }} alignItems="center" justifyContent="center">
+        {isSendTxnPending ? (
+          <Spinner />
+        ) : (
+          <Button
+            color="text100"
+            marginTop="3"
+            width="full"
+            variant="primary"
+            type="submit"
+            disabled={
+              !isNonZeroAmount ||
+              !isEthAddress(toAddress) ||
+              insufficientFunds ||
+              (!isCorrectChainId && !isConnectorSequenceBased)
+            }
+            label="Send"
+            rightIcon={ChevronRightIcon}
+            style={{ height: '52px', borderRadius: vars.radii.md }}
+          />
+        )}
+      </Box>
     </Box>
   )
 }

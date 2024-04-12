@@ -1,4 +1,4 @@
-import React, { useRef, useState, ChangeEvent } from 'react'
+import React, { useRef, useState, ChangeEvent, useEffect } from 'react'
 import { ethers } from 'ethers'
 import {
   Box,
@@ -12,20 +12,18 @@ import {
   Text,
   NumericInput,
   TextInput,
-  vars
+  vars,
+  Spinner
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useAnalyticsContext } from '@0xsequence/kit'
-import { TokenBalance } from '@0xsequence/indexer'
-import { ExtendedConnector } from '@0xsequence/kit'
-import { useAccount, useChainId, useSwitchChain, useWalletClient, useConfig } from 'wagmi'
+import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector } from '@0xsequence/kit'
+import { TokenBalance, Transaction } from '@0xsequence/indexer'
+import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
-import { ERC_1155_ABI, ERC_721_ABI } from '../constants'
-import { useCollectibleBalance, useOpenWalletModal } from '../hooks'
+import { ERC_1155_ABI, ERC_721_ABI, HEADER_HEIGHT } from '../constants'
+import { useCollectibleBalance, useNavigation, useOpenWalletModal } from '../hooks'
 import { limitDecimals, isEthAddress, truncateAtMiddle } from '../utils'
-import { HEADER_HEIGHT } from '../constants'
 import * as sharedStyles from '../shared/styles.css'
-import { chain } from 'lodash'
 
 interface SendCollectibleProps {
   chainId: number
@@ -34,6 +32,7 @@ interface SendCollectibleProps {
 }
 
 export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendCollectibleProps) => {
+  const { setNavigation } = useNavigation()
   const { analytics } = useAnalyticsContext()
   const { chains } = useConfig()
   const connectedChainId = useChainId()
@@ -47,13 +46,32 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
   const { setOpenWalletModal } = useOpenWalletModal()
   const [amount, setAmount] = useState<string>('0')
   const [toAddress, setToAddress] = useState<string>('')
-  const { data: walletClient } = useWalletClient()
+  const [showAmountControls, setShowAmountControls] = useState<boolean>(false)
+  const { sendTransaction } = useSendTransaction()
+  const [isSendTxnPending, setIsSendTxnPending] = useState(false)
   const { data: tokenBalance, isLoading: isLoadingBalances } = useCollectibleBalance({
     accountAddress: accountAddress,
     chainId,
     collectionAddress: contractAddress,
-    tokenId
+    tokenId,
+    verifiedOnly: false
   })
+  const { contractType } = tokenBalance as TokenBalance
+
+  useEffect(() => {
+    if (tokenBalance) {
+      if (contractType === 'ERC721') {
+        setAmount('1')
+        setShowAmountControls(false)
+      } else if (contractType === 'ERC1155') {
+        if (Number(ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals)) >= 1) {
+          setAmount('1')
+        }
+        setShowAmountControls(true)
+      }
+    }
+  }, [tokenBalance])
+
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
 
   const isLoading = isLoadingBalances
@@ -122,7 +140,6 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
     }
 
     const sendAmount = ethers.utils.parseUnits(amountToSendFormatted, decimals)
-    const { contractType } = tokenBalance as TokenBalance
 
     switch (contractType) {
       case 'ERC721':
@@ -133,17 +150,29 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
             source: 'sequence-kit/wallet'
           }
         })
+        setIsSendTxnPending(true)
         // _from, _to, _id
-        walletClient
-          ?.sendTransaction({
+        sendTransaction(
+          {
             to: (tokenBalance as TokenBalance).contractAddress as `0x${string}}`,
             data: new ethers.utils.Interface(ERC_721_ABI).encodeFunctionData('safeTransferFrom', [
               accountAddress,
               toAddress,
               tokenId
-            ]) as `0x${string}`
-          })
-          .catch(e => console.error('User rejected transaction', e))
+            ]) as `0x${string}`,
+            gas: null
+          },
+          {
+            onSettled: (result, error) => {
+              if (result) {
+                setNavigation({
+                  location: 'home'
+                })
+              }
+              setIsSendTxnPending(false)
+            }
+          }
+        )
         break
       case 'ERC1155':
       default:
@@ -154,9 +183,10 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
             source: 'sequence-kit/wallet'
           }
         })
+        setIsSendTxnPending(true)
         // _from, _to, _ids, _amounts, _data
-        walletClient
-          ?.sendTransaction({
+        sendTransaction(
+          {
             to: (tokenBalance as TokenBalance).contractAddress as `0x${string}}`,
             data: new ethers.utils.Interface(ERC_1155_ABI).encodeFunctionData('safeBatchTransferFrom', [
               accountAddress,
@@ -164,11 +194,21 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
               [tokenId],
               [sendAmount.toHexString()],
               []
-            ]) as `0x${string}`
-          })
-          .catch(e => console.error('User rejected transaction', e))
+            ]) as `0x${string}`,
+            gas: null
+          },
+          {
+            onSettled: (result, error) => {
+              if (result) {
+                setNavigation({
+                  location: 'home'
+                })
+              }
+              setIsSendTxnPending(false)
+            }
+          }
+        )
     }
-    setOpenWalletModal(false)
   }
 
   const maxAmount = ethers.utils.formatUnits(tokenBalance?.balance || 0, decimals).toString()
@@ -187,6 +227,7 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
       flexDirection="column"
       as="form"
       onSubmit={executeTransaction}
+      pointerEvents={isSendTxnPending ? 'none' : 'auto'}
     >
       <Box background="backgroundSecondary" borderRadius="md" padding="4" gap="2" flexDirection="column">
         <SendItemInfo
@@ -204,12 +245,17 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
           name="amount"
           value={amount}
           onChange={handleChangeAmount}
+          disabled={!showAmountControls}
           controls={
-            <Box gap="2">
-              <Button disabled={isMinimum} size="xs" onClick={handleSubtractOne} leftIcon={SubtractIcon} />
-              <Button disabled={isMaximum} size="xs" onClick={handleAddOne} leftIcon={AddIcon} />
-              <Button size="xs" shape="square" label="Max" onClick={handleMax} data-id="maxCoin" flexShrink="0" />
-            </Box>
+            <>
+              {showAmountControls && (
+                <Box gap="2">
+                  <Button disabled={isMinimum} size="xs" onClick={handleSubtractOne} leftIcon={SubtractIcon} />
+                  <Button disabled={isMaximum} size="xs" onClick={handleAddOne} leftIcon={AddIcon} />
+                  <Button size="xs" shape="square" label="Max" onClick={handleMax} data-id="maxCoin" flexShrink="0" />
+                </Box>
+              )}
+            </>
           }
         />
         {insufficientFunds && (
@@ -265,7 +311,9 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
 
       {showSwitchNetwork && (
         <Box marginTop="3">
-          <Text color="negative">The wallet is connected to the wrong network. Please switch network before proceeding</Text>
+          <Text variant="small" color="negative" marginBottom="2">
+            The wallet is connected to the wrong network. Please switch network before proceeding
+          </Text>
           <Button
             marginTop="2"
             width="full"
@@ -279,19 +327,28 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
         </Box>
       )}
 
-      <Button
-        color="text100"
-        marginTop="3"
-        width="full"
-        variant="primary"
-        type="submit"
-        disabled={
-          !isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || (!isCorrectChainId && !isConnectorSequenceBased)
-        }
-        label="Send"
-        rightIcon={ChevronRightIcon}
-        style={{ height: '52px', borderRadius: vars.radii.md }}
-      />
+      <Box style={{ height: '52px' }} alignItems="center" justifyContent="center">
+        {isSendTxnPending ? (
+          <Spinner />
+        ) : (
+          <Button
+            color="text100"
+            marginTop="3"
+            width="full"
+            variant="primary"
+            type="submit"
+            disabled={
+              !isNonZeroAmount ||
+              !isEthAddress(toAddress) ||
+              insufficientFunds ||
+              (!isCorrectChainId && !isConnectorSequenceBased)
+            }
+            label="Send"
+            rightIcon={ChevronRightIcon}
+            style={{ height: '52px', borderRadius: vars.radii.md }}
+          />
+        )}
+      </Box>
     </Box>
   )
 }

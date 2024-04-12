@@ -1,5 +1,5 @@
 import React from 'react'
-import { createGenericContext } from '@0xsequence/kit'
+import { createGenericContext } from '../utils/genericContext'
 
 type WalletModalContext = {
   setOpenWalletModal: React.Dispatch<React.SetStateAction<boolean>>

@@ -2,6 +2,9 @@ import { CreateConnectorFn } from 'wagmi'
 import { getKitConnectWallets } from '@0xsequence/kit'
 
 import { apple, coinbaseWallet, email, facebook, google, metamask, sequence, twitch, walletConnect } from './connectors'
+import { googleWaas } from './connectors/google/googleWaas'
+import { emailWaas } from './connectors/email/emailWaas'
+import { appleWaas } from './connectors/apple/appleWaas'
 
 interface GetDefaultConnectors {
   walletConnectProjectId: string
@@ -65,6 +68,66 @@ export const getDefaultConnectors = ({
       }
     })
   ])
+
+  /* @ts-ignore-next-line */
+  return connectors
+}
+
+interface GetDefaultWaasConnectors {
+  projectAccessKey: string
+  waasConfigKey: string
+  googleClientId?: string
+  appleClientId?: string
+  appleRedirectURI?: string
+
+  walletConnectProjectId: string
+
+  appName: string
+  defaultChainId?: number
+
+  enableConfirmationModal?: boolean
+}
+
+export const getDefaultWaasConnectors = ({
+  projectAccessKey,
+  waasConfigKey,
+  googleClientId,
+  appleClientId,
+  appleRedirectURI,
+  walletConnectProjectId,
+  appName,
+  defaultChainId,
+  enableConfirmationModal
+}: GetDefaultWaasConnectors): CreateConnectorFn[] => {
+  const wallets: any[] = [
+    // emailWaas({ projectAccessKey, waasConfigKey, enableConfirmationModal, network: defaultChainId }),
+    coinbaseWallet({
+      appName
+    }),
+    metamask(),
+    walletConnect({
+      projectId: walletConnectProjectId
+    })
+  ]
+  if (googleClientId) {
+    wallets.push(
+      googleWaas({ projectAccessKey, googleClientId, waasConfigKey, enableConfirmationModal, network: defaultChainId })
+    )
+  }
+  if (appleClientId && appleRedirectURI) {
+    wallets.push(
+      appleWaas({
+        projectAccessKey,
+        appleClientId,
+        appleRedirectURI,
+        waasConfigKey,
+        enableConfirmationModal,
+        network: defaultChainId
+      })
+    )
+  }
+
+  const connectors = getKitConnectWallets(projectAccessKey, wallets)
 
   /* @ts-ignore-next-line */
   return connectors

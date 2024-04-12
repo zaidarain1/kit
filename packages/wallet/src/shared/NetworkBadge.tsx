@@ -30,7 +30,7 @@ export const NetworkBadge = ({ chainId }: NetworkBadgeProps) => {
       flexDirection="row"
       justifyContent="center"
       alignItems="center"
-      width="min"
+      width="fit"
     >
       <Image style={{ width: '14px' }} src={nativeTokenInfo.logoURI} />
       <Text
@@ -40,7 +40,7 @@ export const NetworkBadge = ({ chainId }: NetworkBadgeProps) => {
           color: chainColor
         }}
       >
-        {capitalize(network.name)}
+        {capitalize(network.title ?? network.name)}
       </Text>
     </Box>
   )

@@ -13,7 +13,7 @@ export const CollectibleTileImage = ({ imageUrl }: CollectibleTileImageProps) =>
       justifyContent="center"
       alignItems="center"
       overflow="hidden"
-      borderRadius="md"
+      borderRadius="sm"
       background="backgroundSecondary"
     >
       <Image style={{ height: '100%' }} src={imageUrl} />

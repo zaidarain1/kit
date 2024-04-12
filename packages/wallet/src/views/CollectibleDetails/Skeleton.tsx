@@ -16,11 +16,10 @@ export const CollectibleDetailsSkeleton = () => {
         flexDirection="column"
         gap="10"
         paddingBottom="5"
-        paddingLeft="5"
+        paddingX="4"
         paddingTop="0"
         style={{
-          marginTop: '-20px',
-          paddingRight: `calc(${vars.space[5]} - ${scrollbarWidth})`
+          marginTop: '-20px'
         }}
       >
         <Box gap="3" alignItems="center" justifyContent="center" flexDirection="column">

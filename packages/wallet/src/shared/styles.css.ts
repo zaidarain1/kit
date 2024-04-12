@@ -16,18 +16,6 @@ export const scrollbar = style({
   }
 })
 
-globalStyle(`html:not(.is-apple) ${scrollbar} > div::-webkit-scrollbar-thumb`, {
-  background: 'none',
-  backgroundClip: 'content-box',
-  // The transition doesn't work. It might possibly be a chrome issue
-  transition: 'background 0.5s linear'
-})
-
-globalStyle(`html:not(.is-apple) ${scrollbar} > div:hover::-webkit-scrollbar-thumb`, {
-  background: vars.colors.text50,
-  backgroundClip: 'content-box'
-})
-
 export const walletContent = style({})
 
 // Will affect the close button in the modal

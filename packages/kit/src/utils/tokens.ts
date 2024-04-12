@@ -105,7 +105,7 @@ export const defaultNativeTokenInfo = (chainId: number, wagmiChains: readonly [C
 
   if (foundChain) {
     return {
-      name: foundChain.name,
+      name: foundChain.nativeCurrency.name,
       symbol: foundChain.nativeCurrency.symbol,
       decimals: foundChain.nativeCurrency.decimals,
       logoURI: nativeTokenInfos[1].logoURI,

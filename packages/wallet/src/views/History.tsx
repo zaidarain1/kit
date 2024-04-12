@@ -18,14 +18,7 @@ export const History = () => {
 
   return (
     <Box>
-      <Box
-        paddingLeft="5"
-        paddingBottom="5"
-        paddingTop="3"
-        style={{
-          paddingRight: `calc(${vars.space[5]} - ${scrollbarWidth})`
-        }}
-      >
+      <Box paddingX="4" paddingBottom="5" paddingTop="3">
         <TransactionHistoryList
           transactions={transactionHistory}
           isLoading={isLoadingTransactionHistory}

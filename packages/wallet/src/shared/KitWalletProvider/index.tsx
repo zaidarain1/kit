@@ -90,8 +90,8 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
   return (
     <WalletModalContextProvider value={{ setOpenWalletModal, openWalletModalState: openWalletModal }}>
       <NavigationContextProvider value={{ setHistory, history }}>
-        <div id="kit-wallet">
-          <ThemeProvider root="#kit-wallet" scope="kit" theme={theme}>
+        <div id="kit-provider">
+          <ThemeProvider root="#kit-provider" scope="kit" theme={theme}>
             <AnimatePresence>
               {openWalletModal && (
                 <Modal

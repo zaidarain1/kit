@@ -16,14 +16,14 @@ export default defineConfig(() => {
     plugins: [
       react(),
       nodePolyfills({
-        include: ["buffer"],
+        include: ['buffer'],
         globals: {
-          Buffer: true,
-        },
+          Buffer: true
+        }
       }),
       viteTsconfigPaths(),
       vanillaExtractPlugin(),
-      svgrPlugin(),
+      svgrPlugin()
     ],
     server: {
       port: 4444,
@@ -32,6 +32,6 @@ export default defineConfig(() => {
         allow: ['..']
       }
     },
-    base: '', 
-  };
-});
+    base: ''
+  }
+})

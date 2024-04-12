@@ -5,7 +5,7 @@ import { getAppleLogo, getAppleMonochromeLogo } from './AppleLogo'
 
 import { sequenceWallet, BaseSequenceConnectorOptions } from '../wagmiConnectors'
 
-export interface AppleOptions extends BaseSequenceConnectorOptions {}
+export type AppleOptions = BaseSequenceConnectorOptions
 
 export const apple = (options: AppleOptions) => ({
   id: 'apple',

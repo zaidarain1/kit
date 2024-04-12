@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useNavigationContext, Navigation, History } from '../contexts/Navigation'
+import { useNavigationContext, Navigation, History, BasicNavigation } from '../contexts/Navigation'
 import { useOpenWalletModal } from './useOpenWalletModal'
 
 interface UseNavigation {
@@ -18,7 +18,7 @@ export const useNavigation = (): UseNavigation => {
     const parentElement = childElement?.parentElement
     parentElement?.scrollTo(0, 0)
 
-    const newHistory = [...history, navigation]
+    const newHistory = navigation.location === 'home' ? [] : [...history, navigation]
     setHistory(newHistory)
   }
 

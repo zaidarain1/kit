@@ -97,7 +97,7 @@ export const getHeader = (navigation: Navigation) => {
       return <NavigationHeader secondaryText="" primaryText="" />
     case 'send-collectible':
     case 'send-coin':
-      return <NavigationHeader secondaryText="Wallet /" primaryText="Send" />
+      return <NavigationHeader secondaryText="Wallet / " primaryText="Send" />
     case 'home':
     default:
       return <WalletHeader />

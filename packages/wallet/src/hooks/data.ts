@@ -51,7 +51,7 @@ export const useBalances = (args: UseBalancesArgs, options: GetTokenBalancesOpti
       return balances.flat()
     },
     retry: true,
-    staleTime: 10 * time.oneMinute,
+    staleTime: time.oneSecond * 30,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   })
 
@@ -60,7 +60,7 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
     queryKey: ['collectionBalance', args],
     queryFn: () => fetchCollectionBalance(args),
     retry: true,
-    staleTime: 10 * time.oneMinute,
+    staleTime: time.oneSecond * 30,
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
   })
 
@@ -72,7 +72,7 @@ export const useCoinPrices = ({
     queryKey: ['coinPrices', args],
     queryFn: () => getCoinPrices(args),
     retry: true,
-    staleTime: 1 * time.oneMinute,
+    staleTime: time.oneSecond * 30,
     enabled: args.tokens.length > 0 && !disabled
   })
 
@@ -81,7 +81,9 @@ export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs, options:
     queryKey: ['balancesAssetsSummary', args, options],
     queryFn: () => fetchBalancesAssetsSummary(args, options),
     retry: true,
-    staleTime: 10 * time.oneMinute,
+    refetchInterval: time.oneSecond * 4,
+    refetchOnMount: true,
+    staleTime: time.oneSecond,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   })
 
@@ -100,7 +102,7 @@ export const useCoinBalance = (args: GetTokenBalancesArgs, options: GetTokenBala
       return response
     },
     retry: true,
-    staleTime: 1 * time.oneMinute,
+    staleTime: time.oneSecond * 30,
     enabled: !!args.chainId && !!args.accountAddress
   })
 
@@ -109,7 +111,7 @@ export const useCollectibleBalance = (args: GetCollectibleBalanceArgs) =>
     queryKey: ['collectibleBalance', args],
     queryFn: () => getCollectibleBalance(args),
     retry: true,
-    staleTime: 5 * time.oneMinute,
+    staleTime: time.oneSecond * 30,
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress && !!args.tokenId
   })
 
@@ -118,7 +120,7 @@ export const useCollectiblePrices = (args: GetCollectiblePricesArgs) =>
     queryKey: ['useCollectiblePrices', args],
     queryFn: () => getCollectiblePrices(args),
     retry: true,
-    staleTime: 5 * time.oneMinute,
+    staleTime: time.oneMinute,
     enabled: args.tokens.length > 0
   })
 
@@ -140,7 +142,7 @@ export const useTransactionHistory = (
       return page?.page || 1
     },
     retry: true,
-    staleTime: 10 * time.oneMinute,
+    staleTime: time.oneSecond * 30,
     enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
   })
 
@@ -149,7 +151,8 @@ export const useTransactionHistorySummary = (args: GetTransactionHistorySummaryA
     queryKey: ['transactionHistorySummary', args],
     queryFn: () => getTransactionHistorySummary(args),
     retry: true,
-    staleTime: 10 * time.oneMinute,
+    staleTime: time.oneSecond,
+    refetchOnMount: true,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   })
 
@@ -158,7 +161,7 @@ export const useConversionRate = (args: FetchFiatConversionRateArgs) =>
     queryKey: ['useConversionRate', args],
     queryFn: () => fetchFiatConversionRate(args),
     retry: true,
-    staleTime: 60 * time.oneMinute
+    staleTime: time.oneMinute * 10
   })
 
 export const useTokenMetadata = (args: FetchTokenMetadataArgs): UseQueryResult<TokenMetadata[]> =>
@@ -166,7 +169,7 @@ export const useTokenMetadata = (args: FetchTokenMetadataArgs): UseQueryResult<T
     queryKey: ['useTokenMetadata', args],
     queryFn: () => fetchTokenMetadata(args),
     retry: true,
-    staleTime: 60 * time.oneMinute,
+    staleTime: time.oneMinute * 10,
     enabled: !!args.tokens.chainId && !!args.tokens.contractAddress
   })
 
@@ -175,6 +178,6 @@ export const useContractInfo = (args: GetContractInfoArgs): UseQueryResult<Contr
     queryKey: ['useContractInfo', args],
     queryFn: () => getContractInfo(args),
     retry: true,
-    staleTime: 60 * time.oneMinute,
+    staleTime: time.oneMinute * 10,
     enabled: !!args.chainID && !!args.contractAddress
   })

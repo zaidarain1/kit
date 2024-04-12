@@ -15,7 +15,7 @@ export interface GetTokenBalancesArgs {
 
 export const getNativeToken = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
   try {
-    const { indexerClient } = await getNetworkConfigAndClients(chainId)
+    const { indexerClient } = getNetworkConfigAndClients(chainId)
 
     const res = await indexerClient.getEtherBalance({ accountAddress })
 
@@ -62,20 +62,21 @@ export interface GetTokenBalancesOptions {
   hideUnlistedTokens: boolean
   hideCollectibles?: boolean
   includeMetadata?: boolean
+  verifiedOnly?: boolean
 }
 
 export const getTokenBalances = async (
   { accountAddress, chainId, contractAddress }: GetTokenBalancesArgs,
-  { hideUnlistedTokens, hideCollectibles, includeMetadata = true }: GetTokenBalancesOptions
+  { hideUnlistedTokens, hideCollectibles, includeMetadata = true, verifiedOnly }: GetTokenBalancesOptions
 ) => {
   try {
-    const { indexerClient } = await getNetworkConfigAndClients(chainId)
+    const { indexerClient } = getNetworkConfigAndClients(chainId)
 
     const res = await indexerClient.getTokenBalances({
       accountAddress,
       includeMetadata,
       metadataOptions: {
-        verifiedOnly: true
+        verifiedOnly: verifiedOnly ?? true
       },
       ...(contractAddress ? { contractAddress } : {})
     })
@@ -148,13 +149,15 @@ export interface GetCollectionBalanceArgs {
   chainId: number
   collectionAddress: string
   includeMetadata?: boolean
+  verifiedOnly?: boolean
 }
 
 export const fetchCollectionBalance = async ({
   accountAddress,
   chainId,
   collectionAddress,
-  includeMetadata = true
+  includeMetadata = true,
+  verifiedOnly
 }: GetCollectionBalanceArgs) => {
   try {
     const { indexerClient } = await getNetworkConfigAndClients(chainId)
@@ -164,7 +167,7 @@ export const fetchCollectionBalance = async ({
       includeMetadata,
       contractAddress: collectionAddress,
       metadataOptions: {
-        verifiedOnly: true
+        verifiedOnly: verifiedOnly ?? true
       }
     })
 
@@ -388,15 +391,17 @@ export interface GetCollectibleBalanceArgs {
   chainId: number
   collectionAddress: string
   tokenId: string
+  verifiedOnly?: boolean
 }
 
 export const getCollectibleBalance = async ({
   accountAddress,
   chainId,
   collectionAddress,
-  tokenId
+  tokenId,
+  verifiedOnly
 }: GetCollectibleBalanceArgs) => {
-  const { indexerClient } = await getNetworkConfigAndClients(chainId)
+  const { indexerClient } = getNetworkConfigAndClients(chainId)
 
   const res = await indexerClient.getTokenBalances({
     accountAddress,
@@ -404,7 +409,7 @@ export const getCollectibleBalance = async ({
     contractAddress: collectionAddress,
     tokenID: tokenId,
     metadataOptions: {
-      verifiedOnly: true
+      verifiedOnly: verifiedOnly ?? true
     }
   })
   const tokenBalance = res.balances[0]

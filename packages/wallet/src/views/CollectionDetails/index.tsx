@@ -50,7 +50,7 @@ export const CollectionDetails = ({ chainId, contractAddress }: CollectionDetail
 
   return (
     <Box
-      paddingLeft="5"
+      paddingX="4"
       paddingBottom="5"
       paddingTop="3"
       marginTop="8"
@@ -58,7 +58,6 @@ export const CollectionDetails = ({ chainId, contractAddress }: CollectionDetail
       alignItems="center"
       justifyContent="center"
       gap="10"
-      style={{ paddingRight: `calc(${vars.space[5]} - ${scrollbarWidth})` }}
     >
       <Box flexDirection="column" gap="2" justifyContent="center" alignItems="center">
         <CoinIcon imageUrl={collectionLogoURI} size={32} />
@@ -83,17 +82,13 @@ export const CollectionDetails = ({ chainId, contractAddress }: CollectionDetail
           width="full"
           marginTop="3"
         >
-          {collectionBalanceData?.map(balance => {
+          {collectionBalanceData?.map((balance, index) => {
             const unformattedBalance = balance.balance
             const decimals = balance?.tokenMetadata?.decimals || 0
             const formattedBalance = formatDisplay(ethers.utils.formatUnits(unformattedBalance, decimals))
 
             return (
-              <Box
-                key={`${balance.contractAddress}-${balance.tokenID}`}
-                onClick={() => onClickItem(balance)}
-                className={sharedStyles.clickable}
-              >
+              <Box key={index} onClick={() => onClickItem(balance)} className={sharedStyles.clickable}>
                 <Box
                   background="backgroundSecondary"
                   aspectRatio="1/1"
