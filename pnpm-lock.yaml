@@ -102,20 +102,17 @@ importers:
         specifier: ^1.4.7
         version: 1.4.7(@types/react-dom@18.2.25)(@types/react@18.2.79)(framer-motion@8.5.2)(react-dom@18.2.0)(react@18.2.0)
       '@0xsequence/kit':
-        specifier: workspace:*
-        version: link:../../packages/kit
+        specifier: 2.1.1-beta.1
+        version: 2.1.1-beta.1(0xsequence@1.9.17)(@0xsequence/waas@1.9.17)(@react-oauth/google@0.11.1)(@types/react-dom@18.2.19)(@types/react@18.2.55)(ethers@5.7.2)(react-apple-signin-auth@1.1.0)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(uuid@8.3.2)(viem@2.7.9)(wagmi@2.5.7)
       '@0xsequence/kit-checkout':
-        specifier: workspace:*
-        version: link:../../packages/checkout
+        specifier: 2.1.1-beta.1
+        version: 2.1.1-beta.1(@0xsequence/design-system@1.4.1)(@0xsequence/kit@2.1.1-beta.1)(@babel/core@7.23.9)(@vanilla-extract/css@1.14.1)(@vanilla-extract/recipes@0.3.0)(ethers@5.7.2)(framer-motion@8.5.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(wagmi@2.5.7)
       '@0xsequence/kit-connectors':
-        specifier: workspace:*
-        version: link:../../packages/connectors
+        specifier: 2.1.1-beta.1
+        version: 2.1.1-beta.1(0xsequence@1.9.17)(@0xsequence/kit@2.1.1-beta.1)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(uuid@8.3.2)(viem@2.7.9)(wagmi@2.5.7)
       '@0xsequence/kit-wallet':
-        specifier: workspace:*
-        version: link:../../packages/wallet
-      '@0xsequence/network':
-        specifier: ^1.9.19
-        version: 1.9.19(ethers@5.7.2)
+        specifier: 2.1.1-beta.1
+        version: 2.1.1-beta.1(@0xsequence/design-system@1.4.1)(@0xsequence/kit@2.1.1-beta.1)(@types/react-dom@18.2.19)(@types/react@18.2.55)(@vanilla-extract/css@1.14.1)(@vanilla-extract/recipes@0.3.0)(ethers@5.7.2)(framer-motion@8.5.5)(react-dom@18.2.0)(react-native@0.73.4)(react@18.2.0)(wagmi@2.5.7)
       '@tanstack/react-query':
         specifier: ^5.32.0
         version: 5.32.0(react@18.2.0)
