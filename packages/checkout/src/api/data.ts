@@ -166,16 +166,12 @@ export const fetchSardineClientToken = async (): Promise<string> => {
   return res.token
 }
 
-export const createSardineOrder = async (
-  authToken: string,
-  order: SardineCheckout,
-  tokenMetadata?: TokenMetadata
-): Promise<void> => {
+export const createSardineOrder = async (order: SardineCheckout, tokenMetadata?: TokenMetadata): Promise<any> => {
   const response = await fetch('https://api.sandbox.sardine.ai/v1/auth/client-tokens', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Basic ${authToken}`
+      Authorization: `Basic ${order.authToken}`
     },
     body: JSON.stringify({
       referenceId: 'test-0.24678085734dwedwedwed0dwedwedwed4dweddweddwedwedwfwrferfwedwed6884', // change or remove reference id?

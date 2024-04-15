@@ -58,9 +58,8 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
         return <TransactionSuccess />
       case 'transaction-error':
         return <TransactionError />
-      case 'transaction-form':
-      // default:
-      //   return <PaperTransactionForm />
+      default:
+        return <CheckoutSelection />
     }
   }
 
@@ -101,6 +100,7 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
                     }
                   }}
                   scroll={false}
+                  isDismissible={navigation.location !== 'transaction-pending'}
                   backdropColor="backgroundBackdrop"
                   onClose={() => setOpenCheckoutModal(false)}
                 >

@@ -13,6 +13,7 @@ export interface OrderSummaryItem {
 }
 
 export interface SardineCheckout {
+  authToken: string // TODO: remove
   defaultPaymentMethodType: 'us_debit' | 'us_credit' | 'international_debit' | 'international_credit' | 'ach'
   chainId: number
   platform: string

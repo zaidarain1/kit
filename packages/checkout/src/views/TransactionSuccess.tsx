@@ -3,18 +3,14 @@ import { Box, CheckmarkIcon, Text } from '@0xsequence/design-system'
 
 import { useCheckoutModal, useNavigation } from '../hooks'
 import { TransactionSuccessNavigation } from '../contexts'
+import { sequence } from '0xsequence'
 
 export const TransactionSuccess = () => {
   const { closeCheckout, settings } = useCheckoutModal()
   const nav = useNavigation()
   const navigation = nav.navigation as TransactionSuccessNavigation
 
-  useEffect(() => {
-    setTimeout(() => {
-      closeCheckout()
-      settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash)
-    }, 3000)
-  }, [])
+  const network = sequence.network.allNetworks.find(n => n.name === navigation.params.network)
 
   return (
     <Box style={{ height: '500px' }}>
@@ -27,7 +23,20 @@ export const TransactionSuccess = () => {
         <NotificationSuccessIcon />
         <Text fontSize="xlarge">Success!</Text>
         <Text textAlign="center" variant="normal" color="text80">
-          The transaction was successful.
+          Purchase was successful, item was sent to your wallet.
+        </Text>
+
+        <Text
+          as="a"
+          variant="small"
+          underline
+          marginTop="6"
+          color="text100"
+          href={`${network?.blockExplorer?.rootUrl}/tx/${navigation.params.transactionHash}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          View on {network?.blockExplorer?.name}
         </Text>
       </Box>
     </Box>

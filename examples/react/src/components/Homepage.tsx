@@ -5,7 +5,8 @@ import {
   validateEthProof,
   useTheme as useKitTheme,
   useWaasFeeOptions,
-  getNetworkConfigAndClients
+  getNetworkConfigAndClients,
+  getModalPositionCss
 } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
@@ -36,9 +37,17 @@ import {
   Switch,
   Select,
   IconButton,
+<<<<<<< HEAD
   CheckmarkIcon
 } from '@0xsequence/design-system'
 import { allNetworks } from '@0xsequence/network'
+=======
+  Modal,
+  TextInput
+} from '@0xsequence/design-system'
+import { AnimatePresence } from 'framer-motion'
+
+>>>>>>> e45ed1d (2.1.1-beta.1)
 import { Footer } from './Footer'
 import { messageToSign } from '../constants'
 import { delay, formatAddress, getCheckoutSettings } from '../utils'
@@ -319,8 +328,22 @@ export const Homepage = () => {
     setOpenConnectModal(true)
   }
 
+  const [isCheckoutInfoModalOpen, setIsCheckoutInfoModalOpen] = React.useState(false)
+
+  const [checkoutOrderId, setCheckoutOrderId] = React.useState('')
+  const [checkoutTokenContractAddress, setCheckoutTokenContractAddress] = React.useState('')
+  const [checkoutTokenId, setCheckoutTokenId] = React.useState('')
+
   const onClickCheckout = () => {
-    triggerCheckout(getCheckoutSettings(address))
+    setIsCheckoutInfoModalOpen(true)
+  }
+
+  const onCheckoutInfoConfirm = () => {
+    setIsCheckoutInfoModalOpen(false)
+    if (checkoutOrderId !== '' && checkoutTokenContractAddress !== '' && checkoutTokenId !== '') {
+      const checkoutSettings = getCheckoutSettings(checkoutOrderId, address, checkoutTokenContractAddress, checkoutTokenId)
+      triggerCheckout(checkoutSettings)
+    }
   }
 
   const SwitchThemeButton = () => {
@@ -366,11 +389,11 @@ export const Homepage = () => {
                 description="Connect a Sequence wallet to view, swap, send, and receive collections"
                 onClick={() => setOpenWalletModal(true)}
               />
-              {/* <ClickableCard
-                title="Checkout"
-                description="Checkout screen before placing a purchase on coins or collections"
+              <ClickableCard
+                title="Sardine Checkout"
+                description="Set orderbook order id, token contract address and token id to test checkout (on Polygon)"
                 onClick={onClickCheckout}
-              /> */}
+              />
               <ClickableCard
                 title="Send transaction"
                 description="Send a transaction with your wallet"
@@ -607,6 +630,69 @@ export const Homepage = () => {
       </Box>
 
       {!isMobile && <Footer />}
+
+      <AnimatePresence>
+        {isCheckoutInfoModalOpen && (
+          <Modal
+            contentProps={{
+              style: {
+                maxWidth: '400px',
+                height: 'auto',
+                ...getModalPositionCss('center')
+              }
+            }}
+            scroll={false}
+            backdropColor="backgroundBackdrop"
+            onClose={() => setIsCheckoutInfoModalOpen(false)}
+          >
+            <Box id="sequence-kit-checkout-info-modal">
+              <Box paddingTop="16" paddingBottom="8" paddingX="6" gap="2" flexDirection="column">
+                <Text variant="medium" color="text50">
+                  Order ID
+                </Text>
+                <TextInput
+                  autoFocus
+                  name="orderId"
+                  value={checkoutOrderId}
+                  onChange={ev => setCheckoutOrderId(ev.target.value)}
+                  placeholder="Order Id"
+                  data-1p-ignore
+                />
+                <Text variant="medium" color="text50">
+                  Token Contract Address
+                </Text>
+                <TextInput
+                  autoFocus
+                  name="tokenContractAddress"
+                  value={checkoutTokenContractAddress}
+                  onChange={ev => setCheckoutTokenContractAddress(ev.target.value)}
+                  placeholder="Token Contract Address"
+                  data-1p-ignore
+                />
+                <Text variant="medium" color="text50">
+                  Token ID
+                </Text>
+                <TextInput
+                  autoFocus
+                  name="tokenId"
+                  value={checkoutTokenId}
+                  onChange={ev => setCheckoutTokenId(ev.target.value)}
+                  placeholder="Token Id"
+                  data-1p-ignore
+                />
+
+                <Button
+                  marginTop="4"
+                  onClick={() => {
+                    onCheckoutInfoConfirm()
+                  }}
+                  label="Trigger checkout"
+                />
+              </Box>
+            </Box>
+          </Modal>
+        )}
+      </AnimatePresence>
     </Box>
   )
 }

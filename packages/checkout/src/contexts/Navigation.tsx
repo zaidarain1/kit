@@ -11,6 +11,7 @@ export interface TransactionFormNavigation {
 
 export interface TransactionSuccessParams {
   transactionHash: string
+  network: string
 }
 
 export interface TransactionSuccessNavigation {
@@ -29,6 +30,7 @@ export interface TransactionErrorNavigation {
 
 export interface TransactionPendingParams {
   orderId: string
+  authToken: string
 }
 
 export interface TransactionPendingNavigation {

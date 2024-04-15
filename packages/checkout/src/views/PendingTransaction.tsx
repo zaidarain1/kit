@@ -10,21 +10,19 @@ const POLLING_TIME = 10 * 1000
 export const PendingTransaction = () => {
   const nav = useNavigation()
   const {
-    params: { orderId }
+    params: { authToken, orderId }
   } = nav.navigation as TransactionPendingNavigation
   const { setNavigation } = nav
 
   console.log('orderId:', orderId)
 
-  // const paperGetStatusUrl = `https://withpaper.com/api/v1/transaction-status/${transactionId}`
-
-  const pollForOrderStatus = async () => {
+  const pollForOrderStatus = async (authToken: string) => {
     try {
       console.log('Polling for transaction status')
-      const authToken = '' //TODO: remove and add as param
       const pollResponse = await fetchSardineOrderStatus(authToken, orderId)
       const status = pollResponse.status
-      // const transactionHash = pollResponse.result.transactionHash
+      const transactionHash = pollResponse.data.transactionHash
+      const network = pollResponse.data.network
 
       console.log('transaction status poll response:', status)
 
@@ -36,12 +34,13 @@ export const PendingTransaction = () => {
           setNavigation({
             location: 'transaction-success',
             params: {
-              transactionHash: '0x0000000000000000000000000000000000000000000000000000000000000000' // TODO: replace
+              transactionHash,
+              network
             }
           })
         return
       }
-      if (status === 'TRANSFER_FAILED' || status === 'PAYMENT_FAILED') {
+      if (status === 'Declined') {
         setNavigation &&
           setNavigation({
             location: 'transaction-error',
@@ -65,7 +64,7 @@ export const PendingTransaction = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      pollForOrderStatus()
+      pollForOrderStatus(authToken)
     }, POLLING_TIME)
 
     return () => {

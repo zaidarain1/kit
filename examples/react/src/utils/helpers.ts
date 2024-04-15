@@ -18,23 +18,28 @@ export const delay = (ms: number) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export const getCheckoutSettings = (address?: string) => {
+export const getCheckoutSettings = (
+  blockchainNftId: string,
+  recipientAddress: string,
+  tokenContractAddress: string,
+  tokenId: string
+) => {
   const checkoutSettings: CheckoutSettings = {
     sardineCheckout: {
+      authToken: '', // TODO: remove, use token from api
       chainId: 137,
       defaultPaymentMethodType: 'us_debit',
       platform: 'horizon',
       contractAddress: '0xB537a160472183f2150d42EB1c3DD6684A55f74c',
-      blockchainNftId: '860',
-      recipientAddress: '0xB62397749850CC20054a78737d8E3676a51e3e77',
-      quantity: 1,
-      decimals: 2
+      blockchainNftId: blockchainNftId,
+      recipientAddress: recipientAddress,
+      quantity: 1
     },
     orderSummaryItems: [
       {
         chainId: 137,
-        contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
-        tokenId: '262150',
+        contractAddress: tokenContractAddress,
+        tokenId: tokenId,
         quantityRaw: '1'
       }
     ]
