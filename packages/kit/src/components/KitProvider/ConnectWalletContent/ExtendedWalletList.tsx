@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { Box, Text, useTheme } from '@0xsequence/design-system'
+import { Box, Button, Text, TokenImage, useTheme } from '@0xsequence/design-system'
 import { useConnect } from 'wagmi'
 
 import { ExtendedConnector } from '../../../utils/getKitConnectWallets'
@@ -19,44 +19,36 @@ export const ExtendedWalletList = ({ onConnect, connectors }: ExtendedWalletList
   return (
     <Box flexDirection="column" gap="2" marginTop="5">
       {connectors.map(connector => {
-        const Logo =
-          theme === 'dark'
-            ? (connector._wallet.logoDark as React.FunctionComponent)
-            : (connector._wallet.logoLight as React.FunctionComponent)
+        const Logo = theme === 'dark' ? connector._wallet.logoDark : connector._wallet.logoLight
         const walletName = connector._wallet.name
         const connectorId = connector._wallet.id
 
         return (
-          <Box
+          <Button
             key={connectorId}
-            as="button"
-            flexDirection="row"
-            alignItems="center"
-            justifyContent="space-between"
-            background="backgroundSecondary"
-            color="text100"
-            borderRadius="md"
-            padding="4"
-            style={{
-              height: '60px'
-            }}
-            className={styles.networkButton}
+            width="full"
+            shape="square"
+            leftIcon={() => (
+              <Box
+                justifyContent="center"
+                alignItems="center"
+                style={{ backgroundColor: connector._wallet.iconBackground }}
+                className={styles.walletLogoContainerExtended}
+                width="8"
+                height="8"
+                overflow="hidden"
+              >
+                <Logo />
+              </Box>
+            )}
             onClick={() => onConnect(connector)}
-          >
-            <Text variant="medium" color="text100">
-              {walletName}
-              {isPending}
-            </Text>
-            <Box
-              justifyContent="center"
-              alignItems="center"
-              style={{ backgroundColor: connector._wallet.iconBackground }}
-              borderRadius="md"
-              className={styles.walletLogoContainerExtended}
-            >
-              <Logo />
-            </Box>
-          </Box>
+            label={
+              <Text>
+                {walletName}
+                {isPending}
+              </Text>
+            }
+          />
         )
       })}
     </Box>

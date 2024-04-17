@@ -10,9 +10,12 @@ import {
   TextInput,
   vars,
   useTheme,
-  Spinner
+  Spinner,
+  Image,
+  IconButton,
+  Tooltip
 } from '@0xsequence/design-system'
-import { useConnect, useAccount } from 'wagmi'
+import { useConnect, useAccount, Connector } from 'wagmi'
 import { EMAIL_CONNECTOR_LOCAL_STORAGE_KEY } from '@0xsequence/kit-connectors'
 import { GoogleLogin } from '@react-oauth/google'
 import { appleAuthHelpers, useScript } from 'react-apple-signin-auth'
@@ -39,7 +42,6 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   useScript(appleAuthHelpers.APPLE_SCRIPT_SRC)
 
   const { isConnected } = useAccount()
-  const { theme } = useTheme()
   const { config = {} } = props
   const { signIn = {} } = config as KitConfig
   const {
@@ -54,6 +56,26 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   const [showEmailWaasPinInput, setShowEmailWaasPinInput] = useState(false)
   const [waasEmailPinCode, setWaasEmailPinCode] = useState<string[]>([])
   const { connectors: baseConnectors, connect } = useConnect()
+
+  // EIP-6963 connectors will not have the _wallet property
+  const injectedConnectors: ExtendedConnector[] = baseConnectors
+    .filter(c => c.type === 'injected' && !c.hasOwnProperty('_wallet'))
+    .map(connector => {
+      const Logo = () => {
+        return <Image src={connector.icon} alt={connector.name} disableAnimation width="full" height="full" />
+      }
+
+      return {
+        ...connector,
+        _wallet: {
+          id: connector.id,
+          name: connector.name,
+          logoLight: Logo,
+          logoDark: Logo
+        }
+      }
+    })
+
   /* @ts-ignore-next-line */
   const connectors = baseConnectors.filter(c => !!c?._wallet) as ExtendedConnector[]
   const [showExtendedList, setShowExtendedList] = useState<boolean>(false)
@@ -62,14 +84,19 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   })
 
   const emailConnector = connectors.find(c => c._wallet.id.includes('email'))
-  const walletConnectors = connectors
-    .filter(connector => {
-      const foundOption = walletAuthOptions.find(authOption => authOption === connector._wallet.id)
-      return !!foundOption
-    })
-    .sort((a, b) => {
-      return walletAuthOptions.indexOf(a._wallet.id) - walletAuthOptions.indexOf(b._wallet.id)
-    })
+  const walletConnectors = [
+    ...connectors
+      .filter(connector => {
+        const foundOption =
+          walletAuthOptions.find(authOption => authOption === connector._wallet.id) &&
+          !injectedConnectors.some(injected => injected.name === connector.name)
+        return !!foundOption
+      })
+      .sort((a, b) => {
+        return walletAuthOptions.indexOf(a._wallet.id) - walletAuthOptions.indexOf(b._wallet.id)
+      }),
+    ...injectedConnectors
+  ]
 
   const socialAuthConnectors = connectors
     .filter(connector => {
@@ -80,10 +107,9 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
       return socialAuthOptions.indexOf(a._wallet.id) - socialAuthOptions.indexOf(b._wallet.id)
     })
 
-  const displayExtendedListButton = walletConnectors.length > 4
+  const displayExtendedListButton = walletConnectors.length > 7
 
-  const onChangeEmail = (ev: React.ChangeEventHandler<HTMLInputElement>) => {
-    /* @ts-ignore-next-line */
+  const onChangeEmail: React.ChangeEventHandler<HTMLInputElement> = ev => {
     setEmail(ev.target.value)
   }
 
@@ -119,8 +145,10 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
       localStorage.setItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY, email || '')
     }
 
+    // Open Metamask download page if Metamask window.ethereum is not found
     if (connector._wallet.id === 'metamask' && typeof window !== 'undefined') {
       const isMetamaskFound = !!window?.ethereum?._metamask
+
       if (!isMetamaskFound) {
         window.open('https://metamask.io/download/')
         return
@@ -184,14 +212,8 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   if (showExtendedList) {
     return (
       <>
-        <Box
-          as="button"
-          position="absolute"
-          style={{ top: '20px' }}
-          onClick={() => setShowExtendedList(false)}
-          className={styles.clickable}
-        >
-          <ChevronLeftIcon />
+        <Box position="absolute" top="4">
+          <IconButton icon={ChevronLeftIcon} onClick={() => setShowExtendedList(false)} size="xs" />
         </Box>
         <ExtendedWalletList connectors={walletConnectors} onConnect={onConnect} />
       </>
@@ -201,41 +223,31 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   return (
     <>
       <Banner config={config as KitConfig} />
-      <Box marginTop="5">
+
+      <Box marginTop="6">
         {emailConnector && showEmailInput && (
-          <>
-            <form onSubmit={onConnectInlineEmail}>
-              <TextInput
-                /* @ts-ignore-next-line */
-                onChange={onChangeEmail}
-                value={email}
-                name="email"
-                placeholder="Enter email"
-                data-1p-ignore
-              />
-              <Box alignItems="center" justifyContent="center" style={{ height: '48px' }}>
-                {!emailAuthInProgress && (
-                  <Button
-                    type="submit"
-                    disabled={!isEmailValid(email)}
-                    marginTop="4"
-                    width="full"
-                    label="Continue"
-                    rightIcon={ChevronRightIcon}
-                  />
-                )}
-                {emailAuthInProgress && <Spinner marginTop="4" />}
-              </Box>
-            </form>
-          </>
+          <form onSubmit={onConnectInlineEmail}>
+            <TextInput onChange={onChangeEmail} value={email} name="email" placeholder="Enter email" data-1p-ignore />
+            <Box alignItems="center" justifyContent="center" marginTop="4">
+              {!emailAuthInProgress && (
+                <Button
+                  type="submit"
+                  disabled={!isEmailValid(email)}
+                  width="full"
+                  label="Continue"
+                  rightIcon={ChevronRightIcon}
+                />
+              )}
+              {emailAuthInProgress && <Spinner />}
+            </Box>
+          </form>
         )}
+
         {socialAuthConnectors.length > 0 && (
           <>
             {emailConnector && showEmailInput && (
               <>
-                <Box style={{ marginBottom: '-4px' }}>
-                  <Divider color="backgroundSecondary" />
-                </Box>
+                <Divider color="backgroundSecondary" />
                 <Box justifyContent="center" alignItems="center">
                   <Text variant="small" color="text50">
                     or sign in via
@@ -243,20 +255,10 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                 </Box>
               </>
             )}
-            <Box marginTop="3" gap="2" flexDirection="row" justifyContent="center" alignItems="center" flexWrap="wrap">
+            <Box marginTop="2" gap="2" flexDirection="row" justifyContent="center" alignItems="center" flexWrap="wrap">
               {socialAuthConnectors.map(connector => {
-                const Logo =
-                  theme === 'dark'
-                    ? (connector._wallet.monochromeLogoDark as React.FunctionComponent)
-                    : (connector._wallet.monochromeLogoLight as React.FunctionComponent)
                 return (
-                  <Box
-                    key={connector._wallet.id}
-                    aspectRatio="1/1"
-                    alignItems="center"
-                    justifyContent="center"
-                    style={{ width: '40px', height: '40px', margin: '12px 4px' }}
-                  >
+                  <Box key={connector.uid} aspectRatio="1/1" alignItems="center" justifyContent="center">
                     {connector._wallet.id === 'google-waas' && (
                       <Box className={styles.googleWaasButtonContainer}>
                         <GoogleLogin
@@ -275,16 +277,11 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                         />
                       </Box>
                     )}
+
                     {connector._wallet.id === 'apple-waas' && (
-                      <Card
-                        width="full"
-                        height="full"
-                        padding="2"
-                        borderRadius="xs"
-                        className={styles.clickable}
-                        justifyContent="center"
-                        alignItems="center"
-                        onClick={() => {
+                      <ConnectButton
+                        connector={connector}
+                        onConnect={() => {
                           const appleClientId = localStorage.getItem(LocalStorageKey.WaasAppleClientID) || ''
                           const appleRedirectUri = localStorage.getItem(LocalStorageKey.WaasAppleRedirectURI) || ''
                           const sessionHash = localStorage.getItem(LocalStorageKey.WaasSessionHash) || ''
@@ -307,43 +304,22 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                             onError: (error: any) => console.error(error)
                           })
                         }}
-                      >
-                        <Box width="12" height="12" flexDirection="column" alignItems="center" justifyContent="center">
-                          <Logo />
-                        </Box>
-                      </Card>
+                      />
                     )}
-                    {!connector._wallet.id.includes('waas') && (
-                      <Card
-                        width="full"
-                        height="full"
-                        padding="2"
-                        borderRadius="xs"
-                        className={styles.clickable}
-                        justifyContent="center"
-                        alignItems="center"
-                        onClick={() => {
-                          onConnect(connector)
-                        }}
-                      >
-                        <Box width="16" height="16" flexDirection="column" alignItems="center" justifyContent="center">
-                          <Logo />
-                        </Box>
-                      </Card>
-                    )}
+
+                    {!connector._wallet.id.includes('waas') && <ConnectButton connector={connector} onConnect={onConnect} />}
                   </Box>
                 )
               })}
             </Box>
           </>
         )}
+
         {walletConnectors.length > 0 && (
           <>
             {((emailConnector && showEmailInput) || socialAuthConnectors.length > 0) && (
               <>
-                <Box style={{ marginBottom: '-4px' }}>
-                  <Divider color="backgroundSecondary" />
-                </Box>
+                <Divider color="backgroundSecondary" />
                 <Box justifyContent="center" alignItems="center">
                   <Text variant="small" color="text50">
                     or select a wallet
@@ -352,52 +328,59 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
               </>
             )}
             <Box marginTop="2" gap="2" flexDirection="row" justifyContent="center" alignItems="center">
-              {walletConnectors.map(connector => {
-                const Logo =
-                  theme === 'dark'
-                    ? (connector._wallet.logoDark as React.FunctionComponent) ||
-                      (connector._wallet.logoDark as React.FunctionComponent)
-                    : (connector._wallet.logoLight as React.FunctionComponent) ||
-                      (connector._wallet.logoLight as React.FunctionComponent)
-                return (
-                  <Card
-                    key={connector._wallet.id}
-                    style={{ width: '43px', height: '43px', margin: '12px 4px' }}
-                    padding="2"
-                    borderRadius="xs"
-                    className={styles.clickable}
-                    justifyContent="center"
-                    alignItems="center"
-                    onClick={() => onConnect(connector)}
-                  >
-                    <Box width="16" height="16" flexDirection="column" alignItems="center" justifyContent="center">
-                      <Logo />
-                    </Box>
-                  </Card>
-                )
-              })}
+              {walletConnectors.slice(0, 7).map(connector => (
+                <ConnectButton key={connector.uid} connector={connector} onConnect={onConnect} />
+              ))}
             </Box>
+
             {displayExtendedListButton && (
-              <Box
-                padding="4"
-                marginTop="3"
-                background="backgroundSecondary"
-                width="full"
-                justifyContent="space-between"
-                alignItems="center"
-                borderRadius="md"
-                color="text100"
-                as="button"
-                className={styles.clickable}
-                onClick={() => setShowExtendedList(true)}
-              >
-                <Text variant="medium">More options</Text>
-                <ChevronRightIcon />
+              <Box marginTop="4" justifyContent="center">
+                <Button
+                  shape="square"
+                  size="xs"
+                  onClick={() => setShowExtendedList(true)}
+                  label="More options"
+                  rightIcon={ChevronRightIcon}
+                />
               </Box>
             )}
           </>
         )}
       </Box>
     </>
+  )
+}
+
+interface ConnectButtonProps {
+  connector: ExtendedConnector
+  label?: string
+  onConnect: (connector: ExtendedConnector) => void
+}
+
+const ConnectButton = (props: ConnectButtonProps) => {
+  const { connector, label, onConnect } = props
+  const { theme } = useTheme()
+  const walletProps = connector._wallet
+
+  const Logo =
+    theme === 'dark'
+      ? walletProps.monochromeLogoDark || walletProps.logoDark
+      : walletProps.monochromeLogoLight || walletProps.logoLight
+
+  return (
+    <Tooltip message={label || walletProps.name}>
+      <Card
+        clickable
+        width="10"
+        height="10"
+        padding="2"
+        borderRadius="xs"
+        justifyContent="center"
+        alignItems="center"
+        onClick={() => onConnect(connector)}
+      >
+        <Logo />
+      </Card>
+    </Tooltip>
   )
 }
