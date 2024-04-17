@@ -29,20 +29,19 @@ function App() {
     polygon as Chain
   ]
 
-  const projectAccessKey = 'T3czhtWsTONJpbjFgAdLAuEAAAAAAAAA'
+  const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
 
   /// Use this to test the waas connectors
-
   // WaaS config
-  // const waasConfigKey = 'eyJwcm9qZWN0SWQiOjc1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
-  // const googleClientId = '603294233249-6h5saeg2uiu8akpcbar3r2aqjp6j7oem.apps.googleusercontent.com'
+  // const waasConfigKey = 'eyJwcm9qZWN0SWQiOjE2ODE1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
+  // const googleClientId = '970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com'
   // const appleClientId = 'com.horizon.sequence.waas'
   // const appleRedirectURI = 'https://' + window.location.host
 
   // const connectors = [
   //   ...getDefaultWaasConnectors({
   //     walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
-  //     defaultChainId: 42170,
+  //     defaultChainId: 421614,
   //     waasConfigKey,
   //     googleClientId,
   //     appleClientId,
