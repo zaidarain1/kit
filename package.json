@@ -27,7 +27,7 @@
     "build:react": "pnpm --filter @0xsequence/kit-example-react build",
     "start:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas start",
     "serve:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas serve",
-    "build:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas build"    
+    "build:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas build"
   },
   "devDependencies": {
     "@0xsequence/kit": "workspace:*",
@@ -38,7 +38,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@babel/runtime": "^7.23.9",
-    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.25.2",
     "@preconstruct/cli": "^2.8.3",
     "@types/chai": "^4.2.22",
