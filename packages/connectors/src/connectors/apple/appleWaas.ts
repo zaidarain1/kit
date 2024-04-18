@@ -1,4 +1,4 @@
-import { CreateConnectorFn } from 'wagmi'
+import { Wallet } from '@0xsequence/kit'
 
 import { getAppleLogo, getAppleMonochromeLogo } from './AppleLogo'
 
@@ -6,18 +6,18 @@ import { sequenceWaasWallet, BaseSequenceWaasConnectorOptions } from '../wagmiCo
 
 export type AppleWaasOptions = Omit<BaseSequenceWaasConnectorOptions, 'loginType'>
 
-export const appleWaas = (options: AppleWaasOptions) => ({
+export const appleWaas = (options: AppleWaasOptions): Wallet => ({
   id: 'apple-waas',
   logoDark: getAppleLogo({ isDarkMode: true }),
   logoLight: getAppleLogo({ isDarkMode: false }),
   monochromeLogoDark: getAppleMonochromeLogo({ isDarkMode: true }),
   monochromeLogoLight: getAppleMonochromeLogo({ isDarkMode: false }),
   name: 'Apple',
-  createConnector: (() => {
+  createConnector: () => {
     const connector = sequenceWaasWallet({
       ...options,
       loginType: 'apple'
     })
     return connector
-  }) as () => CreateConnectorFn
+  }
 })

@@ -40,8 +40,14 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
   type Provider = sequence.provider.SequenceProvider
   type Properties = {}
+  type StorageItem = {
+    [LocalStorageKey.EthAuthProof]: string
+    [LocalStorageKey.ProjectAccessKey]: string
+    [LocalStorageKey.Theme]: string
+    [LocalStorageKey.EthAuthSettings]: string
+  }
 
-  return createConnector<Provider, Properties>(config => ({
+  return createConnector<Provider, Properties, StorageItem>(config => ({
     id: 'sequence',
     name: 'Sequence',
     type: sequenceWallet.type,
@@ -59,8 +65,8 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
       const provider = (await this.getProvider()) as sequence.provider.SequenceProvider
 
       if (!provider.isConnected()) {
-        const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme)
-        const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthSettings)
+        const localStorageTheme = await config.storage?.getItem(LocalStorageKey.Theme)
+        const ethAuthSettingsRaw = await config.storage?.getItem(LocalStorageKey.EthAuthSettings)
         const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : ({} as EthAuthSettings)
 
         const connectOptionsWithTheme = {
@@ -89,7 +95,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
             typedData: proofTypedData
           })
 
-          localStorage.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
+          await config.storage?.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
         }
       }
 
@@ -118,7 +124,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
         return provider
       } catch (e) {
-        const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey)
+        const projectAccessKey = await config.storage?.getItem(LocalStorageKey.ProjectAccessKey)
 
         if (!projectAccessKey) {
           throw 'projectAccessKey not found'
@@ -174,7 +180,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
     },
     async onConnect(connectinfo) {},
     async onDisconnect() {
-      localStorage.removeItem(LocalStorageKey.EthAuthProof)
+      await config.storage?.removeItem(LocalStorageKey.EthAuthProof)
       config.emitter.emit('disconnect')
     }
   }))

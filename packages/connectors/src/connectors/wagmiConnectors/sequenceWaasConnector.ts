@@ -21,15 +21,15 @@ sequenceWaasWallet.type = 'sequence-waas' as const
 export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
   type Provider = SequenceWaasProvider
   type Properties = { sequenceWaas: SequenceWaaS; sequenceWaasProvider: SequenceWaasProvider }
-
-  if (params.googleClientId) {
-    localStorage.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId)
-  }
-  if (params.appleClientId) {
-    localStorage.setItem(LocalStorageKey.WaasAppleClientID, params.appleClientId)
-  }
-  if (params.appleRedirectURI) {
-    localStorage.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI)
+  type StorageItem = {
+    [LocalStorageKey.WaasSessionHash]: string
+    [LocalStorageKey.WaasActiveLoginType]: string
+    [LocalStorageKey.WaasGoogleIdToken]: string
+    [LocalStorageKey.WaasEmailIdToken]: string
+    [LocalStorageKey.WaasAppleIdToken]: string
+    [LocalStorageKey.WaasGoogleClientID]: string
+    [LocalStorageKey.WaasAppleClientID]: string
+    [LocalStorageKey.WaasAppleRedirectURI]: string
   }
 
   const showConfirmationModal = params.enableConfirmationModal ?? false
@@ -59,17 +59,27 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
     sequenceWaasProvider.updateNetwork(ethers.providers.getNetwork(chainId))
   }
 
-  return createConnector<Provider, Properties>(config => ({
+  return createConnector<Provider, Properties, StorageItem>(config => ({
     id: `sequence-waas`,
     name: 'Sequence WaaS',
     type: sequenceWaasWallet.type,
     sequenceWaas,
     sequenceWaasProvider,
     async setup() {
+      if (params.googleClientId) {
+        await config.storage?.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId)
+      }
+      if (params.appleClientId) {
+        await config.storage?.setItem(LocalStorageKey.WaasAppleClientID, params.appleClientId)
+      }
+      if (params.appleRedirectURI) {
+        await config.storage?.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI)
+      }
+
       const isConnected = await sequenceWaas.isSignedIn()
       if (!isConnected) {
         const sessionHash = await sequenceWaas.getSessionHash()
-        localStorage.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
+        await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
       }
 
       sequenceWaasProvider.on('disconnect', () => {
@@ -90,9 +100,9 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
           await this.disconnect()
         }
       } else {
-        const googleIdToken = localStorage.getItem(LocalStorageKey.WaasGoogleIdToken)
-        const emailIdToken = localStorage.getItem(LocalStorageKey.WaasEmailIdToken)
-        const appleIdToken = localStorage.getItem(LocalStorageKey.WaasAppleIdToken)
+        const googleIdToken = await config.storage?.getItem(LocalStorageKey.WaasGoogleIdToken)
+        const emailIdToken = await config.storage?.getItem(LocalStorageKey.WaasEmailIdToken)
+        const appleIdToken = await config.storage?.getItem(LocalStorageKey.WaasAppleIdToken)
 
         let idToken: string | undefined
 
@@ -115,13 +125,13 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
           accounts = await this.getAccounts()
 
           if (accounts.length) {
-            localStorage.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType)
+            await config.storage?.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType)
           }
         }
 
-        localStorage.removeItem(LocalStorageKey.WaasGoogleIdToken)
-        localStorage.removeItem(LocalStorageKey.WaasEmailIdToken)
-        localStorage.removeItem(LocalStorageKey.WaasAppleIdToken)
+        await config.storage?.removeItem(LocalStorageKey.WaasGoogleIdToken)
+        await config.storage?.removeItem(LocalStorageKey.WaasEmailIdToken)
+        await config.storage?.removeItem(LocalStorageKey.WaasAppleIdToken)
       }
 
       return {
@@ -136,11 +146,11 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
         console.log(e)
       }
 
-      localStorage.removeItem(LocalStorageKey.WaasSessionHash)
-      localStorage.removeItem(LocalStorageKey.WaasActiveLoginType)
+      await config.storage?.removeItem(LocalStorageKey.WaasSessionHash)
+      await config.storage?.removeItem(LocalStorageKey.WaasActiveLoginType)
 
       const sessionHash = await sequenceWaas.getSessionHash()
-      localStorage.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
+      await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
     },
     async getAccounts() {
       try {
@@ -158,7 +168,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
       return sequenceWaasProvider
     },
     async isAuthorized() {
-      const activeWaasOption = localStorage.getItem(LocalStorageKey.WaasActiveLoginType)
+      const activeWaasOption = await config.storage?.getItem(LocalStorageKey.WaasActiveLoginType)
       if (params.loginType !== activeWaasOption) {
         return false
       }

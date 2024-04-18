@@ -23,7 +23,10 @@
     "build:react": "pnpm --filter @0xsequence/kit-example-react build",
     "start:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas start",
     "serve:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas serve",
-    "build:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas build"
+    "build:react-waas": "pnpm --filter @0xsequence/kit-example-react-waas build",
+    "start:next": "pnpm --filter @0xsequence/kit-example-next dev",
+    "serve:next": "pnpm --filter @0xsequence/kit-example-next start",
+    "build:next": "pnpm --filter @0xsequence/kit-example-next build"
   },
   "devDependencies": {
     "@0xsequence/kit": "workspace:*",
