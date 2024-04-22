@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import qs from 'query-string'
 import {
   useOpenConnectModal,
   signEthAuthProof,
@@ -32,7 +31,6 @@ import {
   MoonIcon,
   SignoutIcon,
   useTheme,
-  vars,
   Spinner,
   useMediaQuery,
   Switch,
@@ -47,6 +45,10 @@ import { sequence } from '0xsequence'
 import abi from '../constants/nft-abi'
 import { ethers } from 'ethers'
 import { Alert, AlertProps } from './Alert'
+
+// append ?debug to url to enable debug mode
+const searchParams = new URLSearchParams(location.search)
+const isDebugMode = searchParams.has('debug')
 
 function Homepage() {
   const { theme, setTheme } = useTheme()
@@ -139,10 +141,6 @@ function Homepage() {
   const networkForCurrentChainId = sequence.network.allNetworks.find(n => n.chainId === chainId)
 
   const publicClient = usePublicClient({ chainId })
-
-  // append ?debug=true to url to enable debug mode
-  const { debug } = qs.parse(location.search)
-  const isDebugMode = debug === 'true'
 
   const generateEthAuthProof = async () => {
     if (!walletClient || !publicClient) {

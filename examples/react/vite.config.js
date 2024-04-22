@@ -10,9 +10,6 @@ dns.setDefaultResultOrder('verbatim')
 
 export default defineConfig(() => {
   return {
-    // build: {
-    //   outDir: 'build',
-    // },
     plugins: [
       react(),
       nodePolyfills({
@@ -25,7 +22,11 @@ export default defineConfig(() => {
       vanillaExtractPlugin(),
       svgrPlugin()
     ],
+    build: {
+      minify: false
+    },
     server: {
+      minify: false,
       port: 4444,
       fs: {
         // Allow serving files from one level up to the project root
