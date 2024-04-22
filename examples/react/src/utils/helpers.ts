@@ -28,7 +28,6 @@ export const getCheckoutSettings = (
 ) => {
   const checkoutSettings: CheckoutSettings = {
     sardineCheckout: {
-      authToken: '', // TODO: remove, use token from api
       chainId,
       defaultPaymentMethodType: 'us_debit',
       platform: 'horizon',
