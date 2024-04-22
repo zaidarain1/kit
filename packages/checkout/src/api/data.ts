@@ -1,4 +1,4 @@
-import { Token, TokenPrice } from '@0xsequence/api'
+import { Token, TokenPrice, GetCoinPricesReturn } from '@0xsequence/api'
 import { getNetworkConfigAndClients } from '@0xsequence/kit'
 import { TokenBalance, ContractType } from '@0xsequence/indexer'
 import { GetContractInfoArgs, ContractInfo, TokenMetadata } from '@0xsequence/metadata'
@@ -119,7 +119,7 @@ export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs): Promise<Toke
 
     const { apiClient } = getNetworkConfigAndClients(chainId)
 
-    const res = await apiClient.getCoinPrices({
+    const res: GetCoinPricesReturn = await apiClient.getCoinPrices({
       tokens
     })
 
