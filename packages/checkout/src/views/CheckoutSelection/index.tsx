@@ -64,24 +64,25 @@ export const CheckoutSelection = () => {
     tokenId: orderSummaryItems[0].tokenId
   })
 
-  const triggerSardineTransaction = async (authToken: string) => {
+  const triggerSardineTransaction = async () => {
     console.log('trigger sardine transaction')
 
-    // TODO: add this
-    // const token = await fetchSardineClientToken()
+    console.log('fetching token')
+    const token = await fetchSardineClientToken()
+    console.log('client token', token)
 
     if (settings?.sardineCheckout) {
-      const response = await createSardineOrder(settings.sardineCheckout, tokenMetadata)
+      const response = await createSardineOrder(settings.sardineCheckout, token, tokenMetadata)
 
       if (response.clientToken) {
-        const url = `https://crypto.sandbox.sardine.ai/?client_token=${response.clientToken}&show_features=true`
+        const url = `https://crypto.sardine.ai/?client_token=${response.clientToken}&show_features=true`
         const windowName = 'SardineCrypto'
         const windowSize = 'width=800,height=600'
         window.open(url, windowName, windowSize)
 
         setNavigation({
           location: 'transaction-pending',
-          params: { orderId: response.orderId, authToken: settings.sardineCheckout.authToken }
+          params: { orderId: response.orderId, authToken: token }
         })
       }
     }
@@ -89,7 +90,7 @@ export const CheckoutSelection = () => {
 
   const onClickPayWithCard = () => {
     if (settings?.sardineCheckout) {
-      triggerSardineTransaction(settings.sardineCheckout.authToken)
+      triggerSardineTransaction()
     } else {
       setNavigation({
         location: 'transaction-form'

@@ -166,12 +166,12 @@ export const fetchSardineClientToken = async (): Promise<string> => {
   return res.token
 }
 
-export const createSardineOrder = async (order: SardineCheckout, tokenMetadata?: TokenMetadata): Promise<any> => {
-  const response = await fetch('https://api.sandbox.sardine.ai/v1/auth/client-tokens', {
+export const createSardineOrder = async (order: SardineCheckout, authToken: string, tokenMetadata?: TokenMetadata): Promise<any> => {
+  const response = await fetch('https://api.sardine.ai/v1/auth/client-tokens', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Basic ${order.authToken}`
+      Authorization: `Basic ${authToken}`
     },
     body: JSON.stringify({
       referenceId: 'test-0.24678085734dwedwedwed0dwedwedwed4dweddweddwedwedwfwrferfwedwed6884', // change or remove reference id?
@@ -201,7 +201,7 @@ export const createSardineOrder = async (order: SardineCheckout, tokenMetadata?:
 }
 
 export const fetchSardineOrderStatus = async (authToken: string, orderId: string) => {
-  const response = await fetch(`https://api.sandbox.sardine.ai/v1/orders/${orderId}`, {
+  const response = await fetch(`https://api.sardine.ai/v1/orders/${orderId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
