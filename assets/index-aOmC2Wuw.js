@@ -4,29 +4,6 @@ var __publicField = (obj, key2, value) => {
   __defNormalProp(obj, typeof key2 !== "symbol" ? key2 + "" : key2, value);
   return value;
 };
-var __accessCheck = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
-};
-var __privateGet = (obj, member, getter) => {
-  __accessCheck(obj, member, "read from private field");
-  return getter ? getter.call(obj) : member.get(obj);
-};
-var __privateAdd = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
-  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-};
-var __privateSet = (obj, member, value, setter) => {
-  __accessCheck(obj, member, "write to private field");
-  setter ? setter.call(obj, value) : member.set(obj, value);
-  return value;
-};
-var __privateMethod = (obj, member, method) => {
-  __accessCheck(obj, member, "access private method");
-  return method;
-};
-var _client, _currentResult, _currentMutation, _mutateOptions, _updateResult, updateResult_fn, _notify, notify_fn, _a;
 function _mergeNamespaces(n2, m2) {
   for (var i2 = 0; i2 < m2.length; i2++) {
     const e2 = m2[i2];
@@ -8265,7 +8242,7 @@ function loadExternalIsValidProp(isValidProp) {
 }
 try {
   loadExternalIsValidProp(require("@emotion/is-prop-valid").default);
-} catch (_a2) {
+} catch (_a) {
 }
 function filterProps(props, isDom, forwardMotionProps) {
   const filteredProps = {};
@@ -8715,19 +8692,19 @@ function useTapGesture({ onTap, onTapStart, onTapCancel, whileTap, visualElement
     return !isDragActive();
   }
   function onPointerUp(event, info) {
-    var _a2, _b, _c, _d;
+    var _a, _b, _c, _d;
     if (!checkPointerEnd())
       return;
-    !isNodeOrChild(visualElement.current, event.target) ? (_b = (_a2 = visualElement.getProps()).onTapCancel) === null || _b === void 0 ? void 0 : _b.call(_a2, event, info) : (_d = (_c = visualElement.getProps()).onTap) === null || _d === void 0 ? void 0 : _d.call(_c, event, info);
+    !isNodeOrChild(visualElement.current, event.target) ? (_b = (_a = visualElement.getProps()).onTapCancel) === null || _b === void 0 ? void 0 : _b.call(_a, event, info) : (_d = (_c = visualElement.getProps()).onTap) === null || _d === void 0 ? void 0 : _d.call(_c, event, info);
   }
   function onPointerCancel(event, info) {
-    var _a2, _b;
+    var _a, _b;
     if (!checkPointerEnd())
       return;
-    (_b = (_a2 = visualElement.getProps()).onTapCancel) === null || _b === void 0 ? void 0 : _b.call(_a2, event, info);
+    (_b = (_a = visualElement.getProps()).onTapCancel) === null || _b === void 0 ? void 0 : _b.call(_a, event, info);
   }
   const startPress = reactExports.useCallback((event, info) => {
-    var _a2;
+    var _a;
     removePointerEndListener();
     if (isPressing.current)
       return;
@@ -8737,7 +8714,7 @@ function useTapGesture({ onTap, onTapStart, onTapCancel, whileTap, visualElement
     if (latestProps.whileTap && visualElement.animationState) {
       visualElement.animationState.setActive(AnimationType.Tap, true);
     }
-    (_a2 = latestProps.onTapStart) === null || _a2 === void 0 ? void 0 : _a2.call(latestProps, event, info);
+    (_a = latestProps.onTapStart) === null || _a === void 0 ? void 0 : _a.call(latestProps, event, info);
   }, [Boolean(onTapStart), visualElement]);
   usePointerEvent(visualElement, "pointerdown", hasPressListeners ? startPress : void 0, eventOptions);
   useUnmountEffect(removePointerEndListener);
@@ -9370,8 +9347,8 @@ const color = {
 const colorToken = "${c}";
 const numberToken = "${n}";
 function test(v3) {
-  var _a2, _b;
-  return isNaN(v3) && isString$1(v3) && (((_a2 = v3.match(floatRegex)) === null || _a2 === void 0 ? void 0 : _a2.length) || 0) + (((_b = v3.match(colorRegex)) === null || _b === void 0 ? void 0 : _b.length) || 0) > 0;
+  var _a, _b;
+  return isNaN(v3) && isString$1(v3) && (((_a = v3.match(floatRegex)) === null || _a === void 0 ? void 0 : _a.length) || 0) + (((_b = v3.match(colorRegex)) === null || _b === void 0 ? void 0 : _b.length) || 0) > 0;
 }
 function analyseComplexValue(v3) {
   if (typeof v3 === "number")
@@ -9455,11 +9432,11 @@ const defaultValueTypes = {
 };
 const getDefaultValueType = (key2) => defaultValueTypes[key2];
 function getAnimatableNone(key2, value) {
-  var _a2;
+  var _a;
   let defaultValueType = getDefaultValueType(key2);
   if (defaultValueType !== filter)
     defaultValueType = complex;
-  return (_a2 = defaultValueType.getAnimatableNone) === null || _a2 === void 0 ? void 0 : _a2.call(defaultValueType, value);
+  return (_a = defaultValueType.getAnimatableNone) === null || _a === void 0 ? void 0 : _a.call(defaultValueType, value);
 }
 const testValueType = (v3) => (type) => type.test(v3);
 const auto = {
@@ -9501,7 +9478,7 @@ function setTarget(visualElement, definition) {
   }
 }
 function checkTargetForNewValues(visualElement, target, origin) {
-  var _a2, _b;
+  var _a, _b;
   const newValueKeys = Object.keys(target).filter((key2) => !visualElement.hasValue(key2));
   const numNewValues = newValueKeys.length;
   if (!numNewValues)
@@ -9514,7 +9491,7 @@ function checkTargetForNewValues(visualElement, target, origin) {
       value = targetValue[0];
     }
     if (value === null) {
-      value = (_b = (_a2 = origin[key2]) !== null && _a2 !== void 0 ? _a2 : visualElement.readValue(key2)) !== null && _b !== void 0 ? _b : target[key2];
+      value = (_b = (_a = origin[key2]) !== null && _a !== void 0 ? _a : visualElement.readValue(key2)) !== null && _b !== void 0 ? _b : target[key2];
     }
     if (value === void 0 || value === null)
       continue;
@@ -9538,11 +9515,11 @@ function getOriginFromTransition(key2, transition) {
   return valueTransition.from;
 }
 function getOrigin(target, transition, visualElement) {
-  var _a2;
+  var _a;
   const origin = {};
   for (const key2 in target) {
     const transitionOrigin = getOriginFromTransition(key2, transition);
-    origin[key2] = transitionOrigin !== void 0 ? transitionOrigin : (_a2 = visualElement.getValue(key2)) === null || _a2 === void 0 ? void 0 : _a2.get();
+    origin[key2] = transitionOrigin !== void 0 ? transitionOrigin : (_a = visualElement.getValue(key2)) === null || _a === void 0 ? void 0 : _a.get();
   }
   return origin;
 }
@@ -9729,7 +9706,7 @@ function interpolate(input2, output2, { clamp: isClamp = true, ease, mixer } = {
   };
   return isClamp ? (v3) => interpolator(clamp$2(input2[0], input2[inputLength - 1], v3)) : interpolator;
 }
-const noop$5 = (any) => any;
+const noop$4 = (any) => any;
 const calcBezier = (t2, a1, a2) => (((1 - 3 * a2 + 3 * a1) * t2 + (3 * a2 - 6 * a1)) * t2 + 3 * a1) * t2;
 const subdivisionPrecision = 1e-7;
 const subdivisionMaxIterations = 12;
@@ -9750,7 +9727,7 @@ function binarySubdivide(x, lowerBound, upperBound, mX1, mX2) {
 }
 function cubicBezier(mX1, mY1, mX2, mY2) {
   if (mX1 === mY1 && mX2 === mY2)
-    return noop$5;
+    return noop$4;
   const getTForX = (aX) => binarySubdivide(aX, 0, 1, mX1, mX2);
   return (t2) => t2 === 0 || t2 === 1 ? t2 : calcBezier(getTForX(t2), mY1, mY2);
 }
@@ -9762,7 +9739,7 @@ const backIn = reverseEasing(backOut);
 const backInOut = mirrorEasing(backIn);
 const anticipate = (p2) => (p2 *= 2) < 1 ? 0.5 * backIn(p2) : 0.5 * (2 - Math.pow(2, -10 * (p2 - 1)));
 const easingLookup = {
-  linear: noop$5,
+  linear: noop$4,
   easeIn,
   easeInOut,
   easeOut,
@@ -10043,7 +10020,7 @@ const framesync = (update5) => {
   };
 };
 function animate$1({ duration, driver = framesync, elapsed = 0, repeat: repeatMax = 0, repeatType = "loop", repeatDelay = 0, keyframes: keyframes$12, autoplay = true, onPlay, onStop, onComplete, onRepeat, onUpdate, type = "keyframes", ...options }) {
-  var _a2, _b;
+  var _a, _b;
   const initialElapsed = elapsed;
   let driverControls;
   let repeatCount = 0;
@@ -10055,7 +10032,7 @@ function animate$1({ duration, driver = framesync, elapsed = 0, repeat: repeatMa
   const origin = keyframes$12[0];
   const target = keyframes$12[keyframes$12.length - 1];
   let state = { done: false, value: origin };
-  if ((_b = (_a2 = animator).needsInterpolation) === null || _b === void 0 ? void 0 : _b.call(_a2, origin, target)) {
+  if ((_b = (_a = animator).needsInterpolation) === null || _b === void 0 ? void 0 : _b.call(_a, origin, target)) {
     interpolateFromNumber = interpolate([0, 100], [origin, target], {
       clamp: false
     });
@@ -10301,9 +10278,9 @@ function inertia({ keyframes: keyframes2, velocity = 0, min: min2, max: max2, po
       ...options,
       driver,
       onUpdate: (v3) => {
-        var _a2;
+        var _a;
         onUpdate === null || onUpdate === void 0 ? void 0 : onUpdate(v3);
-        (_a2 = options.onUpdate) === null || _a2 === void 0 ? void 0 : _a2.call(options, v3);
+        (_a = options.onUpdate) === null || _a === void 0 ? void 0 : _a.call(options, v3);
       },
       onComplete,
       onStop
@@ -10509,14 +10486,14 @@ function animateVisualElement(visualElement, definition, options = {}) {
   return animation.then(() => visualElement.notify("AnimationComplete", definition));
 }
 function animateVariant(visualElement, variant, options = {}) {
-  var _a2;
+  var _a;
   const resolved = resolveVariant(visualElement, variant, options.custom);
   let { transition = visualElement.getDefaultTransition() || {} } = resolved || {};
   if (options.transitionOverride) {
     transition = options.transitionOverride;
   }
   const getAnimation = resolved ? () => animateTarget(visualElement, resolved, options) : () => Promise.resolve();
-  const getChildAnimations = ((_a2 = visualElement.variantChildren) === null || _a2 === void 0 ? void 0 : _a2.size) ? (forwardDelay = 0) => {
+  const getChildAnimations = ((_a = visualElement.variantChildren) === null || _a === void 0 ? void 0 : _a.size) ? (forwardDelay = 0) => {
     const { delayChildren = 0, staggerChildren, staggerDirection } = transition;
     return animateChildren(visualElement, variant, delayChildren + forwardDelay, staggerChildren, staggerDirection, options);
   } : () => Promise.resolve();
@@ -10529,13 +10506,13 @@ function animateVariant(visualElement, variant, options = {}) {
   }
 }
 function animateTarget(visualElement, definition, { delay: delay2 = 0, transitionOverride, type } = {}) {
-  var _a2;
+  var _a;
   let { transition = visualElement.getDefaultTransition(), transitionEnd, ...target } = visualElement.makeTargetAnimatable(definition);
   const willChange = visualElement.getValue("willChange");
   if (transitionOverride)
     transition = transitionOverride;
   const animations2 = [];
-  const animationTypeState = type && ((_a2 = visualElement.animationState) === null || _a2 === void 0 ? void 0 : _a2.getState()[type]);
+  const animationTypeState = type && ((_a = visualElement.animationState) === null || _a === void 0 ? void 0 : _a.getState()[type]);
   for (const key2 in target) {
     const value = visualElement.getValue(key2);
     const valueTarget = target[key2];
@@ -10712,12 +10689,12 @@ function createAnimationState(visualElement) {
     return shouldAnimate ? animate2(animations2) : Promise.resolve();
   }
   function setActive(type, isActive, options) {
-    var _a2;
+    var _a;
     if (state[type].isActive === isActive)
       return Promise.resolve();
-    (_a2 = visualElement.variantChildren) === null || _a2 === void 0 ? void 0 : _a2.forEach((child) => {
-      var _a3;
-      return (_a3 = child.animationState) === null || _a3 === void 0 ? void 0 : _a3.setActive(type, isActive);
+    (_a = visualElement.variantChildren) === null || _a === void 0 ? void 0 : _a.forEach((child) => {
+      var _a2;
+      return (_a2 = child.animationState) === null || _a2 === void 0 ? void 0 : _a2.setActive(type, isActive);
     });
     state[type].isActive = isActive;
     const animations2 = animateChanges(options, type);
@@ -11088,7 +11065,7 @@ function applyBoxDelta(box, { x, y: y2 }) {
   applyAxisDelta(box.y, y2.translate, y2.scale, y2.originPoint);
 }
 function applyTreeDeltas(box, treeScale, treePath, isSharedTransition = false) {
-  var _a2, _b;
+  var _a, _b;
   const treeLength = treePath.length;
   if (!treeLength)
     return;
@@ -11098,7 +11075,7 @@ function applyTreeDeltas(box, treeScale, treePath, isSharedTransition = false) {
   for (let i2 = 0; i2 < treeLength; i2++) {
     node2 = treePath[i2];
     delta = node2.projectionDelta;
-    if (((_b = (_a2 = node2.instance) === null || _a2 === void 0 ? void 0 : _a2.style) === null || _b === void 0 ? void 0 : _b.display) === "contents")
+    if (((_b = (_a = node2.instance) === null || _a === void 0 ? void 0 : _a.style) === null || _b === void 0 ? void 0 : _b.display) === "contents")
       continue;
     if (isSharedTransition && node2.options.layoutScroll && node2.scroll && node2 !== node2.root) {
       transformBox(box, {
@@ -11172,7 +11149,7 @@ class VisualElementDragControls {
       }
     };
     const onStart = (event, info) => {
-      var _a2;
+      var _a;
       const { drag: drag2, dragPropagation, onDragStart } = this.getProps();
       if (drag2 && !dragPropagation) {
         if (this.openGlobalLock)
@@ -11189,10 +11166,10 @@ class VisualElementDragControls {
         this.visualElement.projection.target = void 0;
       }
       eachAxis((axis) => {
-        var _a3, _b;
+        var _a2, _b;
         let current = this.getAxisMotionValue(axis).get() || 0;
         if (percent.test(current)) {
-          const measuredAxis = (_b = (_a3 = this.visualElement.projection) === null || _a3 === void 0 ? void 0 : _a3.layout) === null || _b === void 0 ? void 0 : _b.layoutBox[axis];
+          const measuredAxis = (_b = (_a2 = this.visualElement.projection) === null || _a2 === void 0 ? void 0 : _a2.layout) === null || _b === void 0 ? void 0 : _b.layoutBox[axis];
           if (measuredAxis) {
             const length2 = calcLength(measuredAxis);
             current = length2 * (parseFloat(current) / 100);
@@ -11201,7 +11178,7 @@ class VisualElementDragControls {
         this.originPoint[axis] = current;
       });
       onDragStart === null || onDragStart === void 0 ? void 0 : onDragStart(event, info);
-      (_a2 = this.visualElement.animationState) === null || _a2 === void 0 ? void 0 : _a2.setActive(AnimationType.Drag, true);
+      (_a = this.visualElement.animationState) === null || _a === void 0 ? void 0 : _a.setActive(AnimationType.Drag, true);
     };
     const onMove = (event, info) => {
       const { dragPropagation, dragDirectionLock, onDirectionLock, onDrag } = this.getProps();
@@ -11239,12 +11216,12 @@ class VisualElementDragControls {
     onDragEnd === null || onDragEnd === void 0 ? void 0 : onDragEnd(event, info);
   }
   cancel() {
-    var _a2, _b;
+    var _a, _b;
     this.isDragging = false;
     if (this.visualElement.projection) {
       this.visualElement.projection.isAnimationBlocked = false;
     }
-    (_a2 = this.panSession) === null || _a2 === void 0 ? void 0 : _a2.end();
+    (_a = this.panSession) === null || _a === void 0 ? void 0 : _a.end();
     this.panSession = void 0;
     const { dragPropagation } = this.getProps();
     if (!dragPropagation && this.openGlobalLock) {
@@ -11348,10 +11325,10 @@ class VisualElementDragControls {
    * - Otherwise, we apply the delta to the x/y motion values.
    */
   getAxisMotionValue(axis) {
-    var _a2;
+    var _a;
     const dragKey = "_drag" + axis.toUpperCase();
     const externalMotionValue = this.visualElement.getProps()[dragKey];
-    return externalMotionValue ? externalMotionValue : this.visualElement.getValue(axis, ((_a2 = this.visualElement.getProps().initial) === null || _a2 === void 0 ? void 0 : _a2[axis]) || 0);
+    return externalMotionValue ? externalMotionValue : this.visualElement.getValue(axis, ((_a = this.visualElement.getProps().initial) === null || _a === void 0 ? void 0 : _a[axis]) || 0);
   }
   snapToCursor(point3) {
     eachAxis((axis) => {
@@ -11372,7 +11349,7 @@ class VisualElementDragControls {
    * relative to where it was before the resize.
    */
   scalePositionWithinConstraints() {
-    var _a2;
+    var _a;
     if (!this.visualElement.current)
       return;
     const { drag: drag2, dragConstraints } = this.getProps();
@@ -11390,7 +11367,7 @@ class VisualElementDragControls {
     });
     const { transformTemplate } = this.visualElement.getProps();
     this.visualElement.current.style.transform = transformTemplate ? transformTemplate({}, "") : "none";
-    (_a2 = projection.root) === null || _a2 === void 0 ? void 0 : _a2.updateScroll();
+    (_a = projection.root) === null || _a === void 0 ? void 0 : _a.updateScroll();
     projection.updateLayout();
     this.resolveConstraints();
     eachAxis((axis) => {
@@ -11402,7 +11379,7 @@ class VisualElementDragControls {
     });
   }
   addListeners() {
-    var _a2;
+    var _a;
     if (!this.visualElement.current)
       return;
     elementDragControls.set(this.visualElement, this);
@@ -11420,7 +11397,7 @@ class VisualElementDragControls {
     const { projection } = this.visualElement;
     const stopMeasureLayoutListener = projection.addEventListener("measure", measureDragConstraints);
     if (projection && !projection.layout) {
-      (_a2 = projection.root) === null || _a2 === void 0 ? void 0 : _a2.updateScroll();
+      (_a = projection.root) === null || _a === void 0 ? void 0 : _a.updateScroll();
       projection.updateLayout();
     }
     measureDragConstraints();
@@ -11847,13 +11824,13 @@ class VisualElement {
     return {};
   }
   mount(instance) {
-    var _a2;
+    var _a;
     this.current = instance;
     if (this.projection) {
       this.projection.mount(instance);
     }
     if (this.parent && this.isVariantNode && !this.isControllingVariants) {
-      this.removeFromVariantTree = (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.addVariantChild(this);
+      this.removeFromVariantTree = (_a = this.parent) === null || _a === void 0 ? void 0 : _a.addVariantChild(this);
     }
     this.values.forEach((value, key2) => this.bindToMotionValue(key2, value));
     if (!hasReducedMotionListener.current) {
@@ -11865,8 +11842,8 @@ class VisualElement {
     this.setProps(this.props);
   }
   unmount() {
-    var _a2, _b, _c;
-    (_a2 = this.projection) === null || _a2 === void 0 ? void 0 : _a2.unmount();
+    var _a, _b, _c;
+    (_a = this.projection) === null || _a === void 0 ? void 0 : _a.unmount();
     cancelSync.update(this.notifyUpdate);
     cancelSync.render(this.render);
     this.valueSubscriptions.forEach((remove) => remove());
@@ -11994,8 +11971,8 @@ class VisualElement {
    * Returns the variant definition with a given name.
    */
   getVariant(name) {
-    var _a2;
-    return (_a2 = this.props.variants) === null || _a2 === void 0 ? void 0 : _a2[name];
+    var _a;
+    return (_a = this.props.variants) === null || _a === void 0 ? void 0 : _a[name];
   }
   /**
    * Returns the defined default transition on this component.
@@ -12007,13 +11984,13 @@ class VisualElement {
     return this.props.transformPagePoint;
   }
   getClosestVariantNode() {
-    var _a2;
-    return this.isVariantNode ? this : (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.getClosestVariantNode();
+    var _a;
+    return this.isVariantNode ? this : (_a = this.parent) === null || _a === void 0 ? void 0 : _a.getClosestVariantNode();
   }
   getVariantContext(startAtParent = false) {
-    var _a2, _b;
+    var _a, _b;
     if (startAtParent)
-      return (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.getVariantContext();
+      return (_a = this.parent) === null || _a === void 0 ? void 0 : _a.getVariantContext();
     if (!this.isControllingVariants) {
       const context22 = ((_b = this.parent) === null || _b === void 0 ? void 0 : _b.getVariantContext()) || {};
       if (this.props.initial !== void 0) {
@@ -12035,10 +12012,10 @@ class VisualElement {
    * Add a child visual element to our set of children.
    */
   addVariantChild(child) {
-    var _a2;
+    var _a;
     const closestVariantNode = this.getClosestVariantNode();
     if (closestVariantNode) {
-      (_a2 = closestVariantNode.variantChildren) === null || _a2 === void 0 ? void 0 : _a2.add(child);
+      (_a = closestVariantNode.variantChildren) === null || _a === void 0 ? void 0 : _a.add(child);
       return () => closestVariantNode.variantChildren.delete(child);
     }
   }
@@ -12057,9 +12034,9 @@ class VisualElement {
    * Remove a motion value and unbind any active subscriptions.
    */
   removeValue(key2) {
-    var _a2;
+    var _a;
     this.values.delete(key2);
-    (_a2 = this.valueSubscriptions.get(key2)) === null || _a2 === void 0 ? void 0 : _a2();
+    (_a = this.valueSubscriptions.get(key2)) === null || _a === void 0 ? void 0 : _a();
     this.valueSubscriptions.delete(key2);
     delete this.latestValues[key2];
     this.removeValueFromRenderState(key2, this.renderState);
@@ -12101,9 +12078,9 @@ class VisualElement {
    * props.
    */
   getBaseTarget(key2) {
-    var _a2;
+    var _a;
     const { initial } = this.props;
-    const valueFromInitial = typeof initial === "string" || typeof initial === "object" ? (_a2 = resolveVariantFromProps(this.props, initial)) === null || _a2 === void 0 ? void 0 : _a2[key2] : void 0;
+    const valueFromInitial = typeof initial === "string" || typeof initial === "object" ? (_a = resolveVariantFromProps(this.props, initial)) === null || _a === void 0 ? void 0 : _a[key2] : void 0;
     if (initial && valueFromInitial !== void 0) {
       return valueFromInitial;
     }
@@ -12119,8 +12096,8 @@ class VisualElement {
     return this.events[eventName].add(callback);
   }
   notify(eventName, ...args) {
-    var _a2;
-    (_a2 = this.events[eventName]) === null || _a2 === void 0 ? void 0 : _a2.notify(...args);
+    var _a;
+    (_a = this.events[eventName]) === null || _a === void 0 ? void 0 : _a.notify(...args);
   }
 }
 const variantProps = ["initial", ...variantPriorityOrder];
@@ -12130,8 +12107,8 @@ class DOMVisualElement extends VisualElement {
     return a2.compareDocumentPosition(b3) & 2 ? 1 : -1;
   }
   getBaseTargetFromProps(props, key2) {
-    var _a2;
-    return (_a2 = props.style) === null || _a2 === void 0 ? void 0 : _a2[key2];
+    var _a;
+    return (_a = props.style) === null || _a === void 0 ? void 0 : _a[key2];
   }
   removeValueFromRenderState(key2, { vars: vars2, style: style2 }) {
     delete vars2[key2];
@@ -12209,9 +12186,9 @@ class SVGVisualElement extends DOMVisualElement {
     return props[key2];
   }
   readValueFromInstance(instance, key2) {
-    var _a2;
+    var _a;
     if (transformProps.has(key2)) {
-      return ((_a2 = getDefaultValueType(key2)) === null || _a2 === void 0 ? void 0 : _a2.default) || 0;
+      return ((_a = getDefaultValueType(key2)) === null || _a === void 0 ? void 0 : _a.default) || 0;
     }
     key2 = !camelCaseAttributes.has(key2) ? camelToDash(key2) : key2;
     return instance.getAttribute(key2);
@@ -12338,8 +12315,8 @@ class MeasureLayoutWithContext extends React.Component {
         projection.promote();
       } else if (!projection.relegate()) {
         sync.postRender(() => {
-          var _a2;
-          if (!((_a2 = projection.getStack()) === null || _a2 === void 0 ? void 0 : _a2.members.length)) {
+          var _a;
+          if (!((_a = projection.getStack()) === null || _a === void 0 ? void 0 : _a.members.length)) {
             this.safeToRemove();
           }
         });
@@ -12449,7 +12426,7 @@ function getRadius(values, radiusName) {
   return values[radiusName] !== void 0 ? values[radiusName] : values.borderRadius;
 }
 const easeCrossfadeIn = compress(0, 0.5, circOut);
-const easeCrossfadeOut = compress(0.5, 0.95, noop$5);
+const easeCrossfadeOut = compress(0.5, 0.95, noop$4);
 function compress(min2, max2, easing) {
   return (p2) => {
     if (p2 < min2)
@@ -12550,7 +12527,7 @@ class NodeStack {
     }
   }
   promote(node2, preserveFollowOpacity) {
-    var _a2;
+    var _a;
     const prevLead = this.lead;
     if (node2 === prevLead)
       return;
@@ -12568,7 +12545,7 @@ class NodeStack {
         node2.snapshot = prevLead.snapshot;
         node2.snapshot.latestValues = prevLead.animationValues || prevLead.latestValues;
       }
-      if ((_a2 = node2.root) === null || _a2 === void 0 ? void 0 : _a2.isUpdating) {
+      if ((_a = node2.root) === null || _a === void 0 ? void 0 : _a.isUpdating) {
         node2.isLayoutDirty = true;
       }
       const { crossfade } = node2.options;
@@ -12579,8 +12556,8 @@ class NodeStack {
   }
   exitAnimationComplete() {
     this.members.forEach((node2) => {
-      var _a2, _b, _c, _d, _e;
-      (_b = (_a2 = node2.options).onExitComplete) === null || _b === void 0 ? void 0 : _b.call(_a2);
+      var _a, _b, _c, _d, _e;
+      (_b = (_a = node2.options).onExitComplete) === null || _b === void 0 ? void 0 : _b.call(_a);
       (_e = (_c = node2.resumingFrom) === null || _c === void 0 ? void 0 : (_d = _c.options).onExitComplete) === null || _e === void 0 ? void 0 : _e.call(_d);
     });
   }
@@ -12717,7 +12694,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
      * Lifecycles
      */
     mount(instance, isLayoutDirty = false) {
-      var _a2;
+      var _a;
       if (this.instance)
         return;
       this.isSVG = instance instanceof SVGElement && instance.tagName !== "svg";
@@ -12727,7 +12704,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         visualElement.mount(instance);
       }
       this.root.nodes.add(this);
-      (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.children.add(this);
+      (_a = this.parent) === null || _a === void 0 ? void 0 : _a.children.add(this);
       this.elementId && this.root.potentialNodes.delete(this.elementId);
       if (isLayoutDirty && (layout || layoutId)) {
         this.isLayoutDirty = true;
@@ -12750,13 +12727,13 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
       if (this.options.animate !== false && visualElement && (layoutId || layout)) {
         this.addEventListener("didUpdate", ({ delta, hasLayoutChanged, hasRelativeTargetChanged, layout: newLayout }) => {
-          var _a3, _b, _c, _d, _e;
+          var _a2, _b, _c, _d, _e;
           if (this.isTreeAnimationBlocked()) {
             this.target = void 0;
             this.relativeTarget = void 0;
             return;
           }
-          const layoutTransition = (_b = (_a3 = this.options.transition) !== null && _a3 !== void 0 ? _a3 : visualElement.getDefaultTransition()) !== null && _b !== void 0 ? _b : defaultLayoutTransition;
+          const layoutTransition = (_b = (_a2 = this.options.transition) !== null && _a2 !== void 0 ? _a2 : visualElement.getDefaultTransition()) !== null && _b !== void 0 ? _b : defaultLayoutTransition;
           const { onLayoutAnimationStart, onLayoutAnimationComplete } = visualElement.getProps();
           const targetChanged = !this.targetLayout || !boxEquals(this.targetLayout, newLayout) || hasRelativeTargetChanged;
           const hasOnlyRelativeTargetChanged = !hasLayoutChanged && hasRelativeTargetChanged;
@@ -12787,10 +12764,10 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
     }
     unmount() {
-      var _a2, _b;
+      var _a, _b;
       this.options.layoutId && this.willUpdate();
       this.root.nodes.remove(this);
-      (_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.remove(this);
+      (_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.remove(this);
       (_b = this.parent) === null || _b === void 0 ? void 0 : _b.children.delete(this);
       this.instance = void 0;
       cancelSync.preRender(this.updateProjection);
@@ -12806,26 +12783,26 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       return this.updateManuallyBlocked || this.updateBlockedByResize;
     }
     isTreeAnimationBlocked() {
-      var _a2;
-      return this.isAnimationBlocked || ((_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.isTreeAnimationBlocked()) || false;
+      var _a;
+      return this.isAnimationBlocked || ((_a = this.parent) === null || _a === void 0 ? void 0 : _a.isTreeAnimationBlocked()) || false;
     }
     // Note: currently only running on root node
     startUpdate() {
-      var _a2;
+      var _a;
       if (this.isUpdateBlocked())
         return;
       this.isUpdating = true;
-      (_a2 = this.nodes) === null || _a2 === void 0 ? void 0 : _a2.forEach(resetRotation);
+      (_a = this.nodes) === null || _a === void 0 ? void 0 : _a.forEach(resetRotation);
       this.animationId++;
     }
     getTransformTemplate() {
-      var _a2;
-      return (_a2 = this.options.visualElement) === null || _a2 === void 0 ? void 0 : _a2.getProps().transformTemplate;
+      var _a;
+      return (_a = this.options.visualElement) === null || _a === void 0 ? void 0 : _a.getProps().transformTemplate;
     }
     willUpdate(shouldNotifyListeners = true) {
-      var _a2, _b, _c;
+      var _a, _b, _c;
       if (this.root.isUpdateBlocked()) {
-        (_b = (_a2 = this.options).onExitComplete) === null || _b === void 0 ? void 0 : _b.call(_a2);
+        (_b = (_a = this.options).onExitComplete) === null || _b === void 0 ? void 0 : _b.call(_a);
         return;
       }
       !this.root.isUpdating && this.root.startUpdate();
@@ -12896,7 +12873,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.snapshot = this.measure();
     }
     updateLayout() {
-      var _a2;
+      var _a;
       if (!this.instance)
         return;
       this.updateScroll();
@@ -12915,7 +12892,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.isLayoutDirty = false;
       this.projectionDelta = void 0;
       this.notifyListeners("measure", this.layout.layoutBox);
-      (_a2 = this.options.visualElement) === null || _a2 === void 0 ? void 0 : _a2.notify("LayoutMeasure", this.layout.layoutBox, prevLayout === null || prevLayout === void 0 ? void 0 : prevLayout.layoutBox);
+      (_a = this.options.visualElement) === null || _a === void 0 ? void 0 : _a.notify("LayoutMeasure", this.layout.layoutBox, prevLayout === null || prevLayout === void 0 ? void 0 : prevLayout.layoutBox);
     }
     updateScroll(phase = "measure") {
       let needsMeasurement = Boolean(this.options.layoutScroll && this.instance);
@@ -12932,12 +12909,12 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
     }
     resetTransform() {
-      var _a2;
+      var _a;
       if (!resetTransform)
         return;
       const isResetRequested = this.isLayoutDirty || this.shouldResetTransform;
       const hasProjection = this.projectionDelta && !isDeltaZero(this.projectionDelta);
-      const transformTemplateValue = (_a2 = this.getTransformTemplate()) === null || _a2 === void 0 ? void 0 : _a2(this.latestValues, "");
+      const transformTemplateValue = (_a = this.getTransformTemplate()) === null || _a === void 0 ? void 0 : _a(this.latestValues, "");
       const transformTemplateHasChanged = transformTemplateValue !== this.prevTransformTemplateValue;
       if (isResetRequested && (hasProjection || hasTransform(this.latestValues) || transformTemplateHasChanged)) {
         resetTransform(this.instance, transformTemplateValue);
@@ -13014,7 +12991,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       return withTransforms;
     }
     removeTransform(box) {
-      var _a2;
+      var _a;
       const boxWithoutTransform = createBox();
       copyBoxInto(boxWithoutTransform, box);
       for (let i2 = 0; i2 < this.path.length; i2++) {
@@ -13027,7 +13004,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         const sourceBox = createBox();
         const nodeBox = node2.measurePageBox();
         copyBoxInto(sourceBox, nodeBox);
-        removeBoxTransforms(boxWithoutTransform, node2.latestValues, (_a2 = node2.snapshot) === null || _a2 === void 0 ? void 0 : _a2.layoutBox, sourceBox);
+        removeBoxTransforms(boxWithoutTransform, node2.latestValues, (_a = node2.snapshot) === null || _a === void 0 ? void 0 : _a.layoutBox, sourceBox);
       }
       if (hasTransform(this.latestValues)) {
         removeBoxTransforms(boxWithoutTransform, this.latestValues);
@@ -13062,7 +13039,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
      * Frame calculations
      */
     resolveTargetDelta() {
-      var _a2;
+      var _a;
       const lead = this.getLead();
       this.isProjectionDirty || (this.isProjectionDirty = lead.isProjectionDirty);
       this.isTransformDirty || (this.isTransformDirty = lead.isTransformDirty);
@@ -13089,7 +13066,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         this.target = createBox();
         this.targetWithTransforms = createBox();
       }
-      if (this.relativeTarget && this.relativeTargetOrigin && ((_a2 = this.relativeParent) === null || _a2 === void 0 ? void 0 : _a2.target)) {
+      if (this.relativeTarget && this.relativeTargetOrigin && ((_a = this.relativeParent) === null || _a === void 0 ? void 0 : _a.target)) {
         calcRelativeBox(this.target, this.relativeTarget, this.relativeParent.target);
       } else if (this.targetDelta) {
         if (Boolean(this.resumingFrom)) {
@@ -13126,7 +13103,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
     }
     calcProjection() {
-      var _a2;
+      var _a;
       const { isProjectionDirty, isTransformDirty } = this;
       this.isProjectionDirty = this.isTransformDirty = false;
       const lead = this.getLead();
@@ -13139,7 +13116,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       if (canSkip)
         return;
       const { layout, layoutId } = this.options;
-      this.isTreeAnimating = Boolean(((_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.isTreeAnimating) || this.currentAnimation || this.pendingAnimation);
+      this.isTreeAnimating = Boolean(((_a = this.parent) === null || _a === void 0 ? void 0 : _a.isTreeAnimating) || this.currentAnimation || this.pendingAnimation);
       if (!this.isTreeAnimating) {
         this.targetDelta = this.relativeTarget = void 0;
       }
@@ -13172,15 +13149,15 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.isVisible = true;
     }
     scheduleRender(notifyAll = true) {
-      var _a2, _b, _c;
-      (_b = (_a2 = this.options).scheduleRender) === null || _b === void 0 ? void 0 : _b.call(_a2);
+      var _a, _b, _c;
+      (_b = (_a = this.options).scheduleRender) === null || _b === void 0 ? void 0 : _b.call(_a);
       notifyAll && ((_c = this.getStack()) === null || _c === void 0 ? void 0 : _c.scheduleRender());
       if (this.resumingFrom && !this.resumingFrom.instance) {
         this.resumingFrom = void 0;
       }
     }
     setAnimationOrigin(delta, hasOnlyRelativeTargetChanged = false) {
-      var _a2, _b;
+      var _a, _b;
       const snapshot = this.snapshot;
       const snapshotLatestValues = (snapshot === null || snapshot === void 0 ? void 0 : snapshot.latestValues) || {};
       const mixedValues = { ...this.latestValues };
@@ -13190,17 +13167,17 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
       this.attemptToResolveRelativeTarget = !hasOnlyRelativeTargetChanged;
       const relativeLayout = createBox();
-      const isSharedLayoutAnimation = (snapshot === null || snapshot === void 0 ? void 0 : snapshot.source) !== ((_a2 = this.layout) === null || _a2 === void 0 ? void 0 : _a2.source);
+      const isSharedLayoutAnimation = (snapshot === null || snapshot === void 0 ? void 0 : snapshot.source) !== ((_a = this.layout) === null || _a === void 0 ? void 0 : _a.source);
       const isOnlyMember = (((_b = this.getStack()) === null || _b === void 0 ? void 0 : _b.members.length) || 0) <= 1;
       const shouldCrossfadeOpacity = Boolean(isSharedLayoutAnimation && !isOnlyMember && this.options.crossfade === true && !this.path.some(hasOpacityCrossfade));
       this.animationProgress = 0;
       this.mixTargetDelta = (latest) => {
-        var _a3;
+        var _a2;
         const progress2 = latest / 1e3;
         mixAxisDelta(targetDelta.x, delta.x, progress2);
         mixAxisDelta(targetDelta.y, delta.y, progress2);
         this.setTargetDelta(targetDelta);
-        if (this.relativeTarget && this.relativeTargetOrigin && this.layout && ((_a3 = this.relativeParent) === null || _a3 === void 0 ? void 0 : _a3.layout)) {
+        if (this.relativeTarget && this.relativeTargetOrigin && this.layout && ((_a2 = this.relativeParent) === null || _a2 === void 0 ? void 0 : _a2.layout)) {
           calcRelativePosition(relativeLayout, this.layout.layoutBox, this.relativeParent.layout.layoutBox);
           mixBox(this.relativeTarget, this.relativeTargetOrigin, relativeLayout, progress2);
         }
@@ -13215,9 +13192,9 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.mixTargetDelta(this.options.layoutRoot ? 1e3 : 0);
     }
     startAnimation(options) {
-      var _a2, _b;
+      var _a, _b;
       this.notifyListeners("animationStart");
-      (_a2 = this.currentAnimation) === null || _a2 === void 0 ? void 0 : _a2.stop();
+      (_a = this.currentAnimation) === null || _a === void 0 ? void 0 : _a.stop();
       if (this.resumingFrom) {
         (_b = this.resumingFrom.currentAnimation) === null || _b === void 0 ? void 0 : _b.stop();
       }
@@ -13230,13 +13207,13 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         this.currentAnimation = animate(0, animationTarget, {
           ...options,
           onUpdate: (latest) => {
-            var _a3;
+            var _a2;
             this.mixTargetDelta(latest);
-            (_a3 = options.onUpdate) === null || _a3 === void 0 ? void 0 : _a3.call(options, latest);
+            (_a2 = options.onUpdate) === null || _a2 === void 0 ? void 0 : _a2.call(options, latest);
           },
           onComplete: () => {
-            var _a3;
-            (_a3 = options.onComplete) === null || _a3 === void 0 ? void 0 : _a3.call(options);
+            var _a2;
+            (_a2 = options.onComplete) === null || _a2 === void 0 ? void 0 : _a2.call(options);
             this.completeAnimation();
           }
         });
@@ -13247,19 +13224,19 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       });
     }
     completeAnimation() {
-      var _a2;
+      var _a;
       if (this.resumingFrom) {
         this.resumingFrom.currentAnimation = void 0;
         this.resumingFrom.preserveOpacity = void 0;
       }
-      (_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.exitAnimationComplete();
+      (_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.exitAnimationComplete();
       this.resumingFrom = this.currentAnimation = this.animationValues = void 0;
       this.notifyListeners("animationComplete");
     }
     finishAnimation() {
-      var _a2;
+      var _a;
       if (this.currentAnimation) {
-        (_a2 = this.mixTargetDelta) === null || _a2 === void 0 ? void 0 : _a2.call(this, animationTarget);
+        (_a = this.mixTargetDelta) === null || _a === void 0 ? void 0 : _a.call(this, animationTarget);
         this.currentAnimation.stop();
       }
       this.completeAnimation();
@@ -13283,14 +13260,14 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       calcBoxDelta(this.projectionDeltaWithTransform, this.layoutCorrected, targetWithTransforms, latestValues);
     }
     registerSharedNode(layoutId, node2) {
-      var _a2, _b, _c;
+      var _a, _b, _c;
       if (!this.sharedNodes.has(layoutId)) {
         this.sharedNodes.set(layoutId, new NodeStack());
       }
       const stack = this.sharedNodes.get(layoutId);
       stack.add(node2);
       node2.promote({
-        transition: (_a2 = node2.options.initialPromotionConfig) === null || _a2 === void 0 ? void 0 : _a2.transition,
+        transition: (_a = node2.options.initialPromotionConfig) === null || _a === void 0 ? void 0 : _a.transition,
         preserveFollowOpacity: (_c = (_b = node2.options.initialPromotionConfig) === null || _b === void 0 ? void 0 : _b.shouldPreserveFollowOpacity) === null || _c === void 0 ? void 0 : _c.call(_b, node2)
       });
     }
@@ -13299,14 +13276,14 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       return stack ? stack.lead === this : true;
     }
     getLead() {
-      var _a2;
+      var _a;
       const { layoutId } = this.options;
-      return layoutId ? ((_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.lead) || this : this;
+      return layoutId ? ((_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.lead) || this : this;
     }
     getPrevLead() {
-      var _a2;
+      var _a;
       const { layoutId } = this.options;
-      return layoutId ? (_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.prevLead : void 0;
+      return layoutId ? (_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.prevLead : void 0;
     }
     getStack() {
       const { layoutId } = this.options;
@@ -13358,7 +13335,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       visualElement.scheduleRender();
     }
     getProjectionStyles(styleProp = {}) {
-      var _a2, _b;
+      var _a, _b;
       const styles2 = {};
       if (!this.instance || this.isSVG)
         return styles2;
@@ -13397,7 +13374,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       const { x, y: y2 } = this.projectionDelta;
       styles2.transformOrigin = `${x.origin * 100}% ${y2.origin * 100}% 0`;
       if (lead.animationValues) {
-        styles2.opacity = lead === this ? (_b = (_a2 = valuesToRender.opacity) !== null && _a2 !== void 0 ? _a2 : this.latestValues.opacity) !== null && _b !== void 0 ? _b : 1 : this.preserveOpacity ? this.latestValues.opacity : valuesToRender.opacityExit;
+        styles2.opacity = lead === this ? (_b = (_a = valuesToRender.opacity) !== null && _a !== void 0 ? _a : this.latestValues.opacity) !== null && _b !== void 0 ? _b : 1 : this.preserveOpacity ? this.latestValues.opacity : valuesToRender.opacityExit;
       } else {
         styles2.opacity = lead === this ? valuesToRender.opacity !== void 0 ? valuesToRender.opacity : "" : valuesToRender.opacityExit !== void 0 ? valuesToRender.opacityExit : 0;
       }
@@ -13426,8 +13403,8 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
     // Only run on root
     resetTree() {
       this.root.nodes.forEach((node2) => {
-        var _a2;
-        return (_a2 = node2.currentAnimation) === null || _a2 === void 0 ? void 0 : _a2.stop();
+        var _a;
+        return (_a = node2.currentAnimation) === null || _a === void 0 ? void 0 : _a.stop();
       });
       this.root.nodes.forEach(clearMeasurements);
       this.root.sharedNodes.clear();
@@ -13438,8 +13415,8 @@ function updateLayout(node2) {
   node2.updateLayout();
 }
 function notifyLayoutUpdate(node2) {
-  var _a2, _b, _c;
-  const snapshot = ((_a2 = node2.resumeFrom) === null || _a2 === void 0 ? void 0 : _a2.snapshot) || node2.snapshot;
+  var _a, _b, _c;
+  const snapshot = ((_a = node2.resumeFrom) === null || _a === void 0 ? void 0 : _a.snapshot) || node2.snapshot;
   if (node2.isLead() && node2.layout && snapshot && node2.hasListeners("didUpdate")) {
     const { layoutBox: layout, measuredBox: measuredLayout } = node2.layout;
     const { animationType } = node2.options;
@@ -14219,7 +14196,7 @@ function __importStar(mod) {
 function __importDefault(mod) {
   return mod && mod.__esModule ? mod : { default: mod };
 }
-function __classPrivateFieldGet$3(receiver, state, kind, f2) {
+function __classPrivateFieldGet$2(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
     throw new TypeError("Private accessor was defined without a getter");
   if (typeof state === "function" ? receiver !== state || !f2 : !state.has(receiver))
@@ -14314,7 +14291,7 @@ const tslib_es6 = {
   __makeTemplateObject,
   __importStar,
   __importDefault,
-  __classPrivateFieldGet: __classPrivateFieldGet$3,
+  __classPrivateFieldGet: __classPrivateFieldGet$2,
   __classPrivateFieldSet,
   __classPrivateFieldIn,
   __addDisposableResource,
@@ -14331,7 +14308,7 @@ const tslib_es6$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   __asyncValues,
   __await,
   __awaiter: __awaiter$e,
-  __classPrivateFieldGet: __classPrivateFieldGet$3,
+  __classPrivateFieldGet: __classPrivateFieldGet$2,
   __classPrivateFieldIn,
   __classPrivateFieldSet,
   __createBinding,
@@ -17855,7 +17832,7 @@ const limitShift$2 = function(options) {
     }
   };
 };
-const size$7 = function(options) {
+const size$5 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -18608,7 +18585,7 @@ const arrow$1$1 = (options) => {
   };
 };
 var index$4$1 = typeof document !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
-function deepEqual$3(a2, b3) {
+function deepEqual$2(a2, b3) {
   if (a2 === b3) {
     return true;
   }
@@ -18625,7 +18602,7 @@ function deepEqual$3(a2, b3) {
       if (length2 != b3.length)
         return false;
       for (i2 = length2; i2-- !== 0; ) {
-        if (!deepEqual$3(a2[i2], b3[i2])) {
+        if (!deepEqual$2(a2[i2], b3[i2])) {
           return false;
         }
       }
@@ -18646,7 +18623,7 @@ function deepEqual$3(a2, b3) {
       if (key2 === "_owner" && a2.$$typeof) {
         continue;
       }
-      if (!deepEqual$3(a2[key2], b3[key2])) {
+      if (!deepEqual$2(a2[key2], b3[key2])) {
         return false;
       }
     }
@@ -18698,7 +18675,7 @@ function useFloating$1(options) {
     isPositioned: false
   });
   const [latestMiddleware, setLatestMiddleware] = reactExports.useState(middleware2);
-  if (!deepEqual$3(latestMiddleware, middleware2)) {
+  if (!deepEqual$2(latestMiddleware, middleware2)) {
     setLatestMiddleware(middleware2);
   }
   const [_reference, _setReference] = reactExports.useState(null);
@@ -18739,7 +18716,7 @@ function useFloating$1(options) {
         ...data2,
         isPositioned: true
       };
-      if (isMountedRef.current && !deepEqual$3(dataRef.current, fullData)) {
+      if (isMountedRef.current && !deepEqual$2(dataRef.current, fullData)) {
         dataRef.current = fullData;
         reactDomExports.flushSync(() => {
           setData(fullData);
@@ -18918,7 +18895,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1 = /* @__PURE__ */ reactExports.
       avoidCollisions && flip$2({
         ...detectOverflowOptions
       }),
-      size$7({
+      size$5({
         ...detectOverflowOptions,
         apply: ({ elements, rects, availableWidth, availableHeight }) => {
           const { width: anchorWidth, height: anchorHeight } = rects.reference;
@@ -19623,8 +19600,8 @@ function createSidecarMedium$1(options) {
   medium.options = __assign$2({ async: true, ssr: false }, options);
   return medium;
 }
-var SideCar$1$1 = function(_a2) {
-  var sideCar = _a2.sideCar, rest = __rest$1(_a2, ["sideCar"]);
+var SideCar$1$1 = function(_a) {
+  var sideCar = _a.sideCar, rest = __rest$1(_a, ["sideCar"]);
   if (!sideCar) {
     throw new Error("Sidecar: please provide `sideCar` property to import the right car");
   }
@@ -19645,11 +19622,11 @@ var nothing$1 = function() {
 };
 var RemoveScroll$1 = reactExports.forwardRef(function(props, parentRef) {
   var ref = reactExports.useRef(null);
-  var _a2 = reactExports.useState({
+  var _a = reactExports.useState({
     onScrollCapture: nothing$1,
     onWheelCapture: nothing$1,
     onTouchMoveCapture: nothing$1
-  }), callbacks = _a2[0], setCallbacks = _a2[1];
+  }), callbacks = _a[0], setCallbacks = _a[1];
   var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = __rest$1(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs$1([ref, parentRef]);
@@ -19733,8 +19710,8 @@ var styleHookSingleton$1 = function() {
 };
 var styleSingleton$1 = function() {
   var useStyle2 = styleHookSingleton$1();
-  var Sheet = function(_a2) {
-    var styles2 = _a2.styles, dynamic = _a2.dynamic;
+  var Sheet = function(_a) {
+    var styles2 = _a.styles, dynamic = _a.dynamic;
     useStyle2(styles2, dynamic);
     return null;
   };
@@ -19774,8 +19751,8 @@ var getGapWidth$1 = function(gapMode) {
   };
 };
 var Style$1 = styleSingleton$1();
-var getStyles$1 = function(_a2, allowRelative, gapMode, important) {
-  var left = _a2.left, top = _a2.top, right = _a2.right, gap = _a2.gap;
+var getStyles$1 = function(_a, allowRelative, gapMode, important) {
+  var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
   if (gapMode === void 0) {
     gapMode = "margin";
   }
@@ -19786,7 +19763,7 @@ var getStyles$1 = function(_a2, allowRelative, gapMode, important) {
   ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName$1, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName$1, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName$1, " .").concat(zeroRightClassName$1, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName$1, " .").concat(fullWidthClassName$1, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body {\n    ").concat(removedBarSizeVariable$1, ": ").concat(gap, "px;\n  }\n");
 };
 var RemoveScrollBar$1 = function(props) {
-  var noRelative = props.noRelative, noImportant = props.noImportant, _a2 = props.gapMode, gapMode = _a2 === void 0 ? "margin" : _a2;
+  var noRelative = props.noRelative, noImportant = props.noImportant, _a = props.gapMode, gapMode = _a === void 0 ? "margin" : _a;
   var gap = reactExports.useMemo(function() {
     return getGapWidth$1(gapMode);
   }, [gapMode]);
@@ -19833,7 +19810,7 @@ var locationCouldBeScrolled$1 = function(axis, node2) {
     }
     var isScrollable = elementCouldBeScrolled$1(axis, current);
     if (isScrollable) {
-      var _a2 = getScrollVariables$1(axis, current), s2 = _a2[1], d = _a2[2];
+      var _a = getScrollVariables$1(axis, current), s2 = _a[1], d = _a[2];
       if (s2 > d) {
         return true;
       }
@@ -19842,16 +19819,16 @@ var locationCouldBeScrolled$1 = function(axis, node2) {
   } while (current && current !== document.body);
   return false;
 };
-var getVScrollVariables$1 = function(_a2) {
-  var scrollTop = _a2.scrollTop, scrollHeight = _a2.scrollHeight, clientHeight = _a2.clientHeight;
+var getVScrollVariables$1 = function(_a) {
+  var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
   return [
     scrollTop,
     scrollHeight,
     clientHeight
   ];
 };
-var getHScrollVariables$1 = function(_a2) {
-  var scrollLeft = _a2.scrollLeft, scrollWidth = _a2.scrollWidth, clientWidth = _a2.clientWidth;
+var getHScrollVariables$1 = function(_a) {
+  var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
   return [
     scrollLeft,
     scrollWidth,
@@ -19877,7 +19854,7 @@ var handleScroll$1 = function(axis, endTarget, event, sourceDelta, noOverscroll)
   var availableScroll = 0;
   var availableScrollTop = 0;
   do {
-    var _a2 = getScrollVariables$1(axis, target), position2 = _a2[0], scroll_1 = _a2[1], capacity = _a2[2];
+    var _a = getScrollVariables$1(axis, target), position2 = _a[0], scroll_1 = _a[1], capacity = _a[2];
     var elementScroll = scroll_1 - capacity - directionFactor * position2;
     if (position2 || elementScroll) {
       if (elementCouldBeScrolled$1(axis, target)) {
@@ -20448,10 +20425,10 @@ reactExports.forwardRef(
                   icon: SvgCloseIcon,
                   size: "xs",
                   onClick: (ev) => {
-                    var _a2;
+                    var _a;
                     ev.preventDefault();
                     ev.stopPropagation();
-                    ((_a2 = inputRef.current) == null ? void 0 : _a2.value) && (inputRef.current.value = "");
+                    ((_a = inputRef.current) == null ? void 0 : _a.value) && (inputRef.current.value = "");
                     onValueChange == null ? void 0 : onValueChange(null);
                     setFileData(null);
                   },
@@ -25297,7 +25274,7 @@ const api$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
   WebRPCVersion: WebRPCVersion$3
 }, Symbol.toStringTag, { value: "Module" }));
 var bn = { exports: {} };
-var buffer$3 = {};
+var buffer$2 = {};
 var base64Js = {};
 base64Js.byteLength = byteLength;
 base64Js.toByteArray = toByteArray;
@@ -27167,25 +27144,25 @@ ieee754.write = function(buffer2, value, offset2, isLE2, mLen, nBytes) {
   function BufferBigIntNotDefined() {
     throw new Error("BigInt not supported");
   }
-})(buffer$3);
-const Buffer2 = buffer$3.Buffer;
-const Blob$1 = buffer$3.Blob;
-const BlobOptions = buffer$3.BlobOptions;
-const Buffer$1 = buffer$3.Buffer;
-const File = buffer$3.File;
-const FileOptions = buffer$3.FileOptions;
-const INSPECT_MAX_BYTES = buffer$3.INSPECT_MAX_BYTES;
-const SlowBuffer = buffer$3.SlowBuffer;
-const TranscodeEncoding = buffer$3.TranscodeEncoding;
-const atob$1 = buffer$3.atob;
-const btoa$1 = buffer$3.btoa;
-const constants = buffer$3.constants;
-const isAscii = buffer$3.isAscii;
-const isUtf8 = buffer$3.isUtf8;
-const kMaxLength = buffer$3.kMaxLength;
-const kStringMaxLength = buffer$3.kStringMaxLength;
-const resolveObjectURL = buffer$3.resolveObjectURL;
-const transcode = buffer$3.transcode;
+})(buffer$2);
+const Buffer2 = buffer$2.Buffer;
+const Blob$1 = buffer$2.Blob;
+const BlobOptions = buffer$2.BlobOptions;
+const Buffer$1 = buffer$2.Buffer;
+const File = buffer$2.File;
+const FileOptions = buffer$2.FileOptions;
+const INSPECT_MAX_BYTES = buffer$2.INSPECT_MAX_BYTES;
+const SlowBuffer = buffer$2.SlowBuffer;
+const TranscodeEncoding = buffer$2.TranscodeEncoding;
+const atob$1 = buffer$2.atob;
+const btoa$1 = buffer$2.btoa;
+const constants = buffer$2.constants;
+const isAscii = buffer$2.isAscii;
+const isUtf8 = buffer$2.isUtf8;
+const kMaxLength = buffer$2.kMaxLength;
+const kStringMaxLength = buffer$2.kStringMaxLength;
+const resolveObjectURL = buffer$2.resolveObjectURL;
+const transcode = buffer$2.transcode;
 const dist$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Blob: Blob$1,
@@ -30000,7 +29977,7 @@ bn.exports;
 })(bn);
 var bnExports = bn.exports;
 const BN$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(bnExports);
-const version$y = "logger/5.7.0";
+const version$u = "logger/5.7.0";
 let _permanentCensorErrors = false;
 let _censorErrors = false;
 const LogLevels = { debug: 1, "default": 2, info: 2, warning: 3, error: 4, off: 5 };
@@ -30249,7 +30226,7 @@ let Logger$1 = class Logger {
   }
   static globalLogger() {
     if (!_globalLogger) {
-      _globalLogger = new Logger(version$y);
+      _globalLogger = new Logger(version$u);
     }
     return _globalLogger;
   }
@@ -30294,8 +30271,8 @@ const lib_esm$k = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   },
   Logger: Logger$1
 }, Symbol.toStringTag, { value: "Module" }));
-const version$x = "bytes/5.7.0";
-const logger$A = new Logger$1(version$x);
+const version$t = "bytes/5.7.0";
+const logger$A = new Logger$1(version$t);
 function isHexable(value) {
   return !!value.toHexString;
 }
@@ -30677,9 +30654,9 @@ const lib_esm$j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   stripZeros,
   zeroPad
 }, Symbol.toStringTag, { value: "Module" }));
-const version$w = "bignumber/5.7.0";
+const version$s = "bignumber/5.7.0";
 var BN = BN$1.BN;
-const logger$z = new Logger$1(version$w);
+const logger$z = new Logger$1(version$s);
 const _constructorGuard$4 = {};
 const MAX_SAFE = 9007199254740991;
 function isBigNumberish$1(value) {
@@ -30843,10 +30820,10 @@ class BigNumber {
     }
     if (typeof value === "string") {
       if (value.match(/^-?0x[0-9a-f]+$/i)) {
-        return new BigNumber(_constructorGuard$4, toHex$3(value));
+        return new BigNumber(_constructorGuard$4, toHex$2(value));
       }
       if (value.match(/^-?[0-9]+$/)) {
-        return new BigNumber(_constructorGuard$4, toHex$3(new BN(value)));
+        return new BigNumber(_constructorGuard$4, toHex$2(new BN(value)));
       }
       return logger$z.throwArgumentError("invalid BigNumber string", "value", value);
     }
@@ -30890,16 +30867,16 @@ class BigNumber {
     return !!(value && value._isBigNumber);
   }
 }
-function toHex$3(value) {
+function toHex$2(value) {
   if (typeof value !== "string") {
-    return toHex$3(value.toString(16));
+    return toHex$2(value.toString(16));
   }
   if (value[0] === "-") {
     value = value.substring(1);
     if (value[0] === "-") {
       logger$z.throwArgumentError("invalid hex", "value", value);
     }
-    value = toHex$3(value);
+    value = toHex$2(value);
     if (value === "0x00") {
       return value;
     }
@@ -30920,7 +30897,7 @@ function toHex$3(value) {
   return value;
 }
 function toBigNumber(value) {
-  return BigNumber.from(toHex$3(value));
+  return BigNumber.from(toHex$2(value));
 }
 function toBN(value) {
   const hex2 = BigNumber.from(value).toHexString();
@@ -30942,7 +30919,7 @@ function _base36To16(value) {
 function _base16To36(value) {
   return new BN(value, 16).toString(36);
 }
-const logger$y = new Logger$1(version$w);
+const logger$y = new Logger$1(version$s);
 const _constructorGuard$3 = {};
 const Zero$2 = BigNumber.from(0);
 const NegativeOne$2 = BigNumber.from(-1);
@@ -31282,7 +31259,7 @@ class FixedNumber {
 }
 const ONE = FixedNumber.from(1);
 const BUMP = FixedNumber.from("0.5");
-const version$v = "properties/5.7.0";
+const version$r = "properties/5.7.0";
 var __awaiter$d = function(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
@@ -31310,7 +31287,7 @@ var __awaiter$d = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$x = new Logger$1(version$v);
+const logger$x = new Logger$1(version$r);
 function defineReadOnly$1(object2, name, value) {
   Object.defineProperty(object2, name, {
     enumerable: true,
@@ -31425,8 +31402,8 @@ const lib_esm$i = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   resolveProperties: resolveProperties$1,
   shallowCopy: shallowCopy$1
 }, Symbol.toStringTag, { value: "Module" }));
-const version$u = "abi/5.7.0";
-const logger$w = new Logger$1(version$u);
+const version$q = "abi/5.7.0";
+const logger$w = new Logger$1(version$q);
 const _constructorGuard$2 = {};
 let ModifiersBytes = { calldata: true, memory: true, storage: true };
 let ModifiersNest = { calldata: true, memory: true };
@@ -32232,7 +32209,7 @@ function splitNesting(value) {
   }
   return result;
 }
-const logger$v = new Logger$1(version$u);
+const logger$v = new Logger$1(version$q);
 function checkResultErrors(result) {
   const errors = [];
   const checkErrors = function(path, object2) {
@@ -32507,17 +32484,17 @@ process.env = {};
 process.argv = [];
 process.version = "";
 process.versions = {};
-function noop$4() {
+function noop$3() {
 }
-process.on = noop$4;
-process.addListener = noop$4;
-process.once = noop$4;
-process.off = noop$4;
-process.removeListener = noop$4;
-process.removeAllListeners = noop$4;
-process.emit = noop$4;
-process.prependListener = noop$4;
-process.prependOnceListener = noop$4;
+process.on = noop$3;
+process.addListener = noop$3;
+process.once = noop$3;
+process.off = noop$3;
+process.removeListener = noop$3;
+process.removeAllListeners = noop$3;
+process.emit = noop$3;
+process.prependListener = noop$3;
+process.prependOnceListener = noop$3;
 process.listeners = function(name) {
   return [];
 };
@@ -33176,15 +33153,15 @@ var sha3$1 = { exports: {} };
 })(sha3$1);
 var sha3Exports = sha3$1.exports;
 const sha3 = /* @__PURE__ */ getDefaultExportFromCjs$1(sha3Exports);
-function keccak256$3(data) {
+function keccak256$2(data) {
   return "0x" + sha3.keccak_256(arrayify(data));
 }
 const lib_esm$h = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  keccak256: keccak256$3
+  keccak256: keccak256$2
 }, Symbol.toStringTag, { value: "Module" }));
-const version$t = "rlp/5.7.0";
-const logger$u = new Logger$1(version$t);
+const version$p = "rlp/5.7.0";
+const logger$u = new Logger$1(version$p);
 function arrayifyInteger(value) {
   const result = [];
   while (value) {
@@ -33297,8 +33274,8 @@ const lib_esm$g = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   decode: decode$3,
   encode: encode$3
 }, Symbol.toStringTag, { value: "Module" }));
-const version$s = "address/5.7.0";
-const logger$t = new Logger$1(version$s);
+const version$o = "address/5.7.0";
+const logger$t = new Logger$1(version$o);
 function getChecksumAddress(address) {
   if (!isHexString(address, 20)) {
     logger$t.throwArgumentError("invalid address", "address", address);
@@ -33309,7 +33286,7 @@ function getChecksumAddress(address) {
   for (let i2 = 0; i2 < 40; i2++) {
     expanded[i2] = chars[i2].charCodeAt(0);
   }
-  const hashed = arrayify(keccak256$3(expanded));
+  const hashed = arrayify(keccak256$2(expanded));
   for (let i2 = 0; i2 < 40; i2 += 2) {
     if (hashed[i2 >> 1] >> 4 >= 8) {
       chars[i2] = chars[i2].toUpperCase();
@@ -33378,7 +33355,7 @@ function getAddress$1(address) {
   }
   return result;
 }
-function isAddress$2(address) {
+function isAddress$1(address) {
   try {
     getAddress$1(address);
     return true;
@@ -33401,7 +33378,7 @@ function getContractAddress$1(transaction2) {
     logger$t.throwArgumentError("missing from address", "transaction", transaction2);
   }
   const nonce = stripZeros(arrayify(BigNumber.from(transaction2.nonce).toHexString()));
-  return getAddress$1(hexDataSlice(keccak256$3(encode$3([from2, nonce])), 12));
+  return getAddress$1(hexDataSlice(keccak256$2(encode$3([from2, nonce])), 12));
 }
 function getCreate2Address(from2, salt, initCodeHash) {
   if (hexDataLength(salt) !== 32) {
@@ -33410,7 +33387,7 @@ function getCreate2Address(from2, salt, initCodeHash) {
   if (hexDataLength(initCodeHash) !== 32) {
     logger$t.throwArgumentError("initCodeHash must be 32 bytes", "initCodeHash", initCodeHash);
   }
-  return getAddress$1(hexDataSlice(keccak256$3(concat$1(["0xff", getAddress$1(from2), salt, initCodeHash])), 12));
+  return getAddress$1(hexDataSlice(keccak256$2(concat$1(["0xff", getAddress$1(from2), salt, initCodeHash])), 12));
 }
 const lib_esm$f = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -33418,7 +33395,7 @@ const lib_esm$f = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   getContractAddress: getContractAddress$1,
   getCreate2Address,
   getIcapAddress,
-  isAddress: isAddress$2
+  isAddress: isAddress$1
 }, Symbol.toStringTag, { value: "Module" }));
 class AddressCoder extends Coder {
   constructor(localName) {
@@ -33454,7 +33431,7 @@ class AnonymousCoder extends Coder {
     return this.coder.decode(reader2);
   }
 }
-const logger$s = new Logger$1(version$u);
+const logger$s = new Logger$1(version$q);
 function pack$1(writer, coders2, values) {
   let arrayValues = null;
   if (Array.isArray(values)) {
@@ -33760,8 +33737,8 @@ class NumberCoder extends Coder {
     return reader2.coerce(this.name, value);
   }
 }
-const version$r = "strings/5.7.0";
-const logger$r = new Logger$1(version$r);
+const version$n = "strings/5.7.0";
+const logger$r = new Logger$1(version$n);
 var UnicodeNormalizationForm;
 (function(UnicodeNormalizationForm2) {
   UnicodeNormalizationForm2["current"] = "";
@@ -34231,7 +34208,7 @@ class TupleCoder extends Coder {
     return reader2.coerce(this.name, unpack(reader2, this.coders));
   }
 }
-const logger$q = new Logger$1(version$u);
+const logger$q = new Logger$1(version$q);
 const paramTypeBytes = new RegExp(/^bytes([0-9]*)$/);
 const paramTypeNumber = new RegExp(/^(u?int)([0-9]*)$/);
 class AbiCoder {
@@ -34310,9 +34287,9 @@ class AbiCoder {
 }
 const defaultAbiCoder = new AbiCoder();
 function id(text2) {
-  return keccak256$3(toUtf8Bytes(text2));
+  return keccak256$2(toUtf8Bytes(text2));
 }
-const version$q = "hash/5.7.0";
+const version$m = "hash/5.7.0";
 function decode$2(textData) {
   textData = atob(textData);
   const data = [];
@@ -34618,7 +34595,7 @@ function nfc(s2) {
   return s2.normalize("NFC");
 }
 function consume_emoji_reversed(cps, eaten) {
-  var _a2;
+  var _a;
   let node2 = EMOJI_ROOT;
   let emoji;
   let saved;
@@ -34628,7 +34605,7 @@ function consume_emoji_reversed(cps, eaten) {
     eaten.length = 0;
   while (pos) {
     let cp = cps[--pos];
-    node2 = (_a2 = node2.branches.find((x) => x.set.has(cp))) === null || _a2 === void 0 ? void 0 : _a2.node;
+    node2 = (_a = node2.branches.find((x) => x.set.has(cp))) === null || _a === void 0 ? void 0 : _a.node;
     if (!node2)
       break;
     if (node2.save) {
@@ -34654,7 +34631,7 @@ function consume_emoji_reversed(cps, eaten) {
   }
   return emoji;
 }
-const logger$p = new Logger$1(version$q);
+const logger$p = new Logger$1(version$m);
 const Zeros$1 = new Uint8Array(32);
 Zeros$1.fill(0);
 function checkComponent(comp) {
@@ -34700,7 +34677,7 @@ function namehash$1(name) {
   let result = Zeros$1;
   const comps = ensNameSplit(name);
   while (comps.length) {
-    result = keccak256$3(concat$1([result, keccak256$3(comps.pop())]));
+    result = keccak256$2(concat$1([result, keccak256$2(comps.pop())]));
   }
   return hexlify(result);
 }
@@ -34720,7 +34697,7 @@ function hashMessage$1(message) {
   if (typeof message === "string") {
     message = toUtf8Bytes(message);
   }
-  return keccak256$3(concat$1([
+  return keccak256$2(concat$1([
     toUtf8Bytes(messagePrefix),
     toUtf8Bytes(String(message.length)),
     message
@@ -34753,7 +34730,7 @@ var __awaiter$c = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$o = new Logger$1(version$q);
+const logger$o = new Logger$1(version$m);
 const padding = new Uint8Array(32);
 padding.fill(0);
 const NegativeOne = BigNumber.from(-1);
@@ -34868,7 +34845,7 @@ function getBaseEncoder(type) {
       };
     case "bytes":
       return function(value) {
-        return keccak256$3(value);
+        return keccak256$2(value);
       };
     case "string":
       return function(value) {
@@ -34970,9 +34947,9 @@ class TypedDataEncoder {
         }
         let result = value.map(subEncoder);
         if (this._types[subtype]) {
-          result = result.map(keccak256$3);
+          result = result.map(keccak256$2);
         }
-        return keccak256$3(hexConcat(result));
+        return keccak256$2(hexConcat(result));
       };
     }
     const fields = this.types[type];
@@ -34982,7 +34959,7 @@ class TypedDataEncoder {
         const values = fields.map(({ name, type: type2 }) => {
           const result = this.getEncoder(type2)(value[name]);
           if (this._types[type2]) {
-            return keccak256$3(result);
+            return keccak256$2(result);
           }
           return result;
         });
@@ -35003,7 +34980,7 @@ class TypedDataEncoder {
     return this.getEncoder(type)(value);
   }
   hashStruct(name, value) {
-    return keccak256$3(this.encodeData(name, value));
+    return keccak256$2(this.encodeData(name, value));
   }
   encode(value) {
     return this.encodeData(this.primaryType, value);
@@ -35070,7 +35047,7 @@ class TypedDataEncoder {
     ]);
   }
   static hash(domain2, types2, value) {
-    return keccak256$3(TypedDataEncoder.encode(domain2, types2, value));
+    return keccak256$2(TypedDataEncoder.encode(domain2, types2, value));
   }
   // Replaces all address types with ENS names with their looked up address
   static resolveNames(domain2, types2, value, resolveName2) {
@@ -35160,7 +35137,7 @@ const lib_esm$c = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   messagePrefix,
   namehash: namehash$1
 }, Symbol.toStringTag, { value: "Module" }));
-const logger$n = new Logger$1(version$u);
+const logger$n = new Logger$1(version$q);
 class LogDescription extends Description {
 }
 class TransactionDescription extends Description {
@@ -35501,7 +35478,7 @@ class Interface {
       if (param.type === "string") {
         return id(value);
       } else if (param.type === "bytes") {
-        return keccak256$3(hexlify(value));
+        return keccak256$2(hexlify(value));
       }
       if (param.type === "bool" && typeof value === "boolean") {
         value = value ? "0x01" : "0x00";
@@ -35556,7 +35533,7 @@ class Interface {
         if (param.type === "string") {
           topics.push(id(value));
         } else if (param.type === "bytes") {
-          topics.push(keccak256$3(value));
+          topics.push(keccak256$2(value));
         } else if (param.baseType === "tuple" || param.baseType === "array") {
           throw new Error("not implemented");
         } else {
@@ -35731,7 +35708,7 @@ const lib_esm$b = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   checkResultErrors,
   defaultAbiCoder
 }, Symbol.toStringTag, { value: "Module" }));
-const version$p = "abstract-provider/5.7.0";
+const version$l = "abstract-provider/5.7.0";
 var __awaiter$b = function(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
@@ -35759,7 +35736,7 @@ var __awaiter$b = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$m = new Logger$1(version$p);
+const logger$m = new Logger$1(version$l);
 class ForkEvent extends Description {
   static isForkEvent(value) {
     return !!(value && value._isForkEvent);
@@ -35799,7 +35776,7 @@ class Provider {
     return !!(value && value._isProvider);
   }
 }
-const version$o = "abstract-signer/5.7.0";
+const version$k = "abstract-signer/5.7.0";
 var __awaiter$a = function(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
@@ -35827,7 +35804,7 @@ var __awaiter$a = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$l = new Logger$1(version$o);
+const logger$l = new Logger$1(version$k);
 const allowedTransactionKeys$2 = [
   "accessList",
   "ccipReadEnabled",
@@ -36192,13 +36169,13 @@ function toArray(msg, enc) {
   return res;
 }
 utils$c.toArray = toArray;
-function toHex$2(msg) {
+function toHex$1(msg) {
   var res = "";
   for (var i2 = 0; i2 < msg.length; i2++)
     res += zero2(msg[i2].toString(16));
   return res;
 }
-utils$c.toHex = toHex$2;
+utils$c.toHex = toHex$1;
 function htonl(w2) {
   var res = w2 >>> 24 | w2 >>> 8 & 65280 | w2 << 8 & 16711680 | (w2 & 255) << 24;
   return res >>> 0;
@@ -36635,9 +36612,9 @@ var sha256_K = [
   3204031479,
   3329325298
 ];
-function SHA256$3() {
-  if (!(this instanceof SHA256$3))
-    return new SHA256$3();
+function SHA256$2() {
+  if (!(this instanceof SHA256$2))
+    return new SHA256$2();
   BlockHash$2.call(this);
   this.h = [
     1779033703,
@@ -36652,13 +36629,13 @@ function SHA256$3() {
   this.k = sha256_K;
   this.W = new Array(64);
 }
-utils$8.inherits(SHA256$3, BlockHash$2);
-var _256 = SHA256$3;
-SHA256$3.blockSize = 512;
-SHA256$3.outSize = 256;
-SHA256$3.hmacStrength = 192;
-SHA256$3.padLength = 64;
-SHA256$3.prototype._update = function _update2(msg, start) {
+utils$8.inherits(SHA256$2, BlockHash$2);
+var _256 = SHA256$2;
+SHA256$2.blockSize = 512;
+SHA256$2.outSize = 256;
+SHA256$2.hmacStrength = 192;
+SHA256$2.padLength = 64;
+SHA256$2.prototype._update = function _update2(msg, start) {
   var W2 = this.W;
   for (var i2 = 0; i2 < 16; i2++)
     W2[i2] = msg[start + i2];
@@ -36694,18 +36671,18 @@ SHA256$3.prototype._update = function _update2(msg, start) {
   this.h[6] = sum32$1(this.h[6], g2);
   this.h[7] = sum32$1(this.h[7], h2);
 };
-SHA256$3.prototype._digest = function digest3(enc) {
+SHA256$2.prototype._digest = function digest3(enc) {
   if (enc === "hex")
     return utils$8.toHex32(this.h, "big");
   else
     return utils$8.split32(this.h, "big");
 };
 var utils$7 = utils$c;
-var SHA256$2 = _256;
+var SHA256$1 = _256;
 function SHA224() {
   if (!(this instanceof SHA224))
     return new SHA224();
-  SHA256$2.call(this);
+  SHA256$1.call(this);
   this.h = [
     3238371032,
     914150663,
@@ -36717,7 +36694,7 @@ function SHA224() {
     3204075428
   ];
 }
-utils$7.inherits(SHA224, SHA256$2);
+utils$7.inherits(SHA224, SHA256$1);
 var _224 = SHA224;
 SHA224.blockSize = 512;
 SHA224.outSize = 224;
@@ -39556,8 +39533,8 @@ var elliptic_1 = createCommonjsModule(function(module2, exports) {
   null;
 });
 var EC$1 = elliptic_1.ec;
-const version$n = "signing-key/5.7.0";
-const logger$k = new Logger$1(version$n);
+const version$j = "signing-key/5.7.0";
+const logger$k = new Logger$1(version$j);
 let _curve = null;
 function getCurve() {
   if (!_curve) {
@@ -39636,8 +39613,8 @@ const lib_esm$a = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   computePublicKey,
   recoverPublicKey
 }, Symbol.toStringTag, { value: "Module" }));
-const version$m = "transactions/5.7.0";
-const logger$j = new Logger$1(version$m);
+const version$i = "transactions/5.7.0";
+const logger$j = new Logger$1(version$i);
 var TransactionTypes;
 (function(TransactionTypes2) {
   TransactionTypes2[TransactionTypes2["legacy"] = 0] = "legacy";
@@ -39676,7 +39653,7 @@ const allowedTransactionKeys$1 = {
 };
 function computeAddress(key2) {
   const publicKey = computePublicKey(key2);
-  return getAddress$1(hexDataSlice(keccak256$3(hexDataSlice(publicKey, 1)), 12));
+  return getAddress$1(hexDataSlice(keccak256$2(hexDataSlice(publicKey, 1)), 12));
 }
 function recoverAddress(digest9, signature2) {
   return computeAddress(recoverPublicKey(arrayify(digest9), signature2));
@@ -39860,7 +39837,7 @@ function _parseEipSignature(tx, fields, serialize2) {
   tx.r = hexZeroPad(fields[1], 32);
   tx.s = hexZeroPad(fields[2], 32);
   try {
-    const digest9 = keccak256$3(serialize2(tx));
+    const digest9 = keccak256$2(serialize2(tx));
     tx.from = recoverAddress(digest9, { r: tx.r, s: tx.s, recoveryParam: tx.v });
   } catch (error) {
   }
@@ -39888,7 +39865,7 @@ function _parseEip1559(payload) {
   if (transaction2.length === 9) {
     return tx;
   }
-  tx.hash = keccak256$3(payload);
+  tx.hash = keccak256$2(payload);
   _parseEipSignature(tx, transaction2.slice(9), _serializeEip1559);
   return tx;
 }
@@ -39911,7 +39888,7 @@ function _parseEip2930(payload) {
   if (transaction2.length === 8) {
     return tx;
   }
-  tx.hash = keccak256$3(payload);
+  tx.hash = keccak256$2(payload);
   _parseEipSignature(tx, transaction2.slice(8), _serializeEip2930);
   return tx;
 }
@@ -39955,12 +39932,12 @@ function _parse(rawTransaction) {
       raw.push("0x");
       recoveryParam -= tx.chainId * 2 + 8;
     }
-    const digest9 = keccak256$3(encode$3(raw));
+    const digest9 = keccak256$2(encode$3(raw));
     try {
       tx.from = recoverAddress(digest9, { r: hexlify(tx.r), s: hexlify(tx.s), recoveryParam });
     } catch (error) {
     }
-    tx.hash = keccak256$3(rawTransaction);
+    tx.hash = keccak256$2(rawTransaction);
   }
   tx.type = null;
   return tx;
@@ -39992,7 +39969,7 @@ const lib_esm$9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   recoverAddress,
   serialize: serialize$3
 }, Symbol.toStringTag, { value: "Module" }));
-const version$l = "contracts/5.7.0";
+const version$h = "contracts/5.7.0";
 var __awaiter$9 = function(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
@@ -40020,7 +39997,7 @@ var __awaiter$9 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$i = new Logger$1(version$l);
+const logger$i = new Logger$1(version$h);
 function resolveName(resolver, nameOrPromise) {
   return __awaiter$9(this, void 0, void 0, function* () {
     const name = yield nameOrPromise;
@@ -40883,12 +40860,12 @@ var SupportedAlgorithm;
   SupportedAlgorithm2["sha256"] = "sha256";
   SupportedAlgorithm2["sha512"] = "sha512";
 })(SupportedAlgorithm || (SupportedAlgorithm = {}));
-const version$k = "sha2/5.7.0";
-const logger$h = new Logger$1(version$k);
+const version$g = "sha2/5.7.0";
+const logger$h = new Logger$1(version$g);
 function ripemd160(data) {
   return "0x" + hash$2.ripemd160().update(arrayify(data)).digest("hex");
 }
-function sha256$4(data) {
+function sha256$2(data) {
   return "0x" + hash$2.sha256().update(arrayify(data)).digest("hex");
 }
 function sha512(data) {
@@ -40910,7 +40887,7 @@ const lib_esm$7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   },
   computeHmac,
   ripemd160,
-  sha256: sha256$4,
+  sha256: sha256$2,
   sha512
 }, Symbol.toStringTag, { value: "Module" }));
 function pbkdf2$1(password, salt, iterations, keylen, hashAlgorithm) {
@@ -40947,8 +40924,8 @@ function pbkdf2$1(password, salt, iterations, keylen, hashAlgorithm) {
   }
   return hexlify(DK);
 }
-const version$j = "wordlists/5.7.0";
-const logger$g = new Logger$1(version$j);
+const version$f = "wordlists/5.7.0";
+const logger$g = new Logger$1(version$f);
 class Wordlist {
   constructor(locale) {
     logger$g.checkAbstract(new.target, Wordlist);
@@ -41009,8 +40986,8 @@ Wordlist.register(langEn);
 const wordlists = {
   en: langEn
 };
-const version$i = "hdnode/5.7.0";
-const logger$f = new Logger$1(version$i);
+const version$e = "hdnode/5.7.0";
+const logger$f = new Logger$1(version$e);
 const N$1 = BigNumber.from("0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141");
 const MasterSecret = toUtf8Bytes("Bitcoin seed");
 const HardenedBit = 2147483648;
@@ -41024,7 +41001,7 @@ function bytes32(value) {
   return hexZeroPad(hexlify(value), 32);
 }
 function base58check(data) {
-  return Base58.encode(concat$1([data, hexDataSlice(sha256$4(sha256$4(data)), 0, 4)]));
+  return Base58.encode(concat$1([data, hexDataSlice(sha256$2(sha256$2(data)), 0, 4)]));
 }
 function getWordlist(wordlist2) {
   if (wordlist2 == null) {
@@ -41062,7 +41039,7 @@ class HDNode {
       defineReadOnly$1(this, "publicKey", hexlify(publicKey));
     }
     defineReadOnly$1(this, "parentFingerprint", parentFingerprint);
-    defineReadOnly$1(this, "fingerprint", hexDataSlice(ripemd160(sha256$4(this.publicKey)), 0, 4));
+    defineReadOnly$1(this, "fingerprint", hexDataSlice(ripemd160(sha256$2(this.publicKey)), 0, 4));
     defineReadOnly$1(this, "address", computeAddress(this.publicKey));
     defineReadOnly$1(this, "chainCode", chainCode);
     defineReadOnly$1(this, "index", index2);
@@ -41243,7 +41220,7 @@ function mnemonicToEntropy(mnemonic, wordlist2) {
   const entropyBits = 32 * words2.length / 3;
   const checksumBits = words2.length / 3;
   const checksumMask = getUpperMask(checksumBits);
-  const checksum = arrayify(sha256$4(entropy.slice(0, entropyBits / 8)))[0] & checksumMask;
+  const checksum = arrayify(sha256$2(entropy.slice(0, entropyBits / 8)))[0] & checksumMask;
   if (checksum !== (entropy[entropy.length - 1] & checksumMask)) {
     throw new Error("invalid checksum");
   }
@@ -41270,7 +41247,7 @@ function entropyToMnemonic(entropy, wordlist2) {
     }
   }
   const checksumBits = entropy.length / 4;
-  const checksum = arrayify(sha256$4(entropy))[0] & getUpperMask(checksumBits);
+  const checksum = arrayify(sha256$2(entropy))[0] & getUpperMask(checksumBits);
   indices[indices.length - 1] <<= checksumBits;
   indices[indices.length - 1] |= checksum >> 8 - checksumBits;
   return wordlist2.join(indices.map((index2) => wordlist2.getWord(index2)));
@@ -41299,8 +41276,8 @@ const lib_esm$6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   mnemonicToEntropy,
   mnemonicToSeed
 }, Symbol.toStringTag, { value: "Module" }));
-const version$h = "random/5.7.0";
-const logger$e = new Logger$1(version$h);
+const version$d = "random/5.7.0";
+const logger$e = new Logger$1(version$d);
 function getGlobal() {
   if (typeof self !== "undefined") {
     return self;
@@ -41891,7 +41868,7 @@ var aesJs = { exports: {} };
 })(aesJs);
 var aesJsExports = aesJs.exports;
 const aes = /* @__PURE__ */ getDefaultExportFromCjs$1(aesJsExports);
-const version$g = "json-wallets/5.7.0";
+const version$c = "json-wallets/5.7.0";
 function looseArrayify(hexString) {
   if (typeof hexString === "string" && hexString.substring(0, 2) !== "0x") {
     hexString = "0x" + hexString;
@@ -41942,7 +41919,7 @@ function uuidV4(randomBytes2) {
     value.substring(22, 34)
   ].join("-");
 }
-const logger$d = new Logger$1(version$g);
+const logger$d = new Logger$1(version$c);
 class CrowdsaleAccount extends Description {
   isCrowdsaleAccount(value) {
     return !!(value && value._isCrowdsaleAccount);
@@ -41966,7 +41943,7 @@ function decrypt$1(json, password) {
     seedHex += String.fromCharCode(seed[i2]);
   }
   const seedHexBytes = toUtf8Bytes(seedHex);
-  const privateKey = keccak256$3(seedHexBytes);
+  const privateKey = keccak256$2(seedHexBytes);
   return new CrowdsaleAccount({
     _isCrowdsaleAccount: true,
     address: ethaddr,
@@ -42015,7 +41992,7 @@ var scrypt$1 = { exports: {} };
 (function(module2, exports) {
   (function(root2) {
     const MAX_VALUE = 2147483647;
-    function SHA2563(m2) {
+    function SHA2562(m2) {
       const K2 = new Uint32Array([
         1116352408,
         1899447441,
@@ -42175,7 +42152,7 @@ var scrypt$1 = { exports: {} };
       ];
     }
     function PBKDF2_HMAC_SHA256_OneIter(password, salt, dkLen) {
-      password = password.length <= 64 ? password : SHA2563(password);
+      password = password.length <= 64 ? password : SHA2562(password);
       const innerLen = 64 + salt.length + 4;
       const inner = new Array(innerLen);
       const outerKey = new Array(64);
@@ -42207,12 +42184,12 @@ var scrypt$1 = { exports: {} };
       }
       while (dkLen >= 32) {
         incrementCounter();
-        dk2 = dk2.concat(SHA2563(outerKey.concat(SHA2563(inner))));
+        dk2 = dk2.concat(SHA2562(outerKey.concat(SHA2562(inner))));
         dkLen -= 32;
       }
       if (dkLen > 0) {
         incrementCounter();
-        dk2 = dk2.concat(SHA2563(outerKey.concat(SHA2563(inner))).slice(0, dkLen));
+        dk2 = dk2.concat(SHA2562(outerKey.concat(SHA2562(inner))).slice(0, dkLen));
       }
       return dk2;
     }
@@ -42500,7 +42477,7 @@ var __awaiter$8 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$c = new Logger$1(version$g);
+const logger$c = new Logger$1(version$c);
 function hasMnemonic$1(value) {
   return value != null && value.mnemonic && value.mnemonic.phrase;
 }
@@ -42521,7 +42498,7 @@ function _decrypt(data, key2, ciphertext) {
 }
 function _getAccount(data, key2) {
   const ciphertext = looseArrayify(searchPath(data, "crypto/ciphertext"));
-  const computedMAC = hexlify(keccak256$3(concat$1([key2.slice(16, 32), ciphertext]))).substring(2);
+  const computedMAC = hexlify(keccak256$2(concat$1([key2.slice(16, 32), ciphertext]))).substring(2);
   if (computedMAC !== searchPath(data, "crypto/mac").toLowerCase()) {
     throw new Error("invalid password");
   }
@@ -42713,7 +42690,7 @@ function encrypt(account2, password, options, progressCallback) {
     const counter = new aes.Counter(iv);
     const aesCtr = new aes.ModeOfOperation.ctr(derivedKey, counter);
     const ciphertext = arrayify(aesCtr.encrypt(privateKey));
-    const mac = keccak256$3(concat$1([macPrefix, ciphertext]));
+    const mac = keccak256$2(concat$1([macPrefix, ciphertext]));
     const data = {
       address: account2.address.substring(2).toLowerCase(),
       id: uuidV4(uuidRandom),
@@ -42792,7 +42769,7 @@ const lib_esm$4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   isCrowdsaleWallet,
   isKeystoreWallet
 }, Symbol.toStringTag, { value: "Module" }));
-const version$f = "wallet/5.7.0";
+const version$b = "wallet/5.7.0";
 var __awaiter$7 = function(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
@@ -42820,7 +42797,7 @@ var __awaiter$7 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$b = new Logger$1(version$f);
+const logger$b = new Logger$1(version$b);
 function isAccount$1(value) {
   return value != null && isHexString(value.privateKey, 32) && value.address != null;
 }
@@ -42899,7 +42876,7 @@ let Wallet$1 = class Wallet extends Signer$1 {
         }
         delete tx.from;
       }
-      const signature2 = this._signingKey().signDigest(keccak256$3(serialize$3(tx)));
+      const signature2 = this._signingKey().signDigest(keccak256$2(serialize$3(tx)));
       return serialize$3(tx, signature2);
     });
   }
@@ -42944,7 +42921,7 @@ let Wallet$1 = class Wallet extends Signer$1 {
       options = {};
     }
     if (options.extraEntropy) {
-      entropy = arrayify(hexDataSlice(keccak256$3(concat$1([entropy, options.extraEntropy])), 0, 16));
+      entropy = arrayify(hexDataSlice(keccak256$2(concat$1([entropy, options.extraEntropy])), 0, 16));
     }
     const mnemonic = entropyToMnemonic(entropy, options.locale);
     return Wallet.fromMnemonic(mnemonic, options.path, options.locale);
@@ -42976,8 +42953,8 @@ const lib_esm$3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   verifyMessage: verifyMessage$1,
   verifyTypedData: verifyTypedData$1
 }, Symbol.toStringTag, { value: "Module" }));
-const version$e = "networks/5.7.1";
-const logger$a = new Logger$1(version$e);
+const version$a = "networks/5.7.1";
+const logger$a = new Logger$1(version$a);
 function isRenetworkable(value) {
   return value && typeof value.renetwork === "function";
 }
@@ -43201,7 +43178,7 @@ function getNetwork(network2) {
     _defaultProvider: defaultProvider
   };
 }
-const version$d = "web/5.7.1";
+const version$9 = "web/5.7.1";
 var __awaiter$6 = function(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
@@ -43229,7 +43206,7 @@ var __awaiter$6 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-function getUrl$2(href, options) {
+function getUrl$1(href, options) {
   return __awaiter$6(this, void 0, void 0, function* () {
     if (options == null) {
       options = {};
@@ -43311,7 +43288,7 @@ var __awaiter$5 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$9 = new Logger$1(version$d);
+const logger$9 = new Logger$1(version$9);
 function staller(duration) {
   return new Promise((resolve) => {
     setTimeout(resolve, duration);
@@ -43463,7 +43440,7 @@ function _fetchData(connection, body, processFunc) {
       for (let attempt = 0; attempt < attemptLimit; attempt++) {
         let response = null;
         try {
-          response = yield getUrl$2(url, options);
+          response = yield getUrl$1(url, options);
           if (attempt < attemptLimit) {
             if (response.statusCode === 301 || response.statusCode === 302) {
               const location2 = response.headers.location || "";
@@ -43827,8 +43804,8 @@ var bech32 = {
   fromWords
 };
 const bech32$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(bech32);
-const version$c = "providers/5.7.2";
-const logger$8 = new Logger$1(version$c);
+const version$8 = "providers/5.7.2";
+const logger$8 = new Logger$1(version$8);
 class Formatter {
   constructor() {
     this.formats = this.getDefaultFormats();
@@ -44258,7 +44235,7 @@ var __awaiter$4 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$7 = new Logger$1(version$c);
+const logger$7 = new Logger$1(version$8);
 const MAX_CCIP_REDIRECTS = 10;
 function checkTopic(topic) {
   if (topic == null) {
@@ -44389,7 +44366,7 @@ function bytes32ify(value) {
   return hexZeroPad(BigNumber.from(value).toHexString(), 32);
 }
 function base58Encode(data) {
-  return Base58.encode(concat$1([data, hexDataSlice(sha256$4(sha256$4(data)), 0, 4)]));
+  return Base58.encode(concat$1([data, hexDataSlice(sha256$2(sha256$2(data)), 0, 4)]));
 }
 const matcherIpfs = new RegExp("^(ipfs)://(.*)$", "i");
 const matchers = [
@@ -46070,7 +46047,7 @@ var __awaiter$3 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$6 = new Logger$1(version$c);
+const logger$6 = new Logger$1(version$8);
 const errorGas = ["call", "estimateGas"];
 function spelunk(value, requireData) {
   if (value == null) {
@@ -46726,7 +46703,7 @@ var __awaiter$2 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$5 = new Logger$1(version$c);
+const logger$5 = new Logger$1(version$8);
 class StaticJsonRpcProvider extends JsonRpcProvider$1 {
   detectNetwork() {
     const _super = Object.create(null, {
@@ -46775,7 +46752,7 @@ var __awaiter$1 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$4 = new Logger$1(version$c);
+const logger$4 = new Logger$1(version$8);
 function now() {
   return (/* @__PURE__ */ new Date()).getTime();
 }
@@ -47275,7 +47252,7 @@ class FallbackProvider extends BaseProvider {
     });
   }
 }
-const logger$3 = new Logger$1(version$c);
+const logger$3 = new Logger$1(version$8);
 let _nextId$1 = 1;
 function buildWeb3LegacyFetcher(provider2, sendFunc) {
   const fetcher = "Web3LegacyFetcher";
@@ -47396,12 +47373,12 @@ class Web3Provider extends JsonRpcProvider$1 {
     return this.jsonRpcFetchFunc(method, params);
   }
 }
-const version$b = "solidity/5.7.0";
+const version$7 = "solidity/5.7.0";
 const regexBytes = new RegExp("^bytes([0-9]+)$");
 const regexNumber = new RegExp("^(u?int)([0-9]*)$");
 const regexArray = new RegExp("^(.*)\\[([0-9]*)\\]$");
 const Zeros = "0000000000000000000000000000000000000000000000000000000000000000";
-const logger$2 = new Logger$1(version$b);
+const logger$2 = new Logger$1(version$7);
 function _pack(type, value, isArray2) {
   switch (type) {
     case "address":
@@ -47471,20 +47448,20 @@ function pack(types2, values) {
   });
   return hexlify(concat$1(tight));
 }
-function keccak256$2(types2, values) {
-  return keccak256$3(pack(types2, values));
+function keccak256$1(types2, values) {
+  return keccak256$2(pack(types2, values));
 }
-function sha256$3(types2, values) {
-  return sha256$4(pack(types2, values));
+function sha256$1(types2, values) {
+  return sha256$2(pack(types2, values));
 }
 const lib_esm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  keccak256: keccak256$2,
+  keccak256: keccak256$1,
   pack,
-  sha256: sha256$3
+  sha256: sha256$1
 }, Symbol.toStringTag, { value: "Module" }));
-const version$a = "units/5.7.0";
-const logger$1 = new Logger$1(version$a);
+const version$6 = "units/5.7.0";
+const logger$1 = new Logger$1(version$6);
 const names = [
   "wei",
   "kwei",
@@ -47531,7 +47508,7 @@ function commify(value) {
   }
   return negative + formatted.join(",") + suffix;
 }
-function formatUnits$2(value, unitName) {
+function formatUnits$1(value, unitName) {
   if (typeof unitName === "string") {
     const index2 = names.indexOf(unitName);
     if (index2 !== -1) {
@@ -47552,8 +47529,8 @@ function parseUnits(value, unitName) {
   }
   return parseFixed(value, unitName != null ? unitName : 18);
 }
-function formatEther$2(wei) {
-  return formatUnits$2(wei, 18);
+function formatEther$1(wei) {
+  return formatUnits$1(wei, 18);
 }
 function parseEther(ether) {
   return parseUnits(ether, 18);
@@ -47561,8 +47538,8 @@ function parseEther(ether) {
 const lib_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   commify,
-  formatEther: formatEther$2,
-  formatUnits: formatUnits$2,
+  formatEther: formatEther$1,
+  formatUnits: formatUnits$1,
   parseEther,
   parseUnits
 }, Symbol.toStringTag, { value: "Module" }));
@@ -47619,8 +47596,8 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   entropyToMnemonic,
   fetchJson,
   formatBytes32String,
-  formatEther: formatEther$2,
-  formatUnits: formatUnits$2,
+  formatEther: formatEther$1,
+  formatUnits: formatUnits$1,
   getAccountPath,
   getAddress: getAddress$1,
   getContractAddress: getContractAddress$1,
@@ -47637,14 +47614,14 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   hexZeroPad,
   hexlify,
   id,
-  isAddress: isAddress$2,
+  isAddress: isAddress$1,
   isBytes: isBytes$2,
   isBytesLike,
   isHexString,
   isValidMnemonic,
   isValidName,
   joinSignature,
-  keccak256: keccak256$3,
+  keccak256: keccak256$2,
   mnemonicToEntropy,
   mnemonicToSeed,
   namehash: namehash$1,
@@ -47660,13 +47637,13 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   resolveProperties: resolveProperties$1,
   ripemd160,
   serializeTransaction: serialize$3,
-  sha256: sha256$4,
+  sha256: sha256$2,
   sha512,
   shallowCopy: shallowCopy$1,
   shuffled,
-  solidityKeccak256: keccak256$2,
+  solidityKeccak256: keccak256$1,
   solidityPack: pack,
-  soliditySha256: sha256$3,
+  soliditySha256: sha256$1,
   splitSignature,
   stripZeros,
   toUtf8Bytes,
@@ -47676,8 +47653,8 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   verifyTypedData: verifyTypedData$1,
   zeroPad
 }, Symbol.toStringTag, { value: "Module" }));
-const version$9 = "3.7.6";
-const VERSION = version$9;
+const version$5 = "3.7.6";
+const VERSION = version$5;
 const _hasatob = typeof atob === "function";
 const _hasbtoa = typeof btoa === "function";
 const _hasBuffer = typeof Buffer2 === "function";
@@ -47810,7 +47787,7 @@ const extendBuiltins = () => {
   extendUint8Array();
 };
 const gBase64 = {
-  version: version$9,
+  version: version$5,
   VERSION,
   atob: _atob,
   atobPolyfill,
@@ -48036,7 +48013,7 @@ var validateClaims = function(claims) {
 var ValidateEOAProof = function(provider2, chainId, proof) {
   return __awaiter(void 0, void 0, void 0, function() {
     var messageDigest, address;
-    return __generator(this, function(_a2) {
+    return __generator(this, function(_a) {
       messageDigest = proof.messageDigest();
       address = verifyMessage$1(messageDigest, proof.signature);
       if (address.slice(0, 2) === "0x" && address.length === 42 && address.toLowerCase() === proof.address.toLowerCase()) {
@@ -48050,8 +48027,8 @@ var ValidateEOAProof = function(provider2, chainId, proof) {
 var ValidateContractAccountProof = function(provider2, chainId, proof) {
   return __awaiter(void 0, void 0, void 0, function() {
     var messageDigest, walletCode, abi2, contract, isValidSignature2;
-    return __generator(this, function(_a2) {
-      switch (_a2.label) {
+    return __generator(this, function(_a) {
+      switch (_a.label) {
         case 0:
           if (!provider2 || provider2 === void 0) {
             return [2, { isValid: false }];
@@ -48059,7 +48036,7 @@ var ValidateContractAccountProof = function(provider2, chainId, proof) {
           messageDigest = proof.messageDigest();
           return [4, provider2.getCode(proof.address)];
         case 1:
-          walletCode = _a2.sent();
+          walletCode = _a.sent();
           if (walletCode === "0x" || walletCode.length <= 2) {
             throw new Error("ValidateContractAccountProof failed. unable to fetch wallet contract code");
           }
@@ -48067,7 +48044,7 @@ var ValidateContractAccountProof = function(provider2, chainId, proof) {
           contract = new Contract(proof.address, abi2, provider2);
           return [4, contract.isValidSignature(messageDigest, arrayify(proof.signature))];
         case 2:
-          isValidSignature2 = _a2.sent();
+          isValidSignature2 = _a.sent();
           if (isValidSignature2 === IsValidSignatureBytes32MagicValue) {
             return [2, { isValid: true, address: proof.address }];
           } else {
@@ -48096,13 +48073,13 @@ var ETHAuth = (
       this.configJsonRpcProvider = function(ethereumJsonRpcURL) {
         return __awaiter(_this, void 0, void 0, function() {
           var netVersion;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
               case 0:
                 this.provider = new JsonRpcProvider$1(ethereumJsonRpcURL);
                 return [4, this.provider.send("net_version", [])];
               case 1:
-                netVersion = _a2.sent();
+                netVersion = _a.sent();
                 this.chainId = parseInt(netVersion);
                 if (!this.chainId || this.chainId === 0 || this.chainId === NaN) {
                   throw new Error("ethauth: unable to get chainId");
@@ -48132,8 +48109,8 @@ var ETHAuth = (
         }
         return __awaiter(_this, void 0, void 0, function() {
           var isValid2, claimsJSON, proofString;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
               case 0:
                 if (proof.address.length !== 42 || proof.address.slice(0, 2) !== "0x") {
                   throw new Error("ethauth: invalid address");
@@ -48146,7 +48123,7 @@ var ETHAuth = (
                 }
                 return [4, this.validateProof(proof, skipSignatureValidation)];
               case 1:
-                isValid2 = _a2.sent();
+                isValid2 = _a.sent();
                 if (!isValid2) {
                   throw new Error("ethauth: proof is invalid");
                 }
@@ -48166,8 +48143,8 @@ var ETHAuth = (
         }
         return __awaiter(_this, void 0, void 0, function() {
           var parts, prefix2, address, messageBase64, signature2, extra, message, claims, proof, isValid2;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
               case 0:
                 parts = proofString.split(".");
                 if (parts.length < 4 || parts.length > 5) {
@@ -48182,7 +48159,7 @@ var ETHAuth = (
                 proof = new Proof({ address, claims, signature: signature2, extra });
                 return [4, this.validateProof(proof, skipSignatureValidation)];
               case 1:
-                isValid2 = _a2.sent();
+                isValid2 = _a.sent();
                 if (!isValid2) {
                   throw new Error("ethauth: proof is invalid");
                 }
@@ -48197,8 +48174,8 @@ var ETHAuth = (
         }
         return __awaiter(_this, void 0, void 0, function() {
           var isValidClaims, isValidSig;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
               case 0:
                 isValidClaims = this.validateProofClaims(proof);
                 if (isValidClaims.err) {
@@ -48208,11 +48185,11 @@ var ETHAuth = (
                   return [3, 2];
                 return [4, this.validateProofSignature(proof)];
               case 1:
-                isValidSig = _a2.sent();
+                isValidSig = _a.sent();
                 if (isValidSig !== true) {
                   throw new Error("ethauth: proof signature is invalid");
                 }
-                _a2.label = 2;
+                _a.label = 2;
               case 2:
                 return [2, true];
             }
@@ -48222,29 +48199,29 @@ var ETHAuth = (
       this.validateProofSignature = function(proof) {
         return __awaiter(_this, void 0, void 0, function() {
           var retIsValid, i2, validator, isValid2, i2;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
+          return __generator(this, function(_a) {
+            switch (_a.label) {
               case 0:
                 retIsValid = [];
                 i2 = 0;
-                _a2.label = 1;
+                _a.label = 1;
               case 1:
                 if (!(i2 < this.validators.length))
                   return [3, 6];
-                _a2.label = 2;
+                _a.label = 2;
               case 2:
-                _a2.trys.push([2, 4, , 5]);
+                _a.trys.push([2, 4, , 5]);
                 validator = this.validators[i2];
                 return [4, validator(this.provider, this.chainId, proof)];
               case 3:
-                isValid2 = _a2.sent().isValid;
+                isValid2 = _a.sent().isValid;
                 if (isValid2 === true) {
                   return [2, true];
                 }
                 retIsValid.push(isValid2);
                 return [3, 5];
               case 4:
-                _a2.sent();
+                _a.sent();
                 retIsValid.push(false);
                 return [3, 5];
               case 5:
@@ -48747,16 +48724,16 @@ function isBigNumberish(value) {
 }
 const encodeMessageDigest = (message) => {
   if (typeof message === "string") {
-    return arrayify(keccak256$3(toUtf8Bytes(message)));
+    return arrayify(keccak256$2(toUtf8Bytes(message)));
   } else {
-    return arrayify(keccak256$3(message));
+    return arrayify(keccak256$2(message));
   }
 };
 const packMessageData = (walletAddress, chainId, digest9) => {
   return pack(["string", "uint256", "address", "bytes32"], ["", chainId, walletAddress, digest9]);
 };
 const subDigestOf = (address, chainId, digest9) => {
-  return keccak256$3(packMessageData(address, chainId, digest9));
+  return keccak256$2(packMessageData(address, chainId, digest9));
 };
 const isNode$2 = () => {
   if (typeof window === "undefined" && typeof process$1 === "object") {
@@ -48897,7 +48874,7 @@ let PromiseCache$1 = class PromiseCache {
     this.cache = /* @__PURE__ */ new Map();
   }
   do(key2, validMilliseconds, task, ...args) {
-    key2 = `${key2}:${keccak256$3(toUtf8Bytes(JSON.stringify(args, deterministically$1)))}`;
+    key2 = `${key2}:${keccak256$2(toUtf8Bytes(JSON.stringify(args, deterministically$1)))}`;
     let entry = this.cache.get(key2);
     if (entry) {
       if (entry.expiration) {
@@ -49060,7 +49037,7 @@ function _extends$j() {
 function isNetworkConfig(cand) {
   return cand && cand.chainId !== void 0 && cand.name !== void 0 && cand.rpcUrl !== void 0 && cand.relayer !== void 0;
 }
-const getChainId$4 = (chainId) => {
+const getChainId$2 = (chainId) => {
   if (typeof chainId === "number") {
     return chainId;
   }
@@ -49072,7 +49049,7 @@ const getChainId$4 = (chainId) => {
 const maybeChainId = (chainId) => {
   if (!chainId)
     return void 0;
-  return getChainId$4(chainId);
+  return getChainId$2(chainId);
 };
 const isValidNetworkConfig = (networkConfig, raise = false, skipRelayerCheck = false) => {
   if (!networkConfig)
@@ -49875,7 +49852,7 @@ const network$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   exceptionProviderMiddleware,
   findNetworkConfig,
   findSupportedNetwork,
-  getChainId: getChainId$4,
+  getChainId: getChainId$2,
   indexerURL,
   isJsonRpcHandler,
   isJsonRpcProvider,
@@ -49912,7 +49889,7 @@ var config$2 = /* @__PURE__ */ Object.freeze({
   __proto__: null
 });
 function subdigestOf(payload) {
-  return keccak256$2(["bytes", "uint256", "address", "bytes32"], ["0x1901", payload.chainId, payload.address, payload.digest]);
+  return keccak256$1(["bytes", "uint256", "address", "bytes32"], ["0x1901", payload.chainId, payload.address, payload.digest]);
 }
 function isSignedPayload(payload) {
   return payload.digest !== void 0 && payload.chainId !== void 0 && payload.address !== void 0;
@@ -50217,7 +50194,7 @@ const ConfigCoder$1 = {
     return config2.version === 1 && config2.threshold !== void 0 && config2.signers !== void 0;
   },
   imageHashOf: (config2) => {
-    return config2.signers.reduce((imageHash2, signer2) => keccak256$3(defaultAbiCoder.encode(["bytes32", "uint8", "address"], [imageHash2, signer2.weight, signer2.address])), pack(["uint256"], [config2.threshold]));
+    return config2.signers.reduce((imageHash2, signer2) => keccak256$2(defaultAbiCoder.encode(["bytes32", "uint8", "address"], [imageHash2, signer2.weight, signer2.address])), pack(["uint256"], [config2.threshold]));
   },
   hasSubdigest: (_walletConfig, _subdigest) => {
     return false;
@@ -50398,7 +50375,7 @@ var v1 = /* @__PURE__ */ Object.freeze({
 });
 const SetImageHashPrefix = "0x8713a7c4465f6fbee2b6e9d6646d1d9f83fec929edfc4baf661f3c865bdd04d1";
 function hashSetImageHash(imageHash2) {
-  return keccak256$3(messageSetImageHash(imageHash2));
+  return keccak256$2(messageSetImageHash(imageHash2));
 }
 function messageSetImageHash(imageHash2) {
   return pack(["bytes32", "bytes32"], [SetImageHashPrefix, imageHash2]);
@@ -50829,7 +50806,7 @@ function decodeChainedSignature(signature2) {
   });
 }
 function setImageHashStruct(imageHash2) {
-  return pack(["bytes32", "bytes32"], [keccak256$2(["string"], ["SetImageHash(bytes32 imageHash)"]), imageHash2]);
+  return pack(["bytes32", "bytes32"], [keccak256$1(["string"], ["SetImageHash(bytes32 imageHash)"]), imageHash2]);
 }
 async function recoverSignature(signature2, payload, provider2) {
   const signedPayload = payload.subdigest === void 0 ? payload : void 0;
@@ -50864,7 +50841,7 @@ async function recoverSignature(signature2, payload, provider2) {
     const nextMessage = setImageHashStruct(imageHash(deepestConfigOfSignature(recovered)));
     mutatedPayload = _extends$i({}, mutatedPayload, {
       message: nextMessage,
-      digest: keccak256$3(nextMessage)
+      digest: keccak256$2(nextMessage)
     });
   }
   const main = result[0];
@@ -51234,16 +51211,16 @@ function hashNode(node2) {
     return encodeSignerLeaf(node2);
   }
   if (isSubdigestLeaf(node2)) {
-    return keccak256$2(["string", "bytes32"], ["Sequence static digest:\n", node2.subdigest]);
+    return keccak256$1(["string", "bytes32"], ["Sequence static digest:\n", node2.subdigest]);
   }
   if (isNestedLeaf(node2)) {
     const nested = hashNode(node2.tree);
-    return keccak256$2(["string", "bytes32", "uint256", "uint256"], ["Sequence nested config:\n", nested, node2.threshold, node2.weight]);
+    return keccak256$1(["string", "bytes32", "uint256", "uint256"], ["Sequence nested config:\n", nested, node2.threshold, node2.weight]);
   }
   if (isNodeLeaf(node2)) {
     return node2.nodeHash;
   }
-  return keccak256$2(["bytes32", "bytes32"], [hashNode(node2.left), hashNode(node2.right)]);
+  return keccak256$1(["bytes32", "bytes32"], [hashNode(node2.left), hashNode(node2.right)]);
 }
 function leftFace(topology) {
   const stack = [];
@@ -51259,7 +51236,7 @@ function isWalletConfig(config2) {
   return config2.threshold !== void 0 && config2.checkpoint !== void 0 && config2.tree !== void 0 && config2.version !== void 0 && config2.version === 2;
 }
 function imageHash(config2) {
-  return keccak256$2(["bytes32", "uint256"], [keccak256$2(["bytes32", "uint256"], [hashNode(config2.tree), config2.threshold]), config2.checkpoint]);
+  return keccak256$1(["bytes32", "uint256"], [keccak256$1(["bytes32", "uint256"], [hashNode(config2.tree), config2.threshold]), config2.checkpoint]);
 }
 function isSimpleNestedMember(member) {
   return member.threshold !== void 0 && member.weight !== void 0 && member.members !== void 0;
@@ -51599,9 +51576,9 @@ const coders = {
   config: ConfigCoder,
   signature: SignatureCoder
 };
-const version$8 = 2;
+const version$4 = 2;
 const DeployedWalletContext = {
-  version: version$8,
+  version: version$4,
   factory: "0xFaA5c0b14d1bED5C888Ca655B9a8A5911F78eF4A",
   guestModule: "0xfea230Ee243f88BC698dD8f1aE93F8301B6cdfaE",
   mainModule: "0xfBf8f1A5E00034762D928f46d438B947f5d4065d",
@@ -51615,12 +51592,12 @@ var v2 = /* @__PURE__ */ Object.freeze({
   context: context$1,
   chained,
   coders,
-  version: version$8,
+  version: version$4,
   DeployedWalletContext
 });
 function addressOf(context2, imageHash2) {
-  const codeHash = keccak256$3(pack(["bytes", "bytes32"], [context2.walletCreationCode, hexZeroPad(context2.mainModule, 32)]));
-  const hash2 = keccak256$3(pack(["bytes1", "address", "bytes32", "bytes32"], ["0xff", context2.factory, imageHash2, codeHash]));
+  const codeHash = keccak256$2(pack(["bytes", "bytes32"], [context2.walletCreationCode, hexZeroPad(context2.mainModule, 32)]));
+  const hash2 = keccak256$2(pack(["bytes1", "address", "bytes32", "bytes32"], ["0xff", context2.factory, imageHash2, codeHash]));
   return getAddress$1(hexDataSlice(hash2, 12));
 }
 async function isValidCounterfactual(wallet, digest9, signature2, chainId, provider2, contexts) {
@@ -51695,7 +51672,7 @@ function intendTransactionBundle(bundle, wallet, chainId, id2) {
   });
 }
 function intendedTransactionID(bundle) {
-  return keccak256$3(defaultAbiCoder.encode(["address", "uint256", "bytes32"], [bundle.intent.wallet, bundle.chainId, bundle.intent.id]));
+  return keccak256$2(defaultAbiCoder.encode(["address", "uint256", "bytes32"], [bundle.intent.wallet, bundle.chainId, bundle.intent.id]));
 }
 function unpackMetaTransactionsData(data) {
   const res = defaultAbiCoder.decode(["uint256", MetaTransactionsType], data);
@@ -51707,7 +51684,7 @@ function packMetaTransactionsData(nonce, txs) {
   return defaultAbiCoder.encode(["uint256", MetaTransactionsType], [nonce, sequenceTxAbiEncode(txs)]);
 }
 function digestOfTransactions(nonce, txs) {
-  return keccak256$3(packMetaTransactionsData(nonce, txs));
+  return keccak256$2(packMetaTransactionsData(nonce, txs));
 }
 function subdigestOfTransactions(address, chainId, nonce, txs) {
   return subdigestOf({
@@ -51720,7 +51697,7 @@ function subdigestOfGuestModuleTransactions(guestModule, chainId, txs) {
   return subdigestOf({
     address: guestModule,
     chainId,
-    digest: keccak256$3(defaultAbiCoder.encode(["string", MetaTransactionsType], ["guest:", sequenceTxAbiEncode(txs)]))
+    digest: keccak256$2(defaultAbiCoder.encode(["string", MetaTransactionsType], ["guest:", sequenceTxAbiEncode(txs)]))
   });
 }
 function toSequenceTransactions(wallet, txs) {
@@ -51997,7 +51974,7 @@ function coderFor(version2) {
 function genericCoderFor(version2) {
   return coderFor(version2);
 }
-var index$8 = /* @__PURE__ */ Object.freeze({
+var index$7 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   ALL_CODERS,
   coderFor,
@@ -52008,7 +51985,7 @@ const core$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   __proto__: null,
   allVersions,
   commons: index$1$2,
-  universal: index$8,
+  universal: index$7,
   v1,
   v2
 }, Symbol.toStringTag, { value: "Module" }));
@@ -52020,7 +51997,7 @@ function counterfactualVersion(address, firstImageHash, versions) {
   }
   throw new Error("Could not find version for counterfactual address");
 }
-var version$7 = /* @__PURE__ */ Object.freeze({
+var version$3 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   counterfactualVersion
 });
@@ -52091,7 +52068,7 @@ class Migration_v1v2 {
 }
 const MIGRATION_NONCE_SPACE = "0xa04263acf755e8bd19c0d7e20eea39a9ff3729eb";
 const v1v2 = new Migration_v1v2();
-var index$7 = /* @__PURE__ */ Object.freeze({
+var index$6 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   MIGRATION_NONCE_SPACE,
   v1v2
@@ -52201,9 +52178,9 @@ var defaults = /* @__PURE__ */ Object.freeze({
 const migration$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   defaults,
-  migration: index$7,
+  migration: index$6,
   migrator,
-  version: version$7
+  version: version$3
 }, Symbol.toStringTag, { value: "Module" }));
 function _extends$g() {
   _extends$g = Object.assign ? Object.assign.bind() : function(target) {
@@ -53044,7 +53021,7 @@ class SignerWrapper {
     return [2];
   }
 }
-var index$6 = /* @__PURE__ */ Object.freeze({
+var index$5 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   isSapientSigner,
   SignerWrapper
@@ -53204,7 +53181,7 @@ const signhub$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   Orchestrator,
   SignerState,
   isSignerStatusPending,
-  signers: index$6
+  signers: index$5
 }, Symbol.toStringTag, { value: "Module" }));
 function _extends$f() {
   _extends$f = Object.assign ? Object.assign.bind() : function(target) {
@@ -53405,7 +53382,7 @@ class Wallet2 extends Signer$1 {
     return this.coders.signature.encodeSigners(this.config, parts, [], this.chainId).encoded;
   }
   signMessage(message) {
-    return this.signDigest(keccak256$3(message), {
+    return this.signDigest(keccak256$2(message), {
       message
     });
   }
@@ -53812,7 +53789,7 @@ class Account {
     return ctx;
   }
   walletForStatus(chainId, status) {
-    const coder = index$8.coderFor(status.version);
+    const coder = index$7.coderFor(status.version);
     return this.walletFor(chainId, this.contextFor(status.version), status.config, coder);
   }
   walletFor(chainId, context2, config2, coders2) {
@@ -53845,7 +53822,7 @@ class Account {
       return r2;
     });
     const counterFactualVersionPromise = counterfactualImageHashPromise.then((r2) => {
-      return version$7.counterfactualVersion(this.address, r2.imageHash, Object.values(this.contexts));
+      return version$3.counterfactualVersion(this.address, r2.imageHash, Object.values(this.contexts));
     });
     const onChainVersionPromise = async function() {
       const isDeployed2 = await isDeployedPromise;
@@ -53910,7 +53887,7 @@ class Account {
     }
     const isDeployed = await isDeployedPromise;
     const counterfactualImageHash = await counterfactualImageHashPromise;
-    const checkpoint = index$8.coderFor(lastVersion).config.checkpointOf(config2);
+    const checkpoint = index$7.coderFor(lastVersion).config.checkpointOf(config2);
     return {
       original: _extends$e({}, counterfactualImageHash, {
         version: await counterFactualVersionPromise
@@ -54005,7 +53982,7 @@ class Account {
     return coder.trim(chainedSignature);
   }
   async publishWitness() {
-    const digest9 = keccak256$3(toUtf8Bytes(`This is a Sequence account woo! ${Date.now()}`));
+    const digest9 = keccak256$2(toUtf8Bytes(`This is a Sequence account woo! ${Date.now()}`));
     const signature2 = await this.signDigest(digest9, 0, false);
     const decoded = this.coders.signature.decode(signature2);
     const signatures = this.coders.signature.signaturesOfDecoded(decoded);
@@ -54170,7 +54147,7 @@ class Account {
     }), feeQuote);
   }
   signMessage(message, chainId, cantValidateBehavior = "ignore") {
-    return this.signDigest(keccak256$3(message), chainId, true, cantValidateBehavior);
+    return this.signDigest(keccak256$2(message), chainId, true, cantValidateBehavior);
   }
   async signTransactions(txs, chainId, pstatus, options) {
     const status = pstatus || await this.status(chainId);
@@ -54209,7 +54186,7 @@ class Account {
     await this.tracker.saveWalletConfig({
       config: nextConfig
     });
-    const nextCoder = index$8.coderFor(nextConfig.version).config;
+    const nextCoder = index$7.coderFor(nextConfig.version).config;
     const nextImageHash = nextCoder.imageHashOf(nextConfig);
     const reverseConfig = await this.tracker.configOfImageHash({
       imageHash: nextImageHash,
@@ -54355,7 +54332,7 @@ class Account {
                 toVersion,
                 toConfig
               } = migration2;
-              const _coder = index$8.genericCoderFor(toVersion);
+              const _coder = index$7.genericCoderFor(toVersion);
               latestImageHash = _coder.config.imageHashOf(toConfig);
             }
           }
@@ -54369,7 +54346,7 @@ class Account {
         if (!latestConfig) {
           throw new Error(`unable to find config for image hash ${latestImageHash}`);
         }
-        const coder = index$8.genericCoderFor(latestConfig.version);
+        const coder = index$7.genericCoderFor(latestConfig.version);
         const signers = coder.config.signersOf(latestConfig);
         return signers.map((signer2) => _extends$e({}, signer2, {
           network: chainId
@@ -54386,7 +54363,7 @@ class Account {
     await Promise.all(this.networks.map(async function(network2) {
       const chainId = network2.chainId;
       const status = await _this5.status(chainId, true);
-      const fullChain = [status.onChain.imageHash, ...status.onChain.version !== status.version ? status.signedMigrations.map((m2) => index$8.coderFor(m2.toVersion).config.imageHashOf(m2.toConfig)) : [], ...status.presignedConfigurations.map((update5) => update5.nextImageHash)];
+      const fullChain = [status.onChain.imageHash, ...status.onChain.version !== status.version ? status.signedMigrations.map((m2) => index$7.coderFor(m2.toVersion).config.imageHashOf(m2.toConfig)) : [], ...status.presignedConfigurations.map((update5) => update5.nextImageHash)];
       return Promise.all(fullChain.map(async function(nextImageHash, iconf) {
         const isLast = iconf === fullChain.length - 1;
         const config2 = await _this5.tracker.configOfImageHash({
@@ -54396,7 +54373,7 @@ class Account {
           console.warn(`AllSigners may be incomplete, config not found for imageHash ${nextImageHash}`);
           return;
         }
-        const coder = index$8.genericCoderFor(config2.version);
+        const coder = index$7.genericCoderFor(config2.version);
         const signers = coder.config.signersOf(config2);
         signers.forEach((signer2) => {
           const exists2 = allSigners.find((s2) => s2.address === signer2.address && s2.network === chainId);
@@ -56017,7 +55994,7 @@ class LocalConfigTracker {
         config: config2,
         context: context2
       } = args;
-      const imageHash2 = index$8.genericCoderFor(config2.version).config.imageHashOf(config2);
+      const imageHash2 = index$7.genericCoderFor(config2.version).config.imageHashOf(config2);
       await Promise.all([_this.saveWalletConfig({
         config: config2
       }), ...context2.map((ctx) => {
@@ -56060,9 +56037,9 @@ class LocalConfigTracker {
     };
     this.savePresignedConfiguration = async function(args) {
       const decoded = v2.signature.SignatureCoder.decode(args.signature);
-      const nextImageHash = index$8.genericCoderFor(args.nextConfig.version).config.imageHashOf(args.nextConfig);
+      const nextImageHash = index$7.genericCoderFor(args.nextConfig.version).config.imageHashOf(args.nextConfig);
       const message = v2.chained.messageSetImageHash(nextImageHash);
-      const digest9 = keccak256$3(message);
+      const digest9 = keccak256$2(message);
       const payload = {
         message,
         address: args.wallet,
@@ -56242,13 +56219,13 @@ class LocalConfigTracker {
     const {
       newImageHash,
       address: decodedAddress
-    } = index$7.v1v2.decodeTransaction(signed2.tx, contexts);
+    } = index$6.v1v2.decodeTransaction(signed2.tx, contexts);
     if (decodedAddress !== address)
       throw new Error("Invalid migration transaction - address");
     if (v2.config.ConfigCoder.imageHashOf(signed2.toConfig) != newImageHash)
       throw new Error("Invalid migration transaction - config");
     const message = index$1$2.transaction.packMetaTransactionsData(signed2.tx.nonce, signed2.tx.transactions);
-    const digest9 = keccak256$3(message);
+    const digest9 = keccak256$2(message);
     const payload = {
       chainId: signed2.tx.chainId,
       message,
@@ -56274,7 +56251,7 @@ class LocalConfigTracker {
     const [currentConfig, txs] = await Promise.all([this.configOfImageHash({
       imageHash: fromImageHash
     }), this.store.loadMigrationsSubdigest(address, fromVersion, fromVersion + 1)]);
-    const coder = index$8.coderFor(fromVersion);
+    const coder = index$7.coderFor(fromVersion);
     if (!currentConfig) {
       return void 0;
     }
@@ -56506,9 +56483,9 @@ class RemoteConfigTracker {
   }
   async savePresignedConfiguration(args) {
     const config2 = args.nextConfig;
-    const imageHash2 = index$8.genericCoderFor(config2.version).config.imageHashOf(config2);
+    const imageHash2 = index$7.genericCoderFor(config2.version).config.imageHashOf(config2);
     const message = v2.signature.setImageHashStruct(imageHash2);
-    const digest9 = keccak256$3(message);
+    const digest9 = keccak256$2(message);
     await this.sessions.saveSignature({
       wallet: args.wallet,
       digest: digest9,
@@ -56837,7 +56814,7 @@ class MultipleTracker {
     const result1 = await raceUntil(requests, void 0, (val) => {
       if ((val == null ? void 0 : val.res) === void 0)
         return false;
-      return index$8.genericCoderFor(val.res.version).config.isComplete(val.res);
+      return index$7.genericCoderFor(val.res.version).config.isComplete(val.res);
     });
     if (result1 != null && result1.res) {
       this.saveWalletConfig({
@@ -56940,7 +56917,7 @@ class MultipleTracker {
       if (!config3)
         return void 0;
       return {
-        checkpoint: index$8.genericCoderFor(config3.version).config.checkpointOf(config3),
+        checkpoint: index$7.genericCoderFor(config3.version).config.checkpointOf(config3),
         result: r2
       };
     }), void 0);
@@ -57013,7 +56990,7 @@ class CachedTracker {
         if (!config2)
           return void 0;
         return {
-          checkpoint: index$8.genericCoderFor(config2.version).config.checkpointOf(config2),
+          checkpoint: index$7.genericCoderFor(config2.version).config.checkpointOf(config2),
           result: r2
         };
       }));
@@ -57110,7 +57087,7 @@ class PromiseCache2 {
     this.cache = /* @__PURE__ */ new Map();
   }
   do(key2, validMilliseconds, task, ...args) {
-    key2 = `${key2}:${keccak256$3(toUtf8Bytes(JSON.stringify(args, deterministically)))}`;
+    key2 = `${key2}:${keccak256$2(toUtf8Bytes(JSON.stringify(args, deterministically)))}`;
     let entry = this.cache.get(key2);
     if (entry) {
       if (entry.expiration) {
@@ -57191,7 +57168,7 @@ class DedupedTracker {
     }
   }
 }
-var index$5 = /* @__PURE__ */ Object.freeze({
+var index$4 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   debug: debug$1,
   local,
@@ -57207,7 +57184,7 @@ var index$5 = /* @__PURE__ */ Object.freeze({
 const sessions$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   tracker,
-  trackers: index$5
+  trackers: index$4
 }, Symbol.toStringTag, { value: "Module" }));
 const DEFAULT_SESSION_EXPIRATION$1 = 60 * 60 * 24 * 7;
 const EXPIRATION_JWT_MARGIN = 60;
@@ -57510,7 +57487,7 @@ const CRITICAL_CHAINS = [1, 137];
 const SessionSettingsDefault = {
   contexts: index$1$2.context.defaultContexts,
   networks: allNetworks,
-  tracker: new index$5.remote.RemoteConfigTracker("https://sessions.sequence.app")
+  tracker: new index$4.remote.RemoteConfigTracker("https://sessions.sequence.app")
 };
 class Session {
   constructor(networks2, contexts, account2, services) {
@@ -57563,7 +57540,7 @@ class Session {
         if (!config2.config) {
           continue;
         }
-        const coder = index$8.genericCoderFor(config2.config.version);
+        const coder = index$7.genericCoderFor(config2.config.version);
         const signers = coder.config.signersOf(config2.config);
         if (signers.length === 1 && signers[0].address === referenceSigner) {
           return config2.wallet;
@@ -57637,7 +57614,7 @@ class Session {
             if (_failedChains.some((c) => CRITICAL_CHAINS.includes(c))) {
               throw Error(`Failed to sign migrations on ${_failedChains.join(", ")}`);
             }
-            if (index$5.isDedupedTracker(tracker2)) {
+            if (index$4.isDedupedTracker(tracker2)) {
               tracker2.invalidateCache();
             }
             let isFullyMigrated2;
@@ -57997,7 +57974,7 @@ class GuardSigner {
       throw new Error("expected sequence signature request metadata");
     }
     const guardTotpCode = metadata2.guardTotpCode;
-    const coder = index$8.genericCoderFor(metadata2.config.version);
+    const coder = index$7.genericCoderFor(metadata2.config.version);
     const {
       encoded
     } = coder.signature.encodeSigners(metadata2.config, (_metadata$parts = metadata2.parts) != null ? _metadata$parts : /* @__PURE__ */ new Map(), [], metadata2.chainId);
@@ -58162,7 +58139,7 @@ async function signOwnershipProof(proof) {
   if (isSignedOwnershipProof(proof)) {
     return proof;
   } else {
-    const signer2 = index$6.isSapientSigner(proof.signer) ? proof.signer : new index$6.SignerWrapper(proof.signer);
+    const signer2 = index$5.isSapientSigner(proof.signer) ? proof.signer : new index$5.SignerWrapper(proof.signer);
     const signerAddress = await signer2.getAddress();
     const timestamp = /* @__PURE__ */ new Date();
     const typedData = getOwnershipProofTypedData(proof.walletAddress, timestamp);
@@ -58649,7 +58626,7 @@ const multicallMiddleware = (multicall2) => (next2) => {
     return lib2.handle(next2, request, callback);
   };
 };
-var index$4 = /* @__PURE__ */ Object.freeze({
+var index$3 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   ProxyMethods,
   MulticallProvider,
@@ -58659,7 +58636,7 @@ var index$4 = /* @__PURE__ */ Object.freeze({
 const multicall$1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   Multicall,
-  providers: index$4
+  providers: index$3
 }, Symbol.toStringTag, { value: "Module" }));
 var eventemitter2 = { exports: {} };
 (function(module2, exports) {
@@ -60027,18 +60004,18 @@ function output$1(out, instance) {
 function isBytes(a2) {
   return a2 instanceof Uint8Array || a2 != null && typeof a2 === "object" && a2.constructor.name === "Uint8Array";
 }
-const createView$1 = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
-const rotr$1 = (word, shift2) => word << 32 - shift2 | word >>> shift2;
+const createView = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
+const rotr = (word, shift2) => word << 32 - shift2 | word >>> shift2;
 const isLE$1 = new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
 if (!isLE$1)
   throw new Error("Non little-endian hardware is not supported");
-const hexes$2 = /* @__PURE__ */ Array.from({ length: 256 }, (_, i2) => i2.toString(16).padStart(2, "0"));
-function bytesToHex$2(bytes3) {
+const hexes$1 = /* @__PURE__ */ Array.from({ length: 256 }, (_, i2) => i2.toString(16).padStart(2, "0"));
+function bytesToHex$1(bytes3) {
   if (!isBytes(bytes3))
     throw new Error("Uint8Array expected");
   let hex2 = "";
   for (let i2 = 0; i2 < bytes3.length; i2++) {
-    hex2 += hexes$2[bytes3[i2]];
+    hex2 += hexes$1[bytes3[i2]];
   }
   return hex2;
 }
@@ -60047,7 +60024,7 @@ function utf8ToBytes$1(str) {
     throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
   return new Uint8Array(new TextEncoder().encode(str));
 }
-function toBytes$3(data) {
+function toBytes$2(data) {
   if (typeof data === "string")
     data = utf8ToBytes$1(data);
   if (!isBytes(data))
@@ -60061,14 +60038,14 @@ let Hash$1 = class Hash {
   }
 };
 function wrapConstructor$1(hashCons) {
-  const hashC = (msg) => hashCons().update(toBytes$3(msg)).digest();
+  const hashC = (msg) => hashCons().update(toBytes$2(msg)).digest();
   const tmp = hashCons();
   hashC.outputLen = tmp.outputLen;
   hashC.blockLen = tmp.blockLen;
   hashC.create = () => hashCons();
   return hashC;
 }
-function setBigUint64$1(view, byteOffset, value, isLE2) {
+function setBigUint64(view, byteOffset, value, isLE2) {
   if (typeof view.setBigUint64 === "function")
     return view.setBigUint64(byteOffset, value, isLE2);
   const _32n2 = BigInt(32);
@@ -60080,7 +60057,7 @@ function setBigUint64$1(view, byteOffset, value, isLE2) {
   view.setUint32(byteOffset + h2, wh2, isLE2);
   view.setUint32(byteOffset + l2, wl, isLE2);
 }
-let SHA2$1 = class SHA2 extends Hash$1 {
+class SHA2 extends Hash$1 {
   constructor(blockLen, outputLen, padOffset, isLE2) {
     super();
     this.blockLen = blockLen;
@@ -60092,17 +60069,17 @@ let SHA2$1 = class SHA2 extends Hash$1 {
     this.pos = 0;
     this.destroyed = false;
     this.buffer = new Uint8Array(blockLen);
-    this.view = createView$1(this.buffer);
+    this.view = createView(this.buffer);
   }
   update(data) {
     exists$1(this);
     const { view, buffer: buffer2, blockLen } = this;
-    data = toBytes$3(data);
+    data = toBytes$2(data);
     const len = data.length;
     for (let pos = 0; pos < len; ) {
       const take = Math.min(blockLen - this.pos, len - pos);
       if (take === blockLen) {
-        const dataView = createView$1(data);
+        const dataView = createView(data);
         for (; blockLen <= len - pos; pos += blockLen)
           this.process(dataView, pos);
         continue;
@@ -60133,9 +60110,9 @@ let SHA2$1 = class SHA2 extends Hash$1 {
     }
     for (let i2 = pos; i2 < blockLen; i2++)
       buffer2[i2] = 0;
-    setBigUint64$1(view, blockLen - 8, BigInt(this.length * 8), isLE2);
+    setBigUint64(view, blockLen - 8, BigInt(this.length * 8), isLE2);
     this.process(view, 0);
-    const oview = createView$1(out);
+    const oview = createView(out);
     const len = this.outputLen;
     if (len % 4)
       throw new Error("_sha2: outputLen should be aligned to 32bit");
@@ -60165,10 +60142,10 @@ let SHA2$1 = class SHA2 extends Hash$1 {
       to.buffer.set(buffer2);
     return to;
   }
-};
-const Chi$1 = (a2, b3, c) => a2 & b3 ^ ~a2 & c;
-const Maj$1 = (a2, b3, c) => a2 & b3 ^ a2 & c ^ b3 & c;
-const SHA256_K$1 = /* @__PURE__ */ new Uint32Array([
+}
+const Chi = (a2, b3, c) => a2 & b3 ^ ~a2 & c;
+const Maj = (a2, b3, c) => a2 & b3 ^ a2 & c ^ b3 & c;
+const SHA256_K = /* @__PURE__ */ new Uint32Array([
   1116352408,
   1899447441,
   3049323471,
@@ -60234,7 +60211,7 @@ const SHA256_K$1 = /* @__PURE__ */ new Uint32Array([
   3204031479,
   3329325298
 ]);
-const IV$1 = /* @__PURE__ */ new Uint32Array([
+const IV = /* @__PURE__ */ new Uint32Array([
   1779033703,
   3144134277,
   1013904242,
@@ -60244,18 +60221,18 @@ const IV$1 = /* @__PURE__ */ new Uint32Array([
   528734635,
   1541459225
 ]);
-const SHA256_W$1 = /* @__PURE__ */ new Uint32Array(64);
-let SHA256$1 = class SHA256 extends SHA2$1 {
+const SHA256_W = /* @__PURE__ */ new Uint32Array(64);
+class SHA256 extends SHA2 {
   constructor() {
     super(64, 32, 8, false);
-    this.A = IV$1[0] | 0;
-    this.B = IV$1[1] | 0;
-    this.C = IV$1[2] | 0;
-    this.D = IV$1[3] | 0;
-    this.E = IV$1[4] | 0;
-    this.F = IV$1[5] | 0;
-    this.G = IV$1[6] | 0;
-    this.H = IV$1[7] | 0;
+    this.A = IV[0] | 0;
+    this.B = IV[1] | 0;
+    this.C = IV[2] | 0;
+    this.D = IV[3] | 0;
+    this.E = IV[4] | 0;
+    this.F = IV[5] | 0;
+    this.G = IV[6] | 0;
+    this.H = IV[7] | 0;
   }
   get() {
     const { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
@@ -60274,20 +60251,20 @@ let SHA256$1 = class SHA256 extends SHA2$1 {
   }
   process(view, offset2) {
     for (let i2 = 0; i2 < 16; i2++, offset2 += 4)
-      SHA256_W$1[i2] = view.getUint32(offset2, false);
+      SHA256_W[i2] = view.getUint32(offset2, false);
     for (let i2 = 16; i2 < 64; i2++) {
-      const W15 = SHA256_W$1[i2 - 15];
-      const W2 = SHA256_W$1[i2 - 2];
-      const s0 = rotr$1(W15, 7) ^ rotr$1(W15, 18) ^ W15 >>> 3;
-      const s1 = rotr$1(W2, 17) ^ rotr$1(W2, 19) ^ W2 >>> 10;
-      SHA256_W$1[i2] = s1 + SHA256_W$1[i2 - 7] + s0 + SHA256_W$1[i2 - 16] | 0;
+      const W15 = SHA256_W[i2 - 15];
+      const W2 = SHA256_W[i2 - 2];
+      const s0 = rotr(W15, 7) ^ rotr(W15, 18) ^ W15 >>> 3;
+      const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
+      SHA256_W[i2] = s1 + SHA256_W[i2 - 7] + s0 + SHA256_W[i2 - 16] | 0;
     }
     let { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
     for (let i2 = 0; i2 < 64; i2++) {
-      const sigma1 = rotr$1(E2, 6) ^ rotr$1(E2, 11) ^ rotr$1(E2, 25);
-      const T1 = H2 + sigma1 + Chi$1(E2, F2, G2) + SHA256_K$1[i2] + SHA256_W$1[i2] | 0;
-      const sigma0 = rotr$1(A2, 2) ^ rotr$1(A2, 13) ^ rotr$1(A2, 22);
-      const T2 = sigma0 + Maj$1(A2, B2, C2) | 0;
+      const sigma1 = rotr(E2, 6) ^ rotr(E2, 11) ^ rotr(E2, 25);
+      const T1 = H2 + sigma1 + Chi(E2, F2, G2) + SHA256_K[i2] + SHA256_W[i2] | 0;
+      const sigma0 = rotr(A2, 2) ^ rotr(A2, 13) ^ rotr(A2, 22);
+      const T2 = sigma0 + Maj(A2, B2, C2) | 0;
       H2 = G2;
       G2 = F2;
       F2 = E2;
@@ -60308,14 +60285,14 @@ let SHA256$1 = class SHA256 extends SHA2$1 {
     this.set(A2, B2, C2, D2, E2, F2, G2, H2);
   }
   roundClean() {
-    SHA256_W$1.fill(0);
+    SHA256_W.fill(0);
   }
   destroy() {
     this.set(0, 0, 0, 0, 0, 0, 0, 0);
     this.buffer.fill(0);
   }
-};
-const sha256$2 = /* @__PURE__ */ wrapConstructor$1(() => new SHA256$1());
+}
+const sha256 = /* @__PURE__ */ wrapConstructor$1(() => new SHA256());
 var Databeat = class {
   constructor(hostname, fetch2) {
     __publicField(this, "hostname");
@@ -60586,10 +60563,10 @@ var DatabeatRpcClient = class extends Databeat {
     super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, globalFetch);
     __publicField(this, "_globalFetch");
     __publicField(this, "_fetch", (input2, init3) => {
-      var _a2;
+      var _a;
       if (this.auth) {
         let headers = {};
-        if (((_a2 = this.auth.jwt) == null ? void 0 : _a2.length) > 0) {
+        if (((_a = this.auth.jwt) == null ? void 0 : _a.length) > 0) {
           headers["Authorization"] = `BEARER ${this.auth.jwt}`;
         }
         if (this.auth.headers) {
@@ -60864,8 +60841,8 @@ var isEnabled = (defaultEnabled, auth2) => {
   }
 };
 var isAuthEnabled = (auth2) => {
-  var _a2;
-  if (((_a2 = auth2 == null ? void 0 : auth2.jwt) == null ? void 0 : _a2.length) > 0) {
+  var _a;
+  if (((_a = auth2 == null ? void 0 : auth2.jwt) == null ? void 0 : _a.length) > 0) {
     return true;
   }
   if ((auth2 == null ? void 0 : auth2.headers) && Object.keys(auth2.headers).length > 0) {
@@ -60958,7 +60935,7 @@ var genUserId = (seed, allowUserTracking, options) => {
       seed = seed + ":" + options.privacy.extraSalt;
     }
     return {
-      userId: bytesToHex$2(sha256$2(seed)).substring(0, 50),
+      userId: bytesToHex$1(sha256(seed)).substring(0, 50),
       ident: 1
       /* PRIVATE */
     };
@@ -60994,7 +60971,7 @@ if (typeof process$1 === "object" && process$1.version && process$1.version < "v
     process$1.exit(1);
   }
 }
-const PROHIBITED_FUNCTIONS = new Map(["addHook(bytes4,address)", "clearExtraImageHashes(bytes32[])", "removeHook(bytes4)", "setExtraImageHash(bytes32,uint256)", "updateIPFSRoot(bytes32)", "updateImageHash(bytes32)", "updateImageHashAndIPFS(bytes32,bytes32)", "updateImplementation(address)"].map((signature2) => [keccak256$3(toUtf8Bytes(signature2)).slice(0, 10), signature2]));
+const PROHIBITED_FUNCTIONS = new Map(["addHook(bytes4,address)", "clearExtraImageHashes(bytes32[])", "removeHook(bytes4)", "setExtraImageHash(bytes32,uint256)", "updateIPFSRoot(bytes32)", "updateImageHash(bytes32)", "updateImageHashAndIPFS(bytes32,bytes32)", "updateImplementation(address)"].map((signature2) => [keccak256$2(toUtf8Bytes(signature2)).slice(0, 10), signature2]));
 function validateTransactionRequest(wallet, transaction2) {
   const transactions2 = index$1$2.transaction.fromTransactionish(wallet, transaction2);
   const unwound = index$1$2.transaction.unwind(wallet, transactions2);
@@ -62127,18 +62104,18 @@ function overrideLogs(side) {
     var _window$ue2;
     const t2 = (_window$ue2 = window.ue) == null ? void 0 : _window$ue2.sequencewallettransport;
     console.log = (...args) => {
-      t2.logfromjs(`${side}: ${stringify$3(args)}`);
+      t2.logfromjs(`${side}: ${stringify$2(args)}`);
     };
     console.warn = (...args) => {
-      t2.warnfromjs(`${side}: ${stringify$3(args)}`);
+      t2.warnfromjs(`${side}: ${stringify$2(args)}`);
     };
     console.error = (...args) => {
-      t2.errorfromjs(`${side}: ${stringify$3(args)}`);
+      t2.errorfromjs(`${side}: ${stringify$2(args)}`);
     };
     window.logsOverriddenForUnreal = true;
   }
 }
-function stringify$3(things) {
+function stringify$2(things) {
   return things.map((a2) => typeof a2 === "object" ? a2 instanceof Error ? a2.message : JSON.stringify(a2) : String(a2)).join(" ");
 }
 let registeredUnrealMessageProvider;
@@ -63862,7 +63839,7 @@ class SequenceProvider extends BaseProvider {
     return provider2.getResolver(name);
   }
   async resolveName(name) {
-    if (isAddress$2(await name)) {
+    if (isAddress$1(await name)) {
       return name;
     }
     if (!await this.supportsENS()) {
@@ -64673,14 +64650,14 @@ function useLoadGsiScript(options = {}) {
     scriptTag.defer = true;
     scriptTag.nonce = nonce;
     scriptTag.onload = () => {
-      var _a2;
+      var _a;
       setScriptLoadedSuccessfully(true);
-      (_a2 = onScriptLoadSuccessRef.current) === null || _a2 === void 0 ? void 0 : _a2.call(onScriptLoadSuccessRef);
+      (_a = onScriptLoadSuccessRef.current) === null || _a === void 0 ? void 0 : _a.call(onScriptLoadSuccessRef);
     };
     scriptTag.onerror = () => {
-      var _a2;
+      var _a;
       setScriptLoadedSuccessfully(false);
-      (_a2 = onScriptLoadErrorRef.current) === null || _a2 === void 0 ? void 0 : _a2.call(onScriptLoadErrorRef);
+      (_a = onScriptLoadErrorRef.current) === null || _a === void 0 ? void 0 : _a.call(onScriptLoadErrorRef);
     };
     document.body.appendChild(scriptTag);
     return () => {
@@ -64710,8 +64687,8 @@ function useGoogleOAuth() {
   return context2;
 }
 function extractClientId(credentialResponse) {
-  var _a2;
-  const clientId = (_a2 = credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.clientId) !== null && _a2 !== void 0 ? _a2 : credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.client_id;
+  var _a;
+  const clientId = (_a = credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.clientId) !== null && _a !== void 0 ? _a : credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.client_id;
   return clientId;
 }
 const containerHeightMap = { large: 40, medium: 32, small: 20 };
@@ -64725,15 +64702,15 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
   const promptMomentNotificationRef = reactExports.useRef(promptMomentNotification);
   promptMomentNotificationRef.current = promptMomentNotification;
   reactExports.useEffect(() => {
-    var _a2, _b, _c, _d, _e, _f, _g, _h, _j;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
     if (!scriptLoadedSuccessfully)
       return;
-    (_c = (_b = (_a2 = window === null || window === void 0 ? void 0 : window.google) === null || _a2 === void 0 ? void 0 : _a2.accounts) === null || _b === void 0 ? void 0 : _b.id) === null || _c === void 0 ? void 0 : _c.initialize({
+    (_c = (_b = (_a = window === null || window === void 0 ? void 0 : window.google) === null || _a === void 0 ? void 0 : _a.accounts) === null || _b === void 0 ? void 0 : _b.id) === null || _c === void 0 ? void 0 : _c.initialize({
       client_id: clientId,
       callback: (credentialResponse) => {
-        var _a3;
+        var _a2;
         if (!(credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.credential)) {
-          return (_a3 = onErrorRef.current) === null || _a3 === void 0 ? void 0 : _a3.call(onErrorRef);
+          return (_a2 = onErrorRef.current) === null || _a2 === void 0 ? void 0 : _a2.call(onErrorRef);
         }
         const { credential, select_by } = credentialResponse;
         onSuccessRef.current({
@@ -64758,9 +64735,9 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
     if (useOneTap)
       (_j = (_h = (_g = window === null || window === void 0 ? void 0 : window.google) === null || _g === void 0 ? void 0 : _g.accounts) === null || _h === void 0 ? void 0 : _h.id) === null || _j === void 0 ? void 0 : _j.prompt(promptMomentNotificationRef.current);
     return () => {
-      var _a3, _b2, _c2;
+      var _a2, _b2, _c2;
       if (useOneTap)
-        (_c2 = (_b2 = (_a3 = window === null || window === void 0 ? void 0 : window.google) === null || _a3 === void 0 ? void 0 : _a3.accounts) === null || _b2 === void 0 ? void 0 : _b2.id) === null || _c2 === void 0 ? void 0 : _c2.cancel();
+        (_c2 = (_b2 = (_a2 = window === null || window === void 0 ? void 0 : window.google) === null || _a2 === void 0 ? void 0 : _a2.accounts) === null || _b2 === void 0 ? void 0 : _b2.id) === null || _c2 === void 0 ? void 0 : _c2.cancel();
     };
   }, [
     clientId,
@@ -64777,13 +64754,13 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
   ]);
   return React.createElement("div", { ...containerProps, ref: btnContainerRef, style: { height: containerHeightMap[size2], ...containerProps === null || containerProps === void 0 ? void 0 : containerProps.style } });
 }
-const version$6 = "2.7.9";
+const version$2 = "2.7.9";
 const getContractAddress = (address) => address;
-const getUrl$1 = (url) => url;
-const getVersion$6 = () => `viem@${version$6}`;
-let BaseError$6 = class BaseError extends Error {
+const getUrl = (url) => url;
+const getVersion$2 = () => `viem@${version$2}`;
+let BaseError$2 = class BaseError extends Error {
   constructor(shortMessage, args = {}) {
-    var _a2;
+    var _a;
     super();
     Object.defineProperty(this, "details", {
       enumerable: true,
@@ -64819,9 +64796,9 @@ let BaseError$6 = class BaseError extends Error {
       enumerable: true,
       configurable: true,
       writable: true,
-      value: getVersion$6()
+      value: getVersion$2()
     });
-    const details = args.cause instanceof BaseError ? args.cause.details : ((_a2 = args.cause) == null ? void 0 : _a2.message) ? args.cause.message : args.details;
+    const details = args.cause instanceof BaseError ? args.cause.details : ((_a = args.cause) == null ? void 0 : _a.message) ? args.cause.message : args.details;
     const docsPath2 = args.cause instanceof BaseError ? args.cause.docsPath || args.docsPath : args.docsPath;
     this.message = [
       shortMessage || "An error occurred.",
@@ -64841,17 +64818,17 @@ let BaseError$6 = class BaseError extends Error {
     this.shortMessage = shortMessage;
   }
   walk(fn) {
-    return walk$1(this, fn);
+    return walk(this, fn);
   }
 };
-function walk$1(err, fn) {
+function walk(err, fn) {
   if (fn == null ? void 0 : fn(err))
     return err;
   if (err && typeof err === "object" && "cause" in err)
-    return walk$1(err.cause, fn);
+    return walk(err.cause, fn);
   return fn ? null : err;
 }
-let IntegerOutOfRangeError$1 = class IntegerOutOfRangeError extends BaseError$6 {
+class IntegerOutOfRangeError extends BaseError$2 {
   constructor({ max: max2, min: min2, signed: signed2, size: size2, value }) {
     super(`Number "${value}" is not in safe ${size2 ? `${size2 * 8}-bit ${signed2 ? "signed" : "unsigned"} ` : ""}integer range ${max2 ? `(${min2} to ${max2})` : `(above ${min2})`}`);
     Object.defineProperty(this, "name", {
@@ -64861,8 +64838,8 @@ let IntegerOutOfRangeError$1 = class IntegerOutOfRangeError extends BaseError$6 
       value: "IntegerOutOfRangeError"
     });
   }
-};
-class InvalidBytesBooleanError extends BaseError$6 {
+}
+class InvalidBytesBooleanError extends BaseError$2 {
   constructor(bytes3) {
     super(`Bytes value "${bytes3}" is not a valid boolean. The bytes array must contain a single byte of either a 0 or 1 value.`);
     Object.defineProperty(this, "name", {
@@ -64873,7 +64850,7 @@ class InvalidBytesBooleanError extends BaseError$6 {
     });
   }
 }
-class InvalidHexBooleanError extends BaseError$6 {
+class InvalidHexBooleanError extends BaseError$2 {
   constructor(hex2) {
     super(`Hex value "${hex2}" is not a valid boolean. The hex value must be "0x0" (false) or "0x1" (true).`);
     Object.defineProperty(this, "name", {
@@ -64884,7 +64861,7 @@ class InvalidHexBooleanError extends BaseError$6 {
     });
   }
 }
-let SizeOverflowError$1 = class SizeOverflowError extends BaseError$6 {
+class SizeOverflowError extends BaseError$2 {
   constructor({ givenSize, maxSize }) {
     super(`Size cannot exceed ${maxSize} bytes. Given size: ${givenSize} bytes.`);
     Object.defineProperty(this, "name", {
@@ -64894,8 +64871,8 @@ let SizeOverflowError$1 = class SizeOverflowError extends BaseError$6 {
       value: "SizeOverflowError"
     });
   }
-};
-class SliceOffsetOutOfBoundsError extends BaseError$6 {
+}
+class SliceOffsetOutOfBoundsError extends BaseError$2 {
   constructor({ offset: offset2, position: position2, size: size2 }) {
     super(`Slice ${position2 === "start" ? "starting" : "ending"} at offset "${offset2}" is out-of-bounds (size: ${size2}).`);
     Object.defineProperty(this, "name", {
@@ -64906,7 +64883,7 @@ class SliceOffsetOutOfBoundsError extends BaseError$6 {
     });
   }
 }
-let SizeExceedsPaddingSizeError$1 = class SizeExceedsPaddingSizeError extends BaseError$6 {
+class SizeExceedsPaddingSizeError extends BaseError$2 {
   constructor({ size: size2, targetSize, type }) {
     super(`${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()} size (${size2}) exceeds padding size (${targetSize}).`);
     Object.defineProperty(this, "name", {
@@ -64916,8 +64893,8 @@ let SizeExceedsPaddingSizeError$1 = class SizeExceedsPaddingSizeError extends Ba
       value: "SizeExceedsPaddingSizeError"
     });
   }
-};
-class InvalidBytesLengthError extends BaseError$6 {
+}
+class InvalidBytesLengthError extends BaseError$2 {
   constructor({ size: size2, targetSize, type }) {
     super(`${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()} is expected to be ${targetSize} ${type} long, but is ${size2} ${type} long.`);
     Object.defineProperty(this, "name", {
@@ -64928,28 +64905,28 @@ class InvalidBytesLengthError extends BaseError$6 {
     });
   }
 }
-function pad$1(hexOrBytes, { dir, size: size2 = 32 } = {}) {
+function pad2(hexOrBytes, { dir, size: size2 = 32 } = {}) {
   if (typeof hexOrBytes === "string")
-    return padHex$1(hexOrBytes, { dir, size: size2 });
-  return padBytes$1(hexOrBytes, { dir, size: size2 });
+    return padHex(hexOrBytes, { dir, size: size2 });
+  return padBytes(hexOrBytes, { dir, size: size2 });
 }
-function padHex$1(hex_, { dir, size: size2 = 32 } = {}) {
+function padHex(hex_, { dir, size: size2 = 32 } = {}) {
   if (size2 === null)
     return hex_;
   const hex2 = hex_.replace("0x", "");
   if (hex2.length > size2 * 2)
-    throw new SizeExceedsPaddingSizeError$1({
+    throw new SizeExceedsPaddingSizeError({
       size: Math.ceil(hex2.length / 2),
       targetSize: size2,
       type: "hex"
     });
   return `0x${hex2[dir === "right" ? "padEnd" : "padStart"](size2 * 2, "0")}`;
 }
-function padBytes$1(bytes3, { dir, size: size2 = 32 } = {}) {
+function padBytes(bytes3, { dir, size: size2 = 32 } = {}) {
   if (size2 === null)
     return bytes3;
   if (bytes3.length > size2)
-    throw new SizeExceedsPaddingSizeError$1({
+    throw new SizeExceedsPaddingSizeError({
       size: bytes3.length,
       targetSize: size2,
       type: "bytes"
@@ -64961,15 +64938,15 @@ function padBytes$1(bytes3, { dir, size: size2 = 32 } = {}) {
   }
   return paddedBytes;
 }
-function isHex$1(value, { strict = true } = {}) {
+function isHex(value, { strict = true } = {}) {
   if (!value)
     return false;
   if (typeof value !== "string")
     return false;
   return strict ? /^0x[0-9a-fA-F]*$/.test(value) : value.startsWith("0x");
 }
-function size$6(value) {
-  if (isHex$1(value, { strict: false }))
+function size$4(value) {
+  if (isHex(value, { strict: false }))
     return Math.ceil((value.length - 2) / 2);
   return value.length;
 }
@@ -64990,26 +64967,26 @@ function trim$1(hexOrBytes, { dir = "left" } = {}) {
   }
   return data;
 }
-const encoder$3 = /* @__PURE__ */ new TextEncoder();
-function toBytes$2(value, opts = {}) {
+const encoder$1 = /* @__PURE__ */ new TextEncoder();
+function toBytes$1(value, opts = {}) {
   if (typeof value === "number" || typeof value === "bigint")
-    return numberToBytes$1(value, opts);
+    return numberToBytes(value, opts);
   if (typeof value === "boolean")
-    return boolToBytes$1(value, opts);
-  if (isHex$1(value))
-    return hexToBytes$1(value, opts);
-  return stringToBytes$1(value, opts);
+    return boolToBytes(value, opts);
+  if (isHex(value))
+    return hexToBytes(value, opts);
+  return stringToBytes(value, opts);
 }
-function boolToBytes$1(value, opts = {}) {
+function boolToBytes(value, opts = {}) {
   const bytes3 = new Uint8Array(1);
   bytes3[0] = Number(value);
   if (typeof opts.size === "number") {
-    assertSize$1(bytes3, { size: opts.size });
-    return pad$1(bytes3, { size: opts.size });
+    assertSize(bytes3, { size: opts.size });
+    return pad2(bytes3, { size: opts.size });
   }
   return bytes3;
 }
-const charCodeMap$1 = {
+const charCodeMap = {
   zero: 48,
   nine: 57,
   A: 65,
@@ -65017,20 +64994,20 @@ const charCodeMap$1 = {
   a: 97,
   f: 102
 };
-function charCodeToBase16$1(char2) {
-  if (char2 >= charCodeMap$1.zero && char2 <= charCodeMap$1.nine)
-    return char2 - charCodeMap$1.zero;
-  if (char2 >= charCodeMap$1.A && char2 <= charCodeMap$1.F)
-    return char2 - (charCodeMap$1.A - 10);
-  if (char2 >= charCodeMap$1.a && char2 <= charCodeMap$1.f)
-    return char2 - (charCodeMap$1.a - 10);
+function charCodeToBase16(char2) {
+  if (char2 >= charCodeMap.zero && char2 <= charCodeMap.nine)
+    return char2 - charCodeMap.zero;
+  if (char2 >= charCodeMap.A && char2 <= charCodeMap.F)
+    return char2 - (charCodeMap.A - 10);
+  if (char2 >= charCodeMap.a && char2 <= charCodeMap.f)
+    return char2 - (charCodeMap.a - 10);
   return void 0;
 }
-function hexToBytes$1(hex_, opts = {}) {
+function hexToBytes(hex_, opts = {}) {
   let hex2 = hex_;
   if (opts.size) {
-    assertSize$1(hex2, { size: opts.size });
-    hex2 = pad$1(hex2, { dir: "right", size: opts.size });
+    assertSize(hex2, { size: opts.size });
+    hex2 = pad2(hex2, { dir: "right", size: opts.size });
   }
   let hexString = hex2.slice(2);
   if (hexString.length % 2)
@@ -65038,31 +65015,31 @@ function hexToBytes$1(hex_, opts = {}) {
   const length2 = hexString.length / 2;
   const bytes3 = new Uint8Array(length2);
   for (let index2 = 0, j2 = 0; index2 < length2; index2++) {
-    const nibbleLeft = charCodeToBase16$1(hexString.charCodeAt(j2++));
-    const nibbleRight = charCodeToBase16$1(hexString.charCodeAt(j2++));
+    const nibbleLeft = charCodeToBase16(hexString.charCodeAt(j2++));
+    const nibbleRight = charCodeToBase16(hexString.charCodeAt(j2++));
     if (nibbleLeft === void 0 || nibbleRight === void 0) {
-      throw new BaseError$6(`Invalid byte sequence ("${hexString[j2 - 2]}${hexString[j2 - 1]}" in "${hexString}").`);
+      throw new BaseError$2(`Invalid byte sequence ("${hexString[j2 - 2]}${hexString[j2 - 1]}" in "${hexString}").`);
     }
     bytes3[index2] = nibbleLeft * 16 + nibbleRight;
   }
   return bytes3;
 }
-function numberToBytes$1(value, opts) {
-  const hex2 = numberToHex$1(value, opts);
-  return hexToBytes$1(hex2);
+function numberToBytes(value, opts) {
+  const hex2 = numberToHex(value, opts);
+  return hexToBytes(hex2);
 }
-function stringToBytes$1(value, opts = {}) {
-  const bytes3 = encoder$3.encode(value);
+function stringToBytes(value, opts = {}) {
+  const bytes3 = encoder$1.encode(value);
   if (typeof opts.size === "number") {
-    assertSize$1(bytes3, { size: opts.size });
-    return pad$1(bytes3, { dir: "right", size: opts.size });
+    assertSize(bytes3, { size: opts.size });
+    return pad2(bytes3, { dir: "right", size: opts.size });
   }
   return bytes3;
 }
-function assertSize$1(hexOrBytes, { size: size2 }) {
-  if (size$6(hexOrBytes) > size2)
-    throw new SizeOverflowError$1({
-      givenSize: size$6(hexOrBytes),
+function assertSize(hexOrBytes, { size: size2 }) {
+  if (size$4(hexOrBytes) > size2)
+    throw new SizeOverflowError({
+      givenSize: size$4(hexOrBytes),
       maxSize: size2
     });
 }
@@ -65070,19 +65047,19 @@ function fromHex(hex2, toOrOpts) {
   const opts = typeof toOrOpts === "string" ? { to: toOrOpts } : toOrOpts;
   const to = opts.to;
   if (to === "number")
-    return hexToNumber$1(hex2, opts);
+    return hexToNumber(hex2, opts);
   if (to === "bigint")
-    return hexToBigInt$1(hex2, opts);
+    return hexToBigInt(hex2, opts);
   if (to === "string")
     return hexToString(hex2, opts);
   if (to === "boolean")
     return hexToBool(hex2, opts);
-  return hexToBytes$1(hex2, opts);
+  return hexToBytes(hex2, opts);
 }
-function hexToBigInt$1(hex2, opts = {}) {
+function hexToBigInt(hex2, opts = {}) {
   const { signed: signed2 } = opts;
   if (opts.size)
-    assertSize$1(hex2, { size: opts.size });
+    assertSize(hex2, { size: opts.size });
   const value = BigInt(hex2);
   if (!signed2)
     return value;
@@ -65095,7 +65072,7 @@ function hexToBigInt$1(hex2, opts = {}) {
 function hexToBool(hex_, opts = {}) {
   let hex2 = hex_;
   if (opts.size) {
-    assertSize$1(hex2, { size: opts.size });
+    assertSize(hex2, { size: opts.size });
     hex2 = trim$1(hex2);
   }
   if (trim$1(hex2) === "0x00")
@@ -65104,49 +65081,49 @@ function hexToBool(hex_, opts = {}) {
     return true;
   throw new InvalidHexBooleanError(hex2);
 }
-function hexToNumber$1(hex2, opts = {}) {
-  return Number(hexToBigInt$1(hex2, opts));
+function hexToNumber(hex2, opts = {}) {
+  return Number(hexToBigInt(hex2, opts));
 }
 function hexToString(hex2, opts = {}) {
-  let bytes3 = hexToBytes$1(hex2);
+  let bytes3 = hexToBytes(hex2);
   if (opts.size) {
-    assertSize$1(bytes3, { size: opts.size });
+    assertSize(bytes3, { size: opts.size });
     bytes3 = trim$1(bytes3, { dir: "right" });
   }
   return new TextDecoder().decode(bytes3);
 }
-const hexes$1 = /* @__PURE__ */ Array.from({ length: 256 }, (_v, i2) => i2.toString(16).padStart(2, "0"));
-function toHex$1(value, opts = {}) {
+const hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_v, i2) => i2.toString(16).padStart(2, "0"));
+function toHex(value, opts = {}) {
   if (typeof value === "number" || typeof value === "bigint")
-    return numberToHex$1(value, opts);
+    return numberToHex(value, opts);
   if (typeof value === "string") {
-    return stringToHex$1(value, opts);
+    return stringToHex(value, opts);
   }
   if (typeof value === "boolean")
-    return boolToHex$1(value, opts);
-  return bytesToHex$1(value, opts);
+    return boolToHex(value, opts);
+  return bytesToHex(value, opts);
 }
-function boolToHex$1(value, opts = {}) {
+function boolToHex(value, opts = {}) {
   const hex2 = `0x${Number(value)}`;
   if (typeof opts.size === "number") {
-    assertSize$1(hex2, { size: opts.size });
-    return pad$1(hex2, { size: opts.size });
+    assertSize(hex2, { size: opts.size });
+    return pad2(hex2, { size: opts.size });
   }
   return hex2;
 }
-function bytesToHex$1(value, opts = {}) {
+function bytesToHex(value, opts = {}) {
   let string = "";
   for (let i2 = 0; i2 < value.length; i2++) {
-    string += hexes$1[value[i2]];
+    string += hexes[value[i2]];
   }
   const hex2 = `0x${string}`;
   if (typeof opts.size === "number") {
-    assertSize$1(hex2, { size: opts.size });
-    return pad$1(hex2, { dir: "right", size: opts.size });
+    assertSize(hex2, { size: opts.size });
+    return pad2(hex2, { dir: "right", size: opts.size });
   }
   return hex2;
 }
-function numberToHex$1(value_, opts = {}) {
+function numberToHex(value_, opts = {}) {
   const { signed: signed2, size: size2 } = opts;
   const value = BigInt(value_);
   let maxValue;
@@ -65161,7 +65138,7 @@ function numberToHex$1(value_, opts = {}) {
   const minValue = typeof maxValue === "bigint" && signed2 ? -maxValue - 1n : 0;
   if (maxValue && value > maxValue || value < minValue) {
     const suffix = typeof value_ === "bigint" ? "n" : "";
-    throw new IntegerOutOfRangeError$1({
+    throw new IntegerOutOfRangeError({
       max: maxValue ? `${maxValue}${suffix}` : void 0,
       min: `${minValue}${suffix}`,
       signed: signed2,
@@ -65171,13 +65148,13 @@ function numberToHex$1(value_, opts = {}) {
   }
   const hex2 = `0x${(signed2 && value < 0 ? (1n << BigInt(size2 * 8)) + BigInt(value) : value).toString(16)}`;
   if (size2)
-    return pad$1(hex2, { size: size2 });
+    return pad2(hex2, { size: size2 });
   return hex2;
 }
-const encoder$2 = /* @__PURE__ */ new TextEncoder();
-function stringToHex$1(value_, opts = {}) {
-  const value = encoder$2.encode(value_);
-  return bytesToHex$1(value, opts);
+const encoder = /* @__PURE__ */ new TextEncoder();
+function stringToHex(value_, opts = {}) {
+  const value = encoder.encode(value_);
+  return bytesToHex(value, opts);
 }
 async function addChain(client2, { chain }) {
   const { id: id2, name, nativeCurrency, rpcUrls, blockExplorers } = chain;
@@ -65185,7 +65162,7 @@ async function addChain(client2, { chain }) {
     method: "wallet_addEthereumChain",
     params: [
       {
-        chainId: numberToHex$1(id2),
+        chainId: numberToHex(id2),
         chainName: name,
         nativeCurrency,
         rpcUrls: rpcUrls.default.http,
@@ -65210,7 +65187,7 @@ function formatAbiParam(param, { includeName }) {
   }
   return param.type + (includeName && param.name ? ` ${param.name}` : "");
 }
-class AbiConstructorNotFoundError extends BaseError$6 {
+class AbiConstructorNotFoundError extends BaseError$2 {
   constructor({ docsPath: docsPath2 }) {
     super([
       "A constructor was not found on the ABI.",
@@ -65226,7 +65203,7 @@ class AbiConstructorNotFoundError extends BaseError$6 {
     });
   }
 }
-class AbiConstructorParamsNotFoundError extends BaseError$6 {
+class AbiConstructorParamsNotFoundError extends BaseError$2 {
   constructor({ docsPath: docsPath2 }) {
     super([
       "Constructor arguments were provided (`args`), but a constructor parameters (`inputs`) were not found on the ABI.",
@@ -65242,7 +65219,7 @@ class AbiConstructorParamsNotFoundError extends BaseError$6 {
     });
   }
 }
-class AbiDecodingDataSizeTooSmallError extends BaseError$6 {
+class AbiDecodingDataSizeTooSmallError extends BaseError$2 {
   constructor({ data, params, size: size2 }) {
     super([`Data size of ${size2} bytes is too small for given parameters.`].join("\n"), {
       metaMessages: [
@@ -65279,7 +65256,7 @@ class AbiDecodingDataSizeTooSmallError extends BaseError$6 {
     this.size = size2;
   }
 }
-class AbiDecodingZeroDataError extends BaseError$6 {
+class AbiDecodingZeroDataError extends BaseError$2 {
   constructor() {
     super('Cannot decode zero data ("0x") with ABI parameters.');
     Object.defineProperty(this, "name", {
@@ -65290,7 +65267,7 @@ class AbiDecodingZeroDataError extends BaseError$6 {
     });
   }
 }
-class AbiEncodingArrayLengthMismatchError extends BaseError$6 {
+class AbiEncodingArrayLengthMismatchError extends BaseError$2 {
   constructor({ expectedLength, givenLength, type }) {
     super([
       `ABI encoding array length mismatch for type ${type}.`,
@@ -65305,9 +65282,9 @@ class AbiEncodingArrayLengthMismatchError extends BaseError$6 {
     });
   }
 }
-class AbiEncodingBytesSizeMismatchError extends BaseError$6 {
+class AbiEncodingBytesSizeMismatchError extends BaseError$2 {
   constructor({ expectedSize, value }) {
-    super(`Size of bytes "${value}" (bytes${size$6(value)}) does not match expected size (bytes${expectedSize}).`);
+    super(`Size of bytes "${value}" (bytes${size$4(value)}) does not match expected size (bytes${expectedSize}).`);
     Object.defineProperty(this, "name", {
       enumerable: true,
       configurable: true,
@@ -65316,7 +65293,7 @@ class AbiEncodingBytesSizeMismatchError extends BaseError$6 {
     });
   }
 }
-class AbiEncodingLengthMismatchError extends BaseError$6 {
+class AbiEncodingLengthMismatchError extends BaseError$2 {
   constructor({ expectedLength, givenLength }) {
     super([
       "ABI encoding params/values length mismatch.",
@@ -65331,7 +65308,7 @@ class AbiEncodingLengthMismatchError extends BaseError$6 {
     });
   }
 }
-class AbiErrorSignatureNotFoundError extends BaseError$6 {
+class AbiErrorSignatureNotFoundError extends BaseError$2 {
   constructor(signature2, { docsPath: docsPath2 }) {
     super([
       `Encoded error signature "${signature2}" not found on ABI.`,
@@ -65355,7 +65332,7 @@ class AbiErrorSignatureNotFoundError extends BaseError$6 {
     this.signature = signature2;
   }
 }
-class AbiEventSignatureEmptyTopicsError extends BaseError$6 {
+class AbiEventSignatureEmptyTopicsError extends BaseError$2 {
   constructor({ docsPath: docsPath2 }) {
     super("Cannot extract event signature from empty topics.", {
       docsPath: docsPath2
@@ -65368,7 +65345,7 @@ class AbiEventSignatureEmptyTopicsError extends BaseError$6 {
     });
   }
 }
-class AbiEventSignatureNotFoundError extends BaseError$6 {
+class AbiEventSignatureNotFoundError extends BaseError$2 {
   constructor(signature2, { docsPath: docsPath2 }) {
     super([
       `Encoded event signature "${signature2}" not found on ABI.`,
@@ -65385,7 +65362,7 @@ class AbiEventSignatureNotFoundError extends BaseError$6 {
     });
   }
 }
-class AbiEventNotFoundError extends BaseError$6 {
+class AbiEventNotFoundError extends BaseError$2 {
   constructor(eventName, { docsPath: docsPath2 } = {}) {
     super([
       `Event ${eventName ? `"${eventName}" ` : ""}not found on ABI.`,
@@ -65401,7 +65378,7 @@ class AbiEventNotFoundError extends BaseError$6 {
     });
   }
 }
-class AbiFunctionNotFoundError extends BaseError$6 {
+class AbiFunctionNotFoundError extends BaseError$2 {
   constructor(functionName, { docsPath: docsPath2 } = {}) {
     super([
       `Function ${functionName ? `"${functionName}" ` : ""}not found on ABI.`,
@@ -65417,7 +65394,7 @@ class AbiFunctionNotFoundError extends BaseError$6 {
     });
   }
 }
-class AbiFunctionOutputsNotFoundError extends BaseError$6 {
+class AbiFunctionOutputsNotFoundError extends BaseError$2 {
   constructor(functionName, { docsPath: docsPath2 }) {
     super([
       `Function "${functionName}" does not contain any \`outputs\` on ABI.`,
@@ -65434,7 +65411,7 @@ class AbiFunctionOutputsNotFoundError extends BaseError$6 {
     });
   }
 }
-class AbiItemAmbiguityError extends BaseError$6 {
+class AbiItemAmbiguityError extends BaseError$2 {
   constructor(x, y2) {
     super("Found ambiguous types in overloaded ABI items.", {
       metaMessages: [
@@ -65453,7 +65430,7 @@ class AbiItemAmbiguityError extends BaseError$6 {
     });
   }
 }
-class BytesSizeMismatchError extends BaseError$6 {
+class BytesSizeMismatchError extends BaseError$2 {
   constructor({ expectedSize, givenSize }) {
     super(`Expected bytes${expectedSize}, got bytes${givenSize}.`);
     Object.defineProperty(this, "name", {
@@ -65464,7 +65441,7 @@ class BytesSizeMismatchError extends BaseError$6 {
     });
   }
 }
-class DecodeLogDataMismatch extends BaseError$6 {
+class DecodeLogDataMismatch extends BaseError$2 {
   constructor({ abiItem, data, params, size: size2 }) {
     super([
       `Data size of ${size2} bytes is too small for non-indexed event parameters.`
@@ -65510,7 +65487,7 @@ class DecodeLogDataMismatch extends BaseError$6 {
     this.size = size2;
   }
 }
-class DecodeLogTopicsMismatch extends BaseError$6 {
+class DecodeLogTopicsMismatch extends BaseError$2 {
   constructor({ abiItem, param }) {
     super([
       `Expected a topic for indexed event parameter${param.name ? ` "${param.name}"` : ""} on event "${formatAbiItem$1(abiItem, { includeName: true })}".`
@@ -65530,7 +65507,7 @@ class DecodeLogTopicsMismatch extends BaseError$6 {
     this.abiItem = abiItem;
   }
 }
-class InvalidAbiEncodingTypeError extends BaseError$6 {
+class InvalidAbiEncodingTypeError extends BaseError$2 {
   constructor(type, { docsPath: docsPath2 }) {
     super([
       `Type "${type}" is not a valid encoding type.`,
@@ -65544,7 +65521,7 @@ class InvalidAbiEncodingTypeError extends BaseError$6 {
     });
   }
 }
-class InvalidAbiDecodingTypeError extends BaseError$6 {
+class InvalidAbiDecodingTypeError extends BaseError$2 {
   constructor(type, { docsPath: docsPath2 }) {
     super([
       `Type "${type}" is not a valid decoding type.`,
@@ -65558,7 +65535,7 @@ class InvalidAbiDecodingTypeError extends BaseError$6 {
     });
   }
 }
-class InvalidArrayError extends BaseError$6 {
+class InvalidArrayError extends BaseError$2 {
   constructor(value) {
     super([`Value "${value}" is not a valid array.`].join("\n"));
     Object.defineProperty(this, "name", {
@@ -65569,7 +65546,7 @@ class InvalidArrayError extends BaseError$6 {
     });
   }
 }
-class InvalidDefinitionTypeError extends BaseError$6 {
+class InvalidDefinitionTypeError extends BaseError$2 {
   constructor(type) {
     super([
       `"${type}" is not a valid definition type.`,
@@ -65604,7 +65581,7 @@ function concatBytes(values) {
 function concatHex(values) {
   return `0x${values.reduce((acc, x) => acc + x.replace("0x", ""), "")}`;
 }
-let InvalidAddressError$1 = class InvalidAddressError extends BaseError$6 {
+class InvalidAddressError extends BaseError$2 {
   constructor({ address }) {
     super(`Address "${address}" is invalid.`);
     Object.defineProperty(this, "name", {
@@ -65614,13 +65591,13 @@ let InvalidAddressError$1 = class InvalidAddressError extends BaseError$6 {
       value: "InvalidAddressError"
     });
   }
-};
-const addressRegex$1 = /^0x[a-fA-F0-9]{40}$/;
-function isAddress$1(address) {
-  return addressRegex$1.test(address);
+}
+const addressRegex = /^0x[a-fA-F0-9]{40}$/;
+function isAddress(address) {
+  return addressRegex.test(address);
 }
 function slice$1(value, start, end, { strict } = {}) {
-  if (isHex$1(value, { strict: false }))
+  if (isHex(value, { strict: false }))
     return sliceHex(value, start, end, {
       strict
     });
@@ -65629,19 +65606,19 @@ function slice$1(value, start, end, { strict } = {}) {
   });
 }
 function assertStartOffset(value, start) {
-  if (typeof start === "number" && start > 0 && start > size$6(value) - 1)
+  if (typeof start === "number" && start > 0 && start > size$4(value) - 1)
     throw new SliceOffsetOutOfBoundsError({
       offset: start,
       position: "start",
-      size: size$6(value)
+      size: size$4(value)
     });
 }
 function assertEndOffset(value, start, end) {
-  if (typeof start === "number" && typeof end === "number" && size$6(value) !== end - start) {
+  if (typeof start === "number" && typeof end === "number" && size$4(value) !== end - start) {
     throw new SliceOffsetOutOfBoundsError({
       offset: end,
       position: "end",
-      size: size$6(value)
+      size: size$4(value)
     });
   }
 }
@@ -65719,7 +65696,7 @@ function encodeParams(preparedParams) {
     if (dynamic)
       staticSize += 32;
     else
-      staticSize += size$6(encoded);
+      staticSize += size$4(encoded);
   }
   const staticParams = [];
   const dynamicParams = [];
@@ -65727,9 +65704,9 @@ function encodeParams(preparedParams) {
   for (let i2 = 0; i2 < preparedParams.length; i2++) {
     const { dynamic, encoded } = preparedParams[i2];
     if (dynamic) {
-      staticParams.push(numberToHex$1(staticSize + dynamicSize, { size: 32 }));
+      staticParams.push(numberToHex(staticSize + dynamicSize, { size: 32 }));
       dynamicParams.push(encoded);
-      dynamicSize += size$6(encoded);
+      dynamicSize += size$4(encoded);
     } else {
       staticParams.push(encoded);
     }
@@ -65737,9 +65714,9 @@ function encodeParams(preparedParams) {
   return concat([...staticParams, ...dynamicParams]);
 }
 function encodeAddress(value) {
-  if (!isAddress$1(value))
-    throw new InvalidAddressError$1({ address: value });
-  return { dynamic: false, encoded: padHex$1(value.toLowerCase()) };
+  if (!isAddress(value))
+    throw new InvalidAddressError({ address: value });
+  return { dynamic: false, encoded: padHex(value.toLowerCase()) };
 }
 function encodeArray(value, { length: length2, param }) {
   const dynamic = length2 === null;
@@ -65762,7 +65739,7 @@ function encodeArray(value, { length: length2, param }) {
   if (dynamic || dynamicChild) {
     const data = encodeParams(preparedParams);
     if (dynamic) {
-      const length3 = numberToHex$1(preparedParams.length, { size: 32 });
+      const length3 = numberToHex(preparedParams.length, { size: 32 });
       return {
         dynamic: true,
         encoded: preparedParams.length > 0 ? concat([length3, data]) : length3
@@ -65778,17 +65755,17 @@ function encodeArray(value, { length: length2, param }) {
 }
 function encodeBytes(value, { param }) {
   const [, paramSize] = param.type.split("bytes");
-  const bytesSize = size$6(value);
+  const bytesSize = size$4(value);
   if (!paramSize) {
     let value_ = value;
     if (bytesSize % 32 !== 0)
-      value_ = padHex$1(value_, {
+      value_ = padHex(value_, {
         dir: "right",
         size: Math.ceil((value.length - 2) / 2 / 32) * 32
       });
     return {
       dynamic: true,
-      encoded: concat([padHex$1(numberToHex$1(bytesSize, { size: 32 })), value_])
+      encoded: concat([padHex(numberToHex(bytesSize, { size: 32 })), value_])
     };
   }
   if (bytesSize !== parseInt(paramSize))
@@ -65796,33 +65773,33 @@ function encodeBytes(value, { param }) {
       expectedSize: parseInt(paramSize),
       value
     });
-  return { dynamic: false, encoded: padHex$1(value, { dir: "right" }) };
+  return { dynamic: false, encoded: padHex(value, { dir: "right" }) };
 }
 function encodeBool(value) {
-  return { dynamic: false, encoded: padHex$1(boolToHex$1(value)) };
+  return { dynamic: false, encoded: padHex(boolToHex(value)) };
 }
 function encodeNumber(value, { signed: signed2 }) {
   return {
     dynamic: false,
-    encoded: numberToHex$1(value, {
+    encoded: numberToHex(value, {
       size: 32,
       signed: signed2
     })
   };
 }
 function encodeString(value) {
-  const hexValue2 = stringToHex$1(value);
-  const partsLength = Math.ceil(size$6(hexValue2) / 32);
+  const hexValue2 = stringToHex(value);
+  const partsLength = Math.ceil(size$4(hexValue2) / 32);
   const parts = [];
   for (let i2 = 0; i2 < partsLength; i2++) {
-    parts.push(padHex$1(slice$1(hexValue2, i2 * 32, (i2 + 1) * 32), {
+    parts.push(padHex(slice$1(hexValue2, i2 * 32, (i2 + 1) * 32), {
       dir: "right"
     }));
   }
   return {
     dynamic: true,
     encoded: concat([
-      padHex$1(numberToHex$1(size$6(hexValue2), { size: 32 })),
+      padHex(numberToHex(size$4(hexValue2), { size: 32 })),
       ...parts
     ])
   };
@@ -65868,12 +65845,12 @@ function encodeDeployData(parameters) {
   const data = encodeAbiParameters(description.inputs, args);
   return concatHex([bytecode, data]);
 }
-function parseAccount$1(account2) {
+function parseAccount(account2) {
   if (typeof account2 === "string")
     return { address: account2, type: "json-rpc" };
   return account2;
 }
-let AccountNotFoundError$1 = class AccountNotFoundError extends BaseError$6 {
+class AccountNotFoundError extends BaseError$2 {
   constructor({ docsPath: docsPath2 } = {}) {
     super([
       "Could not find an Account to execute with this Action.",
@@ -65889,8 +65866,8 @@ let AccountNotFoundError$1 = class AccountNotFoundError extends BaseError$6 {
       value: "AccountNotFoundError"
     });
   }
-};
-class ChainDoesNotSupportContract extends BaseError$6 {
+}
+class ChainDoesNotSupportContract extends BaseError$2 {
   constructor({ blockNumber, chain, contract }) {
     super(`Chain "${chain.name}" does not support contract "${contract.name}".`, {
       metaMessages: [
@@ -65910,7 +65887,7 @@ class ChainDoesNotSupportContract extends BaseError$6 {
     });
   }
 }
-let ChainMismatchError$1 = class ChainMismatchError extends BaseError$6 {
+class ChainMismatchError extends BaseError$2 {
   constructor({ chain, currentChainId }) {
     super(`The current chain of the wallet (id: ${currentChainId}) does not match the target chain for the transaction (id: ${chain.id} – ${chain.name}).`, {
       metaMessages: [
@@ -65925,8 +65902,8 @@ let ChainMismatchError$1 = class ChainMismatchError extends BaseError$6 {
       value: "ChainMismatchError"
     });
   }
-};
-let ChainNotFoundError$1 = class ChainNotFoundError extends BaseError$6 {
+}
+class ChainNotFoundError extends BaseError$2 {
   constructor() {
     super([
       "No chain was provided to the request.",
@@ -65939,8 +65916,8 @@ let ChainNotFoundError$1 = class ChainNotFoundError extends BaseError$6 {
       value: "ChainNotFoundError"
     });
   }
-};
-class ClientChainNotConfiguredError extends BaseError$6 {
+}
+class ClientChainNotConfiguredError extends BaseError$2 {
   constructor() {
     super("No chain was provided to the Client.");
     Object.defineProperty(this, "name", {
@@ -65951,21 +65928,21 @@ class ClientChainNotConfiguredError extends BaseError$6 {
     });
   }
 }
-function assertCurrentChain$1({ chain, currentChainId }) {
+function assertCurrentChain({ chain, currentChainId }) {
   if (!chain)
-    throw new ChainNotFoundError$1();
+    throw new ChainNotFoundError();
   if (currentChainId !== chain.id)
-    throw new ChainMismatchError$1({ chain, currentChainId });
+    throw new ChainMismatchError({ chain, currentChainId });
 }
-const etherUnits$1 = {
+const etherUnits = {
   gwei: 9,
   wei: 18
 };
-const gweiUnits$1 = {
+const gweiUnits = {
   ether: -9,
   wei: 9
 };
-function formatUnits$1(value, decimals) {
+function formatUnits(value, decimals) {
   let display = value.toString();
   const negative = display.startsWith("-");
   if (negative)
@@ -65978,13 +65955,13 @@ function formatUnits$1(value, decimals) {
   fraction = fraction.replace(/(0+)$/, "");
   return `${negative ? "-" : ""}${integer || "0"}${fraction ? `.${fraction}` : ""}`;
 }
-function formatGwei$1(wei, unit = "wei") {
-  return formatUnits$1(wei, gweiUnits$1[unit]);
+function formatGwei(wei, unit = "wei") {
+  return formatUnits(wei, gweiUnits[unit]);
 }
-let ExecutionRevertedError$1 = class ExecutionRevertedError extends BaseError$6 {
+class ExecutionRevertedError extends BaseError$2 {
   constructor({ cause, message } = {}) {
-    var _a2;
-    const reason = (_a2 = message == null ? void 0 : message.replace("execution reverted: ", "")) == null ? void 0 : _a2.replace("execution reverted", "");
+    var _a;
+    const reason = (_a = message == null ? void 0 : message.replace("execution reverted: ", "")) == null ? void 0 : _a.replace("execution reverted", "");
     super(`Execution reverted ${reason ? `with reason: ${reason}` : "for an unknown reason"}.`, {
       cause
     });
@@ -65995,22 +65972,22 @@ let ExecutionRevertedError$1 = class ExecutionRevertedError extends BaseError$6 
       value: "ExecutionRevertedError"
     });
   }
-};
-Object.defineProperty(ExecutionRevertedError$1, "code", {
+}
+Object.defineProperty(ExecutionRevertedError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: 3
 });
-Object.defineProperty(ExecutionRevertedError$1, "nodeMessage", {
+Object.defineProperty(ExecutionRevertedError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /execution reverted/
 });
-let FeeCapTooHighError$1 = class FeeCapTooHighError extends BaseError$6 {
+class FeeCapTooHighError extends BaseError$2 {
   constructor({ cause, maxFeePerGas } = {}) {
-    super(`The fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei$1(maxFeePerGas)} gwei` : ""}) cannot be higher than the maximum allowed value (2^256-1).`, {
+    super(`The fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei(maxFeePerGas)} gwei` : ""}) cannot be higher than the maximum allowed value (2^256-1).`, {
       cause
     });
     Object.defineProperty(this, "name", {
@@ -66020,16 +65997,16 @@ let FeeCapTooHighError$1 = class FeeCapTooHighError extends BaseError$6 {
       value: "FeeCapTooHigh"
     });
   }
-};
-Object.defineProperty(FeeCapTooHighError$1, "nodeMessage", {
+}
+Object.defineProperty(FeeCapTooHighError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /max fee per gas higher than 2\^256-1|fee cap higher than 2\^256-1/
 });
-let FeeCapTooLowError$1 = class FeeCapTooLowError extends BaseError$6 {
+class FeeCapTooLowError extends BaseError$2 {
   constructor({ cause, maxFeePerGas } = {}) {
-    super(`The fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei$1(maxFeePerGas)}` : ""} gwei) cannot be lower than the block base fee.`, {
+    super(`The fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei(maxFeePerGas)}` : ""} gwei) cannot be lower than the block base fee.`, {
       cause
     });
     Object.defineProperty(this, "name", {
@@ -66039,14 +66016,14 @@ let FeeCapTooLowError$1 = class FeeCapTooLowError extends BaseError$6 {
       value: "FeeCapTooLow"
     });
   }
-};
-Object.defineProperty(FeeCapTooLowError$1, "nodeMessage", {
+}
+Object.defineProperty(FeeCapTooLowError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /max fee per gas less than block base fee|fee cap less than block base fee|transaction is outdated/
 });
-let NonceTooHighError$1 = class NonceTooHighError extends BaseError$6 {
+class NonceTooHighError extends BaseError$2 {
   constructor({ cause, nonce } = {}) {
     super(`Nonce provided for the transaction ${nonce ? `(${nonce}) ` : ""}is higher than the next one expected.`, { cause });
     Object.defineProperty(this, "name", {
@@ -66056,14 +66033,14 @@ let NonceTooHighError$1 = class NonceTooHighError extends BaseError$6 {
       value: "NonceTooHighError"
     });
   }
-};
-Object.defineProperty(NonceTooHighError$1, "nodeMessage", {
+}
+Object.defineProperty(NonceTooHighError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /nonce too high/
 });
-let NonceTooLowError$1 = class NonceTooLowError extends BaseError$6 {
+class NonceTooLowError extends BaseError$2 {
   constructor({ cause, nonce } = {}) {
     super([
       `Nonce provided for the transaction ${nonce ? `(${nonce}) ` : ""}is lower than the current nonce of the account.`,
@@ -66076,14 +66053,14 @@ let NonceTooLowError$1 = class NonceTooLowError extends BaseError$6 {
       value: "NonceTooLowError"
     });
   }
-};
-Object.defineProperty(NonceTooLowError$1, "nodeMessage", {
+}
+Object.defineProperty(NonceTooLowError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /nonce too low|transaction already imported|already known/
 });
-let NonceMaxValueError$1 = class NonceMaxValueError extends BaseError$6 {
+class NonceMaxValueError extends BaseError$2 {
   constructor({ cause, nonce } = {}) {
     super(`Nonce provided for the transaction ${nonce ? `(${nonce}) ` : ""}exceeds the maximum allowed nonce.`, { cause });
     Object.defineProperty(this, "name", {
@@ -66093,14 +66070,14 @@ let NonceMaxValueError$1 = class NonceMaxValueError extends BaseError$6 {
       value: "NonceMaxValueError"
     });
   }
-};
-Object.defineProperty(NonceMaxValueError$1, "nodeMessage", {
+}
+Object.defineProperty(NonceMaxValueError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /nonce has max value/
 });
-let InsufficientFundsError$1 = class InsufficientFundsError extends BaseError$6 {
+class InsufficientFundsError extends BaseError$2 {
   constructor({ cause } = {}) {
     super([
       "The total cost (gas * gas fee + value) of executing this transaction exceeds the balance of the account."
@@ -66124,14 +66101,14 @@ let InsufficientFundsError$1 = class InsufficientFundsError extends BaseError$6 
       value: "InsufficientFundsError"
     });
   }
-};
-Object.defineProperty(InsufficientFundsError$1, "nodeMessage", {
+}
+Object.defineProperty(InsufficientFundsError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /insufficient funds/
 });
-let IntrinsicGasTooHighError$1 = class IntrinsicGasTooHighError extends BaseError$6 {
+class IntrinsicGasTooHighError extends BaseError$2 {
   constructor({ cause, gas } = {}) {
     super(`The amount of gas ${gas ? `(${gas}) ` : ""}provided for the transaction exceeds the limit allowed for the block.`, {
       cause
@@ -66143,14 +66120,14 @@ let IntrinsicGasTooHighError$1 = class IntrinsicGasTooHighError extends BaseErro
       value: "IntrinsicGasTooHighError"
     });
   }
-};
-Object.defineProperty(IntrinsicGasTooHighError$1, "nodeMessage", {
+}
+Object.defineProperty(IntrinsicGasTooHighError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /intrinsic gas too high|gas limit reached/
 });
-let IntrinsicGasTooLowError$1 = class IntrinsicGasTooLowError extends BaseError$6 {
+class IntrinsicGasTooLowError extends BaseError$2 {
   constructor({ cause, gas } = {}) {
     super(`The amount of gas ${gas ? `(${gas}) ` : ""}provided for the transaction is too low.`, {
       cause
@@ -66162,14 +66139,14 @@ let IntrinsicGasTooLowError$1 = class IntrinsicGasTooLowError extends BaseError$
       value: "IntrinsicGasTooLowError"
     });
   }
-};
-Object.defineProperty(IntrinsicGasTooLowError$1, "nodeMessage", {
+}
+Object.defineProperty(IntrinsicGasTooLowError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /intrinsic gas too low/
 });
-let TransactionTypeNotSupportedError$1 = class TransactionTypeNotSupportedError extends BaseError$6 {
+class TransactionTypeNotSupportedError extends BaseError$2 {
   constructor({ cause }) {
     super("The transaction type is not supported for this chain.", {
       cause
@@ -66181,17 +66158,17 @@ let TransactionTypeNotSupportedError$1 = class TransactionTypeNotSupportedError 
       value: "TransactionTypeNotSupportedError"
     });
   }
-};
-Object.defineProperty(TransactionTypeNotSupportedError$1, "nodeMessage", {
+}
+Object.defineProperty(TransactionTypeNotSupportedError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /transaction type not valid/
 });
-let TipAboveFeeCapError$1 = class TipAboveFeeCapError extends BaseError$6 {
+class TipAboveFeeCapError extends BaseError$2 {
   constructor({ cause, maxPriorityFeePerGas, maxFeePerGas } = {}) {
     super([
-      `The provided tip (\`maxPriorityFeePerGas\`${maxPriorityFeePerGas ? ` = ${formatGwei$1(maxPriorityFeePerGas)} gwei` : ""}) cannot be higher than the fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei$1(maxFeePerGas)} gwei` : ""}).`
+      `The provided tip (\`maxPriorityFeePerGas\`${maxPriorityFeePerGas ? ` = ${formatGwei(maxPriorityFeePerGas)} gwei` : ""}) cannot be higher than the fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei(maxFeePerGas)} gwei` : ""}).`
     ].join("\n"), {
       cause
     });
@@ -66202,14 +66179,14 @@ let TipAboveFeeCapError$1 = class TipAboveFeeCapError extends BaseError$6 {
       value: "TipAboveFeeCapError"
     });
   }
-};
-Object.defineProperty(TipAboveFeeCapError$1, "nodeMessage", {
+}
+Object.defineProperty(TipAboveFeeCapError, "nodeMessage", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: /max priority fee per gas higher than max fee per gas|tip higher than fee cap/
 });
-let UnknownNodeError$1 = class UnknownNodeError extends BaseError$6 {
+class UnknownNodeError extends BaseError$2 {
   constructor({ cause }) {
     super(`An error occurred while executing: ${cause == null ? void 0 : cause.shortMessage}`, {
       cause
@@ -66221,11 +66198,11 @@ let UnknownNodeError$1 = class UnknownNodeError extends BaseError$6 {
       value: "UnknownNodeError"
     });
   }
-};
-function formatEther$1(wei, unit = "wei") {
-  return formatUnits$1(wei, etherUnits$1[unit]);
 }
-function prettyPrint$1(args) {
+function formatEther(wei, unit = "wei") {
+  return formatUnits(wei, etherUnits[unit]);
+}
+function prettyPrint(args) {
   const entries = Object.entries(args).map(([key2, value]) => {
     if (value === void 0 || value === false)
       return null;
@@ -66234,7 +66211,7 @@ function prettyPrint$1(args) {
   const maxLength = entries.reduce((acc, [key2]) => Math.max(acc, key2.length), 0);
   return entries.map(([key2, value]) => `  ${`${key2}:`.padEnd(maxLength + 1)}  ${value}`).join("\n");
 }
-let FeeConflictError$1 = class FeeConflictError extends BaseError$6 {
+class FeeConflictError extends BaseError$2 {
   constructor() {
     super([
       "Cannot specify both a `gasPrice` and a `maxFeePerGas`/`maxPriorityFeePerGas`.",
@@ -66247,14 +66224,14 @@ let FeeConflictError$1 = class FeeConflictError extends BaseError$6 {
       value: "FeeConflictError"
     });
   }
-};
-let InvalidSerializableTransactionError$1 = class InvalidSerializableTransactionError extends BaseError$6 {
+}
+class InvalidSerializableTransactionError extends BaseError$2 {
   constructor({ transaction: transaction2 }) {
     super("Cannot infer a transaction type from provided transaction.", {
       metaMessages: [
         "Provided Transaction:",
         "{",
-        prettyPrint$1(transaction2),
+        prettyPrint(transaction2),
         "}",
         "",
         "To infer the type, either provide:",
@@ -66271,20 +66248,20 @@ let InvalidSerializableTransactionError$1 = class InvalidSerializableTransaction
       value: "InvalidSerializableTransactionError"
     });
   }
-};
-let TransactionExecutionError$1 = class TransactionExecutionError extends BaseError$6 {
+}
+class TransactionExecutionError extends BaseError$2 {
   constructor(cause, { account: account2, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value }) {
-    var _a2;
-    const prettyArgs = prettyPrint$1({
+    var _a;
+    const prettyArgs = prettyPrint({
       chain: chain && `${chain == null ? void 0 : chain.name} (id: ${chain == null ? void 0 : chain.id})`,
       from: account2 == null ? void 0 : account2.address,
       to,
-      value: typeof value !== "undefined" && `${formatEther$1(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
+      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a.symbol) || "ETH"}`,
       data,
       gas,
-      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei$1(gasPrice)} gwei`,
-      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei$1(maxFeePerGas)} gwei`,
-      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei$1(maxPriorityFeePerGas)} gwei`,
+      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
+      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei(maxFeePerGas)} gwei`,
+      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei(maxPriorityFeePerGas)} gwei`,
       nonce
     });
     super(cause.shortMessage, {
@@ -66310,8 +66287,8 @@ let TransactionExecutionError$1 = class TransactionExecutionError extends BaseEr
     });
     this.cause = cause;
   }
-};
-class TransactionNotFoundError extends BaseError$6 {
+}
+class TransactionNotFoundError extends BaseError$2 {
   constructor({ blockHash, blockNumber, blockTag, hash: hash2, index: index2 }) {
     let identifier2 = "Transaction";
     if (blockTag && index2 !== void 0)
@@ -66331,7 +66308,7 @@ class TransactionNotFoundError extends BaseError$6 {
     });
   }
 }
-class TransactionReceiptNotFoundError extends BaseError$6 {
+class TransactionReceiptNotFoundError extends BaseError$2 {
   constructor({ hash: hash2 }) {
     super(`Transaction receipt with hash "${hash2}" could not be found. The Transaction may not be processed on a block yet.`);
     Object.defineProperty(this, "name", {
@@ -66342,7 +66319,7 @@ class TransactionReceiptNotFoundError extends BaseError$6 {
     });
   }
 }
-class WaitForTransactionReceiptTimeoutError extends BaseError$6 {
+class WaitForTransactionReceiptTimeoutError extends BaseError$2 {
   constructor({ hash: hash2 }) {
     super(`Timed out while waiting for transaction with hash "${hash2}" to be confirmed.`);
     Object.defineProperty(this, "name", {
@@ -66353,18 +66330,18 @@ class WaitForTransactionReceiptTimeoutError extends BaseError$6 {
     });
   }
 }
-const stringify$2 = (value, replacer, space) => JSON.stringify(value, (key2, value_) => {
+const stringify$1 = (value, replacer, space) => JSON.stringify(value, (key2, value_) => {
   const value2 = typeof value_ === "bigint" ? value_.toString() : value_;
   return typeof replacer === "function" ? replacer(key2, value2) : value2;
 }, space);
-let HttpRequestError$1 = class HttpRequestError extends BaseError$6 {
+class HttpRequestError extends BaseError$2 {
   constructor({ body, details, headers, status, url }) {
     super("HTTP request failed.", {
       details,
       metaMessages: [
         status && `Status: ${status}`,
-        `URL: ${getUrl$1(url)}`,
-        body && `Request body: ${stringify$2(body)}`
+        `URL: ${getUrl(url)}`,
+        body && `Request body: ${stringify$1(body)}`
       ].filter(Boolean)
     });
     Object.defineProperty(this, "name", {
@@ -66402,13 +66379,13 @@ let HttpRequestError$1 = class HttpRequestError extends BaseError$6 {
     this.status = status;
     this.url = url;
   }
-};
-let RpcRequestError$1 = class RpcRequestError extends BaseError$6 {
+}
+class RpcRequestError extends BaseError$2 {
   constructor({ body, error, url }) {
     super("RPC Request failed.", {
       cause: error,
       details: error.message,
-      metaMessages: [`URL: ${getUrl$1(url)}`, `Request body: ${stringify$2(body)}`]
+      metaMessages: [`URL: ${getUrl(url)}`, `Request body: ${stringify$1(body)}`]
     });
     Object.defineProperty(this, "name", {
       enumerable: true,
@@ -66424,12 +66401,12 @@ let RpcRequestError$1 = class RpcRequestError extends BaseError$6 {
     });
     this.code = error.code;
   }
-};
-class TimeoutError extends BaseError$6 {
+}
+class TimeoutError extends BaseError$2 {
   constructor({ body, url }) {
     super("The request took too long to respond.", {
       details: "The request timed out.",
-      metaMessages: [`URL: ${getUrl$1(url)}`, `Request body: ${stringify$2(body)}`]
+      metaMessages: [`URL: ${getUrl(url)}`, `Request body: ${stringify$1(body)}`]
     });
     Object.defineProperty(this, "name", {
       enumerable: true,
@@ -66439,8 +66416,8 @@ class TimeoutError extends BaseError$6 {
     });
   }
 }
-const unknownErrorCode$1 = -1;
-let RpcError$1 = class RpcError extends BaseError$6 {
+const unknownErrorCode = -1;
+class RpcError extends BaseError$2 {
   constructor(cause, { code: code2, docsPath: docsPath2, metaMessages, shortMessage }) {
     super(shortMessage, {
       cause,
@@ -66460,10 +66437,10 @@ let RpcError$1 = class RpcError extends BaseError$6 {
       value: void 0
     });
     this.name = cause.name;
-    this.code = cause instanceof RpcRequestError$1 ? cause.code : code2 ?? unknownErrorCode$1;
+    this.code = cause instanceof RpcRequestError ? cause.code : code2 ?? unknownErrorCode;
   }
-};
-let ProviderRpcError$1 = class ProviderRpcError extends RpcError$1 {
+}
+class ProviderRpcError extends RpcError {
   constructor(cause, options) {
     super(cause, options);
     Object.defineProperty(this, "name", {
@@ -66480,8 +66457,8 @@ let ProviderRpcError$1 = class ProviderRpcError extends RpcError$1 {
     });
     this.data = options.data;
   }
-};
-let ParseRpcError$1 = class ParseRpcError extends RpcError$1 {
+}
+class ParseRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: ParseRpcError.code,
@@ -66494,14 +66471,14 @@ let ParseRpcError$1 = class ParseRpcError extends RpcError$1 {
       value: "ParseRpcError"
     });
   }
-};
-Object.defineProperty(ParseRpcError$1, "code", {
+}
+Object.defineProperty(ParseRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32700
 });
-let InvalidRequestRpcError$1 = class InvalidRequestRpcError extends RpcError$1 {
+class InvalidRequestRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: InvalidRequestRpcError.code,
@@ -66514,14 +66491,14 @@ let InvalidRequestRpcError$1 = class InvalidRequestRpcError extends RpcError$1 {
       value: "InvalidRequestRpcError"
     });
   }
-};
-Object.defineProperty(InvalidRequestRpcError$1, "code", {
+}
+Object.defineProperty(InvalidRequestRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32600
 });
-let MethodNotFoundRpcError$1 = class MethodNotFoundRpcError extends RpcError$1 {
+class MethodNotFoundRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: MethodNotFoundRpcError.code,
@@ -66534,14 +66511,14 @@ let MethodNotFoundRpcError$1 = class MethodNotFoundRpcError extends RpcError$1 {
       value: "MethodNotFoundRpcError"
     });
   }
-};
-Object.defineProperty(MethodNotFoundRpcError$1, "code", {
+}
+Object.defineProperty(MethodNotFoundRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32601
 });
-let InvalidParamsRpcError$1 = class InvalidParamsRpcError extends RpcError$1 {
+class InvalidParamsRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: InvalidParamsRpcError.code,
@@ -66557,14 +66534,14 @@ let InvalidParamsRpcError$1 = class InvalidParamsRpcError extends RpcError$1 {
       value: "InvalidParamsRpcError"
     });
   }
-};
-Object.defineProperty(InvalidParamsRpcError$1, "code", {
+}
+Object.defineProperty(InvalidParamsRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32602
 });
-let InternalRpcError$1 = class InternalRpcError extends RpcError$1 {
+class InternalRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: InternalRpcError.code,
@@ -66577,14 +66554,14 @@ let InternalRpcError$1 = class InternalRpcError extends RpcError$1 {
       value: "InternalRpcError"
     });
   }
-};
-Object.defineProperty(InternalRpcError$1, "code", {
+}
+Object.defineProperty(InternalRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32603
 });
-let InvalidInputRpcError$1 = class InvalidInputRpcError extends RpcError$1 {
+class InvalidInputRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: InvalidInputRpcError.code,
@@ -66600,14 +66577,14 @@ let InvalidInputRpcError$1 = class InvalidInputRpcError extends RpcError$1 {
       value: "InvalidInputRpcError"
     });
   }
-};
-Object.defineProperty(InvalidInputRpcError$1, "code", {
+}
+Object.defineProperty(InvalidInputRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32e3
 });
-let ResourceNotFoundRpcError$1 = class ResourceNotFoundRpcError extends RpcError$1 {
+class ResourceNotFoundRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: ResourceNotFoundRpcError.code,
@@ -66620,14 +66597,14 @@ let ResourceNotFoundRpcError$1 = class ResourceNotFoundRpcError extends RpcError
       value: "ResourceNotFoundRpcError"
     });
   }
-};
-Object.defineProperty(ResourceNotFoundRpcError$1, "code", {
+}
+Object.defineProperty(ResourceNotFoundRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32001
 });
-let ResourceUnavailableRpcError$1 = class ResourceUnavailableRpcError extends RpcError$1 {
+class ResourceUnavailableRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: ResourceUnavailableRpcError.code,
@@ -66640,14 +66617,14 @@ let ResourceUnavailableRpcError$1 = class ResourceUnavailableRpcError extends Rp
       value: "ResourceUnavailableRpcError"
     });
   }
-};
-Object.defineProperty(ResourceUnavailableRpcError$1, "code", {
+}
+Object.defineProperty(ResourceUnavailableRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32002
 });
-let TransactionRejectedRpcError$1 = class TransactionRejectedRpcError extends RpcError$1 {
+class TransactionRejectedRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: TransactionRejectedRpcError.code,
@@ -66660,14 +66637,14 @@ let TransactionRejectedRpcError$1 = class TransactionRejectedRpcError extends Rp
       value: "TransactionRejectedRpcError"
     });
   }
-};
-Object.defineProperty(TransactionRejectedRpcError$1, "code", {
+}
+Object.defineProperty(TransactionRejectedRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32003
 });
-let MethodNotSupportedRpcError$1 = class MethodNotSupportedRpcError extends RpcError$1 {
+class MethodNotSupportedRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: MethodNotSupportedRpcError.code,
@@ -66680,14 +66657,14 @@ let MethodNotSupportedRpcError$1 = class MethodNotSupportedRpcError extends RpcE
       value: "MethodNotSupportedRpcError"
     });
   }
-};
-Object.defineProperty(MethodNotSupportedRpcError$1, "code", {
+}
+Object.defineProperty(MethodNotSupportedRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32004
 });
-let LimitExceededRpcError$1 = class LimitExceededRpcError extends RpcError$1 {
+class LimitExceededRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: LimitExceededRpcError.code,
@@ -66700,14 +66677,14 @@ let LimitExceededRpcError$1 = class LimitExceededRpcError extends RpcError$1 {
       value: "LimitExceededRpcError"
     });
   }
-};
-Object.defineProperty(LimitExceededRpcError$1, "code", {
+}
+Object.defineProperty(LimitExceededRpcError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32005
 });
-let JsonRpcVersionUnsupportedError$1 = class JsonRpcVersionUnsupportedError extends RpcError$1 {
+class JsonRpcVersionUnsupportedError extends RpcError {
   constructor(cause) {
     super(cause, {
       code: JsonRpcVersionUnsupportedError.code,
@@ -66720,14 +66697,14 @@ let JsonRpcVersionUnsupportedError$1 = class JsonRpcVersionUnsupportedError exte
       value: "JsonRpcVersionUnsupportedError"
     });
   }
-};
-Object.defineProperty(JsonRpcVersionUnsupportedError$1, "code", {
+}
+Object.defineProperty(JsonRpcVersionUnsupportedError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: -32006
 });
-let UserRejectedRequestError$1 = class UserRejectedRequestError extends ProviderRpcError$1 {
+class UserRejectedRequestError extends ProviderRpcError {
   constructor(cause) {
     super(cause, {
       code: UserRejectedRequestError.code,
@@ -66740,14 +66717,14 @@ let UserRejectedRequestError$1 = class UserRejectedRequestError extends Provider
       value: "UserRejectedRequestError"
     });
   }
-};
-Object.defineProperty(UserRejectedRequestError$1, "code", {
+}
+Object.defineProperty(UserRejectedRequestError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: 4001
 });
-let UnauthorizedProviderError$1 = class UnauthorizedProviderError extends ProviderRpcError$1 {
+class UnauthorizedProviderError extends ProviderRpcError {
   constructor(cause) {
     super(cause, {
       code: UnauthorizedProviderError.code,
@@ -66760,14 +66737,14 @@ let UnauthorizedProviderError$1 = class UnauthorizedProviderError extends Provid
       value: "UnauthorizedProviderError"
     });
   }
-};
-Object.defineProperty(UnauthorizedProviderError$1, "code", {
+}
+Object.defineProperty(UnauthorizedProviderError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: 4100
 });
-let UnsupportedProviderMethodError$1 = class UnsupportedProviderMethodError extends ProviderRpcError$1 {
+class UnsupportedProviderMethodError extends ProviderRpcError {
   constructor(cause) {
     super(cause, {
       code: UnsupportedProviderMethodError.code,
@@ -66780,14 +66757,14 @@ let UnsupportedProviderMethodError$1 = class UnsupportedProviderMethodError exte
       value: "UnsupportedProviderMethodError"
     });
   }
-};
-Object.defineProperty(UnsupportedProviderMethodError$1, "code", {
+}
+Object.defineProperty(UnsupportedProviderMethodError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: 4200
 });
-let ProviderDisconnectedError$1 = class ProviderDisconnectedError extends ProviderRpcError$1 {
+class ProviderDisconnectedError extends ProviderRpcError {
   constructor(cause) {
     super(cause, {
       code: ProviderDisconnectedError.code,
@@ -66800,14 +66777,14 @@ let ProviderDisconnectedError$1 = class ProviderDisconnectedError extends Provid
       value: "ProviderDisconnectedError"
     });
   }
-};
-Object.defineProperty(ProviderDisconnectedError$1, "code", {
+}
+Object.defineProperty(ProviderDisconnectedError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: 4900
 });
-let ChainDisconnectedError$1 = class ChainDisconnectedError extends ProviderRpcError$1 {
+class ChainDisconnectedError extends ProviderRpcError {
   constructor(cause) {
     super(cause, {
       code: ChainDisconnectedError.code,
@@ -66820,14 +66797,14 @@ let ChainDisconnectedError$1 = class ChainDisconnectedError extends ProviderRpcE
       value: "ChainDisconnectedError"
     });
   }
-};
-Object.defineProperty(ChainDisconnectedError$1, "code", {
+}
+Object.defineProperty(ChainDisconnectedError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: 4901
 });
-let SwitchChainError$1 = class SwitchChainError extends ProviderRpcError$1 {
+class SwitchChainError extends ProviderRpcError {
   constructor(cause) {
     super(cause, {
       code: SwitchChainError.code,
@@ -66840,14 +66817,14 @@ let SwitchChainError$1 = class SwitchChainError extends ProviderRpcError$1 {
       value: "SwitchChainError"
     });
   }
-};
-Object.defineProperty(SwitchChainError$1, "code", {
+}
+Object.defineProperty(SwitchChainError, "code", {
   enumerable: true,
   configurable: true,
   writable: true,
   value: 4902
 });
-let UnknownRpcError$1 = class UnknownRpcError extends RpcError$1 {
+class UnknownRpcError extends RpcError {
   constructor(cause) {
     super(cause, {
       shortMessage: "An unknown RPC error occurred."
@@ -66859,68 +66836,68 @@ let UnknownRpcError$1 = class UnknownRpcError extends RpcError$1 {
       value: "UnknownRpcError"
     });
   }
-};
-function getNodeError$1(err, args) {
+}
+function getNodeError(err, args) {
   const message = (err.details || "").toLowerCase();
-  const executionRevertedError = err instanceof BaseError$6 ? err.walk((e2) => e2.code === ExecutionRevertedError$1.code) : err;
-  if (executionRevertedError instanceof BaseError$6) {
-    return new ExecutionRevertedError$1({
+  const executionRevertedError = err instanceof BaseError$2 ? err.walk((e2) => e2.code === ExecutionRevertedError.code) : err;
+  if (executionRevertedError instanceof BaseError$2) {
+    return new ExecutionRevertedError({
       cause: err,
       message: executionRevertedError.details
     });
   }
-  if (ExecutionRevertedError$1.nodeMessage.test(message))
-    return new ExecutionRevertedError$1({
+  if (ExecutionRevertedError.nodeMessage.test(message))
+    return new ExecutionRevertedError({
       cause: err,
       message: err.details
     });
-  if (FeeCapTooHighError$1.nodeMessage.test(message))
-    return new FeeCapTooHighError$1({
+  if (FeeCapTooHighError.nodeMessage.test(message))
+    return new FeeCapTooHighError({
       cause: err,
       maxFeePerGas: args == null ? void 0 : args.maxFeePerGas
     });
-  if (FeeCapTooLowError$1.nodeMessage.test(message))
-    return new FeeCapTooLowError$1({
+  if (FeeCapTooLowError.nodeMessage.test(message))
+    return new FeeCapTooLowError({
       cause: err,
       maxFeePerGas: args == null ? void 0 : args.maxFeePerGas
     });
-  if (NonceTooHighError$1.nodeMessage.test(message))
-    return new NonceTooHighError$1({ cause: err, nonce: args == null ? void 0 : args.nonce });
-  if (NonceTooLowError$1.nodeMessage.test(message))
-    return new NonceTooLowError$1({ cause: err, nonce: args == null ? void 0 : args.nonce });
-  if (NonceMaxValueError$1.nodeMessage.test(message))
-    return new NonceMaxValueError$1({ cause: err, nonce: args == null ? void 0 : args.nonce });
-  if (InsufficientFundsError$1.nodeMessage.test(message))
-    return new InsufficientFundsError$1({ cause: err });
-  if (IntrinsicGasTooHighError$1.nodeMessage.test(message))
-    return new IntrinsicGasTooHighError$1({ cause: err, gas: args == null ? void 0 : args.gas });
-  if (IntrinsicGasTooLowError$1.nodeMessage.test(message))
-    return new IntrinsicGasTooLowError$1({ cause: err, gas: args == null ? void 0 : args.gas });
-  if (TransactionTypeNotSupportedError$1.nodeMessage.test(message))
-    return new TransactionTypeNotSupportedError$1({ cause: err });
-  if (TipAboveFeeCapError$1.nodeMessage.test(message))
-    return new TipAboveFeeCapError$1({
+  if (NonceTooHighError.nodeMessage.test(message))
+    return new NonceTooHighError({ cause: err, nonce: args == null ? void 0 : args.nonce });
+  if (NonceTooLowError.nodeMessage.test(message))
+    return new NonceTooLowError({ cause: err, nonce: args == null ? void 0 : args.nonce });
+  if (NonceMaxValueError.nodeMessage.test(message))
+    return new NonceMaxValueError({ cause: err, nonce: args == null ? void 0 : args.nonce });
+  if (InsufficientFundsError.nodeMessage.test(message))
+    return new InsufficientFundsError({ cause: err });
+  if (IntrinsicGasTooHighError.nodeMessage.test(message))
+    return new IntrinsicGasTooHighError({ cause: err, gas: args == null ? void 0 : args.gas });
+  if (IntrinsicGasTooLowError.nodeMessage.test(message))
+    return new IntrinsicGasTooLowError({ cause: err, gas: args == null ? void 0 : args.gas });
+  if (TransactionTypeNotSupportedError.nodeMessage.test(message))
+    return new TransactionTypeNotSupportedError({ cause: err });
+  if (TipAboveFeeCapError.nodeMessage.test(message))
+    return new TipAboveFeeCapError({
       cause: err,
       maxFeePerGas: args == null ? void 0 : args.maxFeePerGas,
       maxPriorityFeePerGas: args == null ? void 0 : args.maxPriorityFeePerGas
     });
-  return new UnknownNodeError$1({
+  return new UnknownNodeError({
     cause: err
   });
 }
-function getTransactionError$1(err, { docsPath: docsPath2, ...args }) {
+function getTransactionError(err, { docsPath: docsPath2, ...args }) {
   const cause = (() => {
-    const cause2 = getNodeError$1(err, args);
-    if (cause2 instanceof UnknownNodeError$1)
+    const cause2 = getNodeError(err, args);
+    if (cause2 instanceof UnknownNodeError)
       return err;
     return cause2;
   })();
-  return new TransactionExecutionError$1(cause, {
+  return new TransactionExecutionError(cause, {
     docsPath: docsPath2,
     ...args
   });
 }
-function extract$1(value_, { format: format2 }) {
+function extract(value_, { format: format2 }) {
   if (!format2)
     return {};
   const value = {};
@@ -66937,51 +66914,51 @@ function extract$1(value_, { format: format2 }) {
   extract_(formatted);
   return value;
 }
-const rpcTransactionType$1 = {
+const rpcTransactionType = {
   legacy: "0x0",
   eip2930: "0x1",
   eip1559: "0x2",
   eip4844: "0x3"
 };
-function formatTransactionRequest$1(transactionRequest) {
+function formatTransactionRequest(transactionRequest) {
   return {
     ...transactionRequest,
-    gas: typeof transactionRequest.gas !== "undefined" ? numberToHex$1(transactionRequest.gas) : void 0,
-    gasPrice: typeof transactionRequest.gasPrice !== "undefined" ? numberToHex$1(transactionRequest.gasPrice) : void 0,
-    maxFeePerGas: typeof transactionRequest.maxFeePerGas !== "undefined" ? numberToHex$1(transactionRequest.maxFeePerGas) : void 0,
-    maxPriorityFeePerGas: typeof transactionRequest.maxPriorityFeePerGas !== "undefined" ? numberToHex$1(transactionRequest.maxPriorityFeePerGas) : void 0,
-    nonce: typeof transactionRequest.nonce !== "undefined" ? numberToHex$1(transactionRequest.nonce) : void 0,
-    type: typeof transactionRequest.type !== "undefined" ? rpcTransactionType$1[transactionRequest.type] : void 0,
-    value: typeof transactionRequest.value !== "undefined" ? numberToHex$1(transactionRequest.value) : void 0
+    gas: typeof transactionRequest.gas !== "undefined" ? numberToHex(transactionRequest.gas) : void 0,
+    gasPrice: typeof transactionRequest.gasPrice !== "undefined" ? numberToHex(transactionRequest.gasPrice) : void 0,
+    maxFeePerGas: typeof transactionRequest.maxFeePerGas !== "undefined" ? numberToHex(transactionRequest.maxFeePerGas) : void 0,
+    maxPriorityFeePerGas: typeof transactionRequest.maxPriorityFeePerGas !== "undefined" ? numberToHex(transactionRequest.maxPriorityFeePerGas) : void 0,
+    nonce: typeof transactionRequest.nonce !== "undefined" ? numberToHex(transactionRequest.nonce) : void 0,
+    type: typeof transactionRequest.type !== "undefined" ? rpcTransactionType[transactionRequest.type] : void 0,
+    value: typeof transactionRequest.value !== "undefined" ? numberToHex(transactionRequest.value) : void 0
   };
 }
-function getAction$3(client2, action, name) {
+function getAction$1(client2, action, name) {
   return (params) => {
-    var _a2;
-    return ((_a2 = client2[action.name || name]) == null ? void 0 : _a2.call(client2, params)) ?? action(client2, params);
+    var _a;
+    return ((_a = client2[action.name || name]) == null ? void 0 : _a.call(client2, params)) ?? action(client2, params);
   };
 }
-function assertRequest$1(args) {
+function assertRequest(args) {
   const { account: account_, gasPrice, maxFeePerGas, maxPriorityFeePerGas, to } = args;
-  const account2 = account_ ? parseAccount$1(account_) : void 0;
-  if (account2 && !isAddress$1(account2.address))
-    throw new InvalidAddressError$1({ address: account2.address });
-  if (to && !isAddress$1(to))
-    throw new InvalidAddressError$1({ address: to });
+  const account2 = account_ ? parseAccount(account_) : void 0;
+  if (account2 && !isAddress(account2.address))
+    throw new InvalidAddressError({ address: account2.address });
+  if (to && !isAddress(to))
+    throw new InvalidAddressError({ address: to });
   if (typeof gasPrice !== "undefined" && (typeof maxFeePerGas !== "undefined" || typeof maxPriorityFeePerGas !== "undefined"))
-    throw new FeeConflictError$1();
+    throw new FeeConflictError();
   if (maxFeePerGas && maxFeePerGas > 2n ** 256n - 1n)
-    throw new FeeCapTooHighError$1({ maxFeePerGas });
+    throw new FeeCapTooHighError({ maxFeePerGas });
   if (maxPriorityFeePerGas && maxFeePerGas && maxPriorityFeePerGas > maxFeePerGas)
-    throw new TipAboveFeeCapError$1({ maxFeePerGas, maxPriorityFeePerGas });
+    throw new TipAboveFeeCapError({ maxFeePerGas, maxPriorityFeePerGas });
 }
-async function getChainId$3(client2) {
+async function getChainId$1(client2) {
   const chainIdHex = await client2.request({
     method: "eth_chainId"
   });
-  return hexToNumber$1(chainIdHex);
+  return hexToNumber(chainIdHex);
 }
-let BaseFeeScalarError$1 = class BaseFeeScalarError extends BaseError$6 {
+class BaseFeeScalarError extends BaseError$2 {
   constructor() {
     super("`baseFeeMultiplier` must be greater than 1.");
     Object.defineProperty(this, "name", {
@@ -66991,8 +66968,8 @@ let BaseFeeScalarError$1 = class BaseFeeScalarError extends BaseError$6 {
       value: "BaseFeeScalarError"
     });
   }
-};
-let Eip1559FeesNotSupportedError$1 = class Eip1559FeesNotSupportedError extends BaseError$6 {
+}
+class Eip1559FeesNotSupportedError extends BaseError$2 {
   constructor() {
     super("Chain does not support EIP-1559 fees.");
     Object.defineProperty(this, "name", {
@@ -67002,10 +66979,10 @@ let Eip1559FeesNotSupportedError$1 = class Eip1559FeesNotSupportedError extends 
       value: "Eip1559FeesNotSupportedError"
     });
   }
-};
-let MaxFeePerGasTooLowError$1 = class MaxFeePerGasTooLowError extends BaseError$6 {
+}
+class MaxFeePerGasTooLowError extends BaseError$2 {
   constructor({ maxPriorityFeePerGas }) {
-    super(`\`maxFeePerGas\` cannot be less than the \`maxPriorityFeePerGas\` (${formatGwei$1(maxPriorityFeePerGas)} gwei).`);
+    super(`\`maxFeePerGas\` cannot be less than the \`maxPriorityFeePerGas\` (${formatGwei(maxPriorityFeePerGas)} gwei).`);
     Object.defineProperty(this, "name", {
       enumerable: true,
       configurable: true,
@@ -67013,8 +66990,8 @@ let MaxFeePerGasTooLowError$1 = class MaxFeePerGasTooLowError extends BaseError$
       value: "MaxFeePerGasTooLowError"
     });
   }
-};
-let BlockNotFoundError$1 = class BlockNotFoundError extends BaseError$6 {
+}
+class BlockNotFoundError extends BaseError$2 {
   constructor({ blockHash, blockNumber }) {
     let identifier2 = "Block";
     if (blockHash)
@@ -67029,28 +67006,28 @@ let BlockNotFoundError$1 = class BlockNotFoundError extends BaseError$6 {
       value: "BlockNotFoundError"
     });
   }
-};
-const transactionType$1 = {
+}
+const transactionType = {
   "0x0": "legacy",
   "0x1": "eip2930",
   "0x2": "eip1559",
   "0x3": "eip4844"
 };
-function formatTransaction$1(transaction2) {
+function formatTransaction(transaction2) {
   const transaction_ = {
     ...transaction2,
     blockHash: transaction2.blockHash ? transaction2.blockHash : null,
     blockNumber: transaction2.blockNumber ? BigInt(transaction2.blockNumber) : null,
-    chainId: transaction2.chainId ? hexToNumber$1(transaction2.chainId) : void 0,
+    chainId: transaction2.chainId ? hexToNumber(transaction2.chainId) : void 0,
     gas: transaction2.gas ? BigInt(transaction2.gas) : void 0,
     gasPrice: transaction2.gasPrice ? BigInt(transaction2.gasPrice) : void 0,
     maxFeePerBlobGas: transaction2.maxFeePerBlobGas ? BigInt(transaction2.maxFeePerBlobGas) : void 0,
     maxFeePerGas: transaction2.maxFeePerGas ? BigInt(transaction2.maxFeePerGas) : void 0,
     maxPriorityFeePerGas: transaction2.maxPriorityFeePerGas ? BigInt(transaction2.maxPriorityFeePerGas) : void 0,
-    nonce: transaction2.nonce ? hexToNumber$1(transaction2.nonce) : void 0,
+    nonce: transaction2.nonce ? hexToNumber(transaction2.nonce) : void 0,
     to: transaction2.to ? transaction2.to : null,
     transactionIndex: transaction2.transactionIndex ? Number(transaction2.transactionIndex) : null,
-    type: transaction2.type ? transactionType$1[transaction2.type] : void 0,
+    type: transaction2.type ? transactionType[transaction2.type] : void 0,
     typeHex: transaction2.type ? transaction2.type : void 0,
     value: transaction2.value ? BigInt(transaction2.value) : void 0,
     v: transaction2.v ? BigInt(transaction2.v) : void 0
@@ -67085,12 +67062,12 @@ function formatTransaction$1(transaction2) {
   }
   return transaction_;
 }
-function formatBlock$1(block) {
-  var _a2;
-  const transactions2 = (_a2 = block.transactions) == null ? void 0 : _a2.map((transaction2) => {
+function formatBlock(block) {
+  var _a;
+  const transactions2 = (_a = block.transactions) == null ? void 0 : _a.map((transaction2) => {
     if (typeof transaction2 === "string")
       return transaction2;
-    return formatTransaction$1(transaction2);
+    return formatTransaction(transaction2);
   });
   return {
     ...block,
@@ -67110,11 +67087,11 @@ function formatBlock$1(block) {
     totalDifficulty: block.totalDifficulty ? BigInt(block.totalDifficulty) : null
   };
 }
-async function getBlock$1(client2, { blockHash, blockNumber, blockTag: blockTag_, includeTransactions: includeTransactions_ } = {}) {
-  var _a2, _b, _c;
+async function getBlock(client2, { blockHash, blockNumber, blockTag: blockTag_, includeTransactions: includeTransactions_ } = {}) {
+  var _a, _b, _c;
   const blockTag = blockTag_ ?? "latest";
   const includeTransactions = includeTransactions_ ?? false;
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
   let block = null;
   if (blockHash) {
     block = await client2.request({
@@ -67128,24 +67105,24 @@ async function getBlock$1(client2, { blockHash, blockNumber, blockTag: blockTag_
     });
   }
   if (!block)
-    throw new BlockNotFoundError$1({ blockHash, blockNumber });
-  const format2 = ((_c = (_b = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b.block) == null ? void 0 : _c.format) || formatBlock$1;
+    throw new BlockNotFoundError({ blockHash, blockNumber });
+  const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.block) == null ? void 0 : _c.format) || formatBlock;
   return format2(block);
 }
-async function getGasPrice$1(client2) {
+async function getGasPrice(client2) {
   const gasPrice = await client2.request({
     method: "eth_gasPrice"
   });
   return BigInt(gasPrice);
 }
 async function estimateMaxPriorityFeePerGas(client2, args) {
-  return internal_estimateMaxPriorityFeePerGas$1(client2, args);
+  return internal_estimateMaxPriorityFeePerGas(client2, args);
 }
-async function internal_estimateMaxPriorityFeePerGas$1(client2, args) {
-  var _a2, _b, _c;
+async function internal_estimateMaxPriorityFeePerGas(client2, args) {
+  var _a, _b, _c;
   const { block: block_, chain = client2.chain, request } = args || {};
-  if (typeof ((_a2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a2.defaultPriorityFee) === "function") {
-    const block = block_ || await getAction$3(client2, getBlock$1, "getBlock")({});
+  if (typeof ((_a = chain == null ? void 0 : chain.fees) == null ? void 0 : _a.defaultPriorityFee) === "function") {
+    const block = block_ || await getAction$1(client2, getBlock, "getBlock")({});
     return chain.fees.defaultPriorityFee({
       block,
       client: client2,
@@ -67158,14 +67135,14 @@ async function internal_estimateMaxPriorityFeePerGas$1(client2, args) {
     const maxPriorityFeePerGasHex = await client2.request({
       method: "eth_maxPriorityFeePerGas"
     });
-    return hexToBigInt$1(maxPriorityFeePerGasHex);
+    return hexToBigInt(maxPriorityFeePerGasHex);
   } catch {
     const [block, gasPrice] = await Promise.all([
-      block_ ? Promise.resolve(block_) : getAction$3(client2, getBlock$1, "getBlock")({}),
-      getAction$3(client2, getGasPrice$1, "getGasPrice")({})
+      block_ ? Promise.resolve(block_) : getAction$1(client2, getBlock, "getBlock")({}),
+      getAction$1(client2, getGasPrice, "getGasPrice")({})
     ]);
     if (typeof block.baseFeePerGas !== "bigint")
-      throw new Eip1559FeesNotSupportedError$1();
+      throw new Eip1559FeesNotSupportedError();
     const maxPriorityFeePerGas = gasPrice - block.baseFeePerGas;
     if (maxPriorityFeePerGas < 0n)
       return 0n;
@@ -67173,14 +67150,14 @@ async function internal_estimateMaxPriorityFeePerGas$1(client2, args) {
   }
 }
 async function estimateFeesPerGas(client2, args) {
-  return internal_estimateFeesPerGas$1(client2, args);
+  return internal_estimateFeesPerGas(client2, args);
 }
-async function internal_estimateFeesPerGas$1(client2, args) {
-  var _a2, _b;
+async function internal_estimateFeesPerGas(client2, args) {
+  var _a, _b;
   const { block: block_, chain = client2.chain, request, type = "eip1559" } = args || {};
   const baseFeeMultiplier = await (async () => {
-    var _a3, _b2;
-    if (typeof ((_a3 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a3.baseFeeMultiplier) === "function")
+    var _a2, _b2;
+    if (typeof ((_a2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a2.baseFeeMultiplier) === "function")
       return chain.fees.baseFeeMultiplier({
         block: block_,
         client: client2,
@@ -67189,11 +67166,11 @@ async function internal_estimateFeesPerGas$1(client2, args) {
     return ((_b2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _b2.baseFeeMultiplier) ?? 1.2;
   })();
   if (baseFeeMultiplier < 1)
-    throw new BaseFeeScalarError$1();
-  const decimals = ((_a2 = baseFeeMultiplier.toString().split(".")[1]) == null ? void 0 : _a2.length) ?? 0;
+    throw new BaseFeeScalarError();
+  const decimals = ((_a = baseFeeMultiplier.toString().split(".")[1]) == null ? void 0 : _a.length) ?? 0;
   const denominator = 10 ** decimals;
   const multiply = (base2) => base2 * BigInt(Math.ceil(baseFeeMultiplier * denominator)) / BigInt(denominator);
-  const block = block_ ? block_ : await getAction$3(client2, getBlock$1, "getBlock")({});
+  const block = block_ ? block_ : await getAction$1(client2, getBlock, "getBlock")({});
   if (typeof ((_b = chain == null ? void 0 : chain.fees) == null ? void 0 : _b.estimateFeesPerGas) === "function")
     return chain.fees.estimateFeesPerGas({
       block: block_,
@@ -67204,8 +67181,8 @@ async function internal_estimateFeesPerGas$1(client2, args) {
     });
   if (type === "eip1559") {
     if (typeof block.baseFeePerGas !== "bigint")
-      throw new Eip1559FeesNotSupportedError$1();
-    const maxPriorityFeePerGas = typeof (request == null ? void 0 : request.maxPriorityFeePerGas) === "bigint" ? request.maxPriorityFeePerGas : await internal_estimateMaxPriorityFeePerGas$1(client2, {
+      throw new Eip1559FeesNotSupportedError();
+    const maxPriorityFeePerGas = typeof (request == null ? void 0 : request.maxPriorityFeePerGas) === "bigint" ? request.maxPriorityFeePerGas : await internal_estimateMaxPriorityFeePerGas(client2, {
       block,
       chain,
       request
@@ -67217,23 +67194,23 @@ async function internal_estimateFeesPerGas$1(client2, args) {
       maxPriorityFeePerGas
     };
   }
-  const gasPrice = (request == null ? void 0 : request.gasPrice) ?? multiply(await getAction$3(client2, getGasPrice$1, "getGasPrice")({}));
+  const gasPrice = (request == null ? void 0 : request.gasPrice) ?? multiply(await getAction$1(client2, getGasPrice, "getGasPrice")({}));
   return {
     gasPrice
   };
 }
-let EstimateGasExecutionError$1 = class EstimateGasExecutionError extends BaseError$6 {
+class EstimateGasExecutionError extends BaseError$2 {
   constructor(cause, { account: account2, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value }) {
-    var _a2;
-    const prettyArgs = prettyPrint$1({
+    var _a;
+    const prettyArgs = prettyPrint({
       from: account2 == null ? void 0 : account2.address,
       to,
-      value: typeof value !== "undefined" && `${formatEther$1(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
+      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a.symbol) || "ETH"}`,
       data,
       gas,
-      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei$1(gasPrice)} gwei`,
-      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei$1(maxFeePerGas)} gwei`,
-      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei$1(maxPriorityFeePerGas)} gwei`,
+      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
+      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei(maxFeePerGas)} gwei`,
+      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei(maxPriorityFeePerGas)} gwei`,
       nonce
     });
     super(cause.shortMessage, {
@@ -67259,33 +67236,33 @@ let EstimateGasExecutionError$1 = class EstimateGasExecutionError extends BaseEr
     });
     this.cause = cause;
   }
-};
-function getEstimateGasError$1(err, { docsPath: docsPath2, ...args }) {
+}
+function getEstimateGasError(err, { docsPath: docsPath2, ...args }) {
   const cause = (() => {
-    const cause2 = getNodeError$1(err, args);
-    if (cause2 instanceof UnknownNodeError$1)
+    const cause2 = getNodeError(err, args);
+    if (cause2 instanceof UnknownNodeError)
       return err;
     return cause2;
   })();
-  return new EstimateGasExecutionError$1(cause, {
+  return new EstimateGasExecutionError(cause, {
     docsPath: docsPath2,
     ...args
   });
 }
-async function estimateGas$1(client2, args) {
-  var _a2, _b, _c;
+async function estimateGas(client2, args) {
+  var _a, _b, _c;
   const account_ = args.account ?? client2.account;
-  const account2 = account_ ? parseAccount$1(account_) : void 0;
+  const account2 = account_ ? parseAccount(account_) : void 0;
   try {
-    const { accessList, blockNumber, blockTag, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = (account2 == null ? void 0 : account2.type) === "local" ? await prepareTransactionRequest$1(client2, args) : args;
-    const blockNumberHex = blockNumber ? numberToHex$1(blockNumber) : void 0;
+    const { accessList, blockNumber, blockTag, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = (account2 == null ? void 0 : account2.type) === "local" ? await prepareTransactionRequest(client2, args) : args;
+    const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
     const block = blockNumberHex || blockTag;
-    assertRequest$1(args);
-    const chainFormat = (_c = (_b = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b.transactionRequest) == null ? void 0 : _c.format;
-    const format2 = chainFormat || formatTransactionRequest$1;
+    assertRequest(args);
+    const chainFormat = (_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.transactionRequest) == null ? void 0 : _c.format;
+    const format2 = chainFormat || formatTransactionRequest;
     const request = format2({
       // Pick out extra data that might exist on the chain's transaction request type.
-      ...extract$1(rest, { format: chainFormat }),
+      ...extract(rest, { format: chainFormat }),
       from: account2 == null ? void 0 : account2.address,
       accessList,
       data,
@@ -67303,21 +67280,21 @@ async function estimateGas$1(client2, args) {
     });
     return BigInt(balance);
   } catch (err) {
-    throw getEstimateGasError$1(err, {
+    throw getEstimateGasError(err, {
       ...args,
       account: account2,
       chain: client2.chain
     });
   }
 }
-async function getTransactionCount$1(client2, { address, blockTag = "latest", blockNumber }) {
+async function getTransactionCount(client2, { address, blockTag = "latest", blockNumber }) {
   const count = await client2.request({
     method: "eth_getTransactionCount",
-    params: [address, blockNumber ? numberToHex$1(blockNumber) : blockTag]
+    params: [address, blockNumber ? numberToHex(blockNumber) : blockTag]
   });
-  return hexToNumber$1(count);
+  return hexToNumber(count);
 }
-function getTransactionType$1(transaction2) {
+function getTransactionType(transaction2) {
   if (transaction2.type)
     return transaction2.type;
   if (typeof transaction2.maxFeePerGas !== "undefined" || typeof transaction2.maxPriorityFeePerGas !== "undefined")
@@ -67327,42 +67304,42 @@ function getTransactionType$1(transaction2) {
       return "eip2930";
     return "legacy";
   }
-  throw new InvalidSerializableTransactionError$1({ transaction: transaction2 });
+  throw new InvalidSerializableTransactionError({ transaction: transaction2 });
 }
-async function prepareTransactionRequest$1(client2, args) {
+async function prepareTransactionRequest(client2, args) {
   const { account: account_ = client2.account, chain, gas, nonce, parameters = ["fees", "gas", "nonce", "type"], type } = args;
-  const account2 = account_ ? parseAccount$1(account_) : void 0;
-  const block = await getAction$3(client2, getBlock$1, "getBlock")({ blockTag: "latest" });
+  const account2 = account_ ? parseAccount(account_) : void 0;
+  const block = await getAction$1(client2, getBlock, "getBlock")({ blockTag: "latest" });
   const request = { ...args, ...account2 ? { from: account2 == null ? void 0 : account2.address } : {} };
   if (parameters.includes("nonce") && typeof nonce === "undefined" && account2)
-    request.nonce = await getAction$3(client2, getTransactionCount$1, "getTransactionCount")({
+    request.nonce = await getAction$1(client2, getTransactionCount, "getTransactionCount")({
       address: account2.address,
       blockTag: "pending"
     });
   if ((parameters.includes("fees") || parameters.includes("type")) && typeof type === "undefined") {
     try {
-      request.type = getTransactionType$1(request);
+      request.type = getTransactionType(request);
     } catch {
       request.type = typeof block.baseFeePerGas === "bigint" ? "eip1559" : "legacy";
     }
   }
   if (parameters.includes("fees")) {
     if (request.type === "eip1559") {
-      const { maxFeePerGas, maxPriorityFeePerGas } = await internal_estimateFeesPerGas$1(client2, {
+      const { maxFeePerGas, maxPriorityFeePerGas } = await internal_estimateFeesPerGas(client2, {
         block,
         chain,
         request
       });
       if (typeof args.maxPriorityFeePerGas === "undefined" && args.maxFeePerGas && args.maxFeePerGas < maxPriorityFeePerGas)
-        throw new MaxFeePerGasTooLowError$1({
+        throw new MaxFeePerGasTooLowError({
           maxPriorityFeePerGas
         });
       request.maxPriorityFeePerGas = maxPriorityFeePerGas;
       request.maxFeePerGas = maxFeePerGas;
     } else {
       if (typeof args.maxFeePerGas !== "undefined" || typeof args.maxPriorityFeePerGas !== "undefined")
-        throw new Eip1559FeesNotSupportedError$1();
-      const { gasPrice: gasPrice_ } = await internal_estimateFeesPerGas$1(client2, {
+        throw new Eip1559FeesNotSupportedError();
+      const { gasPrice: gasPrice_ } = await internal_estimateFeesPerGas(client2, {
         block,
         chain,
         request,
@@ -67372,40 +67349,40 @@ async function prepareTransactionRequest$1(client2, args) {
     }
   }
   if (parameters.includes("gas") && typeof gas === "undefined")
-    request.gas = await getAction$3(client2, estimateGas$1, "estimateGas")({
+    request.gas = await getAction$1(client2, estimateGas, "estimateGas")({
       ...request,
       account: account2 ? { address: account2.address, type: "json-rpc" } : void 0
     });
-  assertRequest$1(request);
+  assertRequest(request);
   delete request.parameters;
   return request;
 }
-async function sendRawTransaction$1(client2, { serializedTransaction }) {
+async function sendRawTransaction(client2, { serializedTransaction }) {
   return client2.request({
     method: "eth_sendRawTransaction",
     params: [serializedTransaction]
   }, { retryCount: 0 });
 }
-async function sendTransaction$3(client2, args) {
-  var _a2, _b, _c, _d;
+async function sendTransaction$1(client2, args) {
+  var _a, _b, _c, _d;
   const { account: account_ = client2.account, chain = client2.chain, accessList, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = args;
   if (!account_)
-    throw new AccountNotFoundError$1({
+    throw new AccountNotFoundError({
       docsPath: "/docs/actions/wallet/sendTransaction"
     });
-  const account2 = parseAccount$1(account_);
+  const account2 = parseAccount(account_);
   try {
-    assertRequest$1(args);
+    assertRequest(args);
     let chainId;
     if (chain !== null) {
-      chainId = await getAction$3(client2, getChainId$3, "getChainId")({});
-      assertCurrentChain$1({
+      chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
+      assertCurrentChain({
         currentChainId: chainId,
         chain
       });
     }
     if (account2.type === "local") {
-      const request2 = await getAction$3(client2, prepareTransactionRequest$1, "prepareTransactionRequest")({
+      const request2 = await getAction$1(client2, prepareTransactionRequest, "prepareTransactionRequest")({
         account: account2,
         accessList,
         chain,
@@ -67420,21 +67397,21 @@ async function sendTransaction$3(client2, args) {
         ...rest
       });
       if (!chainId)
-        chainId = await getAction$3(client2, getChainId$3, "getChainId")({});
-      const serializer = (_a2 = chain == null ? void 0 : chain.serializers) == null ? void 0 : _a2.transaction;
+        chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
+      const serializer = (_a = chain == null ? void 0 : chain.serializers) == null ? void 0 : _a.transaction;
       const serializedTransaction = await account2.signTransaction({
         ...request2,
         chainId
       }, { serializer });
-      return await getAction$3(client2, sendRawTransaction$1, "sendRawTransaction")({
+      return await getAction$1(client2, sendRawTransaction, "sendRawTransaction")({
         serializedTransaction
       });
     }
     const chainFormat = (_d = (_c = (_b = client2.chain) == null ? void 0 : _b.formatters) == null ? void 0 : _c.transactionRequest) == null ? void 0 : _d.format;
-    const format2 = chainFormat || formatTransactionRequest$1;
+    const format2 = chainFormat || formatTransactionRequest;
     const request = format2({
       // Pick out extra data that might exist on the chain's transaction request type.
-      ...extract$1(rest, { format: chainFormat }),
+      ...extract(rest, { format: chainFormat }),
       accessList,
       data,
       from: account2.address,
@@ -67451,7 +67428,7 @@ async function sendTransaction$3(client2, args) {
       params: [request]
     }, { retryCount: 0 });
   } catch (err) {
-    throw getTransactionError$1(err, {
+    throw getTransactionError(err, {
       ...args,
       account: account2,
       chain: args.chain || void 0
@@ -67461,7 +67438,7 @@ async function sendTransaction$3(client2, args) {
 function deployContract(walletClient, parameters) {
   const { abi: abi2, args, bytecode, ...request } = parameters;
   const calldata = encodeDeployData({ abi: abi2, args, bytecode });
-  return sendTransaction$3(walletClient, {
+  return sendTransaction$1(walletClient, {
     ...request,
     data: calldata
   });
@@ -67716,8 +67693,6 @@ const rotlBL = (h2, l2, s2) => h2 << s2 - 32 | l2 >>> 64 - s2;
 /*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
 const u8a = (a2) => a2 instanceof Uint8Array;
 const u32 = (arr) => new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
-const createView = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
-const rotr = (word, shift2) => word << 32 - shift2 | word >>> shift2;
 const isLE = new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
 if (!isLE)
   throw new Error("Non little-endian hardware is not supported");
@@ -67726,7 +67701,7 @@ function utf8ToBytes(str) {
     throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
   return new Uint8Array(new TextEncoder().encode(str));
 }
-function toBytes$1(data) {
+function toBytes(data) {
   if (typeof data === "string")
     data = utf8ToBytes(data);
   if (!u8a(data))
@@ -67740,7 +67715,7 @@ class Hash2 {
   }
 }
 function wrapConstructor(hashCons) {
-  const hashC = (msg) => hashCons().update(toBytes$1(msg)).digest();
+  const hashC = (msg) => hashCons().update(toBytes(msg)).digest();
   const tmp = hashCons();
   hashC.outputLen = tmp.outputLen;
   hashC.blockLen = tmp.blockLen;
@@ -67836,7 +67811,7 @@ class Keccak extends Hash2 {
   update(data) {
     exists(this);
     const { blockLen, state } = this;
-    data = toBytes$1(data);
+    data = toBytes(data);
     const len = data.length;
     for (let pos = 0; pos < len; ) {
       const take = Math.min(blockLen - this.pos, len - pos);
@@ -67915,16 +67890,16 @@ class Keccak extends Hash2 {
 }
 const gen = (suffix, blockLen, outputLen) => wrapConstructor(() => new Keccak(blockLen, suffix, outputLen));
 const keccak_256 = /* @__PURE__ */ gen(1, 136, 256 / 8);
-function keccak256$1(value, to_) {
+function keccak256(value, to_) {
   const to = to_ || "hex";
-  const bytes3 = keccak_256(isHex$1(value, { strict: false }) ? toBytes$2(value) : value);
+  const bytes3 = keccak_256(isHex(value, { strict: false }) ? toBytes$1(value) : value);
   if (to === "bytes")
     return bytes3;
-  return toHex$1(bytes3);
+  return toHex(bytes3);
 }
-function checksumAddress$1(address_, chainId) {
+function checksumAddress(address_, chainId) {
   const hexAddress = chainId ? `${chainId}${address_.toLowerCase()}` : address_.substring(2).toLowerCase();
-  const hash2 = keccak256$1(stringToBytes$1(hexAddress), "bytes");
+  const hash2 = keccak256(stringToBytes(hexAddress), "bytes");
   const address = (chainId ? hexAddress.substring(`${chainId}0x`.length) : hexAddress).split("");
   for (let i2 = 0; i2 < 40; i2 += 2) {
     if (hash2[i2 >> 1] >> 4 >= 8 && address[i2]) {
@@ -67937,11 +67912,11 @@ function checksumAddress$1(address_, chainId) {
   return `0x${address.join("")}`;
 }
 function getAddress(address, chainId) {
-  if (!isAddress$1(address))
-    throw new InvalidAddressError$1({ address });
-  return checksumAddress$1(address, chainId);
+  if (!isAddress(address))
+    throw new InvalidAddressError({ address });
+  return checksumAddress(address, chainId);
 }
-let NegativeOffsetError$1 = class NegativeOffsetError extends BaseError$6 {
+class NegativeOffsetError extends BaseError$2 {
   constructor({ offset: offset2 }) {
     super(`Offset \`${offset2}\` cannot be negative.`);
     Object.defineProperty(this, "name", {
@@ -67951,8 +67926,8 @@ let NegativeOffsetError$1 = class NegativeOffsetError extends BaseError$6 {
       value: "NegativeOffsetError"
     });
   }
-};
-let PositionOutOfBoundsError$1 = class PositionOutOfBoundsError extends BaseError$6 {
+}
+class PositionOutOfBoundsError extends BaseError$2 {
   constructor({ length: length2, position: position2 }) {
     super(`Position \`${position2}\` is out of bounds (\`0 < position < ${length2}\`).`);
     Object.defineProperty(this, "name", {
@@ -67962,8 +67937,8 @@ let PositionOutOfBoundsError$1 = class PositionOutOfBoundsError extends BaseErro
       value: "PositionOutOfBoundsError"
     });
   }
-};
-let RecursiveReadLimitExceededError$1 = class RecursiveReadLimitExceededError extends BaseError$6 {
+}
+class RecursiveReadLimitExceededError extends BaseError$2 {
   constructor({ count, limit }) {
     super(`Recursive read limit of \`${limit}\` exceeded (recursive read count: \`${count}\`).`);
     Object.defineProperty(this, "name", {
@@ -67973,8 +67948,8 @@ let RecursiveReadLimitExceededError$1 = class RecursiveReadLimitExceededError ex
       value: "RecursiveReadLimitExceededError"
     });
   }
-};
-const staticCursor$1 = {
+}
+const staticCursor = {
   bytes: new Uint8Array(),
   dataView: new DataView(new ArrayBuffer(0)),
   position: 0,
@@ -67983,21 +67958,21 @@ const staticCursor$1 = {
   recursiveReadLimit: Infinity,
   assertReadLimit() {
     if (this.recursiveReadCount >= this.recursiveReadLimit)
-      throw new RecursiveReadLimitExceededError$1({
+      throw new RecursiveReadLimitExceededError({
         count: this.recursiveReadCount + 1,
         limit: this.recursiveReadLimit
       });
   },
   assertPosition(position2) {
     if (position2 < 0 || position2 > this.bytes.length - 1)
-      throw new PositionOutOfBoundsError$1({
+      throw new PositionOutOfBoundsError({
         length: this.bytes.length,
         position: position2
       });
   },
   decrementPosition(offset2) {
     if (offset2 < 0)
-      throw new NegativeOffsetError$1({ offset: offset2 });
+      throw new NegativeOffsetError({ offset: offset2 });
     const position2 = this.position - offset2;
     this.assertPosition(position2);
     this.position = position2;
@@ -68007,7 +67982,7 @@ const staticCursor$1 = {
   },
   incrementPosition(offset2) {
     if (offset2 < 0)
-      throw new NegativeOffsetError$1({ offset: offset2 });
+      throw new NegativeOffsetError({ offset: offset2 });
     const position2 = this.position + offset2;
     this.assertPosition(position2);
     this.position = position2;
@@ -68130,8 +68105,8 @@ const staticCursor$1 = {
       this.recursiveReadCount++;
   }
 };
-function createCursor$1(bytes3, { recursiveReadLimit = 8192 } = {}) {
-  const cursor2 = Object.create(staticCursor$1);
+function createCursor(bytes3, { recursiveReadLimit = 8192 } = {}) {
+  const cursor2 = Object.create(staticCursor);
   cursor2.bytes = bytes3;
   cursor2.dataView = new DataView(bytes3.buffer, bytes3.byteOffset, bytes3.byteLength);
   cursor2.positionReadCount = /* @__PURE__ */ new Map();
@@ -68140,14 +68115,14 @@ function createCursor$1(bytes3, { recursiveReadLimit = 8192 } = {}) {
 }
 function bytesToBigInt(bytes3, opts = {}) {
   if (typeof opts.size !== "undefined")
-    assertSize$1(bytes3, { size: opts.size });
-  const hex2 = bytesToHex$1(bytes3, opts);
-  return hexToBigInt$1(hex2, opts);
+    assertSize(bytes3, { size: opts.size });
+  const hex2 = bytesToHex(bytes3, opts);
+  return hexToBigInt(hex2, opts);
 }
 function bytesToBool(bytes_, opts = {}) {
   let bytes3 = bytes_;
   if (typeof opts.size !== "undefined") {
-    assertSize$1(bytes3, { size: opts.size });
+    assertSize(bytes3, { size: opts.size });
     bytes3 = trim$1(bytes3);
   }
   if (bytes3.length > 1 || bytes3[0] > 1)
@@ -68156,28 +68131,28 @@ function bytesToBool(bytes_, opts = {}) {
 }
 function bytesToNumber(bytes3, opts = {}) {
   if (typeof opts.size !== "undefined")
-    assertSize$1(bytes3, { size: opts.size });
-  const hex2 = bytesToHex$1(bytes3, opts);
-  return hexToNumber$1(hex2, opts);
+    assertSize(bytes3, { size: opts.size });
+  const hex2 = bytesToHex(bytes3, opts);
+  return hexToNumber(hex2, opts);
 }
 function bytesToString(bytes_, opts = {}) {
   let bytes3 = bytes_;
   if (typeof opts.size !== "undefined") {
-    assertSize$1(bytes3, { size: opts.size });
+    assertSize(bytes3, { size: opts.size });
     bytes3 = trim$1(bytes3, { dir: "right" });
   }
   return new TextDecoder().decode(bytes3);
 }
 function decodeAbiParameters(params, data) {
-  const bytes3 = typeof data === "string" ? hexToBytes$1(data) : data;
-  const cursor2 = createCursor$1(bytes3);
-  if (size$6(bytes3) === 0 && params.length > 0)
+  const bytes3 = typeof data === "string" ? hexToBytes(data) : data;
+  const cursor2 = createCursor(bytes3);
+  if (size$4(bytes3) === 0 && params.length > 0)
     throw new AbiDecodingZeroDataError();
-  if (size$6(data) && size$6(data) < 32)
+  if (size$4(data) && size$4(data) < 32)
     throw new AbiDecodingDataSizeTooSmallError({
-      data: typeof data === "string" ? data : bytesToHex$1(data),
+      data: typeof data === "string" ? data : bytesToHex(data),
       params,
-      size: size$6(data)
+      size: size$4(data)
     });
   let consumed = 0;
   const values = [];
@@ -68218,7 +68193,7 @@ const sizeOfLength = 32;
 const sizeOfOffset = 32;
 function decodeAddress(cursor2) {
   const value = cursor2.readBytes(32);
-  return [checksumAddress$1(bytesToHex$1(sliceBytes(value, -20))), 32];
+  return [checksumAddress(bytesToHex(sliceBytes(value, -20))), 32];
 }
 function decodeArray(cursor2, param, { length: length2, staticPosition }) {
   if (!length2) {
@@ -68281,9 +68256,9 @@ function decodeBytes(cursor2, param, { staticPosition }) {
     }
     const data = cursor2.readBytes(length2);
     cursor2.setPosition(staticPosition + 32);
-    return [bytesToHex$1(data), 32];
+    return [bytesToHex(data), 32];
   }
-  const value = bytesToHex$1(cursor2.readBytes(parseInt(size2), 32));
+  const value = bytesToHex(cursor2.readBytes(parseInt(size2), 32));
   return [value, 32];
 }
 function decodeNumber(cursor2, param) {
@@ -68339,7 +68314,7 @@ function decodeString(cursor2, { staticPosition }) {
   return [value, 32];
 }
 function hasDynamicChild(param) {
-  var _a2;
+  var _a;
   const { type } = param;
   if (type === "string")
     return true;
@@ -68348,7 +68323,7 @@ function hasDynamicChild(param) {
   if (type.endsWith("[]"))
     return true;
   if (type === "tuple")
-    return (_a2 = param.components) == null ? void 0 : _a2.some(hasDynamicChild);
+    return (_a = param.components) == null ? void 0 : _a.some(hasDynamicChild);
   const arrayComponents = getArrayComponents(param.type);
   if (arrayComponents && hasDynamicChild({ ...param, type: arrayComponents[1] }))
     return true;
@@ -68407,7 +68382,7 @@ function formatAbiItem(abiItem) {
     return "fallback()";
   return "receive() external payable";
 }
-const hash$1 = (value) => keccak256$1(toBytes$2(value));
+const hash$1 = (value) => keccak256(toBytes$1(value));
 function hashSignature(sig) {
   return hash$1(sig);
 }
@@ -68450,7 +68425,7 @@ function normalizeSignature(signature2) {
     current += char2;
   }
   if (!valid)
-    throw new BaseError$6("Unable to normalize signature.");
+    throw new BaseError$2("Unable to normalize signature.");
   return result;
 }
 const toSignature = (def) => {
@@ -68468,7 +68443,7 @@ const toEventSelector = toSignatureHash;
 const toFunctionSelector = (fn) => slice$1(toSignatureHash(fn), 0, 4);
 function getAbiItem(parameters) {
   const { abi: abi2, args = [], name } = parameters;
-  const isSelector = isHex$1(name, { strict: false });
+  const isSelector = isHex(name, { strict: false });
   const abiItems = abi2.filter((abiItem) => {
     if (isSelector) {
       if (abiItem.type === "function")
@@ -68528,7 +68503,7 @@ function isArgOfType(arg, abiParameter) {
   const abiParameterType = abiParameter.type;
   switch (abiParameterType) {
     case "address":
-      return isAddress$1(arg);
+      return isAddress(arg);
     case "bool":
       return argType === "boolean";
     case "function":
@@ -68566,9 +68541,9 @@ function getAmbiguousTypes(sourceParameters, targetParameters, args) {
       if (types2.includes("address") && types2.includes("bytes20"))
         return true;
       if (types2.includes("address") && types2.includes("string"))
-        return isAddress$1(args[parameterIndex]);
+        return isAddress(args[parameterIndex]);
       if (types2.includes("address") && types2.includes("bytes"))
-        return isAddress$1(args[parameterIndex]);
+        return isAddress(args[parameterIndex]);
       return false;
     })();
     if (ambiguous)
@@ -68619,8 +68594,8 @@ function encodeFunctionData(parameters) {
   return concatHex([signature2, data ?? "0x"]);
 }
 function getChainContractAddress({ blockNumber, chain, contract: name }) {
-  var _a2;
-  const contract = (_a2 = chain == null ? void 0 : chain.contracts) == null ? void 0 : _a2[name];
+  var _a;
+  const contract = (_a = chain == null ? void 0 : chain.contracts) == null ? void 0 : _a[name];
   if (!contract)
     throw new ChainDoesNotSupportContract({
       chain,
@@ -68692,9 +68667,9 @@ function formatAbiItemWithArgs({ abiItem, args, includeFunctionName = true, incl
     return;
   if (!abiItem.inputs)
     return;
-  return `${includeFunctionName ? abiItem.name : ""}(${abiItem.inputs.map((input2, i2) => `${includeName && input2.name ? `${input2.name}: ` : ""}${typeof args[i2] === "object" ? stringify$2(args[i2]) : args[i2]}`).join(", ")})`;
+  return `${includeFunctionName ? abiItem.name : ""}(${abiItem.inputs.map((input2, i2) => `${includeName && input2.name ? `${input2.name}: ` : ""}${typeof args[i2] === "object" ? stringify$1(args[i2]) : args[i2]}`).join(", ")})`;
 }
-class AccountStateConflictError extends BaseError$6 {
+class AccountStateConflictError extends BaseError$2 {
   constructor({ address }) {
     super(`State for account "${address}" is set multiple times.`);
     Object.defineProperty(this, "name", {
@@ -68705,7 +68680,7 @@ class AccountStateConflictError extends BaseError$6 {
     });
   }
 }
-class StateAssignmentConflictError extends BaseError$6 {
+class StateAssignmentConflictError extends BaseError$2 {
   constructor() {
     super("state and stateDiff are set on the same account.");
     Object.defineProperty(this, "name", {
@@ -68746,19 +68721,19 @@ function prettyStateOverride(stateOverride) {
     return val;
   }, "  State Override:\n").slice(0, -1);
 }
-class CallExecutionError extends BaseError$6 {
+class CallExecutionError extends BaseError$2 {
   constructor(cause, { account: account_, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride }) {
-    var _a2;
-    const account2 = account_ ? parseAccount$1(account_) : void 0;
-    let prettyArgs = prettyPrint$1({
+    var _a;
+    const account2 = account_ ? parseAccount(account_) : void 0;
+    let prettyArgs = prettyPrint({
       from: account2 == null ? void 0 : account2.address,
       to,
-      value: typeof value !== "undefined" && `${formatEther$1(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
+      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a.symbol) || "ETH"}`,
       data,
       gas,
-      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei$1(gasPrice)} gwei`,
-      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei$1(maxFeePerGas)} gwei`,
-      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei$1(maxPriorityFeePerGas)} gwei`,
+      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
+      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei(maxFeePerGas)} gwei`,
+      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei(maxPriorityFeePerGas)} gwei`,
       nonce
     });
     if (stateOverride) {
@@ -68789,7 +68764,7 @@ ${prettyStateOverride(stateOverride)}`;
     this.cause = cause;
   }
 }
-class ContractFunctionExecutionError extends BaseError$6 {
+class ContractFunctionExecutionError extends BaseError$2 {
   constructor(cause, { abi: abi2, args, contractAddress, docsPath: docsPath2, functionName, sender }) {
     const abiItem = getAbiItem({ abi: abi2, args, name: functionName });
     const formattedArgs = abiItem ? formatAbiItemWithArgs({
@@ -68799,7 +68774,7 @@ class ContractFunctionExecutionError extends BaseError$6 {
       includeName: false
     }) : void 0;
     const functionWithParams = abiItem ? formatAbiItem$1(abiItem, { includeName: true }) : void 0;
-    const prettyArgs = prettyPrint$1({
+    const prettyArgs = prettyPrint({
       address: contractAddress && getContractAddress(contractAddress),
       function: functionWithParams,
       args: formattedArgs && formattedArgs !== "()" && `${[...Array((functionName == null ? void 0 : functionName.length) ?? 0).keys()].map(() => " ").join("")}${formattedArgs}`,
@@ -68870,7 +68845,7 @@ class ContractFunctionExecutionError extends BaseError$6 {
     this.sender = sender;
   }
 }
-class ContractFunctionRevertedError extends BaseError$6 {
+class ContractFunctionRevertedError extends BaseError$2 {
   constructor({ abi: abi2, data, functionName, message }) {
     let cause;
     let decodedData = void 0;
@@ -68948,7 +68923,7 @@ class ContractFunctionRevertedError extends BaseError$6 {
     this.signature = signature2;
   }
 }
-class ContractFunctionZeroDataError extends BaseError$6 {
+class ContractFunctionZeroDataError extends BaseError$2 {
   constructor({ functionName }) {
     super(`The contract function "${functionName}" returned no data ("0x").`, {
       metaMessages: [
@@ -68966,7 +68941,7 @@ class ContractFunctionZeroDataError extends BaseError$6 {
     });
   }
 }
-class RawContractError extends BaseError$6 {
+class RawContractError extends BaseError$2 {
   constructor({ data, message }) {
     super(message || "");
     Object.defineProperty(this, "code", {
@@ -68991,13 +68966,13 @@ class RawContractError extends BaseError$6 {
   }
 }
 function isNullUniversalResolverError(err, callType) {
-  var _a2, _b, _c, _d, _e, _f;
-  if (!(err instanceof BaseError$6))
+  var _a, _b, _c, _d, _e, _f;
+  if (!(err instanceof BaseError$2))
     return false;
   const cause = err.walk((e2) => e2 instanceof ContractFunctionRevertedError);
   if (!(cause instanceof ContractFunctionRevertedError))
     return false;
-  if (((_a2 = cause.data) == null ? void 0 : _a2.errorName) === "ResolverNotFound")
+  if (((_a = cause.data) == null ? void 0 : _a.errorName) === "ResolverNotFound")
     return true;
   if (((_b = cause.data) == null ? void 0 : _b.errorName) === "ResolverWildcardNotSupported")
     return true;
@@ -69021,21 +68996,21 @@ function encodedLabelToLabelhash(label) {
   if (label.indexOf("]") !== 65)
     return null;
   const hash2 = `0x${label.slice(1, 65)}`;
-  if (!isHex$1(hash2))
+  if (!isHex(hash2))
     return null;
   return hash2;
 }
 function namehash(name) {
   let result = new Uint8Array(32).fill(0);
   if (!name)
-    return bytesToHex$1(result);
+    return bytesToHex(result);
   const labels = name.split(".");
   for (let i2 = labels.length - 1; i2 >= 0; i2 -= 1) {
     const hashFromEncodedLabel = encodedLabelToLabelhash(labels[i2]);
-    const hashed = hashFromEncodedLabel ? toBytes$2(hashFromEncodedLabel) : keccak256$1(stringToBytes$1(labels[i2]), "bytes");
-    result = keccak256$1(concat([result, hashed]), "bytes");
+    const hashed = hashFromEncodedLabel ? toBytes$1(hashFromEncodedLabel) : keccak256(stringToBytes(labels[i2]), "bytes");
+    result = keccak256(concat([result, hashed]), "bytes");
   }
-  return bytesToHex$1(result);
+  return bytesToHex(result);
 }
 function encodeLabelhash(hash2) {
   return `[${hash2.slice(2)}]`;
@@ -69043,20 +69018,20 @@ function encodeLabelhash(hash2) {
 function labelhash(label) {
   const result = new Uint8Array(32).fill(0);
   if (!label)
-    return bytesToHex$1(result);
-  return encodedLabelToLabelhash(label) || keccak256$1(stringToBytes$1(label));
+    return bytesToHex(result);
+  return encodedLabelToLabelhash(label) || keccak256(stringToBytes(label));
 }
 function packetToBytes(packet) {
   const value = packet.replace(/^\.|\.$/gm, "");
   if (value.length === 0)
     return new Uint8Array(1);
-  const bytes3 = new Uint8Array(stringToBytes$1(value).byteLength + 2);
+  const bytes3 = new Uint8Array(stringToBytes(value).byteLength + 2);
   let offset2 = 0;
   const list2 = value.split(".");
   for (let i2 = 0; i2 < list2.length; i2++) {
-    let encoded = stringToBytes$1(list2[i2]);
+    let encoded = stringToBytes(list2[i2]);
     if (encoded.byteLength > 255)
-      encoded = stringToBytes$1(encodeLabelhash(labelhash(list2[i2])));
+      encoded = stringToBytes(encodeLabelhash(labelhash(list2[i2])));
     bytes3[offset2] = encoded.length;
     bytes3.set(encoded, offset2 + 1);
     offset2 += encoded.length + 1;
@@ -69067,11 +69042,11 @@ function packetToBytes(packet) {
 }
 const EXECUTION_REVERTED_ERROR_CODE = 3;
 function getContractError(err, { abi: abi2, address, args, docsPath: docsPath2, functionName, sender }) {
-  const { code: code2, data, message, shortMessage } = err instanceof RawContractError ? err : err instanceof BaseError$6 ? err.walk((err2) => "data" in err2) || err.walk() : {};
+  const { code: code2, data, message, shortMessage } = err instanceof RawContractError ? err : err instanceof BaseError$2 ? err.walk((err2) => "data" in err2) || err.walk() : {};
   const cause = (() => {
     if (err instanceof AbiDecodingZeroDataError)
       return new ContractFunctionZeroDataError({ functionName });
-    if ([EXECUTION_REVERTED_ERROR_CODE, InternalRpcError$1.code].includes(code2) && (data || message || shortMessage)) {
+    if ([EXECUTION_REVERTED_ERROR_CODE, InternalRpcError.code].includes(code2) && (data || message || shortMessage)) {
       return new ContractFunctionRevertedError({
         abi: abi2,
         data: typeof data === "object" ? data.data : data,
@@ -69145,8 +69120,8 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
 const aggregate3Signature = "0x82ad56cb";
 function getCallError(err, { docsPath: docsPath2, ...args }) {
   const cause = (() => {
-    const cause2 = getNodeError$1(err, args);
-    if (cause2 instanceof UnknownNodeError$1)
+    const cause2 = getNodeError(err, args);
+    if (cause2 instanceof UnknownNodeError)
       return err;
     return cause2;
   })();
@@ -69164,18 +69139,18 @@ function createBatchScheduler({ fn, id: id2, shouldSplitBatch, wait: wait2 = 0, 
     if (args.length === 0)
       return;
     fn(args).then((data) => {
-      var _a2;
+      var _a;
       if (sort && Array.isArray(data))
         data.sort(sort);
       for (let i2 = 0; i2 < scheduler2.length; i2++) {
         const { pendingPromise } = scheduler2[i2];
-        (_a2 = pendingPromise.resolve) == null ? void 0 : _a2.call(pendingPromise, [data[i2], data]);
+        (_a = pendingPromise.resolve) == null ? void 0 : _a.call(pendingPromise, [data[i2], data]);
       }
     }).catch((err) => {
-      var _a2;
+      var _a;
       for (let i2 = 0; i2 < scheduler2.length; i2++) {
         const { pendingPromise } = scheduler2[i2];
-        (_a2 = pendingPromise.reject) == null ? void 0 : _a2.call(pendingPromise, err);
+        (_a = pendingPromise.reject) == null ? void 0 : _a.call(pendingPromise, err);
       }
     });
   };
@@ -69206,19 +69181,19 @@ function createBatchScheduler({ fn, id: id2, shouldSplitBatch, wait: wait2 = 0, 
   };
 }
 async function call(client2, args) {
-  var _a2, _b, _c, _d;
-  const { account: account_ = client2.account, batch = Boolean((_a2 = client2.batch) == null ? void 0 : _a2.multicall), blockNumber, blockTag = "latest", accessList, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride, ...rest } = args;
-  const account2 = account_ ? parseAccount$1(account_) : void 0;
+  var _a, _b, _c, _d;
+  const { account: account_ = client2.account, batch = Boolean((_a = client2.batch) == null ? void 0 : _a.multicall), blockNumber, blockTag = "latest", accessList, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride, ...rest } = args;
+  const account2 = account_ ? parseAccount(account_) : void 0;
   try {
-    assertRequest$1(args);
-    const blockNumberHex = blockNumber ? numberToHex$1(blockNumber) : void 0;
+    assertRequest(args);
+    const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
     const block = blockNumberHex || blockTag;
     const rpcStateOverride = parseStateOverride(stateOverride);
     const chainFormat = (_d = (_c = (_b = client2.chain) == null ? void 0 : _b.formatters) == null ? void 0 : _c.transactionRequest) == null ? void 0 : _d.format;
-    const format2 = chainFormat || formatTransactionRequest$1;
+    const format2 = chainFormat || formatTransactionRequest;
     const request = format2({
       // Pick out extra data that might exist on the chain's transaction request type.
-      ...extract$1(rest, { format: chainFormat }),
+      ...extract(rest, { format: chainFormat }),
       from: account2 == null ? void 0 : account2.address,
       accessList,
       data,
@@ -69251,7 +69226,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-ssUGx0MN.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DD2PFKbn.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
     if ((data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to) {
       return { data: await offchainLookup(client2, { data: data2, to }) };
     }
@@ -69275,8 +69250,8 @@ function shouldPerformMulticall({ request }) {
   return true;
 }
 async function scheduleMulticall(client2, args) {
-  var _a2;
-  const { batchSize = 1024, wait: wait2 = 0 } = typeof ((_a2 = client2.batch) == null ? void 0 : _a2.multicall) === "object" ? client2.batch.multicall : {};
+  var _a;
+  const { batchSize = 1024, wait: wait2 = 0 } = typeof ((_a = client2.batch) == null ? void 0 : _a.multicall) === "object" ? client2.batch.multicall : {};
   const { blockNumber, blockTag = "latest", data, multicallAddress: multicallAddress_, to } = args;
   let multicallAddress = multicallAddress_;
   if (!multicallAddress) {
@@ -69288,7 +69263,7 @@ async function scheduleMulticall(client2, args) {
       contract: "multicall3"
     });
   }
-  const blockNumberHex = blockNumber ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
   const block = blockNumberHex || blockTag;
   const { schedule } = createBatchScheduler({
     id: `${client2.uid}.${block}`,
@@ -69334,7 +69309,7 @@ async function scheduleMulticall(client2, args) {
   return { data: returnData };
 }
 function getRevertErrorData(err) {
-  if (!(err instanceof BaseError$6))
+  if (!(err instanceof BaseError$2))
     return void 0;
   const error = err.walk();
   return typeof error.data === "object" ? error.data.data : error.data;
@@ -69366,10 +69341,10 @@ function parseAccountStateOverride(args) {
     rpcAccountStateOverride.code = code2;
   }
   if (balance !== void 0) {
-    rpcAccountStateOverride.balance = numberToHex$1(balance, { size: 32 });
+    rpcAccountStateOverride.balance = numberToHex(balance, { size: 32 });
   }
   if (nonce !== void 0) {
-    rpcAccountStateOverride.nonce = numberToHex$1(nonce, { size: 8 });
+    rpcAccountStateOverride.nonce = numberToHex(nonce, { size: 8 });
   }
   if (state !== void 0) {
     rpcAccountStateOverride.state = parseStateMapping(state);
@@ -69386,8 +69361,8 @@ function parseStateOverride(args) {
     return void 0;
   const rpcStateOverride = {};
   for (const { address, ...accountState } of args) {
-    if (!isAddress$1(address))
-      throw new InvalidAddressError$1({ address });
+    if (!isAddress(address))
+      throw new InvalidAddressError({ address });
     if (rpcStateOverride[address])
       throw new AccountStateConflictError({ address });
     rpcStateOverride[address] = parseAccountStateOverride(accountState);
@@ -69402,7 +69377,7 @@ async function readContract(client2, parameters) {
     functionName
   });
   try {
-    const { data } = await getAction$3(client2, call, "call")({
+    const { data } = await getAction$1(client2, call, "call")({
       ...rest,
       data: calldata,
       to: address
@@ -69444,11 +69419,11 @@ async function getEnsAddress(client2, { blockNumber, blockTag, coinType, name, g
       address: universalResolverAddress,
       abi: universalResolverResolveAbi,
       functionName: "resolve",
-      args: [toHex$1(packetToBytes(name)), functionData],
+      args: [toHex(packetToBytes(name)), functionData],
       blockNumber,
       blockTag
     };
-    const readContractAction = getAction$3(client2, readContract, "readContract");
+    const readContractAction = getAction$1(client2, readContract, "readContract");
     const res = gatewayUrls ? await readContractAction({
       ...readContractParameters,
       args: [...readContractParameters.args, gatewayUrls]
@@ -69474,7 +69449,7 @@ async function getEnsAddress(client2, { blockNumber, blockTag, coinType, name, g
     throw err;
   }
 }
-class EnsAvatarInvalidMetadataError extends BaseError$6 {
+class EnsAvatarInvalidMetadataError extends BaseError$2 {
   constructor({ data }) {
     super("Unable to extract image from metadata. The metadata may be malformed or invalid.", {
       metaMessages: [
@@ -69491,7 +69466,7 @@ class EnsAvatarInvalidMetadataError extends BaseError$6 {
     });
   }
 }
-class EnsAvatarInvalidNftUriError extends BaseError$6 {
+class EnsAvatarInvalidNftUriError extends BaseError$2 {
   constructor({ reason }) {
     super(`ENS NFT avatar URI is invalid. ${reason}`);
     Object.defineProperty(this, "name", {
@@ -69502,7 +69477,7 @@ class EnsAvatarInvalidNftUriError extends BaseError$6 {
     });
   }
 }
-class EnsAvatarUriResolutionError extends BaseError$6 {
+class EnsAvatarUriResolutionError extends BaseError$2 {
   constructor({ uri }) {
     super(`Unable to resolve ENS avatar URI "${uri}". The URI may be malformed, invalid, or does not respond with a valid image.`);
     Object.defineProperty(this, "name", {
@@ -69513,7 +69488,7 @@ class EnsAvatarUriResolutionError extends BaseError$6 {
     });
   }
 }
-class EnsAvatarUnsupportedNamespaceError extends BaseError$6 {
+class EnsAvatarUnsupportedNamespaceError extends BaseError$2 {
   constructor({ namespace }) {
     super(`ENS NFT avatar namespace "${namespace}" is not supported. Must be "erc721" or "erc1155".`);
     Object.defineProperty(this, "name", {
@@ -69738,7 +69713,7 @@ async function getEnsText(client2, { blockNumber, blockTag, name, key: key2, gat
       abi: universalResolverResolveAbi,
       functionName: "resolve",
       args: [
-        toHex$1(packetToBytes(name)),
+        toHex(packetToBytes(name)),
         encodeFunctionData({
           abi: textResolverAbi,
           functionName: "text",
@@ -69748,7 +69723,7 @@ async function getEnsText(client2, { blockNumber, blockTag, name, key: key2, gat
       blockNumber,
       blockTag
     };
-    const readContractAction = getAction$3(client2, readContract, "readContract");
+    const readContractAction = getAction$1(client2, readContract, "readContract");
     const res = gatewayUrls ? await readContractAction({
       ...readContractParameters,
       args: [...readContractParameters.args, gatewayUrls]
@@ -69770,7 +69745,7 @@ async function getEnsText(client2, { blockNumber, blockTag, name, key: key2, gat
   }
 }
 async function getEnsAvatar(client2, { blockNumber, blockTag, assetGatewayUrls, name, gatewayUrls, strict, universalResolverAddress }) {
-  const record = await getAction$3(client2, getEnsText, "getEnsText")({
+  const record = await getAction$1(client2, getEnsText, "getEnsText")({
     blockNumber,
     blockTag,
     key: "avatar",
@@ -69807,11 +69782,11 @@ async function getEnsName(client2, { address, blockNumber, blockTag, gatewayUrls
       address: universalResolverAddress,
       abi: universalResolverReverseAbi,
       functionName: "reverse",
-      args: [toHex$1(packetToBytes(reverseNode))],
+      args: [toHex(packetToBytes(reverseNode))],
       blockNumber,
       blockTag
     };
-    const readContractAction = getAction$3(client2, readContract, "readContract");
+    const readContractAction = getAction$1(client2, readContract, "readContract");
     const [name, resolvedAddress] = gatewayUrls ? await readContractAction({
       ...readContractParameters,
       args: [...readContractParameters.args, gatewayUrls]
@@ -69838,7 +69813,7 @@ async function getEnsResolver(client2, { blockNumber, blockTag, name, universalR
       contract: "ensUniversalResolver"
     });
   }
-  const [resolverAddress] = await getAction$3(client2, readContract, "readContract")({
+  const [resolverAddress] = await getAction$1(client2, readContract, "readContract")({
     address: universalResolverAddress,
     abi: [
       {
@@ -69850,17 +69825,17 @@ async function getEnsResolver(client2, { blockNumber, blockTag, name, universalR
       }
     ],
     functionName: "findResolver",
-    args: [toHex$1(packetToBytes(name))],
+    args: [toHex(packetToBytes(name))],
     blockNumber,
     blockTag
   });
   return resolverAddress;
 }
 function createFilterRequestScope(client2, { method }) {
-  var _a2, _b;
+  var _a, _b;
   const requestMap = {};
   if (client2.transport.type === "fallback")
-    (_b = (_a2 = client2.transport).onResponse) == null ? void 0 : _b.call(_a2, ({ method: method_, response: id2, status, transport }) => {
+    (_b = (_a = client2.transport).onResponse) == null ? void 0 : _b.call(_a, ({ method: method_, response: id2, status, transport }) => {
       if (status === "success" && method === method_)
         requestMap[id2] = transport.request;
     });
@@ -69875,7 +69850,7 @@ async function createBlockFilter(client2) {
   });
   return { id: id2, request: getRequest(id2), type: "block" };
 }
-class FilterTypeNotSupportedError extends BaseError$6 {
+class FilterTypeNotSupportedError extends BaseError$2 {
   constructor(type) {
     super(`Filter type "${type}" is not supported.`);
     Object.defineProperty(this, "name", {
@@ -69888,7 +69863,7 @@ class FilterTypeNotSupportedError extends BaseError$6 {
 }
 const docsPath$1 = "/docs/contract/encodeEventTopics";
 function encodeEventTopics(parameters) {
-  var _a2;
+  var _a;
   const { abi: abi2, eventName, args } = parameters;
   let abiItem = abi2[0];
   if (eventName) {
@@ -69903,7 +69878,7 @@ function encodeEventTopics(parameters) {
   const signature2 = toEventSelector(definition);
   let topics = [];
   if (args && "inputs" in abiItem) {
-    const indexedInputs = (_a2 = abiItem.inputs) == null ? void 0 : _a2.filter((param) => "indexed" in param && param.indexed);
+    const indexedInputs = (_a = abiItem.inputs) == null ? void 0 : _a.filter((param) => "indexed" in param && param.indexed);
     const args_ = Array.isArray(args) ? args : Object.values(args).length > 0 ? (indexedInputs == null ? void 0 : indexedInputs.map((x) => args[x.name])) ?? [] : [];
     if (args_.length > 0) {
       topics = (indexedInputs == null ? void 0 : indexedInputs.map((param, i2) => Array.isArray(args_[i2]) ? args_[i2].map((_, j2) => encodeArg({ param, value: args_[i2][j2] })) : args_[i2] ? encodeArg({ param, value: args_[i2] }) : null)) ?? [];
@@ -69913,7 +69888,7 @@ function encodeEventTopics(parameters) {
 }
 function encodeArg({ param, value }) {
   if (param.type === "string" || param.type === "bytes")
-    return keccak256$1(toBytes$2(value));
+    return keccak256(toBytes$1(value));
   if (param.type === "tuple" || param.type.match(/^(.*)\[(\d+)?\]$/))
     throw new FilterTypeNotSupportedError(param.type);
   return encodeAbiParameters([param], [value]);
@@ -69933,8 +69908,8 @@ async function createContractEventFilter(client2, parameters) {
     params: [
       {
         address,
-        fromBlock: typeof fromBlock === "bigint" ? numberToHex$1(fromBlock) : fromBlock,
-        toBlock: typeof toBlock === "bigint" ? numberToHex$1(toBlock) : toBlock,
+        fromBlock: typeof fromBlock === "bigint" ? numberToHex(fromBlock) : fromBlock,
+        toBlock: typeof toBlock === "bigint" ? numberToHex(toBlock) : toBlock,
         topics
       }
     ]
@@ -69971,8 +69946,8 @@ async function createEventFilter(client2, { address, args, event, events: events
     params: [
       {
         address,
-        fromBlock: typeof fromBlock === "bigint" ? numberToHex$1(fromBlock) : fromBlock,
-        toBlock: typeof toBlock === "bigint" ? numberToHex$1(toBlock) : toBlock,
+        fromBlock: typeof fromBlock === "bigint" ? numberToHex(fromBlock) : fromBlock,
+        toBlock: typeof toBlock === "bigint" ? numberToHex(toBlock) : toBlock,
         ...topics.length ? { topics } : {}
       }
     ]
@@ -70006,14 +69981,14 @@ async function estimateContractGas(client2, parameters) {
     functionName
   });
   try {
-    const gas = await getAction$3(client2, estimateGas$1, "estimateGas")({
+    const gas = await getAction$1(client2, estimateGas, "estimateGas")({
       data,
       to: address,
       ...request
     });
     return gas;
   } catch (error) {
-    const account2 = request.account ? parseAccount$1(request.account) : void 0;
+    const account2 = request.account ? parseAccount(request.account) : void 0;
     throw getContractError(error, {
       abi: abi2,
       address,
@@ -70025,7 +70000,7 @@ async function estimateContractGas(client2, parameters) {
   }
 }
 async function getBalance(client2, { address, blockNumber, blockTag = "latest" }) {
-  const blockNumberHex = blockNumber ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
   const balance = await client2.request({
     method: "eth_getBalance",
     params: [address, blockNumberHex || blockTag]
@@ -70080,7 +70055,7 @@ async function getBlockNumber(client2, { cacheTime = client2.cacheTime } = {}) {
   return BigInt(blockNumberHex);
 }
 async function getBlockTransactionCount(client2, { blockHash, blockNumber, blockTag = "latest" } = {}) {
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
   let count;
   if (blockHash) {
     count = await client2.request({
@@ -70093,10 +70068,10 @@ async function getBlockTransactionCount(client2, { blockHash, blockNumber, block
       params: [blockNumberHex || blockTag]
     });
   }
-  return hexToNumber$1(count);
+  return hexToNumber(count);
 }
 async function getBytecode(client2, { address, blockNumber, blockTag = "latest" }) {
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
   const hex2 = await client2.request({
     method: "eth_getCode",
     params: [address, blockNumberHex || blockTag]
@@ -70145,12 +70120,12 @@ function decodeEventLog(parameters) {
         }
       } catch (err) {
         if (strict) {
-          if (err instanceof AbiDecodingDataSizeTooSmallError || err instanceof PositionOutOfBoundsError$1)
+          if (err instanceof AbiDecodingDataSizeTooSmallError || err instanceof PositionOutOfBoundsError)
             throw new DecodeLogDataMismatch({
               abiItem,
               data,
               params: nonIndexedInputs,
-              size: size$6(data)
+              size: size$4(data)
             });
           throw err;
         }
@@ -70177,10 +70152,10 @@ function decodeTopic({ param, value }) {
 }
 async function simulateContract$1(client2, parameters) {
   const { abi: abi2, address, args, dataSuffix, functionName, ...callRequest } = parameters;
-  const account2 = callRequest.account ? parseAccount$1(callRequest.account) : client2.account;
+  const account2 = callRequest.account ? parseAccount(callRequest.account) : client2.account;
   const calldata = encodeFunctionData({ abi: abi2, args, functionName });
   try {
-    const { data } = await getAction$3(client2, call, "call")({
+    const { data } = await getAction$1(client2, call, "call")({
       batch: false,
       data: `${calldata}${dataSuffix ? dataSuffix.replace("0x", "") : ""}`,
       to: address,
@@ -70254,12 +70229,12 @@ function observe(observerId, callbacks, fn) {
   const emit = {};
   for (const key2 in callbacks) {
     emit[key2] = (...args) => {
-      var _a2, _b;
+      var _a, _b;
       const listeners2 = getListeners();
       if (listeners2.length === 0)
         return;
       for (const listener of listeners2)
-        (_b = (_a2 = listener.fns)[key2]) == null ? void 0 : _b.call(_a2, ...args);
+        (_b = (_a = listener.fns)[key2]) == null ? void 0 : _b.call(_a, ...args);
     };
   }
   const cleanup = fn(emit);
@@ -70267,7 +70242,7 @@ function observe(observerId, callbacks, fn) {
     cleanupCache.set(observerId, cleanup);
   return unwatch;
 }
-async function wait$1(time2) {
+async function wait(time2) {
   return new Promise((res) => setTimeout(res, time2));
 }
 function poll(fn, { emitOnBegin, initialWaitTime, interval }) {
@@ -70278,12 +70253,12 @@ function poll(fn, { emitOnBegin, initialWaitTime, interval }) {
     if (emitOnBegin)
       data = await fn({ unpoll: unwatch });
     const initialWait = await (initialWaitTime == null ? void 0 : initialWaitTime(data)) ?? interval;
-    await wait$1(initialWait);
+    await wait(initialWait);
     const poll2 = async () => {
       if (!active)
         return;
       await fn({ unpoll: unwatch });
-      await wait$1(interval);
+      await wait(interval);
       poll2();
     };
     poll2();
@@ -70291,7 +70266,7 @@ function poll(fn, { emitOnBegin, initialWaitTime, interval }) {
   watch();
   return unwatch;
 }
-async function getFilterChanges(_client2, { filter: filter2 }) {
+async function getFilterChanges(_client, { filter: filter2 }) {
   const strict = "strict" in filter2 && filter2.strict;
   const logs = await filter2.request({
     method: "eth_getFilterChanges",
@@ -70308,7 +70283,7 @@ async function getFilterChanges(_client2, { filter: filter2 }) {
     strict
   });
 }
-async function uninstallFilter(_client2, { filter: filter2 }) {
+async function uninstallFilter(_client, { filter: filter2 }) {
   return filter2.request({
     method: "eth_uninstallFilter",
     params: [filter2.id]
@@ -70318,7 +70293,7 @@ function watchContractEvent(client2, parameters) {
   const { abi: abi2, address, args, batch = true, eventName, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ } = parameters;
   const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
   const pollContractEvent = () => {
-    const observerId = stringify$2([
+    const observerId = stringify$1([
       "watchContractEvent",
       address,
       args,
@@ -70333,10 +70308,10 @@ function watchContractEvent(client2, parameters) {
       let filter2;
       let initialized = false;
       const unwatch = poll(async () => {
-        var _a2;
+        var _a;
         if (!initialized) {
           try {
-            filter2 = await getAction$3(client2, createContractEventFilter, "createContractEventFilter")({
+            filter2 = await getAction$1(client2, createContractEventFilter, "createContractEventFilter")({
               abi: abi2,
               address,
               args,
@@ -70351,11 +70326,11 @@ function watchContractEvent(client2, parameters) {
         try {
           let logs;
           if (filter2) {
-            logs = await getAction$3(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
+            logs = await getAction$1(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
           } else {
-            const blockNumber = await getAction$3(client2, getBlockNumber, "getBlockNumber")({});
+            const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({});
             if (previousBlockNumber && previousBlockNumber !== blockNumber) {
-              logs = await getAction$3(client2, getContractEvents, "getContractEvents")({
+              logs = await getAction$1(client2, getContractEvents, "getContractEvents")({
                 abi: abi2,
                 address,
                 args,
@@ -70377,9 +70352,9 @@ function watchContractEvent(client2, parameters) {
             for (const log of logs)
               emit.onLogs([log]);
         } catch (err) {
-          if (filter2 && err instanceof InvalidInputRpcError$1)
+          if (filter2 && err instanceof InvalidInputRpcError)
             initialized = false;
-          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+          (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
         }
       }, {
         emitOnBegin: true,
@@ -70387,7 +70362,7 @@ function watchContractEvent(client2, parameters) {
       });
       return async () => {
         if (filter2)
-          await getAction$3(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
+          await getAction$1(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
         unwatch();
       };
     });
@@ -70405,7 +70380,7 @@ function watchContractEvent(client2, parameters) {
         const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
           params: ["logs", { address, topics }],
           onData(data) {
-            var _a2;
+            var _a;
             if (!active)
               return;
             const log = data.result;
@@ -70428,7 +70403,7 @@ function watchContractEvent(client2, parameters) {
                 if (strict_)
                   return;
                 eventName2 = err.abiItem.name;
-                isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
+                isUnnamed = (_a = err.abiItem.inputs) == null ? void 0 : _a.some((x) => !("name" in x && x.name));
               }
               const formatted = formatLog(log, {
                 args: isUnnamed ? [] : {},
@@ -70459,29 +70434,29 @@ async function writeContract$1(client2, parameters) {
     args,
     functionName
   });
-  return getAction$3(client2, sendTransaction$3, "sendTransaction")({
+  return getAction$1(client2, sendTransaction$1, "sendTransaction")({
     data: `${data}${dataSuffix ? dataSuffix.replace("0x", "") : ""}`,
     to: address,
     ...request
   });
 }
-const size$5 = 256;
-let index$3 = size$5;
-let buffer$2;
-function uid$2(length2 = 11) {
-  if (!buffer$2 || index$3 + length2 > size$5 * 2) {
-    buffer$2 = "";
-    index$3 = 0;
-    for (let i2 = 0; i2 < size$5; i2++) {
-      buffer$2 += (256 + Math.random() * 256 | 0).toString(16).substring(1);
+const size$3 = 256;
+let index$2 = size$3;
+let buffer$1;
+function uid$1(length2 = 11) {
+  if (!buffer$1 || index$2 + length2 > size$3 * 2) {
+    buffer$1 = "";
+    index$2 = 0;
+    for (let i2 = 0; i2 < size$3; i2++) {
+      buffer$1 += (256 + Math.random() * 256 | 0).toString(16).substring(1);
     }
   }
-  return buffer$2.substring(index$3, index$3++ + length2);
+  return buffer$1.substring(index$2, index$2++ + length2);
 }
-function createClient$1(parameters) {
+function createClient(parameters) {
   const { batch, cacheTime = parameters.pollingInterval ?? 4e3, key: key2 = "base", name = "Base Client", pollingInterval = 4e3, type = "base" } = parameters;
   const chain = parameters.chain;
-  const account2 = parameters.account ? parseAccount$1(parameters.account) : void 0;
+  const account2 = parameters.account ? parseAccount(parameters.account) : void 0;
   const { config: config2, request, value } = parameters.transport({
     chain,
     pollingInterval
@@ -70498,7 +70473,7 @@ function createClient$1(parameters) {
     request,
     transport,
     type,
-    uid: uid$2()
+    uid: uid$1()
   };
   function extend2(base2) {
     return (extendFn) => {
@@ -70511,13 +70486,13 @@ function createClient$1(parameters) {
   }
   return Object.assign(client2, { extend: extend2(client2) });
 }
-function withRetry$1(fn, { delay: delay_ = 100, retryCount = 2, shouldRetry: shouldRetry2 = () => true } = {}) {
+function withRetry(fn, { delay: delay_ = 100, retryCount = 2, shouldRetry: shouldRetry2 = () => true } = {}) {
   return new Promise((resolve, reject) => {
     const attemptRetry = async ({ count = 0 } = {}) => {
       const retry = async ({ error }) => {
         const delay2 = typeof delay_ === "function" ? delay_({ count, error }) : delay_;
         if (delay2)
-          await wait$1(delay2);
+          await wait(delay2);
         attemptRetry({ count: count + 1 });
       };
       try {
@@ -70532,88 +70507,88 @@ function withRetry$1(fn, { delay: delay_ = 100, retryCount = 2, shouldRetry: sho
     attemptRetry();
   });
 }
-function buildRequest$1(request, options = {}) {
+function buildRequest(request, options = {}) {
   return async (args, overrideOptions = {}) => {
     const { retryDelay = 150, retryCount = 3 } = {
       ...options,
       ...overrideOptions
     };
-    return withRetry$1(async () => {
+    return withRetry(async () => {
       try {
         return await request(args);
       } catch (err_) {
         const err = err_;
         switch (err.code) {
-          case ParseRpcError$1.code:
-            throw new ParseRpcError$1(err);
-          case InvalidRequestRpcError$1.code:
-            throw new InvalidRequestRpcError$1(err);
-          case MethodNotFoundRpcError$1.code:
-            throw new MethodNotFoundRpcError$1(err);
-          case InvalidParamsRpcError$1.code:
-            throw new InvalidParamsRpcError$1(err);
-          case InternalRpcError$1.code:
-            throw new InternalRpcError$1(err);
-          case InvalidInputRpcError$1.code:
-            throw new InvalidInputRpcError$1(err);
-          case ResourceNotFoundRpcError$1.code:
-            throw new ResourceNotFoundRpcError$1(err);
-          case ResourceUnavailableRpcError$1.code:
-            throw new ResourceUnavailableRpcError$1(err);
-          case TransactionRejectedRpcError$1.code:
-            throw new TransactionRejectedRpcError$1(err);
-          case MethodNotSupportedRpcError$1.code:
-            throw new MethodNotSupportedRpcError$1(err);
-          case LimitExceededRpcError$1.code:
-            throw new LimitExceededRpcError$1(err);
-          case JsonRpcVersionUnsupportedError$1.code:
-            throw new JsonRpcVersionUnsupportedError$1(err);
-          case UserRejectedRequestError$1.code:
-            throw new UserRejectedRequestError$1(err);
-          case UnauthorizedProviderError$1.code:
-            throw new UnauthorizedProviderError$1(err);
-          case UnsupportedProviderMethodError$1.code:
-            throw new UnsupportedProviderMethodError$1(err);
-          case ProviderDisconnectedError$1.code:
-            throw new ProviderDisconnectedError$1(err);
-          case ChainDisconnectedError$1.code:
-            throw new ChainDisconnectedError$1(err);
-          case SwitchChainError$1.code:
-            throw new SwitchChainError$1(err);
+          case ParseRpcError.code:
+            throw new ParseRpcError(err);
+          case InvalidRequestRpcError.code:
+            throw new InvalidRequestRpcError(err);
+          case MethodNotFoundRpcError.code:
+            throw new MethodNotFoundRpcError(err);
+          case InvalidParamsRpcError.code:
+            throw new InvalidParamsRpcError(err);
+          case InternalRpcError.code:
+            throw new InternalRpcError(err);
+          case InvalidInputRpcError.code:
+            throw new InvalidInputRpcError(err);
+          case ResourceNotFoundRpcError.code:
+            throw new ResourceNotFoundRpcError(err);
+          case ResourceUnavailableRpcError.code:
+            throw new ResourceUnavailableRpcError(err);
+          case TransactionRejectedRpcError.code:
+            throw new TransactionRejectedRpcError(err);
+          case MethodNotSupportedRpcError.code:
+            throw new MethodNotSupportedRpcError(err);
+          case LimitExceededRpcError.code:
+            throw new LimitExceededRpcError(err);
+          case JsonRpcVersionUnsupportedError.code:
+            throw new JsonRpcVersionUnsupportedError(err);
+          case UserRejectedRequestError.code:
+            throw new UserRejectedRequestError(err);
+          case UnauthorizedProviderError.code:
+            throw new UnauthorizedProviderError(err);
+          case UnsupportedProviderMethodError.code:
+            throw new UnsupportedProviderMethodError(err);
+          case ProviderDisconnectedError.code:
+            throw new ProviderDisconnectedError(err);
+          case ChainDisconnectedError.code:
+            throw new ChainDisconnectedError(err);
+          case SwitchChainError.code:
+            throw new SwitchChainError(err);
           case 5e3:
-            throw new UserRejectedRequestError$1(err);
+            throw new UserRejectedRequestError(err);
           default:
-            if (err_ instanceof BaseError$6)
+            if (err_ instanceof BaseError$2)
               throw err_;
-            throw new UnknownRpcError$1(err);
+            throw new UnknownRpcError(err);
         }
       }
     }, {
       delay: ({ count, error }) => {
-        var _a2;
-        if (error && error instanceof HttpRequestError$1) {
-          const retryAfter = (_a2 = error == null ? void 0 : error.headers) == null ? void 0 : _a2.get("Retry-After");
+        var _a;
+        if (error && error instanceof HttpRequestError) {
+          const retryAfter = (_a = error == null ? void 0 : error.headers) == null ? void 0 : _a.get("Retry-After");
           if (retryAfter == null ? void 0 : retryAfter.match(/\d/))
             return parseInt(retryAfter) * 1e3;
         }
         return ~~(1 << count) * retryDelay;
       },
       retryCount,
-      shouldRetry: ({ error }) => shouldRetry$1(error)
+      shouldRetry: ({ error }) => shouldRetry(error)
     });
   };
 }
-function shouldRetry$1(error) {
+function shouldRetry(error) {
   if ("code" in error && typeof error.code === "number") {
     if (error.code === -1)
       return true;
-    if (error.code === LimitExceededRpcError$1.code)
+    if (error.code === LimitExceededRpcError.code)
       return true;
-    if (error.code === InternalRpcError$1.code)
+    if (error.code === InternalRpcError.code)
       return true;
     return false;
   }
-  if (error instanceof HttpRequestError$1 && error.status) {
+  if (error instanceof HttpRequestError && error.status) {
     if (error.status === 403)
       return true;
     if (error.status === 408)
@@ -70634,16 +70609,16 @@ function shouldRetry$1(error) {
   }
   return true;
 }
-function createTransport$1({ key: key2, name, request, retryCount = 3, retryDelay = 150, timeout, type }, value) {
+function createTransport({ key: key2, name, request, retryCount = 3, retryDelay = 150, timeout, type }, value) {
   return {
     config: { key: key2, name, request, retryCount, retryDelay, timeout, type },
-    request: buildRequest$1(request, { retryCount, retryDelay }),
+    request: buildRequest(request, { retryCount, retryDelay }),
     value
   };
 }
-function custom$1(provider2, config2 = {}) {
+function custom(provider2, config2 = {}) {
   const { key: key2 = "custom", name = "Custom Provider", retryDelay } = config2;
-  return ({ retryCount: defaultRetryCount }) => createTransport$1({
+  return ({ retryCount: defaultRetryCount }) => createTransport({
     key: key2,
     name,
     request: provider2.request.bind(provider2),
@@ -70652,7 +70627,7 @@ function custom$1(provider2, config2 = {}) {
     type: "custom"
   });
 }
-class UrlRequiredError extends BaseError$6 {
+class UrlRequiredError extends BaseError$2 {
   constructor() {
     super("No URL was provided to the Transport. Please provide a valid RPC URL to the Transport.", {
       docsPath: "/docs/clients/intro"
@@ -70700,18 +70675,18 @@ const idCache = /* @__PURE__ */ createIdStore();
 function getHttpRpcClient(url, options = {}) {
   return {
     async request(params) {
-      var _a2;
+      var _a;
       const { body, fetchOptions = {}, timeout = options.timeout ?? 1e4 } = params;
       const { headers, method, signal: signal_ } = { ...options.fetchOptions, ...fetchOptions };
       try {
         const response = await withTimeout(async ({ signal }) => {
           const response2 = await fetch(url, {
             ...fetchOptions,
-            body: Array.isArray(body) ? stringify$2(body.map((body2) => ({
+            body: Array.isArray(body) ? stringify$1(body.map((body2) => ({
               jsonrpc: "2.0",
               id: body2.id ?? idCache.take(),
               ...body2
-            }))) : stringify$2({
+            }))) : stringify$1({
               jsonrpc: "2.0",
               id: body.id ?? idCache.take(),
               ...body
@@ -70730,15 +70705,15 @@ function getHttpRpcClient(url, options = {}) {
           signal: true
         });
         let data;
-        if ((_a2 = response.headers.get("Content-Type")) == null ? void 0 : _a2.startsWith("application/json")) {
+        if ((_a = response.headers.get("Content-Type")) == null ? void 0 : _a.startsWith("application/json")) {
           data = await response.json();
         } else {
           data = await response.text();
         }
         if (!response.ok) {
-          throw new HttpRequestError$1({
+          throw new HttpRequestError({
             body,
-            details: stringify$2(data.error) || response.statusText,
+            details: stringify$1(data.error) || response.statusText,
             headers: response.headers,
             status: response.status,
             url
@@ -70746,11 +70721,11 @@ function getHttpRpcClient(url, options = {}) {
         }
         return data;
       } catch (err) {
-        if (err instanceof HttpRequestError$1)
+        if (err instanceof HttpRequestError)
           throw err;
         if (err instanceof TimeoutError)
           throw err;
-        throw new HttpRequestError$1({
+        throw new HttpRequestError({
           body,
           details: err.message,
           url
@@ -70769,7 +70744,7 @@ function http(url, config2 = {}) {
     if (!url_)
       throw new UrlRequiredError();
     const rpcClient = getHttpRpcClient(url_, { fetchOptions, timeout });
-    return createTransport$1({
+    return createTransport({
       key: key2,
       name,
       async request({ method, params }) {
@@ -70792,7 +70767,7 @@ function http(url, config2 = {}) {
         ];
         const [{ error, result }] = await fn(body);
         if (error)
-          throw new RpcRequestError$1({
+          throw new RpcRequestError({
             body,
             error,
             url: url_
@@ -70810,27 +70785,27 @@ function http(url, config2 = {}) {
   };
 }
 function formatFeeHistory(feeHistory) {
-  var _a2;
+  var _a;
   return {
     baseFeePerGas: feeHistory.baseFeePerGas.map((value) => BigInt(value)),
     gasUsedRatio: feeHistory.gasUsedRatio,
     oldestBlock: BigInt(feeHistory.oldestBlock),
-    reward: (_a2 = feeHistory.reward) == null ? void 0 : _a2.map((reward) => reward.map((value) => BigInt(value)))
+    reward: (_a = feeHistory.reward) == null ? void 0 : _a.map((reward) => reward.map((value) => BigInt(value)))
   };
 }
 async function getFeeHistory(client2, { blockCount, blockNumber, blockTag = "latest", rewardPercentiles }) {
-  const blockNumberHex = blockNumber ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
   const feeHistory = await client2.request({
     method: "eth_feeHistory",
     params: [
-      numberToHex$1(blockCount),
+      numberToHex(blockCount),
       blockNumberHex || blockTag,
       rewardPercentiles
     ]
   });
   return formatFeeHistory(feeHistory);
 }
-async function getFilterLogs(_client2, { filter: filter2 }) {
+async function getFilterLogs(_client, { filter: filter2 }) {
   const strict = filter2.strict ?? false;
   const logs = await filter2.request({
     method: "eth_getFilterLogs",
@@ -70936,7 +70911,7 @@ function hashTypedData(parameters) {
       primaryType,
       types: types2
     }));
-  return keccak256$1(concat(parts));
+  return keccak256(concat(parts));
 }
 function hashDomain({ domain: domain2, types: types2 }) {
   return hashStruct({
@@ -70951,7 +70926,7 @@ function hashStruct({ data, primaryType, types: types2 }) {
     primaryType,
     types: types2
   });
-  return keccak256$1(encoded);
+  return keccak256(encoded);
 }
 function encodeData({ data, primaryType, types: types2 }) {
   const encodedTypes = [{ type: "bytes32" }];
@@ -70969,8 +70944,8 @@ function encodeData({ data, primaryType, types: types2 }) {
   return encodeAbiParameters(encodedTypes, encodedValues);
 }
 function hashType({ primaryType, types: types2 }) {
-  const encodedHashType = toHex$1(encodeType({ primaryType, types: types2 }));
-  return keccak256$1(encodedHashType);
+  const encodedHashType = toHex(encodeType({ primaryType, types: types2 }));
+  return keccak256(encodedHashType);
 }
 function encodeType({ primaryType, types: types2 }) {
   let result = "";
@@ -70998,16 +70973,16 @@ function encodeField({ types: types2, name, type, value }) {
   if (types2[type] !== void 0) {
     return [
       { type: "bytes32" },
-      keccak256$1(encodeData({ data: value, primaryType: type, types: types2 }))
+      keccak256(encodeData({ data: value, primaryType: type, types: types2 }))
     ];
   }
   if (type === "bytes") {
     const prepend = value.length % 2 ? "0" : "";
     value = `0x${prepend + value.slice(2)}`;
-    return [{ type: "bytes32" }, keccak256$1(value)];
+    return [{ type: "bytes32" }, keccak256(value)];
   }
   if (type === "string")
-    return [{ type: "bytes32" }, keccak256$1(toHex$1(value))];
+    return [{ type: "bytes32" }, keccak256(toHex(value))];
   if (type.lastIndexOf("]") === type.length - 1) {
     const parsedType = type.slice(0, type.lastIndexOf("["));
     const typeValuePairs = value.map((item2) => encodeField({
@@ -71018,7 +70993,7 @@ function encodeField({ types: types2, name, type, value }) {
     }));
     return [
       { type: "bytes32" },
-      keccak256$1(encodeAbiParameters(typeValuePairs.map(([t2]) => t2), typeValuePairs.map(([, v3]) => v3)))
+      keccak256(encodeAbiParameters(typeValuePairs.map(([t2]) => t2), typeValuePairs.map(([, v3]) => v3)))
     ];
   }
   return [{ type }, value];
@@ -71032,20 +71007,20 @@ function validateTypedData(parameters) {
       const integerMatch = type.match(integerRegex);
       if (integerMatch && (typeof value === "number" || typeof value === "bigint")) {
         const [_type, base2, size_] = integerMatch;
-        numberToHex$1(value, {
+        numberToHex(value, {
           signed: base2 === "int",
           size: parseInt(size_) / 8
         });
       }
-      if (type === "address" && typeof value === "string" && !isAddress$1(value))
-        throw new InvalidAddressError$1({ address: value });
+      if (type === "address" && typeof value === "string" && !isAddress(value))
+        throw new InvalidAddressError({ address: value });
       const bytesMatch = type.match(bytesRegex);
       if (bytesMatch) {
         const [_type, size_] = bytesMatch;
-        if (size_ && size$6(value) !== parseInt(size_))
+        if (size_ && size$4(value) !== parseInt(size_))
           throw new BytesSizeMismatchError({
             expectedSize: parseInt(size_),
-            givenSize: size$6(value)
+            givenSize: size$4(value)
           });
       }
       const struct2 = types2[type];
@@ -71089,9 +71064,9 @@ function formatTransactionReceipt(transactionReceipt) {
     gasUsed: transactionReceipt.gasUsed ? BigInt(transactionReceipt.gasUsed) : null,
     logs: transactionReceipt.logs ? transactionReceipt.logs.map((log) => formatLog(log)) : null,
     to: transactionReceipt.to ? transactionReceipt.to : null,
-    transactionIndex: transactionReceipt.transactionIndex ? hexToNumber$1(transactionReceipt.transactionIndex) : null,
+    transactionIndex: transactionReceipt.transactionIndex ? hexToNumber(transactionReceipt.transactionIndex) : null,
     status: transactionReceipt.status ? statuses[transactionReceipt.status] : null,
-    type: transactionReceipt.type ? transactionType$1[transactionReceipt.type] || transactionReceipt.type : null
+    type: transactionReceipt.type ? transactionType[transactionReceipt.type] || transactionReceipt.type : null
   };
   if (transactionReceipt.blobGasPrice)
     receipt.blobGasPrice = BigInt(transactionReceipt.blobGasPrice);
@@ -71099,265 +71074,17 @@ function formatTransactionReceipt(transactionReceipt) {
     receipt.blobGasUsed = BigInt(transactionReceipt.blobGasUsed);
   return receipt;
 }
-function setBigUint64(view, byteOffset, value, isLE2) {
-  if (typeof view.setBigUint64 === "function")
-    return view.setBigUint64(byteOffset, value, isLE2);
-  const _32n2 = BigInt(32);
-  const _u32_max = BigInt(4294967295);
-  const wh2 = Number(value >> _32n2 & _u32_max);
-  const wl = Number(value & _u32_max);
-  const h2 = isLE2 ? 4 : 0;
-  const l2 = isLE2 ? 0 : 4;
-  view.setUint32(byteOffset + h2, wh2, isLE2);
-  view.setUint32(byteOffset + l2, wl, isLE2);
-}
-class SHA22 extends Hash2 {
-  constructor(blockLen, outputLen, padOffset, isLE2) {
-    super();
-    this.blockLen = blockLen;
-    this.outputLen = outputLen;
-    this.padOffset = padOffset;
-    this.isLE = isLE2;
-    this.finished = false;
-    this.length = 0;
-    this.pos = 0;
-    this.destroyed = false;
-    this.buffer = new Uint8Array(blockLen);
-    this.view = createView(this.buffer);
-  }
-  update(data) {
-    exists(this);
-    const { view, buffer: buffer2, blockLen } = this;
-    data = toBytes$1(data);
-    const len = data.length;
-    for (let pos = 0; pos < len; ) {
-      const take = Math.min(blockLen - this.pos, len - pos);
-      if (take === blockLen) {
-        const dataView = createView(data);
-        for (; blockLen <= len - pos; pos += blockLen)
-          this.process(dataView, pos);
-        continue;
-      }
-      buffer2.set(data.subarray(pos, pos + take), this.pos);
-      this.pos += take;
-      pos += take;
-      if (this.pos === blockLen) {
-        this.process(view, 0);
-        this.pos = 0;
-      }
-    }
-    this.length += data.length;
-    this.roundClean();
-    return this;
-  }
-  digestInto(out) {
-    exists(this);
-    output(out, this);
-    this.finished = true;
-    const { buffer: buffer2, view, blockLen, isLE: isLE2 } = this;
-    let { pos } = this;
-    buffer2[pos++] = 128;
-    this.buffer.subarray(pos).fill(0);
-    if (this.padOffset > blockLen - pos) {
-      this.process(view, 0);
-      pos = 0;
-    }
-    for (let i2 = pos; i2 < blockLen; i2++)
-      buffer2[i2] = 0;
-    setBigUint64(view, blockLen - 8, BigInt(this.length * 8), isLE2);
-    this.process(view, 0);
-    const oview = createView(out);
-    const len = this.outputLen;
-    if (len % 4)
-      throw new Error("_sha2: outputLen should be aligned to 32bit");
-    const outLen = len / 4;
-    const state = this.get();
-    if (outLen > state.length)
-      throw new Error("_sha2: outputLen bigger than state");
-    for (let i2 = 0; i2 < outLen; i2++)
-      oview.setUint32(4 * i2, state[i2], isLE2);
-  }
-  digest() {
-    const { buffer: buffer2, outputLen } = this;
-    this.digestInto(buffer2);
-    const res = buffer2.slice(0, outputLen);
-    this.destroy();
-    return res;
-  }
-  _cloneInto(to) {
-    to || (to = new this.constructor());
-    to.set(...this.get());
-    const { blockLen, buffer: buffer2, length: length2, finished, destroyed, pos } = this;
-    to.length = length2;
-    to.pos = pos;
-    to.finished = finished;
-    to.destroyed = destroyed;
-    if (length2 % blockLen)
-      to.buffer.set(buffer2);
-    return to;
-  }
-}
-const Chi = (a2, b3, c) => a2 & b3 ^ ~a2 & c;
-const Maj = (a2, b3, c) => a2 & b3 ^ a2 & c ^ b3 & c;
-const SHA256_K = /* @__PURE__ */ new Uint32Array([
-  1116352408,
-  1899447441,
-  3049323471,
-  3921009573,
-  961987163,
-  1508970993,
-  2453635748,
-  2870763221,
-  3624381080,
-  310598401,
-  607225278,
-  1426881987,
-  1925078388,
-  2162078206,
-  2614888103,
-  3248222580,
-  3835390401,
-  4022224774,
-  264347078,
-  604807628,
-  770255983,
-  1249150122,
-  1555081692,
-  1996064986,
-  2554220882,
-  2821834349,
-  2952996808,
-  3210313671,
-  3336571891,
-  3584528711,
-  113926993,
-  338241895,
-  666307205,
-  773529912,
-  1294757372,
-  1396182291,
-  1695183700,
-  1986661051,
-  2177026350,
-  2456956037,
-  2730485921,
-  2820302411,
-  3259730800,
-  3345764771,
-  3516065817,
-  3600352804,
-  4094571909,
-  275423344,
-  430227734,
-  506948616,
-  659060556,
-  883997877,
-  958139571,
-  1322822218,
-  1537002063,
-  1747873779,
-  1955562222,
-  2024104815,
-  2227730452,
-  2361852424,
-  2428436474,
-  2756734187,
-  3204031479,
-  3329325298
-]);
-const IV = /* @__PURE__ */ new Uint32Array([
-  1779033703,
-  3144134277,
-  1013904242,
-  2773480762,
-  1359893119,
-  2600822924,
-  528734635,
-  1541459225
-]);
-const SHA256_W = /* @__PURE__ */ new Uint32Array(64);
-class SHA2562 extends SHA22 {
-  constructor() {
-    super(64, 32, 8, false);
-    this.A = IV[0] | 0;
-    this.B = IV[1] | 0;
-    this.C = IV[2] | 0;
-    this.D = IV[3] | 0;
-    this.E = IV[4] | 0;
-    this.F = IV[5] | 0;
-    this.G = IV[6] | 0;
-    this.H = IV[7] | 0;
-  }
-  get() {
-    const { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
-    return [A2, B2, C2, D2, E2, F2, G2, H2];
-  }
-  // prettier-ignore
-  set(A2, B2, C2, D2, E2, F2, G2, H2) {
-    this.A = A2 | 0;
-    this.B = B2 | 0;
-    this.C = C2 | 0;
-    this.D = D2 | 0;
-    this.E = E2 | 0;
-    this.F = F2 | 0;
-    this.G = G2 | 0;
-    this.H = H2 | 0;
-  }
-  process(view, offset2) {
-    for (let i2 = 0; i2 < 16; i2++, offset2 += 4)
-      SHA256_W[i2] = view.getUint32(offset2, false);
-    for (let i2 = 16; i2 < 64; i2++) {
-      const W15 = SHA256_W[i2 - 15];
-      const W2 = SHA256_W[i2 - 2];
-      const s0 = rotr(W15, 7) ^ rotr(W15, 18) ^ W15 >>> 3;
-      const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
-      SHA256_W[i2] = s1 + SHA256_W[i2 - 7] + s0 + SHA256_W[i2 - 16] | 0;
-    }
-    let { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
-    for (let i2 = 0; i2 < 64; i2++) {
-      const sigma1 = rotr(E2, 6) ^ rotr(E2, 11) ^ rotr(E2, 25);
-      const T1 = H2 + sigma1 + Chi(E2, F2, G2) + SHA256_K[i2] + SHA256_W[i2] | 0;
-      const sigma0 = rotr(A2, 2) ^ rotr(A2, 13) ^ rotr(A2, 22);
-      const T2 = sigma0 + Maj(A2, B2, C2) | 0;
-      H2 = G2;
-      G2 = F2;
-      F2 = E2;
-      E2 = D2 + T1 | 0;
-      D2 = C2;
-      C2 = B2;
-      B2 = A2;
-      A2 = T1 + T2 | 0;
-    }
-    A2 = A2 + this.A | 0;
-    B2 = B2 + this.B | 0;
-    C2 = C2 + this.C | 0;
-    D2 = D2 + this.D | 0;
-    E2 = E2 + this.E | 0;
-    F2 = F2 + this.F | 0;
-    G2 = G2 + this.G | 0;
-    H2 = H2 + this.H | 0;
-    this.set(A2, B2, C2, D2, E2, F2, G2, H2);
-  }
-  roundClean() {
-    SHA256_W.fill(0);
-  }
-  destroy() {
-    this.set(0, 0, 0, 0, 0, 0, 0, 0);
-    this.buffer.fill(0);
-  }
-}
-const sha256$1 = /* @__PURE__ */ wrapConstructor(() => new SHA2562());
 const presignMessagePrefix = "Ethereum Signed Message:\n";
 function hashMessage(message, to_) {
   const messageBytes = (() => {
     if (typeof message === "string")
-      return stringToBytes$1(message);
+      return stringToBytes(message);
     if (message.raw instanceof Uint8Array)
       return message.raw;
-    return toBytes$2(message.raw);
+    return toBytes$1(message.raw);
   })();
-  const prefixBytes = stringToBytes$1(`${presignMessagePrefix}${messageBytes.length}`);
-  return keccak256$1(concat([prefixBytes, messageBytes]), to_);
+  const prefixBytes = stringToBytes(`${presignMessagePrefix}${messageBytes.length}`);
+  return keccak256(concat([prefixBytes, messageBytes]), to_);
 }
 function formatStorageProof(storageProof) {
   return storageProof.map((proof) => ({
@@ -71369,13 +71096,13 @@ function formatProof(proof) {
   return {
     ...proof,
     balance: proof.balance ? BigInt(proof.balance) : void 0,
-    nonce: proof.nonce ? hexToNumber$1(proof.nonce) : void 0,
+    nonce: proof.nonce ? hexToNumber(proof.nonce) : void 0,
     storageProof: proof.storageProof ? formatStorageProof(proof.storageProof) : void 0
   };
 }
 async function getProof(client2, { address, blockNumber, blockTag: blockTag_, storageKeys }) {
   const blockTag = blockTag_ ?? "latest";
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
   const proof = await client2.request({
     method: "eth_getProof",
     params: [address, storageKeys, blockNumberHex || blockTag]
@@ -71383,7 +71110,7 @@ async function getProof(client2, { address, blockNumber, blockTag: blockTag_, st
   return formatProof(proof);
 }
 async function getStorageAt(client2, { address, blockNumber, blockTag = "latest", slot }) {
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
   const data = await client2.request({
     method: "eth_getStorageAt",
     params: [address, slot, blockNumberHex || blockTag]
@@ -71391,9 +71118,9 @@ async function getStorageAt(client2, { address, blockNumber, blockTag = "latest"
   return data;
 }
 async function getTransaction(client2, { blockHash, blockNumber, blockTag: blockTag_, hash: hash2, index: index2 }) {
-  var _a2, _b, _c;
+  var _a, _b, _c;
   const blockTag = blockTag_ || "latest";
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex$1(blockNumber) : void 0;
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
   let transaction2 = null;
   if (hash2) {
     transaction2 = await client2.request({
@@ -71403,12 +71130,12 @@ async function getTransaction(client2, { blockHash, blockNumber, blockTag: block
   } else if (blockHash) {
     transaction2 = await client2.request({
       method: "eth_getTransactionByBlockHashAndIndex",
-      params: [blockHash, numberToHex$1(index2)]
+      params: [blockHash, numberToHex(index2)]
     });
   } else if (blockNumberHex || blockTag) {
     transaction2 = await client2.request({
       method: "eth_getTransactionByBlockNumberAndIndex",
-      params: [blockNumberHex || blockTag, numberToHex$1(index2)]
+      params: [blockNumberHex || blockTag, numberToHex(index2)]
     });
   }
   if (!transaction2)
@@ -71419,13 +71146,13 @@ async function getTransaction(client2, { blockHash, blockNumber, blockTag: block
       hash: hash2,
       index: index2
     });
-  const format2 = ((_c = (_b = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b.transaction) == null ? void 0 : _c.format) || formatTransaction$1;
+  const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.transaction) == null ? void 0 : _c.format) || formatTransaction;
   return format2(transaction2);
 }
 async function getTransactionConfirmations(client2, { hash: hash2, transactionReceipt }) {
   const [blockNumber, transaction2] = await Promise.all([
-    getAction$3(client2, getBlockNumber, "getBlockNumber")({}),
-    hash2 ? getAction$3(client2, getTransaction, "getBlockNumber")({ hash: hash2 }) : void 0
+    getAction$1(client2, getBlockNumber, "getBlockNumber")({}),
+    hash2 ? getAction$1(client2, getTransaction, "getBlockNumber")({ hash: hash2 }) : void 0
   ]);
   const transactionBlockNumber = (transactionReceipt == null ? void 0 : transactionReceipt.blockNumber) || (transaction2 == null ? void 0 : transaction2.blockNumber);
   if (!transactionBlockNumber)
@@ -71433,21 +71160,21 @@ async function getTransactionConfirmations(client2, { hash: hash2, transactionRe
   return blockNumber - transactionBlockNumber + 1n;
 }
 async function getTransactionReceipt(client2, { hash: hash2 }) {
-  var _a2, _b, _c;
+  var _a, _b, _c;
   const receipt = await client2.request({
     method: "eth_getTransactionReceipt",
     params: [hash2]
   });
   if (!receipt)
     throw new TransactionReceiptNotFoundError({ hash: hash2 });
-  const format2 = ((_c = (_b = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b.transactionReceipt) == null ? void 0 : _c.format) || formatTransactionReceipt;
+  const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.transactionReceipt) == null ? void 0 : _c.format) || formatTransactionReceipt;
   return format2(receipt);
 }
 async function multicall(client2, parameters) {
-  var _a2;
+  var _a;
   const { allowFailure = true, batchSize: batchSize_, blockNumber, blockTag, multicallAddress: multicallAddress_, stateOverride } = parameters;
   const contracts = parameters.contracts;
-  const batchSize = batchSize_ ?? (typeof ((_a2 = client2.batch) == null ? void 0 : _a2.multicall) === "object" && client2.batch.multicall.batchSize || 1024);
+  const batchSize = batchSize_ ?? (typeof ((_a = client2.batch) == null ? void 0 : _a.multicall) === "object" && client2.batch.multicall.batchSize || 1024);
   let multicallAddress = multicallAddress_;
   if (!multicallAddress) {
     if (!client2.chain)
@@ -71504,7 +71231,7 @@ async function multicall(client2, parameters) {
       ];
     }
   }
-  const aggregate3Results = await Promise.allSettled(chunkedCalls.map((calls) => getAction$3(client2, readContract, "readContract")({
+  const aggregate3Results = await Promise.allSettled(chunkedCalls.map((calls) => getAction$1(client2, readContract, "readContract")({
     abi: multicall3Abi,
     address: multicallAddress,
     args: [calls],
@@ -71560,7 +71287,7 @@ async function multicall(client2, parameters) {
     }
   }
   if (results2.length !== contracts.length)
-    throw new BaseError$6("multicall results mismatch");
+    throw new BaseError$2("multicall results mismatch");
   return results2;
 }
 const universalSignatureValidatorByteCode = "0x60806040523480156200001157600080fd5b50604051620007003803806200070083398101604081905262000034916200056f565b6000620000438484846200004f565b9050806000526001601ff35b600080846001600160a01b0316803b806020016040519081016040528181526000908060200190933c90507f6492649264926492649264926492649264926492649264926492649264926492620000a68462000451565b036200021f57600060608085806020019051810190620000c79190620005ce565b8651929550909350915060000362000192576000836001600160a01b031683604051620000f5919062000643565b6000604051808303816000865af19150503d806000811462000134576040519150601f19603f3d011682016040523d82523d6000602084013e62000139565b606091505b5050905080620001905760405162461bcd60e51b815260206004820152601e60248201527f5369676e617475726556616c696461746f723a206465706c6f796d656e74000060448201526064015b60405180910390fd5b505b604051630b135d3f60e11b808252906001600160a01b038a1690631626ba7e90620001c4908b90869060040162000661565b602060405180830381865afa158015620001e2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200020891906200069d565b6001600160e01b031916149450505050506200044a565b805115620002b157604051630b135d3f60e11b808252906001600160a01b03871690631626ba7e9062000259908890889060040162000661565b602060405180830381865afa15801562000277573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200029d91906200069d565b6001600160e01b031916149150506200044a565b8251604114620003195760405162461bcd60e51b815260206004820152603a6024820152600080516020620006e083398151915260448201527f3a20696e76616c6964207369676e6174757265206c656e677468000000000000606482015260840162000187565b620003236200046b565b506020830151604080850151855186939260009185919081106200034b576200034b620006c9565b016020015160f81c9050601b81148015906200036b57508060ff16601c14155b15620003cf5760405162461bcd60e51b815260206004820152603b6024820152600080516020620006e083398151915260448201527f3a20696e76616c6964207369676e617475726520762076616c75650000000000606482015260840162000187565b6040805160008152602081018083528a905260ff83169181019190915260608101849052608081018390526001600160a01b038a169060019060a0016020604051602081039080840390855afa1580156200042e573d6000803e3d6000fd5b505050602060405103516001600160a01b031614955050505050505b9392505050565b60006020825110156200046357600080fd5b508051015190565b60405180606001604052806003906020820280368337509192915050565b6001600160a01b03811681146200049f57600080fd5b50565b634e487b7160e01b600052604160045260246000fd5b60005b83811015620004d5578181015183820152602001620004bb565b50506000910152565b600082601f830112620004f057600080fd5b81516001600160401b03808211156200050d576200050d620004a2565b604051601f8301601f19908116603f01168101908282118183101715620005385762000538620004a2565b816040528381528660208588010111156200055257600080fd5b62000565846020830160208901620004b8565b9695505050505050565b6000806000606084860312156200058557600080fd5b8351620005928162000489565b6020850151604086015191945092506001600160401b03811115620005b657600080fd5b620005c486828701620004de565b9150509250925092565b600080600060608486031215620005e457600080fd5b8351620005f18162000489565b60208501519093506001600160401b03808211156200060f57600080fd5b6200061d87838801620004de565b935060408601519150808211156200063457600080fd5b50620005c486828701620004de565b6000825162000657818460208701620004b8565b9190910192915050565b828152604060208201526000825180604084015262000688816060850160208701620004b8565b601f01601f1916919091016060019392505050565b600060208284031215620006b057600080fd5b81516001600160e01b0319811681146200044a57600080fd5b634e487b7160e01b600052603260045260246000fdfe5369676e617475726556616c696461746f72237265636f7665725369676e6572";
@@ -71577,14 +71304,14 @@ function equalBytes(b1, b22) {
   return true;
 }
 function isBytesEqual(a_, b_) {
-  const a2 = isHex$1(a_) ? toBytes$2(a_) : a_;
-  const b3 = isHex$1(b_) ? toBytes$2(b_) : b_;
+  const a2 = isHex(a_) ? toBytes$1(a_) : a_;
+  const b3 = isHex(b_) ? toBytes$1(b_) : b_;
   return equalBytes(a2, b3);
 }
 async function verifyHash(client2, { address, hash: hash2, signature: signature2, ...callRequest }) {
-  const signatureHex = isHex$1(signature2) ? signature2 : toHex$1(signature2);
+  const signatureHex = isHex(signature2) ? signature2 : toHex(signature2);
   try {
-    const { data } = await getAction$3(client2, call, "call")({
+    const { data } = await getAction$1(client2, call, "call")({
       data: encodeDeployData({
         abi: universalSignatureValidatorAbi,
         args: [address, hash2, signatureHex],
@@ -71623,7 +71350,7 @@ function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, on
   const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
   let prevBlockNumber;
   const pollBlockNumber = () => {
-    const observerId = stringify$2([
+    const observerId = stringify$1([
       "watchBlockNumber",
       client2.uid,
       emitOnBegin,
@@ -71631,9 +71358,9 @@ function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, on
       pollingInterval
     ]);
     return observe(observerId, { onBlockNumber, onError }, (emit) => poll(async () => {
-      var _a2;
+      var _a;
       try {
-        const blockNumber = await getAction$3(client2, getBlockNumber, "getBlockNumber")({ cacheTime: 0 });
+        const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({ cacheTime: 0 });
         if (prevBlockNumber) {
           if (blockNumber === prevBlockNumber)
             return;
@@ -71649,7 +71376,7 @@ function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, on
           prevBlockNumber = blockNumber;
         }
       } catch (err) {
-        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+        (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
       }
     }, {
       emitOnBegin,
@@ -71664,10 +71391,10 @@ function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, on
         const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
           params: ["newHeads"],
           onData(data) {
-            var _a2;
+            var _a;
             if (!active)
               return;
-            const blockNumber = hexToBigInt$1((_a2 = data.result) == null ? void 0 : _a2.number);
+            const blockNumber = hexToBigInt((_a = data.result) == null ? void 0 : _a.number);
             onBlockNumber(blockNumber, prevBlockNumber);
             prevBlockNumber = blockNumber;
           },
@@ -71696,7 +71423,7 @@ async function waitForTransactionReceipt(client2, {
   // exponential backoff
   timeout
 }) {
-  const observerId = stringify$2(["waitForTransactionReceipt", client2.uid, hash2]);
+  const observerId = stringify$1(["waitForTransactionReceipt", client2.uid, hash2]);
   let transaction2;
   let replacedTransaction;
   let receipt;
@@ -71705,7 +71432,7 @@ async function waitForTransactionReceipt(client2, {
     if (timeout)
       setTimeout(() => reject(new WaitForTransactionReceiptTimeoutError({ hash: hash2 })), timeout);
     const _unobserve = observe(observerId, { onReplaced, resolve, reject }, (emit) => {
-      const _unwatch = getAction$3(client2, watchBlockNumber, "watchBlockNumber")({
+      const _unwatch = getAction$1(client2, watchBlockNumber, "watchBlockNumber")({
         emitMissed: true,
         emitOnBegin: true,
         poll: true,
@@ -71728,8 +71455,8 @@ async function waitForTransactionReceipt(client2, {
             }
             if (!transaction2) {
               retrying = true;
-              await withRetry$1(async () => {
-                transaction2 = await getAction$3(client2, getTransaction, "getTransaction")({ hash: hash2 });
+              await withRetry(async () => {
+                transaction2 = await getAction$1(client2, getTransaction, "getTransaction")({ hash: hash2 });
                 if (transaction2.blockNumber)
                   blockNumber = transaction2.blockNumber;
               }, {
@@ -71738,7 +71465,7 @@ async function waitForTransactionReceipt(client2, {
               });
               retrying = false;
             }
-            receipt = await getAction$3(client2, getTransactionReceipt, "getTransactionReceipt")({ hash: hash2 });
+            receipt = await getAction$1(client2, getTransactionReceipt, "getTransactionReceipt")({ hash: hash2 });
             if (confirmations > 1 && (!receipt.blockNumber || blockNumber - receipt.blockNumber + 1n < confirmations))
               return;
             done(() => emit.resolve(receipt));
@@ -71751,19 +71478,19 @@ async function waitForTransactionReceipt(client2, {
               try {
                 replacedTransaction = transaction2;
                 retrying = true;
-                const block = await withRetry$1(() => getAction$3(client2, getBlock$1, "getBlock")({
+                const block = await withRetry(() => getAction$1(client2, getBlock, "getBlock")({
                   blockNumber,
                   includeTransactions: true
                 }), {
                   delay: retryDelay,
                   retryCount,
-                  shouldRetry: ({ error }) => error instanceof BlockNotFoundError$1
+                  shouldRetry: ({ error }) => error instanceof BlockNotFoundError
                 });
                 retrying = false;
                 const replacementTransaction = block.transactions.find(({ from: from2, nonce }) => from2 === replacedTransaction.from && nonce === replacedTransaction.nonce);
                 if (!replacementTransaction)
                   return;
-                receipt = await getAction$3(client2, getTransactionReceipt, "getTransactionReceipt")({
+                receipt = await getAction$1(client2, getTransactionReceipt, "getTransactionReceipt")({
                   hash: replacementTransaction.hash
                 });
                 if (confirmations > 1 && (!receipt.blockNumber || blockNumber - receipt.blockNumber + 1n < confirmations))
@@ -71775,8 +71502,8 @@ async function waitForTransactionReceipt(client2, {
                   reason = "cancelled";
                 }
                 done(() => {
-                  var _a2;
-                  (_a2 = emit.onReplaced) == null ? void 0 : _a2.call(emit, {
+                  var _a;
+                  (_a = emit.onReplaced) == null ? void 0 : _a.call(emit, {
                     reason,
                     replacedTransaction,
                     transaction: replacementTransaction,
@@ -71801,7 +71528,7 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
   const includeTransactions = includeTransactions_ ?? false;
   let prevBlock;
   const pollBlocks = () => {
-    const observerId = stringify$2([
+    const observerId = stringify$1([
       "watchBlocks",
       client2.uid,
       emitMissed,
@@ -71810,9 +71537,9 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
       pollingInterval
     ]);
     return observe(observerId, { onBlock, onError }, (emit) => poll(async () => {
-      var _a2;
+      var _a;
       try {
-        const block = await getAction$3(client2, getBlock$1, "getBlock")({
+        const block = await getAction$1(client2, getBlock, "getBlock")({
           blockTag,
           includeTransactions
         });
@@ -71821,7 +71548,7 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
             return;
           if (block.number - prevBlock.number > 1 && emitMissed) {
             for (let i2 = (prevBlock == null ? void 0 : prevBlock.number) + 1n; i2 < block.number; i2++) {
-              const block2 = await getAction$3(client2, getBlock$1, "getBlock")({
+              const block2 = await getAction$1(client2, getBlock, "getBlock")({
                 blockNumber: i2,
                 includeTransactions
               });
@@ -71841,7 +71568,7 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
           prevBlock = block;
         }
       } catch (err) {
-        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+        (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
       }
     }, {
       emitOnBegin,
@@ -71856,10 +71583,10 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
         const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
           params: ["newHeads"],
           onData(data) {
-            var _a2, _b, _c;
+            var _a, _b, _c;
             if (!active)
               return;
-            const format2 = ((_c = (_b = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b.block) == null ? void 0 : _c.format) || formatBlock$1;
+            const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.block) == null ? void 0 : _c.format) || formatBlock;
             const block = format2(data.result);
             onBlock(block, prevBlock);
             prevBlock = block;
@@ -71883,7 +71610,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
   const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
   const strict = strict_ ?? false;
   const pollEvent = () => {
-    const observerId = stringify$2([
+    const observerId = stringify$1([
       "watchEvent",
       address,
       args,
@@ -71897,10 +71624,10 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
       let filter2;
       let initialized = false;
       const unwatch = poll(async () => {
-        var _a2;
+        var _a;
         if (!initialized) {
           try {
-            filter2 = await getAction$3(client2, createEventFilter, "createEventFilter")({
+            filter2 = await getAction$1(client2, createEventFilter, "createEventFilter")({
               address,
               args,
               event,
@@ -71915,11 +71642,11 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
         try {
           let logs;
           if (filter2) {
-            logs = await getAction$3(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
+            logs = await getAction$1(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
           } else {
-            const blockNumber = await getAction$3(client2, getBlockNumber, "getBlockNumber")({});
+            const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({});
             if (previousBlockNumber && previousBlockNumber !== blockNumber) {
-              logs = await getAction$3(client2, getLogs, "getLogs")({
+              logs = await getAction$1(client2, getLogs, "getLogs")({
                 address,
                 args,
                 event,
@@ -71940,9 +71667,9 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
             for (const log of logs)
               emit.onLogs([log]);
         } catch (err) {
-          if (filter2 && err instanceof InvalidInputRpcError$1)
+          if (filter2 && err instanceof InvalidInputRpcError)
             initialized = false;
-          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+          (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
         }
       }, {
         emitOnBegin: true,
@@ -71950,7 +71677,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
       });
       return async () => {
         if (filter2)
-          await getAction$3(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
+          await getAction$1(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
         unwatch();
       };
     });
@@ -71976,7 +71703,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
         const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
           params: ["logs", { address, topics }],
           onData(data) {
-            var _a2;
+            var _a;
             if (!active)
               return;
             const log = data.result;
@@ -71996,7 +71723,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
                 if (strict_)
                   return;
                 eventName = err.abiItem.name;
-                isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
+                isUnnamed = (_a = err.abiItem.inputs) == null ? void 0 : _a.some((x) => !("name" in x && x.name));
               }
               const formatted = formatLog(log, {
                 args: isUnnamed ? [] : {},
@@ -72023,7 +71750,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
 function watchPendingTransactions(client2, { batch = true, onError, onTransactions, poll: poll_, pollingInterval = client2.pollingInterval }) {
   const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
   const pollPendingTransactions = () => {
-    const observerId = stringify$2([
+    const observerId = stringify$1([
       "watchPendingTransactions",
       client2.uid,
       batch,
@@ -72032,18 +71759,18 @@ function watchPendingTransactions(client2, { batch = true, onError, onTransactio
     return observe(observerId, { onTransactions, onError }, (emit) => {
       let filter2;
       const unwatch = poll(async () => {
-        var _a2;
+        var _a;
         try {
           if (!filter2) {
             try {
-              filter2 = await getAction$3(client2, createPendingTransactionFilter, "createPendingTransactionFilter")({});
+              filter2 = await getAction$1(client2, createPendingTransactionFilter, "createPendingTransactionFilter")({});
               return;
             } catch (err) {
               unwatch();
               throw err;
             }
           }
-          const hashes = await getAction$3(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
+          const hashes = await getAction$1(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
           if (hashes.length === 0)
             return;
           if (batch)
@@ -72052,7 +71779,7 @@ function watchPendingTransactions(client2, { batch = true, onError, onTransactio
             for (const hash2 of hashes)
               emit.onTransactions([hash2]);
         } catch (err) {
-          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+          (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
         }
       }, {
         emitOnBegin: true,
@@ -72060,7 +71787,7 @@ function watchPendingTransactions(client2, { batch = true, onError, onTransactio
       });
       return async () => {
         if (filter2)
-          await getAction$3(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
+          await getAction$1(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
         unwatch();
       };
     });
@@ -72101,13 +71828,13 @@ function publicActions(client2) {
     createEventFilter: (args) => createEventFilter(client2, args),
     createPendingTransactionFilter: () => createPendingTransactionFilter(client2),
     estimateContractGas: (args) => estimateContractGas(client2, args),
-    estimateGas: (args) => estimateGas$1(client2, args),
+    estimateGas: (args) => estimateGas(client2, args),
     getBalance: (args) => getBalance(client2, args),
-    getBlock: (args) => getBlock$1(client2, args),
+    getBlock: (args) => getBlock(client2, args),
     getBlockNumber: (args) => getBlockNumber(client2, args),
     getBlockTransactionCount: (args) => getBlockTransactionCount(client2, args),
     getBytecode: (args) => getBytecode(client2, args),
-    getChainId: () => getChainId$3(client2),
+    getChainId: () => getChainId$1(client2),
     getContractEvents: (args) => getContractEvents(client2, args),
     getEnsAddress: (args) => getEnsAddress(client2, args),
     getEnsAvatar: (args) => getEnsAvatar(client2, args),
@@ -72118,19 +71845,19 @@ function publicActions(client2) {
     estimateFeesPerGas: (args) => estimateFeesPerGas(client2, args),
     getFilterChanges: (args) => getFilterChanges(client2, args),
     getFilterLogs: (args) => getFilterLogs(client2, args),
-    getGasPrice: () => getGasPrice$1(client2),
+    getGasPrice: () => getGasPrice(client2),
     getLogs: (args) => getLogs(client2, args),
     getProof: (args) => getProof(client2, args),
     estimateMaxPriorityFeePerGas: (args) => estimateMaxPriorityFeePerGas(client2, args),
     getStorageAt: (args) => getStorageAt(client2, args),
     getTransaction: (args) => getTransaction(client2, args),
     getTransactionConfirmations: (args) => getTransactionConfirmations(client2, args),
-    getTransactionCount: (args) => getTransactionCount$1(client2, args),
+    getTransactionCount: (args) => getTransactionCount(client2, args),
     getTransactionReceipt: (args) => getTransactionReceipt(client2, args),
     multicall: (args) => multicall(client2, args),
-    prepareTransactionRequest: (args) => prepareTransactionRequest$1(client2, args),
+    prepareTransactionRequest: (args) => prepareTransactionRequest(client2, args),
     readContract: (args) => readContract(client2, args),
-    sendRawTransaction: (args) => sendRawTransaction$1(client2, args),
+    sendRawTransaction: (args) => sendRawTransaction(client2, args),
     simulateContract: (args) => simulateContract$1(client2, args),
     verifyMessage: (args) => verifyMessage(client2, args),
     verifyTypedData: (args) => verifyTypedData(client2, args),
@@ -72144,11 +71871,11 @@ function publicActions(client2) {
   };
 }
 async function getAddresses(client2) {
-  var _a2;
-  if (((_a2 = client2.account) == null ? void 0 : _a2.type) === "local")
+  var _a;
+  if (((_a = client2.account) == null ? void 0 : _a.type) === "local")
     return [client2.account.address];
   const addresses = await client2.request({ method: "eth_accounts" });
-  return addresses.map((address) => checksumAddress$1(address));
+  return addresses.map((address) => checksumAddress(address));
 }
 async function getPermissions(client2) {
   const permissions = await client2.request({ method: "wallet_getPermissions" });
@@ -72166,17 +71893,17 @@ async function requestPermissions(client2, permissions) {
 }
 async function signMessage(client2, { account: account_ = client2.account, message }) {
   if (!account_)
-    throw new AccountNotFoundError$1({
+    throw new AccountNotFoundError({
       docsPath: "/docs/actions/wallet/signMessage"
     });
-  const account2 = parseAccount$1(account_);
+  const account2 = parseAccount(account_);
   if (account2.type === "local")
     return account2.signMessage({ message });
   const message_ = (() => {
     if (typeof message === "string")
-      return stringToHex$1(message);
+      return stringToHex(message);
     if (message.raw instanceof Uint8Array)
-      return toHex$1(message.raw);
+      return toHex(message.raw);
     return message.raw;
   })();
   return client2.request({
@@ -72185,25 +71912,25 @@ async function signMessage(client2, { account: account_ = client2.account, messa
   }, { retryCount: 0 });
 }
 async function signTransaction(client2, args) {
-  var _a2, _b, _c, _d;
+  var _a, _b, _c, _d;
   const { account: account_ = client2.account, chain = client2.chain, ...transaction2 } = args;
   if (!account_)
-    throw new AccountNotFoundError$1({
+    throw new AccountNotFoundError({
       docsPath: "/docs/actions/wallet/signTransaction"
     });
-  const account2 = parseAccount$1(account_);
-  assertRequest$1({
+  const account2 = parseAccount(account_);
+  assertRequest({
     account: account2,
     ...args
   });
-  const chainId = await getAction$3(client2, getChainId$3, "getChainId")({});
+  const chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
   if (chain !== null)
-    assertCurrentChain$1({
+    assertCurrentChain({
       currentChainId: chainId,
       chain
     });
-  const formatters = (chain == null ? void 0 : chain.formatters) || ((_a2 = client2.chain) == null ? void 0 : _a2.formatters);
-  const format2 = ((_b = formatters == null ? void 0 : formatters.transactionRequest) == null ? void 0 : _b.format) || formatTransactionRequest$1;
+  const formatters = (chain == null ? void 0 : chain.formatters) || ((_a = client2.chain) == null ? void 0 : _a.formatters);
+  const format2 = ((_b = formatters == null ? void 0 : formatters.transactionRequest) == null ? void 0 : _b.format) || formatTransactionRequest;
   if (account2.type === "local")
     return account2.signTransaction({
       ...transaction2,
@@ -72214,7 +71941,7 @@ async function signTransaction(client2, args) {
     params: [
       {
         ...format2(transaction2),
-        chainId: numberToHex$1(chainId),
+        chainId: numberToHex(chainId),
         from: account2.address
       }
     ]
@@ -72223,10 +71950,10 @@ async function signTransaction(client2, args) {
 async function signTypedData(client2, parameters) {
   const { account: account_ = client2.account, domain: domain2, message, primaryType } = parameters;
   if (!account_)
-    throw new AccountNotFoundError$1({
+    throw new AccountNotFoundError({
       docsPath: "/docs/actions/wallet/signTypedData"
     });
-  const account2 = parseAccount$1(account_);
+  const account2 = parseAccount(account_);
   const types2 = {
     EIP712Domain: getTypesForEIP712Domain({ domain: domain2 }),
     ...parameters.types
@@ -72234,18 +71961,18 @@ async function signTypedData(client2, parameters) {
   validateTypedData({ domain: domain2, message, primaryType, types: types2 });
   if (account2.type === "local")
     return account2.signTypedData({ domain: domain2, message, primaryType, types: types2 });
-  const typedData = stringify$2({ domain: domain2 ?? {}, message, primaryType, types: types2 }, (_, value) => isHex$1(value) ? value.toLowerCase() : value);
+  const typedData = stringify$1({ domain: domain2 ?? {}, message, primaryType, types: types2 }, (_, value) => isHex(value) ? value.toLowerCase() : value);
   return client2.request({
     method: "eth_signTypedData_v4",
     params: [account2.address, typedData]
   }, { retryCount: 0 });
 }
-async function switchChain$2(client2, { id: id2 }) {
+async function switchChain$1(client2, { id: id2 }) {
   await client2.request({
     method: "wallet_switchEthereumChain",
     params: [
       {
-        chainId: numberToHex$1(id2)
+        chainId: numberToHex(id2)
       }
     ]
   }, { retryCount: 0 });
@@ -72262,17 +71989,17 @@ function walletActions(client2) {
     addChain: (args) => addChain(client2, args),
     deployContract: (args) => deployContract(client2, args),
     getAddresses: () => getAddresses(client2),
-    getChainId: () => getChainId$3(client2),
+    getChainId: () => getChainId$1(client2),
     getPermissions: () => getPermissions(client2),
-    prepareTransactionRequest: (args) => prepareTransactionRequest$1(client2, args),
+    prepareTransactionRequest: (args) => prepareTransactionRequest(client2, args),
     requestAddresses: () => requestAddresses(client2),
     requestPermissions: (args) => requestPermissions(client2, args),
-    sendRawTransaction: (args) => sendRawTransaction$1(client2, args),
-    sendTransaction: (args) => sendTransaction$3(client2, args),
+    sendRawTransaction: (args) => sendRawTransaction(client2, args),
+    sendTransaction: (args) => sendTransaction$1(client2, args),
     signMessage: (args) => signMessage(client2, args),
     signTransaction: (args) => signTransaction(client2, args),
     signTypedData: (args) => signTypedData(client2, args),
-    switchChain: (args) => switchChain$2(client2, args),
+    switchChain: (args) => switchChain$1(client2, args),
     watchAsset: (args) => watchAsset(client2, args),
     writeContract: (args) => writeContract$1(client2, args)
   };
@@ -72280,7 +72007,7 @@ function walletActions(client2) {
 const zeroAddress = "0x0000000000000000000000000000000000000000";
 function parseEventLogs({ abi: abi2, eventName, logs, strict = true }) {
   return logs.map((log) => {
-    var _a2;
+    var _a;
     try {
       const event = decodeEventLog({
         ...log,
@@ -72299,7 +72026,7 @@ function parseEventLogs({ abi: abi2, eventName, logs, strict = true }) {
         if (strict)
           return null;
         eventName2 = err.abiItem.name;
-        isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
+        isUnnamed = (_a = err.abiItem.inputs) == null ? void 0 : _a.some((x) => !("name" in x && x.name));
       }
       return { ...log, args: isUnnamed ? [] : {}, eventName: eventName2 };
     }
@@ -72333,8 +72060,8 @@ async function getLogs(client2, { address, blockHash, fromBlock, toBlock, event,
         {
           address,
           topics,
-          fromBlock: typeof fromBlock === "bigint" ? numberToHex$1(fromBlock) : fromBlock,
-          toBlock: typeof toBlock === "bigint" ? numberToHex$1(toBlock) : toBlock
+          fromBlock: typeof fromBlock === "bigint" ? numberToHex(fromBlock) : fromBlock,
+          toBlock: typeof toBlock === "bigint" ? numberToHex(toBlock) : toBlock
         }
       ]
     });
@@ -72352,7 +72079,7 @@ async function getContractEvents(client2, parameters) {
   const { abi: abi2, address, args, blockHash, eventName, fromBlock, toBlock, strict } = parameters;
   const event = eventName ? getAbiItem({ abi: abi2, name: eventName }) : void 0;
   const events = !event ? abi2.filter((x) => x.type === "event") : void 0;
-  return getAction$3(client2, getLogs, "getLogs")({
+  return getAction$1(client2, getLogs, "getLogs")({
     address,
     args,
     blockHash,
@@ -72445,14 +72172,14 @@ function createJSONStorage(getStorage, options) {
   }
   const persistStorage = {
     getItem: (name) => {
-      var _a2;
+      var _a;
       const parse2 = (str2) => {
         if (str2 === null) {
           return null;
         }
         return JSON.parse(str2, options == null ? void 0 : options.reviver);
       };
-      const str = (_a2 = storage.getItem(name)) != null ? _a2 : null;
+      const str = (_a = storage.getItem(name)) != null ? _a : null;
       if (str instanceof Promise) {
         return str.then(parse2);
       }
@@ -72553,12 +72280,12 @@ const oldImpl = (config2, baseOptions) => (set, get2, api2) => {
   );
   let stateFromStorage;
   const hydrate2 = () => {
-    var _a2;
+    var _a;
     if (!storage)
       return;
     hasHydrated = false;
     hydrationListeners.forEach((cb2) => cb2(get2()));
-    const postRehydrationCallback = ((_a2 = options.onRehydrateStorage) == null ? void 0 : _a2.call(options, get2())) || void 0;
+    const postRehydrationCallback = ((_a = options.onRehydrateStorage) == null ? void 0 : _a.call(options, get2())) || void 0;
     return toThenable(storage.getItem.bind(storage))(options.name).then((storageValue) => {
       if (storageValue) {
         return options.deserialize(storageValue);
@@ -72580,10 +72307,10 @@ const oldImpl = (config2, baseOptions) => (set, get2, api2) => {
         }
       }
     }).then((migratedState) => {
-      var _a22;
+      var _a2;
       stateFromStorage = options.merge(
         migratedState,
-        (_a22 = get2()) != null ? _a22 : configResult
+        (_a2 = get2()) != null ? _a2 : configResult
       );
       set(stateFromStorage, true);
       return setItem();
@@ -72676,15 +72403,15 @@ const newImpl = (config2, baseOptions) => (set, get2, api2) => {
   );
   let stateFromStorage;
   const hydrate2 = () => {
-    var _a2, _b;
+    var _a, _b;
     if (!storage)
       return;
     hasHydrated = false;
     hydrationListeners.forEach((cb2) => {
-      var _a22;
-      return cb2((_a22 = get2()) != null ? _a22 : configResult);
+      var _a2;
+      return cb2((_a2 = get2()) != null ? _a2 : configResult);
     });
-    const postRehydrationCallback = ((_b = options.onRehydrateStorage) == null ? void 0 : _b.call(options, (_a2 = get2()) != null ? _a2 : configResult)) || void 0;
+    const postRehydrationCallback = ((_b = options.onRehydrateStorage) == null ? void 0 : _b.call(options, (_a = get2()) != null ? _a : configResult)) || void 0;
     return toThenable(storage.getItem.bind(storage))(options.name).then((deserializedStorageValue) => {
       if (deserializedStorageValue) {
         if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options.version) {
@@ -72702,10 +72429,10 @@ const newImpl = (config2, baseOptions) => (set, get2, api2) => {
         }
       }
     }).then((migratedState) => {
-      var _a22;
+      var _a2;
       stateFromStorage = options.merge(
         migratedState,
-        (_a22 = get2()) != null ? _a22 : configResult
+        (_a2 = get2()) != null ? _a2 : configResult
       );
       set(stateFromStorage, true);
       return setItem();
@@ -72973,7 +72700,7 @@ var eventemitter3 = { exports: {} };
 })(eventemitter3);
 var eventemitter3Exports = eventemitter3.exports;
 const EventEmitter = /* @__PURE__ */ getDefaultExportFromCjs$1(eventemitter3Exports);
-var __classPrivateFieldGet$2 = function(receiver, state, kind, f2) {
+var __classPrivateFieldGet$1 = function(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
     throw new TypeError("Private accessor was defined without a getter");
   if (typeof state === "function" ? receiver !== state || !f2 : !state.has(receiver))
@@ -72992,20 +72719,20 @@ class Emitter {
     _Emitter_emitter.set(this, new EventEmitter());
   }
   on(eventName, fn) {
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").on(eventName, fn);
+    __classPrivateFieldGet$1(this, _Emitter_emitter, "f").on(eventName, fn);
   }
   once(eventName, fn) {
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").once(eventName, fn);
+    __classPrivateFieldGet$1(this, _Emitter_emitter, "f").once(eventName, fn);
   }
   off(eventName, fn) {
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").off(eventName, fn);
+    __classPrivateFieldGet$1(this, _Emitter_emitter, "f").off(eventName, fn);
   }
   emit(eventName, ...params) {
     const data = params[0];
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").emit(eventName, { uid: this.uid, ...data });
+    __classPrivateFieldGet$1(this, _Emitter_emitter, "f").emit(eventName, { uid: this.uid, ...data });
   }
   listenerCount(eventName) {
-    return __classPrivateFieldGet$2(this, _Emitter_emitter, "f").listenerCount(eventName);
+    return __classPrivateFieldGet$1(this, _Emitter_emitter, "f").listenerCount(eventName);
   }
 }
 _Emitter_emitter = /* @__PURE__ */ new WeakMap();
@@ -73111,27 +72838,27 @@ const noopStorage = {
 function createConnector(createConnectorFn) {
   return createConnectorFn;
 }
-const version$5 = "2.6.5";
-const getVersion$5 = () => `@wagmi/core@${version$5}`;
-var __classPrivateFieldGet$1 = function(receiver, state, kind, f2) {
+const version$1 = "2.6.5";
+const getVersion$1 = () => `@wagmi/core@${version$1}`;
+var __classPrivateFieldGet = function(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
     throw new TypeError("Private accessor was defined without a getter");
   if (typeof state === "function" ? receiver !== state || !f2 : !state.has(receiver))
     throw new TypeError("Cannot read private member from an object whose class did not declare it");
   return kind === "m" ? f2 : kind === "a" ? f2.call(receiver) : f2 ? f2.value : state.get(receiver);
 };
-var _BaseError_instances$1, _BaseError_walk$1;
-let BaseError$5 = class BaseError2 extends Error {
+var _BaseError_instances, _BaseError_walk;
+let BaseError$1 = class BaseError2 extends Error {
   get docsBaseUrl() {
     return "https://wagmi.sh/core";
   }
   get version() {
-    return getVersion$5();
+    return getVersion$1();
   }
   constructor(shortMessage, options = {}) {
-    var _a2;
+    var _a;
     super();
-    _BaseError_instances$1.add(this);
+    _BaseError_instances.add(this);
     Object.defineProperty(this, "details", {
       enumerable: true,
       configurable: true,
@@ -73162,7 +72889,7 @@ let BaseError$5 = class BaseError2 extends Error {
       writable: true,
       value: "WagmiCoreError"
     });
-    const details = options.cause instanceof BaseError2 ? options.cause.details : ((_a2 = options.cause) == null ? void 0 : _a2.message) ? options.cause.message : options.details;
+    const details = options.cause instanceof BaseError2 ? options.cause.details : ((_a = options.cause) == null ? void 0 : _a.message) ? options.cause.message : options.details;
     const docsPath2 = options.cause instanceof BaseError2 ? options.cause.docsPath || options.docsPath : options.docsPath;
     this.message = [
       shortMessage || "An error occurred.",
@@ -73182,17 +72909,17 @@ let BaseError$5 = class BaseError2 extends Error {
     this.shortMessage = shortMessage;
   }
   walk(fn) {
-    return __classPrivateFieldGet$1(this, _BaseError_instances$1, "m", _BaseError_walk$1).call(this, this, fn);
+    return __classPrivateFieldGet(this, _BaseError_instances, "m", _BaseError_walk).call(this, this, fn);
   }
 };
-_BaseError_instances$1 = /* @__PURE__ */ new WeakSet(), _BaseError_walk$1 = function _BaseError_walk(err, fn) {
+_BaseError_instances = /* @__PURE__ */ new WeakSet(), _BaseError_walk = function _BaseError_walk2(err, fn) {
   if (fn == null ? void 0 : fn(err))
     return err;
   if (err.cause)
-    return __classPrivateFieldGet$1(this, _BaseError_instances$1, "m", _BaseError_walk).call(this, err.cause, fn);
+    return __classPrivateFieldGet(this, _BaseError_instances, "m", _BaseError_walk2).call(this, err.cause, fn);
   return err;
 };
-let ChainNotConfiguredError$1 = class ChainNotConfiguredError extends BaseError$5 {
+class ChainNotConfiguredError extends BaseError$1 {
   constructor() {
     super("Chain not configured.");
     Object.defineProperty(this, "name", {
@@ -73202,8 +72929,8 @@ let ChainNotConfiguredError$1 = class ChainNotConfiguredError extends BaseError$
       value: "ChainNotConfiguredError"
     });
   }
-};
-class ConnectorAlreadyConnectedError extends BaseError$5 {
+}
+class ConnectorAlreadyConnectedError extends BaseError$1 {
   constructor() {
     super("Connector already connected.");
     Object.defineProperty(this, "name", {
@@ -73214,7 +72941,7 @@ class ConnectorAlreadyConnectedError extends BaseError$5 {
     });
   }
 }
-let ConnectorNotConnectedError$1 = class ConnectorNotConnectedError extends BaseError$5 {
+class ConnectorNotConnectedError extends BaseError$1 {
   constructor() {
     super("Connector not connected.");
     Object.defineProperty(this, "name", {
@@ -73224,8 +72951,8 @@ let ConnectorNotConnectedError$1 = class ConnectorNotConnectedError extends Base
       value: "ConnectorNotConnectedError"
     });
   }
-};
-let ConnectorAccountNotFoundError$1 = class ConnectorAccountNotFoundError extends BaseError$5 {
+}
+class ConnectorAccountNotFoundError extends BaseError$1 {
   constructor({ address, connector }) {
     super(`Account "${address}" not found for connector "${connector.name}".`);
     Object.defineProperty(this, "name", {
@@ -73235,8 +72962,8 @@ let ConnectorAccountNotFoundError$1 = class ConnectorAccountNotFoundError extend
       value: "ConnectorAccountNotFoundError"
     });
   }
-};
-class ProviderNotFoundError extends BaseError$5 {
+}
+class ProviderNotFoundError extends BaseError$1 {
   constructor() {
     super("Provider not found.");
     Object.defineProperty(this, "name", {
@@ -73247,7 +72974,7 @@ class ProviderNotFoundError extends BaseError$5 {
     });
   }
 }
-let SwitchChainNotSupportedError$1 = class SwitchChainNotSupportedError extends BaseError$5 {
+class SwitchChainNotSupportedError extends BaseError$1 {
   constructor({ connector }) {
     super(`"${connector.name}" does not support programmatic chain switching.`);
     Object.defineProperty(this, "name", {
@@ -73257,7 +72984,7 @@ let SwitchChainNotSupportedError$1 = class SwitchChainNotSupportedError extends 
       value: "SwitchChainNotSupportedError"
     });
   }
-};
+}
 function normalizeChainId(chainId) {
   if (typeof chainId === "string")
     return Number.parseInt(chainId, chainId.trim().substring(0, 2) === "0x" ? 16 : 10);
@@ -73315,8 +73042,8 @@ const targetMap = {
     id: "phantom",
     name: "Phantom",
     provider(window2) {
-      var _a2, _b;
-      if ((_a2 = window2 == null ? void 0 : window2.phantom) == null ? void 0 : _a2.ethereum)
+      var _a, _b;
+      if ((_a = window2 == null ? void 0 : window2.phantom) == null ? void 0 : _a.ethereum)
         return (_b = window2.phantom) == null ? void 0 : _b.ethereum;
       return findProvider(window2, "isPhantom");
     }
@@ -73367,7 +73094,7 @@ function injected(parameters = {}) {
         provider2.on("connect", this.onConnect.bind(this));
     },
     async connect({ chainId, isReconnecting: isReconnecting2 } = {}) {
-      var _a2, _b, _c, _d, _e, _f;
+      var _a, _b, _c, _d, _e, _f;
       const provider2 = await this.getProvider();
       if (!provider2)
         throw new ProviderNotFoundError();
@@ -73381,12 +73108,12 @@ function injected(parameters = {}) {
               method: "wallet_requestPermissions",
               params: [{ eth_accounts: {} }]
             });
-            accounts = (_d = (_c = (_b = (_a2 = permissions[0]) == null ? void 0 : _a2.caveats) == null ? void 0 : _b[0]) == null ? void 0 : _c.value) == null ? void 0 : _d.map((x) => getAddress(x));
+            accounts = (_d = (_c = (_b = (_a = permissions[0]) == null ? void 0 : _a.caveats) == null ? void 0 : _b[0]) == null ? void 0 : _c.value) == null ? void 0 : _d.map((x) => getAddress(x));
           } catch (err) {
             const error = err;
-            if (error.code === UserRejectedRequestError$1.code)
-              throw new UserRejectedRequestError$1(error);
-            if (error.code === ResourceUnavailableRpcError$1.code)
+            if (error.code === UserRejectedRequestError.code)
+              throw new UserRejectedRequestError(error);
+            if (error.code === ResourceUnavailableRpcError.code)
               throw error;
           }
       }
@@ -73404,7 +73131,7 @@ function injected(parameters = {}) {
         let currentChainId = await this.getChainId();
         if (chainId && currentChainId !== chainId) {
           const chain = await this.switchChain({ chainId }).catch((error) => {
-            if (error.code === UserRejectedRequestError$1.code)
+            if (error.code === UserRejectedRequestError.code)
               throw error;
             return { id: currentChainId };
           });
@@ -73418,15 +73145,15 @@ function injected(parameters = {}) {
         return { accounts, chainId: currentChainId };
       } catch (err) {
         const error = err;
-        if (error.code === UserRejectedRequestError$1.code)
-          throw new UserRejectedRequestError$1(error);
-        if (error.code === ResourceUnavailableRpcError$1.code)
-          throw new ResourceUnavailableRpcError$1(error);
+        if (error.code === UserRejectedRequestError.code)
+          throw new UserRejectedRequestError(error);
+        if (error.code === ResourceUnavailableRpcError.code)
+          throw new ResourceUnavailableRpcError(error);
         throw error;
       }
     },
     async disconnect() {
-      var _a2, _b;
+      var _a, _b;
       const provider2 = await this.getProvider();
       if (!provider2)
         throw new ProviderNotFoundError();
@@ -73435,7 +73162,7 @@ function injected(parameters = {}) {
       provider2.removeListener("disconnect", this.onDisconnect.bind(this));
       provider2.on("connect", this.onConnect.bind(this));
       if (shimDisconnect) {
-        await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem(`${this.id}.disconnected`, true));
+        await ((_a = config2.storage) == null ? void 0 : _a.setItem(`${this.id}.disconnected`, true));
         if (!parameters.target)
           await ((_b = config2.storage) == null ? void 0 : _b.removeItem("injected.connected"));
       }
@@ -73475,10 +73202,10 @@ function injected(parameters = {}) {
       return provider2;
     },
     async isAuthorized() {
-      var _a2, _b;
+      var _a, _b;
       try {
         const isDisconnected = shimDisconnect && // If shim exists in storage, connector is disconnected
-        await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem(`${this.id}.disconnected`));
+        await ((_a = config2.storage) == null ? void 0 : _a.getItem(`${this.id}.disconnected`));
         if (isDisconnected)
           return false;
         if (!parameters.target) {
@@ -73507,7 +73234,7 @@ function injected(parameters = {}) {
           }
           throw new ProviderNotFoundError();
         }
-        const accounts = await withRetry$1(() => withTimeout(() => this.getAccounts(), {
+        const accounts = await withRetry(() => withTimeout(() => this.getAccounts(), {
           timeout: 100
         }));
         return !!accounts.length;
@@ -73516,18 +73243,18 @@ function injected(parameters = {}) {
       }
     },
     async switchChain({ chainId }) {
-      var _a2, _b, _c;
+      var _a, _b, _c;
       const provider2 = await this.getProvider();
       if (!provider2)
         throw new ProviderNotFoundError();
       const chain = config2.chains.find((x) => x.id === chainId);
       if (!chain)
-        throw new SwitchChainError$1(new ChainNotConfiguredError$1());
+        throw new SwitchChainError(new ChainNotConfiguredError());
       try {
         await Promise.all([
           provider2.request({
             method: "wallet_switchEthereumChain",
-            params: [{ chainId: numberToHex$1(chainId) }]
+            params: [{ chainId: numberToHex(chainId) }]
           }),
           new Promise((resolve) => config2.emitter.once("change", ({ chainId: currentChainId }) => {
             if (currentChainId === chainId)
@@ -73539,7 +73266,7 @@ function injected(parameters = {}) {
         const error = err;
         if (error.code === 4902 || // Unwrapping for MetaMask Mobile
         // https://github.com/MetaMask/metamask-mobile/issues/2944#issuecomment-976988719
-        ((_b = (_a2 = error == null ? void 0 : error.data) == null ? void 0 : _a2.originalError) == null ? void 0 : _b.code) === 4902) {
+        ((_b = (_a = error == null ? void 0 : error.data) == null ? void 0 : _a.originalError) == null ? void 0 : _b.code) === 4902) {
           try {
             const { default: blockExplorer, ...blockExplorers } = chain.blockExplorers ?? {};
             let blockExplorerUrls = [];
@@ -73552,7 +73279,7 @@ function injected(parameters = {}) {
               method: "wallet_addEthereumChain",
               params: [
                 {
-                  chainId: numberToHex$1(chainId),
+                  chainId: numberToHex(chainId),
                   chainName: chain.name,
                   nativeCurrency: chain.nativeCurrency,
                   rpcUrls: [((_c = chain.rpcUrls.default) == null ? void 0 : _c.http[0]) ?? ""],
@@ -73562,26 +73289,26 @@ function injected(parameters = {}) {
             });
             const currentChainId = await this.getChainId();
             if (currentChainId !== chainId)
-              throw new UserRejectedRequestError$1(new Error("User rejected switch after adding network."));
+              throw new UserRejectedRequestError(new Error("User rejected switch after adding network."));
             return chain;
           } catch (error2) {
-            throw new UserRejectedRequestError$1(error2);
+            throw new UserRejectedRequestError(error2);
           }
         }
-        if (error.code === UserRejectedRequestError$1.code)
-          throw new UserRejectedRequestError$1(error);
-        throw new SwitchChainError$1(error);
+        if (error.code === UserRejectedRequestError.code)
+          throw new UserRejectedRequestError(error);
+        throw new SwitchChainError(error);
       }
     },
     async onAccountsChanged(accounts) {
-      var _a2;
+      var _a;
       if (accounts.length === 0)
         this.onDisconnect();
       else if (config2.emitter.listenerCount("connect")) {
         const chainId = (await this.getChainId()).toString();
         this.onConnect({ chainId });
         if (shimDisconnect)
-          await ((_a2 = config2.storage) == null ? void 0 : _a2.removeItem(`${this.id}.disconnected`));
+          await ((_a = config2.storage) == null ? void 0 : _a.removeItem(`${this.id}.disconnected`));
       } else
         config2.emitter.emit("change", {
           accounts: accounts.map((x) => getAddress(x))
@@ -73636,18 +73363,18 @@ function findProvider(window2, select) {
     return ethereum;
   return void 0;
 }
-const size$4 = 256;
-let index$2 = size$4;
-let buffer$1;
-function uid$1(length2 = 11) {
-  if (!buffer$1 || index$2 + length2 > size$4 * 2) {
-    buffer$1 = "";
-    index$2 = 0;
-    for (let i2 = 0; i2 < size$4; i2++) {
-      buffer$1 += (256 + Math.random() * 256 | 0).toString(16).substring(1);
+const size$2 = 256;
+let index$1 = size$2;
+let buffer;
+function uid(length2 = 11) {
+  if (!buffer || index$1 + length2 > size$2 * 2) {
+    buffer = "";
+    index$1 = 0;
+    for (let i2 = 0; i2 < size$2; i2++) {
+      buffer += (256 + Math.random() * 256 | 0).toString(16).substring(1);
     }
   }
-  return buffer$1.substring(index$2, index$2++ + length2);
+  return buffer.substring(index$1, index$1++ + length2);
 }
 function createConfig(parameters) {
   const { multiInjectedProviderDiscovery = true, storage = createStorage({
@@ -73660,15 +73387,15 @@ function createConfig(parameters) {
     ...!ssr ? (mipd == null ? void 0 : mipd.getProviders().map(providerDetailToConnector)) ?? [] : []
   ].map(setup));
   function setup(connectorFn) {
-    var _a2;
-    const emitter = createEmitter(uid$1());
+    var _a;
+    const emitter = createEmitter(uid());
     const connector = {
       ...connectorFn({ emitter, chains: chains2.getState(), storage }),
       emitter,
       uid: emitter.uid
     };
     emitter.on("connect", connect2);
-    (_a2 = connector.setup) == null ? void 0 : _a2.call(connector);
+    (_a = connector.setup) == null ? void 0 : _a.call(connector);
     return connector;
   }
   function providerDetailToConnector(providerDetail) {
@@ -73681,13 +73408,13 @@ function createConfig(parameters) {
     const chainId = config2.chainId ?? store.getState().chainId;
     const chain = chains2.getState().find((x) => x.id === chainId);
     if (config2.chainId && !chain)
-      throw new ChainNotConfiguredError$1();
+      throw new ChainNotConfiguredError();
     {
       const client3 = clients.get(store.getState().chainId);
       if (client3 && !chain)
         return client3;
       else if (!chain)
-        throw new ChainNotConfiguredError$1();
+        throw new ChainNotConfiguredError();
     }
     {
       const client3 = clients.get(chainId);
@@ -73719,7 +73446,7 @@ function createConfig(parameters) {
             properties[key2] = value;
         }
       }
-      client2 = createClient$1({
+      client2 = createClient({
         ...properties,
         chain,
         batch: properties.batch ?? { multicall: true },
@@ -73739,10 +73466,10 @@ function createConfig(parameters) {
   }
   let currentVersion;
   const prefix2 = "0.0.0-canary-";
-  if (version$5.startsWith(prefix2))
-    currentVersion = parseInt(version$5.replace(prefix2, ""));
+  if (version$1.startsWith(prefix2))
+    currentVersion = parseInt(version$1.replace(prefix2, ""));
   else
-    currentVersion = parseInt(version$5.split(".")[0] ?? "0");
+    currentVersion = parseInt(version$1.split(".")[0] ?? "0");
   const store = createStore(subscribeWithSelector(
     // only use persist middleware if storage exists
     storage ? persist(getInitialState, {
@@ -73775,8 +73502,8 @@ function createConfig(parameters) {
   ));
   if (syncConnectedChain)
     store.subscribe(({ connections, current }) => {
-      var _a2;
-      return current ? (_a2 = connections.get(current)) == null ? void 0 : _a2.chainId : void 0;
+      var _a;
+      return current ? (_a = connections.get(current)) == null ? void 0 : _a.chainId : void 0;
     }, (chainId) => {
       const isChainConfigured = chains2.getState().some((x) => x.id === chainId);
       if (!isChainConfigured)
@@ -73918,14 +73645,14 @@ function createConfig(parameters) {
     }
   };
 }
-function getAction$2(client2, actionFn, name) {
+function getAction(client2, actionFn, name) {
   const action = client2[actionFn.name ?? name];
   if (typeof action === "function")
     return action;
   return (params) => actionFn(client2, params);
 }
 async function connect(config2, parameters) {
-  var _a2;
+  var _a;
   let connector;
   if (typeof parameters.connector === "function") {
     connector = config2._internal.connectors.setup(parameters.connector);
@@ -73941,7 +73668,7 @@ async function connect(config2, parameters) {
     connector.emitter.off("connect", config2._internal.events.connect);
     connector.emitter.on("change", config2._internal.events.change);
     connector.emitter.on("disconnect", config2._internal.events.disconnect);
-    await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem("recentConnectorId", connector.id));
+    await ((_a = config2.storage) == null ? void 0 : _a.setItem("recentConnectorId", connector.id));
     config2.setState((x) => ({
       ...x,
       connections: new Map(x.connections).set(connector.uid, {
@@ -73962,8 +73689,8 @@ async function connect(config2, parameters) {
     throw error;
   }
 }
-async function disconnect$1(config2, parameters = {}) {
-  var _a2, _b;
+async function disconnect(config2, parameters = {}) {
+  var _a, _b;
   let connector;
   if (parameters.connector)
     connector = parameters.connector;
@@ -73999,13 +73726,13 @@ async function disconnect$1(config2, parameters = {}) {
     const current = config2.state.current;
     if (!current)
       return;
-    const connector2 = (_a2 = config2.state.connections.get(current)) == null ? void 0 : _a2.connector;
+    const connector2 = (_a = config2.state.connections.get(current)) == null ? void 0 : _a.connector;
     if (!connector2)
       return;
     await ((_b = config2.storage) == null ? void 0 : _b.setItem("recentConnectorId", connector2.id));
   }
 }
-async function getConnectorClient$1(config2, parameters = {}) {
+async function getConnectorClient(config2, parameters = {}) {
   let connection;
   if (parameters.connector) {
     const { connector: connector2 } = parameters;
@@ -74021,27 +73748,27 @@ async function getConnectorClient$1(config2, parameters = {}) {
   } else
     connection = config2.state.connections.get(config2.state.current);
   if (!connection)
-    throw new ConnectorNotConnectedError$1();
+    throw new ConnectorNotConnectedError();
   const chainId = parameters.chainId ?? connection.chainId;
   const connector = connection.connector;
   if (connector.getClient)
     return connector.getClient({ chainId });
-  const account2 = parseAccount$1(parameters.account ?? connection.accounts[0]);
+  const account2 = parseAccount(parameters.account ?? connection.accounts[0]);
   const chain = config2.chains.find((chain2) => chain2.id === chainId);
   const provider2 = await connection.connector.getProvider({ chainId });
   if (parameters.account && !connection.accounts.includes(account2.address))
-    throw new ConnectorAccountNotFoundError$1({
+    throw new ConnectorAccountNotFoundError({
       address: account2.address,
       connector
     });
-  return createClient$1({
+  return createClient({
     account: account2,
     chain,
     name: "Connector Client",
-    transport: (opts) => custom$1(provider2)({ ...opts, retryCount: 0 })
+    transport: (opts) => custom(provider2)({ ...opts, retryCount: 0 })
   });
 }
-function getAccount$1(config2) {
+function getAccount(config2) {
   const uid2 = config2.state.current;
   const connection = config2.state.connections.get(uid2);
   const addresses = connection == null ? void 0 : connection.accounts;
@@ -74103,10 +73830,10 @@ function getAccount$1(config2) {
       };
   }
 }
-function getChainId$2(config2) {
+function getChainId(config2) {
   return config2.state.chainId;
 }
-function deepEqual$2(a2, b3) {
+function deepEqual$1(a2, b3) {
   if (a2 === b3)
     return true;
   if (a2 && b3 && typeof a2 === "object" && typeof b3 === "object") {
@@ -74119,7 +73846,7 @@ function deepEqual$2(a2, b3) {
       if (length2 !== b3.length)
         return false;
       for (i2 = length2; i2-- !== 0; )
-        if (!deepEqual$2(a2[i2], b3[i2]))
+        if (!deepEqual$1(a2[i2], b3[i2]))
           return false;
       return true;
     }
@@ -74136,19 +73863,19 @@ function deepEqual$2(a2, b3) {
         return false;
     for (i2 = length2; i2-- !== 0; ) {
       const key2 = keys[i2];
-      if (key2 && !deepEqual$2(a2[key2], b3[key2]))
+      if (key2 && !deepEqual$1(a2[key2], b3[key2]))
         return false;
     }
     return true;
   }
   return a2 !== a2 && b3 !== b3;
 }
-let previousChains$1 = [];
-function getChains$1(config2) {
+let previousChains = [];
+function getChains(config2) {
   const chains2 = config2.chains;
-  if (deepEqual$2(previousChains$1, chains2))
-    return previousChains$1;
-  previousChains$1 = chains2;
+  if (deepEqual$1(previousChains, chains2))
+    return previousChains;
+  previousChains = chains2;
   return chains2;
 }
 function getClient(config2, parameters = {}) {
@@ -74159,20 +73886,20 @@ function getClient(config2, parameters = {}) {
   }
   return client2;
 }
-let previousConnections$1 = [];
-function getConnections$1(config2) {
+let previousConnections = [];
+function getConnections(config2) {
   const connections = [...config2.state.connections.values()];
   if (config2.state.status === "reconnecting")
-    return previousConnections$1;
-  if (deepEqual$2(previousConnections$1, connections))
-    return previousConnections$1;
-  previousConnections$1 = connections;
+    return previousConnections;
+  if (deepEqual$1(previousConnections, connections))
+    return previousConnections;
+  previousConnections = connections;
   return connections;
 }
 let previousConnectors = [];
 function getConnectors(config2) {
   const connectors2 = config2.connectors;
-  if (deepEqual$2(previousConnectors, connectors2))
+  if (deepEqual$1(previousConnectors, connectors2))
     return previousConnectors;
   previousConnectors = connectors2;
   return connectors2;
@@ -74182,13 +73909,13 @@ function getPublicClient(config2, parameters = {}) {
   return client2 == null ? void 0 : client2.extend(publicActions);
 }
 async function getWalletClient(config2, parameters = {}) {
-  const client2 = await getConnectorClient$1(config2, parameters);
+  const client2 = await getConnectorClient(config2, parameters);
   client2.extend(walletActions);
   return client2.extend(walletActions);
 }
 let isReconnecting = false;
 async function reconnect(config2, parameters = {}) {
-  var _a2, _b;
+  var _a, _b;
   if (isReconnecting)
     return [];
   isReconnecting = true;
@@ -74197,7 +73924,7 @@ async function reconnect(config2, parameters = {}) {
     status: x.current ? "reconnecting" : "connecting"
   }));
   const connectors2 = [];
-  if ((_a2 = parameters.connectors) == null ? void 0 : _a2.length) {
+  if ((_a = parameters.connectors) == null ? void 0 : _a.length) {
     for (const connector_ of parameters.connectors) {
       let connector;
       if (typeof connector_ === "function")
@@ -74269,18 +73996,18 @@ async function reconnect(config2, parameters = {}) {
   isReconnecting = false;
   return connections;
 }
-async function sendTransaction$2(config2, parameters) {
+async function sendTransaction(config2, parameters) {
   const { account: account2, chainId, connector, gas: gas_, ...rest } = parameters;
   let client2;
   if (typeof account2 === "object" && account2.type === "local")
     client2 = config2.getClient({ chainId });
   else
-    client2 = await getConnectorClient$1(config2, { account: account2, chainId, connector });
+    client2 = await getConnectorClient(config2, { account: account2, chainId, connector });
   const gas = await (async () => {
     if (gas_ === null)
       return void 0;
     if (gas_ === void 0) {
-      const action2 = getAction$2(client2, estimateGas$1, "estimateGas");
+      const action2 = getAction(client2, estimateGas, "estimateGas");
       return action2({
         ...rest,
         account: account2,
@@ -74289,7 +74016,7 @@ async function sendTransaction$2(config2, parameters) {
     }
     return gas_;
   })();
-  const action = getAction$2(client2, sendTransaction$3, "sendTransaction");
+  const action = getAction(client2, sendTransaction$1, "sendTransaction");
   const hash2 = await action({
     ...rest,
     ...account2 ? { account: account2 } : {},
@@ -74304,14 +74031,14 @@ async function simulateContract(config2, parameters) {
   if (parameters.account)
     account2 = parameters.account;
   else {
-    const connectorClient = await getConnectorClient$1(config2, {
+    const connectorClient = await getConnectorClient(config2, {
       chainId,
       connector
     });
     account2 = connectorClient.account;
   }
   const client2 = config2.getClient({ chainId });
-  const action = getAction$2(client2, simulateContract$1, "simulateContract");
+  const action = getAction(client2, simulateContract$1, "simulateContract");
   const { result, request } = await action({ ...rest, abi: abi2, account: account2 });
   return {
     chainId: client2.chain.id,
@@ -74319,42 +74046,42 @@ async function simulateContract(config2, parameters) {
     request: { __mode: "prepared", ...request, chainId }
   };
 }
-async function switchChain$1(config2, parameters) {
-  var _a2;
+async function switchChain(config2, parameters) {
+  var _a;
   const { chainId } = parameters;
-  const connection = config2.state.connections.get(((_a2 = parameters.connector) == null ? void 0 : _a2.uid) ?? config2.state.current);
+  const connection = config2.state.connections.get(((_a = parameters.connector) == null ? void 0 : _a.uid) ?? config2.state.current);
   if (connection) {
     const connector = connection.connector;
     if (!connector.switchChain)
-      throw new SwitchChainNotSupportedError$1({ connector });
+      throw new SwitchChainNotSupportedError({ connector });
     const chain2 = await connector.switchChain({ chainId });
     return chain2;
   }
   const chain = config2.chains.find((x) => x.id === chainId);
   if (!chain)
-    throw new ChainNotConfiguredError$1();
+    throw new ChainNotConfiguredError();
   config2.setState((x) => ({ ...x, chainId }));
   return chain;
 }
-function watchAccount$1(config2, parameters) {
+function watchAccount(config2, parameters) {
   const { onChange } = parameters;
-  return config2.subscribe(() => getAccount$1(config2), onChange, {
+  return config2.subscribe(() => getAccount(config2), onChange, {
     equalityFn(a2, b3) {
       const { connector: aConnector, ...aRest } = a2;
       const { connector: bConnector, ...bRest } = b3;
-      return deepEqual$2(aRest, bRest) && // check connector separately
+      return deepEqual$1(aRest, bRest) && // check connector separately
       (aConnector == null ? void 0 : aConnector.id) === (bConnector == null ? void 0 : bConnector.id) && (aConnector == null ? void 0 : aConnector.uid) === (bConnector == null ? void 0 : bConnector.uid);
     }
   });
 }
-function watchChainId$1(config2, parameters) {
+function watchChainId(config2, parameters) {
   const { onChange } = parameters;
   return config2.subscribe((state) => state.chainId, onChange);
 }
-function watchConnections$1(config2, parameters) {
+function watchConnections(config2, parameters) {
   const { onChange } = parameters;
-  return config2.subscribe(() => getConnections$1(config2), onChange, {
-    equalityFn: deepEqual$2
+  return config2.subscribe(() => getConnections(config2), onChange, {
+    equalityFn: deepEqual$1
   });
 }
 function watchConnectors(config2, parameters) {
@@ -74377,7 +74104,7 @@ async function writeContract(config2, parameters) {
   if (typeof account2 === "object" && account2.type === "local")
     client2 = config2.getClient({ chainId });
   else
-    client2 = await getConnectorClient$1(config2, { account: account2, chainId, connector });
+    client2 = await getConnectorClient(config2, { account: account2, chainId, connector });
   let request;
   if (__mode === "prepared")
     request = rest;
@@ -74388,7 +74115,7 @@ async function writeContract(config2, parameters) {
     });
     request = simulateRequest;
   }
-  const action = getAction$2(client2, writeContract$1, "writeContract");
+  const action = getAction(client2, writeContract$1, "writeContract");
   const hash2 = await action({
     ...request,
     ...account2 ? { account: account2 } : {},
@@ -74411,7 +74138,7 @@ function mock$1(parameters) {
     async connect({ chainId } = {}) {
       if (features.connectError) {
         if (typeof features.connectError === "boolean")
-          throw new UserRejectedRequestError$1(new Error("Failed to connect."));
+          throw new UserRejectedRequestError(new Error("Failed to connect."));
         throw features.connectError;
       }
       const provider2 = await this.getProvider();
@@ -74431,7 +74158,7 @@ function mock$1(parameters) {
     },
     async getAccounts() {
       if (!connected)
-        throw new ConnectorNotConnectedError$1();
+        throw new ConnectorNotConnectedError();
       const provider2 = await this.getProvider();
       const accounts = await provider2.request({ method: "eth_accounts" });
       return accounts.map((x) => getAddress(x));
@@ -74453,10 +74180,10 @@ function mock$1(parameters) {
       const provider2 = await this.getProvider();
       const chain = config2.chains.find((x) => x.id === chainId);
       if (!chain)
-        throw new SwitchChainError$1(new ChainNotConfiguredError$1());
+        throw new SwitchChainError(new ChainNotConfiguredError());
       await provider2.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: numberToHex$1(chainId) }]
+        params: [{ chainId: numberToHex(chainId) }]
       });
       return chain;
     },
@@ -74481,20 +74208,20 @@ function mock$1(parameters) {
       const url = chain.rpcUrls.default.http[0];
       const request = async ({ method, params }) => {
         if (method === "eth_chainId")
-          return numberToHex$1(connectedChainId);
+          return numberToHex(connectedChainId);
         if (method === "eth_requestAccounts")
           return parameters.accounts;
         if (method === "eth_signTypedData_v4") {
           if (features.signTypedDataError) {
             if (typeof features.signTypedDataError === "boolean")
-              throw new UserRejectedRequestError$1(new Error("Failed to sign typed data."));
+              throw new UserRejectedRequestError(new Error("Failed to sign typed data."));
             throw features.signTypedDataError;
           }
         }
         if (method === "wallet_switchEthereumChain") {
           if (features.switchChainError) {
             if (typeof features.switchChainError === "boolean")
-              throw new UserRejectedRequestError$1(new Error("Failed to switch chain."));
+              throw new UserRejectedRequestError(new Error("Failed to switch chain."));
             throw features.switchChainError;
           }
           connectedChainId = fromHex(params[0].chainId, "number");
@@ -74504,7 +74231,7 @@ function mock$1(parameters) {
         if (method === "personal_sign") {
           if (features.signMessageError) {
             if (typeof features.signMessageError === "boolean")
-              throw new UserRejectedRequestError$1(new Error("Failed to sign message."));
+              throw new UserRejectedRequestError(new Error("Failed to sign message."));
             throw features.signMessageError;
           }
           method = "eth_sign";
@@ -74513,10 +74240,10 @@ function mock$1(parameters) {
         const body = { method, params };
         const { error, result } = await rpc.http(url, { body });
         if (error)
-          throw new RpcRequestError$1({ body, error, url });
+          throw new RpcRequestError({ body, error, url });
         return result;
       };
-      return custom$1({ request })({ retryCount: 0 });
+      return custom({ request })({ retryCount: 0 });
     }
   }));
 }
@@ -74530,10 +74257,10 @@ function hydrate(config2, parameters) {
     });
   return {
     async onMount() {
-      var _a2;
+      var _a;
       if (config2._internal.ssr) {
         await config2._internal.store.persist.rehydrate();
-        const mipdConnectors = (_a2 = config2._internal.mipd) == null ? void 0 : _a2.getProviders().map(config2._internal.connectors.providerDetailToConnector).map(config2._internal.connectors.setup);
+        const mipdConnectors = (_a = config2._internal.mipd) == null ? void 0 : _a.getProviders().map(config2._internal.connectors.providerDetailToConnector).map(config2._internal.connectors.setup);
         config2._internal.connectors.setState((connectors2) => [
           ...connectors2,
           ...mipdConnectors ?? []
@@ -74549,10 +74276,36 @@ function hydrate(config2, parameters) {
     }
   };
 }
-const WagmiContext$2 = reactExports.createContext(void 0);
-const version$4 = "2.5.7";
-const getVersion$4 = () => `wagmi@${version$4}`;
-let BaseError$4 = class BaseError3 extends BaseError$5 {
+function Hydrate(parameters) {
+  const { children, config: config2, initialState, reconnectOnMount = true } = parameters;
+  const { onMount } = hydrate(config2, {
+    initialState,
+    reconnectOnMount
+  });
+  if (!config2._internal.ssr)
+    onMount();
+  const active = reactExports.useRef(true);
+  reactExports.useEffect(() => {
+    if (!active.current)
+      return;
+    if (!config2._internal.ssr)
+      return;
+    onMount();
+    return () => {
+      active.current = false;
+    };
+  }, []);
+  return children;
+}
+const WagmiContext = reactExports.createContext(void 0);
+function WagmiProvider(parameters) {
+  const { children, config: config2 } = parameters;
+  const props = { value: config2 };
+  return reactExports.createElement(Hydrate, parameters, reactExports.createElement(WagmiContext.Provider, props, children));
+}
+const version = "2.5.7";
+const getVersion = () => `wagmi@${version}`;
+class BaseError3 extends BaseError$1 {
   constructor() {
     super(...arguments);
     Object.defineProperty(this, "name", {
@@ -74566,10 +74319,10 @@ let BaseError$4 = class BaseError3 extends BaseError$5 {
     return "https://wagmi.sh/react";
   }
   get version() {
-    return getVersion$4();
+    return getVersion();
   }
-};
-let WagmiProviderNotFoundError$2 = class WagmiProviderNotFoundError extends BaseError$4 {
+}
+class WagmiProviderNotFoundError extends BaseError3 {
   constructor() {
     super("`useConfig` must be used within `WagmiProvider`.", {
       docsPath: "https://wagmi.sh/react/api/WagmiProvider"
@@ -74581,470 +74334,8 @@ let WagmiProviderNotFoundError$2 = class WagmiProviderNotFoundError extends Base
       value: "WagmiProviderNotFoundError"
     });
   }
-};
-var Subscribable$1 = class Subscribable {
-  constructor() {
-    this.listeners = /* @__PURE__ */ new Set();
-    this.subscribe = this.subscribe.bind(this);
-  }
-  subscribe(listener) {
-    this.listeners.add(listener);
-    this.onSubscribe();
-    return () => {
-      this.listeners.delete(listener);
-      this.onUnsubscribe();
-    };
-  }
-  hasListeners() {
-    return this.listeners.size > 0;
-  }
-  onSubscribe() {
-  }
-  onUnsubscribe() {
-  }
-};
-function hashKey(queryKey) {
-  return JSON.stringify(
-    queryKey,
-    (_, val) => isPlainObject$5(val) ? Object.keys(val).sort().reduce((result, key2) => {
-      result[key2] = val[key2];
-      return result;
-    }, {}) : val
-  );
 }
-function shallowEqualObjects$1(a2, b3) {
-  if (!b3 || Object.keys(a2).length !== Object.keys(b3).length) {
-    return false;
-  }
-  for (const key2 in a2) {
-    if (a2[key2] !== b3[key2]) {
-      return false;
-    }
-  }
-  return true;
-}
-function isPlainObject$5(o) {
-  if (!hasObjectPrototype$2(o)) {
-    return false;
-  }
-  const ctor = o.constructor;
-  if (ctor === void 0) {
-    return true;
-  }
-  const prot = ctor.prototype;
-  if (!hasObjectPrototype$2(prot)) {
-    return false;
-  }
-  if (!prot.hasOwnProperty("isPrototypeOf")) {
-    return false;
-  }
-  return true;
-}
-function hasObjectPrototype$2(o) {
-  return Object.prototype.toString.call(o) === "[object Object]";
-}
-function createNotifyManager$1() {
-  let queue2 = [];
-  let transactions2 = 0;
-  let notifyFn = (callback) => {
-    callback();
-  };
-  let batchNotifyFn = (callback) => {
-    callback();
-  };
-  let scheduleFn = (cb2) => setTimeout(cb2, 0);
-  const setScheduler = (fn) => {
-    scheduleFn = fn;
-  };
-  const batch = (callback) => {
-    let result;
-    transactions2++;
-    try {
-      result = callback();
-    } finally {
-      transactions2--;
-      if (!transactions2) {
-        flush();
-      }
-    }
-    return result;
-  };
-  const schedule = (callback) => {
-    if (transactions2) {
-      queue2.push(callback);
-    } else {
-      scheduleFn(() => {
-        notifyFn(callback);
-      });
-    }
-  };
-  const batchCalls = (callback) => {
-    return (...args) => {
-      schedule(() => {
-        callback(...args);
-      });
-    };
-  };
-  const flush = () => {
-    const originalQueue = queue2;
-    queue2 = [];
-    if (originalQueue.length) {
-      scheduleFn(() => {
-        batchNotifyFn(() => {
-          originalQueue.forEach((callback) => {
-            notifyFn(callback);
-          });
-        });
-      });
-    }
-  };
-  const setNotifyFunction = (fn) => {
-    notifyFn = fn;
-  };
-  const setBatchNotifyFunction = (fn) => {
-    batchNotifyFn = fn;
-  };
-  return {
-    batch,
-    batchCalls,
-    schedule,
-    setNotifyFunction,
-    setBatchNotifyFunction,
-    setScheduler
-  };
-}
-var notifyManager$1 = createNotifyManager$1();
-function getDefaultState$2() {
-  return {
-    context: void 0,
-    data: void 0,
-    error: null,
-    failureCount: 0,
-    failureReason: null,
-    isPaused: false,
-    status: "idle",
-    variables: void 0,
-    submittedAt: 0
-  };
-}
-var MutationObserver$2 = (_a = class extends Subscribable$1 {
-  constructor(client2, options) {
-    super();
-    __privateAdd(this, _updateResult);
-    __privateAdd(this, _notify);
-    __privateAdd(this, _client, void 0);
-    __privateAdd(this, _currentResult, void 0);
-    __privateAdd(this, _currentMutation, void 0);
-    __privateAdd(this, _mutateOptions, void 0);
-    __privateSet(this, _client, client2);
-    this.setOptions(options);
-    this.bindMethods();
-    __privateMethod(this, _updateResult, updateResult_fn).call(this);
-  }
-  bindMethods() {
-    this.mutate = this.mutate.bind(this);
-    this.reset = this.reset.bind(this);
-  }
-  setOptions(options) {
-    var _a2;
-    const prevOptions = this.options;
-    this.options = __privateGet(this, _client).defaultMutationOptions(options);
-    if (!shallowEqualObjects$1(this.options, prevOptions)) {
-      __privateGet(this, _client).getMutationCache().notify({
-        type: "observerOptionsUpdated",
-        mutation: __privateGet(this, _currentMutation),
-        observer: this
-      });
-    }
-    if ((prevOptions == null ? void 0 : prevOptions.mutationKey) && this.options.mutationKey && hashKey(prevOptions.mutationKey) !== hashKey(this.options.mutationKey)) {
-      this.reset();
-    } else if (((_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.state.status) === "pending") {
-      __privateGet(this, _currentMutation).setOptions(this.options);
-    }
-  }
-  onUnsubscribe() {
-    var _a2;
-    if (!this.hasListeners()) {
-      (_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.removeObserver(this);
-    }
-  }
-  onMutationUpdate(action) {
-    __privateMethod(this, _updateResult, updateResult_fn).call(this);
-    __privateMethod(this, _notify, notify_fn).call(this, action);
-  }
-  getCurrentResult() {
-    return __privateGet(this, _currentResult);
-  }
-  reset() {
-    var _a2;
-    (_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.removeObserver(this);
-    __privateSet(this, _currentMutation, void 0);
-    __privateMethod(this, _updateResult, updateResult_fn).call(this);
-    __privateMethod(this, _notify, notify_fn).call(this);
-  }
-  mutate(variables, options) {
-    var _a2;
-    __privateSet(this, _mutateOptions, options);
-    (_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.removeObserver(this);
-    __privateSet(this, _currentMutation, __privateGet(this, _client).getMutationCache().build(__privateGet(this, _client), this.options));
-    __privateGet(this, _currentMutation).addObserver(this);
-    return __privateGet(this, _currentMutation).execute(variables);
-  }
-}, _client = new WeakMap(), _currentResult = new WeakMap(), _currentMutation = new WeakMap(), _mutateOptions = new WeakMap(), _updateResult = new WeakSet(), updateResult_fn = function() {
-  var _a2;
-  const state = ((_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.state) ?? getDefaultState$2();
-  __privateSet(this, _currentResult, {
-    ...state,
-    isPending: state.status === "pending",
-    isSuccess: state.status === "success",
-    isError: state.status === "error",
-    isIdle: state.status === "idle",
-    mutate: this.mutate,
-    reset: this.reset
-  });
-}, _notify = new WeakSet(), notify_fn = function(action) {
-  notifyManager$1.batch(() => {
-    var _a2, _b, _c, _d, _e, _f, _g, _h;
-    if (__privateGet(this, _mutateOptions) && this.hasListeners()) {
-      const variables = __privateGet(this, _currentResult).variables;
-      const context2 = __privateGet(this, _currentResult).context;
-      if ((action == null ? void 0 : action.type) === "success") {
-        (_b = (_a2 = __privateGet(this, _mutateOptions)).onSuccess) == null ? void 0 : _b.call(_a2, action.data, variables, context2);
-        (_d = (_c = __privateGet(this, _mutateOptions)).onSettled) == null ? void 0 : _d.call(_c, action.data, null, variables, context2);
-      } else if ((action == null ? void 0 : action.type) === "error") {
-        (_f = (_e = __privateGet(this, _mutateOptions)).onError) == null ? void 0 : _f.call(_e, action.error, variables, context2);
-        (_h = (_g = __privateGet(this, _mutateOptions)).onSettled) == null ? void 0 : _h.call(
-          _g,
-          void 0,
-          action.error,
-          variables,
-          context2
-        );
-      }
-    }
-    this.listeners.forEach((listener) => {
-      listener(__privateGet(this, _currentResult));
-    });
-  });
-}, _a);
-var QueryClientContext = reactExports.createContext(
-  void 0
-);
-var useQueryClient$1 = (queryClient2) => {
-  const client2 = reactExports.useContext(QueryClientContext);
-  if (queryClient2) {
-    return queryClient2;
-  }
-  if (!client2) {
-    throw new Error("No QueryClient set, use QueryClientProvider to set one");
-  }
-  return client2;
-};
-function shouldThrowError$1(throwError, params) {
-  if (typeof throwError === "function") {
-    return throwError(...params);
-  }
-  return !!throwError;
-}
-function noop$3() {
-}
-function useMutation$1(options, queryClient2) {
-  const client2 = useQueryClient$1(queryClient2);
-  const [observer] = reactExports.useState(
-    () => new MutationObserver$2(
-      client2,
-      options
-    )
-  );
-  reactExports.useEffect(() => {
-    observer.setOptions(options);
-  }, [observer, options]);
-  const result = reactExports.useSyncExternalStore(
-    reactExports.useCallback(
-      (onStoreChange) => observer.subscribe(notifyManager$1.batchCalls(onStoreChange)),
-      [observer]
-    ),
-    () => observer.getCurrentResult(),
-    () => observer.getCurrentResult()
-  );
-  const mutate = reactExports.useCallback(
-    (variables, mutateOptions) => {
-      observer.mutate(variables, mutateOptions).catch(noop$3);
-    },
-    [observer]
-  );
-  if (result.error && shouldThrowError$1(observer.options.throwOnError, [result.error])) {
-    throw result.error;
-  }
-  return { ...result, mutate, mutateAsync: result.mutate };
-}
-function watchChains$1(config2, parameters) {
-  const { onChange } = parameters;
-  return config2._internal.chains.subscribe((chains2, prevChains) => {
-    onChange(chains2, prevChains);
-  });
-}
-function useConfig$2(parameters = {}) {
-  const config2 = parameters.config ?? reactExports.useContext(WagmiContext$2);
-  if (!config2)
-    throw new WagmiProviderNotFoundError$2();
-  return config2;
-}
-var withSelector = { exports: {} };
-var withSelector_production_min = {};
-var shim = { exports: {} };
-var useSyncExternalStoreShim_production_min = {};
-/**
- * @license React
- * use-sync-external-store-shim.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var e$1 = reactExports;
-function h$1(a2, b3) {
-  return a2 === b3 && (0 !== a2 || 1 / a2 === 1 / b3) || a2 !== a2 && b3 !== b3;
-}
-var k = "function" === typeof Object.is ? Object.is : h$1, l$1 = e$1.useState, m = e$1.useEffect, n$2 = e$1.useLayoutEffect, p$1 = e$1.useDebugValue;
-function q$3(a2, b3) {
-  var d = b3(), f2 = l$1({ inst: { value: d, getSnapshot: b3 } }), c = f2[0].inst, g2 = f2[1];
-  n$2(function() {
-    c.value = d;
-    c.getSnapshot = b3;
-    r$3(c) && g2({ inst: c });
-  }, [a2, d, b3]);
-  m(function() {
-    r$3(c) && g2({ inst: c });
-    return a2(function() {
-      r$3(c) && g2({ inst: c });
-    });
-  }, [a2]);
-  p$1(d);
-  return d;
-}
-function r$3(a2) {
-  var b3 = a2.getSnapshot;
-  a2 = a2.value;
-  try {
-    var d = b3();
-    return !k(a2, d);
-  } catch (f2) {
-    return true;
-  }
-}
-function t$1(a2, b3) {
-  return b3();
-}
-var u$2 = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? t$1 : q$3;
-useSyncExternalStoreShim_production_min.useSyncExternalStore = void 0 !== e$1.useSyncExternalStore ? e$1.useSyncExternalStore : u$2;
-{
-  shim.exports = useSyncExternalStoreShim_production_min;
-}
-var shimExports = shim.exports;
-/**
- * @license React
- * use-sync-external-store-shim/with-selector.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-var h = reactExports, n$1 = shimExports;
-function p(a2, b3) {
-  return a2 === b3 && (0 !== a2 || 1 / a2 === 1 / b3) || a2 !== a2 && b3 !== b3;
-}
-var q$2 = "function" === typeof Object.is ? Object.is : p, r$2 = n$1.useSyncExternalStore, t = h.useRef, u$1 = h.useEffect, v$1 = h.useMemo, w = h.useDebugValue;
-withSelector_production_min.useSyncExternalStoreWithSelector = function(a2, b3, e2, l2, g2) {
-  var c = t(null);
-  if (null === c.current) {
-    var f2 = { hasValue: false, value: null };
-    c.current = f2;
-  } else
-    f2 = c.current;
-  c = v$1(function() {
-    function a3(a4) {
-      if (!c2) {
-        c2 = true;
-        d2 = a4;
-        a4 = l2(a4);
-        if (void 0 !== g2 && f2.hasValue) {
-          var b4 = f2.value;
-          if (g2(b4, a4))
-            return k2 = b4;
-        }
-        return k2 = a4;
-      }
-      b4 = k2;
-      if (q$2(d2, a4))
-        return b4;
-      var e3 = l2(a4);
-      if (void 0 !== g2 && g2(b4, e3))
-        return b4;
-      d2 = a4;
-      return k2 = e3;
-    }
-    var c2 = false, d2, k2, m2 = void 0 === e2 ? null : e2;
-    return [function() {
-      return a3(b3());
-    }, null === m2 ? void 0 : function() {
-      return a3(m2());
-    }];
-  }, [b3, e2, l2, g2]);
-  var d = r$2(a2, c[0], c[1]);
-  u$1(function() {
-    f2.hasValue = true;
-    f2.value = d;
-  }, [d]);
-  w(d);
-  return d;
-};
-{
-  withSelector.exports = withSelector_production_min;
-}
-var withSelectorExports = withSelector.exports;
-const isPlainObject$4 = (obj) => typeof obj === "object" && !Array.isArray(obj);
-function useSyncExternalStoreWithTracked$2(subscribe, getSnapshot, getServerSnapshot = getSnapshot, isEqual = deepEqual$2) {
-  const trackedKeys = reactExports.useRef([]);
-  const result = withSelectorExports.useSyncExternalStoreWithSelector(subscribe, getSnapshot, getServerSnapshot, (x) => x, (a2, b3) => {
-    if (isPlainObject$4(a2) && isPlainObject$4(b3) && trackedKeys.current.length) {
-      for (const key2 of trackedKeys.current) {
-        const equal = isEqual(a2[key2], b3[key2]);
-        if (!equal)
-          return false;
-      }
-      return true;
-    }
-    return isEqual(a2, b3);
-  });
-  if (isPlainObject$4(result)) {
-    const trackedResult = { ...result };
-    Object.defineProperties(trackedResult, Object.entries(trackedResult).reduce((res, [key2, value]) => {
-      return {
-        ...res,
-        [key2]: {
-          configurable: false,
-          enumerable: true,
-          get: () => {
-            if (!trackedKeys.current.includes(key2)) {
-              trackedKeys.current.push(key2);
-            }
-            return value;
-          }
-        }
-      };
-    }, {}));
-    return trackedResult;
-  }
-  return result;
-}
-function useAccount$2(parameters = {}) {
-  const config2 = useConfig$2(parameters);
-  return useSyncExternalStoreWithTracked$2((onChange) => watchAccount$1(config2, { onChange }), () => getAccount$1(config2));
-}
-class Subscribable2 {
+class Subscribable {
   constructor() {
     this.listeners = /* @__PURE__ */ new Set();
     this.subscribe = this.subscribe.bind(this);
@@ -75197,7 +74488,7 @@ function hashQueryKeyByOptions(queryKey, options) {
   return hashFn2(queryKey);
 }
 function hashQueryKey(queryKey) {
-  return JSON.stringify(queryKey, (_, val) => isPlainObject$3(val) ? Object.keys(val).sort().reduce((result, key2) => {
+  return JSON.stringify(queryKey, (_, val) => isPlainObject$2(val) ? Object.keys(val).sort().reduce((result, key2) => {
     result[key2] = val[key2];
     return result;
   }, {}) : val);
@@ -75222,7 +74513,7 @@ function replaceEqualDeep(a2, b3) {
     return a2;
   }
   const array = isPlainArray(a2) && isPlainArray(b3);
-  if (array || isPlainObject$3(a2) && isPlainObject$3(b3)) {
+  if (array || isPlainObject$2(a2) && isPlainObject$2(b3)) {
     const aSize = array ? a2.length : Object.keys(a2).length;
     const bItems = array ? b3 : Object.keys(b3);
     const bSize = bItems.length;
@@ -75253,7 +74544,7 @@ function shallowEqualObjects(a2, b3) {
 function isPlainArray(value) {
   return Array.isArray(value) && value.length === Object.keys(value).length;
 }
-function isPlainObject$3(o) {
+function isPlainObject$2(o) {
   if (!hasObjectPrototype$1(o)) {
     return false;
   }
@@ -75300,7 +74591,7 @@ function replaceData(prevData, data, options) {
   }
   return data;
 }
-class FocusManager extends Subscribable2 {
+class FocusManager extends Subscribable {
   constructor() {
     super();
     this.setup = (onFocus) => {
@@ -75366,7 +74657,7 @@ class FocusManager extends Subscribable2 {
 }
 const focusManager = new FocusManager();
 const onlineEvents = ["online", "offline"];
-class OnlineManager extends Subscribable2 {
+class OnlineManager extends Subscribable {
   constructor() {
     super();
     this.setup = (onOnline) => {
@@ -76020,7 +75311,7 @@ function getDefaultState$1(options) {
     fetchStatus: "idle"
   };
 }
-class QueryCache extends Subscribable2 {
+class QueryCache extends Subscribable {
   constructor(config2) {
     super();
     this.config = config2 || {};
@@ -76342,7 +75633,7 @@ function getDefaultState() {
     variables: void 0
   };
 }
-class MutationCache extends Subscribable2 {
+class MutationCache extends Subscribable {
   constructor(config2) {
     super();
     this.config = config2 || {};
@@ -76789,7 +76080,7 @@ class QueryClient {
     this.mutationCache.clear();
   }
 }
-class QueryObserver extends Subscribable2 {
+class QueryObserver extends Subscribable {
   constructor(client2, options) {
     super();
     this.client = client2;
@@ -77290,7 +76581,7 @@ class InfiniteQueryObserver extends QueryObserver {
     };
   }
 }
-let MutationObserver$1 = class MutationObserver2 extends Subscribable2 {
+let MutationObserver$1 = class MutationObserver2 extends Subscribable {
   constructor(client2, options) {
     super();
     this.client = client2;
@@ -77391,9 +76682,359 @@ let MutationObserver$1 = class MutationObserver2 extends Subscribable2 {
     });
   }
 };
+var shim = { exports: {} };
+var useSyncExternalStoreShim_production_min = {};
+/**
+ * @license React
+ * use-sync-external-store-shim.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var e$1 = reactExports;
+function h$1(a2, b3) {
+  return a2 === b3 && (0 !== a2 || 1 / a2 === 1 / b3) || a2 !== a2 && b3 !== b3;
+}
+var k = "function" === typeof Object.is ? Object.is : h$1, l$1 = e$1.useState, m = e$1.useEffect, n$2 = e$1.useLayoutEffect, p$1 = e$1.useDebugValue;
+function q$3(a2, b3) {
+  var d = b3(), f2 = l$1({ inst: { value: d, getSnapshot: b3 } }), c = f2[0].inst, g2 = f2[1];
+  n$2(function() {
+    c.value = d;
+    c.getSnapshot = b3;
+    r$3(c) && g2({ inst: c });
+  }, [a2, d, b3]);
+  m(function() {
+    r$3(c) && g2({ inst: c });
+    return a2(function() {
+      r$3(c) && g2({ inst: c });
+    });
+  }, [a2]);
+  p$1(d);
+  return d;
+}
+function r$3(a2) {
+  var b3 = a2.getSnapshot;
+  a2 = a2.value;
+  try {
+    var d = b3();
+    return !k(a2, d);
+  } catch (f2) {
+    return true;
+  }
+}
+function t$1(a2, b3) {
+  return b3();
+}
+var u$2 = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? t$1 : q$3;
+useSyncExternalStoreShim_production_min.useSyncExternalStore = void 0 !== e$1.useSyncExternalStore ? e$1.useSyncExternalStore : u$2;
+{
+  shim.exports = useSyncExternalStoreShim_production_min;
+}
+var shimExports = shim.exports;
+const useSyncExternalStore = shimExports.useSyncExternalStore;
+const defaultContext = /* @__PURE__ */ reactExports.createContext(void 0);
+const QueryClientSharingContext = /* @__PURE__ */ reactExports.createContext(false);
+function getQueryClientContext(context2, contextSharing) {
+  if (context2) {
+    return context2;
+  }
+  if (contextSharing && typeof window !== "undefined") {
+    if (!window.ReactQueryClientContext) {
+      window.ReactQueryClientContext = defaultContext;
+    }
+    return window.ReactQueryClientContext;
+  }
+  return defaultContext;
+}
+const useQueryClient = ({
+  context: context2
+} = {}) => {
+  const queryClient2 = reactExports.useContext(getQueryClientContext(context2, reactExports.useContext(QueryClientSharingContext)));
+  if (!queryClient2) {
+    throw new Error("No QueryClient set, use QueryClientProvider to set one");
+  }
+  return queryClient2;
+};
+const QueryClientProvider = ({
+  client: client2,
+  children,
+  context: context2,
+  contextSharing = false
+}) => {
+  reactExports.useEffect(() => {
+    client2.mount();
+    return () => {
+      client2.unmount();
+    };
+  }, [client2]);
+  const Context = getQueryClientContext(context2, contextSharing);
+  return /* @__PURE__ */ reactExports.createElement(QueryClientSharingContext.Provider, {
+    value: !context2 && contextSharing
+  }, /* @__PURE__ */ reactExports.createElement(Context.Provider, {
+    value: client2
+  }, children));
+};
+const IsRestoringContext = /* @__PURE__ */ reactExports.createContext(false);
+const useIsRestoring = () => reactExports.useContext(IsRestoringContext);
+IsRestoringContext.Provider;
+function createValue() {
+  let isReset = false;
+  return {
+    clearReset: () => {
+      isReset = false;
+    },
+    reset: () => {
+      isReset = true;
+    },
+    isReset: () => {
+      return isReset;
+    }
+  };
+}
+const QueryErrorResetBoundaryContext = /* @__PURE__ */ reactExports.createContext(createValue());
+const useQueryErrorResetBoundary = () => reactExports.useContext(QueryErrorResetBoundaryContext);
+function shouldThrowError(_useErrorBoundary, params) {
+  if (typeof _useErrorBoundary === "function") {
+    return _useErrorBoundary(...params);
+  }
+  return !!_useErrorBoundary;
+}
+const ensurePreventErrorBoundaryRetry = (options, errorResetBoundary) => {
+  if (options.suspense || options.useErrorBoundary) {
+    if (!errorResetBoundary.isReset()) {
+      options.retryOnMount = false;
+    }
+  }
+};
+const useClearResetErrorBoundary = (errorResetBoundary) => {
+  reactExports.useEffect(() => {
+    errorResetBoundary.clearReset();
+  }, [errorResetBoundary]);
+};
+const getHasError = ({
+  result,
+  errorResetBoundary,
+  useErrorBoundary,
+  query
+}) => {
+  return result.isError && !errorResetBoundary.isReset() && !result.isFetching && shouldThrowError(useErrorBoundary, [result.error, query]);
+};
+const ensureStaleTime = (defaultedOptions) => {
+  if (defaultedOptions.suspense) {
+    if (typeof defaultedOptions.staleTime !== "number") {
+      defaultedOptions.staleTime = 1e3;
+    }
+  }
+};
+const willFetch = (result, isRestoring) => result.isLoading && result.isFetching && !isRestoring;
+const shouldSuspend = (defaultedOptions, result, isRestoring) => (defaultedOptions == null ? void 0 : defaultedOptions.suspense) && willFetch(result, isRestoring);
+const fetchOptimistic = (defaultedOptions, observer, errorResetBoundary) => observer.fetchOptimistic(defaultedOptions).then(({
+  data
+}) => {
+  defaultedOptions.onSuccess == null ? void 0 : defaultedOptions.onSuccess(data);
+  defaultedOptions.onSettled == null ? void 0 : defaultedOptions.onSettled(data, null);
+}).catch((error) => {
+  errorResetBoundary.clearReset();
+  defaultedOptions.onError == null ? void 0 : defaultedOptions.onError(error);
+  defaultedOptions.onSettled == null ? void 0 : defaultedOptions.onSettled(void 0, error);
+});
+function useBaseQuery(options, Observer) {
+  const queryClient2 = useQueryClient({
+    context: options.context
+  });
+  const isRestoring = useIsRestoring();
+  const errorResetBoundary = useQueryErrorResetBoundary();
+  const defaultedOptions = queryClient2.defaultQueryOptions(options);
+  defaultedOptions._optimisticResults = isRestoring ? "isRestoring" : "optimistic";
+  if (defaultedOptions.onError) {
+    defaultedOptions.onError = notifyManager.batchCalls(defaultedOptions.onError);
+  }
+  if (defaultedOptions.onSuccess) {
+    defaultedOptions.onSuccess = notifyManager.batchCalls(defaultedOptions.onSuccess);
+  }
+  if (defaultedOptions.onSettled) {
+    defaultedOptions.onSettled = notifyManager.batchCalls(defaultedOptions.onSettled);
+  }
+  ensureStaleTime(defaultedOptions);
+  ensurePreventErrorBoundaryRetry(defaultedOptions, errorResetBoundary);
+  useClearResetErrorBoundary(errorResetBoundary);
+  const [observer] = reactExports.useState(() => new Observer(queryClient2, defaultedOptions));
+  const result = observer.getOptimisticResult(defaultedOptions);
+  useSyncExternalStore(reactExports.useCallback((onStoreChange) => {
+    const unsubscribe = isRestoring ? () => void 0 : observer.subscribe(notifyManager.batchCalls(onStoreChange));
+    observer.updateResult();
+    return unsubscribe;
+  }, [observer, isRestoring]), () => observer.getCurrentResult(), () => observer.getCurrentResult());
+  reactExports.useEffect(() => {
+    observer.setOptions(defaultedOptions, {
+      listeners: false
+    });
+  }, [defaultedOptions, observer]);
+  if (shouldSuspend(defaultedOptions, result, isRestoring)) {
+    throw fetchOptimistic(defaultedOptions, observer, errorResetBoundary);
+  }
+  if (getHasError({
+    result,
+    errorResetBoundary,
+    useErrorBoundary: defaultedOptions.useErrorBoundary,
+    query: observer.getCurrentQuery()
+  })) {
+    throw result.error;
+  }
+  return !defaultedOptions.notifyOnChangeProps ? observer.trackResult(result) : result;
+}
+function useQuery$1(arg1, arg2, arg3) {
+  const parsedOptions = parseQueryArgs(arg1, arg2, arg3);
+  return useBaseQuery(parsedOptions, QueryObserver);
+}
+function useMutation(arg1, arg2, arg3) {
+  const options = parseMutationArgs(arg1, arg2, arg3);
+  const queryClient2 = useQueryClient({
+    context: options.context
+  });
+  const [observer] = reactExports.useState(() => new MutationObserver$1(queryClient2, options));
+  reactExports.useEffect(() => {
+    observer.setOptions(options);
+  }, [observer, options]);
+  const result = useSyncExternalStore(reactExports.useCallback((onStoreChange) => observer.subscribe(notifyManager.batchCalls(onStoreChange)), [observer]), () => observer.getCurrentResult(), () => observer.getCurrentResult());
+  const mutate = reactExports.useCallback((variables, mutateOptions) => {
+    observer.mutate(variables, mutateOptions).catch(noop$1);
+  }, [observer]);
+  if (result.error && shouldThrowError(observer.options.useErrorBoundary, [result.error])) {
+    throw result.error;
+  }
+  return {
+    ...result,
+    mutate,
+    mutateAsync: result.mutate
+  };
+}
+function noop$1() {
+}
+function useInfiniteQuery(arg1, arg2, arg3) {
+  const options = parseQueryArgs(arg1, arg2, arg3);
+  return useBaseQuery(options, InfiniteQueryObserver);
+}
+function watchChains(config2, parameters) {
+  const { onChange } = parameters;
+  return config2._internal.chains.subscribe((chains2, prevChains) => {
+    onChange(chains2, prevChains);
+  });
+}
+function useConfig(parameters = {}) {
+  const config2 = parameters.config ?? reactExports.useContext(WagmiContext);
+  if (!config2)
+    throw new WagmiProviderNotFoundError();
+  return config2;
+}
+var withSelector = { exports: {} };
+var withSelector_production_min = {};
+/**
+ * @license React
+ * use-sync-external-store-shim/with-selector.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var h = reactExports, n$1 = shimExports;
+function p(a2, b3) {
+  return a2 === b3 && (0 !== a2 || 1 / a2 === 1 / b3) || a2 !== a2 && b3 !== b3;
+}
+var q$2 = "function" === typeof Object.is ? Object.is : p, r$2 = n$1.useSyncExternalStore, t = h.useRef, u$1 = h.useEffect, v$1 = h.useMemo, w = h.useDebugValue;
+withSelector_production_min.useSyncExternalStoreWithSelector = function(a2, b3, e2, l2, g2) {
+  var c = t(null);
+  if (null === c.current) {
+    var f2 = { hasValue: false, value: null };
+    c.current = f2;
+  } else
+    f2 = c.current;
+  c = v$1(function() {
+    function a3(a4) {
+      if (!c2) {
+        c2 = true;
+        d2 = a4;
+        a4 = l2(a4);
+        if (void 0 !== g2 && f2.hasValue) {
+          var b4 = f2.value;
+          if (g2(b4, a4))
+            return k2 = b4;
+        }
+        return k2 = a4;
+      }
+      b4 = k2;
+      if (q$2(d2, a4))
+        return b4;
+      var e3 = l2(a4);
+      if (void 0 !== g2 && g2(b4, e3))
+        return b4;
+      d2 = a4;
+      return k2 = e3;
+    }
+    var c2 = false, d2, k2, m2 = void 0 === e2 ? null : e2;
+    return [function() {
+      return a3(b3());
+    }, null === m2 ? void 0 : function() {
+      return a3(m2());
+    }];
+  }, [b3, e2, l2, g2]);
+  var d = r$2(a2, c[0], c[1]);
+  u$1(function() {
+    f2.hasValue = true;
+    f2.value = d;
+  }, [d]);
+  w(d);
+  return d;
+};
+{
+  withSelector.exports = withSelector_production_min;
+}
+var withSelectorExports = withSelector.exports;
+const isPlainObject$1 = (obj) => typeof obj === "object" && !Array.isArray(obj);
+function useSyncExternalStoreWithTracked(subscribe, getSnapshot, getServerSnapshot = getSnapshot, isEqual = deepEqual$1) {
+  const trackedKeys = reactExports.useRef([]);
+  const result = withSelectorExports.useSyncExternalStoreWithSelector(subscribe, getSnapshot, getServerSnapshot, (x) => x, (a2, b3) => {
+    if (isPlainObject$1(a2) && isPlainObject$1(b3) && trackedKeys.current.length) {
+      for (const key2 of trackedKeys.current) {
+        const equal = isEqual(a2[key2], b3[key2]);
+        if (!equal)
+          return false;
+      }
+      return true;
+    }
+    return isEqual(a2, b3);
+  });
+  if (isPlainObject$1(result)) {
+    const trackedResult = { ...result };
+    Object.defineProperties(trackedResult, Object.entries(trackedResult).reduce((res, [key2, value]) => {
+      return {
+        ...res,
+        [key2]: {
+          configurable: false,
+          enumerable: true,
+          get: () => {
+            if (!trackedKeys.current.includes(key2)) {
+              trackedKeys.current.push(key2);
+            }
+            return value;
+          }
+        }
+      };
+    }, {}));
+    return trackedResult;
+  }
+  return result;
+}
+function useAccount(parameters = {}) {
+  const config2 = useConfig(parameters);
+  return useSyncExternalStoreWithTracked((onChange) => watchAccount(config2, { onChange }), () => getAccount(config2));
+}
 function hashFn(queryKey) {
   return JSON.stringify(queryKey, (_, value) => {
-    if (isPlainObject$2(value))
+    if (isPlainObject(value))
       return Object.keys(value).sort().reduce((result, key2) => {
         result[key2] = value[key2];
         return result;
@@ -77403,7 +77044,7 @@ function hashFn(queryKey) {
     return value;
   });
 }
-function isPlainObject$2(o) {
+function isPlainObject(o) {
   if (!hasObjectPrototype(o)) {
     return false;
   }
@@ -77479,10 +77120,10 @@ function connectMutationOptions(config2) {
     mutationKey: ["connect"]
   };
 }
-function disconnectMutationOptions$1(config2) {
+function disconnectMutationOptions(config2) {
   return {
     mutationFn(variables) {
-      return disconnect$1(config2, variables);
+      return disconnect(config2, variables);
     },
     mutationKey: ["disconnect"]
   };
@@ -77505,18 +77146,18 @@ function getWalletClientQueryKey(options = {}) {
     { ...filterQueryOptions(parameters), connectorUid: connector == null ? void 0 : connector.uid }
   ];
 }
-function sendTransactionMutationOptions$1(config2) {
+function sendTransactionMutationOptions(config2) {
   return {
     mutationFn(variables) {
-      return sendTransaction$2(config2, variables);
+      return sendTransaction(config2, variables);
     },
     mutationKey: ["sendTransaction"]
   };
 }
-function switchChainMutationOptions$1(config2) {
+function switchChainMutationOptions(config2) {
   return {
     mutationFn(variables) {
-      return switchChain$1(config2, variables);
+      return switchChain(config2, variables);
     },
     mutationKey: ["switchChain"]
   };
@@ -77529,16 +77170,33 @@ function writeContractMutationOptions(config2) {
     mutationKey: ["writeContract"]
   };
 }
+function useQuery(parameters) {
+  const result = useQuery$1({
+    ...parameters,
+    queryKeyHashFn: hashFn
+    // for bigint support
+  });
+  result.queryKey = parameters.queryKey;
+  return result;
+}
+function useChainId(parameters = {}) {
+  const config2 = useConfig(parameters);
+  return reactExports.useSyncExternalStore((onChange) => watchChainId(config2, { onChange }), () => getChainId(config2), () => getChainId(config2));
+}
+function useChains(parameters = {}) {
+  const config2 = useConfig(parameters);
+  return reactExports.useSyncExternalStore((onChange) => watchChains(config2, { onChange }), () => getChains(config2), () => getChains(config2));
+}
 function useConnectors(parameters = {}) {
-  const config2 = useConfig$2(parameters);
+  const config2 = useConfig(parameters);
   return reactExports.useSyncExternalStore((onChange) => watchConnectors(config2, { onChange }), () => getConnectors(config2), () => getConnectors(config2));
 }
 function useConnect(parameters = {}) {
   const { mutation } = parameters;
-  const config2 = useConfig$2(parameters);
+  const config2 = useConfig(parameters);
   const connectors2 = useConnectors({ config: config2 });
   const mutationOptions = connectMutationOptions(config2);
-  const { mutate, mutateAsync, ...result } = useMutation$1({
+  const { mutate, mutateAsync, ...result } = useMutation({
     ...mutation,
     ...mutationOptions
   });
@@ -77555,9 +77213,97 @@ function useConnect(parameters = {}) {
     connectors: connectors2
   };
 }
-function useConnections$2(parameters = {}) {
-  const config2 = useConfig$2(parameters);
-  return reactExports.useSyncExternalStore((onChange) => watchConnections$1(config2, { onChange }), () => getConnections$1(config2), () => getConnections$1(config2));
+function useConnections(parameters = {}) {
+  const config2 = useConfig(parameters);
+  return reactExports.useSyncExternalStore((onChange) => watchConnections(config2, { onChange }), () => getConnections(config2), () => getConnections(config2));
+}
+function useDisconnect(parameters = {}) {
+  const { mutation } = parameters;
+  const config2 = useConfig(parameters);
+  const mutationOptions = disconnectMutationOptions(config2);
+  const { mutate, mutateAsync, ...result } = useMutation({
+    ...mutation,
+    ...mutationOptions
+  });
+  return {
+    ...result,
+    connectors: useConnections({ config: config2 }).map((connection) => connection.connector),
+    disconnect: mutate,
+    disconnectAsync: mutateAsync
+  };
+}
+function usePublicClient(parameters = {}) {
+  const config2 = useConfig(parameters);
+  return withSelectorExports.useSyncExternalStoreWithSelector((onChange) => watchPublicClient(config2, { onChange }), () => getPublicClient(config2, parameters), () => getPublicClient(config2, parameters), (x) => x, (a2, b3) => (a2 == null ? void 0 : a2.uid) === (b3 == null ? void 0 : b3.uid));
+}
+function useSendTransaction(parameters = {}) {
+  const { mutation } = parameters;
+  const config2 = useConfig(parameters);
+  const mutationOptions = sendTransactionMutationOptions(config2);
+  const { mutate, mutateAsync, ...result } = useMutation({
+    ...mutation,
+    ...mutationOptions
+  });
+  return {
+    ...result,
+    sendTransaction: mutate,
+    sendTransactionAsync: mutateAsync
+  };
+}
+function useSwitchChain(parameters = {}) {
+  const { mutation } = parameters;
+  const config2 = useConfig(parameters);
+  const mutationOptions = switchChainMutationOptions(config2);
+  const { mutate, mutateAsync, ...result } = useMutation({
+    ...mutation,
+    ...mutationOptions
+  });
+  return {
+    ...result,
+    chains: useChains({ config: config2 }),
+    switchChain: mutate,
+    switchChainAsync: mutateAsync
+  };
+}
+function useWalletClient(parameters = {}) {
+  const { query = {}, ...rest } = parameters;
+  const config2 = useConfig(rest);
+  const queryClient2 = useQueryClient();
+  const { address, connector, status } = useAccount();
+  const chainId = useChainId();
+  const { queryKey, ...options } = getWalletClientQueryOptions(config2, {
+    ...parameters,
+    chainId: parameters.chainId ?? chainId,
+    connector: parameters.connector ?? connector
+  });
+  const enabled = Boolean(status !== "disconnected" && (query.enabled ?? true));
+  reactExports.useEffect(() => {
+    if (address)
+      queryClient2.invalidateQueries({ queryKey });
+    else
+      queryClient2.removeQueries({ queryKey });
+  }, [address, queryClient2]);
+  return useQuery({
+    ...query,
+    ...options,
+    queryKey,
+    enabled,
+    staleTime: Infinity
+  });
+}
+function useWriteContract(parameters = {}) {
+  const { mutation } = parameters;
+  const config2 = useConfig(parameters);
+  const mutationOptions = writeContractMutationOptions(config2);
+  const { mutate, mutateAsync, ...result } = useMutation({
+    ...mutation,
+    ...mutationOptions
+  });
+  return {
+    ...result,
+    writeContract: mutate,
+    writeContractAsync: mutateAsync
+  };
 }
 class InvalidTokenError extends Error {
 }
@@ -77591,7 +77337,7 @@ function coinbaseWallet$1(parameters) {
         let currentChainId = await this.getChainId();
         if (chainId && currentChainId !== chainId) {
           const chain = await this.switchChain({ chainId }).catch((error) => {
-            if (error.code === UserRejectedRequestError$1.code)
+            if (error.code === UserRejectedRequestError.code)
               throw error;
             return { id: currentChainId };
           });
@@ -77600,7 +77346,7 @@ function coinbaseWallet$1(parameters) {
         return { accounts, chainId: currentChainId };
       } catch (error) {
         if (/(user closed modal|accounts received is empty|user denied account)/i.test(error.message))
-          throw new UserRejectedRequestError$1(error);
+          throw new UserRejectedRequestError(error);
         throw error;
       }
     },
@@ -77624,16 +77370,16 @@ function coinbaseWallet$1(parameters) {
       return normalizeChainId(chainId);
     },
     async getProvider() {
-      var _a2;
+      var _a;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-BtT-VBep.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-ivVUtxzs.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
         else
           SDK = CoinbaseWalletSDK;
         sdk = new SDK({ reloadOnDisconnect, ...parameters });
-        const walletExtensionChainId = (_a2 = sdk.walletExtension) == null ? void 0 : _a2.getChainId();
+        const walletExtensionChainId = (_a = sdk.walletExtension) == null ? void 0 : _a.getChainId();
         const chain = config2.chains.find((chain2) => parameters.chainId ? chain2.id === parameters.chainId : chain2.id === walletExtensionChainId) || config2.chains[0];
         const chainId = parameters.chainId || (chain == null ? void 0 : chain.id);
         const jsonRpcUrl = parameters.jsonRpcUrl || (chain == null ? void 0 : chain.rpcUrls.default.http[0]);
@@ -77650,12 +77396,12 @@ function coinbaseWallet$1(parameters) {
       }
     },
     async switchChain({ chainId }) {
-      var _a2, _b;
+      var _a, _b;
       const chain = config2.chains.find((chain2) => chain2.id === chainId);
       if (!chain)
-        throw new SwitchChainError$1(new ChainNotConfiguredError$1());
+        throw new SwitchChainError(new ChainNotConfiguredError());
       const provider2 = await this.getProvider();
-      const chainId_ = numberToHex$1(chain.id);
+      const chainId_ = numberToHex(chain.id);
       try {
         await provider2.request({
           method: "wallet_switchEthereumChain",
@@ -77672,17 +77418,17 @@ function coinbaseWallet$1(parameters) {
                   chainId: chainId_,
                   chainName: chain.name,
                   nativeCurrency: chain.nativeCurrency,
-                  rpcUrls: [((_a2 = chain.rpcUrls.default) == null ? void 0 : _a2.http[0]) ?? ""],
+                  rpcUrls: [((_a = chain.rpcUrls.default) == null ? void 0 : _a.http[0]) ?? ""],
                   blockExplorerUrls: [(_b = chain.blockExplorers) == null ? void 0 : _b.default.url]
                 }
               ]
             });
             return chain;
           } catch (error2) {
-            throw new UserRejectedRequestError$1(error2);
+            throw new UserRejectedRequestError(error2);
           }
         }
-        throw new SwitchChainError$1(error);
+        throw new SwitchChainError(error);
       }
     },
     onAccountsChanged(accounts) {
@@ -77724,7 +77470,7 @@ function walletConnect$1(parameters) {
       provider2.on("session_delete", this.onSessionDelete.bind(this));
     },
     async connect({ chainId, ...rest } = {}) {
-      var _a2, _b;
+      var _a, _b;
       try {
         const provider2 = await this.getProvider();
         if (!provider2)
@@ -77732,7 +77478,7 @@ function walletConnect$1(parameters) {
         provider2.on("display_uri", this.onDisplayUri);
         let targetChainId = chainId;
         if (!targetChainId) {
-          const state = await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem("state")) ?? {};
+          const state = await ((_a = config2.storage) == null ? void 0 : _a.getItem("state")) ?? {};
           const isChainSupported = config2.chains.some((x) => x.id === state.chainId);
           if (isChainSupported)
             targetChainId = state.chainId;
@@ -77763,7 +77509,7 @@ function walletConnect$1(parameters) {
         return { accounts, chainId: currentChainId };
       } catch (error) {
         if (/(user rejected|connection request reset)/i.test(error == null ? void 0 : error.message)) {
-          throw new UserRejectedRequestError$1(error);
+          throw new UserRejectedRequestError(error);
         }
         throw error;
       }
@@ -77789,12 +77535,12 @@ function walletConnect$1(parameters) {
       return provider2.accounts.map((x) => getAddress(x));
     },
     async getProvider({ chainId } = {}) {
-      var _a2;
+      var _a;
       async function initProvider() {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DM6Yr7Dr.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-D6C7Q3GL.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -77814,7 +77560,7 @@ function walletConnect$1(parameters) {
         provider_ == null ? void 0 : provider_.events.setMaxListeners(Infinity);
       }
       if (chainId)
-        await ((_a2 = this.switchChain) == null ? void 0 : _a2.call(this, { chainId }));
+        await ((_a = this.switchChain) == null ? void 0 : _a.call(this, { chainId }));
       return provider_;
     },
     async getChainId() {
@@ -77841,10 +77587,10 @@ function walletConnect$1(parameters) {
       }
     },
     async switchChain({ chainId }) {
-      var _a2;
+      var _a;
       const chain = config2.chains.find((chain2) => chain2.id === chainId);
       if (!chain)
-        throw new SwitchChainError$1(new ChainNotConfiguredError$1());
+        throw new SwitchChainError(new ChainNotConfiguredError());
       try {
         const provider2 = await this.getProvider();
         const namespaceChains = this.getNamespaceChainsIds();
@@ -77855,8 +77601,8 @@ function walletConnect$1(parameters) {
             method: "wallet_addEthereumChain",
             params: [
               {
-                chainId: numberToHex$1(chain.id),
-                blockExplorerUrls: [(_a2 = chain.blockExplorers) == null ? void 0 : _a2.default.url],
+                chainId: numberToHex(chain.id),
+                blockExplorerUrls: [(_a = chain.blockExplorers) == null ? void 0 : _a.default.url],
                 chainName: chain.name,
                 nativeCurrency: chain.nativeCurrency,
                 rpcUrls: [...chain.rpcUrls.default.http]
@@ -77868,14 +77614,14 @@ function walletConnect$1(parameters) {
         }
         await provider2.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: numberToHex$1(chainId) }]
+          params: [{ chainId: numberToHex(chainId) }]
         });
         return chain;
       } catch (error) {
         const message = typeof error === "string" ? error : error == null ? void 0 : error.message;
         if (/user rejected request/i.test(message))
-          throw new UserRejectedRequestError$1(error);
-        throw new SwitchChainError$1(error);
+          throw new UserRejectedRequestError(error);
+        throw new SwitchChainError(error);
       }
     },
     onAccountsChanged(accounts) {
@@ -77912,22 +77658,22 @@ function walletConnect$1(parameters) {
       this.onDisconnect();
     },
     getNamespaceChainsIds() {
-      var _a2, _b, _c;
+      var _a, _b, _c;
       if (!provider_)
         return [];
-      const chainIds = (_c = (_b = (_a2 = provider_.session) == null ? void 0 : _a2.namespaces[NAMESPACE]) == null ? void 0 : _b.chains) == null ? void 0 : _c.map((chain) => parseInt(chain.split(":")[1] || ""));
+      const chainIds = (_c = (_b = (_a = provider_.session) == null ? void 0 : _a.namespaces[NAMESPACE]) == null ? void 0 : _b.chains) == null ? void 0 : _c.map((chain) => parseInt(chain.split(":")[1] || ""));
       return chainIds ?? [];
     },
     getNamespaceMethods() {
-      var _a2, _b;
+      var _a, _b;
       if (!provider_)
         return [];
-      const methods = (_b = (_a2 = provider_.session) == null ? void 0 : _a2.namespaces[NAMESPACE]) == null ? void 0 : _b.methods;
+      const methods = (_b = (_a = provider_.session) == null ? void 0 : _a.namespaces[NAMESPACE]) == null ? void 0 : _b.methods;
       return methods ?? [];
     },
     async getRequestedChainsIds() {
-      var _a2;
-      return await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem(this.requestedChainsStorageKey)) ?? [];
+      var _a;
+      return await ((_a = config2.storage) == null ? void 0 : _a.getItem(this.requestedChainsStorageKey)) ?? [];
     },
     /**
      * Checks if the target chains match the chains that were
@@ -77965,8 +77711,8 @@ function walletConnect$1(parameters) {
       return !connectorChains.every((id2) => requestedChains.includes(id2));
     },
     async setRequestedChainsIds(chains2) {
-      var _a2;
-      await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem(this.requestedChainsStorageKey, chains2));
+      var _a;
+      await ((_a = config2.storage) == null ? void 0 : _a.setItem(this.requestedChainsStorageKey, chains2));
     },
     get requestedChainsStorageKey() {
       return `${this.id}.requestedChains`;
@@ -78081,10 +77827,10 @@ function sequenceWallet(params) {
         });
         const e2 = await provider2.connect(connectOptionsWithTheme);
         if (e2.error) {
-          throw new UserRejectedRequestError$1(new Error(e2.error));
+          throw new UserRejectedRequestError(new Error(e2.error));
         }
         if (!e2.connected) {
-          throw new UserRejectedRequestError$1(new Error("Wallet connection rejected"));
+          throw new UserRejectedRequestError(new Error("Wallet connection rejected"));
         }
         const proofString = (_e$proof = e2.proof) == null ? void 0 : _e$proof.proofString;
         const proofTypedData = (_e$proof2 = e2.proof) == null ? void 0 : _e$proof2.typedData;
@@ -79352,7 +79098,7 @@ function _taggedTemplateLiteral(strings, raw) {
     }
   }));
 }
-function noop$1() {
+function noop() {
 }
 function createWeakMap() {
   if (typeof WeakMap !== "undefined") {
@@ -79363,10 +79109,10 @@ function createWeakMap() {
 }
 function fakeSetOrMap() {
   return {
-    add: noop$1,
-    delete: noop$1,
-    get: noop$1,
-    set: noop$1,
+    add: noop,
+    delete: noop,
+    get: noop,
+    set: noop,
     has: function(k2) {
       return false;
     }
@@ -80226,7 +79972,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
       if (result === null) {
         return null;
       }
-      var _a2 = __read(result, 2), lastIndex = _a2[0], value = _a2[1];
+      var _a = __read(result, 2), lastIndex = _a[0], value = _a[1];
       tokens.push({
         type: "<string-token>",
         value
@@ -80516,7 +80262,7 @@ var consumeString = function consumeString2(str, index2) {
       var result = consumeEscape(str, i2);
       if (result === null)
         return null;
-      var _a2 = __read(result, 2), lastIndex = _a2[0], charCode = _a2[1];
+      var _a = __read(result, 2), lastIndex = _a[0], charCode = _a[1];
       charCodes.push(charCode);
       i2 = lastIndex;
     } else if (code2 === 10) {
@@ -80591,7 +80337,7 @@ var consumeNumeric = function consumeNumeric2(str, index2) {
   var numberResult = consumeNumber(str, index2);
   if (numberResult === null)
     return null;
-  var _a2 = __read(numberResult, 3), numberEndIndex = _a2[0], numberValue = _a2[1], numberFlag = _a2[2];
+  var _a = __read(numberResult, 3), numberEndIndex = _a[0], numberValue = _a[1], numberFlag = _a[2];
   var identResult = consumeIdent(str, numberEndIndex + 1);
   if (identResult !== null) {
     var _b = __read(identResult, 2), identEndIndex = _b[0], identValue = _b[1];
@@ -80688,7 +80434,7 @@ var consumeIdentUnsafe = function consumeIdentUnsafe2(str, index2) {
     } else {
       var result = consumeEscape(str, index2);
       if (result !== null) {
-        var _a2 = __read(result, 2), lastIndex = _a2[0], code_4 = _a2[1];
+        var _a = __read(result, 2), lastIndex = _a[0], code_4 = _a[1];
         identChars.push(code_4);
         index2 = lastIndex;
         continue;
@@ -80710,7 +80456,7 @@ var consumeIdent = function consumeIdent2(str, index2) {
     } else {
       var result = consumeEscape(str, index2);
       if (result !== null) {
-        var _a2 = __read(result, 2), lastIndex = _a2[0], code_5 = _a2[1];
+        var _a = __read(result, 2), lastIndex = _a[0], code_5 = _a[1];
         identChars.push(code_5);
         index2 = lastIndex;
         continue;
@@ -80739,7 +80485,7 @@ var consumeUrl = function consumeUrl2(str, index2) {
       var result = consumeEscape(str, index2);
       if (result === null || hasFinishedWord)
         return null;
-      var _a2 = __read(result, 2), lastIndex = _a2[0], value = _a2[1];
+      var _a = __read(result, 2), lastIndex = _a[0], value = _a[1];
       urlChars.push(value);
       index2 = lastIndex;
     } else {
@@ -80755,7 +80501,7 @@ var consumeIdentLike = function consumeIdentLike2(str, index2) {
   var result = consumeIdent(str, index2);
   if (result === null)
     return null;
-  var _a2 = __read(result, 2), lastIndex = _a2[0], value = _a2[1];
+  var _a = __read(result, 2), lastIndex = _a[0], value = _a[1];
   if (value.toLowerCase() === "url") {
     if (str.length > lastIndex + 1) {
       var nextCode = str.charCodeAt(lastIndex + 1);
@@ -80875,7 +80621,7 @@ var removeWhitespace = function removeWhitespace2(tokenList) {
   return newTokenList;
 };
 var syntacticAnalysis = function syntacticAnalysis2(tokenList) {
-  var e_1, _a2;
+  var e_1, _a;
   var mediaQueryList = [[]];
   for (var i2 = 0; i2 < tokenList.length; i2++) {
     var token2 = tokenList[i2];
@@ -80914,8 +80660,8 @@ var syntacticAnalysis = function syntacticAnalysis2(tokenList) {
       };
     } finally {
       try {
-        if (mediaQueryTokens_1_1 && !mediaQueryTokens_1_1.done && (_a2 = mediaQueryTokens_1["return"]))
-          _a2.call(mediaQueryTokens_1);
+        if (mediaQueryTokens_1_1 && !mediaQueryTokens_1_1.done && (_a = mediaQueryTokens_1["return"]))
+          _a.call(mediaQueryTokens_1);
       } finally {
         if (e_1)
           throw e_1.error;
@@ -81143,7 +80889,7 @@ var tokenizeMediaFeature = function tokenizeMediaFeature2(rawTokens) {
   throw new Error("Invalid media feature");
 };
 var tokenizeRange = function tokenizeRange2(tokens) {
-  var _a2, _b, _c, _d;
+  var _a, _b, _c, _d;
   if (tokens.length < 5 || tokens[0].type !== "<(-token>" || tokens[tokens.length - 1].type !== "<)-token>") {
     throw new Error("Invalid range");
   }
@@ -81180,7 +80926,7 @@ var tokenizeRange = function tokenizeRange2(tokens) {
     } else {
       throw new Error("Invalid range");
     }
-    var tokenIndexAfterFirstOp = 2 + ((_b = (_a2 = range2[hasLeft ? "leftOp" : "rightOp"]) === null || _a2 === void 0 ? void 0 : _a2.length) !== null && _b !== void 0 ? _b : 0);
+    var tokenIndexAfterFirstOp = 2 + ((_b = (_a = range2[hasLeft ? "leftOp" : "rightOp"]) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0);
     var tokenAfterFirstOp = tokens[tokenIndexAfterFirstOp];
     if (hasLeft) {
       if (tokenAfterFirstOp.type === "<ident-token>") {
@@ -83952,3237 +83698,6 @@ function keyframes$1(rule, debugId) {
   }, getFileScope());
   return name;
 }
-const useSyncExternalStore = shimExports.useSyncExternalStore;
-const defaultContext = /* @__PURE__ */ reactExports.createContext(void 0);
-const QueryClientSharingContext = /* @__PURE__ */ reactExports.createContext(false);
-function getQueryClientContext(context2, contextSharing) {
-  if (context2) {
-    return context2;
-  }
-  if (contextSharing && typeof window !== "undefined") {
-    if (!window.ReactQueryClientContext) {
-      window.ReactQueryClientContext = defaultContext;
-    }
-    return window.ReactQueryClientContext;
-  }
-  return defaultContext;
-}
-const useQueryClient = ({
-  context: context2
-} = {}) => {
-  const queryClient2 = reactExports.useContext(getQueryClientContext(context2, reactExports.useContext(QueryClientSharingContext)));
-  if (!queryClient2) {
-    throw new Error("No QueryClient set, use QueryClientProvider to set one");
-  }
-  return queryClient2;
-};
-const QueryClientProvider = ({
-  client: client2,
-  children,
-  context: context2,
-  contextSharing = false
-}) => {
-  reactExports.useEffect(() => {
-    client2.mount();
-    return () => {
-      client2.unmount();
-    };
-  }, [client2]);
-  const Context = getQueryClientContext(context2, contextSharing);
-  return /* @__PURE__ */ reactExports.createElement(QueryClientSharingContext.Provider, {
-    value: !context2 && contextSharing
-  }, /* @__PURE__ */ reactExports.createElement(Context.Provider, {
-    value: client2
-  }, children));
-};
-const IsRestoringContext = /* @__PURE__ */ reactExports.createContext(false);
-const useIsRestoring = () => reactExports.useContext(IsRestoringContext);
-IsRestoringContext.Provider;
-function createValue() {
-  let isReset = false;
-  return {
-    clearReset: () => {
-      isReset = false;
-    },
-    reset: () => {
-      isReset = true;
-    },
-    isReset: () => {
-      return isReset;
-    }
-  };
-}
-const QueryErrorResetBoundaryContext = /* @__PURE__ */ reactExports.createContext(createValue());
-const useQueryErrorResetBoundary = () => reactExports.useContext(QueryErrorResetBoundaryContext);
-function shouldThrowError(_useErrorBoundary, params) {
-  if (typeof _useErrorBoundary === "function") {
-    return _useErrorBoundary(...params);
-  }
-  return !!_useErrorBoundary;
-}
-const ensurePreventErrorBoundaryRetry = (options, errorResetBoundary) => {
-  if (options.suspense || options.useErrorBoundary) {
-    if (!errorResetBoundary.isReset()) {
-      options.retryOnMount = false;
-    }
-  }
-};
-const useClearResetErrorBoundary = (errorResetBoundary) => {
-  reactExports.useEffect(() => {
-    errorResetBoundary.clearReset();
-  }, [errorResetBoundary]);
-};
-const getHasError = ({
-  result,
-  errorResetBoundary,
-  useErrorBoundary,
-  query
-}) => {
-  return result.isError && !errorResetBoundary.isReset() && !result.isFetching && shouldThrowError(useErrorBoundary, [result.error, query]);
-};
-const ensureStaleTime = (defaultedOptions) => {
-  if (defaultedOptions.suspense) {
-    if (typeof defaultedOptions.staleTime !== "number") {
-      defaultedOptions.staleTime = 1e3;
-    }
-  }
-};
-const willFetch = (result, isRestoring) => result.isLoading && result.isFetching && !isRestoring;
-const shouldSuspend = (defaultedOptions, result, isRestoring) => (defaultedOptions == null ? void 0 : defaultedOptions.suspense) && willFetch(result, isRestoring);
-const fetchOptimistic = (defaultedOptions, observer, errorResetBoundary) => observer.fetchOptimistic(defaultedOptions).then(({
-  data
-}) => {
-  defaultedOptions.onSuccess == null ? void 0 : defaultedOptions.onSuccess(data);
-  defaultedOptions.onSettled == null ? void 0 : defaultedOptions.onSettled(data, null);
-}).catch((error) => {
-  errorResetBoundary.clearReset();
-  defaultedOptions.onError == null ? void 0 : defaultedOptions.onError(error);
-  defaultedOptions.onSettled == null ? void 0 : defaultedOptions.onSettled(void 0, error);
-});
-function useBaseQuery(options, Observer) {
-  const queryClient2 = useQueryClient({
-    context: options.context
-  });
-  const isRestoring = useIsRestoring();
-  const errorResetBoundary = useQueryErrorResetBoundary();
-  const defaultedOptions = queryClient2.defaultQueryOptions(options);
-  defaultedOptions._optimisticResults = isRestoring ? "isRestoring" : "optimistic";
-  if (defaultedOptions.onError) {
-    defaultedOptions.onError = notifyManager.batchCalls(defaultedOptions.onError);
-  }
-  if (defaultedOptions.onSuccess) {
-    defaultedOptions.onSuccess = notifyManager.batchCalls(defaultedOptions.onSuccess);
-  }
-  if (defaultedOptions.onSettled) {
-    defaultedOptions.onSettled = notifyManager.batchCalls(defaultedOptions.onSettled);
-  }
-  ensureStaleTime(defaultedOptions);
-  ensurePreventErrorBoundaryRetry(defaultedOptions, errorResetBoundary);
-  useClearResetErrorBoundary(errorResetBoundary);
-  const [observer] = reactExports.useState(() => new Observer(queryClient2, defaultedOptions));
-  const result = observer.getOptimisticResult(defaultedOptions);
-  useSyncExternalStore(reactExports.useCallback((onStoreChange) => {
-    const unsubscribe = isRestoring ? () => void 0 : observer.subscribe(notifyManager.batchCalls(onStoreChange));
-    observer.updateResult();
-    return unsubscribe;
-  }, [observer, isRestoring]), () => observer.getCurrentResult(), () => observer.getCurrentResult());
-  reactExports.useEffect(() => {
-    observer.setOptions(defaultedOptions, {
-      listeners: false
-    });
-  }, [defaultedOptions, observer]);
-  if (shouldSuspend(defaultedOptions, result, isRestoring)) {
-    throw fetchOptimistic(defaultedOptions, observer, errorResetBoundary);
-  }
-  if (getHasError({
-    result,
-    errorResetBoundary,
-    useErrorBoundary: defaultedOptions.useErrorBoundary,
-    query: observer.getCurrentQuery()
-  })) {
-    throw result.error;
-  }
-  return !defaultedOptions.notifyOnChangeProps ? observer.trackResult(result) : result;
-}
-function useQuery$1(arg1, arg2, arg3) {
-  const parsedOptions = parseQueryArgs(arg1, arg2, arg3);
-  return useBaseQuery(parsedOptions, QueryObserver);
-}
-function useMutation(arg1, arg2, arg3) {
-  const options = parseMutationArgs(arg1, arg2, arg3);
-  const queryClient2 = useQueryClient({
-    context: options.context
-  });
-  const [observer] = reactExports.useState(() => new MutationObserver$1(queryClient2, options));
-  reactExports.useEffect(() => {
-    observer.setOptions(options);
-  }, [observer, options]);
-  const result = useSyncExternalStore(reactExports.useCallback((onStoreChange) => observer.subscribe(notifyManager.batchCalls(onStoreChange)), [observer]), () => observer.getCurrentResult(), () => observer.getCurrentResult());
-  const mutate = reactExports.useCallback((variables, mutateOptions) => {
-    observer.mutate(variables, mutateOptions).catch(noop);
-  }, [observer]);
-  if (result.error && shouldThrowError(observer.options.useErrorBoundary, [result.error])) {
-    throw result.error;
-  }
-  return {
-    ...result,
-    mutate,
-    mutateAsync: result.mutate
-  };
-}
-function noop() {
-}
-function useInfiniteQuery(arg1, arg2, arg3) {
-  const options = parseQueryArgs(arg1, arg2, arg3);
-  return useBaseQuery(options, InfiniteQueryObserver);
-}
-const version$3 = "2.9.21";
-const getUrl = (url) => url;
-const getVersion$3 = () => `viem@${version$3}`;
-let BaseError$3 = class BaseError4 extends Error {
-  constructor(shortMessage, args = {}) {
-    var _a2;
-    super();
-    Object.defineProperty(this, "details", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "docsPath", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "metaMessages", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "shortMessage", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ViemError"
-    });
-    Object.defineProperty(this, "version", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: getVersion$3()
-    });
-    const details = args.cause instanceof BaseError4 ? args.cause.details : ((_a2 = args.cause) == null ? void 0 : _a2.message) ? args.cause.message : args.details;
-    const docsPath2 = args.cause instanceof BaseError4 ? args.cause.docsPath || args.docsPath : args.docsPath;
-    this.message = [
-      shortMessage || "An error occurred.",
-      "",
-      ...args.metaMessages ? [...args.metaMessages, ""] : [],
-      ...docsPath2 ? [
-        `Docs: https://viem.sh${docsPath2}${args.docsSlug ? `#${args.docsSlug}` : ""}`
-      ] : [],
-      ...details ? [`Details: ${details}`] : [],
-      `Version: ${this.version}`
-    ].join("\n");
-    if (args.cause)
-      this.cause = args.cause;
-    this.details = details;
-    this.docsPath = docsPath2;
-    this.metaMessages = args.metaMessages;
-    this.shortMessage = shortMessage;
-  }
-  walk(fn) {
-    return walk(this, fn);
-  }
-};
-function walk(err, fn) {
-  if (fn == null ? void 0 : fn(err))
-    return err;
-  if (err && typeof err === "object" && "cause" in err)
-    return walk(err.cause, fn);
-  return fn ? null : err;
-}
-class IntegerOutOfRangeError2 extends BaseError$3 {
-  constructor({ max: max2, min: min2, signed: signed2, size: size2, value }) {
-    super(`Number "${value}" is not in safe ${size2 ? `${size2 * 8}-bit ${signed2 ? "signed" : "unsigned"} ` : ""}integer range ${max2 ? `(${min2} to ${max2})` : `(above ${min2})`}`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "IntegerOutOfRangeError"
-    });
-  }
-}
-class SizeOverflowError2 extends BaseError$3 {
-  constructor({ givenSize, maxSize }) {
-    super(`Size cannot exceed ${maxSize} bytes. Given size: ${givenSize} bytes.`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "SizeOverflowError"
-    });
-  }
-}
-class SizeExceedsPaddingSizeError2 extends BaseError$3 {
-  constructor({ size: size2, targetSize, type }) {
-    super(`${type.charAt(0).toUpperCase()}${type.slice(1).toLowerCase()} size (${size2}) exceeds padding size (${targetSize}).`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "SizeExceedsPaddingSizeError"
-    });
-  }
-}
-function pad2(hexOrBytes, { dir, size: size2 = 32 } = {}) {
-  if (typeof hexOrBytes === "string")
-    return padHex(hexOrBytes, { dir, size: size2 });
-  return padBytes(hexOrBytes, { dir, size: size2 });
-}
-function padHex(hex_, { dir, size: size2 = 32 } = {}) {
-  if (size2 === null)
-    return hex_;
-  const hex2 = hex_.replace("0x", "");
-  if (hex2.length > size2 * 2)
-    throw new SizeExceedsPaddingSizeError2({
-      size: Math.ceil(hex2.length / 2),
-      targetSize: size2,
-      type: "hex"
-    });
-  return `0x${hex2[dir === "right" ? "padEnd" : "padStart"](size2 * 2, "0")}`;
-}
-function padBytes(bytes3, { dir, size: size2 = 32 } = {}) {
-  if (size2 === null)
-    return bytes3;
-  if (bytes3.length > size2)
-    throw new SizeExceedsPaddingSizeError2({
-      size: bytes3.length,
-      targetSize: size2,
-      type: "bytes"
-    });
-  const paddedBytes = new Uint8Array(size2);
-  for (let i2 = 0; i2 < size2; i2++) {
-    const padEnd = dir === "right";
-    paddedBytes[padEnd ? i2 : size2 - i2 - 1] = bytes3[padEnd ? i2 : bytes3.length - i2 - 1];
-  }
-  return paddedBytes;
-}
-function isHex(value, { strict = true } = {}) {
-  if (!value)
-    return false;
-  if (typeof value !== "string")
-    return false;
-  return strict ? /^0x[0-9a-fA-F]*$/.test(value) : value.startsWith("0x");
-}
-function size$3(value) {
-  if (isHex(value, { strict: false }))
-    return Math.ceil((value.length - 2) / 2);
-  return value.length;
-}
-const encoder$1 = /* @__PURE__ */ new TextEncoder();
-function toBytes(value, opts = {}) {
-  if (typeof value === "number" || typeof value === "bigint")
-    return numberToBytes(value, opts);
-  if (typeof value === "boolean")
-    return boolToBytes(value, opts);
-  if (isHex(value))
-    return hexToBytes(value, opts);
-  return stringToBytes(value, opts);
-}
-function boolToBytes(value, opts = {}) {
-  const bytes3 = new Uint8Array(1);
-  bytes3[0] = Number(value);
-  if (typeof opts.size === "number") {
-    assertSize(bytes3, { size: opts.size });
-    return pad2(bytes3, { size: opts.size });
-  }
-  return bytes3;
-}
-const charCodeMap = {
-  zero: 48,
-  nine: 57,
-  A: 65,
-  F: 70,
-  a: 97,
-  f: 102
-};
-function charCodeToBase16(char2) {
-  if (char2 >= charCodeMap.zero && char2 <= charCodeMap.nine)
-    return char2 - charCodeMap.zero;
-  if (char2 >= charCodeMap.A && char2 <= charCodeMap.F)
-    return char2 - (charCodeMap.A - 10);
-  if (char2 >= charCodeMap.a && char2 <= charCodeMap.f)
-    return char2 - (charCodeMap.a - 10);
-  return void 0;
-}
-function hexToBytes(hex_, opts = {}) {
-  let hex2 = hex_;
-  if (opts.size) {
-    assertSize(hex2, { size: opts.size });
-    hex2 = pad2(hex2, { dir: "right", size: opts.size });
-  }
-  let hexString = hex2.slice(2);
-  if (hexString.length % 2)
-    hexString = `0${hexString}`;
-  const length2 = hexString.length / 2;
-  const bytes3 = new Uint8Array(length2);
-  for (let index2 = 0, j2 = 0; index2 < length2; index2++) {
-    const nibbleLeft = charCodeToBase16(hexString.charCodeAt(j2++));
-    const nibbleRight = charCodeToBase16(hexString.charCodeAt(j2++));
-    if (nibbleLeft === void 0 || nibbleRight === void 0) {
-      throw new BaseError$3(`Invalid byte sequence ("${hexString[j2 - 2]}${hexString[j2 - 1]}" in "${hexString}").`);
-    }
-    bytes3[index2] = nibbleLeft * 16 + nibbleRight;
-  }
-  return bytes3;
-}
-function numberToBytes(value, opts) {
-  const hex2 = numberToHex(value, opts);
-  return hexToBytes(hex2);
-}
-function stringToBytes(value, opts = {}) {
-  const bytes3 = encoder$1.encode(value);
-  if (typeof opts.size === "number") {
-    assertSize(bytes3, { size: opts.size });
-    return pad2(bytes3, { dir: "right", size: opts.size });
-  }
-  return bytes3;
-}
-function assertSize(hexOrBytes, { size: size2 }) {
-  if (size$3(hexOrBytes) > size2)
-    throw new SizeOverflowError2({
-      givenSize: size$3(hexOrBytes),
-      maxSize: size2
-    });
-}
-function hexToBigInt(hex2, opts = {}) {
-  const { signed: signed2 } = opts;
-  if (opts.size)
-    assertSize(hex2, { size: opts.size });
-  const value = BigInt(hex2);
-  if (!signed2)
-    return value;
-  const size2 = (hex2.length - 2) / 2;
-  const max2 = (1n << BigInt(size2) * 8n - 1n) - 1n;
-  if (value <= max2)
-    return value;
-  return value - BigInt(`0x${"f".padStart(size2 * 2, "f")}`) - 1n;
-}
-function hexToNumber(hex2, opts = {}) {
-  return Number(hexToBigInt(hex2, opts));
-}
-const hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_v, i2) => i2.toString(16).padStart(2, "0"));
-function toHex(value, opts = {}) {
-  if (typeof value === "number" || typeof value === "bigint")
-    return numberToHex(value, opts);
-  if (typeof value === "string") {
-    return stringToHex(value, opts);
-  }
-  if (typeof value === "boolean")
-    return boolToHex(value, opts);
-  return bytesToHex(value, opts);
-}
-function boolToHex(value, opts = {}) {
-  const hex2 = `0x${Number(value)}`;
-  if (typeof opts.size === "number") {
-    assertSize(hex2, { size: opts.size });
-    return pad2(hex2, { size: opts.size });
-  }
-  return hex2;
-}
-function bytesToHex(value, opts = {}) {
-  let string = "";
-  for (let i2 = 0; i2 < value.length; i2++) {
-    string += hexes[value[i2]];
-  }
-  const hex2 = `0x${string}`;
-  if (typeof opts.size === "number") {
-    assertSize(hex2, { size: opts.size });
-    return pad2(hex2, { dir: "right", size: opts.size });
-  }
-  return hex2;
-}
-function numberToHex(value_, opts = {}) {
-  const { signed: signed2, size: size2 } = opts;
-  const value = BigInt(value_);
-  let maxValue;
-  if (size2) {
-    if (signed2)
-      maxValue = (1n << BigInt(size2) * 8n - 1n) - 1n;
-    else
-      maxValue = 2n ** (BigInt(size2) * 8n) - 1n;
-  } else if (typeof value_ === "number") {
-    maxValue = BigInt(Number.MAX_SAFE_INTEGER);
-  }
-  const minValue = typeof maxValue === "bigint" && signed2 ? -maxValue - 1n : 0;
-  if (maxValue && value > maxValue || value < minValue) {
-    const suffix = typeof value_ === "bigint" ? "n" : "";
-    throw new IntegerOutOfRangeError2({
-      max: maxValue ? `${maxValue}${suffix}` : void 0,
-      min: `${minValue}${suffix}`,
-      signed: signed2,
-      size: size2,
-      value: `${value_}${suffix}`
-    });
-  }
-  const hex2 = `0x${(signed2 && value < 0 ? (1n << BigInt(size2 * 8)) + BigInt(value) : value).toString(16)}`;
-  if (size2)
-    return pad2(hex2, { size: size2 });
-  return hex2;
-}
-const encoder = /* @__PURE__ */ new TextEncoder();
-function stringToHex(value_, opts = {}) {
-  const value = encoder.encode(value_);
-  return bytesToHex(value, opts);
-}
-class InvalidAddressError2 extends BaseError$3 {
-  constructor({ address }) {
-    super(`Address "${address}" is invalid.`, {
-      metaMessages: [
-        "- Address must be a hex value of 20 bytes (40 hex characters).",
-        "- Address must match its checksum counterpart."
-      ]
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "InvalidAddressError"
-    });
-  }
-}
-class LruMap extends Map {
-  constructor(size2) {
-    super();
-    Object.defineProperty(this, "maxSize", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.maxSize = size2;
-  }
-  set(key2, value) {
-    super.set(key2, value);
-    if (this.maxSize && this.size > this.maxSize)
-      this.delete(this.keys().next().value);
-    return this;
-  }
-}
-function keccak256(value, to_) {
-  const to = to_ || "hex";
-  const bytes3 = keccak_256(isHex(value, { strict: false }) ? toBytes(value) : value);
-  if (to === "bytes")
-    return bytes3;
-  return toHex(bytes3);
-}
-function checksumAddress(address_, chainId) {
-  const hexAddress = chainId ? `${chainId}${address_.toLowerCase()}` : address_.substring(2).toLowerCase();
-  const hash2 = keccak256(stringToBytes(hexAddress), "bytes");
-  const address = (chainId ? hexAddress.substring(`${chainId}0x`.length) : hexAddress).split("");
-  for (let i2 = 0; i2 < 40; i2 += 2) {
-    if (hash2[i2 >> 1] >> 4 >= 8 && address[i2]) {
-      address[i2] = address[i2].toUpperCase();
-    }
-    if ((hash2[i2 >> 1] & 15) >= 8 && address[i2 + 1]) {
-      address[i2 + 1] = address[i2 + 1].toUpperCase();
-    }
-  }
-  return `0x${address.join("")}`;
-}
-const addressRegex = /^0x[a-fA-F0-9]{40}$/;
-const isAddressCache = /* @__PURE__ */ new LruMap(8192);
-function isAddress(address, options) {
-  const { strict = true } = options ?? {};
-  if (isAddressCache.has(address))
-    return isAddressCache.get(address);
-  const result = (() => {
-    if (!addressRegex.test(address))
-      return false;
-    if (address.toLowerCase() === address)
-      return true;
-    if (strict)
-      return checksumAddress(address) === address;
-    return true;
-  })();
-  isAddressCache.set(address, result);
-  return result;
-}
-function parseAccount(account2) {
-  if (typeof account2 === "string")
-    return { address: account2, type: "json-rpc" };
-  return account2;
-}
-class AccountNotFoundError2 extends BaseError$3 {
-  constructor({ docsPath: docsPath2 } = {}) {
-    super([
-      "Could not find an Account to execute with this Action.",
-      "Please provide an Account with the `account` argument on the Action, or by supplying an `account` to the WalletClient."
-    ].join("\n"), {
-      docsPath: docsPath2,
-      docsSlug: "account"
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "AccountNotFoundError"
-    });
-  }
-}
-class ChainMismatchError2 extends BaseError$3 {
-  constructor({ chain, currentChainId }) {
-    super(`The current chain of the wallet (id: ${currentChainId}) does not match the target chain for the transaction (id: ${chain.id} – ${chain.name}).`, {
-      metaMessages: [
-        `Current Chain ID:  ${currentChainId}`,
-        `Expected Chain ID: ${chain.id} – ${chain.name}`
-      ]
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ChainMismatchError"
-    });
-  }
-}
-class ChainNotFoundError2 extends BaseError$3 {
-  constructor() {
-    super([
-      "No chain was provided to the request.",
-      "Please provide a chain with the `chain` argument on the Action, or by supplying a `chain` to WalletClient."
-    ].join("\n"));
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ChainNotFoundError"
-    });
-  }
-}
-function assertCurrentChain({ chain, currentChainId }) {
-  if (!chain)
-    throw new ChainNotFoundError2();
-  if (currentChainId !== chain.id)
-    throw new ChainMismatchError2({ chain, currentChainId });
-}
-const etherUnits = {
-  gwei: 9,
-  wei: 18
-};
-const gweiUnits = {
-  ether: -9,
-  wei: 9
-};
-function formatUnits(value, decimals) {
-  let display = value.toString();
-  const negative = display.startsWith("-");
-  if (negative)
-    display = display.slice(1);
-  display = display.padStart(decimals, "0");
-  let [integer, fraction] = [
-    display.slice(0, display.length - decimals),
-    display.slice(display.length - decimals)
-  ];
-  fraction = fraction.replace(/(0+)$/, "");
-  return `${negative ? "-" : ""}${integer || "0"}${fraction ? `.${fraction}` : ""}`;
-}
-function formatGwei(wei, unit = "wei") {
-  return formatUnits(wei, gweiUnits[unit]);
-}
-class ExecutionRevertedError2 extends BaseError$3 {
-  constructor({ cause, message } = {}) {
-    var _a2;
-    const reason = (_a2 = message == null ? void 0 : message.replace("execution reverted: ", "")) == null ? void 0 : _a2.replace("execution reverted", "");
-    super(`Execution reverted ${reason ? `with reason: ${reason}` : "for an unknown reason"}.`, {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ExecutionRevertedError"
-    });
-  }
-}
-Object.defineProperty(ExecutionRevertedError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: 3
-});
-Object.defineProperty(ExecutionRevertedError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /execution reverted/
-});
-class FeeCapTooHighError2 extends BaseError$3 {
-  constructor({ cause, maxFeePerGas } = {}) {
-    super(`The fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei(maxFeePerGas)} gwei` : ""}) cannot be higher than the maximum allowed value (2^256-1).`, {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "FeeCapTooHigh"
-    });
-  }
-}
-Object.defineProperty(FeeCapTooHighError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /max fee per gas higher than 2\^256-1|fee cap higher than 2\^256-1/
-});
-class FeeCapTooLowError2 extends BaseError$3 {
-  constructor({ cause, maxFeePerGas } = {}) {
-    super(`The fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei(maxFeePerGas)}` : ""} gwei) cannot be lower than the block base fee.`, {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "FeeCapTooLow"
-    });
-  }
-}
-Object.defineProperty(FeeCapTooLowError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /max fee per gas less than block base fee|fee cap less than block base fee|transaction is outdated/
-});
-class NonceTooHighError2 extends BaseError$3 {
-  constructor({ cause, nonce } = {}) {
-    super(`Nonce provided for the transaction ${nonce ? `(${nonce}) ` : ""}is higher than the next one expected.`, { cause });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "NonceTooHighError"
-    });
-  }
-}
-Object.defineProperty(NonceTooHighError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /nonce too high/
-});
-class NonceTooLowError2 extends BaseError$3 {
-  constructor({ cause, nonce } = {}) {
-    super([
-      `Nonce provided for the transaction ${nonce ? `(${nonce}) ` : ""}is lower than the current nonce of the account.`,
-      "Try increasing the nonce or find the latest nonce with `getTransactionCount`."
-    ].join("\n"), { cause });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "NonceTooLowError"
-    });
-  }
-}
-Object.defineProperty(NonceTooLowError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /nonce too low|transaction already imported|already known/
-});
-class NonceMaxValueError2 extends BaseError$3 {
-  constructor({ cause, nonce } = {}) {
-    super(`Nonce provided for the transaction ${nonce ? `(${nonce}) ` : ""}exceeds the maximum allowed nonce.`, { cause });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "NonceMaxValueError"
-    });
-  }
-}
-Object.defineProperty(NonceMaxValueError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /nonce has max value/
-});
-class InsufficientFundsError2 extends BaseError$3 {
-  constructor({ cause } = {}) {
-    super([
-      "The total cost (gas * gas fee + value) of executing this transaction exceeds the balance of the account."
-    ].join("\n"), {
-      cause,
-      metaMessages: [
-        "This error could arise when the account does not have enough funds to:",
-        " - pay for the total gas fee,",
-        " - pay for the value to send.",
-        " ",
-        "The cost of the transaction is calculated as `gas * gas fee + value`, where:",
-        " - `gas` is the amount of gas needed for transaction to execute,",
-        " - `gas fee` is the gas fee,",
-        " - `value` is the amount of ether to send to the recipient."
-      ]
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "InsufficientFundsError"
-    });
-  }
-}
-Object.defineProperty(InsufficientFundsError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /insufficient funds/
-});
-class IntrinsicGasTooHighError2 extends BaseError$3 {
-  constructor({ cause, gas } = {}) {
-    super(`The amount of gas ${gas ? `(${gas}) ` : ""}provided for the transaction exceeds the limit allowed for the block.`, {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "IntrinsicGasTooHighError"
-    });
-  }
-}
-Object.defineProperty(IntrinsicGasTooHighError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /intrinsic gas too high|gas limit reached/
-});
-class IntrinsicGasTooLowError2 extends BaseError$3 {
-  constructor({ cause, gas } = {}) {
-    super(`The amount of gas ${gas ? `(${gas}) ` : ""}provided for the transaction is too low.`, {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "IntrinsicGasTooLowError"
-    });
-  }
-}
-Object.defineProperty(IntrinsicGasTooLowError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /intrinsic gas too low/
-});
-class TransactionTypeNotSupportedError2 extends BaseError$3 {
-  constructor({ cause }) {
-    super("The transaction type is not supported for this chain.", {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "TransactionTypeNotSupportedError"
-    });
-  }
-}
-Object.defineProperty(TransactionTypeNotSupportedError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /transaction type not valid/
-});
-class TipAboveFeeCapError2 extends BaseError$3 {
-  constructor({ cause, maxPriorityFeePerGas, maxFeePerGas } = {}) {
-    super([
-      `The provided tip (\`maxPriorityFeePerGas\`${maxPriorityFeePerGas ? ` = ${formatGwei(maxPriorityFeePerGas)} gwei` : ""}) cannot be higher than the fee cap (\`maxFeePerGas\`${maxFeePerGas ? ` = ${formatGwei(maxFeePerGas)} gwei` : ""}).`
-    ].join("\n"), {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "TipAboveFeeCapError"
-    });
-  }
-}
-Object.defineProperty(TipAboveFeeCapError2, "nodeMessage", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: /max priority fee per gas higher than max fee per gas|tip higher than fee cap/
-});
-class UnknownNodeError2 extends BaseError$3 {
-  constructor({ cause }) {
-    super(`An error occurred while executing: ${cause == null ? void 0 : cause.shortMessage}`, {
-      cause
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "UnknownNodeError"
-    });
-  }
-}
-function formatEther(wei, unit = "wei") {
-  return formatUnits(wei, etherUnits[unit]);
-}
-function prettyPrint(args) {
-  const entries = Object.entries(args).map(([key2, value]) => {
-    if (value === void 0 || value === false)
-      return null;
-    return [key2, value];
-  }).filter(Boolean);
-  const maxLength = entries.reduce((acc, [key2]) => Math.max(acc, key2.length), 0);
-  return entries.map(([key2, value]) => `  ${`${key2}:`.padEnd(maxLength + 1)}  ${value}`).join("\n");
-}
-class FeeConflictError2 extends BaseError$3 {
-  constructor() {
-    super([
-      "Cannot specify both a `gasPrice` and a `maxFeePerGas`/`maxPriorityFeePerGas`.",
-      "Use `maxFeePerGas`/`maxPriorityFeePerGas` for EIP-1559 compatible networks, and `gasPrice` for others."
-    ].join("\n"));
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "FeeConflictError"
-    });
-  }
-}
-class InvalidSerializableTransactionError2 extends BaseError$3 {
-  constructor({ transaction: transaction2 }) {
-    super("Cannot infer a transaction type from provided transaction.", {
-      metaMessages: [
-        "Provided Transaction:",
-        "{",
-        prettyPrint(transaction2),
-        "}",
-        "",
-        "To infer the type, either provide:",
-        "- a `type` to the Transaction, or",
-        "- an EIP-1559 Transaction with `maxFeePerGas`, or",
-        "- an EIP-2930 Transaction with `gasPrice` & `accessList`, or",
-        "- an EIP-4844 Transaction with `blobs`, `blobVersionedHashes`, `sidecars`, or",
-        "- a Legacy Transaction with `gasPrice`"
-      ]
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "InvalidSerializableTransactionError"
-    });
-  }
-}
-class TransactionExecutionError2 extends BaseError$3 {
-  constructor(cause, { account: account2, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value }) {
-    var _a2;
-    const prettyArgs = prettyPrint({
-      chain: chain && `${chain == null ? void 0 : chain.name} (id: ${chain == null ? void 0 : chain.id})`,
-      from: account2 == null ? void 0 : account2.address,
-      to,
-      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
-      data,
-      gas,
-      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
-      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei(maxFeePerGas)} gwei`,
-      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei(maxPriorityFeePerGas)} gwei`,
-      nonce
-    });
-    super(cause.shortMessage, {
-      cause,
-      docsPath: docsPath2,
-      metaMessages: [
-        ...cause.metaMessages ? [...cause.metaMessages, " "] : [],
-        "Request Arguments:",
-        prettyArgs
-      ].filter(Boolean)
-    });
-    Object.defineProperty(this, "cause", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "TransactionExecutionError"
-    });
-    this.cause = cause;
-  }
-}
-const stringify$1 = (value, replacer, space) => JSON.stringify(value, (key2, value_) => {
-  const value2 = typeof value_ === "bigint" ? value_.toString() : value_;
-  return typeof replacer === "function" ? replacer(key2, value2) : value2;
-}, space);
-class HttpRequestError2 extends BaseError$3 {
-  constructor({ body, details, headers, status, url }) {
-    super("HTTP request failed.", {
-      details,
-      metaMessages: [
-        status && `Status: ${status}`,
-        `URL: ${getUrl(url)}`,
-        body && `Request body: ${stringify$1(body)}`
-      ].filter(Boolean)
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "HttpRequestError"
-    });
-    Object.defineProperty(this, "body", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "headers", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "status", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "url", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.body = body;
-    this.headers = headers;
-    this.status = status;
-    this.url = url;
-  }
-}
-class RpcRequestError2 extends BaseError$3 {
-  constructor({ body, error, url }) {
-    super("RPC Request failed.", {
-      cause: error,
-      details: error.message,
-      metaMessages: [`URL: ${getUrl(url)}`, `Request body: ${stringify$1(body)}`]
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "RpcRequestError"
-    });
-    Object.defineProperty(this, "code", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.code = error.code;
-  }
-}
-const unknownErrorCode = -1;
-class RpcError2 extends BaseError$3 {
-  constructor(cause, { code: code2, docsPath: docsPath2, metaMessages, shortMessage }) {
-    super(shortMessage, {
-      cause,
-      docsPath: docsPath2,
-      metaMessages: metaMessages || (cause == null ? void 0 : cause.metaMessages)
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "RpcError"
-    });
-    Object.defineProperty(this, "code", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.name = cause.name;
-    this.code = cause instanceof RpcRequestError2 ? cause.code : code2 ?? unknownErrorCode;
-  }
-}
-class ProviderRpcError2 extends RpcError2 {
-  constructor(cause, options) {
-    super(cause, options);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ProviderRpcError"
-    });
-    Object.defineProperty(this, "data", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    this.data = options.data;
-  }
-}
-class ParseRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: ParseRpcError2.code,
-      shortMessage: "Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ParseRpcError"
-    });
-  }
-}
-Object.defineProperty(ParseRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32700
-});
-class InvalidRequestRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: InvalidRequestRpcError2.code,
-      shortMessage: "JSON is not a valid request object."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "InvalidRequestRpcError"
-    });
-  }
-}
-Object.defineProperty(InvalidRequestRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32600
-});
-class MethodNotFoundRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: MethodNotFoundRpcError2.code,
-      shortMessage: "The method does not exist / is not available."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "MethodNotFoundRpcError"
-    });
-  }
-}
-Object.defineProperty(MethodNotFoundRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32601
-});
-class InvalidParamsRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: InvalidParamsRpcError2.code,
-      shortMessage: [
-        "Invalid parameters were provided to the RPC method.",
-        "Double check you have provided the correct parameters."
-      ].join("\n")
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "InvalidParamsRpcError"
-    });
-  }
-}
-Object.defineProperty(InvalidParamsRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32602
-});
-class InternalRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: InternalRpcError2.code,
-      shortMessage: "An internal error was received."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "InternalRpcError"
-    });
-  }
-}
-Object.defineProperty(InternalRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32603
-});
-class InvalidInputRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: InvalidInputRpcError2.code,
-      shortMessage: [
-        "Missing or invalid parameters.",
-        "Double check you have provided the correct parameters."
-      ].join("\n")
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "InvalidInputRpcError"
-    });
-  }
-}
-Object.defineProperty(InvalidInputRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32e3
-});
-class ResourceNotFoundRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: ResourceNotFoundRpcError2.code,
-      shortMessage: "Requested resource not found."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ResourceNotFoundRpcError"
-    });
-  }
-}
-Object.defineProperty(ResourceNotFoundRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32001
-});
-class ResourceUnavailableRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: ResourceUnavailableRpcError2.code,
-      shortMessage: "Requested resource not available."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ResourceUnavailableRpcError"
-    });
-  }
-}
-Object.defineProperty(ResourceUnavailableRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32002
-});
-class TransactionRejectedRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: TransactionRejectedRpcError2.code,
-      shortMessage: "Transaction creation failed."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "TransactionRejectedRpcError"
-    });
-  }
-}
-Object.defineProperty(TransactionRejectedRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32003
-});
-class MethodNotSupportedRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: MethodNotSupportedRpcError2.code,
-      shortMessage: "Method is not implemented."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "MethodNotSupportedRpcError"
-    });
-  }
-}
-Object.defineProperty(MethodNotSupportedRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32004
-});
-class LimitExceededRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: LimitExceededRpcError2.code,
-      shortMessage: "Request exceeds defined limit."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "LimitExceededRpcError"
-    });
-  }
-}
-Object.defineProperty(LimitExceededRpcError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32005
-});
-class JsonRpcVersionUnsupportedError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: JsonRpcVersionUnsupportedError2.code,
-      shortMessage: "Version of JSON-RPC protocol is not supported."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "JsonRpcVersionUnsupportedError"
-    });
-  }
-}
-Object.defineProperty(JsonRpcVersionUnsupportedError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: -32006
-});
-class UserRejectedRequestError2 extends ProviderRpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: UserRejectedRequestError2.code,
-      shortMessage: "User rejected the request."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "UserRejectedRequestError"
-    });
-  }
-}
-Object.defineProperty(UserRejectedRequestError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: 4001
-});
-class UnauthorizedProviderError2 extends ProviderRpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: UnauthorizedProviderError2.code,
-      shortMessage: "The requested method and/or account has not been authorized by the user."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "UnauthorizedProviderError"
-    });
-  }
-}
-Object.defineProperty(UnauthorizedProviderError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: 4100
-});
-class UnsupportedProviderMethodError2 extends ProviderRpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: UnsupportedProviderMethodError2.code,
-      shortMessage: "The Provider does not support the requested method."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "UnsupportedProviderMethodError"
-    });
-  }
-}
-Object.defineProperty(UnsupportedProviderMethodError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: 4200
-});
-class ProviderDisconnectedError2 extends ProviderRpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: ProviderDisconnectedError2.code,
-      shortMessage: "The Provider is disconnected from all chains."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ProviderDisconnectedError"
-    });
-  }
-}
-Object.defineProperty(ProviderDisconnectedError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: 4900
-});
-class ChainDisconnectedError2 extends ProviderRpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: ChainDisconnectedError2.code,
-      shortMessage: "The Provider is not connected to the requested chain."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ChainDisconnectedError"
-    });
-  }
-}
-Object.defineProperty(ChainDisconnectedError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: 4901
-});
-class SwitchChainError2 extends ProviderRpcError2 {
-  constructor(cause) {
-    super(cause, {
-      code: SwitchChainError2.code,
-      shortMessage: "An error occurred when attempting to switch chain."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "SwitchChainError"
-    });
-  }
-}
-Object.defineProperty(SwitchChainError2, "code", {
-  enumerable: true,
-  configurable: true,
-  writable: true,
-  value: 4902
-});
-class UnknownRpcError2 extends RpcError2 {
-  constructor(cause) {
-    super(cause, {
-      shortMessage: "An unknown RPC error occurred."
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "UnknownRpcError"
-    });
-  }
-}
-function getNodeError(err, args) {
-  const message = (err.details || "").toLowerCase();
-  const executionRevertedError = err instanceof BaseError$3 ? err.walk((e2) => e2.code === ExecutionRevertedError2.code) : err;
-  if (executionRevertedError instanceof BaseError$3) {
-    return new ExecutionRevertedError2({
-      cause: err,
-      message: executionRevertedError.details
-    });
-  }
-  if (ExecutionRevertedError2.nodeMessage.test(message))
-    return new ExecutionRevertedError2({
-      cause: err,
-      message: err.details
-    });
-  if (FeeCapTooHighError2.nodeMessage.test(message))
-    return new FeeCapTooHighError2({
-      cause: err,
-      maxFeePerGas: args == null ? void 0 : args.maxFeePerGas
-    });
-  if (FeeCapTooLowError2.nodeMessage.test(message))
-    return new FeeCapTooLowError2({
-      cause: err,
-      maxFeePerGas: args == null ? void 0 : args.maxFeePerGas
-    });
-  if (NonceTooHighError2.nodeMessage.test(message))
-    return new NonceTooHighError2({ cause: err, nonce: args == null ? void 0 : args.nonce });
-  if (NonceTooLowError2.nodeMessage.test(message))
-    return new NonceTooLowError2({ cause: err, nonce: args == null ? void 0 : args.nonce });
-  if (NonceMaxValueError2.nodeMessage.test(message))
-    return new NonceMaxValueError2({ cause: err, nonce: args == null ? void 0 : args.nonce });
-  if (InsufficientFundsError2.nodeMessage.test(message))
-    return new InsufficientFundsError2({ cause: err });
-  if (IntrinsicGasTooHighError2.nodeMessage.test(message))
-    return new IntrinsicGasTooHighError2({ cause: err, gas: args == null ? void 0 : args.gas });
-  if (IntrinsicGasTooLowError2.nodeMessage.test(message))
-    return new IntrinsicGasTooLowError2({ cause: err, gas: args == null ? void 0 : args.gas });
-  if (TransactionTypeNotSupportedError2.nodeMessage.test(message))
-    return new TransactionTypeNotSupportedError2({ cause: err });
-  if (TipAboveFeeCapError2.nodeMessage.test(message))
-    return new TipAboveFeeCapError2({
-      cause: err,
-      maxFeePerGas: args == null ? void 0 : args.maxFeePerGas,
-      maxPriorityFeePerGas: args == null ? void 0 : args.maxPriorityFeePerGas
-    });
-  return new UnknownNodeError2({
-    cause: err
-  });
-}
-function getTransactionError(err, { docsPath: docsPath2, ...args }) {
-  const cause = (() => {
-    const cause2 = getNodeError(err, args);
-    if (cause2 instanceof UnknownNodeError2)
-      return err;
-    return cause2;
-  })();
-  return new TransactionExecutionError2(cause, {
-    docsPath: docsPath2,
-    ...args
-  });
-}
-function extract(value_, { format: format2 }) {
-  if (!format2)
-    return {};
-  const value = {};
-  function extract_(formatted2) {
-    const keys = Object.keys(formatted2);
-    for (const key2 of keys) {
-      if (key2 in value_)
-        value[key2] = value_[key2];
-      if (formatted2[key2] && typeof formatted2[key2] === "object" && !Array.isArray(formatted2[key2]))
-        extract_(formatted2[key2]);
-    }
-  }
-  const formatted = format2(value_ || {});
-  extract_(formatted);
-  return value;
-}
-const rpcTransactionType = {
-  legacy: "0x0",
-  eip2930: "0x1",
-  eip1559: "0x2",
-  eip4844: "0x3"
-};
-function formatTransactionRequest(request) {
-  const rpcRequest = {};
-  if (typeof request.accessList !== "undefined")
-    rpcRequest.accessList = request.accessList;
-  if (typeof request.blobVersionedHashes !== "undefined")
-    rpcRequest.blobVersionedHashes = request.blobVersionedHashes;
-  if (typeof request.blobs !== "undefined") {
-    if (typeof request.blobs[0] !== "string")
-      rpcRequest.blobs = request.blobs.map((x) => bytesToHex(x));
-    else
-      rpcRequest.blobs = request.blobs;
-  }
-  if (typeof request.data !== "undefined")
-    rpcRequest.data = request.data;
-  if (typeof request.from !== "undefined")
-    rpcRequest.from = request.from;
-  if (typeof request.gas !== "undefined")
-    rpcRequest.gas = numberToHex(request.gas);
-  if (typeof request.gasPrice !== "undefined")
-    rpcRequest.gasPrice = numberToHex(request.gasPrice);
-  if (typeof request.maxFeePerBlobGas !== "undefined")
-    rpcRequest.maxFeePerBlobGas = numberToHex(request.maxFeePerBlobGas);
-  if (typeof request.maxFeePerGas !== "undefined")
-    rpcRequest.maxFeePerGas = numberToHex(request.maxFeePerGas);
-  if (typeof request.maxPriorityFeePerGas !== "undefined")
-    rpcRequest.maxPriorityFeePerGas = numberToHex(request.maxPriorityFeePerGas);
-  if (typeof request.nonce !== "undefined")
-    rpcRequest.nonce = numberToHex(request.nonce);
-  if (typeof request.to !== "undefined")
-    rpcRequest.to = request.to;
-  if (typeof request.type !== "undefined")
-    rpcRequest.type = rpcTransactionType[request.type];
-  if (typeof request.value !== "undefined")
-    rpcRequest.value = numberToHex(request.value);
-  return rpcRequest;
-}
-function getAction$1(client2, action, name) {
-  return (params) => {
-    var _a2, _b;
-    return ((_a2 = client2[action.name]) == null ? void 0 : _a2.call(client2, params)) ?? ((_b = client2[name]) == null ? void 0 : _b.call(client2, params)) ?? action(client2, params);
-  };
-}
-function assertRequest(args) {
-  const { account: account_, gasPrice, maxFeePerGas, maxPriorityFeePerGas, to } = args;
-  const account2 = account_ ? parseAccount(account_) : void 0;
-  if (account2 && !isAddress(account2.address))
-    throw new InvalidAddressError2({ address: account2.address });
-  if (to && !isAddress(to))
-    throw new InvalidAddressError2({ address: to });
-  if (typeof gasPrice !== "undefined" && (typeof maxFeePerGas !== "undefined" || typeof maxPriorityFeePerGas !== "undefined"))
-    throw new FeeConflictError2();
-  if (maxFeePerGas && maxFeePerGas > 2n ** 256n - 1n)
-    throw new FeeCapTooHighError2({ maxFeePerGas });
-  if (maxPriorityFeePerGas && maxFeePerGas && maxPriorityFeePerGas > maxFeePerGas)
-    throw new TipAboveFeeCapError2({ maxFeePerGas, maxPriorityFeePerGas });
-}
-async function getChainId$1(client2) {
-  const chainIdHex = await client2.request({
-    method: "eth_chainId"
-  });
-  return hexToNumber(chainIdHex);
-}
-class BaseFeeScalarError2 extends BaseError$3 {
-  constructor() {
-    super("`baseFeeMultiplier` must be greater than 1.");
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "BaseFeeScalarError"
-    });
-  }
-}
-class Eip1559FeesNotSupportedError2 extends BaseError$3 {
-  constructor() {
-    super("Chain does not support EIP-1559 fees.");
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "Eip1559FeesNotSupportedError"
-    });
-  }
-}
-class MaxFeePerGasTooLowError2 extends BaseError$3 {
-  constructor({ maxPriorityFeePerGas }) {
-    super(`\`maxFeePerGas\` cannot be less than the \`maxPriorityFeePerGas\` (${formatGwei(maxPriorityFeePerGas)} gwei).`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "MaxFeePerGasTooLowError"
-    });
-  }
-}
-class BlockNotFoundError2 extends BaseError$3 {
-  constructor({ blockHash, blockNumber }) {
-    let identifier2 = "Block";
-    if (blockHash)
-      identifier2 = `Block at hash "${blockHash}"`;
-    if (blockNumber)
-      identifier2 = `Block at number "${blockNumber}"`;
-    super(`${identifier2} could not be found.`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "BlockNotFoundError"
-    });
-  }
-}
-const transactionType = {
-  "0x0": "legacy",
-  "0x1": "eip2930",
-  "0x2": "eip1559",
-  "0x3": "eip4844"
-};
-function formatTransaction(transaction2) {
-  const transaction_ = {
-    ...transaction2,
-    blockHash: transaction2.blockHash ? transaction2.blockHash : null,
-    blockNumber: transaction2.blockNumber ? BigInt(transaction2.blockNumber) : null,
-    chainId: transaction2.chainId ? hexToNumber(transaction2.chainId) : void 0,
-    gas: transaction2.gas ? BigInt(transaction2.gas) : void 0,
-    gasPrice: transaction2.gasPrice ? BigInt(transaction2.gasPrice) : void 0,
-    maxFeePerBlobGas: transaction2.maxFeePerBlobGas ? BigInt(transaction2.maxFeePerBlobGas) : void 0,
-    maxFeePerGas: transaction2.maxFeePerGas ? BigInt(transaction2.maxFeePerGas) : void 0,
-    maxPriorityFeePerGas: transaction2.maxPriorityFeePerGas ? BigInt(transaction2.maxPriorityFeePerGas) : void 0,
-    nonce: transaction2.nonce ? hexToNumber(transaction2.nonce) : void 0,
-    to: transaction2.to ? transaction2.to : null,
-    transactionIndex: transaction2.transactionIndex ? Number(transaction2.transactionIndex) : null,
-    type: transaction2.type ? transactionType[transaction2.type] : void 0,
-    typeHex: transaction2.type ? transaction2.type : void 0,
-    value: transaction2.value ? BigInt(transaction2.value) : void 0,
-    v: transaction2.v ? BigInt(transaction2.v) : void 0
-  };
-  transaction_.yParity = (() => {
-    if (transaction2.yParity)
-      return Number(transaction2.yParity);
-    if (typeof transaction_.v === "bigint") {
-      if (transaction_.v === 0n || transaction_.v === 27n)
-        return 0;
-      if (transaction_.v === 1n || transaction_.v === 28n)
-        return 1;
-      if (transaction_.v >= 35n)
-        return transaction_.v % 2n === 0n ? 1 : 0;
-    }
-    return void 0;
-  })();
-  if (transaction_.type === "legacy") {
-    delete transaction_.accessList;
-    delete transaction_.maxFeePerBlobGas;
-    delete transaction_.maxFeePerGas;
-    delete transaction_.maxPriorityFeePerGas;
-    delete transaction_.yParity;
-  }
-  if (transaction_.type === "eip2930") {
-    delete transaction_.maxFeePerBlobGas;
-    delete transaction_.maxFeePerGas;
-    delete transaction_.maxPriorityFeePerGas;
-  }
-  if (transaction_.type === "eip1559") {
-    delete transaction_.maxFeePerBlobGas;
-  }
-  return transaction_;
-}
-function formatBlock(block) {
-  var _a2;
-  const transactions2 = (_a2 = block.transactions) == null ? void 0 : _a2.map((transaction2) => {
-    if (typeof transaction2 === "string")
-      return transaction2;
-    return formatTransaction(transaction2);
-  });
-  return {
-    ...block,
-    baseFeePerGas: block.baseFeePerGas ? BigInt(block.baseFeePerGas) : null,
-    blobGasUsed: block.blobGasUsed ? BigInt(block.blobGasUsed) : void 0,
-    difficulty: block.difficulty ? BigInt(block.difficulty) : void 0,
-    excessBlobGas: block.excessBlobGas ? BigInt(block.excessBlobGas) : void 0,
-    gasLimit: block.gasLimit ? BigInt(block.gasLimit) : void 0,
-    gasUsed: block.gasUsed ? BigInt(block.gasUsed) : void 0,
-    hash: block.hash ? block.hash : null,
-    logsBloom: block.logsBloom ? block.logsBloom : null,
-    nonce: block.nonce ? block.nonce : null,
-    number: block.number ? BigInt(block.number) : null,
-    size: block.size ? BigInt(block.size) : void 0,
-    timestamp: block.timestamp ? BigInt(block.timestamp) : void 0,
-    transactions: transactions2,
-    totalDifficulty: block.totalDifficulty ? BigInt(block.totalDifficulty) : null
-  };
-}
-async function getBlock(client2, { blockHash, blockNumber, blockTag: blockTag_, includeTransactions: includeTransactions_ } = {}) {
-  var _a2, _b, _c;
-  const blockTag = blockTag_ ?? "latest";
-  const includeTransactions = includeTransactions_ ?? false;
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
-  let block = null;
-  if (blockHash) {
-    block = await client2.request({
-      method: "eth_getBlockByHash",
-      params: [blockHash, includeTransactions]
-    });
-  } else {
-    block = await client2.request({
-      method: "eth_getBlockByNumber",
-      params: [blockNumberHex || blockTag, includeTransactions]
-    });
-  }
-  if (!block)
-    throw new BlockNotFoundError2({ blockHash, blockNumber });
-  const format2 = ((_c = (_b = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b.block) == null ? void 0 : _c.format) || formatBlock;
-  return format2(block);
-}
-async function getGasPrice(client2) {
-  const gasPrice = await client2.request({
-    method: "eth_gasPrice"
-  });
-  return BigInt(gasPrice);
-}
-async function internal_estimateMaxPriorityFeePerGas(client2, args) {
-  var _a2, _b, _c;
-  const { block: block_, chain = client2.chain, request } = args || {};
-  if (typeof ((_a2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a2.defaultPriorityFee) === "function") {
-    const block = block_ || await getAction$1(client2, getBlock, "getBlock")({});
-    return chain.fees.defaultPriorityFee({
-      block,
-      client: client2,
-      request
-    });
-  }
-  if (typeof ((_b = chain == null ? void 0 : chain.fees) == null ? void 0 : _b.defaultPriorityFee) !== "undefined")
-    return (_c = chain == null ? void 0 : chain.fees) == null ? void 0 : _c.defaultPriorityFee;
-  try {
-    const maxPriorityFeePerGasHex = await client2.request({
-      method: "eth_maxPriorityFeePerGas"
-    });
-    return hexToBigInt(maxPriorityFeePerGasHex);
-  } catch {
-    const [block, gasPrice] = await Promise.all([
-      block_ ? Promise.resolve(block_) : getAction$1(client2, getBlock, "getBlock")({}),
-      getAction$1(client2, getGasPrice, "getGasPrice")({})
-    ]);
-    if (typeof block.baseFeePerGas !== "bigint")
-      throw new Eip1559FeesNotSupportedError2();
-    const maxPriorityFeePerGas = gasPrice - block.baseFeePerGas;
-    if (maxPriorityFeePerGas < 0n)
-      return 0n;
-    return maxPriorityFeePerGas;
-  }
-}
-async function internal_estimateFeesPerGas(client2, args) {
-  var _a2, _b;
-  const { block: block_, chain = client2.chain, request, type = "eip1559" } = args || {};
-  const baseFeeMultiplier = await (async () => {
-    var _a3, _b2;
-    if (typeof ((_a3 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a3.baseFeeMultiplier) === "function")
-      return chain.fees.baseFeeMultiplier({
-        block: block_,
-        client: client2,
-        request
-      });
-    return ((_b2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _b2.baseFeeMultiplier) ?? 1.2;
-  })();
-  if (baseFeeMultiplier < 1)
-    throw new BaseFeeScalarError2();
-  const decimals = ((_a2 = baseFeeMultiplier.toString().split(".")[1]) == null ? void 0 : _a2.length) ?? 0;
-  const denominator = 10 ** decimals;
-  const multiply = (base2) => base2 * BigInt(Math.ceil(baseFeeMultiplier * denominator)) / BigInt(denominator);
-  const block = block_ ? block_ : await getAction$1(client2, getBlock, "getBlock")({});
-  if (typeof ((_b = chain == null ? void 0 : chain.fees) == null ? void 0 : _b.estimateFeesPerGas) === "function") {
-    const fees = await chain.fees.estimateFeesPerGas({
-      block: block_,
-      client: client2,
-      multiply,
-      request,
-      type
-    });
-    if (fees !== null)
-      return fees;
-  }
-  if (type === "eip1559") {
-    if (typeof block.baseFeePerGas !== "bigint")
-      throw new Eip1559FeesNotSupportedError2();
-    const maxPriorityFeePerGas = typeof (request == null ? void 0 : request.maxPriorityFeePerGas) === "bigint" ? request.maxPriorityFeePerGas : await internal_estimateMaxPriorityFeePerGas(client2, {
-      block,
-      chain,
-      request
-    });
-    const baseFeePerGas = multiply(block.baseFeePerGas);
-    const maxFeePerGas = (request == null ? void 0 : request.maxFeePerGas) ?? baseFeePerGas + maxPriorityFeePerGas;
-    return {
-      maxFeePerGas,
-      maxPriorityFeePerGas
-    };
-  }
-  const gasPrice = (request == null ? void 0 : request.gasPrice) ?? multiply(await getAction$1(client2, getGasPrice, "getGasPrice")({}));
-  return {
-    gasPrice
-  };
-}
-class EstimateGasExecutionError2 extends BaseError$3 {
-  constructor(cause, { account: account2, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value }) {
-    var _a2;
-    const prettyArgs = prettyPrint({
-      from: account2 == null ? void 0 : account2.address,
-      to,
-      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
-      data,
-      gas,
-      gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
-      maxFeePerGas: typeof maxFeePerGas !== "undefined" && `${formatGwei(maxFeePerGas)} gwei`,
-      maxPriorityFeePerGas: typeof maxPriorityFeePerGas !== "undefined" && `${formatGwei(maxPriorityFeePerGas)} gwei`,
-      nonce
-    });
-    super(cause.shortMessage, {
-      cause,
-      docsPath: docsPath2,
-      metaMessages: [
-        ...cause.metaMessages ? [...cause.metaMessages, " "] : [],
-        "Estimate Gas Arguments:",
-        prettyArgs
-      ].filter(Boolean)
-    });
-    Object.defineProperty(this, "cause", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "EstimateGasExecutionError"
-    });
-    this.cause = cause;
-  }
-}
-function getEstimateGasError(err, { docsPath: docsPath2, ...args }) {
-  const cause = (() => {
-    const cause2 = getNodeError(err, args);
-    if (cause2 instanceof UnknownNodeError2)
-      return err;
-    return cause2;
-  })();
-  return new EstimateGasExecutionError2(cause, {
-    docsPath: docsPath2,
-    ...args
-  });
-}
-async function estimateGas(client2, args) {
-  var _a2, _b, _c;
-  const account_ = args.account ?? client2.account;
-  const account2 = account_ ? parseAccount(account_) : void 0;
-  try {
-    const { accessList, blobs, blobVersionedHashes, blockNumber, blockTag, data, gas, gasPrice, maxFeePerBlobGas, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = await prepareTransactionRequest(client2, {
-      ...args,
-      parameters: (
-        // Some RPC Providers do not compute versioned hashes from blobs. We will need
-        // to compute them.
-        (account2 == null ? void 0 : account2.type) === "local" ? void 0 : ["blobVersionedHashes"]
-      )
-    });
-    const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
-    const block = blockNumberHex || blockTag;
-    assertRequest(args);
-    const chainFormat = (_c = (_b = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b.transactionRequest) == null ? void 0 : _c.format;
-    const format2 = chainFormat || formatTransactionRequest;
-    const request = format2({
-      // Pick out extra data that might exist on the chain's transaction request type.
-      ...extract(rest, { format: chainFormat }),
-      from: account2 == null ? void 0 : account2.address,
-      accessList,
-      blobs,
-      blobVersionedHashes,
-      data,
-      gas,
-      gasPrice,
-      maxFeePerBlobGas,
-      maxFeePerGas,
-      maxPriorityFeePerGas,
-      nonce,
-      to,
-      value
-    });
-    const balance = await client2.request({
-      method: "eth_estimateGas",
-      params: block ? [request, block] : [request]
-    });
-    return BigInt(balance);
-  } catch (err) {
-    throw getEstimateGasError(err, {
-      ...args,
-      account: account2,
-      chain: client2.chain
-    });
-  }
-}
-async function getTransactionCount(client2, { address, blockTag = "latest", blockNumber }) {
-  const count = await client2.request({
-    method: "eth_getTransactionCount",
-    params: [address, blockNumber ? numberToHex(blockNumber) : blockTag]
-  });
-  return hexToNumber(count);
-}
-function blobsToCommitments(parameters) {
-  const { kzg } = parameters;
-  const to = parameters.to ?? (typeof parameters.blobs[0] === "string" ? "hex" : "bytes");
-  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes(x)) : parameters.blobs;
-  const commitments = [];
-  for (const blob of blobs)
-    commitments.push(Uint8Array.from(kzg.blobToKzgCommitment(blob)));
-  return to === "bytes" ? commitments : commitments.map((x) => bytesToHex(x));
-}
-function blobsToProofs(parameters) {
-  const { kzg } = parameters;
-  const to = parameters.to ?? (typeof parameters.blobs[0] === "string" ? "hex" : "bytes");
-  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes(x)) : parameters.blobs;
-  const commitments = typeof parameters.commitments[0] === "string" ? parameters.commitments.map((x) => hexToBytes(x)) : parameters.commitments;
-  const proofs = [];
-  for (let i2 = 0; i2 < blobs.length; i2++) {
-    const blob = blobs[i2];
-    const commitment = commitments[i2];
-    proofs.push(Uint8Array.from(kzg.computeBlobKzgProof(blob, commitment)));
-  }
-  return to === "bytes" ? proofs : proofs.map((x) => bytesToHex(x));
-}
-function sha256(value, to_) {
-  const to = to_ || "hex";
-  const bytes3 = sha256$1(isHex(value, { strict: false }) ? toBytes(value) : value);
-  if (to === "bytes")
-    return bytes3;
-  return toHex(bytes3);
-}
-function commitmentToVersionedHash(parameters) {
-  const { commitment, version: version2 = 1 } = parameters;
-  const to = parameters.to ?? (typeof commitment === "string" ? "hex" : "bytes");
-  const versionedHash = sha256(commitment, "bytes");
-  versionedHash.set([version2], 0);
-  return to === "bytes" ? versionedHash : bytesToHex(versionedHash);
-}
-function commitmentsToVersionedHashes(parameters) {
-  const { commitments, version: version2 } = parameters;
-  const to = parameters.to ?? (typeof commitments[0] === "string" ? "hex" : "bytes");
-  const hashes = [];
-  for (const commitment of commitments) {
-    hashes.push(commitmentToVersionedHash({
-      commitment,
-      to,
-      version: version2
-    }));
-  }
-  return hashes;
-}
-const blobsPerTransaction = 6;
-const bytesPerFieldElement = 32;
-const fieldElementsPerBlob = 4096;
-const bytesPerBlob = bytesPerFieldElement * fieldElementsPerBlob;
-const maxBytesPerTransaction = bytesPerBlob * blobsPerTransaction - // terminator byte (0x80).
-1 - // zero byte (0x00) appended to each field element.
-1 * fieldElementsPerBlob * blobsPerTransaction;
-class BlobSizeTooLargeError extends BaseError$3 {
-  constructor({ maxSize, size: size2 }) {
-    super("Blob size is too large.", {
-      metaMessages: [`Max: ${maxSize} bytes`, `Given: ${size2} bytes`]
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "BlobSizeTooLargeError"
-    });
-  }
-}
-class EmptyBlobError extends BaseError$3 {
-  constructor() {
-    super("Blob data must not be empty.");
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "EmptyBlobError"
-    });
-  }
-}
-class NegativeOffsetError2 extends BaseError$3 {
-  constructor({ offset: offset2 }) {
-    super(`Offset \`${offset2}\` cannot be negative.`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "NegativeOffsetError"
-    });
-  }
-}
-class PositionOutOfBoundsError2 extends BaseError$3 {
-  constructor({ length: length2, position: position2 }) {
-    super(`Position \`${position2}\` is out of bounds (\`0 < position < ${length2}\`).`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "PositionOutOfBoundsError"
-    });
-  }
-}
-class RecursiveReadLimitExceededError2 extends BaseError$3 {
-  constructor({ count, limit }) {
-    super(`Recursive read limit of \`${limit}\` exceeded (recursive read count: \`${count}\`).`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "RecursiveReadLimitExceededError"
-    });
-  }
-}
-const staticCursor = {
-  bytes: new Uint8Array(),
-  dataView: new DataView(new ArrayBuffer(0)),
-  position: 0,
-  positionReadCount: /* @__PURE__ */ new Map(),
-  recursiveReadCount: 0,
-  recursiveReadLimit: Infinity,
-  assertReadLimit() {
-    if (this.recursiveReadCount >= this.recursiveReadLimit)
-      throw new RecursiveReadLimitExceededError2({
-        count: this.recursiveReadCount + 1,
-        limit: this.recursiveReadLimit
-      });
-  },
-  assertPosition(position2) {
-    if (position2 < 0 || position2 > this.bytes.length - 1)
-      throw new PositionOutOfBoundsError2({
-        length: this.bytes.length,
-        position: position2
-      });
-  },
-  decrementPosition(offset2) {
-    if (offset2 < 0)
-      throw new NegativeOffsetError2({ offset: offset2 });
-    const position2 = this.position - offset2;
-    this.assertPosition(position2);
-    this.position = position2;
-  },
-  getReadCount(position2) {
-    return this.positionReadCount.get(position2 || this.position) || 0;
-  },
-  incrementPosition(offset2) {
-    if (offset2 < 0)
-      throw new NegativeOffsetError2({ offset: offset2 });
-    const position2 = this.position + offset2;
-    this.assertPosition(position2);
-    this.position = position2;
-  },
-  inspectByte(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2);
-    return this.bytes[position2];
-  },
-  inspectBytes(length2, position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + length2 - 1);
-    return this.bytes.subarray(position2, position2 + length2);
-  },
-  inspectUint8(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2);
-    return this.bytes[position2];
-  },
-  inspectUint16(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + 1);
-    return this.dataView.getUint16(position2);
-  },
-  inspectUint24(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + 2);
-    return (this.dataView.getUint16(position2) << 8) + this.dataView.getUint8(position2 + 2);
-  },
-  inspectUint32(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + 3);
-    return this.dataView.getUint32(position2);
-  },
-  pushByte(byte) {
-    this.assertPosition(this.position);
-    this.bytes[this.position] = byte;
-    this.position++;
-  },
-  pushBytes(bytes3) {
-    this.assertPosition(this.position + bytes3.length - 1);
-    this.bytes.set(bytes3, this.position);
-    this.position += bytes3.length;
-  },
-  pushUint8(value) {
-    this.assertPosition(this.position);
-    this.bytes[this.position] = value;
-    this.position++;
-  },
-  pushUint16(value) {
-    this.assertPosition(this.position + 1);
-    this.dataView.setUint16(this.position, value);
-    this.position += 2;
-  },
-  pushUint24(value) {
-    this.assertPosition(this.position + 2);
-    this.dataView.setUint16(this.position, value >> 8);
-    this.dataView.setUint8(this.position + 2, value & ~4294967040);
-    this.position += 3;
-  },
-  pushUint32(value) {
-    this.assertPosition(this.position + 3);
-    this.dataView.setUint32(this.position, value);
-    this.position += 4;
-  },
-  readByte() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectByte();
-    this.position++;
-    return value;
-  },
-  readBytes(length2, size2) {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectBytes(length2);
-    this.position += size2 ?? length2;
-    return value;
-  },
-  readUint8() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint8();
-    this.position += 1;
-    return value;
-  },
-  readUint16() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint16();
-    this.position += 2;
-    return value;
-  },
-  readUint24() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint24();
-    this.position += 3;
-    return value;
-  },
-  readUint32() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint32();
-    this.position += 4;
-    return value;
-  },
-  get remaining() {
-    return this.bytes.length - this.position;
-  },
-  setPosition(position2) {
-    const oldPosition = this.position;
-    this.assertPosition(position2);
-    this.position = position2;
-    return () => this.position = oldPosition;
-  },
-  _touch() {
-    if (this.recursiveReadLimit === Infinity)
-      return;
-    const count = this.getReadCount();
-    this.positionReadCount.set(this.position, count + 1);
-    if (count > 0)
-      this.recursiveReadCount++;
-  }
-};
-function createCursor(bytes3, { recursiveReadLimit = 8192 } = {}) {
-  const cursor2 = Object.create(staticCursor);
-  cursor2.bytes = bytes3;
-  cursor2.dataView = new DataView(bytes3.buffer, bytes3.byteOffset, bytes3.byteLength);
-  cursor2.positionReadCount = /* @__PURE__ */ new Map();
-  cursor2.recursiveReadLimit = recursiveReadLimit;
-  return cursor2;
-}
-function toBlobs(parameters) {
-  const to = parameters.to ?? (typeof parameters.data === "string" ? "hex" : "bytes");
-  const data = typeof parameters.data === "string" ? hexToBytes(parameters.data) : parameters.data;
-  const size_ = size$3(data);
-  if (!size_)
-    throw new EmptyBlobError();
-  if (size_ > maxBytesPerTransaction)
-    throw new BlobSizeTooLargeError({
-      maxSize: maxBytesPerTransaction,
-      size: size_
-    });
-  const blobs = [];
-  let active = true;
-  let position2 = 0;
-  while (active) {
-    const blob = createCursor(new Uint8Array(bytesPerBlob));
-    let size2 = 0;
-    while (size2 < fieldElementsPerBlob) {
-      const bytes3 = data.slice(position2, position2 + (bytesPerFieldElement - 1));
-      blob.pushByte(0);
-      blob.pushBytes(bytes3);
-      if (bytes3.length < 31) {
-        blob.pushByte(128);
-        active = false;
-        break;
-      }
-      size2++;
-      position2 += 31;
-    }
-    blobs.push(blob);
-  }
-  return to === "bytes" ? blobs.map((x) => x.bytes) : blobs.map((x) => bytesToHex(x.bytes));
-}
-function toBlobSidecars(parameters) {
-  const { data, kzg, to } = parameters;
-  const blobs = parameters.blobs ?? toBlobs({ data, to });
-  const commitments = parameters.commitments ?? blobsToCommitments({ blobs, kzg, to });
-  const proofs = parameters.proofs ?? blobsToProofs({ blobs, commitments, kzg, to });
-  const sidecars = [];
-  for (let i2 = 0; i2 < blobs.length; i2++)
-    sidecars.push({
-      blob: blobs[i2],
-      commitment: commitments[i2],
-      proof: proofs[i2]
-    });
-  return sidecars;
-}
-function getTransactionType(transaction2) {
-  if (transaction2.type)
-    return transaction2.type;
-  if (typeof transaction2.blobs !== "undefined" || typeof transaction2.blobVersionedHashes !== "undefined" || typeof transaction2.maxFeePerBlobGas !== "undefined" || typeof transaction2.sidecars !== "undefined")
-    return "eip4844";
-  if (typeof transaction2.maxFeePerGas !== "undefined" || typeof transaction2.maxPriorityFeePerGas !== "undefined") {
-    return "eip1559";
-  }
-  if (typeof transaction2.gasPrice !== "undefined") {
-    if (typeof transaction2.accessList !== "undefined")
-      return "eip2930";
-    return "legacy";
-  }
-  throw new InvalidSerializableTransactionError2({ transaction: transaction2 });
-}
-const defaultParameters = [
-  "blobVersionedHashes",
-  "chainId",
-  "fees",
-  "gas",
-  "nonce",
-  "type"
-];
-async function prepareTransactionRequest(client2, args) {
-  const { account: account_ = client2.account, blobs, chain, chainId, gas, kzg, nonce, parameters = defaultParameters, type } = args;
-  const account2 = account_ ? parseAccount(account_) : void 0;
-  const request = { ...args, ...account2 ? { from: account2 == null ? void 0 : account2.address } : {} };
-  let block;
-  async function getBlock$12() {
-    if (block)
-      return block;
-    block = await getAction$1(client2, getBlock, "getBlock")({ blockTag: "latest" });
-    return block;
-  }
-  if ((parameters.includes("blobVersionedHashes") || parameters.includes("sidecars")) && blobs && kzg) {
-    const commitments = blobsToCommitments({ blobs, kzg });
-    if (parameters.includes("blobVersionedHashes")) {
-      const versionedHashes = commitmentsToVersionedHashes({
-        commitments,
-        to: "hex"
-      });
-      request.blobVersionedHashes = versionedHashes;
-    }
-    if (parameters.includes("sidecars")) {
-      const proofs = blobsToProofs({ blobs, commitments, kzg });
-      const sidecars = toBlobSidecars({
-        blobs,
-        commitments,
-        proofs,
-        to: "hex"
-      });
-      request.sidecars = sidecars;
-    }
-  }
-  if (parameters.includes("chainId")) {
-    if (chain)
-      request.chainId = chain.id;
-    else if (typeof chainId !== "undefined")
-      request.chainId = chainId;
-    else
-      request.chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
-  }
-  if (parameters.includes("nonce") && typeof nonce === "undefined" && account2)
-    request.nonce = await getAction$1(client2, getTransactionCount, "getTransactionCount")({
-      address: account2.address,
-      blockTag: "pending"
-    });
-  if ((parameters.includes("fees") || parameters.includes("type")) && typeof type === "undefined") {
-    try {
-      request.type = getTransactionType(request);
-    } catch {
-      const block2 = await getBlock$12();
-      request.type = typeof (block2 == null ? void 0 : block2.baseFeePerGas) === "bigint" ? "eip1559" : "legacy";
-    }
-  }
-  if (parameters.includes("fees")) {
-    if (request.type === "eip1559" || request.type === "eip4844") {
-      if (typeof request.maxFeePerGas === "undefined" || typeof request.maxPriorityFeePerGas === "undefined") {
-        const block2 = await getBlock$12();
-        const { maxFeePerGas, maxPriorityFeePerGas } = await internal_estimateFeesPerGas(client2, {
-          block: block2,
-          chain,
-          request
-        });
-        if (typeof args.maxPriorityFeePerGas === "undefined" && args.maxFeePerGas && args.maxFeePerGas < maxPriorityFeePerGas)
-          throw new MaxFeePerGasTooLowError2({
-            maxPriorityFeePerGas
-          });
-        request.maxPriorityFeePerGas = maxPriorityFeePerGas;
-        request.maxFeePerGas = maxFeePerGas;
-      }
-    } else {
-      if (typeof args.maxFeePerGas !== "undefined" || typeof args.maxPriorityFeePerGas !== "undefined")
-        throw new Eip1559FeesNotSupportedError2();
-      const block2 = await getBlock$12();
-      const { gasPrice: gasPrice_ } = await internal_estimateFeesPerGas(client2, {
-        block: block2,
-        chain,
-        request,
-        type: "legacy"
-      });
-      request.gasPrice = gasPrice_;
-    }
-  }
-  if (parameters.includes("gas") && typeof gas === "undefined")
-    request.gas = await getAction$1(client2, estimateGas, "estimateGas")({
-      ...request,
-      account: account2 ? { address: account2.address, type: "json-rpc" } : void 0
-    });
-  assertRequest(request);
-  delete request.parameters;
-  return request;
-}
-async function sendRawTransaction(client2, { serializedTransaction }) {
-  return client2.request({
-    method: "eth_sendRawTransaction",
-    params: [serializedTransaction]
-  }, { retryCount: 0 });
-}
-async function sendTransaction$1(client2, parameters) {
-  var _a2, _b, _c, _d;
-  const { account: account_ = client2.account, chain = client2.chain, accessList, blobs, data, gas, gasPrice, maxFeePerBlobGas, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = parameters;
-  if (!account_)
-    throw new AccountNotFoundError2({
-      docsPath: "/docs/actions/wallet/sendTransaction"
-    });
-  const account2 = parseAccount(account_);
-  try {
-    assertRequest(parameters);
-    let chainId;
-    if (chain !== null) {
-      chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
-      assertCurrentChain({
-        currentChainId: chainId,
-        chain
-      });
-    }
-    if (account2.type === "local") {
-      const request2 = await getAction$1(client2, prepareTransactionRequest, "prepareTransactionRequest")({
-        account: account2,
-        accessList,
-        blobs,
-        chain,
-        chainId,
-        data,
-        gas,
-        gasPrice,
-        maxFeePerBlobGas,
-        maxFeePerGas,
-        maxPriorityFeePerGas,
-        nonce,
-        parameters: [...defaultParameters, "sidecars"],
-        to,
-        value,
-        ...rest
-      });
-      const serializer = (_a2 = chain == null ? void 0 : chain.serializers) == null ? void 0 : _a2.transaction;
-      const serializedTransaction = await account2.signTransaction(request2, {
-        serializer
-      });
-      return await getAction$1(client2, sendRawTransaction, "sendRawTransaction")({
-        serializedTransaction
-      });
-    }
-    const chainFormat = (_d = (_c = (_b = client2.chain) == null ? void 0 : _b.formatters) == null ? void 0 : _c.transactionRequest) == null ? void 0 : _d.format;
-    const format2 = chainFormat || formatTransactionRequest;
-    const request = format2({
-      // Pick out extra data that might exist on the chain's transaction request type.
-      ...extract(rest, { format: chainFormat }),
-      accessList,
-      blobs,
-      data,
-      from: account2.address,
-      gas,
-      gasPrice,
-      maxFeePerBlobGas,
-      maxFeePerGas,
-      maxPriorityFeePerGas,
-      nonce,
-      to,
-      value
-    });
-    return await client2.request({
-      method: "eth_sendTransaction",
-      params: [request]
-    }, { retryCount: 0 });
-  } catch (err) {
-    throw getTransactionError(err, {
-      ...parameters,
-      account: account2,
-      chain: parameters.chain || void 0
-    });
-  }
-}
-async function wait(time2) {
-  return new Promise((res) => setTimeout(res, time2));
-}
-const size$2 = 256;
-let index$1 = size$2;
-let buffer;
-function uid(length2 = 11) {
-  if (!buffer || index$1 + length2 > size$2 * 2) {
-    buffer = "";
-    index$1 = 0;
-    for (let i2 = 0; i2 < size$2; i2++) {
-      buffer += (256 + Math.random() * 256 | 0).toString(16).substring(1);
-    }
-  }
-  return buffer.substring(index$1, index$1++ + length2);
-}
-function createClient(parameters) {
-  const { batch, cacheTime = parameters.pollingInterval ?? 4e3, ccipRead, key: key2 = "base", name = "Base Client", pollingInterval = 4e3, type = "base" } = parameters;
-  const chain = parameters.chain;
-  const account2 = parameters.account ? parseAccount(parameters.account) : void 0;
-  const { config: config2, request, value } = parameters.transport({
-    chain,
-    pollingInterval
-  });
-  const transport = { ...config2, ...value };
-  const client2 = {
-    account: account2,
-    batch,
-    cacheTime,
-    ccipRead,
-    chain,
-    key: key2,
-    name,
-    pollingInterval,
-    request,
-    transport,
-    type,
-    uid: uid()
-  };
-  function extend2(base2) {
-    return (extendFn) => {
-      const extended = extendFn(base2);
-      for (const key3 in client2)
-        delete extended[key3];
-      const combined = { ...base2, ...extended };
-      return Object.assign(combined, { extend: extend2(combined) });
-    };
-  }
-  return Object.assign(client2, { extend: extend2(client2) });
-}
-function withRetry(fn, { delay: delay_ = 100, retryCount = 2, shouldRetry: shouldRetry2 = () => true } = {}) {
-  return new Promise((resolve, reject) => {
-    const attemptRetry = async ({ count = 0 } = {}) => {
-      const retry = async ({ error }) => {
-        const delay2 = typeof delay_ === "function" ? delay_({ count, error }) : delay_;
-        if (delay2)
-          await wait(delay2);
-        attemptRetry({ count: count + 1 });
-      };
-      try {
-        const data = await fn();
-        resolve(data);
-      } catch (err) {
-        if (count < retryCount && await shouldRetry2({ count, error: err }))
-          return retry({ error: err });
-        reject(err);
-      }
-    };
-    attemptRetry();
-  });
-}
-function buildRequest(request, options = {}) {
-  return async (args, overrideOptions = {}) => {
-    const { retryDelay = 150, retryCount = 3 } = {
-      ...options,
-      ...overrideOptions
-    };
-    return withRetry(async () => {
-      try {
-        return await request(args);
-      } catch (err_) {
-        const err = err_;
-        switch (err.code) {
-          case ParseRpcError2.code:
-            throw new ParseRpcError2(err);
-          case InvalidRequestRpcError2.code:
-            throw new InvalidRequestRpcError2(err);
-          case MethodNotFoundRpcError2.code:
-            throw new MethodNotFoundRpcError2(err);
-          case InvalidParamsRpcError2.code:
-            throw new InvalidParamsRpcError2(err);
-          case InternalRpcError2.code:
-            throw new InternalRpcError2(err);
-          case InvalidInputRpcError2.code:
-            throw new InvalidInputRpcError2(err);
-          case ResourceNotFoundRpcError2.code:
-            throw new ResourceNotFoundRpcError2(err);
-          case ResourceUnavailableRpcError2.code:
-            throw new ResourceUnavailableRpcError2(err);
-          case TransactionRejectedRpcError2.code:
-            throw new TransactionRejectedRpcError2(err);
-          case MethodNotSupportedRpcError2.code:
-            throw new MethodNotSupportedRpcError2(err);
-          case LimitExceededRpcError2.code:
-            throw new LimitExceededRpcError2(err);
-          case JsonRpcVersionUnsupportedError2.code:
-            throw new JsonRpcVersionUnsupportedError2(err);
-          case UserRejectedRequestError2.code:
-            throw new UserRejectedRequestError2(err);
-          case UnauthorizedProviderError2.code:
-            throw new UnauthorizedProviderError2(err);
-          case UnsupportedProviderMethodError2.code:
-            throw new UnsupportedProviderMethodError2(err);
-          case ProviderDisconnectedError2.code:
-            throw new ProviderDisconnectedError2(err);
-          case ChainDisconnectedError2.code:
-            throw new ChainDisconnectedError2(err);
-          case SwitchChainError2.code:
-            throw new SwitchChainError2(err);
-          case 5e3:
-            throw new UserRejectedRequestError2(err);
-          default:
-            if (err_ instanceof BaseError$3)
-              throw err_;
-            throw new UnknownRpcError2(err);
-        }
-      }
-    }, {
-      delay: ({ count, error }) => {
-        var _a2;
-        if (error && error instanceof HttpRequestError2) {
-          const retryAfter = (_a2 = error == null ? void 0 : error.headers) == null ? void 0 : _a2.get("Retry-After");
-          if (retryAfter == null ? void 0 : retryAfter.match(/\d/))
-            return parseInt(retryAfter) * 1e3;
-        }
-        return ~~(1 << count) * retryDelay;
-      },
-      retryCount,
-      shouldRetry: ({ error }) => shouldRetry(error)
-    });
-  };
-}
-function shouldRetry(error) {
-  if ("code" in error && typeof error.code === "number") {
-    if (error.code === -1)
-      return true;
-    if (error.code === LimitExceededRpcError2.code)
-      return true;
-    if (error.code === InternalRpcError2.code)
-      return true;
-    return false;
-  }
-  if (error instanceof HttpRequestError2 && error.status) {
-    if (error.status === 403)
-      return true;
-    if (error.status === 408)
-      return true;
-    if (error.status === 413)
-      return true;
-    if (error.status === 429)
-      return true;
-    if (error.status === 500)
-      return true;
-    if (error.status === 502)
-      return true;
-    if (error.status === 503)
-      return true;
-    if (error.status === 504)
-      return true;
-    return false;
-  }
-  return true;
-}
-function createTransport({ key: key2, name, request, retryCount = 3, retryDelay = 150, timeout, type }, value) {
-  return {
-    config: { key: key2, name, request, retryCount, retryDelay, timeout, type },
-    request: buildRequest(request, { retryCount, retryDelay }),
-    value
-  };
-}
-function custom(provider2, config2 = {}) {
-  const { key: key2 = "custom", name = "Custom Provider", retryDelay } = config2;
-  return ({ retryCount: defaultRetryCount }) => createTransport({
-    key: key2,
-    name,
-    request: provider2.request.bind(provider2),
-    retryCount: config2.retryCount ?? defaultRetryCount,
-    retryDelay,
-    type: "custom"
-  });
-}
-const version$2 = "2.6.5";
-const getVersion$2 = () => `@wagmi/core@${version$2}`;
-var __classPrivateFieldGet = function(receiver, state, kind, f2) {
-  if (kind === "a" && !f2)
-    throw new TypeError("Private accessor was defined without a getter");
-  if (typeof state === "function" ? receiver !== state || !f2 : !state.has(receiver))
-    throw new TypeError("Cannot read private member from an object whose class did not declare it");
-  return kind === "m" ? f2 : kind === "a" ? f2.call(receiver) : f2 ? f2.value : state.get(receiver);
-};
-var _BaseError_instances, _BaseError_walk2;
-let BaseError$2 = class BaseError5 extends Error {
-  get docsBaseUrl() {
-    return "https://wagmi.sh/core";
-  }
-  get version() {
-    return getVersion$2();
-  }
-  constructor(shortMessage, options = {}) {
-    var _a2;
-    super();
-    _BaseError_instances.add(this);
-    Object.defineProperty(this, "details", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "docsPath", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "metaMessages", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "shortMessage", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: void 0
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "WagmiCoreError"
-    });
-    const details = options.cause instanceof BaseError5 ? options.cause.details : ((_a2 = options.cause) == null ? void 0 : _a2.message) ? options.cause.message : options.details;
-    const docsPath2 = options.cause instanceof BaseError5 ? options.cause.docsPath || options.docsPath : options.docsPath;
-    this.message = [
-      shortMessage || "An error occurred.",
-      "",
-      ...options.metaMessages ? [...options.metaMessages, ""] : [],
-      ...docsPath2 ? [
-        `Docs: ${this.docsBaseUrl}${docsPath2}.html${options.docsSlug ? `#${options.docsSlug}` : ""}`
-      ] : [],
-      ...details ? [`Details: ${details}`] : [],
-      `Version: ${this.version}`
-    ].join("\n");
-    if (options.cause)
-      this.cause = options.cause;
-    this.details = details;
-    this.docsPath = docsPath2;
-    this.metaMessages = options.metaMessages;
-    this.shortMessage = shortMessage;
-  }
-  walk(fn) {
-    return __classPrivateFieldGet(this, _BaseError_instances, "m", _BaseError_walk2).call(this, this, fn);
-  }
-};
-_BaseError_instances = /* @__PURE__ */ new WeakSet(), _BaseError_walk2 = function _BaseError_walk3(err, fn) {
-  if (fn == null ? void 0 : fn(err))
-    return err;
-  if (err.cause)
-    return __classPrivateFieldGet(this, _BaseError_instances, "m", _BaseError_walk3).call(this, err.cause, fn);
-  return err;
-};
-class ChainNotConfiguredError2 extends BaseError$2 {
-  constructor() {
-    super("Chain not configured.");
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ChainNotConfiguredError"
-    });
-  }
-}
-class ConnectorNotConnectedError2 extends BaseError$2 {
-  constructor() {
-    super("Connector not connected.");
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ConnectorNotConnectedError"
-    });
-  }
-}
-class ConnectorAccountNotFoundError2 extends BaseError$2 {
-  constructor({ address, connector }) {
-    super(`Account "${address}" not found for connector "${connector.name}".`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "ConnectorAccountNotFoundError"
-    });
-  }
-}
-class SwitchChainNotSupportedError2 extends BaseError$2 {
-  constructor({ connector }) {
-    super(`"${connector.name}" does not support programmatic chain switching.`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "SwitchChainNotSupportedError"
-    });
-  }
-}
-function getAction(client2, actionFn, name) {
-  const action = client2[actionFn.name ?? name];
-  if (typeof action === "function")
-    return action;
-  return (params) => actionFn(client2, params);
-}
-async function disconnect(config2, parameters = {}) {
-  var _a2, _b;
-  let connector;
-  if (parameters.connector)
-    connector = parameters.connector;
-  else {
-    const { connections: connections2, current } = config2.state;
-    const connection = connections2.get(current);
-    connector = connection == null ? void 0 : connection.connector;
-  }
-  const connections = config2.state.connections;
-  if (connector) {
-    await connector.disconnect();
-    connector.emitter.off("change", config2._internal.events.change);
-    connector.emitter.off("disconnect", config2._internal.events.disconnect);
-    connector.emitter.on("connect", config2._internal.events.connect);
-    connections.delete(connector.uid);
-  }
-  config2.setState((x) => {
-    if (connections.size === 0)
-      return {
-        ...x,
-        connections: /* @__PURE__ */ new Map(),
-        current: void 0,
-        status: "disconnected"
-      };
-    const nextConnection = connections.values().next().value;
-    return {
-      ...x,
-      connections: new Map(connections),
-      current: nextConnection.connector.uid
-    };
-  });
-  {
-    const current = config2.state.current;
-    if (!current)
-      return;
-    const connector2 = (_a2 = config2.state.connections.get(current)) == null ? void 0 : _a2.connector;
-    if (!connector2)
-      return;
-    await ((_b = config2.storage) == null ? void 0 : _b.setItem("recentConnectorId", connector2.id));
-  }
-}
-async function getConnectorClient(config2, parameters = {}) {
-  let connection;
-  if (parameters.connector) {
-    const { connector: connector2 } = parameters;
-    const [accounts, chainId2] = await Promise.all([
-      connector2.getAccounts(),
-      connector2.getChainId()
-    ]);
-    connection = {
-      accounts,
-      chainId: chainId2,
-      connector: connector2
-    };
-  } else
-    connection = config2.state.connections.get(config2.state.current);
-  if (!connection)
-    throw new ConnectorNotConnectedError2();
-  const chainId = parameters.chainId ?? connection.chainId;
-  const connector = connection.connector;
-  if (connector.getClient)
-    return connector.getClient({ chainId });
-  const account2 = parseAccount(parameters.account ?? connection.accounts[0]);
-  const chain = config2.chains.find((chain2) => chain2.id === chainId);
-  const provider2 = await connection.connector.getProvider({ chainId });
-  if (parameters.account && !connection.accounts.includes(account2.address))
-    throw new ConnectorAccountNotFoundError2({
-      address: account2.address,
-      connector
-    });
-  return createClient({
-    account: account2,
-    chain,
-    name: "Connector Client",
-    transport: (opts) => custom(provider2)({ ...opts, retryCount: 0 })
-  });
-}
-function getAccount(config2) {
-  const uid2 = config2.state.current;
-  const connection = config2.state.connections.get(uid2);
-  const addresses = connection == null ? void 0 : connection.accounts;
-  const address = addresses == null ? void 0 : addresses[0];
-  const chain = config2.chains.find((chain2) => chain2.id === (connection == null ? void 0 : connection.chainId));
-  const status = config2.state.status;
-  switch (status) {
-    case "connected":
-      return {
-        address,
-        addresses,
-        chain,
-        chainId: connection == null ? void 0 : connection.chainId,
-        connector: connection == null ? void 0 : connection.connector,
-        isConnected: true,
-        isConnecting: false,
-        isDisconnected: false,
-        isReconnecting: false,
-        status
-      };
-    case "reconnecting":
-      return {
-        address,
-        addresses,
-        chain,
-        chainId: connection == null ? void 0 : connection.chainId,
-        connector: connection == null ? void 0 : connection.connector,
-        isConnected: !!address,
-        isConnecting: false,
-        isDisconnected: false,
-        isReconnecting: true,
-        status
-      };
-    case "connecting":
-      return {
-        address,
-        addresses,
-        chain,
-        chainId: connection == null ? void 0 : connection.chainId,
-        connector: connection == null ? void 0 : connection.connector,
-        isConnected: false,
-        isConnecting: true,
-        isDisconnected: false,
-        isReconnecting: false,
-        status
-      };
-    case "disconnected":
-      return {
-        address: void 0,
-        addresses: void 0,
-        chain: void 0,
-        chainId: void 0,
-        connector: void 0,
-        isConnected: false,
-        isConnecting: false,
-        isDisconnected: true,
-        isReconnecting: false,
-        status
-      };
-  }
-}
-function getChainId(config2) {
-  return config2.state.chainId;
-}
-function deepEqual$1(a2, b3) {
-  if (a2 === b3)
-    return true;
-  if (a2 && b3 && typeof a2 === "object" && typeof b3 === "object") {
-    if (a2.constructor !== b3.constructor)
-      return false;
-    let length2;
-    let i2;
-    if (Array.isArray(a2) && Array.isArray(b3)) {
-      length2 = a2.length;
-      if (length2 !== b3.length)
-        return false;
-      for (i2 = length2; i2-- !== 0; )
-        if (!deepEqual$1(a2[i2], b3[i2]))
-          return false;
-      return true;
-    }
-    if (a2.valueOf !== Object.prototype.valueOf)
-      return a2.valueOf() === b3.valueOf();
-    if (a2.toString !== Object.prototype.toString)
-      return a2.toString() === b3.toString();
-    const keys = Object.keys(a2);
-    length2 = keys.length;
-    if (length2 !== Object.keys(b3).length)
-      return false;
-    for (i2 = length2; i2-- !== 0; )
-      if (!Object.prototype.hasOwnProperty.call(b3, keys[i2]))
-        return false;
-    for (i2 = length2; i2-- !== 0; ) {
-      const key2 = keys[i2];
-      if (key2 && !deepEqual$1(a2[key2], b3[key2]))
-        return false;
-    }
-    return true;
-  }
-  return a2 !== a2 && b3 !== b3;
-}
-let previousChains = [];
-function getChains(config2) {
-  const chains2 = config2.chains;
-  if (deepEqual$1(previousChains, chains2))
-    return previousChains;
-  previousChains = chains2;
-  return chains2;
-}
-let previousConnections = [];
-function getConnections(config2) {
-  const connections = [...config2.state.connections.values()];
-  if (config2.state.status === "reconnecting")
-    return previousConnections;
-  if (deepEqual$1(previousConnections, connections))
-    return previousConnections;
-  previousConnections = connections;
-  return connections;
-}
-async function sendTransaction(config2, parameters) {
-  const { account: account2, chainId, connector, gas: gas_, ...rest } = parameters;
-  let client2;
-  if (typeof account2 === "object" && account2.type === "local")
-    client2 = config2.getClient({ chainId });
-  else
-    client2 = await getConnectorClient(config2, { account: account2, chainId, connector });
-  const gas = await (async () => {
-    if (gas_ === null)
-      return void 0;
-    if (gas_ === void 0) {
-      const action2 = getAction(client2, estimateGas, "estimateGas");
-      return action2({
-        ...rest,
-        account: account2,
-        chain: chainId ? { id: chainId } : null
-      });
-    }
-    return gas_;
-  })();
-  const action = getAction(client2, sendTransaction$1, "sendTransaction");
-  const hash2 = await action({
-    ...rest,
-    ...account2 ? { account: account2 } : {},
-    gas,
-    chain: chainId ? { id: chainId } : null
-  });
-  return hash2;
-}
-async function switchChain(config2, parameters) {
-  var _a2;
-  const { chainId } = parameters;
-  const connection = config2.state.connections.get(((_a2 = parameters.connector) == null ? void 0 : _a2.uid) ?? config2.state.current);
-  if (connection) {
-    const connector = connection.connector;
-    if (!connector.switchChain)
-      throw new SwitchChainNotSupportedError2({ connector });
-    const chain2 = await connector.switchChain({ chainId });
-    return chain2;
-  }
-  const chain = config2.chains.find((x) => x.id === chainId);
-  if (!chain)
-    throw new ChainNotConfiguredError2();
-  config2.setState((x) => ({ ...x, chainId }));
-  return chain;
-}
-function watchAccount(config2, parameters) {
-  const { onChange } = parameters;
-  return config2.subscribe(() => getAccount(config2), onChange, {
-    equalityFn(a2, b3) {
-      const { connector: aConnector, ...aRest } = a2;
-      const { connector: bConnector, ...bRest } = b3;
-      return deepEqual$1(aRest, bRest) && // check connector separately
-      (aConnector == null ? void 0 : aConnector.id) === (bConnector == null ? void 0 : bConnector.id) && (aConnector == null ? void 0 : aConnector.uid) === (bConnector == null ? void 0 : bConnector.uid);
-    }
-  });
-}
-function watchChainId(config2, parameters) {
-  const { onChange } = parameters;
-  return config2.subscribe((state) => state.chainId, onChange);
-}
-function watchConnections(config2, parameters) {
-  const { onChange } = parameters;
-  return config2.subscribe(() => getConnections(config2), onChange, {
-    equalityFn: deepEqual$1
-  });
-}
-const WagmiContext$1 = reactExports.createContext(void 0);
-const version$1 = "2.5.7";
-const getVersion$1 = () => `wagmi@${version$1}`;
-let BaseError$1 = class BaseError6 extends BaseError$2 {
-  constructor() {
-    super(...arguments);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "WagmiError"
-    });
-  }
-  get docsBaseUrl() {
-    return "https://wagmi.sh/react";
-  }
-  get version() {
-    return getVersion$1();
-  }
-};
-let WagmiProviderNotFoundError$1 = class WagmiProviderNotFoundError2 extends BaseError$1 {
-  constructor() {
-    super("`useConfig` must be used within `WagmiProvider`.", {
-      docsPath: "https://wagmi.sh/react/api/WagmiProvider"
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "WagmiProviderNotFoundError"
-    });
-  }
-};
-function watchChains(config2, parameters) {
-  const { onChange } = parameters;
-  return config2._internal.chains.subscribe((chains2, prevChains) => {
-    onChange(chains2, prevChains);
-  });
-}
-function useConfig$1(parameters = {}) {
-  const config2 = parameters.config ?? reactExports.useContext(WagmiContext$1);
-  if (!config2)
-    throw new WagmiProviderNotFoundError$1();
-  return config2;
-}
-const isPlainObject$1 = (obj) => typeof obj === "object" && !Array.isArray(obj);
-function useSyncExternalStoreWithTracked$1(subscribe, getSnapshot, getServerSnapshot = getSnapshot, isEqual = deepEqual$1) {
-  const trackedKeys = reactExports.useRef([]);
-  const result = withSelectorExports.useSyncExternalStoreWithSelector(subscribe, getSnapshot, getServerSnapshot, (x) => x, (a2, b3) => {
-    if (isPlainObject$1(a2) && isPlainObject$1(b3) && trackedKeys.current.length) {
-      for (const key2 of trackedKeys.current) {
-        const equal = isEqual(a2[key2], b3[key2]);
-        if (!equal)
-          return false;
-      }
-      return true;
-    }
-    return isEqual(a2, b3);
-  });
-  if (isPlainObject$1(result)) {
-    const trackedResult = { ...result };
-    Object.defineProperties(trackedResult, Object.entries(trackedResult).reduce((res, [key2, value]) => {
-      return {
-        ...res,
-        [key2]: {
-          configurable: false,
-          enumerable: true,
-          get: () => {
-            if (!trackedKeys.current.includes(key2)) {
-              trackedKeys.current.push(key2);
-            }
-            return value;
-          }
-        }
-      };
-    }, {}));
-    return trackedResult;
-  }
-  return result;
-}
-function useAccount$1(parameters = {}) {
-  const config2 = useConfig$1(parameters);
-  return useSyncExternalStoreWithTracked$1((onChange) => watchAccount(config2, { onChange }), () => getAccount(config2));
-}
-function disconnectMutationOptions(config2) {
-  return {
-    mutationFn(variables) {
-      return disconnect(config2, variables);
-    },
-    mutationKey: ["disconnect"]
-  };
-}
-function sendTransactionMutationOptions(config2) {
-  return {
-    mutationFn(variables) {
-      return sendTransaction(config2, variables);
-    },
-    mutationKey: ["sendTransaction"]
-  };
-}
-function switchChainMutationOptions(config2) {
-  return {
-    mutationFn(variables) {
-      return switchChain(config2, variables);
-    },
-    mutationKey: ["switchChain"]
-  };
-}
-function useChainId$1(parameters = {}) {
-  const config2 = useConfig$1(parameters);
-  return reactExports.useSyncExternalStore((onChange) => watchChainId(config2, { onChange }), () => getChainId(config2), () => getChainId(config2));
-}
-function useChains$1(parameters = {}) {
-  const config2 = useConfig$1(parameters);
-  return reactExports.useSyncExternalStore((onChange) => watchChains(config2, { onChange }), () => getChains(config2), () => getChains(config2));
-}
-function useConnections$1(parameters = {}) {
-  const config2 = useConfig$1(parameters);
-  return reactExports.useSyncExternalStore((onChange) => watchConnections(config2, { onChange }), () => getConnections(config2), () => getConnections(config2));
-}
-function useDisconnect$1(parameters = {}) {
-  const { mutation } = parameters;
-  const config2 = useConfig$1(parameters);
-  const mutationOptions = disconnectMutationOptions(config2);
-  const { mutate, mutateAsync, ...result } = useMutation({
-    ...mutation,
-    ...mutationOptions
-  });
-  return {
-    ...result,
-    connectors: useConnections$1({ config: config2 }).map((connection) => connection.connector),
-    disconnect: mutate,
-    disconnectAsync: mutateAsync
-  };
-}
-function useSendTransaction$1(parameters = {}) {
-  const { mutation } = parameters;
-  const config2 = useConfig$1(parameters);
-  const mutationOptions = sendTransactionMutationOptions(config2);
-  const { mutate, mutateAsync, ...result } = useMutation({
-    ...mutation,
-    ...mutationOptions
-  });
-  return {
-    ...result,
-    sendTransaction: mutate,
-    sendTransactionAsync: mutateAsync
-  };
-}
-function useSwitchChain$1(parameters = {}) {
-  const { mutation } = parameters;
-  const config2 = useConfig$1(parameters);
-  const mutationOptions = switchChainMutationOptions(config2);
-  const { mutate, mutateAsync, ...result } = useMutation({
-    ...mutation,
-    ...mutationOptions
-  });
-  return {
-    ...result,
-    chains: useChains$1({ config: config2 }),
-    switchChain: mutate,
-    switchChainAsync: mutateAsync
-  };
-}
 var Component = {};
 var toggleSelection = function() {
   var selection = document.getSelection();
@@ -88227,7 +84742,7 @@ var SUPPORTS_PATH2D = function() {
   return true;
 }();
 function QRCodeCanvas(props) {
-  const _a2 = props, {
+  const _a = props, {
     value,
     size: size2 = DEFAULT_SIZE,
     level = DEFAULT_LEVEL,
@@ -88236,7 +84751,7 @@ function QRCodeCanvas(props) {
     includeMargin = DEFAULT_INCLUDEMARGIN,
     style: style2,
     imageSettings
-  } = _a2, otherProps = __objRest(_a2, [
+  } = _a, otherProps = __objRest(_a, [
     "value",
     "size",
     "level",
@@ -88315,7 +84830,7 @@ function QRCodeCanvas(props) {
   }, otherProps)), img2);
 }
 function QRCodeSVG(props) {
-  const _a2 = props, {
+  const _a = props, {
     value,
     size: size2 = DEFAULT_SIZE,
     level = DEFAULT_LEVEL,
@@ -88323,7 +84838,7 @@ function QRCodeSVG(props) {
     fgColor = DEFAULT_FGCOLOR,
     includeMargin = DEFAULT_INCLUDEMARGIN,
     imageSettings
-  } = _a2, otherProps = __objRest(_a2, [
+  } = _a, otherProps = __objRest(_a, [
     "value",
     "size",
     "level",
@@ -88366,7 +84881,7 @@ function QRCodeSVG(props) {
   }), image);
 }
 var QRCode = (props) => {
-  const _a2 = props, { renderAs } = _a2, otherProps = __objRest(_a2, ["renderAs"]);
+  const _a = props, { renderAs } = _a, otherProps = __objRest(_a, ["renderAs"]);
   if (renderAs === "svg") {
     return /* @__PURE__ */ React.createElement(QRCodeSVG, __spreadValues({}, otherProps));
   }
@@ -93242,8 +89757,8 @@ function createSidecarMedium(options) {
   medium.options = __assign$3({ async: true, ssr: false }, options);
   return medium;
 }
-var SideCar$1 = function(_a2) {
-  var sideCar = _a2.sideCar, rest = __rest$2(_a2, ["sideCar"]);
+var SideCar$1 = function(_a) {
+  var sideCar = _a.sideCar, rest = __rest$2(_a, ["sideCar"]);
   if (!sideCar) {
     throw new Error("Sidecar: please provide `sideCar` property to import the right car");
   }
@@ -93264,11 +89779,11 @@ var nothing = function() {
 };
 var RemoveScroll = reactExports.forwardRef(function(props, parentRef) {
   var ref = reactExports.useRef(null);
-  var _a2 = reactExports.useState({
+  var _a = reactExports.useState({
     onScrollCapture: nothing,
     onWheelCapture: nothing,
     onTouchMoveCapture: nothing
-  }), callbacks = _a2[0], setCallbacks = _a2[1];
+  }), callbacks = _a[0], setCallbacks = _a[1];
   var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = __rest$2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs([ref, parentRef]);
@@ -93352,8 +89867,8 @@ var styleHookSingleton = function() {
 };
 var styleSingleton = function() {
   var useStyle2 = styleHookSingleton();
-  var Sheet = function(_a2) {
-    var styles2 = _a2.styles, dynamic = _a2.dynamic;
+  var Sheet = function(_a) {
+    var styles2 = _a.styles, dynamic = _a.dynamic;
     useStyle2(styles2, dynamic);
     return null;
   };
@@ -93393,8 +89908,8 @@ var getGapWidth = function(gapMode) {
   };
 };
 var Style = styleSingleton();
-var getStyles = function(_a2, allowRelative, gapMode, important) {
-  var left = _a2.left, top = _a2.top, right = _a2.right, gap = _a2.gap;
+var getStyles = function(_a, allowRelative, gapMode, important) {
+  var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
   if (gapMode === void 0) {
     gapMode = "margin";
   }
@@ -93405,7 +89920,7 @@ var getStyles = function(_a2, allowRelative, gapMode, important) {
   ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
 };
 var RemoveScrollBar = function(props) {
-  var noRelative = props.noRelative, noImportant = props.noImportant, _a2 = props.gapMode, gapMode = _a2 === void 0 ? "margin" : _a2;
+  var noRelative = props.noRelative, noImportant = props.noImportant, _a = props.gapMode, gapMode = _a === void 0 ? "margin" : _a;
   var gap = reactExports.useMemo(function() {
     return getGapWidth(gapMode);
   }, [gapMode]);
@@ -93452,7 +89967,7 @@ var locationCouldBeScrolled = function(axis, node2) {
     }
     var isScrollable = elementCouldBeScrolled(axis, current);
     if (isScrollable) {
-      var _a2 = getScrollVariables(axis, current), s2 = _a2[1], d = _a2[2];
+      var _a = getScrollVariables(axis, current), s2 = _a[1], d = _a[2];
       if (s2 > d) {
         return true;
       }
@@ -93461,16 +89976,16 @@ var locationCouldBeScrolled = function(axis, node2) {
   } while (current && current !== document.body);
   return false;
 };
-var getVScrollVariables = function(_a2) {
-  var scrollTop = _a2.scrollTop, scrollHeight = _a2.scrollHeight, clientHeight = _a2.clientHeight;
+var getVScrollVariables = function(_a) {
+  var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
   return [
     scrollTop,
     scrollHeight,
     clientHeight
   ];
 };
-var getHScrollVariables = function(_a2) {
-  var scrollLeft = _a2.scrollLeft, scrollWidth = _a2.scrollWidth, clientWidth = _a2.clientWidth;
+var getHScrollVariables = function(_a) {
+  var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
   return [
     scrollLeft,
     scrollWidth,
@@ -93496,7 +90011,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
   var availableScroll = 0;
   var availableScrollTop = 0;
   do {
-    var _a2 = getScrollVariables(axis, target), position2 = _a2[0], scroll_1 = _a2[1], capacity = _a2[2];
+    var _a = getScrollVariables(axis, target), position2 = _a[0], scroll_1 = _a[1], capacity = _a[2];
     var elementScroll = scroll_1 - capacity - directionFactor * position2;
     if (position2 || elementScroll) {
       if (elementCouldBeScrolled(axis, target)) {
@@ -94075,7 +90590,7 @@ const computeBalanceFiat = ({
     return "0.00";
   }
   const priceFiat = ((_priceForToken$price2 = priceForToken.price) == null ? void 0 : _priceForToken$price2.value) || 0;
-  const valueFormatted = formatUnits$2(balance.balance, decimals);
+  const valueFormatted = formatUnits$1(balance.balance, decimals);
   const usdValue = parseFloat(valueFormatted) * priceFiat;
   totalUsd += usdValue;
   const fiatValue = totalUsd * conversionRate;
@@ -94370,8 +90885,8 @@ const fetchBalancesAssetsSummary = async ({
       const bPrice = bPriceData != null && bPriceData.price ? bPriceData.price.value : 0;
       const aDecimals = (_contractInfoMapByCha = contractInfoMapByChainId[a2.chainId].contractInfoMap[a2.contractAddress]) == null ? void 0 : _contractInfoMapByCha.decimals;
       const bDecimals = (_contractInfoMapByCha2 = contractInfoMapByChainId[b3.chainId].contractInfoMap[b3.contractAddress]) == null ? void 0 : _contractInfoMapByCha2.decimals;
-      const aFormattedBalance = aDecimals === void 0 ? 0 : Number(formatUnits$2(a2.balance, aDecimals));
-      const bFormattedBalance = bDecimals === void 0 ? 0 : Number(formatUnits$2(b3.balance, bDecimals));
+      const aFormattedBalance = aDecimals === void 0 ? 0 : Number(formatUnits$1(a2.balance, aDecimals));
+      const bFormattedBalance = bDecimals === void 0 ? 0 : Number(formatUnits$1(b3.balance, bDecimals));
       const aValue = aFormattedBalance * aPrice;
       const bValue = bFormattedBalance * bPrice;
       return bValue - aValue;
@@ -94895,7 +91410,7 @@ const HEADER_HEIGHT$1 = "54px";
 const useSettings = () => {
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const getSettingsFromStorage = () => {
     let hideUnlistedTokens = true;
     let hideCollectibles = false;
@@ -95082,7 +91597,7 @@ const CoinTile = ({
   var _contractInfo$decimal;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     fiatCurrency
   } = useSettings();
@@ -95127,7 +91642,7 @@ const CoinTile = ({
       decimals: nativeTokenInfo.decimals
     });
     const _priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
-    const _formattedBalance = formatUnits$2(balance.balance, nativeTokenInfo.decimals);
+    const _formattedBalance = formatUnits$1(balance.balance, nativeTokenInfo.decimals);
     const _balanceDisplayed = formatDisplay$1(_formattedBalance);
     return /* @__PURE__ */ React.createElement(CoinTileContent, {
       networkLogoUrl: nativeTokenInfo.logoURI,
@@ -95147,7 +91662,7 @@ const CoinTile = ({
     decimals
   });
   const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
-  const formattedBalance = formatUnits$2(balance.balance, decimals);
+  const formattedBalance = formatUnits$1(balance.balance, decimals);
   const balanceDisplayed = formatDisplay$1(formattedBalance);
   const name = (contractInfo == null ? void 0 : contractInfo.name) || "Unknown";
   const symbol = (contractInfo == null ? void 0 : contractInfo.name) || "TOKEN";
@@ -95266,7 +91781,7 @@ endFileScope();
 const AssetSummary = () => {
   const {
     address
-  } = useAccount$1();
+  } = useAccount();
   const {
     setNavigation
   } = useNavigation$1();
@@ -95380,10 +91895,10 @@ const Receive = () => {
   const {
     address,
     chain
-  } = useAccount$1();
+  } = useAccount();
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const [isCopied, setCopied] = reactExports.useState(false);
   const nativeTokenInfo = getNativeTokenInfoByChainId((chain == null ? void 0 : chain.id) || 1, chains2);
   reactExports.useEffect(() => {
@@ -95497,11 +92012,11 @@ const SendItemInfo = ({
 }) => {
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     fiatCurrency
   } = useSettings();
-  const formattedBalance = formatUnits$2(balance, decimals);
+  const formattedBalance = formatUnits$1(balance, decimals);
   const balanceDisplayed = formatDisplay$1(formattedBalance);
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
   return /* @__PURE__ */ React.createElement(Box, {
@@ -95558,18 +92073,18 @@ const SendCoin = ({
   } = useAnalyticsContext();
   const {
     chains: chains2
-  } = useConfig$1();
-  const connectedChainId = useChainId$1();
+  } = useConfig();
+  const connectedChainId = useChainId();
   const {
     address: accountAddress = "",
     connector
-  } = useAccount$1();
+  } = useAccount();
   const isConnectorSequenceBased = !!(connector != null && (_connector$_wallet = connector._wallet) != null && _connector$_wallet.isSequenceBased);
   const isCorrectChainId = connectedChainId === chainId;
   const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased;
   const {
     switchChainAsync
-  } = useSwitchChain$1();
+  } = useSwitchChain();
   const amountInputRef = reactExports.useRef(null);
   useOpenWalletModal();
   const {
@@ -95579,7 +92094,7 @@ const SendCoin = ({
   const [toAddress, setToAddress] = reactExports.useState("");
   const {
     sendTransaction: sendTransaction2
-  } = useSendTransaction$1();
+  } = useSendTransaction();
   const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
   const {
     data: balances = [],
@@ -95639,7 +92154,7 @@ const SendCoin = ({
   const handleMax = () => {
     var _amountInputRef$curre;
     (_amountInputRef$curre = amountInputRef.current) == null || _amountInputRef$curre.focus();
-    const maxAmount = formatUnits$2((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
+    const maxAmount = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
     setAmount(maxAmount);
   };
   const handlePaste = async () => {
@@ -95873,18 +92388,18 @@ const SendCollectible = ({
   } = useAnalyticsContext();
   const {
     chains: chains2
-  } = useConfig$1();
-  const connectedChainId = useChainId$1();
+  } = useConfig();
+  const connectedChainId = useChainId();
   const {
     address: accountAddress = "",
     connector
-  } = useAccount$1();
+  } = useAccount();
   const isConnectorSequenceBased = !!(connector != null && (_connector$_wallet = connector._wallet) != null && _connector$_wallet.isSequenceBased);
   const isCorrectChainId = connectedChainId === chainId;
   const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased;
   const {
     switchChain: switchChain2
-  } = useSwitchChain$1();
+  } = useSwitchChain();
   const amountInputRef = reactExports.useRef(null);
   useOpenWalletModal();
   const [amount, setAmount] = reactExports.useState("0");
@@ -95892,7 +92407,7 @@ const SendCollectible = ({
   const [showAmountControls, setShowAmountControls] = reactExports.useState(false);
   const {
     sendTransaction: sendTransaction2
-  } = useSendTransaction$1();
+  } = useSendTransaction();
   const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
   const {
     data: tokenBalance,
@@ -95913,7 +92428,7 @@ const SendCollectible = ({
         setAmount("1");
         setShowAmountControls(false);
       } else if (contractType === "ERC1155") {
-        if (Number(formatUnits$2((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals)) >= 1) {
+        if (Number(formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals)) >= 1) {
           setAmount("1");
         }
         setShowAmountControls(true);
@@ -95950,14 +92465,14 @@ const SendCollectible = ({
     var _amountInputRef$curre2;
     (_amountInputRef$curre2 = amountInputRef.current) == null || _amountInputRef$curre2.focus();
     const incrementedAmount = Number(amount) + 1;
-    const maxAmount2 = Number(formatUnits$2((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals));
+    const maxAmount2 = Number(formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals));
     const newAmount = Math.min(incrementedAmount, maxAmount2).toString();
     setAmount(newAmount);
   };
   const handleMax = () => {
     var _amountInputRef$curre3;
     (_amountInputRef$curre3 = amountInputRef.current) == null || _amountInputRef$curre3.focus();
-    const maxAmount2 = formatUnits$2((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
+    const maxAmount2 = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
     setAmount(maxAmount2);
   };
   const handlePaste = async () => {
@@ -96027,7 +92542,7 @@ const SendCollectible = ({
         });
     }
   };
-  const maxAmount = formatUnits$2((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
+  const maxAmount = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
   const isMinimum = Number(amount) === 0;
   const isMaximum = Number(amount) >= Number(maxAmount);
   return /* @__PURE__ */ React.createElement(Box, {
@@ -96188,7 +92703,7 @@ const TransactionHistoryItem = ({
   var _transaction$transfer;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     fiatCurrency
   } = useSettings();
@@ -96334,7 +92849,7 @@ const TransactionHistoryItem = ({
         var _transfer$contractInf3;
         decimals = isNativeToken ? nativeTokenInfo2.decimals : (_transfer$contractInf3 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf3.decimals;
       }
-      const amountValue = formatUnits$2(amount, decimals);
+      const amountValue = formatUnits$1(amount, decimals);
       const symbol = isNativeToken ? nativeTokenInfo2.symbol : ((_transfer$contractInf4 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf4.symbol) || "";
       const tokenLogoUri = isNativeToken ? nativeTokenInfo2.logoURI : (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.logoURI;
       const fiatConversionRate = (_coinPrices$find = coinPrices.find((coinPrice) => compareAddress$2(coinPrice.token.contractAddress, transfer.contractAddress))) == null || (_coinPrices$find = _coinPrices$find.price) == null ? void 0 : _coinPrices$find.value;
@@ -96553,7 +93068,7 @@ const History = () => {
   } = useSettings();
   const {
     address: accountAddress
-  } = useAccount$1();
+  } = useAccount();
   useScrollbarWidth();
   const {
     data: transactionHistory = [],
@@ -96578,7 +93093,7 @@ const BalanceItem = ({
   var _balance$contractInfo, _balance$contractInfo2;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     setNavigation
   } = useNavigation$1();
@@ -96592,7 +93107,7 @@ const BalanceItem = ({
       return balance.balance;
     }
     const decimals = isNativeToken ? nativeTokenInfo.decimals : balance == null || (_balance$contractInfo3 = balance.contractInfo) == null ? void 0 : _balance$contractInfo3.decimals;
-    const bal = formatUnits$2(balance.balance, decimals || 0);
+    const bal = formatUnits$1(balance.balance, decimals || 0);
     const displayBalance = formatDisplay$1(bal);
     const symbol = isNativeToken ? nativeTokenInfo.symbol : balance == null || (_balance$contractInfo4 = balance.contractInfo) == null ? void 0 : _balance$contractInfo4.symbol;
     return `${displayBalance} ${symbol}`;
@@ -96706,7 +93221,7 @@ const WalletLink = ({
 const SearchWallet = () => {
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     fiatCurrency,
     hideUnlistedTokens,
@@ -96715,7 +93230,7 @@ const SearchWallet = () => {
   const [search2, setSearch] = reactExports.useState("");
   const {
     address: accountAddress
-  } = useAccount$1();
+  } = useAccount();
   useScrollbarWidth();
   const {
     data: tokenBalancesData,
@@ -96871,7 +93386,7 @@ const SearchWalletViewAll = ({
 }) => {
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     fiatCurrency,
     hideUnlistedTokens,
@@ -96885,7 +93400,7 @@ const SearchWalletViewAll = ({
   }, [selectedTab]);
   const {
     address: accountAddress
-  } = useAccount$1();
+  } = useAccount();
   const {
     data: tokenBalancesData,
     isLoading: tokenBalancesIsLoading
@@ -97264,7 +93779,7 @@ const SettingsNetwork = () => {
   } = useSettings();
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const onClickNetwork = (chainId) => {
     if (selectedNetworks.includes(chainId)) {
       if (selectedNetworks.length === 1) {
@@ -97318,7 +93833,7 @@ const NetworkBadge = ({
   var _network$title;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     network: network2
   } = getNetworkConfigAndClients(chainId);
@@ -97458,7 +93973,7 @@ const CoinDetails = ({
   var _dataCoinBalance$cont, _dataCoinBalance$cont2, _dataCoinBalance$cont3, _dataCoinBalance$cont4;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     setNavigation
   } = useNavigation$1();
@@ -97469,7 +93984,7 @@ const CoinDetails = ({
   useScrollbarWidth();
   const {
     address: accountAddress
-  } = useAccount$1();
+  } = useAccount();
   const {
     data: dataTransactionHistory,
     isLoading: isLoadingTransactionHistory,
@@ -97518,7 +94033,7 @@ const CoinDetails = ({
   const symbol = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).symbol : dataCoinBalance == null || (_dataCoinBalance$cont2 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont2.symbol;
   const name = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).name : dataCoinBalance == null || (_dataCoinBalance$cont3 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont3.name;
   const decimals = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).decimals : dataCoinBalance == null || (_dataCoinBalance$cont4 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont4.decimals;
-  const formattedBalance = formatUnits$2((dataCoinBalance == null ? void 0 : dataCoinBalance.balance) || "0", decimals);
+  const formattedBalance = formatUnits$1((dataCoinBalance == null ? void 0 : dataCoinBalance.balance) || "0", decimals);
   const balanceDisplayed = formatDisplay$1(formattedBalance);
   const coinBalanceFiat = dataCoinBalance ? computeBalanceFiat({
     balance: dataCoinBalance,
@@ -97654,7 +94169,7 @@ const CollectionDetails = ({
   } = useNavigation$1();
   const {
     address: accountAddress
-  } = useAccount$1();
+  } = useAccount();
   const {
     data: collectionBalanceData,
     isLoading: isLoadingCollectionBalance
@@ -97726,7 +94241,7 @@ const CollectionDetails = ({
     var _balance$tokenMetadat, _balance$tokenMetadat2, _balance$tokenMetadat3;
     const unformattedBalance = balance.balance;
     const decimals = (balance == null || (_balance$tokenMetadat = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat.decimals) || 0;
-    const formattedBalance = formatDisplay$1(formatUnits$2(unformattedBalance, decimals));
+    const formattedBalance = formatDisplay$1(formatUnits$1(unformattedBalance, decimals));
     return /* @__PURE__ */ React.createElement(Box, {
       key: index2,
       onClick: () => onClickItem(balance),
@@ -97822,10 +94337,10 @@ const CollectibleDetails = ({
   var _dataCollectibleBalan, _dataCollectibleBalan2, _dataCollectibleBalan3, _dataCollectibleBalan4, _dataCollectibleBalan5, _dataCollectiblePrice;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     address: accountAddress
-  } = useAccount$1();
+  } = useAccount();
   const {
     fiatCurrency
   } = useSettings();
@@ -97891,7 +94406,7 @@ const CollectibleDetails = ({
   const collectionName = (dataCollectibleBalance == null || (_dataCollectibleBalan2 = dataCollectibleBalance.contractInfo) == null ? void 0 : _dataCollectibleBalan2.name) || "Unknown Collection";
   const decimals = (dataCollectibleBalance == null || (_dataCollectibleBalan3 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan3.decimals) || 0;
   const rawBalance = (dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.balance) || "0";
-  const balance = formatUnits$2(rawBalance, decimals);
+  const balance = formatUnits$1(rawBalance, decimals);
   const formattedBalance = formatDisplay$1(Number(balance));
   const valueFiat = dataCollectibleBalance ? computeBalanceFiat({
     balance: dataCollectibleBalance,
@@ -98029,7 +94544,7 @@ const TransactionDetails = ({
   var _transaction$transfer, _transaction$transfer2;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     fiatCurrency
   } = useSettings();
@@ -98107,7 +94622,7 @@ const TransactionDetails = ({
       const collectibleDecimals = (transfer == null || (_transfer$tokenMetada = transfer.tokenMetadata) == null || (_transfer$tokenMetada = _transfer$tokenMetada[tokenId]) == null ? void 0 : _transfer$tokenMetada.decimals) || 0;
       const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : (transfer == null || (_transfer$contractInf9 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf9.decimals) || 0;
       const decimals = isCollectible ? collectibleDecimals : coinDecimals;
-      const formattedBalance = formatUnits$2(amount, decimals);
+      const formattedBalance = formatUnits$1(amount, decimals);
       const balanceDisplayed = formatDisplay$1(formattedBalance);
       const fiatPrice = isCollectible ? collectiblePricesData == null || (_collectiblePricesDat = collectiblePricesData.find((collectible) => {
         var _transfer$contractInf10, _transfer$tokenIds3;
@@ -98300,7 +94815,7 @@ const AccountInformation = /* @__PURE__ */ reactExports.forwardRef(({
 }, ref) => {
   const {
     address
-  } = useAccount$1();
+  } = useAccount();
   return /* @__PURE__ */ React.createElement(Box, {
     gap: "2",
     alignItems: "center"
@@ -98339,10 +94854,10 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
   } = useOpenWalletModal();
   const {
     address
-  } = useAccount$1();
+  } = useAccount();
   const {
     disconnect: disconnect2
-  } = useDisconnect$1();
+  } = useDisconnect();
   const {
     theme
   } = useTheme();
@@ -99796,7 +96311,7 @@ const ConnectWalletContent = (props) => {
   dist.useScript(dist.appleAuthHelpers.APPLE_SCRIPT_SRC);
   const {
     isConnected
-  } = useAccount$2();
+  } = useAccount();
   const {
     config: config2 = {}
   } = props;
@@ -100836,7 +97351,7 @@ const TxnDetails = ({
   txs,
   chainId
 }) => {
-  useConfig$2();
+  useConfig();
   const [decodingType, setDecodingType] = reactExports.useState(void 0);
   const [transferProps, setTransferProps] = reactExports.useState([]);
   const [awardItemProps, setAwardItemProps] = reactExports.useState([]);
@@ -100880,7 +97395,7 @@ const TransferItemInfo = ({
   var _transferProps$, _transferProps$2, _transferProps$3, _transferProps$4, _transferProps$5, _transferProps$0$toke, _transferProps$6, _tokenBalance$contrac, _tokenMetadata$, _tokenBalance$contrac2, _tokenMetadata$2, _tokenBalance$contrac3, _tokenBalance$contrac4, _transferProps$0$amou, _transferProps$7, _transferProps$8, _transferProps$0$type, _transferProps$9, _tokenMetadata$3;
   const {
     chains: chains2
-  } = useConfig$2();
+  } = useConfig();
   const contractAddress = (_transferProps$ = transferProps[0]) == null ? void 0 : _transferProps$.contractAddress;
   const toAddress = (_transferProps$2 = transferProps[0]) == null ? void 0 : _transferProps$2.to;
   const isNativeCoin = contractAddress ? compareAddress$1(contractAddress, AddressZero) : true;
@@ -100912,7 +97427,7 @@ const TransferItemInfo = ({
   const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image : tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.logoURI;
   const name = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata == null || (_tokenMetadata$2 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$2.name : (tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.name) || "";
   const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? "" : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
-  const formattedBalance = tokenBalance !== void 0 ? formatUnits$2(tokenBalance.balance, decimals) : "";
+  const formattedBalance = tokenBalance !== void 0 ? formatUnits$1(tokenBalance.balance, decimals) : "";
   formatDisplay$1(formattedBalance);
   const amountSending = (_transferProps$0$amou = (_transferProps$7 = transferProps[0]) == null || (_transferProps$7 = _transferProps$7.amounts) == null ? void 0 : _transferProps$7[0]) != null ? _transferProps$0$amou : (_transferProps$8 = transferProps[0]) == null ? void 0 : _transferProps$8.value;
   const showSquareImage = isNFT;
@@ -100951,7 +97466,7 @@ const TransferItemInfo = ({
   }, name)), /* @__PURE__ */ React.createElement(Text, {
     color: "text50",
     variant: "normal"
-  }, " ", `${formatUnits$2(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
     fontSize: "normal",
     color: "text50"
   }, "To"), /* @__PURE__ */ React.createElement(Box, {
@@ -101090,8 +97605,8 @@ const KitProvider = (props) => {
   const {
     address,
     isConnected
-  } = useAccount$2();
-  const connections = useConnections$2();
+  } = useAccount();
+  const connections = useConnections();
   const waasConnector = (_connections$find = connections.find((c) => c.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
   const [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest] = useWaasConfirmationHandler(waasConnector);
   const googleClientId = localStorage.getItem(LocalStorageKey.WaasGoogleClientID) || "";
@@ -101365,7 +97880,7 @@ const useWalletSettings = () => {
 let _pendingFeeConfirmation;
 function useWaasFeeOptions() {
   var _connections$find;
-  const connections = useConnections$2();
+  const connections = useConnections();
   const waasConnector = (_connections$find = connections.find((c) => c.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
   const [pendingFeeOptionConfirmation, setPendingFeeOptionConfirmation] = reactExports.useState();
   function confirmPendingFeeOption(id2, feeTokenAddress) {
@@ -103523,7 +100038,7 @@ const OrderSummaryItem = ({
 }) => {
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   const {
     data: tokenMetadata,
     isLoading: isTokenMetadataLoading
@@ -103553,7 +100068,7 @@ const OrderSummaryItem = ({
     logoURI: collectionLogoURI,
     name: collectionName = "Unknown Collection"
   } = contractInfo || {};
-  const balanceFormatted = formatUnits$2(quantityRaw, decimals);
+  const balanceFormatted = formatUnits$1(quantityRaw, decimals);
   return /* @__PURE__ */ React.createElement(Card, {
     flexDirection: "row",
     alignItems: "flex-start",
@@ -103657,7 +100172,7 @@ const CheckoutSelection = () => {
   var _cryptoCheckoutSettin, _cryptoCheckoutSettin2, _cryptoCheckoutSettin4, _settings$cryptoCheck;
   const {
     chains: chains2
-  } = useConfig$1();
+  } = useConfig();
   useNavigation();
   const {
     closeCheckout,
@@ -103665,7 +100180,7 @@ const CheckoutSelection = () => {
   } = useCheckoutModal();
   const {
     address: accountAddress
-  } = useAccount$1();
+  } = useAccount();
   const cryptoCheckoutSettings = settings == null ? void 0 : settings.cryptoCheckout;
   const displayCryptoCheckout = !!cryptoCheckoutSettings;
   const {
@@ -103694,8 +100209,8 @@ const CheckoutSelection = () => {
   });
   const userBalanceRaw = coinBalance ? coinBalance.balance : "0";
   const requestedAmountRaw = (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin4 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin4.amountRequiredRaw) || "0";
-  const userBalance = formatUnits$2(userBalanceRaw, coinDecimals);
-  const requestAmount = formatUnits$2(requestedAmountRaw, coinDecimals);
+  const userBalance = formatUnits$1(userBalanceRaw, coinDecimals);
+  const requestAmount = formatUnits$1(requestedAmountRaw, coinDecimals);
   const isInsufficientBalance = BigNumber.from(userBalanceRaw).lt(BigNumber.from(requestedAmountRaw));
   const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
   const chainId = (settings == null || (_settings$cryptoCheck = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck.chainId) || 1;
@@ -103984,219 +100499,6 @@ const useNavigation = () => {
     navigation
   };
 };
-function Hydrate(parameters) {
-  const { children, config: config2, initialState, reconnectOnMount = true } = parameters;
-  const { onMount } = hydrate(config2, {
-    initialState,
-    reconnectOnMount
-  });
-  if (!config2._internal.ssr)
-    onMount();
-  const active = reactExports.useRef(true);
-  reactExports.useEffect(() => {
-    if (!active.current)
-      return;
-    if (!config2._internal.ssr)
-      return;
-    onMount();
-    return () => {
-      active.current = false;
-    };
-  }, []);
-  return children;
-}
-const WagmiContext = reactExports.createContext(void 0);
-function WagmiProvider(parameters) {
-  const { children, config: config2 } = parameters;
-  const props = { value: config2 };
-  return reactExports.createElement(Hydrate, parameters, reactExports.createElement(WagmiContext.Provider, props, children));
-}
-const version = "2.5.7";
-const getVersion = () => `wagmi@${version}`;
-class BaseError7 extends BaseError$5 {
-  constructor() {
-    super(...arguments);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "WagmiError"
-    });
-  }
-  get docsBaseUrl() {
-    return "https://wagmi.sh/react";
-  }
-  get version() {
-    return getVersion();
-  }
-}
-class WagmiProviderNotFoundError3 extends BaseError7 {
-  constructor() {
-    super("`useConfig` must be used within `WagmiProvider`.", {
-      docsPath: "https://wagmi.sh/react/api/WagmiProvider"
-    });
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "WagmiProviderNotFoundError"
-    });
-  }
-}
-function useConfig(parameters = {}) {
-  const config2 = parameters.config ?? reactExports.useContext(WagmiContext);
-  if (!config2)
-    throw new WagmiProviderNotFoundError3();
-  return config2;
-}
-const isPlainObject = (obj) => typeof obj === "object" && !Array.isArray(obj);
-function useSyncExternalStoreWithTracked(subscribe, getSnapshot, getServerSnapshot = getSnapshot, isEqual = deepEqual$2) {
-  const trackedKeys = reactExports.useRef([]);
-  const result = withSelectorExports.useSyncExternalStoreWithSelector(subscribe, getSnapshot, getServerSnapshot, (x) => x, (a2, b3) => {
-    if (isPlainObject(a2) && isPlainObject(b3) && trackedKeys.current.length) {
-      for (const key2 of trackedKeys.current) {
-        const equal = isEqual(a2[key2], b3[key2]);
-        if (!equal)
-          return false;
-      }
-      return true;
-    }
-    return isEqual(a2, b3);
-  });
-  if (isPlainObject(result)) {
-    const trackedResult = { ...result };
-    Object.defineProperties(trackedResult, Object.entries(trackedResult).reduce((res, [key2, value]) => {
-      return {
-        ...res,
-        [key2]: {
-          configurable: false,
-          enumerable: true,
-          get: () => {
-            if (!trackedKeys.current.includes(key2)) {
-              trackedKeys.current.push(key2);
-            }
-            return value;
-          }
-        }
-      };
-    }, {}));
-    return trackedResult;
-  }
-  return result;
-}
-function useAccount(parameters = {}) {
-  const config2 = useConfig(parameters);
-  return useSyncExternalStoreWithTracked((onChange) => watchAccount$1(config2, { onChange }), () => getAccount$1(config2));
-}
-function useQuery(parameters) {
-  const result = useQuery$1({
-    ...parameters,
-    queryKeyHashFn: hashFn
-    // for bigint support
-  });
-  result.queryKey = parameters.queryKey;
-  return result;
-}
-function useChainId(parameters = {}) {
-  const config2 = useConfig(parameters);
-  return reactExports.useSyncExternalStore((onChange) => watchChainId$1(config2, { onChange }), () => getChainId$2(config2), () => getChainId$2(config2));
-}
-function useChains(parameters = {}) {
-  const config2 = useConfig(parameters);
-  return reactExports.useSyncExternalStore((onChange) => watchChains$1(config2, { onChange }), () => getChains$1(config2), () => getChains$1(config2));
-}
-function useConnections(parameters = {}) {
-  const config2 = useConfig(parameters);
-  return reactExports.useSyncExternalStore((onChange) => watchConnections$1(config2, { onChange }), () => getConnections$1(config2), () => getConnections$1(config2));
-}
-function useDisconnect(parameters = {}) {
-  const { mutation } = parameters;
-  const config2 = useConfig(parameters);
-  const mutationOptions = disconnectMutationOptions$1(config2);
-  const { mutate, mutateAsync, ...result } = useMutation({
-    ...mutation,
-    ...mutationOptions
-  });
-  return {
-    ...result,
-    connectors: useConnections({ config: config2 }).map((connection) => connection.connector),
-    disconnect: mutate,
-    disconnectAsync: mutateAsync
-  };
-}
-function usePublicClient(parameters = {}) {
-  const config2 = useConfig(parameters);
-  return withSelectorExports.useSyncExternalStoreWithSelector((onChange) => watchPublicClient(config2, { onChange }), () => getPublicClient(config2, parameters), () => getPublicClient(config2, parameters), (x) => x, (a2, b3) => (a2 == null ? void 0 : a2.uid) === (b3 == null ? void 0 : b3.uid));
-}
-function useSendTransaction(parameters = {}) {
-  const { mutation } = parameters;
-  const config2 = useConfig(parameters);
-  const mutationOptions = sendTransactionMutationOptions$1(config2);
-  const { mutate, mutateAsync, ...result } = useMutation({
-    ...mutation,
-    ...mutationOptions
-  });
-  return {
-    ...result,
-    sendTransaction: mutate,
-    sendTransactionAsync: mutateAsync
-  };
-}
-function useSwitchChain(parameters = {}) {
-  const { mutation } = parameters;
-  const config2 = useConfig(parameters);
-  const mutationOptions = switchChainMutationOptions$1(config2);
-  const { mutate, mutateAsync, ...result } = useMutation({
-    ...mutation,
-    ...mutationOptions
-  });
-  return {
-    ...result,
-    chains: useChains({ config: config2 }),
-    switchChain: mutate,
-    switchChainAsync: mutateAsync
-  };
-}
-function useWalletClient(parameters = {}) {
-  const { query = {}, ...rest } = parameters;
-  const config2 = useConfig(rest);
-  const queryClient2 = useQueryClient();
-  const { address, connector, status } = useAccount();
-  const chainId = useChainId();
-  const { queryKey, ...options } = getWalletClientQueryOptions(config2, {
-    ...parameters,
-    chainId: parameters.chainId ?? chainId,
-    connector: parameters.connector ?? connector
-  });
-  const enabled = Boolean(status !== "disconnected" && (query.enabled ?? true));
-  reactExports.useEffect(() => {
-    if (address)
-      queryClient2.invalidateQueries({ queryKey });
-    else
-      queryClient2.removeQueries({ queryKey });
-  }, [address, queryClient2]);
-  return useQuery({
-    ...query,
-    ...options,
-    queryKey,
-    enabled,
-    staleTime: Infinity
-  });
-}
-function useWriteContract(parameters = {}) {
-  const { mutation } = parameters;
-  const config2 = useConfig(parameters);
-  const mutationOptions = writeContractMutationOptions(config2);
-  const { mutate, mutateAsync, ...result } = useMutation({
-    ...mutation,
-    ...mutationOptions
-  });
-  return {
-    ...result,
-    writeContract: mutate,
-    writeContractAsync: mutateAsync
-  };
-}
 const messageToSign = "Two roads diverged in a yellow wood";
 const bottomPageLinks = [
   {
@@ -104538,7 +100840,7 @@ const Alert = ({ title, description, secondaryDescription, variant, buttonProps,
 const searchParams$1 = new URLSearchParams(location.search);
 const isDebugMode$1 = searchParams$1.has("debug");
 function Homepage() {
-  var _a2;
+  var _a;
   const { theme, setTheme } = useTheme$1();
   const { setTheme: setKitTheme } = useTheme();
   const { address, connector, isConnected } = useAccount();
@@ -104589,14 +100891,14 @@ function Homepage() {
       console.log("nativeTokenBalance", nativeTokenBalance);
       console.log("tokenBalances", tokenBalances);
       const balances = pendingFeeOptionConfirmation.options.map((option) => {
-        var _a3;
+        var _a2;
         if (option.token.contractAddress === null) {
           return { tokenName: option.token.name, decimals: option.token.decimals, balance: nativeTokenBalance.balance.balanceWei };
         } else {
           return {
             tokenName: option.token.name,
             decimals: option.token.decimals,
-            balance: ((_a3 = tokenBalances.balances.find((b3) => b3.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())) == null ? void 0 : _a3.balance) || "0"
+            balance: ((_a2 = tokenBalances.balances.find((b3) => b3.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())) == null ? void 0 : _a2.balance) || "0"
           };
         }
       });
@@ -104853,8 +101155,8 @@ function Homepage() {
                 labelLocation: "top",
                 label: "Pick a fee option",
                 onValueChange: (val) => {
-                  var _a3;
-                  const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find((option) => option.token.name === val);
+                  var _a2;
+                  const selected = (_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.find((option) => option.token.name === val);
                   if (selected) {
                     setSelectedFeeOptionTokenName(selected.token.name);
                     setFeeOptionAlert(void 0);
@@ -104862,8 +101164,8 @@ function Homepage() {
                 },
                 value: selectedFeeOptionTokenName,
                 options: [
-                  ...(_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.map((option) => {
-                    var _a3;
+                  ...(_a = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a.map((option) => {
+                    var _a2;
                     return {
                       label: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "flex-start", flexDirection: "column", fontSize: "xsmall", children: [
                         /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
@@ -104873,7 +101175,7 @@ function Homepage() {
                             "): "
                           ] }),
                           " ",
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits$2(option.value, option.token.decimals) })
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits$1(option.value, option.token.decimals) })
                         ] }),
                         /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
                           /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Text, { children: [
@@ -104882,8 +101184,8 @@ function Homepage() {
                             ": "
                           ] }),
                           " ",
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits$2(
-                            (_a3 = feeOptionBalances.find((b3) => b3.tokenName === option.token.name)) == null ? void 0 : _a3.balance,
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits$1(
+                            (_a2 = feeOptionBalances.find((b3) => b3.tokenName === option.token.name)) == null ? void 0 : _a2.balance,
                             option.token.decimals
                           ) })
                         ] })
@@ -104899,8 +101201,8 @@ function Homepage() {
                 Button,
                 {
                   onClick: () => {
-                    var _a3, _b;
-                    const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find(
+                    var _a2, _b;
+                    const selected = (_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.find(
                       (option) => option.token.name === selectedFeeOptionTokenName
                     );
                     if (selected.token.contractAddress !== void 0) {
@@ -105178,32 +101480,32 @@ root.render(
 );
 export {
   Buffer2 as B,
-  HttpRequestError$1 as H,
-  InvalidAddressError$1 as I,
+  HttpRequestError as H,
+  InvalidAddressError as I,
   __vitePreload as _,
   getDefaultExportFromCjs$1 as a,
   bnExports as b,
   commonjsGlobal as c,
   global$1 as d,
   eventemitter3Exports as e,
-  BaseError$6 as f,
+  BaseError$2 as f,
   getAugmentedNamespace as g,
-  getUrl$1 as h,
+  getUrl as h,
   inherits_browserExports as i,
-  isAddress$1 as j,
+  isAddress as j,
   decodeErrorResult as k,
   call as l,
   concat as m,
   encodeAbiParameters as n,
-  isHex$1 as o,
+  isHex as o,
   process$1 as p,
   require$$2$1 as r,
-  stringify$2 as s,
+  stringify$1 as s,
   tslib_es6$1 as t
 };
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./index-BtT-VBep.js","./___vite-browser-external_commonjs-proxy-BlcACipu.js","./index.es-DM6Yr7Dr.js"]
+    __vite__mapDeps.viteFileDeps = ["./index-ivVUtxzs.js","./___vite-browser-external_commonjs-proxy-BjOBvsn3.js","./index.es-D6C7Q3GL.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
