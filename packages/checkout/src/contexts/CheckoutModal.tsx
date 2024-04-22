@@ -21,8 +21,8 @@ export interface SardineCheckout {
   recipientAddress: string
   quantity: number
   decimals?: number
-  onSuccess?: (transactionHash: string) => void
-  onError?: (error: Error) => void
+  onSuccess?: (transactionHash: string, settings: SardineCheckout) => void
+  onError?: (error: Error, settings: SardineCheckout) => void
 }
 
 export interface CheckoutSettings {

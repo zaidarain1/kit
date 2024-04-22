@@ -12,6 +12,10 @@ export const TransactionSuccess = () => {
 
   const network = sequence.network.allNetworks.find(n => n.name === navigation.params.network)
 
+  useEffect(() => {      settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash, settings?.sardineCheckout)
+    settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash, settings?.sardineCheckout)
+  }, [])
+
   return (
     <Box style={{ height: '500px' }}>
       <Box
