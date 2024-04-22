@@ -22,25 +22,27 @@ export const getCheckoutSettings = (
   blockchainNftId: string,
   recipientAddress: string,
   tokenContractAddress: string,
-  tokenId: string
+  tokenId: string,
+  chainId: number,
+  quantity: number,
 ) => {
   const checkoutSettings: CheckoutSettings = {
     sardineCheckout: {
       authToken: '', // TODO: remove, use token from api
-      chainId: 137,
+      chainId,
       defaultPaymentMethodType: 'us_debit',
       platform: 'horizon',
       contractAddress: '0xB537a160472183f2150d42EB1c3DD6684A55f74c',
       blockchainNftId: blockchainNftId,
       recipientAddress: recipientAddress,
-      quantity: 1
+      quantity
     },
     orderSummaryItems: [
       {
-        chainId: 137,
+        chainId,
         contractAddress: tokenContractAddress,
-        tokenId: tokenId,
-        quantityRaw: '1'
+        tokenId,
+        quantityRaw: String(quantity)
       }
     ]
   }

@@ -37,17 +37,13 @@ import {
   Switch,
   Select,
   IconButton,
-<<<<<<< HEAD
-  CheckmarkIcon
-} from '@0xsequence/design-system'
-import { allNetworks } from '@0xsequence/network'
-=======
+  CheckmarkIcon,
   Modal,
   TextInput
 } from '@0xsequence/design-system'
+import { allNetworks } from '@0xsequence/network'
 import { AnimatePresence } from 'framer-motion'
 
->>>>>>> e45ed1d (2.1.1-beta.1)
 import { Footer } from './Footer'
 import { messageToSign } from '../constants'
 import { delay, formatAddress, getCheckoutSettings } from '../utils'
@@ -341,7 +337,7 @@ export const Homepage = () => {
   const onCheckoutInfoConfirm = () => {
     setIsCheckoutInfoModalOpen(false)
     if (checkoutOrderId !== '' && checkoutTokenContractAddress !== '' && checkoutTokenId !== '') {
-      const checkoutSettings = getCheckoutSettings(checkoutOrderId, address, checkoutTokenContractAddress, checkoutTokenId)
+      const checkoutSettings = getCheckoutSettings(checkoutOrderId, address, checkoutTokenContractAddress, checkoutTokenId, 137, 1)
       triggerCheckout(checkoutSettings)
     }
   }
