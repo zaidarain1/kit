@@ -1,5 +1,14 @@
 # @0xsequence/kit-connectors
 
+## 2.2.2
+
+### Patch Changes
+
+- Fix ConnectButton Logo sizes
+
+- Updated dependencies []:
+  - @0xsequence/kit@2.2.2
+
 ## 2.2.1
 
 ### Patch Changes
