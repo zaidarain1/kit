@@ -34,6 +34,8 @@ chains.forEach(chain => {
   transports[chain.id] = http(network.rpcUrl)
 })
 
+/// Use this to test the waas connectors
+// WaaS config
 const waasConfigKey = 'eyJwcm9qZWN0SWQiOjE2ODE1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
 const googleClientId = '970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com'
 const appleClientId = 'com.horizon.sequence.waas'
@@ -82,6 +84,23 @@ const getUniversalConnectors = () => {
   ]
   return connectors
 }
+
+/// Use this to test the universal connectors
+// const connectors = [
+//   ...getDefaultConnectors({
+//     walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
+//     defaultChainId: arbitrumNova.id,
+//     appName: 'demo app',
+//     projectAccessKey
+//   }),
+//   ...(isDebugMode
+//     ? getKitConnectWallets(projectAccessKey, [
+//         mock({
+//           accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9']
+//         })
+//       ])
+//     : [])
+// ]
 
 export const wagmiConfig = createConfig({
   transports,

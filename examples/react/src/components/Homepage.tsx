@@ -41,8 +41,11 @@ import {
 import { allNetworks } from '@0xsequence/network'
 import { Footer } from './Footer'
 import { messageToSign } from '../constants'
-import { delay, formatAddress, getCheckoutSettings } from '../utils'
 import { abi } from '../constants/nft-abi'
+import { delay, formatAddress, getCheckoutSettings } from '../utils'
+import { sequence } from '0xsequence'
+import demoAbi from '../constants/demo-abi'
+import { ethers } from 'ethers'
 import { Alert, AlertProps } from './Alert'
 import { ConnectionMode } from '../config'
 import { formatUnits, parseUnits } from 'viem'
@@ -69,8 +72,8 @@ export const Homepage = () => {
 
   const isMobile = useMediaQuery('isMobile')
 
-  const { data: txnData, sendTransaction, isPending: isPendingSendTxn, error } = useSendTransaction()
-  const { data: txnData2, isPending: isPendingMintTxn, writeContract } = useWriteContract()
+  const { data: txnData, sendTransaction, isLoading: isPendingSendTxn, error } = useSendTransaction()
+  const { data: txnData2, isLoading: isPendingMintTxn, writeContract } = useWriteContract()
 
   const [isSigningMessage, setIsSigningMessage] = React.useState(false)
   const [isMessageValid, setIsMessageValid] = React.useState<boolean | undefined>()
@@ -83,15 +86,15 @@ export const Homepage = () => {
     localStorage.getItem('confirmationEnabled') === 'true'
   )
 
-  const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions()
+  // const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions()
 
-  const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React.useState<string | undefined>()
+  // const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React.useState<string | undefined>()
 
-  useEffect(() => {
-    if (pendingFeeOptionConfirmation) {
-      setSelectedFeeOptionTokenName(pendingFeeOptionConfirmation.options[0].token.name)
-    }
-  }, [pendingFeeOptionConfirmation])
+  // useEffect(() => {
+  //   if (pendingFeeOptionConfirmation) {
+  //     setSelectedFeeOptionTokenName(pendingFeeOptionConfirmation.options[0].token.name)
+  //   }
+  // }, [pendingFeeOptionConfirmation])
 
   useEffect(() => {
     console.log(error?.message)
@@ -101,13 +104,13 @@ export const Homepage = () => {
 
   const { indexerClient } = getNetworkConfigAndClients(chainId)
 
-  const [feeOptionBalances, setFeeOptionBalances] = React.useState<{ tokenName: string; decimals: number; balance: string }[]>([])
+  // const [feeOptionBalances, setFeeOptionBalances] = React.useState<{ tokenName: string; decimals: number; balance: string }[]>([])
 
-  const [feeOptionAlert, setFeeOptionAlert] = React.useState<AlertProps | undefined>(undefined)
+  // const [feeOptionAlert, setFeeOptionAlert] = React.useState<AlertProps | undefined>(undefined)
 
-  useEffect(() => {
-    checkTokenBalancesForFeeOptions()
-  }, [pendingFeeOptionConfirmation])
+  // useEffect(() => {
+  //   checkTokenBalancesForFeeOptions()
+  // }, [pendingFeeOptionConfirmation])
 
   const handleSwitchConnectionMode = (mode: ConnectionMode) => {
     const searchParams = new URLSearchParams()
@@ -116,36 +119,36 @@ export const Homepage = () => {
     window.location.search = searchParams.toString()
   }
 
-  const checkTokenBalancesForFeeOptions = async () => {
-    if (pendingFeeOptionConfirmation) {
-      const [account] = await walletClient.getAddresses()
-      const nativeTokenBalance = await indexerClient.getEtherBalance({ accountAddress: account })
+  // const checkTokenBalancesForFeeOptions = async () => {
+  //   if (pendingFeeOptionConfirmation) {
+  //     const [account] = await walletClient.getAddresses()
+  //     const nativeTokenBalance = await indexerClient.getEtherBalance({ accountAddress: account })
 
-      const tokenBalances = await indexerClient.getTokenBalances({
-        accountAddress: account
-      })
+  //     const tokenBalances = await indexerClient.getTokenBalances({
+  //       accountAddress: account
+  //     })
 
-      console.log('feeOptions', pendingFeeOptionConfirmation.options)
-      console.log('nativeTokenBalance', nativeTokenBalance)
-      console.log('tokenBalances', tokenBalances)
+  //     console.log('feeOptions', pendingFeeOptionConfirmation.options)
+  //     console.log('nativeTokenBalance', nativeTokenBalance)
+  //     console.log('tokenBalances', tokenBalances)
 
-      const balances = pendingFeeOptionConfirmation.options.map(option => {
-        if (option.token.contractAddress === null) {
-          return { tokenName: option.token.name, decimals: option.token.decimals, balance: nativeTokenBalance.balance.balanceWei }
-        } else {
-          return {
-            tokenName: option.token.name,
-            decimals: option.token.decimals,
-            balance:
-              tokenBalances.balances.find(b => b.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())
-                ?.balance || '0'
-          }
-        }
-      })
+  //     const balances = pendingFeeOptionConfirmation.options.map(option => {
+  //       if (option.token.contractAddress === null) {
+  //         return { tokenName: option.token.name, decimals: option.token.decimals, balance: nativeTokenBalance.balance.balanceWei }
+  //       } else {
+  //         return {
+  //           tokenName: option.token.name,
+  //           decimals: option.token.decimals,
+  //           balance:
+  //             tokenBalances.balances.find(b => b.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())
+  //               ?.balance || '0'
+  //         }
+  //       }
+  //     })
 
-      setFeeOptionBalances(balances)
-    }
-  }
+  //     setFeeOptionBalances(balances)
+  //   }
+  // }
 
   const networkForCurrentChainId = allNetworks.find(n => n.chainId === chainId)
 
@@ -215,13 +218,33 @@ export const Homepage = () => {
   }
 
   const runSendTransaction = async () => {
+    // NOTE: commented code is how to send ETH value to the account
+    // if (!walletClient) {
+    //   return
+    // }
+    // const [account] = await walletClient.getAddresses()
+    // sendTransaction({ to: account, value: '0', gas: null })
+
+    // NOTE: below is a a simple contract call. See `runMintNFT`
+    // on another example where you can use the wagmi `writeContract`
+    // method to do the same thing.
     if (!walletClient) {
       return
     }
 
-    const [account] = await walletClient.getAddresses()
+    const contractAbiInterface = new ethers.utils.Interface([
+      'function demo()'
+    ])
 
-    sendTransaction({ to: account, value: '0', gas: null })
+    const data = contractAbiInterface.encodeFunctionData(
+      'demo', []
+    )
+
+    sendTransaction({
+      to: '0x37470dac8a0255141745906c972e414b1409b470',
+      data,
+      gas: null
+    })
   }
 
   const runMintNFT = async () => {
@@ -445,7 +468,7 @@ export const Homepage = () => {
               />
             </Box>
 
-            {pendingFeeOptionConfirmation && feeOptionBalances.length > 0 && (
+            {/* {pendingFeeOptionConfirmation && feeOptionBalances.length > 0 && (
               <Box marginY="3">
                 <Select
                   name="feeOption"
@@ -525,7 +548,7 @@ export const Homepage = () => {
                   )}
                 </Box>
               </Box>
-            )}
+            )} */}
 
             {isWaasConnection && (
               <Box marginY="3">
