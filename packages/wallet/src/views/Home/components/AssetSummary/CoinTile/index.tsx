@@ -1,9 +1,7 @@
-import React from 'react'
 import { ethers } from 'ethers'
 import { useConfig } from 'wagmi'
 import { Box } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useContractInfo } from '../../../../../hooks'
 
 import { CoinTileContent } from './CoinTileContent'
 
@@ -11,7 +9,7 @@ import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
 import { computeBalanceFiat, formatDisplay, getPercentagePriceChange, compareAddress } from '../../../../../utils'
 
-import { useCoinPrices, useConversionRate, useSettings } from '../../../../../hooks'
+import { useContractInfo, useCoinPrices, useConversionRate, useSettings } from '../../../../../hooks'
 
 interface CoinTileProps {
   balance: TokenBalance

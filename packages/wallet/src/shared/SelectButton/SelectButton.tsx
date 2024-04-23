@@ -1,4 +1,3 @@
-import React from 'react'
 import { BoxProps, Card } from '@0xsequence/design-system'
 import { clsx } from 'clsx'
 import { ReactNode } from 'react'

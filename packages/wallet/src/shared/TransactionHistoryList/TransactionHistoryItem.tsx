@@ -30,7 +30,7 @@ export const TransactionHistoryItem = ({ transaction }: TransactionHistoryItemPr
     })
   }
 
-  let tokenContractAddresses: string[] = []
+  const tokenContractAddresses: string[] = []
 
   transaction.transfers?.forEach(transfer => {
     const tokenContractAddress = transfer.contractAddress
