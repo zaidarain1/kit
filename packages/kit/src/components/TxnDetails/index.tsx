@@ -112,8 +112,8 @@ const TransferItemInfo = ({ address, transferProps, chainId }: TransferItemInfoP
   const imageUrl = isNativeCoin
     ? nativeTokenInfo.logoURI
     : isNFT
-    ? tokenMetadata?.[0]?.image
-    : tokenBalance?.contractInfo?.logoURI
+      ? tokenMetadata?.[0]?.image
+      : tokenBalance?.contractInfo?.logoURI
   const name = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata?.[0]?.name : tokenBalance?.contractInfo?.name || ''
   const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? '' : tokenBalance?.contractInfo?.symbol || ''
 
