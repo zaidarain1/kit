@@ -13,8 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "0xsequence": "^1.9.19",
-    "@0xsequence/kit": "^2.2.2",
-    "@0xsequence/kit-checkout": "^2.2.2",
+    "@0xsequence/kit": "workspace:*",
     "@tanstack/react-query": "^4.36.1",
     "viem": "^2.5.7",
     "wagmi": "^2.5.7"

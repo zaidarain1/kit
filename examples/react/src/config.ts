@@ -1,7 +1,7 @@
 import { KitConfig, getKitConnectWallets } from '@0xsequence/kit'
 import { getDefaultConnectors, mock } from '@0xsequence/kit-connectors'
 import { Chain, arbitrumNova, arbitrumSepolia, mainnet, polygon } from 'wagmi/chains'
-import { sequence } from '0xsequence'
+import { findNetworkConfig, allNetworks } from '@0xsequence/network'
 import { createConfig, http } from 'wagmi'
 import { Transport, zeroAddress } from 'viem'
 
@@ -13,7 +13,7 @@ const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
 
 const chains = [arbitrumNova, arbitrumSepolia, mainnet, polygon] as const satisfies Chain[]
 const transports = chains.reduce<Record<number, Transport>>((acc, chain) => {
-  const network = sequence.network.findNetworkConfig(sequence.network.allNetworks, chain.id)
+  const network = findNetworkConfig(allNetworks, chain.id)
 
   if (network) {
     acc[chain.id] = http(network.rpcUrl)
@@ -23,7 +23,7 @@ const transports = chains.reduce<Record<number, Transport>>((acc, chain) => {
 }, {})
 
 chains.forEach(chain => {
-  const network = sequence.network.findNetworkConfig(sequence.network.allNetworks, chain.id)
+  const network = findNetworkConfig(allNetworks, chain.id)
   if (!network) return
   transports[chain.id] = http(network.rpcUrl)
 })

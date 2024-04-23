@@ -37,11 +37,10 @@ import {
   Select,
   IconButton
 } from '@0xsequence/design-system'
-
+import { allNetworks } from '@0xsequence/network'
 import { Footer } from './Footer'
 import { messageToSign } from '../constants'
 import { formatAddress, getCheckoutSettings } from '../utils'
-import { sequence } from '0xsequence'
 import abi from '../constants/nft-abi'
 import { ethers } from 'ethers'
 import { Alert, AlertProps } from './Alert'
@@ -138,7 +137,7 @@ function Homepage() {
     }
   }
 
-  const networkForCurrentChainId = sequence.network.allNetworks.find(n => n.chainId === chainId)
+  const networkForCurrentChainId = allNetworks.find(n => n.chainId === chainId)
 
   const publicClient = usePublicClient({ chainId })
 
