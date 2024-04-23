@@ -1,5 +1,5 @@
 import { Token, TokenPrice, GetCoinPricesReturn } from '@0xsequence/api'
-import { getNetworkConfigAndClients } from '@0xsequence/kit'
+import { getNetworkConfigAndClients, LocalStorageKey } from '@0xsequence/kit'
 import { TokenBalance, ContractType } from '@0xsequence/indexer'
 import { GetContractInfoArgs, ContractInfo, TokenMetadata } from '@0xsequence/metadata'
 import { ethers } from 'ethers'
@@ -160,8 +160,22 @@ export const fetchContractInfo = async ({ chainID, contractAddress }: GetContrac
 }
 
 export const fetchSardineClientToken = async (): Promise<string> => {
-  const { apiClient } = getNetworkConfigAndClients(1)
-  const res = await apiClient.getSardineClientToken()
+  // TODO: use GetSardineNFTCheckoutToken once added to the apiClient of sequence.js
+  // const { apiClient } = getNetworkConfigAndClients(1)
+  // const res = await apiClient.getSardineNFTCheckoutToken()
+
+  const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || undefined
+
+  const request = await fetch('https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Access-Key': `${projectAccessKey || ''}`,
+    },
+    body: JSON.stringify({})
+  })
+
+  const res = await request.json()
 
   return res.token
 }
