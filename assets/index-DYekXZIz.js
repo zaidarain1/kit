@@ -69226,7 +69226,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DD2PFKbn.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-dHlFoYWI.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
     if ((data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to) {
       return { data: await offchainLookup(client2, { data: data2, to }) };
     }
@@ -77372,7 +77372,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-ivVUtxzs.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-Spuu50bp.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -77540,7 +77540,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-D6C7Q3GL.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CCdPp9UK.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -77733,24 +77733,19 @@ function _extends$6() {
   };
   return _extends$6.apply(this, arguments);
 }
-function _objectDestructuringEmpty$1(obj) {
-  if (obj == null)
-    throw new TypeError("Cannot destructure " + obj);
-}
 const getAppleLogo = ({
   isDarkMode
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
-  const AppleLogo = (_ref) => {
-    let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+  const AppleLogo = (props) => {
+    return /* @__PURE__ */ React.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 29 34",
       fill: "none"
     }, props), /* @__PURE__ */ React.createElement("path", {
       d: "M27.702 11.5918C27.5049 11.7448 24.0243 13.7068 24.0243 18.0694C24.0243 23.1155 28.4532 24.9007 28.5858 24.9449C28.5654 25.0537 27.8822 27.3897 26.2506 29.77C24.7958 31.8646 23.2765 33.9558 20.9651 33.9558C18.6538 33.9558 18.0589 32.6127 15.3907 32.6127C12.7904 32.6127 11.8659 34 9.75169 34C7.63748 34 6.1623 32.0618 4.46618 29.6816C2.50154 26.8865 0.914185 22.5443 0.914185 18.423C0.914185 11.8128 5.21057 8.30703 9.43897 8.30703C11.6857 8.30703 13.5586 9.78278 14.9692 9.78278C16.3118 9.78278 18.4056 8.21862 20.9617 8.21862C21.9304 8.21862 25.4111 8.30703 27.702 11.5918ZM19.7483 5.42014C20.8054 4.16542 21.5532 2.42444 21.5532 0.683468C21.5532 0.442044 21.5328 0.19722 21.4886 0C19.7687 0.0646065 17.7224 1.14591 16.4886 2.57746C15.5199 3.67917 14.6157 5.42014 14.6157 7.18492C14.6157 7.45014 14.6599 7.71537 14.6803 7.80038C14.7891 7.82078 14.9658 7.84458 15.1426 7.84458C16.6857 7.84458 18.6266 6.81088 19.7483 5.42014Z",
       fill: fillColor
-    })));
+    }));
   };
   return AppleLogo;
 };
@@ -77758,9 +77753,8 @@ const getAppleMonochromeLogo = ({
   isDarkMode
 }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
-  const AppleOtcLogo = (_ref2) => {
-    let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref2), _ref2));
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+  const AppleOtcLogo = (props) => {
+    return /* @__PURE__ */ React.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
@@ -77770,7 +77764,7 @@ const getAppleMonochromeLogo = ({
     }), /* @__PURE__ */ React.createElement("path", {
       d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z",
       fill: fillColor
-    })));
+    }));
   };
   return AppleOtcLogo;
 };
@@ -77963,9 +77957,8 @@ const apple = (options) => ({
     return connector;
   }
 });
-const CoinbaseWalletLogo = (_ref) => {
-  let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+const CoinbaseWalletLogo = (props) => {
+  return /* @__PURE__ */ React.createElement("svg", _extends$6({
     viewBox: "0 0 28 28",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -77978,7 +77971,7 @@ const CoinbaseWalletLogo = (_ref) => {
     clipRule: "evenodd",
     d: "M14 23.8C19.4124 23.8 23.8 19.4124 23.8 14C23.8 8.58761 19.4124 4.2 14 4.2C8.58761 4.2 4.2 8.58761 4.2 14C4.2 19.4124 8.58761 23.8 14 23.8ZM11.55 10.8C11.1358 10.8 10.8 11.1358 10.8 11.55V16.45C10.8 16.8642 11.1358 17.2 11.55 17.2H16.45C16.8642 17.2 17.2 16.8642 17.2 16.45V11.55C17.2 11.1358 16.8642 10.8 16.45 10.8H11.55Z",
     fill: "white"
-  })));
+  }));
 };
 const coinbaseWallet = (params) => ({
   id: "coinbase-wallet",
@@ -77994,9 +77987,8 @@ const getEmailLogo = ({
   isDarkMode
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
-  const EmailLogo = (_ref) => {
-    let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+  const EmailLogo = (props) => {
+    return /* @__PURE__ */ React.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 35 34",
       fill: "none"
@@ -78006,7 +77998,7 @@ const getEmailLogo = ({
     }), /* @__PURE__ */ React.createElement("path", {
       d: "M19.7626 19.2667L33.3838 8.19943C33.731 7.91735 34.2501 8.16441 34.2501 8.61174V24.2249C34.2501 26.5721 32.3473 28.4749 30.0001 28.4749H4.50006C2.15285 28.4749 0.250061 26.5721 0.250061 24.2249V8.61174C0.250061 8.16441 0.769134 7.91735 1.11631 8.19943L14.7375 19.2667C16.2014 20.4561 18.2987 20.4561 19.7626 19.2667Z",
       fill: fillColor
-    })));
+    }));
   };
   return EmailLogo;
 };
@@ -78037,9 +78029,8 @@ const email = (options) => ({
     return connector;
   }
 });
-const FacebookLogo = (_ref) => {
-  let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+const FacebookLogo = (props) => {
+  return /* @__PURE__ */ React.createElement("svg", _extends$6({
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 41 40",
     fill: "none"
@@ -78061,22 +78052,21 @@ const FacebookLogo = (_ref) => {
   }), /* @__PURE__ */ React.createElement("stop", {
     offset: "1",
     "stop-color": "#19AFFF"
-  })))));
+  }))));
 };
 const getFacebookMonochromeLogo = ({
   isDarkMode
 }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
-  const FacebookMonochromeLogo = (_ref2) => {
-    let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref2), _ref2));
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+  const FacebookMonochromeLogo = (props) => {
+    return /* @__PURE__ */ React.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
     }, props), /* @__PURE__ */ React.createElement("path", {
       d: "M25.8582 10.4398C24.1222 10.4398 23.6288 11.2098 23.6288 12.9073V15.709H28.246L27.791 20.2476H23.6279V34H18.1024V20.2468H14.375V15.7081H18.1042V12.9851C18.1042 8.40625 19.9399 6 25.0891 6C26.1942 6 27.5163 6.0875 28.3055 6.19775V10.459",
       fill: fillColor
-    })));
+    }));
   };
   return FacebookMonochromeLogo;
 };
@@ -78105,9 +78095,8 @@ const facebook = (options) => ({
     return connector;
   }
 });
-const GoogleLogo = (_ref) => {
-  let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+const GoogleLogo = (props) => {
+  return /* @__PURE__ */ React.createElement("svg", _extends$6({
     viewBox: "0 0 41 40",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -78131,14 +78120,13 @@ const GoogleLogo = (_ref) => {
     id: "Vector_4",
     d: "M20.7497 9.6829C23.2744 9.6829 25.5185 10.5556 27.3107 12.2387L32.2198 7.32972C29.2431 4.55574 25.3783 2.85693 20.7497 2.85693C14.0484 2.85693 8.2667 6.70628 5.44592 12.3167L11.1497 16.7427C12.5055 12.6907 16.2926 9.6829 20.7497 9.6829Z",
     fill: "#EA4335"
-  })))));
+  }))));
 };
 const getMonochromeGoogleLogo = ({
   isDarkMode
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
-  const GoogleMonochromeLogo = (_ref2) => {
-    let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref2), _ref2));
+  const GoogleMonochromeLogo = (props) => {
     return /* @__PURE__ */ React.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
@@ -78177,9 +78165,8 @@ const google = (options) => ({
     return connector;
   }
 });
-const MetamaskLogo = (_ref) => {
-  let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+const MetamaskLogo = (props) => {
+  return /* @__PURE__ */ React.createElement("svg", _extends$6({
     viewBox: "0 0 28 28",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -78389,7 +78376,7 @@ const MetamaskLogo = (_ref) => {
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  })));
+  }));
 };
 const metamask = () => ({
   id: "metamask",
@@ -78404,9 +78391,8 @@ const metamask = () => ({
     return connector;
   }
 });
-const SequenceLogo$1 = (_ref) => {
-  let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+const SequenceLogo$1 = (props) => {
+  return /* @__PURE__ */ React.createElement("svg", _extends$6({
     xmlns: "http://www.w3.org/2000/svg",
     style: {
       fill: "none"
@@ -78651,7 +78637,7 @@ const SequenceLogo$1 = (_ref) => {
     id: "rect1311",
     height: "317.67001",
     width: "396"
-  })))));
+  }))));
 };
 const mock = (options) => ({
   id: "mock",
@@ -78686,9 +78672,8 @@ const getTwitchLogo = ({
   } else {
     fillColor = isDarkMode ? "white" : "black";
   }
-  const TwitchLogo = (_ref) => {
-    _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", {
+  const TwitchLogo = (props) => {
+    return /* @__PURE__ */ React.createElement("svg", _extends$6({
       version: "1.1",
       id: "Layer_1",
       xmlns: "http://www.w3.org/2000/svg",
@@ -78696,7 +78681,7 @@ const getTwitchLogo = ({
       y: "0px",
       viewBox: "0 0 2400 2800",
       transform: "scale(0.80)"
-    }, /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("g", {
+    }, props), /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("g", {
       id: "Layer_1-2"
     }, /* @__PURE__ */ React.createElement("path", {
       fill: fillColor,
@@ -78713,7 +78698,7 @@ const getTwitchLogo = ({
       fill: fillColor,
       width: "200",
       height: "600"
-    })))));
+    }))));
   };
   return TwitchLogo;
 };
@@ -78742,16 +78727,15 @@ const twitch = (options) => ({
     return connector;
   }
 });
-const WalletConnectLogo = (_ref) => {
-  let props = _extends$6({}, (_objectDestructuringEmpty$1(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$6({
+const WalletConnectLogo = (props) => {
+  return /* @__PURE__ */ React.createElement("svg", _extends$6({
     fill: "none",
     viewBox: "0 0 480 332",
     xmlns: "http://www.w3.org/2000/svg"
   }, props), /* @__PURE__ */ React.createElement("path", {
     d: "m126.613 93.9842c62.622-61.3123 164.152-61.3123 226.775 0l7.536 7.3788c3.131 3.066 3.131 8.036 0 11.102l-25.781 25.242c-1.566 1.533-4.104 1.533-5.67 0l-10.371-10.154c-43.687-42.7734-114.517-42.7734-158.204 0l-11.107 10.874c-1.565 1.533-4.103 1.533-5.669 0l-25.781-25.242c-3.132-3.066-3.132-8.036 0-11.102zm280.093 52.2038 22.946 22.465c3.131 3.066 3.131 8.036 0 11.102l-103.463 101.301c-3.131 3.065-8.208 3.065-11.339 0l-73.432-71.896c-.783-.767-2.052-.767-2.835 0l-73.43 71.896c-3.131 3.065-8.208 3.065-11.339 0l-103.4657-101.302c-3.1311-3.066-3.1311-8.036 0-11.102l22.9456-22.466c3.1311-3.065 8.2077-3.065 11.3388 0l73.4333 71.897c.782.767 2.051.767 2.834 0l73.429-71.897c3.131-3.065 8.208-3.065 11.339 0l73.433 71.897c.783.767 2.052.767 2.835 0l73.431-71.895c3.132-3.066 8.208-3.066 11.339 0z",
     fill: "#3396ff"
-  })));
+  }));
 };
 const walletConnect = (options) => ({
   id: "wallet-connect",
@@ -86664,11 +86648,11 @@ const $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ reactExports.f
       } else
         return child;
     });
-    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$4({}, slotProps, {
+    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
       ref: forwardedRef
     }), /* @__PURE__ */ reactExports.isValidElement(newElement) ? /* @__PURE__ */ reactExports.cloneElement(newElement, void 0, newChildren) : null);
   }
-  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$4({}, slotProps, {
+  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
     ref: forwardedRef
   }), children);
 });
@@ -86746,7 +86730,7 @@ const $8927f6f2acc4f386$export$250ffa63cdc0d034 = $8927f6f2acc4f386$var$NODES.re
     reactExports.useEffect(() => {
       window[Symbol.for("radix-ui")] = true;
     }, []);
-    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$4({}, primitiveProps, {
+    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$3({}, primitiveProps, {
       ref: forwardedRef
     }));
   });
@@ -96335,14 +96319,12 @@ const ConnectWalletContent = (props) => {
     connect: connect2
   } = useConnect();
   const injectedConnectors = baseConnectors.filter((c) => c.type === "injected" && !c.hasOwnProperty("_wallet")).map((connector) => {
-    const Logo = () => {
-      return /* @__PURE__ */ React.createElement(Image$1, {
+    const Logo = (props2) => {
+      return /* @__PURE__ */ React.createElement(Image$1, _extends$1({
         src: connector.icon,
         alt: connector.name,
-        disableAnimation: true,
-        width: "full",
-        height: "full"
-      });
+        disableAnimation: true
+      }, props2));
     };
     return _extends$1({}, connector, {
       _wallet: {
@@ -96627,7 +96609,11 @@ const ConnectButton = (props) => {
     justifyContent: "center",
     alignItems: "center",
     onClick: () => onConnect(connector)
-  }, /* @__PURE__ */ React.createElement(Logo, null)));
+  }, /* @__PURE__ */ React.createElement(Box, {
+    as: Logo,
+    width: "6",
+    height: "6"
+  })));
 };
 function _objectDestructuringEmpty(obj) {
   if (obj == null)
@@ -101505,7 +101491,7 @@ export {
 };
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./index-ivVUtxzs.js","./___vite-browser-external_commonjs-proxy-BjOBvsn3.js","./index.es-D6C7Q3GL.js"]
+    __vite__mapDeps.viteFileDeps = ["./index-Spuu50bp.js","./___vite-browser-external_commonjs-proxy-B_SxTE4g.js","./index.es-CCdPp9UK.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
