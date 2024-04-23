@@ -69226,7 +69226,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-dHlFoYWI.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Bv86Sg6O.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
     if ((data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to) {
       return { data: await offchainLookup(client2, { data: data2, to }) };
     }
@@ -77372,7 +77372,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-Spuu50bp.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-DcHPcN7y.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -77540,7 +77540,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CCdPp9UK.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CbmGpx0f.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -100891,7 +100891,7 @@ function Homepage() {
       setFeeOptionBalances(balances);
     }
   };
-  const networkForCurrentChainId = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId);
+  const networkForCurrentChainId = allNetworks.find((n2) => n2.chainId === chainId);
   const publicClient = usePublicClient({ chainId });
   const generateEthAuthProof = async () => {
     if (!walletClient || !publicClient) {
@@ -101391,14 +101391,14 @@ const isDebugMode = searchParams.has("debug");
 const projectAccessKey = "AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI";
 const chains = [arbitrumNova, arbitrumSepolia, mainnet, polygon];
 const transports = chains.reduce((acc, chain) => {
-  const network2 = sequence$1.network.findNetworkConfig(sequence$1.network.allNetworks, chain.id);
+  const network2 = findNetworkConfig(allNetworks, chain.id);
   if (network2) {
     acc[chain.id] = http(network2.rpcUrl);
   }
   return acc;
 }, {});
 chains.forEach((chain) => {
-  const network2 = sequence$1.network.findNetworkConfig(sequence$1.network.allNetworks, chain.id);
+  const network2 = findNetworkConfig(allNetworks, chain.id);
   if (!network2)
     return;
   transports[chain.id] = http(network2.rpcUrl);
@@ -101460,6 +101460,7 @@ const queryClient = new QueryClient();
 function App() {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 }
+console.log("VERSION:", "0.1.1");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
@@ -101491,7 +101492,7 @@ export {
 };
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./index-Spuu50bp.js","./___vite-browser-external_commonjs-proxy-B_SxTE4g.js","./index.es-CCdPp9UK.js"]
+    __vite__mapDeps.viteFileDeps = ["./index-DcHPcN7y.js","./___vite-browser-external_commonjs-proxy-WYJohmSn.js","./index.es-CbmGpx0f.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
