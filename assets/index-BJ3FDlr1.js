@@ -383,10 +383,10 @@ react_production_min.version = "18.2.0";
   react.exports = react_production_min;
 }
 var reactExports = react.exports;
-const React = /* @__PURE__ */ getDefaultExportFromCjs$1(reactExports);
+const React$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(reactExports);
 const $2AODx$react = /* @__PURE__ */ _mergeNamespaces({
   __proto__: null,
-  default: React
+  default: React$1
 }, [reactExports]);
 /**
  * @license React
@@ -7817,7 +7817,7 @@ function useProjectionId() {
   });
 }
 const LayoutGroupContext = reactExports.createContext({});
-class VisualElementHandler extends React.Component {
+class VisualElementHandler extends React$1.Component {
   /**
    * Update visual element props as soon as we know this update is going to be commited.
    */
@@ -12272,7 +12272,7 @@ const correctBoxShadow = {
     return output2;
   }
 };
-class MeasureLayoutWithContext extends React.Component {
+class MeasureLayoutWithContext extends React$1.Component {
   /**
    * This only mounts projection nodes for components that
    * need measuring, we might want to do it for all components
@@ -12355,7 +12355,7 @@ class MeasureLayoutWithContext extends React.Component {
 function MeasureLayout(props) {
   const [isPresent, safeToRemove] = usePresence();
   const layoutGroup = reactExports.useContext(LayoutGroupContext);
-  return React.createElement(MeasureLayoutWithContext, { ...props, layoutGroup, switchLayoutGroup: reactExports.useContext(SwitchLayoutGroupContext), isPresent, safeToRemove });
+  return React$1.createElement(MeasureLayoutWithContext, { ...props, layoutGroup, switchLayoutGroup: reactExports.useContext(SwitchLayoutGroupContext), isPresent, safeToRemove });
 }
 const defaultScaleCorrectors = {
   borderRadius: {
@@ -14676,7 +14676,7 @@ function requireReactJsxRuntime_production_min() {
   if (hasRequiredReactJsxRuntime_production_min)
     return reactJsxRuntime_production_min;
   hasRequiredReactJsxRuntime_production_min = 1;
-  var f2 = React, k2 = Symbol.for("react.element"), l2 = Symbol.for("react.fragment"), m2 = Object.prototype.hasOwnProperty, n2 = f2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, p2 = { key: true, ref: true, __self: true, __source: true };
+  var f2 = React$1, k2 = Symbol.for("react.element"), l2 = Symbol.for("react.fragment"), m2 = Object.prototype.hasOwnProperty, n2 = f2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, p2 = { key: true, ref: true, __self: true, __source: true };
   function q2(c, a2, g2) {
     var b3, d = {}, e2 = null, h2 = null;
     void 0 !== g2 && (e2 = "" + g2);
@@ -16307,7 +16307,7 @@ reactExports.forwardRef(
     );
   }
 );
-React.createContext(null);
+React$1.createContext(null);
 const $1746a345f3d73bb7$var$useReactId$1 = $2AODx$react["useId".toString()] || (() => void 0);
 let $1746a345f3d73bb7$var$count$1 = 0;
 function $1746a345f3d73bb7$export$f680877a34711e37$1(deterministicId) {
@@ -16544,45 +16544,45 @@ function $e02a7d9cb1dc128c$export$c74125a8e3af6bb2(name) {
   });
   const CollectionProvider = (props) => {
     const { scope, children } = props;
-    const ref = React.useRef(null);
-    const itemMap = React.useRef(/* @__PURE__ */ new Map()).current;
-    return /* @__PURE__ */ React.createElement(CollectionProviderImpl, {
+    const ref = React$1.useRef(null);
+    const itemMap = React$1.useRef(/* @__PURE__ */ new Map()).current;
+    return /* @__PURE__ */ React$1.createElement(CollectionProviderImpl, {
       scope,
       itemMap,
       collectionRef: ref
     }, children);
   };
   const COLLECTION_SLOT_NAME = name + "CollectionSlot";
-  const CollectionSlot = /* @__PURE__ */ React.forwardRef((props, forwardedRef) => {
+  const CollectionSlot = /* @__PURE__ */ React$1.forwardRef((props, forwardedRef) => {
     const { scope, children } = props;
     const context2 = useCollectionContext(COLLECTION_SLOT_NAME, scope);
     const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05$1(forwardedRef, context2.collectionRef);
-    return /* @__PURE__ */ React.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360$1, {
+    return /* @__PURE__ */ React$1.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360$1, {
       ref: composedRefs
     }, children);
   });
   const ITEM_SLOT_NAME = name + "CollectionItemSlot";
   const ITEM_DATA_ATTR = "data-radix-collection-item";
-  const CollectionItemSlot = /* @__PURE__ */ React.forwardRef((props, forwardedRef) => {
+  const CollectionItemSlot = /* @__PURE__ */ React$1.forwardRef((props, forwardedRef) => {
     const { scope, children, ...itemData } = props;
-    const ref = React.useRef(null);
+    const ref = React$1.useRef(null);
     const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05$1(forwardedRef, ref);
     const context2 = useCollectionContext(ITEM_SLOT_NAME, scope);
-    React.useEffect(() => {
+    React$1.useEffect(() => {
       context2.itemMap.set(ref, {
         ref,
         ...itemData
       });
       return () => void context2.itemMap.delete(ref);
     });
-    return /* @__PURE__ */ React.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360$1, {
+    return /* @__PURE__ */ React$1.createElement($5e63c961fc1ce211$export$8c6ed5c666ac1360$1, {
       [ITEM_DATA_ATTR]: "",
       ref: composedRefs
     }, children);
   });
   function useCollection(scope) {
     const context2 = useCollectionContext(name + "CollectionConsumer", scope);
-    const getItems = React.useCallback(() => {
+    const getItems = React$1.useCallback(() => {
       const collectionNode = context2.collectionRef.current;
       if (!collectionNode)
         return [];
@@ -64677,7 +64677,7 @@ function GoogleOAuthProvider({ clientId, nonce, onScriptLoadSuccess, onScriptLoa
     clientId,
     scriptLoadedSuccessfully
   }), [clientId, scriptLoadedSuccessfully]);
-  return React.createElement(GoogleOAuthContext.Provider, { value: contextValue }, children);
+  return React$1.createElement(GoogleOAuthContext.Provider, { value: contextValue }, children);
 }
 function useGoogleOAuth() {
   const context2 = reactExports.useContext(GoogleOAuthContext);
@@ -64752,7 +64752,7 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
     width,
     locale
   ]);
-  return React.createElement("div", { ...containerProps, ref: btnContainerRef, style: { height: containerHeightMap[size2], ...containerProps === null || containerProps === void 0 ? void 0 : containerProps.style } });
+  return React$1.createElement("div", { ...containerProps, ref: btnContainerRef, style: { height: containerHeightMap[size2], ...containerProps === null || containerProps === void 0 ? void 0 : containerProps.style } });
 }
 const version$2 = "2.7.9";
 const getContractAddress = (address) => address;
@@ -69226,7 +69226,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Bv86Sg6O.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BTOeO_88.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
     if ((data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to) {
       return { data: await offchainLookup(client2, { data: data2, to }) };
     }
@@ -77372,7 +77372,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-DcHPcN7y.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-z7DNFNci.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -77540,7 +77540,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CbmGpx0f.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CcAtfMcD.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -77738,11 +77738,11 @@ const getAppleLogo = ({
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const AppleLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 29 34",
       fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
+    }, props), /* @__PURE__ */ React$1.createElement("path", {
       d: "M27.702 11.5918C27.5049 11.7448 24.0243 13.7068 24.0243 18.0694C24.0243 23.1155 28.4532 24.9007 28.5858 24.9449C28.5654 25.0537 27.8822 27.3897 26.2506 29.77C24.7958 31.8646 23.2765 33.9558 20.9651 33.9558C18.6538 33.9558 18.0589 32.6127 15.3907 32.6127C12.7904 32.6127 11.8659 34 9.75169 34C7.63748 34 6.1623 32.0618 4.46618 29.6816C2.50154 26.8865 0.914185 22.5443 0.914185 18.423C0.914185 11.8128 5.21057 8.30703 9.43897 8.30703C11.6857 8.30703 13.5586 9.78278 14.9692 9.78278C16.3118 9.78278 18.4056 8.21862 20.9617 8.21862C21.9304 8.21862 25.4111 8.30703 27.702 11.5918ZM19.7483 5.42014C20.8054 4.16542 21.5532 2.42444 21.5532 0.683468C21.5532 0.442044 21.5328 0.19722 21.4886 0C19.7687 0.0646065 17.7224 1.14591 16.4886 2.57746C15.5199 3.67917 14.6157 5.42014 14.6157 7.18492C14.6157 7.45014 14.6599 7.71537 14.6803 7.80038C14.7891 7.82078 14.9658 7.84458 15.1426 7.84458C16.6857 7.84458 18.6266 6.81088 19.7483 5.42014Z",
       fill: fillColor
     }));
@@ -77754,14 +77754,14 @@ const getAppleMonochromeLogo = ({
 }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
   const AppleOtcLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
+    }, props), /* @__PURE__ */ React$1.createElement("path", {
       d: "M27.166 20.8774C27.1338 17.335 30.0617 15.633 30.1936 15.5493C28.5463 13.1395 25.9852 12.8113 25.0714 12.7727C22.8932 12.5507 20.8179 14.0565 19.7111 14.0565C18.6043 14.0565 16.8991 12.8049 15.0909 12.8403C12.7131 12.8757 10.5221 14.2205 9.2962 16.3505C6.8284 20.6297 8.66557 26.9777 11.0722 30.4557C12.2498 32.1545 13.6494 34.0689 15.493 33.9981C17.2691 33.9273 17.9383 32.8495 20.0811 32.8495C22.224 32.8495 22.8289 33.9981 24.7014 33.9627C26.6094 33.9241 27.8191 32.2253 28.9871 30.5201C30.3352 28.5478 30.8918 26.6366 30.924 26.5369C30.8822 26.5208 27.2046 25.1116 27.166 20.8774Z",
       fill: fillColor
-    }), /* @__PURE__ */ React.createElement("path", {
+    }), /* @__PURE__ */ React$1.createElement("path", {
       d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z",
       fill: fillColor
     }));
@@ -77958,15 +77958,15 @@ const apple = (options) => ({
   }
 });
 const CoinbaseWalletLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     viewBox: "0 0 28 28",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("rect", {
+  }, props), /* @__PURE__ */ React$1.createElement("rect", {
     width: "28",
     height: "28",
     fill: "#2C5FF6"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
     d: "M14 23.8C19.4124 23.8 23.8 19.4124 23.8 14C23.8 8.58761 19.4124 4.2 14 4.2C8.58761 4.2 4.2 8.58761 4.2 14C4.2 19.4124 8.58761 23.8 14 23.8ZM11.55 10.8C11.1358 10.8 10.8 11.1358 10.8 11.55V16.45C10.8 16.8642 11.1358 17.2 11.55 17.2H16.45C16.8642 17.2 17.2 16.8642 17.2 16.45V11.55C17.2 11.1358 16.8642 10.8 16.45 10.8H11.55Z",
@@ -77988,14 +77988,14 @@ const getEmailLogo = ({
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const EmailLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 35 34",
       fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
+    }, props), /* @__PURE__ */ React$1.createElement("path", {
       d: "M17.0826 16.3805C17.1802 16.4598 17.32 16.4598 17.4176 16.3805L30.1401 6.04341C30.5283 5.72801 30.3053 5.09985 29.8051 5.09985H4.69499C4.19482 5.09985 3.9718 5.72801 4.35998 6.04341L17.0826 16.3805Z",
       fill: fillColor
-    }), /* @__PURE__ */ React.createElement("path", {
+    }), /* @__PURE__ */ React$1.createElement("path", {
       d: "M19.7626 19.2667L33.3838 8.19943C33.731 7.91735 34.2501 8.16441 34.2501 8.61174V24.2249C34.2501 26.5721 32.3473 28.4749 30.0001 28.4749H4.50006C2.15285 28.4749 0.250061 26.5721 0.250061 24.2249V8.61174C0.250061 8.16441 0.769134 7.91735 1.11631 8.19943L14.7375 19.2667C16.2014 20.4561 18.2987 20.4561 19.7626 19.2667Z",
       fill: fillColor
     }));
@@ -78030,26 +78030,26 @@ const email = (options) => ({
   }
 });
 const FacebookLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 41 40",
     fill: "none"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ React$1.createElement("path", {
     d: "M17.4214 36.9716C9.27855 35.5145 3.10712 28.4859 3.10712 20.0001C3.10712 10.5715 10.8214 2.85718 20.25 2.85718C29.6785 2.85718 37.3928 10.5715 37.3928 20.0001C37.3928 28.4859 31.2214 35.5145 23.0785 36.9716L22.1357 36.2002H18.3643L17.4214 36.9716Z",
     fill: "url(#paint0_linear_193_14528)"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M26.9357 24.7999L27.7072 19.9999H23.1643V16.657C23.1643 15.2856 23.6786 14.257 25.7357 14.257H27.9643V9.88558C26.7643 9.71415 25.3929 9.54272 24.1929 9.54272C20.25 9.54272 17.5071 11.9427 17.5071 16.2285V19.9999H13.2214V24.7999H17.5071V36.8857C18.45 37.0571 19.3929 37.1429 20.3357 37.1429C21.2786 37.1429 22.2214 37.0571 23.1643 36.8857V24.7999H26.9357Z",
     fill: "white"
-  }), /* @__PURE__ */ React.createElement("defs", null, /* @__PURE__ */ React.createElement("linearGradient", {
+  }), /* @__PURE__ */ React$1.createElement("defs", null, /* @__PURE__ */ React$1.createElement("linearGradient", {
     id: "paint0_linear_193_14528",
     x1: "20.2508",
     y1: "35.9507",
     x2: "20.2508",
     y2: "2.85086",
     gradientUnits: "userSpaceOnUse"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     "stop-color": "#0062E0"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     offset: "1",
     "stop-color": "#19AFFF"
   }))));
@@ -78059,11 +78059,11 @@ const getFacebookMonochromeLogo = ({
 }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
   const FacebookMonochromeLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
+    }, props), /* @__PURE__ */ React$1.createElement("path", {
       d: "M25.8582 10.4398C24.1222 10.4398 23.6288 11.2098 23.6288 12.9073V15.709H28.246L27.791 20.2476H23.6279V34H18.1024V20.2468H14.375V15.7081H18.1042V12.9851C18.1042 8.40625 19.9399 6 25.0891 6C26.1942 6 27.5163 6.0875 28.3055 6.19775V10.459",
       fill: fillColor
     }));
@@ -78096,27 +78096,27 @@ const facebook = (options) => ({
   }
 });
 const GoogleLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     viewBox: "0 0 41 40",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("g", {
+  }, props), /* @__PURE__ */ React$1.createElement("g", {
     id: "Frame 2114"
-  }, /* @__PURE__ */ React.createElement("g", {
+  }, /* @__PURE__ */ React$1.createElement("g", {
     id: "Group"
-  }, /* @__PURE__ */ React.createElement("path", {
+  }, /* @__PURE__ */ React$1.createElement("path", {
     id: "Vector",
     d: "M20.7497 16.8828V23.5218H29.9756C29.5705 25.6568 28.3548 27.4647 26.5314 28.6803L32.095 32.9972C35.3366 30.0051 37.2068 25.6102 37.2068 20.3895C37.2068 19.1739 37.0977 18.005 36.895 16.883L20.7497 16.8828Z",
     fill: "#4285F4"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     id: "Vector_2",
     d: "M11.1424 23.2627L9.88756 24.2232L5.44592 27.6829C8.2667 33.2777 14.0481 37.1427 20.7493 37.1427C25.3778 37.1427 29.2583 35.6154 32.0947 32.9973L26.5311 28.6803C25.0038 29.7089 23.0557 30.3324 20.7493 30.3324C16.2922 30.3324 12.5053 27.3246 11.1494 23.2726L11.1424 23.2627Z",
     fill: "#34A853"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     id: "Vector_3",
     d: "M5.44594 12.3169C4.27718 14.6233 3.60712 17.2259 3.60712 19.9999C3.60712 22.7739 4.27718 25.3765 5.44594 27.6829C5.44594 27.6984 11.1499 23.2569 11.1499 23.2569C10.8071 22.2284 10.6044 21.1375 10.6044 19.9997C10.6044 18.8619 10.8071 17.7711 11.1499 16.7425L5.44594 12.3169Z",
     fill: "#FBBC05"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     id: "Vector_4",
     d: "M20.7497 9.6829C23.2744 9.6829 25.5185 10.5556 27.3107 12.2387L32.2198 7.32972C29.2431 4.55574 25.3783 2.85693 20.7497 2.85693C14.0484 2.85693 8.2667 6.70628 5.44592 12.3167L11.1497 16.7427C12.5055 12.6907 16.2926 9.6829 20.7497 9.6829Z",
     fill: "#EA4335"
@@ -78127,11 +78127,11 @@ const getMonochromeGoogleLogo = ({
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const GoogleMonochromeLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
+    }, props), /* @__PURE__ */ React$1.createElement("path", {
       fillRule: "evenodd",
       clipRule: "evenodd",
       d: "M25.8355 14.7613C24.5584 13.5329 22.9441 12.9032 21.1356 12.9032C17.9377 12.9032 15.2302 15.0813 14.2595 18.0232L14.2593 18.023C14.0142 18.7662 13.8712 19.5609 13.8712 20.3866C13.8712 21.2124 14.004 22.0072 14.2594 22.7504L14.2587 22.751H14.2595C15.2302 25.6929 17.9377 27.871 21.1356 27.871C22.7907 27.871 24.1904 27.4168 25.2939 26.6736V26.6732C26.5812 25.7958 27.4497 24.5055 27.746 22.9777H21.1355V18.3223H32.6808C32.8034 19.0758 32.875 19.85 32.875 20.6655C32.875 24.4332 31.5467 27.6126 29.2377 29.77L29.2378 29.7703C27.2148 31.6594 24.446 32.7742 21.1356 32.7742C16.3438 32.7742 12.2059 29.9871 10.1931 25.9407V25.94L10.193 25.9401C9.35521 24.2678 8.875 22.3891 8.875 20.3866C8.875 18.384 9.35521 16.5053 10.193 14.833H10.1934C12.2063 10.7869 16.344 8 21.1356 8C24.446 8 27.2148 9.22839 29.3298 11.231L25.8355 14.7613Z",
@@ -78166,210 +78166,210 @@ const google = (options) => ({
   }
 });
 const MetamaskLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     viewBox: "0 0 28 28",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("rect", {
+  }, props), /* @__PURE__ */ React$1.createElement("rect", {
     width: "28",
     height: "28"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M24.0891 3.1199L15.3446 9.61456L16.9617 5.7828L24.0891 3.1199Z",
     fill: "#E2761B",
     stroke: "#E2761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M3.90207 3.1199L12.5763 9.67608L11.0383 5.7828L3.90207 3.1199Z",
     fill: "#E4761B",
     stroke: "#E4761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M20.9429 18.1745L18.6139 21.7426L23.597 23.1136L25.0295 18.2536L20.9429 18.1745Z",
     fill: "#E4761B",
     stroke: "#E4761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M2.97929 18.2536L4.40301 23.1136L9.38607 21.7426L7.05713 18.1745L2.97929 18.2536Z",
     fill: "#E4761B",
     stroke: "#E4761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M9.10483 12.1456L7.71626 14.2461L12.6642 14.4658L12.4884 9.14877L9.10483 12.1456Z",
     fill: "#E4761B",
     stroke: "#E4761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M18.8864 12.1456L15.4589 9.08725L15.3446 14.4658L20.2837 14.2461L18.8864 12.1456Z",
     fill: "#E4761B",
     stroke: "#E4761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M9.38606 21.7426L12.3566 20.2925L9.79033 18.2888L9.38606 21.7426Z",
     fill: "#E4761B",
     stroke: "#E4761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M15.6347 20.2925L18.6139 21.7426L18.2009 18.2888L15.6347 20.2925Z",
     fill: "#E4761B",
     stroke: "#E4761B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M18.6139 21.7426L15.6347 20.2925L15.8719 22.2348L15.8456 23.0521L18.6139 21.7426Z",
     fill: "#D7C1B3",
     stroke: "#D7C1B3",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M9.38606 21.7426L12.1544 23.0521L12.1368 22.2348L12.3566 20.2925L9.38606 21.7426Z",
     fill: "#D7C1B3",
     stroke: "#D7C1B3",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M12.1984 17.0056L9.72002 16.2762L11.4689 15.4765L12.1984 17.0056Z",
     fill: "#233447",
     stroke: "#233447",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M15.7928 17.0056L16.5223 15.4765L18.28 16.2762L15.7928 17.0056Z",
     fill: "#233447",
     stroke: "#233447",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M9.38606 21.7426L9.80791 18.1745L7.05712 18.2536L9.38606 21.7426Z",
     fill: "#CD6116",
     stroke: "#CD6116",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M18.1921 18.1745L18.6139 21.7426L20.9429 18.2536L18.1921 18.1745Z",
     fill: "#CD6116",
     stroke: "#CD6116",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M20.2837 14.2461L15.3446 14.4658L15.8016 17.0057L16.5311 15.4765L18.2888 16.2762L20.2837 14.2461Z",
     fill: "#CD6116",
     stroke: "#CD6116",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M9.72002 16.2762L11.4777 15.4765L12.1984 17.0057L12.6642 14.4658L7.71626 14.2461L9.72002 16.2762Z",
     fill: "#CD6116",
     stroke: "#CD6116",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M7.71626 14.2461L9.79033 18.2888L9.72002 16.2762L7.71626 14.2461Z",
     fill: "#E4751F",
     stroke: "#E4751F",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M18.2888 16.2762L18.2009 18.2888L20.2837 14.2461L18.2888 16.2762Z",
     fill: "#E4751F",
     stroke: "#E4751F",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M12.6642 14.4658L12.1984 17.0057L12.7784 20.0025L12.9102 16.0565L12.6642 14.4658Z",
     fill: "#E4751F",
     stroke: "#E4751F",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M15.3446 14.4658L15.1073 16.0477L15.2128 20.0025L15.8016 17.0057L15.3446 14.4658Z",
     fill: "#E4751F",
     stroke: "#E4751F",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M15.8016 17.0056L15.2128 20.0025L15.6347 20.2925L18.2009 18.2888L18.2888 16.2762L15.8016 17.0056Z",
     fill: "#F6851B",
     stroke: "#F6851B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M9.72002 16.2762L9.79033 18.2888L12.3566 20.2925L12.7784 20.0025L12.1984 17.0056L9.72002 16.2762Z",
     fill: "#F6851B",
     stroke: "#F6851B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M15.8456 23.0521L15.8719 22.2348L15.6522 22.0414H12.339L12.1368 22.2348L12.1544 23.0521L9.38606 21.7426L10.3528 22.5336L12.3126 23.8958H15.6786L17.6472 22.5336L18.6139 21.7426L15.8456 23.0521Z",
     fill: "#C0AD9E",
     stroke: "#C0AD9E",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M15.6347 20.2925L15.2128 20.0025H12.7784L12.3566 20.2925L12.1368 22.2348L12.339 22.0414H15.6522L15.8719 22.2348L15.6347 20.2925Z",
     fill: "#161616",
     stroke: "#161616",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M24.4583 10.0364L25.2053 6.45072L24.0891 3.1199L15.6347 9.39485L18.8864 12.1456L23.4827 13.4903L24.5022 12.3038L24.0628 11.9874L24.7658 11.3459L24.221 10.924L24.924 10.3879L24.4583 10.0364Z",
     fill: "#763D16",
     stroke: "#763D16",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M2.79472 6.45072L3.54174 10.0364L3.06717 10.3879L3.77024 10.924L3.23415 11.3459L3.93722 11.9874L3.4978 12.3038L4.50847 13.4903L9.10483 12.1456L12.3566 9.39485L3.90207 3.1199L2.79472 6.45072Z",
     fill: "#763D16",
     stroke: "#763D16",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M23.4827 13.4903L18.8864 12.1456L20.2837 14.2461L18.2009 18.2888L20.9429 18.2536H25.0295L23.4827 13.4903Z",
     fill: "#F6851B",
     stroke: "#F6851B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M9.10484 12.1456L4.50848 13.4903L2.97929 18.2536H7.05713L9.79033 18.2888L7.71626 14.2461L9.10484 12.1456Z",
     fill: "#F6851B",
     stroke: "#F6851B",
     strokeWidth: "0.0878845",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     d: "M15.3446 14.4658L15.6347 9.39485L16.9705 5.7828H11.0383L12.3566 9.39485L12.6642 14.4658L12.7696 16.0653L12.7784 20.0025H15.2128L15.2304 16.0653L15.3446 14.4658Z",
     fill: "#F6851B",
     stroke: "#F6851B",
@@ -78392,7 +78392,7 @@ const metamask = () => ({
   }
 });
 const SequenceLogo$1 = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     xmlns: "http://www.w3.org/2000/svg",
     style: {
       fill: "none"
@@ -78400,224 +78400,224 @@ const SequenceLogo$1 = (props) => {
     id: "svg1316",
     version: "1.1",
     viewBox: "0 0 396 396"
-  }, props), /* @__PURE__ */ React.createElement("g", {
+  }, props), /* @__PURE__ */ React$1.createElement("g", {
     transform: "translate(0,38)",
     id: "g1256",
     clipPath: "url(#clip0_5_131)"
-  }, /* @__PURE__ */ React.createElement("g", {
+  }, /* @__PURE__ */ React$1.createElement("g", {
     id: "g1254",
     clipPath: "url(#clip1_5_131)"
-  }, /* @__PURE__ */ React.createElement("path", {
+  }, /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "#111111"
     },
     id: "path1232",
     d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint0_linear_5_13"
     },
     id: "path1234",
     d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint1_linear_5_131"
     },
     id: "path1236",
     d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint2_linear_5_131)"
     },
     id: "path1238",
     d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint3_linear_5_131)"
     },
     id: "path1240",
     d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint4_linear_5_131)"
     },
     id: "path1242",
     d: "m 98.9999,238.126 c 0,-10.965 -8.8648,-19.854 -19.8,-19.854 -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.966 8.8648,19.855 19.8,19.855 10.9352,0 19.8,-8.889 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint5_linear_5_131)"
     },
     id: "path1244",
     d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint6_linear_5_131)"
     },
     id: "path1246",
     d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint7_linear_5_131)"
     },
     id: "path1248",
     d: "M 316.8,59.5632 H 158.4 c -10.935,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.865,19.8544 19.8,19.8544 h 158.4 c 10.935,0 19.8,-8.8892 19.8,-19.8544 0,-10.9653 -8.865,-19.8544 -19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint8_linear_5_131)"
     },
     id: "path1250",
     d: "M 316.8,218.272 H 158.4 c -10.935,0 -19.8,8.889 -19.8,19.854 0,10.966 8.865,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.889 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint9_linear_5_131)"
     },
     id: "path1252",
     d: "M 237.6,138.981 H 79.2 c -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.965 8.8648,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.89 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }))), /* @__PURE__ */ React.createElement("defs", {
+  }))), /* @__PURE__ */ React$1.createElement("defs", {
     id: "defs1314"
-  }, /* @__PURE__ */ React.createElement("linearGradient", {
+  }, /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "318",
     x2: "198",
     y1: "4.0585401e-05",
     x1: "198",
     id: "paint0_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1258",
     stopColor: "#1D273D"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1260",
     stopColor: "#0D0F13",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "63",
     x2: "92.5",
     y1: "99",
     x1: "65.5",
     id: "paint1_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1263",
     stopColor: "#4462FE"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1265",
     stopColor: "#7D69FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "97.591103",
     x2: "96.137703",
     y1: "99.291199",
     x1: "62.879902",
     id: "paint2_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1268",
     stopColor: "#3757FD"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1270",
     stopColor: "#6980FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "97.591103",
     x2: "96.137703",
     y1: "99.291199",
     x1: "62.879902",
     id: "paint3_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1273",
     stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1275",
     stopColor: "#6980FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "223.5",
     x2: "91.5",
     y1: "251.5",
     x1: "65",
     id: "paint4_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1278",
     stopColor: "#BC3EE6"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1280",
     stopColor: "#D972F1",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "146",
     x2: "329.5",
     y1: "172",
     x1: "305",
     id: "paint5_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1283",
     stopColor: "#29BDFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1285",
     stopColor: "#96E7FB",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "176.772",
     x2: "334.56699",
     y1: "178.418",
     x1: "300.17999",
     id: "paint6_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1288",
     stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1290",
     stopColor: "#85E7FF",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "60",
     x2: "317.5",
     y1: "99",
     x1: "154.5",
     id: "paint7_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1293",
     stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1295",
     stopColor: "#85E7FF",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "218",
     x2: "312.5",
     y1: "258",
     x1: "156",
     id: "paint8_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1298",
     stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1300",
     stopColor: "#6980FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "139",
     x2: "235.5",
     y1: "179",
     x1: "86.000099",
     id: "paint9_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1303",
     stopColor: "#6634FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1305",
     stopColor: "#9C6DFF",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
+  })), /* @__PURE__ */ React$1.createElement("clipPath", {
     id: "clip0_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
+  }, /* @__PURE__ */ React$1.createElement("rect", {
     style: {
       fill: "#ffffff"
     },
@@ -78626,9 +78626,9 @@ const SequenceLogo$1 = (props) => {
     id: "rect1308",
     height: "317.67001",
     width: "396"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
+  })), /* @__PURE__ */ React$1.createElement("clipPath", {
     id: "clip1_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
+  }, /* @__PURE__ */ React$1.createElement("rect", {
     style: {
       fill: "#ffffff"
     },
@@ -78673,7 +78673,7 @@ const getTwitchLogo = ({
     fillColor = isDarkMode ? "white" : "black";
   }
   const TwitchLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
       version: "1.1",
       id: "Layer_1",
       xmlns: "http://www.w3.org/2000/svg",
@@ -78681,18 +78681,18 @@ const getTwitchLogo = ({
       y: "0px",
       viewBox: "0 0 2400 2800",
       transform: "scale(0.80)"
-    }, props), /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("g", {
+    }, props), /* @__PURE__ */ React$1.createElement("g", null, /* @__PURE__ */ React$1.createElement("g", {
       id: "Layer_1-2"
-    }, /* @__PURE__ */ React.createElement("path", {
+    }, /* @__PURE__ */ React$1.createElement("path", {
       fill: fillColor,
       d: "M500,0L0,500v1800h600v500l500-500h400l900-900V0H500z M2200,1300l-400,400h-400l-350,350v-350H600V200h1600 V1300z"
-    }), /* @__PURE__ */ React.createElement("rect", {
+    }), /* @__PURE__ */ React$1.createElement("rect", {
       x: "1700",
       y: "550",
       fill: fillColor,
       width: "200",
       height: "600"
-    }), /* @__PURE__ */ React.createElement("rect", {
+    }), /* @__PURE__ */ React$1.createElement("rect", {
       x: "1150",
       y: "550",
       fill: fillColor,
@@ -78728,11 +78728,11 @@ const twitch = (options) => ({
   }
 });
 const WalletConnectLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
     fill: "none",
     viewBox: "0 0 480 332",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("path", {
+  }, props), /* @__PURE__ */ React$1.createElement("path", {
     d: "m126.613 93.9842c62.622-61.3123 164.152-61.3123 226.775 0l7.536 7.3788c3.131 3.066 3.131 8.036 0 11.102l-25.781 25.242c-1.566 1.533-4.104 1.533-5.67 0l-10.371-10.154c-43.687-42.7734-114.517-42.7734-158.204 0l-11.107 10.874c-1.565 1.533-4.103 1.533-5.669 0l-25.781-25.242c-3.132-3.066-3.132-8.036 0-11.102zm280.093 52.2038 22.946 22.465c3.131 3.066 3.131 8.036 0 11.102l-103.463 101.301c-3.131 3.065-8.208 3.065-11.339 0l-73.432-71.896c-.783-.767-2.052-.767-2.835 0l-73.43 71.896c-3.131 3.065-8.208 3.065-11.339 0l-103.4657-101.302c-3.1311-3.066-3.1311-8.036 0-11.102l22.9456-22.466c3.1311-3.065 8.2077-3.065 11.3388 0l73.4333 71.897c.782.767 2.051.767 2.834 0l73.429-71.897c3.131-3.065 8.208-3.065 11.339 0l73.433 71.897c.783.767 2.052.767 2.835 0l73.431-71.895c3.132-3.066 8.208-3.066 11.339 0z",
     fill: "#3396ff"
   }));
@@ -84796,7 +84796,7 @@ function QRCodeCanvas(props) {
   const canvasStyle = __spreadValues({ height: size2, width: size2 }, style2);
   let img2 = null;
   if (imgSrc != null) {
-    img2 = /* @__PURE__ */ React.createElement("img", {
+    img2 = /* @__PURE__ */ React$1.createElement("img", {
       src: imgSrc,
       key: imgSrc,
       style: { display: "none" },
@@ -84806,7 +84806,7 @@ function QRCodeCanvas(props) {
       ref: _image
     });
   }
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("canvas", __spreadValues({
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("canvas", __spreadValues({
     style: canvasStyle,
     height: size2,
     width: size2,
@@ -84840,7 +84840,7 @@ function QRCodeSVG(props) {
     if (calculatedImageSettings.excavation != null) {
       cells = excavateModules(cells, calculatedImageSettings.excavation);
     }
-    image = /* @__PURE__ */ React.createElement("image", {
+    image = /* @__PURE__ */ React$1.createElement("image", {
       xlinkHref: imageSettings.src,
       height: calculatedImageSettings.h,
       width: calculatedImageSettings.w,
@@ -84850,15 +84850,15 @@ function QRCodeSVG(props) {
     });
   }
   const fgPath = generatePath(cells, margin);
-  return /* @__PURE__ */ React.createElement("svg", __spreadValues({
+  return /* @__PURE__ */ React$1.createElement("svg", __spreadValues({
     height: size2,
     width: size2,
     viewBox: `0 0 ${numCells} ${numCells}`
-  }, otherProps), /* @__PURE__ */ React.createElement("path", {
+  }, otherProps), /* @__PURE__ */ React$1.createElement("path", {
     fill: bgColor,
     d: `M0,0 h${numCells}v${numCells}H0z`,
     shapeRendering: "crispEdges"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     fill: fgColor,
     d: fgPath,
     shapeRendering: "crispEdges"
@@ -84867,9 +84867,9 @@ function QRCodeSVG(props) {
 var QRCode = (props) => {
   const _a = props, { renderAs } = _a, otherProps = __objRest(_a, ["renderAs"]);
   if (renderAs === "svg") {
-    return /* @__PURE__ */ React.createElement(QRCodeSVG, __spreadValues({}, otherProps));
+    return /* @__PURE__ */ React$1.createElement(QRCodeSVG, __spreadValues({}, otherProps));
   }
-  return /* @__PURE__ */ React.createElement(QRCodeCanvas, __spreadValues({}, otherProps));
+  return /* @__PURE__ */ React$1.createElement(QRCodeCanvas, __spreadValues({}, otherProps));
 };
 var dayjs_min = { exports: {} };
 (function(module2, exports) {
@@ -90392,9 +90392,9 @@ const $cb5cc270b50c6fcd$export$b688253958b8dfe7 = $cb5cc270b50c6fcd$export$96e53
 const $cb5cc270b50c6fcd$export$41fb9f06171c75f4 = $cb5cc270b50c6fcd$export$7dacb05d26466c3;
 const $cb5cc270b50c6fcd$export$7c6e2c02157bb7d2 = $cb5cc270b50c6fcd$export$d7e1f420b25549ff;
 const createGenericContext$1 = () => {
-  const genericContext = /* @__PURE__ */ React.createContext(void 0);
+  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
   const useGenericContext = () => {
-    const contextIsDefined = React.useContext(genericContext);
+    const contextIsDefined = reactExports.useContext(genericContext);
     if (!contextIsDefined) {
       throw new Error("useGenericContext must be used within a Provider");
     }
@@ -91477,7 +91477,7 @@ const useSettings = () => {
 const DefaultIcon$1 = ({
   size: _size = 30
 }) => {
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "circle",
@@ -91487,7 +91487,7 @@ const DefaultIcon$1 = ({
       width: `${_size}px`,
       height: `${_size}px`
     }
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "large",
     color: "textInverse100"
   }, "?"));
@@ -91497,7 +91497,7 @@ const CoinIcon$1 = ({
   size: _size = 30
 }) => {
   if (imageUrl) {
-    return /* @__PURE__ */ React.createElement(Image$1, {
+    return /* @__PURE__ */ React$1.createElement(Image$1, {
       src: imageUrl,
       borderRadius: "circle",
       style: {
@@ -91506,7 +91506,7 @@ const CoinIcon$1 = ({
       }
     });
   }
-  return /* @__PURE__ */ React.createElement(DefaultIcon$1, {
+  return /* @__PURE__ */ React$1.createElement(DefaultIcon$1, {
     size: _size
   });
 };
@@ -91523,7 +91523,7 @@ const CoinTileContent = ({
     fiatCurrency
   } = useSettings();
   const priceChangeSymbol = priceChangePercentage > 0 ? "+" : "";
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundSecondary",
     width: "full",
     height: "full",
@@ -91533,19 +91533,19 @@ const CoinTileContent = ({
     justifyContent: "center",
     alignItems: "flex-start",
     gap: "1"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     marginBottom: "1"
-  }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
+  }, /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
     size: 36,
     imageUrl: logoUrl
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     marginBottom: "3"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     gap: "1",
     justifyContent: "flex-start",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     whiteSpace: "nowrap",
     color: "text100",
@@ -91554,10 +91554,10 @@ const CoinTileContent = ({
       textOverflow: "ellipsis",
       overflow: "hidden"
     }
-  }, tokenName), /* @__PURE__ */ React.createElement(CoinIcon$1, {
+  }, tokenName), /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
     size: 12,
     imageUrl: networkLogoUrl
-  })), /* @__PURE__ */ React.createElement(Text, {
+  })), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     whiteSpace: "nowrap",
     style: {
@@ -91566,10 +91566,10 @@ const CoinTileContent = ({
       textOverflow: "ellipsis",
       overflow: "hidden"
     }
-  }, `${balance} ${symbol}`)), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  }, `${balance} ${symbol}`)), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     color: "text100"
-  }, `${fiatCurrency.sign}${balanceFiat}`)), /* @__PURE__ */ React.createElement(Text, {
+  }, `${fiatCurrency.sign}${balanceFiat}`)), /* @__PURE__ */ React$1.createElement(Text, {
     style: {
       color: getPercentageColor(priceChangePercentage)
     }
@@ -91664,7 +91664,7 @@ const CoinTile = ({
 const CollectibleTileImage = ({
   imageUrl
 }) => {
-  return /* @__PURE__ */ React.createElement(Card, {
+  return /* @__PURE__ */ React$1.createElement(Card, {
     padding: "0",
     aspectRatio: "1/1",
     justifyContent: "center",
@@ -91672,7 +91672,7 @@ const CollectibleTileImage = ({
     overflow: "hidden",
     borderRadius: "sm",
     background: "backgroundSecondary"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
+  }, /* @__PURE__ */ React$1.createElement(Image$1, {
     style: {
       height: "100%"
     },
@@ -91693,7 +91693,7 @@ const CollectibleTile = ({
     }
   });
   const imageUrl = tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image;
-  return /* @__PURE__ */ React.createElement(CollectibleTileImage, {
+  return /* @__PURE__ */ React$1.createElement(CollectibleTileImage, {
     imageUrl
   });
 };
@@ -91721,7 +91721,7 @@ const Skeleton$1 = ({
   borderRadius: _borderRadius = "md",
   aspectRatio: aspectRatio2
 }) => {
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     className: skeleton$1,
     borderRadius: _borderRadius,
     aspectRatio: aspectRatio2,
@@ -91732,15 +91732,15 @@ const Skeleton$1 = ({
   });
 };
 const SkeletonTiles = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       display: "grid",
       gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
       gap: vars.space[2]
     }
-  }, Array(12).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Box, {
+  }, Array(12).fill(null).map((_, i2) => /* @__PURE__ */ React$1.createElement(Box, {
     key: i2
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     height: "100%",
     width: "100%",
     aspectRatio: "1/1"
@@ -91789,7 +91789,7 @@ const AssetSummary = () => {
     hideCollectibles
   });
   if (isLoadingBalances) {
-    return /* @__PURE__ */ React.createElement(SkeletonTiles, null);
+    return /* @__PURE__ */ React$1.createElement(SkeletonTiles, null);
   }
   const {
     nativeTokens,
@@ -91824,37 +91824,37 @@ const AssetSummary = () => {
       });
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       display: "grid",
       gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
       gap: vars.space[2]
     }
   }, nativeTokens.map((balance, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       key: index2,
       className: clickable$2,
       aspectRatio: "1/1",
       onClick: () => onClickItem(balance)
-    }, /* @__PURE__ */ React.createElement(CoinTile, {
+    }, /* @__PURE__ */ React$1.createElement(CoinTile, {
       balance
     }));
   }), erc20Tokens.map((balance, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       className: clickable$2,
       key: index2,
       aspectRatio: "1/1",
       onClick: () => onClickItem(balance)
-    }, /* @__PURE__ */ React.createElement(CoinTile, {
+    }, /* @__PURE__ */ React$1.createElement(CoinTile, {
       balance
     }));
   }), collectibles.map((balance, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       className: clickable$2,
       aspectRatio: "1/1",
       key: index2,
       onClick: () => onClickItem(balance)
-    }, /* @__PURE__ */ React.createElement(CollectibleTile, {
+    }, /* @__PURE__ */ React$1.createElement(CollectibleTile, {
       balance
     }));
   }));
@@ -91868,12 +91868,12 @@ const useScrollbarWidth = () => {
 };
 const Home = () => {
   useScrollbarWidth();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
     gap: "4",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(AssetSummary, null));
+  }, /* @__PURE__ */ React$1.createElement(AssetSummary, null));
 };
 const Receive = () => {
   const {
@@ -91900,18 +91900,18 @@ const Receive = () => {
       window.open(`https://twitter.com/intent/tweet?text=Here%20is%20my%20address%20${address}`);
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     padding: "5",
     paddingTop: "3",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     gap: "4"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "1",
     width: "fit",
     background: "white",
@@ -91919,18 +91919,18 @@ const Receive = () => {
     alignItems: "center",
     justifyContent: "center",
     padding: "4"
-  }, /* @__PURE__ */ React.createElement(QRCode, {
+  }, /* @__PURE__ */ React$1.createElement(QRCode, {
     value: address || "",
     size: 200,
     bgColor: "white",
     fgColor: "black",
     "data-id": "receiveQR"
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "medium",
     color: "text100",
     textAlign: "center",
@@ -91938,17 +91938,17 @@ const Receive = () => {
     style: {
       fontWeight: "700"
     }
-  }, "My Wallet"), /* @__PURE__ */ React.createElement(Image$1, {
+  }, "My Wallet"), /* @__PURE__ */ React$1.createElement(Image$1, {
     width: "5",
     src: nativeTokenInfo.logoURI,
     alt: "icon"
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "2",
     style: {
       maxWidth: "180px",
       textAlign: "center"
     }
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     textAlign: "center",
     color: "text50",
     style: {
@@ -91956,26 +91956,26 @@ const Receive = () => {
       maxWidth: "180px",
       overflowWrap: "anywhere"
     }
-  }, address))), /* @__PURE__ */ React.createElement(Box, {
+  }, address))), /* @__PURE__ */ React$1.createElement(Box, {
     gap: "3"
-  }, /* @__PURE__ */ React.createElement(lib.CopyToClipboard, {
+  }, /* @__PURE__ */ React$1.createElement(lib.CopyToClipboard, {
     text: address || ""
-  }, /* @__PURE__ */ React.createElement(Button, {
+  }, /* @__PURE__ */ React$1.createElement(Button, {
     onClick: onClickCopy,
     leftIcon: SvgCopyIcon,
     label: isCopied ? "Copied!" : "Copy"
-  })), /* @__PURE__ */ React.createElement(Button, {
+  })), /* @__PURE__ */ React$1.createElement(Button, {
     onClick: onClickShare,
     leftIcon: SvgShareIcon,
     label: "Share"
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "center",
     alignItems: "center",
     style: {
       maxWidth: "260px",
       textAlign: "center"
     }
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     variant: "small",
     style: {
@@ -92003,43 +92003,43 @@ const SendItemInfo = ({
   const formattedBalance = formatUnits$1(balance, decimals);
   const balanceDisplayed = formatDisplay$1(formattedBalance);
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     alignItems: "flex-end",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "space-between",
     alignItems: "center",
     gap: "2"
-  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
+  }, showSquareImage ? /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       width: "40px"
     }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage, {
+  }, /* @__PURE__ */ React$1.createElement(CollectibleTileImage, {
     imageUrl
-  })) : /* @__PURE__ */ React.createElement(CoinIcon$1, {
+  })) : /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
     imageUrl,
     size: 40
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
     gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "medium",
     color: "text100"
-  }, name), /* @__PURE__ */ React.createElement(CoinIcon$1, {
+  }, name), /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
     imageUrl: nativeTokenInfo.logoURI,
     size: 12
-  })), /* @__PURE__ */ React.createElement(Text, {
+  })), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     variant: "normal"
-  }, " ", `${balanceDisplayed} ${symbol} available`))), /* @__PURE__ */ React.createElement(Box, {
+  }, " ", `${balanceDisplayed} ${symbol} available`))), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-end",
     justifyContent: "flex-end"
-  }, fiatValue && /* @__PURE__ */ React.createElement(Text, {
+  }, fiatValue && /* @__PURE__ */ React$1.createElement(Text, {
     variant: "normal",
     color: "text100"
   }, `${fiatCurrency.sign}${fiatValue}`)));
@@ -92206,7 +92206,7 @@ const SendCoin = ({
       });
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     padding: "5",
     paddingTop: "3",
     style: {
@@ -92217,13 +92217,13 @@ const SendCoin = ({
     as: "form",
     onSubmit: executeTransaction,
     pointerEvents: isSendTxnPending ? "none" : "auto"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundSecondary",
     borderRadius: "md",
     padding: "4",
     gap: "2",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(SendItemInfo, {
+  }, /* @__PURE__ */ React$1.createElement(SendItemInfo, {
     imageUrl,
     decimals,
     name,
@@ -92236,7 +92236,7 @@ const SendCoin = ({
       decimals
     }),
     chainId
-  }), /* @__PURE__ */ React.createElement(NumericInput, {
+  }), /* @__PURE__ */ React$1.createElement(NumericInput, {
     ref: amountInputRef,
     style: {
       fontSize: vars.fontSizes.xlarge,
@@ -92245,37 +92245,37 @@ const SendCoin = ({
     name: "amount",
     value: amount,
     onChange: handleChangeAmount,
-    controls: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Text, {
+    controls: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Text, {
       variant: "small",
       color: "text50",
       whiteSpace: "nowrap"
-    }, `~${fiatCurrency.sign}${amountToSendFiat}`), /* @__PURE__ */ React.createElement(Button, {
+    }, `~${fiatCurrency.sign}${amountToSendFiat}`), /* @__PURE__ */ React$1.createElement(Button, {
       size: "xs",
       shape: "square",
       label: "Max",
       onClick: handleMax,
       "data-id": "maxCoin",
       flexShrink: "0"
-    }), /* @__PURE__ */ React.createElement(Text, {
+    }), /* @__PURE__ */ React$1.createElement(Text, {
       fontSize: "xlarge",
       fontWeight: "bold",
       color: "text100"
     }, symbol))
-  }), insufficientFunds && /* @__PURE__ */ React.createElement(Text, {
+  }), insufficientFunds && /* @__PURE__ */ React$1.createElement(Text, {
     as: "div",
     variant: "normal",
     color: "negative",
     marginTop: "2"
-  }, "Insufficient Funds")), /* @__PURE__ */ React.createElement(Box, {
+  }, "Insufficient Funds")), /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundSecondary",
     borderRadius: "md",
     padding: "4",
     gap: "2",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     color: "text50"
-  }, "To"), isEthAddress(toAddress) ? /* @__PURE__ */ React.createElement(Box, {
+  }, "To"), isEthAddress(toAddress) ? /* @__PURE__ */ React$1.createElement(Box, {
     borderRadius: "md",
     background: "backgroundSecondary",
     width: "full",
@@ -92288,27 +92288,27 @@ const SendCoin = ({
     style: {
       height: "52px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+  }, /* @__PURE__ */ React$1.createElement(GradientAvatar, {
     address: toAddress,
     style: {
       width: "20px"
     }
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
-  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 8)}`)), /* @__PURE__ */ React.createElement(SvgCloseIcon, {
+  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 8)}`)), /* @__PURE__ */ React$1.createElement(SvgCloseIcon, {
     size: "xs"
-  })) : /* @__PURE__ */ React.createElement(TextInput, {
+  })) : /* @__PURE__ */ React$1.createElement(TextInput, {
     value: toAddress,
     onChange: (ev) => setToAddress(ev.target.value),
     placeholder: `${nativeTokenInfo.name} Address (0x...)`,
     name: "to-address",
     "data-1p-ignore": true,
-    controls: /* @__PURE__ */ React.createElement(Button, {
+    controls: /* @__PURE__ */ React$1.createElement(Button, {
       size: "xs",
       shape: "square",
       label: "Paste",
@@ -92317,13 +92317,13 @@ const SendCoin = ({
       flexShrink: "0",
       leftIcon: SvgCopyIcon
     })
-  })), showSwitchNetwork && /* @__PURE__ */ React.createElement(Box, {
+  })), showSwitchNetwork && /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "small",
     color: "negative",
     marginBottom: "2"
-  }, "The wallet is connected to the wrong network. Please switch network before proceeding"), /* @__PURE__ */ React.createElement(Button, {
+  }, "The wallet is connected to the wrong network. Please switch network before proceeding"), /* @__PURE__ */ React$1.createElement(Button, {
     marginTop: "2",
     width: "full",
     variant: "primary",
@@ -92337,13 +92337,13 @@ const SendCoin = ({
       height: "52px",
       borderRadius: vars.radii.md
     }
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       height: "52px"
     },
     alignItems: "center",
     justifyContent: "center"
-  }, isSendTxnPending ? /* @__PURE__ */ React.createElement(Spinner, null) : /* @__PURE__ */ React.createElement(Button, {
+  }, isSendTxnPending ? /* @__PURE__ */ React$1.createElement(Spinner, null) : /* @__PURE__ */ React$1.createElement(Button, {
     color: "text100",
     marginTop: "3",
     width: "full",
@@ -92529,7 +92529,7 @@ const SendCollectible = ({
   const maxAmount = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
   const isMinimum = Number(amount) === 0;
   const isMaximum = Number(amount) >= Number(maxAmount);
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     padding: "5",
     paddingTop: "3",
     style: {
@@ -92540,13 +92540,13 @@ const SendCollectible = ({
     as: "form",
     onSubmit: executeTransaction,
     pointerEvents: isSendTxnPending ? "none" : "auto"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundSecondary",
     borderRadius: "md",
     padding: "4",
     gap: "2",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(SendItemInfo, {
+  }, /* @__PURE__ */ React$1.createElement(SendItemInfo, {
     imageUrl,
     showSquareImage: true,
     decimals,
@@ -92554,7 +92554,7 @@ const SendCollectible = ({
     symbol: "",
     balance: (tokenBalance == null ? void 0 : tokenBalance.balance) || "0",
     chainId
-  }), /* @__PURE__ */ React.createElement(NumericInput, {
+  }), /* @__PURE__ */ React$1.createElement(NumericInput, {
     ref: amountInputRef,
     style: {
       fontSize: vars.fontSizes.xlarge,
@@ -92564,19 +92564,19 @@ const SendCollectible = ({
     value: amount,
     onChange: handleChangeAmount,
     disabled: !showAmountControls,
-    controls: /* @__PURE__ */ React.createElement(React.Fragment, null, showAmountControls && /* @__PURE__ */ React.createElement(Box, {
+    controls: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, showAmountControls && /* @__PURE__ */ React$1.createElement(Box, {
       gap: "2"
-    }, /* @__PURE__ */ React.createElement(Button, {
+    }, /* @__PURE__ */ React$1.createElement(Button, {
       disabled: isMinimum,
       size: "xs",
       onClick: handleSubtractOne,
       leftIcon: SvgSubtractIcon
-    }), /* @__PURE__ */ React.createElement(Button, {
+    }), /* @__PURE__ */ React$1.createElement(Button, {
       disabled: isMaximum,
       size: "xs",
       onClick: handleAddOne,
       leftIcon: SvgAddIcon
-    }), /* @__PURE__ */ React.createElement(Button, {
+    }), /* @__PURE__ */ React$1.createElement(Button, {
       size: "xs",
       shape: "square",
       label: "Max",
@@ -92584,21 +92584,21 @@ const SendCollectible = ({
       "data-id": "maxCoin",
       flexShrink: "0"
     })))
-  }), insufficientFunds && /* @__PURE__ */ React.createElement(Text, {
+  }), insufficientFunds && /* @__PURE__ */ React$1.createElement(Text, {
     as: "div",
     variant: "normal",
     color: "negative",
     marginTop: "2"
-  }, "Insufficient Balance")), /* @__PURE__ */ React.createElement(Box, {
+  }, "Insufficient Balance")), /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundSecondary",
     borderRadius: "md",
     padding: "4",
     gap: "2",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     color: "text50"
-  }, "To"), isEthAddress(toAddress) ? /* @__PURE__ */ React.createElement(Box, {
+  }, "To"), isEthAddress(toAddress) ? /* @__PURE__ */ React$1.createElement(Box, {
     borderRadius: "md",
     background: "backgroundSecondary",
     width: "full",
@@ -92611,27 +92611,27 @@ const SendCollectible = ({
     style: {
       height: "52px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+  }, /* @__PURE__ */ React$1.createElement(GradientAvatar, {
     address: toAddress,
     style: {
       width: "20px"
     }
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
-  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 8)}`)), /* @__PURE__ */ React.createElement(SvgCloseIcon, {
+  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 8)}`)), /* @__PURE__ */ React$1.createElement(SvgCloseIcon, {
     size: "xs"
-  })) : /* @__PURE__ */ React.createElement(TextInput, {
+  })) : /* @__PURE__ */ React$1.createElement(TextInput, {
     value: toAddress,
     onChange: (ev) => setToAddress(ev.target.value),
     placeholder: `${nativeTokenInfo.name} Address (0x...)`,
     name: "to-address",
     "data-1p-ignore": true,
-    controls: /* @__PURE__ */ React.createElement(Button, {
+    controls: /* @__PURE__ */ React$1.createElement(Button, {
       size: "xs",
       shape: "square",
       label: "Paste",
@@ -92640,13 +92640,13 @@ const SendCollectible = ({
       flexShrink: "0",
       leftIcon: SvgCopyIcon
     })
-  })), showSwitchNetwork && /* @__PURE__ */ React.createElement(Box, {
+  })), showSwitchNetwork && /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "small",
     color: "negative",
     marginBottom: "2"
-  }, "The wallet is connected to the wrong network. Please switch network before proceeding"), /* @__PURE__ */ React.createElement(Button, {
+  }, "The wallet is connected to the wrong network. Please switch network before proceeding"), /* @__PURE__ */ React$1.createElement(Button, {
     marginTop: "2",
     width: "full",
     variant: "primary",
@@ -92660,13 +92660,13 @@ const SendCollectible = ({
       height: "52px",
       borderRadius: vars.radii.md
     }
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       height: "52px"
     },
     alignItems: "center",
     justifyContent: "center"
-  }, isSendTxnPending ? /* @__PURE__ */ React.createElement(Spinner, null) : /* @__PURE__ */ React.createElement(Button, {
+  }, isSendTxnPending ? /* @__PURE__ */ React$1.createElement(Spinner, null) : /* @__PURE__ */ React$1.createElement(Button, {
     color: "text100",
     marginTop: "3",
     width: "full",
@@ -92702,7 +92702,7 @@ const TransactionHistoryItem = ({
       }
     });
   };
-  let tokenContractAddresses = [];
+  const tokenContractAddresses = [];
   (_transaction$transfer = transaction2.transfers) == null || _transaction$transfer.forEach((transfer) => {
     const tokenContractAddress = transfer.contractAddress;
     if (!tokenContractAddresses.includes(tokenContractAddress)) {
@@ -92732,14 +92732,14 @@ const TransactionHistoryItem = ({
   const getTransactionIconByType = (transferType) => {
     switch (transferType) {
       case TxnTransferType.SEND:
-        return /* @__PURE__ */ React.createElement(SvgArrowRightIcon, {
+        return /* @__PURE__ */ React$1.createElement(SvgArrowRightIcon, {
           style: {
             transform: "rotate(270deg)",
             width: "16px"
           }
         });
       case TxnTransferType.RECEIVE:
-        return /* @__PURE__ */ React.createElement(SvgArrowRightIcon, {
+        return /* @__PURE__ */ React$1.createElement(SvgArrowRightIcon, {
           style: {
             transform: "rotate(90deg)",
             width: "16px"
@@ -92747,7 +92747,7 @@ const TransactionHistoryItem = ({
         });
       case TxnTransferType.UNKNOWN:
       default:
-        return /* @__PURE__ */ React.createElement(SvgTransactionIcon, {
+        return /* @__PURE__ */ React$1.createElement(SvgTransactionIcon, {
           style: {
             width: "14px"
           }
@@ -92778,7 +92778,7 @@ const TransactionHistoryItem = ({
     } else if (transferType === TxnTransferType.RECEIVE) {
       textColor = vars.colors.positive;
     }
-    return /* @__PURE__ */ React.createElement(Text, {
+    return /* @__PURE__ */ React$1.createElement(Text, {
       fontWeight: "bold",
       fontSize: "normal",
       style: {
@@ -92794,28 +92794,28 @@ const TransactionHistoryItem = ({
       amounts
     } = transfer;
     const date = dayjs(transaction2.timestamp).format("MMM DD, YYYY");
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       gap: "2",
       width: "full",
       flexDirection: "column",
       justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Box, {
+    }, /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "row",
       justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Box, {
+    }, /* @__PURE__ */ React$1.createElement(Box, {
       color: "text50",
       gap: "1",
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center"
-    }, getTransactionIconByType(transfer.transferType), /* @__PURE__ */ React.createElement(Text, {
+    }, getTransactionIconByType(transfer.transferType), /* @__PURE__ */ React$1.createElement(Text, {
       fontWeight: "medium",
       fontSize: "normal",
       color: "text100"
-    }, getTansactionLabelByType(transfer.transferType)), /* @__PURE__ */ React.createElement(Image$1, {
+    }, getTansactionLabelByType(transfer.transferType)), /* @__PURE__ */ React$1.createElement(Image$1, {
       src: nativeTokenInfo.logoURI,
       width: "3"
-    })), isFirstItem && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    })), isFirstItem && /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
       fontWeight: "medium",
       fontSize: "normal",
       color: "text50"
@@ -92837,30 +92837,30 @@ const TransactionHistoryItem = ({
       const symbol = isNativeToken ? nativeTokenInfo2.symbol : ((_transfer$contractInf4 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf4.symbol) || "";
       const tokenLogoUri = isNativeToken ? nativeTokenInfo2.logoURI : (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.logoURI;
       const fiatConversionRate = (_coinPrices$find = coinPrices.find((coinPrice) => compareAddress$2(coinPrice.token.contractAddress, transfer.contractAddress))) == null || (_coinPrices$find = _coinPrices$find.price) == null ? void 0 : _coinPrices$find.value;
-      return /* @__PURE__ */ React.createElement(Box, {
+      return /* @__PURE__ */ React$1.createElement(Box, {
         key: index2,
         flexDirection: "row",
         justifyContent: "space-between"
-      }, /* @__PURE__ */ React.createElement(Box, {
+      }, /* @__PURE__ */ React$1.createElement(Box, {
         flexDirection: "row",
         gap: "2",
         justifyContent: "center",
         alignItems: "center"
-      }, tokenLogoUri && /* @__PURE__ */ React.createElement(Image$1, {
+      }, tokenLogoUri && /* @__PURE__ */ React$1.createElement(Image$1, {
         src: tokenLogoUri,
         width: "5",
         alt: "token logo"
-      }), getTransferAmountLabel(formatDisplay$1(amountValue), symbol, transfer.transferType)), isLoading && /* @__PURE__ */ React.createElement(Skeleton$1, {
+      }), getTransferAmountLabel(formatDisplay$1(amountValue), symbol, transfer.transferType)), isLoading && /* @__PURE__ */ React$1.createElement(Skeleton$1, {
         width: "35px",
         height: "20px"
-      }), fiatConversionRate && /* @__PURE__ */ React.createElement(Text, {
+      }), fiatConversionRate && /* @__PURE__ */ React$1.createElement(Text, {
         fontWeight: "medium",
         fontSize: "normal",
         color: "text50"
       }, `${fiatCurrency.sign}${(Number(amountValue) * fiatConversionRate * conversionRate).toFixed(2)}`));
     }));
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundSecondary",
     borderRadius: "md",
     padding: "4",
@@ -92871,7 +92871,7 @@ const TransactionHistoryItem = ({
     className: clickable$2,
     onClick: () => onClickTransaction()
   }, transfers == null ? void 0 : transfers.map((transfer, position2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       key: `${transaction2.txnHash}-${position2}`,
       width: "full"
     }, getTransfer({
@@ -92882,42 +92882,42 @@ const TransactionHistoryItem = ({
 };
 const TransactionHistorySkeleton = () => {
   const getTransactionItem = () => {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "column",
       gap: "2",
       width: "full",
       justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Box, {
+    }, /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "row",
       justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+    }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
       width: "65px",
       height: "20px"
-    }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+    }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
       width: "75px",
       height: "17px"
-    })), /* @__PURE__ */ React.createElement(Box, {
+    })), /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "row",
       justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+    }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
       width: "120px",
       height: "20px"
-    }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+    }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
       width: "35px",
       height: "17px"
     })));
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "3"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "70px",
     height: "17px"
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2"
   }, Array(8).fill(null).map((_, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       borderRadius: "md",
       padding: "4",
       gap: "2",
@@ -92986,15 +92986,15 @@ const TransactionHistoryList = ({
     return transactionsByTime2;
   }, [transactions2]);
   if (isLoading) {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "column",
       gap: "2"
-    }, /* @__PURE__ */ React.createElement(TransactionHistorySkeleton, null));
+    }, /* @__PURE__ */ React$1.createElement(TransactionHistorySkeleton, null));
   }
   const TimeLabel = ({
     label
   }) => {
-    return /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    return /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
       color: "text50",
       fontWeight: "medium",
       fontSize: "normal"
@@ -93003,20 +93003,20 @@ const TransactionHistoryList = ({
   const TransactionsList = ({
     transactions: transactions3
   }) => {
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "column",
       gap: "2"
     }, transactions3.map((transaction2, index2) => {
-      return /* @__PURE__ */ React.createElement(Box, {
+      return /* @__PURE__ */ React$1.createElement(Box, {
         key: `${transaction2.txnHash}-${index2}`,
         flexDirection: "column",
         gap: "2"
-      }, /* @__PURE__ */ React.createElement(TransactionHistoryItem, {
+      }, /* @__PURE__ */ React$1.createElement(TransactionHistoryItem, {
         transaction: transaction2
       }));
     }));
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "5"
   }, transactionPeriods.map((period) => {
@@ -93024,27 +93024,27 @@ const TransactionHistoryList = ({
     if (txs.length === 0) {
       return null;
     }
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       key: period.id,
       flexDirection: "column",
       gap: "3"
-    }, /* @__PURE__ */ React.createElement(TimeLabel, {
+    }, /* @__PURE__ */ React$1.createElement(TimeLabel, {
       label: period.label
-    }), /* @__PURE__ */ React.createElement(TransactionsList, {
+    }), /* @__PURE__ */ React$1.createElement(TransactionsList, {
       transactions: txs
     }));
-  }), transactions2.length === 0 && /* @__PURE__ */ React.createElement(Box, {
+  }), transactions2.length === 0 && /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "3"
-  }, /* @__PURE__ */ React.createElement(TimeLabel, {
+  }, /* @__PURE__ */ React$1.createElement(TimeLabel, {
     label: "History"
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
-  }, "No Recent Transaction History Found")), isFetchingNextPage && /* @__PURE__ */ React.createElement(Box, {
+  }, "No Recent Transaction History Found")), isFetchingNextPage && /* @__PURE__ */ React$1.createElement(Box, {
     margin: "4",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Spinner, null)));
+  }, /* @__PURE__ */ React$1.createElement(Spinner, null)));
 };
 const History = () => {
   const {
@@ -93061,11 +93061,11 @@ const History = () => {
     accountAddress: accountAddress || "",
     chainIds: selectedNetworks
   });
-  return /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
     paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
+  }, /* @__PURE__ */ React$1.createElement(TransactionHistoryList, {
     transactions: transactionHistory,
     isLoading: isLoadingTransactionHistory,
     isFetchingNextPage: false
@@ -93116,7 +93116,7 @@ const BalanceItem = ({
       });
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     key: balance.contractAddress,
     onClick,
     width: "full",
@@ -93124,20 +93124,20 @@ const BalanceItem = ({
     justifyContent: "space-between",
     alignItems: "center",
     className: clickable$2
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     gap: "3",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
+  }, /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
     imageUrl: logoURI,
     size: 30
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     gap: "1",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontWeight: "bold",
     fontSize: "normal",
@@ -93148,23 +93148,23 @@ const BalanceItem = ({
       // @ts-ignore-next-line
       textWrap: "nowrap"
     }
-  }, tokenName), /* @__PURE__ */ React.createElement(Image$1, {
+  }, tokenName), /* @__PURE__ */ React$1.createElement(Image$1, {
     src: nativeTokenInfo.logoURI,
     alt: "network logo",
     style: {
       width: "12px",
       height: "12px"
     }
-  }))), /* @__PURE__ */ React.createElement(Box, {
+  }))), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     fontWeight: "bold",
     fontSize: "normal"
-  }, getQuantity()), /* @__PURE__ */ React.createElement(SvgChevronRightIcon, {
+  }, getQuantity()), /* @__PURE__ */ React$1.createElement(SvgChevronRightIcon, {
     color: "text50"
   })));
 };
@@ -93178,26 +93178,26 @@ const WalletLink = ({
   const onClick = () => {
     setNavigation(toLocation);
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     onClick,
     width: "full",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     className: clickable$2
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     fontSize: "normal",
     fontWeight: "medium"
-  }, label), /* @__PURE__ */ React.createElement(Box, {
+  }, label), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     fontSize: "normal",
     fontWeight: "medium"
-  }, "View all"), /* @__PURE__ */ React.createElement(SvgChevronRightIcon, {
+  }, "View all"), /* @__PURE__ */ React$1.createElement(SvgChevronRightIcon, {
     color: "text50",
     size: "sm"
   })));
@@ -93293,7 +93293,7 @@ const SearchWallet = () => {
   });
   const foundCoinBalances = (search2 === "" ? indexedCoinBalances : fuzzySearchCoinBalances.search(search2).map((result) => result.item)).slice(0, 5);
   const foundCollectionBalances = (search2 === "" ? indexedCollectionBalances : fuzzySearchCollections.search(search2).map((result) => result.item)).slice(0, 5);
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
     paddingTop: "3",
@@ -93301,9 +93301,9 @@ const SearchWallet = () => {
     gap: "10",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     width: "full"
-  }, /* @__PURE__ */ React.createElement(TextInput, {
+  }, /* @__PURE__ */ React$1.createElement(TextInput, {
     autoFocus: true,
     name: "search wallet",
     leftIcon: SvgSearchIcon,
@@ -93311,13 +93311,13 @@ const SearchWallet = () => {
     onChange: (ev) => setSearch(ev.target.value),
     placeholder: "Search your wallet",
     "data-1p-ignore": true
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     gap: "5"
-  }, /* @__PURE__ */ React.createElement(WalletLink, {
+  }, /* @__PURE__ */ React$1.createElement(WalletLink, {
     toLocation: {
       location: "search-view-all",
       params: {
@@ -93325,25 +93325,25 @@ const SearchWallet = () => {
       }
     },
     label: `Collections (${collectionBalancesAmount})`
-  }), isLoading ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), isLoading ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     key: i2,
     width: "100%",
     height: "32px"
-  })) : foundCollectionBalances.length === 0 ? /* @__PURE__ */ React.createElement(Text, {
+  })) : foundCollectionBalances.length === 0 ? /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
   }, "No collections found") : foundCollectionBalances.map((indexedItem, index2) => {
     const balance = collectionBalances[indexedItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
+    return /* @__PURE__ */ React$1.createElement(BalanceItem, {
       key: index2,
       balance
     });
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     gap: "5"
-  }, /* @__PURE__ */ React.createElement(WalletLink, {
+  }, /* @__PURE__ */ React$1.createElement(WalletLink, {
     toLocation: {
       location: "search-view-all",
       params: {
@@ -93351,15 +93351,15 @@ const SearchWallet = () => {
       }
     },
     label: `Coins (${coinBalancesAmount})`
-  }), isLoading ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), isLoading ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     key: i2,
     width: "100%",
     height: "32px"
-  })) : foundCoinBalances.length === 0 ? /* @__PURE__ */ React.createElement(Text, {
+  })) : foundCoinBalances.length === 0 ? /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
   }, "No coins found") : foundCoinBalances.map((indexItem, index2) => {
     const balance = coinBalances[indexItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
+    return /* @__PURE__ */ React$1.createElement(BalanceItem, {
       key: index2,
       balance
     });
@@ -93463,19 +93463,19 @@ const SearchWalletViewAll = ({
   const foundCoinBalances = search2 === "" ? indexedCoinBalances : fuzzySearchCoinBalances.search(search2).map((result) => result.item);
   const foundCollectionBalances = search2 === "" ? indexedCollectionBalances : fuzzySearchCollections.search(search2).map((result) => result.item);
   const TabsHeaderSkeleton = () => {
-    return /* @__PURE__ */ React.createElement(Skeleton$1, {
+    return /* @__PURE__ */ React$1.createElement(Skeleton$1, {
       width: "360px",
       height: "48px"
     });
   };
   const ItemsSkeletons = () => {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, Array(8).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, Array(8).fill(null).map((_, i2) => /* @__PURE__ */ React$1.createElement(Skeleton$1, {
       key: i2,
       width: "full",
       height: "32px"
     })));
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
     paddingTop: "3",
@@ -93483,9 +93483,9 @@ const SearchWalletViewAll = ({
     gap: "5",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     width: "full"
-  }, /* @__PURE__ */ React.createElement(TextInput, {
+  }, /* @__PURE__ */ React$1.createElement(TextInput, {
     autoFocus: true,
     name: "search wallet",
     leftIcon: SvgSearchIcon,
@@ -93493,14 +93493,14 @@ const SearchWalletViewAll = ({
     onChange: (ev) => setSearch(ev.target.value),
     placeholder: "Search your wallet",
     "data-1p-ignore": true
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     width: "full"
-  }, /* @__PURE__ */ React.createElement(TabsRoot, {
+  }, /* @__PURE__ */ React$1.createElement(TabsRoot, {
     value: selectedTab,
     onValueChange: (value) => setSelectedTab(value)
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     marginBottom: "5"
-  }, !isLoading && /* @__PURE__ */ React.createElement(TabsHeader, {
+  }, !isLoading && /* @__PURE__ */ React$1.createElement(TabsHeader, {
     value: selectedTab,
     tabs: [{
       label: `Collections (${collectionBalancesAmount})`,
@@ -93509,29 +93509,29 @@ const SearchWalletViewAll = ({
       label: `Coins (${coinBalancesAmount})`,
       value: "coins"
     }]
-  }), isLoading && /* @__PURE__ */ React.createElement(TabsHeaderSkeleton, null)), /* @__PURE__ */ React.createElement(TabsContent, {
+  }), isLoading && /* @__PURE__ */ React$1.createElement(TabsHeaderSkeleton, null)), /* @__PURE__ */ React$1.createElement(TabsContent, {
     value: "collections"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "3"
-  }, isLoading && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isLoading && foundCollectionBalances.length === 0 && /* @__PURE__ */ React.createElement(Text, {
+  }, isLoading && /* @__PURE__ */ React$1.createElement(ItemsSkeletons, null), !isLoading && foundCollectionBalances.length === 0 && /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
   }, "No Collectibles Found"), !isLoading && foundCollectionBalances.length > 0 && foundCollectionBalances.map((indexItem, index2) => {
     const collectionBalance = collectionBalances[indexItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
+    return /* @__PURE__ */ React$1.createElement(BalanceItem, {
       key: index2,
       balance: collectionBalance
     });
-  }))), /* @__PURE__ */ React.createElement(TabsContent, {
+  }))), /* @__PURE__ */ React$1.createElement(TabsContent, {
     value: "coins"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "3"
-  }, isLoading && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isLoading && coinBalances.length == 0 && /* @__PURE__ */ React.createElement(Text, {
+  }, isLoading && /* @__PURE__ */ React$1.createElement(ItemsSkeletons, null), !isLoading && coinBalances.length == 0 && /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
   }, "No Coins Found"), !isLoading && foundCoinBalances.length > 0 && foundCoinBalances.map((indexedItem, index2) => {
     const coinBalance = coinBalances[indexedItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
+    return /* @__PURE__ */ React$1.createElement(BalanceItem, {
       key: index2,
       balance: coinBalance
     });
@@ -93556,17 +93556,17 @@ const SettingsMenu = () => {
       location: "settings-networks"
     });
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     padding: "5",
     paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Button, {
+  }, /* @__PURE__ */ React$1.createElement(Button, {
     onClick: onClickGeneral,
     leftIcon: SvgSettingsIcon,
     rightIcon: SvgChevronRightIcon,
@@ -93576,7 +93576,7 @@ const SettingsMenu = () => {
       height: "52px",
       borderRadius: vars.radii.md
     }
-  }), /* @__PURE__ */ React.createElement(Button, {
+  }), /* @__PURE__ */ React$1.createElement(Button, {
     onClick: onClickCurrency,
     leftIcon: SvgCurrencyIcon,
     rightIcon: SvgChevronRightIcon,
@@ -93586,7 +93586,7 @@ const SettingsMenu = () => {
       height: "52px",
       borderRadius: vars.radii.md
     }
-  }), /* @__PURE__ */ React.createElement(Button, {
+  }), /* @__PURE__ */ React$1.createElement(Button, {
     onClick: onClickNetworks,
     leftIcon: SvgNetworkIcon,
     rightIcon: SvgChevronRightIcon,
@@ -93612,33 +93612,33 @@ const SettingsGeneral = () => {
   const onChangeHideCollectibles = () => {
     setHideCollectibles(!hideCollectibles);
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     gap: "2",
     padding: "5",
     paddingTop: "3",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Card, {
+  }, /* @__PURE__ */ React$1.createElement(Card, {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontWeight: "bold"
-  }, "Hide unlisted tokens"), /* @__PURE__ */ React.createElement(Switch, {
+  }, "Hide unlisted tokens"), /* @__PURE__ */ React$1.createElement(Switch, {
     checked: hideUnlistedTokens,
     onCheckedChange: onChangeHideUnlistedTokens
-  })), /* @__PURE__ */ React.createElement(Card, {
+  })), /* @__PURE__ */ React$1.createElement(Card, {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontWeight: "bold"
-  }, "Hide collectibles"), /* @__PURE__ */ React.createElement(Switch, {
+  }, "Hide collectibles"), /* @__PURE__ */ React$1.createElement(Switch, {
     checked: hideCollectibles,
     onCheckedChange: onChangeHideCollectibles
   }))));
@@ -93649,7 +93649,7 @@ const SelectedIndicator = (props) => {
     className,
     squareIndicator = false
   } = props;
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     borderStyle: "solid",
     borderColor: squareIndicator && selected ? "transparent" : "borderNormal",
     borderWidth: "thin",
@@ -93663,7 +93663,7 @@ const SelectedIndicator = (props) => {
       width: "20px",
       height: "20px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     as: motion.div,
     background: squareIndicator ? "borderNormal" : "backgroundInverse",
     position: "absolute",
@@ -93686,7 +93686,7 @@ const SelectedIndicator = (props) => {
     },
     justifyContent: "center",
     alignItems: "center"
-  }, squareIndicator && /* @__PURE__ */ React.createElement(SvgCheckmarkIcon, {
+  }, squareIndicator && /* @__PURE__ */ React$1.createElement(SvgCheckmarkIcon, {
     color: "white",
     style: {
       width: "14px",
@@ -93731,27 +93731,27 @@ const SettingsCurrency = () => {
     setFiatCurrency
   } = useSettings();
   useScrollbarWidth();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingBottom: "5",
     paddingX: "4",
     paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2"
   }, supportedFiatCurrencies.map((currency) => {
-    return /* @__PURE__ */ React.createElement(SelectButton, {
+    return /* @__PURE__ */ React$1.createElement(SelectButton, {
       key: currency.symbol,
       value: currency.symbol,
       selected: currency.symbol === fiatCurrency.symbol,
       onClick: () => setFiatCurrency && setFiatCurrency(currency)
-    }, /* @__PURE__ */ React.createElement(Box, {
+    }, /* @__PURE__ */ React$1.createElement(Box, {
       gap: "2",
       justifyContent: "flex-start",
       alignItems: "center"
-    }, /* @__PURE__ */ React.createElement(Text, {
+    }, /* @__PURE__ */ React$1.createElement(Text, {
       color: "text100",
       fontWeight: "bold"
-    }, currency.symbol), /* @__PURE__ */ React.createElement(Text, {
+    }, currency.symbol), /* @__PURE__ */ React$1.createElement(Text, {
       color: "text50"
     }, currency.name.message)));
   })));
@@ -93774,38 +93774,38 @@ const SettingsNetwork = () => {
       setSelectedNetworks([...selectedNetworks, chainId]);
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     padding: "5",
     paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "small",
     color: "text50"
-  }, "Networks"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Networks"), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2"
   }, chains2.map((chain) => {
     const networkInfo = getNativeTokenInfoByChainId(chain.id, chains2);
-    return /* @__PURE__ */ React.createElement(SelectButton, {
+    return /* @__PURE__ */ React$1.createElement(SelectButton, {
       disabled: selectedNetworks.length === 1 && selectedNetworks.includes(chain.id),
       key: chain.id,
       selected: selectedNetworks.includes(chain.id),
       onClick: () => onClickNetwork(chain.id),
       value: chain.id,
       squareIndicator: true
-    }, /* @__PURE__ */ React.createElement(Box, {
+    }, /* @__PURE__ */ React$1.createElement(Box, {
       gap: "2",
       justifyContent: "center",
       alignItems: "center"
-    }, /* @__PURE__ */ React.createElement(Image$1, {
+    }, /* @__PURE__ */ React$1.createElement(Image$1, {
       width: "3",
       height: "3",
       src: networkInfo.logoURI,
       alt: "network"
-    }), /* @__PURE__ */ React.createElement(Text, {
+    }), /* @__PURE__ */ React$1.createElement(Text, {
       color: "text100",
       variant: "small"
     }, networkInfo.name)));
@@ -93824,7 +93824,7 @@ const NetworkBadge = ({
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
   const chainColor = getChainColor(chainId);
   const chainBGColor = getChainBGColor(chainId);
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     height: "6",
     paddingY: "1",
     paddingLeft: "1.5",
@@ -93838,12 +93838,12 @@ const NetworkBadge = ({
     justifyContent: "center",
     alignItems: "center",
     width: "fit"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
+  }, /* @__PURE__ */ React$1.createElement(Image$1, {
     style: {
       width: "14px"
     },
     src: nativeTokenInfo.logoURI
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     fontSize: "xsmall",
     style: {
@@ -93855,11 +93855,11 @@ const CoinDetailsSkeleton = ({
   chainId
 }) => {
   useScrollbarWidth();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "10",
     paddingBottom: "5",
@@ -93868,35 +93868,35 @@ const CoinDetailsSkeleton = ({
     style: {
       marginTop: "-20px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     marginBottom: "10",
     gap: "2",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "32px",
     height: "32px"
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     height: "24px",
     width: "70px"
-  }), /* @__PURE__ */ React.createElement(NetworkBadge, {
+  }), /* @__PURE__ */ React$1.createElement(NetworkBadge, {
     chainId
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     color: "text50",
     fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Balance"), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "150px",
     height: "36px"
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "33px",
     height: "17px"
-  }))), /* @__PURE__ */ React.createElement(Button, {
+  }))), /* @__PURE__ */ React$1.createElement(Button, {
     color: "text100",
     marginTop: "4",
     marginBottom: "10",
@@ -93907,7 +93907,7 @@ const CoinDetailsSkeleton = ({
     disabled: true,
     onClick: () => {
     }
-  }), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(TransactionHistorySkeleton, null))));
+  }), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(TransactionHistorySkeleton, null))));
 };
 const useIntersectionObserver = (ref, options) => {
   var _entry$isIntersecting;
@@ -93946,7 +93946,7 @@ const InfiniteScroll = (props) => {
     setPageNumber((pageNumber2) => pageNumber2 + 1);
     setLoading(false);
   };
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, children, /* @__PURE__ */ React.createElement("div", {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, children, /* @__PURE__ */ React$1.createElement("div", {
     ref: bottomRef
   }));
 };
@@ -94008,7 +94008,7 @@ const CoinDetails = ({
   });
   const isLoading = isLoadingCoinBalance || isLoadingCoinPrices || isLoadingConversionRate;
   if (isLoading) {
-    return /* @__PURE__ */ React.createElement(CoinDetailsSkeleton, {
+    return /* @__PURE__ */ React$1.createElement(CoinDetailsSkeleton, {
       chainId
     });
   }
@@ -94034,11 +94034,11 @@ const CoinDetails = ({
       }
     });
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "10",
     paddingBottom: "5",
@@ -94047,49 +94047,49 @@ const CoinDetails = ({
     style: {
       marginTop: "-20px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     marginBottom: "10",
     gap: "2",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
+  }, /* @__PURE__ */ React$1.createElement(Image$1, {
     width: "8",
     src: logo,
     alt: "logo"
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontWeight: "bold",
     fontSize: "large"
-  }, name), /* @__PURE__ */ React.createElement(NetworkBadge, {
+  }, name), /* @__PURE__ */ React$1.createElement(NetworkBadge, {
     chainId
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     color: "text50",
     fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Balance"), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     color: "text100",
     fontSize: "xlarge"
-  }, `${balanceDisplayed} ${symbol}`), /* @__PURE__ */ React.createElement(Text, {
+  }, `${balanceDisplayed} ${symbol}`), /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     color: "text50",
     fontSize: "normal"
-  }, `${fiatCurrency.sign}${coinBalanceFiat}`))), /* @__PURE__ */ React.createElement(Button, {
+  }, `${fiatCurrency.sign}${coinBalanceFiat}`))), /* @__PURE__ */ React$1.createElement(Button, {
     width: "full",
     variant: "primary",
     leftIcon: SvgSendIcon,
     color: "text100",
     label: "Send",
     onClick: onClickSend
-  }), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(InfiniteScroll, {
+  }), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(InfiniteScroll, {
     onLoad: () => fetchNextPage(),
     hasMore: hasNextPage2
-  }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
+  }, /* @__PURE__ */ React$1.createElement(TransactionHistoryList, {
     transactions: transactionHistory,
     isLoading: isLoadingTransactionHistory,
     isFetchingNextPage
@@ -94099,7 +94099,7 @@ const CollectionDetailsSkeleton = ({
   chainId
 }) => {
   useScrollbarWidth();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
     paddingTop: "3",
@@ -94108,28 +94108,28 @@ const CollectionDetailsSkeleton = ({
     alignItems: "center",
     justifyContent: "center",
     gap: "10"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "32px",
     height: "32px"
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "100px",
     height: "24px"
-  }), /* @__PURE__ */ React.createElement(NetworkBadge, {
+  }), /* @__PURE__ */ React$1.createElement(NetworkBadge, {
     chainId
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "142px",
     height: "17px"
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     width: "full"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "168px",
     height: "20px"
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       display: "grid",
       gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
@@ -94137,7 +94137,7 @@ const CollectionDetailsSkeleton = ({
     },
     width: "full",
     marginTop: "3"
-  }, Array(8).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, Array(8).fill(null).map((_, i2) => /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     key: i2,
     width: "full",
     aspectRatio: "1/1"
@@ -94166,7 +94166,7 @@ const CollectionDetails = ({
   const contractInfo = collectionBalanceData == null || (_collectionBalanceDat = collectionBalanceData[0]) == null ? void 0 : _collectionBalanceDat.contractInfo;
   const collectionLogoURI = contractInfo == null ? void 0 : contractInfo.logoURI;
   if (isLoadingCollectionBalance) {
-    return /* @__PURE__ */ React.createElement(CollectionDetailsSkeleton, {
+    return /* @__PURE__ */ React$1.createElement(CollectionDetailsSkeleton, {
       chainId
     });
   }
@@ -94180,7 +94180,7 @@ const CollectionDetails = ({
       }
     });
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
     paddingTop: "3",
@@ -94189,31 +94189,31 @@ const CollectionDetails = ({
     alignItems: "center",
     justifyContent: "center",
     gap: "10"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
+  }, /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
     imageUrl: collectionLogoURI,
     size: 32
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     fontSize: "large",
     color: "text100"
-  }, (contractInfo == null ? void 0 : contractInfo.name) || "Unknown"), /* @__PURE__ */ React.createElement(NetworkBadge, {
+  }, (contractInfo == null ? void 0 : contractInfo.name) || "Unknown"), /* @__PURE__ */ React$1.createElement(NetworkBadge, {
     chainId
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     fontSize: "normal",
     color: "text50"
-  }, `${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0} Unique Collectibles`)), /* @__PURE__ */ React.createElement(Box, {
+  }, `${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0} Unique Collectibles`)), /* @__PURE__ */ React$1.createElement(Box, {
     width: "full"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     fontSize: "normal",
     color: "text50"
-  }, `Owned (${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0})`), /* @__PURE__ */ React.createElement(Box, {
+  }, `Owned (${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0})`), /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       display: "grid",
       gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
@@ -94226,11 +94226,11 @@ const CollectionDetails = ({
     const unformattedBalance = balance.balance;
     const decimals = (balance == null || (_balance$tokenMetadat = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat.decimals) || 0;
     const formattedBalance = formatDisplay$1(formatUnits$1(unformattedBalance, decimals));
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       key: index2,
       onClick: () => onClickItem(balance),
       className: clickable$2
-    }, /* @__PURE__ */ React.createElement(Box, {
+    }, /* @__PURE__ */ React$1.createElement(Box, {
       background: "backgroundSecondary",
       aspectRatio: "1/1",
       width: "full",
@@ -94238,16 +94238,16 @@ const CollectionDetails = ({
       justifyContent: "center",
       alignItems: "center",
       marginBottom: "2"
-    }, /* @__PURE__ */ React.createElement(Image$1, {
+    }, /* @__PURE__ */ React$1.createElement(Image$1, {
       style: {
         height: "100%"
       },
       src: (_balance$tokenMetadat2 = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat2.image
-    })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
       fontWeight: "bold",
       fontSize: "normal",
       color: "text100"
-    }, `${(_balance$tokenMetadat3 = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat3.name}`)), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    }, `${(_balance$tokenMetadat3 = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat3.name}`)), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
       marginTop: "1",
       fontWeight: "medium",
       fontSize: "normal",
@@ -94257,11 +94257,11 @@ const CollectionDetails = ({
 };
 const CollectibleDetailsSkeleton = () => {
   useScrollbarWidth();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "10",
     paddingBottom: "5",
@@ -94270,35 +94270,35 @@ const CollectibleDetailsSkeleton = () => {
     style: {
       marginTop: "-20px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     gap: "3",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "120px",
     height: "30px"
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "140px",
     height: "40px"
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "347px",
     height: "347px"
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     color: "text50",
     fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Balance"), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "44px",
     height: "36px"
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: "34px",
     height: "17px"
-  }))), /* @__PURE__ */ React.createElement(Button, {
+  }))), /* @__PURE__ */ React$1.createElement(Button, {
     color: "text100",
     marginTop: "4",
     width: "full",
@@ -94307,11 +94307,11 @@ const CollectibleDetailsSkeleton = () => {
     label: "Send",
     onClick: () => {
     }
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     color: "text50",
     fontWeight: "medium"
-  }, "This week"), /* @__PURE__ */ React.createElement(TransactionHistorySkeleton, null))));
+  }, "This week"), /* @__PURE__ */ React$1.createElement(TransactionHistorySkeleton, null))));
 };
 const CollectibleDetails = ({
   contractAddress,
@@ -94373,7 +94373,7 @@ const CollectibleDetails = ({
   });
   const isLoading = isLoadingCollectibleBalance || isLoadingCollectiblePrices || isLoadingConversionRate;
   if (isLoading) {
-    return /* @__PURE__ */ React.createElement(CollectibleDetailsSkeleton, null);
+    return /* @__PURE__ */ React$1.createElement(CollectibleDetailsSkeleton, null);
   }
   const onClickSend = () => {
     setNavigation({
@@ -94398,11 +94398,11 @@ const CollectibleDetails = ({
     conversionRate,
     decimals
   }) : "0";
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "10",
     paddingBottom: "5",
@@ -94411,17 +94411,17 @@ const CollectibleDetails = ({
     style: {
       marginTop: "-20px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     gap: "3",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     gap: "2",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
+  }, /* @__PURE__ */ React$1.createElement(Image$1, {
     borderRadius: "circle",
     width: "8",
     src: collectionLogo,
@@ -94429,50 +94429,50 @@ const CollectibleDetails = ({
     style: {
       objectFit: "cover"
     }
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     gap: "1",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     fontSize: "small",
     color: "text100"
-  }, collectionName), /* @__PURE__ */ React.createElement(Image$1, {
+  }, collectionName), /* @__PURE__ */ React$1.createElement(Image$1, {
     width: "3",
     src: nativeTokenInfo.logoURI,
     alt: "collection logo"
-  }))), /* @__PURE__ */ React.createElement(Box, {
+  }))), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontWeight: "bold",
     fontSize: "large"
-  }, (dataCollectibleBalance == null || (_dataCollectibleBalan4 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan4.name) || "Unknown Collectible"), /* @__PURE__ */ React.createElement(Text, {
+  }, (dataCollectibleBalance == null || (_dataCollectibleBalan4 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan4.name) || "Unknown Collectible"), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     fontSize: "small",
     fontWeight: "medium"
-  }, `#${tokenId}`))), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(CollectibleTileImage, {
+  }, `#${tokenId}`))), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(CollectibleTileImage, {
     imageUrl: dataCollectibleBalance == null || (_dataCollectibleBalan5 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan5.image
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     color: "text50",
     fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Balance"), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     color: "text100",
     fontSize: "xlarge"
-  }, formattedBalance), dataCollectiblePrices && ((_dataCollectiblePrice = dataCollectiblePrices[0].price) == null ? void 0 : _dataCollectiblePrice.value) && /* @__PURE__ */ React.createElement(Text, {
+  }, formattedBalance), dataCollectiblePrices && ((_dataCollectiblePrice = dataCollectiblePrices[0].price) == null ? void 0 : _dataCollectiblePrice.value) && /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     color: "text50",
     fontSize: "normal"
-  }, `${fiatCurrency.symbol} ${valueFiat}`))), /* @__PURE__ */ React.createElement(Button, {
+  }, `${fiatCurrency.symbol} ${valueFiat}`))), /* @__PURE__ */ React$1.createElement(Button, {
     color: "text100",
     marginTop: "4",
     width: "full",
@@ -94480,10 +94480,10 @@ const CollectibleDetails = ({
     leftIcon: SvgSendIcon,
     label: "Send",
     onClick: onClickSend
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(InfiniteScroll, {
+  })), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(InfiniteScroll, {
     onLoad: () => fetchNextPage(),
     hasMore: hasNextPage2
-  }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
+  }, /* @__PURE__ */ React$1.createElement(TransactionHistoryList, {
     transactions: transactionHistory,
     isLoading: isLoadingTransactionHistory,
     isFetchingNextPage
@@ -94509,10 +94509,10 @@ const CopyButton = (props) => {
   };
   const label = isCopied ? "Copied!" : "Copy";
   const backgroundColor = buttonVariant === "icon" ? "rgba(0,0,0,0)" : vars.colors.buttonGlass;
-  return /* @__PURE__ */ React.createElement(lib.CopyToClipboard, {
+  return /* @__PURE__ */ React$1.createElement(lib.CopyToClipboard, {
     text: text2,
     onCopy: handleCopy
-  }, /* @__PURE__ */ React.createElement(IconButton, _extends$2({
+  }, /* @__PURE__ */ React$1.createElement(IconButton, _extends$2({
     size: size2,
     icon: isCopied ? SvgCheckmarkIcon : SvgCopyIcon
   }, rest, {
@@ -94599,7 +94599,7 @@ const TransactionDetails = ({
     const isNativeToken = compareAddress$2((transfer == null || (_transfer$contractInf6 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf6.address) || "", AddressZero);
     const logoURI = isNativeToken ? nativeTokenInfo.logoURI : transfer == null || (_transfer$contractInf7 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf7.logoURI;
     const symbol = isNativeToken ? nativeTokenInfo.symbol : (transfer == null || (_transfer$contractInf8 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf8.symbol) || "";
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, (_transfer$amounts = transfer.amounts) == null ? void 0 : _transfer$amounts.map((amount, index2) => {
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, (_transfer$amounts = transfer.amounts) == null ? void 0 : _transfer$amounts.map((amount, index2) => {
       var _transfer$tokenIds2, _transfer$tokenMetada, _transfer$contractInf9, _collectiblePricesDat, _coinPricesData$find;
       const isCollectible = transfer.contractType === "ERC721" || transfer.contractType === "ERC1155";
       const tokenId = ((_transfer$tokenIds2 = transfer.tokenIds) == null ? void 0 : _transfer$tokenIds2[index2]) || "0";
@@ -94616,14 +94616,14 @@ const TransactionDetails = ({
         return compareAddress$2(coin.token.contractAddress, ((_transfer$contractInf11 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf11.address) || AddressZero) && coin.token.chainId === transaction2.chainId;
       })) == null || (_coinPricesData$find = _coinPricesData$find.price) == null ? void 0 : _coinPricesData$find.value;
       const fiatValue = (parseFloat(formattedBalance) * (conversionRate * (fiatPrice || 0))).toFixed(2);
-      return /* @__PURE__ */ React.createElement(Box, {
+      return /* @__PURE__ */ React$1.createElement(Box, {
         key: index2,
         width: "full",
         flexDirection: "row",
         gap: "2",
         justifyContent: "space-between",
         alignItems: "center"
-      }, /* @__PURE__ */ React.createElement(Box, {
+      }, /* @__PURE__ */ React$1.createElement(Box, {
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
@@ -94635,31 +94635,31 @@ const TransactionDetails = ({
         style: {
           flexBasis: "100%"
         }
-      }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
+      }, /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
         imageUrl: logoURI,
         size: 20
-      }), /* @__PURE__ */ React.createElement(Box, {
+      }), /* @__PURE__ */ React$1.createElement(Box, {
         gap: "0.5",
         flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "center"
-      }, /* @__PURE__ */ React.createElement(Text, {
+      }, /* @__PURE__ */ React$1.createElement(Text, {
         fontWeight: "bold",
         fontSize: "xsmall",
         color: "text100"
-      }, `${balanceDisplayed} ${symbol}`), arePricesLoading ? /* @__PURE__ */ React.createElement(Skeleton$1, {
+      }, `${balanceDisplayed} ${symbol}`), arePricesLoading ? /* @__PURE__ */ React$1.createElement(Skeleton$1, {
         width: "44px",
         height: "12px"
-      }) : /* @__PURE__ */ React.createElement(Text, {
+      }) : /* @__PURE__ */ React$1.createElement(Text, {
         fontWeight: "bold",
         fontSize: "xsmall",
         color: "text50"
-      }, fiatPrice ? `${fiatCurrency.sign}${fiatValue}` : ""))), /* @__PURE__ */ React.createElement(SvgArrowRightIcon, {
+      }, fiatPrice ? `${fiatCurrency.sign}${fiatValue}` : ""))), /* @__PURE__ */ React$1.createElement(SvgArrowRightIcon, {
         color: "text50",
         style: {
           width: "16px"
         }
-      }), /* @__PURE__ */ React.createElement(Box, {
+      }), /* @__PURE__ */ React$1.createElement(Box, {
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
@@ -94671,19 +94671,19 @@ const TransactionDetails = ({
         style: {
           flexBasis: "100%"
         }
-      }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+      }, /* @__PURE__ */ React$1.createElement(GradientAvatar, {
         address: recipientAddress,
         style: {
           width: "20px"
         }
-      }), /* @__PURE__ */ React.createElement(Text, {
+      }), /* @__PURE__ */ React$1.createElement(Text, {
         fontWeight: "bold",
         fontSize: "xsmall",
         color: "text100"
       }, recipientAddressFormatted)));
     }));
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     padding: "5",
     paddingTop: "3",
     flexDirection: "column",
@@ -94691,23 +94691,23 @@ const TransactionDetails = ({
     justifyContent: "center",
     gap: "10",
     marginTop: "5"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "6",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     fontWeight: "medium"
-  }, "Transaction details"), /* @__PURE__ */ React.createElement(Text, {
+  }, "Transaction details"), /* @__PURE__ */ React$1.createElement(Text, {
     marginBottom: "1",
     fontSize: "small",
     fontWeight: "medium",
     color: "text50"
-  }, date), /* @__PURE__ */ React.createElement(NetworkBadge, {
+  }, date), /* @__PURE__ */ React$1.createElement(NetworkBadge, {
     chainId: transaction2.chainId
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
@@ -94716,79 +94716,79 @@ const TransactionDetails = ({
     padding: "4",
     background: "backgroundSecondary",
     borderRadius: "md"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     gap: "1",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     fontWeight: "medium",
     color: "text50"
-  }, "Transfer"), /* @__PURE__ */ React.createElement(Image$1, {
+  }, "Transfer"), /* @__PURE__ */ React$1.createElement(Image$1, {
     width: "3",
     src: nativeTokenInfo.logoURI,
     alt: "network logo"
-  })), (_transaction$transfer2 = transaction2.transfers) == null ? void 0 : _transaction$transfer2.map((transfer, index2) => /* @__PURE__ */ React.createElement(Box, {
+  })), (_transaction$transfer2 = transaction2.transfers) == null ? void 0 : _transaction$transfer2.map((transfer, index2) => /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     gap: "4",
     key: `transfer-${index2}`
-  }, /* @__PURE__ */ React.createElement(Transfer, {
+  }, /* @__PURE__ */ React$1.createElement(Transfer, {
     transfer
-  })))), /* @__PURE__ */ React.createElement(Button, {
+  })))), /* @__PURE__ */ React$1.createElement(Button, {
     onClick: onClickBlockExplorer,
     width: "full",
     borderRadius: "md",
     rightIcon: SvgLinkIcon,
     label: `View on ${nativeTokenInfo.blockExplorerName}`
-  }), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     flexDirection: "column",
     gap: "2",
     justifyContent: "center",
     alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Divider, {
+  }, /* @__PURE__ */ React$1.createElement(Divider, {
     width: "full",
     margin: "0",
     style: {
       marginBottom: "-4px"
     }
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     fontSize: "normal",
     fontWeight: "medium"
-  }, "Status"), /* @__PURE__ */ React.createElement(Text, {
+  }, "Status"), /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     fontWeight: "medium",
     color: "text100"
-  }, "Complete")), /* @__PURE__ */ React.createElement(Box, {
+  }, "Complete")), /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     flexDirection: "column",
     gap: "2",
     justifyContent: "center",
     alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Divider, {
+  }, /* @__PURE__ */ React$1.createElement(Divider, {
     width: "full",
     margin: "0",
     style: {
       marginBottom: "-4px"
     }
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     fontSize: "normal",
     fontWeight: "medium"
-  }, "Transaction Hash"), /* @__PURE__ */ React.createElement(Text, {
+  }, "Transaction Hash"), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontSize: "normal",
     fontWeight: "medium",
     style: {
       overflowWrap: "anywhere"
     }
-  }, transaction2.txnHash), /* @__PURE__ */ React.createElement(CopyButton, {
+  }, transaction2.txnHash), /* @__PURE__ */ React$1.createElement(CopyButton, {
     marginTop: "2",
     buttonVariant: "with-label",
     text: transaction2.txnHash
@@ -94800,15 +94800,15 @@ const AccountInformation = /* @__PURE__ */ reactExports.forwardRef(({
   const {
     address
   } = useAccount();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     gap: "2",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     onClick: onClickAccount,
     gap: "2",
     alignItems: "center",
@@ -94816,14 +94816,14 @@ const AccountInformation = /* @__PURE__ */ reactExports.forwardRef(({
     className: clickable$2,
     position: "relative",
     ref
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+  }, /* @__PURE__ */ React$1.createElement(GradientAvatar, {
     size: "sm",
     address: address || ""
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontWeight: "medium",
     variant: "normal"
-  }, formatAddress$1(address || "")), /* @__PURE__ */ React.createElement(SvgChevronDownIcon, {
+  }, formatAddress$1(address || "")), /* @__PURE__ */ React$1.createElement(SvgChevronDownIcon, {
     color: "text100"
   }))));
 });
@@ -94878,7 +94878,7 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
         return vars.colors.transparent;
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     padding: "3",
     ref,
     zIndex: "30",
@@ -94892,30 +94892,30 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
       left: "15px",
       background: getDropdownBackgroundColor()
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: "3",
     marginLeft: "2",
     color: "text100"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+  }, /* @__PURE__ */ React$1.createElement(GradientAvatar, {
     style: {
       width: "28px"
     },
     size: "md",
     address: address || ""
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "large",
     style: {
       fontWeight: "700"
     },
     color: "text100"
-  }, formatAddress$1(address || "")), /* @__PURE__ */ React.createElement(CopyButton, {
+  }, formatAddress$1(address || "")), /* @__PURE__ */ React$1.createElement(CopyButton, {
     buttonVariant: "icon",
     size: "md",
     text: address || "",
@@ -94923,16 +94923,16 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
     style: {
       marginLeft: "-16px"
     }
-  })), /* @__PURE__ */ React.createElement(IconButton, {
+  })), /* @__PURE__ */ React$1.createElement(IconButton, {
     onClick: () => setOpenWalletDropdown(false),
     size: "xs",
     background: "buttonGlass",
     icon: SvgCloseIcon
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     gap: "2",
     marginTop: "3",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Button, {
+  }, /* @__PURE__ */ React$1.createElement(Button, {
     variant: "glass",
     style: {
       borderRadius: vars.radii.md
@@ -94941,7 +94941,7 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
     leftIcon: SvgQrCodeIcon,
     label: "Receive",
     onClick: onClickReceive
-  }), /* @__PURE__ */ React.createElement(Button, {
+  }), /* @__PURE__ */ React$1.createElement(Button, {
     style: {
       borderRadius: vars.radii.md
     },
@@ -94949,7 +94949,7 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
     leftIcon: SvgTransactionIcon,
     label: "History",
     onClick: onClickHistory
-  }), /* @__PURE__ */ React.createElement(Button, {
+  }), /* @__PURE__ */ React$1.createElement(Button, {
     style: {
       borderRadius: vars.radii.md
     },
@@ -94957,7 +94957,7 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
     leftIcon: SvgSettingsIcon,
     label: "Settings",
     onClick: onClickSettings
-  }), /* @__PURE__ */ React.createElement(Button, {
+  }), /* @__PURE__ */ React$1.createElement(Button, {
     label: "Sign Out",
     style: {
       borderRadius: vars.radii.md
@@ -95005,11 +95005,11 @@ const WalletHeader = () => {
       location: "search"
     });
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     as: motion.div
-  }, /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$be92b6f5f03c0fe9, {
+  }, /* @__PURE__ */ React$1.createElement($cb5cc270b50c6fcd$export$be92b6f5f03c0fe9, {
     open: openWalletDropdown
-  }, /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$b688253958b8dfe7, null), /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement($cb5cc270b50c6fcd$export$b688253958b8dfe7, null), /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundPrimary",
     zIndex: "20",
     position: "fixed",
@@ -95022,27 +95022,27 @@ const WalletHeader = () => {
       height: HEADER_HEIGHT$1,
       paddingTop: "6px"
     }
-  }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
+  }, history.length > 0 ? /* @__PURE__ */ React$1.createElement(IconButton, {
     onClick: onClickBack,
     icon: SvgChevronLeftIcon,
     size: "xs"
-  }) : /* @__PURE__ */ React.createElement(IconButton, {
+  }) : /* @__PURE__ */ React$1.createElement(IconButton, {
     onClick: onClickSearch,
     icon: SvgSearchIcon,
     size: "xs"
-  }), /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$41fb9f06171c75f4, {
+  }), /* @__PURE__ */ React$1.createElement($cb5cc270b50c6fcd$export$41fb9f06171c75f4, {
     asChild: true
-  }, /* @__PURE__ */ React.createElement(AccountInformation, {
+  }, /* @__PURE__ */ React$1.createElement(AccountInformation, {
     onClickAccount
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       width: "44px"
     }
-  })), /* @__PURE__ */ React.createElement(AnimatePresence, null, openWalletDropdown && /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$7c6e2c02157bb7d2, {
+  })), /* @__PURE__ */ React$1.createElement(AnimatePresence, null, openWalletDropdown && /* @__PURE__ */ React$1.createElement($cb5cc270b50c6fcd$export$7c6e2c02157bb7d2, {
     asChild: true,
     side: "bottom",
     align: "start"
-  }, /* @__PURE__ */ React.createElement(WalletDropdownContent, {
+  }, /* @__PURE__ */ React$1.createElement(WalletDropdownContent, {
     setOpenWalletDropdown
   })))));
 };
@@ -95057,7 +95057,7 @@ const NavigationHeader$1 = ({
   const onClickBack = () => {
     goBack();
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundPrimary",
     zIndex: "20",
     position: "fixed",
@@ -95070,19 +95070,19 @@ const NavigationHeader$1 = ({
       height: HEADER_HEIGHT$1,
       paddingTop: "6px"
     }
-  }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
+  }, history.length > 0 ? /* @__PURE__ */ React$1.createElement(IconButton, {
     onClick: onClickBack,
     icon: SvgChevronLeftIcon,
     size: "xs"
-  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  }) : /* @__PURE__ */ React$1.createElement(Box, null), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     variant: "small",
     color: "text50"
-  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
+  }, secondaryText), /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     variant: "small",
     color: "text100"
-  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
+  }, primaryText)), /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       width: "44px"
     }
@@ -95094,57 +95094,57 @@ const getContent = (navigation) => {
   } = navigation;
   switch (location2) {
     case "send-coin":
-      return /* @__PURE__ */ React.createElement(SendCoin, {
+      return /* @__PURE__ */ React$1.createElement(SendCoin, {
         chainId: navigation.params.chainId,
         contractAddress: navigation.params.contractAddress
       });
     case "send-collectible":
-      return /* @__PURE__ */ React.createElement(SendCollectible, {
+      return /* @__PURE__ */ React$1.createElement(SendCollectible, {
         chainId: navigation.params.chainId,
         contractAddress: navigation.params.contractAddress,
         tokenId: navigation.params.tokenId
       });
     case "receive":
-      return /* @__PURE__ */ React.createElement(Receive, null);
+      return /* @__PURE__ */ React$1.createElement(Receive, null);
     case "history":
-      return /* @__PURE__ */ React.createElement(History, null);
+      return /* @__PURE__ */ React$1.createElement(History, null);
     case "search":
-      return /* @__PURE__ */ React.createElement(SearchWallet, null);
+      return /* @__PURE__ */ React$1.createElement(SearchWallet, null);
     case "search-view-all":
-      return /* @__PURE__ */ React.createElement(SearchWalletViewAll, {
+      return /* @__PURE__ */ React$1.createElement(SearchWalletViewAll, {
         defaultTab: navigation.params.defaultTab
       });
     case "settings":
-      return /* @__PURE__ */ React.createElement(SettingsMenu, null);
+      return /* @__PURE__ */ React$1.createElement(SettingsMenu, null);
     case "settings-general":
-      return /* @__PURE__ */ React.createElement(SettingsGeneral, null);
+      return /* @__PURE__ */ React$1.createElement(SettingsGeneral, null);
     case "settings-currency":
-      return /* @__PURE__ */ React.createElement(SettingsCurrency, null);
+      return /* @__PURE__ */ React$1.createElement(SettingsCurrency, null);
     case "settings-networks":
-      return /* @__PURE__ */ React.createElement(SettingsNetwork, null);
+      return /* @__PURE__ */ React$1.createElement(SettingsNetwork, null);
     case "coin-details":
-      return /* @__PURE__ */ React.createElement(CoinDetails, {
+      return /* @__PURE__ */ React$1.createElement(CoinDetails, {
         contractAddress: navigation.params.contractAddress,
         chainId: navigation.params.chainId
       });
     case "collectible-details":
-      return /* @__PURE__ */ React.createElement(CollectibleDetails, {
+      return /* @__PURE__ */ React$1.createElement(CollectibleDetails, {
         contractAddress: navigation.params.contractAddress,
         chainId: navigation.params.chainId,
         tokenId: navigation.params.tokenId
       });
     case "collection-details":
-      return /* @__PURE__ */ React.createElement(CollectionDetails, {
+      return /* @__PURE__ */ React$1.createElement(CollectionDetails, {
         contractAddress: navigation.params.contractAddress,
         chainId: navigation.params.chainId
       });
     case "transaction-details":
-      return /* @__PURE__ */ React.createElement(TransactionDetails, {
+      return /* @__PURE__ */ React$1.createElement(TransactionDetails, {
         transaction: navigation.params.transaction
       });
     case "home":
     default:
-      return /* @__PURE__ */ React.createElement(Home, null);
+      return /* @__PURE__ */ React$1.createElement(Home, null);
   }
 };
 const getHeader = (navigation) => {
@@ -95153,62 +95153,62 @@ const getHeader = (navigation) => {
   } = navigation;
   switch (location2) {
     case "search":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         primaryText: "Search wallet"
       });
     case "search-view-all":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Search wallet / ",
         primaryText: "View all"
       });
     case "settings":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Wallet / ",
         primaryText: "Settings"
       });
     case "settings-general":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Wallet / Settings / ",
         primaryText: "General"
       });
     case "settings-currency":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Wallet / Settings / ",
         primaryText: "Currency"
       });
     case "settings-networks":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Wallet / Settings / ",
         primaryText: "Networks"
       });
     case "receive":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Wallet / ",
         primaryText: "Receive"
       });
     case "history":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Wallet / ",
         primaryText: "History"
       });
     case "coin-details":
-      return /* @__PURE__ */ React.createElement(WalletHeader, null);
+      return /* @__PURE__ */ React$1.createElement(WalletHeader, null);
     case "collectible-details":
-      return /* @__PURE__ */ React.createElement(WalletHeader, null);
+      return /* @__PURE__ */ React$1.createElement(WalletHeader, null);
     case "transaction-details":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "",
         primaryText: ""
       });
     case "send-collectible":
     case "send-coin":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React$1.createElement(NavigationHeader$1, {
         secondaryText: "Wallet / ",
         primaryText: "Send"
       });
     case "home":
     default:
-      return /* @__PURE__ */ React.createElement(WalletHeader, null);
+      return /* @__PURE__ */ React$1.createElement(WalletHeader, null);
   }
 };
 const DEFAULT_LOCATION$1 = {
@@ -95216,9 +95216,9 @@ const DEFAULT_LOCATION$1 = {
 };
 const KitWalletProvider = (props) => {
   const queryClient2 = new QueryClient();
-  return /* @__PURE__ */ React.createElement(QueryClientProvider, {
+  return /* @__PURE__ */ React$1.createElement(QueryClientProvider, {
     client: queryClient2
-  }, /* @__PURE__ */ React.createElement(KitWalletContent, props));
+  }, /* @__PURE__ */ React$1.createElement(KitWalletContent, props));
 };
 const KitWalletContent = ({
   children
@@ -95236,23 +95236,23 @@ const KitWalletContent = ({
       setHistory([]);
     }
   }, [openWalletModal]);
-  return /* @__PURE__ */ React.createElement(WalletModalContextProvider, {
+  return /* @__PURE__ */ React$1.createElement(WalletModalContextProvider, {
     value: {
       setOpenWalletModal,
       openWalletModalState: openWalletModal
     }
-  }, /* @__PURE__ */ React.createElement(NavigationContextProvider$1, {
+  }, /* @__PURE__ */ React$1.createElement(NavigationContextProvider$1, {
     value: {
       setHistory,
       history
     }
-  }, /* @__PURE__ */ React.createElement("div", {
+  }, /* @__PURE__ */ React$1.createElement("div", {
     id: "kit-provider"
-  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
+  }, /* @__PURE__ */ React$1.createElement(ThemeProvider, {
     root: "#kit-provider",
     scope: "kit",
     theme
-  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openWalletModal && /* @__PURE__ */ React.createElement(Modal, {
+  }, /* @__PURE__ */ React$1.createElement(AnimatePresence, null, openWalletModal && /* @__PURE__ */ React$1.createElement(Modal, {
     contentProps: {
       style: _extends$2({
         maxWidth: "400px",
@@ -95262,10 +95262,10 @@ const KitWalletContent = ({
     scroll: false,
     backdropColor: "backgroundBackdrop",
     onClose: () => setOpenWalletModal(false)
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     className: walletContent$2,
     id: "sequence-kit-wallet-content"
-  }, getHeader(navigation), displayScrollbar ? /* @__PURE__ */ React.createElement(Scroll, {
+  }, getHeader(navigation), displayScrollbar ? /* @__PURE__ */ React$1.createElement(Scroll, {
     className: scrollbar,
     style: {
       paddingTop: HEADER_HEIGHT$1,
@@ -95736,7 +95736,7 @@ const ExtendedWalletList = ({
   const {
     isPending
   } = useConnect();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2",
     marginTop: "5"
@@ -95744,11 +95744,11 @@ const ExtendedWalletList = ({
     const Logo = theme === "dark" ? connector._wallet.logoDark : connector._wallet.logoLight;
     const walletName = connector._wallet.name;
     const connectorId = connector._wallet.id;
-    return /* @__PURE__ */ React.createElement(Button, {
+    return /* @__PURE__ */ React$1.createElement(Button, {
       key: connectorId,
       width: "full",
       shape: "square",
-      leftIcon: () => /* @__PURE__ */ React.createElement(Box, {
+      leftIcon: () => /* @__PURE__ */ React$1.createElement(Box, {
         justifyContent: "center",
         alignItems: "center",
         style: {
@@ -95758,9 +95758,9 @@ const ExtendedWalletList = ({
         width: "8",
         height: "8",
         overflow: "hidden"
-      }, /* @__PURE__ */ React.createElement(Logo, null)),
+      }, /* @__PURE__ */ React$1.createElement(Logo, null)),
       onClick: () => onConnect(connector),
-      label: /* @__PURE__ */ React.createElement(Text, null, walletName, isPending)
+      label: /* @__PURE__ */ React$1.createElement(Text, null, walletName, isPending)
     });
   }));
 };
@@ -95773,11 +95773,11 @@ const Banner = ({
   const {
     logoUrl
   } = signIn3;
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, logoUrl && /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, logoUrl && /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "5",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
+  }, /* @__PURE__ */ React$1.createElement(Image$1, {
     src: logoUrl,
     style: {
       height: "110px"
@@ -95946,9 +95946,9 @@ const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
   return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[1];
 };
 const createGenericContext = () => {
-  const genericContext = /* @__PURE__ */ React.createContext(void 0);
+  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
   const useGenericContext = () => {
-    const contextIsDefined = React.useContext(genericContext);
+    const contextIsDefined = reactExports.useContext(genericContext);
     if (!contextIsDefined) {
       throw new Error("useGenericContext must be used within a Provider");
     }
@@ -96267,11 +96267,11 @@ const PINCodeInput = (props) => {
       });
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     gap: "2"
-  }, range(0, digits).map((idx) => /* @__PURE__ */ React.createElement(reactExports.Fragment, {
+  }, range(0, digits).map((idx) => /* @__PURE__ */ React$1.createElement(reactExports.Fragment, {
     key: idx
-  }, idx === digits / 2 && /* @__PURE__ */ React.createElement("span", null), /* @__PURE__ */ React.createElement(Box, {
+  }, idx === digits / 2 && /* @__PURE__ */ React$1.createElement("span", null), /* @__PURE__ */ React$1.createElement(Box, {
     as: "input",
     className: digitInput,
     value: value[idx] || "",
@@ -96320,7 +96320,7 @@ const ConnectWalletContent = (props) => {
   } = useConnect();
   const injectedConnectors = baseConnectors.filter((c) => c.type === "injected" && !c.hasOwnProperty("_wallet")).map((connector) => {
     const Logo = (props2) => {
-      return /* @__PURE__ */ React.createElement(Image$1, _extends$1({
+      return /* @__PURE__ */ React$1.createElement(Image$1, _extends$1({
         src: connector.icon,
         alt: connector.name,
         disableAnimation: true
@@ -96426,21 +96426,21 @@ const ConnectWalletContent = (props) => {
     }
   };
   if (showEmailWaasPinInput) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Box, {
       paddingY: "6",
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "column"
-    }, /* @__PURE__ */ React.createElement(Text, {
+    }, /* @__PURE__ */ React$1.createElement(Text, {
       marginTop: "5",
       marginBottom: "4",
       variant: "normal",
       color: "text80"
-    }, "Enter code received in email."), /* @__PURE__ */ React.createElement(PINCodeInput, {
+    }, "Enter code received in email."), /* @__PURE__ */ React$1.createElement(PINCodeInput, {
       value: waasEmailPinCode,
       digits: 6,
       onChange: setWaasEmailPinCode
-    }), /* @__PURE__ */ React.createElement(Box, {
+    }), /* @__PURE__ */ React$1.createElement(Box, {
       gap: "2",
       marginY: "4",
       alignItems: "center",
@@ -96448,7 +96448,7 @@ const ConnectWalletContent = (props) => {
       style: {
         height: "44px"
       }
-    }, emailAuthLoading ? /* @__PURE__ */ React.createElement(Spinner, null) : /* @__PURE__ */ React.createElement(Button, {
+    }, emailAuthLoading ? /* @__PURE__ */ React$1.createElement(Spinner, null) : /* @__PURE__ */ React$1.createElement(Button, {
       variant: "primary",
       disabled: waasEmailPinCode.includes(""),
       label: "Verify",
@@ -96457,49 +96457,49 @@ const ConnectWalletContent = (props) => {
     }))));
   }
   if (showExtendedList) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Box, {
       position: "absolute",
       top: "4"
-    }, /* @__PURE__ */ React.createElement(IconButton, {
+    }, /* @__PURE__ */ React$1.createElement(IconButton, {
       icon: SvgChevronLeftIcon,
       onClick: () => setShowExtendedList(false),
       size: "xs"
-    })), /* @__PURE__ */ React.createElement(ExtendedWalletList, {
+    })), /* @__PURE__ */ React$1.createElement(ExtendedWalletList, {
       connectors: walletConnectors,
       onConnect
     }));
   }
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Banner, {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Banner, {
     config: config2
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "6"
-  }, emailConnector && showEmailInput && /* @__PURE__ */ React.createElement("form", {
+  }, emailConnector && showEmailInput && /* @__PURE__ */ React$1.createElement("form", {
     onSubmit: onConnectInlineEmail
-  }, /* @__PURE__ */ React.createElement(TextInput, {
+  }, /* @__PURE__ */ React$1.createElement(TextInput, {
     onChange: onChangeEmail,
     value: email2,
     name: "email",
     placeholder: "Enter email",
     "data-1p-ignore": true
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     alignItems: "center",
     justifyContent: "center",
     marginTop: "4"
-  }, !emailAuthInProgress && /* @__PURE__ */ React.createElement(Button, {
+  }, !emailAuthInProgress && /* @__PURE__ */ React$1.createElement(Button, {
     type: "submit",
     disabled: !isEmailValid(email2),
     width: "full",
     label: "Continue",
     rightIcon: SvgChevronRightIcon
-  }), emailAuthInProgress && /* @__PURE__ */ React.createElement(Spinner, null))), socialAuthConnectors.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, emailConnector && showEmailInput && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Divider, {
+  }), emailAuthInProgress && /* @__PURE__ */ React$1.createElement(Spinner, null))), socialAuthConnectors.length > 0 && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, emailConnector && showEmailInput && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Divider, {
     color: "backgroundSecondary"
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "small",
     color: "text50"
-  }, "or sign in via"))), /* @__PURE__ */ React.createElement(Box, {
+  }, "or sign in via"))), /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "2",
     gap: "2",
     flexDirection: "row",
@@ -96508,14 +96508,14 @@ const ConnectWalletContent = (props) => {
     flexWrap: "wrap"
   }, socialAuthConnectors.map((connector) => {
     var _localStorage$getItem;
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       key: connector.uid,
       aspectRatio: "1/1",
       alignItems: "center",
       justifyContent: "center"
-    }, connector._wallet.id === "google-waas" && /* @__PURE__ */ React.createElement(Box, {
+    }, connector._wallet.id === "google-waas" && /* @__PURE__ */ React$1.createElement(Box, {
       className: googleWaasButtonContainer
-    }, /* @__PURE__ */ React.createElement(GoogleLogin, {
+    }, /* @__PURE__ */ React$1.createElement(GoogleLogin, {
       type: "icon",
       size: "large",
       nonce: (_localStorage$getItem = localStorage.getItem(LocalStorageKey.WaasSessionHash)) != null ? _localStorage$getItem : void 0,
@@ -96528,7 +96528,7 @@ const ConnectWalletContent = (props) => {
       onError: () => {
         console.log("Login Failed");
       }
-    })), connector._wallet.id === "apple-waas" && /* @__PURE__ */ React.createElement(ConnectButton, {
+    })), connector._wallet.id === "apple-waas" && /* @__PURE__ */ React$1.createElement(ConnectButton, {
       connector,
       onConnect: () => {
         const appleClientId = localStorage.getItem(LocalStorageKey.WaasAppleClientID) || "";
@@ -96554,32 +96554,32 @@ const ConnectWalletContent = (props) => {
           onError: (error) => console.error(error)
         });
       }
-    }), !connector._wallet.id.includes("waas") && /* @__PURE__ */ React.createElement(ConnectButton, {
+    }), !connector._wallet.id.includes("waas") && /* @__PURE__ */ React$1.createElement(ConnectButton, {
       connector,
       onConnect
     }));
-  }))), walletConnectors.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, (emailConnector && showEmailInput || socialAuthConnectors.length > 0) && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Divider, {
+  }))), walletConnectors.length > 0 && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, (emailConnector && showEmailInput || socialAuthConnectors.length > 0) && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Divider, {
     color: "backgroundSecondary"
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "small",
     color: "text50"
-  }, "or select a wallet"))), /* @__PURE__ */ React.createElement(Box, {
+  }, "or select a wallet"))), /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "2",
     gap: "2",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
-  }, walletConnectors.slice(0, 7).map((connector) => /* @__PURE__ */ React.createElement(ConnectButton, {
+  }, walletConnectors.slice(0, 7).map((connector) => /* @__PURE__ */ React$1.createElement(ConnectButton, {
     key: connector.uid,
     connector,
     onConnect
-  }))), displayExtendedListButton && /* @__PURE__ */ React.createElement(Box, {
+  }))), displayExtendedListButton && /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "4",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Button, {
+  }, /* @__PURE__ */ React$1.createElement(Button, {
     shape: "square",
     size: "xs",
     onClick: () => setShowExtendedList(true),
@@ -96598,9 +96598,9 @@ const ConnectButton = (props) => {
   } = useTheme$1();
   const walletProps = connector._wallet;
   const Logo = theme === "dark" ? walletProps.monochromeLogoDark || walletProps.logoDark : walletProps.monochromeLogoLight || walletProps.logoLight;
-  return /* @__PURE__ */ React.createElement(Tooltip, {
+  return /* @__PURE__ */ React$1.createElement(Tooltip, {
     message: label || walletProps.name
-  }, /* @__PURE__ */ React.createElement(Card, {
+  }, /* @__PURE__ */ React$1.createElement(Card, {
     clickable: true,
     width: "10",
     height: "10",
@@ -96609,7 +96609,7 @@ const ConnectButton = (props) => {
     justifyContent: "center",
     alignItems: "center",
     onClick: () => onConnect(connector)
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     as: Logo,
     width: "6",
     height: "6"
@@ -96621,7 +96621,7 @@ function _objectDestructuringEmpty(obj) {
 }
 const SequenceLogo = (_ref) => {
   let props = _extends$1({}, (_objectDestructuringEmpty(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$1({
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement("svg", _extends$1({
     xmlns: "http://www.w3.org/2000/svg",
     style: {
       fill: "none"
@@ -96629,224 +96629,224 @@ const SequenceLogo = (_ref) => {
     id: "svg1316",
     version: "1.1",
     viewBox: "0 0 396 396"
-  }, props), /* @__PURE__ */ React.createElement("g", {
+  }, props), /* @__PURE__ */ React$1.createElement("g", {
     transform: "translate(0,38)",
     id: "g1256",
     clipPath: "url(#clip0_5_131)"
-  }, /* @__PURE__ */ React.createElement("g", {
+  }, /* @__PURE__ */ React$1.createElement("g", {
     id: "g1254",
     clipPath: "url(#clip1_5_131)"
-  }, /* @__PURE__ */ React.createElement("path", {
+  }, /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "#111111"
     },
     id: "path1232",
     d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint0_linear_5_13"
     },
     id: "path1234",
     d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint1_linear_5_131"
     },
     id: "path1236",
     d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint2_linear_5_131)"
     },
     id: "path1238",
     d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint3_linear_5_131)"
     },
     id: "path1240",
     d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint4_linear_5_131)"
     },
     id: "path1242",
     d: "m 98.9999,238.126 c 0,-10.965 -8.8648,-19.854 -19.8,-19.854 -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.966 8.8648,19.855 19.8,19.855 10.9352,0 19.8,-8.889 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint5_linear_5_131)"
     },
     id: "path1244",
     d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint6_linear_5_131)"
     },
     id: "path1246",
     d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint7_linear_5_131)"
     },
     id: "path1248",
     d: "M 316.8,59.5632 H 158.4 c -10.935,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.865,19.8544 19.8,19.8544 h 158.4 c 10.935,0 19.8,-8.8892 19.8,-19.8544 0,-10.9653 -8.865,-19.8544 -19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint8_linear_5_131)"
     },
     id: "path1250",
     d: "M 316.8,218.272 H 158.4 c -10.935,0 -19.8,8.889 -19.8,19.854 0,10.966 8.865,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.889 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }), /* @__PURE__ */ React.createElement("path", {
+  }), /* @__PURE__ */ React$1.createElement("path", {
     style: {
       fill: "url(#paint9_linear_5_131)"
     },
     id: "path1252",
     d: "M 237.6,138.981 H 79.2 c -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.965 8.8648,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.89 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }))), /* @__PURE__ */ React.createElement("defs", {
+  }))), /* @__PURE__ */ React$1.createElement("defs", {
     id: "defs1314"
-  }, /* @__PURE__ */ React.createElement("linearGradient", {
+  }, /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "318",
     x2: "198",
     y1: "4.0585401e-05",
     x1: "198",
     id: "paint0_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1258",
     stopColor: "#1D273D"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1260",
     stopColor: "#0D0F13",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "63",
     x2: "92.5",
     y1: "99",
     x1: "65.5",
     id: "paint1_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1263",
     stopColor: "#4462FE"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1265",
     stopColor: "#7D69FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "97.591103",
     x2: "96.137703",
     y1: "99.291199",
     x1: "62.879902",
     id: "paint2_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1268",
     stopColor: "#3757FD"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1270",
     stopColor: "#6980FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "97.591103",
     x2: "96.137703",
     y1: "99.291199",
     x1: "62.879902",
     id: "paint3_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1273",
     stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1275",
     stopColor: "#6980FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "223.5",
     x2: "91.5",
     y1: "251.5",
     x1: "65",
     id: "paint4_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1278",
     stopColor: "#BC3EE6"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1280",
     stopColor: "#D972F1",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "146",
     x2: "329.5",
     y1: "172",
     x1: "305",
     id: "paint5_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1283",
     stopColor: "#29BDFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1285",
     stopColor: "#96E7FB",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "176.772",
     x2: "334.56699",
     y1: "178.418",
     x1: "300.17999",
     id: "paint6_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1288",
     stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1290",
     stopColor: "#85E7FF",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "60",
     x2: "317.5",
     y1: "99",
     x1: "154.5",
     id: "paint7_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1293",
     stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1295",
     stopColor: "#85E7FF",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "218",
     x2: "312.5",
     y1: "258",
     x1: "156",
     id: "paint8_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1298",
     stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1300",
     stopColor: "#6980FA",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
+  })), /* @__PURE__ */ React$1.createElement("linearGradient", {
     gradientUnits: "userSpaceOnUse",
     y2: "139",
     x2: "235.5",
     y1: "179",
     x1: "86.000099",
     id: "paint9_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
+  }, /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1303",
     stopColor: "#6634FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
+  }), /* @__PURE__ */ React$1.createElement("stop", {
     id: "stop1305",
     stopColor: "#9C6DFF",
     offset: "1"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
+  })), /* @__PURE__ */ React$1.createElement("clipPath", {
     id: "clip0_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
+  }, /* @__PURE__ */ React$1.createElement("rect", {
     style: {
       fill: "#ffffff"
     },
@@ -96855,9 +96855,9 @@ const SequenceLogo = (_ref) => {
     id: "rect1308",
     height: "317.67001",
     width: "396"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
+  })), /* @__PURE__ */ React$1.createElement("clipPath", {
     id: "clip1_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
+  }, /* @__PURE__ */ React$1.createElement("rect", {
     style: {
       fill: "#ffffff"
     },
@@ -97299,35 +97299,35 @@ const mainModuleAbi = [{
   stateMutability: "nonpayable"
 }];
 const TxnDetailsSkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     alignItems: "center",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "center",
     alignItems: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: 30,
     height: 30,
     borderRadius: "circle"
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2",
     alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: 100,
     height: 14
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: 75,
     height: 14
-  }))), /* @__PURE__ */ React.createElement(Box, {
+  }))), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2",
     alignItems: "flex-end"
-  }, /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: 100,
     height: 14
-  }), /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton$1, {
     width: 50,
     height: 12
   })));
@@ -97355,20 +97355,20 @@ const TxnDetails = ({
     getTxnProps();
   }, []);
   if (!decodingType) {
-    return /* @__PURE__ */ React.createElement(TxnDetailsSkeleton, null);
+    return /* @__PURE__ */ React$1.createElement(TxnDetailsSkeleton, null);
   }
   if (decodingType === DecodingType.UNKNOWN) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null);
+    return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null);
   }
   if (transferProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(TransferItemInfo, {
+    return /* @__PURE__ */ React$1.createElement(TransferItemInfo, {
       address,
       transferProps,
       chainId
     });
   }
   if (awardItemProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(AwardItemInfo, {
+    return /* @__PURE__ */ React$1.createElement(AwardItemInfo, {
       awardItemProps: awardItemProps[0]
     });
   }
@@ -97417,45 +97417,45 @@ const TransferItemInfo = ({
   formatDisplay$1(formattedBalance);
   const amountSending = (_transferProps$0$amou = (_transferProps$7 = transferProps[0]) == null || (_transferProps$7 = _transferProps$7.amounts) == null ? void 0 : _transferProps$7[0]) != null ? _transferProps$0$amou : (_transferProps$8 = transferProps[0]) == null ? void 0 : _transferProps$8.value;
   const showSquareImage = isNFT;
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Card, null, /* @__PURE__ */ React$1.createElement(Box, {
     marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "medium",
     color: "text100"
-  }, capitalizeFirstLetter((_transferProps$0$type = (_transferProps$9 = transferProps[0]) == null ? void 0 : _transferProps$9.type) != null ? _transferProps$0$type : ""))), /* @__PURE__ */ React.createElement(Box, {
+  }, capitalizeFirstLetter((_transferProps$0$type = (_transferProps$9 = transferProps[0]) == null ? void 0 : _transferProps$9.type) != null ? _transferProps$0$type : ""))), /* @__PURE__ */ React$1.createElement(Box, {
     alignItems: "flex-end",
     justifyContent: "space-between",
     marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "space-between",
     alignItems: "center",
     gap: "2"
-  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
+  }, showSquareImage ? /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       width: "40px"
     }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage, {
+  }, /* @__PURE__ */ React$1.createElement(CollectibleTileImage, {
     imageUrl
-  })) : /* @__PURE__ */ React.createElement(CoinIcon$1, {
+  })) : /* @__PURE__ */ React$1.createElement(CoinIcon$1, {
     imageUrl,
     size: 40
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
     gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "medium",
     color: "text100"
-  }, name)), /* @__PURE__ */ React.createElement(Text, {
+  }, name)), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     variant: "normal"
-  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
+  }, "To"), /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "2",
     borderRadius: "md",
     background: "backgroundSecondary",
@@ -97467,59 +97467,59 @@ const TransferItemInfo = ({
     style: {
       height: "52px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+  }, /* @__PURE__ */ React$1.createElement(GradientAvatar, {
     address: toAddress,
     style: {
       width: "20px"
     }
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
   }, `0x${truncateAtMiddle$1(toAddress.substring(2), 12)}`)))));
 };
 const AwardItemInfo = ({
   awardItemProps
 }) => {
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Card, null, /* @__PURE__ */ React$1.createElement(Box, {
     marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "medium",
     color: "text100"
-  }, "Mint")), /* @__PURE__ */ React.createElement(Box, {
+  }, "Mint")), /* @__PURE__ */ React$1.createElement(Box, {
     alignItems: "flex-end",
     justifyContent: "space-between",
     marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "space-between",
     alignItems: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       width: "40px"
     }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage, {
+  }, /* @__PURE__ */ React$1.createElement(CollectibleTileImage, {
     imageUrl: "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0/image.jpeg"
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
     gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "medium",
     color: "text100"
-  }, "Waas Demo NFT")), /* @__PURE__ */ React.createElement(Text, {
+  }, "Waas Demo NFT")), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     variant: "normal"
-  }, awardItemProps.amount)))), awardItemProps.to !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  }, awardItemProps.amount)))), awardItemProps.to !== void 0 && /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
+  }, "To"), /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "2",
     borderRadius: "md",
     background: "backgroundSecondary",
@@ -97531,17 +97531,17 @@ const AwardItemInfo = ({
     style: {
       height: "52px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+  }, /* @__PURE__ */ React$1.createElement(GradientAvatar, {
     address: awardItemProps.to,
     style: {
       width: "20px"
     }
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100"
   }, `0x${truncateAtMiddle$1(awardItemProps.to.substring(2), 12)}`)))));
 };
@@ -97647,37 +97647,37 @@ const KitProvider = (props) => {
   reactExports.useEffect(() => {
     setDisplayedAssets(displayedAssets);
   }, [displayedAssetsSetting]);
-  return /* @__PURE__ */ React.createElement(ThemeContextProvider, {
+  return /* @__PURE__ */ React$1.createElement(ThemeContextProvider, {
     value: {
       theme,
       setTheme,
       position: modalPosition,
       setPosition: setModalPosition
     }
-  }, /* @__PURE__ */ React.createElement(GoogleOAuthProvider, {
+  }, /* @__PURE__ */ React$1.createElement(GoogleOAuthProvider, {
     clientId: googleClientId
-  }, /* @__PURE__ */ React.createElement(ConnectModalContextProvider, {
+  }, /* @__PURE__ */ React$1.createElement(ConnectModalContextProvider, {
     value: {
       setOpenConnectModal,
       openConnectModalState: openConnectModal
     }
-  }, /* @__PURE__ */ React.createElement(WalletConfigContextProvider, {
+  }, /* @__PURE__ */ React$1.createElement(WalletConfigContextProvider, {
     value: {
       setDisplayedAssets,
       displayedAssets
     }
-  }, /* @__PURE__ */ React.createElement(AnalyticsContextProvider, {
+  }, /* @__PURE__ */ React$1.createElement(AnalyticsContextProvider, {
     value: {
       setAnalytics,
       analytics
     }
-  }, /* @__PURE__ */ React.createElement("div", {
+  }, /* @__PURE__ */ React$1.createElement("div", {
     id: "kit-provider"
-  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
+  }, /* @__PURE__ */ React$1.createElement(ThemeProvider, {
     root: "#kit-provider",
     scope: "kit",
     theme
-  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openConnectModal && /* @__PURE__ */ React.createElement(Modal, {
+  }, /* @__PURE__ */ React$1.createElement(AnimatePresence, null, openConnectModal && /* @__PURE__ */ React$1.createElement(Modal, {
     scroll: false,
     backdropColor: "backgroundBackdrop",
     size: "sm",
@@ -97687,10 +97687,10 @@ const KitProvider = (props) => {
       }, getModalPositionCss(position2))
     },
     onClose: () => setOpenConnectModal(false)
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     padding: "4",
     className: walletContent$1
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "center",
     color: "text100",
     alignItems: "center",
@@ -97698,10 +97698,10 @@ const KitProvider = (props) => {
     style: {
       marginTop: "4px"
     }
-  }, /* @__PURE__ */ React.createElement(Text, null, "Sign in ", projectName ? `to ${projectName}` : "")), /* @__PURE__ */ React.createElement(ConnectWalletContent, _extends$1({
+  }, /* @__PURE__ */ React$1.createElement(Text, null, "Sign in ", projectName ? `to ${projectName}` : "")), /* @__PURE__ */ React$1.createElement(ConnectWalletContent, _extends$1({
     openConnectModal,
     setOpenConnectModal
-  }, props)), /* @__PURE__ */ React.createElement(Box, {
+  }, props)), /* @__PURE__ */ React$1.createElement(Box, {
     onClick: poweredBySequenceOnClick,
     className: clickable$1,
     gap: "1",
@@ -97709,13 +97709,13 @@ const KitProvider = (props) => {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "small",
     color: "text100"
-  }, "Powered by Sequence"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Powered by Sequence"), /* @__PURE__ */ React$1.createElement(Box, {
     height: "5",
     width: "5"
-  }, /* @__PURE__ */ React.createElement(SequenceLogo, null)))))), /* @__PURE__ */ React.createElement(AnimatePresence, null, pendingRequestConfirmation && /* @__PURE__ */ React.createElement(Modal, {
+  }, /* @__PURE__ */ React$1.createElement(SequenceLogo, null)))))), /* @__PURE__ */ React$1.createElement(AnimatePresence, null, pendingRequestConfirmation && /* @__PURE__ */ React$1.createElement(Modal, {
     scroll: false,
     backdropColor: "backgroundBackdrop",
     size: "sm",
@@ -97728,12 +97728,12 @@ const KitProvider = (props) => {
     onClose: () => {
       rejectPendingRequest("");
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingTop: "4",
     paddingBottom: "2",
     className: walletContent$1
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     justifyContent: "center",
     color: "text100",
@@ -97742,60 +97742,60 @@ const KitProvider = (props) => {
     style: {
       marginTop: "4px"
     }
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     as: "h1",
     variant: "large",
     marginBottom: "5"
-  }, "Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"), pendingRequestConfirmation.type === "signMessage" && /* @__PURE__ */ React.createElement(Box, {
+  }, "Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"), pendingRequestConfirmation.type === "signMessage" && /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     width: "full"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "normal",
     color: "text50"
-  }, "Message"), /* @__PURE__ */ React.createElement(Card, {
+  }, "Message"), /* @__PURE__ */ React$1.createElement(Card, {
     marginTop: "2",
     paddingY: "6"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "normal",
     marginBottom: "4"
-  }, toUtf8String((_pendingRequestConfir = pendingRequestConfirmation.message) != null ? _pendingRequestConfir : "")))), pendingRequestConfirmation.type === "signTransaction" && /* @__PURE__ */ React.createElement(Box, {
+  }, toUtf8String((_pendingRequestConfir = pendingRequestConfirmation.message) != null ? _pendingRequestConfir : "")))), pendingRequestConfirmation.type === "signTransaction" && /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     width: "full"
-  }, /* @__PURE__ */ React.createElement(TxnDetails, {
+  }, /* @__PURE__ */ React$1.createElement(TxnDetails, {
     address: address != null ? address : "",
     txs: (_pendingRequestConfir2 = pendingRequestConfirmation.txs) != null ? _pendingRequestConfir2 : [],
     chainId: (_pendingRequestConfir3 = pendingRequestConfirmation.chainId) != null ? _pendingRequestConfir3 : 137
-  }), /* @__PURE__ */ React.createElement(Collapsible, {
+  }), /* @__PURE__ */ React$1.createElement(Collapsible, {
     label: "Transaction data",
     marginTop: "4"
-  }, /* @__PURE__ */ React.createElement(Card, {
+  }, /* @__PURE__ */ React$1.createElement(Card, {
     overflowX: "scroll",
     marginY: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "code",
     marginBottom: "4"
-  }, JSON.stringify(pendingRequestConfirmation.txs, null, 2))))), pendingRequestConfirmation.chainId && /* @__PURE__ */ React.createElement(Box, {
+  }, JSON.stringify(pendingRequestConfirmation.txs, null, 2))))), pendingRequestConfirmation.chainId && /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     marginTop: "3",
     justifyContent: "flex-end",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     width: "1/2",
     justifyContent: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     variant: "small",
     color: "text50"
-  }, "Network")), /* @__PURE__ */ React.createElement(Box, {
+  }, "Network")), /* @__PURE__ */ React$1.createElement(Box, {
     width: "1/2",
     justifyContent: "flex-end"
-  }, /* @__PURE__ */ React.createElement(NetworkBadge, {
+  }, /* @__PURE__ */ React$1.createElement(NetworkBadge, {
     chainId: pendingRequestConfirmation.chainId
-  }))), /* @__PURE__ */ React.createElement(Box, {
+  }))), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     gap: "2",
     width: "full",
     marginTop: "5"
-  }, /* @__PURE__ */ React.createElement(Button, {
+  }, /* @__PURE__ */ React$1.createElement(Button, {
     width: "full",
     shape: "square",
     size: "lg",
@@ -97803,7 +97803,7 @@ const KitProvider = (props) => {
     onClick: () => {
       rejectPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
     }
-  }), /* @__PURE__ */ React.createElement(Button, {
+  }), /* @__PURE__ */ React$1.createElement(Button, {
     alignItems: "center",
     textAlign: "center",
     width: "full",
@@ -97814,20 +97814,20 @@ const KitProvider = (props) => {
     onClick: () => {
       confirmPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
     }
-  }))), /* @__PURE__ */ React.createElement(Box, {
+  }))), /* @__PURE__ */ React$1.createElement(Box, {
     gap: "1",
     marginTop: "4",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "small",
     color: "text80"
-  }, "Powered by Sequence"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Powered by Sequence"), /* @__PURE__ */ React$1.createElement(Box, {
     height: "4",
     width: "4",
     marginTop: "1"
-  }, /* @__PURE__ */ React.createElement(SequenceLogo, null)))))))), children)))));
+  }, /* @__PURE__ */ React$1.createElement(SequenceLogo, null)))))))), children)))));
 };
 const useOpenConnectModal = () => {
   const {
@@ -99652,22 +99652,22 @@ const PaperTransaction = ({
   };
   const getEmailInput = () => {
     if (emailEditState) {
-      return /* @__PURE__ */ React.createElement(Box, {
+      return /* @__PURE__ */ React$1.createElement(Box, {
         as: "form",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "flex-start",
         onSubmit: onClickEditEmail
-      }, /* @__PURE__ */ React.createElement(Box, {
+      }, /* @__PURE__ */ React$1.createElement(Box, {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
         gap: "2"
-      }, /* @__PURE__ */ React.createElement(Text, {
+      }, /* @__PURE__ */ React$1.createElement(Text, {
         fontSize: "normal",
         fontWeight: "normal",
         color: "text50"
-      }, "Receipt email address"), /* @__PURE__ */ React.createElement(TextInput, {
+      }, "Receipt email address"), /* @__PURE__ */ React$1.createElement(TextInput, {
         autoFocus: true,
         name: "email",
         type: "email",
@@ -99675,7 +99675,7 @@ const PaperTransaction = ({
         value: inputEmailAddress,
         onChange: emailAddressOnChange,
         "data-1p-ignore": true
-      })), /* @__PURE__ */ React.createElement(Button, {
+      })), /* @__PURE__ */ React$1.createElement(Button, {
         size: "xs",
         label: "Save",
         leftIcon: SvgCheckmarkIcon,
@@ -99683,31 +99683,31 @@ const PaperTransaction = ({
         type: "submit"
       }));
     }
-    return /* @__PURE__ */ React.createElement(Box, {
+    return /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "flex-start"
-    }, /* @__PURE__ */ React.createElement(Box, {
+    }, /* @__PURE__ */ React$1.createElement(Box, {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "flex-start",
       gap: "2"
-    }, /* @__PURE__ */ React.createElement(Text, {
+    }, /* @__PURE__ */ React$1.createElement(Text, {
       fontSize: "normal",
       fontWeight: "normal",
       color: "text50"
-    }, "Receipt email address"), /* @__PURE__ */ React.createElement(Text, {
+    }, "Receipt email address"), /* @__PURE__ */ React$1.createElement(Text, {
       fontSize: "normal",
       fontWeight: "bold",
       color: "text100"
-    }, email2)), /* @__PURE__ */ React.createElement(Button, {
+    }, email2)), /* @__PURE__ */ React$1.createElement(Button, {
       size: "xs",
       label: "Edit",
       leftIcon: SvgEditIcon,
       onClick: onClickEditEmail
     }));
   };
-  return /* @__PURE__ */ React.createElement(Box, null, getEmailInput(), paperSecretLoading && /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, null, getEmailInput(), paperSecretLoading && /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     height: "full",
     flexDirection: "column",
@@ -99716,16 +99716,16 @@ const PaperTransaction = ({
     style: {
       height: "200px"
     }
-  }, /* @__PURE__ */ React.createElement(Spinner, {
+  }, /* @__PURE__ */ React$1.createElement(Spinner, {
     size: "lg",
     style: {
       width: "60px",
       height: "60px"
     }
-  })), paperSecret && !paperSecretLoading && /* @__PURE__ */ React.createElement(Card, {
+  })), paperSecret && !paperSecretLoading && /* @__PURE__ */ React$1.createElement(Card, {
     marginY: "4",
     flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(wt, {
+  }, /* @__PURE__ */ React$1.createElement(wt, {
     sdkClientSecret: paperSecret,
     appName: settings == null || (_settings$creditCardC2 = settings.creditCardCheckout) == null ? void 0 : _settings$creditCardC2.receiptTitle,
     onReview: () => {
@@ -99750,7 +99750,7 @@ const PaperTransactionForm = () => {
   const {
     settings
   } = useCheckoutModal();
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "4",
     paddingBottom: "8",
     gap: "4",
@@ -99758,7 +99758,7 @@ const PaperTransactionForm = () => {
     style: {
       marginTop: HEADER_HEIGHT
     }
-  }, settings && /* @__PURE__ */ React.createElement(PaperTransaction, {
+  }, settings && /* @__PURE__ */ React$1.createElement(PaperTransaction, {
     settings
   }));
 };
@@ -99825,11 +99825,11 @@ const PendingTransaction = () => {
       clearInterval(interval);
     };
   }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       height: "500px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     position: "absolute",
     top: "0",
     left: "0",
@@ -99838,18 +99838,18 @@ const PendingTransaction = () => {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Spinner, {
+  }, /* @__PURE__ */ React$1.createElement(Spinner, {
     size: "lg",
     style: {
       width: "60px",
       height: "60px"
     }
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     variant: "medium",
     color: "text50",
     textAlign: "center",
     marginTop: "8"
-  }, "Transaction in progress. ", /* @__PURE__ */ React.createElement("br", null), "This may take a few minutes.")));
+  }, "Transaction in progress. ", /* @__PURE__ */ React$1.createElement("br", null), "This may take a few minutes.")));
 };
 const TransactionSuccess = () => {
   const {
@@ -99865,11 +99865,11 @@ const TransactionSuccess = () => {
       (settings == null || (_settings$creditCardC = settings.creditCardCheckout) == null ? void 0 : _settings$creditCardC.onSuccess) && (settings == null || (_settings$creditCardC2 = settings.creditCardCheckout) == null ? void 0 : _settings$creditCardC2.onSuccess(navigation.params.transactionHash));
     }, 3e3);
   }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       height: "500px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "center",
     position: "absolute",
@@ -99878,15 +99878,15 @@ const TransactionSuccess = () => {
       right: "50%",
       transform: "translate(50%, -50%)"
     }
-  }, /* @__PURE__ */ React.createElement(NotificationSuccessIcon, null), /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(NotificationSuccessIcon, null), /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "xlarge"
-  }, "Success!"), /* @__PURE__ */ React.createElement(Text, {
+  }, "Success!"), /* @__PURE__ */ React$1.createElement(Text, {
     textAlign: "center",
     variant: "normal",
     color: "text80"
   }, "The transaction was successful.")));
 };
-const NotificationSuccessIcon = () => /* @__PURE__ */ React.createElement(Box, {
+const NotificationSuccessIcon = () => /* @__PURE__ */ React$1.createElement(Box, {
   color: "white",
   background: "positive",
   alignItems: "center",
@@ -99895,7 +99895,7 @@ const NotificationSuccessIcon = () => /* @__PURE__ */ React.createElement(Box, {
   height: "16",
   borderRadius: "circle",
   marginBottom: "2"
-}, /* @__PURE__ */ React.createElement(SvgCheckmarkIcon, {
+}, /* @__PURE__ */ React$1.createElement(SvgCheckmarkIcon, {
   size: "xl"
 }));
 const TransactionError = () => {
@@ -99912,11 +99912,11 @@ const TransactionError = () => {
       (settings == null || (_settings$creditCardC = settings.creditCardCheckout) == null ? void 0 : _settings$creditCardC.onError) && (settings == null || (_settings$creditCardC2 = settings.creditCardCheckout) == null ? void 0 : _settings$creditCardC2.onError(navigation.params.error));
     }, 3e3);
   }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       height: "500px"
     }
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "center",
     position: "absolute",
@@ -99925,15 +99925,15 @@ const TransactionError = () => {
       right: "50%",
       transform: "translate(50%, -50%)"
     }
-  }, /* @__PURE__ */ React.createElement(NotificationErrorIcon, null), /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(NotificationErrorIcon, null), /* @__PURE__ */ React$1.createElement(Text, {
     fontSize: "xlarge"
-  }, "Error"), /* @__PURE__ */ React.createElement(Text, {
+  }, "Error"), /* @__PURE__ */ React$1.createElement(Text, {
     textAlign: "center",
     variant: "normal",
     color: "text80"
   }, "An error occurred while processing the transaction.")));
 };
-const NotificationErrorIcon = () => /* @__PURE__ */ React.createElement(Box, {
+const NotificationErrorIcon = () => /* @__PURE__ */ React$1.createElement(Box, {
   color: "white",
   alignItems: "center",
   justifyContent: "center",
@@ -99942,13 +99942,13 @@ const NotificationErrorIcon = () => /* @__PURE__ */ React.createElement(Box, {
   borderRadius: "circle",
   marginBottom: "2",
   background: "negative"
-}, /* @__PURE__ */ React.createElement(SvgCloseIcon, {
+}, /* @__PURE__ */ React$1.createElement(SvgCloseIcon, {
   size: "xl"
 }));
 const DefaultIcon = ({
   size: _size = 30
 }) => {
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "circle",
@@ -99957,7 +99957,7 @@ const DefaultIcon = ({
       width: `${_size}px`,
       height: `${_size}px`
     }
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     style: {
       fontSize: `${_size - 4}px`
     },
@@ -99971,7 +99971,7 @@ const CoinIcon = ({
   size: _size = 30
 }) => {
   if (imageUrl) {
-    return /* @__PURE__ */ React.createElement(Image$1, {
+    return /* @__PURE__ */ React$1.createElement(Image$1, {
       src: imageUrl,
       borderRadius: "circle",
       style: {
@@ -99980,7 +99980,7 @@ const CoinIcon = ({
       }
     });
   }
-  return /* @__PURE__ */ React.createElement(DefaultIcon, {
+  return /* @__PURE__ */ React$1.createElement(DefaultIcon, {
     size: _size
   });
 };
@@ -100007,7 +100007,7 @@ const Skeleton = ({
   height: _height = "100%",
   borderRadius: _borderRadius = "md"
 }) => {
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     className: skeleton,
     borderRadius: _borderRadius,
     style: {
@@ -100042,7 +100042,7 @@ const OrderSummaryItem = ({
   });
   const isLoading = isTokenMetadataLoading || isContractInfoLoading;
   if (isLoading) {
-    return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
+    return /* @__PURE__ */ React$1.createElement(OrderSummarySkeleton, null);
   }
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, [...chains2]);
   const {
@@ -100055,16 +100055,16 @@ const OrderSummaryItem = ({
     name: collectionName = "Unknown Collection"
   } = contractInfo || {};
   const balanceFormatted = formatUnits$1(quantityRaw, decimals);
-  return /* @__PURE__ */ React.createElement(Card, {
+  return /* @__PURE__ */ React$1.createElement(Card, {
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     aspectRatio: "1/1",
     height: "full",
     justifyContent: "center",
@@ -100072,47 +100072,47 @@ const OrderSummaryItem = ({
     style: {
       width: "80px"
     }
-  }, /* @__PURE__ */ React.createElement(Image$1, {
+  }, /* @__PURE__ */ React$1.createElement(Image$1, {
     src: image,
     borderRadius: "md",
     style: {
       height: "80px"
     }
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     gap: "1",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon, {
+  }, /* @__PURE__ */ React$1.createElement(CoinIcon, {
     size: 12,
     imageUrl: collectionLogoURI
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     marginLeft: "1",
     fontSize: "small",
     color: "text80",
     fontWeight: "bold"
-  }, collectionName), /* @__PURE__ */ React.createElement(CoinIcon, {
+  }, collectionName), /* @__PURE__ */ React$1.createElement(CoinIcon, {
     size: 12,
     imageUrl: nativeTokenInfo.logoURI
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "center",
     style: {
       width: "180px"
     }
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     color: "text100",
     fontSize: "normal",
     fontWeight: "normal"
-  }, name), /* @__PURE__ */ React.createElement(Text, {
+  }, name), /* @__PURE__ */ React$1.createElement(Text, {
     color: "text50",
     fontSize: "normal",
     fontWeight: "normal"
-  }, `#${tokenId}`)))), /* @__PURE__ */ React.createElement(Box, {
+  }, `#${tokenId}`)))), /* @__PURE__ */ React$1.createElement(Box, {
     height: "full",
     fontSize: "small",
     color: "text50",
@@ -100120,30 +100120,30 @@ const OrderSummaryItem = ({
   }, `x${formatDisplay(balanceFormatted)}`));
 };
 const OrderSummarySkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Card, {
+  return /* @__PURE__ */ React$1.createElement(Card, {
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton, {
     height: "80px",
     width: "80px"
-  }), /* @__PURE__ */ React.createElement(Box, {
+  }), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "center",
     gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
+  }, /* @__PURE__ */ React$1.createElement(Skeleton, {
     width: "100px",
     height: "14px"
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
+  }), /* @__PURE__ */ React$1.createElement(Skeleton, {
     width: "180px",
     height: "34px"
-  }))), /* @__PURE__ */ React.createElement(Skeleton, {
+  }))), /* @__PURE__ */ React$1.createElement(Skeleton, {
     height: "14px",
     width: "14px"
   }));
@@ -100207,7 +100207,7 @@ const CheckoutSelection = () => {
     transaction2 && transaction2();
     closeCheckout();
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     paddingX: "5",
     paddingBottom: "5",
     style: {
@@ -100215,59 +100215,59 @@ const CheckoutSelection = () => {
     },
     flexDirection: "column",
     gap: "3"
-  }, orderSummaryItems.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Text, {
+  }, orderSummaryItems.length > 0 && /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "normal",
     fontSize: "normal",
     color: "text50"
-  }, "Order summary"), /* @__PURE__ */ React.createElement(Box, {
+  }, "Order summary"), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     gap: "2"
   }, orderSummaryItems.map((orderSummaryItem, index2) => {
-    return /* @__PURE__ */ React.createElement(OrderSummaryItem, _extends({
+    return /* @__PURE__ */ React$1.createElement(OrderSummaryItem, _extends({
       key: index2
     }, orderSummaryItem, {
       chainId
     }));
-  })), /* @__PURE__ */ React.createElement(Box, {
+  })), /* @__PURE__ */ React$1.createElement(Box, {
     marginTop: "2"
-  }, /* @__PURE__ */ React.createElement(Divider, {
+  }, /* @__PURE__ */ React$1.createElement(Divider, {
     color: "backgroundSecondary",
     style: {
       margin: "0px"
     }
-  }))), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
+  }))), displayCryptoCheckout && /* @__PURE__ */ React$1.createElement(Box, {
     justifyContent: "space-between",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
+  }, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "normal",
     fontSize: "normal",
     color: "text50"
-  }, "Total"), isLoading ? /* @__PURE__ */ React.createElement(Skeleton, {
+  }, "Total"), isLoading ? /* @__PURE__ */ React$1.createElement(Skeleton, {
     width: "100px",
     height: "17px"
-  }) : /* @__PURE__ */ React.createElement(Box, {
+  }) : /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "row",
     gap: "1",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon, {
+  }, /* @__PURE__ */ React$1.createElement(CoinIcon, {
     imageUrl: coinImageUrl,
     size: 12
-  }), /* @__PURE__ */ React.createElement(Text, {
+  }), /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "normal",
     fontSize: "normal",
     color: "text100"
-  }, `${formatDisplay(requestAmount)} ${coinSymbol}`))), /* @__PURE__ */ React.createElement(Box, {
+  }, `${formatDisplay(requestAmount)} ${coinSymbol}`))), /* @__PURE__ */ React$1.createElement(Box, {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     gap: "2"
-  }, displayCryptoCheckout && !isInsufficientBalance && !isLoading && /* @__PURE__ */ React.createElement(Button, {
+  }, displayCryptoCheckout && !isInsufficientBalance && !isLoading && /* @__PURE__ */ React$1.createElement(Button, {
     style: {
       borderRadius: vars.radii.md,
       height: "56px"
     },
     width: "full",
-    leftIcon: () => /* @__PURE__ */ React.createElement(CoinIcon, {
+    leftIcon: () => /* @__PURE__ */ React$1.createElement(CoinIcon, {
       size: 20,
       imageUrl: coinImageUrl
     }),
@@ -100275,7 +100275,7 @@ const CheckoutSelection = () => {
     label: `Pay with ${coinSymbol}`,
     rightIcon: SvgChevronRightIcon,
     onClick: onClickPayWithCrypto
-  }), displayCryptoCheckout && (isInsufficientBalance || isLoading) && /* @__PURE__ */ React.createElement(Button, {
+  }), displayCryptoCheckout && (isInsufficientBalance || isLoading) && /* @__PURE__ */ React$1.createElement(Button, {
     className: insufficientBalanceButton,
     style: {
       borderRadius: vars.radii.md,
@@ -100283,7 +100283,7 @@ const CheckoutSelection = () => {
       justifyContent: "center"
     },
     width: "full",
-    leftIcon: () => /* @__PURE__ */ React.createElement(CoinIcon, {
+    leftIcon: () => /* @__PURE__ */ React$1.createElement(CoinIcon, {
       size: 20,
       imageUrl: coinImageUrl
     }),
@@ -100291,13 +100291,13 @@ const CheckoutSelection = () => {
     label: `Insufficient ${coinSymbol}`,
     onClick: onClickPayWithCrypto,
     disabled: true
-  })), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
+  })), displayCryptoCheckout && /* @__PURE__ */ React$1.createElement(Box, {
     width: "full",
     justifyContent: "flex-end"
-  }, isLoading ? /* @__PURE__ */ React.createElement(Skeleton, {
+  }, isLoading ? /* @__PURE__ */ React$1.createElement(Skeleton, {
     width: "102px",
     height: "14px"
-  }) : /* @__PURE__ */ React.createElement(Text, {
+  }) : /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "bold",
     fontSize: "small",
     color: "text50"
@@ -100315,7 +100315,7 @@ const NavigationHeader = ({
   const onClickBack = () => {
     goBack();
   };
-  return /* @__PURE__ */ React.createElement(Box, {
+  return /* @__PURE__ */ React$1.createElement(Box, {
     background: "backgroundPrimary",
     zIndex: "20",
     position: "fixed",
@@ -100328,7 +100328,7 @@ const NavigationHeader = ({
       paddingTop: "6px",
       backgroundColor: vars.colors.backgroundPrimary
     }
-  }, history.length > 0 && !_disableBack ? /* @__PURE__ */ React.createElement(IconButton, {
+  }, history.length > 0 && !_disableBack ? /* @__PURE__ */ React$1.createElement(IconButton, {
     onClick: onClickBack,
     icon: SvgChevronLeftIcon,
     size: "sm",
@@ -100336,15 +100336,15 @@ const NavigationHeader = ({
       background: "rgba(0,0,0,0)",
       width: "44px"
     }
-  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+  }) : /* @__PURE__ */ React$1.createElement(Box, null), /* @__PURE__ */ React$1.createElement(Box, null, /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     variant: "small",
     color: "text50"
-  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
+  }, secondaryText), /* @__PURE__ */ React$1.createElement(Text, {
     fontWeight: "medium",
     variant: "small",
     color: "text100"
-  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
+  }, primaryText)), /* @__PURE__ */ React$1.createElement(Box, {
     style: {
       width: "44px"
     }
@@ -100358,9 +100358,9 @@ const DEFAULT_LOCATION = {
 };
 const KitCheckoutProvider = (props) => {
   const queryClient2 = new QueryClient();
-  return /* @__PURE__ */ React.createElement(QueryClientProvider, {
+  return /* @__PURE__ */ React$1.createElement(QueryClientProvider, {
     client: queryClient2
-  }, /* @__PURE__ */ React.createElement(KitCheckoutContent, props));
+  }, /* @__PURE__ */ React$1.createElement(KitCheckoutContent, props));
 };
 const KitCheckoutContent = ({
   children
@@ -100386,16 +100386,16 @@ const KitCheckoutContent = ({
     } = navigation;
     switch (location2) {
       case "select-method-checkout":
-        return /* @__PURE__ */ React.createElement(CheckoutSelection, null);
+        return /* @__PURE__ */ React$1.createElement(CheckoutSelection, null);
       case "transaction-pending":
-        return /* @__PURE__ */ React.createElement(PendingTransaction, null);
+        return /* @__PURE__ */ React$1.createElement(PendingTransaction, null);
       case "transaction-success":
-        return /* @__PURE__ */ React.createElement(TransactionSuccess, null);
+        return /* @__PURE__ */ React$1.createElement(TransactionSuccess, null);
       case "transaction-error":
-        return /* @__PURE__ */ React.createElement(TransactionError, null);
+        return /* @__PURE__ */ React$1.createElement(TransactionError, null);
       case "transaction-form":
       default:
-        return /* @__PURE__ */ React.createElement(PaperTransactionForm, null);
+        return /* @__PURE__ */ React$1.createElement(PaperTransactionForm, null);
     }
   };
   const getHeader2 = () => {
@@ -100404,19 +100404,19 @@ const KitCheckoutContent = ({
     } = navigation;
     switch (location2) {
       case "select-method-checkout":
-        return /* @__PURE__ */ React.createElement(NavigationHeader, {
+        return /* @__PURE__ */ React$1.createElement(NavigationHeader, {
           primaryText: "Checkout"
         });
       case "transaction-success":
       case "transaction-error":
       case "transaction-pending":
-        return /* @__PURE__ */ React.createElement(NavigationHeader, {
+        return /* @__PURE__ */ React$1.createElement(NavigationHeader, {
           disableBack: true,
           primaryText: "Pay with credit or debit card"
         });
       case "transaction-form":
       default:
-        return /* @__PURE__ */ React.createElement(NavigationHeader, {
+        return /* @__PURE__ */ React$1.createElement(NavigationHeader, {
           primaryText: "Pay with credit or debit card"
         });
     }
@@ -100426,25 +100426,25 @@ const KitCheckoutContent = ({
       setHistory([]);
     }
   }, [openCheckoutModal]);
-  return /* @__PURE__ */ React.createElement(CheckoutModalContextProvider, {
+  return /* @__PURE__ */ React$1.createElement(CheckoutModalContextProvider, {
     value: {
       triggerCheckout,
       closeCheckout,
       settings,
       theme
     }
-  }, /* @__PURE__ */ React.createElement(NavigationContextProvider, {
+  }, /* @__PURE__ */ React$1.createElement(NavigationContextProvider, {
     value: {
       history,
       setHistory
     }
-  }, /* @__PURE__ */ React.createElement("div", {
+  }, /* @__PURE__ */ React$1.createElement("div", {
     id: "kit-checkout"
-  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
+  }, /* @__PURE__ */ React$1.createElement(ThemeProvider, {
     root: "#kit-checkout",
     scope: "kit",
     theme
-  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openCheckoutModal && /* @__PURE__ */ React.createElement(Modal, {
+  }, /* @__PURE__ */ React$1.createElement(AnimatePresence, null, openCheckoutModal && /* @__PURE__ */ React$1.createElement(Modal, {
     contentProps: {
       style: _extends({
         maxWidth: "400px",
@@ -100454,7 +100454,7 @@ const KitCheckoutContent = ({
     scroll: false,
     backdropColor: "backgroundBackdrop",
     onClose: () => setOpenCheckoutModal(false)
-  }, /* @__PURE__ */ React.createElement(Box, {
+  }, /* @__PURE__ */ React$1.createElement(Box, {
     id: "sequence-kit-checkout-content",
     className: walletContent
   }, getHeader2(), getContent2()))))), children));
@@ -100841,16 +100841,16 @@ function Homepage() {
   const isMobile = useMediaQuery("isMobile");
   const { data: txnData, sendTransaction: sendTransaction2, isLoading: isSendTxnLoading, error } = useSendTransaction();
   const { data: txnData2, isLoading: isMintTxnLoading, writeContract: writeContract2 } = useWriteContract();
-  const [isSigningMessage, setIsSigningMessage] = React.useState(false);
-  const [isMessageValid, setIsMessageValid] = React.useState();
-  const [messageSig, setMessageSig] = React.useState();
-  const [lastTxnDataHash, setLastTxnDataHash] = React.useState();
-  const [lastTxnDataHash2, setLastTxnDataHash2] = React.useState();
-  const [confirmationEnabled, setConfirmationEnabled] = React.useState(
+  const [isSigningMessage, setIsSigningMessage] = React$1.useState(false);
+  const [isMessageValid, setIsMessageValid] = React$1.useState();
+  const [messageSig, setMessageSig] = React$1.useState();
+  const [lastTxnDataHash, setLastTxnDataHash] = React$1.useState();
+  const [lastTxnDataHash2, setLastTxnDataHash2] = React$1.useState();
+  const [confirmationEnabled, setConfirmationEnabled] = React$1.useState(
     localStorage.getItem("confirmationEnabled") === "true"
   );
   const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions();
-  const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React.useState();
+  const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React$1.useState();
   reactExports.useEffect(() => {
     if (pendingFeeOptionConfirmation) {
       setSelectedFeeOptionTokenName(pendingFeeOptionConfirmation.options[0].token.name);
@@ -100861,8 +100861,8 @@ function Homepage() {
   }, [error]);
   const chainId = useChainId();
   const { indexerClient } = getNetworkConfigAndClients(chainId);
-  const [feeOptionBalances, setFeeOptionBalances] = React.useState([]);
-  const [feeOptionAlert, setFeeOptionAlert] = React.useState(void 0);
+  const [feeOptionBalances, setFeeOptionBalances] = React$1.useState([]);
+  const [feeOptionAlert, setFeeOptionAlert] = React$1.useState(void 0);
   reactExports.useEffect(() => {
     checkTokenBalancesForFeeOptions();
   }, [pendingFeeOptionConfirmation]);
@@ -101463,7 +101463,7 @@ function App() {
 console.log("VERSION:", "0.1.1");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
-  /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
+  /* @__PURE__ */ jsxRuntimeExports$1.jsx(React$1.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
 );
 export {
   Buffer2 as B,
@@ -101492,7 +101492,7 @@ export {
 };
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./index-DcHPcN7y.js","./___vite-browser-external_commonjs-proxy-WYJohmSn.js","./index.es-CbmGpx0f.js"]
+    __vite__mapDeps.viteFileDeps = ["./index-z7DNFNci.js","./___vite-browser-external_commonjs-proxy-BlFEd_jZ.js","./index.es-CcAtfMcD.js"]
   }
   return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
 }
