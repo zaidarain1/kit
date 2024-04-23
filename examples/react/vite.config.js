@@ -22,6 +22,12 @@ export default defineConfig(() => {
       vanillaExtractPlugin(),
       svgrPlugin()
     ],
+    define: {
+      'process.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version)
+    },
+    resolve: {
+      dedupe: ['wagmi', 'viem']
+    },
     build: {
       minify: false
     },
