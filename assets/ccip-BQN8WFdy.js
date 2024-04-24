@@ -1,4 +1,4 @@
-import { f as BaseError, h as getUrl, s as stringify, j as isAddress, I as InvalidAddressError, k as decodeErrorResult, l as call, m as concat, n as encodeAbiParameters, H as HttpRequestError, o as isHex } from "./index-LgUQswY4.js";
+import { f as BaseError, h as getUrl, s as stringify, j as isAddress, I as InvalidAddressError, k as decodeErrorResult, l as call, m as concat, n as encodeAbiParameters, H as HttpRequestError, o as isHex } from "./index-3XXYlv3q.js";
 class OffchainLookupError extends BaseError {
   constructor({ callbackSelector, cause, data, extraData, sender, urls }) {
     var _a;
@@ -59,9 +59,9 @@ class OffchainLookupSenderMismatchError extends BaseError {
   }
 }
 function isAddressEqual(a, b) {
-  if (!isAddress(a))
+  if (!isAddress(a, { strict: false }))
     throw new InvalidAddressError({ address: a });
-  if (!isAddress(b))
+  if (!isAddress(b, { strict: false }))
     throw new InvalidAddressError({ address: b });
   return a.toLowerCase() === b.toLowerCase();
 }
@@ -98,10 +98,12 @@ async function offchainLookup(client, { blockNumber, blockTag, data, to }) {
     abi: [offchainLookupAbiItem]
   });
   const [sender, urls, callData, callbackSelector, extraData] = args;
+  const { ccipRead } = client;
+  const ccipRequest_ = ccipRead && typeof (ccipRead == null ? void 0 : ccipRead.request) === "function" ? ccipRead.request : ccipRequest;
   try {
     if (!isAddressEqual(to, sender))
       throw new OffchainLookupSenderMismatchError({ sender, to });
-    const result = await ccipFetch({ data: callData, sender, urls });
+    const result = await ccipRequest_({ data: callData, sender, urls });
     const { data: data_ } = await call(client, {
       blockNumber,
       blockTag,
@@ -123,7 +125,7 @@ async function offchainLookup(client, { blockNumber, blockTag, data, to }) {
     });
   }
 }
-async function ccipFetch({ data, sender, urls }) {
+async function ccipRequest({ data, sender, urls }) {
   var _a;
   let error = new Error("An unknown error occurred.");
   for (let i = 0; i < urls.length; i++) {
@@ -170,7 +172,7 @@ async function ccipFetch({ data, sender, urls }) {
   throw error;
 }
 export {
-  ccipFetch,
+  ccipRequest,
   offchainLookup,
   offchainLookupAbiItem,
   offchainLookupSignature

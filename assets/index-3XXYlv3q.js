@@ -1,10 +1,41 @@
-const __vite__fileDeps=["./index--9QcjOJb.js","./___vite-browser-external_commonjs-proxy-Zi1G5R8U.js","./index.es-Zu6v-7kr.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-Dufvb07S.js","./___vite-browser-external_commonjs-proxy-BSZ-LlhN.js","./index.es-ELpNBbiR.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
   __defNormalProp(obj, typeof key2 !== "symbol" ? key2 + "" : key2, value);
   return value;
 };
+var __accessCheck = (obj, member, msg) => {
+  if (!member.has(obj))
+    throw TypeError("Cannot " + msg);
+};
+var __privateGet = (obj, member, getter) => {
+  __accessCheck(obj, member, "read from private field");
+  return getter ? getter.call(obj) : member.get(obj);
+};
+var __privateAdd = (obj, member, value) => {
+  if (member.has(obj))
+    throw TypeError("Cannot add the same private member more than once");
+  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+};
+var __privateSet = (obj, member, value, setter) => {
+  __accessCheck(obj, member, "write to private field");
+  setter ? setter.call(obj, value) : member.set(obj, value);
+  return value;
+};
+var __privateWrapper = (obj, member, setter, getter) => ({
+  set _(value) {
+    __privateSet(obj, member, value, setter);
+  },
+  get _() {
+    return __privateGet(obj, member, getter);
+  }
+});
+var __privateMethod = (obj, member, method) => {
+  __accessCheck(obj, member, "access private method");
+  return method;
+};
+var _focused, _cleanup, _setup, _a, _online, _cleanup2, _setup2, _b, _gcTimeout, _c, _initialState, _revertState, _cache, _retryer, _defaultOptions, _abortSignalConsumed, _dispatch, dispatch_fn, _d, _queries, _e, _observers, _mutationCache, _retryer2, _dispatch2, dispatch_fn2, _f, _mutations, _mutationId, _g, _queryCache, _mutationCache2, _defaultOptions2, _queryDefaults, _mutationDefaults, _mountCount, _unsubscribeFocus, _unsubscribeOnline, _h, _client, _currentQuery, _currentQueryInitialState, _currentResult, _currentResultState, _currentResultOptions, _selectError, _selectFn, _selectResult, _lastQueryWithDefinedData, _staleTimeoutId, _refetchIntervalId, _currentRefetchInterval, _trackedProps, _executeFetch, executeFetch_fn, _updateStaleTimeout, updateStaleTimeout_fn, _computeRefetchInterval, computeRefetchInterval_fn, _updateRefetchInterval, updateRefetchInterval_fn, _updateTimers, updateTimers_fn, _clearStaleTimeout, clearStaleTimeout_fn, _clearRefetchInterval, clearRefetchInterval_fn, _updateQuery, updateQuery_fn, _notify, notify_fn, _i, _client2, _currentResult2, _currentMutation, _mutateOptions, _updateResult, updateResult_fn, _notify2, notify_fn2, _j;
 function _mergeNamespaces(n2, m2) {
   for (var i2 = 0; i2 < m2.length; i2++) {
     const e2 = m2[i2];
@@ -7653,7 +7684,7 @@ function useVisualElementContext() {
 }
 const PresenceContext = reactExports.createContext(null);
 const isBrowser$3 = typeof document !== "undefined";
-const useIsomorphicLayoutEffect = isBrowser$3 ? reactExports.useLayoutEffect : reactExports.useEffect;
+const useIsomorphicLayoutEffect$1 = isBrowser$3 ? reactExports.useLayoutEffect : reactExports.useEffect;
 const LazyContext = reactExports.createContext({ strict: false });
 function useVisualElement(Component2, visualState, props, createVisualElement) {
   const parent2 = useVisualElementContext();
@@ -7673,10 +7704,10 @@ function useVisualElement(Component2, visualState, props, createVisualElement) {
     });
   }
   const visualElement = visualElementRef.current;
-  useIsomorphicLayoutEffect(() => {
+  useIsomorphicLayoutEffect$1(() => {
     visualElement && visualElement.render();
   });
-  const useAnimateChangesEffect = window.HandoffAppearAnimations ? useIsomorphicLayoutEffect : reactExports.useEffect;
+  const useAnimateChangesEffect = window.HandoffAppearAnimations ? useIsomorphicLayoutEffect$1 : reactExports.useEffect;
   useAnimateChangesEffect(() => {
     if (visualElement && visualElement.animationState) {
       visualElement.animationState.animateChanges();
@@ -8198,10 +8229,25 @@ function useHTMLProps(props, visualState, isStatic) {
   htmlProps.style = style2;
   return htmlProps;
 }
-const validMotionProps = /* @__PURE__ */ new Set([
+const animationProps = [
   "animate",
   "exit",
   "variants",
+  "whileHover",
+  "whileTap",
+  "whileFocus",
+  "whileDrag",
+  "whileInView"
+];
+const tapProps = ["whileTap", "onTap", "onTapStart", "onTapCancel"];
+const panProps = ["onPan", "onPanStart", "onPanSessionStart", "onPanEnd"];
+const inViewProps = [
+  "whileInView",
+  "onViewportEnter",
+  "onViewportLeave",
+  "viewport"
+];
+const validMotionProps = /* @__PURE__ */ new Set([
   "initial",
   "style",
   "values",
@@ -8211,6 +8257,11 @@ const validMotionProps = /* @__PURE__ */ new Set([
   "transformValues",
   "custom",
   "inherit",
+  "layout",
+  "layoutId",
+  "layoutDependency",
+  "layoutScroll",
+  "layoutRoot",
   "onLayoutAnimationStart",
   "onLayoutAnimationComplete",
   "onLayoutMeasure",
@@ -8224,16 +8275,27 @@ const validMotionProps = /* @__PURE__ */ new Set([
   "onMeasureDragConstraints",
   "onDirectionLock",
   "onDragTransitionEnd",
+  "drag",
+  "dragControls",
+  "dragListener",
+  "dragConstraints",
+  "dragDirectionLock",
+  "dragSnapToOrigin",
   "_dragX",
   "_dragY",
+  "dragElastic",
+  "dragMomentum",
+  "dragPropagation",
+  "dragTransition",
   "onHoverStart",
   "onHoverEnd",
-  "onViewportEnter",
-  "onViewportLeave",
-  "viewport"
+  ...inViewProps,
+  ...tapProps,
+  ...animationProps,
+  ...panProps
 ]);
 function isValidMotionProp(key2) {
-  return key2.startsWith("while") || key2.startsWith("drag") && key2 !== "draggable" || key2.startsWith("layout") || key2.startsWith("onTap") || key2.startsWith("onPan") || validMotionProps.has(key2);
+  return validMotionProps.has(key2);
 }
 let shouldForward = (key2) => !isValidMotionProp(key2);
 function loadExternalIsValidProp(isValidProp) {
@@ -8243,7 +8305,7 @@ function loadExternalIsValidProp(isValidProp) {
 }
 try {
   loadExternalIsValidProp(require("@emotion/is-prop-valid").default);
-} catch (_a) {
+} catch (_a2) {
 }
 function filterProps(props, isDom, forwardMotionProps) {
   const filteredProps = {};
@@ -8693,19 +8755,19 @@ function useTapGesture({ onTap, onTapStart, onTapCancel, whileTap, visualElement
     return !isDragActive();
   }
   function onPointerUp(event, info) {
-    var _a, _b, _c, _d;
+    var _a2, _b2, _c2, _d2;
     if (!checkPointerEnd())
       return;
-    !isNodeOrChild(visualElement.current, event.target) ? (_b = (_a = visualElement.getProps()).onTapCancel) === null || _b === void 0 ? void 0 : _b.call(_a, event, info) : (_d = (_c = visualElement.getProps()).onTap) === null || _d === void 0 ? void 0 : _d.call(_c, event, info);
+    !isNodeOrChild(visualElement.current, event.target) ? (_b2 = (_a2 = visualElement.getProps()).onTapCancel) === null || _b2 === void 0 ? void 0 : _b2.call(_a2, event, info) : (_d2 = (_c2 = visualElement.getProps()).onTap) === null || _d2 === void 0 ? void 0 : _d2.call(_c2, event, info);
   }
   function onPointerCancel(event, info) {
-    var _a, _b;
+    var _a2, _b2;
     if (!checkPointerEnd())
       return;
-    (_b = (_a = visualElement.getProps()).onTapCancel) === null || _b === void 0 ? void 0 : _b.call(_a, event, info);
+    (_b2 = (_a2 = visualElement.getProps()).onTapCancel) === null || _b2 === void 0 ? void 0 : _b2.call(_a2, event, info);
   }
   const startPress = reactExports.useCallback((event, info) => {
-    var _a;
+    var _a2;
     removePointerEndListener();
     if (isPressing.current)
       return;
@@ -8715,7 +8777,7 @@ function useTapGesture({ onTap, onTapStart, onTapCancel, whileTap, visualElement
     if (latestProps.whileTap && visualElement.animationState) {
       visualElement.animationState.setActive(AnimationType.Tap, true);
     }
-    (_a = latestProps.onTapStart) === null || _a === void 0 ? void 0 : _a.call(latestProps, event, info);
+    (_a2 = latestProps.onTapStart) === null || _a2 === void 0 ? void 0 : _a2.call(latestProps, event, info);
   }, [Boolean(onTapStart), visualElement]);
   usePointerEvent(visualElement, "pointerdown", hasPressListeners ? startPress : void 0, eventOptions);
   useUnmountEffect(removePointerEndListener);
@@ -9016,7 +9078,7 @@ class MotionValue {
    * @internal
    */
   constructor(init3, options = {}) {
-    this.version = "8.5.5";
+    this.version = "8.5.2";
     this.timeDelta = 0;
     this.lastUpdated = 0;
     this.canTrackVelocity = false;
@@ -9348,8 +9410,8 @@ const color = {
 const colorToken = "${c}";
 const numberToken = "${n}";
 function test(v3) {
-  var _a, _b;
-  return isNaN(v3) && isString$1(v3) && (((_a = v3.match(floatRegex)) === null || _a === void 0 ? void 0 : _a.length) || 0) + (((_b = v3.match(colorRegex)) === null || _b === void 0 ? void 0 : _b.length) || 0) > 0;
+  var _a2, _b2;
+  return isNaN(v3) && isString$1(v3) && (((_a2 = v3.match(floatRegex)) === null || _a2 === void 0 ? void 0 : _a2.length) || 0) + (((_b2 = v3.match(colorRegex)) === null || _b2 === void 0 ? void 0 : _b2.length) || 0) > 0;
 }
 function analyseComplexValue(v3) {
   if (typeof v3 === "number")
@@ -9433,11 +9495,11 @@ const defaultValueTypes = {
 };
 const getDefaultValueType = (key2) => defaultValueTypes[key2];
 function getAnimatableNone(key2, value) {
-  var _a;
+  var _a2;
   let defaultValueType = getDefaultValueType(key2);
   if (defaultValueType !== filter)
     defaultValueType = complex;
-  return (_a = defaultValueType.getAnimatableNone) === null || _a === void 0 ? void 0 : _a.call(defaultValueType, value);
+  return (_a2 = defaultValueType.getAnimatableNone) === null || _a2 === void 0 ? void 0 : _a2.call(defaultValueType, value);
 }
 const testValueType = (v3) => (type) => type.test(v3);
 const auto = {
@@ -9479,7 +9541,7 @@ function setTarget(visualElement, definition) {
   }
 }
 function checkTargetForNewValues(visualElement, target, origin) {
-  var _a, _b;
+  var _a2, _b2;
   const newValueKeys = Object.keys(target).filter((key2) => !visualElement.hasValue(key2));
   const numNewValues = newValueKeys.length;
   if (!numNewValues)
@@ -9492,7 +9554,7 @@ function checkTargetForNewValues(visualElement, target, origin) {
       value = targetValue[0];
     }
     if (value === null) {
-      value = (_b = (_a = origin[key2]) !== null && _a !== void 0 ? _a : visualElement.readValue(key2)) !== null && _b !== void 0 ? _b : target[key2];
+      value = (_b2 = (_a2 = origin[key2]) !== null && _a2 !== void 0 ? _a2 : visualElement.readValue(key2)) !== null && _b2 !== void 0 ? _b2 : target[key2];
     }
     if (value === void 0 || value === null)
       continue;
@@ -9516,11 +9578,11 @@ function getOriginFromTransition(key2, transition) {
   return valueTransition.from;
 }
 function getOrigin(target, transition, visualElement) {
-  var _a;
+  var _a2;
   const origin = {};
   for (const key2 in target) {
     const transitionOrigin = getOriginFromTransition(key2, transition);
-    origin[key2] = transitionOrigin !== void 0 ? transitionOrigin : (_a = visualElement.getValue(key2)) === null || _a === void 0 ? void 0 : _a.get();
+    origin[key2] = transitionOrigin !== void 0 ? transitionOrigin : (_a2 = visualElement.getValue(key2)) === null || _a2 === void 0 ? void 0 : _a2.get();
   }
   return origin;
 }
@@ -10021,7 +10083,7 @@ const framesync = (update5) => {
   };
 };
 function animate$1({ duration, driver = framesync, elapsed = 0, repeat: repeatMax = 0, repeatType = "loop", repeatDelay = 0, keyframes: keyframes$12, autoplay = true, onPlay, onStop, onComplete, onRepeat, onUpdate, type = "keyframes", ...options }) {
-  var _a, _b;
+  var _a2, _b2;
   const initialElapsed = elapsed;
   let driverControls;
   let repeatCount = 0;
@@ -10033,7 +10095,7 @@ function animate$1({ duration, driver = framesync, elapsed = 0, repeat: repeatMa
   const origin = keyframes$12[0];
   const target = keyframes$12[keyframes$12.length - 1];
   let state = { done: false, value: origin };
-  if ((_b = (_a = animator).needsInterpolation) === null || _b === void 0 ? void 0 : _b.call(_a, origin, target)) {
+  if ((_b2 = (_a2 = animator).needsInterpolation) === null || _b2 === void 0 ? void 0 : _b2.call(_a2, origin, target)) {
     interpolateFromNumber = interpolate([0, 100], [origin, target], {
       clamp: false
     });
@@ -10219,7 +10281,6 @@ function createAcceleratedAnimation(value, valueName, { onUpdate, onComplete, ..
   });
   animation.onfinish = () => {
     value.set(getFinalKeyframe(keyframes2, options));
-    sync.update(() => animation.cancel());
     onComplete && onComplete();
   };
   return {
@@ -10279,9 +10340,9 @@ function inertia({ keyframes: keyframes2, velocity = 0, min: min2, max: max2, po
       ...options,
       driver,
       onUpdate: (v3) => {
-        var _a;
+        var _a2;
         onUpdate === null || onUpdate === void 0 ? void 0 : onUpdate(v3);
-        (_a = options.onUpdate) === null || _a === void 0 ? void 0 : _a.call(options, v3);
+        (_a2 = options.onUpdate) === null || _a2 === void 0 ? void 0 : _a2.call(options, v3);
       },
       onComplete,
       onStop
@@ -10487,14 +10548,14 @@ function animateVisualElement(visualElement, definition, options = {}) {
   return animation.then(() => visualElement.notify("AnimationComplete", definition));
 }
 function animateVariant(visualElement, variant, options = {}) {
-  var _a;
+  var _a2;
   const resolved = resolveVariant(visualElement, variant, options.custom);
   let { transition = visualElement.getDefaultTransition() || {} } = resolved || {};
   if (options.transitionOverride) {
     transition = options.transitionOverride;
   }
   const getAnimation = resolved ? () => animateTarget(visualElement, resolved, options) : () => Promise.resolve();
-  const getChildAnimations = ((_a = visualElement.variantChildren) === null || _a === void 0 ? void 0 : _a.size) ? (forwardDelay = 0) => {
+  const getChildAnimations = ((_a2 = visualElement.variantChildren) === null || _a2 === void 0 ? void 0 : _a2.size) ? (forwardDelay = 0) => {
     const { delayChildren = 0, staggerChildren, staggerDirection } = transition;
     return animateChildren(visualElement, variant, delayChildren + forwardDelay, staggerChildren, staggerDirection, options);
   } : () => Promise.resolve();
@@ -10507,13 +10568,13 @@ function animateVariant(visualElement, variant, options = {}) {
   }
 }
 function animateTarget(visualElement, definition, { delay: delay2 = 0, transitionOverride, type } = {}) {
-  var _a;
+  var _a2;
   let { transition = visualElement.getDefaultTransition(), transitionEnd, ...target } = visualElement.makeTargetAnimatable(definition);
   const willChange = visualElement.getValue("willChange");
   if (transitionOverride)
     transition = transitionOverride;
   const animations2 = [];
-  const animationTypeState = type && ((_a = visualElement.animationState) === null || _a === void 0 ? void 0 : _a.getState()[type]);
+  const animationTypeState = type && ((_a2 = visualElement.animationState) === null || _a2 === void 0 ? void 0 : _a2.getState()[type]);
   for (const key2 in target) {
     const value = visualElement.getValue(key2);
     const valueTarget = target[key2];
@@ -10690,12 +10751,12 @@ function createAnimationState(visualElement) {
     return shouldAnimate ? animate2(animations2) : Promise.resolve();
   }
   function setActive(type, isActive, options) {
-    var _a;
+    var _a2;
     if (state[type].isActive === isActive)
       return Promise.resolve();
-    (_a = visualElement.variantChildren) === null || _a === void 0 ? void 0 : _a.forEach((child) => {
-      var _a2;
-      return (_a2 = child.animationState) === null || _a2 === void 0 ? void 0 : _a2.setActive(type, isActive);
+    (_a2 = visualElement.variantChildren) === null || _a2 === void 0 ? void 0 : _a2.forEach((child) => {
+      var _a3;
+      return (_a3 = child.animationState) === null || _a3 === void 0 ? void 0 : _a3.setActive(type, isActive);
     });
     state[type].isActive = isActive;
     const animations2 = animateChanges(options, type);
@@ -11066,7 +11127,7 @@ function applyBoxDelta(box, { x, y: y2 }) {
   applyAxisDelta(box.y, y2.translate, y2.scale, y2.originPoint);
 }
 function applyTreeDeltas(box, treeScale, treePath, isSharedTransition = false) {
-  var _a, _b;
+  var _a2, _b2;
   const treeLength = treePath.length;
   if (!treeLength)
     return;
@@ -11076,7 +11137,7 @@ function applyTreeDeltas(box, treeScale, treePath, isSharedTransition = false) {
   for (let i2 = 0; i2 < treeLength; i2++) {
     node2 = treePath[i2];
     delta = node2.projectionDelta;
-    if (((_b = (_a = node2.instance) === null || _a === void 0 ? void 0 : _a.style) === null || _b === void 0 ? void 0 : _b.display) === "contents")
+    if (((_b2 = (_a2 = node2.instance) === null || _a2 === void 0 ? void 0 : _a2.style) === null || _b2 === void 0 ? void 0 : _b2.display) === "contents")
       continue;
     if (isSharedTransition && node2.options.layoutScroll && node2.scroll && node2 !== node2.root) {
       transformBox(box, {
@@ -11150,7 +11211,7 @@ class VisualElementDragControls {
       }
     };
     const onStart = (event, info) => {
-      var _a;
+      var _a2;
       const { drag: drag2, dragPropagation, onDragStart } = this.getProps();
       if (drag2 && !dragPropagation) {
         if (this.openGlobalLock)
@@ -11167,10 +11228,10 @@ class VisualElementDragControls {
         this.visualElement.projection.target = void 0;
       }
       eachAxis((axis) => {
-        var _a2, _b;
+        var _a3, _b2;
         let current = this.getAxisMotionValue(axis).get() || 0;
         if (percent.test(current)) {
-          const measuredAxis = (_b = (_a2 = this.visualElement.projection) === null || _a2 === void 0 ? void 0 : _a2.layout) === null || _b === void 0 ? void 0 : _b.layoutBox[axis];
+          const measuredAxis = (_b2 = (_a3 = this.visualElement.projection) === null || _a3 === void 0 ? void 0 : _a3.layout) === null || _b2 === void 0 ? void 0 : _b2.layoutBox[axis];
           if (measuredAxis) {
             const length2 = calcLength(measuredAxis);
             current = length2 * (parseFloat(current) / 100);
@@ -11179,7 +11240,7 @@ class VisualElementDragControls {
         this.originPoint[axis] = current;
       });
       onDragStart === null || onDragStart === void 0 ? void 0 : onDragStart(event, info);
-      (_a = this.visualElement.animationState) === null || _a === void 0 ? void 0 : _a.setActive(AnimationType.Drag, true);
+      (_a2 = this.visualElement.animationState) === null || _a2 === void 0 ? void 0 : _a2.setActive(AnimationType.Drag, true);
     };
     const onMove = (event, info) => {
       const { dragPropagation, dragDirectionLock, onDirectionLock, onDrag } = this.getProps();
@@ -11217,19 +11278,19 @@ class VisualElementDragControls {
     onDragEnd === null || onDragEnd === void 0 ? void 0 : onDragEnd(event, info);
   }
   cancel() {
-    var _a, _b;
+    var _a2, _b2;
     this.isDragging = false;
     if (this.visualElement.projection) {
       this.visualElement.projection.isAnimationBlocked = false;
     }
-    (_a = this.panSession) === null || _a === void 0 ? void 0 : _a.end();
+    (_a2 = this.panSession) === null || _a2 === void 0 ? void 0 : _a2.end();
     this.panSession = void 0;
     const { dragPropagation } = this.getProps();
     if (!dragPropagation && this.openGlobalLock) {
       this.openGlobalLock();
       this.openGlobalLock = null;
     }
-    (_b = this.visualElement.animationState) === null || _b === void 0 ? void 0 : _b.setActive(AnimationType.Drag, false);
+    (_b2 = this.visualElement.animationState) === null || _b2 === void 0 ? void 0 : _b2.setActive(AnimationType.Drag, false);
   }
   updateAxis(axis, _point, offset2) {
     const { drag: drag2 } = this.getProps();
@@ -11326,10 +11387,10 @@ class VisualElementDragControls {
    * - Otherwise, we apply the delta to the x/y motion values.
    */
   getAxisMotionValue(axis) {
-    var _a;
+    var _a2;
     const dragKey = "_drag" + axis.toUpperCase();
     const externalMotionValue = this.visualElement.getProps()[dragKey];
-    return externalMotionValue ? externalMotionValue : this.visualElement.getValue(axis, ((_a = this.visualElement.getProps().initial) === null || _a === void 0 ? void 0 : _a[axis]) || 0);
+    return externalMotionValue ? externalMotionValue : this.visualElement.getValue(axis, ((_a2 = this.visualElement.getProps().initial) === null || _a2 === void 0 ? void 0 : _a2[axis]) || 0);
   }
   snapToCursor(point3) {
     eachAxis((axis) => {
@@ -11350,7 +11411,7 @@ class VisualElementDragControls {
    * relative to where it was before the resize.
    */
   scalePositionWithinConstraints() {
-    var _a;
+    var _a2;
     if (!this.visualElement.current)
       return;
     const { drag: drag2, dragConstraints } = this.getProps();
@@ -11368,7 +11429,7 @@ class VisualElementDragControls {
     });
     const { transformTemplate } = this.visualElement.getProps();
     this.visualElement.current.style.transform = transformTemplate ? transformTemplate({}, "") : "none";
-    (_a = projection.root) === null || _a === void 0 ? void 0 : _a.updateScroll();
+    (_a2 = projection.root) === null || _a2 === void 0 ? void 0 : _a2.updateScroll();
     projection.updateLayout();
     this.resolveConstraints();
     eachAxis((axis) => {
@@ -11380,7 +11441,7 @@ class VisualElementDragControls {
     });
   }
   addListeners() {
-    var _a;
+    var _a2;
     if (!this.visualElement.current)
       return;
     elementDragControls.set(this.visualElement, this);
@@ -11398,7 +11459,7 @@ class VisualElementDragControls {
     const { projection } = this.visualElement;
     const stopMeasureLayoutListener = projection.addEventListener("measure", measureDragConstraints);
     if (projection && !projection.layout) {
-      (_a = projection.root) === null || _a === void 0 ? void 0 : _a.updateScroll();
+      (_a2 = projection.root) === null || _a2 === void 0 ? void 0 : _a2.updateScroll();
       projection.updateLayout();
     }
     measureDragConstraints();
@@ -11825,13 +11886,13 @@ class VisualElement {
     return {};
   }
   mount(instance) {
-    var _a;
+    var _a2;
     this.current = instance;
     if (this.projection) {
       this.projection.mount(instance);
     }
     if (this.parent && this.isVariantNode && !this.isControllingVariants) {
-      this.removeFromVariantTree = (_a = this.parent) === null || _a === void 0 ? void 0 : _a.addVariantChild(this);
+      this.removeFromVariantTree = (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.addVariantChild(this);
     }
     this.values.forEach((value, key2) => this.bindToMotionValue(key2, value));
     if (!hasReducedMotionListener.current) {
@@ -11843,13 +11904,13 @@ class VisualElement {
     this.setProps(this.props);
   }
   unmount() {
-    var _a, _b, _c;
-    (_a = this.projection) === null || _a === void 0 ? void 0 : _a.unmount();
+    var _a2, _b2, _c2;
+    (_a2 = this.projection) === null || _a2 === void 0 ? void 0 : _a2.unmount();
     cancelSync.update(this.notifyUpdate);
     cancelSync.render(this.render);
     this.valueSubscriptions.forEach((remove) => remove());
-    (_b = this.removeFromVariantTree) === null || _b === void 0 ? void 0 : _b.call(this);
-    (_c = this.parent) === null || _c === void 0 ? void 0 : _c.children.delete(this);
+    (_b2 = this.removeFromVariantTree) === null || _b2 === void 0 ? void 0 : _b2.call(this);
+    (_c2 = this.parent) === null || _c2 === void 0 ? void 0 : _c2.children.delete(this);
     for (const key2 in this.events) {
       this.events[key2].clear();
     }
@@ -11972,8 +12033,8 @@ class VisualElement {
    * Returns the variant definition with a given name.
    */
   getVariant(name) {
-    var _a;
-    return (_a = this.props.variants) === null || _a === void 0 ? void 0 : _a[name];
+    var _a2;
+    return (_a2 = this.props.variants) === null || _a2 === void 0 ? void 0 : _a2[name];
   }
   /**
    * Returns the defined default transition on this component.
@@ -11985,15 +12046,15 @@ class VisualElement {
     return this.props.transformPagePoint;
   }
   getClosestVariantNode() {
-    var _a;
-    return this.isVariantNode ? this : (_a = this.parent) === null || _a === void 0 ? void 0 : _a.getClosestVariantNode();
+    var _a2;
+    return this.isVariantNode ? this : (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.getClosestVariantNode();
   }
   getVariantContext(startAtParent = false) {
-    var _a, _b;
+    var _a2, _b2;
     if (startAtParent)
-      return (_a = this.parent) === null || _a === void 0 ? void 0 : _a.getVariantContext();
+      return (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.getVariantContext();
     if (!this.isControllingVariants) {
-      const context22 = ((_b = this.parent) === null || _b === void 0 ? void 0 : _b.getVariantContext()) || {};
+      const context22 = ((_b2 = this.parent) === null || _b2 === void 0 ? void 0 : _b2.getVariantContext()) || {};
       if (this.props.initial !== void 0) {
         context22.initial = this.props.initial;
       }
@@ -12013,10 +12074,10 @@ class VisualElement {
    * Add a child visual element to our set of children.
    */
   addVariantChild(child) {
-    var _a;
+    var _a2;
     const closestVariantNode = this.getClosestVariantNode();
     if (closestVariantNode) {
-      (_a = closestVariantNode.variantChildren) === null || _a === void 0 ? void 0 : _a.add(child);
+      (_a2 = closestVariantNode.variantChildren) === null || _a2 === void 0 ? void 0 : _a2.add(child);
       return () => closestVariantNode.variantChildren.delete(child);
     }
   }
@@ -12035,9 +12096,9 @@ class VisualElement {
    * Remove a motion value and unbind any active subscriptions.
    */
   removeValue(key2) {
-    var _a;
+    var _a2;
     this.values.delete(key2);
-    (_a = this.valueSubscriptions.get(key2)) === null || _a === void 0 ? void 0 : _a();
+    (_a2 = this.valueSubscriptions.get(key2)) === null || _a2 === void 0 ? void 0 : _a2();
     this.valueSubscriptions.delete(key2);
     delete this.latestValues[key2];
     this.removeValueFromRenderState(key2, this.renderState);
@@ -12079,9 +12140,9 @@ class VisualElement {
    * props.
    */
   getBaseTarget(key2) {
-    var _a;
+    var _a2;
     const { initial } = this.props;
-    const valueFromInitial = typeof initial === "string" || typeof initial === "object" ? (_a = resolveVariantFromProps(this.props, initial)) === null || _a === void 0 ? void 0 : _a[key2] : void 0;
+    const valueFromInitial = typeof initial === "string" || typeof initial === "object" ? (_a2 = resolveVariantFromProps(this.props, initial)) === null || _a2 === void 0 ? void 0 : _a2[key2] : void 0;
     if (initial && valueFromInitial !== void 0) {
       return valueFromInitial;
     }
@@ -12097,8 +12158,8 @@ class VisualElement {
     return this.events[eventName].add(callback);
   }
   notify(eventName, ...args) {
-    var _a;
-    (_a = this.events[eventName]) === null || _a === void 0 ? void 0 : _a.notify(...args);
+    var _a2;
+    (_a2 = this.events[eventName]) === null || _a2 === void 0 ? void 0 : _a2.notify(...args);
   }
 }
 const variantProps = ["initial", ...variantPriorityOrder];
@@ -12108,8 +12169,8 @@ class DOMVisualElement extends VisualElement {
     return a2.compareDocumentPosition(b3) & 2 ? 1 : -1;
   }
   getBaseTargetFromProps(props, key2) {
-    var _a;
-    return (_a = props.style) === null || _a === void 0 ? void 0 : _a[key2];
+    var _a2;
+    return (_a2 = props.style) === null || _a2 === void 0 ? void 0 : _a2[key2];
   }
   removeValueFromRenderState(key2, { vars: vars2, style: style2 }) {
     delete vars2[key2];
@@ -12187,9 +12248,9 @@ class SVGVisualElement extends DOMVisualElement {
     return props[key2];
   }
   readValueFromInstance(instance, key2) {
-    var _a;
+    var _a2;
     if (transformProps.has(key2)) {
-      return ((_a = getDefaultValueType(key2)) === null || _a === void 0 ? void 0 : _a.default) || 0;
+      return ((_a2 = getDefaultValueType(key2)) === null || _a2 === void 0 ? void 0 : _a2.default) || 0;
     }
     key2 = !camelCaseAttributes.has(key2) ? camelToDash(key2) : key2;
     return instance.getAttribute(key2);
@@ -12316,8 +12377,8 @@ class MeasureLayoutWithContext extends React.Component {
         projection.promote();
       } else if (!projection.relegate()) {
         sync.postRender(() => {
-          var _a;
-          if (!((_a = projection.getStack()) === null || _a === void 0 ? void 0 : _a.members.length)) {
+          var _a2;
+          if (!((_a2 = projection.getStack()) === null || _a2 === void 0 ? void 0 : _a2.members.length)) {
             this.safeToRemove();
           }
         });
@@ -12528,7 +12589,7 @@ class NodeStack {
     }
   }
   promote(node2, preserveFollowOpacity) {
-    var _a;
+    var _a2;
     const prevLead = this.lead;
     if (node2 === prevLead)
       return;
@@ -12546,7 +12607,7 @@ class NodeStack {
         node2.snapshot = prevLead.snapshot;
         node2.snapshot.latestValues = prevLead.animationValues || prevLead.latestValues;
       }
-      if ((_a = node2.root) === null || _a === void 0 ? void 0 : _a.isUpdating) {
+      if ((_a2 = node2.root) === null || _a2 === void 0 ? void 0 : _a2.isUpdating) {
         node2.isLayoutDirty = true;
       }
       const { crossfade } = node2.options;
@@ -12557,9 +12618,9 @@ class NodeStack {
   }
   exitAnimationComplete() {
     this.members.forEach((node2) => {
-      var _a, _b, _c, _d, _e;
-      (_b = (_a = node2.options).onExitComplete) === null || _b === void 0 ? void 0 : _b.call(_a);
-      (_e = (_c = node2.resumingFrom) === null || _c === void 0 ? void 0 : (_d = _c.options).onExitComplete) === null || _e === void 0 ? void 0 : _e.call(_d);
+      var _a2, _b2, _c2, _d2, _e2;
+      (_b2 = (_a2 = node2.options).onExitComplete) === null || _b2 === void 0 ? void 0 : _b2.call(_a2);
+      (_e2 = (_c2 = node2.resumingFrom) === null || _c2 === void 0 ? void 0 : (_d2 = _c2.options).onExitComplete) === null || _e2 === void 0 ? void 0 : _e2.call(_d2);
     });
   }
   scheduleRender() {
@@ -12695,7 +12756,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
      * Lifecycles
      */
     mount(instance, isLayoutDirty = false) {
-      var _a;
+      var _a2;
       if (this.instance)
         return;
       this.isSVG = instance instanceof SVGElement && instance.tagName !== "svg";
@@ -12705,7 +12766,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         visualElement.mount(instance);
       }
       this.root.nodes.add(this);
-      (_a = this.parent) === null || _a === void 0 ? void 0 : _a.children.add(this);
+      (_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.children.add(this);
       this.elementId && this.root.potentialNodes.delete(this.elementId);
       if (isLayoutDirty && (layout || layoutId)) {
         this.isLayoutDirty = true;
@@ -12728,17 +12789,17 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
       if (this.options.animate !== false && visualElement && (layoutId || layout)) {
         this.addEventListener("didUpdate", ({ delta, hasLayoutChanged, hasRelativeTargetChanged, layout: newLayout }) => {
-          var _a2, _b, _c, _d, _e;
+          var _a3, _b2, _c2, _d2, _e2;
           if (this.isTreeAnimationBlocked()) {
             this.target = void 0;
             this.relativeTarget = void 0;
             return;
           }
-          const layoutTransition = (_b = (_a2 = this.options.transition) !== null && _a2 !== void 0 ? _a2 : visualElement.getDefaultTransition()) !== null && _b !== void 0 ? _b : defaultLayoutTransition;
+          const layoutTransition = (_b2 = (_a3 = this.options.transition) !== null && _a3 !== void 0 ? _a3 : visualElement.getDefaultTransition()) !== null && _b2 !== void 0 ? _b2 : defaultLayoutTransition;
           const { onLayoutAnimationStart, onLayoutAnimationComplete } = visualElement.getProps();
           const targetChanged = !this.targetLayout || !boxEquals(this.targetLayout, newLayout) || hasRelativeTargetChanged;
           const hasOnlyRelativeTargetChanged = !hasLayoutChanged && hasRelativeTargetChanged;
-          if (this.options.layoutRoot || ((_c = this.resumeFrom) === null || _c === void 0 ? void 0 : _c.instance) || hasOnlyRelativeTargetChanged || hasLayoutChanged && (targetChanged || !this.currentAnimation)) {
+          if (this.options.layoutRoot || ((_c2 = this.resumeFrom) === null || _c2 === void 0 ? void 0 : _c2.instance) || hasOnlyRelativeTargetChanged || hasLayoutChanged && (targetChanged || !this.currentAnimation)) {
             if (this.resumeFrom) {
               this.resumingFrom = this.resumeFrom;
               this.resumingFrom.resumingFrom = void 0;
@@ -12758,18 +12819,18 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
             if (!hasLayoutChanged && this.animationProgress === 0) {
               finishAnimation(this);
             }
-            this.isLead() && ((_e = (_d = this.options).onExitComplete) === null || _e === void 0 ? void 0 : _e.call(_d));
+            this.isLead() && ((_e2 = (_d2 = this.options).onExitComplete) === null || _e2 === void 0 ? void 0 : _e2.call(_d2));
           }
           this.targetLayout = newLayout;
         });
       }
     }
     unmount() {
-      var _a, _b;
+      var _a2, _b2;
       this.options.layoutId && this.willUpdate();
       this.root.nodes.remove(this);
-      (_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.remove(this);
-      (_b = this.parent) === null || _b === void 0 ? void 0 : _b.children.delete(this);
+      (_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.remove(this);
+      (_b2 = this.parent) === null || _b2 === void 0 ? void 0 : _b2.children.delete(this);
       this.instance = void 0;
       cancelSync.preRender(this.updateProjection);
     }
@@ -12784,26 +12845,26 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       return this.updateManuallyBlocked || this.updateBlockedByResize;
     }
     isTreeAnimationBlocked() {
-      var _a;
-      return this.isAnimationBlocked || ((_a = this.parent) === null || _a === void 0 ? void 0 : _a.isTreeAnimationBlocked()) || false;
+      var _a2;
+      return this.isAnimationBlocked || ((_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.isTreeAnimationBlocked()) || false;
     }
     // Note: currently only running on root node
     startUpdate() {
-      var _a;
+      var _a2;
       if (this.isUpdateBlocked())
         return;
       this.isUpdating = true;
-      (_a = this.nodes) === null || _a === void 0 ? void 0 : _a.forEach(resetRotation);
+      (_a2 = this.nodes) === null || _a2 === void 0 ? void 0 : _a2.forEach(resetRotation);
       this.animationId++;
     }
     getTransformTemplate() {
-      var _a;
-      return (_a = this.options.visualElement) === null || _a === void 0 ? void 0 : _a.getProps().transformTemplate;
+      var _a2;
+      return (_a2 = this.options.visualElement) === null || _a2 === void 0 ? void 0 : _a2.getProps().transformTemplate;
     }
     willUpdate(shouldNotifyListeners = true) {
-      var _a, _b, _c;
+      var _a2, _b2, _c2;
       if (this.root.isUpdateBlocked()) {
-        (_b = (_a = this.options).onExitComplete) === null || _b === void 0 ? void 0 : _b.call(_a);
+        (_b2 = (_a2 = this.options).onExitComplete) === null || _b2 === void 0 ? void 0 : _b2.call(_a2);
         return;
       }
       !this.root.isUpdating && this.root.startUpdate();
@@ -12821,7 +12882,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       const { layoutId, layout } = this.options;
       if (layoutId === void 0 && !layout)
         return;
-      this.prevTransformTemplateValue = (_c = this.getTransformTemplate()) === null || _c === void 0 ? void 0 : _c(this.latestValues, "");
+      this.prevTransformTemplateValue = (_c2 = this.getTransformTemplate()) === null || _c2 === void 0 ? void 0 : _c2(this.latestValues, "");
       this.updateSnapshot();
       shouldNotifyListeners && this.notifyListeners("willUpdate");
     }
@@ -12874,7 +12935,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.snapshot = this.measure();
     }
     updateLayout() {
-      var _a;
+      var _a2;
       if (!this.instance)
         return;
       this.updateScroll();
@@ -12893,7 +12954,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.isLayoutDirty = false;
       this.projectionDelta = void 0;
       this.notifyListeners("measure", this.layout.layoutBox);
-      (_a = this.options.visualElement) === null || _a === void 0 ? void 0 : _a.notify("LayoutMeasure", this.layout.layoutBox, prevLayout === null || prevLayout === void 0 ? void 0 : prevLayout.layoutBox);
+      (_a2 = this.options.visualElement) === null || _a2 === void 0 ? void 0 : _a2.notify("LayoutMeasure", this.layout.layoutBox, prevLayout === null || prevLayout === void 0 ? void 0 : prevLayout.layoutBox);
     }
     updateScroll(phase = "measure") {
       let needsMeasurement = Boolean(this.options.layoutScroll && this.instance);
@@ -12910,12 +12971,12 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
     }
     resetTransform() {
-      var _a;
+      var _a2;
       if (!resetTransform)
         return;
       const isResetRequested = this.isLayoutDirty || this.shouldResetTransform;
       const hasProjection = this.projectionDelta && !isDeltaZero(this.projectionDelta);
-      const transformTemplateValue = (_a = this.getTransformTemplate()) === null || _a === void 0 ? void 0 : _a(this.latestValues, "");
+      const transformTemplateValue = (_a2 = this.getTransformTemplate()) === null || _a2 === void 0 ? void 0 : _a2(this.latestValues, "");
       const transformTemplateHasChanged = transformTemplateValue !== this.prevTransformTemplateValue;
       if (isResetRequested && (hasProjection || hasTransform(this.latestValues) || transformTemplateHasChanged)) {
         resetTransform(this.instance, transformTemplateValue);
@@ -12992,7 +13053,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       return withTransforms;
     }
     removeTransform(box) {
-      var _a;
+      var _a2;
       const boxWithoutTransform = createBox();
       copyBoxInto(boxWithoutTransform, box);
       for (let i2 = 0; i2 < this.path.length; i2++) {
@@ -13005,7 +13066,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         const sourceBox = createBox();
         const nodeBox = node2.measurePageBox();
         copyBoxInto(sourceBox, nodeBox);
-        removeBoxTransforms(boxWithoutTransform, node2.latestValues, (_a = node2.snapshot) === null || _a === void 0 ? void 0 : _a.layoutBox, sourceBox);
+        removeBoxTransforms(boxWithoutTransform, node2.latestValues, (_a2 = node2.snapshot) === null || _a2 === void 0 ? void 0 : _a2.layoutBox, sourceBox);
       }
       if (hasTransform(this.latestValues)) {
         removeBoxTransforms(boxWithoutTransform, this.latestValues);
@@ -13040,7 +13101,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
      * Frame calculations
      */
     resolveTargetDelta() {
-      var _a;
+      var _a2;
       const lead = this.getLead();
       this.isProjectionDirty || (this.isProjectionDirty = lead.isProjectionDirty);
       this.isTransformDirty || (this.isTransformDirty = lead.isTransformDirty);
@@ -13067,7 +13128,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         this.target = createBox();
         this.targetWithTransforms = createBox();
       }
-      if (this.relativeTarget && this.relativeTargetOrigin && ((_a = this.relativeParent) === null || _a === void 0 ? void 0 : _a.target)) {
+      if (this.relativeTarget && this.relativeTargetOrigin && ((_a2 = this.relativeParent) === null || _a2 === void 0 ? void 0 : _a2.target)) {
         calcRelativeBox(this.target, this.relativeTarget, this.relativeParent.target);
       } else if (this.targetDelta) {
         if (Boolean(this.resumingFrom)) {
@@ -13104,7 +13165,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
     }
     calcProjection() {
-      var _a;
+      var _a2;
       const { isProjectionDirty, isTransformDirty } = this;
       this.isProjectionDirty = this.isTransformDirty = false;
       const lead = this.getLead();
@@ -13117,7 +13178,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       if (canSkip)
         return;
       const { layout, layoutId } = this.options;
-      this.isTreeAnimating = Boolean(((_a = this.parent) === null || _a === void 0 ? void 0 : _a.isTreeAnimating) || this.currentAnimation || this.pendingAnimation);
+      this.isTreeAnimating = Boolean(((_a2 = this.parent) === null || _a2 === void 0 ? void 0 : _a2.isTreeAnimating) || this.currentAnimation || this.pendingAnimation);
       if (!this.isTreeAnimating) {
         this.targetDelta = this.relativeTarget = void 0;
       }
@@ -13150,15 +13211,15 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.isVisible = true;
     }
     scheduleRender(notifyAll = true) {
-      var _a, _b, _c;
-      (_b = (_a = this.options).scheduleRender) === null || _b === void 0 ? void 0 : _b.call(_a);
-      notifyAll && ((_c = this.getStack()) === null || _c === void 0 ? void 0 : _c.scheduleRender());
+      var _a2, _b2, _c2;
+      (_b2 = (_a2 = this.options).scheduleRender) === null || _b2 === void 0 ? void 0 : _b2.call(_a2);
+      notifyAll && ((_c2 = this.getStack()) === null || _c2 === void 0 ? void 0 : _c2.scheduleRender());
       if (this.resumingFrom && !this.resumingFrom.instance) {
         this.resumingFrom = void 0;
       }
     }
     setAnimationOrigin(delta, hasOnlyRelativeTargetChanged = false) {
-      var _a, _b;
+      var _a2, _b2;
       const snapshot = this.snapshot;
       const snapshotLatestValues = (snapshot === null || snapshot === void 0 ? void 0 : snapshot.latestValues) || {};
       const mixedValues = { ...this.latestValues };
@@ -13168,17 +13229,17 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
       this.attemptToResolveRelativeTarget = !hasOnlyRelativeTargetChanged;
       const relativeLayout = createBox();
-      const isSharedLayoutAnimation = (snapshot === null || snapshot === void 0 ? void 0 : snapshot.source) !== ((_a = this.layout) === null || _a === void 0 ? void 0 : _a.source);
-      const isOnlyMember = (((_b = this.getStack()) === null || _b === void 0 ? void 0 : _b.members.length) || 0) <= 1;
+      const isSharedLayoutAnimation = (snapshot === null || snapshot === void 0 ? void 0 : snapshot.source) !== ((_a2 = this.layout) === null || _a2 === void 0 ? void 0 : _a2.source);
+      const isOnlyMember = (((_b2 = this.getStack()) === null || _b2 === void 0 ? void 0 : _b2.members.length) || 0) <= 1;
       const shouldCrossfadeOpacity = Boolean(isSharedLayoutAnimation && !isOnlyMember && this.options.crossfade === true && !this.path.some(hasOpacityCrossfade));
       this.animationProgress = 0;
       this.mixTargetDelta = (latest) => {
-        var _a2;
+        var _a3;
         const progress2 = latest / 1e3;
         mixAxisDelta(targetDelta.x, delta.x, progress2);
         mixAxisDelta(targetDelta.y, delta.y, progress2);
         this.setTargetDelta(targetDelta);
-        if (this.relativeTarget && this.relativeTargetOrigin && this.layout && ((_a2 = this.relativeParent) === null || _a2 === void 0 ? void 0 : _a2.layout)) {
+        if (this.relativeTarget && this.relativeTargetOrigin && this.layout && ((_a3 = this.relativeParent) === null || _a3 === void 0 ? void 0 : _a3.layout)) {
           calcRelativePosition(relativeLayout, this.layout.layoutBox, this.relativeParent.layout.layoutBox);
           mixBox(this.relativeTarget, this.relativeTargetOrigin, relativeLayout, progress2);
         }
@@ -13193,11 +13254,11 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       this.mixTargetDelta(this.options.layoutRoot ? 1e3 : 0);
     }
     startAnimation(options) {
-      var _a, _b;
+      var _a2, _b2;
       this.notifyListeners("animationStart");
-      (_a = this.currentAnimation) === null || _a === void 0 ? void 0 : _a.stop();
+      (_a2 = this.currentAnimation) === null || _a2 === void 0 ? void 0 : _a2.stop();
       if (this.resumingFrom) {
-        (_b = this.resumingFrom.currentAnimation) === null || _b === void 0 ? void 0 : _b.stop();
+        (_b2 = this.resumingFrom.currentAnimation) === null || _b2 === void 0 ? void 0 : _b2.stop();
       }
       if (this.pendingAnimation) {
         cancelSync.update(this.pendingAnimation);
@@ -13208,13 +13269,13 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
         this.currentAnimation = animate(0, animationTarget, {
           ...options,
           onUpdate: (latest) => {
-            var _a2;
+            var _a3;
             this.mixTargetDelta(latest);
-            (_a2 = options.onUpdate) === null || _a2 === void 0 ? void 0 : _a2.call(options, latest);
+            (_a3 = options.onUpdate) === null || _a3 === void 0 ? void 0 : _a3.call(options, latest);
           },
           onComplete: () => {
-            var _a2;
-            (_a2 = options.onComplete) === null || _a2 === void 0 ? void 0 : _a2.call(options);
+            var _a3;
+            (_a3 = options.onComplete) === null || _a3 === void 0 ? void 0 : _a3.call(options);
             this.completeAnimation();
           }
         });
@@ -13225,19 +13286,19 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       });
     }
     completeAnimation() {
-      var _a;
+      var _a2;
       if (this.resumingFrom) {
         this.resumingFrom.currentAnimation = void 0;
         this.resumingFrom.preserveOpacity = void 0;
       }
-      (_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.exitAnimationComplete();
+      (_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.exitAnimationComplete();
       this.resumingFrom = this.currentAnimation = this.animationValues = void 0;
       this.notifyListeners("animationComplete");
     }
     finishAnimation() {
-      var _a;
+      var _a2;
       if (this.currentAnimation) {
-        (_a = this.mixTargetDelta) === null || _a === void 0 ? void 0 : _a.call(this, animationTarget);
+        (_a2 = this.mixTargetDelta) === null || _a2 === void 0 ? void 0 : _a2.call(this, animationTarget);
         this.currentAnimation.stop();
       }
       this.completeAnimation();
@@ -13261,15 +13322,15 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       calcBoxDelta(this.projectionDeltaWithTransform, this.layoutCorrected, targetWithTransforms, latestValues);
     }
     registerSharedNode(layoutId, node2) {
-      var _a, _b, _c;
+      var _a2, _b2, _c2;
       if (!this.sharedNodes.has(layoutId)) {
         this.sharedNodes.set(layoutId, new NodeStack());
       }
       const stack = this.sharedNodes.get(layoutId);
       stack.add(node2);
       node2.promote({
-        transition: (_a = node2.options.initialPromotionConfig) === null || _a === void 0 ? void 0 : _a.transition,
-        preserveFollowOpacity: (_c = (_b = node2.options.initialPromotionConfig) === null || _b === void 0 ? void 0 : _b.shouldPreserveFollowOpacity) === null || _c === void 0 ? void 0 : _c.call(_b, node2)
+        transition: (_a2 = node2.options.initialPromotionConfig) === null || _a2 === void 0 ? void 0 : _a2.transition,
+        preserveFollowOpacity: (_c2 = (_b2 = node2.options.initialPromotionConfig) === null || _b2 === void 0 ? void 0 : _b2.shouldPreserveFollowOpacity) === null || _c2 === void 0 ? void 0 : _c2.call(_b2, node2)
       });
     }
     isLead() {
@@ -13277,14 +13338,14 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       return stack ? stack.lead === this : true;
     }
     getLead() {
-      var _a;
+      var _a2;
       const { layoutId } = this.options;
-      return layoutId ? ((_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.lead) || this : this;
+      return layoutId ? ((_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.lead) || this : this;
     }
     getPrevLead() {
-      var _a;
+      var _a2;
       const { layoutId } = this.options;
-      return layoutId ? (_a = this.getStack()) === null || _a === void 0 ? void 0 : _a.prevLead : void 0;
+      return layoutId ? (_a2 = this.getStack()) === null || _a2 === void 0 ? void 0 : _a2.prevLead : void 0;
     }
     getStack() {
       const { layoutId } = this.options;
@@ -13336,7 +13397,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       visualElement.scheduleRender();
     }
     getProjectionStyles(styleProp = {}) {
-      var _a, _b;
+      var _a2, _b2;
       const styles2 = {};
       if (!this.instance || this.isSVG)
         return styles2;
@@ -13375,7 +13436,7 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       const { x, y: y2 } = this.projectionDelta;
       styles2.transformOrigin = `${x.origin * 100}% ${y2.origin * 100}% 0`;
       if (lead.animationValues) {
-        styles2.opacity = lead === this ? (_b = (_a = valuesToRender.opacity) !== null && _a !== void 0 ? _a : this.latestValues.opacity) !== null && _b !== void 0 ? _b : 1 : this.preserveOpacity ? this.latestValues.opacity : valuesToRender.opacityExit;
+        styles2.opacity = lead === this ? (_b2 = (_a2 = valuesToRender.opacity) !== null && _a2 !== void 0 ? _a2 : this.latestValues.opacity) !== null && _b2 !== void 0 ? _b2 : 1 : this.preserveOpacity ? this.latestValues.opacity : valuesToRender.opacityExit;
       } else {
         styles2.opacity = lead === this ? valuesToRender.opacity !== void 0 ? valuesToRender.opacity : "" : valuesToRender.opacityExit !== void 0 ? valuesToRender.opacityExit : 0;
       }
@@ -13404,8 +13465,8 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
     // Only run on root
     resetTree() {
       this.root.nodes.forEach((node2) => {
-        var _a;
-        return (_a = node2.currentAnimation) === null || _a === void 0 ? void 0 : _a.stop();
+        var _a2;
+        return (_a2 = node2.currentAnimation) === null || _a2 === void 0 ? void 0 : _a2.stop();
       });
       this.root.nodes.forEach(clearMeasurements);
       this.root.sharedNodes.clear();
@@ -13416,8 +13477,8 @@ function updateLayout(node2) {
   node2.updateLayout();
 }
 function notifyLayoutUpdate(node2) {
-  var _a, _b, _c;
-  const snapshot = ((_a = node2.resumeFrom) === null || _a === void 0 ? void 0 : _a.snapshot) || node2.snapshot;
+  var _a2, _b2, _c2;
+  const snapshot = ((_a2 = node2.resumeFrom) === null || _a2 === void 0 ? void 0 : _a2.snapshot) || node2.snapshot;
   if (node2.isLead() && node2.layout && snapshot && node2.hasListeners("didUpdate")) {
     const { layoutBox: layout, measuredBox: measuredLayout } = node2.layout;
     const { animationType } = node2.options;
@@ -13475,7 +13536,7 @@ function notifyLayoutUpdate(node2) {
       hasRelativeTargetChanged
     });
   } else if (node2.isLead()) {
-    (_c = (_b = node2.options).onExitComplete) === null || _c === void 0 ? void 0 : _c.call(_b);
+    (_c2 = (_b2 = node2.options).onExitComplete) === null || _c2 === void 0 ? void 0 : _c2.call(_b2);
   }
   node2.options.transition = void 0;
 }
@@ -13596,7 +13657,7 @@ const featureBundle = {
 const motion = /* @__PURE__ */ createMotionProxy((Component2, config2) => createDomMotionConfig(Component2, config2, featureBundle, createDomVisualElement, HTMLProjectionNode));
 function useIsMounted() {
   const isMounted = reactExports.useRef(false);
-  useIsomorphicLayoutEffect(() => {
+  useIsomorphicLayoutEffect$1(() => {
     isMounted.current = true;
     return () => {
       isMounted.current = false;
@@ -13740,7 +13801,7 @@ const AnimatePresence = ({ children, custom: custom2, initial = true, onExitComp
   const presentChildren = reactExports.useRef(childrenToRender);
   const allChildren = reactExports.useRef(/* @__PURE__ */ new Map()).current;
   const isInitialRender = reactExports.useRef(true);
-  useIsomorphicLayoutEffect(() => {
+  useIsomorphicLayoutEffect$1(() => {
     isInitialRender.current = false;
     updateChildLookup(filteredChildren, allChildren);
     presentChildren.current = childrenToRender;
@@ -15000,12 +15061,12 @@ function $6ed0406888f73fc4$export$c7b2cbe3552a0d05$1(...refs) {
 }
 function $c512c27ab02ef895$export$50c7b4e9d9f19c1$1(scopeName, createContextScopeDeps = []) {
   let defaultContexts2 = [];
-  function $c512c27ab02ef895$export$fd42f52fd3ae11092(rootComponentName, defaultContext2) {
-    const BaseContext = /* @__PURE__ */ reactExports.createContext(defaultContext2);
+  function $c512c27ab02ef895$export$fd42f52fd3ae11092(rootComponentName, defaultContext) {
+    const BaseContext = /* @__PURE__ */ reactExports.createContext(defaultContext);
     const index2 = defaultContexts2.length;
     defaultContexts2 = [
       ...defaultContexts2,
-      defaultContext2
+      defaultContext
     ];
     function Provider2(props) {
       const { scope, children, ...context2 } = props;
@@ -15023,8 +15084,8 @@ function $c512c27ab02ef895$export$50c7b4e9d9f19c1$1(scopeName, createContextScop
       const context2 = reactExports.useContext(Context);
       if (context2)
         return context2;
-      if (defaultContext2 !== void 0)
-        return defaultContext2;
+      if (defaultContext !== void 0)
+        return defaultContext;
       throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
     }
     Provider2.displayName = rootComponentName + "Provider";
@@ -15034,8 +15095,8 @@ function $c512c27ab02ef895$export$50c7b4e9d9f19c1$1(scopeName, createContextScop
     ];
   }
   const createScope = () => {
-    const scopeContexts = defaultContexts2.map((defaultContext2) => {
-      return /* @__PURE__ */ reactExports.createContext(defaultContext2);
+    const scopeContexts = defaultContexts2.map((defaultContext) => {
+      return /* @__PURE__ */ reactExports.createContext(defaultContext);
     });
     return function useScope(scope) {
       const contexts = (scope === null || scope === void 0 ? void 0 : scope[scopeName]) || scopeContexts;
@@ -19601,8 +19662,8 @@ function createSidecarMedium$1(options) {
   medium.options = __assign$2({ async: true, ssr: false }, options);
   return medium;
 }
-var SideCar$1$1 = function(_a) {
-  var sideCar = _a.sideCar, rest = __rest$1(_a, ["sideCar"]);
+var SideCar$1$1 = function(_a2) {
+  var sideCar = _a2.sideCar, rest = __rest$1(_a2, ["sideCar"]);
   if (!sideCar) {
     throw new Error("Sidecar: please provide `sideCar` property to import the right car");
   }
@@ -19623,12 +19684,12 @@ var nothing$1 = function() {
 };
 var RemoveScroll$1 = reactExports.forwardRef(function(props, parentRef) {
   var ref = reactExports.useRef(null);
-  var _a = reactExports.useState({
+  var _a2 = reactExports.useState({
     onScrollCapture: nothing$1,
     onWheelCapture: nothing$1,
     onTouchMoveCapture: nothing$1
-  }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = __rest$1(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
+  }), callbacks = _a2[0], setCallbacks = _a2[1];
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b2 = props.as, Container = _b2 === void 0 ? "div" : _b2, rest = __rest$1(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs$1([ref, parentRef]);
   var containerProps = __assign$2(__assign$2({}, rest), callbacks);
@@ -19711,8 +19772,8 @@ var styleHookSingleton$1 = function() {
 };
 var styleSingleton$1 = function() {
   var useStyle2 = styleHookSingleton$1();
-  var Sheet = function(_a) {
-    var styles2 = _a.styles, dynamic = _a.dynamic;
+  var Sheet = function(_a2) {
+    var styles2 = _a2.styles, dynamic = _a2.dynamic;
     useStyle2(styles2, dynamic);
     return null;
   };
@@ -19752,8 +19813,8 @@ var getGapWidth$1 = function(gapMode) {
   };
 };
 var Style$1 = styleSingleton$1();
-var getStyles$1 = function(_a, allowRelative, gapMode, important) {
-  var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
+var getStyles$1 = function(_a2, allowRelative, gapMode, important) {
+  var left = _a2.left, top = _a2.top, right = _a2.right, gap = _a2.gap;
   if (gapMode === void 0) {
     gapMode = "margin";
   }
@@ -19764,7 +19825,7 @@ var getStyles$1 = function(_a, allowRelative, gapMode, important) {
   ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName$1, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName$1, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName$1, " .").concat(zeroRightClassName$1, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName$1, " .").concat(fullWidthClassName$1, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body {\n    ").concat(removedBarSizeVariable$1, ": ").concat(gap, "px;\n  }\n");
 };
 var RemoveScrollBar$1 = function(props) {
-  var noRelative = props.noRelative, noImportant = props.noImportant, _a = props.gapMode, gapMode = _a === void 0 ? "margin" : _a;
+  var noRelative = props.noRelative, noImportant = props.noImportant, _a2 = props.gapMode, gapMode = _a2 === void 0 ? "margin" : _a2;
   var gap = reactExports.useMemo(function() {
     return getGapWidth$1(gapMode);
   }, [gapMode]);
@@ -19811,7 +19872,7 @@ var locationCouldBeScrolled$1 = function(axis, node2) {
     }
     var isScrollable = elementCouldBeScrolled$1(axis, current);
     if (isScrollable) {
-      var _a = getScrollVariables$1(axis, current), s2 = _a[1], d = _a[2];
+      var _a2 = getScrollVariables$1(axis, current), s2 = _a2[1], d = _a2[2];
       if (s2 > d) {
         return true;
       }
@@ -19820,16 +19881,16 @@ var locationCouldBeScrolled$1 = function(axis, node2) {
   } while (current && current !== document.body);
   return false;
 };
-var getVScrollVariables$1 = function(_a) {
-  var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
+var getVScrollVariables$1 = function(_a2) {
+  var scrollTop = _a2.scrollTop, scrollHeight = _a2.scrollHeight, clientHeight = _a2.clientHeight;
   return [
     scrollTop,
     scrollHeight,
     clientHeight
   ];
 };
-var getHScrollVariables$1 = function(_a) {
-  var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
+var getHScrollVariables$1 = function(_a2) {
+  var scrollLeft = _a2.scrollLeft, scrollWidth = _a2.scrollWidth, clientWidth = _a2.clientWidth;
   return [
     scrollLeft,
     scrollWidth,
@@ -19855,7 +19916,7 @@ var handleScroll$1 = function(axis, endTarget, event, sourceDelta, noOverscroll)
   var availableScroll = 0;
   var availableScrollTop = 0;
   do {
-    var _a = getScrollVariables$1(axis, target), position2 = _a[0], scroll_1 = _a[1], capacity = _a[2];
+    var _a2 = getScrollVariables$1(axis, target), position2 = _a2[0], scroll_1 = _a2[1], capacity = _a2[2];
     var elementScroll = scroll_1 - capacity - directionFactor * position2;
     if (position2 || elementScroll) {
       if (elementCouldBeScrolled$1(axis, target)) {
@@ -20426,10 +20487,10 @@ reactExports.forwardRef(
                   icon: SvgCloseIcon,
                   size: "xs",
                   onClick: (ev) => {
-                    var _a;
+                    var _a2;
                     ev.preventDefault();
                     ev.stopPropagation();
-                    ((_a = inputRef.current) == null ? void 0 : _a.value) && (inputRef.current.value = "");
+                    ((_a2 = inputRef.current) == null ? void 0 : _a2.value) && (inputRef.current.value = "");
                     onValueChange == null ? void 0 : onValueChange(null);
                     setFileData(null);
                   },
@@ -30288,12 +30349,12 @@ function addSlice(array) {
   return array;
 }
 function isBytesLike(value) {
-  return isHexString(value) && !(value.length % 2) || isBytes$2(value);
+  return isHexString(value) && !(value.length % 2) || isBytes$1(value);
 }
 function isInteger(value) {
   return typeof value === "number" && value == value && value % 1 === 0;
 }
-function isBytes$2(value) {
+function isBytes$1(value) {
   if (value == null) {
     return false;
   }
@@ -30353,7 +30414,7 @@ function arrayify(value, options) {
     }
     return addSlice(new Uint8Array(result));
   }
-  if (isBytes$2(value)) {
+  if (isBytes$1(value)) {
     return addSlice(new Uint8Array(value));
   }
   return logger$A.throwArgumentError("invalid arrayify value", "value", value);
@@ -30445,7 +30506,7 @@ function hexlify(value, options) {
     }
     return value.toLowerCase();
   }
-  if (isBytes$2(value)) {
+  if (isBytes$1(value)) {
     let result = "0x";
     for (let i2 = 0; i2 < value.length; i2++) {
       let v3 = value[i2];
@@ -30647,7 +30708,7 @@ const lib_esm$j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   hexValue,
   hexZeroPad,
   hexlify,
-  isBytes: isBytes$2,
+  isBytes: isBytes$1,
   isBytesLike,
   isHexString,
   joinSignature,
@@ -30661,7 +30722,7 @@ const logger$z = new Logger$1(version$s);
 const _constructorGuard$4 = {};
 const MAX_SAFE = 9007199254740991;
 function isBigNumberish$1(value) {
-  return value != null && (BigNumber.isBigNumber(value) || typeof value === "number" && value % 1 === 0 || typeof value === "string" && !!value.match(/^-?[0-9]+$/) || isHexString(value) || typeof value === "bigint" || isBytes$2(value));
+  return value != null && (BigNumber.isBigNumber(value) || typeof value === "number" && value % 1 === 0 || typeof value === "string" && !!value.match(/^-?[0-9]+$/) || isHexString(value) || typeof value === "bigint" || isBytes$1(value));
 }
 let _warnedToStringRadix = false;
 class BigNumber {
@@ -30841,7 +30902,7 @@ class BigNumber {
     if (typeof anyValue === "bigint") {
       return BigNumber.from(anyValue.toString());
     }
-    if (isBytes$2(anyValue)) {
+    if (isBytes$1(anyValue)) {
       return BigNumber.from(hexlify(anyValue));
     }
     if (anyValue) {
@@ -31242,7 +31303,7 @@ class FixedNumber {
     if (typeof value === "string") {
       return FixedNumber.fromString(value, format2);
     }
-    if (isBytes$2(value)) {
+    if (isBytes$1(value)) {
       return FixedNumber.fromBytes(value, format2);
     }
     try {
@@ -34596,7 +34657,7 @@ function nfc(s2) {
   return s2.normalize("NFC");
 }
 function consume_emoji_reversed(cps, eaten) {
-  var _a;
+  var _a2;
   let node2 = EMOJI_ROOT;
   let emoji;
   let saved;
@@ -34606,7 +34667,7 @@ function consume_emoji_reversed(cps, eaten) {
     eaten.length = 0;
   while (pos) {
     let cp = cps[--pos];
-    node2 = (_a = node2.branches.find((x) => x.set.has(cp))) === null || _a === void 0 ? void 0 : _a.node;
+    node2 = (_a2 = node2.branches.find((x) => x.set.has(cp))) === null || _a2 === void 0 ? void 0 : _a2.node;
     if (!node2)
       break;
     if (node2.save) {
@@ -36613,9 +36674,9 @@ var sha256_K = [
   3204031479,
   3329325298
 ];
-function SHA256$2() {
-  if (!(this instanceof SHA256$2))
-    return new SHA256$2();
+function SHA256$3() {
+  if (!(this instanceof SHA256$3))
+    return new SHA256$3();
   BlockHash$2.call(this);
   this.h = [
     1779033703,
@@ -36630,13 +36691,13 @@ function SHA256$2() {
   this.k = sha256_K;
   this.W = new Array(64);
 }
-utils$8.inherits(SHA256$2, BlockHash$2);
-var _256 = SHA256$2;
-SHA256$2.blockSize = 512;
-SHA256$2.outSize = 256;
-SHA256$2.hmacStrength = 192;
-SHA256$2.padLength = 64;
-SHA256$2.prototype._update = function _update2(msg, start) {
+utils$8.inherits(SHA256$3, BlockHash$2);
+var _256 = SHA256$3;
+SHA256$3.blockSize = 512;
+SHA256$3.outSize = 256;
+SHA256$3.hmacStrength = 192;
+SHA256$3.padLength = 64;
+SHA256$3.prototype._update = function _update2(msg, start) {
   var W2 = this.W;
   for (var i2 = 0; i2 < 16; i2++)
     W2[i2] = msg[start + i2];
@@ -36672,18 +36733,18 @@ SHA256$2.prototype._update = function _update2(msg, start) {
   this.h[6] = sum32$1(this.h[6], g2);
   this.h[7] = sum32$1(this.h[7], h2);
 };
-SHA256$2.prototype._digest = function digest3(enc) {
+SHA256$3.prototype._digest = function digest3(enc) {
   if (enc === "hex")
     return utils$8.toHex32(this.h, "big");
   else
     return utils$8.split32(this.h, "big");
 };
 var utils$7 = utils$c;
-var SHA256$1 = _256;
+var SHA256$2 = _256;
 function SHA224() {
   if (!(this instanceof SHA224))
     return new SHA224();
-  SHA256$1.call(this);
+  SHA256$2.call(this);
   this.h = [
     3238371032,
     914150663,
@@ -36695,7 +36756,7 @@ function SHA224() {
     3204075428
   ];
 }
-utils$7.inherits(SHA224, SHA256$1);
+utils$7.inherits(SHA224, SHA256$2);
 var _224 = SHA224;
 SHA224.blockSize = 512;
 SHA224.outSize = 224;
@@ -40866,7 +40927,7 @@ const logger$h = new Logger$1(version$g);
 function ripemd160(data) {
   return "0x" + hash$2.ripemd160().update(arrayify(data)).digest("hex");
 }
-function sha256$2(data) {
+function sha256$4(data) {
   return "0x" + hash$2.sha256().update(arrayify(data)).digest("hex");
 }
 function sha512(data) {
@@ -40888,7 +40949,7 @@ const lib_esm$7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   },
   computeHmac,
   ripemd160,
-  sha256: sha256$2,
+  sha256: sha256$4,
   sha512
 }, Symbol.toStringTag, { value: "Module" }));
 function pbkdf2$1(password, salt, iterations, keylen, hashAlgorithm) {
@@ -41002,7 +41063,7 @@ function bytes32(value) {
   return hexZeroPad(hexlify(value), 32);
 }
 function base58check(data) {
-  return Base58.encode(concat$1([data, hexDataSlice(sha256$2(sha256$2(data)), 0, 4)]));
+  return Base58.encode(concat$1([data, hexDataSlice(sha256$4(sha256$4(data)), 0, 4)]));
 }
 function getWordlist(wordlist2) {
   if (wordlist2 == null) {
@@ -41040,7 +41101,7 @@ class HDNode {
       defineReadOnly$1(this, "publicKey", hexlify(publicKey));
     }
     defineReadOnly$1(this, "parentFingerprint", parentFingerprint);
-    defineReadOnly$1(this, "fingerprint", hexDataSlice(ripemd160(sha256$2(this.publicKey)), 0, 4));
+    defineReadOnly$1(this, "fingerprint", hexDataSlice(ripemd160(sha256$4(this.publicKey)), 0, 4));
     defineReadOnly$1(this, "address", computeAddress(this.publicKey));
     defineReadOnly$1(this, "chainCode", chainCode);
     defineReadOnly$1(this, "index", index2);
@@ -41221,7 +41282,7 @@ function mnemonicToEntropy(mnemonic, wordlist2) {
   const entropyBits = 32 * words2.length / 3;
   const checksumBits = words2.length / 3;
   const checksumMask = getUpperMask(checksumBits);
-  const checksum = arrayify(sha256$2(entropy.slice(0, entropyBits / 8)))[0] & checksumMask;
+  const checksum = arrayify(sha256$4(entropy.slice(0, entropyBits / 8)))[0] & checksumMask;
   if (checksum !== (entropy[entropy.length - 1] & checksumMask)) {
     throw new Error("invalid checksum");
   }
@@ -41248,7 +41309,7 @@ function entropyToMnemonic(entropy, wordlist2) {
     }
   }
   const checksumBits = entropy.length / 4;
-  const checksum = arrayify(sha256$2(entropy))[0] & getUpperMask(checksumBits);
+  const checksum = arrayify(sha256$4(entropy))[0] & getUpperMask(checksumBits);
   indices[indices.length - 1] <<= checksumBits;
   indices[indices.length - 1] |= checksum >> 8 - checksumBits;
   return wordlist2.join(indices.map((index2) => wordlist2.getWord(index2)));
@@ -41993,7 +42054,7 @@ var scrypt$1 = { exports: {} };
 (function(module2, exports) {
   (function(root2) {
     const MAX_VALUE = 2147483647;
-    function SHA2562(m2) {
+    function SHA2563(m2) {
       const K2 = new Uint32Array([
         1116352408,
         1899447441,
@@ -42153,7 +42214,7 @@ var scrypt$1 = { exports: {} };
       ];
     }
     function PBKDF2_HMAC_SHA256_OneIter(password, salt, dkLen) {
-      password = password.length <= 64 ? password : SHA2562(password);
+      password = password.length <= 64 ? password : SHA2563(password);
       const innerLen = 64 + salt.length + 4;
       const inner = new Array(innerLen);
       const outerKey = new Array(64);
@@ -42185,12 +42246,12 @@ var scrypt$1 = { exports: {} };
       }
       while (dkLen >= 32) {
         incrementCounter();
-        dk2 = dk2.concat(SHA2562(outerKey.concat(SHA2562(inner))));
+        dk2 = dk2.concat(SHA2563(outerKey.concat(SHA2563(inner))));
         dkLen -= 32;
       }
       if (dkLen > 0) {
         incrementCounter();
-        dk2 = dk2.concat(SHA2562(outerKey.concat(SHA2562(inner))).slice(0, dkLen));
+        dk2 = dk2.concat(SHA2563(outerKey.concat(SHA2563(inner))).slice(0, dkLen));
       }
       return dk2;
     }
@@ -44367,7 +44428,7 @@ function bytes32ify(value) {
   return hexZeroPad(BigNumber.from(value).toHexString(), 32);
 }
 function base58Encode(data) {
-  return Base58.encode(concat$1([data, hexDataSlice(sha256$2(sha256$2(data)), 0, 4)]));
+  return Base58.encode(concat$1([data, hexDataSlice(sha256$4(sha256$4(data)), 0, 4)]));
 }
 const matcherIpfs = new RegExp("^(ipfs)://(.*)$", "i");
 const matchers = [
@@ -47452,14 +47513,14 @@ function pack(types2, values) {
 function keccak256$1(types2, values) {
   return keccak256$2(pack(types2, values));
 }
-function sha256$1(types2, values) {
-  return sha256$2(pack(types2, values));
+function sha256$3(types2, values) {
+  return sha256$4(pack(types2, values));
 }
 const lib_esm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   keccak256: keccak256$1,
   pack,
-  sha256: sha256$1
+  sha256: sha256$3
 }, Symbol.toStringTag, { value: "Module" }));
 const version$6 = "units/5.7.0";
 const logger$1 = new Logger$1(version$6);
@@ -47616,7 +47677,7 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   hexlify,
   id,
   isAddress: isAddress$1,
-  isBytes: isBytes$2,
+  isBytes: isBytes$1,
   isBytesLike,
   isHexString,
   isValidMnemonic,
@@ -47638,13 +47699,13 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   resolveProperties: resolveProperties$1,
   ripemd160,
   serializeTransaction: serialize$3,
-  sha256: sha256$2,
+  sha256: sha256$4,
   sha512,
   shallowCopy: shallowCopy$1,
   shuffled,
   solidityKeccak256: keccak256$1,
   solidityPack: pack,
-  soliditySha256: sha256$1,
+  soliditySha256: sha256$3,
   splitSignature,
   stripZeros,
   toUtf8Bytes,
@@ -47654,10 +47715,8 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   verifyTypedData: verifyTypedData$1,
   zeroPad
 }, Symbol.toStringTag, { value: "Module" }));
-const version$5 = "3.7.6";
+const version$5 = "3.7.7";
 const VERSION = version$5;
-const _hasatob = typeof atob === "function";
-const _hasbtoa = typeof btoa === "function";
 const _hasBuffer = typeof Buffer2 === "function";
 const _TD = typeof TextDecoder === "function" ? new TextDecoder() : void 0;
 const _TE = typeof TextEncoder === "function" ? new TextEncoder() : void 0;
@@ -47684,7 +47743,7 @@ const btoaPolyfill = (bin) => {
   }
   return pad3 ? asc.slice(0, pad3 - 3) + "===".substring(pad3) : asc;
 };
-const _btoa = _hasbtoa ? (bin) => btoa(bin) : _hasBuffer ? (bin) => Buffer2.from(bin, "binary").toString("base64") : btoaPolyfill;
+const _btoa = typeof btoa === "function" ? (bin) => btoa(bin) : _hasBuffer ? (bin) => Buffer2.from(bin, "binary").toString("base64") : btoaPolyfill;
 const _fromUint8Array = _hasBuffer ? (u8a2) => Buffer2.from(u8a2).toString("base64") : (u8a2) => {
   const maxargs = 4096;
   let strs = [];
@@ -47733,7 +47792,7 @@ const atobPolyfill = (asc) => {
   }
   return bin;
 };
-const _atob = _hasatob ? (asc) => atob(_tidyB64(asc)) : _hasBuffer ? (asc) => Buffer2.from(asc, "base64").toString("binary") : atobPolyfill;
+const _atob = typeof atob === "function" ? (asc) => atob(_tidyB64(asc)) : _hasBuffer ? (asc) => Buffer2.from(asc, "base64").toString("binary") : atobPolyfill;
 const _toUint8Array = _hasBuffer ? (a2) => _U8Afrom(Buffer2.from(a2, "base64")) : (a2) => _U8Afrom(_atob(a2).split("").map((c) => c.charCodeAt(0)));
 const toUint8Array = (a2) => _toUint8Array(_unURI(a2));
 const _decode = _hasBuffer ? (a2) => Buffer2.from(a2, "base64").toString("utf8") : _TD ? (a2) => _TD.decode(_toUint8Array(a2)) : (a2) => btou(_atob(a2));
@@ -48014,7 +48073,7 @@ var validateClaims = function(claims) {
 var ValidateEOAProof = function(provider2, chainId, proof) {
   return __awaiter(void 0, void 0, void 0, function() {
     var messageDigest, address;
-    return __generator(this, function(_a) {
+    return __generator(this, function(_a2) {
       messageDigest = proof.messageDigest();
       address = verifyMessage$1(messageDigest, proof.signature);
       if (address.slice(0, 2) === "0x" && address.length === 42 && address.toLowerCase() === proof.address.toLowerCase()) {
@@ -48028,8 +48087,8 @@ var ValidateEOAProof = function(provider2, chainId, proof) {
 var ValidateContractAccountProof = function(provider2, chainId, proof) {
   return __awaiter(void 0, void 0, void 0, function() {
     var messageDigest, walletCode, abi2, contract, isValidSignature2;
-    return __generator(this, function(_a) {
-      switch (_a.label) {
+    return __generator(this, function(_a2) {
+      switch (_a2.label) {
         case 0:
           if (!provider2 || provider2 === void 0) {
             return [2, { isValid: false }];
@@ -48037,7 +48096,7 @@ var ValidateContractAccountProof = function(provider2, chainId, proof) {
           messageDigest = proof.messageDigest();
           return [4, provider2.getCode(proof.address)];
         case 1:
-          walletCode = _a.sent();
+          walletCode = _a2.sent();
           if (walletCode === "0x" || walletCode.length <= 2) {
             throw new Error("ValidateContractAccountProof failed. unable to fetch wallet contract code");
           }
@@ -48045,7 +48104,7 @@ var ValidateContractAccountProof = function(provider2, chainId, proof) {
           contract = new Contract(proof.address, abi2, provider2);
           return [4, contract.isValidSignature(messageDigest, arrayify(proof.signature))];
         case 2:
-          isValidSignature2 = _a.sent();
+          isValidSignature2 = _a2.sent();
           if (isValidSignature2 === IsValidSignatureBytes32MagicValue) {
             return [2, { isValid: true, address: proof.address }];
           } else {
@@ -48067,20 +48126,20 @@ var ETHAuth = (
   /* @__PURE__ */ function() {
     function ETHAuth2() {
       var validators = [];
-      for (var _i = 0; _i < arguments.length; _i++) {
-        validators[_i] = arguments[_i];
+      for (var _i2 = 0; _i2 < arguments.length; _i2++) {
+        validators[_i2] = arguments[_i2];
       }
       var _this = this;
       this.configJsonRpcProvider = function(ethereumJsonRpcURL) {
         return __awaiter(_this, void 0, void 0, function() {
           var netVersion;
-          return __generator(this, function(_a) {
-            switch (_a.label) {
+          return __generator(this, function(_a2) {
+            switch (_a2.label) {
               case 0:
                 this.provider = new JsonRpcProvider$1(ethereumJsonRpcURL);
                 return [4, this.provider.send("net_version", [])];
               case 1:
-                netVersion = _a.sent();
+                netVersion = _a2.sent();
                 this.chainId = parseInt(netVersion);
                 if (!this.chainId || this.chainId === 0 || this.chainId === NaN) {
                   throw new Error("ethauth: unable to get chainId");
@@ -48096,8 +48155,8 @@ var ETHAuth = (
       };
       this.configValidators = function() {
         var validators2 = [];
-        for (var _i2 = 0; _i2 < arguments.length; _i2++) {
-          validators2[_i2] = arguments[_i2];
+        for (var _i3 = 0; _i3 < arguments.length; _i3++) {
+          validators2[_i3] = arguments[_i3];
         }
         if (validators2.length == 0) {
           throw new Error("validators list is empty");
@@ -48110,8 +48169,8 @@ var ETHAuth = (
         }
         return __awaiter(_this, void 0, void 0, function() {
           var isValid2, claimsJSON, proofString;
-          return __generator(this, function(_a) {
-            switch (_a.label) {
+          return __generator(this, function(_a2) {
+            switch (_a2.label) {
               case 0:
                 if (proof.address.length !== 42 || proof.address.slice(0, 2) !== "0x") {
                   throw new Error("ethauth: invalid address");
@@ -48124,7 +48183,7 @@ var ETHAuth = (
                 }
                 return [4, this.validateProof(proof, skipSignatureValidation)];
               case 1:
-                isValid2 = _a.sent();
+                isValid2 = _a2.sent();
                 if (!isValid2) {
                   throw new Error("ethauth: proof is invalid");
                 }
@@ -48144,8 +48203,8 @@ var ETHAuth = (
         }
         return __awaiter(_this, void 0, void 0, function() {
           var parts, prefix2, address, messageBase64, signature2, extra, message, claims, proof, isValid2;
-          return __generator(this, function(_a) {
-            switch (_a.label) {
+          return __generator(this, function(_a2) {
+            switch (_a2.label) {
               case 0:
                 parts = proofString.split(".");
                 if (parts.length < 4 || parts.length > 5) {
@@ -48160,7 +48219,7 @@ var ETHAuth = (
                 proof = new Proof({ address, claims, signature: signature2, extra });
                 return [4, this.validateProof(proof, skipSignatureValidation)];
               case 1:
-                isValid2 = _a.sent();
+                isValid2 = _a2.sent();
                 if (!isValid2) {
                   throw new Error("ethauth: proof is invalid");
                 }
@@ -48175,8 +48234,8 @@ var ETHAuth = (
         }
         return __awaiter(_this, void 0, void 0, function() {
           var isValidClaims, isValidSig;
-          return __generator(this, function(_a) {
-            switch (_a.label) {
+          return __generator(this, function(_a2) {
+            switch (_a2.label) {
               case 0:
                 isValidClaims = this.validateProofClaims(proof);
                 if (isValidClaims.err) {
@@ -48186,11 +48245,11 @@ var ETHAuth = (
                   return [3, 2];
                 return [4, this.validateProofSignature(proof)];
               case 1:
-                isValidSig = _a.sent();
+                isValidSig = _a2.sent();
                 if (isValidSig !== true) {
                   throw new Error("ethauth: proof signature is invalid");
                 }
-                _a.label = 2;
+                _a2.label = 2;
               case 2:
                 return [2, true];
             }
@@ -48200,29 +48259,29 @@ var ETHAuth = (
       this.validateProofSignature = function(proof) {
         return __awaiter(_this, void 0, void 0, function() {
           var retIsValid, i2, validator, isValid2, i2;
-          return __generator(this, function(_a) {
-            switch (_a.label) {
+          return __generator(this, function(_a2) {
+            switch (_a2.label) {
               case 0:
                 retIsValid = [];
                 i2 = 0;
-                _a.label = 1;
+                _a2.label = 1;
               case 1:
                 if (!(i2 < this.validators.length))
                   return [3, 6];
-                _a.label = 2;
+                _a2.label = 2;
               case 2:
-                _a.trys.push([2, 4, , 5]);
+                _a2.trys.push([2, 4, , 5]);
                 validator = this.validators[i2];
                 return [4, validator(this.provider, this.chainId, proof)];
               case 3:
-                isValid2 = _a.sent().isValid;
+                isValid2 = _a2.sent().isValid;
                 if (isValid2 === true) {
                   return [2, true];
                 }
                 retIsValid.push(isValid2);
                 return [3, 5];
               case 4:
-                _a.sent();
+                _a2.sent();
                 retIsValid.push(false);
                 return [3, 5];
               case 5:
@@ -48721,7 +48780,7 @@ const base64DecodeObject = (encodedObject) => {
   return JSON.parse(gBase64.decode(encodedObject));
 };
 function isBigNumberish(value) {
-  return value != null && (BigNumber.isBigNumber(value) || typeof value === "number" && value % 1 === 0 || typeof value === "string" && !!value.match(/^-?[0-9]+$/) || isHexString(value) || typeof value === "bigint" || isBytes$2(value));
+  return value != null && (BigNumber.isBigNumber(value) || typeof value === "number" && value % 1 === 0 || typeof value === "string" && !!value.match(/^-?[0-9]+$/) || isHexString(value) || typeof value === "bigint" || isBytes$1(value));
 }
 const encodeMessageDigest = (message) => {
   if (typeof message === "string") {
@@ -53016,7 +53075,7 @@ class SignerWrapper {
   sign(message, metadata2) {
     return this.signer.signMessage(message);
   }
-  notifyStatusChange(_i, _s, _m) {
+  notifyStatusChange(_i2, _s, _m) {
   }
   suffix() {
     return [2];
@@ -54220,7 +54279,7 @@ class Account {
   async isMigratedAllChains() {
     var _this3 = this;
     const failedChains = [];
-    const statuses2 = await Promise.all(this.networks.map(async function(n2) {
+    const statuses = await Promise.all(this.networks.map(async function(n2) {
       try {
         return await _this3.status(n2.chainId);
       } catch (error) {
@@ -54231,7 +54290,7 @@ class Account {
         };
       }
     }));
-    const migratedAllChains = statuses2.every((s2) => s2.fullyMigrated);
+    const migratedAllChains = statuses.every((s2) => s2.fullyMigrated);
     return {
       migratedAllChains,
       failedChains
@@ -58759,9 +58818,9 @@ var eventemitter2 = { exports: {} };
       }
       this._on = on;
       this._off = off;
-      var _observers = emitter._observers;
-      if (_observers) {
-        _observers.push(this);
+      var _observers2 = emitter._observers;
+      if (_observers2) {
+        _observers2.push(this);
       } else {
         emitter._observers = [this];
       }
@@ -59979,14 +60038,14 @@ var eventemitter2 = { exports: {} };
   }();
 })(eventemitter2);
 var eventemitter2Exports = eventemitter2.exports;
-function isBytes$1(a2) {
+function isBytes(a2) {
   return a2 instanceof Uint8Array || a2 != null && typeof a2 === "object" && a2.constructor.name === "Uint8Array";
 }
 function bytes$1(b3, ...lengths) {
-  if (!isBytes$1(b3))
-    throw new Error("Expected Uint8Array");
+  if (!isBytes(b3))
+    throw new Error("Uint8Array expected");
   if (lengths.length > 0 && !lengths.includes(b3.length))
-    throw new Error(`Expected Uint8Array of length ${lengths}, not of length=${b3.length}`);
+    throw new Error(`Uint8Array expected of length ${lengths}, not of length=${b3.length}`);
 }
 function exists$1(instance, checkFinished = true) {
   if (instance.destroyed)
@@ -60002,18 +60061,12 @@ function output$1(out, instance) {
   }
 }
 /*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-function isBytes(a2) {
-  return a2 instanceof Uint8Array || a2 != null && typeof a2 === "object" && a2.constructor.name === "Uint8Array";
-}
-const createView = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
-const rotr = (word, shift2) => word << 32 - shift2 | word >>> shift2;
-const isLE$1 = new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
-if (!isLE$1)
-  throw new Error("Non little-endian hardware is not supported");
+const createView$1 = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
+const rotr$1 = (word, shift2) => word << 32 - shift2 | word >>> shift2;
+new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
 const hexes$1 = /* @__PURE__ */ Array.from({ length: 256 }, (_, i2) => i2.toString(16).padStart(2, "0"));
 function bytesToHex$1(bytes3) {
-  if (!isBytes(bytes3))
-    throw new Error("Uint8Array expected");
+  bytes$1(bytes3);
   let hex2 = "";
   for (let i2 = 0; i2 < bytes3.length; i2++) {
     hex2 += hexes$1[bytes3[i2]];
@@ -60028,8 +60081,7 @@ function utf8ToBytes$1(str) {
 function toBytes$2(data) {
   if (typeof data === "string")
     data = utf8ToBytes$1(data);
-  if (!isBytes(data))
-    throw new Error(`expected Uint8Array, got ${typeof data}`);
+  bytes$1(data);
   return data;
 }
 let Hash$1 = class Hash {
@@ -60046,7 +60098,7 @@ function wrapConstructor$1(hashCons) {
   hashC.create = () => hashCons();
   return hashC;
 }
-function setBigUint64(view, byteOffset, value, isLE2) {
+function setBigUint64$1(view, byteOffset, value, isLE2) {
   if (typeof view.setBigUint64 === "function")
     return view.setBigUint64(byteOffset, value, isLE2);
   const _32n2 = BigInt(32);
@@ -60058,7 +60110,9 @@ function setBigUint64(view, byteOffset, value, isLE2) {
   view.setUint32(byteOffset + h2, wh2, isLE2);
   view.setUint32(byteOffset + l2, wl, isLE2);
 }
-class SHA2 extends Hash$1 {
+const Chi$1 = (a2, b3, c) => a2 & b3 ^ ~a2 & c;
+const Maj$1 = (a2, b3, c) => a2 & b3 ^ a2 & c ^ b3 & c;
+class HashMD extends Hash$1 {
   constructor(blockLen, outputLen, padOffset, isLE2) {
     super();
     this.blockLen = blockLen;
@@ -60070,7 +60124,7 @@ class SHA2 extends Hash$1 {
     this.pos = 0;
     this.destroyed = false;
     this.buffer = new Uint8Array(blockLen);
-    this.view = createView(this.buffer);
+    this.view = createView$1(this.buffer);
   }
   update(data) {
     exists$1(this);
@@ -60080,7 +60134,7 @@ class SHA2 extends Hash$1 {
     for (let pos = 0; pos < len; ) {
       const take = Math.min(blockLen - this.pos, len - pos);
       if (take === blockLen) {
-        const dataView = createView(data);
+        const dataView = createView$1(data);
         for (; blockLen <= len - pos; pos += blockLen)
           this.process(dataView, pos);
         continue;
@@ -60111,9 +60165,9 @@ class SHA2 extends Hash$1 {
     }
     for (let i2 = pos; i2 < blockLen; i2++)
       buffer2[i2] = 0;
-    setBigUint64(view, blockLen - 8, BigInt(this.length * 8), isLE2);
+    setBigUint64$1(view, blockLen - 8, BigInt(this.length * 8), isLE2);
     this.process(view, 0);
-    const oview = createView(out);
+    const oview = createView$1(out);
     const len = this.outputLen;
     if (len % 4)
       throw new Error("_sha2: outputLen should be aligned to 32bit");
@@ -60144,9 +60198,7 @@ class SHA2 extends Hash$1 {
     return to;
   }
 }
-const Chi = (a2, b3, c) => a2 & b3 ^ ~a2 & c;
-const Maj = (a2, b3, c) => a2 & b3 ^ a2 & c ^ b3 & c;
-const SHA256_K = /* @__PURE__ */ new Uint32Array([
+const SHA256_K$1 = /* @__PURE__ */ new Uint32Array([
   1116352408,
   1899447441,
   3049323471,
@@ -60212,7 +60264,7 @@ const SHA256_K = /* @__PURE__ */ new Uint32Array([
   3204031479,
   3329325298
 ]);
-const IV = /* @__PURE__ */ new Uint32Array([
+const SHA256_IV = /* @__PURE__ */ new Uint32Array([
   1779033703,
   3144134277,
   1013904242,
@@ -60222,18 +60274,18 @@ const IV = /* @__PURE__ */ new Uint32Array([
   528734635,
   1541459225
 ]);
-const SHA256_W = /* @__PURE__ */ new Uint32Array(64);
-class SHA256 extends SHA2 {
+const SHA256_W$1 = /* @__PURE__ */ new Uint32Array(64);
+let SHA256$1 = class SHA256 extends HashMD {
   constructor() {
     super(64, 32, 8, false);
-    this.A = IV[0] | 0;
-    this.B = IV[1] | 0;
-    this.C = IV[2] | 0;
-    this.D = IV[3] | 0;
-    this.E = IV[4] | 0;
-    this.F = IV[5] | 0;
-    this.G = IV[6] | 0;
-    this.H = IV[7] | 0;
+    this.A = SHA256_IV[0] | 0;
+    this.B = SHA256_IV[1] | 0;
+    this.C = SHA256_IV[2] | 0;
+    this.D = SHA256_IV[3] | 0;
+    this.E = SHA256_IV[4] | 0;
+    this.F = SHA256_IV[5] | 0;
+    this.G = SHA256_IV[6] | 0;
+    this.H = SHA256_IV[7] | 0;
   }
   get() {
     const { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
@@ -60252,20 +60304,20 @@ class SHA256 extends SHA2 {
   }
   process(view, offset2) {
     for (let i2 = 0; i2 < 16; i2++, offset2 += 4)
-      SHA256_W[i2] = view.getUint32(offset2, false);
+      SHA256_W$1[i2] = view.getUint32(offset2, false);
     for (let i2 = 16; i2 < 64; i2++) {
-      const W15 = SHA256_W[i2 - 15];
-      const W2 = SHA256_W[i2 - 2];
-      const s0 = rotr(W15, 7) ^ rotr(W15, 18) ^ W15 >>> 3;
-      const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
-      SHA256_W[i2] = s1 + SHA256_W[i2 - 7] + s0 + SHA256_W[i2 - 16] | 0;
+      const W15 = SHA256_W$1[i2 - 15];
+      const W2 = SHA256_W$1[i2 - 2];
+      const s0 = rotr$1(W15, 7) ^ rotr$1(W15, 18) ^ W15 >>> 3;
+      const s1 = rotr$1(W2, 17) ^ rotr$1(W2, 19) ^ W2 >>> 10;
+      SHA256_W$1[i2] = s1 + SHA256_W$1[i2 - 7] + s0 + SHA256_W$1[i2 - 16] | 0;
     }
     let { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
     for (let i2 = 0; i2 < 64; i2++) {
-      const sigma1 = rotr(E2, 6) ^ rotr(E2, 11) ^ rotr(E2, 25);
-      const T1 = H2 + sigma1 + Chi(E2, F2, G2) + SHA256_K[i2] + SHA256_W[i2] | 0;
-      const sigma0 = rotr(A2, 2) ^ rotr(A2, 13) ^ rotr(A2, 22);
-      const T2 = sigma0 + Maj(A2, B2, C2) | 0;
+      const sigma1 = rotr$1(E2, 6) ^ rotr$1(E2, 11) ^ rotr$1(E2, 25);
+      const T1 = H2 + sigma1 + Chi$1(E2, F2, G2) + SHA256_K$1[i2] + SHA256_W$1[i2] | 0;
+      const sigma0 = rotr$1(A2, 2) ^ rotr$1(A2, 13) ^ rotr$1(A2, 22);
+      const T2 = sigma0 + Maj$1(A2, B2, C2) | 0;
       H2 = G2;
       G2 = F2;
       F2 = E2;
@@ -60286,14 +60338,14 @@ class SHA256 extends SHA2 {
     this.set(A2, B2, C2, D2, E2, F2, G2, H2);
   }
   roundClean() {
-    SHA256_W.fill(0);
+    SHA256_W$1.fill(0);
   }
   destroy() {
     this.set(0, 0, 0, 0, 0, 0, 0, 0);
     this.buffer.fill(0);
   }
-}
-const sha256 = /* @__PURE__ */ wrapConstructor$1(() => new SHA256());
+};
+const sha256$2 = /* @__PURE__ */ wrapConstructor$1(() => new SHA256$1());
 var Databeat = class {
   constructor(hostname, fetch2) {
     __publicField(this, "hostname");
@@ -60564,10 +60616,10 @@ var DatabeatRpcClient = class extends Databeat {
     super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, globalFetch);
     __publicField(this, "_globalFetch");
     __publicField(this, "_fetch", (input2, init3) => {
-      var _a;
+      var _a2;
       if (this.auth) {
         let headers = {};
-        if (((_a = this.auth.jwt) == null ? void 0 : _a.length) > 0) {
+        if (((_a2 = this.auth.jwt) == null ? void 0 : _a2.length) > 0) {
           headers["Authorization"] = `BEARER ${this.auth.jwt}`;
         }
         if (this.auth.headers) {
@@ -60842,8 +60894,8 @@ var isEnabled = (defaultEnabled, auth2) => {
   }
 };
 var isAuthEnabled = (auth2) => {
-  var _a;
-  if (((_a = auth2 == null ? void 0 : auth2.jwt) == null ? void 0 : _a.length) > 0) {
+  var _a2;
+  if (((_a2 = auth2 == null ? void 0 : auth2.jwt) == null ? void 0 : _a2.length) > 0) {
     return true;
   }
   if ((auth2 == null ? void 0 : auth2.headers) && Object.keys(auth2.headers).length > 0) {
@@ -60936,7 +60988,7 @@ var genUserId = (seed, allowUserTracking, options) => {
       seed = seed + ":" + options.privacy.extraSalt;
     }
     return {
-      userId: bytesToHex$1(sha256(seed)).substring(0, 50),
+      userId: bytesToHex$1(sha256$2(seed)).substring(0, 50),
       ident: 1
       /* PRIVATE */
     };
@@ -63744,7 +63796,7 @@ class SequenceProvider extends BaseProvider {
     }
     if (method === "wallet_switchEthereumChain") {
       const args = params[0];
-      const chainId = normalizeChainId$2(args);
+      const chainId = normalizeChainId(args);
       return this.setDefaultChainId(chainId);
     }
     if (method === "eth_sendTransaction" || method === "eth_sign" || method === "eth_signTypedData" || method === "eth_signTypedData_v4" || method === "personal_sign" || // These methods will use EIP-6492
@@ -63867,9 +63919,9 @@ class SequenceProvider extends BaseProvider {
 SequenceProvider.is = (provider2) => {
   return provider2 && typeof provider2 === "object" && provider2._isSequenceProvider === true;
 };
-function normalizeChainId$2(chainId) {
+function normalizeChainId(chainId) {
   if (typeof chainId === "object")
-    return normalizeChainId$2(chainId.chainId);
+    return normalizeChainId(chainId.chainId);
   return BigNumber.from(chainId).toNumber();
 }
 class SingleNetworkSequenceProvider extends SequenceProvider {
@@ -64651,14 +64703,14 @@ function useLoadGsiScript(options = {}) {
     scriptTag.defer = true;
     scriptTag.nonce = nonce;
     scriptTag.onload = () => {
-      var _a;
+      var _a2;
       setScriptLoadedSuccessfully(true);
-      (_a = onScriptLoadSuccessRef.current) === null || _a === void 0 ? void 0 : _a.call(onScriptLoadSuccessRef);
+      (_a2 = onScriptLoadSuccessRef.current) === null || _a2 === void 0 ? void 0 : _a2.call(onScriptLoadSuccessRef);
     };
     scriptTag.onerror = () => {
-      var _a;
+      var _a2;
       setScriptLoadedSuccessfully(false);
-      (_a = onScriptLoadErrorRef.current) === null || _a === void 0 ? void 0 : _a.call(onScriptLoadErrorRef);
+      (_a2 = onScriptLoadErrorRef.current) === null || _a2 === void 0 ? void 0 : _a2.call(onScriptLoadErrorRef);
     };
     document.body.appendChild(scriptTag);
     return () => {
@@ -64688,8 +64740,8 @@ function useGoogleOAuth() {
   return context2;
 }
 function extractClientId(credentialResponse) {
-  var _a;
-  const clientId = (_a = credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.clientId) !== null && _a !== void 0 ? _a : credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.client_id;
+  var _a2;
+  const clientId = (_a2 = credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.clientId) !== null && _a2 !== void 0 ? _a2 : credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.client_id;
   return clientId;
 }
 const containerHeightMap = { large: 40, medium: 32, small: 20 };
@@ -64703,15 +64755,15 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
   const promptMomentNotificationRef = reactExports.useRef(promptMomentNotification);
   promptMomentNotificationRef.current = promptMomentNotification;
   reactExports.useEffect(() => {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+    var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2, _j2;
     if (!scriptLoadedSuccessfully)
       return;
-    (_c = (_b = (_a = window === null || window === void 0 ? void 0 : window.google) === null || _a === void 0 ? void 0 : _a.accounts) === null || _b === void 0 ? void 0 : _b.id) === null || _c === void 0 ? void 0 : _c.initialize({
+    (_c2 = (_b2 = (_a2 = window === null || window === void 0 ? void 0 : window.google) === null || _a2 === void 0 ? void 0 : _a2.accounts) === null || _b2 === void 0 ? void 0 : _b2.id) === null || _c2 === void 0 ? void 0 : _c2.initialize({
       client_id: clientId,
       callback: (credentialResponse) => {
-        var _a2;
+        var _a3;
         if (!(credentialResponse === null || credentialResponse === void 0 ? void 0 : credentialResponse.credential)) {
-          return (_a2 = onErrorRef.current) === null || _a2 === void 0 ? void 0 : _a2.call(onErrorRef);
+          return (_a3 = onErrorRef.current) === null || _a3 === void 0 ? void 0 : _a3.call(onErrorRef);
         }
         const { credential, select_by } = credentialResponse;
         onSuccessRef.current({
@@ -64722,7 +64774,7 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
       },
       ...props
     });
-    (_f = (_e = (_d = window === null || window === void 0 ? void 0 : window.google) === null || _d === void 0 ? void 0 : _d.accounts) === null || _e === void 0 ? void 0 : _e.id) === null || _f === void 0 ? void 0 : _f.renderButton(btnContainerRef.current, {
+    (_f2 = (_e2 = (_d2 = window === null || window === void 0 ? void 0 : window.google) === null || _d2 === void 0 ? void 0 : _d2.accounts) === null || _e2 === void 0 ? void 0 : _e2.id) === null || _f2 === void 0 ? void 0 : _f2.renderButton(btnContainerRef.current, {
       type,
       theme,
       size: size2,
@@ -64734,11 +64786,11 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
       click_listener
     });
     if (useOneTap)
-      (_j = (_h = (_g = window === null || window === void 0 ? void 0 : window.google) === null || _g === void 0 ? void 0 : _g.accounts) === null || _h === void 0 ? void 0 : _h.id) === null || _j === void 0 ? void 0 : _j.prompt(promptMomentNotificationRef.current);
+      (_j2 = (_h2 = (_g2 = window === null || window === void 0 ? void 0 : window.google) === null || _g2 === void 0 ? void 0 : _g2.accounts) === null || _h2 === void 0 ? void 0 : _h2.id) === null || _j2 === void 0 ? void 0 : _j2.prompt(promptMomentNotificationRef.current);
     return () => {
-      var _a2, _b2, _c2;
+      var _a3, _b3, _c3;
       if (useOneTap)
-        (_c2 = (_b2 = (_a2 = window === null || window === void 0 ? void 0 : window.google) === null || _a2 === void 0 ? void 0 : _a2.accounts) === null || _b2 === void 0 ? void 0 : _b2.id) === null || _c2 === void 0 ? void 0 : _c2.cancel();
+        (_c3 = (_b3 = (_a3 = window === null || window === void 0 ? void 0 : window.google) === null || _a3 === void 0 ? void 0 : _a3.accounts) === null || _b3 === void 0 ? void 0 : _b3.id) === null || _c3 === void 0 ? void 0 : _c3.cancel();
     };
   }, [
     clientId,
@@ -64755,13 +64807,13 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
   ]);
   return React.createElement("div", { ...containerProps, ref: btnContainerRef, style: { height: containerHeightMap[size2], ...containerProps === null || containerProps === void 0 ? void 0 : containerProps.style } });
 }
-const version$2 = "2.7.9";
+const version$2 = "2.9.26";
 const getContractAddress = (address) => address;
 const getUrl = (url) => url;
 const getVersion$2 = () => `viem@${version$2}`;
 let BaseError$2 = class BaseError extends Error {
   constructor(shortMessage, args = {}) {
-    var _a;
+    var _a2;
     super();
     Object.defineProperty(this, "details", {
       enumerable: true,
@@ -64799,7 +64851,7 @@ let BaseError$2 = class BaseError extends Error {
       writable: true,
       value: getVersion$2()
     });
-    const details = args.cause instanceof BaseError ? args.cause.details : ((_a = args.cause) == null ? void 0 : _a.message) ? args.cause.message : args.details;
+    const details = args.cause instanceof BaseError ? args.cause.details : ((_a2 = args.cause) == null ? void 0 : _a2.message) ? args.cause.message : args.details;
     const docsPath2 = args.cause instanceof BaseError ? args.cause.docsPath || args.docsPath : args.docsPath;
     this.message = [
       shortMessage || "An error occurred.",
@@ -65584,7 +65636,12 @@ function concatHex(values) {
 }
 class InvalidAddressError extends BaseError$2 {
   constructor({ address }) {
-    super(`Address "${address}" is invalid.`);
+    super(`Address "${address}" is invalid.`, {
+      metaMessages: [
+        "- Address must be a hex value of 20 bytes (40 hex characters).",
+        "- Address must match its checksum counterpart."
+      ]
+    });
     Object.defineProperty(this, "name", {
       enumerable: true,
       configurable: true,
@@ -65593,9 +65650,312 @@ class InvalidAddressError extends BaseError$2 {
     });
   }
 }
+class LruMap extends Map {
+  constructor(size2) {
+    super();
+    Object.defineProperty(this, "maxSize", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: void 0
+    });
+    this.maxSize = size2;
+  }
+  set(key2, value) {
+    super.set(key2, value);
+    if (this.maxSize && this.size > this.maxSize)
+      this.delete(this.keys().next().value);
+    return this;
+  }
+}
+function number(n2) {
+  if (!Number.isSafeInteger(n2) || n2 < 0)
+    throw new Error(`Wrong positive integer: ${n2}`);
+}
+function bytes(b3, ...lengths) {
+  if (!(b3 instanceof Uint8Array))
+    throw new Error("Expected Uint8Array");
+  if (lengths.length > 0 && !lengths.includes(b3.length))
+    throw new Error(`Expected Uint8Array of length ${lengths}, not of length=${b3.length}`);
+}
+function exists(instance, checkFinished = true) {
+  if (instance.destroyed)
+    throw new Error("Hash instance has been destroyed");
+  if (checkFinished && instance.finished)
+    throw new Error("Hash#digest() has already been called");
+}
+function output(out, instance) {
+  bytes(out);
+  const min2 = instance.outputLen;
+  if (out.length < min2) {
+    throw new Error(`digestInto() expects output buffer of length at least ${min2}`);
+  }
+}
+const U32_MASK64 = /* @__PURE__ */ BigInt(2 ** 32 - 1);
+const _32n = /* @__PURE__ */ BigInt(32);
+function fromBig(n2, le2 = false) {
+  if (le2)
+    return { h: Number(n2 & U32_MASK64), l: Number(n2 >> _32n & U32_MASK64) };
+  return { h: Number(n2 >> _32n & U32_MASK64) | 0, l: Number(n2 & U32_MASK64) | 0 };
+}
+function split(lst, le2 = false) {
+  let Ah2 = new Uint32Array(lst.length);
+  let Al = new Uint32Array(lst.length);
+  for (let i2 = 0; i2 < lst.length; i2++) {
+    const { h: h2, l: l2 } = fromBig(lst[i2], le2);
+    [Ah2[i2], Al[i2]] = [h2, l2];
+  }
+  return [Ah2, Al];
+}
+const rotlSH = (h2, l2, s2) => h2 << s2 | l2 >>> 32 - s2;
+const rotlSL = (h2, l2, s2) => l2 << s2 | h2 >>> 32 - s2;
+const rotlBH = (h2, l2, s2) => l2 << s2 - 32 | h2 >>> 64 - s2;
+const rotlBL = (h2, l2, s2) => h2 << s2 - 32 | l2 >>> 64 - s2;
+/*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+const u8a = (a2) => a2 instanceof Uint8Array;
+const u32 = (arr) => new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
+const createView = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
+const rotr = (word, shift2) => word << 32 - shift2 | word >>> shift2;
+const isLE = new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
+if (!isLE)
+  throw new Error("Non little-endian hardware is not supported");
+function utf8ToBytes(str) {
+  if (typeof str !== "string")
+    throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
+  return new Uint8Array(new TextEncoder().encode(str));
+}
+function toBytes(data) {
+  if (typeof data === "string")
+    data = utf8ToBytes(data);
+  if (!u8a(data))
+    throw new Error(`expected Uint8Array, got ${typeof data}`);
+  return data;
+}
+class Hash2 {
+  // Safe version that clones internal state
+  clone() {
+    return this._cloneInto();
+  }
+}
+function wrapConstructor(hashCons) {
+  const hashC = (msg) => hashCons().update(toBytes(msg)).digest();
+  const tmp = hashCons();
+  hashC.outputLen = tmp.outputLen;
+  hashC.blockLen = tmp.blockLen;
+  hashC.create = () => hashCons();
+  return hashC;
+}
+const [SHA3_PI, SHA3_ROTL, _SHA3_IOTA] = [[], [], []];
+const _0n = /* @__PURE__ */ BigInt(0);
+const _1n = /* @__PURE__ */ BigInt(1);
+const _2n = /* @__PURE__ */ BigInt(2);
+const _7n = /* @__PURE__ */ BigInt(7);
+const _256n = /* @__PURE__ */ BigInt(256);
+const _0x71n = /* @__PURE__ */ BigInt(113);
+for (let round2 = 0, R2 = _1n, x = 1, y2 = 0; round2 < 24; round2++) {
+  [x, y2] = [y2, (2 * x + 3 * y2) % 5];
+  SHA3_PI.push(2 * (5 * y2 + x));
+  SHA3_ROTL.push((round2 + 1) * (round2 + 2) / 2 % 64);
+  let t2 = _0n;
+  for (let j2 = 0; j2 < 7; j2++) {
+    R2 = (R2 << _1n ^ (R2 >> _7n) * _0x71n) % _256n;
+    if (R2 & _2n)
+      t2 ^= _1n << (_1n << /* @__PURE__ */ BigInt(j2)) - _1n;
+  }
+  _SHA3_IOTA.push(t2);
+}
+const [SHA3_IOTA_H, SHA3_IOTA_L] = /* @__PURE__ */ split(_SHA3_IOTA, true);
+const rotlH = (h2, l2, s2) => s2 > 32 ? rotlBH(h2, l2, s2) : rotlSH(h2, l2, s2);
+const rotlL = (h2, l2, s2) => s2 > 32 ? rotlBL(h2, l2, s2) : rotlSL(h2, l2, s2);
+function keccakP(s2, rounds = 24) {
+  const B2 = new Uint32Array(5 * 2);
+  for (let round2 = 24 - rounds; round2 < 24; round2++) {
+    for (let x = 0; x < 10; x++)
+      B2[x] = s2[x] ^ s2[x + 10] ^ s2[x + 20] ^ s2[x + 30] ^ s2[x + 40];
+    for (let x = 0; x < 10; x += 2) {
+      const idx1 = (x + 8) % 10;
+      const idx0 = (x + 2) % 10;
+      const B0 = B2[idx0];
+      const B1 = B2[idx0 + 1];
+      const Th2 = rotlH(B0, B1, 1) ^ B2[idx1];
+      const Tl = rotlL(B0, B1, 1) ^ B2[idx1 + 1];
+      for (let y2 = 0; y2 < 50; y2 += 10) {
+        s2[x + y2] ^= Th2;
+        s2[x + y2 + 1] ^= Tl;
+      }
+    }
+    let curH = s2[2];
+    let curL = s2[3];
+    for (let t2 = 0; t2 < 24; t2++) {
+      const shift2 = SHA3_ROTL[t2];
+      const Th2 = rotlH(curH, curL, shift2);
+      const Tl = rotlL(curH, curL, shift2);
+      const PI = SHA3_PI[t2];
+      curH = s2[PI];
+      curL = s2[PI + 1];
+      s2[PI] = Th2;
+      s2[PI + 1] = Tl;
+    }
+    for (let y2 = 0; y2 < 50; y2 += 10) {
+      for (let x = 0; x < 10; x++)
+        B2[x] = s2[y2 + x];
+      for (let x = 0; x < 10; x++)
+        s2[y2 + x] ^= ~B2[(x + 2) % 10] & B2[(x + 4) % 10];
+    }
+    s2[0] ^= SHA3_IOTA_H[round2];
+    s2[1] ^= SHA3_IOTA_L[round2];
+  }
+  B2.fill(0);
+}
+class Keccak extends Hash2 {
+  // NOTE: we accept arguments in bytes instead of bits here.
+  constructor(blockLen, suffix, outputLen, enableXOF = false, rounds = 24) {
+    super();
+    this.blockLen = blockLen;
+    this.suffix = suffix;
+    this.outputLen = outputLen;
+    this.enableXOF = enableXOF;
+    this.rounds = rounds;
+    this.pos = 0;
+    this.posOut = 0;
+    this.finished = false;
+    this.destroyed = false;
+    number(outputLen);
+    if (0 >= this.blockLen || this.blockLen >= 200)
+      throw new Error("Sha3 supports only keccak-f1600 function");
+    this.state = new Uint8Array(200);
+    this.state32 = u32(this.state);
+  }
+  keccak() {
+    keccakP(this.state32, this.rounds);
+    this.posOut = 0;
+    this.pos = 0;
+  }
+  update(data) {
+    exists(this);
+    const { blockLen, state } = this;
+    data = toBytes(data);
+    const len = data.length;
+    for (let pos = 0; pos < len; ) {
+      const take = Math.min(blockLen - this.pos, len - pos);
+      for (let i2 = 0; i2 < take; i2++)
+        state[this.pos++] ^= data[pos++];
+      if (this.pos === blockLen)
+        this.keccak();
+    }
+    return this;
+  }
+  finish() {
+    if (this.finished)
+      return;
+    this.finished = true;
+    const { state, suffix, pos, blockLen } = this;
+    state[pos] ^= suffix;
+    if ((suffix & 128) !== 0 && pos === blockLen - 1)
+      this.keccak();
+    state[blockLen - 1] ^= 128;
+    this.keccak();
+  }
+  writeInto(out) {
+    exists(this, false);
+    bytes(out);
+    this.finish();
+    const bufferOut = this.state;
+    const { blockLen } = this;
+    for (let pos = 0, len = out.length; pos < len; ) {
+      if (this.posOut >= blockLen)
+        this.keccak();
+      const take = Math.min(blockLen - this.posOut, len - pos);
+      out.set(bufferOut.subarray(this.posOut, this.posOut + take), pos);
+      this.posOut += take;
+      pos += take;
+    }
+    return out;
+  }
+  xofInto(out) {
+    if (!this.enableXOF)
+      throw new Error("XOF is not possible for this instance");
+    return this.writeInto(out);
+  }
+  xof(bytes3) {
+    number(bytes3);
+    return this.xofInto(new Uint8Array(bytes3));
+  }
+  digestInto(out) {
+    output(out, this);
+    if (this.finished)
+      throw new Error("digest() was already called");
+    this.writeInto(out);
+    this.destroy();
+    return out;
+  }
+  digest() {
+    return this.digestInto(new Uint8Array(this.outputLen));
+  }
+  destroy() {
+    this.destroyed = true;
+    this.state.fill(0);
+  }
+  _cloneInto(to) {
+    const { blockLen, suffix, outputLen, rounds, enableXOF } = this;
+    to || (to = new Keccak(blockLen, suffix, outputLen, enableXOF, rounds));
+    to.state32.set(this.state32);
+    to.pos = this.pos;
+    to.posOut = this.posOut;
+    to.finished = this.finished;
+    to.rounds = rounds;
+    to.suffix = suffix;
+    to.outputLen = outputLen;
+    to.enableXOF = enableXOF;
+    to.destroyed = this.destroyed;
+    return to;
+  }
+}
+const gen = (suffix, blockLen, outputLen) => wrapConstructor(() => new Keccak(blockLen, suffix, outputLen));
+const keccak_256 = /* @__PURE__ */ gen(1, 136, 256 / 8);
+function keccak256(value, to_) {
+  const to = to_ || "hex";
+  const bytes3 = keccak_256(isHex(value, { strict: false }) ? toBytes$1(value) : value);
+  if (to === "bytes")
+    return bytes3;
+  return toHex(bytes3);
+}
+function checksumAddress(address_, chainId) {
+  const hexAddress = chainId ? `${chainId}${address_.toLowerCase()}` : address_.substring(2).toLowerCase();
+  const hash2 = keccak256(stringToBytes(hexAddress), "bytes");
+  const address = (chainId ? hexAddress.substring(`${chainId}0x`.length) : hexAddress).split("");
+  for (let i2 = 0; i2 < 40; i2 += 2) {
+    if (hash2[i2 >> 1] >> 4 >= 8 && address[i2]) {
+      address[i2] = address[i2].toUpperCase();
+    }
+    if ((hash2[i2 >> 1] & 15) >= 8 && address[i2 + 1]) {
+      address[i2 + 1] = address[i2 + 1].toUpperCase();
+    }
+  }
+  return `0x${address.join("")}`;
+}
+function getAddress(address, chainId) {
+  if (!isAddress(address, { strict: false }))
+    throw new InvalidAddressError({ address });
+  return checksumAddress(address, chainId);
+}
 const addressRegex = /^0x[a-fA-F0-9]{40}$/;
-function isAddress(address) {
-  return addressRegex.test(address);
+const isAddressCache = /* @__PURE__ */ new LruMap(8192);
+function isAddress(address, options) {
+  const { strict = true } = options ?? {};
+  if (isAddressCache.has(address))
+    return isAddressCache.get(address);
+  const result = (() => {
+    if (!addressRegex.test(address))
+      return false;
+    if (address.toLowerCase() === address)
+      return true;
+    if (strict)
+      return checksumAddress(address) === address;
+    return true;
+  })();
+  isAddressCache.set(address, result);
+  return result;
 }
 function slice$1(value, start, end, { strict } = {}) {
   if (isHex(value, { strict: false }))
@@ -65777,6 +66137,8 @@ function encodeBytes(value, { param }) {
   return { dynamic: false, encoded: padHex(value, { dir: "right" }) };
 }
 function encodeBool(value) {
+  if (typeof value !== "boolean")
+    throw new BaseError$2(`Invalid boolean value: "${value}" (type: ${typeof value}). Expected: \`true\` or \`false\`.`);
   return { dynamic: false, encoded: padHex(boolToHex(value)) };
 }
 function encodeNumber(value, { signed: signed2 }) {
@@ -65961,8 +66323,8 @@ function formatGwei(wei, unit = "wei") {
 }
 class ExecutionRevertedError extends BaseError$2 {
   constructor({ cause, message } = {}) {
-    var _a;
-    const reason = (_a = message == null ? void 0 : message.replace("execution reverted: ", "")) == null ? void 0 : _a.replace("execution reverted", "");
+    var _a2;
+    const reason = (_a2 = message == null ? void 0 : message.replace("execution reverted: ", "")) == null ? void 0 : _a2.replace("execution reverted", "");
     super(`Execution reverted ${reason ? `with reason: ${reason}` : "for an unknown reason"}.`, {
       cause
     });
@@ -66239,6 +66601,7 @@ class InvalidSerializableTransactionError extends BaseError$2 {
         "- a `type` to the Transaction, or",
         "- an EIP-1559 Transaction with `maxFeePerGas`, or",
         "- an EIP-2930 Transaction with `gasPrice` & `accessList`, or",
+        "- an EIP-4844 Transaction with `blobs`, `blobVersionedHashes`, `sidecars`, or",
         "- a Legacy Transaction with `gasPrice`"
       ]
     });
@@ -66252,12 +66615,12 @@ class InvalidSerializableTransactionError extends BaseError$2 {
 }
 class TransactionExecutionError extends BaseError$2 {
   constructor(cause, { account: account2, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value }) {
-    var _a;
+    var _a2;
     const prettyArgs = prettyPrint({
       chain: chain && `${chain == null ? void 0 : chain.name} (id: ${chain == null ? void 0 : chain.id})`,
       from: account2 == null ? void 0 : account2.address,
       to,
-      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a.symbol) || "ETH"}`,
+      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
       data,
       gas,
       gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
@@ -66921,22 +67284,46 @@ const rpcTransactionType = {
   eip1559: "0x2",
   eip4844: "0x3"
 };
-function formatTransactionRequest(transactionRequest) {
-  return {
-    ...transactionRequest,
-    gas: typeof transactionRequest.gas !== "undefined" ? numberToHex(transactionRequest.gas) : void 0,
-    gasPrice: typeof transactionRequest.gasPrice !== "undefined" ? numberToHex(transactionRequest.gasPrice) : void 0,
-    maxFeePerGas: typeof transactionRequest.maxFeePerGas !== "undefined" ? numberToHex(transactionRequest.maxFeePerGas) : void 0,
-    maxPriorityFeePerGas: typeof transactionRequest.maxPriorityFeePerGas !== "undefined" ? numberToHex(transactionRequest.maxPriorityFeePerGas) : void 0,
-    nonce: typeof transactionRequest.nonce !== "undefined" ? numberToHex(transactionRequest.nonce) : void 0,
-    type: typeof transactionRequest.type !== "undefined" ? rpcTransactionType[transactionRequest.type] : void 0,
-    value: typeof transactionRequest.value !== "undefined" ? numberToHex(transactionRequest.value) : void 0
-  };
+function formatTransactionRequest(request) {
+  const rpcRequest = {};
+  if (typeof request.accessList !== "undefined")
+    rpcRequest.accessList = request.accessList;
+  if (typeof request.blobVersionedHashes !== "undefined")
+    rpcRequest.blobVersionedHashes = request.blobVersionedHashes;
+  if (typeof request.blobs !== "undefined") {
+    if (typeof request.blobs[0] !== "string")
+      rpcRequest.blobs = request.blobs.map((x) => bytesToHex(x));
+    else
+      rpcRequest.blobs = request.blobs;
+  }
+  if (typeof request.data !== "undefined")
+    rpcRequest.data = request.data;
+  if (typeof request.from !== "undefined")
+    rpcRequest.from = request.from;
+  if (typeof request.gas !== "undefined")
+    rpcRequest.gas = numberToHex(request.gas);
+  if (typeof request.gasPrice !== "undefined")
+    rpcRequest.gasPrice = numberToHex(request.gasPrice);
+  if (typeof request.maxFeePerBlobGas !== "undefined")
+    rpcRequest.maxFeePerBlobGas = numberToHex(request.maxFeePerBlobGas);
+  if (typeof request.maxFeePerGas !== "undefined")
+    rpcRequest.maxFeePerGas = numberToHex(request.maxFeePerGas);
+  if (typeof request.maxPriorityFeePerGas !== "undefined")
+    rpcRequest.maxPriorityFeePerGas = numberToHex(request.maxPriorityFeePerGas);
+  if (typeof request.nonce !== "undefined")
+    rpcRequest.nonce = numberToHex(request.nonce);
+  if (typeof request.to !== "undefined")
+    rpcRequest.to = request.to;
+  if (typeof request.type !== "undefined")
+    rpcRequest.type = rpcTransactionType[request.type];
+  if (typeof request.value !== "undefined")
+    rpcRequest.value = numberToHex(request.value);
+  return rpcRequest;
 }
 function getAction$1(client2, action, name) {
   return (params) => {
-    var _a;
-    return ((_a = client2[action.name || name]) == null ? void 0 : _a.call(client2, params)) ?? action(client2, params);
+    var _a2, _b2;
+    return ((_a2 = client2[action.name]) == null ? void 0 : _a2.call(client2, params)) ?? ((_b2 = client2[name]) == null ? void 0 : _b2.call(client2, params)) ?? action(client2, params);
   };
 }
 function assertRequest(args) {
@@ -67064,8 +67451,8 @@ function formatTransaction(transaction2) {
   return transaction_;
 }
 function formatBlock(block) {
-  var _a;
-  const transactions2 = (_a = block.transactions) == null ? void 0 : _a.map((transaction2) => {
+  var _a2;
+  const transactions2 = (_a2 = block.transactions) == null ? void 0 : _a2.map((transaction2) => {
     if (typeof transaction2 === "string")
       return transaction2;
     return formatTransaction(transaction2);
@@ -67089,7 +67476,7 @@ function formatBlock(block) {
   };
 }
 async function getBlock(client2, { blockHash, blockNumber, blockTag: blockTag_, includeTransactions: includeTransactions_ } = {}) {
-  var _a, _b, _c;
+  var _a2, _b2, _c2;
   const blockTag = blockTag_ ?? "latest";
   const includeTransactions = includeTransactions_ ?? false;
   const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
@@ -67107,7 +67494,7 @@ async function getBlock(client2, { blockHash, blockNumber, blockTag: blockTag_, 
   }
   if (!block)
     throw new BlockNotFoundError({ blockHash, blockNumber });
-  const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.block) == null ? void 0 : _c.format) || formatBlock;
+  const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.block) == null ? void 0 : _c2.format) || formatBlock;
   return format2(block);
 }
 async function getGasPrice(client2) {
@@ -67120,9 +67507,9 @@ async function estimateMaxPriorityFeePerGas(client2, args) {
   return internal_estimateMaxPriorityFeePerGas(client2, args);
 }
 async function internal_estimateMaxPriorityFeePerGas(client2, args) {
-  var _a, _b, _c;
+  var _a2, _b2, _c2;
   const { block: block_, chain = client2.chain, request } = args || {};
-  if (typeof ((_a = chain == null ? void 0 : chain.fees) == null ? void 0 : _a.defaultPriorityFee) === "function") {
+  if (typeof ((_a2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a2.defaultPriorityFee) === "function") {
     const block = block_ || await getAction$1(client2, getBlock, "getBlock")({});
     return chain.fees.defaultPriorityFee({
       block,
@@ -67130,8 +67517,8 @@ async function internal_estimateMaxPriorityFeePerGas(client2, args) {
       request
     });
   }
-  if (typeof ((_b = chain == null ? void 0 : chain.fees) == null ? void 0 : _b.defaultPriorityFee) !== "undefined")
-    return (_c = chain == null ? void 0 : chain.fees) == null ? void 0 : _c.defaultPriorityFee;
+  if (typeof ((_b2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _b2.defaultPriorityFee) !== "undefined")
+    return (_c2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _c2.defaultPriorityFee;
   try {
     const maxPriorityFeePerGasHex = await client2.request({
       method: "eth_maxPriorityFeePerGas"
@@ -67154,32 +67541,35 @@ async function estimateFeesPerGas(client2, args) {
   return internal_estimateFeesPerGas(client2, args);
 }
 async function internal_estimateFeesPerGas(client2, args) {
-  var _a, _b;
+  var _a2, _b2;
   const { block: block_, chain = client2.chain, request, type = "eip1559" } = args || {};
   const baseFeeMultiplier = await (async () => {
-    var _a2, _b2;
-    if (typeof ((_a2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a2.baseFeeMultiplier) === "function")
+    var _a3, _b3;
+    if (typeof ((_a3 = chain == null ? void 0 : chain.fees) == null ? void 0 : _a3.baseFeeMultiplier) === "function")
       return chain.fees.baseFeeMultiplier({
         block: block_,
         client: client2,
         request
       });
-    return ((_b2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _b2.baseFeeMultiplier) ?? 1.2;
+    return ((_b3 = chain == null ? void 0 : chain.fees) == null ? void 0 : _b3.baseFeeMultiplier) ?? 1.2;
   })();
   if (baseFeeMultiplier < 1)
     throw new BaseFeeScalarError();
-  const decimals = ((_a = baseFeeMultiplier.toString().split(".")[1]) == null ? void 0 : _a.length) ?? 0;
+  const decimals = ((_a2 = baseFeeMultiplier.toString().split(".")[1]) == null ? void 0 : _a2.length) ?? 0;
   const denominator = 10 ** decimals;
   const multiply = (base2) => base2 * BigInt(Math.ceil(baseFeeMultiplier * denominator)) / BigInt(denominator);
   const block = block_ ? block_ : await getAction$1(client2, getBlock, "getBlock")({});
-  if (typeof ((_b = chain == null ? void 0 : chain.fees) == null ? void 0 : _b.estimateFeesPerGas) === "function")
-    return chain.fees.estimateFeesPerGas({
+  if (typeof ((_b2 = chain == null ? void 0 : chain.fees) == null ? void 0 : _b2.estimateFeesPerGas) === "function") {
+    const fees = await chain.fees.estimateFeesPerGas({
       block: block_,
       client: client2,
       multiply,
       request,
       type
     });
+    if (fees !== null)
+      return fees;
+  }
   if (type === "eip1559") {
     if (typeof block.baseFeePerGas !== "bigint")
       throw new Eip1559FeesNotSupportedError();
@@ -67202,11 +67592,11 @@ async function internal_estimateFeesPerGas(client2, args) {
 }
 class EstimateGasExecutionError extends BaseError$2 {
   constructor(cause, { account: account2, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value }) {
-    var _a;
+    var _a2;
     const prettyArgs = prettyPrint({
       from: account2 == null ? void 0 : account2.address,
       to,
-      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a.symbol) || "ETH"}`,
+      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
       data,
       gas,
       gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
@@ -67251,24 +67641,34 @@ function getEstimateGasError(err, { docsPath: docsPath2, ...args }) {
   });
 }
 async function estimateGas(client2, args) {
-  var _a, _b, _c;
+  var _a2, _b2, _c2;
   const account_ = args.account ?? client2.account;
   const account2 = account_ ? parseAccount(account_) : void 0;
   try {
-    const { accessList, blockNumber, blockTag, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = (account2 == null ? void 0 : account2.type) === "local" ? await prepareTransactionRequest(client2, args) : args;
+    const { accessList, blobs, blobVersionedHashes, blockNumber, blockTag, data, gas, gasPrice, maxFeePerBlobGas, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = await prepareTransactionRequest(client2, {
+      ...args,
+      parameters: (
+        // Some RPC Providers do not compute versioned hashes from blobs. We will need
+        // to compute them.
+        (account2 == null ? void 0 : account2.type) === "local" ? void 0 : ["blobVersionedHashes"]
+      )
+    });
     const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
     const block = blockNumberHex || blockTag;
     assertRequest(args);
-    const chainFormat = (_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.transactionRequest) == null ? void 0 : _c.format;
+    const chainFormat = (_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transactionRequest) == null ? void 0 : _c2.format;
     const format2 = chainFormat || formatTransactionRequest;
     const request = format2({
       // Pick out extra data that might exist on the chain's transaction request type.
       ...extract(rest, { format: chainFormat }),
       from: account2 == null ? void 0 : account2.address,
       accessList,
+      blobs,
+      blobVersionedHashes,
       data,
       gas,
       gasPrice,
+      maxFeePerBlobGas,
       maxFeePerGas,
       maxPriorityFeePerGas,
       nonce,
@@ -67295,11 +67695,589 @@ async function getTransactionCount(client2, { address, blockTag = "latest", bloc
   });
   return hexToNumber(count);
 }
+function blobsToCommitments(parameters) {
+  const { kzg } = parameters;
+  const to = parameters.to ?? (typeof parameters.blobs[0] === "string" ? "hex" : "bytes");
+  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes(x)) : parameters.blobs;
+  const commitments = [];
+  for (const blob of blobs)
+    commitments.push(Uint8Array.from(kzg.blobToKzgCommitment(blob)));
+  return to === "bytes" ? commitments : commitments.map((x) => bytesToHex(x));
+}
+function blobsToProofs(parameters) {
+  const { kzg } = parameters;
+  const to = parameters.to ?? (typeof parameters.blobs[0] === "string" ? "hex" : "bytes");
+  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes(x)) : parameters.blobs;
+  const commitments = typeof parameters.commitments[0] === "string" ? parameters.commitments.map((x) => hexToBytes(x)) : parameters.commitments;
+  const proofs = [];
+  for (let i2 = 0; i2 < blobs.length; i2++) {
+    const blob = blobs[i2];
+    const commitment = commitments[i2];
+    proofs.push(Uint8Array.from(kzg.computeBlobKzgProof(blob, commitment)));
+  }
+  return to === "bytes" ? proofs : proofs.map((x) => bytesToHex(x));
+}
+function setBigUint64(view, byteOffset, value, isLE2) {
+  if (typeof view.setBigUint64 === "function")
+    return view.setBigUint64(byteOffset, value, isLE2);
+  const _32n2 = BigInt(32);
+  const _u32_max = BigInt(4294967295);
+  const wh2 = Number(value >> _32n2 & _u32_max);
+  const wl = Number(value & _u32_max);
+  const h2 = isLE2 ? 4 : 0;
+  const l2 = isLE2 ? 0 : 4;
+  view.setUint32(byteOffset + h2, wh2, isLE2);
+  view.setUint32(byteOffset + l2, wl, isLE2);
+}
+class SHA2 extends Hash2 {
+  constructor(blockLen, outputLen, padOffset, isLE2) {
+    super();
+    this.blockLen = blockLen;
+    this.outputLen = outputLen;
+    this.padOffset = padOffset;
+    this.isLE = isLE2;
+    this.finished = false;
+    this.length = 0;
+    this.pos = 0;
+    this.destroyed = false;
+    this.buffer = new Uint8Array(blockLen);
+    this.view = createView(this.buffer);
+  }
+  update(data) {
+    exists(this);
+    const { view, buffer: buffer2, blockLen } = this;
+    data = toBytes(data);
+    const len = data.length;
+    for (let pos = 0; pos < len; ) {
+      const take = Math.min(blockLen - this.pos, len - pos);
+      if (take === blockLen) {
+        const dataView = createView(data);
+        for (; blockLen <= len - pos; pos += blockLen)
+          this.process(dataView, pos);
+        continue;
+      }
+      buffer2.set(data.subarray(pos, pos + take), this.pos);
+      this.pos += take;
+      pos += take;
+      if (this.pos === blockLen) {
+        this.process(view, 0);
+        this.pos = 0;
+      }
+    }
+    this.length += data.length;
+    this.roundClean();
+    return this;
+  }
+  digestInto(out) {
+    exists(this);
+    output(out, this);
+    this.finished = true;
+    const { buffer: buffer2, view, blockLen, isLE: isLE2 } = this;
+    let { pos } = this;
+    buffer2[pos++] = 128;
+    this.buffer.subarray(pos).fill(0);
+    if (this.padOffset > blockLen - pos) {
+      this.process(view, 0);
+      pos = 0;
+    }
+    for (let i2 = pos; i2 < blockLen; i2++)
+      buffer2[i2] = 0;
+    setBigUint64(view, blockLen - 8, BigInt(this.length * 8), isLE2);
+    this.process(view, 0);
+    const oview = createView(out);
+    const len = this.outputLen;
+    if (len % 4)
+      throw new Error("_sha2: outputLen should be aligned to 32bit");
+    const outLen = len / 4;
+    const state = this.get();
+    if (outLen > state.length)
+      throw new Error("_sha2: outputLen bigger than state");
+    for (let i2 = 0; i2 < outLen; i2++)
+      oview.setUint32(4 * i2, state[i2], isLE2);
+  }
+  digest() {
+    const { buffer: buffer2, outputLen } = this;
+    this.digestInto(buffer2);
+    const res = buffer2.slice(0, outputLen);
+    this.destroy();
+    return res;
+  }
+  _cloneInto(to) {
+    to || (to = new this.constructor());
+    to.set(...this.get());
+    const { blockLen, buffer: buffer2, length: length2, finished, destroyed, pos } = this;
+    to.length = length2;
+    to.pos = pos;
+    to.finished = finished;
+    to.destroyed = destroyed;
+    if (length2 % blockLen)
+      to.buffer.set(buffer2);
+    return to;
+  }
+}
+const Chi = (a2, b3, c) => a2 & b3 ^ ~a2 & c;
+const Maj = (a2, b3, c) => a2 & b3 ^ a2 & c ^ b3 & c;
+const SHA256_K = /* @__PURE__ */ new Uint32Array([
+  1116352408,
+  1899447441,
+  3049323471,
+  3921009573,
+  961987163,
+  1508970993,
+  2453635748,
+  2870763221,
+  3624381080,
+  310598401,
+  607225278,
+  1426881987,
+  1925078388,
+  2162078206,
+  2614888103,
+  3248222580,
+  3835390401,
+  4022224774,
+  264347078,
+  604807628,
+  770255983,
+  1249150122,
+  1555081692,
+  1996064986,
+  2554220882,
+  2821834349,
+  2952996808,
+  3210313671,
+  3336571891,
+  3584528711,
+  113926993,
+  338241895,
+  666307205,
+  773529912,
+  1294757372,
+  1396182291,
+  1695183700,
+  1986661051,
+  2177026350,
+  2456956037,
+  2730485921,
+  2820302411,
+  3259730800,
+  3345764771,
+  3516065817,
+  3600352804,
+  4094571909,
+  275423344,
+  430227734,
+  506948616,
+  659060556,
+  883997877,
+  958139571,
+  1322822218,
+  1537002063,
+  1747873779,
+  1955562222,
+  2024104815,
+  2227730452,
+  2361852424,
+  2428436474,
+  2756734187,
+  3204031479,
+  3329325298
+]);
+const IV = /* @__PURE__ */ new Uint32Array([
+  1779033703,
+  3144134277,
+  1013904242,
+  2773480762,
+  1359893119,
+  2600822924,
+  528734635,
+  1541459225
+]);
+const SHA256_W = /* @__PURE__ */ new Uint32Array(64);
+class SHA2562 extends SHA2 {
+  constructor() {
+    super(64, 32, 8, false);
+    this.A = IV[0] | 0;
+    this.B = IV[1] | 0;
+    this.C = IV[2] | 0;
+    this.D = IV[3] | 0;
+    this.E = IV[4] | 0;
+    this.F = IV[5] | 0;
+    this.G = IV[6] | 0;
+    this.H = IV[7] | 0;
+  }
+  get() {
+    const { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
+    return [A2, B2, C2, D2, E2, F2, G2, H2];
+  }
+  // prettier-ignore
+  set(A2, B2, C2, D2, E2, F2, G2, H2) {
+    this.A = A2 | 0;
+    this.B = B2 | 0;
+    this.C = C2 | 0;
+    this.D = D2 | 0;
+    this.E = E2 | 0;
+    this.F = F2 | 0;
+    this.G = G2 | 0;
+    this.H = H2 | 0;
+  }
+  process(view, offset2) {
+    for (let i2 = 0; i2 < 16; i2++, offset2 += 4)
+      SHA256_W[i2] = view.getUint32(offset2, false);
+    for (let i2 = 16; i2 < 64; i2++) {
+      const W15 = SHA256_W[i2 - 15];
+      const W2 = SHA256_W[i2 - 2];
+      const s0 = rotr(W15, 7) ^ rotr(W15, 18) ^ W15 >>> 3;
+      const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
+      SHA256_W[i2] = s1 + SHA256_W[i2 - 7] + s0 + SHA256_W[i2 - 16] | 0;
+    }
+    let { A: A2, B: B2, C: C2, D: D2, E: E2, F: F2, G: G2, H: H2 } = this;
+    for (let i2 = 0; i2 < 64; i2++) {
+      const sigma1 = rotr(E2, 6) ^ rotr(E2, 11) ^ rotr(E2, 25);
+      const T1 = H2 + sigma1 + Chi(E2, F2, G2) + SHA256_K[i2] + SHA256_W[i2] | 0;
+      const sigma0 = rotr(A2, 2) ^ rotr(A2, 13) ^ rotr(A2, 22);
+      const T2 = sigma0 + Maj(A2, B2, C2) | 0;
+      H2 = G2;
+      G2 = F2;
+      F2 = E2;
+      E2 = D2 + T1 | 0;
+      D2 = C2;
+      C2 = B2;
+      B2 = A2;
+      A2 = T1 + T2 | 0;
+    }
+    A2 = A2 + this.A | 0;
+    B2 = B2 + this.B | 0;
+    C2 = C2 + this.C | 0;
+    D2 = D2 + this.D | 0;
+    E2 = E2 + this.E | 0;
+    F2 = F2 + this.F | 0;
+    G2 = G2 + this.G | 0;
+    H2 = H2 + this.H | 0;
+    this.set(A2, B2, C2, D2, E2, F2, G2, H2);
+  }
+  roundClean() {
+    SHA256_W.fill(0);
+  }
+  destroy() {
+    this.set(0, 0, 0, 0, 0, 0, 0, 0);
+    this.buffer.fill(0);
+  }
+}
+const sha256$1 = /* @__PURE__ */ wrapConstructor(() => new SHA2562());
+function sha256(value, to_) {
+  const to = to_ || "hex";
+  const bytes3 = sha256$1(isHex(value, { strict: false }) ? toBytes$1(value) : value);
+  if (to === "bytes")
+    return bytes3;
+  return toHex(bytes3);
+}
+function commitmentToVersionedHash(parameters) {
+  const { commitment, version: version2 = 1 } = parameters;
+  const to = parameters.to ?? (typeof commitment === "string" ? "hex" : "bytes");
+  const versionedHash = sha256(commitment, "bytes");
+  versionedHash.set([version2], 0);
+  return to === "bytes" ? versionedHash : bytesToHex(versionedHash);
+}
+function commitmentsToVersionedHashes(parameters) {
+  const { commitments, version: version2 } = parameters;
+  const to = parameters.to ?? (typeof commitments[0] === "string" ? "hex" : "bytes");
+  const hashes = [];
+  for (const commitment of commitments) {
+    hashes.push(commitmentToVersionedHash({
+      commitment,
+      to,
+      version: version2
+    }));
+  }
+  return hashes;
+}
+const blobsPerTransaction = 6;
+const bytesPerFieldElement = 32;
+const fieldElementsPerBlob = 4096;
+const bytesPerBlob = bytesPerFieldElement * fieldElementsPerBlob;
+const maxBytesPerTransaction = bytesPerBlob * blobsPerTransaction - // terminator byte (0x80).
+1 - // zero byte (0x00) appended to each field element.
+1 * fieldElementsPerBlob * blobsPerTransaction;
+class BlobSizeTooLargeError extends BaseError$2 {
+  constructor({ maxSize, size: size2 }) {
+    super("Blob size is too large.", {
+      metaMessages: [`Max: ${maxSize} bytes`, `Given: ${size2} bytes`]
+    });
+    Object.defineProperty(this, "name", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "BlobSizeTooLargeError"
+    });
+  }
+}
+class EmptyBlobError extends BaseError$2 {
+  constructor() {
+    super("Blob data must not be empty.");
+    Object.defineProperty(this, "name", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "EmptyBlobError"
+    });
+  }
+}
+class NegativeOffsetError extends BaseError$2 {
+  constructor({ offset: offset2 }) {
+    super(`Offset \`${offset2}\` cannot be negative.`);
+    Object.defineProperty(this, "name", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "NegativeOffsetError"
+    });
+  }
+}
+class PositionOutOfBoundsError extends BaseError$2 {
+  constructor({ length: length2, position: position2 }) {
+    super(`Position \`${position2}\` is out of bounds (\`0 < position < ${length2}\`).`);
+    Object.defineProperty(this, "name", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "PositionOutOfBoundsError"
+    });
+  }
+}
+class RecursiveReadLimitExceededError extends BaseError$2 {
+  constructor({ count, limit }) {
+    super(`Recursive read limit of \`${limit}\` exceeded (recursive read count: \`${count}\`).`);
+    Object.defineProperty(this, "name", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "RecursiveReadLimitExceededError"
+    });
+  }
+}
+const staticCursor = {
+  bytes: new Uint8Array(),
+  dataView: new DataView(new ArrayBuffer(0)),
+  position: 0,
+  positionReadCount: /* @__PURE__ */ new Map(),
+  recursiveReadCount: 0,
+  recursiveReadLimit: Infinity,
+  assertReadLimit() {
+    if (this.recursiveReadCount >= this.recursiveReadLimit)
+      throw new RecursiveReadLimitExceededError({
+        count: this.recursiveReadCount + 1,
+        limit: this.recursiveReadLimit
+      });
+  },
+  assertPosition(position2) {
+    if (position2 < 0 || position2 > this.bytes.length - 1)
+      throw new PositionOutOfBoundsError({
+        length: this.bytes.length,
+        position: position2
+      });
+  },
+  decrementPosition(offset2) {
+    if (offset2 < 0)
+      throw new NegativeOffsetError({ offset: offset2 });
+    const position2 = this.position - offset2;
+    this.assertPosition(position2);
+    this.position = position2;
+  },
+  getReadCount(position2) {
+    return this.positionReadCount.get(position2 || this.position) || 0;
+  },
+  incrementPosition(offset2) {
+    if (offset2 < 0)
+      throw new NegativeOffsetError({ offset: offset2 });
+    const position2 = this.position + offset2;
+    this.assertPosition(position2);
+    this.position = position2;
+  },
+  inspectByte(position_) {
+    const position2 = position_ ?? this.position;
+    this.assertPosition(position2);
+    return this.bytes[position2];
+  },
+  inspectBytes(length2, position_) {
+    const position2 = position_ ?? this.position;
+    this.assertPosition(position2 + length2 - 1);
+    return this.bytes.subarray(position2, position2 + length2);
+  },
+  inspectUint8(position_) {
+    const position2 = position_ ?? this.position;
+    this.assertPosition(position2);
+    return this.bytes[position2];
+  },
+  inspectUint16(position_) {
+    const position2 = position_ ?? this.position;
+    this.assertPosition(position2 + 1);
+    return this.dataView.getUint16(position2);
+  },
+  inspectUint24(position_) {
+    const position2 = position_ ?? this.position;
+    this.assertPosition(position2 + 2);
+    return (this.dataView.getUint16(position2) << 8) + this.dataView.getUint8(position2 + 2);
+  },
+  inspectUint32(position_) {
+    const position2 = position_ ?? this.position;
+    this.assertPosition(position2 + 3);
+    return this.dataView.getUint32(position2);
+  },
+  pushByte(byte) {
+    this.assertPosition(this.position);
+    this.bytes[this.position] = byte;
+    this.position++;
+  },
+  pushBytes(bytes3) {
+    this.assertPosition(this.position + bytes3.length - 1);
+    this.bytes.set(bytes3, this.position);
+    this.position += bytes3.length;
+  },
+  pushUint8(value) {
+    this.assertPosition(this.position);
+    this.bytes[this.position] = value;
+    this.position++;
+  },
+  pushUint16(value) {
+    this.assertPosition(this.position + 1);
+    this.dataView.setUint16(this.position, value);
+    this.position += 2;
+  },
+  pushUint24(value) {
+    this.assertPosition(this.position + 2);
+    this.dataView.setUint16(this.position, value >> 8);
+    this.dataView.setUint8(this.position + 2, value & ~4294967040);
+    this.position += 3;
+  },
+  pushUint32(value) {
+    this.assertPosition(this.position + 3);
+    this.dataView.setUint32(this.position, value);
+    this.position += 4;
+  },
+  readByte() {
+    this.assertReadLimit();
+    this._touch();
+    const value = this.inspectByte();
+    this.position++;
+    return value;
+  },
+  readBytes(length2, size2) {
+    this.assertReadLimit();
+    this._touch();
+    const value = this.inspectBytes(length2);
+    this.position += size2 ?? length2;
+    return value;
+  },
+  readUint8() {
+    this.assertReadLimit();
+    this._touch();
+    const value = this.inspectUint8();
+    this.position += 1;
+    return value;
+  },
+  readUint16() {
+    this.assertReadLimit();
+    this._touch();
+    const value = this.inspectUint16();
+    this.position += 2;
+    return value;
+  },
+  readUint24() {
+    this.assertReadLimit();
+    this._touch();
+    const value = this.inspectUint24();
+    this.position += 3;
+    return value;
+  },
+  readUint32() {
+    this.assertReadLimit();
+    this._touch();
+    const value = this.inspectUint32();
+    this.position += 4;
+    return value;
+  },
+  get remaining() {
+    return this.bytes.length - this.position;
+  },
+  setPosition(position2) {
+    const oldPosition = this.position;
+    this.assertPosition(position2);
+    this.position = position2;
+    return () => this.position = oldPosition;
+  },
+  _touch() {
+    if (this.recursiveReadLimit === Infinity)
+      return;
+    const count = this.getReadCount();
+    this.positionReadCount.set(this.position, count + 1);
+    if (count > 0)
+      this.recursiveReadCount++;
+  }
+};
+function createCursor(bytes3, { recursiveReadLimit = 8192 } = {}) {
+  const cursor2 = Object.create(staticCursor);
+  cursor2.bytes = bytes3;
+  cursor2.dataView = new DataView(bytes3.buffer, bytes3.byteOffset, bytes3.byteLength);
+  cursor2.positionReadCount = /* @__PURE__ */ new Map();
+  cursor2.recursiveReadLimit = recursiveReadLimit;
+  return cursor2;
+}
+function toBlobs(parameters) {
+  const to = parameters.to ?? (typeof parameters.data === "string" ? "hex" : "bytes");
+  const data = typeof parameters.data === "string" ? hexToBytes(parameters.data) : parameters.data;
+  const size_ = size$4(data);
+  if (!size_)
+    throw new EmptyBlobError();
+  if (size_ > maxBytesPerTransaction)
+    throw new BlobSizeTooLargeError({
+      maxSize: maxBytesPerTransaction,
+      size: size_
+    });
+  const blobs = [];
+  let active = true;
+  let position2 = 0;
+  while (active) {
+    const blob = createCursor(new Uint8Array(bytesPerBlob));
+    let size2 = 0;
+    while (size2 < fieldElementsPerBlob) {
+      const bytes3 = data.slice(position2, position2 + (bytesPerFieldElement - 1));
+      blob.pushByte(0);
+      blob.pushBytes(bytes3);
+      if (bytes3.length < 31) {
+        blob.pushByte(128);
+        active = false;
+        break;
+      }
+      size2++;
+      position2 += 31;
+    }
+    blobs.push(blob);
+  }
+  return to === "bytes" ? blobs.map((x) => x.bytes) : blobs.map((x) => bytesToHex(x.bytes));
+}
+function toBlobSidecars(parameters) {
+  const { data, kzg, to } = parameters;
+  const blobs = parameters.blobs ?? toBlobs({ data, to });
+  const commitments = parameters.commitments ?? blobsToCommitments({ blobs, kzg, to });
+  const proofs = parameters.proofs ?? blobsToProofs({ blobs, commitments, kzg, to });
+  const sidecars = [];
+  for (let i2 = 0; i2 < blobs.length; i2++)
+    sidecars.push({
+      blob: blobs[i2],
+      commitment: commitments[i2],
+      proof: proofs[i2]
+    });
+  return sidecars;
+}
 function getTransactionType(transaction2) {
   if (transaction2.type)
     return transaction2.type;
-  if (typeof transaction2.maxFeePerGas !== "undefined" || typeof transaction2.maxPriorityFeePerGas !== "undefined")
+  if (typeof transaction2.blobs !== "undefined" || typeof transaction2.blobVersionedHashes !== "undefined" || typeof transaction2.maxFeePerBlobGas !== "undefined" || typeof transaction2.sidecars !== "undefined")
+    return "eip4844";
+  if (typeof transaction2.maxFeePerGas !== "undefined" || typeof transaction2.maxPriorityFeePerGas !== "undefined") {
     return "eip1559";
+  }
   if (typeof transaction2.gasPrice !== "undefined") {
     if (typeof transaction2.accessList !== "undefined")
       return "eip2930";
@@ -67307,11 +68285,53 @@ function getTransactionType(transaction2) {
   }
   throw new InvalidSerializableTransactionError({ transaction: transaction2 });
 }
+const defaultParameters = [
+  "blobVersionedHashes",
+  "chainId",
+  "fees",
+  "gas",
+  "nonce",
+  "type"
+];
 async function prepareTransactionRequest(client2, args) {
-  const { account: account_ = client2.account, chain, gas, nonce, parameters = ["fees", "gas", "nonce", "type"], type } = args;
+  const { account: account_ = client2.account, blobs, chain, chainId, gas, kzg, nonce, parameters = defaultParameters, type } = args;
   const account2 = account_ ? parseAccount(account_) : void 0;
-  const block = await getAction$1(client2, getBlock, "getBlock")({ blockTag: "latest" });
   const request = { ...args, ...account2 ? { from: account2 == null ? void 0 : account2.address } : {} };
+  let block;
+  async function getBlock$1() {
+    if (block)
+      return block;
+    block = await getAction$1(client2, getBlock, "getBlock")({ blockTag: "latest" });
+    return block;
+  }
+  if ((parameters.includes("blobVersionedHashes") || parameters.includes("sidecars")) && blobs && kzg) {
+    const commitments = blobsToCommitments({ blobs, kzg });
+    if (parameters.includes("blobVersionedHashes")) {
+      const versionedHashes = commitmentsToVersionedHashes({
+        commitments,
+        to: "hex"
+      });
+      request.blobVersionedHashes = versionedHashes;
+    }
+    if (parameters.includes("sidecars")) {
+      const proofs = blobsToProofs({ blobs, commitments, kzg });
+      const sidecars = toBlobSidecars({
+        blobs,
+        commitments,
+        proofs,
+        to: "hex"
+      });
+      request.sidecars = sidecars;
+    }
+  }
+  if (parameters.includes("chainId")) {
+    if (chain)
+      request.chainId = chain.id;
+    else if (typeof chainId !== "undefined")
+      request.chainId = chainId;
+    else
+      request.chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
+  }
   if (parameters.includes("nonce") && typeof nonce === "undefined" && account2)
     request.nonce = await getAction$1(client2, getTransactionCount, "getTransactionCount")({
       address: account2.address,
@@ -67321,27 +68341,32 @@ async function prepareTransactionRequest(client2, args) {
     try {
       request.type = getTransactionType(request);
     } catch {
-      request.type = typeof block.baseFeePerGas === "bigint" ? "eip1559" : "legacy";
+      const block2 = await getBlock$1();
+      request.type = typeof (block2 == null ? void 0 : block2.baseFeePerGas) === "bigint" ? "eip1559" : "legacy";
     }
   }
   if (parameters.includes("fees")) {
-    if (request.type === "eip1559") {
-      const { maxFeePerGas, maxPriorityFeePerGas } = await internal_estimateFeesPerGas(client2, {
-        block,
-        chain,
-        request
-      });
-      if (typeof args.maxPriorityFeePerGas === "undefined" && args.maxFeePerGas && args.maxFeePerGas < maxPriorityFeePerGas)
-        throw new MaxFeePerGasTooLowError({
-          maxPriorityFeePerGas
+    if (request.type !== "legacy" && request.type !== "eip2930") {
+      if (typeof request.maxFeePerGas === "undefined" || typeof request.maxPriorityFeePerGas === "undefined") {
+        const block2 = await getBlock$1();
+        const { maxFeePerGas, maxPriorityFeePerGas } = await internal_estimateFeesPerGas(client2, {
+          block: block2,
+          chain,
+          request
         });
-      request.maxPriorityFeePerGas = maxPriorityFeePerGas;
-      request.maxFeePerGas = maxFeePerGas;
+        if (typeof args.maxPriorityFeePerGas === "undefined" && args.maxFeePerGas && args.maxFeePerGas < maxPriorityFeePerGas)
+          throw new MaxFeePerGasTooLowError({
+            maxPriorityFeePerGas
+          });
+        request.maxPriorityFeePerGas = maxPriorityFeePerGas;
+        request.maxFeePerGas = maxFeePerGas;
+      }
     } else {
       if (typeof args.maxFeePerGas !== "undefined" || typeof args.maxPriorityFeePerGas !== "undefined")
         throw new Eip1559FeesNotSupportedError();
+      const block2 = await getBlock$1();
       const { gasPrice: gasPrice_ } = await internal_estimateFeesPerGas(client2, {
-        block,
+        block: block2,
         chain,
         request,
         type: "legacy"
@@ -67364,16 +68389,16 @@ async function sendRawTransaction(client2, { serializedTransaction }) {
     params: [serializedTransaction]
   }, { retryCount: 0 });
 }
-async function sendTransaction$1(client2, args) {
-  var _a, _b, _c, _d;
-  const { account: account_ = client2.account, chain = client2.chain, accessList, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = args;
+async function sendTransaction$1(client2, parameters) {
+  var _a2, _b2, _c2, _d2;
+  const { account: account_ = client2.account, chain = client2.chain, accessList, blobs, data, gas, gasPrice, maxFeePerBlobGas, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = parameters;
   if (!account_)
     throw new AccountNotFoundError({
       docsPath: "/docs/actions/wallet/sendTransaction"
     });
   const account2 = parseAccount(account_);
   try {
-    assertRequest(args);
+    assertRequest(parameters);
     let chainId;
     if (chain !== null) {
       chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
@@ -67386,38 +68411,41 @@ async function sendTransaction$1(client2, args) {
       const request2 = await getAction$1(client2, prepareTransactionRequest, "prepareTransactionRequest")({
         account: account2,
         accessList,
+        blobs,
         chain,
+        chainId,
         data,
         gas,
         gasPrice,
+        maxFeePerBlobGas,
         maxFeePerGas,
         maxPriorityFeePerGas,
         nonce,
+        parameters: [...defaultParameters, "sidecars"],
         to,
         value,
         ...rest
       });
-      if (!chainId)
-        chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
-      const serializer = (_a = chain == null ? void 0 : chain.serializers) == null ? void 0 : _a.transaction;
-      const serializedTransaction = await account2.signTransaction({
-        ...request2,
-        chainId
-      }, { serializer });
+      const serializer = (_a2 = chain == null ? void 0 : chain.serializers) == null ? void 0 : _a2.transaction;
+      const serializedTransaction = await account2.signTransaction(request2, {
+        serializer
+      });
       return await getAction$1(client2, sendRawTransaction, "sendRawTransaction")({
         serializedTransaction
       });
     }
-    const chainFormat = (_d = (_c = (_b = client2.chain) == null ? void 0 : _b.formatters) == null ? void 0 : _c.transactionRequest) == null ? void 0 : _d.format;
+    const chainFormat = (_d2 = (_c2 = (_b2 = client2.chain) == null ? void 0 : _b2.formatters) == null ? void 0 : _c2.transactionRequest) == null ? void 0 : _d2.format;
     const format2 = chainFormat || formatTransactionRequest;
     const request = format2({
       // Pick out extra data that might exist on the chain's transaction request type.
       ...extract(rest, { format: chainFormat }),
       accessList,
+      blobs,
       data,
       from: account2.address,
       gas,
       gasPrice,
+      maxFeePerBlobGas,
       maxFeePerGas,
       maxPriorityFeePerGas,
       nonce,
@@ -67430,9 +68458,9 @@ async function sendTransaction$1(client2, args) {
     }, { retryCount: 0 });
   } catch (err) {
     throw getTransactionError(err, {
-      ...args,
+      ...parameters,
       account: account2,
-      chain: args.chain || void 0
+      chain: parameters.chain || void 0
     });
   }
 }
@@ -67648,472 +68676,6 @@ const universalSignatureValidatorAbi = [
     type: "constructor"
   }
 ];
-function number(n2) {
-  if (!Number.isSafeInteger(n2) || n2 < 0)
-    throw new Error(`Wrong positive integer: ${n2}`);
-}
-function bytes(b3, ...lengths) {
-  if (!(b3 instanceof Uint8Array))
-    throw new Error("Expected Uint8Array");
-  if (lengths.length > 0 && !lengths.includes(b3.length))
-    throw new Error(`Expected Uint8Array of length ${lengths}, not of length=${b3.length}`);
-}
-function exists(instance, checkFinished = true) {
-  if (instance.destroyed)
-    throw new Error("Hash instance has been destroyed");
-  if (checkFinished && instance.finished)
-    throw new Error("Hash#digest() has already been called");
-}
-function output(out, instance) {
-  bytes(out);
-  const min2 = instance.outputLen;
-  if (out.length < min2) {
-    throw new Error(`digestInto() expects output buffer of length at least ${min2}`);
-  }
-}
-const U32_MASK64 = /* @__PURE__ */ BigInt(2 ** 32 - 1);
-const _32n = /* @__PURE__ */ BigInt(32);
-function fromBig(n2, le2 = false) {
-  if (le2)
-    return { h: Number(n2 & U32_MASK64), l: Number(n2 >> _32n & U32_MASK64) };
-  return { h: Number(n2 >> _32n & U32_MASK64) | 0, l: Number(n2 & U32_MASK64) | 0 };
-}
-function split(lst, le2 = false) {
-  let Ah2 = new Uint32Array(lst.length);
-  let Al = new Uint32Array(lst.length);
-  for (let i2 = 0; i2 < lst.length; i2++) {
-    const { h: h2, l: l2 } = fromBig(lst[i2], le2);
-    [Ah2[i2], Al[i2]] = [h2, l2];
-  }
-  return [Ah2, Al];
-}
-const rotlSH = (h2, l2, s2) => h2 << s2 | l2 >>> 32 - s2;
-const rotlSL = (h2, l2, s2) => l2 << s2 | h2 >>> 32 - s2;
-const rotlBH = (h2, l2, s2) => l2 << s2 - 32 | h2 >>> 64 - s2;
-const rotlBL = (h2, l2, s2) => h2 << s2 - 32 | l2 >>> 64 - s2;
-/*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-const u8a = (a2) => a2 instanceof Uint8Array;
-const u32 = (arr) => new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
-const isLE = new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
-if (!isLE)
-  throw new Error("Non little-endian hardware is not supported");
-function utf8ToBytes(str) {
-  if (typeof str !== "string")
-    throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
-  return new Uint8Array(new TextEncoder().encode(str));
-}
-function toBytes(data) {
-  if (typeof data === "string")
-    data = utf8ToBytes(data);
-  if (!u8a(data))
-    throw new Error(`expected Uint8Array, got ${typeof data}`);
-  return data;
-}
-class Hash2 {
-  // Safe version that clones internal state
-  clone() {
-    return this._cloneInto();
-  }
-}
-function wrapConstructor(hashCons) {
-  const hashC = (msg) => hashCons().update(toBytes(msg)).digest();
-  const tmp = hashCons();
-  hashC.outputLen = tmp.outputLen;
-  hashC.blockLen = tmp.blockLen;
-  hashC.create = () => hashCons();
-  return hashC;
-}
-const [SHA3_PI, SHA3_ROTL, _SHA3_IOTA] = [[], [], []];
-const _0n = /* @__PURE__ */ BigInt(0);
-const _1n = /* @__PURE__ */ BigInt(1);
-const _2n = /* @__PURE__ */ BigInt(2);
-const _7n = /* @__PURE__ */ BigInt(7);
-const _256n = /* @__PURE__ */ BigInt(256);
-const _0x71n = /* @__PURE__ */ BigInt(113);
-for (let round2 = 0, R2 = _1n, x = 1, y2 = 0; round2 < 24; round2++) {
-  [x, y2] = [y2, (2 * x + 3 * y2) % 5];
-  SHA3_PI.push(2 * (5 * y2 + x));
-  SHA3_ROTL.push((round2 + 1) * (round2 + 2) / 2 % 64);
-  let t2 = _0n;
-  for (let j2 = 0; j2 < 7; j2++) {
-    R2 = (R2 << _1n ^ (R2 >> _7n) * _0x71n) % _256n;
-    if (R2 & _2n)
-      t2 ^= _1n << (_1n << /* @__PURE__ */ BigInt(j2)) - _1n;
-  }
-  _SHA3_IOTA.push(t2);
-}
-const [SHA3_IOTA_H, SHA3_IOTA_L] = /* @__PURE__ */ split(_SHA3_IOTA, true);
-const rotlH = (h2, l2, s2) => s2 > 32 ? rotlBH(h2, l2, s2) : rotlSH(h2, l2, s2);
-const rotlL = (h2, l2, s2) => s2 > 32 ? rotlBL(h2, l2, s2) : rotlSL(h2, l2, s2);
-function keccakP(s2, rounds = 24) {
-  const B2 = new Uint32Array(5 * 2);
-  for (let round2 = 24 - rounds; round2 < 24; round2++) {
-    for (let x = 0; x < 10; x++)
-      B2[x] = s2[x] ^ s2[x + 10] ^ s2[x + 20] ^ s2[x + 30] ^ s2[x + 40];
-    for (let x = 0; x < 10; x += 2) {
-      const idx1 = (x + 8) % 10;
-      const idx0 = (x + 2) % 10;
-      const B0 = B2[idx0];
-      const B1 = B2[idx0 + 1];
-      const Th2 = rotlH(B0, B1, 1) ^ B2[idx1];
-      const Tl = rotlL(B0, B1, 1) ^ B2[idx1 + 1];
-      for (let y2 = 0; y2 < 50; y2 += 10) {
-        s2[x + y2] ^= Th2;
-        s2[x + y2 + 1] ^= Tl;
-      }
-    }
-    let curH = s2[2];
-    let curL = s2[3];
-    for (let t2 = 0; t2 < 24; t2++) {
-      const shift2 = SHA3_ROTL[t2];
-      const Th2 = rotlH(curH, curL, shift2);
-      const Tl = rotlL(curH, curL, shift2);
-      const PI = SHA3_PI[t2];
-      curH = s2[PI];
-      curL = s2[PI + 1];
-      s2[PI] = Th2;
-      s2[PI + 1] = Tl;
-    }
-    for (let y2 = 0; y2 < 50; y2 += 10) {
-      for (let x = 0; x < 10; x++)
-        B2[x] = s2[y2 + x];
-      for (let x = 0; x < 10; x++)
-        s2[y2 + x] ^= ~B2[(x + 2) % 10] & B2[(x + 4) % 10];
-    }
-    s2[0] ^= SHA3_IOTA_H[round2];
-    s2[1] ^= SHA3_IOTA_L[round2];
-  }
-  B2.fill(0);
-}
-class Keccak extends Hash2 {
-  // NOTE: we accept arguments in bytes instead of bits here.
-  constructor(blockLen, suffix, outputLen, enableXOF = false, rounds = 24) {
-    super();
-    this.blockLen = blockLen;
-    this.suffix = suffix;
-    this.outputLen = outputLen;
-    this.enableXOF = enableXOF;
-    this.rounds = rounds;
-    this.pos = 0;
-    this.posOut = 0;
-    this.finished = false;
-    this.destroyed = false;
-    number(outputLen);
-    if (0 >= this.blockLen || this.blockLen >= 200)
-      throw new Error("Sha3 supports only keccak-f1600 function");
-    this.state = new Uint8Array(200);
-    this.state32 = u32(this.state);
-  }
-  keccak() {
-    keccakP(this.state32, this.rounds);
-    this.posOut = 0;
-    this.pos = 0;
-  }
-  update(data) {
-    exists(this);
-    const { blockLen, state } = this;
-    data = toBytes(data);
-    const len = data.length;
-    for (let pos = 0; pos < len; ) {
-      const take = Math.min(blockLen - this.pos, len - pos);
-      for (let i2 = 0; i2 < take; i2++)
-        state[this.pos++] ^= data[pos++];
-      if (this.pos === blockLen)
-        this.keccak();
-    }
-    return this;
-  }
-  finish() {
-    if (this.finished)
-      return;
-    this.finished = true;
-    const { state, suffix, pos, blockLen } = this;
-    state[pos] ^= suffix;
-    if ((suffix & 128) !== 0 && pos === blockLen - 1)
-      this.keccak();
-    state[blockLen - 1] ^= 128;
-    this.keccak();
-  }
-  writeInto(out) {
-    exists(this, false);
-    bytes(out);
-    this.finish();
-    const bufferOut = this.state;
-    const { blockLen } = this;
-    for (let pos = 0, len = out.length; pos < len; ) {
-      if (this.posOut >= blockLen)
-        this.keccak();
-      const take = Math.min(blockLen - this.posOut, len - pos);
-      out.set(bufferOut.subarray(this.posOut, this.posOut + take), pos);
-      this.posOut += take;
-      pos += take;
-    }
-    return out;
-  }
-  xofInto(out) {
-    if (!this.enableXOF)
-      throw new Error("XOF is not possible for this instance");
-    return this.writeInto(out);
-  }
-  xof(bytes3) {
-    number(bytes3);
-    return this.xofInto(new Uint8Array(bytes3));
-  }
-  digestInto(out) {
-    output(out, this);
-    if (this.finished)
-      throw new Error("digest() was already called");
-    this.writeInto(out);
-    this.destroy();
-    return out;
-  }
-  digest() {
-    return this.digestInto(new Uint8Array(this.outputLen));
-  }
-  destroy() {
-    this.destroyed = true;
-    this.state.fill(0);
-  }
-  _cloneInto(to) {
-    const { blockLen, suffix, outputLen, rounds, enableXOF } = this;
-    to || (to = new Keccak(blockLen, suffix, outputLen, enableXOF, rounds));
-    to.state32.set(this.state32);
-    to.pos = this.pos;
-    to.posOut = this.posOut;
-    to.finished = this.finished;
-    to.rounds = rounds;
-    to.suffix = suffix;
-    to.outputLen = outputLen;
-    to.enableXOF = enableXOF;
-    to.destroyed = this.destroyed;
-    return to;
-  }
-}
-const gen = (suffix, blockLen, outputLen) => wrapConstructor(() => new Keccak(blockLen, suffix, outputLen));
-const keccak_256 = /* @__PURE__ */ gen(1, 136, 256 / 8);
-function keccak256(value, to_) {
-  const to = to_ || "hex";
-  const bytes3 = keccak_256(isHex(value, { strict: false }) ? toBytes$1(value) : value);
-  if (to === "bytes")
-    return bytes3;
-  return toHex(bytes3);
-}
-function checksumAddress(address_, chainId) {
-  const hexAddress = chainId ? `${chainId}${address_.toLowerCase()}` : address_.substring(2).toLowerCase();
-  const hash2 = keccak256(stringToBytes(hexAddress), "bytes");
-  const address = (chainId ? hexAddress.substring(`${chainId}0x`.length) : hexAddress).split("");
-  for (let i2 = 0; i2 < 40; i2 += 2) {
-    if (hash2[i2 >> 1] >> 4 >= 8 && address[i2]) {
-      address[i2] = address[i2].toUpperCase();
-    }
-    if ((hash2[i2 >> 1] & 15) >= 8 && address[i2 + 1]) {
-      address[i2 + 1] = address[i2 + 1].toUpperCase();
-    }
-  }
-  return `0x${address.join("")}`;
-}
-function getAddress(address, chainId) {
-  if (!isAddress(address))
-    throw new InvalidAddressError({ address });
-  return checksumAddress(address, chainId);
-}
-class NegativeOffsetError extends BaseError$2 {
-  constructor({ offset: offset2 }) {
-    super(`Offset \`${offset2}\` cannot be negative.`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "NegativeOffsetError"
-    });
-  }
-}
-class PositionOutOfBoundsError extends BaseError$2 {
-  constructor({ length: length2, position: position2 }) {
-    super(`Position \`${position2}\` is out of bounds (\`0 < position < ${length2}\`).`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "PositionOutOfBoundsError"
-    });
-  }
-}
-class RecursiveReadLimitExceededError extends BaseError$2 {
-  constructor({ count, limit }) {
-    super(`Recursive read limit of \`${limit}\` exceeded (recursive read count: \`${count}\`).`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "RecursiveReadLimitExceededError"
-    });
-  }
-}
-const staticCursor = {
-  bytes: new Uint8Array(),
-  dataView: new DataView(new ArrayBuffer(0)),
-  position: 0,
-  positionReadCount: /* @__PURE__ */ new Map(),
-  recursiveReadCount: 0,
-  recursiveReadLimit: Infinity,
-  assertReadLimit() {
-    if (this.recursiveReadCount >= this.recursiveReadLimit)
-      throw new RecursiveReadLimitExceededError({
-        count: this.recursiveReadCount + 1,
-        limit: this.recursiveReadLimit
-      });
-  },
-  assertPosition(position2) {
-    if (position2 < 0 || position2 > this.bytes.length - 1)
-      throw new PositionOutOfBoundsError({
-        length: this.bytes.length,
-        position: position2
-      });
-  },
-  decrementPosition(offset2) {
-    if (offset2 < 0)
-      throw new NegativeOffsetError({ offset: offset2 });
-    const position2 = this.position - offset2;
-    this.assertPosition(position2);
-    this.position = position2;
-  },
-  getReadCount(position2) {
-    return this.positionReadCount.get(position2 || this.position) || 0;
-  },
-  incrementPosition(offset2) {
-    if (offset2 < 0)
-      throw new NegativeOffsetError({ offset: offset2 });
-    const position2 = this.position + offset2;
-    this.assertPosition(position2);
-    this.position = position2;
-  },
-  inspectByte(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2);
-    return this.bytes[position2];
-  },
-  inspectBytes(length2, position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + length2 - 1);
-    return this.bytes.subarray(position2, position2 + length2);
-  },
-  inspectUint8(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2);
-    return this.bytes[position2];
-  },
-  inspectUint16(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + 1);
-    return this.dataView.getUint16(position2);
-  },
-  inspectUint24(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + 2);
-    return (this.dataView.getUint16(position2) << 8) + this.dataView.getUint8(position2 + 2);
-  },
-  inspectUint32(position_) {
-    const position2 = position_ ?? this.position;
-    this.assertPosition(position2 + 3);
-    return this.dataView.getUint32(position2);
-  },
-  pushByte(byte) {
-    this.assertPosition(this.position);
-    this.bytes[this.position] = byte;
-    this.position++;
-  },
-  pushBytes(bytes3) {
-    this.assertPosition(this.position + bytes3.length - 1);
-    this.bytes.set(bytes3, this.position);
-    this.position += bytes3.length;
-  },
-  pushUint8(value) {
-    this.assertPosition(this.position);
-    this.bytes[this.position] = value;
-    this.position++;
-  },
-  pushUint16(value) {
-    this.assertPosition(this.position + 1);
-    this.dataView.setUint16(this.position, value);
-    this.position += 2;
-  },
-  pushUint24(value) {
-    this.assertPosition(this.position + 2);
-    this.dataView.setUint16(this.position, value >> 8);
-    this.dataView.setUint8(this.position + 2, value & ~4294967040);
-    this.position += 3;
-  },
-  pushUint32(value) {
-    this.assertPosition(this.position + 3);
-    this.dataView.setUint32(this.position, value);
-    this.position += 4;
-  },
-  readByte() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectByte();
-    this.position++;
-    return value;
-  },
-  readBytes(length2, size2) {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectBytes(length2);
-    this.position += size2 ?? length2;
-    return value;
-  },
-  readUint8() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint8();
-    this.position += 1;
-    return value;
-  },
-  readUint16() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint16();
-    this.position += 2;
-    return value;
-  },
-  readUint24() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint24();
-    this.position += 3;
-    return value;
-  },
-  readUint32() {
-    this.assertReadLimit();
-    this._touch();
-    const value = this.inspectUint32();
-    this.position += 4;
-    return value;
-  },
-  setPosition(position2) {
-    const oldPosition = this.position;
-    this.assertPosition(position2);
-    this.position = position2;
-    return () => this.position = oldPosition;
-  },
-  _touch() {
-    if (this.recursiveReadLimit === Infinity)
-      return;
-    const count = this.getReadCount();
-    this.positionReadCount.set(this.position, count + 1);
-    if (count > 0)
-      this.recursiveReadCount++;
-  }
-};
-function createCursor(bytes3, { recursiveReadLimit = 8192 } = {}) {
-  const cursor2 = Object.create(staticCursor);
-  cursor2.bytes = bytes3;
-  cursor2.dataView = new DataView(bytes3.buffer, bytes3.byteOffset, bytes3.byteLength);
-  cursor2.positionReadCount = /* @__PURE__ */ new Map();
-  cursor2.recursiveReadLimit = recursiveReadLimit;
-  return cursor2;
-}
 function bytesToBigInt(bytes3, opts = {}) {
   if (typeof opts.size !== "undefined")
     assertSize(bytes3, { size: opts.size });
@@ -68315,7 +68877,7 @@ function decodeString(cursor2, { staticPosition }) {
   return [value, 32];
 }
 function hasDynamicChild(param) {
-  var _a;
+  var _a2;
   const { type } = param;
   if (type === "string")
     return true;
@@ -68324,7 +68886,7 @@ function hasDynamicChild(param) {
   if (type.endsWith("[]"))
     return true;
   if (type === "tuple")
-    return (_a = param.components) == null ? void 0 : _a.some(hasDynamicChild);
+    return (_a2 = param.components) == null ? void 0 : _a2.some(hasDynamicChild);
   const arrayComponents = getArrayComponents(param.type);
   if (arrayComponents && hasDynamicChild({ ...param, type: arrayComponents[1] }))
     return true;
@@ -68504,7 +69066,7 @@ function isArgOfType(arg, abiParameter) {
   const abiParameterType = abiParameter.type;
   switch (abiParameterType) {
     case "address":
-      return isAddress(arg);
+      return isAddress(arg, { strict: false });
     case "bool":
       return argType === "boolean";
     case "function":
@@ -68542,9 +69104,9 @@ function getAmbiguousTypes(sourceParameters, targetParameters, args) {
       if (types2.includes("address") && types2.includes("bytes20"))
         return true;
       if (types2.includes("address") && types2.includes("string"))
-        return isAddress(args[parameterIndex]);
+        return isAddress(args[parameterIndex], { strict: false });
       if (types2.includes("address") && types2.includes("bytes"))
-        return isAddress(args[parameterIndex]);
+        return isAddress(args[parameterIndex], { strict: false });
       return false;
     })();
     if (ambiguous)
@@ -68574,7 +69136,7 @@ function decodeFunctionResult(parameters) {
   return void 0;
 }
 const docsPath$2 = "/docs/contract/encodeFunctionData";
-function encodeFunctionData(parameters) {
+function prepareEncodeFunctionData(parameters) {
   const { abi: abi2, args, functionName } = parameters;
   let abiItem = abi2[0];
   if (functionName) {
@@ -68589,14 +69151,27 @@ function encodeFunctionData(parameters) {
   }
   if (abiItem.type !== "function")
     throw new AbiFunctionNotFoundError(void 0, { docsPath: docsPath$2 });
-  const definition = formatAbiItem$1(abiItem);
-  const signature2 = toFunctionSelector(definition);
+  return {
+    abi: [abiItem],
+    functionName: toFunctionSelector(formatAbiItem$1(abiItem))
+  };
+}
+function encodeFunctionData(parameters) {
+  const { args } = parameters;
+  const { abi: abi2, functionName } = (() => {
+    var _a2;
+    if (parameters.abi.length === 1 && ((_a2 = parameters.functionName) == null ? void 0 : _a2.startsWith("0x")))
+      return parameters;
+    return prepareEncodeFunctionData(parameters);
+  })();
+  const abiItem = abi2[0];
+  const signature2 = functionName;
   const data = "inputs" in abiItem && abiItem.inputs ? encodeAbiParameters(abiItem.inputs, args ?? []) : void 0;
   return concatHex([signature2, data ?? "0x"]);
 }
 function getChainContractAddress({ blockNumber, chain, contract: name }) {
-  var _a;
-  const contract = (_a = chain == null ? void 0 : chain.contracts) == null ? void 0 : _a[name];
+  var _a2;
+  const contract = (_a2 = chain == null ? void 0 : chain.contracts) == null ? void 0 : _a2[name];
   if (!contract)
     throw new ChainDoesNotSupportContract({
       chain,
@@ -68615,7 +69190,7 @@ function getChainContractAddress({ blockNumber, chain, contract: name }) {
 }
 const panicReasons = {
   1: "An `assert` condition failed.",
-  17: "Arithmic operation resulted in underflow or overflow.",
+  17: "Arithmetic operation resulted in underflow or overflow.",
   18: "Division or modulo by zero (e.g. `5 / 0` or `23 % 0`).",
   33: "Attempted to convert to an invalid type.",
   34: "Attempted to access a storage byte array that is incorrectly encoded.",
@@ -68724,12 +69299,12 @@ function prettyStateOverride(stateOverride) {
 }
 class CallExecutionError extends BaseError$2 {
   constructor(cause, { account: account_, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride }) {
-    var _a;
+    var _a2;
     const account2 = account_ ? parseAccount(account_) : void 0;
     let prettyArgs = prettyPrint({
       from: account2 == null ? void 0 : account2.address,
       to,
-      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a.symbol) || "ETH"}`,
+      value: typeof value !== "undefined" && `${formatEther(value)} ${((_a2 = chain == null ? void 0 : chain.nativeCurrency) == null ? void 0 : _a2.symbol) || "ETH"}`,
       data,
       gas,
       gasPrice: typeof gasPrice !== "undefined" && `${formatGwei(gasPrice)} gwei`,
@@ -68967,23 +69542,23 @@ class RawContractError extends BaseError$2 {
   }
 }
 function isNullUniversalResolverError(err, callType) {
-  var _a, _b, _c, _d, _e, _f;
+  var _a2, _b2, _c2, _d2, _e2, _f2;
   if (!(err instanceof BaseError$2))
     return false;
   const cause = err.walk((e2) => e2 instanceof ContractFunctionRevertedError);
   if (!(cause instanceof ContractFunctionRevertedError))
     return false;
-  if (((_a = cause.data) == null ? void 0 : _a.errorName) === "ResolverNotFound")
+  if (((_a2 = cause.data) == null ? void 0 : _a2.errorName) === "ResolverNotFound")
     return true;
-  if (((_b = cause.data) == null ? void 0 : _b.errorName) === "ResolverWildcardNotSupported")
+  if (((_b2 = cause.data) == null ? void 0 : _b2.errorName) === "ResolverWildcardNotSupported")
     return true;
-  if (((_c = cause.data) == null ? void 0 : _c.errorName) === "ResolverNotContract")
+  if (((_c2 = cause.data) == null ? void 0 : _c2.errorName) === "ResolverNotContract")
     return true;
-  if (((_d = cause.data) == null ? void 0 : _d.errorName) === "ResolverError")
+  if (((_d2 = cause.data) == null ? void 0 : _d2.errorName) === "ResolverError")
     return true;
-  if (((_e = cause.data) == null ? void 0 : _e.errorName) === "HttpError")
+  if (((_e2 = cause.data) == null ? void 0 : _e2.errorName) === "HttpError")
     return true;
-  if ((_f = cause.reason) == null ? void 0 : _f.includes("Wildcard on non-extended resolvers is not supported"))
+  if ((_f2 = cause.reason) == null ? void 0 : _f2.includes("Wildcard on non-extended resolvers is not supported"))
     return true;
   if (callType === "reverse" && cause.reason === panicReasons[50])
     return true;
@@ -69145,18 +69720,18 @@ function createBatchScheduler({ fn, id: id2, shouldSplitBatch, wait: wait2 = 0, 
     if (args.length === 0)
       return;
     fn(args).then((data) => {
-      var _a;
+      var _a2;
       if (sort && Array.isArray(data))
         data.sort(sort);
       for (let i2 = 0; i2 < scheduler2.length; i2++) {
         const { pendingPromise } = scheduler2[i2];
-        (_a = pendingPromise.resolve) == null ? void 0 : _a.call(pendingPromise, [data[i2], data]);
+        (_a2 = pendingPromise.resolve) == null ? void 0 : _a2.call(pendingPromise, [data[i2], data]);
       }
     }).catch((err) => {
-      var _a;
+      var _a2;
       for (let i2 = 0; i2 < scheduler2.length; i2++) {
         const { pendingPromise } = scheduler2[i2];
-        (_a = pendingPromise.reject) == null ? void 0 : _a.call(pendingPromise, err);
+        (_a2 = pendingPromise.reject) == null ? void 0 : _a2.call(pendingPromise, err);
       }
     });
   };
@@ -69187,24 +69762,26 @@ function createBatchScheduler({ fn, id: id2, shouldSplitBatch, wait: wait2 = 0, 
   };
 }
 async function call(client2, args) {
-  var _a, _b, _c, _d;
-  const { account: account_ = client2.account, batch = Boolean((_a = client2.batch) == null ? void 0 : _a.multicall), blockNumber, blockTag = "latest", accessList, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride, ...rest } = args;
+  var _a2, _b2, _c2, _d2;
+  const { account: account_ = client2.account, batch = Boolean((_a2 = client2.batch) == null ? void 0 : _a2.multicall), blockNumber, blockTag = "latest", accessList, blobs, data, gas, gasPrice, maxFeePerBlobGas, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride, ...rest } = args;
   const account2 = account_ ? parseAccount(account_) : void 0;
   try {
     assertRequest(args);
     const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
     const block = blockNumberHex || blockTag;
     const rpcStateOverride = parseStateOverride(stateOverride);
-    const chainFormat = (_d = (_c = (_b = client2.chain) == null ? void 0 : _b.formatters) == null ? void 0 : _c.transactionRequest) == null ? void 0 : _d.format;
+    const chainFormat = (_d2 = (_c2 = (_b2 = client2.chain) == null ? void 0 : _b2.formatters) == null ? void 0 : _c2.transactionRequest) == null ? void 0 : _d2.format;
     const format2 = chainFormat || formatTransactionRequest;
     const request = format2({
       // Pick out extra data that might exist on the chain's transaction request type.
       ...extract(rest, { format: chainFormat }),
       from: account2 == null ? void 0 : account2.address,
       accessList,
+      blobs,
       data,
       gas,
       gasPrice,
+      maxFeePerBlobGas,
       maxFeePerGas,
       maxPriorityFeePerGas,
       nonce,
@@ -69225,17 +69802,20 @@ async function call(client2, args) {
     }
     const response = await client2.request({
       method: "eth_call",
-      params: rpcStateOverride ? [request, block, rpcStateOverride] : [request, block]
+      params: rpcStateOverride ? [
+        request,
+        block,
+        rpcStateOverride
+      ] : [request, block]
     });
     if (response === "0x")
       return { data: void 0 };
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-OUrBUoqU.js"), true ? [] : void 0, import.meta.url);
-    if ((data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to) {
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BQN8WFdy.js"), true ? [] : void 0, import.meta.url);
+    if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
-    }
     throw getCallError(err, {
       ...args,
       account: account2,
@@ -69256,8 +69836,8 @@ function shouldPerformMulticall({ request }) {
   return true;
 }
 async function scheduleMulticall(client2, args) {
-  var _a;
-  const { batchSize = 1024, wait: wait2 = 0 } = typeof ((_a = client2.batch) == null ? void 0 : _a.multicall) === "object" ? client2.batch.multicall : {};
+  var _a2;
+  const { batchSize = 1024, wait: wait2 = 0 } = typeof ((_a2 = client2.batch) == null ? void 0 : _a2.multicall) === "object" ? client2.batch.multicall : {};
   const { blockNumber, blockTag = "latest", data, multicallAddress: multicallAddress_, to } = args;
   let multicallAddress = multicallAddress_;
   if (!multicallAddress) {
@@ -69315,10 +69895,11 @@ async function scheduleMulticall(client2, args) {
   return { data: returnData };
 }
 function getRevertErrorData(err) {
+  var _a2;
   if (!(err instanceof BaseError$2))
     return void 0;
   const error = err.walk();
-  return typeof error.data === "object" ? error.data.data : error.data;
+  return typeof (error == null ? void 0 : error.data) === "object" ? (_a2 = error.data) == null ? void 0 : _a2.data : error.data;
 }
 function parseStateMapping(stateMapping) {
   if (!stateMapping || stateMapping.length === 0)
@@ -69343,18 +69924,14 @@ function parseStateMapping(stateMapping) {
 function parseAccountStateOverride(args) {
   const { balance, nonce, state, stateDiff, code: code2 } = args;
   const rpcAccountStateOverride = {};
-  if (code2 !== void 0) {
+  if (code2 !== void 0)
     rpcAccountStateOverride.code = code2;
-  }
-  if (balance !== void 0) {
-    rpcAccountStateOverride.balance = numberToHex(balance, { size: 32 });
-  }
-  if (nonce !== void 0) {
-    rpcAccountStateOverride.nonce = numberToHex(nonce, { size: 8 });
-  }
-  if (state !== void 0) {
+  if (balance !== void 0)
+    rpcAccountStateOverride.balance = numberToHex(balance);
+  if (nonce !== void 0)
+    rpcAccountStateOverride.nonce = numberToHex(nonce);
+  if (state !== void 0)
     rpcAccountStateOverride.state = parseStateMapping(state);
-  }
   if (stateDiff !== void 0) {
     if (rpcAccountStateOverride.state)
       throw new StateAssignmentConflictError();
@@ -69367,7 +69944,7 @@ function parseStateOverride(args) {
     return void 0;
   const rpcStateOverride = {};
   for (const { address, ...accountState } of args) {
-    if (!isAddress(address))
+    if (!isAddress(address, { strict: false }))
       throw new InvalidAddressError({ address });
     if (rpcStateOverride[address])
       throw new AccountStateConflictError({ address });
@@ -69838,10 +70415,10 @@ async function getEnsResolver(client2, { blockNumber, blockTag, name, universalR
   return resolverAddress;
 }
 function createFilterRequestScope(client2, { method }) {
-  var _a, _b;
+  var _a2, _b2;
   const requestMap = {};
   if (client2.transport.type === "fallback")
-    (_b = (_a = client2.transport).onResponse) == null ? void 0 : _b.call(_a, ({ method: method_, response: id2, status, transport }) => {
+    (_b2 = (_a2 = client2.transport).onResponse) == null ? void 0 : _b2.call(_a2, ({ method: method_, response: id2, status, transport }) => {
       if (status === "success" && method === method_)
         requestMap[id2] = transport.request;
     });
@@ -69869,7 +70446,7 @@ class FilterTypeNotSupportedError extends BaseError$2 {
 }
 const docsPath$1 = "/docs/contract/encodeEventTopics";
 function encodeEventTopics(parameters) {
-  var _a;
+  var _a2;
   const { abi: abi2, eventName, args } = parameters;
   let abiItem = abi2[0];
   if (eventName) {
@@ -69884,7 +70461,7 @@ function encodeEventTopics(parameters) {
   const signature2 = toEventSelector(definition);
   let topics = [];
   if (args && "inputs" in abiItem) {
-    const indexedInputs = (_a = abiItem.inputs) == null ? void 0 : _a.filter((param) => "indexed" in param && param.indexed);
+    const indexedInputs = (_a2 = abiItem.inputs) == null ? void 0 : _a2.filter((param) => "indexed" in param && param.indexed);
     const args_ = Array.isArray(args) ? args : Object.values(args).length > 0 ? (indexedInputs == null ? void 0 : indexedInputs.map((x) => args[x.name])) ?? [] : [];
     if (args_.length > 0) {
       topics = (indexedInputs == null ? void 0 : indexedInputs.map((param, i2) => Array.isArray(args_[i2]) ? args_[i2].map((_, j2) => encodeArg({ param, value: args_[i2][j2] })) : args_[i2] ? encodeArg({ param, value: args_[i2] }) : null)) ?? [];
@@ -70013,6 +70590,12 @@ async function getBalance(client2, { address, blockNumber, blockTag = "latest" }
   });
   return BigInt(balance);
 }
+async function getBlobBaseFee(client2) {
+  const baseFee = await client2.request({
+    method: "eth_blobBaseFee"
+  });
+  return BigInt(baseFee);
+}
 const promiseCache = /* @__PURE__ */ new Map();
 const responseCache = /* @__PURE__ */ new Map();
 function getCache(cacheKey2) {
@@ -70108,7 +70691,7 @@ function decodeEventLog(parameters) {
         abiItem,
         param
       });
-    args[param.name || i2] = decodeTopic({ param, value: topic });
+    args[isUnnamed ? i2 : param.name || i2] = decodeTopic({ param, value: topic });
   }
   const nonIndexedInputs = inputs.filter((x) => !("indexed" in x && x.indexed));
   if (nonIndexedInputs.length > 0) {
@@ -70235,12 +70818,12 @@ function observe(observerId, callbacks, fn) {
   const emit = {};
   for (const key2 in callbacks) {
     emit[key2] = (...args) => {
-      var _a, _b;
+      var _a2, _b2;
       const listeners2 = getListeners();
       if (listeners2.length === 0)
         return;
       for (const listener of listeners2)
-        (_b = (_a = listener.fns)[key2]) == null ? void 0 : _b.call(_a, ...args);
+        (_b2 = (_a2 = listener.fns)[key2]) == null ? void 0 : _b2.call(_a2, ...args);
     };
   }
   const cleanup = fn(emit);
@@ -70272,7 +70855,7 @@ function poll(fn, { emitOnBegin, initialWaitTime, interval }) {
   watch();
   return unwatch;
 }
-async function getFilterChanges(_client, { filter: filter2 }) {
+async function getFilterChanges(_client3, { filter: filter2 }) {
   const strict = "strict" in filter2 && filter2.strict;
   const logs = await filter2.request({
     method: "eth_getFilterChanges",
@@ -70289,16 +70872,27 @@ async function getFilterChanges(_client, { filter: filter2 }) {
     strict
   });
 }
-async function uninstallFilter(_client, { filter: filter2 }) {
+async function uninstallFilter(_client3, { filter: filter2 }) {
   return filter2.request({
     method: "eth_uninstallFilter",
     params: [filter2.id]
   });
 }
 function watchContractEvent(client2, parameters) {
-  const { abi: abi2, address, args, batch = true, eventName, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ } = parameters;
-  const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
+  const { abi: abi2, address, args, batch = true, eventName, fromBlock, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ } = parameters;
+  const enablePolling = (() => {
+    if (typeof poll_ !== "undefined")
+      return poll_;
+    if (typeof fromBlock === "bigint")
+      return true;
+    if (client2.transport.type === "webSocket")
+      return false;
+    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
+      return false;
+    return true;
+  })();
   const pollContractEvent = () => {
+    const strict = strict_ ?? false;
     const observerId = stringify$1([
       "watchContractEvent",
       address,
@@ -70306,15 +70900,18 @@ function watchContractEvent(client2, parameters) {
       batch,
       client2.uid,
       eventName,
-      pollingInterval
+      pollingInterval,
+      strict,
+      fromBlock
     ]);
-    const strict = strict_ ?? false;
     return observe(observerId, { onLogs, onError }, (emit) => {
       let previousBlockNumber;
+      if (fromBlock !== void 0)
+        previousBlockNumber = fromBlock - 1n;
       let filter2;
       let initialized = false;
       const unwatch = poll(async () => {
-        var _a;
+        var _a2;
         if (!initialized) {
           try {
             filter2 = await getAction$1(client2, createContractEventFilter, "createContractEventFilter")({
@@ -70322,7 +70919,8 @@ function watchContractEvent(client2, parameters) {
               address,
               args,
               eventName,
-              strict
+              strict,
+              fromBlock
             });
           } catch {
           }
@@ -70360,7 +70958,7 @@ function watchContractEvent(client2, parameters) {
         } catch (err) {
           if (filter2 && err instanceof InvalidInputRpcError)
             initialized = false;
-          (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
+          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
         }
       }, {
         emitOnBegin: true,
@@ -70374,62 +70972,85 @@ function watchContractEvent(client2, parameters) {
     });
   };
   const subscribeContractEvent = () => {
+    const strict = strict_ ?? false;
+    const observerId = stringify$1([
+      "watchContractEvent",
+      address,
+      args,
+      batch,
+      client2.uid,
+      eventName,
+      pollingInterval,
+      strict
+    ]);
     let active = true;
     let unsubscribe = () => active = false;
-    (async () => {
-      try {
-        const topics = eventName ? encodeEventTopics({
-          abi: abi2,
-          eventName,
-          args
-        }) : [];
-        const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
-          params: ["logs", { address, topics }],
-          onData(data) {
-            var _a;
-            if (!active)
-              return;
-            const log = data.result;
-            try {
-              const { eventName: eventName2, args: args2 } = decodeEventLog({
-                abi: abi2,
-                data: log.data,
-                topics: log.topics,
-                strict: strict_
-              });
-              const formatted = formatLog(log, {
-                args: args2,
-                eventName: eventName2
-              });
-              onLogs([formatted]);
-            } catch (err) {
-              let eventName2;
-              let isUnnamed;
-              if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
-                if (strict_)
-                  return;
-                eventName2 = err.abiItem.name;
-                isUnnamed = (_a = err.abiItem.inputs) == null ? void 0 : _a.some((x) => !("name" in x && x.name));
-              }
-              const formatted = formatLog(log, {
-                args: isUnnamed ? [] : {},
-                eventName: eventName2
-              });
-              onLogs([formatted]);
+    return observe(observerId, { onLogs, onError }, (emit) => {
+      (async () => {
+        try {
+          const transport = (() => {
+            if (client2.transport.type === "fallback") {
+              const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+              if (!transport2)
+                return client2.transport;
+              return transport2.value;
             }
-          },
-          onError(error) {
-            onError == null ? void 0 : onError(error);
-          }
-        });
-        unsubscribe = unsubscribe_;
-        if (!active)
-          unsubscribe();
-      } catch (err) {
-        onError == null ? void 0 : onError(err);
-      }
-    })();
-    return unsubscribe;
+            return client2.transport;
+          })();
+          const topics = eventName ? encodeEventTopics({
+            abi: abi2,
+            eventName,
+            args
+          }) : [];
+          const { unsubscribe: unsubscribe_ } = await transport.subscribe({
+            params: ["logs", { address, topics }],
+            onData(data) {
+              var _a2;
+              if (!active)
+                return;
+              const log = data.result;
+              try {
+                const { eventName: eventName2, args: args2 } = decodeEventLog({
+                  abi: abi2,
+                  data: log.data,
+                  topics: log.topics,
+                  strict: strict_
+                });
+                const formatted = formatLog(log, {
+                  args: args2,
+                  eventName: eventName2
+                });
+                emit.onLogs([formatted]);
+              } catch (err) {
+                let eventName2;
+                let isUnnamed;
+                if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
+                  if (strict_)
+                    return;
+                  eventName2 = err.abiItem.name;
+                  isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
+                }
+                const formatted = formatLog(log, {
+                  args: isUnnamed ? [] : {},
+                  eventName: eventName2
+                });
+                emit.onLogs([formatted]);
+              }
+            },
+            onError(error) {
+              var _a2;
+              (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, error);
+            }
+          });
+          unsubscribe = unsubscribe_;
+          if (!active)
+            unsubscribe();
+        } catch (err) {
+          onError == null ? void 0 : onError(err);
+        }
+      })();
+      return () => unsubscribe();
+    });
   };
   return enablePolling ? pollContractEvent() : subscribeContractEvent();
 }
@@ -70460,7 +71081,7 @@ function uid$1(length2 = 11) {
   return buffer$1.substring(index$2, index$2++ + length2);
 }
 function createClient(parameters) {
-  const { batch, cacheTime = parameters.pollingInterval ?? 4e3, key: key2 = "base", name = "Base Client", pollingInterval = 4e3, type = "base" } = parameters;
+  const { batch, cacheTime = parameters.pollingInterval ?? 4e3, ccipRead, key: key2 = "base", name = "Base Client", pollingInterval = 4e3, type = "base" } = parameters;
   const chain = parameters.chain;
   const account2 = parameters.account ? parseAccount(parameters.account) : void 0;
   const { config: config2, request, value } = parameters.transport({
@@ -70472,6 +71093,7 @@ function createClient(parameters) {
     account: account2,
     batch,
     cacheTime,
+    ccipRead,
     chain,
     key: key2,
     name,
@@ -70571,9 +71193,9 @@ function buildRequest(request, options = {}) {
       }
     }, {
       delay: ({ count, error }) => {
-        var _a;
+        var _a2;
         if (error && error instanceof HttpRequestError) {
-          const retryAfter = (_a = error == null ? void 0 : error.headers) == null ? void 0 : _a.get("Retry-After");
+          const retryAfter = (_a2 = error == null ? void 0 : error.headers) == null ? void 0 : _a2.get("Retry-After");
           if (retryAfter == null ? void 0 : retryAfter.match(/\d/))
             return parseInt(retryAfter) * 1e3;
         }
@@ -70655,7 +71277,7 @@ function withTimeout(fn, { errorInstance = new Error("timed out"), timeout, sign
             }
           }, timeout);
         }
-        resolve(await fn({ signal: controller == null ? void 0 : controller.signal }));
+        resolve(await fn({ signal: (controller == null ? void 0 : controller.signal) || null }));
       } catch (err) {
         if (err.name === "AbortError")
           reject(errorInstance);
@@ -70681,12 +71303,12 @@ const idCache = /* @__PURE__ */ createIdStore();
 function getHttpRpcClient(url, options = {}) {
   return {
     async request(params) {
-      var _a;
-      const { body, fetchOptions = {}, timeout = options.timeout ?? 1e4 } = params;
+      var _a2;
+      const { body, fetchOptions = {}, onRequest = options.onRequest, onResponse = options.onResponse, timeout = options.timeout ?? 1e4 } = params;
       const { headers, method, signal: signal_ } = { ...options.fetchOptions, ...fetchOptions };
       try {
         const response = await withTimeout(async ({ signal }) => {
-          const response2 = await fetch(url, {
+          const init3 = {
             ...fetchOptions,
             body: Array.isArray(body) ? stringify$1(body.map((body2) => ({
               jsonrpc: "2.0",
@@ -70702,19 +71324,26 @@ function getHttpRpcClient(url, options = {}) {
               "Content-Type": "application/json"
             },
             method: method || "POST",
-            signal: signal_ || (timeout > 0 ? signal : void 0)
-          });
+            signal: signal_ || (timeout > 0 ? signal : null)
+          };
+          const request = new Request(url, init3);
+          if (onRequest)
+            await onRequest(request);
+          const response2 = await fetch(url, init3);
           return response2;
         }, {
           errorInstance: new TimeoutError({ body, url }),
           timeout,
           signal: true
         });
+        if (onResponse)
+          await onResponse(response);
         let data;
-        if ((_a = response.headers.get("Content-Type")) == null ? void 0 : _a.startsWith("application/json")) {
+        if ((_a2 = response.headers.get("Content-Type")) == null ? void 0 : _a2.startsWith("application/json"))
           data = await response.json();
-        } else {
+        else {
           data = await response.text();
+          data = JSON.parse(data || "{}");
         }
         if (!response.ok) {
           throw new HttpRequestError({
@@ -70741,7 +71370,7 @@ function getHttpRpcClient(url, options = {}) {
   };
 }
 function http(url, config2 = {}) {
-  const { batch, fetchOptions, key: key2 = "http", name = "HTTP JSON-RPC", retryDelay } = config2;
+  const { batch, fetchOptions, key: key2 = "http", name = "HTTP JSON-RPC", onFetchRequest, onFetchResponse, retryDelay } = config2;
   return ({ chain, retryCount: retryCount_, timeout: timeout_ }) => {
     const { batchSize = 1e3, wait: wait2 = 0 } = typeof batch === "object" ? batch : {};
     const retryCount = config2.retryCount ?? retryCount_;
@@ -70749,7 +71378,12 @@ function http(url, config2 = {}) {
     const url_ = url || (chain == null ? void 0 : chain.rpcUrls.default.http[0]);
     if (!url_)
       throw new UrlRequiredError();
-    const rpcClient = getHttpRpcClient(url_, { fetchOptions, timeout });
+    const rpcClient = getHttpRpcClient(url_, {
+      fetchOptions,
+      onRequest: onFetchRequest,
+      onResponse: onFetchResponse,
+      timeout
+    });
     return createTransport({
       key: key2,
       name,
@@ -70791,12 +71425,12 @@ function http(url, config2 = {}) {
   };
 }
 function formatFeeHistory(feeHistory) {
-  var _a;
+  var _a2;
   return {
     baseFeePerGas: feeHistory.baseFeePerGas.map((value) => BigInt(value)),
     gasUsedRatio: feeHistory.gasUsedRatio,
     oldestBlock: BigInt(feeHistory.oldestBlock),
-    reward: (_a = feeHistory.reward) == null ? void 0 : _a.map((reward) => reward.map((value) => BigInt(value)))
+    reward: (_a2 = feeHistory.reward) == null ? void 0 : _a2.map((reward) => reward.map((value) => BigInt(value)))
   };
 }
 async function getFeeHistory(client2, { blockCount, blockNumber, blockTag = "latest", rewardPercentiles }) {
@@ -70811,7 +71445,7 @@ async function getFeeHistory(client2, { blockCount, blockNumber, blockTag = "lat
   });
   return formatFeeHistory(feeHistory);
 }
-async function getFilterLogs(_client, { filter: filter2 }) {
+async function getFilterLogs(_client3, { filter: filter2 }) {
   const strict = filter2.strict ?? false;
   const logs = await filter2.request({
     method: "eth_getFilterLogs",
@@ -71056,7 +71690,7 @@ function getTypesForEIP712Domain({ domain: domain2 }) {
     (domain2 == null ? void 0 : domain2.salt) && { name: "salt", type: "bytes32" }
   ].filter(Boolean);
 }
-const statuses = {
+const receiptStatuses = {
   "0x0": "reverted",
   "0x1": "success"
 };
@@ -71071,7 +71705,7 @@ function formatTransactionReceipt(transactionReceipt) {
     logs: transactionReceipt.logs ? transactionReceipt.logs.map((log) => formatLog(log)) : null,
     to: transactionReceipt.to ? transactionReceipt.to : null,
     transactionIndex: transactionReceipt.transactionIndex ? hexToNumber(transactionReceipt.transactionIndex) : null,
-    status: transactionReceipt.status ? statuses[transactionReceipt.status] : null,
+    status: transactionReceipt.status ? receiptStatuses[transactionReceipt.status] : null,
     type: transactionReceipt.type ? transactionType[transactionReceipt.type] || transactionReceipt.type : null
   };
   if (transactionReceipt.blobGasPrice)
@@ -71124,7 +71758,7 @@ async function getStorageAt(client2, { address, blockNumber, blockTag = "latest"
   return data;
 }
 async function getTransaction(client2, { blockHash, blockNumber, blockTag: blockTag_, hash: hash2, index: index2 }) {
-  var _a, _b, _c;
+  var _a2, _b2, _c2;
   const blockTag = blockTag_ || "latest";
   const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
   let transaction2 = null;
@@ -71152,7 +71786,7 @@ async function getTransaction(client2, { blockHash, blockNumber, blockTag: block
       hash: hash2,
       index: index2
     });
-  const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.transaction) == null ? void 0 : _c.format) || formatTransaction;
+  const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transaction) == null ? void 0 : _c2.format) || formatTransaction;
   return format2(transaction2);
 }
 async function getTransactionConfirmations(client2, { hash: hash2, transactionReceipt }) {
@@ -71166,21 +71800,21 @@ async function getTransactionConfirmations(client2, { hash: hash2, transactionRe
   return blockNumber - transactionBlockNumber + 1n;
 }
 async function getTransactionReceipt(client2, { hash: hash2 }) {
-  var _a, _b, _c;
+  var _a2, _b2, _c2;
   const receipt = await client2.request({
     method: "eth_getTransactionReceipt",
     params: [hash2]
   });
   if (!receipt)
     throw new TransactionReceiptNotFoundError({ hash: hash2 });
-  const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.transactionReceipt) == null ? void 0 : _c.format) || formatTransactionReceipt;
+  const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transactionReceipt) == null ? void 0 : _c2.format) || formatTransactionReceipt;
   return format2(receipt);
 }
 async function multicall(client2, parameters) {
-  var _a;
+  var _a2;
   const { allowFailure = true, batchSize: batchSize_, blockNumber, blockTag, multicallAddress: multicallAddress_, stateOverride } = parameters;
   const contracts = parameters.contracts;
-  const batchSize = batchSize_ ?? (typeof ((_a = client2.batch) == null ? void 0 : _a.multicall) === "object" && client2.batch.multicall.batchSize || 1024);
+  const batchSize = batchSize_ ?? (typeof ((_a2 = client2.batch) == null ? void 0 : _a2.multicall) === "object" && client2.batch.multicall.batchSize || 1024);
   let multicallAddress = multicallAddress_;
   if (!multicallAddress) {
     if (!client2.chain)
@@ -71353,7 +71987,15 @@ async function verifyTypedData(client2, parameters) {
   });
 }
 function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, onBlockNumber, onError, poll: poll_, pollingInterval = client2.pollingInterval }) {
-  const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
+  const enablePolling = (() => {
+    if (typeof poll_ !== "undefined")
+      return poll_;
+    if (client2.transport.type === "webSocket")
+      return false;
+    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
+      return false;
+    return true;
+  })();
   let prevBlockNumber;
   const pollBlockNumber = () => {
     const observerId = stringify$1([
@@ -71364,7 +72006,7 @@ function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, on
       pollingInterval
     ]);
     return observe(observerId, { onBlockNumber, onError }, (emit) => poll(async () => {
-      var _a;
+      var _a2;
       try {
         const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({ cacheTime: 0 });
         if (prevBlockNumber) {
@@ -71382,7 +72024,7 @@ function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, on
           prevBlockNumber = blockNumber;
         }
       } catch (err) {
-        (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
+        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
       }
     }, {
       emitOnBegin,
@@ -71390,32 +72032,50 @@ function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, on
     }));
   };
   const subscribeBlockNumber = () => {
-    let active = true;
-    let unsubscribe = () => active = false;
-    (async () => {
-      try {
-        const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
-          params: ["newHeads"],
-          onData(data) {
-            var _a;
-            if (!active)
-              return;
-            const blockNumber = hexToBigInt((_a = data.result) == null ? void 0 : _a.number);
-            onBlockNumber(blockNumber, prevBlockNumber);
-            prevBlockNumber = blockNumber;
-          },
-          onError(error) {
-            onError == null ? void 0 : onError(error);
-          }
-        });
-        unsubscribe = unsubscribe_;
-        if (!active)
-          unsubscribe();
-      } catch (err) {
-        onError == null ? void 0 : onError(err);
-      }
-    })();
-    return unsubscribe;
+    const observerId = stringify$1([
+      "watchBlockNumber",
+      client2.uid,
+      emitOnBegin,
+      emitMissed
+    ]);
+    return observe(observerId, { onBlockNumber, onError }, (emit) => {
+      let active = true;
+      let unsubscribe = () => active = false;
+      (async () => {
+        try {
+          const transport = (() => {
+            if (client2.transport.type === "fallback") {
+              const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+              if (!transport2)
+                return client2.transport;
+              return transport2.value;
+            }
+            return client2.transport;
+          })();
+          const { unsubscribe: unsubscribe_ } = await transport.subscribe({
+            params: ["newHeads"],
+            onData(data) {
+              var _a2;
+              if (!active)
+                return;
+              const blockNumber = hexToBigInt((_a2 = data.result) == null ? void 0 : _a2.number);
+              emit.onBlockNumber(blockNumber, prevBlockNumber);
+              prevBlockNumber = blockNumber;
+            },
+            onError(error) {
+              var _a2;
+              (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, error);
+            }
+          });
+          unsubscribe = unsubscribe_;
+          if (!active)
+            unsubscribe();
+        } catch (err) {
+          onError == null ? void 0 : onError(err);
+        }
+      })();
+      return () => unsubscribe();
+    });
   };
   return enablePolling ? pollBlockNumber() : subscribeBlockNumber();
 }
@@ -71508,8 +72168,8 @@ async function waitForTransactionReceipt(client2, {
                   reason = "cancelled";
                 }
                 done(() => {
-                  var _a;
-                  (_a = emit.onReplaced) == null ? void 0 : _a.call(emit, {
+                  var _a2;
+                  (_a2 = emit.onReplaced) == null ? void 0 : _a2.call(emit, {
                     reason,
                     replacedTransaction,
                     transaction: replacementTransaction,
@@ -71530,20 +72190,29 @@ async function waitForTransactionReceipt(client2, {
   });
 }
 function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnBegin = false, onBlock, onError, includeTransactions: includeTransactions_, poll: poll_, pollingInterval = client2.pollingInterval }) {
-  const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
+  const enablePolling = (() => {
+    if (typeof poll_ !== "undefined")
+      return poll_;
+    if (client2.transport.type === "webSocket")
+      return false;
+    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
+      return false;
+    return true;
+  })();
   const includeTransactions = includeTransactions_ ?? false;
   let prevBlock;
   const pollBlocks = () => {
     const observerId = stringify$1([
       "watchBlocks",
       client2.uid,
+      blockTag,
       emitMissed,
       emitOnBegin,
       includeTransactions,
       pollingInterval
     ]);
     return observe(observerId, { onBlock, onError }, (emit) => poll(async () => {
-      var _a;
+      var _a2;
       try {
         const block = await getAction$1(client2, getBlock, "getBlock")({
           blockTag,
@@ -71574,7 +72243,7 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
           prevBlock = block;
         }
       } catch (err) {
-        (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
+        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
       }
     }, {
       emitOnBegin,
@@ -71586,13 +72255,22 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
     let unsubscribe = () => active = false;
     (async () => {
       try {
-        const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
+        const transport = (() => {
+          if (client2.transport.type === "fallback") {
+            const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+            if (!transport2)
+              return client2.transport;
+            return transport2.value;
+          }
+          return client2.transport;
+        })();
+        const { unsubscribe: unsubscribe_ } = await transport.subscribe({
           params: ["newHeads"],
           onData(data) {
-            var _a, _b, _c;
+            var _a2, _b2, _c2;
             if (!active)
               return;
-            const format2 = ((_c = (_b = (_a = client2.chain) == null ? void 0 : _a.formatters) == null ? void 0 : _b.block) == null ? void 0 : _c.format) || formatBlock;
+            const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.block) == null ? void 0 : _c2.format) || formatBlock;
             const block = format2(data.result);
             onBlock(block, prevBlock);
             prevBlock = block;
@@ -71608,12 +72286,22 @@ function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnB
         onError == null ? void 0 : onError(err);
       }
     })();
-    return unsubscribe;
+    return () => unsubscribe();
   };
   return enablePolling ? pollBlocks() : subscribeBlocks();
 }
-function watchEvent(client2, { address, args, batch = true, event, events, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ }) {
-  const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
+function watchEvent(client2, { address, args, batch = true, event, events, fromBlock, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ }) {
+  const enablePolling = (() => {
+    if (typeof poll_ !== "undefined")
+      return poll_;
+    if (typeof fromBlock === "bigint")
+      return true;
+    if (client2.transport.type === "webSocket")
+      return false;
+    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
+      return false;
+    return true;
+  })();
   const strict = strict_ ?? false;
   const pollEvent = () => {
     const observerId = stringify$1([
@@ -71623,14 +72311,17 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
       batch,
       client2.uid,
       event,
-      pollingInterval
+      pollingInterval,
+      fromBlock
     ]);
     return observe(observerId, { onLogs, onError }, (emit) => {
       let previousBlockNumber;
+      if (fromBlock !== void 0)
+        previousBlockNumber = fromBlock - 1n;
       let filter2;
       let initialized = false;
       const unwatch = poll(async () => {
-        var _a;
+        var _a2;
         if (!initialized) {
           try {
             filter2 = await getAction$1(client2, createEventFilter, "createEventFilter")({
@@ -71638,7 +72329,8 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
               args,
               event,
               events,
-              strict
+              strict,
+              fromBlock
             });
           } catch {
           }
@@ -71675,7 +72367,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
         } catch (err) {
           if (filter2 && err instanceof InvalidInputRpcError)
             initialized = false;
-          (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
+          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
         }
       }, {
         emitOnBegin: true,
@@ -71693,6 +72385,15 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
     let unsubscribe = () => active = false;
     (async () => {
       try {
+        const transport = (() => {
+          if (client2.transport.type === "fallback") {
+            const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+            if (!transport2)
+              return client2.transport;
+            return transport2.value;
+          }
+          return client2.transport;
+        })();
         const events_ = events ?? (event ? [event] : void 0);
         let topics = [];
         if (events_) {
@@ -71706,10 +72407,10 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
           if (event)
             topics = topics[0];
         }
-        const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
+        const { unsubscribe: unsubscribe_ } = await transport.subscribe({
           params: ["logs", { address, topics }],
           onData(data) {
-            var _a;
+            var _a2;
             if (!active)
               return;
             const log = data.result;
@@ -71729,7 +72430,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
                 if (strict_)
                   return;
                 eventName = err.abiItem.name;
-                isUnnamed = (_a = err.abiItem.inputs) == null ? void 0 : _a.some((x) => !("name" in x && x.name));
+                isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
               }
               const formatted = formatLog(log, {
                 args: isUnnamed ? [] : {},
@@ -71749,7 +72450,7 @@ function watchEvent(client2, { address, args, batch = true, event, events, onErr
         onError == null ? void 0 : onError(err);
       }
     })();
-    return unsubscribe;
+    return () => unsubscribe();
   };
   return enablePolling ? pollEvent() : subscribeEvent();
 }
@@ -71765,7 +72466,7 @@ function watchPendingTransactions(client2, { batch = true, onError, onTransactio
     return observe(observerId, { onTransactions, onError }, (emit) => {
       let filter2;
       const unwatch = poll(async () => {
-        var _a;
+        var _a2;
         try {
           if (!filter2) {
             try {
@@ -71785,7 +72486,7 @@ function watchPendingTransactions(client2, { batch = true, onError, onTransactio
             for (const hash2 of hashes)
               emit.onTransactions([hash2]);
         } catch (err) {
-          (_a = emit.onError) == null ? void 0 : _a.call(emit, err);
+          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
         }
       }, {
         emitOnBegin: true,
@@ -71822,7 +72523,7 @@ function watchPendingTransactions(client2, { batch = true, onError, onTransactio
         onError == null ? void 0 : onError(err);
       }
     })();
-    return unsubscribe;
+    return () => unsubscribe();
   };
   return enablePolling ? pollPendingTransactions() : subscribePendingTransactions();
 }
@@ -71836,6 +72537,7 @@ function publicActions(client2) {
     estimateContractGas: (args) => estimateContractGas(client2, args),
     estimateGas: (args) => estimateGas(client2, args),
     getBalance: (args) => getBalance(client2, args),
+    getBlobBaseFee: () => getBlobBaseFee(client2),
     getBlock: (args) => getBlock(client2, args),
     getBlockNumber: (args) => getBlockNumber(client2, args),
     getBlockTransactionCount: (args) => getBlockTransactionCount(client2, args),
@@ -71877,8 +72579,8 @@ function publicActions(client2) {
   };
 }
 async function getAddresses(client2) {
-  var _a;
-  if (((_a = client2.account) == null ? void 0 : _a.type) === "local")
+  var _a2;
+  if (((_a2 = client2.account) == null ? void 0 : _a2.type) === "local")
     return [client2.account.address];
   const addresses = await client2.request({ method: "eth_accounts" });
   return addresses.map((address) => checksumAddress(address));
@@ -71917,9 +72619,9 @@ async function signMessage(client2, { account: account_ = client2.account, messa
     params: [message_, account2.address]
   }, { retryCount: 0 });
 }
-async function signTransaction(client2, args) {
-  var _a, _b, _c, _d;
-  const { account: account_ = client2.account, chain = client2.chain, ...transaction2 } = args;
+async function signTransaction(client2, parameters) {
+  var _a2, _b2, _c2, _d2;
+  const { account: account_ = client2.account, chain = client2.chain, ...transaction2 } = parameters;
   if (!account_)
     throw new AccountNotFoundError({
       docsPath: "/docs/actions/wallet/signTransaction"
@@ -71927,7 +72629,7 @@ async function signTransaction(client2, args) {
   const account2 = parseAccount(account_);
   assertRequest({
     account: account2,
-    ...args
+    ...parameters
   });
   const chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
   if (chain !== null)
@@ -71935,13 +72637,14 @@ async function signTransaction(client2, args) {
       currentChainId: chainId,
       chain
     });
-  const formatters = (chain == null ? void 0 : chain.formatters) || ((_a = client2.chain) == null ? void 0 : _a.formatters);
-  const format2 = ((_b = formatters == null ? void 0 : formatters.transactionRequest) == null ? void 0 : _b.format) || formatTransactionRequest;
-  if (account2.type === "local")
+  const formatters = (chain == null ? void 0 : chain.formatters) || ((_a2 = client2.chain) == null ? void 0 : _a2.formatters);
+  const format2 = ((_b2 = formatters == null ? void 0 : formatters.transactionRequest) == null ? void 0 : _b2.format) || formatTransactionRequest;
+  if (account2.type === "local") {
     return account2.signTransaction({
       ...transaction2,
       chainId
-    }, { serializer: (_d = (_c = client2.chain) == null ? void 0 : _c.serializers) == null ? void 0 : _d.transaction });
+    }, { serializer: (_d2 = (_c2 = client2.chain) == null ? void 0 : _c2.serializers) == null ? void 0 : _d2.transaction });
+  }
   return await client2.request({
     method: "eth_signTransaction",
     params: [
@@ -72013,7 +72716,7 @@ function walletActions(client2) {
 const zeroAddress = "0x0000000000000000000000000000000000000000";
 function parseEventLogs({ abi: abi2, eventName, logs, strict = true }) {
   return logs.map((log) => {
-    var _a;
+    var _a2;
     try {
       const event = decodeEventLog({
         ...log,
@@ -72032,7 +72735,7 @@ function parseEventLogs({ abi: abi2, eventName, logs, strict = true }) {
         if (strict)
           return null;
         eventName2 = err.abiItem.name;
-        isUnnamed = (_a = err.abiItem.inputs) == null ? void 0 : _a.some((x) => !("name" in x && x.name));
+        isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
       }
       return { ...log, args: isUnnamed ? [] : {}, eventName: eventName2 };
     }
@@ -72178,14 +72881,14 @@ function createJSONStorage(getStorage, options) {
   }
   const persistStorage = {
     getItem: (name) => {
-      var _a;
+      var _a2;
       const parse2 = (str2) => {
         if (str2 === null) {
           return null;
         }
         return JSON.parse(str2, options == null ? void 0 : options.reviver);
       };
-      const str = (_a = storage.getItem(name)) != null ? _a : null;
+      const str = (_a2 = storage.getItem(name)) != null ? _a2 : null;
       if (str instanceof Promise) {
         return str.then(parse2);
       }
@@ -72286,12 +72989,12 @@ const oldImpl = (config2, baseOptions) => (set, get2, api2) => {
   );
   let stateFromStorage;
   const hydrate2 = () => {
-    var _a;
+    var _a2;
     if (!storage)
       return;
     hasHydrated = false;
     hydrationListeners.forEach((cb2) => cb2(get2()));
-    const postRehydrationCallback = ((_a = options.onRehydrateStorage) == null ? void 0 : _a.call(options, get2())) || void 0;
+    const postRehydrationCallback = ((_a2 = options.onRehydrateStorage) == null ? void 0 : _a2.call(options, get2())) || void 0;
     return toThenable(storage.getItem.bind(storage))(options.name).then((storageValue) => {
       if (storageValue) {
         return options.deserialize(storageValue);
@@ -72313,10 +73016,10 @@ const oldImpl = (config2, baseOptions) => (set, get2, api2) => {
         }
       }
     }).then((migratedState) => {
-      var _a2;
+      var _a22;
       stateFromStorage = options.merge(
         migratedState,
-        (_a2 = get2()) != null ? _a2 : configResult
+        (_a22 = get2()) != null ? _a22 : configResult
       );
       set(stateFromStorage, true);
       return setItem();
@@ -72409,15 +73112,15 @@ const newImpl = (config2, baseOptions) => (set, get2, api2) => {
   );
   let stateFromStorage;
   const hydrate2 = () => {
-    var _a, _b;
+    var _a2, _b2;
     if (!storage)
       return;
     hasHydrated = false;
     hydrationListeners.forEach((cb2) => {
-      var _a2;
-      return cb2((_a2 = get2()) != null ? _a2 : configResult);
+      var _a22;
+      return cb2((_a22 = get2()) != null ? _a22 : configResult);
     });
-    const postRehydrationCallback = ((_b = options.onRehydrateStorage) == null ? void 0 : _b.call(options, (_a = get2()) != null ? _a : configResult)) || void 0;
+    const postRehydrationCallback = ((_b2 = options.onRehydrateStorage) == null ? void 0 : _b2.call(options, (_a2 = get2()) != null ? _a2 : configResult)) || void 0;
     return toThenable(storage.getItem.bind(storage))(options.name).then((deserializedStorageValue) => {
       if (deserializedStorageValue) {
         if (typeof deserializedStorageValue.version === "number" && deserializedStorageValue.version !== options.version) {
@@ -72435,10 +73138,10 @@ const newImpl = (config2, baseOptions) => (set, get2, api2) => {
         }
       }
     }).then((migratedState) => {
-      var _a2;
+      var _a22;
       stateFromStorage = options.merge(
         migratedState,
-        (_a2 = get2()) != null ? _a2 : configResult
+        (_a22 = get2()) != null ? _a22 : configResult
       );
       set(stateFromStorage, true);
       return setItem();
@@ -72844,7 +73547,7 @@ const noopStorage = {
 function createConnector(createConnectorFn) {
   return createConnectorFn;
 }
-const version$1 = "2.6.5";
+const version$1 = "2.6.17";
 const getVersion$1 = () => `@wagmi/core@${version$1}`;
 var __classPrivateFieldGet = function(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
@@ -72862,7 +73565,7 @@ let BaseError$1 = class BaseError2 extends Error {
     return getVersion$1();
   }
   constructor(shortMessage, options = {}) {
-    var _a;
+    var _a2;
     super();
     _BaseError_instances.add(this);
     Object.defineProperty(this, "details", {
@@ -72895,7 +73598,7 @@ let BaseError$1 = class BaseError2 extends Error {
       writable: true,
       value: "WagmiCoreError"
     });
-    const details = options.cause instanceof BaseError2 ? options.cause.details : ((_a = options.cause) == null ? void 0 : _a.message) ? options.cause.message : options.details;
+    const details = options.cause instanceof BaseError2 ? options.cause.details : ((_a2 = options.cause) == null ? void 0 : _a2.message) ? options.cause.message : options.details;
     const docsPath2 = options.cause instanceof BaseError2 ? options.cause.docsPath || options.docsPath : options.docsPath;
     this.message = [
       shortMessage || "An error occurred.",
@@ -72991,15 +73694,6 @@ class SwitchChainNotSupportedError extends BaseError$1 {
     });
   }
 }
-function normalizeChainId(chainId) {
-  if (typeof chainId === "string")
-    return Number.parseInt(chainId, chainId.trim().substring(0, 2) === "0x" ? 16 : 10);
-  if (typeof chainId === "bigint")
-    return Number(chainId);
-  if (typeof chainId === "number")
-    return chainId;
-  throw new Error(`Cannot normalize chainId "${chainId}" of type "${typeof chainId}"`);
-}
 const targetMap = {
   coinbaseWallet: {
     id: "coinbaseWallet",
@@ -73048,9 +73742,9 @@ const targetMap = {
     id: "phantom",
     name: "Phantom",
     provider(window2) {
-      var _a, _b;
-      if ((_a = window2 == null ? void 0 : window2.phantom) == null ? void 0 : _a.ethereum)
-        return (_b = window2.phantom) == null ? void 0 : _b.ethereum;
+      var _a2, _b2;
+      if ((_a2 = window2 == null ? void 0 : window2.phantom) == null ? void 0 : _a2.ethereum)
+        return (_b2 = window2.phantom) == null ? void 0 : _b2.ethereum;
       return findProvider(window2, "isPhantom");
     }
   }
@@ -73083,6 +73777,10 @@ function injected(parameters = {}) {
       }
     };
   }
+  let accountsChanged;
+  let chainChanged;
+  let connect2;
+  let disconnect2;
   return createConnector((config2) => ({
     get icon() {
       return getTarget().icon;
@@ -73096,44 +73794,63 @@ function injected(parameters = {}) {
     type: injected.type,
     async setup() {
       const provider2 = await this.getProvider();
-      if (provider2 && parameters.target)
-        provider2.on("connect", this.onConnect.bind(this));
+      if (provider2 && parameters.target) {
+        if (!connect2) {
+          connect2 = this.onConnect.bind(this);
+          provider2.on("connect", connect2);
+        }
+        if (!accountsChanged) {
+          accountsChanged = this.onAccountsChanged.bind(this);
+          provider2.on("accountsChanged", accountsChanged);
+        }
+      }
     },
     async connect({ chainId, isReconnecting: isReconnecting2 } = {}) {
-      var _a, _b, _c, _d, _e, _f;
+      var _a2, _b2, _c2, _d2, _e2, _f2;
       const provider2 = await this.getProvider();
       if (!provider2)
         throw new ProviderNotFoundError();
-      let accounts = null;
-      if (!isReconnecting2) {
-        accounts = await this.getAccounts().catch(() => null);
-        const isAuthorized = !!(accounts == null ? void 0 : accounts.length);
-        if (isAuthorized)
-          try {
-            const permissions = await provider2.request({
-              method: "wallet_requestPermissions",
-              params: [{ eth_accounts: {} }]
-            });
-            accounts = (_d = (_c = (_b = (_a = permissions[0]) == null ? void 0 : _a.caveats) == null ? void 0 : _b[0]) == null ? void 0 : _c.value) == null ? void 0 : _d.map((x) => getAddress(x));
-          } catch (err) {
-            const error = err;
-            if (error.code === UserRejectedRequestError.code)
-              throw new UserRejectedRequestError(error);
-            if (error.code === ResourceUnavailableRpcError.code)
-              throw error;
-          }
+      let accounts = [];
+      if (isReconnecting2)
+        accounts = await this.getAccounts().catch(() => []);
+      else if (shimDisconnect) {
+        try {
+          const permissions = await provider2.request({
+            method: "wallet_requestPermissions",
+            params: [{ eth_accounts: {} }]
+          });
+          accounts = (_d2 = (_c2 = (_b2 = (_a2 = permissions[0]) == null ? void 0 : _a2.caveats) == null ? void 0 : _b2[0]) == null ? void 0 : _c2.value) == null ? void 0 : _d2.map((x) => getAddress(x));
+        } catch (err) {
+          const error = err;
+          if (error.code === UserRejectedRequestError.code)
+            throw new UserRejectedRequestError(error);
+          if (error.code === ResourceUnavailableRpcError.code)
+            throw error;
+        }
       }
       try {
-        if (!(accounts == null ? void 0 : accounts.length)) {
+        if (!(accounts == null ? void 0 : accounts.length) && !isReconnecting2) {
           const requestedAccounts = await provider2.request({
             method: "eth_requestAccounts"
           });
           accounts = requestedAccounts.map((x) => getAddress(x));
         }
-        provider2.removeListener("connect", this.onConnect.bind(this));
-        provider2.on("accountsChanged", this.onAccountsChanged.bind(this));
-        provider2.on("chainChanged", this.onChainChanged);
-        provider2.on("disconnect", this.onDisconnect.bind(this));
+        if (connect2) {
+          provider2.removeListener("connect", connect2);
+          connect2 = void 0;
+        }
+        if (!accountsChanged) {
+          accountsChanged = this.onAccountsChanged.bind(this);
+          provider2.on("accountsChanged", accountsChanged);
+        }
+        if (!chainChanged) {
+          chainChanged = this.onChainChanged.bind(this);
+          provider2.on("chainChanged", chainChanged);
+        }
+        if (!disconnect2) {
+          disconnect2 = this.onDisconnect.bind(this);
+          provider2.on("disconnect", disconnect2);
+        }
         let currentChainId = await this.getChainId();
         if (chainId && currentChainId !== chainId) {
           const chain = await this.switchChain({ chainId }).catch((error) => {
@@ -73144,9 +73861,9 @@ function injected(parameters = {}) {
           currentChainId = (chain == null ? void 0 : chain.id) ?? currentChainId;
         }
         if (shimDisconnect) {
-          await ((_e = config2.storage) == null ? void 0 : _e.removeItem(`${this.id}.disconnected`));
+          await ((_e2 = config2.storage) == null ? void 0 : _e2.removeItem(`${this.id}.disconnected`));
           if (!parameters.target)
-            await ((_f = config2.storage) == null ? void 0 : _f.setItem("injected.connected", true));
+            await ((_f2 = config2.storage) == null ? void 0 : _f2.setItem("injected.connected", true));
         }
         return { accounts, chainId: currentChainId };
       } catch (err) {
@@ -73159,18 +73876,26 @@ function injected(parameters = {}) {
       }
     },
     async disconnect() {
-      var _a, _b;
+      var _a2, _b2;
       const provider2 = await this.getProvider();
       if (!provider2)
         throw new ProviderNotFoundError();
-      provider2.removeListener("accountsChanged", this.onAccountsChanged.bind(this));
-      provider2.removeListener("chainChanged", this.onChainChanged);
-      provider2.removeListener("disconnect", this.onDisconnect.bind(this));
-      provider2.on("connect", this.onConnect.bind(this));
+      if (chainChanged) {
+        provider2.removeListener("chainChanged", chainChanged);
+        chainChanged = void 0;
+      }
+      if (disconnect2) {
+        provider2.removeListener("disconnect", disconnect2);
+        disconnect2 = void 0;
+      }
+      if (!connect2) {
+        connect2 = this.onConnect.bind(this);
+        provider2.on("connect", connect2);
+      }
       if (shimDisconnect) {
-        await ((_a = config2.storage) == null ? void 0 : _a.setItem(`${this.id}.disconnected`, true));
+        await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem(`${this.id}.disconnected`, true));
         if (!parameters.target)
-          await ((_b = config2.storage) == null ? void 0 : _b.removeItem("injected.connected"));
+          await ((_b2 = config2.storage) == null ? void 0 : _b2.removeItem("injected.connected"));
       }
     },
     async getAccounts() {
@@ -73185,7 +73910,7 @@ function injected(parameters = {}) {
       if (!provider2)
         throw new ProviderNotFoundError();
       const hexChainId = await provider2.request({ method: "eth_chainId" });
-      return normalizeChainId(hexChainId);
+      return Number(hexChainId);
     },
     async getProvider() {
       if (typeof window === "undefined")
@@ -73208,14 +73933,14 @@ function injected(parameters = {}) {
       return provider2;
     },
     async isAuthorized() {
-      var _a, _b;
+      var _a2, _b2;
       try {
         const isDisconnected = shimDisconnect && // If shim exists in storage, connector is disconnected
-        await ((_a = config2.storage) == null ? void 0 : _a.getItem(`${this.id}.disconnected`));
+        await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem(`${this.id}.disconnected`));
         if (isDisconnected)
           return false;
         if (!parameters.target) {
-          const connected = await ((_b = config2.storage) == null ? void 0 : _b.getItem("injected.connected"));
+          const connected = await ((_b2 = config2.storage) == null ? void 0 : _b2.getItem("injected.connected"));
           if (!connected)
             return false;
         }
@@ -73249,7 +73974,7 @@ function injected(parameters = {}) {
       }
     },
     async switchChain({ chainId }) {
-      var _a, _b, _c;
+      var _a2, _b2, _c2;
       const provider2 = await this.getProvider();
       if (!provider2)
         throw new ProviderNotFoundError();
@@ -73262,20 +73987,26 @@ function injected(parameters = {}) {
             method: "wallet_switchEthereumChain",
             params: [{ chainId: numberToHex(chainId) }]
           }),
-          new Promise((resolve) => config2.emitter.once("change", ({ chainId: currentChainId }) => {
-            if (currentChainId === chainId)
-              resolve();
-          }))
+          new Promise((resolve) => {
+            const listener = (data) => {
+              console.log("[injected] switchChain.listener", { data, chainId });
+              if (Number(data) === chainId) {
+                provider2.removeListener("chainChanged", listener);
+                resolve();
+              }
+            };
+            provider2.on("chainChanged", listener);
+          })
         ]);
         return chain;
       } catch (err) {
         const error = err;
         if (error.code === 4902 || // Unwrapping for MetaMask Mobile
         // https://github.com/MetaMask/metamask-mobile/issues/2944#issuecomment-976988719
-        ((_b = (_a = error == null ? void 0 : error.data) == null ? void 0 : _a.originalError) == null ? void 0 : _b.code) === 4902) {
+        ((_b2 = (_a2 = error == null ? void 0 : error.data) == null ? void 0 : _a2.originalError) == null ? void 0 : _b2.code) === 4902) {
           try {
             const { default: blockExplorer, ...blockExplorers } = chain.blockExplorers ?? {};
-            let blockExplorerUrls = [];
+            let blockExplorerUrls;
             if (blockExplorer)
               blockExplorerUrls = [
                 blockExplorer.url,
@@ -73288,7 +74019,7 @@ function injected(parameters = {}) {
                   chainId: numberToHex(chainId),
                   chainName: chain.name,
                   nativeCurrency: chain.nativeCurrency,
-                  rpcUrls: [((_c = chain.rpcUrls.default) == null ? void 0 : _c.http[0]) ?? ""],
+                  rpcUrls: [((_c2 = chain.rpcUrls.default) == null ? void 0 : _c2.http[0]) ?? ""],
                   blockExplorerUrls
                 }
               ]
@@ -73307,35 +74038,49 @@ function injected(parameters = {}) {
       }
     },
     async onAccountsChanged(accounts) {
-      var _a;
+      var _a2;
+      console.log("[injected] onAccountsChanged", accounts);
       if (accounts.length === 0)
         this.onDisconnect();
       else if (config2.emitter.listenerCount("connect")) {
         const chainId = (await this.getChainId()).toString();
         this.onConnect({ chainId });
         if (shimDisconnect)
-          await ((_a = config2.storage) == null ? void 0 : _a.removeItem(`${this.id}.disconnected`));
+          await ((_a2 = config2.storage) == null ? void 0 : _a2.removeItem(`${this.id}.disconnected`));
       } else
         config2.emitter.emit("change", {
           accounts: accounts.map((x) => getAddress(x))
         });
     },
     onChainChanged(chain) {
-      const chainId = normalizeChainId(chain);
+      console.log("[injected] onChainChanged", chain);
+      const chainId = Number(chain);
       config2.emitter.emit("change", { chainId });
     },
     async onConnect(connectInfo) {
       const accounts = await this.getAccounts();
       if (accounts.length === 0)
         return;
-      const chainId = normalizeChainId(connectInfo.chainId);
+      const chainId = Number(connectInfo.chainId);
       config2.emitter.emit("connect", { accounts, chainId });
       const provider2 = await this.getProvider();
       if (provider2) {
-        provider2.removeListener("connect", this.onConnect.bind(this));
-        provider2.on("accountsChanged", this.onAccountsChanged.bind(this));
-        provider2.on("chainChanged", this.onChainChanged);
-        provider2.on("disconnect", this.onDisconnect.bind(this));
+        if (connect2) {
+          provider2.removeListener("connect", connect2);
+          connect2 = void 0;
+        }
+        if (!accountsChanged) {
+          accountsChanged = this.onAccountsChanged.bind(this);
+          provider2.on("accountsChanged", accountsChanged);
+        }
+        if (!chainChanged) {
+          chainChanged = this.onChainChanged.bind(this);
+          provider2.on("chainChanged", chainChanged);
+        }
+        if (!disconnect2) {
+          disconnect2 = this.onDisconnect.bind(this);
+          provider2.on("disconnect", disconnect2);
+        }
       }
     },
     async onDisconnect(error) {
@@ -73346,10 +74091,18 @@ function injected(parameters = {}) {
       }
       config2.emitter.emit("disconnect");
       if (provider2) {
-        provider2.removeListener("accountsChanged", this.onAccountsChanged.bind(this));
-        provider2.removeListener("chainChanged", this.onChainChanged);
-        provider2.removeListener("disconnect", this.onDisconnect.bind(this));
-        provider2.on("connect", this.onConnect.bind(this));
+        if (chainChanged) {
+          provider2.removeListener("chainChanged", chainChanged);
+          chainChanged = void 0;
+        }
+        if (disconnect2) {
+          provider2.removeListener("disconnect", disconnect2);
+          disconnect2 = void 0;
+        }
+        if (!connect2) {
+          connect2 = this.onConnect.bind(this);
+          provider2.on("connect", connect2);
+        }
       }
     }
   }));
@@ -73393,7 +74146,7 @@ function createConfig(parameters) {
     ...!ssr ? (mipd == null ? void 0 : mipd.getProviders().map(providerDetailToConnector)) ?? [] : []
   ].map(setup));
   function setup(connectorFn) {
-    var _a;
+    var _a2;
     const emitter = createEmitter(uid());
     const connector = {
       ...connectorFn({ emitter, chains: chains2.getState(), storage }),
@@ -73401,7 +74154,7 @@ function createConfig(parameters) {
       uid: emitter.uid
     };
     emitter.on("connect", connect2);
-    (_a = connector.setup) == null ? void 0 : _a.call(connector);
+    (_a2 = connector.setup) == null ? void 0 : _a2.call(connector);
     return connector;
   }
   function providerDetailToConnector(providerDetail) {
@@ -73466,7 +74219,7 @@ function createConfig(parameters) {
     return {
       chainId: chains2.getState()[0].id,
       connections: /* @__PURE__ */ new Map(),
-      current: void 0,
+      current: null,
       status: "disconnected"
     };
   }
@@ -73508,8 +74261,8 @@ function createConfig(parameters) {
   ));
   if (syncConnectedChain)
     store.subscribe(({ connections, current }) => {
-      var _a;
-      return current ? (_a = connections.get(current)) == null ? void 0 : _a.chainId : void 0;
+      var _a2;
+      return current ? (_a2 = connections.get(current)) == null ? void 0 : _a2.chainId : void 0;
     }, (chainId) => {
       const isChainConfigured = chains2.getState().some((x) => x.id === chainId);
       if (!isChainConfigured)
@@ -73531,6 +74284,8 @@ function createConfig(parameters) {
         continue;
       newConnectors.push(connector);
     }
+    if (storage && !store.persist.hasHydrated())
+      return;
     connectors2.setState((x) => [...x, ...newConnectors], true);
   });
   function change(data) {
@@ -73555,6 +74310,12 @@ function createConfig(parameters) {
       const connector = connectors2.getState().find((x2) => x2.uid === data.uid);
       if (!connector)
         return x;
+      if (connector.emitter.listenerCount("connect"))
+        connector.emitter.off("connect", change);
+      if (!connector.emitter.listenerCount("change"))
+        connector.emitter.on("change", change);
+      if (!connector.emitter.listenerCount("disconnect"))
+        connector.emitter.on("disconnect", disconnect2);
       return {
         ...x,
         connections: new Map(x.connections).set(data.uid, {
@@ -73571,16 +74332,20 @@ function createConfig(parameters) {
     store.setState((x) => {
       const connection = x.connections.get(data.uid);
       if (connection) {
-        connection.connector.emitter.off("change", change);
-        connection.connector.emitter.off("disconnect", disconnect2);
-        connection.connector.emitter.on("connect", connect2);
+        const connector = connection.connector;
+        if (connector.emitter.listenerCount("change"))
+          connection.connector.emitter.off("change", change);
+        if (connector.emitter.listenerCount("disconnect"))
+          connection.connector.emitter.off("disconnect", disconnect2);
+        if (!connector.emitter.listenerCount("connect"))
+          connection.connector.emitter.on("connect", connect2);
       }
       x.connections.delete(data.uid);
       if (x.connections.size === 0)
         return {
           ...x,
           connections: /* @__PURE__ */ new Map(),
-          current: void 0,
+          current: null,
           status: "disconnected"
         };
       const nextConnection = x.connections.values().next().value;
@@ -73652,13 +74417,16 @@ function createConfig(parameters) {
   };
 }
 function getAction(client2, actionFn, name) {
-  const action = client2[actionFn.name ?? name];
-  if (typeof action === "function")
-    return action;
+  const action_implicit = client2[actionFn.name];
+  if (typeof action_implicit === "function")
+    return action_implicit;
+  const action_explicit = client2[name];
+  if (typeof action_explicit === "function")
+    return action_explicit;
   return (params) => actionFn(client2, params);
 }
 async function connect(config2, parameters) {
-  var _a;
+  var _a2;
   let connector;
   if (typeof parameters.connector === "function") {
     connector = config2._internal.connectors.setup(parameters.connector);
@@ -73674,7 +74442,7 @@ async function connect(config2, parameters) {
     connector.emitter.off("connect", config2._internal.events.connect);
     connector.emitter.on("change", config2._internal.events.change);
     connector.emitter.on("disconnect", config2._internal.events.disconnect);
-    await ((_a = config2.storage) == null ? void 0 : _a.setItem("recentConnectorId", connector.id));
+    await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem("recentConnectorId", connector.id));
     config2.setState((x) => ({
       ...x,
       connections: new Map(x.connections).set(connector.uid, {
@@ -73696,7 +74464,7 @@ async function connect(config2, parameters) {
   }
 }
 async function disconnect(config2, parameters = {}) {
-  var _a, _b;
+  var _a2, _b2;
   let connector;
   if (parameters.connector)
     connector = parameters.connector;
@@ -73718,7 +74486,7 @@ async function disconnect(config2, parameters = {}) {
       return {
         ...x,
         connections: /* @__PURE__ */ new Map(),
-        current: void 0,
+        current: null,
         status: "disconnected"
       };
     const nextConnection = connections.values().next().value;
@@ -73732,10 +74500,10 @@ async function disconnect(config2, parameters = {}) {
     const current = config2.state.current;
     if (!current)
       return;
-    const connector2 = (_a = config2.state.connections.get(current)) == null ? void 0 : _a.connector;
+    const connector2 = (_a2 = config2.state.connections.get(current)) == null ? void 0 : _a2.connector;
     if (!connector2)
       return;
-    await ((_b = config2.storage) == null ? void 0 : _b.setItem("recentConnectorId", connector2.id));
+    await ((_b2 = config2.storage) == null ? void 0 : _b2.setItem("recentConnectorId", connector2.id));
   }
 }
 async function getConnectorClient(config2, parameters = {}) {
@@ -73760,6 +74528,7 @@ async function getConnectorClient(config2, parameters = {}) {
   if (connector.getClient)
     return connector.getClient({ chainId });
   const account2 = parseAccount(parameters.account ?? connection.accounts[0]);
+  account2.address = getAddress(account2.address);
   const chain = config2.chains.find((chain2) => chain2.id === chainId);
   const provider2 = await connection.connector.getProvider({ chainId });
   if (parameters.account && !connection.accounts.includes(account2.address))
@@ -73921,7 +74690,7 @@ async function getWalletClient(config2, parameters = {}) {
 }
 let isReconnecting = false;
 async function reconnect(config2, parameters = {}) {
-  var _a, _b;
+  var _a2, _b2;
   if (isReconnecting)
     return [];
   isReconnecting = true;
@@ -73930,7 +74699,7 @@ async function reconnect(config2, parameters = {}) {
     status: x.current ? "reconnecting" : "connecting"
   }));
   const connectors2 = [];
-  if ((_a = parameters.connectors) == null ? void 0 : _a.length) {
+  if ((_a2 = parameters.connectors) == null ? void 0 : _a2.length) {
     for (const connector_ of parameters.connectors) {
       let connector;
       if (typeof connector_ === "function")
@@ -73943,7 +74712,7 @@ async function reconnect(config2, parameters = {}) {
     connectors2.push(...config2.connectors);
   let recentConnectorId;
   try {
-    recentConnectorId = await ((_b = config2.storage) == null ? void 0 : _b.getItem("recentConnectorId"));
+    recentConnectorId = await ((_b2 = config2.storage) == null ? void 0 : _b2.getItem("recentConnectorId"));
   } catch {
   }
   const scores = {};
@@ -73990,15 +74759,17 @@ async function reconnect(config2, parameters = {}) {
     providers.push(provider_);
     connected = true;
   }
-  if (!connected)
-    config2.setState((x) => ({
-      ...x,
-      connections: /* @__PURE__ */ new Map(),
-      current: void 0,
-      status: "disconnected"
-    }));
-  else
-    config2.setState((x) => ({ ...x, status: "connected" }));
+  if (config2.state.status === "reconnecting" || config2.state.status === "connecting") {
+    if (!connected)
+      config2.setState((x) => ({
+        ...x,
+        connections: /* @__PURE__ */ new Map(),
+        current: null,
+        status: "disconnected"
+      }));
+    else
+      config2.setState((x) => ({ ...x, status: "connected" }));
+  }
   isReconnecting = false;
   return connections;
 }
@@ -74053,9 +74824,9 @@ async function simulateContract(config2, parameters) {
   };
 }
 async function switchChain(config2, parameters) {
-  var _a;
+  var _a2;
   const { chainId } = parameters;
-  const connection = config2.state.connections.get(((_a = parameters.connector) == null ? void 0 : _a.uid) ?? config2.state.current);
+  const connection = config2.state.connections.get(((_a2 = parameters.connector) == null ? void 0 : _a2.uid) ?? config2.state.current);
   if (connection) {
     const connector = connection.connector;
     if (!connector.switchChain)
@@ -74117,7 +74888,8 @@ async function writeContract(config2, parameters) {
   else {
     const { request: simulateRequest } = await simulateContract(config2, {
       ...rest,
-      account: account2
+      account: account2,
+      chainId
     });
     request = simulateRequest;
   }
@@ -74202,7 +74974,7 @@ function mock$1(parameters) {
         });
     },
     onChainChanged(chain) {
-      const chainId = normalizeChainId(chain);
+      const chainId = Number(chain);
       config2.emitter.emit("change", { chainId });
     },
     async onDisconnect(_error) {
@@ -74255,7 +75027,7 @@ function mock$1(parameters) {
 }
 function hydrate(config2, parameters) {
   const { initialState, reconnectOnMount } = parameters;
-  if (initialState)
+  if (initialState && !config2._internal.store.persist.hasHydrated())
     config2.setState({
       ...initialState,
       connections: reconnectOnMount ? initialState.connections : /* @__PURE__ */ new Map(),
@@ -74263,10 +75035,10 @@ function hydrate(config2, parameters) {
     });
   return {
     async onMount() {
-      var _a;
+      var _a2;
       if (config2._internal.ssr) {
         await config2._internal.store.persist.rehydrate();
-        const mipdConnectors = (_a = config2._internal.mipd) == null ? void 0 : _a.getProviders().map(config2._internal.connectors.providerDetailToConnector).map(config2._internal.connectors.setup);
+        const mipdConnectors = (_a2 = config2._internal.mipd) == null ? void 0 : _a2.getProviders().map(config2._internal.connectors.providerDetailToConnector).map(config2._internal.connectors.setup);
         config2._internal.connectors.setState((connectors2) => [
           ...connectors2,
           ...mipdConnectors ?? []
@@ -74309,7 +75081,7 @@ function WagmiProvider(parameters) {
   const props = { value: config2 };
   return reactExports.createElement(Hydrate, parameters, reactExports.createElement(WagmiContext.Provider, props, children));
 }
-const version = "2.5.7";
+const version = "2.5.20";
 const getVersion = () => `wagmi@${version}`;
 class BaseError3 extends BaseError$1 {
   constructor() {
@@ -74331,7 +75103,7 @@ class BaseError3 extends BaseError$1 {
 class WagmiProviderNotFoundError extends BaseError3 {
   constructor() {
     super("`useConfig` must be used within `WagmiProvider`.", {
-      docsPath: "https://wagmi.sh/react/api/WagmiProvider"
+      docsPath: "/api/WagmiProvider"
     });
     Object.defineProperty(this, "name", {
       enumerable: true,
@@ -74341,19 +75113,16 @@ class WagmiProviderNotFoundError extends BaseError3 {
     });
   }
 }
-class Subscribable {
+var Subscribable = class {
   constructor() {
     this.listeners = /* @__PURE__ */ new Set();
     this.subscribe = this.subscribe.bind(this);
   }
   subscribe(listener) {
-    const identity = {
-      listener
-    };
-    this.listeners.add(identity);
+    this.listeners.add(listener);
     this.onSubscribe();
     return () => {
-      this.listeners.delete(identity);
+      this.listeners.delete(listener);
       this.onUnsubscribe();
     };
   }
@@ -74364,8 +75133,8 @@ class Subscribable {
   }
   onUnsubscribe() {
   }
-}
-const isServer = typeof window === "undefined" || "Deno" in window;
+};
+var isServer = typeof window === "undefined" || "Deno" in globalThis;
 function noop$2() {
   return void 0;
 }
@@ -74378,52 +75147,6 @@ function isValidTimeout(value) {
 function timeUntilStale(updatedAt, staleTime) {
   return Math.max(updatedAt + (staleTime || 0) - Date.now(), 0);
 }
-function parseQueryArgs(arg1, arg2, arg3) {
-  if (!isQueryKey(arg1)) {
-    return arg1;
-  }
-  if (typeof arg2 === "function") {
-    return {
-      ...arg3,
-      queryKey: arg1,
-      queryFn: arg2
-    };
-  }
-  return {
-    ...arg2,
-    queryKey: arg1
-  };
-}
-function parseMutationArgs(arg1, arg2, arg3) {
-  if (isQueryKey(arg1)) {
-    if (typeof arg2 === "function") {
-      return {
-        ...arg3,
-        mutationKey: arg1,
-        mutationFn: arg2
-      };
-    }
-    return {
-      ...arg2,
-      mutationKey: arg1
-    };
-  }
-  if (typeof arg1 === "function") {
-    return {
-      ...arg2,
-      mutationFn: arg1
-    };
-  }
-  return {
-    ...arg1
-  };
-}
-function parseFilterArgs(arg1, arg2, arg3) {
-  return isQueryKey(arg1) ? [{
-    ...arg2,
-    queryKey: arg1
-  }, arg3] : [arg1 || {}, arg2];
-}
 function matchQuery(filters, query) {
   const {
     type = "all",
@@ -74433,7 +75156,7 @@ function matchQuery(filters, query) {
     queryKey,
     stale
   } = filters;
-  if (isQueryKey(queryKey)) {
+  if (queryKey) {
     if (exact) {
       if (query.queryHash !== hashQueryKeyByOptions(queryKey, query.options)) {
         return false;
@@ -74454,7 +75177,7 @@ function matchQuery(filters, query) {
   if (typeof stale === "boolean" && query.isStale() !== stale) {
     return false;
   }
-  if (typeof fetchStatus !== "undefined" && fetchStatus !== query.state.fetchStatus) {
+  if (fetchStatus && fetchStatus !== query.state.fetchStatus) {
     return false;
   }
   if (predicate && !predicate(query)) {
@@ -74463,25 +75186,20 @@ function matchQuery(filters, query) {
   return true;
 }
 function matchMutation(filters, mutation) {
-  const {
-    exact,
-    fetching,
-    predicate,
-    mutationKey
-  } = filters;
-  if (isQueryKey(mutationKey)) {
+  const { exact, status, predicate, mutationKey } = filters;
+  if (mutationKey) {
     if (!mutation.options.mutationKey) {
       return false;
     }
     if (exact) {
-      if (hashQueryKey(mutation.options.mutationKey) !== hashQueryKey(mutationKey)) {
+      if (hashKey(mutation.options.mutationKey) !== hashKey(mutationKey)) {
         return false;
       }
     } else if (!partialMatchKey(mutation.options.mutationKey, mutationKey)) {
       return false;
     }
   }
-  if (typeof fetching === "boolean" && mutation.state.status === "loading" !== fetching) {
+  if (status && mutation.state.status !== status) {
     return false;
   }
   if (predicate && !predicate(mutation)) {
@@ -74490,19 +75208,19 @@ function matchMutation(filters, mutation) {
   return true;
 }
 function hashQueryKeyByOptions(queryKey, options) {
-  const hashFn2 = (options == null ? void 0 : options.queryKeyHashFn) || hashQueryKey;
+  const hashFn2 = (options == null ? void 0 : options.queryKeyHashFn) || hashKey;
   return hashFn2(queryKey);
 }
-function hashQueryKey(queryKey) {
-  return JSON.stringify(queryKey, (_, val) => isPlainObject$2(val) ? Object.keys(val).sort().reduce((result, key2) => {
-    result[key2] = val[key2];
-    return result;
-  }, {}) : val);
+function hashKey(queryKey) {
+  return JSON.stringify(
+    queryKey,
+    (_, val) => isPlainObject$2(val) ? Object.keys(val).sort().reduce((result, key2) => {
+      result[key2] = val[key2];
+      return result;
+    }, {}) : val
+  );
 }
 function partialMatchKey(a2, b3) {
-  return partialDeepEqual(a2, b3);
-}
-function partialDeepEqual(a2, b3) {
   if (a2 === b3) {
     return true;
   }
@@ -74510,7 +75228,7 @@ function partialDeepEqual(a2, b3) {
     return false;
   }
   if (a2 && b3 && typeof a2 === "object" && typeof b3 === "object") {
-    return !Object.keys(b3).some((key2) => !partialDeepEqual(a2[key2], b3[key2]));
+    return !Object.keys(b3).some((key2) => !partialMatchKey(a2[key2], b3[key2]));
   }
   return false;
 }
@@ -74520,16 +75238,22 @@ function replaceEqualDeep(a2, b3) {
   }
   const array = isPlainArray(a2) && isPlainArray(b3);
   if (array || isPlainObject$2(a2) && isPlainObject$2(b3)) {
-    const aSize = array ? a2.length : Object.keys(a2).length;
+    const aItems = array ? a2 : Object.keys(a2);
+    const aSize = aItems.length;
     const bItems = array ? b3 : Object.keys(b3);
     const bSize = bItems.length;
     const copy2 = array ? [] : {};
     let equalItems = 0;
     for (let i2 = 0; i2 < bSize; i2++) {
       const key2 = array ? i2 : bItems[i2];
-      copy2[key2] = replaceEqualDeep(a2[key2], b3[key2]);
-      if (copy2[key2] === a2[key2]) {
+      if (!array && a2[key2] === void 0 && b3[key2] === void 0 && aItems.includes(key2)) {
+        copy2[key2] = void 0;
         equalItems++;
+      } else {
+        copy2[key2] = replaceEqualDeep(a2[key2], b3[key2]);
+        if (copy2[key2] === a2[key2] && a2[key2] !== void 0) {
+          equalItems++;
+        }
       }
     }
     return aSize === bSize && equalItems === aSize ? a2 : copy2;
@@ -74537,7 +75261,7 @@ function replaceEqualDeep(a2, b3) {
   return b3;
 }
 function shallowEqualObjects(a2, b3) {
-  if (a2 && !b3 || b3 && !a2) {
+  if (!b3 || Object.keys(a2).length !== Object.keys(b3).length) {
     return false;
   }
   for (const key2 in a2) {
@@ -74555,7 +75279,7 @@ function isPlainObject$2(o) {
     return false;
   }
   const ctor = o.constructor;
-  if (typeof ctor === "undefined") {
+  if (ctor === void 0) {
     return true;
   }
   const prot = ctor.prototype;
@@ -74570,178 +75294,155 @@ function isPlainObject$2(o) {
 function hasObjectPrototype$1(o) {
   return Object.prototype.toString.call(o) === "[object Object]";
 }
-function isQueryKey(value) {
-  return Array.isArray(value);
-}
-function sleep(timeout) {
+function sleep(ms) {
   return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
+    setTimeout(resolve, ms);
   });
 }
-function scheduleMicrotask(callback) {
-  sleep(0).then(callback);
-}
-function getAbortController() {
-  if (typeof AbortController === "function") {
-    return new AbortController();
-  }
-  return;
-}
 function replaceData(prevData, data, options) {
-  if (options.isDataEqual != null && options.isDataEqual(prevData, data)) {
-    return prevData;
-  } else if (typeof options.structuralSharing === "function") {
+  if (typeof options.structuralSharing === "function") {
     return options.structuralSharing(prevData, data);
   } else if (options.structuralSharing !== false) {
     return replaceEqualDeep(prevData, data);
   }
   return data;
 }
-class FocusManager extends Subscribable {
+function addToEnd(items, item2, max2 = 0) {
+  const newItems = [...items, item2];
+  return max2 && newItems.length > max2 ? newItems.slice(1) : newItems;
+}
+function addToStart(items, item2, max2 = 0) {
+  const newItems = [item2, ...items];
+  return max2 && newItems.length > max2 ? newItems.slice(0, -1) : newItems;
+}
+var skipToken = Symbol();
+var FocusManager = (_a = class extends Subscribable {
   constructor() {
     super();
-    this.setup = (onFocus) => {
+    __privateAdd(this, _focused, void 0);
+    __privateAdd(this, _cleanup, void 0);
+    __privateAdd(this, _setup, void 0);
+    __privateSet(this, _setup, (onFocus) => {
       if (!isServer && window.addEventListener) {
         const listener = () => onFocus();
         window.addEventListener("visibilitychange", listener, false);
-        window.addEventListener("focus", listener, false);
         return () => {
           window.removeEventListener("visibilitychange", listener);
-          window.removeEventListener("focus", listener);
         };
       }
       return;
-    };
+    });
   }
   onSubscribe() {
-    if (!this.cleanup) {
-      this.setEventListener(this.setup);
+    if (!__privateGet(this, _cleanup)) {
+      this.setEventListener(__privateGet(this, _setup));
     }
   }
   onUnsubscribe() {
+    var _a2;
     if (!this.hasListeners()) {
-      var _this$cleanup;
-      (_this$cleanup = this.cleanup) == null ? void 0 : _this$cleanup.call(this);
-      this.cleanup = void 0;
+      (_a2 = __privateGet(this, _cleanup)) == null ? void 0 : _a2.call(this);
+      __privateSet(this, _cleanup, void 0);
     }
   }
   setEventListener(setup) {
-    var _this$cleanup2;
-    this.setup = setup;
-    (_this$cleanup2 = this.cleanup) == null ? void 0 : _this$cleanup2.call(this);
-    this.cleanup = setup((focused) => {
+    var _a2;
+    __privateSet(this, _setup, setup);
+    (_a2 = __privateGet(this, _cleanup)) == null ? void 0 : _a2.call(this);
+    __privateSet(this, _cleanup, setup((focused) => {
       if (typeof focused === "boolean") {
         this.setFocused(focused);
       } else {
         this.onFocus();
       }
-    });
+    }));
   }
   setFocused(focused) {
-    const changed = this.focused !== focused;
+    const changed = __privateGet(this, _focused) !== focused;
     if (changed) {
-      this.focused = focused;
+      __privateSet(this, _focused, focused);
       this.onFocus();
     }
   }
   onFocus() {
-    this.listeners.forEach(({
-      listener
-    }) => {
-      listener();
+    const isFocused = this.isFocused();
+    this.listeners.forEach((listener) => {
+      listener(isFocused);
     });
   }
   isFocused() {
-    if (typeof this.focused === "boolean") {
-      return this.focused;
+    var _a2;
+    if (typeof __privateGet(this, _focused) === "boolean") {
+      return __privateGet(this, _focused);
     }
-    if (typeof document === "undefined") {
-      return true;
-    }
-    return [void 0, "visible", "prerender"].includes(document.visibilityState);
+    return ((_a2 = globalThis.document) == null ? void 0 : _a2.visibilityState) !== "hidden";
   }
-}
-const focusManager = new FocusManager();
-const onlineEvents = ["online", "offline"];
-class OnlineManager extends Subscribable {
+}, _focused = new WeakMap(), _cleanup = new WeakMap(), _setup = new WeakMap(), _a);
+var focusManager = new FocusManager();
+var OnlineManager = (_b = class extends Subscribable {
   constructor() {
     super();
-    this.setup = (onOnline) => {
+    __privateAdd(this, _online, true);
+    __privateAdd(this, _cleanup2, void 0);
+    __privateAdd(this, _setup2, void 0);
+    __privateSet(this, _setup2, (onOnline) => {
       if (!isServer && window.addEventListener) {
-        const listener = () => onOnline();
-        onlineEvents.forEach((event) => {
-          window.addEventListener(event, listener, false);
-        });
+        const onlineListener = () => onOnline(true);
+        const offlineListener = () => onOnline(false);
+        window.addEventListener("online", onlineListener, false);
+        window.addEventListener("offline", offlineListener, false);
         return () => {
-          onlineEvents.forEach((event) => {
-            window.removeEventListener(event, listener);
-          });
+          window.removeEventListener("online", onlineListener);
+          window.removeEventListener("offline", offlineListener);
         };
       }
       return;
-    };
+    });
   }
   onSubscribe() {
-    if (!this.cleanup) {
-      this.setEventListener(this.setup);
+    if (!__privateGet(this, _cleanup2)) {
+      this.setEventListener(__privateGet(this, _setup2));
     }
   }
   onUnsubscribe() {
+    var _a2;
     if (!this.hasListeners()) {
-      var _this$cleanup;
-      (_this$cleanup = this.cleanup) == null ? void 0 : _this$cleanup.call(this);
-      this.cleanup = void 0;
+      (_a2 = __privateGet(this, _cleanup2)) == null ? void 0 : _a2.call(this);
+      __privateSet(this, _cleanup2, void 0);
     }
   }
   setEventListener(setup) {
-    var _this$cleanup2;
-    this.setup = setup;
-    (_this$cleanup2 = this.cleanup) == null ? void 0 : _this$cleanup2.call(this);
-    this.cleanup = setup((online) => {
-      if (typeof online === "boolean") {
-        this.setOnline(online);
-      } else {
-        this.onOnline();
-      }
-    });
+    var _a2;
+    __privateSet(this, _setup2, setup);
+    (_a2 = __privateGet(this, _cleanup2)) == null ? void 0 : _a2.call(this);
+    __privateSet(this, _cleanup2, setup(this.setOnline.bind(this)));
   }
   setOnline(online) {
-    const changed = this.online !== online;
+    const changed = __privateGet(this, _online) !== online;
     if (changed) {
-      this.online = online;
-      this.onOnline();
+      __privateSet(this, _online, online);
+      this.listeners.forEach((listener) => {
+        listener(online);
+      });
     }
-  }
-  onOnline() {
-    this.listeners.forEach(({
-      listener
-    }) => {
-      listener();
-    });
   }
   isOnline() {
-    if (typeof this.online === "boolean") {
-      return this.online;
-    }
-    if (typeof navigator === "undefined" || typeof navigator.onLine === "undefined") {
-      return true;
-    }
-    return navigator.onLine;
+    return __privateGet(this, _online);
   }
-}
-const onlineManager = new OnlineManager();
+}, _online = new WeakMap(), _cleanup2 = new WeakMap(), _setup2 = new WeakMap(), _b);
+var onlineManager = new OnlineManager();
 function defaultRetryDelay(failureCount) {
   return Math.min(1e3 * 2 ** failureCount, 3e4);
 }
 function canFetch(networkMode) {
-  return (networkMode != null ? networkMode : "online") === "online" ? onlineManager.isOnline() : true;
+  return (networkMode ?? "online") === "online" ? onlineManager.isOnline() : true;
 }
-class CancelledError {
+var CancelledError = class {
   constructor(options) {
     this.revert = options == null ? void 0 : options.revert;
     this.silent = options == null ? void 0 : options.silent;
   }
-}
+};
 function isCancelledError(value) {
   return value instanceof CancelledError;
 }
@@ -74757,9 +75458,10 @@ function createRetryer(config2) {
     promiseReject = outerReject;
   });
   const cancel = (cancelOptions) => {
+    var _a2;
     if (!isResolved) {
       reject(new CancelledError(cancelOptions));
-      config2.abort == null ? void 0 : config2.abort();
+      (_a2 = config2.abort) == null ? void 0 : _a2.call(config2);
     }
   };
   const cancelRetry = () => {
@@ -74768,37 +75470,40 @@ function createRetryer(config2) {
   const continueRetry = () => {
     isRetryCancelled = false;
   };
-  const shouldPause = () => !focusManager.isFocused() || config2.networkMode !== "always" && !onlineManager.isOnline();
+  const canContinue = () => focusManager.isFocused() && (config2.networkMode === "always" || onlineManager.isOnline()) && config2.canRun();
+  const canStart = () => canFetch(config2.networkMode) && config2.canRun();
   const resolve = (value) => {
+    var _a2;
     if (!isResolved) {
       isResolved = true;
-      config2.onSuccess == null ? void 0 : config2.onSuccess(value);
+      (_a2 = config2.onSuccess) == null ? void 0 : _a2.call(config2, value);
       continueFn == null ? void 0 : continueFn();
       promiseResolve(value);
     }
   };
   const reject = (value) => {
+    var _a2;
     if (!isResolved) {
       isResolved = true;
-      config2.onError == null ? void 0 : config2.onError(value);
+      (_a2 = config2.onError) == null ? void 0 : _a2.call(config2, value);
       continueFn == null ? void 0 : continueFn();
       promiseReject(value);
     }
   };
   const pause = () => {
     return new Promise((continueResolve) => {
+      var _a2;
       continueFn = (value) => {
-        const canContinue = isResolved || !shouldPause();
-        if (canContinue) {
+        if (isResolved || canContinue()) {
           continueResolve(value);
         }
-        return canContinue;
       };
-      config2.onPause == null ? void 0 : config2.onPause();
+      (_a2 = config2.onPause) == null ? void 0 : _a2.call(config2);
     }).then(() => {
+      var _a2;
       continueFn = void 0;
       if (!isResolved) {
-        config2.onContinue == null ? void 0 : config2.onContinue();
+        (_a2 = config2.onContinue) == null ? void 0 : _a2.call(config2);
       }
     });
   };
@@ -74813,12 +75518,12 @@ function createRetryer(config2) {
       promiseOrValue = Promise.reject(error);
     }
     Promise.resolve(promiseOrValue).then(resolve).catch((error) => {
-      var _config$retry, _config$retryDelay;
+      var _a2;
       if (isResolved) {
         return;
       }
-      const retry = (_config$retry = config2.retry) != null ? _config$retry : 3;
-      const retryDelay = (_config$retryDelay = config2.retryDelay) != null ? _config$retryDelay : defaultRetryDelay;
+      const retry = config2.retry ?? (isServer ? 0 : 3);
+      const retryDelay = config2.retryDelay ?? defaultRetryDelay;
       const delay2 = typeof retryDelay === "function" ? retryDelay(failureCount, error) : retryDelay;
       const shouldRetry2 = retry === true || typeof retry === "number" && failureCount < retry || typeof retry === "function" && retry(failureCount, error);
       if (isRetryCancelled || !shouldRetry2) {
@@ -74826,12 +75531,9 @@ function createRetryer(config2) {
         return;
       }
       failureCount++;
-      config2.onFail == null ? void 0 : config2.onFail(failureCount, error);
+      (_a2 = config2.onFail) == null ? void 0 : _a2.call(config2, failureCount, error);
       sleep(delay2).then(() => {
-        if (shouldPause()) {
-          return pause();
-        }
-        return;
+        return canContinue() ? void 0 : pause();
       }).then(() => {
         if (isRetryCancelled) {
           reject(error);
@@ -74841,23 +75543,26 @@ function createRetryer(config2) {
       });
     });
   };
-  if (canFetch(config2.networkMode)) {
-    run();
-  } else {
-    pause().then(run);
-  }
   return {
     promise,
     cancel,
     continue: () => {
-      const didContinue = continueFn == null ? void 0 : continueFn();
-      return didContinue ? promise : Promise.resolve();
+      continueFn == null ? void 0 : continueFn();
+      return promise;
     },
     cancelRetry,
-    continueRetry
+    continueRetry,
+    canStart,
+    start: () => {
+      if (canStart()) {
+        run();
+      } else {
+        pause().then(run);
+      }
+      return promise;
+    }
   };
 }
-const defaultLogger = console;
 function createNotifyManager() {
   let queue2 = [];
   let transactions2 = 0;
@@ -74866,6 +75571,10 @@ function createNotifyManager() {
   };
   let batchNotifyFn = (callback) => {
     callback();
+  };
+  let scheduleFn = (cb2) => setTimeout(cb2, 0);
+  const setScheduler = (fn) => {
+    scheduleFn = fn;
   };
   const batch = (callback) => {
     let result;
@@ -74884,7 +75593,7 @@ function createNotifyManager() {
     if (transactions2) {
       queue2.push(callback);
     } else {
-      scheduleMicrotask(() => {
+      scheduleFn(() => {
         notifyFn(callback);
       });
     }
@@ -74900,7 +75609,7 @@ function createNotifyManager() {
     const originalQueue = queue2;
     queue2 = [];
     if (originalQueue.length) {
-      scheduleMicrotask(() => {
+      scheduleFn(() => {
         batchNotifyFn(() => {
           originalQueue.forEach((callback) => {
             notifyFn(callback);
@@ -74920,65 +75629,75 @@ function createNotifyManager() {
     batchCalls,
     schedule,
     setNotifyFunction,
-    setBatchNotifyFunction
+    setBatchNotifyFunction,
+    setScheduler
   };
 }
-const notifyManager = createNotifyManager();
-class Removable {
+var notifyManager = createNotifyManager();
+var Removable = (_c = class {
+  constructor() {
+    __privateAdd(this, _gcTimeout, void 0);
+  }
   destroy() {
     this.clearGcTimeout();
   }
   scheduleGc() {
     this.clearGcTimeout();
-    if (isValidTimeout(this.cacheTime)) {
-      this.gcTimeout = setTimeout(() => {
+    if (isValidTimeout(this.gcTime)) {
+      __privateSet(this, _gcTimeout, setTimeout(() => {
         this.optionalRemove();
-      }, this.cacheTime);
+      }, this.gcTime));
     }
   }
-  updateCacheTime(newCacheTime) {
-    this.cacheTime = Math.max(this.cacheTime || 0, newCacheTime != null ? newCacheTime : isServer ? Infinity : 5 * 60 * 1e3);
+  updateGcTime(newGcTime) {
+    this.gcTime = Math.max(
+      this.gcTime || 0,
+      newGcTime ?? (isServer ? Infinity : 5 * 60 * 1e3)
+    );
   }
   clearGcTimeout() {
-    if (this.gcTimeout) {
-      clearTimeout(this.gcTimeout);
-      this.gcTimeout = void 0;
+    if (__privateGet(this, _gcTimeout)) {
+      clearTimeout(__privateGet(this, _gcTimeout));
+      __privateSet(this, _gcTimeout, void 0);
     }
   }
-}
-class Query extends Removable {
+}, _gcTimeout = new WeakMap(), _c);
+var Query = (_d = class extends Removable {
   constructor(config2) {
     super();
-    this.abortSignalConsumed = false;
-    this.defaultOptions = config2.defaultOptions;
+    __privateAdd(this, _dispatch);
+    __privateAdd(this, _initialState, void 0);
+    __privateAdd(this, _revertState, void 0);
+    __privateAdd(this, _cache, void 0);
+    __privateAdd(this, _retryer, void 0);
+    __privateAdd(this, _defaultOptions, void 0);
+    __privateAdd(this, _abortSignalConsumed, void 0);
+    __privateSet(this, _abortSignalConsumed, false);
+    __privateSet(this, _defaultOptions, config2.defaultOptions);
     this.setOptions(config2.options);
     this.observers = [];
-    this.cache = config2.cache;
-    this.logger = config2.logger || defaultLogger;
+    __privateSet(this, _cache, config2.cache);
     this.queryKey = config2.queryKey;
     this.queryHash = config2.queryHash;
-    this.initialState = config2.state || getDefaultState$1(this.options);
-    this.state = this.initialState;
+    __privateSet(this, _initialState, config2.state || getDefaultState$1(this.options));
+    this.state = __privateGet(this, _initialState);
     this.scheduleGc();
   }
   get meta() {
     return this.options.meta;
   }
   setOptions(options) {
-    this.options = {
-      ...this.defaultOptions,
-      ...options
-    };
-    this.updateCacheTime(this.options.cacheTime);
+    this.options = { ...__privateGet(this, _defaultOptions), ...options };
+    this.updateGcTime(this.options.gcTime);
   }
   optionalRemove() {
     if (!this.observers.length && this.state.fetchStatus === "idle") {
-      this.cache.remove(this);
+      __privateGet(this, _cache).remove(this);
     }
   }
   setData(newData, options) {
     const data = replaceData(this.state.data, newData, this.options);
-    this.dispatch({
+    __privateMethod(this, _dispatch, dispatch_fn).call(this, {
       data,
       type: "success",
       dataUpdatedAt: options == null ? void 0 : options.updatedAt,
@@ -74987,27 +75706,21 @@ class Query extends Removable {
     return data;
   }
   setState(state, setStateOptions) {
-    this.dispatch({
-      type: "setState",
-      state,
-      setStateOptions
-    });
+    __privateMethod(this, _dispatch, dispatch_fn).call(this, { type: "setState", state, setStateOptions });
   }
   cancel(options) {
-    var _this$retryer;
-    const promise = this.promise;
-    (_this$retryer = this.retryer) == null ? void 0 : _this$retryer.cancel(options);
+    var _a2, _b2;
+    const promise = (_a2 = __privateGet(this, _retryer)) == null ? void 0 : _a2.promise;
+    (_b2 = __privateGet(this, _retryer)) == null ? void 0 : _b2.cancel(options);
     return promise ? promise.then(noop$2).catch(noop$2) : Promise.resolve();
   }
   destroy() {
     super.destroy();
-    this.cancel({
-      silent: true
-    });
+    this.cancel({ silent: true });
   }
   reset() {
     this.destroy();
-    this.setState(this.initialState);
+    this.setState(__privateGet(this, _initialState));
   }
   isActive() {
     return this.observers.some((observer) => observer.options.enabled !== false);
@@ -75016,62 +75729,52 @@ class Query extends Removable {
     return this.getObserversCount() > 0 && !this.isActive();
   }
   isStale() {
-    return this.state.isInvalidated || !this.state.dataUpdatedAt || this.observers.some((observer) => observer.getCurrentResult().isStale);
+    if (this.state.isInvalidated) {
+      return true;
+    }
+    if (this.getObserversCount() > 0) {
+      return this.observers.some(
+        (observer) => observer.getCurrentResult().isStale
+      );
+    }
+    return this.state.data === void 0;
   }
   isStaleByTime(staleTime = 0) {
-    return this.state.isInvalidated || !this.state.dataUpdatedAt || !timeUntilStale(this.state.dataUpdatedAt, staleTime);
+    return this.state.isInvalidated || this.state.data === void 0 || !timeUntilStale(this.state.dataUpdatedAt, staleTime);
   }
   onFocus() {
-    var _this$retryer2;
+    var _a2;
     const observer = this.observers.find((x) => x.shouldFetchOnWindowFocus());
-    if (observer) {
-      observer.refetch({
-        cancelRefetch: false
-      });
-    }
-    (_this$retryer2 = this.retryer) == null ? void 0 : _this$retryer2.continue();
+    observer == null ? void 0 : observer.refetch({ cancelRefetch: false });
+    (_a2 = __privateGet(this, _retryer)) == null ? void 0 : _a2.continue();
   }
   onOnline() {
-    var _this$retryer3;
+    var _a2;
     const observer = this.observers.find((x) => x.shouldFetchOnReconnect());
-    if (observer) {
-      observer.refetch({
-        cancelRefetch: false
-      });
-    }
-    (_this$retryer3 = this.retryer) == null ? void 0 : _this$retryer3.continue();
+    observer == null ? void 0 : observer.refetch({ cancelRefetch: false });
+    (_a2 = __privateGet(this, _retryer)) == null ? void 0 : _a2.continue();
   }
   addObserver(observer) {
     if (!this.observers.includes(observer)) {
       this.observers.push(observer);
       this.clearGcTimeout();
-      this.cache.notify({
-        type: "observerAdded",
-        query: this,
-        observer
-      });
+      __privateGet(this, _cache).notify({ type: "observerAdded", query: this, observer });
     }
   }
   removeObserver(observer) {
     if (this.observers.includes(observer)) {
       this.observers = this.observers.filter((x) => x !== observer);
       if (!this.observers.length) {
-        if (this.retryer) {
-          if (this.abortSignalConsumed) {
-            this.retryer.cancel({
-              revert: true
-            });
+        if (__privateGet(this, _retryer)) {
+          if (__privateGet(this, _abortSignalConsumed)) {
+            __privateGet(this, _retryer).cancel({ revert: true });
           } else {
-            this.retryer.cancelRetry();
+            __privateGet(this, _retryer).cancelRetry();
           }
         }
         this.scheduleGc();
       }
-      this.cache.notify({
-        type: "observerRemoved",
-        query: this,
-        observer
-      });
+      __privateGet(this, _cache).notify({ type: "observerRemoved", query: this, observer });
     }
   }
   getObserversCount() {
@@ -75079,22 +75782,17 @@ class Query extends Removable {
   }
   invalidate() {
     if (!this.state.isInvalidated) {
-      this.dispatch({
-        type: "invalidate"
-      });
+      __privateMethod(this, _dispatch, dispatch_fn).call(this, { type: "invalidate" });
     }
   }
   fetch(options, fetchOptions) {
-    var _this$options$behavio, _context$fetchOptions;
+    var _a2, _b2, _c2;
     if (this.state.fetchStatus !== "idle") {
-      if (this.state.dataUpdatedAt && fetchOptions != null && fetchOptions.cancelRefetch) {
-        this.cancel({
-          silent: true
-        });
-      } else if (this.promise) {
-        var _this$retryer4;
-        (_this$retryer4 = this.retryer) == null ? void 0 : _this$retryer4.continueRetry();
-        return this.promise;
+      if (this.state.data !== void 0 && (fetchOptions == null ? void 0 : fetchOptions.cancelRefetch)) {
+        this.cancel({ silent: true });
+      } else if (__privateGet(this, _retryer)) {
+        __privateGet(this, _retryer).continueRetry();
+        return __privateGet(this, _retryer).promise;
       }
     }
     if (options) {
@@ -75106,31 +75804,38 @@ class Query extends Removable {
         this.setOptions(observer.options);
       }
     }
-    const abortController = getAbortController();
+    const abortController = new AbortController();
     const queryFnContext = {
       queryKey: this.queryKey,
-      pageParam: void 0,
       meta: this.meta
     };
     const addSignalProperty = (object2) => {
       Object.defineProperty(object2, "signal", {
         enumerable: true,
         get: () => {
-          if (abortController) {
-            this.abortSignalConsumed = true;
-            return abortController.signal;
-          }
-          return void 0;
+          __privateSet(this, _abortSignalConsumed, true);
+          return abortController.signal;
         }
       });
     };
     addSignalProperty(queryFnContext);
     const fetchFn = () => {
-      if (!this.options.queryFn) {
-        return Promise.reject("Missing queryFn for queryKey '" + this.options.queryHash + "'");
+      if (!this.options.queryFn || this.options.queryFn === skipToken) {
+        return Promise.reject(
+          new Error(`Missing queryFn: '${this.options.queryHash}'`)
+        );
       }
-      this.abortSignalConsumed = false;
-      return this.options.queryFn(queryFnContext);
+      __privateSet(this, _abortSignalConsumed, false);
+      if (this.options.persister) {
+        return this.options.persister(
+          this.options.queryFn,
+          queryFnContext,
+          this
+        );
+      }
+      return this.options.queryFn(
+        queryFnContext
+      );
     };
     const context2 = {
       fetchOptions,
@@ -75140,44 +75845,57 @@ class Query extends Removable {
       fetchFn
     };
     addSignalProperty(context2);
-    (_this$options$behavio = this.options.behavior) == null ? void 0 : _this$options$behavio.onFetch(context2);
-    this.revertState = this.state;
-    if (this.state.fetchStatus === "idle" || this.state.fetchMeta !== ((_context$fetchOptions = context2.fetchOptions) == null ? void 0 : _context$fetchOptions.meta)) {
-      var _context$fetchOptions2;
-      this.dispatch({
-        type: "fetch",
-        meta: (_context$fetchOptions2 = context2.fetchOptions) == null ? void 0 : _context$fetchOptions2.meta
-      });
+    (_a2 = this.options.behavior) == null ? void 0 : _a2.onFetch(
+      context2,
+      this
+    );
+    __privateSet(this, _revertState, this.state);
+    if (this.state.fetchStatus === "idle" || this.state.fetchMeta !== ((_b2 = context2.fetchOptions) == null ? void 0 : _b2.meta)) {
+      __privateMethod(this, _dispatch, dispatch_fn).call(this, { type: "fetch", meta: (_c2 = context2.fetchOptions) == null ? void 0 : _c2.meta });
     }
     const onError = (error) => {
+      var _a3, _b3, _c3, _d2;
       if (!(isCancelledError(error) && error.silent)) {
-        this.dispatch({
+        __privateMethod(this, _dispatch, dispatch_fn).call(this, {
           type: "error",
           error
         });
       }
       if (!isCancelledError(error)) {
-        var _this$cache$config$on, _this$cache$config, _this$cache$config$on2, _this$cache$config2;
-        (_this$cache$config$on = (_this$cache$config = this.cache.config).onError) == null ? void 0 : _this$cache$config$on.call(_this$cache$config, error, this);
-        (_this$cache$config$on2 = (_this$cache$config2 = this.cache.config).onSettled) == null ? void 0 : _this$cache$config$on2.call(_this$cache$config2, this.state.data, error, this);
+        (_b3 = (_a3 = __privateGet(this, _cache).config).onError) == null ? void 0 : _b3.call(
+          _a3,
+          error,
+          this
+        );
+        (_d2 = (_c3 = __privateGet(this, _cache).config).onSettled) == null ? void 0 : _d2.call(
+          _c3,
+          this.state.data,
+          error,
+          this
+        );
       }
       if (!this.isFetchingOptimistic) {
         this.scheduleGc();
       }
       this.isFetchingOptimistic = false;
     };
-    this.retryer = createRetryer({
+    __privateSet(this, _retryer, createRetryer({
       fn: context2.fetchFn,
-      abort: abortController == null ? void 0 : abortController.abort.bind(abortController),
+      abort: abortController.abort.bind(abortController),
       onSuccess: (data) => {
-        var _this$cache$config$on3, _this$cache$config3, _this$cache$config$on4, _this$cache$config4;
-        if (typeof data === "undefined") {
-          onError(new Error(this.queryHash + " data is undefined"));
+        var _a3, _b3, _c3, _d2;
+        if (data === void 0) {
+          onError(new Error(`${this.queryHash} data is undefined`));
           return;
         }
         this.setData(data);
-        (_this$cache$config$on3 = (_this$cache$config3 = this.cache.config).onSuccess) == null ? void 0 : _this$cache$config$on3.call(_this$cache$config3, data, this);
-        (_this$cache$config$on4 = (_this$cache$config4 = this.cache.config).onSettled) == null ? void 0 : _this$cache$config$on4.call(_this$cache$config4, data, this.state.error, this);
+        (_b3 = (_a3 = __privateGet(this, _cache).config).onSuccess) == null ? void 0 : _b3.call(_a3, data, this);
+        (_d2 = (_c3 = __privateGet(this, _cache).config).onSettled) == null ? void 0 : _d2.call(
+          _c3,
+          data,
+          this.state.error,
+          this
+        );
         if (!this.isFetchingOptimistic) {
           this.scheduleGc();
         }
@@ -75185,127 +75903,115 @@ class Query extends Removable {
       },
       onError,
       onFail: (failureCount, error) => {
-        this.dispatch({
-          type: "failed",
-          failureCount,
-          error
-        });
+        __privateMethod(this, _dispatch, dispatch_fn).call(this, { type: "failed", failureCount, error });
       },
       onPause: () => {
-        this.dispatch({
-          type: "pause"
-        });
+        __privateMethod(this, _dispatch, dispatch_fn).call(this, { type: "pause" });
       },
       onContinue: () => {
-        this.dispatch({
-          type: "continue"
-        });
+        __privateMethod(this, _dispatch, dispatch_fn).call(this, { type: "continue" });
       },
       retry: context2.options.retry,
       retryDelay: context2.options.retryDelay,
-      networkMode: context2.options.networkMode
-    });
-    this.promise = this.retryer.promise;
-    return this.promise;
+      networkMode: context2.options.networkMode,
+      canRun: () => true
+    }));
+    return __privateGet(this, _retryer).start();
   }
-  dispatch(action) {
-    const reducer = (state) => {
-      var _action$meta, _action$dataUpdatedAt;
-      switch (action.type) {
-        case "failed":
-          return {
-            ...state,
-            fetchFailureCount: action.failureCount,
-            fetchFailureReason: action.error
-          };
-        case "pause":
-          return {
-            ...state,
-            fetchStatus: "paused"
-          };
-        case "continue":
-          return {
-            ...state,
-            fetchStatus: "fetching"
-          };
-        case "fetch":
-          return {
-            ...state,
-            fetchFailureCount: 0,
-            fetchFailureReason: null,
-            fetchMeta: (_action$meta = action.meta) != null ? _action$meta : null,
-            fetchStatus: canFetch(this.options.networkMode) ? "fetching" : "paused",
-            ...!state.dataUpdatedAt && {
-              error: null,
-              status: "loading"
-            }
-          };
-        case "success":
-          return {
-            ...state,
-            data: action.data,
-            dataUpdateCount: state.dataUpdateCount + 1,
-            dataUpdatedAt: (_action$dataUpdatedAt = action.dataUpdatedAt) != null ? _action$dataUpdatedAt : Date.now(),
-            error: null,
-            isInvalidated: false,
-            status: "success",
-            ...!action.manual && {
-              fetchStatus: "idle",
-              fetchFailureCount: 0,
-              fetchFailureReason: null
-            }
-          };
-        case "error":
-          const error = action.error;
-          if (isCancelledError(error) && error.revert && this.revertState) {
-            return {
-              ...this.revertState,
-              fetchStatus: "idle"
-            };
-          }
-          return {
-            ...state,
-            error,
-            errorUpdateCount: state.errorUpdateCount + 1,
-            errorUpdatedAt: Date.now(),
-            fetchFailureCount: state.fetchFailureCount + 1,
-            fetchFailureReason: error,
+}, _initialState = new WeakMap(), _revertState = new WeakMap(), _cache = new WeakMap(), _retryer = new WeakMap(), _defaultOptions = new WeakMap(), _abortSignalConsumed = new WeakMap(), _dispatch = new WeakSet(), dispatch_fn = function(action) {
+  const reducer = (state) => {
+    switch (action.type) {
+      case "failed":
+        return {
+          ...state,
+          fetchFailureCount: action.failureCount,
+          fetchFailureReason: action.error
+        };
+      case "pause":
+        return {
+          ...state,
+          fetchStatus: "paused"
+        };
+      case "continue":
+        return {
+          ...state,
+          fetchStatus: "fetching"
+        };
+      case "fetch":
+        return {
+          ...state,
+          ...fetchState(state.data, this.options),
+          fetchMeta: action.meta ?? null
+        };
+      case "success":
+        return {
+          ...state,
+          data: action.data,
+          dataUpdateCount: state.dataUpdateCount + 1,
+          dataUpdatedAt: action.dataUpdatedAt ?? Date.now(),
+          error: null,
+          isInvalidated: false,
+          status: "success",
+          ...!action.manual && {
             fetchStatus: "idle",
-            status: "error"
-          };
-        case "invalidate":
-          return {
-            ...state,
-            isInvalidated: true
-          };
-        case "setState":
-          return {
-            ...state,
-            ...action.state
-          };
-      }
-    };
-    this.state = reducer(this.state);
-    notifyManager.batch(() => {
-      this.observers.forEach((observer) => {
-        observer.onQueryUpdate(action);
-      });
-      this.cache.notify({
-        query: this,
-        type: "updated",
-        action
-      });
+            fetchFailureCount: 0,
+            fetchFailureReason: null
+          }
+        };
+      case "error":
+        const error = action.error;
+        if (isCancelledError(error) && error.revert && __privateGet(this, _revertState)) {
+          return { ...__privateGet(this, _revertState), fetchStatus: "idle" };
+        }
+        return {
+          ...state,
+          error,
+          errorUpdateCount: state.errorUpdateCount + 1,
+          errorUpdatedAt: Date.now(),
+          fetchFailureCount: state.fetchFailureCount + 1,
+          fetchFailureReason: error,
+          fetchStatus: "idle",
+          status: "error"
+        };
+      case "invalidate":
+        return {
+          ...state,
+          isInvalidated: true
+        };
+      case "setState":
+        return {
+          ...state,
+          ...action.state
+        };
+    }
+  };
+  this.state = reducer(this.state);
+  notifyManager.batch(() => {
+    this.observers.forEach((observer) => {
+      observer.onQueryUpdate();
     });
-  }
+    __privateGet(this, _cache).notify({ query: this, type: "updated", action });
+  });
+}, _d);
+function fetchState(data, options) {
+  return {
+    fetchFailureCount: 0,
+    fetchFailureReason: null,
+    fetchStatus: canFetch(options.networkMode) ? "fetching" : "paused",
+    ...data === void 0 && {
+      error: null,
+      status: "pending"
+    }
+  };
 }
 function getDefaultState$1(options) {
   const data = typeof options.initialData === "function" ? options.initialData() : options.initialData;
-  const hasData = typeof data !== "undefined";
+  const hasData = data !== void 0;
   const initialDataUpdatedAt = hasData ? typeof options.initialDataUpdatedAt === "function" ? options.initialDataUpdatedAt() : options.initialDataUpdatedAt : 0;
   return {
     data,
     dataUpdateCount: 0,
-    dataUpdatedAt: hasData ? initialDataUpdatedAt != null ? initialDataUpdatedAt : Date.now() : 0,
+    dataUpdatedAt: hasData ? initialDataUpdatedAt ?? Date.now() : 0,
     error: null,
     errorUpdateCount: 0,
     errorUpdatedAt: 0,
@@ -75313,26 +76019,24 @@ function getDefaultState$1(options) {
     fetchFailureReason: null,
     fetchMeta: null,
     isInvalidated: false,
-    status: hasData ? "success" : "loading",
+    status: hasData ? "success" : "pending",
     fetchStatus: "idle"
   };
 }
-class QueryCache extends Subscribable {
-  constructor(config2) {
+var QueryCache = (_e = class extends Subscribable {
+  constructor(config2 = {}) {
     super();
-    this.config = config2 || {};
-    this.queries = [];
-    this.queriesMap = {};
+    __privateAdd(this, _queries, void 0);
+    this.config = config2;
+    __privateSet(this, _queries, /* @__PURE__ */ new Map());
   }
   build(client2, options, state) {
-    var _options$queryHash;
     const queryKey = options.queryKey;
-    const queryHash = (_options$queryHash = options.queryHash) != null ? _options$queryHash : hashQueryKeyByOptions(queryKey, options);
+    const queryHash = options.queryHash ?? hashQueryKeyByOptions(queryKey, options);
     let query = this.get(queryHash);
     if (!query) {
       query = new Query({
         cache: this,
-        logger: client2.getLogger(),
         queryKey,
         queryHash,
         options: client2.defaultQueryOptions(options),
@@ -75344,9 +76048,8 @@ class QueryCache extends Subscribable {
     return query;
   }
   add(query) {
-    if (!this.queriesMap[query.queryHash]) {
-      this.queriesMap[query.queryHash] = query;
-      this.queries.push(query);
+    if (!__privateGet(this, _queries).has(query.queryHash)) {
+      __privateGet(this, _queries).set(query.queryHash, query);
       this.notify({
         type: "added",
         query
@@ -75354,100 +76057,86 @@ class QueryCache extends Subscribable {
     }
   }
   remove(query) {
-    const queryInMap = this.queriesMap[query.queryHash];
+    const queryInMap = __privateGet(this, _queries).get(query.queryHash);
     if (queryInMap) {
       query.destroy();
-      this.queries = this.queries.filter((x) => x !== query);
       if (queryInMap === query) {
-        delete this.queriesMap[query.queryHash];
+        __privateGet(this, _queries).delete(query.queryHash);
       }
-      this.notify({
-        type: "removed",
-        query
-      });
+      this.notify({ type: "removed", query });
     }
   }
   clear() {
     notifyManager.batch(() => {
-      this.queries.forEach((query) => {
+      this.getAll().forEach((query) => {
         this.remove(query);
       });
     });
   }
   get(queryHash) {
-    return this.queriesMap[queryHash];
+    return __privateGet(this, _queries).get(queryHash);
   }
   getAll() {
-    return this.queries;
+    return [...__privateGet(this, _queries).values()];
   }
-  find(arg1, arg2) {
-    const [filters] = parseFilterArgs(arg1, arg2);
-    if (typeof filters.exact === "undefined") {
-      filters.exact = true;
-    }
-    return this.queries.find((query) => matchQuery(filters, query));
+  find(filters) {
+    const defaultedFilters = { exact: true, ...filters };
+    return this.getAll().find(
+      (query) => matchQuery(defaultedFilters, query)
+    );
   }
-  findAll(arg1, arg2) {
-    const [filters] = parseFilterArgs(arg1, arg2);
-    return Object.keys(filters).length > 0 ? this.queries.filter((query) => matchQuery(filters, query)) : this.queries;
+  findAll(filters = {}) {
+    const queries = this.getAll();
+    return Object.keys(filters).length > 0 ? queries.filter((query) => matchQuery(filters, query)) : queries;
   }
   notify(event) {
     notifyManager.batch(() => {
-      this.listeners.forEach(({
-        listener
-      }) => {
+      this.listeners.forEach((listener) => {
         listener(event);
       });
     });
   }
   onFocus() {
     notifyManager.batch(() => {
-      this.queries.forEach((query) => {
+      this.getAll().forEach((query) => {
         query.onFocus();
       });
     });
   }
   onOnline() {
     notifyManager.batch(() => {
-      this.queries.forEach((query) => {
+      this.getAll().forEach((query) => {
         query.onOnline();
       });
     });
   }
-}
-class Mutation extends Removable {
+}, _queries = new WeakMap(), _e);
+var Mutation = (_f = class extends Removable {
   constructor(config2) {
     super();
-    this.defaultOptions = config2.defaultOptions;
+    __privateAdd(this, _dispatch2);
+    __privateAdd(this, _observers, void 0);
+    __privateAdd(this, _mutationCache, void 0);
+    __privateAdd(this, _retryer2, void 0);
     this.mutationId = config2.mutationId;
-    this.mutationCache = config2.mutationCache;
-    this.logger = config2.logger || defaultLogger;
-    this.observers = [];
+    __privateSet(this, _mutationCache, config2.mutationCache);
+    __privateSet(this, _observers, []);
     this.state = config2.state || getDefaultState();
     this.setOptions(config2.options);
     this.scheduleGc();
   }
   setOptions(options) {
-    this.options = {
-      ...this.defaultOptions,
-      ...options
-    };
-    this.updateCacheTime(this.options.cacheTime);
+    this.options = options;
+    this.updateGcTime(this.options.gcTime);
   }
   get meta() {
     return this.options.meta;
   }
-  setState(state) {
-    this.dispatch({
-      type: "setState",
-      state
-    });
-  }
   addObserver(observer) {
-    if (!this.observers.includes(observer)) {
-      this.observers.push(observer);
+    if (!__privateGet(this, _observers).includes(observer)) {
+      __privateGet(this, _observers).push(observer);
       this.clearGcTimeout();
-      this.mutationCache.notify({
+      __privateGet(this, _mutationCache).notify({
         type: "observerAdded",
         mutation: this,
         observer
@@ -75455,178 +76144,195 @@ class Mutation extends Removable {
     }
   }
   removeObserver(observer) {
-    this.observers = this.observers.filter((x) => x !== observer);
+    __privateSet(this, _observers, __privateGet(this, _observers).filter((x) => x !== observer));
     this.scheduleGc();
-    this.mutationCache.notify({
+    __privateGet(this, _mutationCache).notify({
       type: "observerRemoved",
       mutation: this,
       observer
     });
   }
   optionalRemove() {
-    if (!this.observers.length) {
-      if (this.state.status === "loading") {
+    if (!__privateGet(this, _observers).length) {
+      if (this.state.status === "pending") {
         this.scheduleGc();
       } else {
-        this.mutationCache.remove(this);
+        __privateGet(this, _mutationCache).remove(this);
       }
     }
   }
   continue() {
-    var _this$retryer$continu, _this$retryer;
-    return (_this$retryer$continu = (_this$retryer = this.retryer) == null ? void 0 : _this$retryer.continue()) != null ? _this$retryer$continu : this.execute();
+    var _a2;
+    return ((_a2 = __privateGet(this, _retryer2)) == null ? void 0 : _a2.continue()) ?? // continuing a mutation assumes that variables are set, mutation must have been dehydrated before
+    this.execute(this.state.variables);
   }
-  async execute() {
-    const executeMutation = () => {
-      var _this$options$retry;
-      this.retryer = createRetryer({
-        fn: () => {
-          if (!this.options.mutationFn) {
-            return Promise.reject("No mutationFn found");
-          }
-          return this.options.mutationFn(this.state.variables);
-        },
-        onFail: (failureCount, error) => {
-          this.dispatch({
-            type: "failed",
-            failureCount,
-            error
-          });
-        },
-        onPause: () => {
-          this.dispatch({
-            type: "pause"
-          });
-        },
-        onContinue: () => {
-          this.dispatch({
-            type: "continue"
-          });
-        },
-        retry: (_this$options$retry = this.options.retry) != null ? _this$options$retry : 0,
-        retryDelay: this.options.retryDelay,
-        networkMode: this.options.networkMode
-      });
-      return this.retryer.promise;
-    };
-    const restored = this.state.status === "loading";
+  async execute(variables) {
+    var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t;
+    __privateSet(this, _retryer2, createRetryer({
+      fn: () => {
+        if (!this.options.mutationFn) {
+          return Promise.reject(new Error("No mutationFn found"));
+        }
+        return this.options.mutationFn(variables);
+      },
+      onFail: (failureCount, error) => {
+        __privateMethod(this, _dispatch2, dispatch_fn2).call(this, { type: "failed", failureCount, error });
+      },
+      onPause: () => {
+        __privateMethod(this, _dispatch2, dispatch_fn2).call(this, { type: "pause" });
+      },
+      onContinue: () => {
+        __privateMethod(this, _dispatch2, dispatch_fn2).call(this, { type: "continue" });
+      },
+      retry: this.options.retry ?? 0,
+      retryDelay: this.options.retryDelay,
+      networkMode: this.options.networkMode,
+      canRun: () => __privateGet(this, _mutationCache).canRun(this)
+    }));
+    const restored = this.state.status === "pending";
+    const isPaused = !__privateGet(this, _retryer2).canStart();
     try {
-      var _this$mutationCache$c3, _this$mutationCache$c4, _this$options$onSucce, _this$options2, _this$mutationCache$c5, _this$mutationCache$c6, _this$options$onSettl, _this$options3;
       if (!restored) {
-        var _this$mutationCache$c, _this$mutationCache$c2, _this$options$onMutat, _this$options;
-        this.dispatch({
-          type: "loading",
-          variables: this.options.variables
-        });
-        await ((_this$mutationCache$c = (_this$mutationCache$c2 = this.mutationCache.config).onMutate) == null ? void 0 : _this$mutationCache$c.call(_this$mutationCache$c2, this.state.variables, this));
-        const context2 = await ((_this$options$onMutat = (_this$options = this.options).onMutate) == null ? void 0 : _this$options$onMutat.call(_this$options, this.state.variables));
+        __privateMethod(this, _dispatch2, dispatch_fn2).call(this, { type: "pending", variables, isPaused });
+        await ((_b2 = (_a2 = __privateGet(this, _mutationCache).config).onMutate) == null ? void 0 : _b2.call(
+          _a2,
+          variables,
+          this
+        ));
+        const context2 = await ((_d2 = (_c2 = this.options).onMutate) == null ? void 0 : _d2.call(_c2, variables));
         if (context2 !== this.state.context) {
-          this.dispatch({
-            type: "loading",
+          __privateMethod(this, _dispatch2, dispatch_fn2).call(this, {
+            type: "pending",
             context: context2,
-            variables: this.state.variables
+            variables,
+            isPaused
           });
         }
       }
-      const data = await executeMutation();
-      await ((_this$mutationCache$c3 = (_this$mutationCache$c4 = this.mutationCache.config).onSuccess) == null ? void 0 : _this$mutationCache$c3.call(_this$mutationCache$c4, data, this.state.variables, this.state.context, this));
-      await ((_this$options$onSucce = (_this$options2 = this.options).onSuccess) == null ? void 0 : _this$options$onSucce.call(_this$options2, data, this.state.variables, this.state.context));
-      await ((_this$mutationCache$c5 = (_this$mutationCache$c6 = this.mutationCache.config).onSettled) == null ? void 0 : _this$mutationCache$c5.call(_this$mutationCache$c6, data, null, this.state.variables, this.state.context, this));
-      await ((_this$options$onSettl = (_this$options3 = this.options).onSettled) == null ? void 0 : _this$options$onSettl.call(_this$options3, data, null, this.state.variables, this.state.context));
-      this.dispatch({
-        type: "success",
-        data
-      });
+      const data = await __privateGet(this, _retryer2).start();
+      await ((_f2 = (_e2 = __privateGet(this, _mutationCache).config).onSuccess) == null ? void 0 : _f2.call(
+        _e2,
+        data,
+        variables,
+        this.state.context,
+        this
+      ));
+      await ((_h2 = (_g2 = this.options).onSuccess) == null ? void 0 : _h2.call(_g2, data, variables, this.state.context));
+      await ((_j2 = (_i2 = __privateGet(this, _mutationCache).config).onSettled) == null ? void 0 : _j2.call(
+        _i2,
+        data,
+        null,
+        this.state.variables,
+        this.state.context,
+        this
+      ));
+      await ((_l = (_k = this.options).onSettled) == null ? void 0 : _l.call(_k, data, null, variables, this.state.context));
+      __privateMethod(this, _dispatch2, dispatch_fn2).call(this, { type: "success", data });
       return data;
     } catch (error) {
       try {
-        var _this$mutationCache$c7, _this$mutationCache$c8, _this$options$onError, _this$options4, _this$mutationCache$c9, _this$mutationCache$c10, _this$options$onSettl2, _this$options5;
-        await ((_this$mutationCache$c7 = (_this$mutationCache$c8 = this.mutationCache.config).onError) == null ? void 0 : _this$mutationCache$c7.call(_this$mutationCache$c8, error, this.state.variables, this.state.context, this));
-        if (false)
-          ;
-        await ((_this$options$onError = (_this$options4 = this.options).onError) == null ? void 0 : _this$options$onError.call(_this$options4, error, this.state.variables, this.state.context));
-        await ((_this$mutationCache$c9 = (_this$mutationCache$c10 = this.mutationCache.config).onSettled) == null ? void 0 : _this$mutationCache$c9.call(_this$mutationCache$c10, void 0, error, this.state.variables, this.state.context, this));
-        await ((_this$options$onSettl2 = (_this$options5 = this.options).onSettled) == null ? void 0 : _this$options$onSettl2.call(_this$options5, void 0, error, this.state.variables, this.state.context));
+        await ((_n = (_m = __privateGet(this, _mutationCache).config).onError) == null ? void 0 : _n.call(
+          _m,
+          error,
+          variables,
+          this.state.context,
+          this
+        ));
+        await ((_p = (_o = this.options).onError) == null ? void 0 : _p.call(
+          _o,
+          error,
+          variables,
+          this.state.context
+        ));
+        await ((_r = (_q = __privateGet(this, _mutationCache).config).onSettled) == null ? void 0 : _r.call(
+          _q,
+          void 0,
+          error,
+          this.state.variables,
+          this.state.context,
+          this
+        ));
+        await ((_t = (_s = this.options).onSettled) == null ? void 0 : _t.call(
+          _s,
+          void 0,
+          error,
+          variables,
+          this.state.context
+        ));
         throw error;
       } finally {
-        this.dispatch({
-          type: "error",
-          error
-        });
+        __privateMethod(this, _dispatch2, dispatch_fn2).call(this, { type: "error", error });
       }
+    } finally {
+      __privateGet(this, _mutationCache).runNext(this);
     }
   }
-  dispatch(action) {
-    const reducer = (state) => {
-      switch (action.type) {
-        case "failed":
-          return {
-            ...state,
-            failureCount: action.failureCount,
-            failureReason: action.error
-          };
-        case "pause":
-          return {
-            ...state,
-            isPaused: true
-          };
-        case "continue":
-          return {
-            ...state,
-            isPaused: false
-          };
-        case "loading":
-          return {
-            ...state,
-            context: action.context,
-            data: void 0,
-            failureCount: 0,
-            failureReason: null,
-            error: null,
-            isPaused: !canFetch(this.options.networkMode),
-            status: "loading",
-            variables: action.variables
-          };
-        case "success":
-          return {
-            ...state,
-            data: action.data,
-            failureCount: 0,
-            failureReason: null,
-            error: null,
-            status: "success",
-            isPaused: false
-          };
-        case "error":
-          return {
-            ...state,
-            data: void 0,
-            error: action.error,
-            failureCount: state.failureCount + 1,
-            failureReason: action.error,
-            isPaused: false,
-            status: "error"
-          };
-        case "setState":
-          return {
-            ...state,
-            ...action.state
-          };
-      }
-    };
-    this.state = reducer(this.state);
-    notifyManager.batch(() => {
-      this.observers.forEach((observer) => {
-        observer.onMutationUpdate(action);
-      });
-      this.mutationCache.notify({
-        mutation: this,
-        type: "updated",
-        action
-      });
+}, _observers = new WeakMap(), _mutationCache = new WeakMap(), _retryer2 = new WeakMap(), _dispatch2 = new WeakSet(), dispatch_fn2 = function(action) {
+  const reducer = (state) => {
+    switch (action.type) {
+      case "failed":
+        return {
+          ...state,
+          failureCount: action.failureCount,
+          failureReason: action.error
+        };
+      case "pause":
+        return {
+          ...state,
+          isPaused: true
+        };
+      case "continue":
+        return {
+          ...state,
+          isPaused: false
+        };
+      case "pending":
+        return {
+          ...state,
+          context: action.context,
+          data: void 0,
+          failureCount: 0,
+          failureReason: null,
+          error: null,
+          isPaused: action.isPaused,
+          status: "pending",
+          variables: action.variables,
+          submittedAt: Date.now()
+        };
+      case "success":
+        return {
+          ...state,
+          data: action.data,
+          failureCount: 0,
+          failureReason: null,
+          error: null,
+          status: "success",
+          isPaused: false
+        };
+      case "error":
+        return {
+          ...state,
+          data: void 0,
+          error: action.error,
+          failureCount: state.failureCount + 1,
+          failureReason: action.error,
+          isPaused: false,
+          status: "error"
+        };
+    }
+  };
+  this.state = reducer(this.state);
+  notifyManager.batch(() => {
+    __privateGet(this, _observers).forEach((observer) => {
+      observer.onMutationUpdate(action);
     });
-  }
-}
+    __privateGet(this, _mutationCache).notify({
+      mutation: this,
+      type: "updated",
+      action
+    });
+  });
+}, _f);
 function getDefaultState() {
   return {
     context: void 0,
@@ -75636,105 +76342,119 @@ function getDefaultState() {
     failureReason: null,
     isPaused: false,
     status: "idle",
-    variables: void 0
+    variables: void 0,
+    submittedAt: 0
   };
 }
-class MutationCache extends Subscribable {
-  constructor(config2) {
+var MutationCache = (_g = class extends Subscribable {
+  constructor(config2 = {}) {
     super();
-    this.config = config2 || {};
-    this.mutations = [];
-    this.mutationId = 0;
+    __privateAdd(this, _mutations, void 0);
+    __privateAdd(this, _mutationId, void 0);
+    this.config = config2;
+    __privateSet(this, _mutations, /* @__PURE__ */ new Map());
+    __privateSet(this, _mutationId, Date.now());
   }
   build(client2, options, state) {
     const mutation = new Mutation({
       mutationCache: this,
-      logger: client2.getLogger(),
-      mutationId: ++this.mutationId,
+      mutationId: ++__privateWrapper(this, _mutationId)._,
       options: client2.defaultMutationOptions(options),
-      state,
-      defaultOptions: options.mutationKey ? client2.getMutationDefaults(options.mutationKey) : void 0
+      state
     });
     this.add(mutation);
     return mutation;
   }
   add(mutation) {
-    this.mutations.push(mutation);
-    this.notify({
-      type: "added",
-      mutation
-    });
+    const scope = scopeFor(mutation);
+    const mutations = __privateGet(this, _mutations).get(scope) ?? [];
+    mutations.push(mutation);
+    __privateGet(this, _mutations).set(scope, mutations);
+    this.notify({ type: "added", mutation });
   }
   remove(mutation) {
-    this.mutations = this.mutations.filter((x) => x !== mutation);
-    this.notify({
-      type: "removed",
-      mutation
-    });
+    var _a2;
+    const scope = scopeFor(mutation);
+    if (__privateGet(this, _mutations).has(scope)) {
+      const mutations = (_a2 = __privateGet(this, _mutations).get(scope)) == null ? void 0 : _a2.filter((x) => x !== mutation);
+      if (mutations) {
+        if (mutations.length === 0) {
+          __privateGet(this, _mutations).delete(scope);
+        } else {
+          __privateGet(this, _mutations).set(scope, mutations);
+        }
+      }
+    }
+    this.notify({ type: "removed", mutation });
+  }
+  canRun(mutation) {
+    var _a2;
+    const firstPendingMutation = (_a2 = __privateGet(this, _mutations).get(scopeFor(mutation))) == null ? void 0 : _a2.find((m2) => m2.state.status === "pending");
+    return !firstPendingMutation || firstPendingMutation === mutation;
+  }
+  runNext(mutation) {
+    var _a2;
+    const foundMutation = (_a2 = __privateGet(this, _mutations).get(scopeFor(mutation))) == null ? void 0 : _a2.find((m2) => m2 !== mutation && m2.state.isPaused);
+    return (foundMutation == null ? void 0 : foundMutation.continue()) ?? Promise.resolve();
   }
   clear() {
     notifyManager.batch(() => {
-      this.mutations.forEach((mutation) => {
+      this.getAll().forEach((mutation) => {
         this.remove(mutation);
       });
     });
   }
   getAll() {
-    return this.mutations;
+    return [...__privateGet(this, _mutations).values()].flat();
   }
   find(filters) {
-    if (typeof filters.exact === "undefined") {
-      filters.exact = true;
-    }
-    return this.mutations.find((mutation) => matchMutation(filters, mutation));
+    const defaultedFilters = { exact: true, ...filters };
+    return this.getAll().find(
+      (mutation) => matchMutation(defaultedFilters, mutation)
+    );
   }
-  findAll(filters) {
-    return this.mutations.filter((mutation) => matchMutation(filters, mutation));
+  findAll(filters = {}) {
+    return this.getAll().filter((mutation) => matchMutation(filters, mutation));
   }
   notify(event) {
     notifyManager.batch(() => {
-      this.listeners.forEach(({
-        listener
-      }) => {
+      this.listeners.forEach((listener) => {
         listener(event);
       });
     });
   }
   resumePausedMutations() {
-    var _this$resuming;
-    this.resuming = ((_this$resuming = this.resuming) != null ? _this$resuming : Promise.resolve()).then(() => {
-      const pausedMutations = this.mutations.filter((x) => x.state.isPaused);
-      return notifyManager.batch(() => pausedMutations.reduce((promise, mutation) => promise.then(() => mutation.continue().catch(noop$2)), Promise.resolve()));
-    }).then(() => {
-      this.resuming = void 0;
-    });
-    return this.resuming;
+    const pausedMutations = this.getAll().filter((x) => x.state.isPaused);
+    return notifyManager.batch(
+      () => Promise.all(
+        pausedMutations.map((mutation) => mutation.continue().catch(noop$2))
+      )
+    );
   }
+}, _mutations = new WeakMap(), _mutationId = new WeakMap(), _g);
+function scopeFor(mutation) {
+  var _a2;
+  return ((_a2 = mutation.options.scope) == null ? void 0 : _a2.id) ?? String(mutation.mutationId);
 }
-function infiniteQueryBehavior() {
+function infiniteQueryBehavior(pages) {
   return {
-    onFetch: (context2) => {
-      context2.fetchFn = () => {
-        var _context$fetchOptions, _context$fetchOptions2, _context$fetchOptions3, _context$fetchOptions4, _context$state$data, _context$state$data2;
-        const refetchPage = (_context$fetchOptions = context2.fetchOptions) == null ? void 0 : (_context$fetchOptions2 = _context$fetchOptions.meta) == null ? void 0 : _context$fetchOptions2.refetchPage;
-        const fetchMore = (_context$fetchOptions3 = context2.fetchOptions) == null ? void 0 : (_context$fetchOptions4 = _context$fetchOptions3.meta) == null ? void 0 : _context$fetchOptions4.fetchMore;
-        const pageParam = fetchMore == null ? void 0 : fetchMore.pageParam;
-        const isFetchingNextPage = (fetchMore == null ? void 0 : fetchMore.direction) === "forward";
-        const isFetchingPreviousPage = (fetchMore == null ? void 0 : fetchMore.direction) === "backward";
-        const oldPages = ((_context$state$data = context2.state.data) == null ? void 0 : _context$state$data.pages) || [];
-        const oldPageParams = ((_context$state$data2 = context2.state.data) == null ? void 0 : _context$state$data2.pageParams) || [];
-        let newPageParams = oldPageParams;
+    onFetch: (context2, query) => {
+      const fetchFn = async () => {
+        var _a2, _b2, _c2, _d2, _e2;
+        const options = context2.options;
+        const direction = (_c2 = (_b2 = (_a2 = context2.fetchOptions) == null ? void 0 : _a2.meta) == null ? void 0 : _b2.fetchMore) == null ? void 0 : _c2.direction;
+        const oldPages = ((_d2 = context2.state.data) == null ? void 0 : _d2.pages) || [];
+        const oldPageParams = ((_e2 = context2.state.data) == null ? void 0 : _e2.pageParams) || [];
+        const empty = { pages: [], pageParams: [] };
         let cancelled = false;
         const addSignalProperty = (object2) => {
           Object.defineProperty(object2, "signal", {
             enumerable: true,
             get: () => {
-              var _context$signal;
-              if ((_context$signal = context2.signal) != null && _context$signal.aborted) {
+              if (context2.signal.aborted) {
                 cancelled = true;
               } else {
-                var _context$signal2;
-                (_context$signal2 = context2.signal) == null ? void 0 : _context$signal2.addEventListener("abort", () => {
+                context2.signal.addEventListener("abort", () => {
                   cancelled = true;
                 });
               }
@@ -75742,185 +76462,216 @@ function infiniteQueryBehavior() {
             }
           });
         };
-        const queryFn = context2.options.queryFn || (() => Promise.reject("Missing queryFn for queryKey '" + context2.options.queryHash + "'"));
-        const buildNewPages = (pages, param, page, previous) => {
-          newPageParams = previous ? [param, ...newPageParams] : [...newPageParams, param];
-          return previous ? [page, ...pages] : [...pages, page];
+        const queryFn = context2.options.queryFn && context2.options.queryFn !== skipToken ? context2.options.queryFn : () => {
+          return Promise.reject(
+            new Error(`Missing queryFn: '${context2.options.queryHash}'`)
+          );
         };
-        const fetchPage = (pages, manual, param, previous) => {
+        const fetchPage = async (data, param, previous) => {
           if (cancelled) {
-            return Promise.reject("Cancelled");
+            return Promise.reject();
           }
-          if (typeof param === "undefined" && !manual && pages.length) {
-            return Promise.resolve(pages);
+          if (param == null && data.pages.length) {
+            return Promise.resolve(data);
           }
           const queryFnContext = {
             queryKey: context2.queryKey,
             pageParam: param,
+            direction: previous ? "backward" : "forward",
             meta: context2.options.meta
           };
           addSignalProperty(queryFnContext);
-          const queryFnResult = queryFn(queryFnContext);
-          const promise2 = Promise.resolve(queryFnResult).then((page) => buildNewPages(pages, param, page, previous));
-          return promise2;
+          const page = await queryFn(
+            queryFnContext
+          );
+          const { maxPages } = context2.options;
+          const addTo = previous ? addToStart : addToEnd;
+          return {
+            pages: addTo(data.pages, page, maxPages),
+            pageParams: addTo(data.pageParams, param, maxPages)
+          };
         };
-        let promise;
-        if (!oldPages.length) {
-          promise = fetchPage([]);
-        } else if (isFetchingNextPage) {
-          const manual = typeof pageParam !== "undefined";
-          const param = manual ? pageParam : getNextPageParam(context2.options, oldPages);
-          promise = fetchPage(oldPages, manual, param);
-        } else if (isFetchingPreviousPage) {
-          const manual = typeof pageParam !== "undefined";
-          const param = manual ? pageParam : getPreviousPageParam(context2.options, oldPages);
-          promise = fetchPage(oldPages, manual, param, true);
+        let result;
+        if (direction && oldPages.length) {
+          const previous = direction === "backward";
+          const pageParamFn = previous ? getPreviousPageParam : getNextPageParam;
+          const oldData = {
+            pages: oldPages,
+            pageParams: oldPageParams
+          };
+          const param = pageParamFn(options, oldData);
+          result = await fetchPage(oldData, param, previous);
         } else {
-          newPageParams = [];
-          const manual = typeof context2.options.getNextPageParam === "undefined";
-          const shouldFetchFirstPage = refetchPage && oldPages[0] ? refetchPage(oldPages[0], 0, oldPages) : true;
-          promise = shouldFetchFirstPage ? fetchPage([], manual, oldPageParams[0]) : Promise.resolve(buildNewPages([], oldPageParams[0], oldPages[0]));
-          for (let i2 = 1; i2 < oldPages.length; i2++) {
-            promise = promise.then((pages) => {
-              const shouldFetchNextPage = refetchPage && oldPages[i2] ? refetchPage(oldPages[i2], i2, oldPages) : true;
-              if (shouldFetchNextPage) {
-                const param = manual ? oldPageParams[i2] : getNextPageParam(context2.options, pages);
-                return fetchPage(pages, manual, param);
-              }
-              return Promise.resolve(buildNewPages(pages, oldPageParams[i2], oldPages[i2]));
-            });
+          result = await fetchPage(
+            empty,
+            oldPageParams[0] ?? options.initialPageParam
+          );
+          const remainingPages = pages ?? oldPages.length;
+          for (let i2 = 1; i2 < remainingPages; i2++) {
+            const param = getNextPageParam(options, result);
+            result = await fetchPage(result, param);
           }
         }
-        const finalPromise = promise.then((pages) => ({
-          pages,
-          pageParams: newPageParams
-        }));
-        return finalPromise;
+        return result;
       };
+      if (context2.options.persister) {
+        context2.fetchFn = () => {
+          var _a2, _b2;
+          return (_b2 = (_a2 = context2.options).persister) == null ? void 0 : _b2.call(
+            _a2,
+            fetchFn,
+            {
+              queryKey: context2.queryKey,
+              meta: context2.options.meta,
+              signal: context2.signal
+            },
+            query
+          );
+        };
+      } else {
+        context2.fetchFn = fetchFn;
+      }
     }
   };
 }
-function getNextPageParam(options, pages) {
-  return options.getNextPageParam == null ? void 0 : options.getNextPageParam(pages[pages.length - 1], pages);
+function getNextPageParam(options, { pages, pageParams }) {
+  const lastIndex = pages.length - 1;
+  return options.getNextPageParam(
+    pages[lastIndex],
+    pages,
+    pageParams[lastIndex],
+    pageParams
+  );
 }
-function getPreviousPageParam(options, pages) {
-  return options.getPreviousPageParam == null ? void 0 : options.getPreviousPageParam(pages[0], pages);
+function getPreviousPageParam(options, { pages, pageParams }) {
+  var _a2;
+  return (_a2 = options.getPreviousPageParam) == null ? void 0 : _a2.call(
+    options,
+    pages[0],
+    pages,
+    pageParams[0],
+    pageParams
+  );
 }
-function hasNextPage(options, pages) {
-  if (options.getNextPageParam && Array.isArray(pages)) {
-    const nextPageParam = getNextPageParam(options, pages);
-    return typeof nextPageParam !== "undefined" && nextPageParam !== null && nextPageParam !== false;
-  }
-  return;
+function hasNextPage(options, data) {
+  if (!data)
+    return false;
+  return getNextPageParam(options, data) != null;
 }
-function hasPreviousPage(options, pages) {
-  if (options.getPreviousPageParam && Array.isArray(pages)) {
-    const previousPageParam = getPreviousPageParam(options, pages);
-    return typeof previousPageParam !== "undefined" && previousPageParam !== null && previousPageParam !== false;
-  }
-  return;
+function hasPreviousPage(options, data) {
+  if (!data || !options.getPreviousPageParam)
+    return false;
+  return getPreviousPageParam(options, data) != null;
 }
-class QueryClient {
+var QueryClient = (_h = class {
   constructor(config2 = {}) {
-    this.queryCache = config2.queryCache || new QueryCache();
-    this.mutationCache = config2.mutationCache || new MutationCache();
-    this.logger = config2.logger || defaultLogger;
-    this.defaultOptions = config2.defaultOptions || {};
-    this.queryDefaults = [];
-    this.mutationDefaults = [];
-    this.mountCount = 0;
+    __privateAdd(this, _queryCache, void 0);
+    __privateAdd(this, _mutationCache2, void 0);
+    __privateAdd(this, _defaultOptions2, void 0);
+    __privateAdd(this, _queryDefaults, void 0);
+    __privateAdd(this, _mutationDefaults, void 0);
+    __privateAdd(this, _mountCount, void 0);
+    __privateAdd(this, _unsubscribeFocus, void 0);
+    __privateAdd(this, _unsubscribeOnline, void 0);
+    __privateSet(this, _queryCache, config2.queryCache || new QueryCache());
+    __privateSet(this, _mutationCache2, config2.mutationCache || new MutationCache());
+    __privateSet(this, _defaultOptions2, config2.defaultOptions || {});
+    __privateSet(this, _queryDefaults, /* @__PURE__ */ new Map());
+    __privateSet(this, _mutationDefaults, /* @__PURE__ */ new Map());
+    __privateSet(this, _mountCount, 0);
   }
   mount() {
-    this.mountCount++;
-    if (this.mountCount !== 1)
+    __privateWrapper(this, _mountCount)._++;
+    if (__privateGet(this, _mountCount) !== 1)
       return;
-    this.unsubscribeFocus = focusManager.subscribe(() => {
-      if (focusManager.isFocused()) {
-        this.resumePausedMutations();
-        this.queryCache.onFocus();
+    __privateSet(this, _unsubscribeFocus, focusManager.subscribe(async (focused) => {
+      if (focused) {
+        await this.resumePausedMutations();
+        __privateGet(this, _queryCache).onFocus();
       }
-    });
-    this.unsubscribeOnline = onlineManager.subscribe(() => {
-      if (onlineManager.isOnline()) {
-        this.resumePausedMutations();
-        this.queryCache.onOnline();
+    }));
+    __privateSet(this, _unsubscribeOnline, onlineManager.subscribe(async (online) => {
+      if (online) {
+        await this.resumePausedMutations();
+        __privateGet(this, _queryCache).onOnline();
       }
-    });
+    }));
   }
   unmount() {
-    var _this$unsubscribeFocu, _this$unsubscribeOnli;
-    this.mountCount--;
-    if (this.mountCount !== 0)
+    var _a2, _b2;
+    __privateWrapper(this, _mountCount)._--;
+    if (__privateGet(this, _mountCount) !== 0)
       return;
-    (_this$unsubscribeFocu = this.unsubscribeFocus) == null ? void 0 : _this$unsubscribeFocu.call(this);
-    this.unsubscribeFocus = void 0;
-    (_this$unsubscribeOnli = this.unsubscribeOnline) == null ? void 0 : _this$unsubscribeOnli.call(this);
-    this.unsubscribeOnline = void 0;
+    (_a2 = __privateGet(this, _unsubscribeFocus)) == null ? void 0 : _a2.call(this);
+    __privateSet(this, _unsubscribeFocus, void 0);
+    (_b2 = __privateGet(this, _unsubscribeOnline)) == null ? void 0 : _b2.call(this);
+    __privateSet(this, _unsubscribeOnline, void 0);
   }
-  isFetching(arg1, arg2) {
-    const [filters] = parseFilterArgs(arg1, arg2);
-    filters.fetchStatus = "fetching";
-    return this.queryCache.findAll(filters).length;
+  isFetching(filters) {
+    return __privateGet(this, _queryCache).findAll({ ...filters, fetchStatus: "fetching" }).length;
   }
   isMutating(filters) {
-    return this.mutationCache.findAll({
-      ...filters,
-      fetching: true
-    }).length;
+    return __privateGet(this, _mutationCache2).findAll({ ...filters, status: "pending" }).length;
   }
-  getQueryData(queryKey, filters) {
-    var _this$queryCache$find;
-    return (_this$queryCache$find = this.queryCache.find(queryKey, filters)) == null ? void 0 : _this$queryCache$find.state.data;
+  getQueryData(queryKey) {
+    var _a2;
+    const options = this.defaultQueryOptions({ queryKey });
+    return (_a2 = __privateGet(this, _queryCache).get(options.queryHash)) == null ? void 0 : _a2.state.data;
   }
-  ensureQueryData(arg1, arg2, arg3) {
-    const parsedOptions = parseQueryArgs(arg1, arg2, arg3);
-    const cachedData = this.getQueryData(parsedOptions.queryKey);
-    return cachedData ? Promise.resolve(cachedData) : this.fetchQuery(parsedOptions);
+  ensureQueryData(options) {
+    const cachedData = this.getQueryData(options.queryKey);
+    if (cachedData === void 0)
+      return this.fetchQuery(options);
+    else {
+      const defaultedOptions = this.defaultQueryOptions(options);
+      const query = __privateGet(this, _queryCache).build(this, defaultedOptions);
+      if (options.revalidateIfStale && query.isStaleByTime(defaultedOptions.staleTime)) {
+        void this.prefetchQuery(defaultedOptions);
+      }
+      return Promise.resolve(cachedData);
+    }
   }
-  getQueriesData(queryKeyOrFilters) {
-    return this.getQueryCache().findAll(queryKeyOrFilters).map(({
-      queryKey,
-      state
-    }) => {
+  getQueriesData(filters) {
+    return __privateGet(this, _queryCache).findAll(filters).map(({ queryKey, state }) => {
       const data = state.data;
       return [queryKey, data];
     });
   }
   setQueryData(queryKey, updater, options) {
-    const query = this.queryCache.find(queryKey);
+    const defaultedOptions = this.defaultQueryOptions({ queryKey });
+    const query = __privateGet(this, _queryCache).get(
+      defaultedOptions.queryHash
+    );
     const prevData = query == null ? void 0 : query.state.data;
     const data = functionalUpdate(updater, prevData);
-    if (typeof data === "undefined") {
+    if (data === void 0) {
       return void 0;
     }
-    const parsedOptions = parseQueryArgs(queryKey);
-    const defaultedOptions = this.defaultQueryOptions(parsedOptions);
-    return this.queryCache.build(this, defaultedOptions).setData(data, {
-      ...options,
-      manual: true
-    });
+    return __privateGet(this, _queryCache).build(this, defaultedOptions).setData(data, { ...options, manual: true });
   }
-  setQueriesData(queryKeyOrFilters, updater, options) {
-    return notifyManager.batch(() => this.getQueryCache().findAll(queryKeyOrFilters).map(({
-      queryKey
-    }) => [queryKey, this.setQueryData(queryKey, updater, options)]));
+  setQueriesData(filters, updater, options) {
+    return notifyManager.batch(
+      () => __privateGet(this, _queryCache).findAll(filters).map(({ queryKey }) => [
+        queryKey,
+        this.setQueryData(queryKey, updater, options)
+      ])
+    );
   }
-  getQueryState(queryKey, filters) {
-    var _this$queryCache$find2;
-    return (_this$queryCache$find2 = this.queryCache.find(queryKey, filters)) == null ? void 0 : _this$queryCache$find2.state;
+  getQueryState(queryKey) {
+    var _a2;
+    const options = this.defaultQueryOptions({ queryKey });
+    return (_a2 = __privateGet(this, _queryCache).get(options.queryHash)) == null ? void 0 : _a2.state;
   }
-  removeQueries(arg1, arg2) {
-    const [filters] = parseFilterArgs(arg1, arg2);
-    const queryCache = this.queryCache;
+  removeQueries(filters) {
+    const queryCache = __privateGet(this, _queryCache);
     notifyManager.batch(() => {
       queryCache.findAll(filters).forEach((query) => {
         queryCache.remove(query);
       });
     });
   }
-  resetQueries(arg1, arg2, arg3) {
-    const [filters, options] = parseFilterArgs(arg1, arg2, arg3);
-    const queryCache = this.queryCache;
+  resetQueries(filters, options) {
+    const queryCache = __privateGet(this, _queryCache);
     const refetchFilters = {
       type: "active",
       ...filters
@@ -75932,19 +76683,16 @@ class QueryClient {
       return this.refetchQueries(refetchFilters, options);
     });
   }
-  cancelQueries(arg1, arg2, arg3) {
-    const [filters, cancelOptions = {}] = parseFilterArgs(arg1, arg2, arg3);
-    if (typeof cancelOptions.revert === "undefined") {
-      cancelOptions.revert = true;
-    }
-    const promises = notifyManager.batch(() => this.queryCache.findAll(filters).map((query) => query.cancel(cancelOptions)));
+  cancelQueries(filters = {}, cancelOptions = {}) {
+    const defaultedCancelOptions = { revert: true, ...cancelOptions };
+    const promises = notifyManager.batch(
+      () => __privateGet(this, _queryCache).findAll(filters).map((query) => query.cancel(defaultedCancelOptions))
+    );
     return Promise.all(promises).then(noop$2).catch(noop$2);
   }
-  invalidateQueries(arg1, arg2, arg3) {
-    const [filters, options] = parseFilterArgs(arg1, arg2, arg3);
+  invalidateQueries(filters = {}, options = {}) {
     return notifyManager.batch(() => {
-      var _ref, _filters$refetchType;
-      this.queryCache.findAll(filters).forEach((query) => {
+      __privateGet(this, _queryCache).findAll(filters).forEach((query) => {
         query.invalidate();
       });
       if (filters.refetchType === "none") {
@@ -75952,161 +76700,187 @@ class QueryClient {
       }
       const refetchFilters = {
         ...filters,
-        type: (_ref = (_filters$refetchType = filters.refetchType) != null ? _filters$refetchType : filters.type) != null ? _ref : "active"
+        type: filters.refetchType ?? filters.type ?? "active"
       };
       return this.refetchQueries(refetchFilters, options);
     });
   }
-  refetchQueries(arg1, arg2, arg3) {
-    const [filters, options] = parseFilterArgs(arg1, arg2, arg3);
-    const promises = notifyManager.batch(() => this.queryCache.findAll(filters).filter((query) => !query.isDisabled()).map((query) => {
-      var _options$cancelRefetc;
-      return query.fetch(void 0, {
-        ...options,
-        cancelRefetch: (_options$cancelRefetc = options == null ? void 0 : options.cancelRefetch) != null ? _options$cancelRefetc : true,
-        meta: {
-          refetchPage: filters.refetchPage
+  refetchQueries(filters = {}, options) {
+    const fetchOptions = {
+      ...options,
+      cancelRefetch: (options == null ? void 0 : options.cancelRefetch) ?? true
+    };
+    const promises = notifyManager.batch(
+      () => __privateGet(this, _queryCache).findAll(filters).filter((query) => !query.isDisabled()).map((query) => {
+        let promise = query.fetch(void 0, fetchOptions);
+        if (!fetchOptions.throwOnError) {
+          promise = promise.catch(noop$2);
         }
-      });
-    }));
-    let promise = Promise.all(promises).then(noop$2);
-    if (!(options != null && options.throwOnError)) {
-      promise = promise.catch(noop$2);
-    }
-    return promise;
+        return query.state.fetchStatus === "paused" ? Promise.resolve() : promise;
+      })
+    );
+    return Promise.all(promises).then(noop$2);
   }
-  fetchQuery(arg1, arg2, arg3) {
-    const parsedOptions = parseQueryArgs(arg1, arg2, arg3);
-    const defaultedOptions = this.defaultQueryOptions(parsedOptions);
-    if (typeof defaultedOptions.retry === "undefined") {
+  fetchQuery(options) {
+    const defaultedOptions = this.defaultQueryOptions(options);
+    if (defaultedOptions.retry === void 0) {
       defaultedOptions.retry = false;
     }
-    const query = this.queryCache.build(this, defaultedOptions);
+    const query = __privateGet(this, _queryCache).build(this, defaultedOptions);
     return query.isStaleByTime(defaultedOptions.staleTime) ? query.fetch(defaultedOptions) : Promise.resolve(query.state.data);
   }
-  prefetchQuery(arg1, arg2, arg3) {
-    return this.fetchQuery(arg1, arg2, arg3).then(noop$2).catch(noop$2);
+  prefetchQuery(options) {
+    return this.fetchQuery(options).then(noop$2).catch(noop$2);
   }
-  fetchInfiniteQuery(arg1, arg2, arg3) {
-    const parsedOptions = parseQueryArgs(arg1, arg2, arg3);
-    parsedOptions.behavior = infiniteQueryBehavior();
-    return this.fetchQuery(parsedOptions);
+  fetchInfiniteQuery(options) {
+    options.behavior = infiniteQueryBehavior(options.pages);
+    return this.fetchQuery(options);
   }
-  prefetchInfiniteQuery(arg1, arg2, arg3) {
-    return this.fetchInfiniteQuery(arg1, arg2, arg3).then(noop$2).catch(noop$2);
+  prefetchInfiniteQuery(options) {
+    return this.fetchInfiniteQuery(options).then(noop$2).catch(noop$2);
   }
   resumePausedMutations() {
-    return this.mutationCache.resumePausedMutations();
+    if (onlineManager.isOnline()) {
+      return __privateGet(this, _mutationCache2).resumePausedMutations();
+    }
+    return Promise.resolve();
   }
   getQueryCache() {
-    return this.queryCache;
+    return __privateGet(this, _queryCache);
   }
   getMutationCache() {
-    return this.mutationCache;
-  }
-  getLogger() {
-    return this.logger;
+    return __privateGet(this, _mutationCache2);
   }
   getDefaultOptions() {
-    return this.defaultOptions;
+    return __privateGet(this, _defaultOptions2);
   }
   setDefaultOptions(options) {
-    this.defaultOptions = options;
+    __privateSet(this, _defaultOptions2, options);
   }
   setQueryDefaults(queryKey, options) {
-    const result = this.queryDefaults.find((x) => hashQueryKey(queryKey) === hashQueryKey(x.queryKey));
-    if (result) {
-      result.defaultOptions = options;
-    } else {
-      this.queryDefaults.push({
-        queryKey,
-        defaultOptions: options
-      });
-    }
+    __privateGet(this, _queryDefaults).set(hashKey(queryKey), {
+      queryKey,
+      defaultOptions: options
+    });
   }
   getQueryDefaults(queryKey) {
-    if (!queryKey) {
-      return void 0;
-    }
-    const firstMatchingDefaults = this.queryDefaults.find((x) => partialMatchKey(queryKey, x.queryKey));
-    return firstMatchingDefaults == null ? void 0 : firstMatchingDefaults.defaultOptions;
+    const defaults2 = [...__privateGet(this, _queryDefaults).values()];
+    let result = {};
+    defaults2.forEach((queryDefault) => {
+      if (partialMatchKey(queryKey, queryDefault.queryKey)) {
+        result = { ...result, ...queryDefault.defaultOptions };
+      }
+    });
+    return result;
   }
   setMutationDefaults(mutationKey, options) {
-    const result = this.mutationDefaults.find((x) => hashQueryKey(mutationKey) === hashQueryKey(x.mutationKey));
-    if (result) {
-      result.defaultOptions = options;
-    } else {
-      this.mutationDefaults.push({
-        mutationKey,
-        defaultOptions: options
-      });
-    }
+    __privateGet(this, _mutationDefaults).set(hashKey(mutationKey), {
+      mutationKey,
+      defaultOptions: options
+    });
   }
   getMutationDefaults(mutationKey) {
-    if (!mutationKey) {
-      return void 0;
-    }
-    const firstMatchingDefaults = this.mutationDefaults.find((x) => partialMatchKey(mutationKey, x.mutationKey));
-    return firstMatchingDefaults == null ? void 0 : firstMatchingDefaults.defaultOptions;
+    const defaults2 = [...__privateGet(this, _mutationDefaults).values()];
+    let result = {};
+    defaults2.forEach((queryDefault) => {
+      if (partialMatchKey(mutationKey, queryDefault.mutationKey)) {
+        result = { ...result, ...queryDefault.defaultOptions };
+      }
+    });
+    return result;
   }
   defaultQueryOptions(options) {
-    if (options != null && options._defaulted) {
+    if (options._defaulted) {
       return options;
     }
     const defaultedOptions = {
-      ...this.defaultOptions.queries,
-      ...this.getQueryDefaults(options == null ? void 0 : options.queryKey),
+      ...__privateGet(this, _defaultOptions2).queries,
+      ...this.getQueryDefaults(options.queryKey),
       ...options,
       _defaulted: true
     };
-    if (!defaultedOptions.queryHash && defaultedOptions.queryKey) {
-      defaultedOptions.queryHash = hashQueryKeyByOptions(defaultedOptions.queryKey, defaultedOptions);
+    if (!defaultedOptions.queryHash) {
+      defaultedOptions.queryHash = hashQueryKeyByOptions(
+        defaultedOptions.queryKey,
+        defaultedOptions
+      );
     }
-    if (typeof defaultedOptions.refetchOnReconnect === "undefined") {
+    if (defaultedOptions.refetchOnReconnect === void 0) {
       defaultedOptions.refetchOnReconnect = defaultedOptions.networkMode !== "always";
     }
-    if (typeof defaultedOptions.useErrorBoundary === "undefined") {
-      defaultedOptions.useErrorBoundary = !!defaultedOptions.suspense;
+    if (defaultedOptions.throwOnError === void 0) {
+      defaultedOptions.throwOnError = !!defaultedOptions.suspense;
+    }
+    if (!defaultedOptions.networkMode && defaultedOptions.persister) {
+      defaultedOptions.networkMode = "offlineFirst";
+    }
+    if (defaultedOptions.enabled !== true && defaultedOptions.queryFn === skipToken) {
+      defaultedOptions.enabled = false;
     }
     return defaultedOptions;
   }
   defaultMutationOptions(options) {
-    if (options != null && options._defaulted) {
+    if (options == null ? void 0 : options._defaulted) {
       return options;
     }
     return {
-      ...this.defaultOptions.mutations,
-      ...this.getMutationDefaults(options == null ? void 0 : options.mutationKey),
+      ...__privateGet(this, _defaultOptions2).mutations,
+      ...(options == null ? void 0 : options.mutationKey) && this.getMutationDefaults(options.mutationKey),
       ...options,
       _defaulted: true
     };
   }
   clear() {
-    this.queryCache.clear();
-    this.mutationCache.clear();
+    __privateGet(this, _queryCache).clear();
+    __privateGet(this, _mutationCache2).clear();
   }
-}
-class QueryObserver extends Subscribable {
+}, _queryCache = new WeakMap(), _mutationCache2 = new WeakMap(), _defaultOptions2 = new WeakMap(), _queryDefaults = new WeakMap(), _mutationDefaults = new WeakMap(), _mountCount = new WeakMap(), _unsubscribeFocus = new WeakMap(), _unsubscribeOnline = new WeakMap(), _h);
+var QueryObserver = (_i = class extends Subscribable {
   constructor(client2, options) {
     super();
-    this.client = client2;
+    __privateAdd(this, _executeFetch);
+    __privateAdd(this, _updateStaleTimeout);
+    __privateAdd(this, _computeRefetchInterval);
+    __privateAdd(this, _updateRefetchInterval);
+    __privateAdd(this, _updateTimers);
+    __privateAdd(this, _clearStaleTimeout);
+    __privateAdd(this, _clearRefetchInterval);
+    __privateAdd(this, _updateQuery);
+    __privateAdd(this, _notify);
+    __privateAdd(this, _client, void 0);
+    __privateAdd(this, _currentQuery, void 0);
+    __privateAdd(this, _currentQueryInitialState, void 0);
+    __privateAdd(this, _currentResult, void 0);
+    __privateAdd(this, _currentResultState, void 0);
+    __privateAdd(this, _currentResultOptions, void 0);
+    __privateAdd(this, _selectError, void 0);
+    __privateAdd(this, _selectFn, void 0);
+    __privateAdd(this, _selectResult, void 0);
+    // This property keeps track of the last query with defined data.
+    // It will be used to pass the previous data and query to the placeholder function between renders.
+    __privateAdd(this, _lastQueryWithDefinedData, void 0);
+    __privateAdd(this, _staleTimeoutId, void 0);
+    __privateAdd(this, _refetchIntervalId, void 0);
+    __privateAdd(this, _currentRefetchInterval, void 0);
+    __privateAdd(this, _trackedProps, /* @__PURE__ */ new Set());
     this.options = options;
-    this.trackedProps = /* @__PURE__ */ new Set();
-    this.selectError = null;
+    __privateSet(this, _client, client2);
+    __privateSet(this, _selectError, null);
     this.bindMethods();
     this.setOptions(options);
   }
   bindMethods() {
-    this.remove = this.remove.bind(this);
     this.refetch = this.refetch.bind(this);
   }
   onSubscribe() {
     if (this.listeners.size === 1) {
-      this.currentQuery.addObserver(this);
-      if (shouldFetchOnMount(this.currentQuery, this.options)) {
-        this.executeFetch();
+      __privateGet(this, _currentQuery).addObserver(this);
+      if (shouldFetchOnMount(__privateGet(this, _currentQuery), this.options)) {
+        __privateMethod(this, _executeFetch, executeFetch_fn).call(this);
+      } else {
+        this.updateResult();
       }
-      this.updateTimers();
+      __privateMethod(this, _updateTimers, updateTimers_fn).call(this);
     }
   }
   onUnsubscribe() {
@@ -76115,181 +76889,124 @@ class QueryObserver extends Subscribable {
     }
   }
   shouldFetchOnReconnect() {
-    return shouldFetchOn(this.currentQuery, this.options, this.options.refetchOnReconnect);
+    return shouldFetchOn(
+      __privateGet(this, _currentQuery),
+      this.options,
+      this.options.refetchOnReconnect
+    );
   }
   shouldFetchOnWindowFocus() {
-    return shouldFetchOn(this.currentQuery, this.options, this.options.refetchOnWindowFocus);
+    return shouldFetchOn(
+      __privateGet(this, _currentQuery),
+      this.options,
+      this.options.refetchOnWindowFocus
+    );
   }
   destroy() {
     this.listeners = /* @__PURE__ */ new Set();
-    this.clearStaleTimeout();
-    this.clearRefetchInterval();
-    this.currentQuery.removeObserver(this);
+    __privateMethod(this, _clearStaleTimeout, clearStaleTimeout_fn).call(this);
+    __privateMethod(this, _clearRefetchInterval, clearRefetchInterval_fn).call(this);
+    __privateGet(this, _currentQuery).removeObserver(this);
   }
   setOptions(options, notifyOptions) {
     const prevOptions = this.options;
-    const prevQuery = this.currentQuery;
-    this.options = this.client.defaultQueryOptions(options);
-    if (!shallowEqualObjects(prevOptions, this.options)) {
-      this.client.getQueryCache().notify({
+    const prevQuery = __privateGet(this, _currentQuery);
+    this.options = __privateGet(this, _client).defaultQueryOptions(options);
+    if (this.options.enabled !== void 0 && typeof this.options.enabled !== "boolean") {
+      throw new Error("Expected enabled to be a boolean");
+    }
+    __privateMethod(this, _updateQuery, updateQuery_fn).call(this);
+    __privateGet(this, _currentQuery).setOptions(this.options);
+    if (prevOptions._defaulted && !shallowEqualObjects(this.options, prevOptions)) {
+      __privateGet(this, _client).getQueryCache().notify({
         type: "observerOptionsUpdated",
-        query: this.currentQuery,
+        query: __privateGet(this, _currentQuery),
         observer: this
       });
     }
-    if (typeof this.options.enabled !== "undefined" && typeof this.options.enabled !== "boolean") {
-      throw new Error("Expected enabled to be a boolean");
-    }
-    if (!this.options.queryKey) {
-      this.options.queryKey = prevOptions.queryKey;
-    }
-    this.updateQuery();
     const mounted = this.hasListeners();
-    if (mounted && shouldFetchOptionally(this.currentQuery, prevQuery, this.options, prevOptions)) {
-      this.executeFetch();
+    if (mounted && shouldFetchOptionally(
+      __privateGet(this, _currentQuery),
+      prevQuery,
+      this.options,
+      prevOptions
+    )) {
+      __privateMethod(this, _executeFetch, executeFetch_fn).call(this);
     }
     this.updateResult(notifyOptions);
-    if (mounted && (this.currentQuery !== prevQuery || this.options.enabled !== prevOptions.enabled || this.options.staleTime !== prevOptions.staleTime)) {
-      this.updateStaleTimeout();
+    if (mounted && (__privateGet(this, _currentQuery) !== prevQuery || this.options.enabled !== prevOptions.enabled || this.options.staleTime !== prevOptions.staleTime)) {
+      __privateMethod(this, _updateStaleTimeout, updateStaleTimeout_fn).call(this);
     }
-    const nextRefetchInterval = this.computeRefetchInterval();
-    if (mounted && (this.currentQuery !== prevQuery || this.options.enabled !== prevOptions.enabled || nextRefetchInterval !== this.currentRefetchInterval)) {
-      this.updateRefetchInterval(nextRefetchInterval);
+    const nextRefetchInterval = __privateMethod(this, _computeRefetchInterval, computeRefetchInterval_fn).call(this);
+    if (mounted && (__privateGet(this, _currentQuery) !== prevQuery || this.options.enabled !== prevOptions.enabled || nextRefetchInterval !== __privateGet(this, _currentRefetchInterval))) {
+      __privateMethod(this, _updateRefetchInterval, updateRefetchInterval_fn).call(this, nextRefetchInterval);
     }
   }
   getOptimisticResult(options) {
-    const query = this.client.getQueryCache().build(this.client, options);
+    const query = __privateGet(this, _client).getQueryCache().build(__privateGet(this, _client), options);
     const result = this.createResult(query, options);
-    if (shouldAssignObserverCurrentProperties(this, result, options)) {
-      this.currentResult = result;
-      this.currentResultOptions = this.options;
-      this.currentResultState = this.currentQuery.state;
+    if (shouldAssignObserverCurrentProperties(this, result)) {
+      __privateSet(this, _currentResult, result);
+      __privateSet(this, _currentResultOptions, this.options);
+      __privateSet(this, _currentResultState, __privateGet(this, _currentQuery).state);
     }
     return result;
   }
   getCurrentResult() {
-    return this.currentResult;
+    return __privateGet(this, _currentResult);
   }
-  trackResult(result) {
+  trackResult(result, onPropTracked) {
     const trackedResult = {};
     Object.keys(result).forEach((key2) => {
       Object.defineProperty(trackedResult, key2, {
         configurable: false,
         enumerable: true,
         get: () => {
-          this.trackedProps.add(key2);
+          this.trackProp(key2);
+          onPropTracked == null ? void 0 : onPropTracked(key2);
           return result[key2];
         }
       });
     });
     return trackedResult;
   }
+  trackProp(key2) {
+    __privateGet(this, _trackedProps).add(key2);
+  }
   getCurrentQuery() {
-    return this.currentQuery;
+    return __privateGet(this, _currentQuery);
   }
-  remove() {
-    this.client.getQueryCache().remove(this.currentQuery);
-  }
-  refetch({
-    refetchPage,
-    ...options
-  } = {}) {
+  refetch({ ...options } = {}) {
     return this.fetch({
-      ...options,
-      meta: {
-        refetchPage
-      }
+      ...options
     });
   }
   fetchOptimistic(options) {
-    const defaultedOptions = this.client.defaultQueryOptions(options);
-    const query = this.client.getQueryCache().build(this.client, defaultedOptions);
+    const defaultedOptions = __privateGet(this, _client).defaultQueryOptions(options);
+    const query = __privateGet(this, _client).getQueryCache().build(__privateGet(this, _client), defaultedOptions);
     query.isFetchingOptimistic = true;
     return query.fetch().then(() => this.createResult(query, defaultedOptions));
   }
   fetch(fetchOptions) {
-    var _fetchOptions$cancelR;
-    return this.executeFetch({
+    return __privateMethod(this, _executeFetch, executeFetch_fn).call(this, {
       ...fetchOptions,
-      cancelRefetch: (_fetchOptions$cancelR = fetchOptions.cancelRefetch) != null ? _fetchOptions$cancelR : true
+      cancelRefetch: fetchOptions.cancelRefetch ?? true
     }).then(() => {
       this.updateResult();
-      return this.currentResult;
+      return __privateGet(this, _currentResult);
     });
   }
-  executeFetch(fetchOptions) {
-    this.updateQuery();
-    let promise = this.currentQuery.fetch(this.options, fetchOptions);
-    if (!(fetchOptions != null && fetchOptions.throwOnError)) {
-      promise = promise.catch(noop$2);
-    }
-    return promise;
-  }
-  updateStaleTimeout() {
-    this.clearStaleTimeout();
-    if (isServer || this.currentResult.isStale || !isValidTimeout(this.options.staleTime)) {
-      return;
-    }
-    const time2 = timeUntilStale(this.currentResult.dataUpdatedAt, this.options.staleTime);
-    const timeout = time2 + 1;
-    this.staleTimeoutId = setTimeout(() => {
-      if (!this.currentResult.isStale) {
-        this.updateResult();
-      }
-    }, timeout);
-  }
-  computeRefetchInterval() {
-    var _this$options$refetch;
-    return typeof this.options.refetchInterval === "function" ? this.options.refetchInterval(this.currentResult.data, this.currentQuery) : (_this$options$refetch = this.options.refetchInterval) != null ? _this$options$refetch : false;
-  }
-  updateRefetchInterval(nextInterval) {
-    this.clearRefetchInterval();
-    this.currentRefetchInterval = nextInterval;
-    if (isServer || this.options.enabled === false || !isValidTimeout(this.currentRefetchInterval) || this.currentRefetchInterval === 0) {
-      return;
-    }
-    this.refetchIntervalId = setInterval(() => {
-      if (this.options.refetchIntervalInBackground || focusManager.isFocused()) {
-        this.executeFetch();
-      }
-    }, this.currentRefetchInterval);
-  }
-  updateTimers() {
-    this.updateStaleTimeout();
-    this.updateRefetchInterval(this.computeRefetchInterval());
-  }
-  clearStaleTimeout() {
-    if (this.staleTimeoutId) {
-      clearTimeout(this.staleTimeoutId);
-      this.staleTimeoutId = void 0;
-    }
-  }
-  clearRefetchInterval() {
-    if (this.refetchIntervalId) {
-      clearInterval(this.refetchIntervalId);
-      this.refetchIntervalId = void 0;
-    }
-  }
   createResult(query, options) {
-    const prevQuery = this.currentQuery;
+    var _a2;
+    const prevQuery = __privateGet(this, _currentQuery);
     const prevOptions = this.options;
-    const prevResult = this.currentResult;
-    const prevResultState = this.currentResultState;
-    const prevResultOptions = this.currentResultOptions;
+    const prevResult = __privateGet(this, _currentResult);
+    const prevResultState = __privateGet(this, _currentResultState);
+    const prevResultOptions = __privateGet(this, _currentResultOptions);
     const queryChange = query !== prevQuery;
-    const queryInitialState = queryChange ? query.state : this.currentQueryInitialState;
-    const prevQueryResult = queryChange ? this.currentResult : this.previousQueryResult;
-    const {
-      state
-    } = query;
-    let {
-      dataUpdatedAt,
-      error,
-      errorUpdatedAt,
-      fetchStatus,
-      status
-    } = state;
-    let isPreviousData = false;
+    const queryInitialState = queryChange ? query.state : __privateGet(this, _currentQueryInitialState);
+    const { state } = query;
+    let newState = { ...state };
     let isPlaceholderData = false;
     let data;
     if (options._optimisticResults) {
@@ -76297,195 +77014,226 @@ class QueryObserver extends Subscribable {
       const fetchOnMount = !mounted && shouldFetchOnMount(query, options);
       const fetchOptionally = mounted && shouldFetchOptionally(query, prevQuery, options, prevOptions);
       if (fetchOnMount || fetchOptionally) {
-        fetchStatus = canFetch(query.options.networkMode) ? "fetching" : "paused";
-        if (!dataUpdatedAt) {
-          status = "loading";
-        }
+        newState = {
+          ...newState,
+          ...fetchState(state.data, query.options)
+        };
       }
       if (options._optimisticResults === "isRestoring") {
-        fetchStatus = "idle";
+        newState.fetchStatus = "idle";
       }
     }
-    if (options.keepPreviousData && !state.dataUpdatedAt && prevQueryResult != null && prevQueryResult.isSuccess && status !== "error") {
-      data = prevQueryResult.data;
-      dataUpdatedAt = prevQueryResult.dataUpdatedAt;
-      status = prevQueryResult.status;
-      isPreviousData = true;
-    } else if (options.select && typeof state.data !== "undefined") {
-      if (prevResult && state.data === (prevResultState == null ? void 0 : prevResultState.data) && options.select === this.selectFn) {
-        data = this.selectResult;
+    let { error, errorUpdatedAt, status } = newState;
+    if (options.select && newState.data !== void 0) {
+      if (prevResult && newState.data === (prevResultState == null ? void 0 : prevResultState.data) && options.select === __privateGet(this, _selectFn)) {
+        data = __privateGet(this, _selectResult);
       } else {
         try {
-          this.selectFn = options.select;
-          data = options.select(state.data);
+          __privateSet(this, _selectFn, options.select);
+          data = options.select(newState.data);
           data = replaceData(prevResult == null ? void 0 : prevResult.data, data, options);
-          this.selectResult = data;
-          this.selectError = null;
+          __privateSet(this, _selectResult, data);
+          __privateSet(this, _selectError, null);
         } catch (selectError) {
-          this.selectError = selectError;
+          __privateSet(this, _selectError, selectError);
         }
       }
     } else {
-      data = state.data;
+      data = newState.data;
     }
-    if (typeof options.placeholderData !== "undefined" && typeof data === "undefined" && status === "loading") {
+    if (options.placeholderData !== void 0 && data === void 0 && status === "pending") {
       let placeholderData;
-      if (prevResult != null && prevResult.isPlaceholderData && options.placeholderData === (prevResultOptions == null ? void 0 : prevResultOptions.placeholderData)) {
+      if ((prevResult == null ? void 0 : prevResult.isPlaceholderData) && options.placeholderData === (prevResultOptions == null ? void 0 : prevResultOptions.placeholderData)) {
         placeholderData = prevResult.data;
       } else {
-        placeholderData = typeof options.placeholderData === "function" ? options.placeholderData() : options.placeholderData;
-        if (options.select && typeof placeholderData !== "undefined") {
+        placeholderData = typeof options.placeholderData === "function" ? options.placeholderData(
+          (_a2 = __privateGet(this, _lastQueryWithDefinedData)) == null ? void 0 : _a2.state.data,
+          __privateGet(this, _lastQueryWithDefinedData)
+        ) : options.placeholderData;
+        if (options.select && placeholderData !== void 0) {
           try {
             placeholderData = options.select(placeholderData);
-            this.selectError = null;
+            __privateSet(this, _selectError, null);
           } catch (selectError) {
-            this.selectError = selectError;
+            __privateSet(this, _selectError, selectError);
           }
         }
       }
-      if (typeof placeholderData !== "undefined") {
+      if (placeholderData !== void 0) {
         status = "success";
-        data = replaceData(prevResult == null ? void 0 : prevResult.data, placeholderData, options);
+        data = replaceData(
+          prevResult == null ? void 0 : prevResult.data,
+          placeholderData,
+          options
+        );
         isPlaceholderData = true;
       }
     }
-    if (this.selectError) {
-      error = this.selectError;
-      data = this.selectResult;
+    if (__privateGet(this, _selectError)) {
+      error = __privateGet(this, _selectError);
+      data = __privateGet(this, _selectResult);
       errorUpdatedAt = Date.now();
       status = "error";
     }
-    const isFetching = fetchStatus === "fetching";
-    const isLoading = status === "loading";
+    const isFetching = newState.fetchStatus === "fetching";
+    const isPending = status === "pending";
     const isError = status === "error";
+    const isLoading = isPending && isFetching;
+    const hasData = data !== void 0;
     const result = {
       status,
-      fetchStatus,
-      isLoading,
+      fetchStatus: newState.fetchStatus,
+      isPending,
       isSuccess: status === "success",
       isError,
-      isInitialLoading: isLoading && isFetching,
+      isInitialLoading: isLoading,
+      isLoading,
       data,
-      dataUpdatedAt,
+      dataUpdatedAt: newState.dataUpdatedAt,
       error,
       errorUpdatedAt,
-      failureCount: state.fetchFailureCount,
-      failureReason: state.fetchFailureReason,
-      errorUpdateCount: state.errorUpdateCount,
-      isFetched: state.dataUpdateCount > 0 || state.errorUpdateCount > 0,
-      isFetchedAfterMount: state.dataUpdateCount > queryInitialState.dataUpdateCount || state.errorUpdateCount > queryInitialState.errorUpdateCount,
+      failureCount: newState.fetchFailureCount,
+      failureReason: newState.fetchFailureReason,
+      errorUpdateCount: newState.errorUpdateCount,
+      isFetched: newState.dataUpdateCount > 0 || newState.errorUpdateCount > 0,
+      isFetchedAfterMount: newState.dataUpdateCount > queryInitialState.dataUpdateCount || newState.errorUpdateCount > queryInitialState.errorUpdateCount,
       isFetching,
-      isRefetching: isFetching && !isLoading,
-      isLoadingError: isError && state.dataUpdatedAt === 0,
-      isPaused: fetchStatus === "paused",
+      isRefetching: isFetching && !isPending,
+      isLoadingError: isError && !hasData,
+      isPaused: newState.fetchStatus === "paused",
       isPlaceholderData,
-      isPreviousData,
-      isRefetchError: isError && state.dataUpdatedAt !== 0,
+      isRefetchError: isError && hasData,
       isStale: isStale(query, options),
-      refetch: this.refetch,
-      remove: this.remove
+      refetch: this.refetch
     };
     return result;
   }
   updateResult(notifyOptions) {
-    const prevResult = this.currentResult;
-    const nextResult = this.createResult(this.currentQuery, this.options);
-    this.currentResultState = this.currentQuery.state;
-    this.currentResultOptions = this.options;
+    const prevResult = __privateGet(this, _currentResult);
+    const nextResult = this.createResult(__privateGet(this, _currentQuery), this.options);
+    __privateSet(this, _currentResultState, __privateGet(this, _currentQuery).state);
+    __privateSet(this, _currentResultOptions, this.options);
+    if (__privateGet(this, _currentResultState).data !== void 0) {
+      __privateSet(this, _lastQueryWithDefinedData, __privateGet(this, _currentQuery));
+    }
     if (shallowEqualObjects(nextResult, prevResult)) {
       return;
     }
-    this.currentResult = nextResult;
-    const defaultNotifyOptions = {
-      cache: true
-    };
+    __privateSet(this, _currentResult, nextResult);
+    const defaultNotifyOptions = {};
     const shouldNotifyListeners = () => {
       if (!prevResult) {
         return true;
       }
-      const {
-        notifyOnChangeProps
-      } = this.options;
+      const { notifyOnChangeProps } = this.options;
       const notifyOnChangePropsValue = typeof notifyOnChangeProps === "function" ? notifyOnChangeProps() : notifyOnChangeProps;
-      if (notifyOnChangePropsValue === "all" || !notifyOnChangePropsValue && !this.trackedProps.size) {
+      if (notifyOnChangePropsValue === "all" || !notifyOnChangePropsValue && !__privateGet(this, _trackedProps).size) {
         return true;
       }
-      const includedProps = new Set(notifyOnChangePropsValue != null ? notifyOnChangePropsValue : this.trackedProps);
-      if (this.options.useErrorBoundary) {
+      const includedProps = new Set(
+        notifyOnChangePropsValue ?? __privateGet(this, _trackedProps)
+      );
+      if (this.options.throwOnError) {
         includedProps.add("error");
       }
-      return Object.keys(this.currentResult).some((key2) => {
+      return Object.keys(__privateGet(this, _currentResult)).some((key2) => {
         const typedKey = key2;
-        const changed = this.currentResult[typedKey] !== prevResult[typedKey];
+        const changed = __privateGet(this, _currentResult)[typedKey] !== prevResult[typedKey];
         return changed && includedProps.has(typedKey);
       });
     };
     if ((notifyOptions == null ? void 0 : notifyOptions.listeners) !== false && shouldNotifyListeners()) {
       defaultNotifyOptions.listeners = true;
     }
-    this.notify({
-      ...defaultNotifyOptions,
-      ...notifyOptions
-    });
+    __privateMethod(this, _notify, notify_fn).call(this, { ...defaultNotifyOptions, ...notifyOptions });
   }
-  updateQuery() {
-    const query = this.client.getQueryCache().build(this.client, this.options);
-    if (query === this.currentQuery) {
-      return;
-    }
-    const prevQuery = this.currentQuery;
-    this.currentQuery = query;
-    this.currentQueryInitialState = query.state;
-    this.previousQueryResult = this.currentResult;
+  onQueryUpdate() {
+    this.updateResult();
     if (this.hasListeners()) {
-      prevQuery == null ? void 0 : prevQuery.removeObserver(this);
-      query.addObserver(this);
+      __privateMethod(this, _updateTimers, updateTimers_fn).call(this);
     }
   }
-  onQueryUpdate(action) {
-    const notifyOptions = {};
-    if (action.type === "success") {
-      notifyOptions.onSuccess = !action.manual;
-    } else if (action.type === "error" && !isCancelledError(action.error)) {
-      notifyOptions.onError = true;
-    }
-    this.updateResult(notifyOptions);
-    if (this.hasListeners()) {
-      this.updateTimers();
-    }
+}, _client = new WeakMap(), _currentQuery = new WeakMap(), _currentQueryInitialState = new WeakMap(), _currentResult = new WeakMap(), _currentResultState = new WeakMap(), _currentResultOptions = new WeakMap(), _selectError = new WeakMap(), _selectFn = new WeakMap(), _selectResult = new WeakMap(), _lastQueryWithDefinedData = new WeakMap(), _staleTimeoutId = new WeakMap(), _refetchIntervalId = new WeakMap(), _currentRefetchInterval = new WeakMap(), _trackedProps = new WeakMap(), _executeFetch = new WeakSet(), executeFetch_fn = function(fetchOptions) {
+  __privateMethod(this, _updateQuery, updateQuery_fn).call(this);
+  let promise = __privateGet(this, _currentQuery).fetch(
+    this.options,
+    fetchOptions
+  );
+  if (!(fetchOptions == null ? void 0 : fetchOptions.throwOnError)) {
+    promise = promise.catch(noop$2);
   }
-  notify(notifyOptions) {
-    notifyManager.batch(() => {
-      if (notifyOptions.onSuccess) {
-        var _this$options$onSucce, _this$options, _this$options$onSettl, _this$options2;
-        (_this$options$onSucce = (_this$options = this.options).onSuccess) == null ? void 0 : _this$options$onSucce.call(_this$options, this.currentResult.data);
-        (_this$options$onSettl = (_this$options2 = this.options).onSettled) == null ? void 0 : _this$options$onSettl.call(_this$options2, this.currentResult.data, null);
-      } else if (notifyOptions.onError) {
-        var _this$options$onError, _this$options3, _this$options$onSettl2, _this$options4;
-        (_this$options$onError = (_this$options3 = this.options).onError) == null ? void 0 : _this$options$onError.call(_this$options3, this.currentResult.error);
-        (_this$options$onSettl2 = (_this$options4 = this.options).onSettled) == null ? void 0 : _this$options$onSettl2.call(_this$options4, void 0, this.currentResult.error);
-      }
-      if (notifyOptions.listeners) {
-        this.listeners.forEach(({
-          listener
-        }) => {
-          listener(this.currentResult);
-        });
-      }
-      if (notifyOptions.cache) {
-        this.client.getQueryCache().notify({
-          query: this.currentQuery,
-          type: "observerResultsUpdated"
-        });
-      }
+  return promise;
+}, _updateStaleTimeout = new WeakSet(), updateStaleTimeout_fn = function() {
+  __privateMethod(this, _clearStaleTimeout, clearStaleTimeout_fn).call(this);
+  if (isServer || __privateGet(this, _currentResult).isStale || !isValidTimeout(this.options.staleTime)) {
+    return;
+  }
+  const time2 = timeUntilStale(
+    __privateGet(this, _currentResult).dataUpdatedAt,
+    this.options.staleTime
+  );
+  const timeout = time2 + 1;
+  __privateSet(this, _staleTimeoutId, setTimeout(() => {
+    if (!__privateGet(this, _currentResult).isStale) {
+      this.updateResult();
+    }
+  }, timeout));
+}, _computeRefetchInterval = new WeakSet(), computeRefetchInterval_fn = function() {
+  return (typeof this.options.refetchInterval === "function" ? this.options.refetchInterval(__privateGet(this, _currentQuery)) : this.options.refetchInterval) ?? false;
+}, _updateRefetchInterval = new WeakSet(), updateRefetchInterval_fn = function(nextInterval) {
+  __privateMethod(this, _clearRefetchInterval, clearRefetchInterval_fn).call(this);
+  __privateSet(this, _currentRefetchInterval, nextInterval);
+  if (isServer || this.options.enabled === false || !isValidTimeout(__privateGet(this, _currentRefetchInterval)) || __privateGet(this, _currentRefetchInterval) === 0) {
+    return;
+  }
+  __privateSet(this, _refetchIntervalId, setInterval(() => {
+    if (this.options.refetchIntervalInBackground || focusManager.isFocused()) {
+      __privateMethod(this, _executeFetch, executeFetch_fn).call(this);
+    }
+  }, __privateGet(this, _currentRefetchInterval)));
+}, _updateTimers = new WeakSet(), updateTimers_fn = function() {
+  __privateMethod(this, _updateStaleTimeout, updateStaleTimeout_fn).call(this);
+  __privateMethod(this, _updateRefetchInterval, updateRefetchInterval_fn).call(this, __privateMethod(this, _computeRefetchInterval, computeRefetchInterval_fn).call(this));
+}, _clearStaleTimeout = new WeakSet(), clearStaleTimeout_fn = function() {
+  if (__privateGet(this, _staleTimeoutId)) {
+    clearTimeout(__privateGet(this, _staleTimeoutId));
+    __privateSet(this, _staleTimeoutId, void 0);
+  }
+}, _clearRefetchInterval = new WeakSet(), clearRefetchInterval_fn = function() {
+  if (__privateGet(this, _refetchIntervalId)) {
+    clearInterval(__privateGet(this, _refetchIntervalId));
+    __privateSet(this, _refetchIntervalId, void 0);
+  }
+}, _updateQuery = new WeakSet(), updateQuery_fn = function() {
+  const query = __privateGet(this, _client).getQueryCache().build(__privateGet(this, _client), this.options);
+  if (query === __privateGet(this, _currentQuery)) {
+    return;
+  }
+  const prevQuery = __privateGet(this, _currentQuery);
+  __privateSet(this, _currentQuery, query);
+  __privateSet(this, _currentQueryInitialState, query.state);
+  if (this.hasListeners()) {
+    prevQuery == null ? void 0 : prevQuery.removeObserver(this);
+    query.addObserver(this);
+  }
+}, _notify = new WeakSet(), notify_fn = function(notifyOptions) {
+  notifyManager.batch(() => {
+    if (notifyOptions.listeners) {
+      this.listeners.forEach((listener) => {
+        listener(__privateGet(this, _currentResult));
+      });
+    }
+    __privateGet(this, _client).getQueryCache().notify({
+      query: __privateGet(this, _currentQuery),
+      type: "observerResultsUpdated"
     });
-  }
-}
+  });
+}, _i);
 function shouldLoadOnMount(query, options) {
-  return options.enabled !== false && !query.state.dataUpdatedAt && !(query.state.status === "error" && options.retryOnMount === false);
+  return options.enabled !== false && query.state.data === void 0 && !(query.state.status === "error" && options.retryOnMount === false);
 }
 function shouldFetchOnMount(query, options) {
-  return shouldLoadOnMount(query, options) || query.state.dataUpdatedAt > 0 && shouldFetchOn(query, options, options.refetchOnMount);
+  return shouldLoadOnMount(query, options) || query.state.data !== void 0 && shouldFetchOn(query, options, options.refetchOnMount);
 }
 function shouldFetchOn(query, options, field) {
   if (options.enabled !== false) {
@@ -76495,28 +77243,18 @@ function shouldFetchOn(query, options, field) {
   return false;
 }
 function shouldFetchOptionally(query, prevQuery, options, prevOptions) {
-  return options.enabled !== false && (query !== prevQuery || prevOptions.enabled === false) && (!options.suspense || query.state.status !== "error") && isStale(query, options);
+  return (query !== prevQuery || prevOptions.enabled === false) && (!options.suspense || query.state.status !== "error") && isStale(query, options);
 }
 function isStale(query, options) {
-  return query.isStaleByTime(options.staleTime);
+  return options.enabled !== false && query.isStaleByTime(options.staleTime);
 }
-function shouldAssignObserverCurrentProperties(observer, optimisticResult, options) {
-  if (options.keepPreviousData) {
-    return false;
-  }
-  if (options.placeholderData !== void 0) {
-    return optimisticResult.isPlaceholderData;
-  }
+function shouldAssignObserverCurrentProperties(observer, optimisticResult) {
   if (!shallowEqualObjects(observer.getCurrentResult(), optimisticResult)) {
     return true;
   }
   return false;
 }
-class InfiniteQueryObserver extends QueryObserver {
-  // Type override
-  // Type override
-  // Type override
-  // eslint-disable-next-line @typescript-eslint/no-useless-constructor
+var InfiniteQueryObserver = class extends QueryObserver {
   constructor(client2, options) {
     super(client2, options);
   }
@@ -76526,168 +77264,334 @@ class InfiniteQueryObserver extends QueryObserver {
     this.fetchPreviousPage = this.fetchPreviousPage.bind(this);
   }
   setOptions(options, notifyOptions) {
-    super.setOptions({
-      ...options,
-      behavior: infiniteQueryBehavior()
-    }, notifyOptions);
+    super.setOptions(
+      {
+        ...options,
+        behavior: infiniteQueryBehavior()
+      },
+      notifyOptions
+    );
   }
   getOptimisticResult(options) {
     options.behavior = infiniteQueryBehavior();
     return super.getOptimisticResult(options);
   }
-  fetchNextPage({
-    pageParam,
-    ...options
-  } = {}) {
+  fetchNextPage(options) {
     return this.fetch({
       ...options,
       meta: {
-        fetchMore: {
-          direction: "forward",
-          pageParam
-        }
+        fetchMore: { direction: "forward" }
       }
     });
   }
-  fetchPreviousPage({
-    pageParam,
-    ...options
-  } = {}) {
+  fetchPreviousPage(options) {
     return this.fetch({
       ...options,
       meta: {
-        fetchMore: {
-          direction: "backward",
-          pageParam
-        }
+        fetchMore: { direction: "backward" }
       }
     });
   }
   createResult(query, options) {
-    var _state$fetchMeta, _state$fetchMeta$fetc, _state$fetchMeta2, _state$fetchMeta2$fet, _state$data, _state$data2;
-    const {
-      state
-    } = query;
+    var _a2, _b2, _c2, _d2;
+    const { state } = query;
     const result = super.createResult(query, options);
-    const {
-      isFetching,
-      isRefetching
-    } = result;
-    const isFetchingNextPage = isFetching && ((_state$fetchMeta = state.fetchMeta) == null ? void 0 : (_state$fetchMeta$fetc = _state$fetchMeta.fetchMore) == null ? void 0 : _state$fetchMeta$fetc.direction) === "forward";
-    const isFetchingPreviousPage = isFetching && ((_state$fetchMeta2 = state.fetchMeta) == null ? void 0 : (_state$fetchMeta2$fet = _state$fetchMeta2.fetchMore) == null ? void 0 : _state$fetchMeta2$fet.direction) === "backward";
+    const { isFetching, isRefetching } = result;
+    const isFetchingNextPage = isFetching && ((_b2 = (_a2 = state.fetchMeta) == null ? void 0 : _a2.fetchMore) == null ? void 0 : _b2.direction) === "forward";
+    const isFetchingPreviousPage = isFetching && ((_d2 = (_c2 = state.fetchMeta) == null ? void 0 : _c2.fetchMore) == null ? void 0 : _d2.direction) === "backward";
     return {
       ...result,
       fetchNextPage: this.fetchNextPage,
       fetchPreviousPage: this.fetchPreviousPage,
-      hasNextPage: hasNextPage(options, (_state$data = state.data) == null ? void 0 : _state$data.pages),
-      hasPreviousPage: hasPreviousPage(options, (_state$data2 = state.data) == null ? void 0 : _state$data2.pages),
+      hasNextPage: hasNextPage(options, state.data),
+      hasPreviousPage: hasPreviousPage(options, state.data),
       isFetchingNextPage,
       isFetchingPreviousPage,
       isRefetching: isRefetching && !isFetchingNextPage && !isFetchingPreviousPage
     };
   }
-}
-let MutationObserver$1 = class MutationObserver2 extends Subscribable {
+};
+var MutationObserver$1 = (_j = class extends Subscribable {
   constructor(client2, options) {
     super();
-    this.client = client2;
+    __privateAdd(this, _updateResult);
+    __privateAdd(this, _notify2);
+    __privateAdd(this, _client2, void 0);
+    __privateAdd(this, _currentResult2, void 0);
+    __privateAdd(this, _currentMutation, void 0);
+    __privateAdd(this, _mutateOptions, void 0);
+    __privateSet(this, _client2, client2);
     this.setOptions(options);
     this.bindMethods();
-    this.updateResult();
+    __privateMethod(this, _updateResult, updateResult_fn).call(this);
   }
   bindMethods() {
     this.mutate = this.mutate.bind(this);
     this.reset = this.reset.bind(this);
   }
   setOptions(options) {
-    var _this$currentMutation;
+    var _a2;
     const prevOptions = this.options;
-    this.options = this.client.defaultMutationOptions(options);
-    if (!shallowEqualObjects(prevOptions, this.options)) {
-      this.client.getMutationCache().notify({
+    this.options = __privateGet(this, _client2).defaultMutationOptions(options);
+    if (!shallowEqualObjects(this.options, prevOptions)) {
+      __privateGet(this, _client2).getMutationCache().notify({
         type: "observerOptionsUpdated",
-        mutation: this.currentMutation,
+        mutation: __privateGet(this, _currentMutation),
         observer: this
       });
     }
-    (_this$currentMutation = this.currentMutation) == null ? void 0 : _this$currentMutation.setOptions(this.options);
+    if ((prevOptions == null ? void 0 : prevOptions.mutationKey) && this.options.mutationKey && hashKey(prevOptions.mutationKey) !== hashKey(this.options.mutationKey)) {
+      this.reset();
+    } else if (((_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.state.status) === "pending") {
+      __privateGet(this, _currentMutation).setOptions(this.options);
+    }
   }
   onUnsubscribe() {
+    var _a2;
     if (!this.hasListeners()) {
-      var _this$currentMutation2;
-      (_this$currentMutation2 = this.currentMutation) == null ? void 0 : _this$currentMutation2.removeObserver(this);
+      (_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.removeObserver(this);
     }
   }
   onMutationUpdate(action) {
-    this.updateResult();
-    const notifyOptions = {
-      listeners: true
-    };
-    if (action.type === "success") {
-      notifyOptions.onSuccess = true;
-    } else if (action.type === "error") {
-      notifyOptions.onError = true;
-    }
-    this.notify(notifyOptions);
+    __privateMethod(this, _updateResult, updateResult_fn).call(this);
+    __privateMethod(this, _notify2, notify_fn2).call(this, action);
   }
   getCurrentResult() {
-    return this.currentResult;
+    return __privateGet(this, _currentResult2);
   }
   reset() {
-    this.currentMutation = void 0;
-    this.updateResult();
-    this.notify({
-      listeners: true
-    });
+    var _a2;
+    (_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.removeObserver(this);
+    __privateSet(this, _currentMutation, void 0);
+    __privateMethod(this, _updateResult, updateResult_fn).call(this);
+    __privateMethod(this, _notify2, notify_fn2).call(this);
   }
   mutate(variables, options) {
-    this.mutateOptions = options;
-    if (this.currentMutation) {
-      this.currentMutation.removeObserver(this);
+    var _a2;
+    __privateSet(this, _mutateOptions, options);
+    (_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.removeObserver(this);
+    __privateSet(this, _currentMutation, __privateGet(this, _client2).getMutationCache().build(__privateGet(this, _client2), this.options));
+    __privateGet(this, _currentMutation).addObserver(this);
+    return __privateGet(this, _currentMutation).execute(variables);
+  }
+}, _client2 = new WeakMap(), _currentResult2 = new WeakMap(), _currentMutation = new WeakMap(), _mutateOptions = new WeakMap(), _updateResult = new WeakSet(), updateResult_fn = function() {
+  var _a2;
+  const state = ((_a2 = __privateGet(this, _currentMutation)) == null ? void 0 : _a2.state) ?? getDefaultState();
+  __privateSet(this, _currentResult2, {
+    ...state,
+    isPending: state.status === "pending",
+    isSuccess: state.status === "success",
+    isError: state.status === "error",
+    isIdle: state.status === "idle",
+    mutate: this.mutate,
+    reset: this.reset
+  });
+}, _notify2 = new WeakSet(), notify_fn2 = function(action) {
+  notifyManager.batch(() => {
+    var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2;
+    if (__privateGet(this, _mutateOptions) && this.hasListeners()) {
+      const variables = __privateGet(this, _currentResult2).variables;
+      const context2 = __privateGet(this, _currentResult2).context;
+      if ((action == null ? void 0 : action.type) === "success") {
+        (_b2 = (_a2 = __privateGet(this, _mutateOptions)).onSuccess) == null ? void 0 : _b2.call(_a2, action.data, variables, context2);
+        (_d2 = (_c2 = __privateGet(this, _mutateOptions)).onSettled) == null ? void 0 : _d2.call(_c2, action.data, null, variables, context2);
+      } else if ((action == null ? void 0 : action.type) === "error") {
+        (_f2 = (_e2 = __privateGet(this, _mutateOptions)).onError) == null ? void 0 : _f2.call(_e2, action.error, variables, context2);
+        (_h2 = (_g2 = __privateGet(this, _mutateOptions)).onSettled) == null ? void 0 : _h2.call(
+          _g2,
+          void 0,
+          action.error,
+          variables,
+          context2
+        );
+      }
     }
-    this.currentMutation = this.client.getMutationCache().build(this.client, {
-      ...this.options,
-      variables: typeof variables !== "undefined" ? variables : this.options.variables
+    this.listeners.forEach((listener) => {
+      listener(__privateGet(this, _currentResult2));
     });
-    this.currentMutation.addObserver(this);
-    return this.currentMutation.execute();
+  });
+}, _j);
+var QueryClientContext = reactExports.createContext(
+  void 0
+);
+var useQueryClient = (queryClient2) => {
+  const client2 = reactExports.useContext(QueryClientContext);
+  if (queryClient2) {
+    return queryClient2;
   }
-  updateResult() {
-    const state = this.currentMutation ? this.currentMutation.state : getDefaultState();
-    const result = {
-      ...state,
-      isLoading: state.status === "loading",
-      isSuccess: state.status === "success",
-      isError: state.status === "error",
-      isIdle: state.status === "idle",
-      mutate: this.mutate,
-      reset: this.reset
+  if (!client2) {
+    throw new Error("No QueryClient set, use QueryClientProvider to set one");
+  }
+  return client2;
+};
+var QueryClientProvider = ({
+  client: client2,
+  children
+}) => {
+  reactExports.useEffect(() => {
+    client2.mount();
+    return () => {
+      client2.unmount();
     };
-    this.currentResult = result;
+  }, [client2]);
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientContext.Provider, { value: client2, children });
+};
+var IsRestoringContext = reactExports.createContext(false);
+var useIsRestoring = () => reactExports.useContext(IsRestoringContext);
+IsRestoringContext.Provider;
+function createValue() {
+  let isReset = false;
+  return {
+    clearReset: () => {
+      isReset = false;
+    },
+    reset: () => {
+      isReset = true;
+    },
+    isReset: () => {
+      return isReset;
+    }
+  };
+}
+var QueryErrorResetBoundaryContext = reactExports.createContext(createValue());
+var useQueryErrorResetBoundary = () => reactExports.useContext(QueryErrorResetBoundaryContext);
+function shouldThrowError(throwError, params) {
+  if (typeof throwError === "function") {
+    return throwError(...params);
   }
-  notify(options) {
-    notifyManager.batch(() => {
-      if (this.mutateOptions && this.hasListeners()) {
-        if (options.onSuccess) {
-          var _this$mutateOptions$o, _this$mutateOptions, _this$mutateOptions$o2, _this$mutateOptions2;
-          (_this$mutateOptions$o = (_this$mutateOptions = this.mutateOptions).onSuccess) == null ? void 0 : _this$mutateOptions$o.call(_this$mutateOptions, this.currentResult.data, this.currentResult.variables, this.currentResult.context);
-          (_this$mutateOptions$o2 = (_this$mutateOptions2 = this.mutateOptions).onSettled) == null ? void 0 : _this$mutateOptions$o2.call(_this$mutateOptions2, this.currentResult.data, null, this.currentResult.variables, this.currentResult.context);
-        } else if (options.onError) {
-          var _this$mutateOptions$o3, _this$mutateOptions3, _this$mutateOptions$o4, _this$mutateOptions4;
-          (_this$mutateOptions$o3 = (_this$mutateOptions3 = this.mutateOptions).onError) == null ? void 0 : _this$mutateOptions$o3.call(_this$mutateOptions3, this.currentResult.error, this.currentResult.variables, this.currentResult.context);
-          (_this$mutateOptions$o4 = (_this$mutateOptions4 = this.mutateOptions).onSettled) == null ? void 0 : _this$mutateOptions$o4.call(_this$mutateOptions4, void 0, this.currentResult.error, this.currentResult.variables, this.currentResult.context);
-        }
-      }
-      if (options.listeners) {
-        this.listeners.forEach(({
-          listener
-        }) => {
-          listener(this.currentResult);
-        });
-      }
-    });
+  return !!throwError;
+}
+function noop$1() {
+}
+var ensurePreventErrorBoundaryRetry = (options, errorResetBoundary) => {
+  if (options.suspense || options.throwOnError) {
+    if (!errorResetBoundary.isReset()) {
+      options.retryOnMount = false;
+    }
   }
 };
+var useClearResetErrorBoundary = (errorResetBoundary) => {
+  reactExports.useEffect(() => {
+    errorResetBoundary.clearReset();
+  }, [errorResetBoundary]);
+};
+var getHasError = ({
+  result,
+  errorResetBoundary,
+  throwOnError,
+  query
+}) => {
+  return result.isError && !errorResetBoundary.isReset() && !result.isFetching && query && shouldThrowError(throwOnError, [result.error, query]);
+};
+var ensureStaleTime = (defaultedOptions) => {
+  if (defaultedOptions.suspense) {
+    if (typeof defaultedOptions.staleTime !== "number") {
+      defaultedOptions.staleTime = 1e3;
+    }
+  }
+};
+var shouldSuspend = (defaultedOptions, result) => (defaultedOptions == null ? void 0 : defaultedOptions.suspense) && result.isPending;
+var fetchOptimistic = (defaultedOptions, observer, errorResetBoundary) => observer.fetchOptimistic(defaultedOptions).catch(() => {
+  errorResetBoundary.clearReset();
+});
+function useBaseQuery(options, Observer, queryClient2) {
+  const client2 = useQueryClient(queryClient2);
+  const isRestoring = useIsRestoring();
+  const errorResetBoundary = useQueryErrorResetBoundary();
+  const defaultedOptions = client2.defaultQueryOptions(options);
+  defaultedOptions._optimisticResults = isRestoring ? "isRestoring" : "optimistic";
+  ensureStaleTime(defaultedOptions);
+  ensurePreventErrorBoundaryRetry(defaultedOptions, errorResetBoundary);
+  useClearResetErrorBoundary(errorResetBoundary);
+  const [observer] = reactExports.useState(
+    () => new Observer(
+      client2,
+      defaultedOptions
+    )
+  );
+  const result = observer.getOptimisticResult(defaultedOptions);
+  reactExports.useSyncExternalStore(
+    reactExports.useCallback(
+      (onStoreChange) => {
+        const unsubscribe = isRestoring ? () => void 0 : observer.subscribe(notifyManager.batchCalls(onStoreChange));
+        observer.updateResult();
+        return unsubscribe;
+      },
+      [observer, isRestoring]
+    ),
+    () => observer.getCurrentResult(),
+    () => observer.getCurrentResult()
+  );
+  reactExports.useEffect(() => {
+    observer.setOptions(defaultedOptions, { listeners: false });
+  }, [defaultedOptions, observer]);
+  if (shouldSuspend(defaultedOptions, result)) {
+    throw fetchOptimistic(defaultedOptions, observer, errorResetBoundary);
+  }
+  if (getHasError({
+    result,
+    errorResetBoundary,
+    throwOnError: defaultedOptions.throwOnError,
+    query: client2.getQueryCache().get(defaultedOptions.queryHash)
+  })) {
+    throw result.error;
+  }
+  return !defaultedOptions.notifyOnChangeProps ? observer.trackResult(result) : result;
+}
+function useQuery$1(options, queryClient2) {
+  return useBaseQuery(options, QueryObserver, queryClient2);
+}
+function useMutation(options, queryClient2) {
+  const client2 = useQueryClient(queryClient2);
+  const [observer] = reactExports.useState(
+    () => new MutationObserver$1(
+      client2,
+      options
+    )
+  );
+  reactExports.useEffect(() => {
+    observer.setOptions(options);
+  }, [observer, options]);
+  const result = reactExports.useSyncExternalStore(
+    reactExports.useCallback(
+      (onStoreChange) => observer.subscribe(notifyManager.batchCalls(onStoreChange)),
+      [observer]
+    ),
+    () => observer.getCurrentResult(),
+    () => observer.getCurrentResult()
+  );
+  const mutate = reactExports.useCallback(
+    (variables, mutateOptions) => {
+      observer.mutate(variables, mutateOptions).catch(noop$1);
+    },
+    [observer]
+  );
+  if (result.error && shouldThrowError(observer.options.throwOnError, [result.error])) {
+    throw result.error;
+  }
+  return { ...result, mutate, mutateAsync: result.mutate };
+}
+function useInfiniteQuery(options, queryClient2) {
+  return useBaseQuery(
+    options,
+    InfiniteQueryObserver,
+    queryClient2
+  );
+}
+function watchChains(config2, parameters) {
+  const { onChange } = parameters;
+  return config2._internal.chains.subscribe((chains2, prevChains) => {
+    onChange(chains2, prevChains);
+  });
+}
+function useConfig(parameters = {}) {
+  const config2 = parameters.config ?? reactExports.useContext(WagmiContext);
+  if (!config2)
+    throw new WagmiProviderNotFoundError();
+  return config2;
+}
+var withSelector = { exports: {} };
+var withSelector_production_min = {};
 var shim = { exports: {} };
 var useSyncExternalStoreShim_production_min = {};
 /**
@@ -76739,204 +77643,6 @@ useSyncExternalStoreShim_production_min.useSyncExternalStore = void 0 !== e$1.us
   shim.exports = useSyncExternalStoreShim_production_min;
 }
 var shimExports = shim.exports;
-const useSyncExternalStore = shimExports.useSyncExternalStore;
-const defaultContext = /* @__PURE__ */ reactExports.createContext(void 0);
-const QueryClientSharingContext = /* @__PURE__ */ reactExports.createContext(false);
-function getQueryClientContext(context2, contextSharing) {
-  if (context2) {
-    return context2;
-  }
-  if (contextSharing && typeof window !== "undefined") {
-    if (!window.ReactQueryClientContext) {
-      window.ReactQueryClientContext = defaultContext;
-    }
-    return window.ReactQueryClientContext;
-  }
-  return defaultContext;
-}
-const useQueryClient = ({
-  context: context2
-} = {}) => {
-  const queryClient2 = reactExports.useContext(getQueryClientContext(context2, reactExports.useContext(QueryClientSharingContext)));
-  if (!queryClient2) {
-    throw new Error("No QueryClient set, use QueryClientProvider to set one");
-  }
-  return queryClient2;
-};
-const QueryClientProvider = ({
-  client: client2,
-  children,
-  context: context2,
-  contextSharing = false
-}) => {
-  reactExports.useEffect(() => {
-    client2.mount();
-    return () => {
-      client2.unmount();
-    };
-  }, [client2]);
-  const Context = getQueryClientContext(context2, contextSharing);
-  return /* @__PURE__ */ reactExports.createElement(QueryClientSharingContext.Provider, {
-    value: !context2 && contextSharing
-  }, /* @__PURE__ */ reactExports.createElement(Context.Provider, {
-    value: client2
-  }, children));
-};
-const IsRestoringContext = /* @__PURE__ */ reactExports.createContext(false);
-const useIsRestoring = () => reactExports.useContext(IsRestoringContext);
-IsRestoringContext.Provider;
-function createValue() {
-  let isReset = false;
-  return {
-    clearReset: () => {
-      isReset = false;
-    },
-    reset: () => {
-      isReset = true;
-    },
-    isReset: () => {
-      return isReset;
-    }
-  };
-}
-const QueryErrorResetBoundaryContext = /* @__PURE__ */ reactExports.createContext(createValue());
-const useQueryErrorResetBoundary = () => reactExports.useContext(QueryErrorResetBoundaryContext);
-function shouldThrowError(_useErrorBoundary, params) {
-  if (typeof _useErrorBoundary === "function") {
-    return _useErrorBoundary(...params);
-  }
-  return !!_useErrorBoundary;
-}
-const ensurePreventErrorBoundaryRetry = (options, errorResetBoundary) => {
-  if (options.suspense || options.useErrorBoundary) {
-    if (!errorResetBoundary.isReset()) {
-      options.retryOnMount = false;
-    }
-  }
-};
-const useClearResetErrorBoundary = (errorResetBoundary) => {
-  reactExports.useEffect(() => {
-    errorResetBoundary.clearReset();
-  }, [errorResetBoundary]);
-};
-const getHasError = ({
-  result,
-  errorResetBoundary,
-  useErrorBoundary,
-  query
-}) => {
-  return result.isError && !errorResetBoundary.isReset() && !result.isFetching && shouldThrowError(useErrorBoundary, [result.error, query]);
-};
-const ensureStaleTime = (defaultedOptions) => {
-  if (defaultedOptions.suspense) {
-    if (typeof defaultedOptions.staleTime !== "number") {
-      defaultedOptions.staleTime = 1e3;
-    }
-  }
-};
-const willFetch = (result, isRestoring) => result.isLoading && result.isFetching && !isRestoring;
-const shouldSuspend = (defaultedOptions, result, isRestoring) => (defaultedOptions == null ? void 0 : defaultedOptions.suspense) && willFetch(result, isRestoring);
-const fetchOptimistic = (defaultedOptions, observer, errorResetBoundary) => observer.fetchOptimistic(defaultedOptions).then(({
-  data
-}) => {
-  defaultedOptions.onSuccess == null ? void 0 : defaultedOptions.onSuccess(data);
-  defaultedOptions.onSettled == null ? void 0 : defaultedOptions.onSettled(data, null);
-}).catch((error) => {
-  errorResetBoundary.clearReset();
-  defaultedOptions.onError == null ? void 0 : defaultedOptions.onError(error);
-  defaultedOptions.onSettled == null ? void 0 : defaultedOptions.onSettled(void 0, error);
-});
-function useBaseQuery(options, Observer) {
-  const queryClient2 = useQueryClient({
-    context: options.context
-  });
-  const isRestoring = useIsRestoring();
-  const errorResetBoundary = useQueryErrorResetBoundary();
-  const defaultedOptions = queryClient2.defaultQueryOptions(options);
-  defaultedOptions._optimisticResults = isRestoring ? "isRestoring" : "optimistic";
-  if (defaultedOptions.onError) {
-    defaultedOptions.onError = notifyManager.batchCalls(defaultedOptions.onError);
-  }
-  if (defaultedOptions.onSuccess) {
-    defaultedOptions.onSuccess = notifyManager.batchCalls(defaultedOptions.onSuccess);
-  }
-  if (defaultedOptions.onSettled) {
-    defaultedOptions.onSettled = notifyManager.batchCalls(defaultedOptions.onSettled);
-  }
-  ensureStaleTime(defaultedOptions);
-  ensurePreventErrorBoundaryRetry(defaultedOptions, errorResetBoundary);
-  useClearResetErrorBoundary(errorResetBoundary);
-  const [observer] = reactExports.useState(() => new Observer(queryClient2, defaultedOptions));
-  const result = observer.getOptimisticResult(defaultedOptions);
-  useSyncExternalStore(reactExports.useCallback((onStoreChange) => {
-    const unsubscribe = isRestoring ? () => void 0 : observer.subscribe(notifyManager.batchCalls(onStoreChange));
-    observer.updateResult();
-    return unsubscribe;
-  }, [observer, isRestoring]), () => observer.getCurrentResult(), () => observer.getCurrentResult());
-  reactExports.useEffect(() => {
-    observer.setOptions(defaultedOptions, {
-      listeners: false
-    });
-  }, [defaultedOptions, observer]);
-  if (shouldSuspend(defaultedOptions, result, isRestoring)) {
-    throw fetchOptimistic(defaultedOptions, observer, errorResetBoundary);
-  }
-  if (getHasError({
-    result,
-    errorResetBoundary,
-    useErrorBoundary: defaultedOptions.useErrorBoundary,
-    query: observer.getCurrentQuery()
-  })) {
-    throw result.error;
-  }
-  return !defaultedOptions.notifyOnChangeProps ? observer.trackResult(result) : result;
-}
-function useQuery$1(arg1, arg2, arg3) {
-  const parsedOptions = parseQueryArgs(arg1, arg2, arg3);
-  return useBaseQuery(parsedOptions, QueryObserver);
-}
-function useMutation(arg1, arg2, arg3) {
-  const options = parseMutationArgs(arg1, arg2, arg3);
-  const queryClient2 = useQueryClient({
-    context: options.context
-  });
-  const [observer] = reactExports.useState(() => new MutationObserver$1(queryClient2, options));
-  reactExports.useEffect(() => {
-    observer.setOptions(options);
-  }, [observer, options]);
-  const result = useSyncExternalStore(reactExports.useCallback((onStoreChange) => observer.subscribe(notifyManager.batchCalls(onStoreChange)), [observer]), () => observer.getCurrentResult(), () => observer.getCurrentResult());
-  const mutate = reactExports.useCallback((variables, mutateOptions) => {
-    observer.mutate(variables, mutateOptions).catch(noop$1);
-  }, [observer]);
-  if (result.error && shouldThrowError(observer.options.useErrorBoundary, [result.error])) {
-    throw result.error;
-  }
-  return {
-    ...result,
-    mutate,
-    mutateAsync: result.mutate
-  };
-}
-function noop$1() {
-}
-function useInfiniteQuery(arg1, arg2, arg3) {
-  const options = parseQueryArgs(arg1, arg2, arg3);
-  return useBaseQuery(options, InfiniteQueryObserver);
-}
-function watchChains(config2, parameters) {
-  const { onChange } = parameters;
-  return config2._internal.chains.subscribe((chains2, prevChains) => {
-    onChange(chains2, prevChains);
-  });
-}
-function useConfig(parameters = {}) {
-  const config2 = parameters.config ?? reactExports.useContext(WagmiContext);
-  if (!config2)
-    throw new WagmiProviderNotFoundError();
-  return config2;
-}
-var withSelector = { exports: {} };
-var withSelector_production_min = {};
 /**
  * @license React
  * use-sync-external-store-shim/with-selector.production.min.js
@@ -77275,19 +77981,24 @@ function useWalletClient(parameters = {}) {
   const { query = {}, ...rest } = parameters;
   const config2 = useConfig(rest);
   const queryClient2 = useQueryClient();
-  const { address, connector, status } = useAccount();
-  const chainId = useChainId();
+  const { address, connector, status } = useAccount({ config: config2 });
+  const chainId = useChainId({ config: config2 });
   const { queryKey, ...options } = getWalletClientQueryOptions(config2, {
     ...parameters,
     chainId: parameters.chainId ?? chainId,
     connector: parameters.connector ?? connector
   });
   const enabled = Boolean(status !== "disconnected" && (query.enabled ?? true));
+  const addressRef = reactExports.useRef(address);
   reactExports.useEffect(() => {
-    if (address)
-      queryClient2.invalidateQueries({ queryKey });
-    else
+    const previousAddress = addressRef.current;
+    if (!address && previousAddress) {
       queryClient2.removeQueries({ queryKey });
+      addressRef.current = void 0;
+    } else if (address !== previousAddress) {
+      queryClient2.invalidateQueries({ queryKey });
+      addressRef.current = address;
+    }
   }, [address, queryClient2]);
   return useQuery({
     ...query,
@@ -77327,6 +78038,9 @@ function coinbaseWallet$1(parameters) {
   const reloadOnDisconnect = false;
   let sdk;
   let walletProvider;
+  let accountsChanged;
+  let chainChanged;
+  let disconnect2;
   return createConnector((config2) => ({
     id: "coinbaseWalletSDK",
     name: "Coinbase Wallet",
@@ -77337,9 +78051,18 @@ function coinbaseWallet$1(parameters) {
         const accounts = (await provider2.request({
           method: "eth_requestAccounts"
         })).map((x) => getAddress(x));
-        provider2.on("accountsChanged", this.onAccountsChanged);
-        provider2.on("chainChanged", this.onChainChanged);
-        provider2.on("disconnect", this.onDisconnect.bind(this));
+        if (!accountsChanged) {
+          accountsChanged = this.onAccountsChanged.bind(this);
+          provider2.on("accountsChanged", accountsChanged);
+        }
+        if (!chainChanged) {
+          chainChanged = this.onChainChanged.bind(this);
+          provider2.on("chainChanged", chainChanged);
+        }
+        if (!disconnect2) {
+          disconnect2 = this.onDisconnect.bind(this);
+          provider2.on("disconnect", disconnect2);
+        }
         let currentChainId = await this.getChainId();
         if (chainId && currentChainId !== chainId) {
           const chain = await this.switchChain({ chainId }).catch((error) => {
@@ -77358,9 +78081,18 @@ function coinbaseWallet$1(parameters) {
     },
     async disconnect() {
       const provider2 = await this.getProvider();
-      provider2.removeListener("accountsChanged", this.onAccountsChanged);
-      provider2.removeListener("chainChanged", this.onChainChanged);
-      provider2.removeListener("disconnect", this.onDisconnect.bind(this));
+      if (accountsChanged) {
+        provider2.removeListener("accountsChanged", accountsChanged);
+        accountsChanged = void 0;
+      }
+      if (chainChanged) {
+        provider2.removeListener("chainChanged", chainChanged);
+        chainChanged = void 0;
+      }
+      if (disconnect2) {
+        provider2.removeListener("disconnect", disconnect2);
+        disconnect2 = void 0;
+      }
       provider2.disconnect();
       provider2.close();
     },
@@ -77373,19 +78105,19 @@ function coinbaseWallet$1(parameters) {
     async getChainId() {
       const provider2 = await this.getProvider();
       const chainId = await provider2.request({ method: "eth_chainId" });
-      return normalizeChainId(chainId);
+      return Number(chainId);
     },
     async getProvider() {
-      var _a;
+      var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index--9QcjOJb.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-Dufvb07S.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
         else
           SDK = CoinbaseWalletSDK;
         sdk = new SDK({ reloadOnDisconnect, ...parameters });
-        const walletExtensionChainId = (_a = sdk.walletExtension) == null ? void 0 : _a.getChainId();
+        const walletExtensionChainId = (_a2 = sdk.walletExtension) == null ? void 0 : _a2.getChainId();
         const chain = config2.chains.find((chain2) => parameters.chainId ? chain2.id === parameters.chainId : chain2.id === walletExtensionChainId) || config2.chains[0];
         const chainId = parameters.chainId || (chain == null ? void 0 : chain.id);
         const jsonRpcUrl = parameters.jsonRpcUrl || (chain == null ? void 0 : chain.rpcUrls.default.http[0]);
@@ -77402,7 +78134,7 @@ function coinbaseWallet$1(parameters) {
       }
     },
     async switchChain({ chainId }) {
-      var _a, _b;
+      var _a2, _b2;
       const chain = config2.chains.find((chain2) => chain2.id === chainId);
       if (!chain)
         throw new SwitchChainError(new ChainNotConfiguredError());
@@ -77424,8 +78156,8 @@ function coinbaseWallet$1(parameters) {
                   chainId: chainId_,
                   chainName: chain.name,
                   nativeCurrency: chain.nativeCurrency,
-                  rpcUrls: [((_a = chain.rpcUrls.default) == null ? void 0 : _a.http[0]) ?? ""],
-                  blockExplorerUrls: [(_b = chain.blockExplorers) == null ? void 0 : _b.default.url]
+                  rpcUrls: [((_a2 = chain.rpcUrls.default) == null ? void 0 : _a2.http[0]) ?? ""],
+                  blockExplorerUrls: [(_b2 = chain.blockExplorers) == null ? void 0 : _b2.default.url]
                 }
               ]
             });
@@ -77439,22 +78171,31 @@ function coinbaseWallet$1(parameters) {
     },
     onAccountsChanged(accounts) {
       if (accounts.length === 0)
-        config2.emitter.emit("disconnect");
+        this.onDisconnect();
       else
         config2.emitter.emit("change", {
           accounts: accounts.map((x) => getAddress(x))
         });
     },
     onChainChanged(chain) {
-      const chainId = normalizeChainId(chain);
+      const chainId = Number(chain);
       config2.emitter.emit("change", { chainId });
     },
     async onDisconnect(_error) {
       config2.emitter.emit("disconnect");
       const provider2 = await this.getProvider();
-      provider2.removeListener("accountsChanged", this.onAccountsChanged);
-      provider2.removeListener("chainChanged", this.onChainChanged);
-      provider2.removeListener("disconnect", this.onDisconnect.bind(this));
+      if (accountsChanged) {
+        provider2.removeListener("accountsChanged", accountsChanged);
+        accountsChanged = void 0;
+      }
+      if (chainChanged) {
+        provider2.removeListener("chainChanged", chainChanged);
+        chainChanged = void 0;
+      }
+      if (disconnect2) {
+        provider2.removeListener("disconnect", disconnect2);
+        disconnect2 = void 0;
+      }
     }
   }));
 }
@@ -77476,7 +78217,7 @@ function walletConnect$1(parameters) {
       provider2.on("session_delete", this.onSessionDelete.bind(this));
     },
     async connect({ chainId, ...rest } = {}) {
-      var _a, _b;
+      var _a2, _b2;
       try {
         const provider2 = await this.getProvider();
         if (!provider2)
@@ -77484,12 +78225,12 @@ function walletConnect$1(parameters) {
         provider2.on("display_uri", this.onDisplayUri);
         let targetChainId = chainId;
         if (!targetChainId) {
-          const state = await ((_a = config2.storage) == null ? void 0 : _a.getItem("state")) ?? {};
+          const state = await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem("state")) ?? {};
           const isChainSupported = config2.chains.some((x) => x.id === state.chainId);
           if (isChainSupported)
             targetChainId = state.chainId;
           else
-            targetChainId = (_b = config2.chains[0]) == null ? void 0 : _b.id;
+            targetChainId = (_b2 = config2.chains[0]) == null ? void 0 : _b2.id;
         }
         if (!targetChainId)
           throw new Error("No chains found on connector.");
@@ -77541,12 +78282,12 @@ function walletConnect$1(parameters) {
       return provider2.accounts.map((x) => getAddress(x));
     },
     async getProvider({ chainId } = {}) {
-      var _a;
+      var _a2;
       async function initProvider() {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-Zu6v-7kr.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-ELpNBbiR.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -77566,7 +78307,7 @@ function walletConnect$1(parameters) {
         provider_ == null ? void 0 : provider_.events.setMaxListeners(Infinity);
       }
       if (chainId)
-        await ((_a = this.switchChain) == null ? void 0 : _a.call(this, { chainId }));
+        await ((_a2 = this.switchChain) == null ? void 0 : _a2.call(this, { chainId }));
       return provider_;
     },
     async getChainId() {
@@ -77593,7 +78334,7 @@ function walletConnect$1(parameters) {
       }
     },
     async switchChain({ chainId }) {
-      var _a;
+      var _a2;
       const chain = config2.chains.find((chain2) => chain2.id === chainId);
       if (!chain)
         throw new SwitchChainError(new ChainNotConfiguredError());
@@ -77608,7 +78349,7 @@ function walletConnect$1(parameters) {
             params: [
               {
                 chainId: numberToHex(chain.id),
-                blockExplorerUrls: [(_a = chain.blockExplorers) == null ? void 0 : _a.default.url],
+                blockExplorerUrls: [(_a2 = chain.blockExplorers) == null ? void 0 : _a2.default.url],
                 chainName: chain.name,
                 nativeCurrency: chain.nativeCurrency,
                 rpcUrls: [...chain.rpcUrls.default.http]
@@ -77639,11 +78380,11 @@ function walletConnect$1(parameters) {
         });
     },
     onChainChanged(chain) {
-      const chainId = normalizeChainId(chain);
+      const chainId = Number(chain);
       config2.emitter.emit("change", { chainId });
     },
     async onConnect(connectInfo) {
-      const chainId = normalizeChainId(connectInfo.chainId);
+      const chainId = Number(connectInfo.chainId);
       const accounts = await this.getAccounts();
       config2.emitter.emit("connect", { accounts, chainId });
     },
@@ -77664,22 +78405,22 @@ function walletConnect$1(parameters) {
       this.onDisconnect();
     },
     getNamespaceChainsIds() {
-      var _a, _b, _c;
+      var _a2, _b2, _c2;
       if (!provider_)
         return [];
-      const chainIds = (_c = (_b = (_a = provider_.session) == null ? void 0 : _a.namespaces[NAMESPACE]) == null ? void 0 : _b.chains) == null ? void 0 : _c.map((chain) => parseInt(chain.split(":")[1] || ""));
+      const chainIds = (_c2 = (_b2 = (_a2 = provider_.session) == null ? void 0 : _a2.namespaces[NAMESPACE]) == null ? void 0 : _b2.chains) == null ? void 0 : _c2.map((chain) => parseInt(chain.split(":")[1] || ""));
       return chainIds ?? [];
     },
     getNamespaceMethods() {
-      var _a, _b;
+      var _a2, _b2;
       if (!provider_)
         return [];
-      const methods = (_b = (_a = provider_.session) == null ? void 0 : _a.namespaces[NAMESPACE]) == null ? void 0 : _b.methods;
+      const methods = (_b2 = (_a2 = provider_.session) == null ? void 0 : _a2.namespaces[NAMESPACE]) == null ? void 0 : _b2.methods;
       return methods ?? [];
     },
     async getRequestedChainsIds() {
-      var _a;
-      return await ((_a = config2.storage) == null ? void 0 : _a.getItem(this.requestedChainsStorageKey)) ?? [];
+      var _a2;
+      return await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem(this.requestedChainsStorageKey)) ?? [];
     },
     /**
      * Checks if the target chains match the chains that were
@@ -77717,8 +78458,8 @@ function walletConnect$1(parameters) {
       return !connectorChains.every((id2) => requestedChains.includes(id2));
     },
     async setRequestedChainsIds(chains2) {
-      var _a;
-      await ((_a = config2.storage) == null ? void 0 : _a.setItem(this.requestedChainsStorageKey, chains2));
+      var _a2;
+      await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem(this.requestedChainsStorageKey, chains2));
     },
     get requestedChainsStorageKey() {
       return `${this.id}.requestedChains`;
@@ -79174,8 +79915,8 @@ function createInstance(options) {
   var arrayFirstInterpSetsIndentCache = createWeakMap();
   function outdent(stringsOrOptions) {
     var values = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-      values[_i - 1] = arguments[_i];
+    for (var _i2 = 1; _i2 < arguments.length; _i2++) {
+      values[_i2 - 1] = arguments[_i2];
     }
     if (isTemplateStringsArray(stringsOrOptions)) {
       var strings = stringsOrOptions;
@@ -79962,7 +80703,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
       if (result === null) {
         return null;
       }
-      var _a = __read(result, 2), lastIndex = _a[0], value = _a[1];
+      var _a2 = __read(result, 2), lastIndex = _a2[0], value = _a2[1];
       tokens.push({
         type: "<string-token>",
         value
@@ -79975,7 +80716,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
           var flag = wouldStartIdentifier(str, index2 + 1) ? "id" : "unrestricted";
           var result = consumeIdentUnsafe(str, index2 + 1);
           if (result !== null) {
-            var _b = __read(result, 2), lastIndex = _b[0], value = _b[1];
+            var _b2 = __read(result, 2), lastIndex = _b2[0], value = _b2[1];
             tokens.push({
               type: "<hash-token>",
               value: value.toLowerCase(),
@@ -79995,7 +80736,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
       if (result === null) {
         return null;
       }
-      var _c = __read(result, 2), lastIndex = _c[0], value = _c[1];
+      var _c2 = __read(result, 2), lastIndex = _c2[0], value = _c2[1];
       tokens.push({
         type: "<string-token>",
         value
@@ -80017,7 +80758,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
           value: code2
         });
       } else {
-        var _d = __read(plusNumeric, 2), lastIndex = _d[0], tokenTuple = _d[1];
+        var _d2 = __read(plusNumeric, 2), lastIndex = _d2[0], tokenTuple = _d2[1];
         if (tokenTuple[0] === "<dimension-token>") {
           tokens.push({
             type: "<dimension-token>",
@@ -80047,7 +80788,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
     } else if (code2 === 45) {
       var minusNumeric = consumeNumeric(str, index2);
       if (minusNumeric !== null) {
-        var _e = __read(minusNumeric, 2), lastIndex = _e[0], tokenTuple = _e[1];
+        var _e2 = __read(minusNumeric, 2), lastIndex = _e2[0], tokenTuple = _e2[1];
         if (tokenTuple[0] === "<dimension-token>") {
           tokens.push({
             type: "<dimension-token>",
@@ -80084,7 +80825,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
       }
       var result = consumeIdentLike(str, index2);
       if (result !== null) {
-        var _f = __read(result, 3), lastIndex = _f[0], value = _f[1], type = _f[2];
+        var _f2 = __read(result, 3), lastIndex = _f2[0], value = _f2[1], type = _f2[2];
         tokens.push({
           type,
           value
@@ -80104,7 +80845,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
           value: code2
         });
       } else {
-        var _g = __read(minusNumeric, 2), lastIndex = _g[0], tokenTuple = _g[1];
+        var _g2 = __read(minusNumeric, 2), lastIndex = _g2[0], tokenTuple = _g2[1];
         if (tokenTuple[0] === "<dimension-token>") {
           tokens.push({
             type: "<dimension-token>",
@@ -80156,7 +80897,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
     } else if (code2 === 64) {
       var result = consumeIdent(str, index2 + 1);
       if (result !== null) {
-        var _h = __read(result, 2), lastIndex = _h[0], value = _h[1];
+        var _h2 = __read(result, 2), lastIndex = _h2[0], value = _h2[1];
         tokens.push({
           type: "<at-keyword-token>",
           value: value.toLowerCase()
@@ -80177,7 +80918,7 @@ var lexicalAnalysis = function lexicalAnalysis2(str, index2) {
       if (result === null) {
         return null;
       }
-      var _j = __read(result, 2), lastIndex = _j[0], value = _j[1];
+      var _j2 = __read(result, 2), lastIndex = _j2[0], value = _j2[1];
       str = str.slice(0, index2) + value + str.slice(lastIndex + 1);
       index2 -= 1;
     } else if (code2 === 93) {
@@ -80252,7 +80993,7 @@ var consumeString = function consumeString2(str, index2) {
       var result = consumeEscape(str, i2);
       if (result === null)
         return null;
-      var _a = __read(result, 2), lastIndex = _a[0], charCode = _a[1];
+      var _a2 = __read(result, 2), lastIndex = _a2[0], charCode = _a2[1];
       charCodes.push(charCode);
       i2 = lastIndex;
     } else if (code2 === 10) {
@@ -80327,10 +81068,10 @@ var consumeNumeric = function consumeNumeric2(str, index2) {
   var numberResult = consumeNumber(str, index2);
   if (numberResult === null)
     return null;
-  var _a = __read(numberResult, 3), numberEndIndex = _a[0], numberValue = _a[1], numberFlag = _a[2];
+  var _a2 = __read(numberResult, 3), numberEndIndex = _a2[0], numberValue = _a2[1], numberFlag = _a2[2];
   var identResult = consumeIdent(str, numberEndIndex + 1);
   if (identResult !== null) {
-    var _b = __read(identResult, 2), identEndIndex = _b[0], identValue = _b[1];
+    var _b2 = __read(identResult, 2), identEndIndex = _b2[0], identValue = _b2[1];
     return [identEndIndex, ["<dimension-token>", numberValue, identValue]];
   }
   if (numberEndIndex + 1 < str.length && str.charCodeAt(numberEndIndex + 1) === 37) {
@@ -80424,7 +81165,7 @@ var consumeIdentUnsafe = function consumeIdentUnsafe2(str, index2) {
     } else {
       var result = consumeEscape(str, index2);
       if (result !== null) {
-        var _a = __read(result, 2), lastIndex = _a[0], code_4 = _a[1];
+        var _a2 = __read(result, 2), lastIndex = _a2[0], code_4 = _a2[1];
         identChars.push(code_4);
         index2 = lastIndex;
         continue;
@@ -80446,7 +81187,7 @@ var consumeIdent = function consumeIdent2(str, index2) {
     } else {
       var result = consumeEscape(str, index2);
       if (result !== null) {
-        var _a = __read(result, 2), lastIndex = _a[0], code_5 = _a[1];
+        var _a2 = __read(result, 2), lastIndex = _a2[0], code_5 = _a2[1];
         identChars.push(code_5);
         index2 = lastIndex;
         continue;
@@ -80475,7 +81216,7 @@ var consumeUrl = function consumeUrl2(str, index2) {
       var result = consumeEscape(str, index2);
       if (result === null || hasFinishedWord)
         return null;
-      var _a = __read(result, 2), lastIndex = _a[0], value = _a[1];
+      var _a2 = __read(result, 2), lastIndex = _a2[0], value = _a2[1];
       urlChars.push(value);
       index2 = lastIndex;
     } else {
@@ -80491,7 +81232,7 @@ var consumeIdentLike = function consumeIdentLike2(str, index2) {
   var result = consumeIdent(str, index2);
   if (result === null)
     return null;
-  var _a = __read(result, 2), lastIndex = _a[0], value = _a[1];
+  var _a2 = __read(result, 2), lastIndex = _a2[0], value = _a2[1];
   if (value.toLowerCase() === "url") {
     if (str.length > lastIndex + 1) {
       var nextCode = str.charCodeAt(lastIndex + 1);
@@ -80504,7 +81245,7 @@ var consumeIdentLike = function consumeIdentLike2(str, index2) {
             var result_1 = consumeUrl(str, lastIndex + offset2);
             if (result_1 === null)
               return null;
-            var _b = __read(result_1, 2), lastUrlIndex = _b[0], value_1 = _b[1];
+            var _b2 = __read(result_1, 2), lastUrlIndex = _b2[0], value_1 = _b2[1];
             return [lastUrlIndex, value_1, "<url-token>"];
           }
         }
@@ -80611,7 +81352,7 @@ var removeWhitespace = function removeWhitespace2(tokenList) {
   return newTokenList;
 };
 var syntacticAnalysis = function syntacticAnalysis2(tokenList) {
-  var e_1, _a;
+  var e_1, _a2;
   var mediaQueryList = [[]];
   for (var i2 = 0; i2 < tokenList.length; i2++) {
     var token2 = tokenList[i2];
@@ -80650,8 +81391,8 @@ var syntacticAnalysis = function syntacticAnalysis2(tokenList) {
       };
     } finally {
       try {
-        if (mediaQueryTokens_1_1 && !mediaQueryTokens_1_1.done && (_a = mediaQueryTokens_1["return"]))
-          _a.call(mediaQueryTokens_1);
+        if (mediaQueryTokens_1_1 && !mediaQueryTokens_1_1.done && (_a2 = mediaQueryTokens_1["return"]))
+          _a2.call(mediaQueryTokens_1);
       } finally {
         if (e_1)
           throw e_1.error;
@@ -80879,7 +81620,7 @@ var tokenizeMediaFeature = function tokenizeMediaFeature2(rawTokens) {
   throw new Error("Invalid media feature");
 };
 var tokenizeRange = function tokenizeRange2(tokens) {
-  var _a, _b, _c, _d;
+  var _a2, _b2, _c2, _d2;
   if (tokens.length < 5 || tokens[0].type !== "<(-token>" || tokens[tokens.length - 1].type !== "<)-token>") {
     throw new Error("Invalid range");
   }
@@ -80916,7 +81657,7 @@ var tokenizeRange = function tokenizeRange2(tokens) {
     } else {
       throw new Error("Invalid range");
     }
-    var tokenIndexAfterFirstOp = 2 + ((_b = (_a = range2[hasLeft ? "leftOp" : "rightOp"]) === null || _a === void 0 ? void 0 : _a.length) !== null && _b !== void 0 ? _b : 0);
+    var tokenIndexAfterFirstOp = 2 + ((_b2 = (_a2 = range2[hasLeft ? "leftOp" : "rightOp"]) === null || _a2 === void 0 ? void 0 : _a2.length) !== null && _b2 !== void 0 ? _b2 : 0);
     var tokenAfterFirstOp = tokens[tokenIndexAfterFirstOp];
     if (hasLeft) {
       if (tokenAfterFirstOp.type === "<ident-token>") {
@@ -80941,7 +81682,7 @@ var tokenizeRange = function tokenizeRange2(tokens) {
             } else {
               throw new Error("Invalid range");
             }
-            var tokenAfterSecondOp = tokens[tokenIndexAfterFirstOp + 1 + ((_d = (_c = range2.rightOp) === null || _c === void 0 ? void 0 : _c.length) !== null && _d !== void 0 ? _d : 0)];
+            var tokenAfterSecondOp = tokens[tokenIndexAfterFirstOp + 1 + ((_d2 = (_c2 = range2.rightOp) === null || _c2 === void 0 ? void 0 : _c2.length) !== null && _d2 !== void 0 ? _d2 : 0)];
             range2.rightToken = tokenAfterSecondOp;
           } else {
             throw new Error("Invalid range");
@@ -84732,7 +85473,7 @@ var SUPPORTS_PATH2D = function() {
   return true;
 }();
 function QRCodeCanvas(props) {
-  const _a = props, {
+  const _a2 = props, {
     value,
     size: size2 = DEFAULT_SIZE,
     level = DEFAULT_LEVEL,
@@ -84741,7 +85482,7 @@ function QRCodeCanvas(props) {
     includeMargin = DEFAULT_INCLUDEMARGIN,
     style: style2,
     imageSettings
-  } = _a, otherProps = __objRest(_a, [
+  } = _a2, otherProps = __objRest(_a2, [
     "value",
     "size",
     "level",
@@ -84820,7 +85561,7 @@ function QRCodeCanvas(props) {
   }, otherProps)), img2);
 }
 function QRCodeSVG(props) {
-  const _a = props, {
+  const _a2 = props, {
     value,
     size: size2 = DEFAULT_SIZE,
     level = DEFAULT_LEVEL,
@@ -84828,7 +85569,7 @@ function QRCodeSVG(props) {
     fgColor = DEFAULT_FGCOLOR,
     includeMargin = DEFAULT_INCLUDEMARGIN,
     imageSettings
-  } = _a, otherProps = __objRest(_a, [
+  } = _a2, otherProps = __objRest(_a2, [
     "value",
     "size",
     "level",
@@ -84871,7 +85612,7 @@ function QRCodeSVG(props) {
   }), image);
 }
 var QRCode = (props) => {
-  const _a = props, { renderAs } = _a, otherProps = __objRest(_a, ["renderAs"]);
+  const _a2 = props, { renderAs } = _a2, otherProps = __objRest(_a2, ["renderAs"]);
   if (renderAs === "svg") {
     return /* @__PURE__ */ React.createElement(QRCodeSVG, __spreadValues({}, otherProps));
   }
@@ -84904,9 +85645,9 @@ var dayjs_min = { exports: {} };
       return void 0 === t3;
     } }, g2 = "en", D2 = {};
     D2[g2] = M2;
-    var p2 = "$isDayjsObject", S2 = function(t3) {
-      return t3 instanceof _ || !(!t3 || !t3[p2]);
-    }, w2 = function t3(e3, n3, r3) {
+    var p2 = function(t3) {
+      return t3 instanceof b3;
+    }, S2 = function t3(e3, n3, r3) {
       var i3;
       if (!e3)
         return g2;
@@ -84921,18 +85662,18 @@ var dayjs_min = { exports: {} };
         D2[a3] = e3, i3 = a3;
       }
       return !r3 && i3 && (g2 = i3), i3 || !r3 && g2;
-    }, O2 = function(t3, e3) {
-      if (S2(t3))
+    }, w2 = function(t3, e3) {
+      if (p2(t3))
         return t3.clone();
       var n3 = "object" == typeof e3 ? e3 : {};
-      return n3.date = t3, n3.args = arguments, new _(n3);
-    }, b3 = v3;
-    b3.l = w2, b3.i = S2, b3.w = function(t3, e3) {
-      return O2(t3, { locale: e3.$L, utc: e3.$u, x: e3.$x, $offset: e3.$offset });
+      return n3.date = t3, n3.args = arguments, new b3(n3);
+    }, O2 = v3;
+    O2.l = S2, O2.i = p2, O2.w = function(t3, e3) {
+      return w2(t3, { locale: e3.$L, utc: e3.$u, x: e3.$x, $offset: e3.$offset });
     };
-    var _ = function() {
+    var b3 = function() {
       function M3(t3) {
-        this.$L = w2(t3.locale, null, true), this.parse(t3), this.$x = this.$x || t3.x || {}, this[p2] = true;
+        this.$L = S2(t3.locale, null, true), this.parse(t3);
       }
       var m3 = M3.prototype;
       return m3.parse = function(t3) {
@@ -84940,7 +85681,7 @@ var dayjs_min = { exports: {} };
           var e3 = t4.date, n3 = t4.utc;
           if (null === e3)
             return /* @__PURE__ */ new Date(NaN);
-          if (b3.u(e3))
+          if (O2.u(e3))
             return /* @__PURE__ */ new Date();
           if (e3 instanceof Date)
             return new Date(e3);
@@ -84952,33 +85693,33 @@ var dayjs_min = { exports: {} };
             }
           }
           return new Date(e3);
-        }(t3), this.init();
+        }(t3), this.$x = t3.x || {}, this.init();
       }, m3.init = function() {
         var t3 = this.$d;
         this.$y = t3.getFullYear(), this.$M = t3.getMonth(), this.$D = t3.getDate(), this.$W = t3.getDay(), this.$H = t3.getHours(), this.$m = t3.getMinutes(), this.$s = t3.getSeconds(), this.$ms = t3.getMilliseconds();
       }, m3.$utils = function() {
-        return b3;
+        return O2;
       }, m3.isValid = function() {
         return !(this.$d.toString() === l2);
       }, m3.isSame = function(t3, e3) {
-        var n3 = O2(t3);
+        var n3 = w2(t3);
         return this.startOf(e3) <= n3 && n3 <= this.endOf(e3);
       }, m3.isAfter = function(t3, e3) {
-        return O2(t3) < this.startOf(e3);
+        return w2(t3) < this.startOf(e3);
       }, m3.isBefore = function(t3, e3) {
-        return this.endOf(e3) < O2(t3);
+        return this.endOf(e3) < w2(t3);
       }, m3.$g = function(t3, e3, n3) {
-        return b3.u(t3) ? this[e3] : this.set(n3, t3);
+        return O2.u(t3) ? this[e3] : this.set(n3, t3);
       }, m3.unix = function() {
         return Math.floor(this.valueOf() / 1e3);
       }, m3.valueOf = function() {
         return this.$d.getTime();
       }, m3.startOf = function(t3, e3) {
-        var n3 = this, r3 = !!b3.u(e3) || e3, f3 = b3.p(t3), l3 = function(t4, e4) {
-          var i3 = b3.w(n3.$u ? Date.UTC(n3.$y, e4, t4) : new Date(n3.$y, e4, t4), n3);
+        var n3 = this, r3 = !!O2.u(e3) || e3, f3 = O2.p(t3), l3 = function(t4, e4) {
+          var i3 = O2.w(n3.$u ? Date.UTC(n3.$y, e4, t4) : new Date(n3.$y, e4, t4), n3);
           return r3 ? i3 : i3.endOf(a2);
         }, $3 = function(t4, e4) {
-          return b3.w(n3.toDate()[t4].apply(n3.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e4)), n3);
+          return O2.w(n3.toDate()[t4].apply(n3.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e4)), n3);
         }, y3 = this.$W, M4 = this.$M, m4 = this.$D, v4 = "set" + (this.$u ? "UTC" : "");
         switch (f3) {
           case h2:
@@ -85003,7 +85744,7 @@ var dayjs_min = { exports: {} };
       }, m3.endOf = function(t3) {
         return this.startOf(t3, false);
       }, m3.$set = function(t3, e3) {
-        var n3, o2 = b3.p(t3), f3 = "set" + (this.$u ? "UTC" : ""), l3 = (n3 = {}, n3[a2] = f3 + "Date", n3[d] = f3 + "Date", n3[c] = f3 + "Month", n3[h2] = f3 + "FullYear", n3[u2] = f3 + "Hours", n3[s2] = f3 + "Minutes", n3[i2] = f3 + "Seconds", n3[r2] = f3 + "Milliseconds", n3)[o2], $3 = o2 === a2 ? this.$D + (e3 - this.$W) : e3;
+        var n3, o2 = O2.p(t3), f3 = "set" + (this.$u ? "UTC" : ""), l3 = (n3 = {}, n3[a2] = f3 + "Date", n3[d] = f3 + "Date", n3[c] = f3 + "Month", n3[h2] = f3 + "FullYear", n3[u2] = f3 + "Hours", n3[s2] = f3 + "Minutes", n3[i2] = f3 + "Seconds", n3[r2] = f3 + "Milliseconds", n3)[o2], $3 = o2 === a2 ? this.$D + (e3 - this.$W) : e3;
         if (o2 === c || o2 === h2) {
           var y3 = this.clone().set(d, 1);
           y3.$d[l3]($3), y3.init(), this.$d = y3.set(d, Math.min(this.$D, y3.daysInMonth())).$d;
@@ -85013,13 +85754,13 @@ var dayjs_min = { exports: {} };
       }, m3.set = function(t3, e3) {
         return this.clone().$set(t3, e3);
       }, m3.get = function(t3) {
-        return this[b3.p(t3)]();
+        return this[O2.p(t3)]();
       }, m3.add = function(r3, f3) {
         var d2, l3 = this;
         r3 = Number(r3);
-        var $3 = b3.p(f3), y3 = function(t3) {
-          var e3 = O2(l3);
-          return b3.w(e3.date(e3.date() + Math.round(t3 * r3)), l3);
+        var $3 = O2.p(f3), y3 = function(t3) {
+          var e3 = w2(l3);
+          return O2.w(e3.date(e3.date() + Math.round(t3 * r3)), l3);
         };
         if ($3 === c)
           return this.set(c, this.$M + r3);
@@ -85030,17 +85771,17 @@ var dayjs_min = { exports: {} };
         if ($3 === o)
           return y3(7);
         var M4 = (d2 = {}, d2[s2] = e2, d2[u2] = n2, d2[i2] = t2, d2)[$3] || 1, m4 = this.$d.getTime() + r3 * M4;
-        return b3.w(m4, this);
+        return O2.w(m4, this);
       }, m3.subtract = function(t3, e3) {
         return this.add(-1 * t3, e3);
       }, m3.format = function(t3) {
         var e3 = this, n3 = this.$locale();
         if (!this.isValid())
           return n3.invalidDate || l2;
-        var r3 = t3 || "YYYY-MM-DDTHH:mm:ssZ", i3 = b3.z(this), s3 = this.$H, u3 = this.$m, a3 = this.$M, o2 = n3.weekdays, c2 = n3.months, f3 = n3.meridiem, h3 = function(t4, n4, i4, s4) {
+        var r3 = t3 || "YYYY-MM-DDTHH:mm:ssZ", i3 = O2.z(this), s3 = this.$H, u3 = this.$m, a3 = this.$M, o2 = n3.weekdays, c2 = n3.months, f3 = n3.meridiem, h3 = function(t4, n4, i4, s4) {
           return t4 && (t4[n4] || t4(e3, r3)) || i4[n4].slice(0, s4);
         }, d2 = function(t4) {
-          return b3.s(s3 % 12 || 12, t4, "0");
+          return O2.s(s3 % 12 || 12, t4, "0");
         }, $3 = f3 || function(t4, e4, n4) {
           var r4 = t4 < 12 ? "AM" : "PM";
           return n4 ? r4.toLowerCase() : r4;
@@ -85051,11 +85792,11 @@ var dayjs_min = { exports: {} };
               case "YY":
                 return String(e3.$y).slice(-2);
               case "YYYY":
-                return b3.s(e3.$y, 4, "0");
+                return O2.s(e3.$y, 4, "0");
               case "M":
                 return a3 + 1;
               case "MM":
-                return b3.s(a3 + 1, 2, "0");
+                return O2.s(a3 + 1, 2, "0");
               case "MMM":
                 return h3(n3.monthsShort, a3, c2, 3);
               case "MMMM":
@@ -85063,7 +85804,7 @@ var dayjs_min = { exports: {} };
               case "D":
                 return e3.$D;
               case "DD":
-                return b3.s(e3.$D, 2, "0");
+                return O2.s(e3.$D, 2, "0");
               case "d":
                 return String(e3.$W);
               case "dd":
@@ -85075,7 +85816,7 @@ var dayjs_min = { exports: {} };
               case "H":
                 return String(s3);
               case "HH":
-                return b3.s(s3, 2, "0");
+                return O2.s(s3, 2, "0");
               case "h":
                 return d2(1);
               case "hh":
@@ -85087,13 +85828,13 @@ var dayjs_min = { exports: {} };
               case "m":
                 return String(u3);
               case "mm":
-                return b3.s(u3, 2, "0");
+                return O2.s(u3, 2, "0");
               case "s":
                 return String(e3.$s);
               case "ss":
-                return b3.s(e3.$s, 2, "0");
+                return O2.s(e3.$s, 2, "0");
               case "SSS":
-                return b3.s(e3.$ms, 3, "0");
+                return O2.s(e3.$ms, 3, "0");
               case "Z":
                 return i3;
             }
@@ -85103,8 +85844,8 @@ var dayjs_min = { exports: {} };
       }, m3.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, m3.diff = function(r3, d2, l3) {
-        var $3, y3 = this, M4 = b3.p(d2), m4 = O2(r3), v4 = (m4.utcOffset() - this.utcOffset()) * e2, g3 = this - m4, D3 = function() {
-          return b3.m(y3, m4);
+        var $3, y3 = this, M4 = O2.p(d2), m4 = w2(r3), v4 = (m4.utcOffset() - this.utcOffset()) * e2, g3 = this - m4, D3 = function() {
+          return O2.m(y3, m4);
         };
         switch (M4) {
           case h2:
@@ -85134,7 +85875,7 @@ var dayjs_min = { exports: {} };
           default:
             $3 = g3;
         }
-        return l3 ? $3 : b3.a($3);
+        return l3 ? $3 : O2.a($3);
       }, m3.daysInMonth = function() {
         return this.endOf(c).$D;
       }, m3.$locale = function() {
@@ -85142,10 +85883,10 @@ var dayjs_min = { exports: {} };
       }, m3.locale = function(t3, e3) {
         if (!t3)
           return this.$L;
-        var n3 = this.clone(), r3 = w2(t3, e3, true);
+        var n3 = this.clone(), r3 = S2(t3, e3, true);
         return r3 && (n3.$L = r3), n3;
       }, m3.clone = function() {
-        return b3.w(this.$d, this);
+        return O2.w(this.$d, this);
       }, m3.toDate = function() {
         return new Date(this.valueOf());
       }, m3.toJSON = function() {
@@ -85155,16 +85896,16 @@ var dayjs_min = { exports: {} };
       }, m3.toString = function() {
         return this.$d.toUTCString();
       }, M3;
-    }(), k2 = _.prototype;
-    return O2.prototype = k2, [["$ms", r2], ["$s", i2], ["$m", s2], ["$H", u2], ["$W", a2], ["$M", c], ["$y", h2], ["$D", d]].forEach(function(t3) {
-      k2[t3[1]] = function(e3) {
+    }(), _ = b3.prototype;
+    return w2.prototype = _, [["$ms", r2], ["$s", i2], ["$m", s2], ["$H", u2], ["$W", a2], ["$M", c], ["$y", h2], ["$D", d]].forEach(function(t3) {
+      _[t3[1]] = function(e3) {
         return this.$g(e3, t3[0], t3[1]);
       };
-    }), O2.extend = function(t3, e3) {
-      return t3.$i || (t3(e3, _, O2), t3.$i = true), O2;
-    }, O2.locale = w2, O2.isDayjs = S2, O2.unix = function(t3) {
-      return O2(1e3 * t3);
-    }, O2.en = D2[g2], O2.Ls = D2, O2.p = {}, O2;
+    }), w2.extend = function(t3, e3) {
+      return t3.$i || (t3(e3, b3, w2), t3.$i = true), w2;
+    }, w2.locale = S2, w2.isDayjs = p2, w2.unix = function(t3) {
+      return w2(1e3 * t3);
+    }, w2.en = D2[g2], w2.Ls = D2, w2.p = {}, w2;
   });
 })(dayjs_min);
 var dayjs_minExports = dayjs_min.exports;
@@ -86483,18 +87224,17 @@ function r$1(e2) {
   if ("string" == typeof e2 || "number" == typeof e2)
     n2 += e2;
   else if ("object" == typeof e2)
-    if (Array.isArray(e2)) {
-      var o = e2.length;
-      for (t2 = 0; t2 < o; t2++)
+    if (Array.isArray(e2))
+      for (t2 = 0; t2 < e2.length; t2++)
         e2[t2] && (f2 = r$1(e2[t2])) && (n2 && (n2 += " "), n2 += f2);
-    } else
-      for (f2 in e2)
-        e2[f2] && (n2 && (n2 += " "), n2 += f2);
+    else
+      for (t2 in e2)
+        e2[t2] && (n2 && (n2 += " "), n2 += t2);
   return n2;
 }
 function clsx() {
-  for (var e2, t2, f2 = 0, n2 = "", o = arguments.length; f2 < o; f2++)
-    (e2 = arguments[f2]) && (t2 = r$1(e2)) && (n2 && (n2 += " "), n2 += t2);
+  for (var e2, t2, f2 = 0, n2 = ""; f2 < arguments.length; )
+    (e2 = arguments[f2++]) && (t2 = r$1(e2)) && (n2 && (n2 += " "), n2 += t2);
   return n2;
 }
 function _extends$3() {
@@ -86534,12 +87274,12 @@ function $6ed0406888f73fc4$export$c7b2cbe3552a0d05(...refs) {
 }
 function $c512c27ab02ef895$export$50c7b4e9d9f19c1(scopeName, createContextScopeDeps = []) {
   let defaultContexts2 = [];
-  function $c512c27ab02ef895$export$fd42f52fd3ae1109(rootComponentName, defaultContext2) {
-    const BaseContext = /* @__PURE__ */ reactExports.createContext(defaultContext2);
+  function $c512c27ab02ef895$export$fd42f52fd3ae1109(rootComponentName, defaultContext) {
+    const BaseContext = /* @__PURE__ */ reactExports.createContext(defaultContext);
     const index2 = defaultContexts2.length;
     defaultContexts2 = [
       ...defaultContexts2,
-      defaultContext2
+      defaultContext
     ];
     function Provider2(props) {
       const { scope, children, ...context2 } = props;
@@ -86557,8 +87297,8 @@ function $c512c27ab02ef895$export$50c7b4e9d9f19c1(scopeName, createContextScopeD
       const context2 = reactExports.useContext(Context);
       if (context2)
         return context2;
-      if (defaultContext2 !== void 0)
-        return defaultContext2;
+      if (defaultContext !== void 0)
+        return defaultContext;
       throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
     }
     Provider2.displayName = rootComponentName + "Provider";
@@ -86568,8 +87308,8 @@ function $c512c27ab02ef895$export$50c7b4e9d9f19c1(scopeName, createContextScopeD
     ];
   }
   const createScope = () => {
-    const scopeContexts = defaultContexts2.map((defaultContext2) => {
-      return /* @__PURE__ */ reactExports.createContext(defaultContext2);
+    const scopeContexts = defaultContexts2.map((defaultContext) => {
+      return /* @__PURE__ */ reactExports.createContext(defaultContext);
     });
     return function useScope(scope) {
       const contexts = (scope === null || scope === void 0 ? void 0 : scope[scopeName]) || scopeContexts;
@@ -86905,8 +87645,7 @@ function $5cb92bef7577960e$var$usePointerDownOutside(onPointerDownOutside, owner
           });
         } else
           handleAndDispatchPointerDownOutsideEvent();
-      } else
-        ownerDocument.removeEventListener("click", handleClickRef.current);
+      }
       isPointerInsideReactTreeRef.current = false;
     };
     const timerId = window.setTimeout(() => {
@@ -87044,11 +87783,12 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6 = /* @__PURE__ */ reactExports.f
           });
       }, handleMutations = function(mutations) {
         const focusedElement = document.activeElement;
-        if (focusedElement !== document.body)
-          return;
-        for (const mutation of mutations)
-          if (mutation.removedNodes.length > 0)
-            $d3863c46a17e8a28$var$focus(container1);
+        for (const mutation of mutations) {
+          if (mutation.removedNodes.length > 0) {
+            if (!(container1 !== null && container1 !== void 0 && container1.contains(focusedElement)))
+              $d3863c46a17e8a28$var$focus(container1);
+          }
+        }
       };
       document.addEventListener("focusin", handleFocusIn);
       document.addEventListener("focusout", handleFocusOut);
@@ -89073,7 +89813,7 @@ const $cf1ac5d9fe0e8206$var$CONTENT_NAME = "PopperContent";
 const [$cf1ac5d9fe0e8206$var$PopperContentProvider, $cf1ac5d9fe0e8206$var$useContentContext] = $cf1ac5d9fe0e8206$var$createPopperContext($cf1ac5d9fe0e8206$var$CONTENT_NAME);
 const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   var _arrowSize$width, _arrowSize$height, _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$trans, _middlewareData$trans2, _middlewareData$hide;
-  const { __scopePopper, side = "bottom", sideOffset = 0, align = "center", alignOffset = 0, arrowPadding = 0, avoidCollisions = true, collisionBoundary = [], collisionPadding: collisionPaddingProp = 0, sticky = "partial", hideWhenDetached = false, updatePositionStrategy = "optimized", onPlaced, ...contentProps } = props;
+  const { __scopePopper, side = "bottom", sideOffset = 0, align = "center", alignOffset = 0, arrowPadding = 0, collisionBoundary = [], collisionPadding: collisionPaddingProp = 0, sticky = "partial", hideWhenDetached = false, avoidCollisions = true, onPlaced, ...contentProps } = props;
   const context2 = $cf1ac5d9fe0e8206$var$usePopperContext($cf1ac5d9fe0e8206$var$CONTENT_NAME, __scopePopper);
   const [content2, setContent] = reactExports.useState(null);
   const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(
@@ -89106,12 +89846,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.fo
     // default to `fixed` strategy so users don't have to pick and we also avoid focus scroll issues
     strategy: "fixed",
     placement: desiredPlacement,
-    whileElementsMounted: (...args) => {
-      const cleanup = autoUpdate(...args, {
-        animationFrame: updatePositionStrategy === "always"
-      });
-      return cleanup;
-    },
+    whileElementsMounted: autoUpdate,
     elements: {
       reference: context2.anchor
     },
@@ -89149,8 +89884,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.fo
         arrowHeight
       }),
       hideWhenDetached && hide({
-        strategy: "referenceHidden",
-        ...detectOverflowOptions
+        strategy: "referenceHidden"
       })
     ]
   });
@@ -89523,21 +90257,25 @@ var applyAttributeToOthers = function(originalTarget, parentNode, markerName, co
       if (elementsToKeep.has(node2)) {
         deep(node2);
       } else {
-        var attr = node2.getAttribute(controlAttribute);
-        var alreadyHidden = attr !== null && attr !== "false";
-        var counterValue = (counterMap.get(node2) || 0) + 1;
-        var markerValue = (markerCounter.get(node2) || 0) + 1;
-        counterMap.set(node2, counterValue);
-        markerCounter.set(node2, markerValue);
-        hiddenNodes.push(node2);
-        if (counterValue === 1 && alreadyHidden) {
-          uncontrolledNodes.set(node2, true);
-        }
-        if (markerValue === 1) {
-          node2.setAttribute(markerName, "true");
-        }
-        if (!alreadyHidden) {
-          node2.setAttribute(controlAttribute, "true");
+        try {
+          var attr = node2.getAttribute(controlAttribute);
+          var alreadyHidden = attr !== null && attr !== "false";
+          var counterValue = (counterMap.get(node2) || 0) + 1;
+          var markerValue = (markerCounter.get(node2) || 0) + 1;
+          counterMap.set(node2, counterValue);
+          markerCounter.set(node2, markerValue);
+          hiddenNodes.push(node2);
+          if (counterValue === 1 && alreadyHidden) {
+            uncontrolledNodes.set(node2, true);
+          }
+          if (markerValue === 1) {
+            node2.setAttribute(markerName, "true");
+          }
+          if (!alreadyHidden) {
+            node2.setAttribute(controlAttribute, "true");
+          }
+        } catch (e2) {
+          console.error("aria-hidden: cannot operate on ", node2, e2);
         }
       }
     });
@@ -89621,6 +90359,7 @@ function useCallbackRef(initialValue, callback) {
   ref.callback = callback;
   return ref.facade;
 }
+var useIsomorphicLayoutEffect = typeof window !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
 var currentValues = /* @__PURE__ */ new WeakMap();
 function useMergeRefs(refs, defaultValue) {
   var callbackRef = useCallbackRef(defaultValue || null, function(newValue) {
@@ -89628,7 +90367,7 @@ function useMergeRefs(refs, defaultValue) {
       return assignRef(ref, newValue);
     });
   });
-  reactExports.useLayoutEffect(function() {
+  useIsomorphicLayoutEffect(function() {
     var oldValue = currentValues.get(callbackRef);
     if (oldValue) {
       var prevRefs_1 = new Set(oldValue);
@@ -89733,8 +90472,8 @@ function createSidecarMedium(options) {
   medium.options = __assign$3({ async: true, ssr: false }, options);
   return medium;
 }
-var SideCar$1 = function(_a) {
-  var sideCar = _a.sideCar, rest = __rest$2(_a, ["sideCar"]);
+var SideCar$1 = function(_a2) {
+  var sideCar = _a2.sideCar, rest = __rest$2(_a2, ["sideCar"]);
   if (!sideCar) {
     throw new Error("Sidecar: please provide `sideCar` property to import the right car");
   }
@@ -89755,12 +90494,12 @@ var nothing = function() {
 };
 var RemoveScroll = reactExports.forwardRef(function(props, parentRef) {
   var ref = reactExports.useRef(null);
-  var _a = reactExports.useState({
+  var _a2 = reactExports.useState({
     onScrollCapture: nothing,
     onWheelCapture: nothing,
     onTouchMoveCapture: nothing
-  }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, rest = __rest$2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
+  }), callbacks = _a2[0], setCallbacks = _a2[1];
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b2 = props.as, Container = _b2 === void 0 ? "div" : _b2, rest = __rest$2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs([ref, parentRef]);
   var containerProps = __assign$3(__assign$3({}, rest), callbacks);
@@ -89843,8 +90582,8 @@ var styleHookSingleton = function() {
 };
 var styleSingleton = function() {
   var useStyle2 = styleHookSingleton();
-  var Sheet = function(_a) {
-    var styles2 = _a.styles, dynamic = _a.dynamic;
+  var Sheet = function(_a2) {
+    var styles2 = _a2.styles, dynamic = _a2.dynamic;
     useStyle2(styles2, dynamic);
     return null;
   };
@@ -89884,19 +90623,38 @@ var getGapWidth = function(gapMode) {
   };
 };
 var Style = styleSingleton();
-var getStyles = function(_a, allowRelative, gapMode, important) {
-  var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
+var lockAttribute = "data-scroll-locked";
+var getStyles = function(_a2, allowRelative, gapMode, important) {
+  var left = _a2.left, top = _a2.top, right = _a2.right, gap = _a2.gap;
   if (gapMode === void 0) {
     gapMode = "margin";
   }
-  return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
+  return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body[").concat(lockAttribute, "] {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
     allowRelative && "position: relative ".concat(important, ";"),
     gapMode === "margin" && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
     gapMode === "padding" && "padding-right: ".concat(gap, "px ").concat(important, ";")
-  ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
+  ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body[").concat(lockAttribute, "] {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
 };
-var RemoveScrollBar = function(props) {
-  var noRelative = props.noRelative, noImportant = props.noImportant, _a = props.gapMode, gapMode = _a === void 0 ? "margin" : _a;
+var getCurrentUseCounter = function() {
+  var counter = parseInt(document.body.getAttribute(lockAttribute) || "0", 10);
+  return isFinite(counter) ? counter : 0;
+};
+var useLockAttribute = function() {
+  reactExports.useEffect(function() {
+    document.body.setAttribute(lockAttribute, (getCurrentUseCounter() + 1).toString());
+    return function() {
+      var newCounter = getCurrentUseCounter() - 1;
+      if (newCounter <= 0) {
+        document.body.removeAttribute(lockAttribute);
+      } else {
+        document.body.setAttribute(lockAttribute, newCounter.toString());
+      }
+    };
+  }, []);
+};
+var RemoveScrollBar = function(_a2) {
+  var noRelative = _a2.noRelative, noImportant = _a2.noImportant, _b2 = _a2.gapMode, gapMode = _b2 === void 0 ? "margin" : _b2;
+  useLockAttribute();
   var gap = reactExports.useMemo(function() {
     return getGapWidth(gapMode);
   }, [gapMode]);
@@ -89943,7 +90701,7 @@ var locationCouldBeScrolled = function(axis, node2) {
     }
     var isScrollable = elementCouldBeScrolled(axis, current);
     if (isScrollable) {
-      var _a = getScrollVariables(axis, current), s2 = _a[1], d = _a[2];
+      var _a2 = getScrollVariables(axis, current), s2 = _a2[1], d = _a2[2];
       if (s2 > d) {
         return true;
       }
@@ -89952,16 +90710,16 @@ var locationCouldBeScrolled = function(axis, node2) {
   } while (current && current !== document.body);
   return false;
 };
-var getVScrollVariables = function(_a) {
-  var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
+var getVScrollVariables = function(_a2) {
+  var scrollTop = _a2.scrollTop, scrollHeight = _a2.scrollHeight, clientHeight = _a2.clientHeight;
   return [
     scrollTop,
     scrollHeight,
     clientHeight
   ];
 };
-var getHScrollVariables = function(_a) {
-  var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
+var getHScrollVariables = function(_a2) {
+  var scrollLeft = _a2.scrollLeft, scrollWidth = _a2.scrollWidth, clientWidth = _a2.clientWidth;
   return [
     scrollLeft,
     scrollWidth,
@@ -89987,7 +90745,7 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
   var availableScroll = 0;
   var availableScrollTop = 0;
   do {
-    var _a = getScrollVariables(axis, target), position2 = _a[0], scroll_1 = _a[1], capacity = _a[2];
+    var _a2 = getScrollVariables(axis, target), position2 = _a2[0], scroll_1 = _a2[1], capacity = _a2[2];
     var elementScroll = scroll_1 - capacity - directionFactor * position2;
     if (position2 || elementScroll) {
       if (elementCouldBeScrolled(axis, target)) {
@@ -91085,13 +91843,9 @@ const useTransactionHistory = (arg) => useInfiniteQuery({
   queryFn: ({
     pageParam
   }) => {
-    return getTransactionHistory(_extends$2({}, arg, pageParam ? {
+    return getTransactionHistory(_extends$2({}, arg, {
       page: {
         page: pageParam
-      }
-    } : {
-      page: {
-        page: 1
       }
     }));
   },
@@ -91102,6 +91856,7 @@ const useTransactionHistory = (arg) => useInfiniteQuery({
       return void 0;
     return (page == null ? void 0 : page.page) || 1;
   },
+  initialPageParam: 1,
   retry: true,
   staleTime: time$1.oneSecond * 30,
   enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
@@ -91581,7 +92336,7 @@ const CoinTile = ({
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
   const {
     data: dataCoinPrices = [],
-    isLoading: isLoadingCoinPrice
+    isPending: isPendingCoinPrice
   } = useCoinPrices({
     tokens: [{
       chainId: balance.chainId,
@@ -91590,19 +92345,19 @@ const CoinTile = ({
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
   const {
     data: contractInfo,
-    isLoading: isLoadingContractInfo
+    isPending: isPendingContractInfo
   } = useContractInfo$1({
     chainID: String(balance.chainId),
     contractAddress: balance.contractAddress
   });
-  const isLoading = isLoadingCoinPrice || isLoadingConversionRate || isLoadingContractInfo;
-  if (isLoading) {
+  const isPending = isPendingCoinPrice || isPendingConversionRate || isPendingContractInfo;
+  if (isPending) {
     return /* @__PURE__ */ React.createElement(Box, {
       background: "backgroundSecondary",
       width: "full",
@@ -91771,7 +92526,7 @@ const AssetSummary = () => {
   } = useSettings();
   const {
     data: balances = [],
-    isLoading: isLoadingBalances
+    isPending: isPendingBalances
   } = useBalancesAssetsSummary({
     accountAddress: address || "",
     chainIds: selectedNetworks,
@@ -91780,7 +92535,7 @@ const AssetSummary = () => {
     hideUnlistedTokens,
     hideCollectibles
   });
-  if (isLoadingBalances) {
+  if (isPendingBalances) {
     return /* @__PURE__ */ React.createElement(SkeletonTiles, null);
   }
   const {
@@ -92074,7 +92829,7 @@ const SendCoin = ({
   const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
   const {
     data: balances = [],
-    isLoading: isLoadingBalances
+    isPending: isPendingBalances
   } = useBalances$1({
     accountAddress,
     chainIds: [chainId],
@@ -92086,7 +92841,7 @@ const SendCoin = ({
   const tokenBalance = balances.find((b3) => b3.contractAddress === contractAddress);
   const {
     data: coinPrices = [],
-    isLoading: isLoadingCoinPrices
+    isPending: isPendingCoinPrices
   } = useCoinPrices({
     tokens: [{
       chainId,
@@ -92095,12 +92850,12 @@ const SendCoin = ({
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
-  const isLoading = isLoadingBalances || isLoadingCoinPrices || isLoadingConversionRate;
-  if (isLoading) {
+  const isPending = isPendingBalances || isPendingCoinPrices || isPendingConversionRate;
+  if (isPending) {
     return null;
   }
   const isNativeCoin = compareAddress$2(contractAddress, AddressZero);
@@ -92387,7 +93142,7 @@ const SendCollectible = ({
   const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
   const {
     data: tokenBalance,
-    isLoading: isLoadingBalances
+    isPending: isPendingBalances
   } = useCollectibleBalance({
     accountAddress,
     chainId,
@@ -92412,8 +93167,8 @@ const SendCollectible = ({
     }
   }, [tokenBalance]);
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  const isLoading = isLoadingBalances;
-  if (isLoading) {
+  const isPending = isPendingBalances;
+  if (isPending) {
     return null;
   }
   const decimals = (tokenBalance == null || (_tokenBalance$tokenMe = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe.decimals) || 0;
@@ -92703,7 +93458,7 @@ const TransactionHistoryItem = ({
   });
   const {
     data: coinPrices = [],
-    isLoading: isLoadingCoinPrices
+    isPending: isPendingCoinPrices
   } = useCoinPrices({
     tokens: tokenContractAddresses.map((contractAddress) => ({
       contractAddress,
@@ -92712,11 +93467,11 @@ const TransactionHistoryItem = ({
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
-  const isLoading = isLoadingCoinPrices || isLoadingConversionRate;
+  const isPending = isPendingCoinPrices || isPendingConversionRate;
   const {
     transfers
   } = transaction2;
@@ -92842,7 +93597,7 @@ const TransactionHistoryItem = ({
         src: tokenLogoUri,
         width: "5",
         alt: "token logo"
-      }), getTransferAmountLabel(formatDisplay$1(amountValue), symbol, transfer.transferType)), isLoading && /* @__PURE__ */ React.createElement(Skeleton$1, {
+      }), getTransferAmountLabel(formatDisplay$1(amountValue), symbol, transfer.transferType)), isPending && /* @__PURE__ */ React.createElement(Skeleton$1, {
         width: "35px",
         height: "20px"
       }), fiatConversionRate && /* @__PURE__ */ React.createElement(Text, {
@@ -92923,7 +93678,7 @@ const TransactionHistorySkeleton = () => {
 };
 const TransactionHistoryList = ({
   transactions: transactions2,
-  isLoading,
+  isPending,
   isFetchingNextPage
 }) => {
   const transactionPeriods = [{
@@ -92977,7 +93732,7 @@ const TransactionHistoryList = ({
     });
     return transactionsByTime2;
   }, [transactions2]);
-  if (isLoading) {
+  if (isPending) {
     return /* @__PURE__ */ React.createElement(Box, {
       flexDirection: "column",
       gap: "2"
@@ -93048,7 +93803,7 @@ const History = () => {
   useScrollbarWidth();
   const {
     data: transactionHistory = [],
-    isLoading: isLoadingTransactionHistory
+    isPending: isPendingTransactionHistory
   } = useTransactionHistorySummary({
     accountAddress: accountAddress || "",
     chainIds: selectedNetworks
@@ -93059,7 +93814,7 @@ const History = () => {
     paddingTop: "3"
   }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
     transactions: transactionHistory,
-    isLoading: isLoadingTransactionHistory,
+    isPending: isPendingTransactionHistory,
     isFetchingNextPage: false
   })));
 };
@@ -93210,7 +93965,7 @@ const SearchWallet = () => {
   useScrollbarWidth();
   const {
     data: tokenBalancesData,
-    isLoading: tokenBalancesIsLoading
+    isPending: isPendingTokenBalances
   } = useBalances$1({
     accountAddress: accountAddress || "",
     chainIds: selectedNetworks
@@ -93220,7 +93975,7 @@ const SearchWallet = () => {
   const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b3) => b3.contractType === "ERC20" || compareAddress$2(b3.contractAddress, AddressZero))) || [];
   const {
     data: coinPrices = [],
-    isLoading: isLoadingCoinPrices
+    isPending: isPendingCoinPrices
   } = useCoinPrices({
     tokens: coinBalancesUnordered.map((token2) => ({
       chainId: token2.chainId,
@@ -93229,7 +93984,7 @@ const SearchWallet = () => {
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
@@ -93252,7 +94007,7 @@ const SearchWallet = () => {
   const collectionBalances = collectionBalancesUnordered.sort((a2, b3) => {
     return Number(b3.balance) - Number(a2.balance);
   });
-  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices || isLoadingConversionRate;
+  const isPending = isPendingTokenBalances || isPendingCoinPrices || isPendingConversionRate;
   const indexedCollectionBalances = collectionBalances.map((balance, index2) => {
     var _balance$contractInfo;
     return {
@@ -93317,7 +94072,7 @@ const SearchWallet = () => {
       }
     },
     label: `Collections (${collectionBalancesAmount})`
-  }), isLoading ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), isPending ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
     key: i2,
     width: "100%",
     height: "32px"
@@ -93343,7 +94098,7 @@ const SearchWallet = () => {
       }
     },
     label: `Coins (${coinBalancesAmount})`
-  }), isLoading ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
+  }), isPending ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton$1, {
     key: i2,
     width: "100%",
     height: "32px"
@@ -93379,7 +94134,7 @@ const SearchWalletViewAll = ({
   } = useAccount();
   const {
     data: tokenBalancesData,
-    isLoading: tokenBalancesIsLoading
+    isPending: isPendingTokenBalances
   } = useBalances$1({
     accountAddress: accountAddress || "",
     chainIds: selectedNetworks
@@ -93389,7 +94144,7 @@ const SearchWalletViewAll = ({
   const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b3) => b3.contractType === "ERC20" || compareAddress$2(b3.contractAddress, AddressZero))) || [];
   const {
     data: coinPrices = [],
-    isLoading: isLoadingCoinPrices
+    isPending: isPendingCoinPrices
   } = useCoinPrices({
     tokens: coinBalancesUnordered.map((token2) => ({
       chainId: token2.chainId,
@@ -93398,7 +94153,7 @@ const SearchWalletViewAll = ({
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
@@ -93423,7 +94178,7 @@ const SearchWalletViewAll = ({
   });
   const coinBalancesAmount = coinBalances.length;
   const collectionBalancesAmount = collectionBalances.length;
-  const isLoading = tokenBalancesIsLoading || isLoadingCoinPrices || isLoadingConversionRate;
+  const isPending = isPendingTokenBalances || isPendingCoinPrices || isPendingConversionRate;
   const indexedCollectionBalances = collectionBalances.map((balance, index2) => {
     var _balance$contractInfo;
     return {
@@ -93492,7 +94247,7 @@ const SearchWalletViewAll = ({
     onValueChange: (value) => setSelectedTab(value)
   }, /* @__PURE__ */ React.createElement(Box, {
     marginBottom: "5"
-  }, !isLoading && /* @__PURE__ */ React.createElement(TabsHeader, {
+  }, !isPending && /* @__PURE__ */ React.createElement(TabsHeader, {
     value: selectedTab,
     tabs: [{
       label: `Collections (${collectionBalancesAmount})`,
@@ -93501,14 +94256,14 @@ const SearchWalletViewAll = ({
       label: `Coins (${coinBalancesAmount})`,
       value: "coins"
     }]
-  }), isLoading && /* @__PURE__ */ React.createElement(TabsHeaderSkeleton, null)), /* @__PURE__ */ React.createElement(TabsContent, {
+  }), isPending && /* @__PURE__ */ React.createElement(TabsHeaderSkeleton, null)), /* @__PURE__ */ React.createElement(TabsContent, {
     value: "collections"
   }, /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
     gap: "3"
-  }, isLoading && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isLoading && foundCollectionBalances.length === 0 && /* @__PURE__ */ React.createElement(Text, {
+  }, isPending && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isPending && foundCollectionBalances.length === 0 && /* @__PURE__ */ React.createElement(Text, {
     color: "text100"
-  }, "No Collectibles Found"), !isLoading && foundCollectionBalances.length > 0 && foundCollectionBalances.map((indexItem, index2) => {
+  }, "No Collectibles Found"), !isPending && foundCollectionBalances.length > 0 && foundCollectionBalances.map((indexItem, index2) => {
     const collectionBalance = collectionBalances[indexItem.index];
     return /* @__PURE__ */ React.createElement(BalanceItem, {
       key: index2,
@@ -93519,9 +94274,9 @@ const SearchWalletViewAll = ({
   }, /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
     gap: "3"
-  }, isLoading && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isLoading && coinBalances.length == 0 && /* @__PURE__ */ React.createElement(Text, {
+  }, isPending && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isPending && coinBalances.length == 0 && /* @__PURE__ */ React.createElement(Text, {
     color: "text100"
-  }, "No Coins Found"), !isLoading && foundCoinBalances.length > 0 && foundCoinBalances.map((indexedItem, index2) => {
+  }, "No Coins Found"), !isPending && foundCoinBalances.length > 0 && foundCoinBalances.map((indexedItem, index2) => {
     const coinBalance = coinBalances[indexedItem.index];
     return /* @__PURE__ */ React.createElement(BalanceItem, {
       key: index2,
@@ -93963,7 +94718,7 @@ const CoinDetails = ({
   } = useAccount();
   const {
     data: dataTransactionHistory,
-    isLoading: isLoadingTransactionHistory,
+    isPending: isPendingTransactionHistory,
     fetchNextPage,
     hasNextPage: hasNextPage2,
     isFetchingNextPage
@@ -93975,7 +94730,7 @@ const CoinDetails = ({
   const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory);
   const {
     data: dataCoinBalance,
-    isLoading: isLoadingCoinBalance
+    isPending: isPendingCoinBalance
   } = useCoinBalance({
     accountAddress: accountAddress || "",
     contractAddress,
@@ -93985,7 +94740,7 @@ const CoinDetails = ({
   });
   const {
     data: dataCoinPrices,
-    isLoading: isLoadingCoinPrices
+    isPending: isPendingCoinPrices
   } = useCoinPrices({
     tokens: [{
       chainId,
@@ -93994,12 +94749,12 @@ const CoinDetails = ({
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
-  const isLoading = isLoadingCoinBalance || isLoadingCoinPrices || isLoadingConversionRate;
-  if (isLoading) {
+  const isPending = isPendingCoinBalance || isPendingCoinPrices || isPendingConversionRate;
+  if (isPending) {
     return /* @__PURE__ */ React.createElement(CoinDetailsSkeleton, {
       chainId
     });
@@ -94083,7 +94838,7 @@ const CoinDetails = ({
     hasMore: hasNextPage2
   }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
     transactions: transactionHistory,
-    isLoading: isLoadingTransactionHistory,
+    isPending: isPendingTransactionHistory,
     isFetchingNextPage
   })))));
 };
@@ -94148,7 +94903,7 @@ const CollectionDetails = ({
   } = useAccount();
   const {
     data: collectionBalanceData,
-    isLoading: isLoadingCollectionBalance
+    isPending: isPendingCollectionBalance
   } = useCollectionBalance({
     chainId,
     accountAddress: accountAddress || "",
@@ -94157,7 +94912,7 @@ const CollectionDetails = ({
   useScrollbarWidth();
   const contractInfo = collectionBalanceData == null || (_collectionBalanceDat = collectionBalanceData[0]) == null ? void 0 : _collectionBalanceDat.contractInfo;
   const collectionLogoURI = contractInfo == null ? void 0 : contractInfo.logoURI;
-  if (isLoadingCollectionBalance) {
+  if (isPendingCollectionBalance) {
     return /* @__PURE__ */ React.createElement(CollectionDetailsSkeleton, {
       chainId
     });
@@ -94326,7 +95081,7 @@ const CollectibleDetails = ({
   useScrollbarWidth();
   const {
     data: dataTransactionHistory,
-    isLoading: isLoadingTransactionHistory,
+    isPending: isPendingTransactionHistory,
     fetchNextPage,
     hasNextPage: hasNextPage2,
     isFetchingNextPage
@@ -94339,7 +95094,7 @@ const CollectibleDetails = ({
   const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory);
   const {
     data: dataCollectibleBalance,
-    isLoading: isLoadingCollectibleBalance
+    isPending: isPendingCollectibleBalance
   } = useCollectibleBalance({
     accountAddress: accountAddress || "",
     collectionAddress: contractAddress,
@@ -94349,7 +95104,7 @@ const CollectibleDetails = ({
   });
   const {
     data: dataCollectiblePrices,
-    isLoading: isLoadingCollectiblePrices
+    isPending: isPendingCollectiblePrices
   } = useCollectiblePrices({
     tokens: [{
       chainId,
@@ -94359,12 +95114,12 @@ const CollectibleDetails = ({
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
-  const isLoading = isLoadingCollectibleBalance || isLoadingCollectiblePrices || isLoadingConversionRate;
-  if (isLoading) {
+  const isPending = isPendingCollectibleBalance || isPendingCollectiblePrices || isPendingConversionRate;
+  if (isPending) {
     return /* @__PURE__ */ React.createElement(CollectibleDetailsSkeleton, null);
   }
   const onClickSend = () => {
@@ -94477,7 +95232,7 @@ const CollectibleDetails = ({
     hasMore: hasNextPage2
   }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
     transactions: transactionHistory,
-    isLoading: isLoadingTransactionHistory,
+    isPending: isPendingTransactionHistory,
     isFetchingNextPage
   })))));
 };
@@ -94558,23 +95313,23 @@ const TransactionDetails = ({
   });
   const {
     data: coinPricesData,
-    isLoading: coinPricesIsLoading
+    isPending: isPendingCoinPrices
   } = useCoinPrices({
     tokens: coins
   });
   const {
     data: collectiblePricesData,
-    isLoading: collectiblePricesIsLoading
+    isPending: isPendingCollectiblePrices
   } = useCollectiblePrices({
     tokens: collectibles
   });
   const {
     data: conversionRate = 1,
-    isLoading: isLoadingConversionRate
+    isPending: isPendingConversionRate
   } = useConversionRate({
     toCurrency: fiatCurrency.symbol
   });
-  const arePricesLoading = coins.length > 0 && coinPricesIsLoading || collectibles.length > 0 && collectiblePricesIsLoading || isLoadingConversionRate;
+  const arePricesLoading = coins.length > 0 && isPendingCoinPrices || collectibles.length > 0 && isPendingCollectiblePrices || isPendingConversionRate;
   const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
   const date = dayjs(transaction2.timestamp).format("ddd MMM DD YYYY, h:m:s a");
   const onClickBlockExplorer = () => {
@@ -97382,7 +98137,7 @@ const TransferItemInfo = ({
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
   const {
     data: balances = [],
-    isLoading: isLoadingBalances
+    isPending: isPendingBalances
   } = useBalances$1({
     accountAddress: address,
     chainIds: [chainId],
@@ -97392,7 +98147,7 @@ const TransferItemInfo = ({
   });
   const {
     data: tokenMetadata,
-    isLoading: isTokenMetadataLoading
+    isPending: isPendingTokenMetadata
   } = useTokenMetadata$1({
     tokens: {
       chainId,
@@ -98973,9 +99728,9 @@ function createStringFromObject(mergedProps, registered, obj) {
           throw new Error(noComponentSelectorMessage);
         }
         if (Array.isArray(value) && typeof value[0] === "string" && (registered == null || registered[value[0]] === void 0)) {
-          for (var _i = 0; _i < value.length; _i++) {
-            if (isProcessableValue(value[_i])) {
-              string += processStyleName(_key) + ":" + processStyleValue(_key, value[_i]) + ";";
+          for (var _i2 = 0; _i2 < value.length; _i2++) {
+            if (isProcessableValue(value[_i2])) {
+              string += processStyleName(_key) + ":" + processStyleValue(_key, value[_i2]) + ";";
             }
           }
         } else {
@@ -99197,7 +99952,7 @@ var $ = (t2, r2, e2) => r2 in t2 ? ue(t2, r2, { enumerable: true, configurable: 
 };
 var ge = (t2, r2) => () => (r2 || t2((r2 = { exports: {} }).exports, r2), r2.exports);
 var L = ge((bt, Ie2) => {
-  Ie2.exports = { name: "@paperxyz/react-client-sdk", version: "1.1.5", description: "Paper React Client SDK for Checkout Elements", license: "Apache-2.0", main: "dist/index.js", types: "./dist/index.d.ts", type: "module", files: ["dist/**"], exports: { ".": { import: "./dist/index.js", types: "./dist/index.d.ts" } }, bugs: { url: "https://github.com/paperxyz/js-sdk/issues" }, homepage: "https://github.com/paperxyz/js-sdk", repository: { type: "git", url: "git+https://github.com/paperxyz/js-sdk.git" }, author: "Paper <support@withpaper.com>", keywords: [], scripts: { build: "tsup-node src/index.ts --env.NODE_ENV production --env.ESM_ONLY true ", "build-package-checkout": "yarn build", "dev-checkout": "tsup-node src/index.ts --env.NODE_ENV development --watch --env.ESM_ONLY true", lint: 'eslint "src/**/*.ts*"', "lint:fix": "yarn lint --fix", clean: "rm -rf .turbo && rm -rf node_modules && rm -rf dist", prepare: "cd ../../ && node ./scripts/postInstall && cd ./packages/react-client-sdk" }, peerDependencies: { react: ">=16.0.0", "react-dom": ">=16.0.0" }, devDependencies: { "@paperxyz/tsconfig": "*", "@types/react": "18.0.26", "eslint-config-paperxyz": "*", react: "^18.2.0", "react-dom": "^18.2.0", typescript: "^4.7.4" }, dependencies: { "@emotion/css": "11.10.5", "@headlessui/react": "1.7.6", "@paperxyz/js-client-sdk": "*", "@paperxyz/sdk-common-utilities": "*" } };
+  Ie2.exports = { name: "@paperxyz/react-client-sdk", version: "1.1.3", description: "Paper React Client SDK for Checkout Elements", license: "Apache-2.0", main: "dist/index.js", types: "./dist/index.d.ts", type: "module", files: ["dist/**"], exports: { ".": { import: "./dist/index.js", types: "./dist/index.d.ts" } }, bugs: { url: "https://github.com/paperxyz/js-sdk/issues" }, homepage: "https://github.com/paperxyz/js-sdk", repository: { type: "git", url: "git+https://github.com/paperxyz/js-sdk.git" }, author: "Paper <support@withpaper.com>", keywords: [], scripts: { build: "tsup-node src/index.ts --env.NODE_ENV production --env.ESM_ONLY true ", "build-package-checkout": "yarn build", "dev-checkout": "tsup-node src/index.ts --env.NODE_ENV development --watch --env.ESM_ONLY true", lint: 'eslint "src/**/*.ts*"', "lint:fix": "yarn lint --fix", clean: "rm -rf .turbo && rm -rf node_modules && rm -rf dist", prepare: "cd ../../ && node ./scripts/postInstall && cd ./packages/react-client-sdk" }, peerDependencies: { react: ">=16.0.0", "react-dom": ">=16.0.0" }, devDependencies: { "@paperxyz/tsconfig": "*", "@types/react": "18.0.26", "eslint-config-paperxyz": "*", react: "^18.2.0", "react-dom": "^18.2.0", typescript: "^4.7.4" }, dependencies: { "@emotion/css": "11.10.5", "@headlessui/react": "1.7.6", "@paperxyz/js-client-sdk": "*", "@paperxyz/sdk-common-utilities": "*" } };
 });
 var Y = reactExports.createContext({ chainName: "Polygon", setChainName: () => {
 }, clientId: "", appName: "" }), b2 = () => reactExports.useContext(Y);
@@ -100019,7 +100774,7 @@ const OrderSummaryItem = ({
   } = useConfig();
   const {
     data: tokenMetadata,
-    isLoading: isTokenMetadataLoading
+    isPending: isPendingTokenMetadata
   } = useTokenMetadata({
     chainId,
     contractAddress,
@@ -100027,13 +100782,13 @@ const OrderSummaryItem = ({
   });
   const {
     data: contractInfo,
-    isLoading: isContractInfoLoading
+    isPending: isPendingContractInfo
   } = useContractInfo({
     chainID: String(chainId),
     contractAddress
   });
-  const isLoading = isTokenMetadataLoading || isContractInfoLoading;
-  if (isLoading) {
+  const isPending = isPendingTokenMetadata || isPendingContractInfo;
+  if (isPending) {
     return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
   }
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, [...chains2]);
@@ -100163,19 +100918,19 @@ const CheckoutSelection = () => {
   const displayCryptoCheckout = !!cryptoCheckoutSettings;
   const {
     data: contractInfoData,
-    isLoading: contractInfoLoading
+    isPending: isPendingContractInfo
   } = useContractInfo({
     contractAddress: (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin.contractAddress) || "",
     chainID: String((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1)
   });
   const {
     data: balancesData,
-    isLoading: balancesLoading
+    isPending: isPendingBalances
   } = useBalances({
     accountAddress: accountAddress || "",
     chainId: (cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1
   });
-  const isLoading = (contractInfoLoading || balancesLoading) && cryptoCheckoutSettings;
+  const isPending = (isPendingContractInfo || isPendingBalances) && cryptoCheckoutSettings;
   const isNativeToken = compareAddress((cryptoCheckoutSettings == null || (_cryptoCheckoutSettin2 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin2.contractAddress) || "", AddressZero);
   const nativeTokenInfo = getNativeTokenInfoByChainId((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, chains2);
   const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : (contractInfoData == null ? void 0 : contractInfoData.decimals) || 0;
@@ -100234,7 +100989,7 @@ const CheckoutSelection = () => {
     fontWeight: "normal",
     fontSize: "normal",
     color: "text50"
-  }, "Total"), isLoading ? /* @__PURE__ */ React.createElement(Skeleton, {
+  }, "Total"), isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
     width: "100px",
     height: "17px"
   }) : /* @__PURE__ */ React.createElement(Box, {
@@ -100253,7 +101008,7 @@ const CheckoutSelection = () => {
     alignItems: "center",
     justifyContent: "center",
     gap: "2"
-  }, displayCryptoCheckout && !isInsufficientBalance && !isLoading && /* @__PURE__ */ React.createElement(Button, {
+  }, displayCryptoCheckout && !isInsufficientBalance && !isPending && /* @__PURE__ */ React.createElement(Button, {
     style: {
       borderRadius: vars.radii.md,
       height: "56px"
@@ -100267,7 +101022,7 @@ const CheckoutSelection = () => {
     label: `Pay with ${coinSymbol}`,
     rightIcon: SvgChevronRightIcon,
     onClick: onClickPayWithCrypto
-  }), displayCryptoCheckout && (isInsufficientBalance || isLoading) && /* @__PURE__ */ React.createElement(Button, {
+  }), displayCryptoCheckout && (isInsufficientBalance || isPending) && /* @__PURE__ */ React.createElement(Button, {
     className: insufficientBalanceButton,
     style: {
       borderRadius: vars.radii.md,
@@ -100286,7 +101041,7 @@ const CheckoutSelection = () => {
   })), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
     width: "full",
     justifyContent: "flex-end"
-  }, isLoading ? /* @__PURE__ */ React.createElement(Skeleton, {
+  }, isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
     width: "102px",
     height: "14px"
   }) : /* @__PURE__ */ React.createElement(Text, {
@@ -100596,6 +101351,9 @@ const truncateAtMiddle = (text2, truncateAt) => {
 const formatAddress = (text2) => {
   return `0x${truncateAtMiddle((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
 };
+const delay = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
@@ -100817,8 +101575,8 @@ const Alert = ({ title, description, secondaryDescription, variant, buttonProps,
 };
 const searchParams$1 = new URLSearchParams(location.search);
 const isDebugMode$1 = searchParams$1.has("debug");
-function Homepage() {
-  var _a;
+const Homepage = () => {
+  var _a2;
   const { theme, setTheme } = useTheme$1();
   const { setTheme: setKitTheme } = useTheme();
   const { address, connector, isConnected } = useAccount();
@@ -100831,8 +101589,8 @@ function Homepage() {
   const connections = useConnections();
   const isWaasConnection = connections.find((c) => c.connector.id.includes("waas")) !== void 0;
   const isMobile = useMediaQuery("isMobile");
-  const { data: txnData, sendTransaction: sendTransaction2, isLoading: isSendTxnLoading, error } = useSendTransaction();
-  const { data: txnData2, isLoading: isMintTxnLoading, writeContract: writeContract2 } = useWriteContract();
+  const { data: txnData, sendTransaction: sendTransaction2, isPending: isPendingSendTxn, error } = useSendTransaction();
+  const { data: txnData2, isPending: isPendingMintTxn, writeContract: writeContract2 } = useWriteContract();
   const [isSigningMessage, setIsSigningMessage] = React.useState(false);
   const [isMessageValid, setIsMessageValid] = React.useState();
   const [messageSig, setMessageSig] = React.useState();
@@ -100869,14 +101627,14 @@ function Homepage() {
       console.log("nativeTokenBalance", nativeTokenBalance);
       console.log("tokenBalances", tokenBalances);
       const balances = pendingFeeOptionConfirmation.options.map((option) => {
-        var _a2;
+        var _a3;
         if (option.token.contractAddress === null) {
           return { tokenName: option.token.name, decimals: option.token.decimals, balance: nativeTokenBalance.balance.balanceWei };
         } else {
           return {
             tokenName: option.token.name,
             decimals: option.token.decimals,
-            balance: ((_a2 = tokenBalances.balances.find((b3) => b3.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())) == null ? void 0 : _a2.balance) || "0"
+            balance: ((_a3 = tokenBalances.balances.find((b3) => b3.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())) == null ? void 0 : _a3.balance) || "0"
           };
         }
       });
@@ -100985,7 +101743,7 @@ function Homepage() {
       ] }) })
     ] });
   };
-  const ClickableCard = ({ title, description, disabled, isLoading, onClick }) => {
+  const ClickableCard = ({ title, description, disabled, isPending, onClick }) => {
     return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
       Card,
       {
@@ -100997,7 +101755,7 @@ function Homepage() {
         children: [
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { color: "text100", lineHeight: "5", fontSize: "normal", fontWeight: "bold", children: title }),
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { marginTop: "1", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", lineHeight: "5", color: "text50", fontSize: "normal", children: description }) }),
-          isLoading && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Spinner, { marginTop: "3", size: "sm", color: "text100" })
+          isPending && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Spinner, { marginTop: "3", size: "sm", color: "text100" })
         ]
       }
     );
@@ -101044,7 +101802,7 @@ function Homepage() {
               {
                 title: "Send transaction",
                 description: "Send a transaction with your wallet",
-                isLoading: isSendTxnLoading,
+                isPending: isPendingSendTxn,
                 onClick: runSendTransaction
               }
             ),
@@ -101070,7 +101828,7 @@ function Homepage() {
                 title: "Sign message",
                 description: "Sign a message with your wallet",
                 onClick: signMessage2,
-                isLoading: isSigningMessage
+                isPending: isSigningMessage
               }
             ),
             isMessageValid && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Card, { style: { width: "332px" }, color: "text100", flexDirection: "column", gap: "2", children: [
@@ -101088,7 +101846,7 @@ function Homepage() {
               {
                 title: "Mint an NFT",
                 description: "Test minting an NFT to your wallet",
-                isLoading: isMintTxnLoading,
+                isPending: isPendingMintTxn,
                 onClick: runMintNFT
               }
             ),
@@ -101133,8 +101891,8 @@ function Homepage() {
                 labelLocation: "top",
                 label: "Pick a fee option",
                 onValueChange: (val) => {
-                  var _a2;
-                  const selected = (_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.find((option) => option.token.name === val);
+                  var _a3;
+                  const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find((option) => option.token.name === val);
                   if (selected) {
                     setSelectedFeeOptionTokenName(selected.token.name);
                     setFeeOptionAlert(void 0);
@@ -101142,8 +101900,8 @@ function Homepage() {
                 },
                 value: selectedFeeOptionTokenName,
                 options: [
-                  ...(_a = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a.map((option) => {
-                    var _a2;
+                  ...(_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.map((option) => {
+                    var _a3;
                     return {
                       label: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "flex-start", flexDirection: "column", fontSize: "xsmall", children: [
                         /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
@@ -101163,7 +101921,7 @@ function Homepage() {
                           ] }),
                           " ",
                           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits$1(
-                            (_a2 = feeOptionBalances.find((b3) => b3.tokenName === option.token.name)) == null ? void 0 : _a2.balance,
+                            (_a3 = feeOptionBalances.find((b3) => b3.tokenName === option.token.name)) == null ? void 0 : _a3.balance,
                             option.token.decimals
                           ) })
                         ] })
@@ -101179,13 +101937,13 @@ function Homepage() {
                 Button,
                 {
                   onClick: () => {
-                    var _a2, _b;
-                    const selected = (_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.find(
+                    var _a3, _b2;
+                    const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find(
                       (option) => option.token.name === selectedFeeOptionTokenName
                     );
                     if (selected.token.contractAddress !== void 0) {
                       const balance = parseUnits(
-                        (_b = feeOptionBalances.find((b3) => b3.tokenName === selected.token.name)) == null ? void 0 : _b.balance,
+                        (_b2 = feeOptionBalances.find((b3) => b3.tokenName === selected.token.name)) == null ? void 0 : _b2.balance,
                         selected.token.decimals
                       );
                       const feeOptionValue = parseUnits(selected.value, selected.token.decimals);
@@ -101270,10 +102028,7 @@ function Homepage() {
     ),
     !isMobile && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Footer, {})
   ] });
-}
-function delay(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+};
 const arbitrumNova = /* @__PURE__ */ defineChain({
   id: 42170,
   name: "Arbitrum Nova",
@@ -101314,7 +102069,7 @@ const arbitrumSepolia = /* @__PURE__ */ defineChain({
     default: {
       name: "Arbiscan",
       url: "https://sepolia.arbiscan.io",
-      apiUrl: "https://sepolia.arbiscan.io/api"
+      apiUrl: "https://api-sepolia.arbiscan.io/api"
     }
   },
   contracts: {
@@ -101346,8 +102101,8 @@ const mainnet = /* @__PURE__ */ defineChain({
       address: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
     },
     ensUniversalResolver: {
-      address: "0x8cab227b1162f03b8338331adaad7aadc83b895e",
-      blockCreated: 18958930
+      address: "0xce01f8eee7E479C928F8919abD53E553a36CeF67",
+      blockCreated: 19258213
     },
     multicall3: {
       address: "0xca11bde05977b3631167028862be2a173976ca11",
@@ -101449,9 +102204,9 @@ const kitConfig = {
   ]
 };
 const queryClient = new QueryClient();
-function App() {
+const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
-}
+};
 console.log("VERSION:", "0.1.1");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
