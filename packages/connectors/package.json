@@ -20,18 +20,18 @@
     "react-apple-signin-auth": "^1.1.0"
   },
   "devDependencies": {
-    "@types/uuid": "^8.3.2",
-    "@0xsequence/kit": "workspace:*"
+    "@0xsequence/kit": "workspace:*",
+    "@types/uuid": "^9.0.8"
   },
   "peerDependencies": {
     "0xsequence": ">=1.9.19",
+    "@0xsequence/kit": "workspace:*",
     "ethers": ">=5.7.2",
     "react": ">=17",
     "react-dom": ">=17",
+    "uuid": ">=8.3.2",
     "viem": ">=2.0.0",
-    "wagmi": ">=2.0.0",
-    "@0xsequence/kit": "workspace:*",
-    "uuid": ">=8.3.2"
+    "wagmi": ">=2.0.0"
   },
   "files": [
     "src",
