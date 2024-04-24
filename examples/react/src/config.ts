@@ -1,12 +1,18 @@
 import { KitConfig, getKitConnectWallets } from '@0xsequence/kit'
-import { getDefaultConnectors, mock } from '@0xsequence/kit-connectors'
+import { getDefaultConnectors, getDefaultWaasConnectors, mock } from '@0xsequence/kit-connectors'
 import { Chain, arbitrumNova, arbitrumSepolia, mainnet, polygon } from 'wagmi/chains'
 import { findNetworkConfig, allNetworks } from '@0xsequence/network'
 import { createConfig, http } from 'wagmi'
 import { Transport, zeroAddress } from 'viem'
 
-// append ?debug to url to enable debug mode
+export type ConnectionMode = 'waas' | 'universal'
+
 const searchParams = new URLSearchParams(location.search)
+
+// append ?mode=waas|universal to url to switch between connection modes
+const connectionMode: ConnectionMode = searchParams.get('mode') === 'universal' ? 'universal' : 'waas'
+
+// append ?debug to url to enable debug mode
 const isDebugMode = searchParams.has('debug')
 
 const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
@@ -28,55 +34,59 @@ chains.forEach(chain => {
   transports[chain.id] = http(network.rpcUrl)
 })
 
-/// Use this to test the waas connectors
-// WaaS config
-// const waasConfigKey = 'eyJwcm9qZWN0SWQiOjE2ODE1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
-// const googleClientId = '970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com'
-// const appleClientId = 'com.horizon.sequence.waas'
-// const appleRedirectURI = 'https://' + window.location.host
+const waasConfigKey = 'eyJwcm9qZWN0SWQiOjE2ODE1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
+const googleClientId = '970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com'
+const appleClientId = 'com.horizon.sequence.waas'
+const appleRedirectURI = 'https://' + window.location.host
 
-// const connectors = [
-//   ...getDefaultWaasConnectors({
-//     walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
-//     defaultChainId: arbitrumSepolia.id,
-//     waasConfigKey,
-//     googleClientId,
-//     appleClientId,
-//     appleRedirectURI,
-//     appName: 'Kit Demo',
-//     projectAccessKey,
-//     enableConfirmationModal: localStorage.getItem('confirmationEnabled') === 'true'
-//   }),
-//   ...(isDebugMode
-//     ? getKitConnectWallets(projectAccessKey, [
-//         mock({
-//           accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9']
-//         })
-//       ])
-//     : [])
-// ]
+const getWaasConnectors = () => {
+  const connectors = [
+    ...getDefaultWaasConnectors({
+      walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
+      defaultChainId: arbitrumSepolia.id,
+      waasConfigKey,
+      googleClientId,
+      appleClientId,
+      appleRedirectURI,
+      appName: 'Kit Demo',
+      projectAccessKey,
+      enableConfirmationModal: localStorage.getItem('confirmationEnabled') === 'true'
+    }),
+    ...(isDebugMode
+      ? getKitConnectWallets(projectAccessKey, [
+          mock({
+            accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9']
+          })
+        ])
+      : [])
+  ]
 
-/// Use this to test the universal connectors
-const connectors = [
-  ...getDefaultConnectors({
-    walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
-    defaultChainId: arbitrumNova.id,
-    appName: 'demo app',
-    projectAccessKey
-  }),
-  ...(isDebugMode
-    ? getKitConnectWallets(projectAccessKey, [
-        mock({
-          accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9']
-        })
-      ])
-    : [])
-]
+  return connectors
+}
+
+const getUniversalConnectors = () => {
+  const connectors = [
+    ...getDefaultConnectors({
+      walletConnectProjectId: 'c65a6cb1aa83c4e24500130f23a437d8',
+      defaultChainId: arbitrumNova.id,
+      appName: 'demo app',
+      projectAccessKey
+    }),
+    ...(isDebugMode
+      ? getKitConnectWallets(projectAccessKey, [
+          mock({
+            accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9']
+          })
+        ])
+      : [])
+  ]
+  return connectors
+}
 
 export const wagmiConfig = createConfig({
   transports,
   chains,
-  connectors
+  connectors: connectionMode === 'waas' ? getWaasConnectors() : getUniversalConnectors()
 })
 
 export const kitConfig: KitConfig = {

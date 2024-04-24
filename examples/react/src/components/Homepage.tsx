@@ -35,7 +35,8 @@ import {
   useMediaQuery,
   Switch,
   Select,
-  IconButton
+  IconButton,
+  CheckmarkIcon
 } from '@0xsequence/design-system'
 import { allNetworks } from '@0xsequence/network'
 import { Footer } from './Footer'
@@ -44,9 +45,11 @@ import { delay, formatAddress, getCheckoutSettings } from '../utils'
 import { abi } from '../constants/nft-abi'
 import { ethers } from 'ethers'
 import { Alert, AlertProps } from './Alert'
+import { ConnectionMode } from '../config'
 
 // append ?debug to url to enable debug mode
 const searchParams = new URLSearchParams(location.search)
+const connectionMode: ConnectionMode = searchParams.get('mode') === 'universal' ? 'universal' : 'waas'
 const isDebugMode = searchParams.has('debug')
 
 export const Homepage = () => {
@@ -106,6 +109,13 @@ export const Homepage = () => {
     checkTokenBalancesForFeeOptions()
   }, [pendingFeeOptionConfirmation])
 
+  const handleSwitchConnectionMode = (mode: ConnectionMode) => {
+    const searchParams = new URLSearchParams()
+
+    searchParams.set('mode', mode)
+    window.location.search = searchParams.toString()
+  }
+
   const checkTokenBalancesForFeeOptions = async () => {
     if (pendingFeeOptionConfirmation) {
       const [account] = await walletClient.getAddresses()
@@ -159,10 +169,10 @@ export const Homepage = () => {
 
   useEffect(() => {
     if (txnData) {
-      setLastTxnDataHash(txnData.hash ?? txnData)
+      setLastTxnDataHash((txnData as any).hash ?? txnData)
     }
     if (txnData2) {
-      setLastTxnDataHash2(txnData2.hash ?? txnData)
+      setLastTxnDataHash2((txnData2 as any).hash ?? txnData)
     }
   }, [txnData, txnData2])
 
@@ -368,13 +378,13 @@ export const Homepage = () => {
                 onClick={runSendTransaction}
               />
 
-              {lastTxnDataHash && (txnData?.chainId === chainId || txnData) && (
+              {lastTxnDataHash && ((txnData as any)?.chainId === chainId || txnData) && (
                 <Text
                   as="a"
                   marginLeft="4"
                   variant="small"
                   underline
-                  href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${txnData.hash ?? txnData}`}
+                  href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${(txnData as any).hash ?? txnData}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -407,13 +417,13 @@ export const Homepage = () => {
                 isPending={isPendingMintTxn}
                 onClick={runMintNFT}
               />
-              {lastTxnDataHash2 && (txnData2?.chainId === chainId || txnData2) && (
+              {lastTxnDataHash2 && ((txnData2 as any)?.chainId === chainId || txnData2) && (
                 <Text
                   as="a"
                   marginLeft="4"
                   variant="small"
                   underline
-                  href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${txnData2.hash ?? txnData2}`}
+                  href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${(txnData2 as any).hash ?? txnData2}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -575,11 +585,66 @@ export const Homepage = () => {
               <Box gap="2" flexDirection="row" alignItems="center">
                 <Button onClick={onClickConnect} variant="feature" label="Connect" />
               </Box>
+
+              <Box gap="2" flexDirection="column" marginTop="10" width="1/2">
+                <ConnectionModeSelect
+                  mode="waas"
+                  title="Wallet as a Service (WaaS)"
+                  description="Connect to an embedded wallet for a seamless experience."
+                  onClick={handleSwitchConnectionMode}
+                />
+
+                <ConnectionModeSelect
+                  mode="universal"
+                  title="Universal"
+                  description="Connect to the universal sequence wallet or EIP6963 Injected wallet providers (web extension wallets)."
+                  onClick={handleSwitchConnectionMode}
+                />
+              </Box>
             </Box>
           </Box>
         )}
       </Box>
+
       {!isMobile && <Footer />}
     </Box>
+  )
+}
+
+interface ConnectionModeSelectProps {
+  mode: ConnectionMode
+  title: string
+  description: string
+  onClick: (mode: ConnectionMode) => void
+}
+
+const ConnectionModeSelect = (props: ConnectionModeSelectProps) => {
+  const { mode, title, description, onClick } = props
+
+  const isSelected = connectionMode === mode
+
+  return (
+    <Card
+      clickable
+      outlined
+      borderWidth="thick"
+      style={{
+        boxShadow: isSelected ? '0 0 24px rgb(127 59 158 / 0.8)' : 'none',
+        borderColor: isSelected ? 'rgb(127 59 200)' : 'var(--seq-colors-border-normal)'
+      }}
+      onClick={() => onClick(mode)}
+    >
+      <Box gap="2">
+        <Box marginTop="1">
+          <Text variant="normal" fontWeight="bold" color={isSelected ? 'text100' : 'text80'}>
+            {title}
+          </Text>
+          <Text as="p" variant="normal" color="text50" marginTop="4">
+            {description}
+          </Text>
+        </Box>
+        <CheckmarkIcon size="md" style={{ color: 'rgb(127 59 200)' }} visibility={isSelected ? 'visible' : 'hidden'} />
+      </Box>
+    </Card>
   )
 }
