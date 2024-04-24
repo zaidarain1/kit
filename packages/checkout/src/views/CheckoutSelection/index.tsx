@@ -1,6 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { Box, Button, ChevronRightIcon, Divider, Text, PaymentsIcon, vars } from '@0xsequence/design-system'
+import { Box, Button, ChevronRightIcon, Divider, HelpIcon, Text, TooltipPrimitive, Tooltip, PaymentsIcon, vars } from '@0xsequence/design-system'
 
 import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
 
@@ -117,9 +117,24 @@ export const CheckoutSelection = () => {
     >
       {orderSummaryItems.length > 0 && (
         <>
-          <Text fontWeight="normal" fontSize="normal" color="text50">
-            Order summary
-          </Text>
+          <Box flexDirection="row" gap="2" alignItems="center">
+            <Text fontWeight="normal" fontSize="normal" color="text50">
+              Order summary
+            </Text>
+            <Tooltip
+              vOffset={-2}
+              side="bottom"
+              message={
+                <>
+                  Please note that NFTs are digital assets<br/> and as such cannot delivered physically.
+                </>
+              }
+            >
+              <Box width="5" height="5">
+                <HelpIcon color="text80" />
+              </Box>
+            </Tooltip>
+          </Box>
           <Box flexDirection="column" gap="2">
             {orderSummaryItems.map((orderSummaryItem, index) => {
               return <OrderSummaryItem key={index} {...orderSummaryItem} chainId={chainId} />
