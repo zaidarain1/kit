@@ -1,6 +1,6 @@
 import { BoxProps, Card } from '@0xsequence/design-system'
 import { clsx } from 'clsx'
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 import { SelectedIndicator } from './SelectedIndicator'
 
@@ -30,6 +30,7 @@ export const SelectButton = (props: SelectButtonProps) => {
       justifyContent="space-between"
       textAlign="left"
       width="full"
+      border="none"
       style={{
         appearance: 'none'
       }}

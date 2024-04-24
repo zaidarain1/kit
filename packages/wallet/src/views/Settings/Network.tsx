@@ -1,6 +1,5 @@
 import React from 'react'
-import { Box, Image, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { Box, Text, TokenImage } from '@0xsequence/design-system'
 
 import { useConfig } from 'wagmi'
 
@@ -26,12 +25,11 @@ export const SettingsNetwork = () => {
   return (
     <Box style={{ paddingTop: HEADER_HEIGHT }}>
       <Box padding="5" paddingTop="3">
-        <Text variant="small" color="text50">
+        <Text variant="small" fontWeight="bold" color="text50">
           Networks
         </Text>
-        <Box flexDirection="column" gap="2">
+        <Box flexDirection="column" gap="2" marginTop="4">
           {chains.map(chain => {
-            const networkInfo = getNativeTokenInfoByChainId(chain.id, chains)
             return (
               <SelectButton
                 disabled={selectedNetworks.length === 1 && selectedNetworks.includes(chain.id)}
@@ -42,9 +40,9 @@ export const SettingsNetwork = () => {
                 squareIndicator
               >
                 <Box gap="2" justifyContent="center" alignItems="center">
-                  <Image width="3" height="3" src={networkInfo.logoURI} alt="network" />
-                  <Text color="text100" variant="small">
-                    {networkInfo.name}
+                  <TokenImage src={`https://assets.sequence.info/images/networks/medium/${chain.id}.webp`} />
+                  <Text color="text100" variant="normal" fontWeight="bold">
+                    {chain.name}
                   </Text>
                 </Box>
               </SelectButton>

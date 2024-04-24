@@ -1,3 +1,4 @@
+import React from 'react'
 import { ethers } from 'ethers'
 import { useConfig } from 'wagmi'
 import { Box } from '@0xsequence/design-system'
