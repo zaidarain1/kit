@@ -1,3 +1,4 @@
+const __vite__fileDeps=["./index-DF18LQBe.js","./___vite-browser-external_commonjs-proxy-Di5M0ox2.js","./index.es-D3rUaDFB.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -14476,7 +14477,7 @@ const breakpoints = {
 };
 var colorSchemeVars = { colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
 var vars = { blur: { blur: "var(--seq-blur-blur)", none: "var(--seq-blur-none)" }, borderWidths: { none: "var(--seq-border-widths-none)", thin: "var(--seq-border-widths-thin)", thick: "var(--seq-border-widths-thick)" }, fonts: { inherit: "var(--seq-fonts-inherit)", body: "var(--seq-fonts-body)", mono: "var(--seq-fonts-mono)" }, fontSizes: { inherit: "var(--seq-font-sizes-inherit)", xsmall: "var(--seq-font-sizes-xsmall)", small: "var(--seq-font-sizes-small)", normal: "var(--seq-font-sizes-normal)", medium: "var(--seq-font-sizes-medium)", large: "var(--seq-font-sizes-large)", xlarge: "var(--seq-font-sizes-xlarge)" }, fontWeights: { inherit: "var(--seq-font-weights-inherit)", normal: "var(--seq-font-weights-normal)", medium: "var(--seq-font-weights-medium)", semibold: "var(--seq-font-weights-semibold)", bold: "var(--seq-font-weights-bold)" }, letterSpacings: { inherit: "var(--seq-letter-spacings-inherit)", none: "var(--seq-letter-spacings-none)", normal: "var(--seq-letter-spacings-normal)", wide: "var(--seq-letter-spacings-wide)" }, lineHeights: { "4": "var(--seq-line-heights-4)", "5": "var(--seq-line-heights-5)", "6": "var(--seq-line-heights-6)", "7": "var(--seq-line-heights-7)", "9": "var(--seq-line-heights-9)", inherit: "var(--seq-line-heights-inherit)" }, opacity: { "0": "var(--seq-opacity-0)", "50": "var(--seq-opacity-50)", "80": "var(--seq-opacity-80)", "100": "var(--seq-opacity-100)" }, radii: { none: "var(--seq-radii-none)", xs: "var(--seq-radii-xs)", sm: "var(--seq-radii-sm)", md: "var(--seq-radii-md)", lg: "var(--seq-radii-lg)", circle: "var(--seq-radii-circle)" }, space: { "0": "var(--seq-space-0)", "1": "var(--seq-space-1)", "2": "var(--seq-space-2)", "3": "var(--seq-space-3)", "4": "var(--seq-space-4)", "5": "var(--seq-space-5)", "6": "var(--seq-space-6)", "7": "var(--seq-space-7)", "8": "var(--seq-space-8)", "9": "var(--seq-space-9)", "10": "var(--seq-space-10)", "12": "var(--seq-space-12)", "14": "var(--seq-space-14)", "16": "var(--seq-space-16)", "0.25": "var(--seq-space-0_25)", "0.5": "var(--seq-space-0_5)", "1.5": "var(--seq-space-1_5)" }, colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
-function _toPrimitive$1(input2, hint) {
+function _toPrimitive(input2, hint) {
   if (typeof input2 !== "object" || input2 === null)
     return input2;
   var prim = input2[Symbol.toPrimitive];
@@ -14488,12 +14489,12 @@ function _toPrimitive$1(input2, hint) {
   }
   return (hint === "string" ? String : Number)(input2);
 }
-function _toPropertyKey$1(arg) {
-  var key2 = _toPrimitive$1(arg, "string");
+function _toPropertyKey(arg) {
+  var key2 = _toPrimitive(arg, "string");
   return typeof key2 === "symbol" ? key2 : String(key2);
 }
 function _defineProperty$1$1(obj, key2, value) {
-  key2 = _toPropertyKey$1(key2);
+  key2 = _toPropertyKey(key2);
   if (key2 in obj) {
     Object.defineProperty(obj, key2, {
       value,
@@ -14698,7 +14699,7 @@ function requireReactJsxRuntime_production_min() {
   jsxRuntime.exports = requireReactJsxRuntime_production_min();
 }
 var jsxRuntimeExports = jsxRuntime.exports;
-function toPrimitive(t2, r2) {
+function toPrimitive$1(t2, r2) {
   if ("object" != typeof t2 || !t2)
     return t2;
   var e2 = t2[Symbol.toPrimitive];
@@ -14710,12 +14711,12 @@ function toPrimitive(t2, r2) {
   }
   return ("string" === r2 ? String : Number)(t2);
 }
-function toPropertyKey(t2) {
-  var i2 = toPrimitive(t2, "string");
+function toPropertyKey$1(t2) {
+  var i2 = toPrimitive$1(t2, "string");
   return "symbol" == typeof i2 ? i2 : String(i2);
 }
 function _defineProperty$3(obj, key2, value) {
-  key2 = toPropertyKey(key2);
+  key2 = toPropertyKey$1(key2);
   if (key2 in obj) {
     Object.defineProperty(obj, key2, {
       value,
@@ -15325,8 +15326,8 @@ function $921a889cee6df7e8$var$usePresence$1(present) {
 function $921a889cee6df7e8$var$getAnimationName$1(styles2) {
   return (styles2 === null || styles2 === void 0 ? void 0 : styles2.animationName) || "none";
 }
-function _extends$m() {
-  _extends$m = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$l() {
+  _extends$l = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -15337,7 +15338,7 @@ function _extends$m() {
     }
     return target;
   };
-  return _extends$m.apply(this, arguments);
+  return _extends$l.apply(this, arguments);
 }
 const $5e63c961fc1ce211$export$8c6ed5c666ac1360$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, ...slotProps } = props;
@@ -15353,11 +15354,11 @@ const $5e63c961fc1ce211$export$8c6ed5c666ac1360$1 = /* @__PURE__ */ reactExports
       } else
         return child;
     });
-    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$m({}, slotProps, {
+    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$l({}, slotProps, {
       ref: forwardedRef
     }), /* @__PURE__ */ reactExports.isValidElement(newElement) ? /* @__PURE__ */ reactExports.cloneElement(newElement, void 0, newChildren) : null);
   }
-  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$m({}, slotProps, {
+  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$l({}, slotProps, {
     ref: forwardedRef
   }), children);
 });
@@ -16732,7 +16733,7 @@ const $5cb92bef7577960e$export$177fb62ff3ec1f22$1 = /* @__PURE__ */ reactExports
     document.addEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE$1, handleUpdate);
     return () => document.removeEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE$1, handleUpdate);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, layerProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({}, layerProps, {
     ref: composedRefs,
     style: {
       pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
@@ -17005,7 +17006,7 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6$1 = /* @__PURE__ */ reactExports
     trapped,
     focusScope.paused
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
     tabIndex: -1
   }, scopeProps, {
     ref: composedRefs,
@@ -18799,7 +18800,7 @@ function useFloating$1(options) {
 }
 const $7e8f5cd07187803e$export$21b07c8f274aebd5$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.svg, _extends$m({}, arrowProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.svg, _extends$l({}, arrowProps, {
     ref: forwardedRef,
     width,
     height,
@@ -18831,7 +18832,7 @@ const $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d$1 = /* @__PURE__ */ reactExports.
   reactExports.useEffect(() => {
     context2.onAnchorChange((virtualRef === null || virtualRef === void 0 ? void 0 : virtualRef.current) || ref.current);
   });
-  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, anchorProps, {
+  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({}, anchorProps, {
     ref: composedRefs
   }));
 });
@@ -18961,7 +18962,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1 = /* @__PURE__ */ reactExports.
     arrowX,
     arrowY,
     shouldHideArrow: cannotCenterArrow
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
     "data-side": placedSide,
     "data-align": placedAlign
   }, contentProps, {
@@ -19012,7 +19013,7 @@ const $cf1ac5d9fe0e8206$export$79d62cd4e10a3fd0$1 = /* @__PURE__ */ reactExports
         }[contentContext.placedSide],
         visibility: contentContext.shouldHideArrow ? "hidden" : void 0
       }
-    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9$1, _extends$m({}, arrowProps, {
+    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9$1, _extends$l({}, arrowProps, {
       ref: forwardedRef,
       style: {
         ...arrowProps.style,
@@ -19080,7 +19081,7 @@ const $cf1ac5d9fe0e8206$export$21b07c8f274aebd5 = $cf1ac5d9fe0e8206$export$79d62
 const $f1701beae083dbae$export$602eac185826482c = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   var _globalThis$document;
   const { container = globalThis === null || globalThis === void 0 ? void 0 : (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.body, ...portalProps } = props;
-  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, portalProps, {
+  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({}, portalProps, {
     ref: forwardedRef
   })), container) : null;
 });
@@ -20086,7 +20087,7 @@ const $6cc32821e9371a1c$export$2ce376c2cc3355c8 = /* @__PURE__ */ reactExports.f
         rootContext.onClose();
     }
   };
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends$m({}, itemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends$l({}, itemProps, {
     ref: composedRefs,
     disabled,
     onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10$1(props.onClick, handleSelect),
@@ -20132,11 +20133,11 @@ const $6cc32821e9371a1c$var$MenuItemImpl = /* @__PURE__ */ reactExports.forwardR
     scope: __scopeMenu,
     disabled,
     textValue: textValue !== null && textValue !== void 0 ? textValue : textContent
-  }, /* @__PURE__ */ reactExports.createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends$l({
     asChild: true
   }, rovingFocusGroupScope, {
     focusable: !disabled
-  }), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
     role: "menuitem",
     "data-highlighted": isFocused ? "" : void 0,
     "aria-disabled": disabled || void 0,
@@ -20172,7 +20173,7 @@ const $6cc32821e9371a1c$export$f6f243521332502d = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
     scope: props.__scopeMenu,
     checked
-  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$l({
     role: "menuitemcheckbox",
     "aria-checked": $6cc32821e9371a1c$var$isIndeterminate(checked) ? "mixed" : checked
   }, checkboxItemProps, {
@@ -20201,7 +20202,7 @@ const $6cc32821e9371a1c$export$69bd225e9817f6d0 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
     scope: props.__scopeMenu,
     checked
-  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$l({
     role: "menuitemradio",
     "aria-checked": checked
   }, radioItemProps, {
@@ -20224,7 +20225,7 @@ const $6cc32821e9371a1c$export$a2593e23056970a3 = /* @__PURE__ */ reactExports.f
   const indicatorContext = $6cc32821e9371a1c$var$useItemIndicatorContext($6cc32821e9371a1c$var$ITEM_INDICATOR_NAME, __scopeMenu);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || $6cc32821e9371a1c$var$isIndeterminate(indicatorContext.checked) || indicatorContext.checked === true
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({}, itemIndicatorProps, {
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$l({}, itemIndicatorProps, {
     ref: forwardedRef,
     "data-state": $6cc32821e9371a1c$var$getCheckedState(indicatorContext.checked)
   })));
@@ -20252,21 +20253,21 @@ $d08ef79370b62062$var$createDropdownMenuContext($d08ef79370b62062$var$DROPDOWN_M
 const $d08ef79370b62062$export$53a69729da201fa9 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...checkboxItemProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends$m({}, menuScope, checkboxItemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends$l({}, menuScope, checkboxItemProps, {
     ref: forwardedRef
   }));
 });
 const $d08ef79370b62062$export$e4f69b41b1637536 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...radioItemProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends$m({}, menuScope, radioItemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends$l({}, menuScope, radioItemProps, {
     ref: forwardedRef
   }));
 });
 const $d08ef79370b62062$export$42355ae145153fb6 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...itemIndicatorProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends$m({}, menuScope, itemIndicatorProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends$l({}, menuScope, itemIndicatorProps, {
     ref: forwardedRef
   }));
 });
@@ -20683,7 +20684,7 @@ const $5d3850c4d0b4e6c7$export$bd1d06c79be19e17 = /* @__PURE__ */ reactExports.f
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, props.__scopeDialog);
   return context2.modal ? /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends$m({}, overlayProps, {
+  }, /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends$l({}, overlayProps, {
     ref: forwardedRef
   }))) : null;
 });
@@ -20699,7 +20700,7 @@ const $5d3850c4d0b4e6c7$var$DialogOverlayImpl = /* @__PURE__ */ reactExports.for
       shards: [
         context2.contentRef
       ]
-    }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+    }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
       "data-state": $5d3850c4d0b4e6c7$var$getState(context2.open)
     }, overlayProps, {
       ref: forwardedRef,
@@ -20717,9 +20718,9 @@ const $5d3850c4d0b4e6c7$export$b6d9565de1e068cf = /* @__PURE__ */ reactExports.f
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends$m({}, contentProps, {
+  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends$l({}, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends$m({}, contentProps, {
+  })) : /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends$l({}, contentProps, {
     ref: forwardedRef
   })));
 });
@@ -20732,7 +20733,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentModal = /* @__PURE__ */ reactExports.fo
     if (content2)
       return hideOthers$1(content2);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$l({}, props, {
     ref: composedRefs,
     trapFocus: context2.open,
     disableOutsidePointerEvents: true,
@@ -20758,7 +20759,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentNonModal = /* @__PURE__ */ reactExports
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
   const hasInteractedOutsideRef = reactExports.useRef(false);
   const hasPointerDownOutsideRef = reactExports.useRef(false);
-  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$l({}, props, {
     ref: forwardedRef,
     trapFocus: false,
     disableOutsidePointerEvents: false,
@@ -20803,7 +20804,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentImpl = /* @__PURE__ */ reactExports.for
     trapped: trapFocus,
     onMountAutoFocus: onOpenAutoFocus,
     onUnmountAutoFocus: onCloseAutoFocus
-  }, /* @__PURE__ */ reactExports.createElement($5cb92bef7577960e$export$177fb62ff3ec1f22$1, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($5cb92bef7577960e$export$177fb62ff3ec1f22$1, _extends$l({
     role: "dialog",
     id: context2.contentId,
     "aria-describedby": context2.descriptionId,
@@ -20818,7 +20819,7 @@ const $5d3850c4d0b4e6c7$var$CLOSE_NAME = "DialogClose";
 const $5d3850c4d0b4e6c7$export$fba2fb7cd781b7ac = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDialog, ...closeProps } = props;
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CLOSE_NAME, __scopeDialog);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$l({
     type: "button"
   }, closeProps, {
     ref: forwardedRef,
@@ -21539,7 +21540,7 @@ function $ae6933e535247d3d$export$7d15b64cf5a3a4c4(value, [min2, max2]) {
   return Math.min(max2, Math.max(min2, value));
 }
 const $ea1ef594cf570d83$export$439d29a4e110a164 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$l({}, props, {
     ref: forwardedRef,
     style: {
       // See: https://github.com/twbs/bootstrap/blob/master/scss/mixins/_screen-reader.scss
@@ -21672,9 +21673,9 @@ const $cc7e05a45900e73f$export$3ac1e88a1c0b9f1 = /* @__PURE__ */ reactExports.fo
       resetTypeahead();
     }
   };
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$l({
     asChild: true
-  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$l({
     type: "button",
     role: "combobox",
     "aria-controls": context2.contentId,
@@ -21731,7 +21732,7 @@ const $cc7e05a45900e73f$export$e288731fd71264f0 = /* @__PURE__ */ reactExports.f
     onValueNodeHasChildrenChange,
     hasChildren
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({}, valueProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$l({}, valueProps, {
     ref: composedRefs,
     style: {
       pointerEvents: "none"
@@ -21740,7 +21741,7 @@ const $cc7e05a45900e73f$export$e288731fd71264f0 = /* @__PURE__ */ reactExports.f
 });
 const $cc7e05a45900e73f$export$99b400cabb58c515 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, children, ...iconProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$l({
     "aria-hidden": true
   }, iconProps, {
     ref: forwardedRef
@@ -21761,7 +21762,7 @@ const $cc7e05a45900e73f$export$c973a4b3cb86a03d = /* @__PURE__ */ reactExports.f
       scope: props.__scopeSelect
     }, /* @__PURE__ */ reactExports.createElement("div", null, props.children))), frag) : null;
   }
-  return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectContentImpl, _extends$l({}, props, {
     ref: forwardedRef
   }));
 });
@@ -21988,7 +21989,7 @@ const $cc7e05a45900e73f$var$SelectContentImpl = /* @__PURE__ */ reactExports.for
     onPointerDownOutside,
     onFocusOutside: (event) => event.preventDefault(),
     onDismiss: () => context2.onOpenChange(false)
-  }, /* @__PURE__ */ reactExports.createElement(SelectPosition, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement(SelectPosition, _extends$l({
     role: "listbox",
     id: context2.contentId,
     "data-state": context2.open ? "open" : "closed",
@@ -22182,7 +22183,7 @@ const $cc7e05a45900e73f$var$SelectItemAlignedPosition = /* @__PURE__ */ reactExp
       position: "fixed",
       zIndex: contentZIndex
     }
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, popperProps, {
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({}, popperProps, {
     ref: composedRefs,
     style: {
       // When we get the height of the content, it includes borders. If we were to set
@@ -22197,7 +22198,7 @@ const $cc7e05a45900e73f$var$SelectItemAlignedPosition = /* @__PURE__ */ reactExp
 const $cc7e05a45900e73f$var$SelectPopperPosition = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, align = "start", collisionPadding = $cc7e05a45900e73f$var$CONTENT_MARGIN, ...popperProps } = props;
   const popperScope = $cc7e05a45900e73f$var$usePopperScope(__scopeSelect);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$m({}, popperScope, popperProps, {
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$l({}, popperScope, popperProps, {
     ref: forwardedRef,
     align,
     collisionPadding,
@@ -22227,7 +22228,7 @@ const $cc7e05a45900e73f$export$9ed6e7b40248d36d = /* @__PURE__ */ reactExports.f
     }
   }), /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$Collection.Slot, {
     scope: __scopeSelect
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
     "data-radix-select-viewport": "",
     role: "presentation"
   }, viewportProps, {
@@ -22275,7 +22276,7 @@ const $cc7e05a45900e73f$export$ee25a334c55de1f4 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectGroupContextProvider, {
     scope: __scopeSelect,
     id: groupId
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
     role: "group",
     "aria-labelledby": groupId
   }, groupProps, {
@@ -22321,7 +22322,7 @@ const $cc7e05a45900e73f$export$13ef48a934230896 = /* @__PURE__ */ reactExports.f
     value,
     disabled,
     textValue
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
     role: "option",
     "aria-labelledby": textId,
     "data-highlighted": isFocused ? "" : void 0,
@@ -22407,7 +22408,7 @@ const $cc7e05a45900e73f$export$3572fb0fb821ff49 = /* @__PURE__ */ reactExports.f
     onNativeOptionRemove,
     nativeOption
   ]);
-  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$l({
     id: itemContext.textId
   }, itemTextProps, {
     ref: composedRefs
@@ -22439,7 +22440,7 @@ const $cc7e05a45900e73f$var$BubbleSelect = /* @__PURE__ */ reactExports.forwardR
   ]);
   return /* @__PURE__ */ reactExports.createElement($ea1ef594cf570d83$export$439d29a4e110a164, {
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement("select", _extends$m({}, selectProps, {
+  }, /* @__PURE__ */ reactExports.createElement("select", _extends$l({}, selectProps, {
     ref: composedRefs,
     defaultValue: value
   })));
@@ -23121,7 +23122,7 @@ const $054eb8030ebde76e$var$ToastImpl = /* @__PURE__ */ reactExports.forwardRef(
         handleClose();
       context2.isFocusedToastEscapeKeyDownRef.current = false;
     })
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.li, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.li, _extends$l({
     // Ensure toasts are announced as status list or status when focused
     role: "status",
     "aria-live": "off",
@@ -23263,7 +23264,7 @@ const $054eb8030ebde76e$export$3019feecfda683d2 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$var$ToastAnnounceExclude, {
     altText,
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$export$811e70f61c205839, _extends$m({}, actionProps, {
+  }, /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$export$811e70f61c205839, _extends$l({}, actionProps, {
     ref: forwardedRef
   })));
 });
@@ -23280,7 +23281,7 @@ const $054eb8030ebde76e$export$811e70f61c205839 = /* @__PURE__ */ reactExports.f
   const interactiveContext = $054eb8030ebde76e$var$useToastInteractiveContext($054eb8030ebde76e$var$CLOSE_NAME, __scopeToast);
   return /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$var$ToastAnnounceExclude, {
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$l({
     type: "button"
   }, closeProps, {
     ref: forwardedRef,
@@ -23289,7 +23290,7 @@ const $054eb8030ebde76e$export$811e70f61c205839 = /* @__PURE__ */ reactExports.f
 });
 const $054eb8030ebde76e$var$ToastAnnounceExclude = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeToast, altText, ...announceExcludeProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$l({
     "data-radix-toast-announce-exclude": "",
     "data-radix-toast-announce-alt": altText || void 0
   }, announceExcludeProps, {
@@ -23599,9 +23600,9 @@ const $a093c7e1ec25a057$export$8c610744efcf8a1d = /* @__PURE__ */ reactExports.f
   }, [
     handlePointerUp
   ]);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$l({
     asChild: true
-  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$l({
     // We purposefully avoid adding `type=button` here because tooltip triggers are also
     // commonly anchors and the anchor `type` attribute signifies MIME type.
     "aria-describedby": context2.open ? context2.contentId : void 0,
@@ -23645,11 +23646,11 @@ const $a093c7e1ec25a057$export$e9003e2be37ec060 = /* @__PURE__ */ reactExports.f
   const context2 = $a093c7e1ec25a057$var$useTooltipContext($a093c7e1ec25a057$var$CONTENT_NAME, props.__scopeTooltip);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, context2.disableHoverableContent ? /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$m({
+  }, context2.disableHoverableContent ? /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$l({
     side
   }, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentHoverable, _extends$m({
+  })) : /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentHoverable, _extends$l({
     side
   }, contentProps, {
     ref: forwardedRef
@@ -23737,7 +23738,7 @@ const $a093c7e1ec25a057$var$TooltipContentHoverable = /* @__PURE__ */ reactExpor
     onClose,
     handleRemoveGraceArea
   ]);
-  return /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$l({}, props, {
     ref: composedRefs
   }));
 });
@@ -23780,7 +23781,7 @@ const $a093c7e1ec25a057$var$TooltipContentImpl = /* @__PURE__ */ reactExports.fo
     onPointerDownOutside,
     onFocusOutside: (event) => event.preventDefault(),
     onDismiss: onClose
-  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$l({
     "data-state": context2.stateAttribute
   }, popperScope, contentProps, {
     ref: forwardedRef,
@@ -23805,7 +23806,7 @@ const $a093c7e1ec25a057$export$c27ee0ad710f7559 = /* @__PURE__ */ reactExports.f
   const { __scopeTooltip, ...arrowProps } = props;
   const popperScope = $a093c7e1ec25a057$var$usePopperScope(__scopeTooltip);
   const visuallyHiddenContentContext = $a093c7e1ec25a057$var$useVisuallyHiddenContentContext($a093c7e1ec25a057$var$ARROW_NAME, __scopeTooltip);
-  return visuallyHiddenContentContext.isInside ? null : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$21b07c8f274aebd5, _extends$m({}, popperScope, arrowProps, {
+  return visuallyHiddenContentContext.isInside ? null : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$21b07c8f274aebd5, _extends$l({}, popperScope, arrowProps, {
     ref: forwardedRef
   }));
 });
@@ -24800,8 +24801,8 @@ const abi$1$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   walletContracts
 }, Symbol.toStringTag, { value: "Module" }));
 const global$1 = globalThis || void 0 || self;
-function _extends$l() {
-  _extends$l = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$k() {
+  _extends$k = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -24812,7 +24813,7 @@ function _extends$l() {
     }
     return target;
   };
-  return _extends$l.apply(this, arguments);
+  return _extends$k.apply(this, arguments);
 }
 const WebRPCVersion$3 = "v1";
 const WebRPCSchemaVersion$3 = "v0.4.0";
@@ -25218,7 +25219,7 @@ class API {
 const createHTTPRequest$6 = (body = {}, headers = {}) => {
   return {
     method: "POST",
-    headers: _extends$l({}, headers, {
+    headers: _extends$k({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {})
@@ -25258,7 +25259,7 @@ class SequenceAPIClient extends API {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$l({}, init3.headers, headers);
+      init3.headers = _extends$k({}, init3.headers, headers);
       return fetch$5(input2, init3);
     };
     this.fetch = this._fetch;
@@ -48751,8 +48752,8 @@ const jwtDecodeClaims = (jwt) => {
   const claims = JSON.parse(gBase64.decode(parts[1]));
   return claims;
 };
-function _extends$k() {
-  _extends$k = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$j() {
+  _extends$j = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -48763,7 +48764,7 @@ function _extends$k() {
     }
     return target;
   };
-  return _extends$k.apply(this, arguments);
+  return _extends$j.apply(this, arguments);
 }
 var logLevel = /* @__PURE__ */ function(logLevel2) {
   logLevel2[logLevel2["DEBUG"] = 1] = "DEBUG";
@@ -48780,7 +48781,7 @@ class Logger2 {
     this.configure(config2);
   }
   configure(config2) {
-    this.config = _extends$k({}, this.config, config2);
+    this.config = _extends$j({}, this.config, config2);
     switch (this.config.logLevel) {
       case "DEBUG":
         this.logLevel = logLevel.DEBUG;
@@ -48968,7 +48969,7 @@ const sleep$1 = (t2) => {
   });
 };
 const encodeTypedDataHash = (typedData) => {
-  const types2 = _extends$k({}, typedData.types);
+  const types2 = _extends$j({}, typedData.types);
   delete types2["EIP712Domain"];
   return TypedDataEncoder.hash(typedData.domain, types2, typedData.message);
 };
@@ -49020,8 +49021,8 @@ const utils$1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   subDigestOf,
   urlClean
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$j() {
-  _extends$j = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$i() {
+  _extends$i = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -49032,7 +49033,7 @@ function _extends$j() {
     }
     return target;
   };
-  return _extends$j.apply(this, arguments);
+  return _extends$i.apply(this, arguments);
 }
 function isNetworkConfig(cand) {
   return cand && cand.chainId !== void 0 && cand.name !== void 0 && cand.rpcUrl !== void 0 && cand.relayer !== void 0;
@@ -49250,16 +49251,16 @@ const genUrls = (network2) => {
     indexerUrl: indexerURL(network2)
   };
 };
-const allNetworks = validateAndSortNetworks([_extends$j({}, networks[ChainId.POLYGON], genUrls("polygon"), {
+const allNetworks = validateAndSortNetworks([_extends$i({}, networks[ChainId.POLYGON], genUrls("polygon"), {
   isDefaultChain: true,
   isAuthChain: true
-}), _extends$j({}, networks[ChainId.MAINNET], genUrls("mainnet")), _extends$j({}, networks[ChainId.BSC], genUrls("bsc")), _extends$j({}, networks[ChainId.AVALANCHE], genUrls("avalanche")), _extends$j({}, networks[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$j({}, networks[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$j({}, networks[ChainId.OPTIMISM], genUrls("optimism")), _extends$j({}, networks[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$j({}, networks[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$j({}, networks[ChainId.GNOSIS], genUrls("gnosis")), _extends$j({}, networks[ChainId.RINKEBY], genUrls("rinkeby"), {
+}), _extends$i({}, networks[ChainId.MAINNET], genUrls("mainnet")), _extends$i({}, networks[ChainId.BSC], genUrls("bsc")), _extends$i({}, networks[ChainId.AVALANCHE], genUrls("avalanche")), _extends$i({}, networks[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$i({}, networks[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$i({}, networks[ChainId.OPTIMISM], genUrls("optimism")), _extends$i({}, networks[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$i({}, networks[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$i({}, networks[ChainId.GNOSIS], genUrls("gnosis")), _extends$i({}, networks[ChainId.RINKEBY], genUrls("rinkeby"), {
   disabled: true
-}), _extends$j({}, networks[ChainId.GOERLI], genUrls("goerli"), {
+}), _extends$i({}, networks[ChainId.GOERLI], genUrls("goerli"), {
   disabled: true
-}), _extends$j({}, networks[ChainId.SEPOLIA], genUrls("sepolia")), _extends$j({}, networks[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
+}), _extends$i({}, networks[ChainId.SEPOLIA], genUrls("sepolia")), _extends$i({}, networks[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
   disabled: true
-}), _extends$j({}, networks[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$j({}, networks[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$j({}, networks[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$j({}, networks[ChainId.BASE], genUrls("base")), _extends$j({}, networks[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$j({}, networks[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$j({}, networks[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$j({}, networks[ChainId.XAI], genUrls("xai")), _extends$j({}, networks[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$j({}, networks[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$j({}, networks[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$j({}, networks[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$j({}, networks[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$j({}, networks[ChainId.HARDHAT], {
+}), _extends$i({}, networks[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$i({}, networks[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$i({}, networks[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$i({}, networks[ChainId.BASE], genUrls("base")), _extends$i({}, networks[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$i({}, networks[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$i({}, networks[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$i({}, networks[ChainId.XAI], genUrls("xai")), _extends$i({}, networks[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$i({}, networks[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$i({}, networks[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$i({}, networks[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$i({}, networks[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$i({}, networks[ChainId.HARDHAT], {
   rpcUrl: "http://localhost:8545",
   relayer: {
     url: "http://localhost:3000",
@@ -49267,7 +49268,7 @@ const allNetworks = validateAndSortNetworks([_extends$j({}, networks[ChainId.POL
       url: "http://localhost:8545"
     }
   }
-}), _extends$j({}, networks[ChainId.HARDHAT_2], {
+}), _extends$i({}, networks[ChainId.HARDHAT_2], {
   rpcUrl: "http://localhost:9545",
   relayer: {
     url: "http://localhost:3000",
@@ -49871,8 +49872,8 @@ const network$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   updateNetworkConfig,
   validateAndSortNetworks
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$i() {
-  _extends$i = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$h() {
+  _extends$h = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -49883,7 +49884,7 @@ function _extends$i() {
     }
     return target;
   };
-  return _extends$i.apply(this, arguments);
+  return _extends$h.apply(this, arguments);
 }
 var config$2 = /* @__PURE__ */ Object.freeze({
   __proto__: null
@@ -50117,13 +50118,13 @@ function encodeSigners$1(config2, signatures, subdigests, _) {
     const bytes3 = arrayify(signature2.signature);
     weight = weight.add(s2.weight);
     if (signature2.isDynamic || bytes3.length !== 66) {
-      return _extends$i({}, s2, {
+      return _extends$h({}, s2, {
         isDynamic: true,
         signature: signature2.signature,
         address: s2.address
       });
     }
-    return _extends$i({}, s2, {
+    return _extends$h({}, s2, {
       isDynamic: false,
       signature: signature2.signature
     });
@@ -50801,7 +50802,7 @@ function decodeChainedSignature(signature2) {
     throw new Error(`Expected first link of chained signature to be a simple signature (not chained)`);
   }
   const suffix = chain.slice(1);
-  return _extends$i({}, main, {
+  return _extends$h({}, main, {
     suffix
   });
 }
@@ -50821,7 +50822,7 @@ async function recoverSignature(signature2, payload, provider2) {
       version: 2,
       type: signature2.type,
       subdigest,
-      config: _extends$i({
+      config: _extends$h({
         version: 2
       }, signature2.decoded, {
         tree
@@ -50833,20 +50834,20 @@ async function recoverSignature(signature2, payload, provider2) {
   }
   const result = [];
   let mutatedPayload = signedPayload;
-  for (const sig of [_extends$i({}, signature2, {
+  for (const sig of [_extends$h({}, signature2, {
     suffix: void 0
   }), ...signature2.suffix]) {
     const recovered = await recoverSignature(sig, mutatedPayload, provider2);
     result.unshift(recovered);
     const nextMessage = setImageHashStruct(imageHash(deepestConfigOfSignature(recovered)));
-    mutatedPayload = _extends$i({}, mutatedPayload, {
+    mutatedPayload = _extends$h({}, mutatedPayload, {
       message: nextMessage,
       digest: keccak256$2(nextMessage)
     });
   }
   const main = result[0];
   const suffix = result.slice(1);
-  return _extends$i({}, main, {
+  return _extends$h({}, main, {
     suffix
   });
 }
@@ -50959,7 +50960,7 @@ function subdigestsOfDecoded(utopology) {
 async function trimSignature(signature2) {
   const decoded = typeof signature2 === "string" ? decodeSignature(signature2) : signature2;
   if (isUnrecoveredChainedSignature(decoded)) {
-    const _trimmed = await Promise.all([trimSignature(_extends$i({}, decoded, {
+    const _trimmed = await Promise.all([trimSignature(_extends$h({}, decoded, {
       suffix: void 0
     })), ...decoded.suffix.map((s2) => trimSignature(s2))]);
     return encodeChain(_trimmed[0], _trimmed.slice(1));
@@ -50967,8 +50968,8 @@ async function trimSignature(signature2) {
   const {
     trimmed
   } = await trimUnrecoveredTree(decoded.decoded.tree);
-  return encodeSignature(_extends$i({}, decoded, {
-    decoded: _extends$i({}, decoded.decoded, {
+  return encodeSignature(_extends$h({}, decoded, {
+    decoded: _extends$h({}, decoded.decoded, {
       tree: trimmed
     })
   }));
@@ -51023,7 +51024,7 @@ async function trimUnrecoveredTree(tree, trimStaticDigest = true) {
   if (isNodeLeaf(tree) && isEncodedSignerLeaf(tree.nodeHash)) {
     return {
       weight: 0,
-      trimmed: _extends$i({}, decodeSignerLeaf(tree.nodeHash))
+      trimmed: _extends$h({}, decodeSignerLeaf(tree.nodeHash))
     };
   }
   if (isUnrecoveredSignatureLeaf(tree) || isSignerLeaf(tree) && tree.signature !== void 0) {
@@ -51384,7 +51385,7 @@ const ConfigCoder = {
   },
   fromSimple: (config2) => {
     var _config$subdigests;
-    return toWalletConfig(_extends$i({}, config2, {
+    return toWalletConfig(_extends$h({}, config2, {
       members: [...config2.signers, ...((_config$subdigests = config2.subdigests) != null ? _config$subdigests : []).map((subdigest) => ({
         subdigest
       }))]
@@ -51663,7 +51664,7 @@ const MetaTransactionsType = `tuple(
   bytes data
 )[]`;
 function intendTransactionBundle(bundle, wallet, chainId, id2) {
-  return _extends$i({}, bundle, {
+  return _extends$h({}, bundle, {
     chainId,
     intent: {
       id: id2,
@@ -51826,13 +51827,13 @@ const unwind = (wallet, transactions2) => {
     if (tx.to === wallet && hexlify(txData.slice(0, 4)) === selfExecuteSelector) {
       const data = txData.slice(4);
       const decoded = defaultAbiCoder.decode([selfExecuteAbi], data)[0];
-      unwound.push(...unwind(tx.to, decoded.map((d) => _extends$i({}, d, {
+      unwound.push(...unwind(tx.to, decoded.map((d) => _extends$h({}, d, {
         to: d.target
       }))));
     } else {
       try {
         const innerTransactions = walletInterface.decodeFunctionData("execute", txData)[0];
-        const unwoundTransactions = unwind(wallet, innerTransactions.map((tx2) => _extends$i({}, tx2, {
+        const unwoundTransactions = unwind(wallet, innerTransactions.map((tx2) => _extends$h({}, tx2, {
           to: tx2.target
         })));
         unwound.push(...unwoundTransactions);
@@ -52073,8 +52074,8 @@ var index$6 = /* @__PURE__ */ Object.freeze({
   MIGRATION_NONCE_SPACE,
   v1v2
 });
-function _extends$h() {
-  _extends$h = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$g() {
+  _extends$g = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -52085,7 +52086,7 @@ function _extends$h() {
     }
     return target;
   };
-  return _extends$h.apply(this, arguments);
+  return _extends$g.apply(this, arguments);
 }
 function validateMigrations(migrations) {
   for (const [version2, migration2] of Object.entries(migrations)) {
@@ -52159,7 +52160,7 @@ class Migrator {
     }
     const unsignedMigration = migration2.buildTransaction(address, this.contexts, nextConfig);
     const signedBundle = await wallet.signTransactionBundle(unsignedMigration.tx);
-    return _extends$h({}, unsignedMigration, {
+    return _extends$g({}, unsignedMigration, {
       tx: signedBundle
     });
   }
@@ -52182,8 +52183,8 @@ const migration$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   migrator,
   version: version$3
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$g() {
-  _extends$g = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$f() {
+  _extends$f = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -52194,7 +52195,7 @@ function _extends$g() {
     }
     return target;
   };
-  return _extends$g.apply(this, arguments);
+  return _extends$f.apply(this, arguments);
 }
 const DEFAULT_GAS_LIMIT = BigNumber.from(8e5);
 const ProviderRelayerDefaults = {
@@ -52211,7 +52212,7 @@ class ProviderRelayer {
     this.waitPollRate = void 0;
     this.deltaBlocksLog = void 0;
     this.fromBlockLog = void 0;
-    const opts = _extends$g({}, ProviderRelayerDefaults, options);
+    const opts = _extends$f({}, ProviderRelayerDefaults, options);
     this.provider = opts.provider;
     this.waitPollRate = opts.waitPollRate;
     this.deltaBlocksLog = opts.deltaBlocksLog;
@@ -52310,7 +52311,7 @@ class ProviderRelayer {
         const found = txs.find((tx) => tx.logs.find((l2) => l2.topics.length === 0 && l2.data.replace("0x", "") === normalMetaTxnId || l2.topics.length === 1 && // TxFailed event topic
         l2.topics[0] === "0x3dbd1590ea96dd3253a91f24e64e3a502e1225d602a5731357bc12643070ccd7" && l2.data.length >= 64 && l2.data.replace("0x", "").startsWith(normalMetaTxnId)));
         if (found) {
-          return _extends$g({
+          return _extends$f({
             receipt: found
           }, await retry(() => _this2.provider.getTransaction(found.transactionHash), `unable to get transaction ${found.transactionHash}`));
         }
@@ -52337,7 +52338,7 @@ class LocalRelayer extends ProviderRelayer {
   constructor(options) {
     super(Signer$1.isSigner(options) ? {
       provider: options.provider
-    } : _extends$g({}, options, {
+    } : _extends$f({}, options, {
       provider: options.signer.provider
     }));
     this.signer = void 0;
@@ -52370,7 +52371,7 @@ class LocalRelayer extends ProviderRelayer {
       logger.warn(`LocalRelayer doesn't accept fee quotes`);
     }
     const data = index$1$2.transaction.encodeBundleExecData(signedTxs);
-    const responsePromise = this.signer.sendTransaction(_extends$g({
+    const responsePromise = this.signer.sendTransaction(_extends$f({
       to: signedTxs.entrypoint,
       data
     }, this.txnOptions, {
@@ -52708,7 +52709,7 @@ class Relayer {
 const createHTTPRequest$5 = (body = {}, headers = {}) => {
   return {
     method: "POST",
-    headers: _extends$g({}, headers, {
+    headers: _extends$f({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {})
@@ -52766,7 +52767,7 @@ class RpcRelayer {
       if (projectAccessKey2 && projectAccessKey2.length > 0) {
         headers["X-Access-Key"] = projectAccessKey2;
       }
-      init3.headers = _extends$g({}, init3.headers, headers);
+      init3.headers = _extends$f({}, init3.headers, headers);
       return fetch$4(input2, init3);
     };
     this.service = new Relayer(options.url, this._fetch);
@@ -53183,8 +53184,8 @@ const signhub$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   isSignerStatusPending,
   signers: index$5
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$f() {
-  _extends$f = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$e() {
+  _extends$e = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -53195,7 +53196,7 @@ function _extends$f() {
     }
     return target;
   };
-  return _extends$f.apply(this, arguments);
+  return _extends$e.apply(this, arguments);
 }
 async function resolveArrayProperties$1(object2) {
   if (Array.isArray(object2)) {
@@ -53245,7 +53246,7 @@ class Wallet2 extends Signer$1 {
   }
   static newWallet(options) {
     const address = index$1$2.context.addressOf(options.context, options.coders.config.imageHashOf(options.config));
-    return new Wallet2(_extends$f({}, options, {
+    return new Wallet2(_extends$e({}, options, {
       address
     }));
   }
@@ -53316,7 +53317,7 @@ class Wallet2 extends Signer$1 {
     }
     if (!this.relayer)
       throw new Error("Wallet deploy requires a relayer");
-    return this.relayer.relay(_extends$f({}, deployTx, {
+    return this.relayer.relay(_extends$e({}, deployTx, {
       chainId: this.chainId,
       intent: {
         id: hexlify(randomBytes(32)),
@@ -53357,7 +53358,7 @@ class Wallet2 extends Signer$1 {
     if (this.coders.config.hasSubdigest(this.config, subdigest)) {
       return this.coders.signature.encodeSigners(this.config, /* @__PURE__ */ new Map(), [subdigest], this.chainId).encoded;
     }
-    const childMetadata = _extends$f({}, metadata2, {
+    const childMetadata = _extends$e({}, metadata2, {
       // Keep other metadata fields
       digest: digest9,
       chainId: this.chainId,
@@ -53371,7 +53372,7 @@ class Wallet2 extends Signer$1 {
       metadata: childMetadata,
       callback: (status, onNewMetadata) => {
         const parts2 = statusToSignatureParts(status);
-        const newMetadata = _extends$f({}, childMetadata, {
+        const newMetadata = _extends$e({}, childMetadata, {
           parts: parts2
         });
         onNewMetadata(newMetadata);
@@ -53429,7 +53430,7 @@ class Wallet2 extends Signer$1 {
     }
     const defaultedNonce = await this.fetchNonceOrSpace(nonce);
     const digest9 = index$1$2.transaction.digestOfTransactions(defaultedNonce, transactions2);
-    const meta = _extends$f({
+    const meta = _extends$e({
       digest: digest9,
       transactions: transactions2
     }, metadata2);
@@ -53482,7 +53483,7 @@ class Wallet2 extends Signer$1 {
     const simulations = await relayer2.simulate(this.address, ...transactions2);
     return transactions2.map((tx, i2) => {
       const gasLimit = tx.gasLimit ? BigNumber.from(tx.gasLimit).toNumber() : simulations[i2].gasLimit;
-      return _extends$f({}, tx, simulations[i2], {
+      return _extends$e({}, tx, simulations[i2], {
         gasLimit
       });
     });
@@ -53496,8 +53497,8 @@ class Wallet2 extends Signer$1 {
     throw new Error("Method not implemented.");
   }
 }
-function _extends$e() {
-  _extends$e = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$d() {
+  _extends$d = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -53508,7 +53509,7 @@ function _extends$e() {
     }
     return target;
   };
-  return _extends$e.apply(this, arguments);
+  return _extends$d.apply(this, arguments);
 }
 function isPromise(value) {
   return !!value && typeof value.then === "function";
@@ -53770,7 +53771,7 @@ class Account {
       throw new Error(`Relayer not found for chainId ${chainId}`);
     if (isRelayer(found.relayer))
       return found.relayer;
-    return new RpcRelayer(_extends$e({}, found.relayer, this.projectAccessKey ? {
+    return new RpcRelayer(_extends$d({}, found.relayer, this.projectAccessKey ? {
       projectAccessKey: this.projectAccessKey
     } : {
       jwtAuth: this.jwt
@@ -53889,7 +53890,7 @@ class Account {
     const counterfactualImageHash = await counterfactualImageHashPromise;
     const checkpoint = index$7.coderFor(lastVersion).config.checkpointOf(config2);
     return {
-      original: _extends$e({}, counterfactualImageHash, {
+      original: _extends$d({}, counterfactualImageHash, {
         version: await counterFactualVersionPromise
       }),
       onChain: {
@@ -54067,7 +54068,7 @@ class Account {
   }
   async editConfig(changes) {
     const currentConfig = await this.status(0).then((s2) => s2.config);
-    const newConfig = this.coders.config.editConfig(currentConfig, _extends$e({}, changes, {
+    const newConfig = this.coders.config.editConfig(currentConfig, _extends$d({}, changes, {
       checkpoint: this.coders.config.checkpointOf(currentConfig).add(1)
     }));
     return this.updateConfig(newConfig);
@@ -54142,7 +54143,7 @@ class Account {
   }
   async doBootstrap(chainId, feeQuote, prestatus) {
     const bootstrapTxs = await this.bootstrapTransactions(chainId, prestatus);
-    return this.relayer(chainId).relay(_extends$e({}, bootstrapTxs, {
+    return this.relayer(chainId).relay(_extends$d({}, bootstrapTxs, {
       chainId
     }), feeQuote);
   }
@@ -54170,7 +54171,7 @@ class Account {
       space: options.nonceSpace
     } : void 0;
     const signed2 = await wallet.signTransactions(txs, nonceOptions, metadata2);
-    return _extends$e({}, signed2, {
+    return _extends$d({}, signed2, {
       signature: await this.decorateSignature(signed2.signature, status)
     });
   }
@@ -54272,7 +54273,7 @@ class Account {
     const decoratedBundle = await this.decorateTransactions(signedBundle, wstatus);
     const data = index$1$2.transaction.encodeBundleExecData(decoratedBundle);
     const res = await this.relayer(chainId).getFeeOptionsRaw(decoratedBundle.entrypoint, data, options);
-    return _extends$e({}, res, {
+    return _extends$d({}, res, {
       decorated: decoratedBundle
     });
   }
@@ -54348,7 +54349,7 @@ class Account {
         }
         const coder = index$7.genericCoderFor(latestConfig.version);
         const signers = coder.config.signersOf(latestConfig);
-        return signers.map((signer2) => _extends$e({}, signer2, {
+        return signers.map((signer2) => _extends$d({}, signer2, {
           network: chainId
         }));
       } catch (error) {
@@ -54403,8 +54404,8 @@ const account$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   Account,
   isAccount
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$d() {
-  _extends$d = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$c() {
+  _extends$c = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -54415,7 +54416,7 @@ function _extends$d() {
     }
     return target;
   };
-  return _extends$d.apply(this, arguments);
+  return _extends$c.apply(this, arguments);
 }
 const WebRPCVersion$1 = "v1";
 const WebRPCSchemaVersion$1 = "v0.4.0";
@@ -54674,7 +54675,7 @@ class Indexer {
 const createHTTPRequest$4 = (body = {}, headers = {}) => {
   return {
     method: "POST",
-    headers: _extends$d({}, headers, {
+    headers: _extends$c({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {})
@@ -54714,7 +54715,7 @@ class SequenceIndexer extends Indexer {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$d({}, init3.headers, headers);
+      init3.headers = _extends$c({}, init3.headers, headers);
       return fetch$3(input2, init3);
     };
     this.fetch = this._fetch;
@@ -54736,8 +54737,8 @@ const indexer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   WebRPCSchemaVersion: WebRPCSchemaVersion$1,
   WebRPCVersion: WebRPCVersion$1
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$c() {
-  _extends$c = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$b() {
+  _extends$b = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -54748,7 +54749,7 @@ function _extends$c() {
     }
     return target;
   };
-  return _extends$c.apply(this, arguments);
+  return _extends$b.apply(this, arguments);
 }
 const WebRPCVersion = "v1";
 const WebRPCSchemaVersion = "v0.4.0";
@@ -55186,7 +55187,7 @@ class Collections {
 const createHTTPRequest$3 = (body = {}, headers = {}) => {
   return {
     method: "POST",
-    headers: _extends$c({}, headers, {
+    headers: _extends$b({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {})
@@ -55226,7 +55227,7 @@ class SequenceMetadata extends Metadata {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$c({}, init3.headers, headers);
+      init3.headers = _extends$b({}, init3.headers, headers);
       return fetch$2(input2, init3);
     };
     this.fetch = this._fetch;
@@ -55242,7 +55243,7 @@ class SequenceCollections extends Collections {
       if (jwtAuth2 && jwtAuth2.length > 0) {
         headers["Authorization"] = `BEARER ${jwtAuth2}`;
       }
-      init3.headers = _extends$c({}, init3.headers, headers);
+      init3.headers = _extends$b({}, init3.headers, headers);
       return fetch$2(input2, init3);
     };
     this.fetch = this._fetch;
@@ -55657,8 +55658,8 @@ var debug$1 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   DebugConfigTracker
 });
-function _extends$b() {
-  _extends$b = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$a() {
+  _extends$a = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -55669,7 +55670,7 @@ function _extends$b() {
     }
     return target;
   };
-  return _extends$b.apply(this, arguments);
+  return _extends$a.apply(this, arguments);
 }
 class MemoryTrackerStore {
   constructor() {
@@ -56074,7 +56075,7 @@ class LocalConfigTracker {
       const subdigestsOfSigner = await Promise.all(signers.map((s2) => _this.store.loadSubdigestsOfSigner(s2)));
       const subdigests = [...new Set(subdigestsOfSigner.flat())];
       const payloads = await Promise.all([...new Set(subdigests)].map(async function(s2) {
-        return _extends$b({}, await _this.payloadOfSubdigest({
+        return _extends$a({}, await _this.payloadOfSubdigest({
           subdigest: s2
         }), {
           subdigest: s2
@@ -56426,7 +56427,7 @@ class Sessions {
 const createHTTPRequest$2 = (body = {}, headers = {}) => {
   return {
     method: "POST",
-    headers: _extends$b({}, headers, {
+    headers: _extends$a({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {})
@@ -56714,17 +56715,17 @@ function encodeV2ConfigTree(tree) {
       node: tree.nodeHash
     };
   } else {
-    return _extends$b({}, tree);
+    return _extends$a({}, tree);
   }
 }
 function decodeConfig(version2, config2) {
   switch (version2) {
     case 1:
-      return _extends$b({}, config2, {
+      return _extends$a({}, config2, {
         version: version2
       });
     case 2:
-      return _extends$b({}, config2, {
+      return _extends$a({}, config2, {
         version: version2,
         tree: decodeV2ConfigTree(config2.tree)
       });
@@ -56735,7 +56736,7 @@ function decodeConfig(version2, config2) {
 function decodeV2ConfigTree(tree) {
   switch (typeof tree) {
     case "object":
-      const tree_ = _extends$b({}, tree);
+      const tree_ = _extends$a({}, tree);
       if (tree_.left !== void 0) {
         tree_.left = decodeV2ConfigTree(tree_.left);
       }
@@ -57463,8 +57464,8 @@ class AuthError extends Error {
   }
 }
 const ErrAccountIsRequired = new AuthError("auth error: account address is empty");
-function _extends$a() {
-  _extends$a = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$9() {
+  _extends$9 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -57475,7 +57476,7 @@ function _extends$a() {
     }
     return target;
   };
-  return _extends$a.apply(this, arguments);
+  return _extends$9.apply(this, arguments);
 }
 function isSessionDumpV1(obj) {
   return obj.config && obj.metadata && obj.version === void 0;
@@ -57502,7 +57503,7 @@ class Session {
       address: this.account.address
     };
     if (this.services) {
-      return _extends$a({}, base2, await this.services.dump());
+      return _extends$9({}, base2, await this.services.dump());
     }
     return base2;
   }
@@ -57548,7 +57549,7 @@ class Session {
       }
       return void 0;
     };
-    return Session.open(_extends$a({}, args, {
+    return Session.open(_extends$9({}, args, {
       orchestrator,
       referenceSigner,
       threshold,
@@ -57575,7 +57576,7 @@ class Session {
       networks: networks2,
       tracker: tracker2,
       services
-    } = _extends$a({}, SessionSettingsDefault, settings);
+    } = _extends$9({}, SessionSettingsDefault, settings);
     const referenceChainId = (_findNetworkConfig$ch = (_findNetworkConfig = findNetworkConfig(networks2, (_settings$services$se = settings == null || (_settings$services = settings.services) == null ? void 0 : _settings$services.sequenceApiChainId) != null ? _settings$services$se : ChainId.MAINNET)) == null ? void 0 : _findNetworkConfig.chainId) != null ? _findNetworkConfig$ch : (_networks$ = networks2[0]) == null ? void 0 : _networks$.chainId;
     if (!referenceChainId)
       throw Error("No reference chain found");
@@ -57692,11 +57693,11 @@ class Session {
       networks: networks2,
       tracker: tracker2,
       services
-    } = _extends$a({}, SessionSettingsDefault, settings);
+    } = _extends$9({}, SessionSettingsDefault, settings);
     let account2;
     if (isSessionDumpV1(dump)) {
       var _dump$jwt$expiration, _dump$jwt, _dump$jwt2;
-      const oldAddress = dump.config.address || index$1$2.context.addressOf(contexts[1], v1.config.ConfigCoder.imageHashOf(_extends$a({}, dump.config, {
+      const oldAddress = dump.config.address || index$1$2.context.addressOf(contexts[1], v1.config.ConfigCoder.imageHashOf(_extends$9({}, dump.config, {
         version: 1
       })));
       const jwtExpired = ((_dump$jwt$expiration = (_dump$jwt = dump.jwt) == null ? void 0 : _dump$jwt.expiration) != null ? _dump$jwt$expiration : 0) < Math.floor(Date.now() / 1e3);
@@ -57766,8 +57767,8 @@ const auth$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   isSessionDumpV2,
   signAuthorization
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$9() {
-  _extends$9 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$8() {
+  _extends$8 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -57778,7 +57779,7 @@ function _extends$9() {
     }
     return target;
   };
-  return _extends$9.apply(this, arguments);
+  return _extends$8.apply(this, arguments);
 }
 class Guard {
   constructor(hostname, fetch2) {
@@ -57923,7 +57924,7 @@ class Guard {
 const createHTTPRequest$1 = (body = {}, headers = {}) => {
   return {
     method: "POST",
-    headers: _extends$9({}, headers, {
+    headers: _extends$8({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {})
@@ -58010,7 +58011,7 @@ class GuardSigner {
         }
       });
     }
-    return _extends$9({}, response, {
+    return _extends$8({}, response, {
       methods: response.methods.map(parseAuthMethod)
     });
   }
@@ -58216,8 +58217,8 @@ const guard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   isSignedOwnershipProof,
   signOwnershipProof
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$8() {
-  _extends$8 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$7() {
+  _extends$7 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -58228,7 +58229,7 @@ function _extends$8() {
     }
     return target;
   };
-  return _extends$8.apply(this, arguments);
+  return _extends$7.apply(this, arguments);
 }
 let JsonRpcMethod = /* @__PURE__ */ function(JsonRpcMethod2) {
   JsonRpcMethod2["ethCall"] = "eth_call";
@@ -58501,7 +58502,7 @@ class Multicall {
         }
       });
     };
-    this.options = options ? _extends$8({}, Multicall.DefaultOptions, options) : Multicall.DefaultOptions;
+    this.options = options ? _extends$7({}, Multicall.DefaultOptions, options) : Multicall.DefaultOptions;
     if (this.options.batchSize <= 0)
       throw new Error(`Invalid batch size of ${this.options.batchSize}`);
   }
@@ -58519,7 +58520,7 @@ class Multicall {
     return cand !== void 0 && cand.batchSize !== void 0 && cand.timeWindow !== void 0 && cand.contract !== void 0;
   }
 }
-Multicall.DefaultOptions = _extends$8({}, DefaultMulticallOptions);
+Multicall.DefaultOptions = _extends$7({}, DefaultMulticallOptions);
 const ProxyMethods = ["getNetwork", "getBlockNumber", "getGasPrice", "getTransactionCount", "getStorageAt", "sendTransaction", "estimateGas", "getBlock", "getTransaction", "getTransactionReceipt", "getLogs", "emit", "litenerCount", "addListener", "removeListener", "waitForTransaction", "detectNetwork", "getBlockWithTransactions"];
 class MulticallProvider extends BaseProvider {
   constructor(provider2, multicall2) {
@@ -61008,8 +61009,8 @@ function isCreateContractCall(data) {
     return false;
   }
 }
-function _extends$7() {
-  _extends$7 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$6() {
+  _extends$6 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -61020,7 +61021,7 @@ function _extends$7() {
     }
     return target;
   };
-  return _extends$7.apply(this, arguments);
+  return _extends$6.apply(this, arguments);
 }
 function isProviderTransport(transport) {
   return transport && typeof transport === "object" && typeof transport.register === "function" && typeof transport.unregister === "function" && typeof transport.openWallet === "function" && typeof transport.closeWallet === "function" && typeof transport.isOpened === "function" && typeof transport.isConnected === "function" && typeof transport.on === "function";
@@ -61349,7 +61350,7 @@ class BaseProviderTransport {
     logger.info("closing wallet and flushing!");
     this.pendingMessageRequests.length = 0;
     this.responseCallbacks.forEach((responseCallback) => {
-      responseCallback(_extends$7({}, new Error("wallet closed"), {
+      responseCallback(_extends$6({}, new Error("wallet closed"), {
         code: 4001
       }));
     });
@@ -62767,7 +62768,7 @@ function toExtended(transactions2) {
     throw new Error("No transaction provided");
   }
   const [first, ...rest] = transactions2;
-  return _extends$7({}, first, {
+  return _extends$6({}, first, {
     auxiliary: rest
   });
 }
@@ -63103,7 +63104,7 @@ class WalletRequestHandler {
       } catch (err) {
         logger.error(err);
         response.result = null;
-        response.error = _extends$7({}, new Error(err), {
+        response.error = _extends$6({}, new Error(err), {
           code: 4001
         });
       }
@@ -63219,7 +63220,7 @@ class WalletRequestHandler {
   sendMessageRequest(message) {
     return new Promise((resolve) => {
       this.sendAsync(message.data, (error, response) => {
-        const responseMessage = _extends$7({}, message, {
+        const responseMessage = _extends$6({}, message, {
           data: response
         });
         resolve(responseMessage);
@@ -63262,7 +63263,7 @@ class WalletRequestHandler {
     }
     if (jsonRpcResponse) {
       return this.account.networks.map((n2) => {
-        const network2 = _extends$7({}, n2);
+        const network2 = _extends$6({}, n2);
         network2.provider = void 0;
         network2.relayer = void 0;
         return network2;
@@ -63279,7 +63280,7 @@ class WalletRequestHandler {
       walletContext: this.account.contexts,
       accountAddress: this.account.address,
       // The dapp shouldn't access the relayer directly, and the provider (as an object) is not serializable.
-      networks: this.account.networks.map((n2) => _extends$7({}, n2, {
+      networks: this.account.networks.map((n2) => _extends$6({}, n2, {
         provider: void 0,
         relayer: void 0
       }))
@@ -63680,7 +63681,7 @@ class SequenceProvider extends BaseProvider {
     });
   }
   authorize(options) {
-    return this.client.connect(_extends$7({}, options, {
+    return this.client.connect(_extends$6({}, options, {
       authorize: true
     }));
   }
@@ -64095,7 +64096,7 @@ class SequenceClient {
     this.transport.on("connect", (response) => {
       var _this$callbacks$conne;
       const chainIdHex = hexValue(this.getChainId());
-      (_this$callbacks$conne = this.callbacks.connect) == null || _this$callbacks$conne.forEach((cb2) => cb2(_extends$7({}, response, {
+      (_this$callbacks$conne = this.callbacks.connect) == null || _this$callbacks$conne.forEach((cb2) => cb2(_extends$6({}, response, {
         // Ignore the full connect response
         // use the chainId defined locally
         chainId: chainIdHex
@@ -64229,7 +64230,7 @@ class SequenceClient {
     }
     await this.openWallet(void 0, {
       type: "connect",
-      options: _extends$7({}, options, {
+      options: _extends$6({}, options, {
         networkId: this.getChainId(),
         clientVersion: packageJson.version
       })
@@ -64425,8 +64426,8 @@ const initWallet = (projectAccessKey2, partialConfig) => {
   if (sequenceWalletProvider) {
     return sequenceWalletProvider;
   }
-  const config2 = _extends$7({}, DefaultProviderConfig, partialConfig, {
-    transports: _extends$7({}, DefaultProviderConfig.transports, partialConfig == null ? void 0 : partialConfig.transports)
+  const config2 = _extends$6({}, DefaultProviderConfig, partialConfig, {
+    transports: _extends$6({}, DefaultProviderConfig.transports, partialConfig == null ? void 0 : partialConfig.transports)
   });
   const rpcProviders = {};
   const newNetworks = (_config$networks$filt = (_config$networks = config2.networks) == null ? void 0 : _config$networks.filter((n2) => {
@@ -64435,7 +64436,7 @@ const initWallet = (projectAccessKey2, partialConfig) => {
   const combinedNetworks = allNetworks.map((n2) => {
     var _config$networks2;
     const network2 = (_config$networks2 = config2.networks) == null ? void 0 : _config$networks2.find((cn) => cn.chainId === n2.chainId);
-    return network2 ? _extends$7({}, n2, network2) : n2;
+    return network2 ? _extends$6({}, n2, network2) : n2;
   }).concat(newNetworks).map((network2) => {
     if (network2.rpcUrl.includes(projectAccessKey2)) {
       return network2;
@@ -69074,6 +69075,8 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
   let promise = Promise.resolve();
   if (deps && deps.length > 0) {
     const links = document.getElementsByTagName("link");
+    const cspNonceMeta = document.querySelector("meta[property=csp-nonce]");
+    const cspNonce = (cspNonceMeta == null ? void 0 : cspNonceMeta.nonce) || (cspNonceMeta == null ? void 0 : cspNonceMeta.getAttribute("nonce"));
     promise = Promise.all(deps.map((dep) => {
       dep = assetsURL(dep, importerUrl);
       if (dep in seen)
@@ -69099,6 +69102,9 @@ const __vitePreload = function preload(baseModule, deps, importerUrl) {
         link.crossOrigin = "";
       }
       link.href = dep;
+      if (cspNonce) {
+        link.setAttribute("nonce", cspNonce);
+      }
       document.head.appendChild(link);
       if (isCss) {
         return new Promise((res, rej) => {
@@ -69226,7 +69232,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BTOeO_88.js"), true ? __vite__mapDeps([]) : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DXmoWezg.js"), true ? [] : void 0, import.meta.url);
     if ((data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to) {
       return { data: await offchainLookup(client2, { data: data2, to }) };
     }
@@ -77372,7 +77378,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-z7DNFNci.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-DF18LQBe.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -77540,7 +77546,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CcAtfMcD.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-D3rUaDFB.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -77719,8 +77725,8 @@ function walletConnect$1(parameters) {
     }
   }));
 }
-function _extends$6() {
-  _extends$6 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$5() {
+  _extends$5 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -77731,14 +77737,14 @@ function _extends$6() {
     }
     return target;
   };
-  return _extends$6.apply(this, arguments);
+  return _extends$5.apply(this, arguments);
 }
 const getAppleLogo = ({
   isDarkMode
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const AppleLogo = (props) => {
-    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 29 34",
       fill: "none"
@@ -77754,7 +77760,7 @@ const getAppleMonochromeLogo = ({
 }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
   const AppleOtcLogo = (props) => {
-    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
@@ -77812,10 +77818,10 @@ function sequenceWallet(params) {
         const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme);
         const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthSettings);
         const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {};
-        const connectOptionsWithTheme = _extends$6({
+        const connectOptionsWithTheme = _extends$5({
           authorize: true
         }, parseEthAuthSettings, connect2, {
-          settings: _extends$6({
+          settings: _extends$5({
             theme: localStorageTheme || "dark"
           }, connect2 == null ? void 0 : connect2.settings)
         });
@@ -77947,9 +77953,9 @@ const apple = (options) => ({
   name: "Apple",
   createConnector: () => {
     var _options$connect;
-    const connector = sequenceWallet(_extends$6({}, options, {
-      connect: _extends$6({}, options == null ? void 0 : options.connect, {
-        settings: _extends$6({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+    const connector = sequenceWallet(_extends$5({}, options, {
+      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+        settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "apple"
         })
       })
@@ -77958,7 +77964,7 @@ const apple = (options) => ({
   }
 });
 const CoinbaseWalletLogo = (props) => {
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     viewBox: "0 0 28 28",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -77979,7 +77985,7 @@ const coinbaseWallet = (params) => ({
   logoLight: CoinbaseWalletLogo,
   name: "Coinbase Wallet",
   createConnector: () => {
-    const connector = coinbaseWallet$1(_extends$6({}, params));
+    const connector = coinbaseWallet$1(_extends$5({}, params));
     return connector;
   }
 });
@@ -77988,7 +77994,7 @@ const getEmailLogo = ({
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const EmailLogo = (props) => {
-    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 35 34",
       fill: "none"
@@ -78017,10 +78023,10 @@ const email = (options) => ({
   createConnector: () => {
     var _options$connect;
     const email2 = localStorage.getItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY);
-    const connector = sequenceWallet(_extends$6({}, options, {
+    const connector = sequenceWallet(_extends$5({}, options, {
       // @ts-ignore
-      connect: _extends$6({}, options == null ? void 0 : options.connect, {
-        settings: _extends$6({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+        settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInOptions: ["email"],
           signInWithEmail: email2 || ""
         })
@@ -78030,7 +78036,7 @@ const email = (options) => ({
   }
 });
 const FacebookLogo = (props) => {
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 41 40",
     fill: "none"
@@ -78059,7 +78065,7 @@ const getFacebookMonochromeLogo = ({
 }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
   const FacebookMonochromeLogo = (props) => {
-    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
@@ -78085,9 +78091,9 @@ const facebook = (options) => ({
   name: "Facebook",
   createConnector: () => {
     var _options$connect;
-    const connector = sequenceWallet(_extends$6({}, options, {
-      connect: _extends$6({}, options == null ? void 0 : options.connect, {
-        settings: _extends$6({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+    const connector = sequenceWallet(_extends$5({}, options, {
+      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+        settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "facebook"
         })
       })
@@ -78096,7 +78102,7 @@ const facebook = (options) => ({
   }
 });
 const GoogleLogo = (props) => {
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     viewBox: "0 0 41 40",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -78127,7 +78133,7 @@ const getMonochromeGoogleLogo = ({
 }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const GoogleMonochromeLogo = (props) => {
-    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
       xmlns: "http://www.w3.org/2000/svg",
       viewBox: "0 0 41 40",
       fill: "none"
@@ -78154,10 +78160,10 @@ const google = (options) => ({
   name: "Google",
   createConnector: () => {
     var _options$connect;
-    const connector = sequenceWallet(_extends$6({}, options, {
+    const connector = sequenceWallet(_extends$5({}, options, {
       // @ts-ignore
-      connect: _extends$6({}, options == null ? void 0 : options.connect, {
-        settings: _extends$6({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+        settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "google"
         })
       })
@@ -78166,7 +78172,7 @@ const google = (options) => ({
   }
 });
 const MetamaskLogo = (props) => {
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     viewBox: "0 0 28 28",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
@@ -78392,7 +78398,7 @@ const metamask = () => ({
   }
 });
 const SequenceLogo$1 = (props) => {
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     xmlns: "http://www.w3.org/2000/svg",
     style: {
       fill: "none"
@@ -78659,7 +78665,7 @@ const sequence = (options) => ({
   // iconBackground: '#777',
   name: "Sequence",
   createConnector: () => {
-    const connector = sequenceWallet(_extends$6({}, options));
+    const connector = sequenceWallet(_extends$5({}, options));
     return connector;
   }
 });
@@ -78673,7 +78679,7 @@ const getTwitchLogo = ({
     fillColor = isDarkMode ? "white" : "black";
   }
   const TwitchLogo = (props) => {
-    return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+    return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
       version: "1.1",
       id: "Layer_1",
       xmlns: "http://www.w3.org/2000/svg",
@@ -78717,9 +78723,9 @@ const twitch = (options) => ({
   name: "Twitch",
   createConnector: () => {
     var _options$connect;
-    const connector = sequenceWallet(_extends$6({}, options, {
-      connect: _extends$6({}, options == null ? void 0 : options.connect, {
-        settings: _extends$6({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+    const connector = sequenceWallet(_extends$5({}, options, {
+      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+        settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "twitch"
         })
       })
@@ -78728,7 +78734,7 @@ const twitch = (options) => ({
   }
 });
 const WalletConnectLogo = (props) => {
-  return /* @__PURE__ */ React$1.createElement("svg", _extends$6({
+  return /* @__PURE__ */ React$1.createElement("svg", _extends$5({
     fill: "none",
     viewBox: "0 0 480 332",
     xmlns: "http://www.w3.org/2000/svg"
@@ -78744,7 +78750,7 @@ const walletConnect = (options) => ({
   // iconBackground: '#fff',
   name: "Walletconnect",
   createConnector: () => {
-    const connector = walletConnect$1(_extends$6({}, options));
+    const connector = walletConnect$1(_extends$5({}, options));
     return connector;
   }
 });
@@ -78913,8 +78919,8 @@ var _excluded$6 = ["onSuccess", "onError", "skipScript", "authOptions", "iconPro
 function _interopRequireDefault$1(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
-function _extends$5() {
-  _extends$5 = Object.assign || function(target) {
+function _extends$4() {
+  _extends$4 = Object.assign || function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -78925,7 +78931,7 @@ function _extends$5() {
     }
     return target;
   };
-  return _extends$5.apply(this, arguments);
+  return _extends$4.apply(this, arguments);
 }
 function ownKeys$2(object2, enumerableOnly) {
   var keys = Object.keys(object2);
@@ -79013,7 +79019,7 @@ var AppleSigninButton = function AppleSigninButton2(_ref) {
     });
   };
   var props = _objectSpread$1({
-    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$5({
+    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$4({
       width: "24px",
       height: "44px",
       viewBox: "0 0 24 44"
@@ -79038,7 +79044,7 @@ var AppleSigninButton = function AppleSigninButton2(_ref) {
   if (render) {
     return render(props);
   }
-  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$5({
+  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$4({
     className: "".concat(noDefaultStyle ? "" : "react-apple-signin-auth-btn react-apple-signin-auth-btn-".concat(uiType)).concat(className ? " ".concat(className) : ""),
     type: "button",
     "aria-label": "Signin with apple ID"
@@ -81027,24 +81033,24 @@ var tokenizeRange = function tokenizeRange2(tokens) {
     throw new Error("Invalid range");
   }
 };
-function _toPrimitive(input2, hint) {
-  if (typeof input2 !== "object" || input2 === null)
-    return input2;
-  var prim = input2[Symbol.toPrimitive];
-  if (prim !== void 0) {
-    var res = prim.call(input2, hint || "default");
-    if (typeof res !== "object")
-      return res;
+function toPrimitive(t2, r2) {
+  if ("object" != typeof t2 || !t2)
+    return t2;
+  var e2 = t2[Symbol.toPrimitive];
+  if (void 0 !== e2) {
+    var i2 = e2.call(t2, r2 || "default");
+    if ("object" != typeof i2)
+      return i2;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-  return (hint === "string" ? String : Number)(input2);
+  return ("string" === r2 ? String : Number)(t2);
 }
-function _toPropertyKey(arg) {
-  var key2 = _toPrimitive(arg, "string");
-  return typeof key2 === "symbol" ? key2 : String(key2);
+function toPropertyKey(t2) {
+  var i2 = toPrimitive(t2, "string");
+  return "symbol" == typeof i2 ? i2 : String(i2);
 }
 function _defineProperty$1(obj, key2, value) {
-  key2 = _toPropertyKey(key2);
+  key2 = toPropertyKey(key2);
   if (key2 in obj) {
     Object.defineProperty(obj, key2, {
       value,
@@ -81057,26 +81063,26 @@ function _defineProperty$1(obj, key2, value) {
   }
   return obj;
 }
-function ownKeys$1(object2, enumerableOnly) {
-  var keys = Object.keys(object2);
+function ownKeys$1(e2, r2) {
+  var t2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object2);
-    enumerableOnly && (symbols = symbols.filter(function(sym) {
-      return Object.getOwnPropertyDescriptor(object2, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
+    var o = Object.getOwnPropertySymbols(e2);
+    r2 && (o = o.filter(function(r3) {
+      return Object.getOwnPropertyDescriptor(e2, r3).enumerable;
+    })), t2.push.apply(t2, o);
   }
-  return keys;
+  return t2;
 }
-function _objectSpread2(target) {
-  for (var i2 = 1; i2 < arguments.length; i2++) {
-    var source = null != arguments[i2] ? arguments[i2] : {};
-    i2 % 2 ? ownKeys$1(Object(source), true).forEach(function(key2) {
-      _defineProperty$1(target, key2, source[key2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function(key2) {
-      Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
+function _objectSpread2(e2) {
+  for (var r2 = 1; r2 < arguments.length; r2++) {
+    var t2 = null != arguments[r2] ? arguments[r2] : {};
+    r2 % 2 ? ownKeys$1(Object(t2), true).forEach(function(r3) {
+      _defineProperty$1(e2, r3, t2[r3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : ownKeys$1(Object(t2)).forEach(function(r3) {
+      Object.defineProperty(e2, r3, Object.getOwnPropertyDescriptor(t2, r3));
     });
   }
-  return target;
+  return e2;
 }
 function _objectWithoutPropertiesLoose$3(source, excluded) {
   if (source == null)
@@ -81713,7 +81719,7 @@ class Stylesheet {
     var parentConditions = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : [];
     if (rules) {
       var _this$currConditional;
-      (_this$currConditional = this.currConditionalRuleset) === null || _this$currConditional === void 0 ? void 0 : _this$currConditional.addConditionPrecedence(parentConditions, Object.keys(rules).map((query2) => "@media ".concat(query2)));
+      (_this$currConditional = this.currConditionalRuleset) === null || _this$currConditional === void 0 || _this$currConditional.addConditionPrecedence(parentConditions, Object.keys(rules).map((query2) => "@media ".concat(query2)));
       for (var [query, mediaRule] of Object.entries(rules)) {
         var mediaQuery = "@media ".concat(query);
         validateMediaQuery(mediaQuery);
@@ -81736,7 +81742,7 @@ class Stylesheet {
     var parentConditions = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : [];
     if (rules) {
       var _this$currConditional2;
-      (_this$currConditional2 = this.currConditionalRuleset) === null || _this$currConditional2 === void 0 ? void 0 : _this$currConditional2.addConditionPrecedence(parentConditions, Object.keys(rules).map((query) => "@container ".concat(query)));
+      (_this$currConditional2 = this.currConditionalRuleset) === null || _this$currConditional2 === void 0 || _this$currConditional2.addConditionPrecedence(parentConditions, Object.keys(rules).map((query) => "@container ".concat(query)));
       forEach(rules, (containerRule, query) => {
         var containerQuery = "@container ".concat(query);
         var conditions = [...parentConditions, containerQuery];
@@ -81758,7 +81764,7 @@ class Stylesheet {
     var parentConditions = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : [];
     if (rules) {
       var _this$currConditional3;
-      (_this$currConditional3 = this.currConditionalRuleset) === null || _this$currConditional3 === void 0 ? void 0 : _this$currConditional3.addConditionPrecedence(parentConditions, Object.keys(rules).map((name) => "@layer ".concat(name)));
+      (_this$currConditional3 = this.currConditionalRuleset) === null || _this$currConditional3 === void 0 || _this$currConditional3.addConditionPrecedence(parentConditions, Object.keys(rules).map((name) => "@layer ".concat(name)));
       forEach(rules, (layerRule, name) => {
         var conditions = [...parentConditions, "@layer ".concat(name)];
         this.addLayer(conditions);
@@ -81780,7 +81786,7 @@ class Stylesheet {
     var parentConditions = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : [];
     if (rules) {
       var _this$currConditional4;
-      (_this$currConditional4 = this.currConditionalRuleset) === null || _this$currConditional4 === void 0 ? void 0 : _this$currConditional4.addConditionPrecedence(parentConditions, Object.keys(rules).map((query) => "@supports ".concat(query)));
+      (_this$currConditional4 = this.currConditionalRuleset) === null || _this$currConditional4 === void 0 || _this$currConditional4.addConditionPrecedence(parentConditions, Object.keys(rules).map((query) => "@supports ".concat(query)));
       forEach(rules, (supportsRule, query) => {
         var conditions = [...parentConditions, "@supports ".concat(query)];
         this.addConditionalRule({
@@ -83501,52 +83507,52 @@ function _inherits$1(subClass, superClass) {
     _setPrototypeOf$1(subClass, superClass);
 }
 function _wrapRegExp() {
-  _wrapRegExp = function(re2, groups) {
-    return new BabelRegExp(re2, void 0, groups);
+  _wrapRegExp = function(e22, r22) {
+    return new BabelRegExp(e22, void 0, r22);
   };
-  var _super = RegExp.prototype, _groups = /* @__PURE__ */ new WeakMap();
-  function BabelRegExp(re2, flags, groups) {
-    var _this = new RegExp(re2, flags);
-    return _groups.set(_this, groups || _groups.get(re2)), _setPrototypeOf$1(_this, BabelRegExp.prototype);
+  var e2 = RegExp.prototype, r2 = /* @__PURE__ */ new WeakMap();
+  function BabelRegExp(e22, t2, p2) {
+    var o = new RegExp(e22, t2);
+    return r2.set(o, p2 || r2.get(e22)), _setPrototypeOf$1(o, BabelRegExp.prototype);
   }
-  function buildGroups(result, re2) {
-    var g2 = _groups.get(re2);
-    return Object.keys(g2).reduce(function(groups, name) {
-      var i2 = g2[name];
-      if ("number" == typeof i2)
-        groups[name] = result[i2];
+  function buildGroups(e22, t2) {
+    var p2 = r2.get(t2);
+    return Object.keys(p2).reduce(function(r22, t22) {
+      var o = p2[t22];
+      if ("number" == typeof o)
+        r22[t22] = e22[o];
       else {
-        for (var k2 = 0; void 0 === result[i2[k2]] && k2 + 1 < i2.length; )
-          k2++;
-        groups[name] = result[i2[k2]];
+        for (var i2 = 0; void 0 === e22[o[i2]] && i2 + 1 < o.length; )
+          i2++;
+        r22[t22] = e22[o[i2]];
       }
-      return groups;
+      return r22;
     }, /* @__PURE__ */ Object.create(null));
   }
-  return _inherits$1(BabelRegExp, RegExp), BabelRegExp.prototype.exec = function(str) {
-    var result = _super.exec.call(this, str);
-    if (result) {
-      result.groups = buildGroups(result, this);
-      var indices = result.indices;
-      indices && (indices.groups = buildGroups(indices, this));
+  return _inherits$1(BabelRegExp, RegExp), BabelRegExp.prototype.exec = function(r22) {
+    var t2 = e2.exec.call(this, r22);
+    if (t2) {
+      t2.groups = buildGroups(t2, this);
+      var p2 = t2.indices;
+      p2 && (p2.groups = buildGroups(p2, this));
     }
-    return result;
-  }, BabelRegExp.prototype[Symbol.replace] = function(str, substitution) {
-    if ("string" == typeof substitution) {
-      var groups = _groups.get(this);
-      return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, function(_, name) {
-        var group = groups[name];
-        return "$" + (Array.isArray(group) ? group.join("$") : group);
+    return t2;
+  }, BabelRegExp.prototype[Symbol.replace] = function(t2, p2) {
+    if ("string" == typeof p2) {
+      var o = r2.get(this);
+      return e2[Symbol.replace].call(this, t2, p2.replace(/\$<([^>]+)>/g, function(e22, r22) {
+        var t22 = o[r22];
+        return "$" + (Array.isArray(t22) ? t22.join("$") : t22);
       }));
     }
-    if ("function" == typeof substitution) {
-      var _this = this;
-      return _super[Symbol.replace].call(this, str, function() {
-        var args = arguments;
-        return "object" != typeof args[args.length - 1] && (args = [].slice.call(args)).push(buildGroups(args, _this)), substitution.apply(this, args);
+    if ("function" == typeof p2) {
+      var i2 = this;
+      return e2[Symbol.replace].call(this, t2, function() {
+        var e22 = arguments;
+        return "object" != typeof e22[e22.length - 1] && (e22 = [].slice.call(e22)).push(buildGroups(e22, i2)), p2.apply(this, e22);
       });
     }
-    return _super[Symbol.replace].call(this, str, substitution);
+    return e2[Symbol.replace].call(this, t2, p2);
   }, _wrapRegExp.apply(this, arguments);
 }
 function getDevPrefix(_ref) {
@@ -86491,8 +86497,8 @@ function clsx() {
     (e2 = arguments[f2]) && (t2 = r$1(e2)) && (n2 && (n2 += " "), n2 += t2);
   return n2;
 }
-function _extends$4() {
-  _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$3() {
+  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -86503,7 +86509,7 @@ function _extends$4() {
     }
     return target;
   };
-  return _extends$4.apply(this, arguments);
+  return _extends$3.apply(this, arguments);
 }
 function $e42e1063c40fb3ef$export$b9ecd428b558ff10(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
   return function handleEvent(event) {
@@ -86619,20 +86625,6 @@ function $c512c27ab02ef895$var$composeContextScopes(...scopes) {
   };
   createScope1.scopeName = baseScope.scopeName;
   return createScope1;
-}
-function _extends$3() {
-  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$3.apply(this, arguments);
 }
 const $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, ...slotProps } = props;
@@ -90231,7 +90223,7 @@ const $cb5cc270b50c6fcd$export$96e5381f42521a79 = /* @__PURE__ */ reactExports.f
     onCustomAnchorAdd,
     onCustomAnchorRemove
   ]);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$4({}, popperScope, anchorProps, {
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({}, popperScope, anchorProps, {
     ref: forwardedRef
   }));
 });
@@ -90241,7 +90233,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$TRIGGER_NAME, __scopePopover);
   const popperScope = $cb5cc270b50c6fcd$var$usePopperScope(__scopePopover);
   const composedTriggerRef = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context2.triggerRef);
-  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$4({
+  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$3({
     type: "button",
     "aria-haspopup": "dialog",
     "aria-expanded": context2.open,
@@ -90251,7 +90243,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
     ref: composedTriggerRef,
     onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, context2.onOpenToggle)
   }));
-  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$4({
+  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({
     asChild: true
   }, popperScope), trigger2);
 });
@@ -90266,9 +90258,9 @@ const $cb5cc270b50c6fcd$export$d7e1f420b25549ff = /* @__PURE__ */ reactExports.f
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
     present: forceMount || context2.open
-  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$4({}, contentProps, {
+  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$3({}, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$4({}, contentProps, {
+  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$3({}, contentProps, {
     ref: forwardedRef
   })));
 });
@@ -90285,7 +90277,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentModal = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($am6gm$RemoveScroll, {
     as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
     allowPinchZoom: true
-  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$4({}, props, {
+  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
     ref: composedRefs,
     trapFocus: context2.open,
     disableOutsidePointerEvents: true,
@@ -90316,7 +90308,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentNonModal = /* @__PURE__ */ reactExport
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   const hasInteractedOutsideRef = reactExports.useRef(false);
   const hasPointerDownOutsideRef = reactExports.useRef(false);
-  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$4({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
     ref: forwardedRef,
     trapFocus: false,
     disableOutsidePointerEvents: false,
@@ -90368,7 +90360,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentImpl = /* @__PURE__ */ reactExports.fo
     onPointerDownOutside,
     onFocusOutside,
     onDismiss: () => context2.onOpenChange(false)
-  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$4({
+  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$3({
     "data-state": $cb5cc270b50c6fcd$var$getState(context2.open),
     role: "dialog",
     id: context2.contentId
@@ -101490,9 +101482,3 @@ export {
   stringify$1 as s,
   tslib_es6$1 as t
 };
-function __vite__mapDeps(indexes) {
-  if (!__vite__mapDeps.viteFileDeps) {
-    __vite__mapDeps.viteFileDeps = ["./index-z7DNFNci.js","./___vite-browser-external_commonjs-proxy-BlFEd_jZ.js","./index.es-CcAtfMcD.js"]
-  }
-  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
-}
