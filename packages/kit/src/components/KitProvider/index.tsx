@@ -51,6 +51,7 @@ export interface EthAuthSettings {
 }
 
 export interface KitConfig {
+  projectAccessKey: string
   disableAnalytics?: boolean
   defaultTheme?: Theme
   position?: ModalPosition
@@ -104,6 +105,8 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   const [googleClientId, setGoogleClientId] = useState<string>('')
 
   useEffect(() => {
+    // TODO: this is silly, do not use localStorage, instead get them from the runtime
+    // config object.
     const googleClientId = localStorage.getItem(LocalStorageKey.WaasGoogleClientID) || ''
     setGoogleClientId(googleClientId)
   }, [])
@@ -132,9 +135,8 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   }
 
   useEffect(() => {
-    const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || ''
     if (!disableAnalytics) {
-      setupAnalytics(projectAccessKey)
+      setupAnalytics(config.projectAccessKey)
     }
   }, [])
 

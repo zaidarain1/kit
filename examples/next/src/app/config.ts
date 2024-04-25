@@ -7,7 +7,7 @@ import { Transport, zeroAddress } from 'viem'
 
 export type ConnectionMode = 'waas' | 'universal'
 
-const connectionMode: ConnectionMode = 'universal'
+let connectionMode: ConnectionMode = 'universal'
 const isDebugMode = false
 
 const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
@@ -85,6 +85,7 @@ export const wagmiConfig = createConfig({
 })
 
 export const kitConfig: KitConfig = {
+  projectAccessKey,
   defaultTheme: 'dark',
   signIn: {
     projectName: 'Kit Demo',

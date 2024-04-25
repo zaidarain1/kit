@@ -13,6 +13,7 @@ const WAAS_SESSION_HASH = 'waasSessionHash'
 const WAAS_EMAIL_ID_TOKEN = 'waasEmailIdToken'
 const WAAS_ACTIVE_LOGIN_TYPE = 'waasActiveLoginType'
 
+// TODO: remove all of this.. we should not be storing these in local storage
 export enum LocalStorageKey {
   Settings = `${PREFIX}.${SETTINGS}`,
   Theme = `${PREFIX}.${THEME}`,
