@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BA7fYG_p.js","./___vite-browser-external_commonjs-proxy-BmZ1Vr3F.js","./index.es-DJ_sIsJ_.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DgNH_3_4.js","./___vite-browser-external_commonjs-proxy-BLuDiMqP.js","./index.es-DurA0YlR.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -47579,7 +47579,7 @@ function formatUnits$1(value, unitName) {
   }
   return formatFixed(value, unitName != null ? unitName : 18);
 }
-function parseUnits(value, unitName) {
+function parseUnits$1(value, unitName) {
   if (typeof value !== "string") {
     logger$1.throwArgumentError("value must be a string", "value", value);
   }
@@ -47595,7 +47595,7 @@ function formatEther$1(wei) {
   return formatUnits$1(wei, 18);
 }
 function parseEther(ether) {
-  return parseUnits(ether, 18);
+  return parseUnits$1(ether, 18);
 }
 const lib_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -47603,7 +47603,7 @@ const lib_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   formatEther: formatEther$1,
   formatUnits: formatUnits$1,
   parseEther,
-  parseUnits
+  parseUnits: parseUnits$1
 }, Symbol.toStringTag, { value: "Module" }));
 const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -47691,7 +47691,7 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   parseBytes32String,
   parseEther,
   parseTransaction: parse$4,
-  parseUnits,
+  parseUnits: parseUnits$1,
   poll: poll$1,
   randomBytes,
   recoverAddress,
@@ -69813,7 +69813,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BpnvyzZ4.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Ms9Y1I3L.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -71725,6 +71725,37 @@ function hashMessage(message, to_) {
   })();
   const prefixBytes = stringToBytes(`${presignMessagePrefix}${messageBytes.length}`);
   return keccak256(concat([prefixBytes, messageBytes]), to_);
+}
+function parseUnits(value, decimals) {
+  let [integer, fraction = "0"] = value.split(".");
+  const negative = integer.startsWith("-");
+  if (negative)
+    integer = integer.slice(1);
+  fraction = fraction.replace(/(0+)$/, "");
+  if (decimals === 0) {
+    if (Math.round(Number(`.${fraction}`)) === 1)
+      integer = `${BigInt(integer) + 1n}`;
+    fraction = "";
+  } else if (fraction.length > decimals) {
+    const [left, unit, right] = [
+      fraction.slice(0, decimals - 1),
+      fraction.slice(decimals - 1, decimals),
+      fraction.slice(decimals)
+    ];
+    const rounded = Math.round(Number(`${unit}.${right}`));
+    if (rounded > 9)
+      fraction = `${BigInt(left) + BigInt(1)}0`.padStart(left.length + 1, "0");
+    else
+      fraction = `${left}${rounded}`;
+    if (fraction.length > decimals) {
+      fraction = fraction.slice(1);
+      integer = `${BigInt(integer) + 1n}`;
+    }
+    fraction = fraction.slice(0, decimals);
+  } else {
+    fraction = fraction.padEnd(decimals, "0");
+  }
+  return BigInt(`${negative ? "-" : ""}${integer}${fraction}`);
 }
 function formatStorageProof(storageProof) {
   return storageProof.map((proof) => ({
@@ -88323,7 +88354,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-BA7fYG_p.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-DgNH_3_4.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -88500,7 +88531,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DJ_sIsJ_.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DurA0YlR.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -103472,7 +103503,7 @@ const SendCoin = ({
   const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.logoURI;
   const symbol = isNativeCoin ? nativeTokenInfo.symbol : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
   const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits(amountToSendFormatted, decimals);
+  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
   const amountToSendFiat = computeBalanceFiat({
     balance: _extends$2({}, tokenBalance, {
       balance: amountRaw.toString()
@@ -103510,7 +103541,7 @@ const SendCoin = ({
       });
     }
     e2.preventDefault();
-    const sendAmount = parseUnits(amountToSendFormatted, decimals);
+    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
     if (isNativeCoin) {
       var _wallet;
       analytics == null || analytics.track({
@@ -103783,7 +103814,7 @@ const SendCollectible = ({
   const name2 = (tokenBalance == null || (_tokenBalance$tokenMe2 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe2.name) || "Unknown";
   const imageUrl = (tokenBalance == null || (_tokenBalance$tokenMe3 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe3.image) || (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.logoURI) || "";
   const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits(amountToSendFormatted, decimals);
+  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
   const insufficientFunds = amountRaw.gt((tokenBalance == null ? void 0 : tokenBalance.balance) || "0");
   const isNonZeroAmount = amountRaw.gt(0);
   const handleChangeAmount = (ev) => {
@@ -103829,7 +103860,7 @@ const SendCollectible = ({
         chainId
       });
     }
-    const sendAmount = parseUnits(amountToSendFormatted, decimals);
+    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
     switch (contractType) {
       case "ERC721":
         analytics == null || analytics.track({
@@ -112525,7 +112556,7 @@ const Homepage = () => {
                             "): "
                           ] }),
                           " ",
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits$1(option.value, option.token.decimals) })
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(BigInt(option.value), option.token.decimals) })
                         ] }),
                         /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
                           /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Text, { children: [
@@ -112534,8 +112565,8 @@ const Homepage = () => {
                             ": "
                           ] }),
                           " ",
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits$1(
-                            (_a3 = feeOptionBalances.find((b3) => b3.tokenName === option.token.name)) == null ? void 0 : _a3.balance,
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(
+                            BigInt(((_a3 = feeOptionBalances.find((b3) => b3.tokenName === option.token.name)) == null ? void 0 : _a3.balance) || "0"),
                             option.token.decimals
                           ) })
                         ] })
@@ -112561,7 +112592,7 @@ const Homepage = () => {
                         selected.token.decimals
                       );
                       const feeOptionValue = parseUnits(selected.value, selected.token.decimals);
-                      if (balance && balance.lt(feeOptionValue)) {
+                      if (balance && balance < feeOptionValue) {
                         setFeeOptionAlert({
                           title: "Insufficient balance",
                           description: `You do not have enough balance to pay the fee with ${selected.token.name}, please make sure you have enough balance in your wallet for the selected fee option.`,
