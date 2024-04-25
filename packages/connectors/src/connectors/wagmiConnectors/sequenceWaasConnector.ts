@@ -65,6 +65,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
     type: sequenceWaasWallet.type,
     sequenceWaas,
     sequenceWaasProvider,
+
     async setup() {
       if (params.googleClientId) {
         await config.storage?.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId)
@@ -86,6 +87,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
         this.onDisconnect()
       })
     },
+
     async connect({ chainId, isReconnecting } = {}) {
       const isSignedIn = await sequenceWaas.isSignedIn()
 
@@ -139,6 +141,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
         chainId
       }
     },
+
     async disconnect() {
       try {
         await sequenceWaas.dropSession({ sessionId: await sequenceWaas.getSessionId() })
@@ -152,6 +155,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
       const sessionHash = await sequenceWaas.getSessionHash()
       await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
     },
+
     async getAccounts() {
       try {
         const isSignedIn = await sequenceWaas.isSignedIn()
@@ -164,9 +168,11 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
       }
       return []
     },
+
     async getProvider(): Promise<SequenceWaasProvider> {
       return sequenceWaasProvider
     },
+
     async isAuthorized() {
       const activeWaasOption = await config.storage?.getItem(LocalStorageKey.WaasActiveLoginType)
       if (params.loginType !== activeWaasOption) {
@@ -178,6 +184,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
         return false
       }
     },
+
     async switchChain({ chainId }) {
       const chain = config.chains.find(c => c.id === chainId) || config.chains[0]
 
@@ -187,20 +194,25 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
 
       return chain
     },
+
     async getChainId() {
       const provider = await this.getProvider()
       return provider.getChainId()
     },
+
     async onAccountsChanged(accounts) {
       return { account: accounts[0] }
     },
+
     async onChainChanged(chain) {
       const provider = await this.getProvider()
 
       config.emitter.emit('change', { chainId: normalizeChainId(chain) })
       provider.setDefaultChainId(normalizeChainId(chain))
     },
+
     async onConnect(connectinfo) {},
+
     async onDisconnect() {
       await this.disconnect()
     }

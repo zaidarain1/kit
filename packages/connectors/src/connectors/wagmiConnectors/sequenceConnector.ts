@@ -53,7 +53,12 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
     id: 'sequence',
     name: 'Sequence',
     type: sequenceWallet.type,
+
     async setup() {
+      if (projectAccessKey) {
+        await config.storage?.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
+      }
+
       const provider = await this.getProvider()
       provider.on('chainChanged', (chainIdHex: string) => {
         config.emitter.emit('change', { chainId: normalizeChainId(chainIdHex) })
@@ -63,6 +68,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         this.onDisconnect()
       })
     },
+
     async connect() {
       const provider = (await this.getProvider()) as sequence.provider.SequenceProvider
 
@@ -108,11 +114,13 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         chainId: provider.getChainId()
       }
     },
+
     async disconnect() {
       const provider = await this.getProvider()
 
       provider.disconnect()
     },
+
     async getAccounts() {
       const provider = await this.getProvider()
 
@@ -120,6 +128,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
       return [account]
     },
+
     async getProvider(): Promise<sequence.provider.SequenceProvider> {
       try {
         const provider = sequence.getWallet()
@@ -145,6 +154,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         return provider
       }
     },
+
     async isAuthorized() {
       try {
         const account = await this.getAccounts()
@@ -153,6 +163,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         return false
       }
     },
+
     async switchChain({ chainId }) {
       const provider = await this.getProvider()
 
@@ -163,22 +174,27 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
       return chain
     },
+
     async getChainId() {
       const provider = (await this.getProvider()) as sequence.provider.SequenceProvider
 
       const chainId = provider.getChainId()
       return chainId
     },
+
     async onAccountsChanged(accounts) {
       return { account: accounts[0] }
     },
+
     async onChainChanged(chain) {
       const provider = await this.getProvider()
 
       config.emitter.emit('change', { chainId: normalizeChainId(chain) })
       provider.setDefaultChainId(normalizeChainId(chain))
     },
+
     async onConnect(connectinfo) {},
+
     async onDisconnect() {
       await config.storage?.removeItem(LocalStorageKey.EthAuthProof)
       config.emitter.emit('disconnect')
