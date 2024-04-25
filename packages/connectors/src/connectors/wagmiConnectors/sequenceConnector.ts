@@ -19,6 +19,8 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
   let id = 'sequence'
   let name = 'Sequence'
 
+  const { projectAccessKey } = connect
+
   const signInOptions = params?.connect?.settings?.signInOptions || []
   const signInWith = params?.connect?.settings?.signInWith
   const signInWithEmail = params?.connect?.settings?.signInWithEmail
@@ -124,8 +126,6 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
         return provider
       } catch (e) {
-        const projectAccessKey = await config.storage?.getItem(LocalStorageKey.ProjectAccessKey)
-
         if (!projectAccessKey) {
           throw 'projectAccessKey not found'
         }

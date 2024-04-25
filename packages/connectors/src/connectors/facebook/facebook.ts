@@ -15,10 +15,11 @@ export const facebook = (options: FacebookOptions): Wallet => ({
   monochromeLogoLight: getFacebookMonochromeLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Facebook',
-  createConnector: () => {
+  createConnector: projectAccessKey => {
     const connector = sequenceWallet({
       ...options,
       connect: {
+        projectAccessKey,
         ...options?.connect,
         settings: {
           ...options?.connect?.settings,

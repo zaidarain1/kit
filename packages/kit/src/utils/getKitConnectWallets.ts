@@ -1,7 +1,6 @@
 import React from 'react'
 import { Connector, CreateConnectorFn } from 'wagmi'
 
-import { LocalStorageKey } from '../constants'
 import { LogoProps } from '@0xsequence/kit-connectors'
 
 export interface WalletProperties {
@@ -17,7 +16,7 @@ export interface WalletProperties {
 }
 
 export type Wallet = WalletProperties & {
-  createConnector: () => CreateConnectorFn
+  createConnector: (projectAccessKey: string) => CreateConnectorFn
 }
 
 export interface WalletField {
@@ -27,8 +26,6 @@ export interface WalletField {
 export type ExtendedConnector = Connector & WalletField
 
 export const getKitConnectWallets = (projectAccessKey: string, wallets: Wallet[]): CreateConnectorFn[] => {
-  localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
-
   const connectors: CreateConnectorFn[] = []
 
   wallets.forEach(wallet => {
@@ -36,7 +33,7 @@ export const getKitConnectWallets = (projectAccessKey: string, wallets: Wallet[]
     const walletProperties = { ...metaProperties }
 
     const createConnectorOverride = (config: any) => {
-      const connector = createConnector()
+      const connector = createConnector(projectAccessKey)
 
       const res = connector(config) as ExtendedConnector
       res._wallet = { ...walletProperties }

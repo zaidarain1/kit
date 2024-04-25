@@ -13,11 +13,11 @@ export const google = (options: GoogleOptions): Wallet => ({
   monochromeLogoDark: getMonochromeGoogleLogo({ isDarkMode: true }),
   monochromeLogoLight: getMonochromeGoogleLogo({ isDarkMode: false }),
   name: 'Google',
-  createConnector: () => {
+  createConnector: projectAccessKey => {
     const connector = sequenceWallet({
       ...options,
-      // @ts-ignore
       connect: {
+        projectAccessKey,
         ...options?.connect,
         settings: {
           ...options?.connect?.settings,

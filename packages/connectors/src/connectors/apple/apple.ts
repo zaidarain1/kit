@@ -14,10 +14,11 @@ export const apple = (options: AppleOptions): Wallet => ({
   monochromeLogoLight: getAppleMonochromeLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Apple',
-  createConnector: () => {
+  createConnector: projectAccessKey => {
     const connector = sequenceWallet({
       ...options,
       connect: {
+        projectAccessKey,
         ...options?.connect,
         settings: {
           ...options?.connect?.settings,
