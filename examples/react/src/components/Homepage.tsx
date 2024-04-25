@@ -43,9 +43,9 @@ import { Footer } from './Footer'
 import { messageToSign } from '../constants'
 import { delay, formatAddress, getCheckoutSettings } from '../utils'
 import { abi } from '../constants/nft-abi'
-import { ethers } from 'ethers'
 import { Alert, AlertProps } from './Alert'
 import { ConnectionMode } from '../config'
+import { formatUnits, parseUnits } from 'viem'
 
 // append ?debug to url to enable debug mode
 const searchParams = new URLSearchParams(location.search)
@@ -465,13 +465,13 @@ export const Homepage = () => {
                         <Box alignItems="flex-start" flexDirection="column" fontSize="xsmall">
                           <Box flexDirection="row">
                             <Text>Fee (in {option.token.name}): </Text>{' '}
-                            <Text>{ethers.utils.formatUnits(option.value, option.token.decimals)}</Text>
+                            <Text>{formatUnits(BigInt(option.value), option.token.decimals)}</Text>
                           </Box>
                           <Box flexDirection="row">
                             <Text>Wallet balance for {option.token.name}: </Text>{' '}
                             <Text>
-                              {ethers.utils.formatUnits(
-                                feeOptionBalances.find(b => b.tokenName === option.token.name)?.balance,
+                              {formatUnits(
+                                BigInt(feeOptionBalances.find(b => b.tokenName === option.token.name)?.balance || '0'),
                                 option.token.decimals
                               )}
                             </Text>
@@ -491,12 +491,12 @@ export const Homepage = () => {
 
                       if (selected.token.contractAddress !== undefined) {
                         // check if wallet has enough balance, should be balance > feeOption.value
-                        const balance = ethers.utils.parseUnits(
+                        const balance = parseUnits(
                           feeOptionBalances.find(b => b.tokenName === selected.token.name)?.balance,
                           selected.token.decimals
                         )
-                        const feeOptionValue = ethers.utils.parseUnits(selected.value, selected.token.decimals)
-                        if (balance && balance.lt(feeOptionValue)) {
+                        const feeOptionValue = parseUnits(selected.value, selected.token.decimals)
+                        if (balance && balance < feeOptionValue) {
                           setFeeOptionAlert({
                             title: 'Insufficient balance',
                             description: `You do not have enough balance to pay the fee with ${selected.token.name}, please make sure you have enough balance in your wallet for the selected fee option.`,
