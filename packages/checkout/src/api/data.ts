@@ -203,7 +203,7 @@ export const fetchSardineClientToken = async (order: SardineCheckout, tokenMetad
     )
   })
 
-  const { orderId, token } = await res.json()
+  const { resp: { orderId, token } } = await res.json()
 
   // const res = await apiClient.getSardineNFTCheckoutToken({
   //   referenceId,

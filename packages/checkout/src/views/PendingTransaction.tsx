@@ -72,25 +72,37 @@ export const PendingTransaction = () => {
     }
   }, [])
 
+  // return (
+  //   <Box style={{ height: '500px' }}>
+  //     <Box
+  //       position="absolute"
+  //       top="0"
+  //       left="0"
+  //       width="full"
+  //       height="full"
+  //       flexDirection="column"
+  //       alignItems="center"
+  //       justifyContent="center"
+  //     >
+  //       <Spinner size="lg" style={{ width: '60px', height: '60px' }} />
+  //       <Text variant="medium" color="text50" textAlign="center" marginTop="8">
+  //         Order in progress. <br />
+  //         This may take a few minutes. <br />
+  //         Please do not close this window.
+  //       </Text>
+  //     </Box>
+  //   </Box>
+  // )
   return (
-    <Box style={{ height: '500px' }}>
-      <Box
-        position="absolute"
-        top="0"
-        left="0"
-        width="full"
-        height="full"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Spinner size="lg" style={{ width: '60px', height: '60px' }} />
-        <Text variant="medium" color="text50" textAlign="center" marginTop="8">
-          Order in progress. <br />
-          This may take a few minutes. <br />
-          Please do not close this window.
-        </Text>
-      </Box>
+    <Box alignItems="center" justifyContent="center" style={{ height: '620px' }}>
+      <iframe
+        src={`https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`}
+        style={{
+          maxHeight: '500px',
+          height: '100%',
+          width: '350px'
+        }}
+      />
     </Box>
   )
 }

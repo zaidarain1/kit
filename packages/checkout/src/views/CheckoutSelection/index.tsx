@@ -70,10 +70,10 @@ export const CheckoutSelection = () => {
     if (settings?.sardineCheckout) {
       const { token, orderId } = await fetchSardineClientToken(settings.sardineCheckout, tokenMetadata)
 
-      const url = `https://crypto.sardine.ai/?client_token=${token}&show_features=true`
-      const windowName = 'SardineCrypto'
-      const windowSize = 'width=800,height=600'
-      window.open(url, windowName, windowSize)
+      // const url = `https://crypto.sardine.ai/?client_token=${token}&show_features=true`
+      // const windowName = 'SardineCrypto'
+      // const windowSize = 'width=800,height=600'
+      // window.open(url, windowName, windowSize)
 
       setNavigation({
         location: 'transaction-pending',
