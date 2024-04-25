@@ -159,45 +159,77 @@ export const fetchContractInfo = async ({ chainID, contractAddress }: GetContrac
   return response.contractInfo
 }
 
-export const fetchSardineClientToken = async (): Promise<string> => {
-  const { apiClient } = getNetworkConfigAndClients(1)
-  const res = await apiClient.getSardineNFTCheckoutToken()
-
-  return res.token
+export interface FetchSardineClientTokenReturn {
+  token: string,
+  orderId: string,
 }
 
-export const createSardineOrder = async (order: SardineCheckout, authToken: string, tokenMetadata?: TokenMetadata): Promise<any> => {
-  const response = await fetch('https://api.sardine.ai/v1/auth/client-tokens', {
+export const fetchSardineClientToken = async (order: SardineCheckout, tokenMetadata?: TokenMetadata): Promise<FetchSardineClientTokenReturn> => {
+  const { apiClient } = getNetworkConfigAndClients(1)
+
+  const randomNumber = Math.floor(Math.random() * 1000000)
+  const timestamp = new Date().getTime()
+  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks[order.chainId as ChainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`
+
+  const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || undefined
+
+  const res = await fetch('https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Basic ${authToken}`
+      'X-Access-Key': `${projectAccessKey || ''}`
     },
-    body: JSON.stringify({
-      referenceId: 'test-0.24678085734dwedwedwed0dwedwedwed4dweddweddwedwedwfwrferfwedwed6884', // change or remove reference id?
-      expiresIn: 3600,
-      paymentMethodTypeConfig: {
-        enabled: ['us_debit', 'us_credit', 'international_debit', 'international_credit', 'ach'],
-        default: order.defaultPaymentMethodType
-      },
-      nft: {
-        name: tokenMetadata?.name || 'Unknown',
-        imageUrl: tokenMetadata?.image || '',
-        network: networks[order.chainId as ChainId].name,
-        recipientAddress: order.recipientAddress,
-        platform: 'horizon',
-        blockchainNftId: order.blockchainNftId,
-        contractAddress: order.contractAddress,
-        executionType: 'smart_contract',
-        quantity: Number(order.quantity),
-        decimals: Number(order.decimals)
+    body: JSON.stringify(
+      { 
+        params: {
+          referenceId,
+          expiresIn: 3600,
+          paymentMethodTypeConfig: {
+            enabled: ['us_debit', 'us_credit', 'international_debit', 'international_credit', 'ach'],
+            default: order.defaultPaymentMethodType
+          },
+          name: tokenMetadata?.name || 'Unknown',
+          imageUrl: tokenMetadata?.image || '',
+          network: networks[order.chainId as ChainId].name,
+          recipientAddress: order.recipientAddress,
+          platform: 'horizon',
+          blockchainNftId: order.blockchainNftId,
+          contractAddress: order.contractAddress,
+          executionType: 'smart_contract',
+          quantity: Number(order.quantity),
+          decimals: Number(order.decimals)
+        }
       }
-    })
+    )
   })
 
-  const json = await response.json()
+  const { orderId, token } = await res.json()
 
-  return json
+  // const res = await apiClient.getSardineNFTCheckoutToken({
+  //   referenceId,
+  //   expiresIn: 3600,
+  //   paymentMethodTypeConfig: {
+  //     enabled: ['us_debit', 'us_credit', 'international_debit', 'international_credit', 'ach'],
+  //     default: order.defaultPaymentMethodType
+  //   },
+  //   nft: {
+  //     name: tokenMetadata?.name || 'Unknown',
+  //     imageUrl: tokenMetadata?.image || '',
+  //     network: networks[order.chainId as ChainId].name,
+  //     recipientAddress: order.recipientAddress,
+  //     platform: 'horizon',
+  //     blockchainNftId: order.blockchainNftId,
+  //     contractAddress: order.contractAddress,
+  //     executionType: 'smart_contract',
+  //     quantity: Number(order.quantity),
+  //     decimals: Number(order.decimals)
+  //   }
+  // })
+
+  return ({
+    token,
+    orderId,
+  })
 }
 
 export const fetchSardineOrderStatus = async (authToken: string, orderId: string) => {

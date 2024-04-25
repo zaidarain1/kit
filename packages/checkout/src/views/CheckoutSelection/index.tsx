@@ -14,7 +14,7 @@ import { HEADER_HEIGHT } from '../../constants'
 import { useNavigation, useCheckoutModal, useBalances, useContractInfo, useTokenMetadata } from '../../hooks'
 import { compareAddress, formatDisplay } from '../../utils'
 import * as styles from './styles.css'
-import { createSardineOrder, fetchSardineClientToken, fetchSardineOrderStatus } from '../../api'
+import { fetchSardineClientToken, fetchSardineOrderStatus } from '../../api'
 
 export const CheckoutSelection = () => {
   const { chains } = useConfig()
@@ -67,24 +67,18 @@ export const CheckoutSelection = () => {
   const triggerSardineTransaction = async () => {
     console.log('trigger sardine transaction')
 
-    console.log('fetching token')
-    const token = await fetchSardineClientToken()
-    console.log('client token', token)
-
     if (settings?.sardineCheckout) {
-      const response = await createSardineOrder(settings.sardineCheckout, token, tokenMetadata)
+      const { token, orderId } = await fetchSardineClientToken(settings.sardineCheckout, tokenMetadata)
 
-      if (response.clientToken) {
-        const url = `https://crypto.sardine.ai/?client_token=${response.clientToken}&show_features=true`
-        const windowName = 'SardineCrypto'
-        const windowSize = 'width=800,height=600'
-        window.open(url, windowName, windowSize)
+      const url = `https://crypto.sardine.ai/?client_token=${token}&show_features=true`
+      const windowName = 'SardineCrypto'
+      const windowSize = 'width=800,height=600'
+      window.open(url, windowName, windowSize)
 
-        setNavigation({
-          location: 'transaction-pending',
-          params: { orderId: response.orderId, authToken: token }
-        })
-      }
+      setNavigation({
+        location: 'transaction-pending',
+        params: { orderId, authToken: token }
+      })
     }
   }
 
