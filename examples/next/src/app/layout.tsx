@@ -4,6 +4,7 @@ import './globals.css'
 import '@0xsequence/design-system/styles.css'
 
 import { Web3Provider } from './Web3Provider'
+import { ThemeProvider } from '@0xsequence/design-system'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Web3Provider>{children}</Web3Provider>
+        <ThemeProvider theme="dark">
+          <Web3Provider>{children}</Web3Provider>
+        </ThemeProvider>
       </body>
     </html>
   )
