@@ -41,10 +41,9 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
   }
 
   type Provider = sequence.provider.SequenceProvider
-  type Properties = {}
+  type Properties = { params: BaseSequenceConnectorOptions }
   type StorageItem = {
     [LocalStorageKey.EthAuthProof]: string
-    [LocalStorageKey.ProjectAccessKey]: string
     [LocalStorageKey.Theme]: string
     [LocalStorageKey.EthAuthSettings]: string
   }
@@ -53,12 +52,9 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
     id: 'sequence',
     name: 'Sequence',
     type: sequenceWallet.type,
+    params,
 
     async setup() {
-      if (projectAccessKey) {
-        await config.storage?.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey)
-      }
-
       const provider = await this.getProvider()
       provider.on('chainChanged', (chainIdHex: string) => {
         config.emitter.emit('change', { chainId: normalizeChainId(chainIdHex) })

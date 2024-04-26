@@ -20,7 +20,11 @@ sequenceWaasWallet.type = 'sequence-waas' as const
 
 export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
   type Provider = SequenceWaasProvider
-  type Properties = { sequenceWaas: SequenceWaaS; sequenceWaasProvider: SequenceWaasProvider }
+  type Properties = {
+    sequenceWaas: SequenceWaaS
+    sequenceWaasProvider: SequenceWaasProvider
+    params: BaseSequenceWaasConnectorOptions
+  }
   type StorageItem = {
     [LocalStorageKey.WaasSessionHash]: string
     [LocalStorageKey.WaasActiveLoginType]: string
@@ -65,6 +69,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
     type: sequenceWaasWallet.type,
     sequenceWaas,
     sequenceWaasProvider,
+    params,
 
     async setup() {
       if (params.googleClientId) {
