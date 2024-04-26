@@ -252,7 +252,7 @@ const decodeTxnData = async (txns: commons.transaction.TransactionEncoded[]): Pr
 
     return createTxnData('', call, 0, callData)
   } catch (err) {
-    throw new Error(err)
+    throw err
   }
 }
 
