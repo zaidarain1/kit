@@ -164,16 +164,19 @@ export interface FetchSardineClientTokenReturn {
   orderId: string,
 }
 
-export const fetchSardineClientToken = async (order: SardineCheckout, tokenMetadata?: TokenMetadata): Promise<FetchSardineClientTokenReturn> => {
+export const fetchSardineClientToken = async (order: SardineCheckout, isDev: boolean, tokenMetadata?: TokenMetadata): Promise<FetchSardineClientTokenReturn> => {
   const { apiClient } = getNetworkConfigAndClients(1)
 
   const randomNumber = Math.floor(Math.random() * 1000000)
   const timestamp = new Date().getTime()
   const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks[order.chainId as ChainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`
 
-  const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || undefined
 
-  const res = await fetch('https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken', {
+  // Test credentials: https://docs.sardine.ai/docs/integrate-payments/nft-checkout-testing-credentials
+  const projectAccessKey = isDev ? '17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA' : localStorage.getItem(LocalStorageKey.ProjectAccessKey) || undefined
+  const url = isDev ? 'https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutToken' : 'https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken'
+
+  const res = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -232,13 +235,20 @@ export const fetchSardineClientToken = async (order: SardineCheckout, tokenMetad
   })
 }
 
-export const fetchSardineOrderStatus = async (authToken: string, orderId: string) => {
-  const response = await fetch(`https://api.sardine.ai/v1/orders/${orderId}`, {
-    method: 'GET',
+export const fetchSardineOrderStatus = async (orderId: string, isDev: boolean) => {
+  // Test credentials: https://docs.sardine.ai/docs/integrate-payments/nft-checkout-testing-credentials
+  const projectAccessKey = isDev ? '17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA' :  localStorage.getItem(LocalStorageKey.ProjectAccessKey) || undefined
+  const url = isDev ? 'https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutOrderStatus' : 'https://api.sequence.app/rpc/API/GetSardineNFTCheckoutOrderStatus'
+
+  const response = await fetch(url, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Basic ${authToken}`
-    }
+      'X-Access-Key': `${projectAccessKey}`
+    },
+    body: JSON.stringify({
+      orderId,
+    })
   })
 
   const json = await response.json()

@@ -9,6 +9,7 @@ const POLLING_TIME = 10 * 1000
 
 export const PendingTransaction = () => {
   const nav = useNavigation()
+  const { settings } = useCheckoutModal()
   const {
     params: { authToken, orderId }
   } = nav.navigation as TransactionPendingNavigation
@@ -16,13 +17,15 @@ export const PendingTransaction = () => {
 
   console.log('orderId:', orderId)
 
-  const pollForOrderStatus = async (authToken: string) => {
+  const pollForOrderStatus = async () => {
     try {
       console.log('Polling for transaction status')
-      const pollResponse = await fetchSardineOrderStatus(authToken, orderId)
-      const status = pollResponse.status
-      const transactionHash = pollResponse.data.transactionHash
-      const network = pollResponse.data.network
+      const isDev = settings?.sardineCheckout?.isDev || false
+
+      const pollResponse = await fetchSardineOrderStatus(orderId, isDev)
+      const status = pollResponse.resp.status
+      const transactionHash = pollResponse.resp?.data?.transactionHash
+      const network = pollResponse.resp?.data?.network
 
       console.log('transaction status poll response:', status)
 
@@ -64,7 +67,7 @@ export const PendingTransaction = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      pollForOrderStatus(authToken)
+      pollForOrderStatus()
     }, POLLING_TIME)
 
     return () => {
@@ -96,7 +99,8 @@ export const PendingTransaction = () => {
   return (
     <Box alignItems="center" justifyContent="center" style={{ height: '620px' }}>
       <iframe
-        src={`https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`}
+        src={`https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true`}
+        // src={`https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`}
         style={{
           maxHeight: '500px',
           height: '100%',

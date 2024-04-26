@@ -68,7 +68,8 @@ export const CheckoutSelection = () => {
     console.log('trigger sardine transaction')
 
     if (settings?.sardineCheckout) {
-      const { token, orderId } = await fetchSardineClientToken(settings.sardineCheckout, tokenMetadata)
+      const isDev = settings?.sardineCheckout?.isDev || false
+      const { token, orderId } = await fetchSardineClientToken(settings.sardineCheckout, isDev, tokenMetadata)
 
       // const url = `https://crypto.sardine.ai/?client_token=${token}&show_features=true`
       // const windowName = 'SardineCrypto'

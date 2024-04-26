@@ -23,6 +23,7 @@ export interface SardineCheckout {
   decimals?: number
   onSuccess?: (transactionHash: string, settings: SardineCheckout) => void
   onError?: (error: Error, settings: SardineCheckout) => void
+  isDev?: boolean
 }
 
 export interface CheckoutSettings {

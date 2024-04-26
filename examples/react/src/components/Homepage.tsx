@@ -337,7 +337,7 @@ export const Homepage = () => {
   const onCheckoutInfoConfirm = () => {
     setIsCheckoutInfoModalOpen(false)
     if (checkoutOrderId !== '' && checkoutTokenContractAddress !== '' && checkoutTokenId !== '') {
-      const checkoutSettings = getCheckoutSettings(checkoutOrderId, address, checkoutTokenContractAddress, checkoutTokenId, 137, 1)
+      const checkoutSettings = getCheckoutSettings(checkoutOrderId, address, checkoutTokenContractAddress, checkoutTokenId, 137, 1, true)
       triggerCheckout(checkoutSettings)
     }
   }

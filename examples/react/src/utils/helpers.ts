@@ -25,6 +25,7 @@ export const getCheckoutSettings = (
   tokenId: string,
   chainId: number,
   quantity: number,
+  isDev?: boolean
 ) => {
   const checkoutSettings: CheckoutSettings = {
     sardineCheckout: {
@@ -34,7 +35,8 @@ export const getCheckoutSettings = (
       contractAddress: '0xB537a160472183f2150d42EB1c3DD6684A55f74c',
       blockchainNftId: blockchainNftId,
       recipientAddress: recipientAddress,
-      quantity
+      quantity,
+      isDev
     },
     orderSummaryItems: [
       {
