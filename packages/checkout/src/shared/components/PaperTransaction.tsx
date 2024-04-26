@@ -30,11 +30,11 @@ export const PaperTransaction = ({ settings }: PaperTransactionProps) => {
     setPaperSecretLoading(true)
     try {
       if (!email) {
-        throw 'No email address found'
+        throw new Error('No email address found')
       }
 
       if (!settings.creditCardCheckout) {
-        throw 'No credit card checkout settings found'
+        throw new Error('No credit card checkout settings found')
       }
 
       const secret = await fetchPaperSecret({
@@ -48,7 +48,7 @@ export const PaperTransaction = ({ settings }: PaperTransactionProps) => {
       setNavigation({
         location: 'transaction-error',
         params: {
-          error: e
+          error: e as Error
         }
       })
     }
