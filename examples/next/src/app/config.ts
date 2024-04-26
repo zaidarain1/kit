@@ -7,7 +7,7 @@ import { Transport, zeroAddress } from 'viem'
 
 export type ConnectionMode = 'waas' | 'universal'
 
-export const connectionMode = 'universal' as ConnectionMode
+export const connectionMode = 'waas' as ConnectionMode
 export const isDebugMode = false
 
 const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
@@ -32,7 +32,7 @@ chains.forEach(chain => {
 const waasConfigKey = 'eyJwcm9qZWN0SWQiOjE2ODE1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
 const googleClientId = '970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com'
 const appleClientId = 'com.horizon.sequence.waas'
-const appleRedirectURI = typeof window !== 'undefined' ? 'https://' + window.location.host : undefined
+// const appleRedirectURI = typeof window !== 'undefined' ? 'https://' + window.location.host : undefined
 
 const getWaasConnectors = () => {
   const connectors = [
@@ -42,10 +42,10 @@ const getWaasConnectors = () => {
       waasConfigKey,
       googleClientId,
       appleClientId,
-      appleRedirectURI,
+      // appleRedirectURI,
       appName: 'Kit Demo',
-      projectAccessKey,
-      enableConfirmationModal: localStorage.getItem('confirmationEnabled') === 'true'
+      projectAccessKey
+      // enableConfirmationModal: localStorage.getItem('confirmationEnabled') === 'true'
     }),
     ...(isDebugMode
       ? getKitConnectWallets(projectAccessKey, [
@@ -81,7 +81,8 @@ const getUniversalConnectors = () => {
 export const wagmiConfig = createConfig({
   transports,
   chains,
-  connectors: connectionMode === 'waas' ? getWaasConnectors() : getUniversalConnectors()
+  connectors: connectionMode === 'waas' ? getWaasConnectors() : getUniversalConnectors(),
+  ssr: true
 })
 
 export const kitConfig: KitConfig = {
