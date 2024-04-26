@@ -32,7 +32,7 @@ chains.forEach(chain => {
 const waasConfigKey = 'eyJwcm9qZWN0SWQiOjE2ODE1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0='
 const googleClientId = '970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com'
 const appleClientId = 'com.horizon.sequence.waas'
-// const appleRedirectURI = typeof window !== 'undefined' ? 'https://' + window.location.host : undefined
+const appleRedirectURI = 'http://localhost:3000'
 
 const getWaasConnectors = () => {
   const connectors = [
@@ -42,7 +42,7 @@ const getWaasConnectors = () => {
       waasConfigKey,
       googleClientId,
       appleClientId,
-      // appleRedirectURI,
+      appleRedirectURI,
       appName: 'Kit Demo',
       projectAccessKey
       // enableConfirmationModal: localStorage.getItem('confirmationEnabled') === 'true'

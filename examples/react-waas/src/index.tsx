@@ -51,6 +51,7 @@ const config = createConfig({
 })
 
 const kitConfig: KitConfig = {
+  projectAccessKey,
   defaultTheme: 'dark',
   signIn: {
     projectName: 'Kit Demo'
