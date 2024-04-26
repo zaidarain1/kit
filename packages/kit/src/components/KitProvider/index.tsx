@@ -4,7 +4,7 @@ import { sequence } from '0xsequence'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { Box, Button, Card, Collapsible, Modal, Text, ThemeProvider } from '@0xsequence/design-system'
 import { AnimatePresence } from 'framer-motion'
-import { Connector, useAccount, useConnections } from 'wagmi'
+import { Connector, useAccount, useConfig, useConnections } from 'wagmi'
 import { ethers } from 'ethers'
 
 import '@0xsequence/design-system/styles.css'
@@ -19,7 +19,7 @@ import {
   WalletConfigContextProvider,
   AnalyticsContextProvider
 } from '../../contexts'
-import { ModalPosition, getModalPositionCss } from '../../utils'
+import { ExtendedConnector, ModalPosition, getModalPositionCss } from '../../utils'
 
 import * as sharedStyles from '../styles.css'
 
@@ -103,14 +103,13 @@ export const KitProvider = (props: KitConnectProviderProps) => {
 
   // const googleClientId = localStorage.getItem(LocalStorageKey.WaasGoogleClientID) || ''
 
-  const [googleClientId, setGoogleClientId] = useState<string>('')
+  const wagmiConfig = useConfig()
+  const googleWaasConnector = wagmiConfig.connectors.find(
+    c => c.id === 'sequence-waas' && (c as ExtendedConnector)._wallet.id === 'google-waas'
+  ) as ExtendedConnector | undefined
+  const googleClientId: string = (googleWaasConnector as any)?.params?.googleClientId || ''
 
-  useEffect(() => {
-    // TODO: this is silly, do not use localStorage, instead get them from the runtime
-    // config object.
-    const googleClientId = localStorage.getItem(LocalStorageKey.WaasGoogleClientID) || ''
-    setGoogleClientId(googleClientId)
-  }, [])
+  console.log('googleClientId', googleClientId)
 
   const setupAnalytics = (projectAccessKey: string) => {
     const s = sequence.initWallet(projectAccessKey)
