@@ -7,7 +7,7 @@ import { Transport, zeroAddress } from 'viem'
 
 export type ConnectionMode = 'waas' | 'universal'
 
-const connectionMode: ConnectionMode = 'universal'
+const connectionMode = 'universal' as ConnectionMode
 const isDebugMode = false
 
 const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
@@ -81,7 +81,7 @@ const getUniversalConnectors = () => {
 export const wagmiConfig = createConfig({
   transports,
   chains,
-  connectors: (connectionMode as ConnectionMode) === 'waas' ? getWaasConnectors() : getUniversalConnectors()
+  connectors: connectionMode === 'waas' ? getWaasConnectors() : getUniversalConnectors()
 })
 
 export const kitConfig: KitConfig = {
