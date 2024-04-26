@@ -106,6 +106,7 @@ export const Footer = () => {
                 style={{
                   filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
                 }}
+                disableAnimation
               />
             </Box>
           )

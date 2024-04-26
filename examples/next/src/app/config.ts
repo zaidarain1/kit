@@ -7,8 +7,8 @@ import { Transport, zeroAddress } from 'viem'
 
 export type ConnectionMode = 'waas' | 'universal'
 
-const connectionMode = 'universal' as ConnectionMode
-const isDebugMode = false
+export const connectionMode = 'universal' as ConnectionMode
+export const isDebugMode = false
 
 const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
 

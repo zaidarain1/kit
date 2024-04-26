@@ -6,7 +6,7 @@ export const Header = () => {
   const { address, connector } = useAccount()
 
   return (
-    <Box padding="5" justifyContent="space-between">
+    <Box position="fixed" width="full" padding="5" justifyContent="space-between">
       <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
         <Image style={{ width: '36px' }} src="kit-logo.svg" alt="Sequence kit" />
         <Image
