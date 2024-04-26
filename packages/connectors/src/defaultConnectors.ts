@@ -100,7 +100,7 @@ export const getDefaultWaasConnectors = ({
   enableConfirmationModal
 }: GetDefaultWaasConnectors): CreateConnectorFn[] => {
   const wallets: any[] = [
-    // emailWaas({ projectAccessKey, waasConfigKey, enableConfirmationModal, network: defaultChainId }),
+    emailWaas({ projectAccessKey, waasConfigKey, enableConfirmationModal, network: defaultChainId }),
     coinbaseWallet({
       appName
     }),
