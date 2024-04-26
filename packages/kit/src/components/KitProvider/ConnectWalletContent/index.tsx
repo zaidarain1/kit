@@ -266,7 +266,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                         <GoogleLogin
                           type="icon"
                           size="large"
-                          nonce={(storage?.getItem(LocalStorageKey.WaasSessionHash) as string) ?? undefined}
+                          nonce={JSON.parse(localStorage.getItem('wagmi.' + LocalStorageKey.WaasSessionHash) ?? '') || undefined}
                           onSuccess={credentialResponse => {
                             if (credentialResponse.credential) {
                               storage?.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential)
@@ -284,16 +284,16 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                       <ConnectButton
                         connector={connector}
                         onConnect={() => {
-                          const appleClientId = (storage?.getItem(LocalStorageKey.WaasAppleClientID) as string) || ''
-                          const appleRedirectUri = (storage?.getItem(LocalStorageKey.WaasAppleRedirectURI) as string) || ''
-                          const sessionHash = (storage?.getItem(LocalStorageKey.WaasSessionHash) as string) || ''
+                          const appleClientId = localStorage.getItem('wagmi.' + LocalStorageKey.WaasAppleClientID) || ''
+                          const appleRedirectUri = localStorage.getItem('wagmi.' + LocalStorageKey.WaasAppleRedirectURI) || ''
+                          const sessionHash = localStorage.getItem('wagmi.' + LocalStorageKey.WaasSessionHash) || ''
                           appleAuthHelpers.signIn({
                             authOptions: {
-                              clientId: appleClientId,
+                              clientId: JSON.parse(appleClientId),
                               scope: 'openid email',
-                              redirectURI: appleRedirectUri,
+                              redirectURI: JSON.parse(appleRedirectUri),
                               usePopup: true,
-                              nonce: sessionHash
+                              nonce: JSON.parse(sessionHash)
                             },
                             onSuccess: (response: any) => {
                               if (response.authorization?.id_token) {

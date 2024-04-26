@@ -12,7 +12,7 @@ import { EthAuthSettings } from '../components/KitProvider'
 export const signEthAuthProof = async (walletClient: GetWalletClientData<any, any>): Promise<ETHAuthProof> => {
   const wagmiConfig = useConfig()
   const storage = wagmiConfig.storage as Storage<{ [key: string]: string }>
-  const proofInformation = storage?.getItem(LocalStorageKey.EthAuthProof) as string | undefined
+  const proofInformation = localStorage.getItem('wagmi.' + LocalStorageKey.EthAuthProof)
   // if proof information was generated and saved upon wallet connection, use that
   if (proofInformation) {
     const proof = JSON.parse(proofInformation) as ETHAuthProof
@@ -20,7 +20,7 @@ export const signEthAuthProof = async (walletClient: GetWalletClientData<any, an
   }
 
   // generate a new proof
-  const proofSettingsFromStorage = storage?.getItem(LocalStorageKey.EthAuthSettings) as string | undefined
+  const proofSettingsFromStorage = localStorage.getItem('wagmi.' + LocalStorageKey.EthAuthSettings) as string | undefined
 
   if (!proofSettingsFromStorage) {
     throw new Error('No ETHAuth settings found')
