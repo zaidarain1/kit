@@ -66,12 +66,12 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
     },
 
     async connect() {
-      const provider = (await this.getProvider()) as sequence.provider.SequenceProvider
+      const provider = await this.getProvider()
 
       if (!provider.isConnected()) {
         const localStorageTheme = await config.storage?.getItem(LocalStorageKey.Theme)
         const ethAuthSettingsRaw = await config.storage?.getItem(LocalStorageKey.EthAuthSettings)
-        const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : ({} as EthAuthSettings)
+        const parseEthAuthSettings = (ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {}) as EthAuthSettings
 
         const connectOptionsWithTheme = {
           authorize: true,
@@ -119,18 +119,18 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
     async getAccounts() {
       const provider = await this.getProvider()
-
-      const account = getAddress((await provider.getSigner().getAddress()) as `0x${string}`)
+      const signer = provider.getSigner()
+      const account = getAddress(await signer.getAddress())
 
       return [account]
     },
 
-    async getProvider(): Promise<sequence.provider.SequenceProvider> {
+    async getProvider() {
       try {
         const provider = sequence.getWallet()
 
         return provider
-      } catch (e) {
+      } catch (err) {
         if (!projectAccessKey) {
           throw 'projectAccessKey not found'
         }
@@ -144,7 +144,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
           analytics: false
         })
 
-        const chainId = await provider.getChainId()
+        const chainId = provider.getChainId()
         config.emitter.emit('change', { chainId: normalizeChainId(chainId) })
 
         return provider
@@ -172,9 +172,9 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
     },
 
     async getChainId() {
-      const provider = (await this.getProvider()) as sequence.provider.SequenceProvider
-
+      const provider = await this.getProvider()
       const chainId = provider.getChainId()
+
       return chainId
     },
 
