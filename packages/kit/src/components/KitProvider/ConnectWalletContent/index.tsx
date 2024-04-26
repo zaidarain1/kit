@@ -226,8 +226,16 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
 
       <Box marginTop="6">
         {emailConnector && showEmailInput && (
-          <form onSubmit={onConnectInlineEmail}>
-            <TextInput onChange={onChangeEmail} value={email} name="email" placeholder="Enter email" data-1p-ignore />
+          <Box as="form" onSubmit={onConnectInlineEmail}>
+            <Box style={{ width: 'calc(100% - 32px)' }}>
+              <TextInput
+                onChange={onChangeEmail}
+                value={email}
+                name="email"
+                placeholder="Enter email"
+                data-1p-ignore
+              />
+            </Box>
             <Box alignItems="center" justifyContent="center" marginTop="4">
               {!emailAuthInProgress && (
                 <Button
@@ -240,7 +248,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
               )}
               {emailAuthInProgress && <Spinner />}
             </Box>
-          </form>
+          </Box>
         )}
 
         {socialAuthConnectors.length > 0 && (

@@ -65,8 +65,8 @@ globalStyle(`${googleWaasButtonContainer}`, {
 export const digitInput = style([
   textVariants({ variant: 'large' }),
   {
-    height: '48px',
-    width: '40px',
+    height: '24px',
+    width: '20px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
