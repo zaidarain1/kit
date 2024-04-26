@@ -15,7 +15,7 @@ import {
   IconButton,
   Tooltip
 } from '@0xsequence/design-system'
-import { useConnect, useAccount, Connector } from 'wagmi'
+import { useConnect, useAccount, Connector, useConfig, Storage } from 'wagmi'
 import { EMAIL_CONNECTOR_LOCAL_STORAGE_KEY, LogoProps } from '@0xsequence/kit-connectors'
 import { GoogleLogin } from '@react-oauth/google'
 import { appleAuthHelpers, useScript } from 'react-apple-signin-auth'
@@ -42,6 +42,8 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   useScript(appleAuthHelpers.APPLE_SCRIPT_SRC)
 
   const { isConnected } = useAccount()
+  const wagmiConfig = useConfig()
+  const storage = wagmiConfig.storage as Storage<{ [string: string]: string }>
   const { config = {} } = props
   const { signIn = {} } = config as KitConfig
   const {
@@ -121,7 +123,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   } = useEmailAuth({
     connector: connectors.find(c => c._wallet.id === 'email-waas'),
     onSuccess: async idToken => {
-      localStorage.setItem(LocalStorageKey.WaasEmailIdToken, idToken)
+      storage?.setItem(LocalStorageKey.WaasEmailIdToken, idToken)
       if (emailConnector) {
         connect({ connector: emailConnector })
       }
@@ -264,10 +266,10 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                         <GoogleLogin
                           type="icon"
                           size="large"
-                          nonce={localStorage.getItem(LocalStorageKey.WaasSessionHash) ?? undefined}
+                          nonce={(storage?.getItem(LocalStorageKey.WaasSessionHash) as string) ?? undefined}
                           onSuccess={credentialResponse => {
                             if (credentialResponse.credential) {
-                              localStorage.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential)
+                              storage?.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential)
                               onConnect(connector)
                             }
                           }}
@@ -282,9 +284,9 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                       <ConnectButton
                         connector={connector}
                         onConnect={() => {
-                          const appleClientId = localStorage.getItem(LocalStorageKey.WaasAppleClientID) || ''
-                          const appleRedirectUri = localStorage.getItem(LocalStorageKey.WaasAppleRedirectURI) || ''
-                          const sessionHash = localStorage.getItem(LocalStorageKey.WaasSessionHash) || ''
+                          const appleClientId = (storage?.getItem(LocalStorageKey.WaasAppleClientID) as string) || ''
+                          const appleRedirectUri = (storage?.getItem(LocalStorageKey.WaasAppleRedirectURI) as string) || ''
+                          const sessionHash = (storage?.getItem(LocalStorageKey.WaasSessionHash) as string) || ''
                           appleAuthHelpers.signIn({
                             authOptions: {
                               clientId: appleClientId,
@@ -295,7 +297,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                             },
                             onSuccess: (response: any) => {
                               if (response.authorization?.id_token) {
-                                localStorage.setItem(LocalStorageKey.WaasAppleIdToken, response.authorization.id_token)
+                                storage?.setItem(LocalStorageKey.WaasAppleIdToken, response.authorization.id_token)
                                 onConnect(connector)
                               } else {
                                 console.log('Apple login error: No id_token found')

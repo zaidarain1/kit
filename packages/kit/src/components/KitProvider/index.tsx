@@ -96,20 +96,19 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   const [analytics, setAnalytics] = useState<sequence.SequenceClient['analytics']>()
   const { address, isConnected } = useAccount()
   const connections = useConnections()
-
+  const wagmiConfig = useConfig()
   const waasConnector: Connector | undefined = connections.find(c => c.connector.id.includes('waas'))?.connector
 
   const [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest] = useWaasConfirmationHandler(waasConnector)
 
-  // const googleClientId = localStorage.getItem(LocalStorageKey.WaasGoogleClientID) || ''
-
-  const wagmiConfig = useConfig()
   const googleWaasConnector = wagmiConfig.connectors.find(
     c => c.id === 'sequence-waas' && (c as ExtendedConnector)._wallet.id === 'google-waas'
   ) as ExtendedConnector | undefined
   const googleClientId: string = (googleWaasConnector as any)?.params?.googleClientId || ''
 
-  console.log('googleClientId', googleClientId)
+  useEffect(() => {
+    localStorage.setItem(LocalStorageKey.ProjectAccessKey, config.projectAccessKey)
+  }, [])
 
   const setupAnalytics = (projectAccessKey: string) => {
     const s = sequence.initWallet(projectAccessKey)
