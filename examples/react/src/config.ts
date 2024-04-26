@@ -90,6 +90,7 @@ export const wagmiConfig = createConfig({
 })
 
 export const kitConfig: KitConfig = {
+  projectAccessKey,
   defaultTheme: 'dark',
   signIn: {
     projectName: 'Kit Demo',
