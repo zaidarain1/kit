@@ -16,7 +16,7 @@
     "@0xsequence/kit-checkout": "workspace:*",
     "@0xsequence/kit-connectors": "workspace:*",
     "@0xsequence/kit-wallet": "workspace:*",
-    "@0xsequence/network": "^1.9.24",
+    "@0xsequence/network": "0.0.0-20240429151738",
     "@tanstack/react-query": "^5.32.0",
     "@vanilla-extract/css": "^1.14.2",
     "framer-motion": "^8.5.2",

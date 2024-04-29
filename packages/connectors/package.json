@@ -13,9 +13,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/provider": "^1.9.24",
-    "@0xsequence/waas": "^1.9.24",
-    "@0xsequence/waas-ethers": "^1.9.24",
+    "@0xsequence/provider": "0.0.0-20240429151738",
+    "@0xsequence/waas": "0.0.0-20240429151738",
+    "@0xsequence/waas-ethers": "0.0.0-20240429151738",
     "@react-oauth/google": "^0.11.1",
     "react-apple-signin-auth": "^1.1.0"
   },
