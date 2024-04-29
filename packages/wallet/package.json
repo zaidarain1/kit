@@ -13,11 +13,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "0xsequence": "0.0.0-20240429151738",
-    "@0xsequence/api": "0.0.0-20240429151738",
-    "@0xsequence/indexer": "0.0.0-20240429151738",
-    "@0xsequence/metadata": "0.0.0-20240429151738",
-    "@0xsequence/network": "0.0.0-20240429151738",
+    "0xsequence": "0.0.0-20240429153138",
+    "@0xsequence/api": "0.0.0-20240429153138",
+    "@0xsequence/indexer": "0.0.0-20240429153138",
+    "@0xsequence/metadata": "0.0.0-20240429153138",
+    "@0xsequence/network": "0.0.0-20240429153138",
     "@radix-ui/react-popover": "^1.0.6",
     "@tanstack/react-query": "^5.32.0",
     "clsx": "^2.0.0",
