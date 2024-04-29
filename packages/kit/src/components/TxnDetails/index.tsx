@@ -11,6 +11,7 @@ import { commons } from '@0xsequence/core'
 import { DecodingType, TransferProps, AwardItemProps, decodeTransactions } from '../../utils/txnDecoding'
 import { ContractType, TokenBalance } from '@0xsequence/indexer'
 import { getAddress } from 'ethers/lib/utils'
+import { useAPIClient } from '../../hooks'
 
 interface TxnDetailsProps {
   address: string
@@ -38,7 +39,7 @@ export const TxnDetailsSkeleton = () => {
 
 // @ts-ignore-next-line
 export const TxnDetails = ({ address, txs, chainId }: TxnDetailsProps) => {
-  const { chains } = useConfig()
+  const apiClient = useAPIClient()
   // const { fiatCurrency } = useSettings()
 
   const [decodingType, setDecodingType] = useState<DecodingType | undefined>(undefined)
@@ -46,11 +47,14 @@ export const TxnDetails = ({ address, txs, chainId }: TxnDetailsProps) => {
   const [awardItemProps, setAwardItemProps] = useState<AwardItemProps[]>([])
 
   const getTxnProps = async () => {
-    const decodedTxnDatas = await decodeTransactions(address, txs)
+    const decodedTxnDatas = await decodeTransactions(apiClient, address, txs)
+
     setDecodingType(decodedTxnDatas[0].type)
+
     if (decodedTxnDatas[0].type === 'transfer') {
       setTransferProps(decodedTxnDatas as TransferProps[])
     }
+
     if (decodedTxnDatas[0].type === 'awardItem') {
       setAwardItemProps(decodedTxnDatas as AwardItemProps[])
     }

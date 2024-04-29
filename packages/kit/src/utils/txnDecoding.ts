@@ -1,8 +1,7 @@
-import { ContractCall } from '@0xsequence/api'
+import { ContractCall, SequenceAPIClient } from '@0xsequence/api'
 import { commons } from '@0xsequence/core'
 import { ContractType, TxnTransferType } from '@0xsequence/indexer'
 import { BigNumber, BigNumberish, BytesLike, ethers } from 'ethers'
-import { getNetworkConfigAndClients } from './clients'
 import { getAddress } from 'ethers/lib/utils'
 
 interface TransactionEncodedWithCall extends commons.transaction.TransactionEncoded {
@@ -242,12 +241,11 @@ type DecodedTxnData =
   | ERC1155SafeTransferFromTxnData
   | AwardItemTxnData
 
-const decodeTxnData = async (txns: commons.transaction.TransactionEncoded[]): Promise<TxnData> => {
+const decodeTxnData = async (apiClient: SequenceAPIClient, txns: commons.transaction.TransactionEncoded[]): Promise<TxnData> => {
   const mainModule = new ethers.utils.Interface(mainModuleAbi)
   const callData = mainModule.encodeFunctionData('selfExecute', [txns])
 
   try {
-    const { apiClient } = getNetworkConfigAndClients(1) // chainId passed here doesn't matter since we get apiClient
     const { call } = await apiClient.decodeContractCall({ callData })
 
     return createTxnData('', call, 0, callData)
@@ -257,11 +255,12 @@ const decodeTxnData = async (txns: commons.transaction.TransactionEncoded[]): Pr
 }
 
 export const decodeTransactions = async (
+  apiClient: SequenceAPIClient,
   accountAddress: string,
   txns: commons.transaction.Transaction[]
 ): Promise<TxnProps[]> => {
   const encodedTxns = encodeTransactions(txns)
-  const decodedTxnDatas = (await decodeTxnData(encodedTxns)).objs as DecodedTxnData[]
+  const decodedTxnDatas = (await decodeTxnData(apiClient, encodedTxns)).objs as DecodedTxnData[]
 
   const from = getAddress(accountAddress)
 
