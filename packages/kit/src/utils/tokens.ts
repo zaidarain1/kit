@@ -1,3 +1,4 @@
+import { ChainId } from '@0xsequence/network'
 import { Chain } from 'wagmi/chains'
 
 export interface NativeTokenInfo {
@@ -14,7 +15,7 @@ interface TokenInfos {
 }
 
 export const nativeTokenInfos: TokenInfos = {
-  1: {
+  [ChainId.MAINNET]: {
     name: 'Ethereum',
     symbol: 'ETH',
     logoURI: 'https://assets.coingecko.com/coins/images/279/thumb/ethereum.png',
@@ -22,7 +23,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'Etherscan',
     blockExplorerUrl: 'https://etherscan.io'
   },
-  5: {
+  [ChainId.GOERLI]: {
     name: 'Goerli',
     symbol: 'ETH',
     decimals: 18,
@@ -30,7 +31,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'Etherscan (Goerli)',
     blockExplorerUrl: 'https://goerli.etherscan.io'
   },
-  10: {
+  [ChainId.OPTIMISM]: {
     name: 'Optimism',
     symbol: 'OP',
     logoURI: 'https://assets.coingecko.com/coins/images/25244/small/Optimism.png',
@@ -38,7 +39,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'Etherscan (Optimism)',
     blockExplorerUrl: 'https://optimistic.etherscan.io'
   },
-  56: {
+  [ChainId.BSC]: {
     name: 'BNB',
     symbol: 'BNB',
     logoURI: 'https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png',
@@ -46,7 +47,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'BscScan',
     blockExplorerUrl: 'https://bscscan.com'
   },
-  100: {
+  [ChainId.GNOSIS]: {
     name: 'Gnosis',
     symbol: 'GNO',
     logoURI: 'https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png',
@@ -54,7 +55,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerUrl: 'https://gnosisscan.io',
     blockExplorerName: 'Gnosis Scan'
   },
-  137: {
+  [ChainId.POLYGON]: {
     name: 'Polygon',
     symbol: 'MATIC',
     logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
@@ -62,7 +63,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'Polyscan',
     blockExplorerUrl: 'https://polygonscan.com'
   },
-  1101: {
+  [ChainId.POLYGON_ZKEVM]: {
     name: 'Polygon zkEVM',
     symbol: 'ETH',
     logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
@@ -70,7 +71,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'PolygonScan',
     blockExplorerUrl: 'https://zkevm.polygonscan.com'
   },
-  42161: {
+  [ChainId.ARBITRUM]: {
     name: 'Arbitrum',
     symbol: 'ARB',
     logoURI: 'https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png',
@@ -78,7 +79,7 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'Arbiscan',
     blockExplorerUrl: 'https://arbiscan.io'
   },
-  43114: {
+  [ChainId.AVALANCHE]: {
     name: 'Avalanche',
     symbol: 'AVAX',
     logoURI: 'https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png',
@@ -86,13 +87,21 @@ export const nativeTokenInfos: TokenInfos = {
     blockExplorerName: 'Snowtrace',
     blockExplorerUrl: 'https://snowtrace.io'
   },
-  80001: {
+  [ChainId.POLYGON_MUMBAI]: {
     name: 'Mumbai',
     symbol: 'MATIC',
     logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
     decimals: 18,
     blockExplorerName: 'Polyscan (Mumbai)',
     blockExplorerUrl: 'https://mumbai.polygonscan.com'
+  },
+  [ChainId.POLYGON_AMOY]: {
+    name: 'Amoy',
+    symbol: 'MATIC',
+    logoURI: 'https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png',
+    decimals: 18,
+    blockExplorerName: 'Polyscan (Amoy)',
+    blockExplorerUrl: 'https://amoy.polygonscan.com'
   }
 }
 
