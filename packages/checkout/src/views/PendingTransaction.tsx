@@ -17,6 +17,11 @@ export const PendingTransaction = () => {
 
   console.log('orderId:', orderId)
 
+  const isDev = settings?.sardineCheckout?.isDev || false
+  const url = isDev
+    ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true`
+    : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`
+
   const pollForOrderStatus = async () => {
     try {
       console.log('Polling for transaction status')
@@ -99,12 +104,12 @@ export const PendingTransaction = () => {
   return (
     <Box alignItems="center" justifyContent="center" style={{ height: '620px' }}>
       <iframe
-        src={`https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true`}
-        // src={`https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`}
+        src={url}
         style={{
           maxHeight: '500px',
           height: '100%',
-          width: '350px'
+          maxWidth: '380px',
+          width: '100%'
         }}
       />
     </Box>
