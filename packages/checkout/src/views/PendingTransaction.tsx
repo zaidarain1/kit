@@ -48,7 +48,7 @@ export const PendingTransaction = () => {
           })
         return
       }
-      if (status === 'Declined') {
+      if (status === 'Declined' || status === 'Cancelled') {
         setNavigation &&
           setNavigation({
             location: 'transaction-error',

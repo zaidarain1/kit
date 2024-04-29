@@ -29,19 +29,20 @@ export const TransactionSuccess = () => {
         <Text textAlign="center" variant="normal" color="text80">
           Purchase was successful, item was sent to your wallet.
         </Text>
-
-        <Text
-          as="a"
-          variant="small"
-          underline
-          marginTop="6"
-          color="text100"
-          href={`${network?.blockExplorer?.rootUrl}/tx/${navigation.params.transactionHash}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          View on {network?.blockExplorer?.name}
-        </Text>
+        {navigation.params.transactionHash && (
+          <Text
+            as="a"
+            variant="small"
+            underline
+            marginTop="6"
+            color="text100"
+            href={`${network?.blockExplorer?.rootUrl}/tx/${navigation.params.transactionHash}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View on {network?.blockExplorer?.name}
+          </Text>
+        )}
       </Box>
     </Box>
   )
