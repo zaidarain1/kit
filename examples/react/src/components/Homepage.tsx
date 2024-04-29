@@ -5,7 +5,7 @@ import {
   validateEthProof,
   useTheme as useKitTheme,
   useWaasFeeOptions,
-  getNetworkConfigAndClients
+  useIndexerClient
 } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
@@ -99,7 +99,7 @@ export const Homepage = () => {
 
   const chainId = useChainId()
 
-  const { indexerClient } = getNetworkConfigAndClients(chainId)
+  const indexerClient = useIndexerClient(chainId)
 
   const [feeOptionBalances, setFeeOptionBalances] = React.useState<{ tokenName: string; decimals: number; balance: string }[]>([])
 

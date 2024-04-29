@@ -14,13 +14,7 @@ import {
 import { Header } from './Header'
 import { delay } from '@/utils'
 import { formatUnits, parseUnits } from 'viem'
-import {
-  getNetworkConfigAndClients,
-  signEthAuthProof,
-  useOpenConnectModal,
-  useWaasFeeOptions,
-  validateEthProof
-} from '@0xsequence/kit'
+import { signEthAuthProof, useIndexerClient, useOpenConnectModal, useWaasFeeOptions, validateEthProof } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal, CheckoutSettings } from '@0xsequence/kit-checkout'
 import { ConnectionMode, isDebugMode } from '../config'
@@ -66,7 +60,7 @@ export const Connected = () => {
 
   const chainId = useChainId()
 
-  const { indexerClient } = getNetworkConfigAndClients(chainId)
+  const indexerClient = useIndexerClient(chainId)
 
   const [feeOptionBalances, setFeeOptionBalances] = useState<{ tokenName: string; decimals: number; balance: string }[]>([])
 

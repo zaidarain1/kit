@@ -16,5 +16,11 @@ export const useIndexerClient = (chainId: ChainId) => {
     indexerClients.set(chainId, new SequenceIndexer(indexerURL(network.name), projectAccessKey))
   }
 
-  return indexerClients.get(chainId)
+  const indexerClient = indexerClients.get(chainId)
+
+  if (!indexerClient) {
+    throw new Error('Indexer client not found')
+  }
+
+  return indexerClient
 }
