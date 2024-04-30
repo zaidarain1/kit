@@ -1,4 +1,4 @@
-import { GetCoinPricesArgs, GetExchangeRateArgs } from '@0xsequence/api'
+import { GetCoinPricesArgs, GetExchangeRateArgs, SequenceAPIClient, Token } from '@0xsequence/api'
 import { useQuery } from '@tanstack/react-query'
 
 import { useMetadataClient } from './useMetadataClient'
@@ -25,29 +25,38 @@ export const useExchangeRate = (toCurrency: string) => {
 
       return res.exchangeRate.value
     },
-    initialData: 1,
     retry: true,
     staleTime: time.oneMinute * 10
   })
 }
 
-export const useCoinPrices = (args: GetCoinPricesArgs) => {
+// const getCoinPrices = async (apiClient: SequenceAPIClient, tokens: Token[]) => {
+//   if (args.tokens.length === 0) {
+//     return []
+//   }
+
+//   const res = await apiClient.getCoinPrices(args)
+
+//   return res?.tokenPrices || []
+// }
+
+export const useCoinPrices = (tokens: Token[]) => {
   const apiClient = useAPIClient()
 
   return useQuery({
-    queryKey: ['coinPrices', args],
+    queryKey: ['coinPrices', tokens],
     queryFn: async () => {
-      if (args.tokens.length === 0) {
+      if (tokens.length === 0) {
         return []
       }
 
-      const res = await apiClient.getCoinPrices(args)
+      const res = await apiClient.getCoinPrices({ tokens })
 
       return res?.tokenPrices || []
     },
     retry: true,
     staleTime: time.oneMinute,
-    enabled: args.tokens.length > 0
+    enabled: tokens.length > 0
   })
 }
 

@@ -13,13 +13,19 @@ import {
   vars,
   Spinner
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector, useExchangeRate } from '@0xsequence/kit'
+import {
+  getNativeTokenInfoByChainId,
+  useAnalyticsContext,
+  ExtendedConnector,
+  useExchangeRate,
+  useCoinPrices
+} from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
 import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_20_ABI, HEADER_HEIGHT } from '../constants'
-import { useBalances, useCoinPrices, useSettings, useOpenWalletModal, useNavigation } from '../hooks'
+import { useBalances, useSettings, useOpenWalletModal, useNavigation } from '../hooks'
 import { compareAddress, computeBalanceFiat, limitDecimals, isEthAddress, truncateAtMiddle } from '../utils'
 import * as sharedStyles from '../shared/styles.css'
 
@@ -56,14 +62,12 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
   )
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const tokenBalance = (balances as TokenBalance[]).find(b => b.contractAddress === contractAddress)
-  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices({
-    tokens: [
-      {
-        chainId,
-        contractAddress
-      }
-    ]
-  })
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices([
+    {
+      chainId,
+      contractAddress
+    }
+  ])
 
   const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 

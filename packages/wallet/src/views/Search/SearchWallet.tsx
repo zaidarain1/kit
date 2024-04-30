@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ethers } from 'ethers'
 import { Box, SearchIcon, Text, TextInput, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices } from '@0xsequence/kit'
 import Fuse from 'fuse.js'
 import { useAccount, useConfig } from 'wagmi'
 
@@ -9,7 +9,7 @@ import { BalanceItem } from './components/BalanceItem'
 import { WalletLink } from './components/WalletLink'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances, useCoinPrices, useSettings } from '../../hooks'
+import { useBalances, useSettings } from '../../hooks'
 import { compareAddress, computeBalanceFiat } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
 
@@ -33,12 +33,12 @@ export const SearchWallet = () => {
       b => b.contractType === 'ERC20' || compareAddress(b.contractAddress, ethers.constants.AddressZero)
     ) || []
 
-  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices({
-    tokens: coinBalancesUnordered.map(token => ({
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices(
+    coinBalancesUnordered.map(token => ({
       chainId: token.chainId,
       contractAddress: token.contractAddress
     }))
-  })
+  )
 
   const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 

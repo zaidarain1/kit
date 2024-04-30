@@ -5,8 +5,6 @@ import {
   GetTokenBalancesArgs,
   fetchCollectionBalance,
   GetCollectionBalanceArgs,
-  getCoinPrices,
-  GetCoinPricesArgs,
   fetchBalancesAssetsSummary,
   getNativeToken,
   getTokenBalances,
@@ -54,15 +52,6 @@ export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
     retry: true,
     staleTime: time.oneSecond * 30,
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
-  })
-
-export const useCoinPrices = ({ disabled, ...args }: GetCoinPricesArgs & { disabled?: boolean }) =>
-  useQuery({
-    queryKey: ['coinPrices', args],
-    queryFn: () => getCoinPrices(args),
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: args.tokens.length > 0 && !disabled
   })
 
 export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs, options: GetTokenBalancesOptions) =>

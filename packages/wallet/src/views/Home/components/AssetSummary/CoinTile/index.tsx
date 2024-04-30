@@ -6,11 +6,11 @@ import { TokenBalance } from '@0xsequence/indexer'
 
 import { CoinTileContent } from './CoinTileContent'
 
-import { getNativeTokenInfoByChainId, useContractInfo, useExchangeRate } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useContractInfo, useExchangeRate, useCoinPrices } from '@0xsequence/kit'
 
 import { computeBalanceFiat, formatDisplay, getPercentagePriceChange, compareAddress } from '../../../../../utils'
 
-import { useCoinPrices, useSettings } from '../../../../../hooks'
+import { useSettings } from '../../../../../hooks'
 
 interface CoinTileProps {
   balance: TokenBalance
@@ -22,14 +22,12 @@ export const CoinTile = ({ balance }: CoinTileProps) => {
   const isNativeToken = compareAddress(balance.contractAddress, ethers.constants.AddressZero)
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains)
 
-  const { data: dataCoinPrices = [], isPending: isPendingCoinPrice } = useCoinPrices({
-    tokens: [
-      {
-        chainId: balance.chainId,
-        contractAddress: balance.contractAddress
-      }
-    ]
-  })
+  const { data: dataCoinPrices = [], isPending: isPendingCoinPrice } = useCoinPrices([
+    {
+      chainId: balance.chainId,
+      contractAddress: balance.contractAddress
+    }
+  ])
 
   const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 

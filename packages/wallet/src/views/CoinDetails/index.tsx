@@ -1,7 +1,7 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
+import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices } from '@0xsequence/kit'
 
 import { useAccount, useConfig } from 'wagmi'
 
@@ -10,7 +10,7 @@ import { CoinDetailsSkeleton } from './Skeleton'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
-import { useCoinBalance, useSettings, useCoinPrices, useTransactionHistory, useNavigation } from '../../hooks'
+import { useCoinBalance, useSettings, useTransactionHistory, useNavigation } from '../../hooks'
 import { HEADER_HEIGHT } from '../../constants'
 import { compareAddress, computeBalanceFiat, formatDisplay, flattenPaginatedTransactionHistory } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
@@ -51,14 +51,12 @@ export const CoinDetails = ({ contractAddress, chainId }: CoinDetailsProps) => {
     { hideUnlistedTokens }
   )
 
-  const { data: dataCoinPrices, isPending: isPendingCoinPrices } = useCoinPrices({
-    tokens: [
-      {
-        chainId,
-        contractAddress
-      }
-    ]
-  })
+  const { data: dataCoinPrices, isPending: isPendingCoinPrices } = useCoinPrices([
+    {
+      chainId,
+      contractAddress
+    }
+  ])
 
   const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
