@@ -7,6 +7,7 @@ import { useIndexerClient, useIndexerClients } from './useIndexerClient'
 import { ContractType, Page, SequenceIndexer, TokenBalance } from '@0xsequence/indexer'
 
 import { zeroAddress } from 'viem'
+import { compareAddress } from '../utils/helpers'
 
 export const time = {
   oneSecond: 1 * 1000,
@@ -28,7 +29,7 @@ const getNativeTokenBalance = async (indexerClient: SequenceIndexer, chainId: nu
     tokenID: ''
   }
 
-  return [tokenBalance]
+  return tokenBalance
 }
 
 interface GetTokenBalancesArgs {
@@ -91,6 +92,62 @@ export const useBalances = ({ chainIds, ...args }: UseBalancesArgs) => {
     retry: true,
     staleTime: time.oneSecond * 30,
     enabled: chainIds.length > 0 && !!args.accountAddress
+  })
+}
+
+interface UseCoinBalanceArgs extends GetTokenBalancesArgs {
+  chainId: number
+}
+
+export const useCoinBalance = (args: UseCoinBalanceArgs) => {
+  const indexerClient = useIndexerClient(args.chainId)
+
+  return useQuery({
+    queryKey: ['coinBalance', args],
+    queryFn: async () => {
+      if (compareAddress(args?.contractAddress || '', zeroAddress)) {
+        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress)
+        return res
+      } else {
+        const res = await getTokenBalances(indexerClient, args)
+        return res[0]
+      }
+    },
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  })
+}
+
+interface UseCollectibleBalanceArgs {
+  accountAddress: string
+  chainId: number
+  contractAddress: string
+  tokenId: string
+  verifiedOnly?: boolean
+}
+
+export const useCollectibleBalance = (args: UseCollectibleBalanceArgs) => {
+  const indexerClient = useIndexerClient(args.chainId)
+
+  return useQuery({
+    queryKey: ['collectibleBalance', args],
+    queryFn: async () => {
+      const res = await indexerClient.getTokenBalances({
+        accountAddress: args.accountAddress,
+        contractAddress: args.contractAddress,
+        tokenID: args.tokenId,
+        includeMetadata: true,
+        metadataOptions: {
+          verifiedOnly: args.verifiedOnly ?? true
+        }
+      })
+
+      return res.balances[0]
+    },
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
   })
 }
 

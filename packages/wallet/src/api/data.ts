@@ -354,37 +354,6 @@ export const fetchBalancesAssetsSummary = async (
   }
 }
 
-export interface GetCollectibleBalanceArgs {
-  accountAddress: string
-  chainId: number
-  collectionAddress: string
-  tokenId: string
-  verifiedOnly?: boolean
-}
-
-export const getCollectibleBalance = async ({
-  accountAddress,
-  chainId,
-  collectionAddress,
-  tokenId,
-  verifiedOnly
-}: GetCollectibleBalanceArgs) => {
-  const { indexerClient } = getNetworkConfigAndClients(chainId)
-
-  const res = await indexerClient.getTokenBalances({
-    accountAddress,
-    includeMetadata: true,
-    contractAddress: collectionAddress,
-    tokenID: tokenId,
-    metadataOptions: {
-      verifiedOnly: verifiedOnly ?? true
-    }
-  })
-  const tokenBalance = res.balances[0]
-
-  return tokenBalance
-}
-
 export interface GetTransactionHistoryArgs {
   chainId: number
   accountAddress: string

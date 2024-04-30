@@ -2,12 +2,18 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { useAccount, useConfig } from 'wagmi'
 import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate, useTransactionHistory, useCollectiblePrices } from '@0xsequence/kit'
+import {
+  getNativeTokenInfoByChainId,
+  useExchangeRate,
+  useTransactionHistory,
+  useCollectiblePrices,
+  useCollectibleBalance
+} from '@0xsequence/kit'
 
 import { CollectibleDetailsSkeleton } from './Skeleton'
 
 import { computeBalanceFiat, formatDisplay, flattenPaginatedTransactionHistory } from '../../utils'
-import { useCollectibleBalance, useSettings, useNavigation } from '../../hooks'
+import { useSettings, useNavigation } from '../../hooks'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import { CollectibleTileImage } from '../../shared/CollectibleTileImage'
@@ -44,7 +50,7 @@ export const CollectibleDetails = ({ contractAddress, chainId, tokenId }: Collec
 
   const { data: dataCollectibleBalance, isPending: isPendingCollectibleBalance } = useCollectibleBalance({
     accountAddress: accountAddress || '',
-    collectionAddress: contractAddress,
+    contractAddress,
     chainId,
     tokenId,
     verifiedOnly: false
