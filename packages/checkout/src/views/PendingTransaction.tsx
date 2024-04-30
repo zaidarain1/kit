@@ -30,7 +30,6 @@ export const PendingTransaction = () => {
       const pollResponse = await fetchSardineOrderStatus(orderId, isDev)
       const status = pollResponse.resp.status
       const transactionHash = pollResponse.resp?.data?.transactionHash
-      const network = pollResponse.resp?.data?.network
 
       console.log('transaction status poll response:', status)
 
@@ -43,7 +42,6 @@ export const PendingTransaction = () => {
             location: 'transaction-success',
             params: {
               transactionHash,
-              network
             }
           })
         return

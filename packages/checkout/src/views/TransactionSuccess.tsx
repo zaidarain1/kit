@@ -10,7 +10,8 @@ export const TransactionSuccess = () => {
   const nav = useNavigation()
   const navigation = nav.navigation as TransactionSuccessNavigation
 
-  const network = sequence.network.allNetworks.find(n => n.name === navigation.params.network)
+  const chainId = settings?.sardineCheckout?.chainId || 137
+  const network = sequence.network.allNetworks.find(n => n.chainId === chainId)
 
   useEffect(() => {      settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash, settings?.sardineCheckout)
     settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash, settings?.sardineCheckout)

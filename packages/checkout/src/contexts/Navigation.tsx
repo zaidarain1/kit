@@ -11,7 +11,6 @@ export interface TransactionFormNavigation {
 
 export interface TransactionSuccessParams {
   transactionHash: string
-  network: string
 }
 
 export interface TransactionSuccessNavigation {
