@@ -18,14 +18,13 @@ export const AssetSummary = () => {
   const { displayedAssets } = useWalletSettings()
   const { hideUnlistedTokens, hideCollectibles, selectedNetworks } = useSettings()
 
-  const { data: balances = [], isPending: isPendingBalances } = useBalancesAssetsSummary(
-    {
-      accountAddress: address || '',
-      chainIds: selectedNetworks,
-      displayAssets: displayedAssets
-    },
-    { hideUnlistedTokens, hideCollectibles }
-  )
+  const { data: balances = [], isPending: isPendingBalances } = useBalancesAssetsSummary({
+    accountAddress: address || '',
+    chainIds: selectedNetworks,
+    displayAssets: displayedAssets,
+    hideCollectibles,
+    verifiedOnly: hideUnlistedTokens
+  })
 
   if (isPendingBalances) {
     return <SkeletonTiles />

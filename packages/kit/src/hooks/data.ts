@@ -1,4 +1,4 @@
-import { Token } from '@0xsequence/api'
+import { SequenceAPIClient, Token } from '@0xsequence/api'
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 import { useMetadataClient } from './useMetadataClient'
@@ -15,7 +15,7 @@ export const time = {
   oneHour: 60 * 60 * 1000
 }
 
-const getNativeTokenBalance = async (indexerClient: SequenceIndexer, chainId: number, accountAddress: string) => {
+export const getNativeTokenBalance = async (indexerClient: SequenceIndexer, chainId: number, accountAddress: string) => {
   const res = await indexerClient.getEtherBalance({ accountAddress })
 
   const tokenBalance: TokenBalance = {
@@ -40,7 +40,7 @@ interface GetTokenBalancesArgs {
   contractAddress?: string
 }
 
-const getTokenBalances = async (indexerClient: SequenceIndexer, args: GetTokenBalancesArgs) => {
+export const getTokenBalances = async (indexerClient: SequenceIndexer, args: GetTokenBalancesArgs) => {
   const res = await indexerClient.getTokenBalances({
     accountAddress: args.accountAddress,
     includeMetadata: args.includeMetadata ?? true,
@@ -53,7 +53,7 @@ const getTokenBalances = async (indexerClient: SequenceIndexer, args: GetTokenBa
   return res?.balances || []
 }
 
-const getBalances = async (indexerClient: SequenceIndexer, chainId: number, args: GetTokenBalancesArgs) => {
+export const getBalances = async (indexerClient: SequenceIndexer, chainId: number, args: GetTokenBalancesArgs) => {
   if (!args.accountAddress) {
     return []
   }
@@ -151,6 +151,19 @@ export const useCollectibleBalance = (args: UseCollectibleBalanceArgs) => {
   })
 }
 
+export const getCollectionBalance = async (indexerClient: SequenceIndexer, args: UseCollectionBalanceArgs) => {
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    contractAddress: args.contractAddress,
+    includeMetadata: args.includeMetadata ?? true,
+    metadataOptions: {
+      verifiedOnly: args.verifiedOnly ?? true
+    }
+  })
+
+  return res?.balances || []
+}
+
 interface UseCollectionBalanceArgs {
   chainId: number
   accountAddress: string
@@ -164,18 +177,7 @@ export const useCollectionBalance = (args: UseCollectionBalanceArgs) => {
 
   return useQuery({
     queryKey: ['collectionBalance', args],
-    queryFn: async () => {
-      const res = await indexerClient.getTokenBalances({
-        accountAddress: args.accountAddress,
-        contractAddress: args.contractAddress,
-        includeMetadata: args.includeMetadata ?? true,
-        metadataOptions: {
-          verifiedOnly: args.verifiedOnly ?? true
-        }
-      })
-
-      return res?.balances || []
-    },
+    queryFn: () => getCollectionBalance(indexerClient, args),
     retry: true,
     staleTime: time.oneSecond * 30,
     enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
@@ -202,24 +204,36 @@ export const useExchangeRate = (toCurrency: string) => {
   })
 }
 
+export const getCoinPrices = async (apiClient: SequenceAPIClient, tokens: Token[]) => {
+  if (tokens.length === 0) {
+    return []
+  }
+
+  const res = await apiClient.getCoinPrices({ tokens })
+
+  return res?.tokenPrices || []
+}
+
 export const useCoinPrices = (tokens: Token[]) => {
   const apiClient = useAPIClient()
 
   return useQuery({
     queryKey: ['coinPrices', tokens],
-    queryFn: async () => {
-      if (tokens.length === 0) {
-        return []
-      }
-
-      const res = await apiClient.getCoinPrices({ tokens })
-
-      return res?.tokenPrices || []
-    },
+    queryFn: () => getCoinPrices(apiClient, tokens),
     retry: true,
     staleTime: time.oneMinute,
     enabled: tokens.length > 0
   })
+}
+
+export const getCollectiblePrices = async (apiClient: SequenceAPIClient, tokens: Token[]) => {
+  if (tokens.length === 0) {
+    return []
+  }
+
+  const res = await apiClient.getCollectiblePrices({ tokens })
+
+  return res?.tokenPrices || []
 }
 
 export const useCollectiblePrices = (tokens: Token[]) => {
@@ -227,15 +241,7 @@ export const useCollectiblePrices = (tokens: Token[]) => {
 
   return useQuery({
     queryKey: ['useCollectiblePrices', tokens],
-    queryFn: async () => {
-      if (tokens.length === 0) {
-        return []
-      }
-
-      const res = await apiClient.getCollectiblePrices({ tokens })
-
-      return res?.tokenPrices || []
-    },
+    queryFn: () => getCollectiblePrices(apiClient, tokens),
     retry: true,
     staleTime: time.oneMinute,
     enabled: tokens.length > 0
