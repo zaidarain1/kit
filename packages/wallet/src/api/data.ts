@@ -520,11 +520,3 @@ export const fetchTokenMetadata = async ({ tokens }: FetchTokenMetadataArgs): Pr
 
   return response.tokenMetadata
 }
-
-export const getContractInfo = async (args: GetContractInfoArgs): Promise<ContractInfo> => {
-  const { metadataClient } = getNetworkConfigAndClients(Number(args.chainID))
-
-  const response = await metadataClient.getContractInfo(args)
-
-  return response.contractInfo
-}

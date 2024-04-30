@@ -6,11 +6,11 @@ import { TokenBalance } from '@0xsequence/indexer'
 
 import { CoinTileContent } from './CoinTileContent'
 
-import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useContractInfo, useExchangeRate } from '@0xsequence/kit'
 
 import { computeBalanceFiat, formatDisplay, getPercentagePriceChange, compareAddress } from '../../../../../utils'
 
-import { useContractInfo, useCoinPrices, useSettings } from '../../../../../hooks'
+import { useCoinPrices, useSettings } from '../../../../../hooks'
 
 interface CoinTileProps {
   balance: TokenBalance

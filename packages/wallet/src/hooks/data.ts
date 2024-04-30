@@ -22,8 +22,7 @@ import {
   getTransactionHistorySummary,
   GetTransactionHistorySummaryArgs,
   fetchTokenMetadata,
-  FetchTokenMetadataArgs,
-  getContractInfo
+  FetchTokenMetadataArgs
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -155,13 +154,4 @@ export const useTokenMetadata = (args: FetchTokenMetadataArgs) =>
     retry: true,
     staleTime: time.oneMinute * 10,
     enabled: !!args.tokens.chainId && !!args.tokens.contractAddress
-  })
-
-export const useContractInfo = (args: GetContractInfoArgs) =>
-  useQuery({
-    queryKey: ['useContractInfo', args],
-    queryFn: () => getContractInfo(args),
-    retry: true,
-    staleTime: time.oneMinute * 10,
-    enabled: !!args.chainID && !!args.contractAddress
   })

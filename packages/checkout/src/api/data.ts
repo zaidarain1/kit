@@ -147,17 +147,6 @@ export const fetchTokenMetadata = async ({ chainId, tokenId, contractAddress }: 
   return response.tokenMetadata[0]
 }
 
-export const fetchContractInfo = async ({ chainID, contractAddress }: GetContractInfoArgs): Promise<ContractInfo> => {
-  const { metadataClient } = getNetworkConfigAndClients(chainID)
-
-  const response = await metadataClient.getContractInfo({
-    chainID,
-    contractAddress
-  })
-
-  return response.contractInfo
-}
-
 export interface FetchPaperSecretArgs {
   chainId: number
   email: string

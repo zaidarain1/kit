@@ -10,8 +10,7 @@ import {
   getCoinPrices,
   GetCoinPricesArgs,
   fetchTokenMetadata,
-  GetTokenMetadataArgs,
-  fetchContractInfo
+  GetTokenMetadataArgs
 } from '../api/data'
 
 export const time = {
@@ -54,13 +53,4 @@ export const useTokenMetadata = (args: GetTokenMetadataArgs): UseQueryResult<Tok
     retry: true,
     staleTime: 10 * time.oneMinute,
     enabled: !!args.chainId && !!args.contractAddress
-  })
-
-export const useContractInfo = (args: GetContractInfoArgs): UseQueryResult<ContractInfo> =>
-  useQuery({
-    queryKey: ['useContractInfo', args],
-    queryFn: () => fetchContractInfo(args),
-    retry: true,
-    staleTime: 60 * time.oneMinute,
-    enabled: !!args.chainID && !!args.contractAddress
   })
