@@ -31,14 +31,9 @@ export const CoinTile = ({ balance }: CoinTileProps) => {
     ]
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
-  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo({
-    chainID: String(balance.chainId),
-    contractAddress: balance.contractAddress
-  })
+  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo(balance.chainId, balance.contractAddress)
 
   const isPending = isPendingCoinPrice || isPendingConversionRate || isPendingContractInfo
   if (isPending) {

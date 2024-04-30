@@ -48,9 +48,7 @@ export const SearchWalletViewAll = ({ defaultTab }: SearchWalletViewAllProps) =>
     }))
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const coinBalances = coinBalancesUnordered.sort((a, b) => {
     const isHigherFiat =

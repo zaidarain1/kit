@@ -60,9 +60,7 @@ export const CollectibleDetails = ({ contractAddress, chainId, tokenId }: Collec
     ]
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const isPending = isPendingCollectibleBalance || isPendingCollectiblePrices || isPendingConversionRate
 

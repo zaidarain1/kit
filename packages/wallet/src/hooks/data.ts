@@ -1,4 +1,3 @@
-import { GetContractInfoArgs } from '@0xsequence/metadata'
 import { ethers } from 'ethers'
 import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
 import {
@@ -20,9 +19,7 @@ import {
   GetTokenBalancesOptions,
   FetchBalancesAssetsArgs,
   getTransactionHistorySummary,
-  GetTransactionHistorySummaryArgs,
-  fetchTokenMetadata,
-  FetchTokenMetadataArgs
+  GetTransactionHistorySummaryArgs
 } from '../api/data'
 
 import { compareAddress } from '../utils/helpers'
@@ -145,13 +142,4 @@ export const useTransactionHistorySummary = (args: GetTransactionHistorySummaryA
     staleTime: time.oneSecond,
     refetchOnMount: true,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
-  })
-
-export const useTokenMetadata = (args: FetchTokenMetadataArgs) =>
-  useQuery({
-    queryKey: ['useTokenMetadata', args],
-    queryFn: () => fetchTokenMetadata(args),
-    retry: true,
-    staleTime: time.oneMinute * 10,
-    enabled: !!args.tokens.chainId && !!args.tokens.contractAddress
   })

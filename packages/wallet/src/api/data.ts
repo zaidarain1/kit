@@ -498,25 +498,3 @@ export const getTransactionHistorySummary = async ({
 
   return orderedTransactions
 }
-
-interface Collectibles {
-  contractAddress: string
-  chainId: number
-  tokenIds: string[]
-}
-
-export interface FetchTokenMetadataArgs {
-  tokens: Collectibles
-}
-
-export const fetchTokenMetadata = async ({ tokens }: FetchTokenMetadataArgs): Promise<TokenMetadata[]> => {
-  const { metadataClient } = getNetworkConfigAndClients(tokens.chainId)
-
-  const response = await metadataClient.getTokenMetadata({
-    chainID: tokens.chainId.toString(),
-    contractAddress: tokens.contractAddress,
-    tokenIDs: tokens.tokenIds
-  })
-
-  return response.tokenMetadata
-}

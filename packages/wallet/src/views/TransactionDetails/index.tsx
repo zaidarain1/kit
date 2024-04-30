@@ -63,9 +63,7 @@ export const TransactionDetails = ({ transaction }: TransactionDetailProps) => {
     tokens: collectibles
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const arePricesLoading =
     (coins.length > 0 && isPendingCoinPrices) ||

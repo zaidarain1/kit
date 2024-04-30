@@ -1,4 +1,3 @@
-import { GetContractInfoArgs, GetTokenMetadataArgs } from '@0xsequence/metadata'
 import { GetCoinPricesArgs, GetExchangeRateArgs } from '@0xsequence/api'
 import { useQuery } from '@tanstack/react-query'
 
@@ -11,20 +10,22 @@ export const time = {
   oneHour: 60 * 60 * 1000
 }
 
-export const useExchangeRate = (args: GetExchangeRateArgs) => {
+// From USD to another currency
+export const useExchangeRate = (toCurrency: string) => {
   const apiClient = useAPIClient()
 
   return useQuery({
-    queryKey: ['exchangeRate', args],
+    queryKey: ['exchangeRate', toCurrency],
     queryFn: async () => {
-      if (args.toCurrency === 'USD') {
+      if (toCurrency === 'USD') {
         return 1
       }
 
-      const res = await apiClient.getExchangeRate(args)
+      const res = await apiClient.getExchangeRate({ toCurrency })
 
       return res.exchangeRate.value
     },
+    initialData: 1,
     retry: true,
     staleTime: time.oneMinute * 10
   })
@@ -50,34 +51,41 @@ export const useCoinPrices = (args: GetCoinPricesArgs) => {
   })
 }
 
-export const useTokenMetadata = (args: GetTokenMetadataArgs) => {
+export const useTokenMetadata = (chainId: number, contractAddress: string, tokenIds: string[]) => {
   const metadataClient = useMetadataClient()
 
   return useQuery({
-    queryKey: ['tokenMetadata', args],
+    queryKey: ['tokenMetadata', chainId, contractAddress, tokenIds],
     queryFn: async () => {
-      const res = await metadataClient.getTokenMetadata(args)
+      const res = await metadataClient.getTokenMetadata({
+        chainID: String(chainId),
+        contractAddress,
+        tokenIDs: tokenIds
+      })
 
-      return res.tokenMetadata[0]
+      return res.tokenMetadata
     },
     retry: true,
     staleTime: time.oneMinute * 10,
-    enabled: !!args.chainID && !!args.contractAddress
+    enabled: !!chainId && !!contractAddress
   })
 }
 
-export const useContractInfo = (args: GetContractInfoArgs) => {
+export const useContractInfo = (chainId: number, contractAddress: string) => {
   const metadataClient = useMetadataClient()
 
   return useQuery({
-    queryKey: ['contractInfo', args],
+    queryKey: ['contractInfo', chainId, contractAddress],
     queryFn: async () => {
-      const res = await metadataClient.getContractInfo(args)
+      const res = await metadataClient.getContractInfo({
+        chainID: String(chainId),
+        contractAddress
+      })
 
       return res.contractInfo
     },
     retry: true,
     staleTime: time.oneMinute * 10,
-    enabled: !!args.chainID && !!args.contractAddress
+    enabled: !!chainId && !!contractAddress
   })
 }

@@ -26,10 +26,10 @@ export const CheckoutSelection = () => {
   const displayCryptoCheckout = !!cryptoCheckoutSettings
   // const displayCreditCardCheckout = !!creditCardCheckoutSettings
 
-  const { data: contractInfoData, isPending: isPendingContractInfo } = useContractInfo({
-    contractAddress: cryptoCheckoutSettings?.coinQuantity?.contractAddress || '',
-    chainID: String(cryptoCheckoutSettings?.chainId || 1)
-  })
+  const { data: contractInfoData, isPending: isPendingContractInfo } = useContractInfo(
+    cryptoCheckoutSettings?.chainId || 1,
+    cryptoCheckoutSettings?.coinQuantity?.contractAddress || ''
+  )
 
   const { data: balancesData, isPending: isPendingBalances } = useBalances({
     accountAddress: accountAddress || '',

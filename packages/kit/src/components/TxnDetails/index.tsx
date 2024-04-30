@@ -1,15 +1,16 @@
-import { Box, Card, GradientAvatar, Image, Text, vars } from '@0xsequence/design-system'
+import { Box, Card, GradientAvatar, Text } from '@0xsequence/design-system'
 
 import React, { useEffect, useState } from 'react'
 
 import { ethers } from 'ethers'
 import { useConfig } from 'wagmi'
 
-import { Skeleton, CollectibleTileImage, CoinIcon, formatDisplay, useBalances, useTokenMetadata } from '@0xsequence/kit-wallet'
+import { useTokenMetadata } from '@0xsequence/kit'
+import { Skeleton, CollectibleTileImage, CoinIcon, formatDisplay, useBalances } from '@0xsequence/kit-wallet'
 import { compareAddress, getNativeTokenInfoByChainId } from '../../utils'
 import { commons } from '@0xsequence/core'
 import { DecodingType, TransferProps, AwardItemProps, decodeTransactions } from '../../utils/txnDecoding'
-import { ContractType, TokenBalance } from '@0xsequence/indexer'
+import { ContractType } from '@0xsequence/indexer'
 import { getAddress } from 'ethers/lib/utils'
 import { useAPIClient } from '../../hooks'
 
@@ -104,9 +105,11 @@ const TransferItemInfo = ({ address, transferProps, chainId }: TransferItemInfoP
     { hideUnlistedTokens: false }
   )
 
-  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata({
-    tokens: { chainId, contractAddress, tokenIds: transferProps[0]?.tokenIds ?? [] }
-  })
+  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata(
+    chainId,
+    contractAddress,
+    transferProps[0]?.tokenIds ?? []
+  )
 
   const tokenBalance = contractAddress
     ? balances.find(b => getAddress(b.contractAddress) === getAddress(contractAddress))

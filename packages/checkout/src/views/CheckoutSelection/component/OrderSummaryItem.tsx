@@ -2,11 +2,10 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { useConfig } from 'wagmi'
 import { Box, Card, Image, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useContractInfo } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useContractInfo, useTokenMetadata } from '@0xsequence/kit'
 import { CoinIcon } from '../../../shared/components/CoinIcon'
 import { Skeleton } from '../../../shared/components/Skeleton'
 
-import { useTokenMetadata } from '../../../hooks'
 import { formatDisplay } from '../../../utils'
 
 interface OrderSummaryItem {
@@ -18,17 +17,8 @@ interface OrderSummaryItem {
 
 export const OrderSummaryItem = ({ contractAddress, tokenId, quantityRaw, chainId }: OrderSummaryItem) => {
   const { chains } = useConfig()
-  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata({
-    chainId,
-    contractAddress,
-    tokenId
-  })
-
-  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo({
-    chainID: String(chainId),
-    contractAddress
-  })
-
+  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata(chainId, contractAddress, [tokenId])
+  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo(chainId, contractAddress)
   const isPending = isPendingTokenMetadata || isPendingContractInfo
 
   if (isPending) {
@@ -36,7 +26,7 @@ export const OrderSummaryItem = ({ contractAddress, tokenId, quantityRaw, chainI
   }
 
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, [...chains])
-  const { name = 'unknown', image, decimals = 0 } = tokenMetadata || {}
+  const { name = 'unknown', image, decimals = 0 } = tokenMetadata?.[0] ?? {}
 
   const { logoURI: collectionLogoURI, name: collectionName = 'Unknown Collection' } = contractInfo || {}
 

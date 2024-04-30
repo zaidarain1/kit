@@ -129,24 +129,6 @@ export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs): Promise<Toke
   }
 }
 
-export interface GetTokenMetadataArgs {
-  chainId: number
-  tokenId: string
-  contractAddress: string
-}
-
-export const fetchTokenMetadata = async ({ chainId, tokenId, contractAddress }: GetTokenMetadataArgs): Promise<TokenMetadata> => {
-  const { metadataClient } = getNetworkConfigAndClients(chainId)
-
-  const response = await metadataClient.getTokenMetadata({
-    chainID: String(chainId),
-    contractAddress,
-    tokenIDs: [tokenId]
-  })
-
-  return response.tokenMetadata[0]
-}
-
 export interface FetchPaperSecretArgs {
   chainId: number
   email: string
