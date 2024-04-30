@@ -1,8 +1,9 @@
-import { getNetworkConfigAndClients } from '@0xsequence/kit'
-
+import { getNetwork } from '@0xsequence/kit'
 import { getPaperNetworkName } from '../utils'
+import { SequenceAPIClient } from '@0xsequence/api'
 
 export interface FetchPaperSecretArgs {
+  apiClient: SequenceAPIClient
   chainId: number
   email: string
   abi: string
@@ -21,6 +22,7 @@ export interface MethodArguments {
 }
 
 export const fetchPaperSecret = async ({
+  apiClient,
   chainId,
   email,
   contractAddress,
@@ -33,9 +35,7 @@ export const fetchPaperSecret = async ({
   methodName,
   recipientAddress
 }: FetchPaperSecretArgs) => {
-  const { network, apiClient } = await getNetworkConfigAndClients(chainId)
-
-  // @ts-ignore-next-line
+  const network = getNetwork(chainId)
   const chainName = getPaperNetworkName(network)
 
   const paramsJson = JSON.stringify({

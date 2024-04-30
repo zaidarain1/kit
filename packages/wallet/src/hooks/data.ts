@@ -3,15 +3,15 @@ import {
   getTransactionHistory,
   useAPIClient,
   useIndexerClients,
-  getNetworkConfigAndClients,
   DisplayedAsset,
   getNativeTokenBalance,
   getTokenBalances,
   getCoinPrices,
-  getCollectionBalance
+  getCollectionBalance,
+  useMetadataClient
 } from '@0xsequence/kit'
 import { Transaction, TokenBalance, SequenceIndexer } from '@0xsequence/indexer'
-import { GetContractInfoBatchReturn } from '@0xsequence/metadata'
+import { GetContractInfoBatchReturn, SequenceMetadata } from '@0xsequence/metadata'
 import { SequenceAPIClient, TokenPrice } from '@0xsequence/api'
 import { ethers } from 'ethers'
 
@@ -23,7 +23,7 @@ export const time = {
   oneHour: 60 * 60 * 1000
 }
 
-export interface FetchBalancesAssetsArgs {
+export interface GetBalancesAssetsArgs {
   accountAddress: string
   chainIds: number[]
   displayAssets: DisplayedAsset[]
@@ -31,10 +31,11 @@ export interface FetchBalancesAssetsArgs {
   hideCollectibles?: boolean
 }
 
-export const fetchBalancesAssetsSummary = async (
-  indexerClients: Map<number, SequenceIndexer>,
+export const getBalancesAssetsSummary = async (
   apiClient: SequenceAPIClient,
-  { accountAddress, displayAssets, hideCollectibles, verifiedOnly }: FetchBalancesAssetsArgs
+  metadataClient: SequenceMetadata,
+  indexerClients: Map<number, SequenceIndexer>,
+  { accountAddress, displayAssets, hideCollectibles, verifiedOnly }: GetBalancesAssetsArgs
 ) => {
   const indexerClientsArr = Array.from(indexerClients.entries())
 
@@ -157,7 +158,6 @@ export const fetchBalancesAssetsSummary = async (
       })
 
       const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async chainId => {
-        const { metadataClient } = getNetworkConfigAndClients(chainId)
         const tokenBalances = erc20BalanceByChainId[Number(chainId)]
         const contractAddresses = tokenBalances.map(balance => balance.contractAddress)
         const result = await metadataClient.getContractInfoBatch({
@@ -222,13 +222,14 @@ export const fetchBalancesAssetsSummary = async (
   }
 }
 
-export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs) => {
+export const useBalancesAssetsSummary = (args: GetBalancesAssetsArgs) => {
   const apiClient = useAPIClient()
+  const metadataClient = useMetadataClient()
   const indexerClients = useIndexerClients(args.chainIds)
 
   return useQuery({
     queryKey: ['balancesAssetsSummary', args],
-    queryFn: () => fetchBalancesAssetsSummary(indexerClients, apiClient, args),
+    queryFn: () => getBalancesAssetsSummary(apiClient, metadataClient, indexerClients, args),
     retry: true,
     refetchInterval: time.oneSecond * 4,
     refetchOnMount: true,

@@ -3,7 +3,6 @@ const SETTINGS = 'settings'
 const THEME = 'theme'
 const ETHAUTH_PROOF = 'ethAuthProof'
 const ETHAUTH_SETTINGS = 'ethAuthSettings'
-const PROJECT_ACCESS_KEY = 'projectAccessKey'
 const WAAS_GOOGLE_CLIENT_ID = 'waasGoogleClientId'
 const WAAS_GOOGLE_ID_TOKEN = 'waasGoogleIdToken'
 const WAAS_APPLE_CLIENT_ID = 'waasAppleClientId'
@@ -19,7 +18,6 @@ export enum LocalStorageKey {
   Theme = `${PREFIX}.${THEME}`,
   EthAuthProof = `${PREFIX}.${ETHAUTH_PROOF}`,
   EthAuthSettings = `${PREFIX}.${ETHAUTH_SETTINGS}`,
-  ProjectAccessKey = `${PREFIX}.${PROJECT_ACCESS_KEY}`,
   WaasGoogleClientID = `${PREFIX}.${WAAS_GOOGLE_CLIENT_ID}`,
   WaasGoogleIdToken = `${PREFIX}.${WAAS_GOOGLE_ID_TOKEN}`,
   WaasAppleClientID = `${PREFIX}.${WAAS_APPLE_CLIENT_ID}`,

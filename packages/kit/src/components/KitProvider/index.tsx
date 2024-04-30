@@ -106,10 +106,6 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   ) as ExtendedConnector | undefined
   const googleClientId: string = (googleWaasConnector as any)?.params?.googleClientId || ''
 
-  useEffect(() => {
-    localStorage.setItem(LocalStorageKey.ProjectAccessKey, config.projectAccessKey)
-  }, [])
-
   const setupAnalytics = (projectAccessKey: string) => {
     const s = sequence.initWallet(projectAccessKey)
     const sequenceAnalytics = s.client.analytics
