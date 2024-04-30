@@ -1,5 +1,5 @@
 import { ethers } from 'ethers'
-import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import {
   GetTokenBalancesArgs,
   fetchBalancesAssetsSummary,
@@ -7,10 +7,6 @@ import {
   getTokenBalances,
   getCollectibleBalance,
   GetCollectibleBalanceArgs,
-  getCollectiblePrices,
-  GetCollectiblePricesArgs,
-  getTransactionHistory,
-  GetTransactionHistoryArgs,
   GetTokenBalancesOptions,
   FetchBalancesAssetsArgs,
   getTransactionHistorySummary,
@@ -62,15 +58,6 @@ export const useCollectibleBalance = (args: GetCollectibleBalanceArgs) =>
     retry: true,
     staleTime: time.oneSecond * 30,
     enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress && !!args.tokenId
-  })
-
-export const useCollectiblePrices = (args: GetCollectiblePricesArgs) =>
-  useQuery({
-    queryKey: ['useCollectiblePrices', args],
-    queryFn: () => getCollectiblePrices(args),
-    retry: true,
-    staleTime: time.oneMinute,
-    enabled: args.tokens.length > 0
   })
 
 export const useTransactionHistorySummary = (args: GetTransactionHistorySummaryArgs) =>

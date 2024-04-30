@@ -145,16 +145,6 @@ export const useExchangeRate = (toCurrency: string) => {
   })
 }
 
-// const getCoinPrices = async (apiClient: SequenceAPIClient, tokens: Token[]) => {
-//   if (args.tokens.length === 0) {
-//     return []
-//   }
-
-//   const res = await apiClient.getCoinPrices(args)
-
-//   return res?.tokenPrices || []
-// }
-
 export const useCoinPrices = (tokens: Token[]) => {
   const apiClient = useAPIClient()
 
@@ -166,6 +156,26 @@ export const useCoinPrices = (tokens: Token[]) => {
       }
 
       const res = await apiClient.getCoinPrices({ tokens })
+
+      return res?.tokenPrices || []
+    },
+    retry: true,
+    staleTime: time.oneMinute,
+    enabled: tokens.length > 0
+  })
+}
+
+export const useCollectiblePrices = (tokens: Token[]) => {
+  const apiClient = useAPIClient()
+
+  return useQuery({
+    queryKey: ['useCollectiblePrices', tokens],
+    queryFn: async () => {
+      if (tokens.length === 0) {
+        return []
+      }
+
+      const res = await apiClient.getCollectiblePrices({ tokens })
 
       return res?.tokenPrices || []
     },

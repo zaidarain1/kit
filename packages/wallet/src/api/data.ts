@@ -385,28 +385,6 @@ export const getCollectibleBalance = async ({
   return tokenBalance
 }
 
-export interface GetCollectiblePricesArgs {
-  tokens: Token[]
-}
-
-export const getCollectiblePrices = async ({ tokens }: GetCollectiblePricesArgs) => {
-  try {
-    if (tokens.length === 0) return []
-    const chainId = tokens[0].chainId
-
-    const { apiClient } = await getNetworkConfigAndClients(chainId)
-
-    const res = await apiClient.getCollectiblePrices({
-      tokens
-    })
-
-    return res?.tokenPrices || []
-  } catch (e) {
-    console.error(e)
-    return
-  }
-}
-
 export interface GetTransactionHistoryArgs {
   chainId: number
   accountAddress: string

@@ -2,12 +2,12 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { useAccount, useConfig } from 'wagmi'
 import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate, useTransactionHistory } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate, useTransactionHistory, useCollectiblePrices } from '@0xsequence/kit'
 
 import { CollectibleDetailsSkeleton } from './Skeleton'
 
 import { computeBalanceFiat, formatDisplay, flattenPaginatedTransactionHistory } from '../../utils'
-import { useCollectiblePrices, useCollectibleBalance, useSettings, useNavigation } from '../../hooks'
+import { useCollectibleBalance, useSettings, useNavigation } from '../../hooks'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import { CollectibleTileImage } from '../../shared/CollectibleTileImage'
@@ -50,15 +50,13 @@ export const CollectibleDetails = ({ contractAddress, chainId, tokenId }: Collec
     verifiedOnly: false
   })
 
-  const { data: dataCollectiblePrices, isPending: isPendingCollectiblePrices } = useCollectiblePrices({
-    tokens: [
-      {
-        chainId,
-        contractAddress,
-        tokenId
-      }
-    ]
-  })
+  const { data: dataCollectiblePrices, isPending: isPendingCollectiblePrices } = useCollectiblePrices([
+    {
+      chainId,
+      contractAddress,
+      tokenId
+    }
+  ])
 
   const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
