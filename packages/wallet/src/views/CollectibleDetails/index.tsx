@@ -1,13 +1,13 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { useAccount, useConfig } from 'wagmi'
-import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
+import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId, useExchangeRate, useTransactionHistory } from '@0xsequence/kit'
 
 import { CollectibleDetailsSkeleton } from './Skeleton'
 
 import { computeBalanceFiat, formatDisplay, flattenPaginatedTransactionHistory } from '../../utils'
-import { useCollectiblePrices, useCollectibleBalance, useSettings, useTransactionHistory, useNavigation } from '../../hooks'
+import { useCollectiblePrices, useCollectibleBalance, useSettings, useNavigation } from '../../hooks'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import { CollectibleTileImage } from '../../shared/CollectibleTileImage'

@@ -1,10 +1,10 @@
 import { Token } from '@0xsequence/api'
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 
 import { useMetadataClient } from './useMetadataClient'
 import { useAPIClient } from './useAPIClient'
 import { useIndexerClient, useIndexerClients } from './useIndexerClient'
-import { ContractType, SequenceIndexer, TokenBalance } from '@0xsequence/indexer'
+import { ContractType, Page, SequenceIndexer, TokenBalance } from '@0xsequence/indexer'
 
 import { zeroAddress } from 'viem'
 
@@ -211,5 +211,63 @@ export const useContractInfo = (chainId: number, contractAddress: string) => {
     retry: true,
     staleTime: time.oneMinute * 10,
     enabled: !!chainId && !!contractAddress
+  })
+}
+
+export interface GetTransactionHistoryArgs {
+  accountAddress: string
+  contractAddress?: string
+  tokenId?: string
+  page?: Page
+}
+
+export const getTransactionHistory = async (
+  indexerClient: SequenceIndexer,
+  { contractAddress, accountAddress, tokenId, page }: GetTransactionHistoryArgs
+) => {
+  const res = indexerClient.getTransactionHistory({
+    includeMetadata: true,
+    page,
+    filter: {
+      accountAddress,
+      contractAddress,
+      tokenID: tokenId
+    }
+  })
+
+  return res
+}
+
+interface UseTransactionHistoryArgs {
+  chainId: number
+  accountAddress: string
+  contractAddress?: string
+  tokenId?: string
+  disabled?: boolean
+}
+
+export const useTransactionHistory = (args: UseTransactionHistoryArgs) => {
+  const indexerClient = useIndexerClient(args.chainId)
+
+  return useInfiniteQuery({
+    queryKey: ['transactionHistory', args],
+    queryFn: ({ pageParam }) => {
+      return getTransactionHistory(indexerClient, {
+        ...args,
+        page: { page: pageParam }
+      })
+    },
+    getNextPageParam: ({ page }) => {
+      // Note: must return undefined instead of null to stop the infinite scroll
+      if (!page.more) {
+        return undefined
+      }
+
+      return page?.page || 1
+    },
+    initialPageParam: 1,
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
   })
 }

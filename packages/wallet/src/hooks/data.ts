@@ -73,27 +73,6 @@ export const useCollectiblePrices = (args: GetCollectiblePricesArgs) =>
     enabled: args.tokens.length > 0
   })
 
-export const useTransactionHistory = (arg: Omit<GetTransactionHistoryArgs, 'page'> & { disabled?: boolean }) =>
-  useInfiniteQuery({
-    queryKey: ['transactionHistory', arg],
-    queryFn: ({ pageParam }) => {
-      return getTransactionHistory({
-        ...(arg as Omit<GetTransactionHistoryArgs, 'page'>),
-        page: { page: pageParam }
-      })
-    },
-    getNextPageParam: ({ page }) => {
-      // Note: must return undefined instead of null to stop the infinite scroll
-      if (!page.more) return undefined
-
-      return page?.page || 1
-    },
-    initialPageParam: 1,
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
-  })
-
 export const useTransactionHistorySummary = (args: GetTransactionHistorySummaryArgs) =>
   useQuery({
     queryKey: ['transactionHistorySummary', args],
