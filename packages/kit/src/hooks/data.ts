@@ -1,13 +1,45 @@
-import { GetCoinPricesArgs, GetExchangeRateArgs, SequenceAPIClient, Token } from '@0xsequence/api'
+import { Token } from '@0xsequence/api'
 import { useQuery } from '@tanstack/react-query'
 
 import { useMetadataClient } from './useMetadataClient'
 import { useAPIClient } from './useAPIClient'
+import { useIndexerClient } from './useIndexerClient'
 
 export const time = {
   oneSecond: 1 * 1000,
   oneMinute: 60 * 1000,
   oneHour: 60 * 60 * 1000
+}
+
+interface UseCollectionBalanceArgs {
+  chainId: number
+  accountAddress: string
+  contractAddress: string
+  includeMetadata?: boolean
+  verifiedOnly?: boolean
+}
+
+export const useCollectionBalance = (args: UseCollectionBalanceArgs) => {
+  const indexerClient = useIndexerClient(args.chainId)
+
+  return useQuery({
+    queryKey: ['collectionBalance', args],
+    queryFn: async () => {
+      const res = await indexerClient.getTokenBalances({
+        accountAddress: args.accountAddress,
+        contractAddress: args.contractAddress,
+        includeMetadata: args.includeMetadata ?? true,
+        metadataOptions: {
+          verifiedOnly: args.verifiedOnly ?? true
+        }
+      })
+
+      return res?.balances || []
+    },
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
+  })
 }
 
 // From USD to another currency

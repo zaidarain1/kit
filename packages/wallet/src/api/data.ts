@@ -1,4 +1,4 @@
-import { ContractInfo, GetContractInfoArgs, GetContractInfoBatchReturn, TokenMetadata } from '@0xsequence/metadata'
+import { GetContractInfoBatchReturn } from '@0xsequence/metadata'
 import { Token, TokenPrice } from '@0xsequence/api'
 import { TokenBalance, ContractType, Page, GetTransactionHistoryReturn, Transaction } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
@@ -176,6 +176,7 @@ export const fetchCollectionBalance = async ({
     return []
   }
 }
+
 export interface FetchBalancesAssetsArgs {
   accountAddress: string
   chainIds: number[]

@@ -73,38 +73,6 @@ export const fetchBalances = async ({ accountAddress, chainId }: GetTokenBalance
   }
 }
 
-export interface GetCollectionBalanceArgs {
-  accountAddress: string
-  chainId: number
-  collectionAddress: string
-  verifiedOnly?: boolean
-}
-
-export const fetchCollectionBalance = async ({
-  accountAddress,
-  chainId,
-  collectionAddress,
-  verifiedOnly
-}: GetCollectionBalanceArgs) => {
-  try {
-    const { indexerClient } = getNetworkConfigAndClients(chainId)
-
-    const res = await indexerClient.getTokenBalances({
-      accountAddress,
-      includeMetadata: true,
-      contractAddress: collectionAddress,
-      metadataOptions: {
-        verifiedOnly: verifiedOnly ?? true
-      }
-    })
-
-    return res?.balances || []
-  } catch (e) {
-    console.error(e)
-    return []
-  }
-}
-
 export interface FetchPaperSecretArgs {
   chainId: number
   email: string

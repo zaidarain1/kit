@@ -45,15 +45,6 @@ export const useBalances = (args: UseBalancesArgs, options: GetTokenBalancesOpti
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   })
 
-export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
-  useQuery({
-    queryKey: ['collectionBalance', args],
-    queryFn: () => fetchCollectionBalance(args),
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
-  })
-
 export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs, options: GetTokenBalancesOptions) =>
   useQuery({
     queryKey: ['balancesAssetsSummary', args, options],
