@@ -499,24 +499,6 @@ export const getTransactionHistorySummary = async ({
   return orderedTransactions
 }
 
-export interface FetchFiatConversionRateArgs {
-  toCurrency: string
-}
-
-export const fetchFiatConversionRate = async ({ toCurrency }: FetchFiatConversionRateArgs) => {
-  if (toCurrency === 'USD') {
-    return 1
-  }
-
-  const { apiClient } = getNetworkConfigAndClients(137)
-
-  const response = await apiClient.getExchangeRate({
-    toCurrency
-  })
-
-  return response.exchangeRate.value
-}
-
 interface Collectibles {
   contractAddress: string
   chainId: number

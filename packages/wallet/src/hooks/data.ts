@@ -17,8 +17,6 @@ import {
   GetCollectiblePricesArgs,
   getTransactionHistory,
   GetTransactionHistoryArgs,
-  fetchFiatConversionRate,
-  FetchFiatConversionRateArgs,
   GetTokenBalancesOptions,
   FetchBalancesAssetsArgs,
   getTransactionHistorySummary,
@@ -148,14 +146,6 @@ export const useTransactionHistorySummary = (args: GetTransactionHistorySummaryA
     staleTime: time.oneSecond,
     refetchOnMount: true,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
-  })
-
-export const useConversionRate = (args: FetchFiatConversionRateArgs) =>
-  useQuery({
-    queryKey: ['useConversionRate', args],
-    queryFn: () => fetchFiatConversionRate(args),
-    retry: true,
-    staleTime: time.oneMinute * 10
   })
 
 export const useTokenMetadata = (args: FetchTokenMetadataArgs) =>

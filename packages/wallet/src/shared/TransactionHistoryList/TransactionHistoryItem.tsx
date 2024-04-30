@@ -2,14 +2,14 @@ import React from 'react'
 import { TokenPrice } from '@0xsequence/api'
 import { ethers } from 'ethers'
 import { Transaction, TxnTransfer, TxnTransferType } from '@0xsequence/indexer'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
 import { ArrowRightIcon, Box, Text, Image, SendIcon, ReceiveIcon, TransactionIcon, vars } from '@0xsequence/design-system'
 import dayjs from 'dayjs'
 import { useConfig } from 'wagmi'
 
 import * as sharedStyles from '../../shared/styles.css'
 import { Skeleton } from '../../shared/Skeleton'
-import { useCoinPrices, useSettings, useNavigation, useConversionRate } from '../../hooks'
+import { useCoinPrices, useSettings, useNavigation } from '../../hooks'
 import { formatDisplay, compareAddress } from '../../utils'
 
 interface TransactionHistoryItemProps {
@@ -46,7 +46,7 @@ export const TransactionHistoryItem = ({ transaction }: TransactionHistoryItemPr
     }))
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
     toCurrency: fiatCurrency.symbol
   })
 

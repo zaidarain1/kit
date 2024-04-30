@@ -1,7 +1,7 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
 
 import { useAccount, useConfig } from 'wagmi'
 
@@ -10,7 +10,7 @@ import { CoinDetailsSkeleton } from './Skeleton'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
-import { useCoinBalance, useConversionRate, useSettings, useCoinPrices, useTransactionHistory, useNavigation } from '../../hooks'
+import { useCoinBalance, useSettings, useCoinPrices, useTransactionHistory, useNavigation } from '../../hooks'
 import { HEADER_HEIGHT } from '../../constants'
 import { compareAddress, computeBalanceFiat, formatDisplay, flattenPaginatedTransactionHistory } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
@@ -60,7 +60,7 @@ export const CoinDetails = ({ contractAddress, chainId }: CoinDetailsProps) => {
     ]
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
     toCurrency: fiatCurrency.symbol
   })
 

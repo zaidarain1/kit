@@ -461,6 +461,9 @@ importers:
       0xsequence:
         specifier: 0.0.0-20240429153138
         version: 0.0.0-20240429153138(ethers@5.7.2)
+      '@tanstack/react-query':
+        specifier: ^5.32.0
+        version: 5.32.0(react@18.2.0)
       ethers:
         specifier: 5.7.2
         version: 5.7.2

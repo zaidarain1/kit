@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Token } from '@0xsequence/api'
 import { Transaction, TxnTransfer } from '@0xsequence/indexer'
 import { ArrowRightIcon, Box, Button, Divider, GradientAvatar, Image, LinkIcon, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
 import dayjs from 'dayjs'
 import { useConfig } from 'wagmi'
 
@@ -12,7 +12,7 @@ import { CopyButton } from '../../shared/CopyButton'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { Skeleton } from '../../shared/Skeleton'
 import { compareAddress, formatDisplay } from '../../utils'
-import { useCoinPrices, useConversionRate, useCollectiblePrices, useSettings } from '../../hooks'
+import { useCoinPrices, useCollectiblePrices, useSettings } from '../../hooks'
 
 interface TransactionDetailProps {
   transaction: Transaction
@@ -63,7 +63,7 @@ export const TransactionDetails = ({ transaction }: TransactionDetailProps) => {
     tokens: collectibles
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
     toCurrency: fiatCurrency.symbol
   })
 

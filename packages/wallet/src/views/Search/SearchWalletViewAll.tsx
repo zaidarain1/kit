@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 import { Box, SearchIcon, TabsContent, TabsHeader, TabsRoot, Text, TextInput, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
 import { useAccount, useConfig } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances, useCoinPrices, useConversionRate, useSettings } from '../../hooks'
+import { useBalances, useCoinPrices, useSettings } from '../../hooks'
 import { compareAddress, computeBalanceFiat } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
 
@@ -48,7 +48,7 @@ export const SearchWalletViewAll = ({ defaultTab }: SearchWalletViewAllProps) =>
     }))
   })
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate({
     toCurrency: fiatCurrency.symbol
   })
 
