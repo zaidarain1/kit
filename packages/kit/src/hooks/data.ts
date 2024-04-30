@@ -3,12 +3,95 @@ import { useQuery } from '@tanstack/react-query'
 
 import { useMetadataClient } from './useMetadataClient'
 import { useAPIClient } from './useAPIClient'
-import { useIndexerClient } from './useIndexerClient'
+import { useIndexerClient, useIndexerClients } from './useIndexerClient'
+import { ContractType, SequenceIndexer, TokenBalance } from '@0xsequence/indexer'
+
+import { zeroAddress } from 'viem'
 
 export const time = {
   oneSecond: 1 * 1000,
   oneMinute: 60 * 1000,
   oneHour: 60 * 60 * 1000
+}
+
+const getNativeTokenBalance = async (indexerClient: SequenceIndexer, chainId: number, accountAddress: string) => {
+  const res = await indexerClient.getEtherBalance({ accountAddress })
+
+  const tokenBalance: TokenBalance = {
+    chainId,
+    contractAddress: zeroAddress,
+    accountAddress,
+    balance: res?.balance.balanceWei || '0',
+    contractType: ContractType.UNKNOWN,
+    blockHash: '',
+    blockNumber: 0,
+    tokenID: ''
+  }
+
+  return [tokenBalance]
+}
+
+interface GetTokenBalancesArgs {
+  accountAddress: string
+  hideCollectibles?: boolean
+  includeMetadata?: boolean
+  verifiedOnly?: boolean
+  contractAddress?: string
+}
+
+const getTokenBalances = async (indexerClient: SequenceIndexer, args: GetTokenBalancesArgs) => {
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    includeMetadata: args.includeMetadata ?? true,
+    metadataOptions: {
+      verifiedOnly: args.verifiedOnly ?? true
+    },
+    ...(args.contractAddress && { contractAddress: args.contractAddress })
+  })
+
+  return res?.balances || []
+}
+
+const getBalances = async (indexerClient: SequenceIndexer, chainId: number, args: GetTokenBalancesArgs) => {
+  if (!args.accountAddress) {
+    return []
+  }
+
+  const balances = (
+    await Promise.allSettled([
+      getNativeTokenBalance(indexerClient, chainId, args.accountAddress),
+      getTokenBalances(indexerClient, args)
+    ])
+  )
+    .map(res => (res.status === 'fulfilled' ? res.value : []))
+    .flat()
+
+  return balances
+}
+
+interface UseBalancesArgs extends GetTokenBalancesArgs {
+  chainIds: number[]
+}
+
+// Gets native and token balances
+export const useBalances = ({ chainIds, ...args }: UseBalancesArgs) => {
+  const indexerClients = useIndexerClients(chainIds)
+
+  return useQuery({
+    queryKey: ['balances', chainIds, args],
+    queryFn: async () => {
+      const res = (
+        await Promise.all(
+          Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args))
+        )
+      ).flat()
+
+      return res
+    },
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: chainIds.length > 0 && !!args.accountAddress
+  })
 }
 
 interface UseCollectionBalanceArgs {

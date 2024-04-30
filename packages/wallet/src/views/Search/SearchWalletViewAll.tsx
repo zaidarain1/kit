@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 import { Box, SearchIcon, TabsContent, TabsHeader, TabsRoot, Text, TextInput } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices, useBalances } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
 import { useAccount, useConfig } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances, useSettings } from '../../hooks'
+import { useSettings } from '../../hooks'
 import { compareAddress, computeBalanceFiat } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
 
@@ -28,13 +28,11 @@ export const SearchWalletViewAll = ({ defaultTab }: SearchWalletViewAllProps) =>
 
   const { address: accountAddress } = useAccount()
 
-  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances(
-    {
-      accountAddress: accountAddress || '',
-      chainIds: selectedNetworks
-    },
-    { hideUnlistedTokens }
-  )
+  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances({
+    chainIds: selectedNetworks,
+    accountAddress: accountAddress || '',
+    verifiedOnly: hideUnlistedTokens
+  })
 
   const coinBalancesUnordered =
     tokenBalancesData?.filter(

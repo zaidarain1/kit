@@ -1,10 +1,7 @@
 import { ethers } from 'ethers'
 import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
 import {
-  fetchBalances,
   GetTokenBalancesArgs,
-  fetchCollectionBalance,
-  GetCollectionBalanceArgs,
   fetchBalancesAssetsSummary,
   getNativeToken,
   getTokenBalances,
@@ -27,23 +24,6 @@ export const time = {
   oneMinute: 60 * 1000,
   oneHour: 60 * 60 * 1000
 }
-
-export interface UseBalancesArgs extends Omit<GetTokenBalancesArgs, 'chainId'> {
-  chainIds: number[]
-}
-
-export const useBalances = (args: UseBalancesArgs, options: GetTokenBalancesOptions) =>
-  useQuery({
-    queryKey: ['balances', args, options],
-    queryFn: async () => {
-      const { chainIds, ...restArgs } = args
-      const balances = await Promise.all(chainIds.map(chainId => fetchBalances({ ...restArgs, chainId }, options)))
-      return balances.flat()
-    },
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: args.chainIds.length > 0 && !!args.accountAddress
-  })
 
 export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs, options: GetTokenBalancesOptions) =>
   useQuery({

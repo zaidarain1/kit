@@ -18,14 +18,15 @@ import {
   useAnalyticsContext,
   ExtendedConnector,
   useExchangeRate,
-  useCoinPrices
+  useCoinPrices,
+  useBalances
 } from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
 import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_20_ABI, HEADER_HEIGHT } from '../constants'
-import { useBalances, useSettings, useOpenWalletModal, useNavigation } from '../hooks'
+import { useSettings, useOpenWalletModal, useNavigation } from '../hooks'
 import { compareAddress, computeBalanceFiat, limitDecimals, isEthAddress, truncateAtMiddle } from '../utils'
 import * as sharedStyles from '../shared/styles.css'
 
@@ -52,14 +53,11 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
   const [toAddress, setToAddress] = useState<string>('')
   const { sendTransaction } = useSendTransaction()
   const [isSendTxnPending, setIsSendTxnPending] = useState(false)
-  const { data: balances = [], isPending: isPendingBalances } = useBalances(
-    {
-      accountAddress: accountAddress,
-      chainIds: [chainId],
-      contractAddress
-    },
-    { hideUnlistedTokens: false }
-  )
+  const { data: balances = [], isPending: isPendingBalances } = useBalances({
+    chainIds: [chainId],
+    accountAddress: accountAddress,
+    contractAddress
+  })
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const tokenBalance = (balances as TokenBalance[]).find(b => b.contractAddress === contractAddress)
   const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices([

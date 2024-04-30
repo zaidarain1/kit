@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
 import { useConfig } from 'wagmi'
 
-import { useTokenMetadata } from '@0xsequence/kit'
-import { Skeleton, CollectibleTileImage, CoinIcon, formatDisplay, useBalances } from '@0xsequence/kit-wallet'
+import { useTokenMetadata, useBalances } from '@0xsequence/kit'
+import { Skeleton, CollectibleTileImage, CoinIcon, formatDisplay } from '@0xsequence/kit-wallet'
 import { compareAddress, getNativeTokenInfoByChainId } from '../../utils'
 import { commons } from '@0xsequence/core'
 import { DecodingType, TransferProps, AwardItemProps, decodeTransactions } from '../../utils/txnDecoding'
@@ -96,14 +96,11 @@ const TransferItemInfo = ({ address, transferProps, chainId }: TransferItemInfoP
   const isNFT = transferProps[0]?.contractType === ContractType.ERC1155 || transferProps[0]?.contractType === ContractType.ERC721
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
 
-  const { data: balances = [], isPending: isPendingBalances } = useBalances(
-    {
-      accountAddress: address,
-      chainIds: [chainId],
-      contractAddress
-    },
-    { hideUnlistedTokens: false }
-  )
+  const { data: balances = [], isPending: isPendingBalances } = useBalances({
+    chainIds: [chainId],
+    accountAddress: address,
+    contractAddress
+  })
 
   const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata(
     chainId,

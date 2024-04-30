@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ethers } from 'ethers'
-import { Box, SearchIcon, Text, TextInput, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices } from '@0xsequence/kit'
+import { Box, SearchIcon, Text, TextInput } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices, useBalances } from '@0xsequence/kit'
 import Fuse from 'fuse.js'
 import { useAccount, useConfig } from 'wagmi'
 
@@ -9,7 +9,7 @@ import { BalanceItem } from './components/BalanceItem'
 import { WalletLink } from './components/WalletLink'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances, useSettings } from '../../hooks'
+import { useSettings } from '../../hooks'
 import { compareAddress, computeBalanceFiat } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
 
@@ -20,13 +20,11 @@ export const SearchWallet = () => {
   const { address: accountAddress } = useAccount()
   const scrollbarWidth = useScrollbarWidth()
 
-  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances(
-    {
-      accountAddress: accountAddress || '',
-      chainIds: selectedNetworks
-    },
-    { hideUnlistedTokens }
-  )
+  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances({
+    chainIds: selectedNetworks,
+    accountAddress: accountAddress || '',
+    verifiedOnly: hideUnlistedTokens
+  })
 
   const coinBalancesUnordered =
     tokenBalancesData?.filter(

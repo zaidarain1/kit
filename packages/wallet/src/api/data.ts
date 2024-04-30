@@ -111,38 +111,6 @@ export const getTokenBalances = async (
   }
 }
 
-export interface FetchBalancesOptions {
-  hideUnlistedTokens: boolean
-  hideCollectibles?: boolean
-}
-
-export const fetchBalances = async (
-  { accountAddress, chainId }: GetTokenBalancesArgs,
-  { hideUnlistedTokens, hideCollectibles }: FetchBalancesOptions
-) => {
-  try {
-    const tokenBalances = (
-      await Promise.all([
-        getNativeToken({
-          accountAddress,
-          chainId
-        }),
-        getTokenBalances(
-          {
-            accountAddress,
-            chainId
-          },
-          { hideUnlistedTokens, hideCollectibles }
-        )
-      ])
-    ).flat()
-    return tokenBalances
-  } catch (e) {
-    console.error(e)
-    return []
-  }
-}
-
 export interface GetCollectionBalanceArgs {
   accountAddress: string
   chainId: number
