@@ -1,6 +1,6 @@
-const __vite__fileDeps=["./index-CAwQU5i8.js","./index-GQ54RlLM.js","./index-D-Tlm5BR.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
-import { p as process$1, d as require$$0$2, f as global, B as Buffer, g as getAugmentedNamespace, a as getDefaultExportFromCjs, c as commonjsGlobal, _ as __vitePreload } from "./index-GQ54RlLM.js";
-import { r as require$$1, e as eventsExports, U as Ug } from "./___vite-browser-external_commonjs-proxy-BLuDiMqP.js";
+const __vite__fileDeps=["./index-MQMA9YRy.js","./index-1bnjC135.js","./index-D-Tlm5BR.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+import { p as process$1, r as require$$0$2, g as global, B as Buffer, a as getAugmentedNamespace, b as getDefaultExportFromCjs, c as commonjsGlobal, _ as __vitePreload } from "./index-1bnjC135.js";
+import { r as require$$1, e as eventsExports, U as Ug } from "./___vite-browser-external_commonjs-proxy-CKHcKlS0.js";
 var chacha20poly1305 = {};
 var chacha = {};
 var binary = {};
@@ -3063,9 +3063,6 @@ var operatingSystemRules = [
   ["OS/2", /OS\/2/]
 ];
 function detect(userAgent) {
-  if (!!userAgent) {
-    return parseUserAgent(userAgent);
-  }
   if (typeof document === "undefined" && typeof navigator !== "undefined" && navigator.product === "ReactNative") {
     return new ReactNativeInfo();
   }
@@ -4129,7 +4126,7 @@ function ft$2(e) {
   return r;
 }
 function pt$1(e, n2) {
-  return cjs$4.fromMiliseconds((n2 || Date.now()) + cjs$4.toMiliseconds(e));
+  return cjs$4.fromMiliseconds(Date.now() + cjs$4.toMiliseconds(e));
 }
 function mt$1(e) {
   return Date.now() >= cjs$4.toMiliseconds(e);
@@ -4248,7 +4245,7 @@ function U$2(e, n2) {
   return { message: n2 ? `${t} ${n2}` : t, code: r };
 }
 function k$2(e, n2) {
-  return Array.isArray(e) ? typeof n2 < "u" && e.length ? e.every(n2) : true : false;
+  return Array.isArray(e) ? true : false;
 }
 function B$1(e) {
   return Object.getPrototypeOf(e) === Object.prototype && Object.keys(e).length;
@@ -4260,7 +4257,7 @@ function g$5(e, n2) {
   return n2 && w$4(e) ? true : typeof e == "string" && !!e.trim().length;
 }
 function G$2(e, n2) {
-  return n2 && w$4(e) ? true : typeof e == "number" && !isNaN(e);
+  return typeof e == "number" && !isNaN(e);
 }
 function Mt$1(e, n2) {
   const { requiredNamespaces: t } = n2, r = Object.keys(e.namespaces), o = Object.keys(t);
@@ -4377,7 +4374,7 @@ function dn(e) {
 }
 function qt$1(e, n2) {
   let t = false;
-  return n2 && !e ? t = true : e && k$2(e) && e.length && e.forEach((r) => {
+  return !e ? t = true : e && k$2(e) && e.length && e.forEach((r) => {
     t = dn(r);
   }), t;
 }
@@ -4388,13 +4385,13 @@ function Gt$1(e) {
   return typeof e < "u" && typeof e !== null;
 }
 function Wt(e) {
-  return !(!e || typeof e != "object" || !e.code || !G$2(e.code, false) || !e.message || !g$5(e.message, false));
+  return !(!e || typeof e != "object" || !e.code || !G$2(e.code) || !e.message || !g$5(e.message, false));
 }
 function zt$1(e) {
   return !(w$4(e) || !g$5(e.method, false));
 }
 function Yt$1(e) {
-  return !(w$4(e) || w$4(e.result) && w$4(e.error) || !G$2(e.id, false) || !g$5(e.jsonrpc, false));
+  return !(w$4(e) || w$4(e.result) && w$4(e.error) || !G$2(e.id) || !g$5(e.jsonrpc, false));
 }
 function Jt$1(e) {
   return !(w$4(e) || !g$5(e.name, false));
@@ -4452,7 +4449,7 @@ function nr$1(e) {
   }), n2;
 }
 function tr$1(e, n2) {
-  return G$2(e, false) && e <= n2.max && e >= n2.min;
+  return G$2(e) && e <= n2.max && e >= n2.min;
 }
 function rr$1() {
   const e = R$2();
@@ -7671,7 +7668,7 @@ function formatJsonRpcError(id, error, data) {
   return {
     id,
     jsonrpc: "2.0",
-    error: formatErrorMessage(error, data)
+    error: formatErrorMessage(error)
   };
 }
 function formatErrorMessage(error, data) {
@@ -7680,9 +7677,6 @@ function formatErrorMessage(error, data) {
   }
   if (typeof error === "string") {
     error = Object.assign(Object.assign({}, getError(SERVER_ERROR)), { message: error });
-  }
-  if (typeof data !== "undefined") {
-    error.data = data;
   }
   if (isReservedErrorCode(error.code)) {
     error = getErrorByCode(error.code);
@@ -8234,7 +8228,7 @@ lodash_isequal.exports;
   function arrayLikeKeys(value, inherited) {
     var isArr = isArray(value), isArg = !isArr && isArguments(value), isBuff = !isArr && !isArg && isBuffer(value), isType = !isArr && !isArg && !isBuff && isTypedArray(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes(value.length, String) : [], length = result.length;
     for (var key in value) {
-      if ((inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
+      if (hasOwnProperty.call(value, key) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
       (key == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
       isBuff && (key == "offset" || key == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
       isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || // Skip index properties.
@@ -10608,7 +10602,7 @@ class ds extends w$2 {
         throw new Error(a3);
       }
       const { pairingTopic: s, requiredNamespaces: t, optionalNamespaces: i2, sessionProperties: n2, relays: o } = e;
-      if (w$4(s) || await this.isValidPairingTopic(s), !qt$1(o, true)) {
+      if (w$4(s) || await this.isValidPairingTopic(s), !qt$1(o)) {
         const { message: a3 } = N$2("MISSING_OR_INVALID", `connect() relays: ${o}`);
         throw new Error(a3);
       }
@@ -15769,7 +15763,7 @@ class v2 {
     if (this.rpc = this.getRpcConfig(t), this.chainId = this.rpc.chains.length ? g2(this.rpc.chains) : g2(this.rpc.optionalChains), this.signer = await hv.init({ projectId: this.rpc.projectId, metadata: this.rpc.metadata, disableProviderPing: t.disableProviderPing, relayUrl: t.relayUrl, storageOptions: t.storageOptions }), this.registerEventListeners(), await this.loadPersistedSession(), this.rpc.showQrModal) {
       let s;
       try {
-        const { WalletConnectModal: i2 } = await __vitePreload(() => import("./index-CAwQU5i8.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { WalletConnectModal: i2 } = await __vitePreload(() => import("./index-MQMA9YRy.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         s = i2;
       } catch {
         throw new Error("To use QR modal, please install @walletconnect/modal package");

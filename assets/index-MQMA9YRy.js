@@ -1,5 +1,5 @@
-const __vite__fileDeps=["./index-BLuoeisx.js","./index-GQ54RlLM.js","./index-D-Tlm5BR.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
-import { _ as __vitePreload } from "./index-GQ54RlLM.js";
+const __vite__fileDeps=["./index-1F9hDpP1.js","./index-1bnjC135.js","./index-D-Tlm5BR.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+import { _ as __vitePreload } from "./index-1bnjC135.js";
 const t = Symbol();
 const s = Object.getPrototypeOf, c$1 = /* @__PURE__ */ new WeakMap(), l = (e) => e && (c$1.has(e) ? c$1.get(e) : s(e) === Object.prototype || s(e) === Array.prototype), y$1 = (e) => l(e) && e[t] || null, h = (e, t2 = true) => {
   c$1.set(e, t2);
@@ -232,10 +232,6 @@ function subscribe(proxyObject, callback, notifyInSync) {
   let isListenerActive = false;
   const listener = (op) => {
     ops.push(op);
-    if (notifyInSync) {
-      callback(ops.splice(0));
-      return;
-    }
     if (!promise) {
       promise = Promise.resolve().then(() => {
         promise = void 0;
@@ -491,7 +487,7 @@ class d {
   }
   async initUi() {
     if (typeof window < "u") {
-      await __vitePreload(() => import("./index-BLuoeisx.js"), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+      await __vitePreload(() => import("./index-1F9hDpP1.js"), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
       const e = document.createElement("wcm-modal");
       document.body.insertAdjacentElement("beforeend", e), p.setIsUiLoaded(true);
     }

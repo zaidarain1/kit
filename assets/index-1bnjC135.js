@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DgNH_3_4.js","./___vite-browser-external_commonjs-proxy-BLuDiMqP.js","./index.es-DurA0YlR.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-C3z8_oub.js","./___vite-browser-external_commonjs-proxy-CKHcKlS0.js","./index.es-DdqhZQ4g.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -281,6 +281,9 @@ function T$1(a2) {
   throw a2._result;
 }
 var U$1 = { current: null }, V$1 = { transition: null }, W$2 = { ReactCurrentDispatcher: U$1, ReactCurrentBatchConfig: V$1, ReactCurrentOwner: K$2 };
+function X$2() {
+  throw Error("act(...) is not supported in production builds of React.");
+}
 react_production_min.Children = { map: S$2, forEach: function(a2, b3, e2) {
   S$2(a2, function() {
     b3.apply(this, arguments);
@@ -307,6 +310,7 @@ react_production_min.PureComponent = G$3;
 react_production_min.StrictMode = q$6;
 react_production_min.Suspense = w$1;
 react_production_min.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = W$2;
+react_production_min.act = X$2;
 react_production_min.cloneElement = function(a2, b3, e2) {
   if (null === a2 || void 0 === a2)
     throw Error("React.cloneElement(...): The argument must be a React element, but you passed " + a2 + ".");
@@ -363,9 +367,7 @@ react_production_min.startTransition = function(a2) {
     V$1.transition = b3;
   }
 };
-react_production_min.unstable_act = function() {
-  throw Error("act(...) is not supported in production builds of React.");
-};
+react_production_min.unstable_act = X$2;
 react_production_min.useCallback = function(a2, b3) {
   return U$1.current.useCallback(a2, b3);
 };
@@ -410,7 +412,7 @@ react_production_min.useSyncExternalStore = function(a2, b3, e2) {
 react_production_min.useTransition = function() {
   return U$1.current.useTransition();
 };
-react_production_min.version = "18.2.0";
+react_production_min.version = "18.3.1";
 {
   react.exports = react_production_min;
 }
@@ -3176,297 +3178,7 @@ function Jg(a2) {
   null === zg ? zg = [a2] : zg.push(a2);
 }
 var Kg = ua.ReactCurrentBatchConfig;
-function Lg(a2, b3) {
-  if (a2 && a2.defaultProps) {
-    b3 = A$1({}, b3);
-    a2 = a2.defaultProps;
-    for (var c2 in a2)
-      void 0 === b3[c2] && (b3[c2] = a2[c2]);
-    return b3;
-  }
-  return b3;
-}
-var Mg = Uf(null), Ng = null, Og = null, Pg = null;
-function Qg() {
-  Pg = Og = Ng = null;
-}
-function Rg(a2) {
-  var b3 = Mg.current;
-  E$1(Mg);
-  a2._currentValue = b3;
-}
-function Sg(a2, b3, c2) {
-  for (; null !== a2; ) {
-    var d2 = a2.alternate;
-    (a2.childLanes & b3) !== b3 ? (a2.childLanes |= b3, null !== d2 && (d2.childLanes |= b3)) : null !== d2 && (d2.childLanes & b3) !== b3 && (d2.childLanes |= b3);
-    if (a2 === c2)
-      break;
-    a2 = a2.return;
-  }
-}
-function Tg(a2, b3) {
-  Ng = a2;
-  Pg = Og = null;
-  a2 = a2.dependencies;
-  null !== a2 && null !== a2.firstContext && (0 !== (a2.lanes & b3) && (Ug = true), a2.firstContext = null);
-}
-function Vg(a2) {
-  var b3 = a2._currentValue;
-  if (Pg !== a2)
-    if (a2 = { context: a2, memoizedValue: b3, next: null }, null === Og) {
-      if (null === Ng)
-        throw Error(p$3(308));
-      Og = a2;
-      Ng.dependencies = { lanes: 0, firstContext: a2 };
-    } else
-      Og = Og.next = a2;
-  return b3;
-}
-var Wg = null;
-function Xg(a2) {
-  null === Wg ? Wg = [a2] : Wg.push(a2);
-}
-function Yg(a2, b3, c2, d2) {
-  var e2 = b3.interleaved;
-  null === e2 ? (c2.next = c2, Xg(b3)) : (c2.next = e2.next, e2.next = c2);
-  b3.interleaved = c2;
-  return Zg(a2, d2);
-}
-function Zg(a2, b3) {
-  a2.lanes |= b3;
-  var c2 = a2.alternate;
-  null !== c2 && (c2.lanes |= b3);
-  c2 = a2;
-  for (a2 = a2.return; null !== a2; )
-    a2.childLanes |= b3, c2 = a2.alternate, null !== c2 && (c2.childLanes |= b3), c2 = a2, a2 = a2.return;
-  return 3 === c2.tag ? c2.stateNode : null;
-}
-var $g = false;
-function ah(a2) {
-  a2.updateQueue = { baseState: a2.memoizedState, firstBaseUpdate: null, lastBaseUpdate: null, shared: { pending: null, interleaved: null, lanes: 0 }, effects: null };
-}
-function bh(a2, b3) {
-  a2 = a2.updateQueue;
-  b3.updateQueue === a2 && (b3.updateQueue = { baseState: a2.baseState, firstBaseUpdate: a2.firstBaseUpdate, lastBaseUpdate: a2.lastBaseUpdate, shared: a2.shared, effects: a2.effects });
-}
-function ch(a2, b3) {
-  return { eventTime: a2, lane: b3, tag: 0, payload: null, callback: null, next: null };
-}
-function dh(a2, b3, c2) {
-  var d2 = a2.updateQueue;
-  if (null === d2)
-    return null;
-  d2 = d2.shared;
-  if (0 !== (K$1 & 2)) {
-    var e2 = d2.pending;
-    null === e2 ? b3.next = b3 : (b3.next = e2.next, e2.next = b3);
-    d2.pending = b3;
-    return Zg(a2, c2);
-  }
-  e2 = d2.interleaved;
-  null === e2 ? (b3.next = b3, Xg(d2)) : (b3.next = e2.next, e2.next = b3);
-  d2.interleaved = b3;
-  return Zg(a2, c2);
-}
-function eh(a2, b3, c2) {
-  b3 = b3.updateQueue;
-  if (null !== b3 && (b3 = b3.shared, 0 !== (c2 & 4194240))) {
-    var d2 = b3.lanes;
-    d2 &= a2.pendingLanes;
-    c2 |= d2;
-    b3.lanes = c2;
-    Cc(a2, c2);
-  }
-}
-function fh(a2, b3) {
-  var c2 = a2.updateQueue, d2 = a2.alternate;
-  if (null !== d2 && (d2 = d2.updateQueue, c2 === d2)) {
-    var e2 = null, f2 = null;
-    c2 = c2.firstBaseUpdate;
-    if (null !== c2) {
-      do {
-        var g2 = { eventTime: c2.eventTime, lane: c2.lane, tag: c2.tag, payload: c2.payload, callback: c2.callback, next: null };
-        null === f2 ? e2 = f2 = g2 : f2 = f2.next = g2;
-        c2 = c2.next;
-      } while (null !== c2);
-      null === f2 ? e2 = f2 = b3 : f2 = f2.next = b3;
-    } else
-      e2 = f2 = b3;
-    c2 = { baseState: d2.baseState, firstBaseUpdate: e2, lastBaseUpdate: f2, shared: d2.shared, effects: d2.effects };
-    a2.updateQueue = c2;
-    return;
-  }
-  a2 = c2.lastBaseUpdate;
-  null === a2 ? c2.firstBaseUpdate = b3 : a2.next = b3;
-  c2.lastBaseUpdate = b3;
-}
-function gh(a2, b3, c2, d2) {
-  var e2 = a2.updateQueue;
-  $g = false;
-  var f2 = e2.firstBaseUpdate, g2 = e2.lastBaseUpdate, h2 = e2.shared.pending;
-  if (null !== h2) {
-    e2.shared.pending = null;
-    var k2 = h2, l2 = k2.next;
-    k2.next = null;
-    null === g2 ? f2 = l2 : g2.next = l2;
-    g2 = k2;
-    var m2 = a2.alternate;
-    null !== m2 && (m2 = m2.updateQueue, h2 = m2.lastBaseUpdate, h2 !== g2 && (null === h2 ? m2.firstBaseUpdate = l2 : h2.next = l2, m2.lastBaseUpdate = k2));
-  }
-  if (null !== f2) {
-    var q2 = e2.baseState;
-    g2 = 0;
-    m2 = l2 = k2 = null;
-    h2 = f2;
-    do {
-      var r2 = h2.lane, y2 = h2.eventTime;
-      if ((d2 & r2) === r2) {
-        null !== m2 && (m2 = m2.next = {
-          eventTime: y2,
-          lane: 0,
-          tag: h2.tag,
-          payload: h2.payload,
-          callback: h2.callback,
-          next: null
-        });
-        a: {
-          var n2 = a2, t2 = h2;
-          r2 = b3;
-          y2 = c2;
-          switch (t2.tag) {
-            case 1:
-              n2 = t2.payload;
-              if ("function" === typeof n2) {
-                q2 = n2.call(y2, q2, r2);
-                break a;
-              }
-              q2 = n2;
-              break a;
-            case 3:
-              n2.flags = n2.flags & -65537 | 128;
-            case 0:
-              n2 = t2.payload;
-              r2 = "function" === typeof n2 ? n2.call(y2, q2, r2) : n2;
-              if (null === r2 || void 0 === r2)
-                break a;
-              q2 = A$1({}, q2, r2);
-              break a;
-            case 2:
-              $g = true;
-          }
-        }
-        null !== h2.callback && 0 !== h2.lane && (a2.flags |= 64, r2 = e2.effects, null === r2 ? e2.effects = [h2] : r2.push(h2));
-      } else
-        y2 = { eventTime: y2, lane: r2, tag: h2.tag, payload: h2.payload, callback: h2.callback, next: null }, null === m2 ? (l2 = m2 = y2, k2 = q2) : m2 = m2.next = y2, g2 |= r2;
-      h2 = h2.next;
-      if (null === h2)
-        if (h2 = e2.shared.pending, null === h2)
-          break;
-        else
-          r2 = h2, h2 = r2.next, r2.next = null, e2.lastBaseUpdate = r2, e2.shared.pending = null;
-    } while (1);
-    null === m2 && (k2 = q2);
-    e2.baseState = k2;
-    e2.firstBaseUpdate = l2;
-    e2.lastBaseUpdate = m2;
-    b3 = e2.shared.interleaved;
-    if (null !== b3) {
-      e2 = b3;
-      do
-        g2 |= e2.lane, e2 = e2.next;
-      while (e2 !== b3);
-    } else
-      null === f2 && (e2.shared.lanes = 0);
-    hh |= g2;
-    a2.lanes = g2;
-    a2.memoizedState = q2;
-  }
-}
-function ih(a2, b3, c2) {
-  a2 = b3.effects;
-  b3.effects = null;
-  if (null !== a2)
-    for (b3 = 0; b3 < a2.length; b3++) {
-      var d2 = a2[b3], e2 = d2.callback;
-      if (null !== e2) {
-        d2.callback = null;
-        d2 = c2;
-        if ("function" !== typeof e2)
-          throw Error(p$3(191, e2));
-        e2.call(d2);
-      }
-    }
-}
-var jh = new aa.Component().refs;
-function kh(a2, b3, c2, d2) {
-  b3 = a2.memoizedState;
-  c2 = c2(d2, b3);
-  c2 = null === c2 || void 0 === c2 ? b3 : A$1({}, b3, c2);
-  a2.memoizedState = c2;
-  0 === a2.lanes && (a2.updateQueue.baseState = c2);
-}
-var nh = { isMounted: function(a2) {
-  return (a2 = a2._reactInternals) ? Vb(a2) === a2 : false;
-}, enqueueSetState: function(a2, b3, c2) {
-  a2 = a2._reactInternals;
-  var d2 = L$1(), e2 = lh(a2), f2 = ch(d2, e2);
-  f2.payload = b3;
-  void 0 !== c2 && null !== c2 && (f2.callback = c2);
-  b3 = dh(a2, f2, e2);
-  null !== b3 && (mh(b3, a2, e2, d2), eh(b3, a2, e2));
-}, enqueueReplaceState: function(a2, b3, c2) {
-  a2 = a2._reactInternals;
-  var d2 = L$1(), e2 = lh(a2), f2 = ch(d2, e2);
-  f2.tag = 1;
-  f2.payload = b3;
-  void 0 !== c2 && null !== c2 && (f2.callback = c2);
-  b3 = dh(a2, f2, e2);
-  null !== b3 && (mh(b3, a2, e2, d2), eh(b3, a2, e2));
-}, enqueueForceUpdate: function(a2, b3) {
-  a2 = a2._reactInternals;
-  var c2 = L$1(), d2 = lh(a2), e2 = ch(c2, d2);
-  e2.tag = 2;
-  void 0 !== b3 && null !== b3 && (e2.callback = b3);
-  b3 = dh(a2, e2, d2);
-  null !== b3 && (mh(b3, a2, d2, c2), eh(b3, a2, d2));
-} };
-function oh(a2, b3, c2, d2, e2, f2, g2) {
-  a2 = a2.stateNode;
-  return "function" === typeof a2.shouldComponentUpdate ? a2.shouldComponentUpdate(d2, f2, g2) : b3.prototype && b3.prototype.isPureReactComponent ? !Ie(c2, d2) || !Ie(e2, f2) : true;
-}
-function ph(a2, b3, c2) {
-  var d2 = false, e2 = Vf;
-  var f2 = b3.contextType;
-  "object" === typeof f2 && null !== f2 ? f2 = Vg(f2) : (e2 = Zf(b3) ? Xf : H$1.current, d2 = b3.contextTypes, f2 = (d2 = null !== d2 && void 0 !== d2) ? Yf(a2, e2) : Vf);
-  b3 = new b3(c2, f2);
-  a2.memoizedState = null !== b3.state && void 0 !== b3.state ? b3.state : null;
-  b3.updater = nh;
-  a2.stateNode = b3;
-  b3._reactInternals = a2;
-  d2 && (a2 = a2.stateNode, a2.__reactInternalMemoizedUnmaskedChildContext = e2, a2.__reactInternalMemoizedMaskedChildContext = f2);
-  return b3;
-}
-function qh(a2, b3, c2, d2) {
-  a2 = b3.state;
-  "function" === typeof b3.componentWillReceiveProps && b3.componentWillReceiveProps(c2, d2);
-  "function" === typeof b3.UNSAFE_componentWillReceiveProps && b3.UNSAFE_componentWillReceiveProps(c2, d2);
-  b3.state !== a2 && nh.enqueueReplaceState(b3, b3.state, null);
-}
-function rh$1(a2, b3, c2, d2) {
-  var e2 = a2.stateNode;
-  e2.props = c2;
-  e2.state = a2.memoizedState;
-  e2.refs = jh;
-  ah(a2);
-  var f2 = b3.contextType;
-  "object" === typeof f2 && null !== f2 ? e2.context = Vg(f2) : (f2 = Zf(b3) ? Xf : H$1.current, e2.context = Yf(a2, f2));
-  e2.state = a2.memoizedState;
-  f2 = b3.getDerivedStateFromProps;
-  "function" === typeof f2 && (kh(a2, b3, f2, c2), e2.state = a2.memoizedState);
-  "function" === typeof b3.getDerivedStateFromProps || "function" === typeof e2.getSnapshotBeforeUpdate || "function" !== typeof e2.UNSAFE_componentWillMount && "function" !== typeof e2.componentWillMount || (b3 = e2.state, "function" === typeof e2.componentWillMount && e2.componentWillMount(), "function" === typeof e2.UNSAFE_componentWillMount && e2.UNSAFE_componentWillMount(), b3 !== e2.state && nh.enqueueReplaceState(e2, e2.state, null), gh(a2, c2, e2, d2), e2.state = a2.memoizedState);
-  "function" === typeof e2.componentDidMount && (a2.flags |= 4194308);
-}
-function sh$1(a2, b3, c2) {
+function Lg(a2, b3, c2) {
   a2 = c2.ref;
   if (null !== a2 && "function" !== typeof a2 && "object" !== typeof a2) {
     if (c2._owner) {
@@ -3483,7 +3195,6 @@ function sh$1(a2, b3, c2) {
         return b3.ref;
       b3 = function(a3) {
         var b4 = e2.refs;
-        b4 === jh && (b4 = e2.refs = {});
         null === a3 ? delete b4[f2] : b4[f2] = a3;
       };
       b3._stringRef = f2;
@@ -3496,15 +3207,15 @@ function sh$1(a2, b3, c2) {
   }
   return a2;
 }
-function th(a2, b3) {
+function Mg(a2, b3) {
   a2 = Object.prototype.toString.call(b3);
   throw Error(p$3(31, "[object Object]" === a2 ? "object with keys {" + Object.keys(b3).join(", ") + "}" : a2));
 }
-function uh(a2) {
+function Ng(a2) {
   var b3 = a2._init;
   return b3(a2._payload);
 }
-function vh$1(a2) {
+function Og(a2) {
   function b3(b4, c3) {
     if (a2) {
       var d3 = b4.deletions;
@@ -3524,7 +3235,7 @@ function vh$1(a2) {
     return a3;
   }
   function e2(a3, b4) {
-    a3 = wh(a3, b4);
+    a3 = Pg(a3, b4);
     a3.index = 0;
     a3.sibling = null;
     return a3;
@@ -3545,7 +3256,7 @@ function vh$1(a2) {
   }
   function h2(a3, b4, c3, d3) {
     if (null === b4 || 6 !== b4.tag)
-      return b4 = xh(c3, a3.mode, d3), b4.return = a3, b4;
+      return b4 = Qg(c3, a3.mode, d3), b4.return = a3, b4;
     b4 = e2(b4, c3);
     b4.return = a3;
     return b4;
@@ -3554,43 +3265,43 @@ function vh$1(a2) {
     var f3 = c3.type;
     if (f3 === ya)
       return m2(a3, b4, c3.props.children, d3, c3.key);
-    if (null !== b4 && (b4.elementType === f3 || "object" === typeof f3 && null !== f3 && f3.$$typeof === Ha && uh(f3) === b4.type))
-      return d3 = e2(b4, c3.props), d3.ref = sh$1(a3, b4, c3), d3.return = a3, d3;
-    d3 = yh(c3.type, c3.key, c3.props, null, a3.mode, d3);
-    d3.ref = sh$1(a3, b4, c3);
+    if (null !== b4 && (b4.elementType === f3 || "object" === typeof f3 && null !== f3 && f3.$$typeof === Ha && Ng(f3) === b4.type))
+      return d3 = e2(b4, c3.props), d3.ref = Lg(a3, b4, c3), d3.return = a3, d3;
+    d3 = Rg(c3.type, c3.key, c3.props, null, a3.mode, d3);
+    d3.ref = Lg(a3, b4, c3);
     d3.return = a3;
     return d3;
   }
   function l2(a3, b4, c3, d3) {
     if (null === b4 || 4 !== b4.tag || b4.stateNode.containerInfo !== c3.containerInfo || b4.stateNode.implementation !== c3.implementation)
-      return b4 = zh(c3, a3.mode, d3), b4.return = a3, b4;
+      return b4 = Sg(c3, a3.mode, d3), b4.return = a3, b4;
     b4 = e2(b4, c3.children || []);
     b4.return = a3;
     return b4;
   }
   function m2(a3, b4, c3, d3, f3) {
     if (null === b4 || 7 !== b4.tag)
-      return b4 = Ah(c3, a3.mode, d3, f3), b4.return = a3, b4;
+      return b4 = Tg(c3, a3.mode, d3, f3), b4.return = a3, b4;
     b4 = e2(b4, c3);
     b4.return = a3;
     return b4;
   }
   function q2(a3, b4, c3) {
     if ("string" === typeof b4 && "" !== b4 || "number" === typeof b4)
-      return b4 = xh("" + b4, a3.mode, c3), b4.return = a3, b4;
+      return b4 = Qg("" + b4, a3.mode, c3), b4.return = a3, b4;
     if ("object" === typeof b4 && null !== b4) {
       switch (b4.$$typeof) {
         case va:
-          return c3 = yh(b4.type, b4.key, b4.props, null, a3.mode, c3), c3.ref = sh$1(a3, null, b4), c3.return = a3, c3;
+          return c3 = Rg(b4.type, b4.key, b4.props, null, a3.mode, c3), c3.ref = Lg(a3, null, b4), c3.return = a3, c3;
         case wa:
-          return b4 = zh(b4, a3.mode, c3), b4.return = a3, b4;
+          return b4 = Sg(b4, a3.mode, c3), b4.return = a3, b4;
         case Ha:
           var d3 = b4._init;
           return q2(a3, d3(b4._payload), c3);
       }
       if (eb(b4) || Ka(b4))
-        return b4 = Ah(b4, a3.mode, c3, null), b4.return = a3, b4;
-      th(a3, b4);
+        return b4 = Tg(b4, a3.mode, c3, null), b4.return = a3, b4;
+      Mg(a3, b4);
     }
     return null;
   }
@@ -3614,7 +3325,7 @@ function vh$1(a2) {
       }
       if (eb(c3) || Ka(c3))
         return null !== e3 ? null : m2(a3, b4, c3, d3, null);
-      th(a3, c3);
+      Mg(a3, c3);
     }
     return null;
   }
@@ -3633,7 +3344,7 @@ function vh$1(a2) {
       }
       if (eb(d3) || Ka(d3))
         return a3 = a3.get(c3) || null, m2(b4, a3, d3, e3, null);
-      th(b4, d3);
+      Mg(b4, d3);
     }
     return null;
   }
@@ -3723,10 +3434,10 @@ function vh$1(a2) {
                     a3 = d3;
                     break a;
                   }
-                } else if (l3.elementType === k3 || "object" === typeof k3 && null !== k3 && k3.$$typeof === Ha && uh(k3) === l3.type) {
+                } else if (l3.elementType === k3 || "object" === typeof k3 && null !== k3 && k3.$$typeof === Ha && Ng(k3) === l3.type) {
                   c2(a3, l3.sibling);
                   d3 = e2(l3, f3.props);
-                  d3.ref = sh$1(a3, l3, f3);
+                  d3.ref = Lg(a3, l3, f3);
                   d3.return = a3;
                   a3 = d3;
                   break a;
@@ -3737,7 +3448,7 @@ function vh$1(a2) {
                 b3(a3, l3);
               l3 = l3.sibling;
             }
-            f3.type === ya ? (d3 = Ah(f3.props.children, a3.mode, h3, f3.key), d3.return = a3, a3 = d3) : (h3 = yh(f3.type, f3.key, f3.props, null, a3.mode, h3), h3.ref = sh$1(a3, d3, f3), h3.return = a3, a3 = h3);
+            f3.type === ya ? (d3 = Tg(f3.props.children, a3.mode, h3, f3.key), d3.return = a3, a3 = d3) : (h3 = Rg(f3.type, f3.key, f3.props, null, a3.mode, h3), h3.ref = Lg(a3, d3, f3), h3.return = a3, a3 = h3);
           }
           return g2(a3);
         case wa:
@@ -3758,7 +3469,7 @@ function vh$1(a2) {
                 b3(a3, d3);
               d3 = d3.sibling;
             }
-            d3 = zh(f3, a3.mode, h3);
+            d3 = Sg(f3, a3.mode, h3);
             d3.return = a3;
             a3 = d3;
           }
@@ -3770,22 +3481,233 @@ function vh$1(a2) {
         return n2(a3, d3, f3, h3);
       if (Ka(f3))
         return t2(a3, d3, f3, h3);
-      th(a3, f3);
+      Mg(a3, f3);
     }
-    return "string" === typeof f3 && "" !== f3 || "number" === typeof f3 ? (f3 = "" + f3, null !== d3 && 6 === d3.tag ? (c2(a3, d3.sibling), d3 = e2(d3, f3), d3.return = a3, a3 = d3) : (c2(a3, d3), d3 = xh(f3, a3.mode, h3), d3.return = a3, a3 = d3), g2(a3)) : c2(a3, d3);
+    return "string" === typeof f3 && "" !== f3 || "number" === typeof f3 ? (f3 = "" + f3, null !== d3 && 6 === d3.tag ? (c2(a3, d3.sibling), d3 = e2(d3, f3), d3.return = a3, a3 = d3) : (c2(a3, d3), d3 = Qg(f3, a3.mode, h3), d3.return = a3, a3 = d3), g2(a3)) : c2(a3, d3);
   }
   return J2;
 }
-var Bh = vh$1(true), Ch = vh$1(false), Dh = {}, Eh = Uf(Dh), Fh = Uf(Dh), Gh = Uf(Dh);
-function Hh(a2) {
-  if (a2 === Dh)
+var Ug = Og(true), Vg = Og(false), Wg = Uf(null), Xg = null, Yg = null, Zg = null;
+function $g() {
+  Zg = Yg = Xg = null;
+}
+function ah(a2) {
+  var b3 = Wg.current;
+  E$1(Wg);
+  a2._currentValue = b3;
+}
+function bh(a2, b3, c2) {
+  for (; null !== a2; ) {
+    var d2 = a2.alternate;
+    (a2.childLanes & b3) !== b3 ? (a2.childLanes |= b3, null !== d2 && (d2.childLanes |= b3)) : null !== d2 && (d2.childLanes & b3) !== b3 && (d2.childLanes |= b3);
+    if (a2 === c2)
+      break;
+    a2 = a2.return;
+  }
+}
+function ch(a2, b3) {
+  Xg = a2;
+  Zg = Yg = null;
+  a2 = a2.dependencies;
+  null !== a2 && null !== a2.firstContext && (0 !== (a2.lanes & b3) && (dh = true), a2.firstContext = null);
+}
+function eh(a2) {
+  var b3 = a2._currentValue;
+  if (Zg !== a2)
+    if (a2 = { context: a2, memoizedValue: b3, next: null }, null === Yg) {
+      if (null === Xg)
+        throw Error(p$3(308));
+      Yg = a2;
+      Xg.dependencies = { lanes: 0, firstContext: a2 };
+    } else
+      Yg = Yg.next = a2;
+  return b3;
+}
+var fh = null;
+function gh(a2) {
+  null === fh ? fh = [a2] : fh.push(a2);
+}
+function hh(a2, b3, c2, d2) {
+  var e2 = b3.interleaved;
+  null === e2 ? (c2.next = c2, gh(b3)) : (c2.next = e2.next, e2.next = c2);
+  b3.interleaved = c2;
+  return ih(a2, d2);
+}
+function ih(a2, b3) {
+  a2.lanes |= b3;
+  var c2 = a2.alternate;
+  null !== c2 && (c2.lanes |= b3);
+  c2 = a2;
+  for (a2 = a2.return; null !== a2; )
+    a2.childLanes |= b3, c2 = a2.alternate, null !== c2 && (c2.childLanes |= b3), c2 = a2, a2 = a2.return;
+  return 3 === c2.tag ? c2.stateNode : null;
+}
+var jh = false;
+function kh(a2) {
+  a2.updateQueue = { baseState: a2.memoizedState, firstBaseUpdate: null, lastBaseUpdate: null, shared: { pending: null, interleaved: null, lanes: 0 }, effects: null };
+}
+function lh(a2, b3) {
+  a2 = a2.updateQueue;
+  b3.updateQueue === a2 && (b3.updateQueue = { baseState: a2.baseState, firstBaseUpdate: a2.firstBaseUpdate, lastBaseUpdate: a2.lastBaseUpdate, shared: a2.shared, effects: a2.effects });
+}
+function mh(a2, b3) {
+  return { eventTime: a2, lane: b3, tag: 0, payload: null, callback: null, next: null };
+}
+function nh(a2, b3, c2) {
+  var d2 = a2.updateQueue;
+  if (null === d2)
+    return null;
+  d2 = d2.shared;
+  if (0 !== (K$1 & 2)) {
+    var e2 = d2.pending;
+    null === e2 ? b3.next = b3 : (b3.next = e2.next, e2.next = b3);
+    d2.pending = b3;
+    return ih(a2, c2);
+  }
+  e2 = d2.interleaved;
+  null === e2 ? (b3.next = b3, gh(d2)) : (b3.next = e2.next, e2.next = b3);
+  d2.interleaved = b3;
+  return ih(a2, c2);
+}
+function oh(a2, b3, c2) {
+  b3 = b3.updateQueue;
+  if (null !== b3 && (b3 = b3.shared, 0 !== (c2 & 4194240))) {
+    var d2 = b3.lanes;
+    d2 &= a2.pendingLanes;
+    c2 |= d2;
+    b3.lanes = c2;
+    Cc(a2, c2);
+  }
+}
+function ph(a2, b3) {
+  var c2 = a2.updateQueue, d2 = a2.alternate;
+  if (null !== d2 && (d2 = d2.updateQueue, c2 === d2)) {
+    var e2 = null, f2 = null;
+    c2 = c2.firstBaseUpdate;
+    if (null !== c2) {
+      do {
+        var g2 = { eventTime: c2.eventTime, lane: c2.lane, tag: c2.tag, payload: c2.payload, callback: c2.callback, next: null };
+        null === f2 ? e2 = f2 = g2 : f2 = f2.next = g2;
+        c2 = c2.next;
+      } while (null !== c2);
+      null === f2 ? e2 = f2 = b3 : f2 = f2.next = b3;
+    } else
+      e2 = f2 = b3;
+    c2 = { baseState: d2.baseState, firstBaseUpdate: e2, lastBaseUpdate: f2, shared: d2.shared, effects: d2.effects };
+    a2.updateQueue = c2;
+    return;
+  }
+  a2 = c2.lastBaseUpdate;
+  null === a2 ? c2.firstBaseUpdate = b3 : a2.next = b3;
+  c2.lastBaseUpdate = b3;
+}
+function qh(a2, b3, c2, d2) {
+  var e2 = a2.updateQueue;
+  jh = false;
+  var f2 = e2.firstBaseUpdate, g2 = e2.lastBaseUpdate, h2 = e2.shared.pending;
+  if (null !== h2) {
+    e2.shared.pending = null;
+    var k2 = h2, l2 = k2.next;
+    k2.next = null;
+    null === g2 ? f2 = l2 : g2.next = l2;
+    g2 = k2;
+    var m2 = a2.alternate;
+    null !== m2 && (m2 = m2.updateQueue, h2 = m2.lastBaseUpdate, h2 !== g2 && (null === h2 ? m2.firstBaseUpdate = l2 : h2.next = l2, m2.lastBaseUpdate = k2));
+  }
+  if (null !== f2) {
+    var q2 = e2.baseState;
+    g2 = 0;
+    m2 = l2 = k2 = null;
+    h2 = f2;
+    do {
+      var r2 = h2.lane, y2 = h2.eventTime;
+      if ((d2 & r2) === r2) {
+        null !== m2 && (m2 = m2.next = {
+          eventTime: y2,
+          lane: 0,
+          tag: h2.tag,
+          payload: h2.payload,
+          callback: h2.callback,
+          next: null
+        });
+        a: {
+          var n2 = a2, t2 = h2;
+          r2 = b3;
+          y2 = c2;
+          switch (t2.tag) {
+            case 1:
+              n2 = t2.payload;
+              if ("function" === typeof n2) {
+                q2 = n2.call(y2, q2, r2);
+                break a;
+              }
+              q2 = n2;
+              break a;
+            case 3:
+              n2.flags = n2.flags & -65537 | 128;
+            case 0:
+              n2 = t2.payload;
+              r2 = "function" === typeof n2 ? n2.call(y2, q2, r2) : n2;
+              if (null === r2 || void 0 === r2)
+                break a;
+              q2 = A$1({}, q2, r2);
+              break a;
+            case 2:
+              jh = true;
+          }
+        }
+        null !== h2.callback && 0 !== h2.lane && (a2.flags |= 64, r2 = e2.effects, null === r2 ? e2.effects = [h2] : r2.push(h2));
+      } else
+        y2 = { eventTime: y2, lane: r2, tag: h2.tag, payload: h2.payload, callback: h2.callback, next: null }, null === m2 ? (l2 = m2 = y2, k2 = q2) : m2 = m2.next = y2, g2 |= r2;
+      h2 = h2.next;
+      if (null === h2)
+        if (h2 = e2.shared.pending, null === h2)
+          break;
+        else
+          r2 = h2, h2 = r2.next, r2.next = null, e2.lastBaseUpdate = r2, e2.shared.pending = null;
+    } while (1);
+    null === m2 && (k2 = q2);
+    e2.baseState = k2;
+    e2.firstBaseUpdate = l2;
+    e2.lastBaseUpdate = m2;
+    b3 = e2.shared.interleaved;
+    if (null !== b3) {
+      e2 = b3;
+      do
+        g2 |= e2.lane, e2 = e2.next;
+      while (e2 !== b3);
+    } else
+      null === f2 && (e2.shared.lanes = 0);
+    rh$1 |= g2;
+    a2.lanes = g2;
+    a2.memoizedState = q2;
+  }
+}
+function sh$1(a2, b3, c2) {
+  a2 = b3.effects;
+  b3.effects = null;
+  if (null !== a2)
+    for (b3 = 0; b3 < a2.length; b3++) {
+      var d2 = a2[b3], e2 = d2.callback;
+      if (null !== e2) {
+        d2.callback = null;
+        d2 = c2;
+        if ("function" !== typeof e2)
+          throw Error(p$3(191, e2));
+        e2.call(d2);
+      }
+    }
+}
+var th = {}, uh = Uf(th), vh$1 = Uf(th), wh = Uf(th);
+function xh(a2) {
+  if (a2 === th)
     throw Error(p$3(174));
   return a2;
 }
-function Ih(a2, b3) {
-  G$2(Gh, b3);
-  G$2(Fh, a2);
-  G$2(Eh, Dh);
+function yh(a2, b3) {
+  G$2(wh, b3);
+  G$2(vh$1, a2);
+  G$2(uh, th);
   a2 = b3.nodeType;
   switch (a2) {
     case 9:
@@ -3795,25 +3717,25 @@ function Ih(a2, b3) {
     default:
       a2 = 8 === a2 ? b3.parentNode : b3, b3 = a2.namespaceURI || null, a2 = a2.tagName, b3 = lb(b3, a2);
   }
-  E$1(Eh);
-  G$2(Eh, b3);
+  E$1(uh);
+  G$2(uh, b3);
 }
-function Jh() {
-  E$1(Eh);
-  E$1(Fh);
-  E$1(Gh);
+function zh() {
+  E$1(uh);
+  E$1(vh$1);
+  E$1(wh);
 }
-function Kh$1(a2) {
-  Hh(Gh.current);
-  var b3 = Hh(Eh.current);
+function Ah(a2) {
+  xh(wh.current);
+  var b3 = xh(uh.current);
   var c2 = lb(b3, a2.type);
-  b3 !== c2 && (G$2(Fh, a2), G$2(Eh, c2));
+  b3 !== c2 && (G$2(vh$1, a2), G$2(uh, c2));
 }
-function Lh(a2) {
-  Fh.current === a2 && (E$1(Eh), E$1(Fh));
+function Bh(a2) {
+  vh$1.current === a2 && (E$1(uh), E$1(vh$1));
 }
-var M = Uf(0);
-function Mh(a2) {
+var L$1 = Uf(0);
+function Ch(a2) {
   for (var b3 = a2; null !== b3; ) {
     if (13 === b3.tag) {
       var c2 = b3.memoizedState;
@@ -3839,17 +3761,17 @@ function Mh(a2) {
   }
   return null;
 }
-var Nh = [];
-function Oh() {
-  for (var a2 = 0; a2 < Nh.length; a2++)
-    Nh[a2]._workInProgressVersionPrimary = null;
-  Nh.length = 0;
+var Dh = [];
+function Eh() {
+  for (var a2 = 0; a2 < Dh.length; a2++)
+    Dh[a2]._workInProgressVersionPrimary = null;
+  Dh.length = 0;
 }
-var Ph = ua.ReactCurrentDispatcher, Qh = ua.ReactCurrentBatchConfig, Rh = 0, N$2 = null, O$1 = null, P = null, Sh = false, Th = false, Uh = 0, Vh = 0;
-function Q$2() {
+var Fh = ua.ReactCurrentDispatcher, Gh = ua.ReactCurrentBatchConfig, Hh = 0, M = null, N$2 = null, O$1 = null, Ih = false, Jh = false, Kh$1 = 0, Lh = 0;
+function P() {
   throw Error(p$3(321));
 }
-function Wh(a2, b3) {
+function Mh(a2, b3) {
   if (null === b3)
     return false;
   for (var c2 = 0; c2 < b3.length && c2 < a2.length; c2++)
@@ -3857,74 +3779,74 @@ function Wh(a2, b3) {
       return false;
   return true;
 }
-function Xh(a2, b3, c2, d2, e2, f2) {
-  Rh = f2;
-  N$2 = b3;
+function Nh(a2, b3, c2, d2, e2, f2) {
+  Hh = f2;
+  M = b3;
   b3.memoizedState = null;
   b3.updateQueue = null;
   b3.lanes = 0;
-  Ph.current = null === a2 || null === a2.memoizedState ? Yh : Zh;
+  Fh.current = null === a2 || null === a2.memoizedState ? Oh : Ph;
   a2 = c2(d2, e2);
-  if (Th) {
+  if (Jh) {
     f2 = 0;
     do {
-      Th = false;
-      Uh = 0;
+      Jh = false;
+      Kh$1 = 0;
       if (25 <= f2)
         throw Error(p$3(301));
       f2 += 1;
-      P = O$1 = null;
+      O$1 = N$2 = null;
       b3.updateQueue = null;
-      Ph.current = $h;
+      Fh.current = Qh;
       a2 = c2(d2, e2);
-    } while (Th);
+    } while (Jh);
   }
-  Ph.current = ai;
-  b3 = null !== O$1 && null !== O$1.next;
-  Rh = 0;
-  P = O$1 = N$2 = null;
-  Sh = false;
+  Fh.current = Rh;
+  b3 = null !== N$2 && null !== N$2.next;
+  Hh = 0;
+  O$1 = N$2 = M = null;
+  Ih = false;
   if (b3)
     throw Error(p$3(300));
   return a2;
 }
-function bi() {
-  var a2 = 0 !== Uh;
-  Uh = 0;
+function Sh() {
+  var a2 = 0 !== Kh$1;
+  Kh$1 = 0;
   return a2;
 }
-function ci() {
+function Th() {
   var a2 = { memoizedState: null, baseState: null, baseQueue: null, queue: null, next: null };
-  null === P ? N$2.memoizedState = P = a2 : P = P.next = a2;
-  return P;
+  null === O$1 ? M.memoizedState = O$1 = a2 : O$1 = O$1.next = a2;
+  return O$1;
 }
-function di() {
-  if (null === O$1) {
-    var a2 = N$2.alternate;
+function Uh() {
+  if (null === N$2) {
+    var a2 = M.alternate;
     a2 = null !== a2 ? a2.memoizedState : null;
   } else
-    a2 = O$1.next;
-  var b3 = null === P ? N$2.memoizedState : P.next;
+    a2 = N$2.next;
+  var b3 = null === O$1 ? M.memoizedState : O$1.next;
   if (null !== b3)
-    P = b3, O$1 = a2;
+    O$1 = b3, N$2 = a2;
   else {
     if (null === a2)
       throw Error(p$3(310));
-    O$1 = a2;
-    a2 = { memoizedState: O$1.memoizedState, baseState: O$1.baseState, baseQueue: O$1.baseQueue, queue: O$1.queue, next: null };
-    null === P ? N$2.memoizedState = P = a2 : P = P.next = a2;
+    N$2 = a2;
+    a2 = { memoizedState: N$2.memoizedState, baseState: N$2.baseState, baseQueue: N$2.baseQueue, queue: N$2.queue, next: null };
+    null === O$1 ? M.memoizedState = O$1 = a2 : O$1 = O$1.next = a2;
   }
-  return P;
+  return O$1;
 }
-function ei(a2, b3) {
+function Vh(a2, b3) {
   return "function" === typeof b3 ? b3(a2) : b3;
 }
-function fi(a2) {
-  var b3 = di(), c2 = b3.queue;
+function Wh(a2) {
+  var b3 = Uh(), c2 = b3.queue;
   if (null === c2)
     throw Error(p$3(311));
   c2.lastRenderedReducer = a2;
-  var d2 = O$1, e2 = d2.baseQueue, f2 = c2.pending;
+  var d2 = N$2, e2 = d2.baseQueue, f2 = c2.pending;
   if (null !== f2) {
     if (null !== e2) {
       var g2 = e2.next;
@@ -3940,7 +3862,7 @@ function fi(a2) {
     var h2 = g2 = null, k2 = null, l2 = f2;
     do {
       var m2 = l2.lane;
-      if ((Rh & m2) === m2)
+      if ((Hh & m2) === m2)
         null !== k2 && (k2 = k2.next = { lane: 0, action: l2.action, hasEagerState: l2.hasEagerState, eagerState: l2.eagerState, next: null }), d2 = l2.hasEagerState ? l2.eagerState : a2(d2, l2.action);
       else {
         var q2 = {
@@ -3951,13 +3873,13 @@ function fi(a2) {
           next: null
         };
         null === k2 ? (h2 = k2 = q2, g2 = d2) : k2 = k2.next = q2;
-        N$2.lanes |= m2;
-        hh |= m2;
+        M.lanes |= m2;
+        rh$1 |= m2;
       }
       l2 = l2.next;
     } while (null !== l2 && l2 !== f2);
     null === k2 ? g2 = d2 : k2.next = h2;
-    He(d2, b3.memoizedState) || (Ug = true);
+    He(d2, b3.memoizedState) || (dh = true);
     b3.memoizedState = d2;
     b3.baseState = g2;
     b3.baseQueue = k2;
@@ -3967,14 +3889,14 @@ function fi(a2) {
   if (null !== a2) {
     e2 = a2;
     do
-      f2 = e2.lane, N$2.lanes |= f2, hh |= f2, e2 = e2.next;
+      f2 = e2.lane, M.lanes |= f2, rh$1 |= f2, e2 = e2.next;
     while (e2 !== a2);
   } else
     null === e2 && (c2.lanes = 0);
   return [b3.memoizedState, c2.dispatch];
 }
-function gi(a2) {
-  var b3 = di(), c2 = b3.queue;
+function Xh(a2) {
+  var b3 = Uh(), c2 = b3.queue;
   if (null === c2)
     throw Error(p$3(311));
   c2.lastRenderedReducer = a2;
@@ -3985,46 +3907,46 @@ function gi(a2) {
     do
       f2 = a2(f2, g2.action), g2 = g2.next;
     while (g2 !== e2);
-    He(f2, b3.memoizedState) || (Ug = true);
+    He(f2, b3.memoizedState) || (dh = true);
     b3.memoizedState = f2;
     null === b3.baseQueue && (b3.baseState = f2);
     c2.lastRenderedState = f2;
   }
   return [f2, d2];
 }
-function hi() {
+function Yh() {
 }
-function ii(a2, b3) {
-  var c2 = N$2, d2 = di(), e2 = b3(), f2 = !He(d2.memoizedState, e2);
-  f2 && (d2.memoizedState = e2, Ug = true);
+function Zh(a2, b3) {
+  var c2 = M, d2 = Uh(), e2 = b3(), f2 = !He(d2.memoizedState, e2);
+  f2 && (d2.memoizedState = e2, dh = true);
   d2 = d2.queue;
-  ji(ki.bind(null, c2, d2, a2), [a2]);
-  if (d2.getSnapshot !== b3 || f2 || null !== P && P.memoizedState.tag & 1) {
+  $h(ai.bind(null, c2, d2, a2), [a2]);
+  if (d2.getSnapshot !== b3 || f2 || null !== O$1 && O$1.memoizedState.tag & 1) {
     c2.flags |= 2048;
-    li(9, mi.bind(null, c2, d2, e2, b3), void 0, null);
-    if (null === R$1)
+    bi(9, ci.bind(null, c2, d2, e2, b3), void 0, null);
+    if (null === Q$2)
       throw Error(p$3(349));
-    0 !== (Rh & 30) || ni(c2, b3, e2);
+    0 !== (Hh & 30) || di(c2, b3, e2);
   }
   return e2;
 }
-function ni(a2, b3, c2) {
+function di(a2, b3, c2) {
   a2.flags |= 16384;
   a2 = { getSnapshot: b3, value: c2 };
-  b3 = N$2.updateQueue;
-  null === b3 ? (b3 = { lastEffect: null, stores: null }, N$2.updateQueue = b3, b3.stores = [a2]) : (c2 = b3.stores, null === c2 ? b3.stores = [a2] : c2.push(a2));
+  b3 = M.updateQueue;
+  null === b3 ? (b3 = { lastEffect: null, stores: null }, M.updateQueue = b3, b3.stores = [a2]) : (c2 = b3.stores, null === c2 ? b3.stores = [a2] : c2.push(a2));
 }
-function mi(a2, b3, c2, d2) {
+function ci(a2, b3, c2, d2) {
   b3.value = c2;
   b3.getSnapshot = d2;
-  oi(b3) && pi(a2);
+  ei(b3) && fi(a2);
 }
-function ki(a2, b3, c2) {
+function ai(a2, b3, c2) {
   return c2(function() {
-    oi(b3) && pi(a2);
+    ei(b3) && fi(a2);
   });
 }
-function oi(a2) {
+function ei(a2) {
   var b3 = a2.getSnapshot;
   a2 = a2.value;
   try {
@@ -4034,61 +3956,61 @@ function oi(a2) {
     return true;
   }
 }
-function pi(a2) {
-  var b3 = Zg(a2, 1);
-  null !== b3 && mh(b3, a2, 1, -1);
+function fi(a2) {
+  var b3 = ih(a2, 1);
+  null !== b3 && gi(b3, a2, 1, -1);
 }
-function qi(a2) {
-  var b3 = ci();
+function hi(a2) {
+  var b3 = Th();
   "function" === typeof a2 && (a2 = a2());
   b3.memoizedState = b3.baseState = a2;
-  a2 = { pending: null, interleaved: null, lanes: 0, dispatch: null, lastRenderedReducer: ei, lastRenderedState: a2 };
+  a2 = { pending: null, interleaved: null, lanes: 0, dispatch: null, lastRenderedReducer: Vh, lastRenderedState: a2 };
   b3.queue = a2;
-  a2 = a2.dispatch = ri.bind(null, N$2, a2);
+  a2 = a2.dispatch = ii.bind(null, M, a2);
   return [b3.memoizedState, a2];
 }
-function li(a2, b3, c2, d2) {
+function bi(a2, b3, c2, d2) {
   a2 = { tag: a2, create: b3, destroy: c2, deps: d2, next: null };
-  b3 = N$2.updateQueue;
-  null === b3 ? (b3 = { lastEffect: null, stores: null }, N$2.updateQueue = b3, b3.lastEffect = a2.next = a2) : (c2 = b3.lastEffect, null === c2 ? b3.lastEffect = a2.next = a2 : (d2 = c2.next, c2.next = a2, a2.next = d2, b3.lastEffect = a2));
+  b3 = M.updateQueue;
+  null === b3 ? (b3 = { lastEffect: null, stores: null }, M.updateQueue = b3, b3.lastEffect = a2.next = a2) : (c2 = b3.lastEffect, null === c2 ? b3.lastEffect = a2.next = a2 : (d2 = c2.next, c2.next = a2, a2.next = d2, b3.lastEffect = a2));
   return a2;
 }
-function si() {
-  return di().memoizedState;
+function ji() {
+  return Uh().memoizedState;
 }
-function ti(a2, b3, c2, d2) {
-  var e2 = ci();
-  N$2.flags |= a2;
-  e2.memoizedState = li(1 | b3, c2, void 0, void 0 === d2 ? null : d2);
+function ki(a2, b3, c2, d2) {
+  var e2 = Th();
+  M.flags |= a2;
+  e2.memoizedState = bi(1 | b3, c2, void 0, void 0 === d2 ? null : d2);
 }
-function ui(a2, b3, c2, d2) {
-  var e2 = di();
+function li(a2, b3, c2, d2) {
+  var e2 = Uh();
   d2 = void 0 === d2 ? null : d2;
   var f2 = void 0;
-  if (null !== O$1) {
-    var g2 = O$1.memoizedState;
+  if (null !== N$2) {
+    var g2 = N$2.memoizedState;
     f2 = g2.destroy;
-    if (null !== d2 && Wh(d2, g2.deps)) {
-      e2.memoizedState = li(b3, c2, f2, d2);
+    if (null !== d2 && Mh(d2, g2.deps)) {
+      e2.memoizedState = bi(b3, c2, f2, d2);
       return;
     }
   }
-  N$2.flags |= a2;
-  e2.memoizedState = li(1 | b3, c2, f2, d2);
+  M.flags |= a2;
+  e2.memoizedState = bi(1 | b3, c2, f2, d2);
 }
-function vi(a2, b3) {
-  return ti(8390656, 8, a2, b3);
+function mi(a2, b3) {
+  return ki(8390656, 8, a2, b3);
 }
-function ji(a2, b3) {
-  return ui(2048, 8, a2, b3);
+function $h(a2, b3) {
+  return li(2048, 8, a2, b3);
 }
-function wi(a2, b3) {
-  return ui(4, 2, a2, b3);
+function ni(a2, b3) {
+  return li(4, 2, a2, b3);
 }
-function xi(a2, b3) {
-  return ui(4, 4, a2, b3);
+function oi(a2, b3) {
+  return li(4, 4, a2, b3);
 }
-function yi(a2, b3) {
+function pi(a2, b3) {
   if ("function" === typeof b3)
     return a2 = a2(), b3(a2), function() {
       b3(null);
@@ -4098,67 +4020,67 @@ function yi(a2, b3) {
       b3.current = null;
     };
 }
-function zi(a2, b3, c2) {
+function qi(a2, b3, c2) {
   c2 = null !== c2 && void 0 !== c2 ? c2.concat([a2]) : null;
-  return ui(4, 4, yi.bind(null, b3, a2), c2);
+  return li(4, 4, pi.bind(null, b3, a2), c2);
 }
-function Ai() {
+function ri() {
 }
-function Bi(a2, b3) {
-  var c2 = di();
+function si(a2, b3) {
+  var c2 = Uh();
   b3 = void 0 === b3 ? null : b3;
   var d2 = c2.memoizedState;
-  if (null !== d2 && null !== b3 && Wh(b3, d2[1]))
+  if (null !== d2 && null !== b3 && Mh(b3, d2[1]))
     return d2[0];
   c2.memoizedState = [a2, b3];
   return a2;
 }
-function Ci(a2, b3) {
-  var c2 = di();
+function ti(a2, b3) {
+  var c2 = Uh();
   b3 = void 0 === b3 ? null : b3;
   var d2 = c2.memoizedState;
-  if (null !== d2 && null !== b3 && Wh(b3, d2[1]))
+  if (null !== d2 && null !== b3 && Mh(b3, d2[1]))
     return d2[0];
   a2 = a2();
   c2.memoizedState = [a2, b3];
   return a2;
 }
-function Di(a2, b3, c2) {
-  if (0 === (Rh & 21))
-    return a2.baseState && (a2.baseState = false, Ug = true), a2.memoizedState = c2;
-  He(c2, b3) || (c2 = yc(), N$2.lanes |= c2, hh |= c2, a2.baseState = true);
+function ui(a2, b3, c2) {
+  if (0 === (Hh & 21))
+    return a2.baseState && (a2.baseState = false, dh = true), a2.memoizedState = c2;
+  He(c2, b3) || (c2 = yc(), M.lanes |= c2, rh$1 |= c2, a2.baseState = true);
   return b3;
 }
-function Ei(a2, b3) {
+function vi(a2, b3) {
   var c2 = C;
   C = 0 !== c2 && 4 > c2 ? c2 : 4;
   a2(true);
-  var d2 = Qh.transition;
-  Qh.transition = {};
+  var d2 = Gh.transition;
+  Gh.transition = {};
   try {
     a2(false), b3();
   } finally {
-    C = c2, Qh.transition = d2;
+    C = c2, Gh.transition = d2;
   }
 }
-function Fi() {
-  return di().memoizedState;
+function wi() {
+  return Uh().memoizedState;
 }
-function Gi(a2, b3, c2) {
-  var d2 = lh(a2);
+function xi(a2, b3, c2) {
+  var d2 = yi(a2);
   c2 = { lane: d2, action: c2, hasEagerState: false, eagerState: null, next: null };
-  if (Hi(a2))
-    Ii(b3, c2);
-  else if (c2 = Yg(a2, b3, c2, d2), null !== c2) {
-    var e2 = L$1();
-    mh(c2, a2, d2, e2);
-    Ji(c2, b3, d2);
+  if (zi(a2))
+    Ai(b3, c2);
+  else if (c2 = hh(a2, b3, c2, d2), null !== c2) {
+    var e2 = R$1();
+    gi(c2, a2, d2, e2);
+    Bi(c2, b3, d2);
   }
 }
-function ri(a2, b3, c2) {
-  var d2 = lh(a2), e2 = { lane: d2, action: c2, hasEagerState: false, eagerState: null, next: null };
-  if (Hi(a2))
-    Ii(b3, e2);
+function ii(a2, b3, c2) {
+  var d2 = yi(a2), e2 = { lane: d2, action: c2, hasEagerState: false, eagerState: null, next: null };
+  if (zi(a2))
+    Ai(b3, e2);
   else {
     var f2 = a2.alternate;
     if (0 === a2.lanes && (null === f2 || 0 === f2.lanes) && (f2 = b3.lastRenderedReducer, null !== f2))
@@ -4168,28 +4090,28 @@ function ri(a2, b3, c2) {
         e2.eagerState = h2;
         if (He(h2, g2)) {
           var k2 = b3.interleaved;
-          null === k2 ? (e2.next = e2, Xg(b3)) : (e2.next = k2.next, k2.next = e2);
+          null === k2 ? (e2.next = e2, gh(b3)) : (e2.next = k2.next, k2.next = e2);
           b3.interleaved = e2;
           return;
         }
       } catch (l2) {
       } finally {
       }
-    c2 = Yg(a2, b3, e2, d2);
-    null !== c2 && (e2 = L$1(), mh(c2, a2, d2, e2), Ji(c2, b3, d2));
+    c2 = hh(a2, b3, e2, d2);
+    null !== c2 && (e2 = R$1(), gi(c2, a2, d2, e2), Bi(c2, b3, d2));
   }
 }
-function Hi(a2) {
+function zi(a2) {
   var b3 = a2.alternate;
-  return a2 === N$2 || null !== b3 && b3 === N$2;
+  return a2 === M || null !== b3 && b3 === M;
 }
-function Ii(a2, b3) {
-  Th = Sh = true;
+function Ai(a2, b3) {
+  Jh = Ih = true;
   var c2 = a2.pending;
   null === c2 ? b3.next = b3 : (b3.next = c2.next, c2.next = b3);
   a2.pending = b3;
 }
-function Ji(a2, b3, c2) {
+function Bi(a2, b3, c2) {
   if (0 !== (c2 & 4194240)) {
     var d2 = b3.lanes;
     d2 &= a2.pendingLanes;
@@ -4198,121 +4120,199 @@ function Ji(a2, b3, c2) {
     Cc(a2, c2);
   }
 }
-var ai = { readContext: Vg, useCallback: Q$2, useContext: Q$2, useEffect: Q$2, useImperativeHandle: Q$2, useInsertionEffect: Q$2, useLayoutEffect: Q$2, useMemo: Q$2, useReducer: Q$2, useRef: Q$2, useState: Q$2, useDebugValue: Q$2, useDeferredValue: Q$2, useTransition: Q$2, useMutableSource: Q$2, useSyncExternalStore: Q$2, useId: Q$2, unstable_isNewReconciler: false }, Yh = { readContext: Vg, useCallback: function(a2, b3) {
-  ci().memoizedState = [a2, void 0 === b3 ? null : b3];
+var Rh = { readContext: eh, useCallback: P, useContext: P, useEffect: P, useImperativeHandle: P, useInsertionEffect: P, useLayoutEffect: P, useMemo: P, useReducer: P, useRef: P, useState: P, useDebugValue: P, useDeferredValue: P, useTransition: P, useMutableSource: P, useSyncExternalStore: P, useId: P, unstable_isNewReconciler: false }, Oh = { readContext: eh, useCallback: function(a2, b3) {
+  Th().memoizedState = [a2, void 0 === b3 ? null : b3];
   return a2;
-}, useContext: Vg, useEffect: vi, useImperativeHandle: function(a2, b3, c2) {
+}, useContext: eh, useEffect: mi, useImperativeHandle: function(a2, b3, c2) {
   c2 = null !== c2 && void 0 !== c2 ? c2.concat([a2]) : null;
-  return ti(
+  return ki(
     4194308,
     4,
-    yi.bind(null, b3, a2),
+    pi.bind(null, b3, a2),
     c2
   );
 }, useLayoutEffect: function(a2, b3) {
-  return ti(4194308, 4, a2, b3);
+  return ki(4194308, 4, a2, b3);
 }, useInsertionEffect: function(a2, b3) {
-  return ti(4, 2, a2, b3);
+  return ki(4, 2, a2, b3);
 }, useMemo: function(a2, b3) {
-  var c2 = ci();
+  var c2 = Th();
   b3 = void 0 === b3 ? null : b3;
   a2 = a2();
   c2.memoizedState = [a2, b3];
   return a2;
 }, useReducer: function(a2, b3, c2) {
-  var d2 = ci();
+  var d2 = Th();
   b3 = void 0 !== c2 ? c2(b3) : b3;
   d2.memoizedState = d2.baseState = b3;
   a2 = { pending: null, interleaved: null, lanes: 0, dispatch: null, lastRenderedReducer: a2, lastRenderedState: b3 };
   d2.queue = a2;
-  a2 = a2.dispatch = Gi.bind(null, N$2, a2);
+  a2 = a2.dispatch = xi.bind(null, M, a2);
   return [d2.memoizedState, a2];
 }, useRef: function(a2) {
-  var b3 = ci();
+  var b3 = Th();
   a2 = { current: a2 };
   return b3.memoizedState = a2;
-}, useState: qi, useDebugValue: Ai, useDeferredValue: function(a2) {
-  return ci().memoizedState = a2;
+}, useState: hi, useDebugValue: ri, useDeferredValue: function(a2) {
+  return Th().memoizedState = a2;
 }, useTransition: function() {
-  var a2 = qi(false), b3 = a2[0];
-  a2 = Ei.bind(null, a2[1]);
-  ci().memoizedState = a2;
+  var a2 = hi(false), b3 = a2[0];
+  a2 = vi.bind(null, a2[1]);
+  Th().memoizedState = a2;
   return [b3, a2];
 }, useMutableSource: function() {
 }, useSyncExternalStore: function(a2, b3, c2) {
-  var d2 = N$2, e2 = ci();
+  var d2 = M, e2 = Th();
   if (I$1) {
     if (void 0 === c2)
       throw Error(p$3(407));
     c2 = c2();
   } else {
     c2 = b3();
-    if (null === R$1)
+    if (null === Q$2)
       throw Error(p$3(349));
-    0 !== (Rh & 30) || ni(d2, b3, c2);
+    0 !== (Hh & 30) || di(d2, b3, c2);
   }
   e2.memoizedState = c2;
   var f2 = { value: c2, getSnapshot: b3 };
   e2.queue = f2;
-  vi(ki.bind(
+  mi(ai.bind(
     null,
     d2,
     f2,
     a2
   ), [a2]);
   d2.flags |= 2048;
-  li(9, mi.bind(null, d2, f2, c2, b3), void 0, null);
+  bi(9, ci.bind(null, d2, f2, c2, b3), void 0, null);
   return c2;
 }, useId: function() {
-  var a2 = ci(), b3 = R$1.identifierPrefix;
+  var a2 = Th(), b3 = Q$2.identifierPrefix;
   if (I$1) {
     var c2 = sg;
     var d2 = rg;
     c2 = (d2 & ~(1 << 32 - oc(d2) - 1)).toString(32) + c2;
     b3 = ":" + b3 + "R" + c2;
-    c2 = Uh++;
+    c2 = Kh$1++;
     0 < c2 && (b3 += "H" + c2.toString(32));
     b3 += ":";
   } else
-    c2 = Vh++, b3 = ":" + b3 + "r" + c2.toString(32) + ":";
+    c2 = Lh++, b3 = ":" + b3 + "r" + c2.toString(32) + ":";
   return a2.memoizedState = b3;
-}, unstable_isNewReconciler: false }, Zh = {
-  readContext: Vg,
-  useCallback: Bi,
-  useContext: Vg,
-  useEffect: ji,
-  useImperativeHandle: zi,
-  useInsertionEffect: wi,
-  useLayoutEffect: xi,
-  useMemo: Ci,
-  useReducer: fi,
-  useRef: si,
+}, unstable_isNewReconciler: false }, Ph = {
+  readContext: eh,
+  useCallback: si,
+  useContext: eh,
+  useEffect: $h,
+  useImperativeHandle: qi,
+  useInsertionEffect: ni,
+  useLayoutEffect: oi,
+  useMemo: ti,
+  useReducer: Wh,
+  useRef: ji,
   useState: function() {
-    return fi(ei);
+    return Wh(Vh);
   },
-  useDebugValue: Ai,
+  useDebugValue: ri,
   useDeferredValue: function(a2) {
-    var b3 = di();
-    return Di(b3, O$1.memoizedState, a2);
+    var b3 = Uh();
+    return ui(b3, N$2.memoizedState, a2);
   },
   useTransition: function() {
-    var a2 = fi(ei)[0], b3 = di().memoizedState;
+    var a2 = Wh(Vh)[0], b3 = Uh().memoizedState;
     return [a2, b3];
   },
-  useMutableSource: hi,
-  useSyncExternalStore: ii,
-  useId: Fi,
+  useMutableSource: Yh,
+  useSyncExternalStore: Zh,
+  useId: wi,
   unstable_isNewReconciler: false
-}, $h = { readContext: Vg, useCallback: Bi, useContext: Vg, useEffect: ji, useImperativeHandle: zi, useInsertionEffect: wi, useLayoutEffect: xi, useMemo: Ci, useReducer: gi, useRef: si, useState: function() {
-  return gi(ei);
-}, useDebugValue: Ai, useDeferredValue: function(a2) {
-  var b3 = di();
-  return null === O$1 ? b3.memoizedState = a2 : Di(b3, O$1.memoizedState, a2);
+}, Qh = { readContext: eh, useCallback: si, useContext: eh, useEffect: $h, useImperativeHandle: qi, useInsertionEffect: ni, useLayoutEffect: oi, useMemo: ti, useReducer: Xh, useRef: ji, useState: function() {
+  return Xh(Vh);
+}, useDebugValue: ri, useDeferredValue: function(a2) {
+  var b3 = Uh();
+  return null === N$2 ? b3.memoizedState = a2 : ui(b3, N$2.memoizedState, a2);
 }, useTransition: function() {
-  var a2 = gi(ei)[0], b3 = di().memoizedState;
+  var a2 = Xh(Vh)[0], b3 = Uh().memoizedState;
   return [a2, b3];
-}, useMutableSource: hi, useSyncExternalStore: ii, useId: Fi, unstable_isNewReconciler: false };
-function Ki(a2, b3) {
+}, useMutableSource: Yh, useSyncExternalStore: Zh, useId: wi, unstable_isNewReconciler: false };
+function Ci(a2, b3) {
+  if (a2 && a2.defaultProps) {
+    b3 = A$1({}, b3);
+    a2 = a2.defaultProps;
+    for (var c2 in a2)
+      void 0 === b3[c2] && (b3[c2] = a2[c2]);
+    return b3;
+  }
+  return b3;
+}
+function Di(a2, b3, c2, d2) {
+  b3 = a2.memoizedState;
+  c2 = c2(d2, b3);
+  c2 = null === c2 || void 0 === c2 ? b3 : A$1({}, b3, c2);
+  a2.memoizedState = c2;
+  0 === a2.lanes && (a2.updateQueue.baseState = c2);
+}
+var Ei = { isMounted: function(a2) {
+  return (a2 = a2._reactInternals) ? Vb(a2) === a2 : false;
+}, enqueueSetState: function(a2, b3, c2) {
+  a2 = a2._reactInternals;
+  var d2 = R$1(), e2 = yi(a2), f2 = mh(d2, e2);
+  f2.payload = b3;
+  void 0 !== c2 && null !== c2 && (f2.callback = c2);
+  b3 = nh(a2, f2, e2);
+  null !== b3 && (gi(b3, a2, e2, d2), oh(b3, a2, e2));
+}, enqueueReplaceState: function(a2, b3, c2) {
+  a2 = a2._reactInternals;
+  var d2 = R$1(), e2 = yi(a2), f2 = mh(d2, e2);
+  f2.tag = 1;
+  f2.payload = b3;
+  void 0 !== c2 && null !== c2 && (f2.callback = c2);
+  b3 = nh(a2, f2, e2);
+  null !== b3 && (gi(b3, a2, e2, d2), oh(b3, a2, e2));
+}, enqueueForceUpdate: function(a2, b3) {
+  a2 = a2._reactInternals;
+  var c2 = R$1(), d2 = yi(a2), e2 = mh(c2, d2);
+  e2.tag = 2;
+  void 0 !== b3 && null !== b3 && (e2.callback = b3);
+  b3 = nh(a2, e2, d2);
+  null !== b3 && (gi(b3, a2, d2, c2), oh(b3, a2, d2));
+} };
+function Fi(a2, b3, c2, d2, e2, f2, g2) {
+  a2 = a2.stateNode;
+  return "function" === typeof a2.shouldComponentUpdate ? a2.shouldComponentUpdate(d2, f2, g2) : b3.prototype && b3.prototype.isPureReactComponent ? !Ie(c2, d2) || !Ie(e2, f2) : true;
+}
+function Gi(a2, b3, c2) {
+  var d2 = false, e2 = Vf;
+  var f2 = b3.contextType;
+  "object" === typeof f2 && null !== f2 ? f2 = eh(f2) : (e2 = Zf(b3) ? Xf : H$1.current, d2 = b3.contextTypes, f2 = (d2 = null !== d2 && void 0 !== d2) ? Yf(a2, e2) : Vf);
+  b3 = new b3(c2, f2);
+  a2.memoizedState = null !== b3.state && void 0 !== b3.state ? b3.state : null;
+  b3.updater = Ei;
+  a2.stateNode = b3;
+  b3._reactInternals = a2;
+  d2 && (a2 = a2.stateNode, a2.__reactInternalMemoizedUnmaskedChildContext = e2, a2.__reactInternalMemoizedMaskedChildContext = f2);
+  return b3;
+}
+function Hi(a2, b3, c2, d2) {
+  a2 = b3.state;
+  "function" === typeof b3.componentWillReceiveProps && b3.componentWillReceiveProps(c2, d2);
+  "function" === typeof b3.UNSAFE_componentWillReceiveProps && b3.UNSAFE_componentWillReceiveProps(c2, d2);
+  b3.state !== a2 && Ei.enqueueReplaceState(b3, b3.state, null);
+}
+function Ii(a2, b3, c2, d2) {
+  var e2 = a2.stateNode;
+  e2.props = c2;
+  e2.state = a2.memoizedState;
+  e2.refs = {};
+  kh(a2);
+  var f2 = b3.contextType;
+  "object" === typeof f2 && null !== f2 ? e2.context = eh(f2) : (f2 = Zf(b3) ? Xf : H$1.current, e2.context = Yf(a2, f2));
+  e2.state = a2.memoizedState;
+  f2 = b3.getDerivedStateFromProps;
+  "function" === typeof f2 && (Di(a2, b3, f2, c2), e2.state = a2.memoizedState);
+  "function" === typeof b3.getDerivedStateFromProps || "function" === typeof e2.getSnapshotBeforeUpdate || "function" !== typeof e2.UNSAFE_componentWillMount && "function" !== typeof e2.componentWillMount || (b3 = e2.state, "function" === typeof e2.componentWillMount && e2.componentWillMount(), "function" === typeof e2.UNSAFE_componentWillMount && e2.UNSAFE_componentWillMount(), b3 !== e2.state && Ei.enqueueReplaceState(e2, e2.state, null), qh(a2, c2, e2, d2), e2.state = a2.memoizedState);
+  "function" === typeof e2.componentDidMount && (a2.flags |= 4194308);
+}
+function Ji(a2, b3) {
   try {
     var c2 = "", d2 = b3;
     do
@@ -4324,10 +4324,10 @@ function Ki(a2, b3) {
   }
   return { value: a2, source: b3, stack: e2, digest: null };
 }
-function Li(a2, b3, c2) {
+function Ki(a2, b3, c2) {
   return { value: a2, source: null, stack: null != c2 ? c2 : null, digest: null != b3 ? b3 : null };
 }
-function Mi(a2, b3) {
+function Li(a2, b3) {
   try {
     console.error(b3.value);
   } catch (c2) {
@@ -4336,20 +4336,20 @@ function Mi(a2, b3) {
     });
   }
 }
-var Ni = "function" === typeof WeakMap ? WeakMap : Map;
-function Oi(a2, b3, c2) {
-  c2 = ch(-1, c2);
+var Mi = "function" === typeof WeakMap ? WeakMap : Map;
+function Ni(a2, b3, c2) {
+  c2 = mh(-1, c2);
   c2.tag = 3;
   c2.payload = { element: null };
   var d2 = b3.value;
   c2.callback = function() {
-    Pi || (Pi = true, Qi = d2);
-    Mi(a2, b3);
+    Oi || (Oi = true, Pi = d2);
+    Li(a2, b3);
   };
   return c2;
 }
-function Ri(a2, b3, c2) {
-  c2 = ch(-1, c2);
+function Qi(a2, b3, c2) {
+  c2 = mh(-1, c2);
   c2.tag = 3;
   var d2 = a2.type.getDerivedStateFromError;
   if ("function" === typeof d2) {
@@ -4358,29 +4358,29 @@ function Ri(a2, b3, c2) {
       return d2(e2);
     };
     c2.callback = function() {
-      Mi(a2, b3);
+      Li(a2, b3);
     };
   }
   var f2 = a2.stateNode;
   null !== f2 && "function" === typeof f2.componentDidCatch && (c2.callback = function() {
-    Mi(a2, b3);
-    "function" !== typeof d2 && (null === Si ? Si = /* @__PURE__ */ new Set([this]) : Si.add(this));
+    Li(a2, b3);
+    "function" !== typeof d2 && (null === Ri ? Ri = /* @__PURE__ */ new Set([this]) : Ri.add(this));
     var c3 = b3.stack;
     this.componentDidCatch(b3.value, { componentStack: null !== c3 ? c3 : "" });
   });
   return c2;
 }
-function Ti(a2, b3, c2) {
+function Si(a2, b3, c2) {
   var d2 = a2.pingCache;
   if (null === d2) {
-    d2 = a2.pingCache = new Ni();
+    d2 = a2.pingCache = new Mi();
     var e2 = /* @__PURE__ */ new Set();
     d2.set(b3, e2);
   } else
     e2 = d2.get(b3), void 0 === e2 && (e2 = /* @__PURE__ */ new Set(), d2.set(b3, e2));
-  e2.has(c2) || (e2.add(c2), a2 = Ui.bind(null, a2, b3, c2), b3.then(a2, a2));
+  e2.has(c2) || (e2.add(c2), a2 = Ti.bind(null, a2, b3, c2), b3.then(a2, a2));
 }
-function Vi(a2) {
+function Ui(a2) {
   do {
     var b3;
     if (b3 = 13 === a2.tag)
@@ -4391,36 +4391,36 @@ function Vi(a2) {
   } while (null !== a2);
   return null;
 }
-function Wi(a2, b3, c2, d2, e2) {
+function Vi(a2, b3, c2, d2, e2) {
   if (0 === (a2.mode & 1))
-    return a2 === b3 ? a2.flags |= 65536 : (a2.flags |= 128, c2.flags |= 131072, c2.flags &= -52805, 1 === c2.tag && (null === c2.alternate ? c2.tag = 17 : (b3 = ch(-1, 1), b3.tag = 2, dh(c2, b3, 1))), c2.lanes |= 1), a2;
+    return a2 === b3 ? a2.flags |= 65536 : (a2.flags |= 128, c2.flags |= 131072, c2.flags &= -52805, 1 === c2.tag && (null === c2.alternate ? c2.tag = 17 : (b3 = mh(-1, 1), b3.tag = 2, nh(c2, b3, 1))), c2.lanes |= 1), a2;
   a2.flags |= 65536;
   a2.lanes = e2;
   return a2;
 }
-var Xi = ua.ReactCurrentOwner, Ug = false;
-function Yi(a2, b3, c2, d2) {
-  b3.child = null === a2 ? Ch(b3, null, c2, d2) : Bh(b3, a2.child, c2, d2);
+var Wi = ua.ReactCurrentOwner, dh = false;
+function Xi(a2, b3, c2, d2) {
+  b3.child = null === a2 ? Vg(b3, null, c2, d2) : Ug(b3, a2.child, c2, d2);
 }
-function Zi(a2, b3, c2, d2, e2) {
+function Yi(a2, b3, c2, d2, e2) {
   c2 = c2.render;
   var f2 = b3.ref;
-  Tg(b3, e2);
-  d2 = Xh(a2, b3, c2, d2, f2, e2);
-  c2 = bi();
-  if (null !== a2 && !Ug)
-    return b3.updateQueue = a2.updateQueue, b3.flags &= -2053, a2.lanes &= ~e2, $i(a2, b3, e2);
+  ch(b3, e2);
+  d2 = Nh(a2, b3, c2, d2, f2, e2);
+  c2 = Sh();
+  if (null !== a2 && !dh)
+    return b3.updateQueue = a2.updateQueue, b3.flags &= -2053, a2.lanes &= ~e2, Zi(a2, b3, e2);
   I$1 && c2 && vg(b3);
   b3.flags |= 1;
-  Yi(a2, b3, d2, e2);
+  Xi(a2, b3, d2, e2);
   return b3.child;
 }
-function aj(a2, b3, c2, d2, e2) {
+function $i(a2, b3, c2, d2, e2) {
   if (null === a2) {
     var f2 = c2.type;
-    if ("function" === typeof f2 && !bj(f2) && void 0 === f2.defaultProps && null === c2.compare && void 0 === c2.defaultProps)
-      return b3.tag = 15, b3.type = f2, cj(a2, b3, f2, d2, e2);
-    a2 = yh(c2.type, null, d2, b3, b3.mode, e2);
+    if ("function" === typeof f2 && !aj(f2) && void 0 === f2.defaultProps && null === c2.compare && void 0 === c2.defaultProps)
+      return b3.tag = 15, b3.type = f2, bj(a2, b3, f2, d2, e2);
+    a2 = Rg(c2.type, null, d2, b3, b3.mode, e2);
     a2.ref = b3.ref;
     a2.return = b3;
     return b3.child = a2;
@@ -4431,142 +4431,142 @@ function aj(a2, b3, c2, d2, e2) {
     c2 = c2.compare;
     c2 = null !== c2 ? c2 : Ie;
     if (c2(g2, d2) && a2.ref === b3.ref)
-      return $i(a2, b3, e2);
+      return Zi(a2, b3, e2);
   }
   b3.flags |= 1;
-  a2 = wh(f2, d2);
+  a2 = Pg(f2, d2);
   a2.ref = b3.ref;
   a2.return = b3;
   return b3.child = a2;
 }
-function cj(a2, b3, c2, d2, e2) {
+function bj(a2, b3, c2, d2, e2) {
   if (null !== a2) {
     var f2 = a2.memoizedProps;
     if (Ie(f2, d2) && a2.ref === b3.ref)
-      if (Ug = false, b3.pendingProps = d2 = f2, 0 !== (a2.lanes & e2))
-        0 !== (a2.flags & 131072) && (Ug = true);
+      if (dh = false, b3.pendingProps = d2 = f2, 0 !== (a2.lanes & e2))
+        0 !== (a2.flags & 131072) && (dh = true);
       else
-        return b3.lanes = a2.lanes, $i(a2, b3, e2);
+        return b3.lanes = a2.lanes, Zi(a2, b3, e2);
   }
-  return dj(a2, b3, c2, d2, e2);
+  return cj(a2, b3, c2, d2, e2);
 }
-function ej(a2, b3, c2) {
+function dj(a2, b3, c2) {
   var d2 = b3.pendingProps, e2 = d2.children, f2 = null !== a2 ? a2.memoizedState : null;
   if ("hidden" === d2.mode)
     if (0 === (b3.mode & 1))
-      b3.memoizedState = { baseLanes: 0, cachePool: null, transitions: null }, G$2(fj, gj), gj |= c2;
+      b3.memoizedState = { baseLanes: 0, cachePool: null, transitions: null }, G$2(ej, fj), fj |= c2;
     else {
       if (0 === (c2 & 1073741824))
-        return a2 = null !== f2 ? f2.baseLanes | c2 : c2, b3.lanes = b3.childLanes = 1073741824, b3.memoizedState = { baseLanes: a2, cachePool: null, transitions: null }, b3.updateQueue = null, G$2(fj, gj), gj |= a2, null;
+        return a2 = null !== f2 ? f2.baseLanes | c2 : c2, b3.lanes = b3.childLanes = 1073741824, b3.memoizedState = { baseLanes: a2, cachePool: null, transitions: null }, b3.updateQueue = null, G$2(ej, fj), fj |= a2, null;
       b3.memoizedState = { baseLanes: 0, cachePool: null, transitions: null };
       d2 = null !== f2 ? f2.baseLanes : c2;
-      G$2(fj, gj);
-      gj |= d2;
+      G$2(ej, fj);
+      fj |= d2;
     }
   else
-    null !== f2 ? (d2 = f2.baseLanes | c2, b3.memoizedState = null) : d2 = c2, G$2(fj, gj), gj |= d2;
-  Yi(a2, b3, e2, c2);
+    null !== f2 ? (d2 = f2.baseLanes | c2, b3.memoizedState = null) : d2 = c2, G$2(ej, fj), fj |= d2;
+  Xi(a2, b3, e2, c2);
   return b3.child;
 }
-function hj(a2, b3) {
+function gj(a2, b3) {
   var c2 = b3.ref;
   if (null === a2 && null !== c2 || null !== a2 && a2.ref !== c2)
     b3.flags |= 512, b3.flags |= 2097152;
 }
-function dj(a2, b3, c2, d2, e2) {
+function cj(a2, b3, c2, d2, e2) {
   var f2 = Zf(c2) ? Xf : H$1.current;
   f2 = Yf(b3, f2);
-  Tg(b3, e2);
-  c2 = Xh(a2, b3, c2, d2, f2, e2);
-  d2 = bi();
-  if (null !== a2 && !Ug)
-    return b3.updateQueue = a2.updateQueue, b3.flags &= -2053, a2.lanes &= ~e2, $i(a2, b3, e2);
+  ch(b3, e2);
+  c2 = Nh(a2, b3, c2, d2, f2, e2);
+  d2 = Sh();
+  if (null !== a2 && !dh)
+    return b3.updateQueue = a2.updateQueue, b3.flags &= -2053, a2.lanes &= ~e2, Zi(a2, b3, e2);
   I$1 && d2 && vg(b3);
   b3.flags |= 1;
-  Yi(a2, b3, c2, e2);
+  Xi(a2, b3, c2, e2);
   return b3.child;
 }
-function ij(a2, b3, c2, d2, e2) {
+function hj(a2, b3, c2, d2, e2) {
   if (Zf(c2)) {
     var f2 = true;
     cg(b3);
   } else
     f2 = false;
-  Tg(b3, e2);
+  ch(b3, e2);
   if (null === b3.stateNode)
-    jj(a2, b3), ph(b3, c2, d2), rh$1(b3, c2, d2, e2), d2 = true;
+    ij(a2, b3), Gi(b3, c2, d2), Ii(b3, c2, d2, e2), d2 = true;
   else if (null === a2) {
     var g2 = b3.stateNode, h2 = b3.memoizedProps;
     g2.props = h2;
     var k2 = g2.context, l2 = c2.contextType;
-    "object" === typeof l2 && null !== l2 ? l2 = Vg(l2) : (l2 = Zf(c2) ? Xf : H$1.current, l2 = Yf(b3, l2));
+    "object" === typeof l2 && null !== l2 ? l2 = eh(l2) : (l2 = Zf(c2) ? Xf : H$1.current, l2 = Yf(b3, l2));
     var m2 = c2.getDerivedStateFromProps, q2 = "function" === typeof m2 || "function" === typeof g2.getSnapshotBeforeUpdate;
-    q2 || "function" !== typeof g2.UNSAFE_componentWillReceiveProps && "function" !== typeof g2.componentWillReceiveProps || (h2 !== d2 || k2 !== l2) && qh(b3, g2, d2, l2);
-    $g = false;
+    q2 || "function" !== typeof g2.UNSAFE_componentWillReceiveProps && "function" !== typeof g2.componentWillReceiveProps || (h2 !== d2 || k2 !== l2) && Hi(b3, g2, d2, l2);
+    jh = false;
     var r2 = b3.memoizedState;
     g2.state = r2;
-    gh(b3, d2, g2, e2);
+    qh(b3, d2, g2, e2);
     k2 = b3.memoizedState;
-    h2 !== d2 || r2 !== k2 || Wf.current || $g ? ("function" === typeof m2 && (kh(b3, c2, m2, d2), k2 = b3.memoizedState), (h2 = $g || oh(b3, c2, h2, d2, r2, k2, l2)) ? (q2 || "function" !== typeof g2.UNSAFE_componentWillMount && "function" !== typeof g2.componentWillMount || ("function" === typeof g2.componentWillMount && g2.componentWillMount(), "function" === typeof g2.UNSAFE_componentWillMount && g2.UNSAFE_componentWillMount()), "function" === typeof g2.componentDidMount && (b3.flags |= 4194308)) : ("function" === typeof g2.componentDidMount && (b3.flags |= 4194308), b3.memoizedProps = d2, b3.memoizedState = k2), g2.props = d2, g2.state = k2, g2.context = l2, d2 = h2) : ("function" === typeof g2.componentDidMount && (b3.flags |= 4194308), d2 = false);
+    h2 !== d2 || r2 !== k2 || Wf.current || jh ? ("function" === typeof m2 && (Di(b3, c2, m2, d2), k2 = b3.memoizedState), (h2 = jh || Fi(b3, c2, h2, d2, r2, k2, l2)) ? (q2 || "function" !== typeof g2.UNSAFE_componentWillMount && "function" !== typeof g2.componentWillMount || ("function" === typeof g2.componentWillMount && g2.componentWillMount(), "function" === typeof g2.UNSAFE_componentWillMount && g2.UNSAFE_componentWillMount()), "function" === typeof g2.componentDidMount && (b3.flags |= 4194308)) : ("function" === typeof g2.componentDidMount && (b3.flags |= 4194308), b3.memoizedProps = d2, b3.memoizedState = k2), g2.props = d2, g2.state = k2, g2.context = l2, d2 = h2) : ("function" === typeof g2.componentDidMount && (b3.flags |= 4194308), d2 = false);
   } else {
     g2 = b3.stateNode;
-    bh(a2, b3);
+    lh(a2, b3);
     h2 = b3.memoizedProps;
-    l2 = b3.type === b3.elementType ? h2 : Lg(b3.type, h2);
+    l2 = b3.type === b3.elementType ? h2 : Ci(b3.type, h2);
     g2.props = l2;
     q2 = b3.pendingProps;
     r2 = g2.context;
     k2 = c2.contextType;
-    "object" === typeof k2 && null !== k2 ? k2 = Vg(k2) : (k2 = Zf(c2) ? Xf : H$1.current, k2 = Yf(b3, k2));
+    "object" === typeof k2 && null !== k2 ? k2 = eh(k2) : (k2 = Zf(c2) ? Xf : H$1.current, k2 = Yf(b3, k2));
     var y2 = c2.getDerivedStateFromProps;
-    (m2 = "function" === typeof y2 || "function" === typeof g2.getSnapshotBeforeUpdate) || "function" !== typeof g2.UNSAFE_componentWillReceiveProps && "function" !== typeof g2.componentWillReceiveProps || (h2 !== q2 || r2 !== k2) && qh(b3, g2, d2, k2);
-    $g = false;
+    (m2 = "function" === typeof y2 || "function" === typeof g2.getSnapshotBeforeUpdate) || "function" !== typeof g2.UNSAFE_componentWillReceiveProps && "function" !== typeof g2.componentWillReceiveProps || (h2 !== q2 || r2 !== k2) && Hi(b3, g2, d2, k2);
+    jh = false;
     r2 = b3.memoizedState;
     g2.state = r2;
-    gh(b3, d2, g2, e2);
+    qh(b3, d2, g2, e2);
     var n2 = b3.memoizedState;
-    h2 !== q2 || r2 !== n2 || Wf.current || $g ? ("function" === typeof y2 && (kh(b3, c2, y2, d2), n2 = b3.memoizedState), (l2 = $g || oh(b3, c2, l2, d2, r2, n2, k2) || false) ? (m2 || "function" !== typeof g2.UNSAFE_componentWillUpdate && "function" !== typeof g2.componentWillUpdate || ("function" === typeof g2.componentWillUpdate && g2.componentWillUpdate(d2, n2, k2), "function" === typeof g2.UNSAFE_componentWillUpdate && g2.UNSAFE_componentWillUpdate(d2, n2, k2)), "function" === typeof g2.componentDidUpdate && (b3.flags |= 4), "function" === typeof g2.getSnapshotBeforeUpdate && (b3.flags |= 1024)) : ("function" !== typeof g2.componentDidUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 4), "function" !== typeof g2.getSnapshotBeforeUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 1024), b3.memoizedProps = d2, b3.memoizedState = n2), g2.props = d2, g2.state = n2, g2.context = k2, d2 = l2) : ("function" !== typeof g2.componentDidUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 4), "function" !== typeof g2.getSnapshotBeforeUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 1024), d2 = false);
+    h2 !== q2 || r2 !== n2 || Wf.current || jh ? ("function" === typeof y2 && (Di(b3, c2, y2, d2), n2 = b3.memoizedState), (l2 = jh || Fi(b3, c2, l2, d2, r2, n2, k2) || false) ? (m2 || "function" !== typeof g2.UNSAFE_componentWillUpdate && "function" !== typeof g2.componentWillUpdate || ("function" === typeof g2.componentWillUpdate && g2.componentWillUpdate(d2, n2, k2), "function" === typeof g2.UNSAFE_componentWillUpdate && g2.UNSAFE_componentWillUpdate(d2, n2, k2)), "function" === typeof g2.componentDidUpdate && (b3.flags |= 4), "function" === typeof g2.getSnapshotBeforeUpdate && (b3.flags |= 1024)) : ("function" !== typeof g2.componentDidUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 4), "function" !== typeof g2.getSnapshotBeforeUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 1024), b3.memoizedProps = d2, b3.memoizedState = n2), g2.props = d2, g2.state = n2, g2.context = k2, d2 = l2) : ("function" !== typeof g2.componentDidUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 4), "function" !== typeof g2.getSnapshotBeforeUpdate || h2 === a2.memoizedProps && r2 === a2.memoizedState || (b3.flags |= 1024), d2 = false);
   }
-  return kj(a2, b3, c2, d2, f2, e2);
+  return jj(a2, b3, c2, d2, f2, e2);
 }
-function kj(a2, b3, c2, d2, e2, f2) {
-  hj(a2, b3);
+function jj(a2, b3, c2, d2, e2, f2) {
+  gj(a2, b3);
   var g2 = 0 !== (b3.flags & 128);
   if (!d2 && !g2)
-    return e2 && dg(b3, c2, false), $i(a2, b3, f2);
+    return e2 && dg(b3, c2, false), Zi(a2, b3, f2);
   d2 = b3.stateNode;
-  Xi.current = b3;
+  Wi.current = b3;
   var h2 = g2 && "function" !== typeof c2.getDerivedStateFromError ? null : d2.render();
   b3.flags |= 1;
-  null !== a2 && g2 ? (b3.child = Bh(b3, a2.child, null, f2), b3.child = Bh(b3, null, h2, f2)) : Yi(a2, b3, h2, f2);
+  null !== a2 && g2 ? (b3.child = Ug(b3, a2.child, null, f2), b3.child = Ug(b3, null, h2, f2)) : Xi(a2, b3, h2, f2);
   b3.memoizedState = d2.state;
   e2 && dg(b3, c2, true);
   return b3.child;
 }
-function lj(a2) {
+function kj(a2) {
   var b3 = a2.stateNode;
   b3.pendingContext ? ag(a2, b3.pendingContext, b3.pendingContext !== b3.context) : b3.context && ag(a2, b3.context, false);
-  Ih(a2, b3.containerInfo);
+  yh(a2, b3.containerInfo);
 }
-function mj(a2, b3, c2, d2, e2) {
+function lj(a2, b3, c2, d2, e2) {
   Ig();
   Jg(e2);
   b3.flags |= 256;
-  Yi(a2, b3, c2, d2);
+  Xi(a2, b3, c2, d2);
   return b3.child;
 }
-var nj = { dehydrated: null, treeContext: null, retryLane: 0 };
-function oj(a2) {
+var mj = { dehydrated: null, treeContext: null, retryLane: 0 };
+function nj(a2) {
   return { baseLanes: a2, cachePool: null, transitions: null };
 }
-function pj(a2, b3, c2) {
-  var d2 = b3.pendingProps, e2 = M.current, f2 = false, g2 = 0 !== (b3.flags & 128), h2;
+function oj(a2, b3, c2) {
+  var d2 = b3.pendingProps, e2 = L$1.current, f2 = false, g2 = 0 !== (b3.flags & 128), h2;
   (h2 = g2) || (h2 = null !== a2 && null === a2.memoizedState ? false : 0 !== (e2 & 2));
   if (h2)
     f2 = true, b3.flags &= -129;
   else if (null === a2 || null !== a2.memoizedState)
     e2 |= 1;
-  G$2(M, e2 & 1);
+  G$2(L$1, e2 & 1);
   if (null === a2) {
     Eg(b3);
     a2 = b3.memoizedState;
@@ -4574,19 +4574,19 @@ function pj(a2, b3, c2) {
       return 0 === (b3.mode & 1) ? b3.lanes = 1 : "$!" === a2.data ? b3.lanes = 8 : b3.lanes = 1073741824, null;
     g2 = d2.children;
     a2 = d2.fallback;
-    return f2 ? (d2 = b3.mode, f2 = b3.child, g2 = { mode: "hidden", children: g2 }, 0 === (d2 & 1) && null !== f2 ? (f2.childLanes = 0, f2.pendingProps = g2) : f2 = qj(g2, d2, 0, null), a2 = Ah(a2, d2, c2, null), f2.return = b3, a2.return = b3, f2.sibling = a2, b3.child = f2, b3.child.memoizedState = oj(c2), b3.memoizedState = nj, a2) : rj(b3, g2);
+    return f2 ? (d2 = b3.mode, f2 = b3.child, g2 = { mode: "hidden", children: g2 }, 0 === (d2 & 1) && null !== f2 ? (f2.childLanes = 0, f2.pendingProps = g2) : f2 = pj(g2, d2, 0, null), a2 = Tg(a2, d2, c2, null), f2.return = b3, a2.return = b3, f2.sibling = a2, b3.child = f2, b3.child.memoizedState = nj(c2), b3.memoizedState = mj, a2) : qj(b3, g2);
   }
   e2 = a2.memoizedState;
   if (null !== e2 && (h2 = e2.dehydrated, null !== h2))
-    return sj(a2, b3, g2, d2, h2, e2, c2);
+    return rj(a2, b3, g2, d2, h2, e2, c2);
   if (f2) {
     f2 = d2.fallback;
     g2 = b3.mode;
     e2 = a2.child;
     h2 = e2.sibling;
     var k2 = { mode: "hidden", children: d2.children };
-    0 === (g2 & 1) && b3.child !== e2 ? (d2 = b3.child, d2.childLanes = 0, d2.pendingProps = k2, b3.deletions = null) : (d2 = wh(e2, k2), d2.subtreeFlags = e2.subtreeFlags & 14680064);
-    null !== h2 ? f2 = wh(h2, f2) : (f2 = Ah(f2, g2, c2, null), f2.flags |= 2);
+    0 === (g2 & 1) && b3.child !== e2 ? (d2 = b3.child, d2.childLanes = 0, d2.pendingProps = k2, b3.deletions = null) : (d2 = Pg(e2, k2), d2.subtreeFlags = e2.subtreeFlags & 14680064);
+    null !== h2 ? f2 = Pg(h2, f2) : (f2 = Tg(f2, g2, c2, null), f2.flags |= 2);
     f2.return = b3;
     d2.return = b3;
     d2.sibling = f2;
@@ -4594,15 +4594,15 @@ function pj(a2, b3, c2) {
     d2 = f2;
     f2 = b3.child;
     g2 = a2.child.memoizedState;
-    g2 = null === g2 ? oj(c2) : { baseLanes: g2.baseLanes | c2, cachePool: null, transitions: g2.transitions };
+    g2 = null === g2 ? nj(c2) : { baseLanes: g2.baseLanes | c2, cachePool: null, transitions: g2.transitions };
     f2.memoizedState = g2;
     f2.childLanes = a2.childLanes & ~c2;
-    b3.memoizedState = nj;
+    b3.memoizedState = mj;
     return d2;
   }
   f2 = a2.child;
   a2 = f2.sibling;
-  d2 = wh(f2, { mode: "visible", children: d2.children });
+  d2 = Pg(f2, { mode: "visible", children: d2.children });
   0 === (b3.mode & 1) && (d2.lanes = c2);
   d2.return = b3;
   d2.sibling = null;
@@ -4611,53 +4611,53 @@ function pj(a2, b3, c2) {
   b3.memoizedState = null;
   return d2;
 }
-function rj(a2, b3) {
-  b3 = qj({ mode: "visible", children: b3 }, a2.mode, 0, null);
+function qj(a2, b3) {
+  b3 = pj({ mode: "visible", children: b3 }, a2.mode, 0, null);
   b3.return = a2;
   return a2.child = b3;
 }
-function tj(a2, b3, c2, d2) {
+function sj(a2, b3, c2, d2) {
   null !== d2 && Jg(d2);
-  Bh(b3, a2.child, null, c2);
-  a2 = rj(b3, b3.pendingProps.children);
+  Ug(b3, a2.child, null, c2);
+  a2 = qj(b3, b3.pendingProps.children);
   a2.flags |= 2;
   b3.memoizedState = null;
   return a2;
 }
-function sj(a2, b3, c2, d2, e2, f2, g2) {
+function rj(a2, b3, c2, d2, e2, f2, g2) {
   if (c2) {
     if (b3.flags & 256)
-      return b3.flags &= -257, d2 = Li(Error(p$3(422))), tj(a2, b3, g2, d2);
+      return b3.flags &= -257, d2 = Ki(Error(p$3(422))), sj(a2, b3, g2, d2);
     if (null !== b3.memoizedState)
       return b3.child = a2.child, b3.flags |= 128, null;
     f2 = d2.fallback;
     e2 = b3.mode;
-    d2 = qj({ mode: "visible", children: d2.children }, e2, 0, null);
-    f2 = Ah(f2, e2, g2, null);
+    d2 = pj({ mode: "visible", children: d2.children }, e2, 0, null);
+    f2 = Tg(f2, e2, g2, null);
     f2.flags |= 2;
     d2.return = b3;
     f2.return = b3;
     d2.sibling = f2;
     b3.child = d2;
-    0 !== (b3.mode & 1) && Bh(b3, a2.child, null, g2);
-    b3.child.memoizedState = oj(g2);
-    b3.memoizedState = nj;
+    0 !== (b3.mode & 1) && Ug(b3, a2.child, null, g2);
+    b3.child.memoizedState = nj(g2);
+    b3.memoizedState = mj;
     return f2;
   }
   if (0 === (b3.mode & 1))
-    return tj(a2, b3, g2, null);
+    return sj(a2, b3, g2, null);
   if ("$!" === e2.data) {
     d2 = e2.nextSibling && e2.nextSibling.dataset;
     if (d2)
       var h2 = d2.dgst;
     d2 = h2;
     f2 = Error(p$3(419));
-    d2 = Li(f2, d2, void 0);
-    return tj(a2, b3, g2, d2);
+    d2 = Ki(f2, d2, void 0);
+    return sj(a2, b3, g2, d2);
   }
   h2 = 0 !== (g2 & a2.childLanes);
-  if (Ug || h2) {
-    d2 = R$1;
+  if (dh || h2) {
+    d2 = Q$2;
     if (null !== d2) {
       switch (g2 & -g2) {
         case 4:
@@ -4696,38 +4696,38 @@ function sj(a2, b3, c2, d2, e2, f2, g2) {
           e2 = 0;
       }
       e2 = 0 !== (e2 & (d2.suspendedLanes | g2)) ? 0 : e2;
-      0 !== e2 && e2 !== f2.retryLane && (f2.retryLane = e2, Zg(a2, e2), mh(d2, a2, e2, -1));
+      0 !== e2 && e2 !== f2.retryLane && (f2.retryLane = e2, ih(a2, e2), gi(d2, a2, e2, -1));
     }
-    uj();
-    d2 = Li(Error(p$3(421)));
-    return tj(a2, b3, g2, d2);
+    tj();
+    d2 = Ki(Error(p$3(421)));
+    return sj(a2, b3, g2, d2);
   }
   if ("$?" === e2.data)
-    return b3.flags |= 128, b3.child = a2.child, b3 = vj.bind(null, a2), e2._reactRetry = b3, null;
+    return b3.flags |= 128, b3.child = a2.child, b3 = uj.bind(null, a2), e2._reactRetry = b3, null;
   a2 = f2.treeContext;
   yg = Lf(e2.nextSibling);
   xg = b3;
   I$1 = true;
   zg = null;
   null !== a2 && (og[pg++] = rg, og[pg++] = sg, og[pg++] = qg, rg = a2.id, sg = a2.overflow, qg = b3);
-  b3 = rj(b3, d2.children);
+  b3 = qj(b3, d2.children);
   b3.flags |= 4096;
   return b3;
 }
-function wj(a2, b3, c2) {
+function vj(a2, b3, c2) {
   a2.lanes |= b3;
   var d2 = a2.alternate;
   null !== d2 && (d2.lanes |= b3);
-  Sg(a2.return, b3, c2);
+  bh(a2.return, b3, c2);
 }
-function xj(a2, b3, c2, d2, e2) {
+function wj(a2, b3, c2, d2, e2) {
   var f2 = a2.memoizedState;
   null === f2 ? a2.memoizedState = { isBackwards: b3, rendering: null, renderingStartTime: 0, last: d2, tail: c2, tailMode: e2 } : (f2.isBackwards = b3, f2.rendering = null, f2.renderingStartTime = 0, f2.last = d2, f2.tail = c2, f2.tailMode = e2);
 }
-function yj(a2, b3, c2) {
+function xj(a2, b3, c2) {
   var d2 = b3.pendingProps, e2 = d2.revealOrder, f2 = d2.tail;
-  Yi(a2, b3, d2.children, c2);
-  d2 = M.current;
+  Xi(a2, b3, d2.children, c2);
+  d2 = L$1.current;
   if (0 !== (d2 & 2))
     d2 = d2 & 1 | 2, b3.flags |= 128;
   else {
@@ -4735,9 +4735,9 @@ function yj(a2, b3, c2) {
       a:
         for (a2 = b3.child; null !== a2; ) {
           if (13 === a2.tag)
-            null !== a2.memoizedState && wj(a2, c2, b3);
+            null !== a2.memoizedState && vj(a2, c2, b3);
           else if (19 === a2.tag)
-            wj(a2, c2, b3);
+            vj(a2, c2, b3);
           else if (null !== a2.child) {
             a2.child.return = a2;
             a2 = a2.child;
@@ -4755,7 +4755,7 @@ function yj(a2, b3, c2) {
         }
     d2 &= 1;
   }
-  G$2(M, d2);
+  G$2(L$1, d2);
   if (0 === (b3.mode & 1))
     b3.memoizedState = null;
   else
@@ -4763,17 +4763,17 @@ function yj(a2, b3, c2) {
       case "forwards":
         c2 = b3.child;
         for (e2 = null; null !== c2; )
-          a2 = c2.alternate, null !== a2 && null === Mh(a2) && (e2 = c2), c2 = c2.sibling;
+          a2 = c2.alternate, null !== a2 && null === Ch(a2) && (e2 = c2), c2 = c2.sibling;
         c2 = e2;
         null === c2 ? (e2 = b3.child, b3.child = null) : (e2 = c2.sibling, c2.sibling = null);
-        xj(b3, false, e2, c2, f2);
+        wj(b3, false, e2, c2, f2);
         break;
       case "backwards":
         c2 = null;
         e2 = b3.child;
         for (b3.child = null; null !== e2; ) {
           a2 = e2.alternate;
-          if (null !== a2 && null === Mh(a2)) {
+          if (null !== a2 && null === Ch(a2)) {
             b3.child = e2;
             break;
           }
@@ -4782,91 +4782,91 @@ function yj(a2, b3, c2) {
           c2 = e2;
           e2 = a2;
         }
-        xj(b3, true, c2, null, f2);
+        wj(b3, true, c2, null, f2);
         break;
       case "together":
-        xj(b3, false, null, null, void 0);
+        wj(b3, false, null, null, void 0);
         break;
       default:
         b3.memoizedState = null;
     }
   return b3.child;
 }
-function jj(a2, b3) {
+function ij(a2, b3) {
   0 === (b3.mode & 1) && null !== a2 && (a2.alternate = null, b3.alternate = null, b3.flags |= 2);
 }
-function $i(a2, b3, c2) {
+function Zi(a2, b3, c2) {
   null !== a2 && (b3.dependencies = a2.dependencies);
-  hh |= b3.lanes;
+  rh$1 |= b3.lanes;
   if (0 === (c2 & b3.childLanes))
     return null;
   if (null !== a2 && b3.child !== a2.child)
     throw Error(p$3(153));
   if (null !== b3.child) {
     a2 = b3.child;
-    c2 = wh(a2, a2.pendingProps);
+    c2 = Pg(a2, a2.pendingProps);
     b3.child = c2;
     for (c2.return = b3; null !== a2.sibling; )
-      a2 = a2.sibling, c2 = c2.sibling = wh(a2, a2.pendingProps), c2.return = b3;
+      a2 = a2.sibling, c2 = c2.sibling = Pg(a2, a2.pendingProps), c2.return = b3;
     c2.sibling = null;
   }
   return b3.child;
 }
-function zj(a2, b3, c2) {
+function yj(a2, b3, c2) {
   switch (b3.tag) {
     case 3:
-      lj(b3);
+      kj(b3);
       Ig();
       break;
     case 5:
-      Kh$1(b3);
+      Ah(b3);
       break;
     case 1:
       Zf(b3.type) && cg(b3);
       break;
     case 4:
-      Ih(b3, b3.stateNode.containerInfo);
+      yh(b3, b3.stateNode.containerInfo);
       break;
     case 10:
       var d2 = b3.type._context, e2 = b3.memoizedProps.value;
-      G$2(Mg, d2._currentValue);
+      G$2(Wg, d2._currentValue);
       d2._currentValue = e2;
       break;
     case 13:
       d2 = b3.memoizedState;
       if (null !== d2) {
         if (null !== d2.dehydrated)
-          return G$2(M, M.current & 1), b3.flags |= 128, null;
+          return G$2(L$1, L$1.current & 1), b3.flags |= 128, null;
         if (0 !== (c2 & b3.child.childLanes))
-          return pj(a2, b3, c2);
-        G$2(M, M.current & 1);
-        a2 = $i(a2, b3, c2);
+          return oj(a2, b3, c2);
+        G$2(L$1, L$1.current & 1);
+        a2 = Zi(a2, b3, c2);
         return null !== a2 ? a2.sibling : null;
       }
-      G$2(M, M.current & 1);
+      G$2(L$1, L$1.current & 1);
       break;
     case 19:
       d2 = 0 !== (c2 & b3.childLanes);
       if (0 !== (a2.flags & 128)) {
         if (d2)
-          return yj(a2, b3, c2);
+          return xj(a2, b3, c2);
         b3.flags |= 128;
       }
       e2 = b3.memoizedState;
       null !== e2 && (e2.rendering = null, e2.tail = null, e2.lastEffect = null);
-      G$2(M, M.current);
+      G$2(L$1, L$1.current);
       if (d2)
         break;
       else
         return null;
     case 22:
     case 23:
-      return b3.lanes = 0, ej(a2, b3, c2);
+      return b3.lanes = 0, dj(a2, b3, c2);
   }
-  return $i(a2, b3, c2);
+  return Zi(a2, b3, c2);
 }
-var Aj, Bj, Cj, Dj;
-Aj = function(a2, b3) {
+var zj, Aj, Bj, Cj;
+zj = function(a2, b3) {
   for (var c2 = b3.child; null !== c2; ) {
     if (5 === c2.tag || 6 === c2.tag)
       a2.appendChild(c2.stateNode);
@@ -4886,13 +4886,13 @@ Aj = function(a2, b3) {
     c2 = c2.sibling;
   }
 };
-Bj = function() {
+Aj = function() {
 };
-Cj = function(a2, b3, c2, d2) {
+Bj = function(a2, b3, c2, d2) {
   var e2 = a2.memoizedProps;
   if (e2 !== d2) {
     a2 = b3.stateNode;
-    Hh(Eh.current);
+    xh(uh.current);
     var f2 = null;
     switch (c2) {
       case "input":
@@ -4948,10 +4948,10 @@ Cj = function(a2, b3, c2, d2) {
       b3.flags |= 4;
   }
 };
-Dj = function(a2, b3, c2, d2) {
+Cj = function(a2, b3, c2, d2) {
   c2 !== d2 && (b3.flags |= 4);
 };
-function Ej(a2, b3) {
+function Dj(a2, b3) {
   if (!I$1)
     switch (a2.tailMode) {
       case "hidden":
@@ -4979,7 +4979,7 @@ function S$1(a2) {
   a2.childLanes = c2;
   return b3;
 }
-function Fj(a2, b3, c2) {
+function Ej(a2, b3, c2) {
   var d2 = b3.pendingProps;
   wg(b3);
   switch (b3.tag) {
@@ -4998,22 +4998,22 @@ function Fj(a2, b3, c2) {
       return Zf(b3.type) && $f(), S$1(b3), null;
     case 3:
       d2 = b3.stateNode;
-      Jh();
+      zh();
       E$1(Wf);
       E$1(H$1);
-      Oh();
+      Eh();
       d2.pendingContext && (d2.context = d2.pendingContext, d2.pendingContext = null);
       if (null === a2 || null === a2.child)
-        Gg(b3) ? b3.flags |= 4 : null === a2 || a2.memoizedState.isDehydrated && 0 === (b3.flags & 256) || (b3.flags |= 1024, null !== zg && (Gj(zg), zg = null));
-      Bj(a2, b3);
+        Gg(b3) ? b3.flags |= 4 : null === a2 || a2.memoizedState.isDehydrated && 0 === (b3.flags & 256) || (b3.flags |= 1024, null !== zg && (Fj(zg), zg = null));
+      Aj(a2, b3);
       S$1(b3);
       return null;
     case 5:
-      Lh(b3);
-      var e2 = Hh(Gh.current);
+      Bh(b3);
+      var e2 = xh(wh.current);
       c2 = b3.type;
       if (null !== a2 && null != b3.stateNode)
-        Cj(a2, b3, c2, d2, e2), a2.ref !== b3.ref && (b3.flags |= 512, b3.flags |= 2097152);
+        Bj(a2, b3, c2, d2, e2), a2.ref !== b3.ref && (b3.flags |= 512, b3.flags |= 2097152);
       else {
         if (!d2) {
           if (null === b3.stateNode)
@@ -5021,7 +5021,7 @@ function Fj(a2, b3, c2) {
           S$1(b3);
           return null;
         }
-        a2 = Hh(Eh.current);
+        a2 = xh(uh.current);
         if (Gg(b3)) {
           d2 = b3.stateNode;
           c2 = b3.type;
@@ -5105,7 +5105,7 @@ function Fj(a2, b3, c2) {
           "http://www.w3.org/1999/xhtml" === a2 ? "script" === c2 ? (a2 = g2.createElement("div"), a2.innerHTML = "<script><\/script>", a2 = a2.removeChild(a2.firstChild)) : "string" === typeof d2.is ? a2 = g2.createElement(c2, { is: d2.is }) : (a2 = g2.createElement(c2), "select" === c2 && (g2 = a2, d2.multiple ? g2.multiple = true : d2.size && (g2.size = d2.size))) : a2 = g2.createElementNS(a2, c2);
           a2[Of] = b3;
           a2[Pf] = d2;
-          Aj(a2, b3, false, false);
+          zj(a2, b3, false, false);
           b3.stateNode = a2;
           a: {
             g2 = vb(c2, d2);
@@ -5220,12 +5220,12 @@ function Fj(a2, b3, c2) {
       return null;
     case 6:
       if (a2 && null != b3.stateNode)
-        Dj(a2, b3, a2.memoizedProps, d2);
+        Cj(a2, b3, a2.memoizedProps, d2);
       else {
         if ("string" !== typeof d2 && null === b3.stateNode)
           throw Error(p$3(166));
-        c2 = Hh(Gh.current);
-        Hh(Eh.current);
+        c2 = xh(wh.current);
+        xh(uh.current);
         if (Gg(b3)) {
           d2 = b3.stateNode;
           c2 = b3.memoizedProps;
@@ -5247,7 +5247,7 @@ function Fj(a2, b3, c2) {
       S$1(b3);
       return null;
     case 13:
-      E$1(M);
+      E$1(L$1);
       d2 = b3.memoizedState;
       if (null === a2 || null !== a2.memoizedState && null !== a2.memoizedState.dehydrated) {
         if (I$1 && null !== yg && 0 !== (b3.mode & 1) && 0 === (b3.flags & 128))
@@ -5266,25 +5266,25 @@ function Fj(a2, b3, c2) {
           S$1(b3);
           f2 = false;
         } else
-          null !== zg && (Gj(zg), zg = null), f2 = true;
+          null !== zg && (Fj(zg), zg = null), f2 = true;
         if (!f2)
           return b3.flags & 65536 ? b3 : null;
       }
       if (0 !== (b3.flags & 128))
         return b3.lanes = c2, b3;
       d2 = null !== d2;
-      d2 !== (null !== a2 && null !== a2.memoizedState) && d2 && (b3.child.flags |= 8192, 0 !== (b3.mode & 1) && (null === a2 || 0 !== (M.current & 1) ? 0 === T && (T = 3) : uj()));
+      d2 !== (null !== a2 && null !== a2.memoizedState) && d2 && (b3.child.flags |= 8192, 0 !== (b3.mode & 1) && (null === a2 || 0 !== (L$1.current & 1) ? 0 === T && (T = 3) : tj()));
       null !== b3.updateQueue && (b3.flags |= 4);
       S$1(b3);
       return null;
     case 4:
-      return Jh(), Bj(a2, b3), null === a2 && sf(b3.stateNode.containerInfo), S$1(b3), null;
+      return zh(), Aj(a2, b3), null === a2 && sf(b3.stateNode.containerInfo), S$1(b3), null;
     case 10:
-      return Rg(b3.type._context), S$1(b3), null;
+      return ah(b3.type._context), S$1(b3), null;
     case 17:
       return Zf(b3.type) && $f(), S$1(b3), null;
     case 19:
-      E$1(M);
+      E$1(L$1);
       f2 = b3.memoizedState;
       if (null === f2)
         return S$1(b3), null;
@@ -5292,43 +5292,43 @@ function Fj(a2, b3, c2) {
       g2 = f2.rendering;
       if (null === g2)
         if (d2)
-          Ej(f2, false);
+          Dj(f2, false);
         else {
           if (0 !== T || null !== a2 && 0 !== (a2.flags & 128))
             for (a2 = b3.child; null !== a2; ) {
-              g2 = Mh(a2);
+              g2 = Ch(a2);
               if (null !== g2) {
                 b3.flags |= 128;
-                Ej(f2, false);
+                Dj(f2, false);
                 d2 = g2.updateQueue;
                 null !== d2 && (b3.updateQueue = d2, b3.flags |= 4);
                 b3.subtreeFlags = 0;
                 d2 = c2;
                 for (c2 = b3.child; null !== c2; )
                   f2 = c2, a2 = d2, f2.flags &= 14680066, g2 = f2.alternate, null === g2 ? (f2.childLanes = 0, f2.lanes = a2, f2.child = null, f2.subtreeFlags = 0, f2.memoizedProps = null, f2.memoizedState = null, f2.updateQueue = null, f2.dependencies = null, f2.stateNode = null) : (f2.childLanes = g2.childLanes, f2.lanes = g2.lanes, f2.child = g2.child, f2.subtreeFlags = 0, f2.deletions = null, f2.memoizedProps = g2.memoizedProps, f2.memoizedState = g2.memoizedState, f2.updateQueue = g2.updateQueue, f2.type = g2.type, a2 = g2.dependencies, f2.dependencies = null === a2 ? null : { lanes: a2.lanes, firstContext: a2.firstContext }), c2 = c2.sibling;
-                G$2(M, M.current & 1 | 2);
+                G$2(L$1, L$1.current & 1 | 2);
                 return b3.child;
               }
               a2 = a2.sibling;
             }
-          null !== f2.tail && B$1() > Hj && (b3.flags |= 128, d2 = true, Ej(f2, false), b3.lanes = 4194304);
+          null !== f2.tail && B$1() > Gj && (b3.flags |= 128, d2 = true, Dj(f2, false), b3.lanes = 4194304);
         }
       else {
         if (!d2)
-          if (a2 = Mh(g2), null !== a2) {
-            if (b3.flags |= 128, d2 = true, c2 = a2.updateQueue, null !== c2 && (b3.updateQueue = c2, b3.flags |= 4), Ej(f2, true), null === f2.tail && "hidden" === f2.tailMode && !g2.alternate && !I$1)
+          if (a2 = Ch(g2), null !== a2) {
+            if (b3.flags |= 128, d2 = true, c2 = a2.updateQueue, null !== c2 && (b3.updateQueue = c2, b3.flags |= 4), Dj(f2, true), null === f2.tail && "hidden" === f2.tailMode && !g2.alternate && !I$1)
               return S$1(b3), null;
           } else
-            2 * B$1() - f2.renderingStartTime > Hj && 1073741824 !== c2 && (b3.flags |= 128, d2 = true, Ej(f2, false), b3.lanes = 4194304);
+            2 * B$1() - f2.renderingStartTime > Gj && 1073741824 !== c2 && (b3.flags |= 128, d2 = true, Dj(f2, false), b3.lanes = 4194304);
         f2.isBackwards ? (g2.sibling = b3.child, b3.child = g2) : (c2 = f2.last, null !== c2 ? c2.sibling = g2 : b3.child = g2, f2.last = g2);
       }
       if (null !== f2.tail)
-        return b3 = f2.tail, f2.rendering = b3, f2.tail = b3.sibling, f2.renderingStartTime = B$1(), b3.sibling = null, c2 = M.current, G$2(M, d2 ? c2 & 1 | 2 : c2 & 1), b3;
+        return b3 = f2.tail, f2.rendering = b3, f2.tail = b3.sibling, f2.renderingStartTime = B$1(), b3.sibling = null, c2 = L$1.current, G$2(L$1, d2 ? c2 & 1 | 2 : c2 & 1), b3;
       S$1(b3);
       return null;
     case 22:
     case 23:
-      return Ij(), d2 = null !== b3.memoizedState, null !== a2 && null !== a2.memoizedState !== d2 && (b3.flags |= 8192), d2 && 0 !== (b3.mode & 1) ? 0 !== (gj & 1073741824) && (S$1(b3), b3.subtreeFlags & 6 && (b3.flags |= 8192)) : S$1(b3), null;
+      return Hj(), d2 = null !== b3.memoizedState, null !== a2 && null !== a2.memoizedState !== d2 && (b3.flags |= 8192), d2 && 0 !== (b3.mode & 1) ? 0 !== (fj & 1073741824) && (S$1(b3), b3.subtreeFlags & 6 && (b3.flags |= 8192)) : S$1(b3), null;
     case 24:
       return null;
     case 25:
@@ -5336,17 +5336,17 @@ function Fj(a2, b3, c2) {
   }
   throw Error(p$3(156, b3.tag));
 }
-function Jj(a2, b3) {
+function Ij(a2, b3) {
   wg(b3);
   switch (b3.tag) {
     case 1:
       return Zf(b3.type) && $f(), a2 = b3.flags, a2 & 65536 ? (b3.flags = a2 & -65537 | 128, b3) : null;
     case 3:
-      return Jh(), E$1(Wf), E$1(H$1), Oh(), a2 = b3.flags, 0 !== (a2 & 65536) && 0 === (a2 & 128) ? (b3.flags = a2 & -65537 | 128, b3) : null;
+      return zh(), E$1(Wf), E$1(H$1), Eh(), a2 = b3.flags, 0 !== (a2 & 65536) && 0 === (a2 & 128) ? (b3.flags = a2 & -65537 | 128, b3) : null;
     case 5:
-      return Lh(b3), null;
+      return Bh(b3), null;
     case 13:
-      E$1(M);
+      E$1(L$1);
       a2 = b3.memoizedState;
       if (null !== a2 && null !== a2.dehydrated) {
         if (null === b3.alternate)
@@ -5356,22 +5356,22 @@ function Jj(a2, b3) {
       a2 = b3.flags;
       return a2 & 65536 ? (b3.flags = a2 & -65537 | 128, b3) : null;
     case 19:
-      return E$1(M), null;
+      return E$1(L$1), null;
     case 4:
-      return Jh(), null;
+      return zh(), null;
     case 10:
-      return Rg(b3.type._context), null;
+      return ah(b3.type._context), null;
     case 22:
     case 23:
-      return Ij(), null;
+      return Hj(), null;
     case 24:
       return null;
     default:
       return null;
   }
 }
-var Kj = false, U = false, Lj = "function" === typeof WeakSet ? WeakSet : Set, V = null;
-function Mj(a2, b3) {
+var Jj = false, U = false, Kj = "function" === typeof WeakSet ? WeakSet : Set, V = null;
+function Lj(a2, b3) {
   var c2 = a2.ref;
   if (null !== c2)
     if ("function" === typeof c2)
@@ -5383,15 +5383,15 @@ function Mj(a2, b3) {
     else
       c2.current = null;
 }
-function Nj(a2, b3, c2) {
+function Mj(a2, b3, c2) {
   try {
     c2();
   } catch (d2) {
     W$1(a2, b3, d2);
   }
 }
-var Oj = false;
-function Pj(a2, b3) {
+var Nj = false;
+function Oj(a2, b3) {
   Cf = dd;
   a2 = Me();
   if (Ne$1(a2)) {
@@ -5460,7 +5460,7 @@ function Pj(a2, b3) {
                 break;
               case 1:
                 if (null !== n2) {
-                  var t2 = n2.memoizedProps, J2 = n2.memoizedState, x = b3.stateNode, w2 = x.getSnapshotBeforeUpdate(b3.elementType === b3.type ? t2 : Lg(b3.type, t2), J2);
+                  var t2 = n2.memoizedProps, J2 = n2.memoizedState, x = b3.stateNode, w2 = x.getSnapshotBeforeUpdate(b3.elementType === b3.type ? t2 : Ci(b3.type, t2), J2);
                   x.__reactInternalSnapshotBeforeUpdate = w2;
                 }
                 break;
@@ -5487,11 +5487,11 @@ function Pj(a2, b3) {
         }
         V = b3.return;
       }
-  n2 = Oj;
-  Oj = false;
+  n2 = Nj;
+  Nj = false;
   return n2;
 }
-function Qj(a2, b3, c2) {
+function Pj(a2, b3, c2) {
   var d2 = b3.updateQueue;
   d2 = null !== d2 ? d2.lastEffect : null;
   if (null !== d2) {
@@ -5500,13 +5500,13 @@ function Qj(a2, b3, c2) {
       if ((e2.tag & a2) === a2) {
         var f2 = e2.destroy;
         e2.destroy = void 0;
-        void 0 !== f2 && Nj(b3, c2, f2);
+        void 0 !== f2 && Mj(b3, c2, f2);
       }
       e2 = e2.next;
     } while (e2 !== d2);
   }
 }
-function Rj(a2, b3) {
+function Qj(a2, b3) {
   b3 = b3.updateQueue;
   b3 = null !== b3 ? b3.lastEffect : null;
   if (null !== b3) {
@@ -5520,7 +5520,7 @@ function Rj(a2, b3) {
     } while (c2 !== b3);
   }
 }
-function Sj(a2) {
+function Rj(a2) {
   var b3 = a2.ref;
   if (null !== b3) {
     var c2 = a2.stateNode;
@@ -5534,9 +5534,9 @@ function Sj(a2) {
     "function" === typeof b3 ? b3(a2) : b3.current = a2;
   }
 }
-function Tj(a2) {
+function Sj(a2) {
   var b3 = a2.alternate;
-  null !== b3 && (a2.alternate = null, Tj(b3));
+  null !== b3 && (a2.alternate = null, Sj(b3));
   a2.child = null;
   a2.deletions = null;
   a2.sibling = null;
@@ -5550,14 +5550,14 @@ function Tj(a2) {
   a2.stateNode = null;
   a2.updateQueue = null;
 }
-function Uj(a2) {
+function Tj(a2) {
   return 5 === a2.tag || 3 === a2.tag || 4 === a2.tag;
 }
-function Vj(a2) {
+function Uj(a2) {
   a:
     for (; ; ) {
       for (; null === a2.sibling; ) {
-        if (null === a2.return || Uj(a2.return))
+        if (null === a2.return || Tj(a2.return))
           return null;
         a2 = a2.return;
       }
@@ -5574,28 +5574,28 @@ function Vj(a2) {
         return a2.stateNode;
     }
 }
-function Wj(a2, b3, c2) {
+function Vj(a2, b3, c2) {
   var d2 = a2.tag;
   if (5 === d2 || 6 === d2)
     a2 = a2.stateNode, b3 ? 8 === c2.nodeType ? c2.parentNode.insertBefore(a2, b3) : c2.insertBefore(a2, b3) : (8 === c2.nodeType ? (b3 = c2.parentNode, b3.insertBefore(a2, c2)) : (b3 = c2, b3.appendChild(a2)), c2 = c2._reactRootContainer, null !== c2 && void 0 !== c2 || null !== b3.onclick || (b3.onclick = Bf));
   else if (4 !== d2 && (a2 = a2.child, null !== a2))
-    for (Wj(a2, b3, c2), a2 = a2.sibling; null !== a2; )
-      Wj(a2, b3, c2), a2 = a2.sibling;
+    for (Vj(a2, b3, c2), a2 = a2.sibling; null !== a2; )
+      Vj(a2, b3, c2), a2 = a2.sibling;
 }
-function Xj(a2, b3, c2) {
+function Wj(a2, b3, c2) {
   var d2 = a2.tag;
   if (5 === d2 || 6 === d2)
     a2 = a2.stateNode, b3 ? c2.insertBefore(a2, b3) : c2.appendChild(a2);
   else if (4 !== d2 && (a2 = a2.child, null !== a2))
-    for (Xj(a2, b3, c2), a2 = a2.sibling; null !== a2; )
-      Xj(a2, b3, c2), a2 = a2.sibling;
+    for (Wj(a2, b3, c2), a2 = a2.sibling; null !== a2; )
+      Wj(a2, b3, c2), a2 = a2.sibling;
 }
-var X$1 = null, Yj = false;
-function Zj(a2, b3, c2) {
+var X$1 = null, Xj = false;
+function Yj(a2, b3, c2) {
   for (c2 = c2.child; null !== c2; )
-    ak(a2, b3, c2), c2 = c2.sibling;
+    Zj(a2, b3, c2), c2 = c2.sibling;
 }
-function ak(a2, b3, c2) {
+function Zj(a2, b3, c2) {
   if (lc && "function" === typeof lc.onCommitFiberUnmount)
     try {
       lc.onCommitFiberUnmount(kc, c2);
@@ -5603,26 +5603,26 @@ function ak(a2, b3, c2) {
     }
   switch (c2.tag) {
     case 5:
-      U || Mj(c2, b3);
+      U || Lj(c2, b3);
     case 6:
-      var d2 = X$1, e2 = Yj;
+      var d2 = X$1, e2 = Xj;
       X$1 = null;
-      Zj(a2, b3, c2);
+      Yj(a2, b3, c2);
       X$1 = d2;
-      Yj = e2;
-      null !== X$1 && (Yj ? (a2 = X$1, c2 = c2.stateNode, 8 === a2.nodeType ? a2.parentNode.removeChild(c2) : a2.removeChild(c2)) : X$1.removeChild(c2.stateNode));
+      Xj = e2;
+      null !== X$1 && (Xj ? (a2 = X$1, c2 = c2.stateNode, 8 === a2.nodeType ? a2.parentNode.removeChild(c2) : a2.removeChild(c2)) : X$1.removeChild(c2.stateNode));
       break;
     case 18:
-      null !== X$1 && (Yj ? (a2 = X$1, c2 = c2.stateNode, 8 === a2.nodeType ? Kf(a2.parentNode, c2) : 1 === a2.nodeType && Kf(a2, c2), bd(a2)) : Kf(X$1, c2.stateNode));
+      null !== X$1 && (Xj ? (a2 = X$1, c2 = c2.stateNode, 8 === a2.nodeType ? Kf(a2.parentNode, c2) : 1 === a2.nodeType && Kf(a2, c2), bd(a2)) : Kf(X$1, c2.stateNode));
       break;
     case 4:
       d2 = X$1;
-      e2 = Yj;
+      e2 = Xj;
       X$1 = c2.stateNode.containerInfo;
-      Yj = true;
-      Zj(a2, b3, c2);
+      Xj = true;
+      Yj(a2, b3, c2);
       X$1 = d2;
-      Yj = e2;
+      Xj = e2;
       break;
     case 0:
     case 11:
@@ -5633,44 +5633,44 @@ function ak(a2, b3, c2) {
         do {
           var f2 = e2, g2 = f2.destroy;
           f2 = f2.tag;
-          void 0 !== g2 && (0 !== (f2 & 2) ? Nj(c2, b3, g2) : 0 !== (f2 & 4) && Nj(c2, b3, g2));
+          void 0 !== g2 && (0 !== (f2 & 2) ? Mj(c2, b3, g2) : 0 !== (f2 & 4) && Mj(c2, b3, g2));
           e2 = e2.next;
         } while (e2 !== d2);
       }
-      Zj(a2, b3, c2);
+      Yj(a2, b3, c2);
       break;
     case 1:
-      if (!U && (Mj(c2, b3), d2 = c2.stateNode, "function" === typeof d2.componentWillUnmount))
+      if (!U && (Lj(c2, b3), d2 = c2.stateNode, "function" === typeof d2.componentWillUnmount))
         try {
           d2.props = c2.memoizedProps, d2.state = c2.memoizedState, d2.componentWillUnmount();
         } catch (h2) {
           W$1(c2, b3, h2);
         }
-      Zj(a2, b3, c2);
+      Yj(a2, b3, c2);
       break;
     case 21:
-      Zj(a2, b3, c2);
+      Yj(a2, b3, c2);
       break;
     case 22:
-      c2.mode & 1 ? (U = (d2 = U) || null !== c2.memoizedState, Zj(a2, b3, c2), U = d2) : Zj(a2, b3, c2);
+      c2.mode & 1 ? (U = (d2 = U) || null !== c2.memoizedState, Yj(a2, b3, c2), U = d2) : Yj(a2, b3, c2);
       break;
     default:
-      Zj(a2, b3, c2);
+      Yj(a2, b3, c2);
   }
 }
-function bk(a2) {
+function ak(a2) {
   var b3 = a2.updateQueue;
   if (null !== b3) {
     a2.updateQueue = null;
     var c2 = a2.stateNode;
-    null === c2 && (c2 = a2.stateNode = new Lj());
+    null === c2 && (c2 = a2.stateNode = new Kj());
     b3.forEach(function(b4) {
-      var d2 = ck.bind(null, a2, b4);
+      var d2 = bk.bind(null, a2, b4);
       c2.has(b4) || (c2.add(b4), b4.then(d2, d2));
     });
   }
 }
-function dk(a2, b3) {
+function ck(a2, b3) {
   var c2 = b3.deletions;
   if (null !== c2)
     for (var d2 = 0; d2 < c2.length; d2++) {
@@ -5682,24 +5682,24 @@ function dk(a2, b3) {
             switch (h2.tag) {
               case 5:
                 X$1 = h2.stateNode;
-                Yj = false;
+                Xj = false;
                 break a;
               case 3:
                 X$1 = h2.stateNode.containerInfo;
-                Yj = true;
+                Xj = true;
                 break a;
               case 4:
                 X$1 = h2.stateNode.containerInfo;
-                Yj = true;
+                Xj = true;
                 break a;
             }
             h2 = h2.return;
           }
         if (null === X$1)
           throw Error(p$3(160));
-        ak(f2, g2, e2);
+        Zj(f2, g2, e2);
         X$1 = null;
-        Yj = false;
+        Xj = false;
         var k2 = e2.alternate;
         null !== k2 && (k2.return = null);
         e2.return = null;
@@ -5709,39 +5709,39 @@ function dk(a2, b3) {
     }
   if (b3.subtreeFlags & 12854)
     for (b3 = b3.child; null !== b3; )
-      ek(b3, a2), b3 = b3.sibling;
+      dk(b3, a2), b3 = b3.sibling;
 }
-function ek(a2, b3) {
+function dk(a2, b3) {
   var c2 = a2.alternate, d2 = a2.flags;
   switch (a2.tag) {
     case 0:
     case 11:
     case 14:
     case 15:
-      dk(b3, a2);
-      fk(a2);
+      ck(b3, a2);
+      ek(a2);
       if (d2 & 4) {
         try {
-          Qj(3, a2, a2.return), Rj(3, a2);
+          Pj(3, a2, a2.return), Qj(3, a2);
         } catch (t2) {
           W$1(a2, a2.return, t2);
         }
         try {
-          Qj(5, a2, a2.return);
+          Pj(5, a2, a2.return);
         } catch (t2) {
           W$1(a2, a2.return, t2);
         }
       }
       break;
     case 1:
-      dk(b3, a2);
-      fk(a2);
-      d2 & 512 && null !== c2 && Mj(c2, c2.return);
+      ck(b3, a2);
+      ek(a2);
+      d2 & 512 && null !== c2 && Lj(c2, c2.return);
       break;
     case 5:
-      dk(b3, a2);
-      fk(a2);
-      d2 & 512 && null !== c2 && Mj(c2, c2.return);
+      ck(b3, a2);
+      ek(a2);
+      d2 & 512 && null !== c2 && Lj(c2, c2.return);
       if (a2.flags & 32) {
         var e2 = a2.stateNode;
         try {
@@ -5787,8 +5787,8 @@ function ek(a2, b3) {
       }
       break;
     case 6:
-      dk(b3, a2);
-      fk(a2);
+      ck(b3, a2);
+      ek(a2);
       if (d2 & 4) {
         if (null === a2.stateNode)
           throw Error(p$3(162));
@@ -5802,8 +5802,8 @@ function ek(a2, b3) {
       }
       break;
     case 3:
-      dk(b3, a2);
-      fk(a2);
+      ck(b3, a2);
+      ek(a2);
       if (d2 & 4 && null !== c2 && c2.memoizedState.isDehydrated)
         try {
           bd(b3.containerInfo);
@@ -5812,20 +5812,20 @@ function ek(a2, b3) {
         }
       break;
     case 4:
-      dk(b3, a2);
-      fk(a2);
+      ck(b3, a2);
+      ek(a2);
       break;
     case 13:
-      dk(b3, a2);
-      fk(a2);
+      ck(b3, a2);
+      ek(a2);
       e2 = a2.child;
-      e2.flags & 8192 && (f2 = null !== e2.memoizedState, e2.stateNode.isHidden = f2, !f2 || null !== e2.alternate && null !== e2.alternate.memoizedState || (gk = B$1()));
-      d2 & 4 && bk(a2);
+      e2.flags & 8192 && (f2 = null !== e2.memoizedState, e2.stateNode.isHidden = f2, !f2 || null !== e2.alternate && null !== e2.alternate.memoizedState || (fk = B$1()));
+      d2 & 4 && ak(a2);
       break;
     case 22:
       m2 = null !== c2 && null !== c2.memoizedState;
-      a2.mode & 1 ? (U = (l2 = U) || m2, dk(b3, a2), U = l2) : dk(b3, a2);
-      fk(a2);
+      a2.mode & 1 ? (U = (l2 = U) || m2, ck(b3, a2), U = l2) : ck(b3, a2);
+      ek(a2);
       if (d2 & 8192) {
         l2 = null !== a2.memoizedState;
         if ((a2.stateNode.isHidden = l2) && !m2 && 0 !== (a2.mode & 1))
@@ -5838,10 +5838,10 @@ function ek(a2, b3) {
                 case 11:
                 case 14:
                 case 15:
-                  Qj(4, r2, r2.return);
+                  Pj(4, r2, r2.return);
                   break;
                 case 1:
-                  Mj(r2, r2.return);
+                  Lj(r2, r2.return);
                   var n2 = r2.stateNode;
                   if ("function" === typeof n2.componentWillUnmount) {
                     d2 = r2;
@@ -5854,15 +5854,15 @@ function ek(a2, b3) {
                   }
                   break;
                 case 5:
-                  Mj(r2, r2.return);
+                  Lj(r2, r2.return);
                   break;
                 case 22:
                   if (null !== r2.memoizedState) {
-                    hk(q2);
+                    gk(q2);
                     continue;
                   }
               }
-              null !== y2 ? (y2.return = r2, V = y2) : hk(q2);
+              null !== y2 ? (y2.return = r2, V = y2) : gk(q2);
             }
             m2 = m2.sibling;
           }
@@ -5904,26 +5904,26 @@ function ek(a2, b3) {
       }
       break;
     case 19:
-      dk(b3, a2);
-      fk(a2);
-      d2 & 4 && bk(a2);
+      ck(b3, a2);
+      ek(a2);
+      d2 & 4 && ak(a2);
       break;
     case 21:
       break;
     default:
-      dk(
+      ck(
         b3,
         a2
-      ), fk(a2);
+      ), ek(a2);
   }
 }
-function fk(a2) {
+function ek(a2) {
   var b3 = a2.flags;
   if (b3 & 2) {
     try {
       a: {
         for (var c2 = a2.return; null !== c2; ) {
-          if (Uj(c2)) {
+          if (Tj(c2)) {
             var d2 = c2;
             break a;
           }
@@ -5935,13 +5935,13 @@ function fk(a2) {
         case 5:
           var e2 = d2.stateNode;
           d2.flags & 32 && (ob(e2, ""), d2.flags &= -33);
-          var f2 = Vj(a2);
-          Xj(a2, f2, e2);
+          var f2 = Uj(a2);
+          Wj(a2, f2, e2);
           break;
         case 3:
         case 4:
-          var g2 = d2.stateNode.containerInfo, h2 = Vj(a2);
-          Wj(a2, h2, g2);
+          var g2 = d2.stateNode.containerInfo, h2 = Uj(a2);
+          Vj(a2, h2, g2);
           break;
         default:
           throw Error(p$3(161));
@@ -5953,35 +5953,35 @@ function fk(a2) {
   }
   b3 & 4096 && (a2.flags &= -4097);
 }
-function ik(a2, b3, c2) {
+function hk(a2, b3, c2) {
   V = a2;
-  jk(a2);
+  ik(a2);
 }
-function jk(a2, b3, c2) {
+function ik(a2, b3, c2) {
   for (var d2 = 0 !== (a2.mode & 1); null !== V; ) {
     var e2 = V, f2 = e2.child;
     if (22 === e2.tag && d2) {
-      var g2 = null !== e2.memoizedState || Kj;
+      var g2 = null !== e2.memoizedState || Jj;
       if (!g2) {
         var h2 = e2.alternate, k2 = null !== h2 && null !== h2.memoizedState || U;
-        h2 = Kj;
+        h2 = Jj;
         var l2 = U;
-        Kj = g2;
+        Jj = g2;
         if ((U = k2) && !l2)
           for (V = e2; null !== V; )
-            g2 = V, k2 = g2.child, 22 === g2.tag && null !== g2.memoizedState ? kk(e2) : null !== k2 ? (k2.return = g2, V = k2) : kk(e2);
+            g2 = V, k2 = g2.child, 22 === g2.tag && null !== g2.memoizedState ? jk(e2) : null !== k2 ? (k2.return = g2, V = k2) : jk(e2);
         for (; null !== f2; )
-          V = f2, jk(f2), f2 = f2.sibling;
+          V = f2, ik(f2), f2 = f2.sibling;
         V = e2;
-        Kj = h2;
+        Jj = h2;
         U = l2;
       }
-      lk(a2);
+      kk(a2);
     } else
-      0 !== (e2.subtreeFlags & 8772) && null !== f2 ? (f2.return = e2, V = f2) : lk(a2);
+      0 !== (e2.subtreeFlags & 8772) && null !== f2 ? (f2.return = e2, V = f2) : kk(a2);
   }
 }
-function lk(a2) {
+function kk(a2) {
   for (; null !== V; ) {
     var b3 = V;
     if (0 !== (b3.flags & 8772)) {
@@ -5992,7 +5992,7 @@ function lk(a2) {
             case 0:
             case 11:
             case 15:
-              U || Rj(5, b3);
+              U || Qj(5, b3);
               break;
             case 1:
               var d2 = b3.stateNode;
@@ -6000,11 +6000,11 @@ function lk(a2) {
                 if (null === c2)
                   d2.componentDidMount();
                 else {
-                  var e2 = b3.elementType === b3.type ? c2.memoizedProps : Lg(b3.type, c2.memoizedProps);
+                  var e2 = b3.elementType === b3.type ? c2.memoizedProps : Ci(b3.type, c2.memoizedProps);
                   d2.componentDidUpdate(e2, c2.memoizedState, d2.__reactInternalSnapshotBeforeUpdate);
                 }
               var f2 = b3.updateQueue;
-              null !== f2 && ih(b3, f2, d2);
+              null !== f2 && sh$1(b3, f2, d2);
               break;
             case 3:
               var g2 = b3.updateQueue;
@@ -6018,7 +6018,7 @@ function lk(a2) {
                     case 1:
                       c2 = b3.child.stateNode;
                   }
-                ih(b3, g2, c2);
+                sh$1(b3, g2, c2);
               }
               break;
             case 5:
@@ -6066,7 +6066,7 @@ function lk(a2) {
             default:
               throw Error(p$3(163));
           }
-        U || b3.flags & 512 && Sj(b3);
+        U || b3.flags & 512 && Rj(b3);
       } catch (r2) {
         W$1(b3, b3.return, r2);
       }
@@ -6084,7 +6084,7 @@ function lk(a2) {
     V = b3.return;
   }
 }
-function hk(a2) {
+function gk(a2) {
   for (; null !== V; ) {
     var b3 = V;
     if (b3 === a2) {
@@ -6100,7 +6100,7 @@ function hk(a2) {
     V = b3.return;
   }
 }
-function kk(a2) {
+function jk(a2) {
   for (; null !== V; ) {
     var b3 = V;
     try {
@@ -6110,7 +6110,7 @@ function kk(a2) {
         case 15:
           var c2 = b3.return;
           try {
-            Rj(4, b3);
+            Qj(4, b3);
           } catch (k2) {
             W$1(b3, c2, k2);
           }
@@ -6127,7 +6127,7 @@ function kk(a2) {
           }
           var f2 = b3.return;
           try {
-            Sj(b3);
+            Rj(b3);
           } catch (k2) {
             W$1(b3, f2, k2);
           }
@@ -6135,7 +6135,7 @@ function kk(a2) {
         case 5:
           var g2 = b3.return;
           try {
-            Sj(b3);
+            Rj(b3);
           } catch (k2) {
             W$1(b3, g2, k2);
           }
@@ -6156,17 +6156,17 @@ function kk(a2) {
     V = b3.return;
   }
 }
-var mk = Math.ceil, nk = ua.ReactCurrentDispatcher, ok = ua.ReactCurrentOwner, pk = ua.ReactCurrentBatchConfig, K$1 = 0, R$1 = null, Y$1 = null, Z$1 = 0, gj = 0, fj = Uf(0), T = 0, qk = null, hh = 0, rk = 0, sk = 0, tk = null, uk = null, gk = 0, Hj = Infinity, vk = null, Pi = false, Qi = null, Si = null, wk = false, xk = null, yk = 0, zk = 0, Ak = null, Bk = -1, Ck = 0;
-function L$1() {
-  return 0 !== (K$1 & 6) ? B$1() : -1 !== Bk ? Bk : Bk = B$1();
+var lk = Math.ceil, mk = ua.ReactCurrentDispatcher, nk = ua.ReactCurrentOwner, ok = ua.ReactCurrentBatchConfig, K$1 = 0, Q$2 = null, Y$1 = null, Z$1 = 0, fj = 0, ej = Uf(0), T = 0, pk = null, rh$1 = 0, qk = 0, rk = 0, sk = null, tk = null, fk = 0, Gj = Infinity, uk = null, Oi = false, Pi = null, Ri = null, vk = false, wk = null, xk = 0, yk = 0, zk = null, Ak = -1, Bk = 0;
+function R$1() {
+  return 0 !== (K$1 & 6) ? B$1() : -1 !== Ak ? Ak : Ak = B$1();
 }
-function lh(a2) {
+function yi(a2) {
   if (0 === (a2.mode & 1))
     return 1;
   if (0 !== (K$1 & 2) && 0 !== Z$1)
     return Z$1 & -Z$1;
   if (null !== Kg.transition)
-    return 0 === Ck && (Ck = yc()), Ck;
+    return 0 === Bk && (Bk = yc()), Bk;
   a2 = C;
   if (0 !== a2)
     return a2;
@@ -6174,23 +6174,23 @@ function lh(a2) {
   a2 = void 0 === a2 ? 16 : jd(a2.type);
   return a2;
 }
-function mh(a2, b3, c2, d2) {
-  if (50 < zk)
-    throw zk = 0, Ak = null, Error(p$3(185));
+function gi(a2, b3, c2, d2) {
+  if (50 < yk)
+    throw yk = 0, zk = null, Error(p$3(185));
   Ac(a2, c2, d2);
-  if (0 === (K$1 & 2) || a2 !== R$1)
-    a2 === R$1 && (0 === (K$1 & 2) && (rk |= c2), 4 === T && Dk(a2, Z$1)), Ek(a2, d2), 1 === c2 && 0 === K$1 && 0 === (b3.mode & 1) && (Hj = B$1() + 500, fg && jg());
+  if (0 === (K$1 & 2) || a2 !== Q$2)
+    a2 === Q$2 && (0 === (K$1 & 2) && (qk |= c2), 4 === T && Ck(a2, Z$1)), Dk(a2, d2), 1 === c2 && 0 === K$1 && 0 === (b3.mode & 1) && (Gj = B$1() + 500, fg && jg());
 }
-function Ek(a2, b3) {
+function Dk(a2, b3) {
   var c2 = a2.callbackNode;
   wc(a2, b3);
-  var d2 = uc(a2, a2 === R$1 ? Z$1 : 0);
+  var d2 = uc(a2, a2 === Q$2 ? Z$1 : 0);
   if (0 === d2)
     null !== c2 && bc(c2), a2.callbackNode = null, a2.callbackPriority = 0;
   else if (b3 = d2 & -d2, a2.callbackPriority !== b3) {
     null != c2 && bc(c2);
     if (1 === b3)
-      0 === a2.tag ? ig(Fk.bind(null, a2)) : hg(Fk.bind(null, a2)), Jf(function() {
+      0 === a2.tag ? ig(Ek.bind(null, a2)) : hg(Ek.bind(null, a2)), Jf(function() {
         0 === (K$1 & 6) && jg();
       }), c2 = null;
     else {
@@ -6210,55 +6210,55 @@ function Ek(a2, b3) {
         default:
           c2 = hc;
       }
-      c2 = Gk(c2, Hk.bind(null, a2));
+      c2 = Fk(c2, Gk.bind(null, a2));
     }
     a2.callbackPriority = b3;
     a2.callbackNode = c2;
   }
 }
-function Hk(a2, b3) {
-  Bk = -1;
-  Ck = 0;
+function Gk(a2, b3) {
+  Ak = -1;
+  Bk = 0;
   if (0 !== (K$1 & 6))
     throw Error(p$3(327));
   var c2 = a2.callbackNode;
-  if (Ik() && a2.callbackNode !== c2)
+  if (Hk() && a2.callbackNode !== c2)
     return null;
-  var d2 = uc(a2, a2 === R$1 ? Z$1 : 0);
+  var d2 = uc(a2, a2 === Q$2 ? Z$1 : 0);
   if (0 === d2)
     return null;
   if (0 !== (d2 & 30) || 0 !== (d2 & a2.expiredLanes) || b3)
-    b3 = Jk(a2, d2);
+    b3 = Ik(a2, d2);
   else {
     b3 = d2;
     var e2 = K$1;
     K$1 |= 2;
-    var f2 = Kk();
-    if (R$1 !== a2 || Z$1 !== b3)
-      vk = null, Hj = B$1() + 500, Lk(a2, b3);
+    var f2 = Jk();
+    if (Q$2 !== a2 || Z$1 !== b3)
+      uk = null, Gj = B$1() + 500, Kk(a2, b3);
     do
       try {
-        Mk();
+        Lk();
         break;
       } catch (h2) {
-        Nk(a2, h2);
+        Mk(a2, h2);
       }
     while (1);
-    Qg();
-    nk.current = f2;
+    $g();
+    mk.current = f2;
     K$1 = e2;
-    null !== Y$1 ? b3 = 0 : (R$1 = null, Z$1 = 0, b3 = T);
+    null !== Y$1 ? b3 = 0 : (Q$2 = null, Z$1 = 0, b3 = T);
   }
   if (0 !== b3) {
-    2 === b3 && (e2 = xc(a2), 0 !== e2 && (d2 = e2, b3 = Ok(a2, e2)));
+    2 === b3 && (e2 = xc(a2), 0 !== e2 && (d2 = e2, b3 = Nk(a2, e2)));
     if (1 === b3)
-      throw c2 = qk, Lk(a2, 0), Dk(a2, d2), Ek(a2, B$1()), c2;
+      throw c2 = pk, Kk(a2, 0), Ck(a2, d2), Dk(a2, B$1()), c2;
     if (6 === b3)
-      Dk(a2, d2);
+      Ck(a2, d2);
     else {
       e2 = a2.current.alternate;
-      if (0 === (d2 & 30) && !Pk(e2) && (b3 = Jk(a2, d2), 2 === b3 && (f2 = xc(a2), 0 !== f2 && (d2 = f2, b3 = Ok(a2, f2))), 1 === b3))
-        throw c2 = qk, Lk(a2, 0), Dk(a2, d2), Ek(a2, B$1()), c2;
+      if (0 === (d2 & 30) && !Ok(e2) && (b3 = Ik(a2, d2), 2 === b3 && (f2 = xc(a2), 0 !== f2 && (d2 = f2, b3 = Nk(a2, f2))), 1 === b3))
+        throw c2 = pk, Kk(a2, 0), Ck(a2, d2), Dk(a2, B$1()), c2;
       a2.finishedWork = e2;
       a2.finishedLanes = d2;
       switch (b3) {
@@ -6266,26 +6266,26 @@ function Hk(a2, b3) {
         case 1:
           throw Error(p$3(345));
         case 2:
-          Qk(a2, uk, vk);
+          Pk(a2, tk, uk);
           break;
         case 3:
-          Dk(a2, d2);
-          if ((d2 & 130023424) === d2 && (b3 = gk + 500 - B$1(), 10 < b3)) {
+          Ck(a2, d2);
+          if ((d2 & 130023424) === d2 && (b3 = fk + 500 - B$1(), 10 < b3)) {
             if (0 !== uc(a2, 0))
               break;
             e2 = a2.suspendedLanes;
             if ((e2 & d2) !== d2) {
-              L$1();
+              R$1();
               a2.pingedLanes |= a2.suspendedLanes & e2;
               break;
             }
-            a2.timeoutHandle = Ff(Qk.bind(null, a2, uk, vk), b3);
+            a2.timeoutHandle = Ff(Pk.bind(null, a2, tk, uk), b3);
             break;
           }
-          Qk(a2, uk, vk);
+          Pk(a2, tk, uk);
           break;
         case 4:
-          Dk(a2, d2);
+          Ck(a2, d2);
           if ((d2 & 4194240) === d2)
             break;
           b3 = a2.eventTimes;
@@ -6298,35 +6298,35 @@ function Hk(a2, b3) {
           }
           d2 = e2;
           d2 = B$1() - d2;
-          d2 = (120 > d2 ? 120 : 480 > d2 ? 480 : 1080 > d2 ? 1080 : 1920 > d2 ? 1920 : 3e3 > d2 ? 3e3 : 4320 > d2 ? 4320 : 1960 * mk(d2 / 1960)) - d2;
+          d2 = (120 > d2 ? 120 : 480 > d2 ? 480 : 1080 > d2 ? 1080 : 1920 > d2 ? 1920 : 3e3 > d2 ? 3e3 : 4320 > d2 ? 4320 : 1960 * lk(d2 / 1960)) - d2;
           if (10 < d2) {
-            a2.timeoutHandle = Ff(Qk.bind(null, a2, uk, vk), d2);
+            a2.timeoutHandle = Ff(Pk.bind(null, a2, tk, uk), d2);
             break;
           }
-          Qk(a2, uk, vk);
+          Pk(a2, tk, uk);
           break;
         case 5:
-          Qk(a2, uk, vk);
+          Pk(a2, tk, uk);
           break;
         default:
           throw Error(p$3(329));
       }
     }
   }
-  Ek(a2, B$1());
-  return a2.callbackNode === c2 ? Hk.bind(null, a2) : null;
+  Dk(a2, B$1());
+  return a2.callbackNode === c2 ? Gk.bind(null, a2) : null;
 }
-function Ok(a2, b3) {
-  var c2 = tk;
-  a2.current.memoizedState.isDehydrated && (Lk(a2, b3).flags |= 256);
-  a2 = Jk(a2, b3);
-  2 !== a2 && (b3 = uk, uk = c2, null !== b3 && Gj(b3));
+function Nk(a2, b3) {
+  var c2 = sk;
+  a2.current.memoizedState.isDehydrated && (Kk(a2, b3).flags |= 256);
+  a2 = Ik(a2, b3);
+  2 !== a2 && (b3 = tk, tk = c2, null !== b3 && Fj(b3));
   return a2;
 }
-function Gj(a2) {
-  null === uk ? uk = a2 : uk.push.apply(uk, a2);
+function Fj(a2) {
+  null === tk ? tk = a2 : tk.push.apply(tk, a2);
 }
-function Pk(a2) {
+function Ok(a2) {
   for (var b3 = a2; ; ) {
     if (b3.flags & 16384) {
       var c2 = b3.updateQueue;
@@ -6359,9 +6359,9 @@ function Pk(a2) {
   }
   return true;
 }
-function Dk(a2, b3) {
-  b3 &= ~sk;
+function Ck(a2, b3) {
   b3 &= ~rk;
+  b3 &= ~qk;
   a2.suspendedLanes |= b3;
   a2.pingedLanes &= ~b3;
   for (a2 = a2.expirationTimes; 0 < b3; ) {
@@ -6370,54 +6370,54 @@ function Dk(a2, b3) {
     b3 &= ~d2;
   }
 }
-function Fk(a2) {
+function Ek(a2) {
   if (0 !== (K$1 & 6))
     throw Error(p$3(327));
-  Ik();
+  Hk();
   var b3 = uc(a2, 0);
   if (0 === (b3 & 1))
-    return Ek(a2, B$1()), null;
-  var c2 = Jk(a2, b3);
+    return Dk(a2, B$1()), null;
+  var c2 = Ik(a2, b3);
   if (0 !== a2.tag && 2 === c2) {
     var d2 = xc(a2);
-    0 !== d2 && (b3 = d2, c2 = Ok(a2, d2));
+    0 !== d2 && (b3 = d2, c2 = Nk(a2, d2));
   }
   if (1 === c2)
-    throw c2 = qk, Lk(a2, 0), Dk(a2, b3), Ek(a2, B$1()), c2;
+    throw c2 = pk, Kk(a2, 0), Ck(a2, b3), Dk(a2, B$1()), c2;
   if (6 === c2)
     throw Error(p$3(345));
   a2.finishedWork = a2.current.alternate;
   a2.finishedLanes = b3;
-  Qk(a2, uk, vk);
-  Ek(a2, B$1());
+  Pk(a2, tk, uk);
+  Dk(a2, B$1());
   return null;
 }
-function Rk(a2, b3) {
+function Qk(a2, b3) {
   var c2 = K$1;
   K$1 |= 1;
   try {
     return a2(b3);
   } finally {
-    K$1 = c2, 0 === K$1 && (Hj = B$1() + 500, fg && jg());
+    K$1 = c2, 0 === K$1 && (Gj = B$1() + 500, fg && jg());
   }
 }
-function Sk(a2) {
-  null !== xk && 0 === xk.tag && 0 === (K$1 & 6) && Ik();
+function Rk(a2) {
+  null !== wk && 0 === wk.tag && 0 === (K$1 & 6) && Hk();
   var b3 = K$1;
   K$1 |= 1;
-  var c2 = pk.transition, d2 = C;
+  var c2 = ok.transition, d2 = C;
   try {
-    if (pk.transition = null, C = 1, a2)
+    if (ok.transition = null, C = 1, a2)
       return a2();
   } finally {
-    C = d2, pk.transition = c2, K$1 = b3, 0 === (K$1 & 6) && jg();
+    C = d2, ok.transition = c2, K$1 = b3, 0 === (K$1 & 6) && jg();
   }
 }
-function Ij() {
-  gj = fj.current;
-  E$1(fj);
+function Hj() {
+  fj = ej.current;
+  E$1(ej);
 }
-function Lk(a2, b3) {
+function Kk(a2, b3) {
   a2.finishedWork = null;
   a2.finishedLanes = 0;
   var c2 = a2.timeoutHandle;
@@ -6432,42 +6432,42 @@ function Lk(a2, b3) {
           null !== d2 && void 0 !== d2 && $f();
           break;
         case 3:
-          Jh();
+          zh();
           E$1(Wf);
           E$1(H$1);
-          Oh();
+          Eh();
           break;
         case 5:
-          Lh(d2);
+          Bh(d2);
           break;
         case 4:
-          Jh();
+          zh();
           break;
         case 13:
-          E$1(M);
+          E$1(L$1);
           break;
         case 19:
-          E$1(M);
+          E$1(L$1);
           break;
         case 10:
-          Rg(d2.type._context);
+          ah(d2.type._context);
           break;
         case 22:
         case 23:
-          Ij();
+          Hj();
       }
       c2 = c2.return;
     }
-  R$1 = a2;
-  Y$1 = a2 = wh(a2.current, null);
-  Z$1 = gj = b3;
+  Q$2 = a2;
+  Y$1 = a2 = Pg(a2.current, null);
+  Z$1 = fj = b3;
   T = 0;
-  qk = null;
-  sk = rk = hh = 0;
-  uk = tk = null;
-  if (null !== Wg) {
-    for (b3 = 0; b3 < Wg.length; b3++)
-      if (c2 = Wg[b3], d2 = c2.interleaved, null !== d2) {
+  pk = null;
+  rk = qk = rh$1 = 0;
+  tk = sk = null;
+  if (null !== fh) {
+    for (b3 = 0; b3 < fh.length; b3++)
+      if (c2 = fh[b3], d2 = c2.interleaved, null !== d2) {
         c2.interleaved = null;
         var e2 = d2.next, f2 = c2.pending;
         if (null !== f2) {
@@ -6477,32 +6477,32 @@ function Lk(a2, b3) {
         }
         c2.pending = d2;
       }
-    Wg = null;
+    fh = null;
   }
   return a2;
 }
-function Nk(a2, b3) {
+function Mk(a2, b3) {
   do {
     var c2 = Y$1;
     try {
-      Qg();
-      Ph.current = ai;
-      if (Sh) {
-        for (var d2 = N$2.memoizedState; null !== d2; ) {
+      $g();
+      Fh.current = Rh;
+      if (Ih) {
+        for (var d2 = M.memoizedState; null !== d2; ) {
           var e2 = d2.queue;
           null !== e2 && (e2.pending = null);
           d2 = d2.next;
         }
-        Sh = false;
+        Ih = false;
       }
-      Rh = 0;
-      P = O$1 = N$2 = null;
-      Th = false;
-      Uh = 0;
-      ok.current = null;
+      Hh = 0;
+      O$1 = N$2 = M = null;
+      Jh = false;
+      Kh$1 = 0;
+      nk.current = null;
       if (null === c2 || null === c2.return) {
         T = 1;
-        qk = b3;
+        pk = b3;
         Y$1 = null;
         break;
       }
@@ -6516,11 +6516,11 @@ function Nk(a2, b3) {
             var r2 = m2.alternate;
             r2 ? (m2.updateQueue = r2.updateQueue, m2.memoizedState = r2.memoizedState, m2.lanes = r2.lanes) : (m2.updateQueue = null, m2.memoizedState = null);
           }
-          var y2 = Vi(g2);
+          var y2 = Ui(g2);
           if (null !== y2) {
             y2.flags &= -257;
-            Wi(y2, g2, h2, f2, b3);
-            y2.mode & 1 && Ti(f2, l2, b3);
+            Vi(y2, g2, h2, f2, b3);
+            y2.mode & 1 && Si(f2, l2, b3);
             b3 = y2;
             k2 = l2;
             var n2 = b3.updateQueue;
@@ -6533,24 +6533,24 @@ function Nk(a2, b3) {
             break a;
           } else {
             if (0 === (b3 & 1)) {
-              Ti(f2, l2, b3);
-              uj();
+              Si(f2, l2, b3);
+              tj();
               break a;
             }
             k2 = Error(p$3(426));
           }
         } else if (I$1 && h2.mode & 1) {
-          var J2 = Vi(g2);
+          var J2 = Ui(g2);
           if (null !== J2) {
             0 === (J2.flags & 65536) && (J2.flags |= 256);
-            Wi(J2, g2, h2, f2, b3);
-            Jg(Ki(k2, h2));
+            Vi(J2, g2, h2, f2, b3);
+            Jg(Ji(k2, h2));
             break a;
           }
         }
-        f2 = k2 = Ki(k2, h2);
+        f2 = k2 = Ji(k2, h2);
         4 !== T && (T = 2);
-        null === tk ? tk = [f2] : tk.push(f2);
+        null === sk ? sk = [f2] : sk.push(f2);
         f2 = g2;
         do {
           switch (f2.tag) {
@@ -6558,25 +6558,25 @@ function Nk(a2, b3) {
               f2.flags |= 65536;
               b3 &= -b3;
               f2.lanes |= b3;
-              var x = Oi(f2, k2, b3);
-              fh(f2, x);
+              var x = Ni(f2, k2, b3);
+              ph(f2, x);
               break a;
             case 1:
               h2 = k2;
               var w2 = f2.type, u2 = f2.stateNode;
-              if (0 === (f2.flags & 128) && ("function" === typeof w2.getDerivedStateFromError || null !== u2 && "function" === typeof u2.componentDidCatch && (null === Si || !Si.has(u2)))) {
+              if (0 === (f2.flags & 128) && ("function" === typeof w2.getDerivedStateFromError || null !== u2 && "function" === typeof u2.componentDidCatch && (null === Ri || !Ri.has(u2)))) {
                 f2.flags |= 65536;
                 b3 &= -b3;
                 f2.lanes |= b3;
-                var F2 = Ri(f2, h2, b3);
-                fh(f2, F2);
+                var F2 = Qi(f2, h2, b3);
+                ph(f2, F2);
                 break a;
               }
           }
           f2 = f2.return;
         } while (null !== f2);
       }
-      Tk(c2);
+      Sk(c2);
     } catch (na) {
       b3 = na;
       Y$1 === c2 && null !== c2 && (Y$1 = c2 = c2.return);
@@ -6585,65 +6585,65 @@ function Nk(a2, b3) {
     break;
   } while (1);
 }
-function Kk() {
-  var a2 = nk.current;
-  nk.current = ai;
-  return null === a2 ? ai : a2;
+function Jk() {
+  var a2 = mk.current;
+  mk.current = Rh;
+  return null === a2 ? Rh : a2;
 }
-function uj() {
+function tj() {
   if (0 === T || 3 === T || 2 === T)
     T = 4;
-  null === R$1 || 0 === (hh & 268435455) && 0 === (rk & 268435455) || Dk(R$1, Z$1);
+  null === Q$2 || 0 === (rh$1 & 268435455) && 0 === (qk & 268435455) || Ck(Q$2, Z$1);
 }
-function Jk(a2, b3) {
+function Ik(a2, b3) {
   var c2 = K$1;
   K$1 |= 2;
-  var d2 = Kk();
-  if (R$1 !== a2 || Z$1 !== b3)
-    vk = null, Lk(a2, b3);
+  var d2 = Jk();
+  if (Q$2 !== a2 || Z$1 !== b3)
+    uk = null, Kk(a2, b3);
   do
     try {
-      Uk();
+      Tk();
       break;
     } catch (e2) {
-      Nk(a2, e2);
+      Mk(a2, e2);
     }
   while (1);
-  Qg();
+  $g();
   K$1 = c2;
-  nk.current = d2;
+  mk.current = d2;
   if (null !== Y$1)
     throw Error(p$3(261));
-  R$1 = null;
+  Q$2 = null;
   Z$1 = 0;
   return T;
 }
-function Uk() {
+function Tk() {
   for (; null !== Y$1; )
-    Vk(Y$1);
+    Uk(Y$1);
 }
-function Mk() {
+function Lk() {
   for (; null !== Y$1 && !cc(); )
-    Vk(Y$1);
+    Uk(Y$1);
 }
-function Vk(a2) {
-  var b3 = Wk(a2.alternate, a2, gj);
+function Uk(a2) {
+  var b3 = Vk(a2.alternate, a2, fj);
   a2.memoizedProps = a2.pendingProps;
-  null === b3 ? Tk(a2) : Y$1 = b3;
-  ok.current = null;
+  null === b3 ? Sk(a2) : Y$1 = b3;
+  nk.current = null;
 }
-function Tk(a2) {
+function Sk(a2) {
   var b3 = a2;
   do {
     var c2 = b3.alternate;
     a2 = b3.return;
     if (0 === (b3.flags & 32768)) {
-      if (c2 = Fj(c2, b3, gj), null !== c2) {
+      if (c2 = Ej(c2, b3, fj), null !== c2) {
         Y$1 = c2;
         return;
       }
     } else {
-      c2 = Jj(c2, b3);
+      c2 = Ij(c2, b3);
       if (null !== c2) {
         c2.flags &= 32767;
         Y$1 = c2;
@@ -6666,19 +6666,19 @@ function Tk(a2) {
   } while (null !== b3);
   0 === T && (T = 5);
 }
-function Qk(a2, b3, c2) {
-  var d2 = C, e2 = pk.transition;
+function Pk(a2, b3, c2) {
+  var d2 = C, e2 = ok.transition;
   try {
-    pk.transition = null, C = 1, Xk(a2, b3, c2, d2);
+    ok.transition = null, C = 1, Wk(a2, b3, c2, d2);
   } finally {
-    pk.transition = e2, C = d2;
+    ok.transition = e2, C = d2;
   }
   return null;
 }
-function Xk(a2, b3, c2, d2) {
+function Wk(a2, b3, c2, d2) {
   do
-    Ik();
-  while (null !== xk);
+    Hk();
+  while (null !== wk);
   if (0 !== (K$1 & 6))
     throw Error(p$3(327));
   c2 = a2.finishedWork;
@@ -6693,61 +6693,61 @@ function Xk(a2, b3, c2, d2) {
   a2.callbackPriority = 0;
   var f2 = c2.lanes | c2.childLanes;
   Bc(a2, f2);
-  a2 === R$1 && (Y$1 = R$1 = null, Z$1 = 0);
-  0 === (c2.subtreeFlags & 2064) && 0 === (c2.flags & 2064) || wk || (wk = true, Gk(hc, function() {
-    Ik();
+  a2 === Q$2 && (Y$1 = Q$2 = null, Z$1 = 0);
+  0 === (c2.subtreeFlags & 2064) && 0 === (c2.flags & 2064) || vk || (vk = true, Fk(hc, function() {
+    Hk();
     return null;
   }));
   f2 = 0 !== (c2.flags & 15990);
   if (0 !== (c2.subtreeFlags & 15990) || f2) {
-    f2 = pk.transition;
-    pk.transition = null;
+    f2 = ok.transition;
+    ok.transition = null;
     var g2 = C;
     C = 1;
     var h2 = K$1;
     K$1 |= 4;
-    ok.current = null;
-    Pj(a2, c2);
-    ek(c2, a2);
+    nk.current = null;
+    Oj(a2, c2);
+    dk(c2, a2);
     Oe(Df);
     dd = !!Cf;
     Df = Cf = null;
     a2.current = c2;
-    ik(c2);
+    hk(c2);
     dc();
     K$1 = h2;
     C = g2;
-    pk.transition = f2;
+    ok.transition = f2;
   } else
     a2.current = c2;
-  wk && (wk = false, xk = a2, yk = e2);
+  vk && (vk = false, wk = a2, xk = e2);
   f2 = a2.pendingLanes;
-  0 === f2 && (Si = null);
+  0 === f2 && (Ri = null);
   mc(c2.stateNode);
-  Ek(a2, B$1());
+  Dk(a2, B$1());
   if (null !== b3)
     for (d2 = a2.onRecoverableError, c2 = 0; c2 < b3.length; c2++)
       e2 = b3[c2], d2(e2.value, { componentStack: e2.stack, digest: e2.digest });
-  if (Pi)
-    throw Pi = false, a2 = Qi, Qi = null, a2;
-  0 !== (yk & 1) && 0 !== a2.tag && Ik();
+  if (Oi)
+    throw Oi = false, a2 = Pi, Pi = null, a2;
+  0 !== (xk & 1) && 0 !== a2.tag && Hk();
   f2 = a2.pendingLanes;
-  0 !== (f2 & 1) ? a2 === Ak ? zk++ : (zk = 0, Ak = a2) : zk = 0;
+  0 !== (f2 & 1) ? a2 === zk ? yk++ : (yk = 0, zk = a2) : yk = 0;
   jg();
   return null;
 }
-function Ik() {
-  if (null !== xk) {
-    var a2 = Dc(yk), b3 = pk.transition, c2 = C;
+function Hk() {
+  if (null !== wk) {
+    var a2 = Dc(xk), b3 = ok.transition, c2 = C;
     try {
-      pk.transition = null;
+      ok.transition = null;
       C = 16 > a2 ? 16 : a2;
-      if (null === xk)
+      if (null === wk)
         var d2 = false;
       else {
-        a2 = xk;
-        xk = null;
-        yk = 0;
+        a2 = wk;
+        wk = null;
+        xk = 0;
         if (0 !== (K$1 & 6))
           throw Error(p$3(331));
         var e2 = K$1;
@@ -6765,7 +6765,7 @@ function Ik() {
                     case 0:
                     case 11:
                     case 15:
-                      Qj(8, m2, f2);
+                      Pj(8, m2, f2);
                   }
                   var q2 = m2.child;
                   if (null !== q2)
@@ -6774,7 +6774,7 @@ function Ik() {
                     for (; null !== V; ) {
                       m2 = V;
                       var r2 = m2.sibling, y2 = m2.return;
-                      Tj(m2);
+                      Sj(m2);
                       if (m2 === l2) {
                         V = null;
                         break;
@@ -6814,7 +6814,7 @@ function Ik() {
                     case 0:
                     case 11:
                     case 15:
-                      Qj(9, f2, f2.return);
+                      Pj(9, f2, f2.return);
                   }
                 var x = f2.sibling;
                 if (null !== x) {
@@ -6841,7 +6841,7 @@ function Ik() {
                       case 0:
                       case 11:
                       case 15:
-                        Rj(9, h2);
+                        Qj(9, h2);
                     }
                   } catch (na) {
                     W$1(h2, h2.return, na);
@@ -6870,60 +6870,60 @@ function Ik() {
       }
       return d2;
     } finally {
-      C = c2, pk.transition = b3;
+      C = c2, ok.transition = b3;
     }
   }
   return false;
 }
-function Yk(a2, b3, c2) {
-  b3 = Ki(c2, b3);
-  b3 = Oi(a2, b3, 1);
-  a2 = dh(a2, b3, 1);
-  b3 = L$1();
-  null !== a2 && (Ac(a2, 1, b3), Ek(a2, b3));
+function Xk(a2, b3, c2) {
+  b3 = Ji(c2, b3);
+  b3 = Ni(a2, b3, 1);
+  a2 = nh(a2, b3, 1);
+  b3 = R$1();
+  null !== a2 && (Ac(a2, 1, b3), Dk(a2, b3));
 }
 function W$1(a2, b3, c2) {
   if (3 === a2.tag)
-    Yk(a2, a2, c2);
+    Xk(a2, a2, c2);
   else
     for (; null !== b3; ) {
       if (3 === b3.tag) {
-        Yk(b3, a2, c2);
+        Xk(b3, a2, c2);
         break;
       } else if (1 === b3.tag) {
         var d2 = b3.stateNode;
-        if ("function" === typeof b3.type.getDerivedStateFromError || "function" === typeof d2.componentDidCatch && (null === Si || !Si.has(d2))) {
-          a2 = Ki(c2, a2);
-          a2 = Ri(b3, a2, 1);
-          b3 = dh(b3, a2, 1);
-          a2 = L$1();
-          null !== b3 && (Ac(b3, 1, a2), Ek(b3, a2));
+        if ("function" === typeof b3.type.getDerivedStateFromError || "function" === typeof d2.componentDidCatch && (null === Ri || !Ri.has(d2))) {
+          a2 = Ji(c2, a2);
+          a2 = Qi(b3, a2, 1);
+          b3 = nh(b3, a2, 1);
+          a2 = R$1();
+          null !== b3 && (Ac(b3, 1, a2), Dk(b3, a2));
           break;
         }
       }
       b3 = b3.return;
     }
 }
-function Ui(a2, b3, c2) {
+function Ti(a2, b3, c2) {
   var d2 = a2.pingCache;
   null !== d2 && d2.delete(b3);
-  b3 = L$1();
+  b3 = R$1();
   a2.pingedLanes |= a2.suspendedLanes & c2;
-  R$1 === a2 && (Z$1 & c2) === c2 && (4 === T || 3 === T && (Z$1 & 130023424) === Z$1 && 500 > B$1() - gk ? Lk(a2, 0) : sk |= c2);
-  Ek(a2, b3);
+  Q$2 === a2 && (Z$1 & c2) === c2 && (4 === T || 3 === T && (Z$1 & 130023424) === Z$1 && 500 > B$1() - fk ? Kk(a2, 0) : rk |= c2);
+  Dk(a2, b3);
 }
-function Zk(a2, b3) {
+function Yk(a2, b3) {
   0 === b3 && (0 === (a2.mode & 1) ? b3 = 1 : (b3 = sc, sc <<= 1, 0 === (sc & 130023424) && (sc = 4194304)));
-  var c2 = L$1();
-  a2 = Zg(a2, b3);
-  null !== a2 && (Ac(a2, b3, c2), Ek(a2, c2));
+  var c2 = R$1();
+  a2 = ih(a2, b3);
+  null !== a2 && (Ac(a2, b3, c2), Dk(a2, c2));
 }
-function vj(a2) {
+function uj(a2) {
   var b3 = a2.memoizedState, c2 = 0;
   null !== b3 && (c2 = b3.retryLane);
-  Zk(a2, c2);
+  Yk(a2, c2);
 }
-function ck(a2, b3) {
+function bk(a2, b3) {
   var c2 = 0;
   switch (a2.tag) {
     case 13:
@@ -6938,55 +6938,55 @@ function ck(a2, b3) {
       throw Error(p$3(314));
   }
   null !== d2 && d2.delete(b3);
-  Zk(a2, c2);
+  Yk(a2, c2);
 }
-var Wk;
-Wk = function(a2, b3, c2) {
+var Vk;
+Vk = function(a2, b3, c2) {
   if (null !== a2)
     if (a2.memoizedProps !== b3.pendingProps || Wf.current)
-      Ug = true;
+      dh = true;
     else {
       if (0 === (a2.lanes & c2) && 0 === (b3.flags & 128))
-        return Ug = false, zj(a2, b3, c2);
-      Ug = 0 !== (a2.flags & 131072) ? true : false;
+        return dh = false, yj(a2, b3, c2);
+      dh = 0 !== (a2.flags & 131072) ? true : false;
     }
   else
-    Ug = false, I$1 && 0 !== (b3.flags & 1048576) && ug(b3, ng, b3.index);
+    dh = false, I$1 && 0 !== (b3.flags & 1048576) && ug(b3, ng, b3.index);
   b3.lanes = 0;
   switch (b3.tag) {
     case 2:
       var d2 = b3.type;
-      jj(a2, b3);
+      ij(a2, b3);
       a2 = b3.pendingProps;
       var e2 = Yf(b3, H$1.current);
-      Tg(b3, c2);
-      e2 = Xh(null, b3, d2, a2, e2, c2);
-      var f2 = bi();
+      ch(b3, c2);
+      e2 = Nh(null, b3, d2, a2, e2, c2);
+      var f2 = Sh();
       b3.flags |= 1;
-      "object" === typeof e2 && null !== e2 && "function" === typeof e2.render && void 0 === e2.$$typeof ? (b3.tag = 1, b3.memoizedState = null, b3.updateQueue = null, Zf(d2) ? (f2 = true, cg(b3)) : f2 = false, b3.memoizedState = null !== e2.state && void 0 !== e2.state ? e2.state : null, ah(b3), e2.updater = nh, b3.stateNode = e2, e2._reactInternals = b3, rh$1(b3, d2, a2, c2), b3 = kj(null, b3, d2, true, f2, c2)) : (b3.tag = 0, I$1 && f2 && vg(b3), Yi(null, b3, e2, c2), b3 = b3.child);
+      "object" === typeof e2 && null !== e2 && "function" === typeof e2.render && void 0 === e2.$$typeof ? (b3.tag = 1, b3.memoizedState = null, b3.updateQueue = null, Zf(d2) ? (f2 = true, cg(b3)) : f2 = false, b3.memoizedState = null !== e2.state && void 0 !== e2.state ? e2.state : null, kh(b3), e2.updater = Ei, b3.stateNode = e2, e2._reactInternals = b3, Ii(b3, d2, a2, c2), b3 = jj(null, b3, d2, true, f2, c2)) : (b3.tag = 0, I$1 && f2 && vg(b3), Xi(null, b3, e2, c2), b3 = b3.child);
       return b3;
     case 16:
       d2 = b3.elementType;
       a: {
-        jj(a2, b3);
+        ij(a2, b3);
         a2 = b3.pendingProps;
         e2 = d2._init;
         d2 = e2(d2._payload);
         b3.type = d2;
-        e2 = b3.tag = $k(d2);
-        a2 = Lg(d2, a2);
+        e2 = b3.tag = Zk(d2);
+        a2 = Ci(d2, a2);
         switch (e2) {
           case 0:
-            b3 = dj(null, b3, d2, a2, c2);
+            b3 = cj(null, b3, d2, a2, c2);
             break a;
           case 1:
-            b3 = ij(null, b3, d2, a2, c2);
+            b3 = hj(null, b3, d2, a2, c2);
             break a;
           case 11:
-            b3 = Zi(null, b3, d2, a2, c2);
+            b3 = Yi(null, b3, d2, a2, c2);
             break a;
           case 14:
-            b3 = aj(null, b3, d2, Lg(d2.type, a2), c2);
+            b3 = $i(null, b3, d2, Ci(d2.type, a2), c2);
             break a;
         }
         throw Error(p$3(
@@ -6997,72 +6997,72 @@ Wk = function(a2, b3, c2) {
       }
       return b3;
     case 0:
-      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Lg(d2, e2), dj(a2, b3, d2, e2, c2);
+      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Ci(d2, e2), cj(a2, b3, d2, e2, c2);
     case 1:
-      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Lg(d2, e2), ij(a2, b3, d2, e2, c2);
+      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Ci(d2, e2), hj(a2, b3, d2, e2, c2);
     case 3:
       a: {
-        lj(b3);
+        kj(b3);
         if (null === a2)
           throw Error(p$3(387));
         d2 = b3.pendingProps;
         f2 = b3.memoizedState;
         e2 = f2.element;
-        bh(a2, b3);
-        gh(b3, d2, null, c2);
+        lh(a2, b3);
+        qh(b3, d2, null, c2);
         var g2 = b3.memoizedState;
         d2 = g2.element;
         if (f2.isDehydrated)
           if (f2 = { element: d2, isDehydrated: false, cache: g2.cache, pendingSuspenseBoundaries: g2.pendingSuspenseBoundaries, transitions: g2.transitions }, b3.updateQueue.baseState = f2, b3.memoizedState = f2, b3.flags & 256) {
-            e2 = Ki(Error(p$3(423)), b3);
-            b3 = mj(a2, b3, d2, c2, e2);
+            e2 = Ji(Error(p$3(423)), b3);
+            b3 = lj(a2, b3, d2, c2, e2);
             break a;
           } else if (d2 !== e2) {
-            e2 = Ki(Error(p$3(424)), b3);
-            b3 = mj(a2, b3, d2, c2, e2);
+            e2 = Ji(Error(p$3(424)), b3);
+            b3 = lj(a2, b3, d2, c2, e2);
             break a;
           } else
-            for (yg = Lf(b3.stateNode.containerInfo.firstChild), xg = b3, I$1 = true, zg = null, c2 = Ch(b3, null, d2, c2), b3.child = c2; c2; )
+            for (yg = Lf(b3.stateNode.containerInfo.firstChild), xg = b3, I$1 = true, zg = null, c2 = Vg(b3, null, d2, c2), b3.child = c2; c2; )
               c2.flags = c2.flags & -3 | 4096, c2 = c2.sibling;
         else {
           Ig();
           if (d2 === e2) {
-            b3 = $i(a2, b3, c2);
+            b3 = Zi(a2, b3, c2);
             break a;
           }
-          Yi(a2, b3, d2, c2);
+          Xi(a2, b3, d2, c2);
         }
         b3 = b3.child;
       }
       return b3;
     case 5:
-      return Kh$1(b3), null === a2 && Eg(b3), d2 = b3.type, e2 = b3.pendingProps, f2 = null !== a2 ? a2.memoizedProps : null, g2 = e2.children, Ef(d2, e2) ? g2 = null : null !== f2 && Ef(d2, f2) && (b3.flags |= 32), hj(a2, b3), Yi(a2, b3, g2, c2), b3.child;
+      return Ah(b3), null === a2 && Eg(b3), d2 = b3.type, e2 = b3.pendingProps, f2 = null !== a2 ? a2.memoizedProps : null, g2 = e2.children, Ef(d2, e2) ? g2 = null : null !== f2 && Ef(d2, f2) && (b3.flags |= 32), gj(a2, b3), Xi(a2, b3, g2, c2), b3.child;
     case 6:
       return null === a2 && Eg(b3), null;
     case 13:
-      return pj(a2, b3, c2);
+      return oj(a2, b3, c2);
     case 4:
-      return Ih(b3, b3.stateNode.containerInfo), d2 = b3.pendingProps, null === a2 ? b3.child = Bh(b3, null, d2, c2) : Yi(a2, b3, d2, c2), b3.child;
+      return yh(b3, b3.stateNode.containerInfo), d2 = b3.pendingProps, null === a2 ? b3.child = Ug(b3, null, d2, c2) : Xi(a2, b3, d2, c2), b3.child;
     case 11:
-      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Lg(d2, e2), Zi(a2, b3, d2, e2, c2);
+      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Ci(d2, e2), Yi(a2, b3, d2, e2, c2);
     case 7:
-      return Yi(a2, b3, b3.pendingProps, c2), b3.child;
+      return Xi(a2, b3, b3.pendingProps, c2), b3.child;
     case 8:
-      return Yi(a2, b3, b3.pendingProps.children, c2), b3.child;
+      return Xi(a2, b3, b3.pendingProps.children, c2), b3.child;
     case 12:
-      return Yi(a2, b3, b3.pendingProps.children, c2), b3.child;
+      return Xi(a2, b3, b3.pendingProps.children, c2), b3.child;
     case 10:
       a: {
         d2 = b3.type._context;
         e2 = b3.pendingProps;
         f2 = b3.memoizedProps;
         g2 = e2.value;
-        G$2(Mg, d2._currentValue);
+        G$2(Wg, d2._currentValue);
         d2._currentValue = g2;
         if (null !== f2)
           if (He(f2.value, g2)) {
             if (f2.children === e2.children && !Wf.current) {
-              b3 = $i(a2, b3, c2);
+              b3 = Zi(a2, b3, c2);
               break a;
             }
           } else
@@ -7073,7 +7073,7 @@ Wk = function(a2, b3, c2) {
                 for (var k2 = h2.firstContext; null !== k2; ) {
                   if (k2.context === d2) {
                     if (1 === f2.tag) {
-                      k2 = ch(-1, c2 & -c2);
+                      k2 = mh(-1, c2 & -c2);
                       k2.tag = 2;
                       var l2 = f2.updateQueue;
                       if (null !== l2) {
@@ -7086,7 +7086,7 @@ Wk = function(a2, b3, c2) {
                     f2.lanes |= c2;
                     k2 = f2.alternate;
                     null !== k2 && (k2.lanes |= c2);
-                    Sg(
+                    bh(
                       f2.return,
                       c2,
                       b3
@@ -7105,7 +7105,7 @@ Wk = function(a2, b3, c2) {
                 g2.lanes |= c2;
                 h2 = g2.alternate;
                 null !== h2 && (h2.lanes |= c2);
-                Sg(g2, c2, b3);
+                bh(g2, c2, b3);
                 g2 = f2.sibling;
               } else
                 g2 = f2.child;
@@ -7127,29 +7127,29 @@ Wk = function(a2, b3, c2) {
                 }
               f2 = g2;
             }
-        Yi(a2, b3, e2.children, c2);
+        Xi(a2, b3, e2.children, c2);
         b3 = b3.child;
       }
       return b3;
     case 9:
-      return e2 = b3.type, d2 = b3.pendingProps.children, Tg(b3, c2), e2 = Vg(e2), d2 = d2(e2), b3.flags |= 1, Yi(a2, b3, d2, c2), b3.child;
+      return e2 = b3.type, d2 = b3.pendingProps.children, ch(b3, c2), e2 = eh(e2), d2 = d2(e2), b3.flags |= 1, Xi(a2, b3, d2, c2), b3.child;
     case 14:
-      return d2 = b3.type, e2 = Lg(d2, b3.pendingProps), e2 = Lg(d2.type, e2), aj(a2, b3, d2, e2, c2);
+      return d2 = b3.type, e2 = Ci(d2, b3.pendingProps), e2 = Ci(d2.type, e2), $i(a2, b3, d2, e2, c2);
     case 15:
-      return cj(a2, b3, b3.type, b3.pendingProps, c2);
+      return bj(a2, b3, b3.type, b3.pendingProps, c2);
     case 17:
-      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Lg(d2, e2), jj(a2, b3), b3.tag = 1, Zf(d2) ? (a2 = true, cg(b3)) : a2 = false, Tg(b3, c2), ph(b3, d2, e2), rh$1(b3, d2, e2, c2), kj(null, b3, d2, true, a2, c2);
+      return d2 = b3.type, e2 = b3.pendingProps, e2 = b3.elementType === d2 ? e2 : Ci(d2, e2), ij(a2, b3), b3.tag = 1, Zf(d2) ? (a2 = true, cg(b3)) : a2 = false, ch(b3, c2), Gi(b3, d2, e2), Ii(b3, d2, e2, c2), jj(null, b3, d2, true, a2, c2);
     case 19:
-      return yj(a2, b3, c2);
+      return xj(a2, b3, c2);
     case 22:
-      return ej(a2, b3, c2);
+      return dj(a2, b3, c2);
   }
   throw Error(p$3(156, b3.tag));
 };
-function Gk(a2, b3) {
+function Fk(a2, b3) {
   return ac(a2, b3);
 }
-function al(a2, b3, c2, d2) {
+function $k(a2, b3, c2, d2) {
   this.tag = a2;
   this.key = c2;
   this.sibling = this.child = this.return = this.stateNode = this.type = this.elementType = null;
@@ -7164,15 +7164,15 @@ function al(a2, b3, c2, d2) {
   this.alternate = null;
 }
 function Bg(a2, b3, c2, d2) {
-  return new al(a2, b3, c2, d2);
+  return new $k(a2, b3, c2, d2);
 }
-function bj(a2) {
+function aj(a2) {
   a2 = a2.prototype;
   return !(!a2 || !a2.isReactComponent);
 }
-function $k(a2) {
+function Zk(a2) {
   if ("function" === typeof a2)
-    return bj(a2) ? 1 : 0;
+    return aj(a2) ? 1 : 0;
   if (void 0 !== a2 && null !== a2) {
     a2 = a2.$$typeof;
     if (a2 === Da)
@@ -7182,7 +7182,7 @@ function $k(a2) {
   }
   return 2;
 }
-function wh(a2, b3) {
+function Pg(a2, b3) {
   var c2 = a2.alternate;
   null === c2 ? (c2 = Bg(a2.tag, b3, a2.key, a2.mode), c2.elementType = a2.elementType, c2.type = a2.type, c2.stateNode = a2.stateNode, c2.alternate = a2, a2.alternate = c2) : (c2.pendingProps = b3, c2.type = a2.type, c2.flags = 0, c2.subtreeFlags = 0, c2.deletions = null);
   c2.flags = a2.flags & 14680064;
@@ -7199,18 +7199,18 @@ function wh(a2, b3) {
   c2.ref = a2.ref;
   return c2;
 }
-function yh(a2, b3, c2, d2, e2, f2) {
+function Rg(a2, b3, c2, d2, e2, f2) {
   var g2 = 2;
   d2 = a2;
   if ("function" === typeof a2)
-    bj(a2) && (g2 = 1);
+    aj(a2) && (g2 = 1);
   else if ("string" === typeof a2)
     g2 = 5;
   else
     a:
       switch (a2) {
         case ya:
-          return Ah(c2.children, e2, f2, b3);
+          return Tg(c2.children, e2, f2, b3);
         case za:
           g2 = 8;
           e2 |= 8;
@@ -7222,7 +7222,7 @@ function yh(a2, b3, c2, d2, e2, f2) {
         case Fa:
           return a2 = Bg(19, c2, b3, e2), a2.elementType = Fa, a2.lanes = f2, a2;
         case Ia:
-          return qj(c2, e2, f2, b3);
+          return pj(c2, e2, f2, b3);
         default:
           if ("object" === typeof a2 && null !== a2)
             switch (a2.$$typeof) {
@@ -7251,30 +7251,30 @@ function yh(a2, b3, c2, d2, e2, f2) {
   b3.lanes = f2;
   return b3;
 }
-function Ah(a2, b3, c2, d2) {
+function Tg(a2, b3, c2, d2) {
   a2 = Bg(7, a2, d2, b3);
   a2.lanes = c2;
   return a2;
 }
-function qj(a2, b3, c2, d2) {
+function pj(a2, b3, c2, d2) {
   a2 = Bg(22, a2, d2, b3);
   a2.elementType = Ia;
   a2.lanes = c2;
   a2.stateNode = { isHidden: false };
   return a2;
 }
-function xh(a2, b3, c2) {
+function Qg(a2, b3, c2) {
   a2 = Bg(6, a2, null, b3);
   a2.lanes = c2;
   return a2;
 }
-function zh(a2, b3, c2) {
+function Sg(a2, b3, c2) {
   b3 = Bg(4, null !== a2.children ? a2.children : [], a2.key, b3);
   b3.lanes = c2;
   b3.stateNode = { containerInfo: a2.containerInfo, pendingChildren: null, implementation: a2.implementation };
   return b3;
 }
-function bl(a2, b3, c2, d2, e2) {
+function al(a2, b3, c2, d2, e2) {
   this.tag = b3;
   this.containerInfo = a2;
   this.finishedWork = this.pingCache = this.current = this.pendingChildren = null;
@@ -7289,21 +7289,21 @@ function bl(a2, b3, c2, d2, e2) {
   this.onRecoverableError = e2;
   this.mutableSourceEagerHydrationData = null;
 }
-function cl(a2, b3, c2, d2, e2, f2, g2, h2, k2) {
-  a2 = new bl(a2, b3, c2, h2, k2);
+function bl(a2, b3, c2, d2, e2, f2, g2, h2, k2) {
+  a2 = new al(a2, b3, c2, h2, k2);
   1 === b3 ? (b3 = 1, true === f2 && (b3 |= 8)) : b3 = 0;
   f2 = Bg(3, null, null, b3);
   a2.current = f2;
   f2.stateNode = a2;
   f2.memoizedState = { element: d2, isDehydrated: c2, cache: null, transitions: null, pendingSuspenseBoundaries: null };
-  ah(f2);
+  kh(f2);
   return a2;
 }
-function dl(a2, b3, c2) {
+function cl(a2, b3, c2) {
   var d2 = 3 < arguments.length && void 0 !== arguments[3] ? arguments[3] : null;
   return { $$typeof: wa, key: null == d2 ? null : "" + d2, children: a2, containerInfo: b3, implementation: c2 };
 }
-function el(a2) {
+function dl(a2) {
   if (!a2)
     return Vf;
   a2 = a2._reactInternals;
@@ -7333,33 +7333,33 @@ function el(a2) {
   }
   return b3;
 }
-function fl(a2, b3, c2, d2, e2, f2, g2, h2, k2) {
-  a2 = cl(c2, d2, true, a2, e2, f2, g2, h2, k2);
-  a2.context = el(null);
+function el(a2, b3, c2, d2, e2, f2, g2, h2, k2) {
+  a2 = bl(c2, d2, true, a2, e2, f2, g2, h2, k2);
+  a2.context = dl(null);
   c2 = a2.current;
-  d2 = L$1();
-  e2 = lh(c2);
-  f2 = ch(d2, e2);
+  d2 = R$1();
+  e2 = yi(c2);
+  f2 = mh(d2, e2);
   f2.callback = void 0 !== b3 && null !== b3 ? b3 : null;
-  dh(c2, f2, e2);
+  nh(c2, f2, e2);
   a2.current.lanes = e2;
   Ac(a2, e2, d2);
-  Ek(a2, d2);
+  Dk(a2, d2);
   return a2;
 }
-function gl(a2, b3, c2, d2) {
-  var e2 = b3.current, f2 = L$1(), g2 = lh(e2);
-  c2 = el(c2);
+function fl(a2, b3, c2, d2) {
+  var e2 = b3.current, f2 = R$1(), g2 = yi(e2);
+  c2 = dl(c2);
   null === b3.context ? b3.context = c2 : b3.pendingContext = c2;
-  b3 = ch(f2, g2);
+  b3 = mh(f2, g2);
   b3.payload = { element: a2 };
   d2 = void 0 === d2 ? null : d2;
   null !== d2 && (b3.callback = d2);
-  a2 = dh(e2, b3, g2);
-  null !== a2 && (mh(a2, e2, g2, f2), eh(a2, e2, g2));
+  a2 = nh(e2, b3, g2);
+  null !== a2 && (gi(a2, e2, g2, f2), oh(a2, e2, g2));
   return g2;
 }
-function hl(a2) {
+function gl(a2) {
   a2 = a2.current;
   if (!a2.child)
     return null;
@@ -7370,47 +7370,47 @@ function hl(a2) {
       return a2.child.stateNode;
   }
 }
-function il(a2, b3) {
+function hl(a2, b3) {
   a2 = a2.memoizedState;
   if (null !== a2 && null !== a2.dehydrated) {
     var c2 = a2.retryLane;
     a2.retryLane = 0 !== c2 && c2 < b3 ? c2 : b3;
   }
 }
-function jl(a2, b3) {
-  il(a2, b3);
-  (a2 = a2.alternate) && il(a2, b3);
+function il(a2, b3) {
+  hl(a2, b3);
+  (a2 = a2.alternate) && hl(a2, b3);
 }
-function kl() {
+function jl() {
   return null;
 }
-var ll = "function" === typeof reportError ? reportError : function(a2) {
+var kl = "function" === typeof reportError ? reportError : function(a2) {
   console.error(a2);
 };
-function ml(a2) {
+function ll(a2) {
   this._internalRoot = a2;
 }
-nl.prototype.render = ml.prototype.render = function(a2) {
+ml.prototype.render = ll.prototype.render = function(a2) {
   var b3 = this._internalRoot;
   if (null === b3)
     throw Error(p$3(409));
-  gl(a2, b3, null, null);
+  fl(a2, b3, null, null);
 };
-nl.prototype.unmount = ml.prototype.unmount = function() {
+ml.prototype.unmount = ll.prototype.unmount = function() {
   var a2 = this._internalRoot;
   if (null !== a2) {
     this._internalRoot = null;
     var b3 = a2.containerInfo;
-    Sk(function() {
-      gl(null, a2, null, null);
+    Rk(function() {
+      fl(null, a2, null, null);
     });
     b3[uf] = null;
   }
 };
-function nl(a2) {
+function ml(a2) {
   this._internalRoot = a2;
 }
-nl.prototype.unstable_scheduleHydration = function(a2) {
+ml.prototype.unstable_scheduleHydration = function(a2) {
   if (a2) {
     var b3 = Hc();
     a2 = { blockedOn: null, target: a2, priority: b3 };
@@ -7420,28 +7420,28 @@ nl.prototype.unstable_scheduleHydration = function(a2) {
     0 === c2 && Vc(a2);
   }
 };
-function ol(a2) {
+function nl(a2) {
   return !(!a2 || 1 !== a2.nodeType && 9 !== a2.nodeType && 11 !== a2.nodeType);
 }
-function pl(a2) {
+function ol(a2) {
   return !(!a2 || 1 !== a2.nodeType && 9 !== a2.nodeType && 11 !== a2.nodeType && (8 !== a2.nodeType || " react-mount-point-unstable " !== a2.nodeValue));
 }
-function ql() {
+function pl() {
 }
-function rl(a2, b3, c2, d2, e2) {
+function ql(a2, b3, c2, d2, e2) {
   if (e2) {
     if ("function" === typeof d2) {
       var f2 = d2;
       d2 = function() {
-        var a3 = hl(g2);
+        var a3 = gl(g2);
         f2.call(a3);
       };
     }
-    var g2 = fl(b3, d2, a2, 0, null, false, false, "", ql);
+    var g2 = el(b3, d2, a2, 0, null, false, false, "", pl);
     a2._reactRootContainer = g2;
     a2[uf] = g2.current;
     sf(8 === a2.nodeType ? a2.parentNode : a2);
-    Sk();
+    Rk();
     return g2;
   }
   for (; e2 = a2.lastChild; )
@@ -7449,34 +7449,34 @@ function rl(a2, b3, c2, d2, e2) {
   if ("function" === typeof d2) {
     var h2 = d2;
     d2 = function() {
-      var a3 = hl(k2);
+      var a3 = gl(k2);
       h2.call(a3);
     };
   }
-  var k2 = cl(a2, 0, false, null, null, false, false, "", ql);
+  var k2 = bl(a2, 0, false, null, null, false, false, "", pl);
   a2._reactRootContainer = k2;
   a2[uf] = k2.current;
   sf(8 === a2.nodeType ? a2.parentNode : a2);
-  Sk(function() {
-    gl(b3, k2, c2, d2);
+  Rk(function() {
+    fl(b3, k2, c2, d2);
   });
   return k2;
 }
-function sl(a2, b3, c2, d2, e2) {
+function rl(a2, b3, c2, d2, e2) {
   var f2 = c2._reactRootContainer;
   if (f2) {
     var g2 = f2;
     if ("function" === typeof e2) {
       var h2 = e2;
       e2 = function() {
-        var a3 = hl(g2);
+        var a3 = gl(g2);
         h2.call(a3);
       };
     }
-    gl(b3, g2, a2, e2);
+    fl(b3, g2, a2, e2);
   } else
-    g2 = rl(c2, b3, a2, e2, d2);
-  return hl(g2);
+    g2 = ql(c2, b3, a2, e2, d2);
+  return gl(g2);
 }
 Ec = function(a2) {
   switch (a2.tag) {
@@ -7484,37 +7484,37 @@ Ec = function(a2) {
       var b3 = a2.stateNode;
       if (b3.current.memoizedState.isDehydrated) {
         var c2 = tc(b3.pendingLanes);
-        0 !== c2 && (Cc(b3, c2 | 1), Ek(b3, B$1()), 0 === (K$1 & 6) && (Hj = B$1() + 500, jg()));
+        0 !== c2 && (Cc(b3, c2 | 1), Dk(b3, B$1()), 0 === (K$1 & 6) && (Gj = B$1() + 500, jg()));
       }
       break;
     case 13:
-      Sk(function() {
-        var b4 = Zg(a2, 1);
+      Rk(function() {
+        var b4 = ih(a2, 1);
         if (null !== b4) {
-          var c3 = L$1();
-          mh(b4, a2, 1, c3);
+          var c3 = R$1();
+          gi(b4, a2, 1, c3);
         }
-      }), jl(a2, 1);
+      }), il(a2, 1);
   }
 };
 Fc = function(a2) {
   if (13 === a2.tag) {
-    var b3 = Zg(a2, 134217728);
+    var b3 = ih(a2, 134217728);
     if (null !== b3) {
-      var c2 = L$1();
-      mh(b3, a2, 134217728, c2);
+      var c2 = R$1();
+      gi(b3, a2, 134217728, c2);
     }
-    jl(a2, 134217728);
+    il(a2, 134217728);
   }
 };
 Gc = function(a2) {
   if (13 === a2.tag) {
-    var b3 = lh(a2), c2 = Zg(a2, b3);
+    var b3 = yi(a2), c2 = ih(a2, b3);
     if (null !== c2) {
-      var d2 = L$1();
-      mh(c2, a2, b3, d2);
+      var d2 = R$1();
+      gi(c2, a2, b3, d2);
     }
-    jl(a2, b3);
+    il(a2, b3);
   }
 };
 Hc = function() {
@@ -7556,37 +7556,37 @@ yb = function(a2, b3, c2) {
       b3 = c2.value, null != b3 && fb(a2, !!c2.multiple, b3, false);
   }
 };
-Gb = Rk;
-Hb = Sk;
-var tl = { usingClientEntryPoint: false, Events: [Cb, ue$1, Db, Eb, Fb, Rk] }, ul = { findFiberByHostInstance: Wc, bundleType: 0, version: "18.2.0", rendererPackageName: "react-dom" };
-var vl = { bundleType: ul.bundleType, version: ul.version, rendererPackageName: ul.rendererPackageName, rendererConfig: ul.rendererConfig, overrideHookState: null, overrideHookStateDeletePath: null, overrideHookStateRenamePath: null, overrideProps: null, overridePropsDeletePath: null, overridePropsRenamePath: null, setErrorHandler: null, setSuspenseHandler: null, scheduleUpdate: null, currentDispatcherRef: ua.ReactCurrentDispatcher, findHostInstanceByFiber: function(a2) {
+Gb = Qk;
+Hb = Rk;
+var sl = { usingClientEntryPoint: false, Events: [Cb, ue$1, Db, Eb, Fb, Qk] }, tl = { findFiberByHostInstance: Wc, bundleType: 0, version: "18.3.1", rendererPackageName: "react-dom" };
+var ul = { bundleType: tl.bundleType, version: tl.version, rendererPackageName: tl.rendererPackageName, rendererConfig: tl.rendererConfig, overrideHookState: null, overrideHookStateDeletePath: null, overrideHookStateRenamePath: null, overrideProps: null, overridePropsDeletePath: null, overridePropsRenamePath: null, setErrorHandler: null, setSuspenseHandler: null, scheduleUpdate: null, currentDispatcherRef: ua.ReactCurrentDispatcher, findHostInstanceByFiber: function(a2) {
   a2 = Zb(a2);
   return null === a2 ? null : a2.stateNode;
-}, findFiberByHostInstance: ul.findFiberByHostInstance || kl, findHostInstancesForRefresh: null, scheduleRefresh: null, scheduleRoot: null, setRefreshHandler: null, getCurrentFiber: null, reconcilerVersion: "18.2.0-next-9e3b772b8-20220608" };
+}, findFiberByHostInstance: tl.findFiberByHostInstance || jl, findHostInstancesForRefresh: null, scheduleRefresh: null, scheduleRoot: null, setRefreshHandler: null, getCurrentFiber: null, reconcilerVersion: "18.3.1-next-f1338f8080-20240426" };
 if ("undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__) {
-  var wl = __REACT_DEVTOOLS_GLOBAL_HOOK__;
-  if (!wl.isDisabled && wl.supportsFiber)
+  var vl = __REACT_DEVTOOLS_GLOBAL_HOOK__;
+  if (!vl.isDisabled && vl.supportsFiber)
     try {
-      kc = wl.inject(vl), lc = wl;
+      kc = vl.inject(ul), lc = vl;
     } catch (a2) {
     }
 }
-reactDom_production_min.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = tl;
+reactDom_production_min.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = sl;
 reactDom_production_min.createPortal = function(a2, b3) {
   var c2 = 2 < arguments.length && void 0 !== arguments[2] ? arguments[2] : null;
-  if (!ol(b3))
+  if (!nl(b3))
     throw Error(p$3(200));
-  return dl(a2, b3, null, c2);
+  return cl(a2, b3, null, c2);
 };
 reactDom_production_min.createRoot = function(a2, b3) {
-  if (!ol(a2))
+  if (!nl(a2))
     throw Error(p$3(299));
-  var c2 = false, d2 = "", e2 = ll;
+  var c2 = false, d2 = "", e2 = kl;
   null !== b3 && void 0 !== b3 && (true === b3.unstable_strictMode && (c2 = true), void 0 !== b3.identifierPrefix && (d2 = b3.identifierPrefix), void 0 !== b3.onRecoverableError && (e2 = b3.onRecoverableError));
-  b3 = cl(a2, 1, false, null, null, c2, false, d2, e2);
+  b3 = bl(a2, 1, false, null, null, c2, false, d2, e2);
   a2[uf] = b3.current;
   sf(8 === a2.nodeType ? a2.parentNode : a2);
-  return new ml(b3);
+  return new ll(b3);
 };
 reactDom_production_min.findDOMNode = function(a2) {
   if (null == a2)
@@ -7605,19 +7605,19 @@ reactDom_production_min.findDOMNode = function(a2) {
   return a2;
 };
 reactDom_production_min.flushSync = function(a2) {
-  return Sk(a2);
+  return Rk(a2);
 };
 reactDom_production_min.hydrate = function(a2, b3, c2) {
-  if (!pl(b3))
+  if (!ol(b3))
     throw Error(p$3(200));
-  return sl(null, a2, b3, true, c2);
+  return rl(null, a2, b3, true, c2);
 };
 reactDom_production_min.hydrateRoot = function(a2, b3, c2) {
-  if (!ol(a2))
+  if (!nl(a2))
     throw Error(p$3(405));
-  var d2 = null != c2 && c2.hydratedSources || null, e2 = false, f2 = "", g2 = ll;
+  var d2 = null != c2 && c2.hydratedSources || null, e2 = false, f2 = "", g2 = kl;
   null !== c2 && void 0 !== c2 && (true === c2.unstable_strictMode && (e2 = true), void 0 !== c2.identifierPrefix && (f2 = c2.identifierPrefix), void 0 !== c2.onRecoverableError && (g2 = c2.onRecoverableError));
-  b3 = fl(b3, null, a2, 1, null != c2 ? c2 : null, e2, false, f2, g2);
+  b3 = el(b3, null, a2, 1, null != c2 ? c2 : null, e2, false, f2, g2);
   a2[uf] = b3.current;
   sf(a2);
   if (d2)
@@ -7626,32 +7626,32 @@ reactDom_production_min.hydrateRoot = function(a2, b3, c2) {
         c2,
         e2
       );
-  return new nl(b3);
+  return new ml(b3);
 };
 reactDom_production_min.render = function(a2, b3, c2) {
-  if (!pl(b3))
+  if (!ol(b3))
     throw Error(p$3(200));
-  return sl(null, a2, b3, false, c2);
+  return rl(null, a2, b3, false, c2);
 };
 reactDom_production_min.unmountComponentAtNode = function(a2) {
-  if (!pl(a2))
+  if (!ol(a2))
     throw Error(p$3(40));
-  return a2._reactRootContainer ? (Sk(function() {
-    sl(null, null, a2, false, function() {
+  return a2._reactRootContainer ? (Rk(function() {
+    rl(null, null, a2, false, function() {
       a2._reactRootContainer = null;
       a2[uf] = null;
     });
   }), true) : false;
 };
-reactDom_production_min.unstable_batchedUpdates = Rk;
+reactDom_production_min.unstable_batchedUpdates = Qk;
 reactDom_production_min.unstable_renderSubtreeIntoContainer = function(a2, b3, c2, d2) {
-  if (!pl(c2))
+  if (!ol(c2))
     throw Error(p$3(200));
   if (null == a2 || void 0 === a2._reactInternals)
     throw Error(p$3(38));
-  return sl(a2, b3, c2, false, d2);
+  return rl(a2, b3, c2, false, d2);
 };
-reactDom_production_min.version = "18.2.0-next-9e3b772b8-20220608";
+reactDom_production_min.version = "18.3.1-next-f1338f8080-20240426";
 function checkDCE() {
   if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") {
     return;
@@ -7683,8 +7683,8 @@ function useVisualElementContext() {
   return reactExports.useContext(MotionContext).visualElement;
 }
 const PresenceContext = reactExports.createContext(null);
-const isBrowser$3 = typeof document !== "undefined";
-const useIsomorphicLayoutEffect$1 = isBrowser$3 ? reactExports.useLayoutEffect : reactExports.useEffect;
+const isBrowser$2 = typeof document !== "undefined";
+const useIsomorphicLayoutEffect$1 = isBrowser$2 ? reactExports.useLayoutEffect : reactExports.useEffect;
 const LazyContext = reactExports.createContext({ strict: false });
 function useVisualElement(Component2, visualState, props, createVisualElement) {
   const parent2 = useVisualElementContext();
@@ -7880,7 +7880,7 @@ function createMotionComponent({ preloadedFeatures, createVisualElement, project
     const context2 = useCreateMotionContext(props);
     const projectionId = isStatic ? void 0 : useProjectionId();
     const visualState = useVisualState(props, isStatic);
-    if (!isStatic && isBrowser$3) {
+    if (!isStatic && isBrowser$2) {
       context2.visualElement = useVisualElement(Component2, visualState, configAndProps, createVisualElement);
       const lazyStrictMode = reactExports.useContext(LazyContext).strict;
       const initialLayoutGroupConfig = reactExports.useContext(SwitchLayoutGroupContext);
@@ -8229,25 +8229,10 @@ function useHTMLProps(props, visualState, isStatic) {
   htmlProps.style = style2;
   return htmlProps;
 }
-const animationProps = [
+const validMotionProps = /* @__PURE__ */ new Set([
   "animate",
   "exit",
   "variants",
-  "whileHover",
-  "whileTap",
-  "whileFocus",
-  "whileDrag",
-  "whileInView"
-];
-const tapProps = ["whileTap", "onTap", "onTapStart", "onTapCancel"];
-const panProps = ["onPan", "onPanStart", "onPanSessionStart", "onPanEnd"];
-const inViewProps = [
-  "whileInView",
-  "onViewportEnter",
-  "onViewportLeave",
-  "viewport"
-];
-const validMotionProps = /* @__PURE__ */ new Set([
   "initial",
   "style",
   "values",
@@ -8257,11 +8242,6 @@ const validMotionProps = /* @__PURE__ */ new Set([
   "transformValues",
   "custom",
   "inherit",
-  "layout",
-  "layoutId",
-  "layoutDependency",
-  "layoutScroll",
-  "layoutRoot",
   "onLayoutAnimationStart",
   "onLayoutAnimationComplete",
   "onLayoutMeasure",
@@ -8275,27 +8255,16 @@ const validMotionProps = /* @__PURE__ */ new Set([
   "onMeasureDragConstraints",
   "onDirectionLock",
   "onDragTransitionEnd",
-  "drag",
-  "dragControls",
-  "dragListener",
-  "dragConstraints",
-  "dragDirectionLock",
-  "dragSnapToOrigin",
   "_dragX",
   "_dragY",
-  "dragElastic",
-  "dragMomentum",
-  "dragPropagation",
-  "dragTransition",
   "onHoverStart",
   "onHoverEnd",
-  ...inViewProps,
-  ...tapProps,
-  ...animationProps,
-  ...panProps
+  "onViewportEnter",
+  "onViewportLeave",
+  "viewport"
 ]);
 function isValidMotionProp(key2) {
-  return validMotionProps.has(key2);
+  return key2.startsWith("while") || key2.startsWith("drag") && key2 !== "draggable" || key2.startsWith("layout") || key2.startsWith("onTap") || key2.startsWith("onPan") || validMotionProps.has(key2);
 }
 let shouldForward = (key2) => !isValidMotionProp(key2);
 function loadExternalIsValidProp(isValidProp) {
@@ -9078,7 +9047,7 @@ class MotionValue {
    * @internal
    */
   constructor(init3, options = {}) {
-    this.version = "8.5.2";
+    this.version = "8.5.5";
     this.timeDelta = 0;
     this.lastUpdated = 0;
     this.canTrackVelocity = false;
@@ -9701,12 +9670,12 @@ const mixObject = (origin, target) => {
   };
 };
 const mixComplex = (origin, target) => {
-  const template2 = complex.createTransformer(target);
+  const template = complex.createTransformer(target);
   const originStats = analyseComplexValue(origin);
   const targetStats = analyseComplexValue(target);
   const canInterpolate = originStats.numColors === targetStats.numColors && originStats.numNumbers >= targetStats.numNumbers;
   if (canInterpolate) {
-    return pipe(mixArray(originStats.values, targetStats.values), template2);
+    return pipe(mixArray(originStats.values, targetStats.values), template);
   } else {
     return (p2) => `${p2 > 0 ? target : origin}`;
   }
@@ -9769,7 +9738,7 @@ function interpolate(input2, output2, { clamp: isClamp = true, ease, mixer } = {
   };
   return isClamp ? (v3) => interpolator(clamp$2(input2[0], input2[inputLength - 1], v3)) : interpolator;
 }
-const noop$4 = (any) => any;
+const noop$3 = (any) => any;
 const calcBezier = (t2, a1, a2) => (((1 - 3 * a2 + 3 * a1) * t2 + (3 * a2 - 6 * a1)) * t2 + 3 * a1) * t2;
 const subdivisionPrecision = 1e-7;
 const subdivisionMaxIterations = 12;
@@ -9790,7 +9759,7 @@ function binarySubdivide(x, lowerBound, upperBound, mX1, mX2) {
 }
 function cubicBezier(mX1, mY1, mX2, mY2) {
   if (mX1 === mY1 && mX2 === mY2)
-    return noop$4;
+    return noop$3;
   const getTForX = (aX) => binarySubdivide(aX, 0, 1, mX1, mX2);
   return (t2) => t2 === 0 || t2 === 1 ? t2 : calcBezier(getTForX(t2), mY1, mY2);
 }
@@ -9802,7 +9771,7 @@ const backIn = reverseEasing(backOut);
 const backInOut = mirrorEasing(backIn);
 const anticipate = (p2) => (p2 *= 2) < 1 ? 0.5 * backIn(p2) : 0.5 * (2 - Math.pow(2, -10 * (p2 - 1)));
 const easingLookup = {
-  linear: noop$4,
+  linear: noop$3,
   easeIn,
   easeInOut,
   easeOut,
@@ -9820,6 +9789,7 @@ const easingDefinitionToFunction = (definition) => {
     const [x1, y1, x2, y2] = definition;
     return cubicBezier(x1, y1, x2, y2);
   } else if (typeof definition === "string") {
+    invariant(easingLookup[definition] !== void 0);
     return easingLookup[definition];
   }
   return definition;
@@ -10281,6 +10251,7 @@ function createAcceleratedAnimation(value, valueName, { onUpdate, onComplete, ..
   });
   animation.onfinish = () => {
     value.set(getFinalKeyframe(keyframes2, options));
+    sync.update(() => animation.cancel());
     onComplete && onComplete();
   };
   return {
@@ -11753,7 +11724,7 @@ const checkAndConvertChangedValueTypes = (visualElement, target, origin = {}, tr
       });
     }
     visualElement.render();
-    if (isBrowser$3 && scrollY !== null) {
+    if (isBrowser$2 && scrollY !== null) {
       window.scrollTo({ top: scrollY });
     }
     return { target: convertedTarget, transitionEnd };
@@ -11774,7 +11745,7 @@ const prefersReducedMotion = { current: null };
 const hasReducedMotionListener = { current: false };
 function initPrefersReducedMotion() {
   hasReducedMotionListener.current = true;
-  if (!isBrowser$3)
+  if (!isBrowser$2)
     return;
   if (window.matchMedia) {
     const motionMediaQuery = window.matchMedia("(prefers-reduced-motion)");
@@ -12311,7 +12282,7 @@ const correctBoxShadow = {
     const shadow = complex.parse(latest);
     if (shadow.length > 5)
       return original;
-    const template2 = complex.createTransformer(latest);
+    const template = complex.createTransformer(latest);
     const offset2 = typeof shadow[0] !== "number" ? 1 : 0;
     const xScale = projectionDelta.x.scale * treeScale.x;
     const yScale = projectionDelta.y.scale * treeScale.y;
@@ -12322,7 +12293,7 @@ const correctBoxShadow = {
       shadow[2 + offset2] /= averageScale;
     if (typeof shadow[3 + offset2] === "number")
       shadow[3 + offset2] /= averageScale;
-    let output2 = template2(shadow);
+    let output2 = template(shadow);
     if (containsCSSVariables) {
       let i2 = 0;
       output2 = output2.replace(varToken, () => {
@@ -12488,7 +12459,7 @@ function getRadius(values, radiusName) {
   return values[radiusName] !== void 0 ? values[radiusName] : values.borderRadius;
 }
 const easeCrossfadeIn = compress(0, 0.5, circOut);
-const easeCrossfadeOut = compress(0.5, 0.95, noop$4);
+const easeCrossfadeOut = compress(0.5, 0.95, noop$3);
 function compress(min2, max2, easing) {
   return (p2) => {
     if (p2 < min2)
@@ -13398,21 +13369,21 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
     }
     getProjectionStyles(styleProp = {}) {
       var _a2, _b2;
-      const styles2 = {};
+      const styles = {};
       if (!this.instance || this.isSVG)
-        return styles2;
+        return styles;
       if (!this.isVisible) {
         return { visibility: "hidden" };
       } else {
-        styles2.visibility = "";
+        styles.visibility = "";
       }
       const transformTemplate = this.getTransformTemplate();
       if (this.needsReset) {
         this.needsReset = false;
-        styles2.opacity = "";
-        styles2.pointerEvents = resolveMotionValue(styleProp.pointerEvents) || "";
-        styles2.transform = transformTemplate ? transformTemplate(this.latestValues, "") : "none";
-        return styles2;
+        styles.opacity = "";
+        styles.pointerEvents = resolveMotionValue(styleProp.pointerEvents) || "";
+        styles.transform = transformTemplate ? transformTemplate(this.latestValues, "") : "none";
+        return styles;
       }
       const lead = this.getLead();
       if (!this.projectionDelta || !this.layout || !lead.target) {
@@ -13429,35 +13400,35 @@ function createProjectionNode({ attachResizeListener, defaultParent, measureScro
       }
       const valuesToRender = lead.animationValues || lead.latestValues;
       this.applyTransformsToTarget();
-      styles2.transform = buildProjectionTransform(this.projectionDeltaWithTransform, this.treeScale, valuesToRender);
+      styles.transform = buildProjectionTransform(this.projectionDeltaWithTransform, this.treeScale, valuesToRender);
       if (transformTemplate) {
-        styles2.transform = transformTemplate(valuesToRender, styles2.transform);
+        styles.transform = transformTemplate(valuesToRender, styles.transform);
       }
       const { x, y: y2 } = this.projectionDelta;
-      styles2.transformOrigin = `${x.origin * 100}% ${y2.origin * 100}% 0`;
+      styles.transformOrigin = `${x.origin * 100}% ${y2.origin * 100}% 0`;
       if (lead.animationValues) {
-        styles2.opacity = lead === this ? (_b2 = (_a2 = valuesToRender.opacity) !== null && _a2 !== void 0 ? _a2 : this.latestValues.opacity) !== null && _b2 !== void 0 ? _b2 : 1 : this.preserveOpacity ? this.latestValues.opacity : valuesToRender.opacityExit;
+        styles.opacity = lead === this ? (_b2 = (_a2 = valuesToRender.opacity) !== null && _a2 !== void 0 ? _a2 : this.latestValues.opacity) !== null && _b2 !== void 0 ? _b2 : 1 : this.preserveOpacity ? this.latestValues.opacity : valuesToRender.opacityExit;
       } else {
-        styles2.opacity = lead === this ? valuesToRender.opacity !== void 0 ? valuesToRender.opacity : "" : valuesToRender.opacityExit !== void 0 ? valuesToRender.opacityExit : 0;
+        styles.opacity = lead === this ? valuesToRender.opacity !== void 0 ? valuesToRender.opacity : "" : valuesToRender.opacityExit !== void 0 ? valuesToRender.opacityExit : 0;
       }
       for (const key2 in scaleCorrectors) {
         if (valuesToRender[key2] === void 0)
           continue;
         const { correct, applyTo } = scaleCorrectors[key2];
-        const corrected = styles2.transform === "none" ? valuesToRender[key2] : correct(valuesToRender[key2], lead);
+        const corrected = styles.transform === "none" ? valuesToRender[key2] : correct(valuesToRender[key2], lead);
         if (applyTo) {
           const num = applyTo.length;
           for (let i2 = 0; i2 < num; i2++) {
-            styles2[applyTo[i2]] = corrected;
+            styles[applyTo[i2]] = corrected;
           }
         } else {
-          styles2[key2] = corrected;
+          styles[key2] = corrected;
         }
       }
       if (this.options.layoutId) {
-        styles2.pointerEvents = lead === this ? resolveMotionValue(styleProp.pointerEvents) || "" : "none";
+        styles.pointerEvents = lead === this ? resolveMotionValue(styleProp.pointerEvents) || "" : "none";
       }
-      return styles2;
+      return styles;
     }
     clearSnapshot() {
       this.resumeFrom = this.snapshot = void 0;
@@ -14243,20 +14214,20 @@ var __setModuleDefault = Object.create ? function(o2, v3) {
 } : function(o2, v3) {
   o2["default"] = v3;
 };
-function __importStar$1(mod) {
-  if (mod && mod.__esModule)
-    return mod;
+function __importStar$1(mod2) {
+  if (mod2 && mod2.__esModule)
+    return mod2;
   var result = {};
-  if (mod != null) {
-    for (var k2 in mod)
-      if (k2 !== "default" && Object.prototype.hasOwnProperty.call(mod, k2))
-        __createBinding$1(result, mod, k2);
+  if (mod2 != null) {
+    for (var k2 in mod2)
+      if (k2 !== "default" && Object.prototype.hasOwnProperty.call(mod2, k2))
+        __createBinding$1(result, mod2, k2);
   }
-  __setModuleDefault(result, mod);
+  __setModuleDefault(result, mod2);
   return result;
 }
-function __importDefault$1(mod) {
-  return mod && mod.__esModule ? mod : { default: mod };
+function __importDefault$1(mod2) {
+  return mod2 && mod2.__esModule ? mod2 : { default: mod2 };
 }
 function __classPrivateFieldGet$3(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
@@ -14538,7 +14509,7 @@ const breakpoints = {
 };
 var colorSchemeVars = { colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
 var vars = { blur: { blur: "var(--seq-blur-blur)", none: "var(--seq-blur-none)" }, borderWidths: { none: "var(--seq-border-widths-none)", thin: "var(--seq-border-widths-thin)", thick: "var(--seq-border-widths-thick)" }, fonts: { inherit: "var(--seq-fonts-inherit)", body: "var(--seq-fonts-body)", mono: "var(--seq-fonts-mono)" }, fontSizes: { inherit: "var(--seq-font-sizes-inherit)", xsmall: "var(--seq-font-sizes-xsmall)", small: "var(--seq-font-sizes-small)", normal: "var(--seq-font-sizes-normal)", medium: "var(--seq-font-sizes-medium)", large: "var(--seq-font-sizes-large)", xlarge: "var(--seq-font-sizes-xlarge)" }, fontWeights: { inherit: "var(--seq-font-weights-inherit)", normal: "var(--seq-font-weights-normal)", medium: "var(--seq-font-weights-medium)", semibold: "var(--seq-font-weights-semibold)", bold: "var(--seq-font-weights-bold)" }, letterSpacings: { inherit: "var(--seq-letter-spacings-inherit)", none: "var(--seq-letter-spacings-none)", normal: "var(--seq-letter-spacings-normal)", wide: "var(--seq-letter-spacings-wide)" }, lineHeights: { "4": "var(--seq-line-heights-4)", "5": "var(--seq-line-heights-5)", "6": "var(--seq-line-heights-6)", "7": "var(--seq-line-heights-7)", "9": "var(--seq-line-heights-9)", inherit: "var(--seq-line-heights-inherit)" }, opacity: { "0": "var(--seq-opacity-0)", "50": "var(--seq-opacity-50)", "80": "var(--seq-opacity-80)", "100": "var(--seq-opacity-100)" }, radii: { none: "var(--seq-radii-none)", xs: "var(--seq-radii-xs)", sm: "var(--seq-radii-sm)", md: "var(--seq-radii-md)", lg: "var(--seq-radii-lg)", circle: "var(--seq-radii-circle)" }, space: { "0": "var(--seq-space-0)", "1": "var(--seq-space-1)", "2": "var(--seq-space-2)", "3": "var(--seq-space-3)", "4": "var(--seq-space-4)", "5": "var(--seq-space-5)", "6": "var(--seq-space-6)", "7": "var(--seq-space-7)", "8": "var(--seq-space-8)", "9": "var(--seq-space-9)", "10": "var(--seq-space-10)", "12": "var(--seq-space-12)", "14": "var(--seq-space-14)", "16": "var(--seq-space-16)", "0.25": "var(--seq-space-0_25)", "0.5": "var(--seq-space-0_5)", "1.5": "var(--seq-space-1_5)" }, colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
-function _toPrimitive(input2, hint) {
+function _toPrimitive$1(input2, hint) {
   if (typeof input2 !== "object" || input2 === null)
     return input2;
   var prim = input2[Symbol.toPrimitive];
@@ -14550,12 +14521,12 @@ function _toPrimitive(input2, hint) {
   }
   return (hint === "string" ? String : Number)(input2);
 }
-function _toPropertyKey(arg) {
-  var key2 = _toPrimitive(arg, "string");
+function _toPropertyKey$1(arg) {
+  var key2 = _toPrimitive$1(arg, "string");
   return typeof key2 === "symbol" ? key2 : String(key2);
 }
 function _defineProperty$1$1(obj, key2, value) {
-  key2 = _toPropertyKey(key2);
+  key2 = _toPropertyKey$1(key2);
   if (key2 in obj) {
     Object.defineProperty(obj, key2, {
       value,
@@ -14776,7 +14747,7 @@ function toPropertyKey$1(t2) {
   var i2 = toPrimitive$1(t2, "string");
   return "symbol" == typeof i2 ? i2 : String(i2);
 }
-function _defineProperty$3(obj, key2, value) {
+function _defineProperty$4(obj, key2, value) {
   key2 = toPropertyKey$1(key2);
   if (key2 in obj) {
     Object.defineProperty(obj, key2, {
@@ -14790,7 +14761,7 @@ function _defineProperty$3(obj, key2, value) {
   }
   return obj;
 }
-function ownKeys$3(e2, r2) {
+function ownKeys$4(e2, r2) {
   var t2 = Object.keys(e2);
   if (Object.getOwnPropertySymbols) {
     var o2 = Object.getOwnPropertySymbols(e2);
@@ -14803,9 +14774,9 @@ function ownKeys$3(e2, r2) {
 function _objectSpread2$2(e2) {
   for (var r2 = 1; r2 < arguments.length; r2++) {
     var t2 = null != arguments[r2] ? arguments[r2] : {};
-    r2 % 2 ? ownKeys$3(Object(t2), true).forEach(function(r3) {
-      _defineProperty$3(e2, r3, t2[r3]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : ownKeys$3(Object(t2)).forEach(function(r3) {
+    r2 % 2 ? ownKeys$4(Object(t2), true).forEach(function(r3) {
+      _defineProperty$4(e2, r3, t2[r3]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t2)) : ownKeys$4(Object(t2)).forEach(function(r3) {
       Object.defineProperty(e2, r3, Object.getOwnPropertyDescriptor(t2, r3));
     });
   }
@@ -15321,15 +15292,15 @@ function $921a889cee6df7e8$var$usePresence$1(present) {
     state
   ]);
   $9f79659886946c16$export$e5c5a5f917a5871c$1(() => {
-    const styles2 = stylesRef.current;
+    const styles = stylesRef.current;
     const wasPresent = prevPresentRef.current;
     const hasPresentChanged = wasPresent !== present;
     if (hasPresentChanged) {
       const prevAnimationName = prevAnimationNameRef.current;
-      const currentAnimationName = $921a889cee6df7e8$var$getAnimationName$1(styles2);
+      const currentAnimationName = $921a889cee6df7e8$var$getAnimationName$1(styles);
       if (present)
         send("MOUNT");
-      else if (currentAnimationName === "none" || (styles2 === null || styles2 === void 0 ? void 0 : styles2.display) === "none")
+      else if (currentAnimationName === "none" || (styles === null || styles === void 0 ? void 0 : styles.display) === "none")
         send("UNMOUNT");
       else {
         const isAnimating = prevAnimationName !== currentAnimationName;
@@ -15384,8 +15355,8 @@ function $921a889cee6df7e8$var$usePresence$1(present) {
     }, [])
   };
 }
-function $921a889cee6df7e8$var$getAnimationName$1(styles2) {
-  return (styles2 === null || styles2 === void 0 ? void 0 : styles2.animationName) || "none";
+function $921a889cee6df7e8$var$getAnimationName$1(styles) {
+  return (styles === null || styles === void 0 ? void 0 : styles.animationName) || "none";
 }
 function _extends$m() {
   _extends$m = Object.assign ? Object.assign.bind() : function(target) {
@@ -15650,7 +15621,7 @@ function $e698a72e93240346$var$getState(checked) {
 const $e698a72e93240346$export$be92b6f5f03c0fe9 = $e698a72e93240346$export$48513f6b9f8ce62d;
 const $e698a72e93240346$export$adb584737d712b70 = $e698a72e93240346$export$59aad738f51d1c05;
 var labelVariants = createRuntimeFn({ defaultClassName: "_43lu9r4", variantClassNames: { labelLocation: { top: "_43lu9r5 _43lu9r0 fyvr11kw fyvr11i4 fyvr118k fyvr11h0", left: "_43lu9r6 _43lu9r1 fyvr11ko fyvr11ic fyvr118k fyvr11h0", right: "_43lu9r7 _43lu9r2 fyvr11ko fyvr11ic fyvr118k fyvr11h0", hidden: "_43lu9r8 _43lu9r3 fyvr1188 fyvr11h0" } }, defaultVariants: {}, compoundVariants: [] });
-const Field = (props) => {
+const Field$1 = (props) => {
   const {
     id: id2,
     label,
@@ -16345,7 +16316,7 @@ reactExports.forwardRef(
       ...rest
     } = props;
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Field,
+      Field$1,
       {
         disabled,
         display: "flex",
@@ -17740,7 +17711,7 @@ async function convertValueToCoords$1(state, options) {
     y: crossAxis * crossAxisMulti
   };
 }
-const offset$1 = function(options) {
+const offset$2 = function(options) {
   if (options === void 0) {
     options = 0;
   }
@@ -18944,7 +18915,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1 = /* @__PURE__ */ reactExports.
       reference: context2.anchor
     },
     middleware: [
-      offset$1({
+      offset$2({
         mainAxis: sideOffset + arrowHeight,
         alignmentAxis: alignOffset
       }),
@@ -19486,7 +19457,7 @@ var hideOthers$1 = function(originalTarget, parentNode, markerName) {
     markerName = "data-aria-hidden";
   }
   var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
-  var activeParentNode = parentNode || getDefaultParent$1(originalTarget);
+  var activeParentNode = getDefaultParent$1(originalTarget);
   if (!activeParentNode) {
     return function() {
       return null;
@@ -19520,14 +19491,13 @@ function __rest$2(s2, e2) {
   return t2;
 }
 function __spreadArray(to, from2, pack2) {
-  if (pack2 || arguments.length === 2)
-    for (var i2 = 0, l2 = from2.length, ar; i2 < l2; i2++) {
-      if (ar || !(i2 in from2)) {
-        if (!ar)
-          ar = Array.prototype.slice.call(from2, 0, i2);
-        ar[i2] = from2[i2];
-      }
+  for (var i2 = 0, l2 = from2.length, ar; i2 < l2; i2++) {
+    if (ar || !(i2 in from2)) {
+      if (!ar)
+        ar = Array.prototype.slice.call(from2, 0, i2);
+      ar[i2] = from2[i2];
     }
+  }
   return to.concat(ar || Array.prototype.slice.call(from2));
 }
 typeof SuppressedError === "function" ? SuppressedError : function(error, suppressed, message) {
@@ -19572,7 +19542,7 @@ function useCallbackRef$1(initialValue, callback) {
   return ref.facade;
 }
 function useMergeRefs$1(refs, defaultValue) {
-  return useCallbackRef$1(defaultValue || null, function(newValue) {
+  return useCallbackRef$1(null, function(newValue) {
     return refs.forEach(function(ref) {
       return assignRef$1(ref, newValue);
     });
@@ -19761,20 +19731,20 @@ var stylesheetSingleton$1 = function() {
 };
 var styleHookSingleton$1 = function() {
   var sheet = stylesheetSingleton$1();
-  return function(styles2, isDynamic) {
+  return function(styles, isDynamic) {
     reactExports.useEffect(function() {
-      sheet.add(styles2);
+      sheet.add(styles);
       return function() {
         sheet.remove();
       };
-    }, [styles2 && isDynamic]);
+    }, [styles && isDynamic]);
   };
 };
 var styleSingleton$1 = function() {
   var useStyle2 = styleHookSingleton$1();
   var Sheet = function(_a2) {
-    var styles2 = _a2.styles, dynamic = _a2.dynamic;
-    useStyle2(styles2, dynamic);
+    var styles = _a2.styles, dynamic = _a2.dynamic;
+    useStyle2(styles, dynamic);
     return null;
   };
   return Sheet;
@@ -19851,11 +19821,11 @@ var alwaysContainsScroll$1 = function(node2) {
   return node2.tagName === "TEXTAREA";
 };
 var elementCanBeScrolled$1 = function(node2, overflow) {
-  var styles2 = window.getComputedStyle(node2);
+  var styles = window.getComputedStyle(node2);
   return (
     // not-not-scrollable
-    styles2[overflow] !== "hidden" && // contains scroll inside self
-    !(styles2.overflowY === styles2.overflowX && !alwaysContainsScroll$1(node2) && styles2[overflow] === "visible")
+    styles[overflow] !== "hidden" && // contains scroll inside self
+    !(styles.overflowY === styles.overflowX && !alwaysContainsScroll$1(node2) && styles[overflow] === "visible")
   );
 };
 var elementCouldBeVScrolled$1 = function(node2) {
@@ -19930,9 +19900,9 @@ var handleScroll$1 = function(axis, endTarget, event, sourceDelta, noOverscroll)
     !targetInLock && target !== document.body || // self content
     targetInLock && (endTarget.contains(target) || endTarget === target)
   );
-  if (isDeltaPositive && (noOverscroll && availableScroll === 0 || !noOverscroll && delta > availableScroll)) {
+  if (isDeltaPositive && (availableScroll === 0 || !noOverscroll)) {
     shouldCancelScroll = true;
-  } else if (!isDeltaPositive && (noOverscroll && availableScrollTop === 0 || !noOverscroll && -delta > availableScrollTop)) {
+  } else if (!isDeltaPositive && (availableScrollTop === 0 || !noOverscroll)) {
     shouldCancelScroll = true;
   }
   return shouldCancelScroll;
@@ -19969,7 +19939,7 @@ function RemoveScrollSideCar$1(props) {
   reactExports.useEffect(function() {
     if (props.inert) {
       document.body.classList.add("block-interactivity-".concat(id2));
-      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef$1), true).filter(Boolean);
+      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef$1)).filter(Boolean);
       allow_1.forEach(function(el2) {
         return el2.classList.add("allow-interactivity-".concat(id2));
       });
@@ -20439,7 +20409,7 @@ reactExports.forwardRef(
     };
     const accept = validExtensions.map((ext) => MIME_TYPES[ext]).join(",");
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Field,
+      Field$1,
       {
         description: description2,
         disabled,
@@ -20508,8 +20478,8 @@ var avatar = createRuntimeFn({ defaultClassName: "_1bhyzin0", variantClassNames:
 const MOD = 1e3;
 const SIZE = 64;
 const RADIUS = SIZE / 2;
-const scaledMod = (value, mod = MOD) => {
-  return value % mod / (MOD / SIZE);
+const scaledMod = (value, mod2 = MOD) => {
+  return value % mod2 / (MOD / SIZE);
 };
 const cyrb53 = (str, seed = 0) => {
   let h1 = 3735928559 ^ seed, h2 = 1103547991 ^ seed;
@@ -21171,7 +21141,7 @@ const TextInput = reactExports.forwardRef(
       ...rest
     } = props;
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Field,
+      Field$1,
       {
         description: description2,
         disabled,
@@ -21553,7 +21523,7 @@ var indicatorVariants = createRuntimeFn({ defaultClassName: "io59uy8 io59uy7 io5
 const RadioOption = (props) => {
   const { id: id2, label, size: size2 = "sm", value, disabled } = props;
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { alignItems: "center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Field,
+    Field$1,
     {
       disabled,
       display: "flex",
@@ -22602,7 +22572,7 @@ const Select = reactExports.forwardRef(
       ...rest
     } = props;
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Field,
+      Field$1,
       {
         disabled,
         display: "grid",
@@ -22856,7 +22826,7 @@ const Switch = (props) => {
     ...rest
   } = props;
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Field,
+    Field$1,
     {
       disabled,
       display: "flex",
@@ -23445,7 +23415,7 @@ reactExports.forwardRef(
       ...rest
     } = props;
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Field,
+      Field$1,
       {
         description: description2,
         disabled,
@@ -24878,7 +24848,7 @@ function _extends$l() {
 }
 const WebRPCVersion$3 = "v1";
 const WebRPCSchemaVersion$3 = "v0.4.0";
-const WebRPCSchemaHash$3 = "36319973bb13b5ade2a7e4515f6bfcf0fe8da6fa";
+const WebRPCSchemaHash$3 = "3c1782dee5a602d773450bdb42c84515771d30d1";
 let SortOrder$2 = /* @__PURE__ */ function(SortOrder2) {
   SortOrder2["DESC"] = "DESC";
   SortOrder2["ASC"] = "ASC";
@@ -24889,53 +24859,73 @@ class API {
     this.hostname = void 0;
     this.fetch = void 0;
     this.path = "/rpc/API/";
-    this.ping = (headers) => {
-      return this.fetch(this.url("Ping"), createHTTPRequest$7({}, headers)).then((res) => {
+    this.ping = (headers, signal) => {
+      return this.fetch(this.url("Ping"), createHTTPRequest$7({}, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.version = (headers) => {
-      return this.fetch(this.url("Version"), createHTTPRequest$7({}, headers)).then((res) => {
+    this.version = (headers, signal) => {
+      return this.fetch(this.url("Version"), createHTTPRequest$7({}, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             version: _data2.version
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.runtimeStatus = (headers) => {
-      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$7({}, headers)).then((res) => {
+    this.runtimeStatus = (headers, signal) => {
+      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$7({}, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.clock = (headers) => {
-      return this.fetch(this.url("Clock"), createHTTPRequest$7({}, headers)).then((res) => {
+    this.clock = (headers, signal) => {
+      return this.fetch(this.url("Clock"), createHTTPRequest$7({}, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             serverTime: _data2.serverTime
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getSequenceContext = (headers) => {
-      return this.fetch(this.url("GetSequenceContext"), createHTTPRequest$7({}, headers)).then((res) => {
+    this.getSequenceContext = (headers, signal) => {
+      return this.fetch(this.url("GetSequenceContext"), createHTTPRequest$7({}, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             data: _data2.data
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getAuthToken = (args, headers) => {
-      return this.fetch(this.url("GetAuthToken"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getAuthToken = (args, headers, signal) => {
+      return this.fetch(this.url("GetAuthToken"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status,
@@ -24944,10 +24934,14 @@ class API {
             user: _data2.user
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getAuthToken2 = (args, headers) => {
-      return this.fetch(this.url("GetAuthToken2"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getAuthToken2 = (args, headers, signal) => {
+      return this.fetch(this.url("GetAuthToken2"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status,
@@ -24956,317 +24950,483 @@ class API {
             user: _data2.user
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.sendPasswordlessLink = (args, headers) => {
-      return this.fetch(this.url("SendPasswordlessLink"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.sendPasswordlessLink = (args, headers, signal) => {
+      return this.fetch(this.url("SendPasswordlessLink"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.friendList = (args, headers) => {
-      return this.fetch(this.url("FriendList"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.friendList = (args, headers, signal) => {
+      return this.fetch(this.url("FriendList"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             page: _data2.page,
             friends: _data2.friends
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getFriendByAddress = (args, headers) => {
-      return this.fetch(this.url("GetFriendByAddress"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getFriendByAddress = (args, headers, signal) => {
+      return this.fetch(this.url("GetFriendByAddress"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status,
             friend: _data2.friend
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.searchFriends = (args, headers) => {
-      return this.fetch(this.url("SearchFriends"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.searchFriends = (args, headers, signal) => {
+      return this.fetch(this.url("SearchFriends"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             friends: _data2.friends
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.addFriend = (args, headers) => {
-      return this.fetch(this.url("AddFriend"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.addFriend = (args, headers, signal) => {
+      return this.fetch(this.url("AddFriend"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status,
             friend: _data2.friend
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateFriendNickname = (args, headers) => {
-      return this.fetch(this.url("UpdateFriendNickname"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.updateFriendNickname = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateFriendNickname"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status,
             friend: _data2.friend
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.removeFriend = (args, headers) => {
-      return this.fetch(this.url("RemoveFriend"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.removeFriend = (args, headers, signal) => {
+      return this.fetch(this.url("RemoveFriend"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.contractCall = (args, headers) => {
-      return this.fetch(this.url("ContractCall"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.contractCall = (args, headers, signal) => {
+      return this.fetch(this.url("ContractCall"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             returns: _data2.returns
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.decodeContractCall = (args, headers) => {
-      return this.fetch(this.url("DecodeContractCall"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.decodeContractCall = (args, headers, signal) => {
+      return this.fetch(this.url("DecodeContractCall"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             call: _data2.call
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.lookupContractCallSelectors = (args, headers) => {
-      return this.fetch(this.url("LookupContractCallSelectors"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.lookupContractCallSelectors = (args, headers, signal) => {
+      return this.fetch(this.url("LookupContractCallSelectors"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             signatures: _data2.signatures
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.userStorageFetch = (args, headers) => {
-      return this.fetch(this.url("UserStorageFetch"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.userStorageFetch = (args, headers, signal) => {
+      return this.fetch(this.url("UserStorageFetch"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             object: _data2.object
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.userStorageSave = (args, headers) => {
-      return this.fetch(this.url("UserStorageSave"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.userStorageSave = (args, headers, signal) => {
+      return this.fetch(this.url("UserStorageSave"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             ok: _data2.ok
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.userStorageDelete = (args, headers) => {
-      return this.fetch(this.url("UserStorageDelete"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.userStorageDelete = (args, headers, signal) => {
+      return this.fetch(this.url("UserStorageDelete"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             ok: _data2.ok
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.userStorageFetchAll = (args, headers) => {
-      return this.fetch(this.url("UserStorageFetchAll"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.userStorageFetchAll = (args, headers, signal) => {
+      return this.fetch(this.url("UserStorageFetchAll"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             objects: _data2.objects
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getMoonpayLink = (args, headers) => {
-      return this.fetch(this.url("GetMoonpayLink"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getMoonpayLink = (args, headers, signal) => {
+      return this.fetch(this.url("GetMoonpayLink"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             signedUrl: _data2.signedUrl
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getSardineClientToken = (headers) => {
-      return this.fetch(this.url("GetSardineClientToken"), createHTTPRequest$7({}, headers)).then((res) => {
+    this.getSardineClientToken = (headers, signal) => {
+      return this.fetch(this.url("GetSardineClientToken"), createHTTPRequest$7({}, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             token: _data2.token
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.resolveENSAddress = (args, headers) => {
-      return this.fetch(this.url("ResolveENSAddress"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getSardineNFTCheckoutToken = (args, headers, signal) => {
+      return this.fetch(this.url("GetSardineNFTCheckoutToken"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data2) => {
+          return {
+            resp: _data2.resp
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.getSardineNFTCheckoutOrderStatus = (args, headers, signal) => {
+      return this.fetch(this.url("GetSardineNFTCheckoutOrderStatus"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data2) => {
+          return {
+            resp: _data2.resp
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.resolveENSAddress = (args, headers, signal) => {
+      return this.fetch(this.url("ResolveENSAddress"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             address: _data2.address,
             ok: _data2.ok
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.isValidSignature = (args, headers) => {
-      return this.fetch(this.url("IsValidSignature"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.isValidSignature = (args, headers, signal) => {
+      return this.fetch(this.url("IsValidSignature"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             isValid: _data2.isValid
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.isValidMessageSignature = (args, headers) => {
-      return this.fetch(this.url("IsValidMessageSignature"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.isValidMessageSignature = (args, headers, signal) => {
+      return this.fetch(this.url("IsValidMessageSignature"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             isValid: _data2.isValid
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.isValidTypedDataSignature = (args, headers) => {
-      return this.fetch(this.url("IsValidTypedDataSignature"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.isValidTypedDataSignature = (args, headers, signal) => {
+      return this.fetch(this.url("IsValidTypedDataSignature"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             isValid: _data2.isValid
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.isValidETHAuthProof = (args, headers) => {
-      return this.fetch(this.url("IsValidETHAuthProof"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.isValidETHAuthProof = (args, headers, signal) => {
+      return this.fetch(this.url("IsValidETHAuthProof"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             isValid: _data2.isValid
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getCoinPrices = (args, headers) => {
-      return this.fetch(this.url("GetCoinPrices"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getCoinPrices = (args, headers, signal) => {
+      return this.fetch(this.url("GetCoinPrices"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             tokenPrices: _data2.tokenPrices
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getCollectiblePrices = (args, headers) => {
-      return this.fetch(this.url("GetCollectiblePrices"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getCollectiblePrices = (args, headers, signal) => {
+      return this.fetch(this.url("GetCollectiblePrices"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             tokenPrices: _data2.tokenPrices
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getExchangeRate = (args, headers) => {
-      return this.fetch(this.url("GetExchangeRate"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getExchangeRate = (args, headers, signal) => {
+      return this.fetch(this.url("GetExchangeRate"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             exchangeRate: _data2.exchangeRate
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.memoryStore = (args, headers) => {
-      return this.fetch(this.url("MemoryStore"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.memoryStore = (args, headers, signal) => {
+      return this.fetch(this.url("MemoryStore"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             ok: _data2.ok
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.memoryLoad = (args, headers) => {
-      return this.fetch(this.url("MemoryLoad"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.memoryLoad = (args, headers, signal) => {
+      return this.fetch(this.url("MemoryLoad"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             value: _data2.value
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getInviteInfo = (headers) => {
-      return this.fetch(this.url("GetInviteInfo"), createHTTPRequest$7({}, headers)).then((res) => {
+    this.getInviteInfo = (headers, signal) => {
+      return this.fetch(this.url("GetInviteInfo"), createHTTPRequest$7({}, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             inviteInfo: _data2.inviteInfo
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.isValidAccessCode = (args, headers) => {
-      return this.fetch(this.url("IsValidAccessCode"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.isValidAccessCode = (args, headers, signal) => {
+      return this.fetch(this.url("IsValidAccessCode"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.internalClaimAccessCode = (args, headers) => {
-      return this.fetch(this.url("InternalClaimAccessCode"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.internalClaimAccessCode = (args, headers, signal) => {
+      return this.fetch(this.url("InternalClaimAccessCode"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.blockNumberAtTime = (args, headers) => {
-      return this.fetch(this.url("BlockNumberAtTime"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.blockNumberAtTime = (args, headers, signal) => {
+      return this.fetch(this.url("BlockNumberAtTime"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             blocks: _data2.blocks
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.paperSessionSecret = (args, headers) => {
-      return this.fetch(this.url("PaperSessionSecret"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.paperSessionSecret = (args, headers, signal) => {
+      return this.fetch(this.url("PaperSessionSecret"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             secret: _data2.secret
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.paperSessionSecret2 = (args, headers) => {
-      return this.fetch(this.url("PaperSessionSecret2"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.paperSessionSecret2 = (args, headers, signal) => {
+      return this.fetch(this.url("PaperSessionSecret2"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             secret: _data2.secret
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.linkWallet = (args, headers) => {
-      return this.fetch(this.url("LinkWallet"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.linkWallet = (args, headers, signal) => {
+      return this.fetch(this.url("LinkWallet"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             status: _data2.status,
             linkedWalletAddress: _data2.linkedWalletAddress
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getLinkedWallets = (args, headers) => {
-      return this.fetch(this.url("GetLinkedWallets"), createHTTPRequest$7(args, headers)).then((res) => {
+    this.getLinkedWallets = (args, headers, signal) => {
+      return this.fetch(this.url("GetLinkedWallets"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data2) => {
           return {
             linkedWallets: _data2.linkedWallets
           };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$6.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
@@ -25277,13 +25437,14 @@ class API {
     return this.hostname + this.path + name2;
   }
 }
-const createHTTPRequest$7 = (body = {}, headers = {}) => {
+const createHTTPRequest$7 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
     headers: _extends$l({}, headers, {
       "Content-Type": "application/json"
     }),
-    body: JSON.stringify(body || {})
+    body: JSON.stringify(body || {}),
+    signal
   };
 };
 const buildResponse$7 = (res) => {
@@ -25291,18 +25452,200 @@ const buildResponse$7 = (res) => {
     let data;
     try {
       data = JSON.parse(text2);
-    } catch (err) {
-      throw {
-        code: "unknown",
-        msg: `expecting JSON, got: ${text2}`,
-        status: res.status
-      };
+    } catch (error) {
+      let message = "";
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      throw WebrpcBadResponseError$6.new({
+        status: res.status,
+        cause: `JSON.parse(): ${message}: response text: ${text2}`
+      });
     }
     if (!res.ok) {
-      throw data;
+      const code2 = typeof data.code === "number" ? data.code : 0;
+      throw (webrpcErrorByCode$6[code2] || WebrpcError$6).new(data);
     }
     return data;
   });
+};
+let WebrpcError$6 = class WebrpcError extends Error {
+  constructor(name2, code2, message, status, cause) {
+    super(message);
+    this.name = void 0;
+    this.code = void 0;
+    this.message = void 0;
+    this.status = void 0;
+    this.cause = void 0;
+    this.msg = void 0;
+    this.name = name2 || "WebrpcError";
+    this.code = typeof code2 === "number" ? code2 : 0;
+    this.message = message || `endpoint error ${this.code}`;
+    this.msg = this.message;
+    this.status = typeof status === "number" ? status : 0;
+    this.cause = cause;
+    Object.setPrototypeOf(this, WebrpcError.prototype);
+  }
+  static new(payload) {
+    return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
+  }
+};
+let WebrpcEndpointError$6 = class WebrpcEndpointError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcEndpointError.prototype);
+  }
+};
+let WebrpcRequestFailedError$6 = class WebrpcRequestFailedError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError.prototype);
+  }
+};
+let WebrpcBadRouteError$6 = class WebrpcBadRouteError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRouteError.prototype);
+  }
+};
+let WebrpcBadMethodError$6 = class WebrpcBadMethodError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadMethodError.prototype);
+  }
+};
+let WebrpcBadRequestError$6 = class WebrpcBadRequestError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRequestError.prototype);
+  }
+};
+let WebrpcBadResponseError$6 = class WebrpcBadResponseError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadResponseError.prototype);
+  }
+};
+let WebrpcServerPanicError$6 = class WebrpcServerPanicError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcServerPanicError.prototype);
+  }
+};
+let WebrpcInternalErrorError$6 = class WebrpcInternalErrorError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError.prototype);
+  }
+};
+let WebrpcClientDisconnectedError$6 = class WebrpcClientDisconnectedError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError.prototype);
+  }
+};
+let WebrpcStreamLostError$6 = class WebrpcStreamLostError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamLostError.prototype);
+  }
+};
+let WebrpcStreamFinishedError$6 = class WebrpcStreamFinishedError extends WebrpcError$6 {
+  constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError.prototype);
+  }
+};
+let UnauthorizedError$6 = class UnauthorizedError extends WebrpcError$6 {
+  constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnauthorizedError.prototype);
+  }
+};
+let PermissionDeniedError$4 = class PermissionDeniedError extends WebrpcError$6 {
+  constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, PermissionDeniedError.prototype);
+  }
+};
+let SessionExpiredError$4 = class SessionExpiredError extends WebrpcError$6 {
+  constructor(name2 = "SessionExpired", code2 = 1002, message = "Session expired", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, SessionExpiredError.prototype);
+  }
+};
+let AbortedError$3 = class AbortedError extends WebrpcError$6 {
+  constructor(name2 = "Aborted", code2 = 1005, message = "Request aborted", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, AbortedError.prototype);
+  }
+};
+let InvalidArgumentError$4 = class InvalidArgumentError extends WebrpcError$6 {
+  constructor(name2 = "InvalidArgument", code2 = 2e3, message = "Invalid argument", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, InvalidArgumentError.prototype);
+  }
+};
+let UnavailableError$3 = class UnavailableError extends WebrpcError$6 {
+  constructor(name2 = "Unavailable", code2 = 2002, message = "Unavailable resource", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnavailableError.prototype);
+  }
+};
+let QueryFailedError$4 = class QueryFailedError extends WebrpcError$6 {
+  constructor(name2 = "QueryFailed", code2 = 2003, message = "Query failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, QueryFailedError.prototype);
+  }
+};
+let NotFoundError$5 = class NotFoundError extends WebrpcError$6 {
+  constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, NotFoundError.prototype);
+  }
+};
+let errors$3 = /* @__PURE__ */ function(errors2) {
+  errors2["WebrpcEndpoint"] = "WebrpcEndpoint";
+  errors2["WebrpcRequestFailed"] = "WebrpcRequestFailed";
+  errors2["WebrpcBadRoute"] = "WebrpcBadRoute";
+  errors2["WebrpcBadMethod"] = "WebrpcBadMethod";
+  errors2["WebrpcBadRequest"] = "WebrpcBadRequest";
+  errors2["WebrpcBadResponse"] = "WebrpcBadResponse";
+  errors2["WebrpcServerPanic"] = "WebrpcServerPanic";
+  errors2["WebrpcInternalError"] = "WebrpcInternalError";
+  errors2["WebrpcClientDisconnected"] = "WebrpcClientDisconnected";
+  errors2["WebrpcStreamLost"] = "WebrpcStreamLost";
+  errors2["WebrpcStreamFinished"] = "WebrpcStreamFinished";
+  errors2["Unauthorized"] = "Unauthorized";
+  errors2["PermissionDenied"] = "PermissionDenied";
+  errors2["SessionExpired"] = "SessionExpired";
+  errors2["Aborted"] = "Aborted";
+  errors2["InvalidArgument"] = "InvalidArgument";
+  errors2["Unavailable"] = "Unavailable";
+  errors2["QueryFailed"] = "QueryFailed";
+  errors2["NotFound"] = "NotFound";
+  return errors2;
+}({});
+const webrpcErrorByCode$6 = {
+  [0]: WebrpcEndpointError$6,
+  [-1]: WebrpcRequestFailedError$6,
+  [-2]: WebrpcBadRouteError$6,
+  [-3]: WebrpcBadMethodError$6,
+  [-4]: WebrpcBadRequestError$6,
+  [-5]: WebrpcBadResponseError$6,
+  [-6]: WebrpcServerPanicError$6,
+  [-7]: WebrpcInternalErrorError$6,
+  [-8]: WebrpcClientDisconnectedError$6,
+  [-9]: WebrpcStreamLostError$6,
+  [-10]: WebrpcStreamFinishedError$6,
+  [1e3]: UnauthorizedError$6,
+  [1001]: PermissionDeniedError$4,
+  [1002]: SessionExpiredError$4,
+  [1005]: AbortedError$3,
+  [2e3]: InvalidArgumentError$4,
+  [2002]: UnavailableError$3,
+  [2003]: QueryFailedError$4,
+  [3e3]: NotFoundError$5
 };
 const fetch$5 = typeof global$1 === "object" ? global$1.fetch : window.fetch;
 class SequenceAPIClient extends API {
@@ -25329,11 +25672,32 @@ class SequenceAPIClient extends API {
 const api$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   API,
+  AbortedError: AbortedError$3,
+  InvalidArgumentError: InvalidArgumentError$4,
+  NotFoundError: NotFoundError$5,
+  PermissionDeniedError: PermissionDeniedError$4,
+  QueryFailedError: QueryFailedError$4,
   SequenceAPIClient,
+  SessionExpiredError: SessionExpiredError$4,
   SortOrder: SortOrder$2,
+  UnauthorizedError: UnauthorizedError$6,
+  UnavailableError: UnavailableError$3,
   WebRPCSchemaHash: WebRPCSchemaHash$3,
   WebRPCSchemaVersion: WebRPCSchemaVersion$3,
-  WebRPCVersion: WebRPCVersion$3
+  WebRPCVersion: WebRPCVersion$3,
+  WebrpcBadMethodError: WebrpcBadMethodError$6,
+  WebrpcBadRequestError: WebrpcBadRequestError$6,
+  WebrpcBadResponseError: WebrpcBadResponseError$6,
+  WebrpcBadRouteError: WebrpcBadRouteError$6,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$6,
+  WebrpcEndpointError: WebrpcEndpointError$6,
+  WebrpcError: WebrpcError$6,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$6,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$6,
+  WebrpcServerPanicError: WebrpcServerPanicError$6,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$6,
+  WebrpcStreamLostError: WebrpcStreamLostError$6,
+  errors: errors$3
 }, Symbol.toStringTag, { value: "Module" }));
 var bn = { exports: {} };
 var buffer$2 = {};
@@ -25345,9 +25709,9 @@ var lookup = [];
 var revLookup = [];
 var Arr = typeof Uint8Array !== "undefined" ? Uint8Array : Array;
 var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-for (var i$3 = 0, len = code.length; i$3 < len; ++i$3) {
-  lookup[i$3] = code[i$3];
-  revLookup[code.charCodeAt(i$3)] = i$3;
+for (var i$2 = 0, len = code.length; i$2 < len; ++i$2) {
+  lookup[i$2] = code[i$2];
+  revLookup[code.charCodeAt(i$2)] = i$2;
 }
 revLookup["-".charCodeAt(0)] = 62;
 revLookup["_".charCodeAt(0)] = 63;
@@ -25535,11 +25899,11 @@ ieee754.write = function(buffer2, value, offset2, isLE2, mLen, nBytes) {
   function typedArraySupport() {
     try {
       const arr = new GlobalUint8Array(1);
-      const proto2 = { foo: function() {
+      const proto = { foo: function() {
         return 42;
       } };
-      Object.setPrototypeOf(proto2, GlobalUint8Array.prototype);
-      Object.setPrototypeOf(arr, proto2);
+      Object.setPrototypeOf(proto, GlobalUint8Array.prototype);
+      Object.setPrototypeOf(arr, proto);
       return arr.foo() === 42;
     } catch (e2) {
       return false;
@@ -26954,9 +27318,9 @@ ieee754.write = function(buffer2, value, offset2, isLE2, mLen, nBytes) {
     }
     return this;
   };
-  const errors = {};
+  const errors2 = {};
   function E2(sym, getMessage, Base) {
-    errors[sym] = class NodeError extends Base {
+    errors2[sym] = class NodeError extends Base {
       constructor() {
         super();
         Object.defineProperty(this, "message", {
@@ -27039,35 +27403,33 @@ ieee754.write = function(buffer2, value, offset2, isLE2, mLen, nBytes) {
     if (value > max2 || value < min2) {
       const n2 = typeof min2 === "bigint" ? "n" : "";
       let range2;
-      if (byteLength3 > 3) {
+      {
         if (min2 === 0 || min2 === BigInt(0)) {
           range2 = `>= 0${n2} and < 2${n2} ** ${(byteLength3 + 1) * 8}${n2}`;
         } else {
           range2 = `>= -(2${n2} ** ${(byteLength3 + 1) * 8 - 1}${n2}) and < 2 ** ${(byteLength3 + 1) * 8 - 1}${n2}`;
         }
-      } else {
-        range2 = `>= ${min2}${n2} and <= ${max2}${n2}`;
       }
-      throw new errors.ERR_OUT_OF_RANGE("value", range2, value);
+      throw new errors2.ERR_OUT_OF_RANGE("value", range2, value);
     }
     checkBounds(buf, offset2, byteLength3);
   }
   function validateNumber(value, name2) {
     if (typeof value !== "number") {
-      throw new errors.ERR_INVALID_ARG_TYPE(name2, "number", value);
+      throw new errors2.ERR_INVALID_ARG_TYPE(name2, "number", value);
     }
   }
   function boundsError(value, length2, type) {
     if (Math.floor(value) !== value) {
       validateNumber(value, type);
-      throw new errors.ERR_OUT_OF_RANGE(type || "offset", "an integer", value);
+      throw new errors2.ERR_OUT_OF_RANGE("offset", "an integer", value);
     }
     if (length2 < 0) {
-      throw new errors.ERR_BUFFER_OUT_OF_BOUNDS();
+      throw new errors2.ERR_BUFFER_OUT_OF_BOUNDS();
     }
-    throw new errors.ERR_OUT_OF_RANGE(
-      type || "offset",
-      `>= ${type ? 1 : 0} and <= ${length2}`,
+    throw new errors2.ERR_OUT_OF_RANGE(
+      "offset",
+      `>= ${0} and <= ${length2}`,
       value
     );
   }
@@ -27488,8 +27850,8 @@ bn.exports;
       limbLen--;
       limbPow = limbPow / base2 | 0;
       var total = number2.length - start;
-      var mod = total % limbLen;
-      var end = Math.min(total, total - mod) + start;
+      var mod2 = total % limbLen;
+      var end = Math.min(total, total - mod2) + start;
       var word = 0;
       for (var i2 = start; i2 < end; i2 += limbLen) {
         word = parseBase(number2, i2, i2 + limbLen, base2);
@@ -27500,13 +27862,13 @@ bn.exports;
           this._iaddn(word);
         }
       }
-      if (mod !== 0) {
-        var pow = 1;
+      if (mod2 !== 0) {
+        var pow3 = 1;
         word = parseBase(number2, i2, number2.length, base2);
-        for (i2 = 0; i2 < mod; i2++) {
-          pow *= base2;
+        for (i2 = 0; i2 < mod2; i2++) {
+          pow3 *= base2;
         }
-        this.imuln(pow);
+        this.imuln(pow3);
         if (this.words[0] + word < 67108864) {
           this.words[0] += word;
         } else {
@@ -28851,7 +29213,7 @@ bn.exports;
     BN2.prototype.isqr = function isqr() {
       return this.imul(this.clone());
     };
-    BN2.prototype.pow = function pow(num) {
+    BN2.prototype.pow = function pow3(num) {
       var w2 = toBitArray(num);
       if (w2.length === 0)
         return new BN2(1);
@@ -29158,21 +29520,21 @@ bn.exports;
           mod: new BN2(0)
         };
       }
-      var div, mod, res;
+      var div, mod2, res;
       if (this.negative !== 0 && num.negative === 0) {
         res = this.neg().divmod(num, mode);
         if (mode !== "mod") {
           div = res.div.neg();
         }
         if (mode !== "div") {
-          mod = res.mod.neg();
-          if (positive && mod.negative !== 0) {
-            mod.iadd(num);
+          mod2 = res.mod.neg();
+          if (positive && mod2.negative !== 0) {
+            mod2.iadd(num);
           }
         }
         return {
           div,
-          mod
+          mod: mod2
         };
       }
       if (this.negative === 0 && num.negative !== 0) {
@@ -29188,14 +29550,14 @@ bn.exports;
       if ((this.negative & num.negative) !== 0) {
         res = this.neg().divmod(num.neg(), mode);
         if (mode !== "div") {
-          mod = res.mod.neg();
-          if (positive && mod.negative !== 0) {
-            mod.isub(num);
+          mod2 = res.mod.neg();
+          if (positive && mod2.negative !== 0) {
+            mod2.isub(num);
           }
         }
         return {
           div: res.div,
-          mod
+          mod: mod2
         };
       }
       if (num.length > this.length || this.cmp(num) < 0) {
@@ -29227,7 +29589,7 @@ bn.exports;
     BN2.prototype.div = function div(num) {
       return this.divmod(num, "div", false).div;
     };
-    BN2.prototype.mod = function mod(num) {
+    BN2.prototype.mod = function mod2(num) {
       return this.divmod(num, "mod", false).mod;
     };
     BN2.prototype.umod = function umod(num) {
@@ -29237,10 +29599,10 @@ bn.exports;
       var dm = this.divmod(num);
       if (dm.mod.isZero())
         return dm.div;
-      var mod = dm.div.negative !== 0 ? dm.mod.isub(num) : dm.mod;
+      var mod2 = dm.div.negative !== 0 ? dm.mod.isub(num) : dm.mod;
       var half = num.ushrn(1);
       var r2 = num.andln(1);
-      var cmp = mod.cmp(half);
+      var cmp = mod2.cmp(half);
       if (cmp < 0 || r2 === 1 && cmp === 0)
         return dm.div;
       return dm.div.negative !== 0 ? dm.div.isubn(1) : dm.div.iaddn(1);
@@ -29878,8 +30240,8 @@ bn.exports;
       var mod3 = this.m.andln(3);
       assert2(mod3 % 2 === 1);
       if (mod3 === 3) {
-        var pow = this.m.add(new BN2(1)).iushrn(2);
-        return this.pow(a2, pow);
+        var pow3 = this.m.add(new BN2(1)).iushrn(2);
+        return this.pow(a2, pow3);
       }
       var q2 = this.m.subn(1);
       var s2 = 0;
@@ -29923,7 +30285,7 @@ bn.exports;
         return this.imod(inv);
       }
     };
-    Red.prototype.pow = function pow(a2, num) {
+    Red.prototype.pow = function pow3(a2, num) {
       if (num.isZero())
         return new BN2(1).toRed(this);
       if (num.cmpn(1) === 0)
@@ -32273,7 +32635,7 @@ function splitNesting(value) {
 }
 const logger$v = new Logger$1(version$s);
 function checkResultErrors(result) {
-  const errors = [];
+  const errors2 = [];
   const checkErrors = function(path, object2) {
     if (!Array.isArray(object2)) {
       return;
@@ -32284,12 +32646,12 @@ function checkResultErrors(result) {
       try {
         checkErrors(childPath, object2[key2]);
       } catch (error) {
-        errors.push({ path: childPath, error });
+        errors2.push({ path: childPath, error });
       }
     }
   };
   checkErrors([], result);
-  return errors;
+  return errors2;
 }
 class Coder {
   constructor(name2, type, localName, dynamic) {
@@ -32415,8 +32777,8 @@ class Reader {
 function getDefaultExportFromCjs(x) {
   return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
-var browser$2 = { exports: {} };
-var process = browser$2.exports = {};
+var browser$1 = { exports: {} };
+var process = browser$1.exports = {};
 var cachedSetTimeout;
 var cachedClearTimeout;
 function defaultSetTimout() {
@@ -32546,17 +32908,17 @@ process.env = {};
 process.argv = [];
 process.version = "";
 process.versions = {};
-function noop$3() {
+function noop$2() {
 }
-process.on = noop$3;
-process.addListener = noop$3;
-process.once = noop$3;
-process.off = noop$3;
-process.removeListener = noop$3;
-process.removeAllListeners = noop$3;
-process.emit = noop$3;
-process.prependListener = noop$3;
-process.prependOnceListener = noop$3;
+process.on = noop$2;
+process.addListener = noop$2;
+process.once = noop$2;
+process.off = noop$2;
+process.removeListener = noop$2;
+process.removeAllListeners = noop$2;
+process.emit = noop$2;
+process.prependListener = noop$2;
+process.prependOnceListener = noop$2;
 process.listeners = function(name2) {
   return [];
 };
@@ -32572,7 +32934,7 @@ process.chdir = function(dir) {
 process.umask = function() {
   return 0;
 };
-var browserExports = browser$2.exports;
+var browserExports = browser$1.exports;
 const process$1 = /* @__PURE__ */ getDefaultExportFromCjs(browserExports);
 var sha3$1 = { exports: {} };
 (function(module2) {
@@ -34663,8 +35025,6 @@ function consume_emoji_reversed(cps, eaten) {
   let saved;
   let stack = [];
   let pos = cps.length;
-  if (eaten)
-    eaten.length = 0;
   while (pos) {
     let cp = cps[--pos];
     node2 = (_a2 = node2.branches.find((x) => x.set.has(cp))) === null || _a2 === void 0 ? void 0 : _a2.node;
@@ -34686,8 +35046,6 @@ function consume_emoji_reversed(cps, eaten) {
       emoji = stack.slice();
       if (node2.valid == 2)
         emoji.splice(1, 1);
-      if (eaten)
-        eaten.push(...cps.slice(pos).reverse());
       cps.length = pos;
     }
   }
@@ -36138,7 +36496,7 @@ class VoidSigner extends Signer$1 {
     return new VoidSigner(this.address, provider2);
   }
 }
-var hash$3 = {};
+var hash$4 = {};
 var utils$c = {};
 var minimalisticAssert$1 = assert$b;
 function assert$b(val, msg) {
@@ -37689,7 +38047,7 @@ function Hmac(hash2, key2, enc) {
   this.outer = null;
   this._init(utils$3.toArray(key2, enc));
 }
-var hmac$1 = Hmac;
+var hmac$2 = Hmac;
 Hmac.prototype._init = function init(key2) {
   if (key2.length > this.blockSize)
     key2 = new this.Hash().update(key2).digest();
@@ -37717,15 +38075,15 @@ Hmac.prototype.digest = function digest8(enc) {
   hash2.common = common$5;
   hash2.sha = sha;
   hash2.ripemd = ripemd;
-  hash2.hmac = hmac$1;
+  hash2.hmac = hmac$2;
   hash2.sha1 = hash2.sha.sha1;
   hash2.sha256 = hash2.sha.sha256;
   hash2.sha224 = hash2.sha.sha224;
   hash2.sha384 = hash2.sha.sha384;
   hash2.sha512 = hash2.sha.sha512;
   hash2.ripemd160 = hash2.ripemd.ripemd160;
-})(hash$3);
-const hash$2 = /* @__PURE__ */ getDefaultExportFromCjs$1(hash$3);
+})(hash$4);
+const hash$3 = /* @__PURE__ */ getDefaultExportFromCjs$1(hash$4);
 function createCommonjsModule(fn, basedir, module2) {
   return module2 = {
     path: basedir,
@@ -37815,12 +38173,12 @@ var utils_1$1 = createCommonjsModule(function(module2, exports) {
     var k2 = num.clone();
     for (var i2 = 0; i2 < naf.length; i2++) {
       var z2;
-      var mod = k2.andln(ws - 1);
+      var mod2 = k2.andln(ws - 1);
       if (k2.isOdd()) {
-        if (mod > (ws >> 1) - 1)
-          z2 = (ws >> 1) - mod;
+        if (mod2 > (ws >> 1) - 1)
+          z2 = (ws >> 1) - mod2;
         else
-          z2 = mod;
+          z2 = mod2;
         k2.isubn(z2);
       } else {
         z2 = 0;
@@ -38705,17 +39063,17 @@ JPoint.prototype.mixedAdd = function mixedAdd(p2) {
   var nz = this.z.redMul(h2);
   return this.curve.jpoint(nx, ny, nz);
 };
-JPoint.prototype.dblp = function dblp2(pow) {
-  if (pow === 0)
+JPoint.prototype.dblp = function dblp2(pow3) {
+  if (pow3 === 0)
     return this;
   if (this.isInfinity())
     return this;
-  if (!pow)
+  if (!pow3)
     return this.dbl();
   var i2;
   if (this.curve.zeroA || this.curve.threeA) {
     var r2 = this;
-    for (i2 = 0; i2 < pow; i2++)
+    for (i2 = 0; i2 < pow3; i2++)
       r2 = r2.dbl();
     return r2;
   }
@@ -38726,7 +39084,7 @@ JPoint.prototype.dblp = function dblp2(pow) {
   var jz = this.z;
   var jz4 = jz.redSqr().redSqr();
   var jyd = jy.redAdd(jy);
-  for (i2 = 0; i2 < pow; i2++) {
+  for (i2 = 0; i2 < pow3; i2++) {
     var jx2 = jx.redSqr();
     var jyd2 = jyd.redSqr();
     var jyd4 = jyd2.redSqr();
@@ -38737,7 +39095,7 @@ JPoint.prototype.dblp = function dblp2(pow) {
     var dny = c2.redMul(t2);
     dny = dny.redIAdd(dny).redISub(jyd4);
     var nz = jyd.redMul(jz);
-    if (i2 + 1 < pow)
+    if (i2 + 1 < pow3)
       jz4 = jz4.redMul(jyd4);
     jx = nx;
     jz = nz;
@@ -38971,7 +39329,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     a: "ffffffff ffffffff ffffffff fffffffe ffffffff fffffffc",
     b: "64210519 e59c80e7 0fa7e9ab 72243049 feb8deec c146b9b1",
     n: "ffffffff ffffffff ffffffff 99def836 146bc9b1 b4d22831",
-    hash: hash$2.sha256,
+    hash: hash$3.sha256,
     gRed: false,
     g: [
       "188da80e b03090f6 7cbf20eb 43a18800 f4ff0afd 82ff1012",
@@ -38985,7 +39343,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     a: "ffffffff ffffffff ffffffff fffffffe ffffffff ffffffff fffffffe",
     b: "b4050a85 0c04b3ab f5413256 5044b0b7 d7bfd8ba 270b3943 2355ffb4",
     n: "ffffffff ffffffff ffffffff ffff16a2 e0b8f03e 13dd2945 5c5c2a3d",
-    hash: hash$2.sha256,
+    hash: hash$3.sha256,
     gRed: false,
     g: [
       "b70e0cbd 6bb4bf7f 321390b9 4a03c1d3 56c21122 343280d6 115c1d21",
@@ -38999,7 +39357,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     a: "ffffffff 00000001 00000000 00000000 00000000 ffffffff ffffffff fffffffc",
     b: "5ac635d8 aa3a93e7 b3ebbd55 769886bc 651d06b0 cc53b0f6 3bce3c3e 27d2604b",
     n: "ffffffff 00000000 ffffffff ffffffff bce6faad a7179e84 f3b9cac2 fc632551",
-    hash: hash$2.sha256,
+    hash: hash$3.sha256,
     gRed: false,
     g: [
       "6b17d1f2 e12c4247 f8bce6e5 63a440f2 77037d81 2deb33a0 f4a13945 d898c296",
@@ -39013,7 +39371,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     a: "ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffe ffffffff 00000000 00000000 fffffffc",
     b: "b3312fa7 e23ee7e4 988e056b e3f82d19 181d9c6e fe814112 0314088f 5013875a c656398d 8a2ed19d 2a85c8ed d3ec2aef",
     n: "ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff c7634d81 f4372ddf 581a0db2 48b0a77a ecec196a ccc52973",
-    hash: hash$2.sha384,
+    hash: hash$3.sha384,
     gRed: false,
     g: [
       "aa87ca22 be8b0537 8eb1c71e f320ad74 6e1d3b62 8ba79b98 59f741e0 82542a38 5502f25d bf55296c 3a545e38 72760ab7",
@@ -39027,7 +39385,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     a: "000001ff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffc",
     b: "00000051 953eb961 8e1c9a1f 929a21a0 b68540ee a2da725b 99b315f3 b8b48991 8ef109e1 56193951 ec7e937b 1652c0bd 3bb1bf07 3573df88 3d2c34f1 ef451fd4 6b503f00",
     n: "000001ff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff ffffffff fffffffa 51868783 bf2f966b 7fcc0148 f709a5d0 3bb5c9b8 899c47ae bb6fb71e 91386409",
-    hash: hash$2.sha512,
+    hash: hash$3.sha512,
     gRed: false,
     g: [
       "000000c6 858e06b7 0404e9cd 9e3ecb66 2395b442 9c648139 053fb521 f828af60 6b4d3dba a14b5e77 efe75928 fe1dc127 a2ffa8de 3348b3c1 856a429b f97e7e31 c2e5bd66",
@@ -39041,7 +39399,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     a: "76d06",
     b: "1",
     n: "1000000000000000 0000000000000000 14def9dea2f79cd6 5812631a5cf5d3ed",
-    hash: hash$2.sha256,
+    hash: hash$3.sha256,
     gRed: false,
     g: [
       "9"
@@ -39056,7 +39414,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     // -121665 * (121666^(-1)) (mod P)
     d: "52036cee2b6ffe73 8cc740797779e898 00700a4d4141d8ab 75eb4dca135978a3",
     n: "1000000000000000 0000000000000000 14def9dea2f79cd6 5812631a5cf5d3ed",
-    hash: hash$2.sha256,
+    hash: hash$3.sha256,
     gRed: false,
     g: [
       "216936d3cd6e53fec0a4e231fdd6dc5c692cc7609525a7b2c9562d608f25d51a",
@@ -39079,7 +39437,7 @@ var curves_1 = createCommonjsModule(function(module2, exports) {
     b: "7",
     n: "ffffffff ffffffff ffffffff fffffffe baaedce6 af48a03b bfd25e8c d0364141",
     h: "1",
-    hash: hash$2.sha256,
+    hash: hash$3.sha256,
     // Precomputed endomorphism
     beta: "7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee",
     lambda: "5363ad4cc05c30e0a5261c028812645a122e22ea20816678df02967c1b23bd72",
@@ -39135,7 +39493,7 @@ HmacDRBG.prototype._init = function init2(entropy, nonce, pers) {
   this.reseedInterval = 281474976710656;
 };
 HmacDRBG.prototype._hmac = function hmac() {
-  return new hash$2.hmac(this.hash, this.K);
+  return new hash$3.hmac(this.hash, this.K);
 };
 HmacDRBG.prototype._update = function update4(seed) {
   var kmac = this._hmac().update(this.V).update([0]);
@@ -40427,9 +40785,9 @@ class FragmentRunningEvent extends RunningEvent {
     }
   }
   getEmit(event) {
-    const errors = checkResultErrors(event.args);
-    if (errors.length) {
-      throw errors[0].error;
+    const errors2 = checkResultErrors(event.args);
+    if (errors2.length) {
+      throw errors2[0].error;
     }
     const args = (event.args || []).slice();
     args.push(event);
@@ -40925,13 +41283,13 @@ var SupportedAlgorithm;
 const version$i = "sha2/5.7.0";
 const logger$h = new Logger$1(version$i);
 function ripemd160(data) {
-  return "0x" + hash$2.ripemd160().update(arrayify(data)).digest("hex");
+  return "0x" + hash$3.ripemd160().update(arrayify(data)).digest("hex");
 }
 function sha256$4(data) {
-  return "0x" + hash$2.sha256().update(arrayify(data)).digest("hex");
+  return "0x" + hash$3.sha256().update(arrayify(data)).digest("hex");
 }
 function sha512(data) {
-  return "0x" + hash$2.sha512().update(arrayify(data)).digest("hex");
+  return "0x" + hash$3.sha512().update(arrayify(data)).digest("hex");
 }
 function computeHmac(algorithm, key2, data) {
   if (!SupportedAlgorithm[algorithm]) {
@@ -40940,7 +41298,7 @@ function computeHmac(algorithm, key2, data) {
       algorithm
     });
   }
-  return "0x" + hash$2.hmac(hash$2[algorithm], arrayify(key2)).update(arrayify(data)).digest("hex");
+  return "0x" + hash$3.hmac(hash$3[algorithm], arrayify(key2)).update(arrayify(data)).digest("hex");
 }
 const lib_esm$7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -41353,10 +41711,10 @@ function getGlobal() {
   throw new Error("unable to locate global object");
 }
 const anyGlobal = getGlobal();
-let crypto$1 = anyGlobal.crypto || anyGlobal.msCrypto;
-if (!crypto$1 || !crypto$1.getRandomValues) {
+let crypto$2 = anyGlobal.crypto || anyGlobal.msCrypto;
+if (!crypto$2 || !crypto$2.getRandomValues) {
   logger$e.warn("WARNING: Missing strong random number source");
-  crypto$1 = {
+  crypto$2 = {
     getRandomValues: function(buffer2) {
       return logger$e.throwError("no secure random source avaialble", Logger$1.errors.UNSUPPORTED_OPERATION, {
         operation: "crypto.getRandomValues"
@@ -41364,12 +41722,12 @@ if (!crypto$1 || !crypto$1.getRandomValues) {
     }
   };
 }
-function randomBytes(length2) {
+function randomBytes$1(length2) {
   if (length2 <= 0 || length2 > 1024 || length2 % 1 || length2 != length2) {
     logger$e.throwArgumentError("invalid length", "length", length2);
   }
   const result = new Uint8Array(length2);
-  crypto$1.getRandomValues(result);
+  crypto$2.getRandomValues(result);
   return arrayify(result);
 }
 function shuffled(array) {
@@ -41384,7 +41742,7 @@ function shuffled(array) {
 }
 const lib_esm$5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  randomBytes,
+  randomBytes: randomBytes$1,
   shuffled
 }, Symbol.toStringTag, { value: "Module" }));
 var aesJs = { exports: {} };
@@ -42712,7 +43070,7 @@ function encrypt(account2, password, options, progressCallback) {
   if (options.salt) {
     salt = arrayify(options.salt);
   } else {
-    salt = randomBytes(32);
+    salt = randomBytes$1(32);
   }
   let iv = null;
   if (options.iv) {
@@ -42721,7 +43079,7 @@ function encrypt(account2, password, options, progressCallback) {
       throw new Error("invalid iv");
     }
   } else {
-    iv = randomBytes(16);
+    iv = randomBytes$1(16);
   }
   let uuidRandom = null;
   if (options.uuid) {
@@ -42730,7 +43088,7 @@ function encrypt(account2, password, options, progressCallback) {
       throw new Error("invalid uuid");
     }
   } else {
-    uuidRandom = randomBytes(16);
+    uuidRandom = randomBytes$1(16);
   }
   let N2 = 1 << 17, r2 = 8, p2 = 1;
   if (options.scrypt) {
@@ -42775,7 +43133,7 @@ function encrypt(account2, password, options, progressCallback) {
       }
     };
     if (entropy) {
-      const mnemonicIv = randomBytes(16);
+      const mnemonicIv = randomBytes$1(16);
       const mnemonicCounter = new aes.Counter(mnemonicIv);
       const mnemonicAesCtr = new aes.ModeOfOperation.ctr(mnemonicKey, mnemonicCounter);
       const mnemonicCiphertext = arrayify(mnemonicAesCtr.encrypt(entropy));
@@ -42978,7 +43336,7 @@ let Wallet$1 = class Wallet extends Signer$1 {
    *  Static methods to create Wallet instances.
    */
   static createRandom(options) {
-    let entropy = randomBytes(16);
+    let entropy = randomBytes$1(16);
     if (!options) {
       options = {};
     }
@@ -43182,7 +43540,7 @@ const networks$1 = {
   bnb: { chainId: 56, name: "bnb" },
   bnbt: { chainId: 97, name: "bnbt" }
 };
-function getNetwork(network2) {
+function getNetwork$1(network2) {
   if (network2 == null) {
     return null;
   }
@@ -44891,7 +45249,7 @@ class BaseProvider extends Provider {
   }
   // @TODO: Remove this and just use getNetwork
   static getNetwork(network2) {
-    return getNetwork(network2 == null ? "homestead" : network2);
+    return getNetwork$1(network2 == null ? "homestead" : network2);
   }
   ccipReadFetch(tx, calldata, urls) {
     return __awaiter$5(this, void 0, void 0, function* () {
@@ -47259,7 +47617,7 @@ class FallbackProvider extends BaseProvider {
           }
           first = false;
         }
-        const errors = configs.reduce((accum, c2) => {
+        const errors2 = configs.reduce((accum, c2) => {
           if (!c2.done || c2.error == null) {
             return accum;
           }
@@ -47272,8 +47630,8 @@ class FallbackProvider extends BaseProvider {
           }
           return accum;
         }, {});
-        Object.keys(errors).forEach((errorCode) => {
-          const tally = errors[errorCode];
+        Object.keys(errors2).forEach((errorCode) => {
+          const tally = errors2[errorCode];
           if (tally.weight < this.quorum) {
             return;
           }
@@ -47693,7 +48051,7 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   parseTransaction: parse$4,
   parseUnits: parseUnits$1,
   poll: poll$1,
-  randomBytes,
+  randomBytes: randomBytes$1,
   recoverAddress,
   recoverPublicKey,
   resolveProperties: resolveProperties$1,
@@ -47904,7 +48262,7 @@ function __awaiter$1(thisArg, _arguments, P2, generator) {
     function step(result) {
       result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
+    step((generator = generator.apply(thisArg, [])).next());
   });
 }
 function __generator$1(thisArg, body) {
@@ -48802,7 +49160,7 @@ const isNode$2 = () => {
     return false;
   }
 };
-const isBrowser$2 = () => !isNode$2();
+const isBrowser$1 = () => !isNode$2();
 const jwtDecodeClaims = (jwt) => {
   const parts = jwt.split(".");
   if (parts.length !== 3) {
@@ -49063,7 +49421,7 @@ const utils$1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   getRandomInt,
   getStatic,
   isBigNumberish,
-  isBrowser: isBrowser$2,
+  isBrowser: isBrowser$1,
   isNode: isNode$2,
   jwtDecodeClaims,
   logger,
@@ -52447,7 +52805,7 @@ class LocalRelayer extends ProviderRelayer {
 }
 const WebRPCVersion$2 = "v1";
 const WebRPCSchemaVersion$2 = "v0.4.1";
-const WebRPCSchemaHash$2 = "13cf0e854e8127ae83218cc188ef0e7456241c96";
+const WebRPCSchemaHash$2 = "1e27d0fd295aa5897878939595ef0c6adc54b1a3";
 let ETHTxnStatus = /* @__PURE__ */ function(ETHTxnStatus2) {
   ETHTxnStatus2["UNKNOWN"] = "UNKNOWN";
   ETHTxnStatus2["DROPPED"] = "DROPPED";
@@ -52483,109 +52841,153 @@ class Relayer {
     this.hostname = void 0;
     this.fetch = void 0;
     this.path = "/rpc/Relayer/";
-    this.ping = (headers) => {
-      return this.fetch(this.url("Ping"), createHTTPRequest$6({}, headers)).then((res) => {
+    this.ping = (headers, signal) => {
+      return this.fetch(this.url("Ping"), createHTTPRequest$6({}, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.version = (headers) => {
-      return this.fetch(this.url("Version"), createHTTPRequest$6({}, headers)).then((res) => {
+    this.version = (headers, signal) => {
+      return this.fetch(this.url("Version"), createHTTPRequest$6({}, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             version: _data2.version
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.runtimeStatus = (headers) => {
-      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$6({}, headers)).then((res) => {
+    this.runtimeStatus = (headers, signal) => {
+      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$6({}, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getSequenceContext = (headers) => {
-      return this.fetch(this.url("GetSequenceContext"), createHTTPRequest$6({}, headers)).then((res) => {
+    this.getSequenceContext = (headers, signal) => {
+      return this.fetch(this.url("GetSequenceContext"), createHTTPRequest$6({}, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             data: _data2.data
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getChainID = (headers) => {
-      return this.fetch(this.url("GetChainID"), createHTTPRequest$6({}, headers)).then((res) => {
+    this.getChainID = (headers, signal) => {
+      return this.fetch(this.url("GetChainID"), createHTTPRequest$6({}, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             chainID: _data2.chainID
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.sendMetaTxn = (args, headers) => {
-      return this.fetch(this.url("SendMetaTxn"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.sendMetaTxn = (args, headers, signal) => {
+      return this.fetch(this.url("SendMetaTxn"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status,
             txnHash: _data2.txnHash
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getMetaTxnNonce = (args, headers) => {
-      return this.fetch(this.url("GetMetaTxnNonce"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.getMetaTxnNonce = (args, headers, signal) => {
+      return this.fetch(this.url("GetMetaTxnNonce"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             nonce: _data2.nonce
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getMetaTxnReceipt = (args, headers) => {
-      return this.fetch(this.url("GetMetaTxnReceipt"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.getMetaTxnReceipt = (args, headers, signal) => {
+      return this.fetch(this.url("GetMetaTxnReceipt"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             receipt: _data2.receipt
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.simulate = (args, headers) => {
-      return this.fetch(this.url("Simulate"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.simulate = (args, headers, signal) => {
+      return this.fetch(this.url("Simulate"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             results: _data2.results
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateMetaTxnGasLimits = (args, headers) => {
-      return this.fetch(this.url("UpdateMetaTxnGasLimits"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.updateMetaTxnGasLimits = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateMetaTxnGasLimits"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             payload: _data2.payload
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.feeTokens = (headers) => {
-      return this.fetch(this.url("FeeTokens"), createHTTPRequest$6({}, headers)).then((res) => {
+    this.feeTokens = (headers, signal) => {
+      return this.fetch(this.url("FeeTokens"), createHTTPRequest$6({}, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             isFeeRequired: _data2.isFeeRequired,
             tokens: _data2.tokens
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.feeOptions = (args, headers) => {
-      return this.fetch(this.url("FeeOptions"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.feeOptions = (args, headers, signal) => {
+      return this.fetch(this.url("FeeOptions"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             options: _data2.options,
@@ -52593,168 +52995,254 @@ class Relayer {
             quote: _data2.quote
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getMetaTxnNetworkFeeOptions = (args, headers) => {
-      return this.fetch(this.url("GetMetaTxnNetworkFeeOptions"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.getMetaTxnNetworkFeeOptions = (args, headers, signal) => {
+      return this.fetch(this.url("GetMetaTxnNetworkFeeOptions"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             options: _data2.options
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getMetaTransactions = (args, headers) => {
-      return this.fetch(this.url("GetMetaTransactions"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.getMetaTransactions = (args, headers, signal) => {
+      return this.fetch(this.url("GetMetaTransactions"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             page: _data2.page,
             transactions: _data2.transactions
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.sentTransactions = (args, headers) => {
-      return this.fetch(this.url("SentTransactions"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.sentTransactions = (args, headers, signal) => {
+      return this.fetch(this.url("SentTransactions"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             page: _data2.page,
             transactions: _data2.transactions
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.pendingTransactions = (args, headers) => {
-      return this.fetch(this.url("PendingTransactions"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.pendingTransactions = (args, headers, signal) => {
+      return this.fetch(this.url("PendingTransactions"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             page: _data2.page,
             transactions: _data2.transactions
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getGasTank = (args, headers) => {
-      return this.fetch(this.url("GetGasTank"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.getGasTank = (args, headers, signal) => {
+      return this.fetch(this.url("GetGasTank"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             gasTank: _data2.gasTank
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.addGasTank = (args, headers) => {
-      return this.fetch(this.url("AddGasTank"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.addGasTank = (args, headers, signal) => {
+      return this.fetch(this.url("AddGasTank"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status,
             gasTank: _data2.gasTank
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateGasTank = (args, headers) => {
-      return this.fetch(this.url("UpdateGasTank"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.updateGasTank = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateGasTank"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status,
             gasTank: _data2.gasTank
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getGasSponsor = (args, headers) => {
-      return this.fetch(this.url("GetGasSponsor"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.getGasSponsor = (args, headers, signal) => {
+      return this.fetch(this.url("GetGasSponsor"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             gasSponsor: _data2.gasSponsor
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.listGasSponsors = (args, headers) => {
-      return this.fetch(this.url("ListGasSponsors"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.addressGasSponsors = (args, headers, signal) => {
+      return this.fetch(this.url("AddressGasSponsors"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             page: _data2.page,
             gasSponsors: _data2.gasSponsors
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.addGasSponsor = (args, headers) => {
-      return this.fetch(this.url("AddGasSponsor"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.listGasSponsors = (args, headers, signal) => {
+      return this.fetch(this.url("ListGasSponsors"), createHTTPRequest$6(args, headers, signal)).then((res) => {
+        return buildResponse$6(res).then((_data2) => {
+          return {
+            page: _data2.page,
+            gasSponsors: _data2.gasSponsors
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.addGasSponsor = (args, headers, signal) => {
+      return this.fetch(this.url("AddGasSponsor"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status,
             gasSponsor: _data2.gasSponsor
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateGasSponsor = (args, headers) => {
-      return this.fetch(this.url("UpdateGasSponsor"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.updateGasSponsor = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateGasSponsor"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status,
             gasSponsor: _data2.gasSponsor
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.removeGasSponsor = (args, headers) => {
-      return this.fetch(this.url("RemoveGasSponsor"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.removeGasSponsor = (args, headers, signal) => {
+      return this.fetch(this.url("RemoveGasSponsor"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.reportGasSponsorUsage = (args, headers) => {
-      return this.fetch(this.url("ReportGasSponsorUsage"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.reportGasSponsorUsage = (args, headers, signal) => {
+      return this.fetch(this.url("ReportGasSponsorUsage"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             gasSponsorUsage: _data2.gasSponsorUsage
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.nextGasTankBalanceAdjustmentNonce = (args, headers) => {
-      return this.fetch(this.url("NextGasTankBalanceAdjustmentNonce"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.nextGasTankBalanceAdjustmentNonce = (args, headers, signal) => {
+      return this.fetch(this.url("NextGasTankBalanceAdjustmentNonce"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             nonce: _data2.nonce
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.adjustGasTankBalance = (args, headers) => {
-      return this.fetch(this.url("AdjustGasTankBalance"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.adjustGasTankBalance = (args, headers, signal) => {
+      return this.fetch(this.url("AdjustGasTankBalance"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             status: _data2.status,
             adjustment: _data2.adjustment
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getGasTankBalanceAdjustment = (args, headers) => {
-      return this.fetch(this.url("GetGasTankBalanceAdjustment"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.getGasTankBalanceAdjustment = (args, headers, signal) => {
+      return this.fetch(this.url("GetGasTankBalanceAdjustment"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             adjustment: _data2.adjustment
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.listGasTankBalanceAdjustments = (args, headers) => {
-      return this.fetch(this.url("ListGasTankBalanceAdjustments"), createHTTPRequest$6(args, headers)).then((res) => {
+    this.listGasTankBalanceAdjustments = (args, headers, signal) => {
+      return this.fetch(this.url("ListGasTankBalanceAdjustments"), createHTTPRequest$6(args, headers, signal)).then((res) => {
         return buildResponse$6(res).then((_data2) => {
           return {
             page: _data2.page,
             adjustments: _data2.adjustments
           };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$5.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
@@ -52765,13 +53253,14 @@ class Relayer {
     return this.hostname + this.path + name2;
   }
 }
-const createHTTPRequest$6 = (body = {}, headers = {}) => {
+const createHTTPRequest$6 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
     headers: _extends$g({}, headers, {
       "Content-Type": "application/json"
     }),
-    body: JSON.stringify(body || {})
+    body: JSON.stringify(body || {}),
+    signal
   };
 };
 const buildResponse$6 = (res) => {
@@ -52779,18 +53268,200 @@ const buildResponse$6 = (res) => {
     let data;
     try {
       data = JSON.parse(text2);
-    } catch (err) {
-      throw {
-        code: "unknown",
-        msg: `expecting JSON, got: ${text2}`,
-        status: res.status
-      };
+    } catch (error) {
+      let message = "";
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      throw WebrpcBadResponseError$5.new({
+        status: res.status,
+        cause: `JSON.parse(): ${message}: response text: ${text2}`
+      });
     }
     if (!res.ok) {
-      throw data;
+      const code2 = typeof data.code === "number" ? data.code : 0;
+      throw (webrpcErrorByCode$5[code2] || WebrpcError$5).new(data);
     }
     return data;
   });
+};
+let WebrpcError$5 = class WebrpcError2 extends Error {
+  constructor(name2, code2, message, status, cause) {
+    super(message);
+    this.name = void 0;
+    this.code = void 0;
+    this.message = void 0;
+    this.status = void 0;
+    this.cause = void 0;
+    this.msg = void 0;
+    this.name = name2 || "WebrpcError";
+    this.code = typeof code2 === "number" ? code2 : 0;
+    this.message = message || `endpoint error ${this.code}`;
+    this.msg = this.message;
+    this.status = typeof status === "number" ? status : 0;
+    this.cause = cause;
+    Object.setPrototypeOf(this, WebrpcError2.prototype);
+  }
+  static new(payload) {
+    return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
+  }
+};
+let WebrpcEndpointError$5 = class WebrpcEndpointError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcEndpointError2.prototype);
+  }
+};
+let WebrpcRequestFailedError$5 = class WebrpcRequestFailedError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError2.prototype);
+  }
+};
+let WebrpcBadRouteError$5 = class WebrpcBadRouteError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRouteError2.prototype);
+  }
+};
+let WebrpcBadMethodError$5 = class WebrpcBadMethodError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadMethodError2.prototype);
+  }
+};
+let WebrpcBadRequestError$5 = class WebrpcBadRequestError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRequestError2.prototype);
+  }
+};
+let WebrpcBadResponseError$5 = class WebrpcBadResponseError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadResponseError2.prototype);
+  }
+};
+let WebrpcServerPanicError$5 = class WebrpcServerPanicError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcServerPanicError2.prototype);
+  }
+};
+let WebrpcInternalErrorError$5 = class WebrpcInternalErrorError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError2.prototype);
+  }
+};
+let WebrpcClientDisconnectedError$5 = class WebrpcClientDisconnectedError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError2.prototype);
+  }
+};
+let WebrpcStreamLostError$5 = class WebrpcStreamLostError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamLostError2.prototype);
+  }
+};
+let WebrpcStreamFinishedError$5 = class WebrpcStreamFinishedError2 extends WebrpcError$5 {
+  constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError2.prototype);
+  }
+};
+let UnauthorizedError$5 = class UnauthorizedError2 extends WebrpcError$5 {
+  constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnauthorizedError2.prototype);
+  }
+};
+let PermissionDeniedError$3 = class PermissionDeniedError2 extends WebrpcError$5 {
+  constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, PermissionDeniedError2.prototype);
+  }
+};
+let MethodNotFoundError$2 = class MethodNotFoundError extends WebrpcError$5 {
+  constructor(name2 = "MethodNotFound", code2 = 1003, message = "Method not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, MethodNotFoundError.prototype);
+  }
+};
+let AbortedError$2 = class AbortedError2 extends WebrpcError$5 {
+  constructor(name2 = "Aborted", code2 = 1005, message = "Request aborted", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, AbortedError2.prototype);
+  }
+};
+let InvalidArgumentError$3 = class InvalidArgumentError2 extends WebrpcError$5 {
+  constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, InvalidArgumentError2.prototype);
+  }
+};
+let UnavailableError$2 = class UnavailableError2 extends WebrpcError$5 {
+  constructor(name2 = "Unavailable", code2 = 2002, message = "Unavailable resource", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnavailableError2.prototype);
+  }
+};
+let QueryFailedError$3 = class QueryFailedError2 extends WebrpcError$5 {
+  constructor(name2 = "QueryFailed", code2 = 2003, message = "Query failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, QueryFailedError2.prototype);
+  }
+};
+let NotFoundError$4 = class NotFoundError2 extends WebrpcError$5 {
+  constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, NotFoundError2.prototype);
+  }
+};
+let errors$2 = /* @__PURE__ */ function(errors2) {
+  errors2["WebrpcEndpoint"] = "WebrpcEndpoint";
+  errors2["WebrpcRequestFailed"] = "WebrpcRequestFailed";
+  errors2["WebrpcBadRoute"] = "WebrpcBadRoute";
+  errors2["WebrpcBadMethod"] = "WebrpcBadMethod";
+  errors2["WebrpcBadRequest"] = "WebrpcBadRequest";
+  errors2["WebrpcBadResponse"] = "WebrpcBadResponse";
+  errors2["WebrpcServerPanic"] = "WebrpcServerPanic";
+  errors2["WebrpcInternalError"] = "WebrpcInternalError";
+  errors2["WebrpcClientDisconnected"] = "WebrpcClientDisconnected";
+  errors2["WebrpcStreamLost"] = "WebrpcStreamLost";
+  errors2["WebrpcStreamFinished"] = "WebrpcStreamFinished";
+  errors2["Unauthorized"] = "Unauthorized";
+  errors2["PermissionDenied"] = "PermissionDenied";
+  errors2["MethodNotFound"] = "MethodNotFound";
+  errors2["Aborted"] = "Aborted";
+  errors2["InvalidArgument"] = "InvalidArgument";
+  errors2["Unavailable"] = "Unavailable";
+  errors2["QueryFailed"] = "QueryFailed";
+  errors2["NotFound"] = "NotFound";
+  return errors2;
+}({});
+const webrpcErrorByCode$5 = {
+  [0]: WebrpcEndpointError$5,
+  [-1]: WebrpcRequestFailedError$5,
+  [-2]: WebrpcBadRouteError$5,
+  [-3]: WebrpcBadMethodError$5,
+  [-4]: WebrpcBadRequestError$5,
+  [-5]: WebrpcBadResponseError$5,
+  [-6]: WebrpcServerPanicError$5,
+  [-7]: WebrpcInternalErrorError$5,
+  [-8]: WebrpcClientDisconnectedError$5,
+  [-9]: WebrpcStreamLostError$5,
+  [-10]: WebrpcStreamFinishedError$5,
+  [1e3]: UnauthorizedError$5,
+  [1001]: PermissionDeniedError$3,
+  [1003]: MethodNotFoundError$2,
+  [1005]: AbortedError$2,
+  [2001]: InvalidArgumentError$3,
+  [2002]: UnavailableError$2,
+  [2003]: QueryFailedError$3,
+  [3e3]: NotFoundError$4
 };
 var relayer_gen = /* @__PURE__ */ Object.freeze({
   __proto__: null,
@@ -52801,7 +53472,28 @@ var relayer_gen = /* @__PURE__ */ Object.freeze({
   TransferType,
   FeeTokenType: FeeTokenType$1,
   SortOrder: SortOrder$1,
-  Relayer
+  Relayer,
+  WebrpcError: WebrpcError$5,
+  WebrpcEndpointError: WebrpcEndpointError$5,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$5,
+  WebrpcBadRouteError: WebrpcBadRouteError$5,
+  WebrpcBadMethodError: WebrpcBadMethodError$5,
+  WebrpcBadRequestError: WebrpcBadRequestError$5,
+  WebrpcBadResponseError: WebrpcBadResponseError$5,
+  WebrpcServerPanicError: WebrpcServerPanicError$5,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$5,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$5,
+  WebrpcStreamLostError: WebrpcStreamLostError$5,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$5,
+  UnauthorizedError: UnauthorizedError$5,
+  PermissionDeniedError: PermissionDeniedError$3,
+  MethodNotFoundError: MethodNotFoundError$2,
+  AbortedError: AbortedError$2,
+  InvalidArgumentError: InvalidArgumentError$3,
+  UnavailableError: UnavailableError$2,
+  QueryFailedError: QueryFailedError$3,
+  NotFoundError: NotFoundError$4,
+  errors: errors$2
 });
 const FINAL_STATUSES = [ETHTxnStatus.DROPPED, ETHTxnStatus.SUCCEEDED, ETHTxnStatus.PARTIALLY_FAILED, ETHTxnStatus.FAILED];
 const FAILED_STATUSES = [ETHTxnStatus.DROPPED, ETHTxnStatus.PARTIALLY_FAILED, ETHTxnStatus.FAILED];
@@ -53105,7 +53797,7 @@ class Orchestrator {
     this.setSigners(signers);
   }
   static randomTag() {
-    return `default-${hexlify(randomBytes(8)).slice(2)}`;
+    return `default-${hexlify(randomBytes$1(8)).slice(2)}`;
   }
   pullId() {
     return `${this.tag}-${this.count++}`;
@@ -53379,7 +54071,7 @@ class Wallet2 extends Signer$1 {
     return this.relayer.relay(_extends$f({}, deployTx, {
       chainId: this.chainId,
       intent: {
-        id: hexlify(randomBytes(32)),
+        id: hexlify(randomBytes$1(32)),
         wallet: this.address
       }
     }));
@@ -53470,7 +54162,7 @@ class Wallet2 extends Signer$1 {
   }
   // Generate nonce with random space
   randomNonce() {
-    const randomNonceSpace = BigNumber.from(hexlify(randomBytes(12)));
+    const randomNonceSpace = BigNumber.from(hexlify(randomBytes$1(12)));
     const randomNonce = index$1$2.transaction.encodeNonce(randomNonceSpace, 0);
     return randomNonce;
   }
@@ -54316,7 +55008,7 @@ class Account {
     const predecorated = await this.predecorateTransactions(txs, wstatus, chainId);
     const transactions2 = index$1$2.transaction.fromTransactionish(this.address, predecorated);
     const stubSignature = wallet.coders.config.buildStubSignature(wallet.config, stubSignatureOverrides);
-    const intentId = hexlify(randomBytes(32));
+    const intentId = hexlify(randomBytes$1(32));
     const signedBundle = {
       chainId,
       intent: {
@@ -54479,7 +55171,7 @@ function _extends$d() {
 }
 const WebRPCVersion$1 = "v1";
 const WebRPCSchemaVersion$1 = "v0.4.0";
-const WebRPCSchemaHash$1 = "83530970d81179658f6546c87fc4352280dbd287";
+const WebRPCSchemaHash$1 = "d33d29bc84a4439a42a4e1533035bc80c4ea226e";
 let ContractType$1 = /* @__PURE__ */ function(ContractType2) {
   ContractType2["UNKNOWN"] = "UNKNOWN";
   ContractType2["NATIVE"] = "NATIVE";
@@ -54539,63 +55231,87 @@ class Indexer {
     this.hostname = void 0;
     this.fetch = void 0;
     this.path = "/rpc/Indexer/";
-    this.ping = (headers) => {
-      return this.fetch(this.url("Ping"), createHTTPRequest$5({}, headers)).then((res) => {
+    this.ping = (headers, signal) => {
+      return this.fetch(this.url("Ping"), createHTTPRequest$5({}, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.version = (headers) => {
-      return this.fetch(this.url("Version"), createHTTPRequest$5({}, headers)).then((res) => {
+    this.version = (headers, signal) => {
+      return this.fetch(this.url("Version"), createHTTPRequest$5({}, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             version: _data2.version
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.runtimeStatus = (headers) => {
-      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$5({}, headers)).then((res) => {
+    this.runtimeStatus = (headers, signal) => {
+      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$5({}, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getChainID = (headers) => {
-      return this.fetch(this.url("GetChainID"), createHTTPRequest$5({}, headers)).then((res) => {
+    this.getChainID = (headers, signal) => {
+      return this.fetch(this.url("GetChainID"), createHTTPRequest$5({}, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             chainID: _data2.chainID
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getEtherBalance = (args, headers) => {
-      return this.fetch(this.url("GetEtherBalance"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getEtherBalance = (args, headers, signal) => {
+      return this.fetch(this.url("GetEtherBalance"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             balance: _data2.balance
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTokenBalances = (args, headers) => {
-      return this.fetch(this.url("GetTokenBalances"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getTokenBalances = (args, headers, signal) => {
+      return this.fetch(this.url("GetTokenBalances"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             page: _data2.page,
             balances: _data2.balances
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTokenSupplies = (args, headers) => {
-      return this.fetch(this.url("GetTokenSupplies"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getTokenSupplies = (args, headers, signal) => {
+      return this.fetch(this.url("GetTokenSupplies"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             page: _data2.page,
@@ -54603,126 +55319,198 @@ class Indexer {
             tokenIDs: _data2.tokenIDs
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTokenSuppliesMap = (args, headers) => {
-      return this.fetch(this.url("GetTokenSuppliesMap"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getTokenSuppliesMap = (args, headers, signal) => {
+      return this.fetch(this.url("GetTokenSuppliesMap"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             supplies: _data2.supplies
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getBalanceUpdates = (args, headers) => {
-      return this.fetch(this.url("GetBalanceUpdates"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getBalanceUpdates = (args, headers, signal) => {
+      return this.fetch(this.url("GetBalanceUpdates"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             page: _data2.page,
             balances: _data2.balances
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTransactionHistory = (args, headers) => {
-      return this.fetch(this.url("GetTransactionHistory"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getTransactionHistory = (args, headers, signal) => {
+      return this.fetch(this.url("GetTransactionHistory"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             page: _data2.page,
             transactions: _data2.transactions
           };
         });
-      });
-    };
-    this.syncBalance = (args, headers) => {
-      return this.fetch(this.url("SyncBalance"), createHTTPRequest$5(args, headers)).then((res) => {
-        return buildResponse$5(res).then((_data2) => {
-          return {};
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
-    this.fetchTransactionReceipt = (args, headers) => {
-      return this.fetch(this.url("FetchTransactionReceipt"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.syncBalance = (args, headers, signal) => {
+      return this.fetch(this.url("SyncBalance"), createHTTPRequest$5(args, headers, signal)).then((res) => {
+        return buildResponse$5(res).then((_data2) => {
+          return {};
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.fetchTransactionReceipt = (args, headers, signal) => {
+      return this.fetch(this.url("FetchTransactionReceipt"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             receipt: _data2.receipt
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getOrderbookOrders = (args, headers) => {
-      return this.fetch(this.url("GetOrderbookOrders"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getOrderbookOrders = (args, headers, signal) => {
+      return this.fetch(this.url("GetOrderbookOrders"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             page: _data2.page,
             orders: _data2.orders
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTopOrders = (args, headers) => {
-      return this.fetch(this.url("GetTopOrders"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getTopOrders = (args, headers, signal) => {
+      return this.fetch(this.url("GetTopOrders"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             orders: _data2.orders
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.fetchTransactionReceiptWithFilter = (args, headers) => {
-      return this.fetch(this.url("FetchTransactionReceiptWithFilter"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.fetchTransactionReceiptWithFilter = (args, headers, signal) => {
+      return this.fetch(this.url("FetchTransactionReceiptWithFilter"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             receipt: _data2.receipt
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getAllWebhookListeners = (args, headers) => {
-      return this.fetch(this.url("GetAllWebhookListeners"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getAllWebhookListeners = (args, headers, signal) => {
+      return this.fetch(this.url("GetAllWebhookListeners"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             listeners: _data2.listeners
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getWebhookListener = (args, headers) => {
-      return this.fetch(this.url("GetWebhookListener"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.getWebhookListener = (args, headers, signal) => {
+      return this.fetch(this.url("GetWebhookListener"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             listener: _data2.listener
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.addWebhookListener = (args, headers) => {
-      return this.fetch(this.url("AddWebhookListener"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.addWebhookListener = (args, headers, signal) => {
+      return this.fetch(this.url("AddWebhookListener"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             status: _data2.status,
             listener: _data2.listener
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateWebhookListener = (args, headers) => {
-      return this.fetch(this.url("UpdateWebhookListener"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.updateWebhookListener = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateWebhookListener"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.removeWebhookListener = (args, headers) => {
-      return this.fetch(this.url("RemoveWebhookListener"), createHTTPRequest$5(args, headers)).then((res) => {
+    this.removeWebhookListener = (args, headers, signal) => {
+      return this.fetch(this.url("RemoveWebhookListener"), createHTTPRequest$5(args, headers, signal)).then((res) => {
         return buildResponse$5(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$4.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
+    };
+    this.subscribeReceipts = (args, options) => {
+      const _fetch = () => this.fetch(this.url("SubscribeReceipts"), createHTTPRequest$5(args, options.headers, options.signal)).then(async function(res) {
+        await sseResponse(res, options, _fetch);
+      }, (error) => {
+        options.onError(error, _fetch);
+      });
+      return _fetch();
+    };
+    this.subscribeEvents = (args, options) => {
+      const _fetch = () => this.fetch(this.url("SubscribeEvents"), createHTTPRequest$5(args, options.headers, options.signal)).then(async function(res) {
+        await sseResponse(res, options, _fetch);
+      }, (error) => {
+        options.onError(error, _fetch);
+      });
+      return _fetch();
     };
     this.hostname = hostname;
     this.fetch = (input2, init3) => fetch2(input2, init3);
@@ -54731,13 +55519,126 @@ class Indexer {
     return this.hostname + this.path + name2;
   }
 }
-const createHTTPRequest$5 = (body = {}, headers = {}) => {
+const sseResponse = async (res, options, retryFetch) => {
+  const {
+    onMessage,
+    onOpen,
+    onClose,
+    onError
+  } = options;
+  if (!res.ok) {
+    try {
+      await buildResponse$5(res);
+    } catch (error) {
+      onError(error, retryFetch);
+    }
+    return;
+  }
+  if (!res.body) {
+    onError(WebrpcBadResponseError$4.new({
+      status: res.status,
+      cause: "Invalid response, missing body"
+    }), retryFetch);
+    return;
+  }
+  onOpen && onOpen();
+  const reader2 = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer2 = "";
+  let lastReadTime = Date.now();
+  const timeout = (10 + 1) * 1e3;
+  let intervalId;
+  try {
+    intervalId = setInterval(() => {
+      if (Date.now() - lastReadTime > timeout) {
+        throw WebrpcStreamLostError$4.new({
+          cause: "Stream timed out"
+        });
+      }
+    }, timeout);
+    while (true) {
+      let value;
+      let done;
+      try {
+        ;
+        ({
+          value,
+          done
+        } = await reader2.read());
+        lastReadTime = Date.now();
+        buffer2 += decoder.decode(value, {
+          stream: true
+        });
+      } catch (error) {
+        let message = "";
+        if (error instanceof Error) {
+          message = error.message;
+        }
+        if (error instanceof DOMException && error.name === "AbortError") {
+          onError(WebrpcRequestFailedError$4.new({
+            message: "AbortError",
+            cause: `AbortError: ${message}`
+          }), () => {
+            throw new Error("Abort signal cannot be used to reconnect");
+          });
+        } else {
+          onError(WebrpcStreamLostError$4.new({
+            cause: `reader.read(): ${message}`
+          }), retryFetch);
+        }
+        return;
+      }
+      let lines = buffer2.split("\n");
+      for (let i2 = 0; i2 < lines.length - 1; i2++) {
+        if (lines[i2].length == 0) {
+          continue;
+        }
+        let data;
+        try {
+          data = JSON.parse(lines[i2]);
+          if (data.hasOwnProperty("webrpcError")) {
+            const error = data.webrpcError;
+            const code2 = typeof error.code === "number" ? error.code : 0;
+            onError((webrpcErrorByCode$4[code2] || WebrpcError$4).new(error), retryFetch);
+            return;
+          }
+        } catch (error) {
+          if (error instanceof Error && error.message === "Abort signal cannot be used to reconnect") {
+            throw error;
+          }
+          onError(WebrpcBadResponseError$4.new({
+            status: res.status,
+            // @ts-ignore
+            cause: `JSON.parse(): ${error.message}`
+          }), retryFetch);
+        }
+        onMessage(data);
+      }
+      if (!done) {
+        buffer2 = lines[lines.length - 1];
+        continue;
+      }
+      onClose && onClose();
+      return;
+    }
+  } catch (error) {
+    if (error instanceof WebrpcStreamLostError$4) {
+      onError(error, retryFetch);
+    } else {
+      throw error;
+    }
+  } finally {
+    clearInterval(intervalId);
+  }
+};
+const createHTTPRequest$5 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
     headers: _extends$d({}, headers, {
       "Content-Type": "application/json"
     }),
-    body: JSON.stringify(body || {})
+    body: JSON.stringify(body || {}),
+    signal
   };
 };
 const buildResponse$5 = (res) => {
@@ -54745,18 +55646,240 @@ const buildResponse$5 = (res) => {
     let data;
     try {
       data = JSON.parse(text2);
-    } catch (err) {
-      throw {
-        code: "unknown",
-        msg: `expecting JSON, got: ${text2}`,
-        status: res.status
-      };
+    } catch (error) {
+      let message = "";
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      throw WebrpcBadResponseError$4.new({
+        status: res.status,
+        cause: `JSON.parse(): ${message}: response text: ${text2}`
+      });
     }
     if (!res.ok) {
-      throw data;
+      const code2 = typeof data.code === "number" ? data.code : 0;
+      throw (webrpcErrorByCode$4[code2] || WebrpcError$4).new(data);
     }
     return data;
   });
+};
+let WebrpcError$4 = class WebrpcError3 extends Error {
+  constructor(name2, code2, message, status, cause) {
+    super(message);
+    this.name = void 0;
+    this.code = void 0;
+    this.message = void 0;
+    this.status = void 0;
+    this.cause = void 0;
+    this.msg = void 0;
+    this.name = name2 || "WebrpcError";
+    this.code = typeof code2 === "number" ? code2 : 0;
+    this.message = message || `endpoint error ${this.code}`;
+    this.msg = this.message;
+    this.status = typeof status === "number" ? status : 0;
+    this.cause = cause;
+    Object.setPrototypeOf(this, WebrpcError3.prototype);
+  }
+  static new(payload) {
+    return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
+  }
+};
+let WebrpcEndpointError$4 = class WebrpcEndpointError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcEndpointError3.prototype);
+  }
+};
+let WebrpcRequestFailedError$4 = class WebrpcRequestFailedError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError3.prototype);
+  }
+};
+let WebrpcBadRouteError$4 = class WebrpcBadRouteError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRouteError3.prototype);
+  }
+};
+let WebrpcBadMethodError$4 = class WebrpcBadMethodError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadMethodError3.prototype);
+  }
+};
+let WebrpcBadRequestError$4 = class WebrpcBadRequestError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRequestError3.prototype);
+  }
+};
+let WebrpcBadResponseError$4 = class WebrpcBadResponseError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadResponseError3.prototype);
+  }
+};
+let WebrpcServerPanicError$4 = class WebrpcServerPanicError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcServerPanicError3.prototype);
+  }
+};
+let WebrpcInternalErrorError$4 = class WebrpcInternalErrorError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError3.prototype);
+  }
+};
+let WebrpcClientDisconnectedError$4 = class WebrpcClientDisconnectedError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError3.prototype);
+  }
+};
+let WebrpcStreamLostError$4 = class WebrpcStreamLostError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamLostError3.prototype);
+  }
+};
+let WebrpcStreamFinishedError$4 = class WebrpcStreamFinishedError3 extends WebrpcError$4 {
+  constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError3.prototype);
+  }
+};
+let UnauthorizedError$4 = class UnauthorizedError3 extends WebrpcError$4 {
+  constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnauthorizedError3.prototype);
+  }
+};
+let PermissionDeniedError$2 = class PermissionDeniedError3 extends WebrpcError$4 {
+  constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, PermissionDeniedError3.prototype);
+  }
+};
+let SessionExpiredError$3 = class SessionExpiredError2 extends WebrpcError$4 {
+  constructor(name2 = "SessionExpired", code2 = 1002, message = "Session expired", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, SessionExpiredError2.prototype);
+  }
+};
+let MethodNotFoundError$1 = class MethodNotFoundError2 extends WebrpcError$4 {
+  constructor(name2 = "MethodNotFound", code2 = 1003, message = "Method not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, MethodNotFoundError2.prototype);
+  }
+};
+let RequestConflictError$1 = class RequestConflictError extends WebrpcError$4 {
+  constructor(name2 = "RequestConflict", code2 = 1004, message = "Conflict with target resource", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, RequestConflictError.prototype);
+  }
+};
+let AbortedError$1 = class AbortedError3 extends WebrpcError$4 {
+  constructor(name2 = "Aborted", code2 = 1005, message = "Request aborted", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, AbortedError3.prototype);
+  }
+};
+let TimeoutError$2 = class TimeoutError extends WebrpcError$4 {
+  constructor(name2 = "Timeout", code2 = 2e3, message = "Request timed out", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, TimeoutError.prototype);
+  }
+};
+let InvalidArgumentError$2 = class InvalidArgumentError3 extends WebrpcError$4 {
+  constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, InvalidArgumentError3.prototype);
+  }
+};
+let UnavailableError$1 = class UnavailableError3 extends WebrpcError$4 {
+  constructor(name2 = "Unavailable", code2 = 2002, message = "Unavailable resource", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnavailableError3.prototype);
+  }
+};
+let QueryFailedError$2 = class QueryFailedError3 extends WebrpcError$4 {
+  constructor(name2 = "QueryFailed", code2 = 2003, message = "Query failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, QueryFailedError3.prototype);
+  }
+};
+let NotFoundError$3 = class NotFoundError3 extends WebrpcError$4 {
+  constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, NotFoundError3.prototype);
+  }
+};
+let ProjectNotFoundError$1 = class ProjectNotFoundError extends WebrpcError$4 {
+  constructor(name2 = "ProjectNotFound", code2 = 3002, message = "Project not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, ProjectNotFoundError.prototype);
+  }
+};
+class MetadataCallFailedError extends WebrpcError$4 {
+  constructor(name2 = "MetadataCallFailed", code2 = 3003, message = "Metadata service call failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, MetadataCallFailedError.prototype);
+  }
+}
+let errors$1 = /* @__PURE__ */ function(errors2) {
+  errors2["WebrpcEndpoint"] = "WebrpcEndpoint";
+  errors2["WebrpcRequestFailed"] = "WebrpcRequestFailed";
+  errors2["WebrpcBadRoute"] = "WebrpcBadRoute";
+  errors2["WebrpcBadMethod"] = "WebrpcBadMethod";
+  errors2["WebrpcBadRequest"] = "WebrpcBadRequest";
+  errors2["WebrpcBadResponse"] = "WebrpcBadResponse";
+  errors2["WebrpcServerPanic"] = "WebrpcServerPanic";
+  errors2["WebrpcInternalError"] = "WebrpcInternalError";
+  errors2["WebrpcClientDisconnected"] = "WebrpcClientDisconnected";
+  errors2["WebrpcStreamLost"] = "WebrpcStreamLost";
+  errors2["WebrpcStreamFinished"] = "WebrpcStreamFinished";
+  errors2["Unauthorized"] = "Unauthorized";
+  errors2["PermissionDenied"] = "PermissionDenied";
+  errors2["SessionExpired"] = "SessionExpired";
+  errors2["MethodNotFound"] = "MethodNotFound";
+  errors2["RequestConflict"] = "RequestConflict";
+  errors2["Aborted"] = "Aborted";
+  errors2["Timeout"] = "Timeout";
+  errors2["InvalidArgument"] = "InvalidArgument";
+  errors2["Unavailable"] = "Unavailable";
+  errors2["QueryFailed"] = "QueryFailed";
+  errors2["NotFound"] = "NotFound";
+  errors2["ProjectNotFound"] = "ProjectNotFound";
+  errors2["MetadataCallFailed"] = "MetadataCallFailed";
+  return errors2;
+}({});
+const webrpcErrorByCode$4 = {
+  [0]: WebrpcEndpointError$4,
+  [-1]: WebrpcRequestFailedError$4,
+  [-2]: WebrpcBadRouteError$4,
+  [-3]: WebrpcBadMethodError$4,
+  [-4]: WebrpcBadRequestError$4,
+  [-5]: WebrpcBadResponseError$4,
+  [-6]: WebrpcServerPanicError$4,
+  [-7]: WebrpcInternalErrorError$4,
+  [-8]: WebrpcClientDisconnectedError$4,
+  [-9]: WebrpcStreamLostError$4,
+  [-10]: WebrpcStreamFinishedError$4,
+  [1e3]: UnauthorizedError$4,
+  [1001]: PermissionDeniedError$2,
+  [1002]: SessionExpiredError$3,
+  [1003]: MethodNotFoundError$1,
+  [1004]: RequestConflictError$1,
+  [1005]: AbortedError$1,
+  [2e3]: TimeoutError$2,
+  [2001]: InvalidArgumentError$2,
+  [2002]: UnavailableError$1,
+  [2003]: QueryFailedError$2,
+  [3e3]: NotFoundError$3,
+  [3002]: ProjectNotFoundError$1,
+  [3003]: MetadataCallFailedError
 };
 const fetch$3 = typeof global$1 === "object" ? global$1.fetch : window.fetch;
 class SequenceIndexer extends Indexer {
@@ -54782,19 +55905,45 @@ class SequenceIndexer extends Indexer {
 }
 const indexer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
+  AbortedError: AbortedError$1,
   ContractType: ContractType$1,
   EventLogDataType,
   EventLogType,
   Indexer,
+  InvalidArgumentError: InvalidArgumentError$2,
+  MetadataCallFailedError,
+  MethodNotFoundError: MethodNotFoundError$1,
+  NotFoundError: NotFoundError$3,
   OrderStatus,
+  PermissionDeniedError: PermissionDeniedError$2,
+  ProjectNotFoundError: ProjectNotFoundError$1,
+  QueryFailedError: QueryFailedError$2,
+  RequestConflictError: RequestConflictError$1,
   SequenceIndexer,
+  SessionExpiredError: SessionExpiredError$3,
   SortOrder,
+  TimeoutError: TimeoutError$2,
   TransactionStatus,
   TransactionType,
   TxnTransferType,
+  UnauthorizedError: UnauthorizedError$4,
+  UnavailableError: UnavailableError$1,
   WebRPCSchemaHash: WebRPCSchemaHash$1,
   WebRPCSchemaVersion: WebRPCSchemaVersion$1,
-  WebRPCVersion: WebRPCVersion$1
+  WebRPCVersion: WebRPCVersion$1,
+  WebrpcBadMethodError: WebrpcBadMethodError$4,
+  WebrpcBadRequestError: WebrpcBadRequestError$4,
+  WebrpcBadResponseError: WebrpcBadResponseError$4,
+  WebrpcBadRouteError: WebrpcBadRouteError$4,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$4,
+  WebrpcEndpointError: WebrpcEndpointError$4,
+  WebrpcError: WebrpcError$4,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$4,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$4,
+  WebrpcServerPanicError: WebrpcServerPanicError$4,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$4,
+  WebrpcStreamLostError: WebrpcStreamLostError$4,
+  errors: errors$1
 }, Symbol.toStringTag, { value: "Module" }));
 function _extends$c() {
   _extends$c = Object.assign ? Object.assign.bind() : function(target) {
@@ -54812,7 +55961,7 @@ function _extends$c() {
 }
 const WebRPCVersion = "v1";
 const WebRPCSchemaVersion = "v0.4.0";
-const WebRPCSchemaHash = "45fc83f7a323a06571e8834caf6fd768e324fb3f";
+const WebRPCSchemaHash = "beba38a03448af4673d6c6d02364dca15197c8b5";
 let ContractType = /* @__PURE__ */ function(ContractType2) {
   ContractType2["UNKNOWN"] = "UNKNOWN";
   ContractType2["ERC20"] = "ERC20";
@@ -54846,71 +55995,99 @@ class Metadata {
     this.hostname = void 0;
     this.fetch = void 0;
     this.path = "/rpc/Metadata/";
-    this.ping = (headers) => {
-      return this.fetch(this.url("Ping"), createHTTPRequest$4({}, headers)).then((res) => {
+    this.ping = (headers, signal) => {
+      return this.fetch(this.url("Ping"), createHTTPRequest$4({}, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.version = (headers) => {
-      return this.fetch(this.url("Version"), createHTTPRequest$4({}, headers)).then((res) => {
+    this.version = (headers, signal) => {
+      return this.fetch(this.url("Version"), createHTTPRequest$4({}, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             version: _data2.version
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.runtimeStatus = (headers) => {
-      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$4({}, headers)).then((res) => {
+    this.runtimeStatus = (headers, signal) => {
+      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$4({}, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTokenMetadata = (args, headers) => {
-      return this.fetch(this.url("GetTokenMetadata"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getTokenMetadata = (args, headers, signal) => {
+      return this.fetch(this.url("GetTokenMetadata"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             tokenMetadata: _data2.tokenMetadata
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.refreshTokenMetadata = (args, headers) => {
-      return this.fetch(this.url("RefreshTokenMetadata"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.refreshTokenMetadata = (args, headers, signal) => {
+      return this.fetch(this.url("RefreshTokenMetadata"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             taskId: _data2.taskId
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.enqueueTokensForRefresh = (args, headers) => {
-      return this.fetch(this.url("EnqueueTokensForRefresh"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.enqueueTokensForRefresh = (args, headers, signal) => {
+      return this.fetch(this.url("EnqueueTokensForRefresh"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             taskId: _data2.taskId
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTokenRefreshStatus = (args, headers) => {
-      return this.fetch(this.url("GetTokenRefreshStatus"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getTokenRefreshStatus = (args, headers, signal) => {
+      return this.fetch(this.url("GetTokenRefreshStatus"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTokenRefreshResult = (args, headers) => {
-      return this.fetch(this.url("GetTokenRefreshResult"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getTokenRefreshResult = (args, headers, signal) => {
+      return this.fetch(this.url("GetTokenRefreshResult"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             status: _data2.status,
@@ -54918,161 +56095,233 @@ class Metadata {
             failureReasons: _data2.failureReasons
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.cancelRefreshJob = (args, headers) => {
-      return this.fetch(this.url("CancelRefreshJob"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.cancelRefreshJob = (args, headers, signal) => {
+      return this.fetch(this.url("CancelRefreshJob"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             ok: _data2.ok
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getTokenMetadataBatch = (args, headers) => {
-      return this.fetch(this.url("GetTokenMetadataBatch"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getTokenMetadataBatch = (args, headers, signal) => {
+      return this.fetch(this.url("GetTokenMetadataBatch"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             contractTokenMetadata: _data2.contractTokenMetadata
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.searchTokenMetadata = (args, headers) => {
-      return this.fetch(this.url("SearchTokenMetadata"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.searchTokenMetadata = (args, headers, signal) => {
+      return this.fetch(this.url("SearchTokenMetadata"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             page: _data2.page,
             tokenMetadata: _data2.tokenMetadata
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.searchTokenIDs = (args, headers) => {
-      return this.fetch(this.url("SearchTokenIDs"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.searchTokenIDs = (args, headers, signal) => {
+      return this.fetch(this.url("SearchTokenIDs"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             page: _data2.page,
             tokenIds: _data2.tokenIds
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.tokenCollectionFilters = (args, headers) => {
-      return this.fetch(this.url("TokenCollectionFilters"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.tokenCollectionFilters = (args, headers, signal) => {
+      return this.fetch(this.url("TokenCollectionFilters"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             filters: _data2.filters
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getContractInfo = (args, headers) => {
-      return this.fetch(this.url("GetContractInfo"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getContractInfo = (args, headers, signal) => {
+      return this.fetch(this.url("GetContractInfo"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             contractInfo: _data2.contractInfo
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getContractInfoBatch = (args, headers) => {
-      return this.fetch(this.url("GetContractInfoBatch"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getContractInfoBatch = (args, headers, signal) => {
+      return this.fetch(this.url("GetContractInfoBatch"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             contractInfoMap: _data2.contractInfoMap
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.searchContractInfo = (args, headers) => {
-      return this.fetch(this.url("SearchContractInfo"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.searchContractInfo = (args, headers, signal) => {
+      return this.fetch(this.url("SearchContractInfo"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             contractInfoList: _data2.contractInfoList
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.searchContractInfoBatch = (args, headers) => {
-      return this.fetch(this.url("SearchContractInfoBatch"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.searchContractInfoBatch = (args, headers, signal) => {
+      return this.fetch(this.url("SearchContractInfoBatch"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             contractInfoByChain: _data2.contractInfoByChain
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.searchMetadata = (args, headers) => {
-      return this.fetch(this.url("SearchMetadata"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.searchMetadata = (args, headers, signal) => {
+      return this.fetch(this.url("SearchMetadata"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             tokenMetadata: _data2.tokenMetadata,
             contractInfo: _data2.contractInfo
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getNiftyswapTokenQuantity = (args, headers) => {
-      return this.fetch(this.url("GetNiftyswapTokenQuantity"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getNiftyswapTokenQuantity = (args, headers, signal) => {
+      return this.fetch(this.url("GetNiftyswapTokenQuantity"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             quantity: _data2.quantity
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getNiftyswapUnitPrices = (args, headers) => {
-      return this.fetch(this.url("GetNiftyswapUnitPrices"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getNiftyswapUnitPrices = (args, headers, signal) => {
+      return this.fetch(this.url("GetNiftyswapUnitPrices"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             prices: _data2.prices
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getNiftyswapUnitPricesWithQuantities = (args, headers) => {
-      return this.fetch(this.url("GetNiftyswapUnitPricesWithQuantities"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getNiftyswapUnitPricesWithQuantities = (args, headers, signal) => {
+      return this.fetch(this.url("GetNiftyswapUnitPricesWithQuantities"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             prices: _data2.prices
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.addContractToMintMonitor = (args, headers) => {
-      return this.fetch(this.url("AddContractToMintMonitor"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.addContractToMintMonitor = (args, headers, signal) => {
+      return this.fetch(this.url("AddContractToMintMonitor"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             ok: _data2.ok
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.removeContractFromMintMonitor = (args, headers) => {
-      return this.fetch(this.url("RemoveContractFromMintMonitor"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.removeContractFromMintMonitor = (args, headers, signal) => {
+      return this.fetch(this.url("RemoveContractFromMintMonitor"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             ok: _data2.ok
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.mintMonitorJobStatus = (args, headers) => {
-      return this.fetch(this.url("MintMonitorJobStatus"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.mintMonitorJobStatus = (args, headers, signal) => {
+      return this.fetch(this.url("MintMonitorJobStatus"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             task: _data2.task
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.mintMonitorTriggerJob = (args, headers) => {
-      return this.fetch(this.url("MintMonitorTriggerJob"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.mintMonitorTriggerJob = (args, headers, signal) => {
+      return this.fetch(this.url("MintMonitorTriggerJob"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             ok: _data2.ok
           };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
@@ -55088,151 +56337,215 @@ class Collections {
     this.hostname = void 0;
     this.fetch = void 0;
     this.path = "/rpc/Collections/";
-    this.createCollection = (args, headers) => {
-      return this.fetch(this.url("CreateCollection"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.createCollection = (args, headers, signal) => {
+      return this.fetch(this.url("CreateCollection"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             collection: _data2.collection
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getCollection = (args, headers) => {
-      return this.fetch(this.url("GetCollection"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getCollection = (args, headers, signal) => {
+      return this.fetch(this.url("GetCollection"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             collection: _data2.collection
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.listCollections = (args, headers) => {
-      return this.fetch(this.url("ListCollections"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.listCollections = (args, headers, signal) => {
+      return this.fetch(this.url("ListCollections"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             page: _data2.page,
             collections: _data2.collections
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateCollection = (args, headers) => {
-      return this.fetch(this.url("UpdateCollection"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.updateCollection = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateCollection"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             collection: _data2.collection
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.deleteCollection = (args, headers) => {
-      return this.fetch(this.url("DeleteCollection"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.deleteCollection = (args, headers, signal) => {
+      return this.fetch(this.url("DeleteCollection"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.publishCollection = (args, headers) => {
-      return this.fetch(this.url("PublishCollection"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.publishCollection = (args, headers, signal) => {
+      return this.fetch(this.url("PublishCollection"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             collection: _data2.collection
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.unpublishCollection = (args, headers) => {
-      return this.fetch(this.url("UnpublishCollection"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.unpublishCollection = (args, headers, signal) => {
+      return this.fetch(this.url("UnpublishCollection"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             collection: _data2.collection
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.createToken = (args, headers) => {
-      return this.fetch(this.url("CreateToken"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.createToken = (args, headers, signal) => {
+      return this.fetch(this.url("CreateToken"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             token: _data2.token,
             assets: _data2.assets
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getToken = (args, headers) => {
-      return this.fetch(this.url("GetToken"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getToken = (args, headers, signal) => {
+      return this.fetch(this.url("GetToken"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             token: _data2.token,
             assets: _data2.assets
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.listTokens = (args, headers) => {
-      return this.fetch(this.url("ListTokens"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.listTokens = (args, headers, signal) => {
+      return this.fetch(this.url("ListTokens"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             page: _data2.page,
             tokens: _data2.tokens
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateToken = (args, headers) => {
-      return this.fetch(this.url("UpdateToken"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.updateToken = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateToken"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             token: _data2.token
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.deleteToken = (args, headers) => {
-      return this.fetch(this.url("DeleteToken"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.deleteToken = (args, headers, signal) => {
+      return this.fetch(this.url("DeleteToken"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.createAsset = (args, headers) => {
-      return this.fetch(this.url("CreateAsset"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.createAsset = (args, headers, signal) => {
+      return this.fetch(this.url("CreateAsset"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             asset: _data2.asset
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getAsset = (args, headers) => {
-      return this.fetch(this.url("GetAsset"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.getAsset = (args, headers, signal) => {
+      return this.fetch(this.url("GetAsset"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             asset: _data2.asset
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.updateAsset = (args, headers) => {
-      return this.fetch(this.url("UpdateAsset"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.updateAsset = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateAsset"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             asset: _data2.asset
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.deleteAsset = (args, headers) => {
-      return this.fetch(this.url("DeleteAsset"), createHTTPRequest$4(args, headers)).then((res) => {
+    this.deleteAsset = (args, headers, signal) => {
+      return this.fetch(this.url("DeleteAsset"), createHTTPRequest$4(args, headers, signal)).then((res) => {
         return buildResponse$4(res).then((_data2) => {
           return {
             status: _data2.status
           };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
@@ -55243,13 +56556,14 @@ class Collections {
     return this.hostname + this.path + name2;
   }
 }
-const createHTTPRequest$4 = (body = {}, headers = {}) => {
+const createHTTPRequest$4 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
     headers: _extends$c({}, headers, {
       "Content-Type": "application/json"
     }),
-    body: JSON.stringify(body || {})
+    body: JSON.stringify(body || {}),
+    signal
   };
 };
 const buildResponse$4 = (res) => {
@@ -55257,18 +56571,232 @@ const buildResponse$4 = (res) => {
     let data;
     try {
       data = JSON.parse(text2);
-    } catch (err) {
-      throw {
-        code: "unknown",
-        msg: `expecting JSON, got: ${text2}`,
-        status: res.status
-      };
+    } catch (error) {
+      let message = "";
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      throw WebrpcBadResponseError$3.new({
+        status: res.status,
+        cause: `JSON.parse(): ${message}: response text: ${text2}`
+      });
     }
     if (!res.ok) {
-      throw data;
+      const code2 = typeof data.code === "number" ? data.code : 0;
+      throw (webrpcErrorByCode$3[code2] || WebrpcError$3).new(data);
     }
     return data;
   });
+};
+let WebrpcError$3 = class WebrpcError4 extends Error {
+  constructor(name2, code2, message, status, cause) {
+    super(message);
+    this.name = void 0;
+    this.code = void 0;
+    this.message = void 0;
+    this.status = void 0;
+    this.cause = void 0;
+    this.msg = void 0;
+    this.name = name2 || "WebrpcError";
+    this.code = typeof code2 === "number" ? code2 : 0;
+    this.message = message || `endpoint error ${this.code}`;
+    this.msg = this.message;
+    this.status = typeof status === "number" ? status : 0;
+    this.cause = cause;
+    Object.setPrototypeOf(this, WebrpcError4.prototype);
+  }
+  static new(payload) {
+    return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
+  }
+};
+let WebrpcEndpointError$3 = class WebrpcEndpointError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcEndpointError4.prototype);
+  }
+};
+let WebrpcRequestFailedError$3 = class WebrpcRequestFailedError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError4.prototype);
+  }
+};
+let WebrpcBadRouteError$3 = class WebrpcBadRouteError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRouteError4.prototype);
+  }
+};
+let WebrpcBadMethodError$3 = class WebrpcBadMethodError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadMethodError4.prototype);
+  }
+};
+let WebrpcBadRequestError$3 = class WebrpcBadRequestError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRequestError4.prototype);
+  }
+};
+let WebrpcBadResponseError$3 = class WebrpcBadResponseError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadResponseError4.prototype);
+  }
+};
+let WebrpcServerPanicError$3 = class WebrpcServerPanicError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcServerPanicError4.prototype);
+  }
+};
+let WebrpcInternalErrorError$3 = class WebrpcInternalErrorError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError4.prototype);
+  }
+};
+let WebrpcClientDisconnectedError$3 = class WebrpcClientDisconnectedError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError4.prototype);
+  }
+};
+let WebrpcStreamLostError$3 = class WebrpcStreamLostError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamLostError4.prototype);
+  }
+};
+let WebrpcStreamFinishedError$3 = class WebrpcStreamFinishedError4 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError4.prototype);
+  }
+};
+let UnauthorizedError$3 = class UnauthorizedError4 extends WebrpcError$3 {
+  constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnauthorizedError4.prototype);
+  }
+};
+let PermissionDeniedError$1 = class PermissionDeniedError4 extends WebrpcError$3 {
+  constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, PermissionDeniedError4.prototype);
+  }
+};
+let SessionExpiredError$2 = class SessionExpiredError3 extends WebrpcError$3 {
+  constructor(name2 = "SessionExpired", code2 = 1002, message = "Session expired", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, SessionExpiredError3.prototype);
+  }
+};
+class MethodNotFoundError3 extends WebrpcError$3 {
+  constructor(name2 = "MethodNotFound", code2 = 1003, message = "Method not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, MethodNotFoundError3.prototype);
+  }
+}
+class RequestConflictError2 extends WebrpcError$3 {
+  constructor(name2 = "RequestConflict", code2 = 1004, message = "Conflict with target resource", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, RequestConflictError2.prototype);
+  }
+}
+class FailError extends WebrpcError$3 {
+  constructor(name2 = "Fail", code2 = 1005, message = "Request Failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, FailError.prototype);
+  }
+}
+let TimeoutError$1 = class TimeoutError2 extends WebrpcError$3 {
+  constructor(name2 = "Timeout", code2 = 2e3, message = "Request timed out", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, TimeoutError2.prototype);
+  }
+};
+let InvalidArgumentError$1 = class InvalidArgumentError4 extends WebrpcError$3 {
+  constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, InvalidArgumentError4.prototype);
+  }
+};
+class RequiredArgumentError extends WebrpcError$3 {
+  constructor(name2 = "RequiredArgument", code2 = 2002, message = "Required argument missing", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, RequiredArgumentError.prototype);
+  }
+}
+let NotFoundError$2 = class NotFoundError4 extends WebrpcError$3 {
+  constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, NotFoundError4.prototype);
+  }
+};
+class ProjectNotFoundError2 extends WebrpcError$3 {
+  constructor(name2 = "ProjectNotFound", code2 = 3002, message = "Project not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, ProjectNotFoundError2.prototype);
+  }
+}
+let ChainNotFoundError$1 = class ChainNotFoundError extends WebrpcError$3 {
+  constructor(name2 = "ChainNotFound", code2 = 3003, message = "Chain not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, ChainNotFoundError.prototype);
+  }
+};
+let errors = /* @__PURE__ */ function(errors2) {
+  errors2["WebrpcEndpoint"] = "WebrpcEndpoint";
+  errors2["WebrpcRequestFailed"] = "WebrpcRequestFailed";
+  errors2["WebrpcBadRoute"] = "WebrpcBadRoute";
+  errors2["WebrpcBadMethod"] = "WebrpcBadMethod";
+  errors2["WebrpcBadRequest"] = "WebrpcBadRequest";
+  errors2["WebrpcBadResponse"] = "WebrpcBadResponse";
+  errors2["WebrpcServerPanic"] = "WebrpcServerPanic";
+  errors2["WebrpcInternalError"] = "WebrpcInternalError";
+  errors2["WebrpcClientDisconnected"] = "WebrpcClientDisconnected";
+  errors2["WebrpcStreamLost"] = "WebrpcStreamLost";
+  errors2["WebrpcStreamFinished"] = "WebrpcStreamFinished";
+  errors2["Unauthorized"] = "Unauthorized";
+  errors2["PermissionDenied"] = "PermissionDenied";
+  errors2["SessionExpired"] = "SessionExpired";
+  errors2["MethodNotFound"] = "MethodNotFound";
+  errors2["RequestConflict"] = "RequestConflict";
+  errors2["Fail"] = "Fail";
+  errors2["Timeout"] = "Timeout";
+  errors2["InvalidArgument"] = "InvalidArgument";
+  errors2["RequiredArgument"] = "RequiredArgument";
+  errors2["NotFound"] = "NotFound";
+  errors2["ProjectNotFound"] = "ProjectNotFound";
+  errors2["ChainNotFound"] = "ChainNotFound";
+  return errors2;
+}({});
+const webrpcErrorByCode$3 = {
+  [0]: WebrpcEndpointError$3,
+  [-1]: WebrpcRequestFailedError$3,
+  [-2]: WebrpcBadRouteError$3,
+  [-3]: WebrpcBadMethodError$3,
+  [-4]: WebrpcBadRequestError$3,
+  [-5]: WebrpcBadResponseError$3,
+  [-6]: WebrpcServerPanicError$3,
+  [-7]: WebrpcInternalErrorError$3,
+  [-8]: WebrpcClientDisconnectedError$3,
+  [-9]: WebrpcStreamLostError$3,
+  [-10]: WebrpcStreamFinishedError$3,
+  [1e3]: UnauthorizedError$3,
+  [1001]: PermissionDeniedError$1,
+  [1002]: SessionExpiredError$2,
+  [1003]: MethodNotFoundError3,
+  [1004]: RequestConflictError2,
+  [1005]: FailError,
+  [2e3]: TimeoutError$1,
+  [2001]: InvalidArgumentError$1,
+  [2002]: RequiredArgumentError,
+  [3e3]: NotFoundError$2,
+  [3002]: ProjectNotFoundError2,
+  [3003]: ChainNotFoundError$1
 };
 const fetch$2 = typeof global$1 === "object" ? global$1.fetch : window.fetch;
 class SequenceMetadata extends Metadata {
@@ -55312,17 +56840,42 @@ class SequenceCollections extends Collections {
 }
 const metadata$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
+  ChainNotFoundError: ChainNotFoundError$1,
   Collections,
   ContractType,
+  FailError,
+  InvalidArgumentError: InvalidArgumentError$1,
   Metadata,
+  MethodNotFoundError: MethodNotFoundError3,
+  NotFoundError: NotFoundError$2,
+  PermissionDeniedError: PermissionDeniedError$1,
+  ProjectNotFoundError: ProjectNotFoundError2,
   PropertyType,
+  RequestConflictError: RequestConflictError2,
+  RequiredArgumentError,
   SequenceCollections,
   SequenceMetadata,
+  SessionExpiredError: SessionExpiredError$2,
   SwapType,
   TaskStatus,
+  TimeoutError: TimeoutError$1,
+  UnauthorizedError: UnauthorizedError$3,
   WebRPCSchemaHash,
   WebRPCSchemaVersion,
-  WebRPCVersion
+  WebRPCVersion,
+  WebrpcBadMethodError: WebrpcBadMethodError$3,
+  WebrpcBadRequestError: WebrpcBadRequestError$3,
+  WebrpcBadResponseError: WebrpcBadResponseError$3,
+  WebrpcBadRouteError: WebrpcBadRouteError$3,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$3,
+  WebrpcEndpointError: WebrpcEndpointError$3,
+  WebrpcError: WebrpcError$3,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$3,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$3,
+  WebrpcServerPanicError: WebrpcServerPanicError$3,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$3,
+  WebrpcStreamLostError: WebrpcStreamLostError$3,
+  errors
 }, Symbol.toStringTag, { value: "Module" }));
 function useGateway(uri, gateway) {
   const clean = uri.replace("ipfs://ipfs/", "").replace("ipfs://", "");
@@ -57845,131 +59398,191 @@ class Guard {
     this.hostname = void 0;
     this.fetch = void 0;
     this.path = "/rpc/Guard/";
-    this.ping = (headers) => {
-      return this.fetch(this.url("Ping"), createHTTPRequest$2({}, headers)).then((res) => {
+    this.ping = (headers, signal) => {
+      return this.fetch(this.url("Ping"), createHTTPRequest$2({}, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.version = (headers) => {
-      return this.fetch(this.url("Version"), createHTTPRequest$2({}, headers)).then((res) => {
+    this.version = (headers, signal) => {
+      return this.fetch(this.url("Version"), createHTTPRequest$2({}, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             version: _data2.version
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.runtimeStatus = (headers) => {
-      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$2({}, headers)).then((res) => {
+    this.runtimeStatus = (headers, signal) => {
+      return this.fetch(this.url("RuntimeStatus"), createHTTPRequest$2({}, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             status: _data2.status
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.getSignerConfig = (args, headers) => {
-      return this.fetch(this.url("GetSignerConfig"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.getSignerConfig = (args, headers, signal) => {
+      return this.fetch(this.url("GetSignerConfig"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             signerConfig: _data2.signerConfig
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.sign = (args, headers) => {
-      return this.fetch(this.url("Sign"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.sign = (args, headers, signal) => {
+      return this.fetch(this.url("Sign"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             sig: _data2.sig
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.signWith = (args, headers) => {
-      return this.fetch(this.url("SignWith"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.signWith = (args, headers, signal) => {
+      return this.fetch(this.url("SignWith"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             sig: _data2.sig
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.authMethods = (args, headers) => {
-      return this.fetch(this.url("AuthMethods"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.authMethods = (args, headers, signal) => {
+      return this.fetch(this.url("AuthMethods"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             methods: _data2.methods,
             active: _data2.active
           };
         });
-      });
-    };
-    this.setPIN = (args, headers) => {
-      return this.fetch(this.url("SetPIN"), createHTTPRequest$2(args, headers)).then((res) => {
-        return buildResponse$2(res).then((_data2) => {
-          return {};
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
-    this.resetPIN = (args, headers) => {
-      return this.fetch(this.url("ResetPIN"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.setPIN = (args, headers, signal) => {
+      return this.fetch(this.url("SetPIN"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {};
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.createTOTP = (args, headers) => {
-      return this.fetch(this.url("CreateTOTP"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.resetPIN = (args, headers, signal) => {
+      return this.fetch(this.url("ResetPIN"), createHTTPRequest$2(args, headers, signal)).then((res) => {
+        return buildResponse$2(res).then((_data2) => {
+          return {};
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.createTOTP = (args, headers, signal) => {
+      return this.fetch(this.url("CreateTOTP"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             uri: _data2.uri
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.commitTOTP = (args, headers) => {
-      return this.fetch(this.url("CommitTOTP"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.commitTOTP = (args, headers, signal) => {
+      return this.fetch(this.url("CommitTOTP"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             codes: _data2.codes
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.resetTOTP = (args, headers) => {
-      return this.fetch(this.url("ResetTOTP"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.resetTOTP = (args, headers, signal) => {
+      return this.fetch(this.url("ResetTOTP"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {};
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.reset2FA = (args, headers) => {
-      return this.fetch(this.url("Reset2FA"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.reset2FA = (args, headers, signal) => {
+      return this.fetch(this.url("Reset2FA"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {};
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.recoveryCodes = (args, headers) => {
-      return this.fetch(this.url("RecoveryCodes"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.recoveryCodes = (args, headers, signal) => {
+      return this.fetch(this.url("RecoveryCodes"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             codes: _data2.codes
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.resetRecoveryCodes = (args, headers) => {
-      return this.fetch(this.url("ResetRecoveryCodes"), createHTTPRequest$2(args, headers)).then((res) => {
+    this.resetRecoveryCodes = (args, headers, signal) => {
+      return this.fetch(this.url("ResetRecoveryCodes"), createHTTPRequest$2(args, headers, signal)).then((res) => {
         return buildResponse$2(res).then((_data2) => {
           return {
             codes: _data2.codes
           };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$2.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
@@ -57980,13 +59593,14 @@ class Guard {
     return this.hostname + this.path + name2;
   }
 }
-const createHTTPRequest$2 = (body = {}, headers = {}) => {
+const createHTTPRequest$2 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
     headers: _extends$9({}, headers, {
       "Content-Type": "application/json"
     }),
-    body: JSON.stringify(body || {})
+    body: JSON.stringify(body || {}),
+    signal
   };
 };
 const buildResponse$2 = (res) => {
@@ -57994,18 +59608,178 @@ const buildResponse$2 = (res) => {
     let data;
     try {
       data = JSON.parse(text2);
-    } catch (err) {
-      throw {
-        code: "unknown",
-        msg: `expecting JSON, got: ${text2}`,
-        status: res.status
-      };
+    } catch (error) {
+      let message = "";
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      throw WebrpcBadResponseError$2.new({
+        status: res.status,
+        cause: `JSON.parse(): ${message}: response text: ${text2}`
+      });
     }
     if (!res.ok) {
-      throw data;
+      const code2 = typeof data.code === "number" ? data.code : 0;
+      throw (webrpcErrorByCode$2[code2] || WebrpcError$2).new(data);
     }
     return data;
   });
+};
+let WebrpcError$2 = class WebrpcError5 extends Error {
+  constructor(name2, code2, message, status, cause) {
+    super(message);
+    this.name = void 0;
+    this.code = void 0;
+    this.message = void 0;
+    this.status = void 0;
+    this.cause = void 0;
+    this.msg = void 0;
+    this.name = name2 || "WebrpcError";
+    this.code = typeof code2 === "number" ? code2 : 0;
+    this.message = message || `endpoint error ${this.code}`;
+    this.msg = this.message;
+    this.status = typeof status === "number" ? status : 0;
+    this.cause = cause;
+    Object.setPrototypeOf(this, WebrpcError5.prototype);
+  }
+  static new(payload) {
+    return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
+  }
+};
+let WebrpcEndpointError$2 = class WebrpcEndpointError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcEndpointError5.prototype);
+  }
+};
+let WebrpcRequestFailedError$2 = class WebrpcRequestFailedError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError5.prototype);
+  }
+};
+let WebrpcBadRouteError$2 = class WebrpcBadRouteError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRouteError5.prototype);
+  }
+};
+let WebrpcBadMethodError$2 = class WebrpcBadMethodError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadMethodError5.prototype);
+  }
+};
+let WebrpcBadRequestError$2 = class WebrpcBadRequestError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRequestError5.prototype);
+  }
+};
+let WebrpcBadResponseError$2 = class WebrpcBadResponseError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadResponseError5.prototype);
+  }
+};
+let WebrpcServerPanicError$2 = class WebrpcServerPanicError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcServerPanicError5.prototype);
+  }
+};
+let WebrpcInternalErrorError$2 = class WebrpcInternalErrorError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError5.prototype);
+  }
+};
+let WebrpcClientDisconnectedError$2 = class WebrpcClientDisconnectedError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError5.prototype);
+  }
+};
+let WebrpcStreamLostError$2 = class WebrpcStreamLostError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamLostError5.prototype);
+  }
+};
+let WebrpcStreamFinishedError$2 = class WebrpcStreamFinishedError5 extends WebrpcError$2 {
+  constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError5.prototype);
+  }
+};
+let UnauthorizedError$2 = class UnauthorizedError5 extends WebrpcError$2 {
+  constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnauthorizedError5.prototype);
+  }
+};
+let SessionExpiredError$1 = class SessionExpiredError4 extends WebrpcError$2 {
+  constructor(name2 = "SessionExpired", code2 = 1002, message = "Session expired", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, SessionExpiredError4.prototype);
+  }
+};
+class AbortedError4 extends WebrpcError$2 {
+  constructor(name2 = "Aborted", code2 = 1005, message = "Request aborted", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, AbortedError4.prototype);
+  }
+}
+class InvalidArgumentError5 extends WebrpcError$2 {
+  constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, InvalidArgumentError5.prototype);
+  }
+}
+class UnavailableError4 extends WebrpcError$2 {
+  constructor(name2 = "Unavailable", code2 = 2002, message = "Unavailable resource", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, UnavailableError4.prototype);
+  }
+}
+let QueryFailedError$1 = class QueryFailedError4 extends WebrpcError$2 {
+  constructor(name2 = "QueryFailed", code2 = 2003, message = "Query failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, QueryFailedError4.prototype);
+  }
+};
+class ValidationFailedError extends WebrpcError$2 {
+  constructor(name2 = "ValidationFailed", code2 = 2004, message = "Validation Failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, ValidationFailedError.prototype);
+  }
+}
+let NotFoundError$1 = class NotFoundError5 extends WebrpcError$2 {
+  constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, NotFoundError5.prototype);
+  }
+};
+const webrpcErrorByCode$2 = {
+  [0]: WebrpcEndpointError$2,
+  [-1]: WebrpcRequestFailedError$2,
+  [-2]: WebrpcBadRouteError$2,
+  [-3]: WebrpcBadMethodError$2,
+  [-4]: WebrpcBadRequestError$2,
+  [-5]: WebrpcBadResponseError$2,
+  [-6]: WebrpcServerPanicError$2,
+  [-7]: WebrpcInternalErrorError$2,
+  [-8]: WebrpcClientDisconnectedError$2,
+  [-9]: WebrpcStreamLostError$2,
+  [-10]: WebrpcStreamFinishedError$2,
+  [1e3]: UnauthorizedError$2,
+  [1002]: SessionExpiredError$1,
+  [1005]: AbortedError4,
+  [2001]: InvalidArgumentError5,
+  [2002]: UnavailableError4,
+  [2003]: QueryFailedError$1,
+  [2004]: ValidationFailedError,
+  [3e3]: NotFoundError$1
 };
 const fetch$1 = typeof global$1 === "object" ? global$1.fetch : window.fetch;
 class GuardSigner {
@@ -58780,7 +60554,7 @@ var eventemitter2 = { exports: {} };
       var obj = {};
       var key2;
       var len = keys.length;
-      var valuesCount = values ? values.length : 0;
+      var valuesCount = 0;
       for (var i2 = 0; i2 < len; i2++) {
         key2 = keys[i2];
         obj[key2] = i2 < valuesCount ? values[i2] : undefined$1;
@@ -58932,7 +60706,7 @@ var eventemitter2 = { exports: {} };
       }
       for (var i2 = 0; i2 < length2; i2++) {
         option = keys[i2];
-        if (!allowUnknown && !hasOwnProperty2.call(schema, option)) {
+        if (!hasOwnProperty2.call(schema, option)) {
           throw Error('Unknown "' + option + '" option');
         }
         value = options[option];
@@ -60028,11 +61802,7 @@ var eventemitter2 = { exports: {} };
       },
       _observers: { value: null, writable: true, configurable: true }
     });
-    if (typeof undefined$1 === "function" && undefined$1.amd) {
-      undefined$1(function() {
-        return EventEmitter2;
-      });
-    } else {
+    {
       module2.exports = EventEmitter2;
     }
   }();
@@ -60064,23 +61834,23 @@ function output$1(out, instance) {
 const createView$1 = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
 const rotr$1 = (word, shift2) => word << 32 - shift2 | word >>> shift2;
 new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
-const hexes$1 = /* @__PURE__ */ Array.from({ length: 256 }, (_, i2) => i2.toString(16).padStart(2, "0"));
-function bytesToHex$1(bytes3) {
+const hexes$2 = /* @__PURE__ */ Array.from({ length: 256 }, (_, i2) => i2.toString(16).padStart(2, "0"));
+function bytesToHex$2(bytes3) {
   bytes$1(bytes3);
   let hex2 = "";
   for (let i2 = 0; i2 < bytes3.length; i2++) {
-    hex2 += hexes$1[bytes3[i2]];
+    hex2 += hexes$2[bytes3[i2]];
   }
   return hex2;
 }
-function utf8ToBytes$1(str) {
+function utf8ToBytes$2(str) {
   if (typeof str !== "string")
     throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
   return new Uint8Array(new TextEncoder().encode(str));
 }
 function toBytes$2(data) {
   if (typeof data === "string")
-    data = utf8ToBytes$1(data);
+    data = utf8ToBytes$2(data);
   bytes$1(data);
   return data;
 }
@@ -60554,19 +62324,19 @@ var UnauthorizedError$1 = class _UnauthorizedError extends WebrpcError$1 {
     Object.setPrototypeOf(this, _UnauthorizedError.prototype);
   }
 };
-var PermissionDeniedError = class _PermissionDeniedError extends WebrpcError$1 {
+var PermissionDeniedError5 = class _PermissionDeniedError extends WebrpcError$1 {
   constructor(name2 = "PermissionDenied", code2 = 2e3, message = "Permission denied", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, _PermissionDeniedError.prototype);
   }
 };
-var SessionExpiredError = class _SessionExpiredError extends WebrpcError$1 {
+var SessionExpiredError5 = class _SessionExpiredError extends WebrpcError$1 {
   constructor(name2 = "SessionExpired", code2 = 2001, message = "Session expired", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, _SessionExpiredError.prototype);
   }
 };
-var NotFoundError = class _NotFoundError extends WebrpcError$1 {
+var NotFoundError6 = class _NotFoundError extends WebrpcError$1 {
   constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, _NotFoundError.prototype);
@@ -60578,7 +62348,7 @@ var InvalidAppKeyError = class _InvalidAppKeyError extends WebrpcError$1 {
     Object.setPrototypeOf(this, _InvalidAppKeyError.prototype);
   }
 };
-var QueryFailedError = class _QueryFailedError extends WebrpcError$1 {
+var QueryFailedError5 = class _QueryFailedError extends WebrpcError$1 {
   constructor(name2 = "QueryFailed", code2 = 4001, message = "DB query failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, _QueryFailedError.prototype);
@@ -60603,11 +62373,11 @@ var webrpcErrorByCode$1 = {
   [-9]: WebrpcStreamLostError$1,
   [-10]: WebrpcStreamFinishedError$1,
   [1e3]: UnauthorizedError$1,
-  [2e3]: PermissionDeniedError,
-  [2001]: SessionExpiredError,
-  [3e3]: NotFoundError,
+  [2e3]: PermissionDeniedError5,
+  [2001]: SessionExpiredError5,
+  [3e3]: NotFoundError6,
   [4e3]: InvalidAppKeyError,
-  [4001]: QueryFailedError,
+  [4001]: QueryFailedError5,
   [4002]: InvalidProjectIdError
 };
 var DatabeatRpcClient = class extends Databeat {
@@ -60739,7 +62509,7 @@ var Databeat2 = class {
   // depending on privacy or strict modes. identify is also called on init,
   // where we load the data from localStorage.
   identify(userId, options) {
-    if (!isBrowser$1())
+    if (!isBrowser())
       return;
     if (options && options.allowTracking !== void 0) {
       this.allowTracking(options.allowTracking);
@@ -60784,7 +62554,7 @@ var Databeat2 = class {
     }
   }
   async track(events, options) {
-    if (isBrowser$1() && this.userId === null) {
+    if (isBrowser() && this.userId === null) {
       throw new Error("databeat: init first");
     }
     if (Array.isArray(events)) {
@@ -60859,27 +62629,27 @@ var Databeat2 = class {
       this.enabled = false;
       return;
     }
-    if (!isBrowser$1())
+    if (!isBrowser())
       return;
     this.enabled = true;
     this.ts = setStorageVal({ on: this.enabled, id: this.userId, it: this.ident, ut: this.allowUserTracking });
     this.identify();
   }
   disable() {
-    if (!isBrowser$1())
+    if (!isBrowser())
       return;
     this.enabled = false;
     this.ts = setStorageVal({ on: this.enabled, id: this.userId, it: this.ident, ut: this.allowUserTracking });
   }
 };
-var isBrowser$1 = () => {
+var isBrowser = () => {
   return typeof window === "object" && typeof window.localStorage === "object" && typeof window.localStorage.getItem === "function" && typeof window.localStorage.setItem === "function";
 };
 var isEnabled = (defaultEnabled, auth2) => {
   if (!isAuthEnabled(auth2)) {
     return false;
   }
-  if (!isBrowser$1()) {
+  if (!isBrowser()) {
     return true;
   }
   const val = getStorageVal();
@@ -60911,7 +62681,7 @@ var getPagePath = () => {
   }
 };
 var getDefaultProps = () => {
-  if (!isBrowser$1())
+  if (!isBrowser())
     return {};
   const params = new URL(window.location.href).searchParams;
   const props = {};
@@ -60981,14 +62751,14 @@ var genUserId = (seed, allowUserTracking, options) => {
     };
   }
   if (options.privacy.userIdHash === true || !options.userIdentTracking || !allowUserTracking) {
-    if (isBrowser$1() && options.privacy.userAgentSalt === true) {
+    if (isBrowser() && options.privacy.userAgentSalt === true) {
       seed = seed + ":" + navigator.userAgent;
     }
     if (options.privacy.extraSalt && options.privacy.extraSalt.length > 0) {
       seed = seed + ":" + options.privacy.extraSalt;
     }
     return {
-      userId: bytesToHex$1(sha256$2(seed)).substring(0, 50),
+      userId: bytesToHex$2(sha256$2(seed)).substring(0, 50),
       ident: 1
       /* PRIVATE */
     };
@@ -60997,7 +62767,7 @@ var genUserId = (seed, allowUserTracking, options) => {
   }
 };
 var genSessionId = () => {
-  const isSessionStorageAvail = isBrowser$1() && typeof window.sessionStorage === "object" && typeof window.sessionStorage.getItem === "function" && typeof window.sessionStorage.setItem === "function";
+  const isSessionStorageAvail = isBrowser() && typeof window.sessionStorage === "object" && typeof window.sessionStorage.getItem === "function" && typeof window.sessionStorage.setItem === "function";
   if (!isSessionStorageAvail) {
     return genRandHex(16);
   } else {
@@ -62157,18 +63927,18 @@ function overrideLogs(side) {
     var _window$ue2;
     const t2 = (_window$ue2 = window.ue) == null ? void 0 : _window$ue2.sequencewallettransport;
     console.log = (...args) => {
-      t2.logfromjs(`${side}: ${stringify$3(args)}`);
+      t2.logfromjs(`${side}: ${stringify$2(args)}`);
     };
     console.warn = (...args) => {
-      t2.warnfromjs(`${side}: ${stringify$3(args)}`);
+      t2.warnfromjs(`${side}: ${stringify$2(args)}`);
     };
     console.error = (...args) => {
-      t2.errorfromjs(`${side}: ${stringify$3(args)}`);
+      t2.errorfromjs(`${side}: ${stringify$2(args)}`);
     };
     window.logsOverriddenForUnreal = true;
   }
 }
-function stringify$3(things) {
+function stringify$2(things) {
   return things.map((a2) => typeof a2 === "object" ? a2 instanceof Error ? a2.message : JSON.stringify(a2) : String(a2)).join(" ");
 }
 let registeredUnrealMessageProvider;
@@ -62728,23 +64498,23 @@ class MuxMessageProvider {
     this.messageProviders = messageProviders;
     this.provider = void 0;
   }
-  static new(template2) {
+  static new(template) {
     var _template$windowTrans, _template$proxyTransp, _template$extensionTr, _template$unrealTrans;
     const muxMessageProvider = new MuxMessageProvider();
-    if ((_template$windowTrans = template2.windowTransport) != null && _template$windowTrans.enabled && typeof window === "object" && template2.walletAppURL) {
-      const windowMessageProvider = new WindowMessageProvider(template2.walletAppURL);
+    if ((_template$windowTrans = template.windowTransport) != null && _template$windowTrans.enabled && typeof window === "object" && template.walletAppURL) {
+      const windowMessageProvider = new WindowMessageProvider(template.walletAppURL);
       muxMessageProvider.add(windowMessageProvider);
     }
-    if ((_template$proxyTransp = template2.proxyTransport) != null && _template$proxyTransp.enabled) {
-      const proxyMessageProvider = new ProxyMessageProvider(template2.proxyTransport.appPort);
+    if ((_template$proxyTransp = template.proxyTransport) != null && _template$proxyTransp.enabled) {
+      const proxyMessageProvider = new ProxyMessageProvider(template.proxyTransport.appPort);
       muxMessageProvider.add(proxyMessageProvider);
     }
-    if ((_template$extensionTr = template2.extensionTransport) != null && _template$extensionTr.enabled) {
-      const extensionMessageProvider = new ExtensionMessageProvider(template2.extensionTransport.runtime);
+    if ((_template$extensionTr = template.extensionTransport) != null && _template$extensionTr.enabled) {
+      const extensionMessageProvider = new ExtensionMessageProvider(template.extensionTransport.runtime);
       muxMessageProvider.add(extensionMessageProvider);
     }
-    if ((_template$unrealTrans = template2.unrealTransport) != null && _template$unrealTrans.enabled && template2.windowTransport && template2.walletAppURL) {
-      const unrealMessageProvider = new UnrealMessageProvider(template2.walletAppURL);
+    if ((_template$unrealTrans = template.unrealTransport) != null && _template$unrealTrans.enabled && template.windowTransport && template.walletAppURL) {
+      const unrealMessageProvider = new UnrealMessageProvider(template.walletAppURL);
       muxMessageProvider.add(unrealMessageProvider);
     }
     muxMessageProvider.register();
@@ -63993,7 +65763,7 @@ const setupAnalytics = (projectAccessKey2, server) => {
       userAgentSalt: false
     },
     initProps: () => {
-      if (!isBrowser$1()) {
+      if (!isBrowser()) {
         return {};
       } else {
         return {
@@ -64005,7 +65775,7 @@ const setupAnalytics = (projectAccessKey2, server) => {
 };
 var packageJson = {
   name: "@0xsequence/provider",
-  version: "1.9.19",
+  version: "1.9.26",
   description: "provider sub-package for Sequence",
   repository: "https://github.com/0xsequence/sequence.js/tree/master/packages/provider",
   source: "src/index.ts",
@@ -64807,7 +66577,7 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
   ]);
   return React.createElement("div", { ...containerProps, ref: btnContainerRef, style: { height: containerHeightMap[size2], ...containerProps === null || containerProps === void 0 ? void 0 : containerProps.style } });
 }
-const version$4 = "2.9.26";
+const version$4 = "2.9.29";
 const getContractAddress = (address) => address;
 const getUrl = (url) => url;
 const getVersion$2 = () => `viem@${version$4}`;
@@ -65027,7 +66797,7 @@ function toBytes$1(value, opts = {}) {
   if (typeof value === "boolean")
     return boolToBytes(value, opts);
   if (isHex(value))
-    return hexToBytes(value, opts);
+    return hexToBytes$1(value, opts);
   return stringToBytes(value, opts);
 }
 function boolToBytes(value, opts = {}) {
@@ -65056,7 +66826,7 @@ function charCodeToBase16(char2) {
     return char2 - (charCodeMap.a - 10);
   return void 0;
 }
-function hexToBytes(hex_, opts = {}) {
+function hexToBytes$1(hex_, opts = {}) {
   let hex2 = hex_;
   if (opts.size) {
     assertSize(hex2, { size: opts.size });
@@ -65079,7 +66849,7 @@ function hexToBytes(hex_, opts = {}) {
 }
 function numberToBytes(value, opts) {
   const hex2 = numberToHex(value, opts);
-  return hexToBytes(hex2);
+  return hexToBytes$1(hex2);
 }
 function stringToBytes(value, opts = {}) {
   const bytes3 = encoder$1.encode(value);
@@ -65097,17 +66867,17 @@ function assertSize(hexOrBytes, { size: size2 }) {
     });
 }
 function fromHex$1(hex2, toOrOpts) {
-  const opts = typeof toOrOpts === "string" ? { to: toOrOpts } : toOrOpts;
+  const opts = { to: toOrOpts };
   const to = opts.to;
   if (to === "number")
-    return hexToNumber(hex2, opts);
+    return hexToNumber$1(hex2, opts);
   if (to === "bigint")
     return hexToBigInt(hex2, opts);
   if (to === "string")
     return hexToString(hex2, opts);
   if (to === "boolean")
     return hexToBool(hex2, opts);
-  return hexToBytes(hex2, opts);
+  return hexToBytes$1(hex2, opts);
 }
 function hexToBigInt(hex2, opts = {}) {
   const { signed: signed2 } = opts;
@@ -65134,18 +66904,18 @@ function hexToBool(hex_, opts = {}) {
     return true;
   throw new InvalidHexBooleanError(hex2);
 }
-function hexToNumber(hex2, opts = {}) {
+function hexToNumber$1(hex2, opts = {}) {
   return Number(hexToBigInt(hex2, opts));
 }
 function hexToString(hex2, opts = {}) {
-  let bytes3 = hexToBytes(hex2);
+  let bytes3 = hexToBytes$1(hex2);
   if (opts.size) {
     assertSize(bytes3, { size: opts.size });
     bytes3 = trim$1(bytes3, { dir: "right" });
   }
   return new TextDecoder().decode(bytes3);
 }
-const hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_v, i2) => i2.toString(16).padStart(2, "0"));
+const hexes$1 = /* @__PURE__ */ Array.from({ length: 256 }, (_v, i2) => i2.toString(16).padStart(2, "0"));
 function toHex$1(value, opts = {}) {
   if (typeof value === "number" || typeof value === "bigint")
     return numberToHex(value, opts);
@@ -65154,7 +66924,7 @@ function toHex$1(value, opts = {}) {
   }
   if (typeof value === "boolean")
     return boolToHex(value, opts);
-  return bytesToHex(value, opts);
+  return bytesToHex$1(value, opts);
 }
 function boolToHex(value, opts = {}) {
   const hex2 = `0x${Number(value)}`;
@@ -65164,10 +66934,10 @@ function boolToHex(value, opts = {}) {
   }
   return hex2;
 }
-function bytesToHex(value, opts = {}) {
+function bytesToHex$1(value, opts = {}) {
   let string = "";
   for (let i2 = 0; i2 < value.length; i2++) {
-    string += hexes[value[i2]];
+    string += hexes$1[value[i2]];
   }
   const hex2 = `0x${string}`;
   if (typeof opts.size === "number") {
@@ -65207,7 +66977,7 @@ function numberToHex(value_, opts = {}) {
 const encoder = /* @__PURE__ */ new TextEncoder();
 function stringToHex(value_, opts = {}) {
   const value = encoder.encode(value_);
-  return bytesToHex(value, opts);
+  return bytesToHex$1(value, opts);
 }
 async function addChain(client2, { chain }) {
   const { id: id2, name: name2, nativeCurrency, rpcUrls, blockExplorers } = chain;
@@ -65616,9 +67386,9 @@ class InvalidDefinitionTypeError extends BaseError$2 {
 function concat(values) {
   if (typeof values[0] === "string")
     return concatHex(values);
-  return concatBytes(values);
+  return concatBytes$2(values);
 }
-function concatBytes(values) {
+function concatBytes$2(values) {
   let length2 = 0;
   for (const arr of values) {
     length2 += arr.length;
@@ -65678,6 +67448,12 @@ function bytes(b3, ...lengths) {
   if (lengths.length > 0 && !lengths.includes(b3.length))
     throw new Error(`Expected Uint8Array of length ${lengths}, not of length=${b3.length}`);
 }
+function hash$2(hash2) {
+  if (typeof hash2 !== "function" || typeof hash2.create !== "function")
+    throw new Error("Hash should be wrapped by utils.wrapConstructor");
+  number(hash2.outputLen);
+  number(hash2.blockLen);
+}
 function exists(instance, checkFinished = true) {
   if (instance.destroyed)
     throw new Error("Hash instance has been destroyed");
@@ -65711,25 +67487,37 @@ const rotlSH = (h2, l2, s2) => h2 << s2 | l2 >>> 32 - s2;
 const rotlSL = (h2, l2, s2) => l2 << s2 | h2 >>> 32 - s2;
 const rotlBH = (h2, l2, s2) => l2 << s2 - 32 | h2 >>> 64 - s2;
 const rotlBL = (h2, l2, s2) => h2 << s2 - 32 | l2 >>> 64 - s2;
+const crypto$1 = typeof globalThis === "object" && "crypto" in globalThis ? globalThis.crypto : void 0;
 /*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-const u8a = (a2) => a2 instanceof Uint8Array;
+const u8a$1 = (a2) => a2 instanceof Uint8Array;
 const u32 = (arr) => new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
 const createView = (arr) => new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
 const rotr = (word, shift2) => word << 32 - shift2 | word >>> shift2;
 const isLE = new Uint8Array(new Uint32Array([287454020]).buffer)[0] === 68;
 if (!isLE)
   throw new Error("Non little-endian hardware is not supported");
-function utf8ToBytes(str) {
+function utf8ToBytes$1(str) {
   if (typeof str !== "string")
     throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
   return new Uint8Array(new TextEncoder().encode(str));
 }
 function toBytes(data) {
   if (typeof data === "string")
-    data = utf8ToBytes(data);
-  if (!u8a(data))
+    data = utf8ToBytes$1(data);
+  if (!u8a$1(data))
     throw new Error(`expected Uint8Array, got ${typeof data}`);
   return data;
+}
+function concatBytes$1(...arrays) {
+  const r2 = new Uint8Array(arrays.reduce((sum, a2) => sum + a2.length, 0));
+  let pad3 = 0;
+  arrays.forEach((a2) => {
+    if (!u8a$1(a2))
+      throw new Error("Uint8Array expected");
+    r2.set(a2, pad3);
+    pad3 += a2.length;
+  });
+  return r2;
 }
 class Hash2 {
   // Safe version that clones internal state
@@ -65745,22 +67533,28 @@ function wrapConstructor(hashCons) {
   hashC.create = () => hashCons();
   return hashC;
 }
+function randomBytes(bytesLength = 32) {
+  if (crypto$1 && typeof crypto$1.getRandomValues === "function") {
+    return crypto$1.getRandomValues(new Uint8Array(bytesLength));
+  }
+  throw new Error("crypto.getRandomValues must be defined");
+}
 const [SHA3_PI, SHA3_ROTL, _SHA3_IOTA] = [[], [], []];
-const _0n = /* @__PURE__ */ BigInt(0);
-const _1n = /* @__PURE__ */ BigInt(1);
-const _2n = /* @__PURE__ */ BigInt(2);
+const _0n$4 = /* @__PURE__ */ BigInt(0);
+const _1n$5 = /* @__PURE__ */ BigInt(1);
+const _2n$3 = /* @__PURE__ */ BigInt(2);
 const _7n = /* @__PURE__ */ BigInt(7);
 const _256n = /* @__PURE__ */ BigInt(256);
 const _0x71n = /* @__PURE__ */ BigInt(113);
-for (let round2 = 0, R2 = _1n, x = 1, y2 = 0; round2 < 24; round2++) {
+for (let round2 = 0, R2 = _1n$5, x = 1, y2 = 0; round2 < 24; round2++) {
   [x, y2] = [y2, (2 * x + 3 * y2) % 5];
   SHA3_PI.push(2 * (5 * y2 + x));
   SHA3_ROTL.push((round2 + 1) * (round2 + 2) / 2 % 64);
-  let t2 = _0n;
+  let t2 = _0n$4;
   for (let j2 = 0; j2 < 7; j2++) {
-    R2 = (R2 << _1n ^ (R2 >> _7n) * _0x71n) % _256n;
-    if (R2 & _2n)
-      t2 ^= _1n << (_1n << /* @__PURE__ */ BigInt(j2)) - _1n;
+    R2 = (R2 << _1n$5 ^ (R2 >> _7n) * _0x71n) % _256n;
+    if (R2 & _2n$3)
+      t2 ^= _1n$5 << (_1n$5 << /* @__PURE__ */ BigInt(j2)) - _1n$5;
   }
   _SHA3_IOTA.push(t2);
 }
@@ -65921,9 +67715,9 @@ function keccak256(value, to_) {
   return toHex$1(bytes3);
 }
 function checksumAddress(address_, chainId) {
-  const hexAddress = chainId ? `${chainId}${address_.toLowerCase()}` : address_.substring(2).toLowerCase();
+  const hexAddress = address_.substring(2).toLowerCase();
   const hash2 = keccak256(stringToBytes(hexAddress), "bytes");
-  const address = (chainId ? hexAddress.substring(`${chainId}0x`.length) : hexAddress).split("");
+  const address = hexAddress.split("");
   for (let i2 = 0; i2 < 40; i2 += 2) {
     if (hash2[i2 >> 1] >> 4 >= 8 && address[i2]) {
       address[i2] = address[i2].toUpperCase();
@@ -65937,7 +67731,7 @@ function checksumAddress(address_, chainId) {
 function getAddress(address, chainId) {
   if (!isAddress(address, { strict: false }))
     throw new InvalidAddressError({ address });
-  return checksumAddress(address, chainId);
+  return checksumAddress(address);
 }
 const addressRegex = /^0x[a-fA-F0-9]{40}$/;
 const isAddressCache = /* @__PURE__ */ new LruMap(8192);
@@ -66266,7 +68060,7 @@ class ChainMismatchError extends BaseError$2 {
     });
   }
 }
-class ChainNotFoundError extends BaseError$2 {
+class ChainNotFoundError2 extends BaseError$2 {
   constructor() {
     super([
       "No chain was provided to the request.",
@@ -66293,7 +68087,7 @@ class ClientChainNotConfiguredError extends BaseError$2 {
 }
 function assertCurrentChain({ chain, currentChainId }) {
   if (!chain)
-    throw new ChainNotFoundError();
+    throw new ChainNotFoundError2();
   if (currentChainId !== chain.id)
     throw new ChainMismatchError({ chain, currentChainId });
 }
@@ -66694,7 +68488,7 @@ class WaitForTransactionReceiptTimeoutError extends BaseError$2 {
     });
   }
 }
-const stringify$2 = (value, replacer, space) => JSON.stringify(value, (key2, value_) => {
+const stringify$1 = (value, replacer, space) => JSON.stringify(value, (key2, value_) => {
   const value2 = typeof value_ === "bigint" ? value_.toString() : value_;
   return typeof replacer === "function" ? replacer(key2, value2) : value2;
 }, space);
@@ -66705,7 +68499,7 @@ class HttpRequestError extends BaseError$2 {
       metaMessages: [
         status && `Status: ${status}`,
         `URL: ${getUrl(url)}`,
-        body && `Request body: ${stringify$2(body)}`
+        body && `Request body: ${stringify$1(body)}`
       ].filter(Boolean)
     });
     Object.defineProperty(this, "name", {
@@ -66749,7 +68543,7 @@ class RpcRequestError extends BaseError$2 {
     super("RPC Request failed.", {
       cause: error,
       details: error.message,
-      metaMessages: [`URL: ${getUrl(url)}`, `Request body: ${stringify$2(body)}`]
+      metaMessages: [`URL: ${getUrl(url)}`, `Request body: ${stringify$1(body)}`]
     });
     Object.defineProperty(this, "name", {
       enumerable: true,
@@ -66766,11 +68560,11 @@ class RpcRequestError extends BaseError$2 {
     this.code = error.code;
   }
 }
-class TimeoutError extends BaseError$2 {
+class TimeoutError3 extends BaseError$2 {
   constructor({ body, url }) {
     super("The request took too long to respond.", {
       details: "The request timed out.",
-      metaMessages: [`URL: ${getUrl(url)}`, `Request body: ${stringify$2(body)}`]
+      metaMessages: [`URL: ${getUrl(url)}`, `Request body: ${stringify$1(body)}`]
     });
     Object.defineProperty(this, "name", {
       enumerable: true,
@@ -67292,7 +69086,7 @@ function formatTransactionRequest(request) {
     rpcRequest.blobVersionedHashes = request.blobVersionedHashes;
   if (typeof request.blobs !== "undefined") {
     if (typeof request.blobs[0] !== "string")
-      rpcRequest.blobs = request.blobs.map((x) => bytesToHex(x));
+      rpcRequest.blobs = request.blobs.map((x) => bytesToHex$1(x));
     else
       rpcRequest.blobs = request.blobs;
   }
@@ -67344,7 +69138,7 @@ async function getChainId$1(client2) {
   const chainIdHex = await client2.request({
     method: "eth_chainId"
   });
-  return hexToNumber(chainIdHex);
+  return hexToNumber$1(chainIdHex);
 }
 class BaseFeeScalarError extends BaseError$2 {
   constructor() {
@@ -67406,13 +69200,13 @@ function formatTransaction(transaction2) {
     ...transaction2,
     blockHash: transaction2.blockHash ? transaction2.blockHash : null,
     blockNumber: transaction2.blockNumber ? BigInt(transaction2.blockNumber) : null,
-    chainId: transaction2.chainId ? hexToNumber(transaction2.chainId) : void 0,
+    chainId: transaction2.chainId ? hexToNumber$1(transaction2.chainId) : void 0,
     gas: transaction2.gas ? BigInt(transaction2.gas) : void 0,
     gasPrice: transaction2.gasPrice ? BigInt(transaction2.gasPrice) : void 0,
     maxFeePerBlobGas: transaction2.maxFeePerBlobGas ? BigInt(transaction2.maxFeePerBlobGas) : void 0,
     maxFeePerGas: transaction2.maxFeePerGas ? BigInt(transaction2.maxFeePerGas) : void 0,
     maxPriorityFeePerGas: transaction2.maxPriorityFeePerGas ? BigInt(transaction2.maxPriorityFeePerGas) : void 0,
-    nonce: transaction2.nonce ? hexToNumber(transaction2.nonce) : void 0,
+    nonce: transaction2.nonce ? hexToNumber$1(transaction2.nonce) : void 0,
     to: transaction2.to ? transaction2.to : null,
     transactionIndex: transaction2.transactionIndex ? Number(transaction2.transactionIndex) : null,
     type: transaction2.type ? transactionType[transaction2.type] : void 0,
@@ -67693,29 +69487,29 @@ async function getTransactionCount(client2, { address, blockTag = "latest", bloc
     method: "eth_getTransactionCount",
     params: [address, blockNumber ? numberToHex(blockNumber) : blockTag]
   });
-  return hexToNumber(count);
+  return hexToNumber$1(count);
 }
 function blobsToCommitments(parameters) {
   const { kzg } = parameters;
   const to = parameters.to ?? (typeof parameters.blobs[0] === "string" ? "hex" : "bytes");
-  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes(x)) : parameters.blobs;
+  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes$1(x)) : parameters.blobs;
   const commitments = [];
   for (const blob of blobs)
     commitments.push(Uint8Array.from(kzg.blobToKzgCommitment(blob)));
-  return to === "bytes" ? commitments : commitments.map((x) => bytesToHex(x));
+  return to === "bytes" ? commitments : commitments.map((x) => bytesToHex$1(x));
 }
 function blobsToProofs(parameters) {
   const { kzg } = parameters;
   const to = parameters.to ?? (typeof parameters.blobs[0] === "string" ? "hex" : "bytes");
-  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes(x)) : parameters.blobs;
-  const commitments = typeof parameters.commitments[0] === "string" ? parameters.commitments.map((x) => hexToBytes(x)) : parameters.commitments;
+  const blobs = typeof parameters.blobs[0] === "string" ? parameters.blobs.map((x) => hexToBytes$1(x)) : parameters.blobs;
+  const commitments = typeof parameters.commitments[0] === "string" ? parameters.commitments.map((x) => hexToBytes$1(x)) : parameters.commitments;
   const proofs = [];
   for (let i2 = 0; i2 < blobs.length; i2++) {
     const blob = blobs[i2];
     const commitment = commitments[i2];
     proofs.push(Uint8Array.from(kzg.computeBlobKzgProof(blob, commitment)));
   }
-  return to === "bytes" ? proofs : proofs.map((x) => bytesToHex(x));
+  return to === "bytes" ? proofs : proofs.map((x) => bytesToHex$1(x));
 }
 function setBigUint64(view, byteOffset, value, isLE2) {
   if (typeof view.setBigUint64 === "function")
@@ -67966,18 +69760,15 @@ class SHA2562 extends SHA2 {
 }
 const sha256$1 = /* @__PURE__ */ wrapConstructor(() => new SHA2562());
 function sha256(value, to_) {
-  const to = to_ || "hex";
   const bytes3 = sha256$1(isHex(value, { strict: false }) ? toBytes$1(value) : value);
-  if (to === "bytes")
-    return bytes3;
-  return toHex$1(bytes3);
+  return bytes3;
 }
 function commitmentToVersionedHash(parameters) {
   const { commitment, version: version2 = 1 } = parameters;
   const to = parameters.to ?? (typeof commitment === "string" ? "hex" : "bytes");
-  const versionedHash = sha256(commitment, "bytes");
+  const versionedHash = sha256(commitment);
   versionedHash.set([version2], 0);
-  return to === "bytes" ? versionedHash : bytesToHex(versionedHash);
+  return to === "bytes" ? versionedHash : bytesToHex$1(versionedHash);
 }
 function commitmentsToVersionedHashes(parameters) {
   const { commitments, version: version2 } = parameters;
@@ -68225,7 +70016,7 @@ function createCursor(bytes3, { recursiveReadLimit = 8192 } = {}) {
 }
 function toBlobs(parameters) {
   const to = parameters.to ?? (typeof parameters.data === "string" ? "hex" : "bytes");
-  const data = typeof parameters.data === "string" ? hexToBytes(parameters.data) : parameters.data;
+  const data = typeof parameters.data === "string" ? hexToBytes$1(parameters.data) : parameters.data;
   const size_ = size$4(data);
   if (!size_)
     throw new EmptyBlobError();
@@ -68254,7 +70045,7 @@ function toBlobs(parameters) {
     }
     blobs.push(blob);
   }
-  return to === "bytes" ? blobs.map((x) => x.bytes) : blobs.map((x) => bytesToHex(x.bytes));
+  return to === "bytes" ? blobs.map((x) => x.bytes) : blobs.map((x) => bytesToHex$1(x.bytes));
 }
 function toBlobSidecars(parameters) {
   const { data, kzg, to } = parameters;
@@ -68679,7 +70470,7 @@ const universalSignatureValidatorAbi = [
 function bytesToBigInt(bytes3, opts = {}) {
   if (typeof opts.size !== "undefined")
     assertSize(bytes3, { size: opts.size });
-  const hex2 = bytesToHex(bytes3, opts);
+  const hex2 = bytesToHex$1(bytes3, opts);
   return hexToBigInt(hex2, opts);
 }
 function bytesToBool(bytes_, opts = {}) {
@@ -68695,8 +70486,8 @@ function bytesToBool(bytes_, opts = {}) {
 function bytesToNumber(bytes3, opts = {}) {
   if (typeof opts.size !== "undefined")
     assertSize(bytes3, { size: opts.size });
-  const hex2 = bytesToHex(bytes3, opts);
-  return hexToNumber(hex2, opts);
+  const hex2 = bytesToHex$1(bytes3, opts);
+  return hexToNumber$1(hex2, opts);
 }
 function bytesToString(bytes_, opts = {}) {
   let bytes3 = bytes_;
@@ -68707,13 +70498,13 @@ function bytesToString(bytes_, opts = {}) {
   return new TextDecoder().decode(bytes3);
 }
 function decodeAbiParameters(params, data) {
-  const bytes3 = typeof data === "string" ? hexToBytes(data) : data;
+  const bytes3 = typeof data === "string" ? hexToBytes$1(data) : data;
   const cursor2 = createCursor(bytes3);
   if (size$4(bytes3) === 0 && params.length > 0)
     throw new AbiDecodingZeroDataError();
   if (size$4(data) && size$4(data) < 32)
     throw new AbiDecodingDataSizeTooSmallError({
-      data: typeof data === "string" ? data : bytesToHex(data),
+      data: typeof data === "string" ? data : bytesToHex$1(data),
       params,
       size: size$4(data)
     });
@@ -68756,7 +70547,7 @@ const sizeOfLength = 32;
 const sizeOfOffset = 32;
 function decodeAddress(cursor2) {
   const value = cursor2.readBytes(32);
-  return [checksumAddress(bytesToHex(sliceBytes(value, -20))), 32];
+  return [checksumAddress(bytesToHex$1(sliceBytes(value, -20))), 32];
 }
 function decodeArray(cursor2, param, { length: length2, staticPosition }) {
   if (!length2) {
@@ -68819,9 +70610,9 @@ function decodeBytes(cursor2, param, { staticPosition }) {
     }
     const data = cursor2.readBytes(length2);
     cursor2.setPosition(staticPosition + 32);
-    return [bytesToHex(data), 32];
+    return [bytesToHex$1(data), 32];
   }
-  const value = bytesToHex(cursor2.readBytes(parseInt(size2), 32));
+  const value = bytesToHex$1(cursor2.readBytes(parseInt(size2), 32));
   return [value, 32];
 }
 function decodeNumber(cursor2, param) {
@@ -69243,7 +71034,7 @@ function formatAbiItemWithArgs({ abiItem, args, includeFunctionName = true, incl
     return;
   if (!abiItem.inputs)
     return;
-  return `${includeFunctionName ? abiItem.name : ""}(${abiItem.inputs.map((input2, i2) => `${includeName && input2.name ? `${input2.name}: ` : ""}${typeof args[i2] === "object" ? stringify$2(args[i2]) : args[i2]}`).join(", ")})`;
+  return `${includeFunctionName ? abiItem.name : ""}(${abiItem.inputs.map((input2, i2) => `${includeName && input2.name ? `${input2.name}: ` : ""}${typeof args[i2] === "object" ? stringify$1(args[i2]) : args[i2]}`).join(", ")})`;
 }
 class AccountStateConflictError extends BaseError$2 {
   constructor({ address }) {
@@ -69579,14 +71370,14 @@ function encodedLabelToLabelhash(label) {
 function namehash(name2) {
   let result = new Uint8Array(32).fill(0);
   if (!name2)
-    return bytesToHex(result);
+    return bytesToHex$1(result);
   const labels = name2.split(".");
   for (let i2 = labels.length - 1; i2 >= 0; i2 -= 1) {
     const hashFromEncodedLabel = encodedLabelToLabelhash(labels[i2]);
     const hashed = hashFromEncodedLabel ? toBytes$1(hashFromEncodedLabel) : keccak256(stringToBytes(labels[i2]), "bytes");
     result = keccak256(concat([result, hashed]), "bytes");
   }
-  return bytesToHex(result);
+  return bytesToHex$1(result);
 }
 function encodeLabelhash(hash2) {
   return `[${hash2.slice(2)}]`;
@@ -69594,7 +71385,7 @@ function encodeLabelhash(hash2) {
 function labelhash(label) {
   const result = new Uint8Array(32).fill(0);
   if (!label)
-    return bytesToHex(result);
+    return bytesToHex$1(result);
   return encodedLabelToLabelhash(label) || keccak256(stringToBytes(label));
 }
 function packetToBytes(packet) {
@@ -69813,7 +71604,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Ms9Y1I3L.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BarYAJW1.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -70657,7 +72448,7 @@ async function getBlockTransactionCount(client2, { blockHash, blockNumber, block
       params: [blockNumberHex || blockTag]
     });
   }
-  return hexToNumber(count);
+  return hexToNumber$1(count);
 }
 async function getBytecode(client2, { address, blockNumber, blockTag = "latest" }) {
   const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
@@ -70739,47 +72530,32 @@ function decodeTopic({ param, value }) {
   const decodedArg = decodeAbiParameters([param], value) || [];
   return decodedArg[0];
 }
-async function simulateContract$1(client2, parameters) {
-  const { abi: abi2, address, args, dataSuffix, functionName, ...callRequest } = parameters;
-  const account2 = callRequest.account ? parseAccount(callRequest.account) : client2.account;
-  const calldata = encodeFunctionData({ abi: abi2, args, functionName });
-  try {
-    const { data } = await getAction$1(client2, call, "call")({
-      batch: false,
-      data: `${calldata}${dataSuffix ? dataSuffix.replace("0x", "") : ""}`,
-      to: address,
-      ...callRequest,
-      account: account2
-    });
-    const result = decodeFunctionResult({
-      abi: abi2,
-      args,
-      functionName,
-      data: data || "0x"
-    });
-    const minimizedAbi = abi2.filter((abiItem) => "name" in abiItem && abiItem.name === parameters.functionName);
-    return {
-      result,
-      request: {
-        abi: minimizedAbi,
-        address,
-        args,
-        dataSuffix,
-        functionName,
-        ...callRequest,
-        account: account2
+function parseEventLogs({ abi: abi2, eventName, logs, strict = true }) {
+  return logs.map((log) => {
+    var _a2;
+    try {
+      const event = decodeEventLog({
+        ...log,
+        abi: abi2,
+        strict
+      });
+      if (eventName && !eventName.includes(event.eventName))
+        return null;
+      return { ...event, ...log };
+    } catch (err) {
+      let eventName2;
+      let isUnnamed;
+      if (err instanceof AbiEventSignatureNotFoundError)
+        return null;
+      if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
+        if (strict)
+          return null;
+        eventName2 = err.abiItem.name;
+        isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
       }
-    };
-  } catch (error) {
-    throw getContractError(error, {
-      abi: abi2,
-      address,
-      args,
-      docsPath: "/docs/contract/simulateContract",
-      functionName,
-      sender: account2 == null ? void 0 : account2.address
-    });
-  }
+      return { ...log, args: isUnnamed ? [] : {}, eventName: eventName2 };
+    }
+  }).filter(Boolean);
 }
 function formatLog(log, { args, eventName } = {}) {
   return {
@@ -70791,6 +72567,322 @@ function formatLog(log, { args, eventName } = {}) {
     transactionIndex: log.transactionIndex ? Number(log.transactionIndex) : null,
     ...eventName ? { args, eventName } : {}
   };
+}
+async function getLogs(client2, { address, blockHash, fromBlock, toBlock, event, events: events_, args, strict: strict_ } = {}) {
+  const strict = strict_ ?? false;
+  const events = events_ ?? (event ? [event] : void 0);
+  let topics = [];
+  if (events) {
+    topics = [
+      events.flatMap((event2) => encodeEventTopics({
+        abi: [event2],
+        eventName: event2.name,
+        args
+      }))
+    ];
+    if (event)
+      topics = topics[0];
+  }
+  let logs;
+  if (blockHash) {
+    logs = await client2.request({
+      method: "eth_getLogs",
+      params: [{ address, topics, blockHash }]
+    });
+  } else {
+    logs = await client2.request({
+      method: "eth_getLogs",
+      params: [
+        {
+          address,
+          topics,
+          fromBlock: typeof fromBlock === "bigint" ? numberToHex(fromBlock) : fromBlock,
+          toBlock: typeof toBlock === "bigint" ? numberToHex(toBlock) : toBlock
+        }
+      ]
+    });
+  }
+  const formattedLogs = logs.map((log) => formatLog(log));
+  if (!events)
+    return formattedLogs;
+  return parseEventLogs({
+    abi: events,
+    logs: formattedLogs,
+    strict
+  });
+}
+async function getContractEvents(client2, parameters) {
+  const { abi: abi2, address, args, blockHash, eventName, fromBlock, toBlock, strict } = parameters;
+  const event = eventName ? getAbiItem({ abi: abi2, name: eventName }) : void 0;
+  const events = !event ? abi2.filter((x) => x.type === "event") : void 0;
+  return getAction$1(client2, getLogs, "getLogs")({
+    address,
+    args,
+    blockHash,
+    event,
+    events,
+    fromBlock,
+    toBlock,
+    strict
+  });
+}
+function formatFeeHistory(feeHistory) {
+  var _a2;
+  return {
+    baseFeePerGas: feeHistory.baseFeePerGas.map((value) => BigInt(value)),
+    gasUsedRatio: feeHistory.gasUsedRatio,
+    oldestBlock: BigInt(feeHistory.oldestBlock),
+    reward: (_a2 = feeHistory.reward) == null ? void 0 : _a2.map((reward) => reward.map((value) => BigInt(value)))
+  };
+}
+async function getFeeHistory(client2, { blockCount, blockNumber, blockTag = "latest", rewardPercentiles }) {
+  const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
+  const feeHistory = await client2.request({
+    method: "eth_feeHistory",
+    params: [
+      numberToHex(blockCount),
+      blockNumberHex || blockTag,
+      rewardPercentiles
+    ]
+  });
+  return formatFeeHistory(feeHistory);
+}
+async function getFilterChanges(_client3, { filter: filter2 }) {
+  const strict = "strict" in filter2 && filter2.strict;
+  const logs = await filter2.request({
+    method: "eth_getFilterChanges",
+    params: [filter2.id]
+  });
+  if (typeof logs[0] === "string")
+    return logs;
+  const formattedLogs = logs.map((log) => formatLog(log));
+  if (!("abi" in filter2) || !filter2.abi)
+    return formattedLogs;
+  return parseEventLogs({
+    abi: filter2.abi,
+    logs: formattedLogs,
+    strict
+  });
+}
+async function getFilterLogs(_client3, { filter: filter2 }) {
+  const strict = filter2.strict ?? false;
+  const logs = await filter2.request({
+    method: "eth_getFilterLogs",
+    params: [filter2.id]
+  });
+  const formattedLogs = logs.map((log) => formatLog(log));
+  if (!filter2.abi)
+    return formattedLogs;
+  return parseEventLogs({
+    abi: filter2.abi,
+    logs: formattedLogs,
+    strict
+  });
+}
+async function getStorageAt(client2, { address, blockNumber, blockTag = "latest", slot }) {
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
+  const data = await client2.request({
+    method: "eth_getStorageAt",
+    params: [address, slot, blockNumberHex || blockTag]
+  });
+  return data;
+}
+async function getTransaction(client2, { blockHash, blockNumber, blockTag: blockTag_, hash: hash2, index: index2 }) {
+  var _a2, _b2, _c2;
+  const blockTag = blockTag_ || "latest";
+  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
+  let transaction2 = null;
+  if (hash2) {
+    transaction2 = await client2.request({
+      method: "eth_getTransactionByHash",
+      params: [hash2]
+    });
+  } else if (blockHash) {
+    transaction2 = await client2.request({
+      method: "eth_getTransactionByBlockHashAndIndex",
+      params: [blockHash, numberToHex(index2)]
+    });
+  } else if (blockNumberHex || blockTag) {
+    transaction2 = await client2.request({
+      method: "eth_getTransactionByBlockNumberAndIndex",
+      params: [blockNumberHex || blockTag, numberToHex(index2)]
+    });
+  }
+  if (!transaction2)
+    throw new TransactionNotFoundError({
+      blockHash,
+      blockNumber,
+      blockTag,
+      hash: hash2,
+      index: index2
+    });
+  const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transaction) == null ? void 0 : _c2.format) || formatTransaction;
+  return format2(transaction2);
+}
+async function getTransactionConfirmations(client2, { hash: hash2, transactionReceipt }) {
+  const [blockNumber, transaction2] = await Promise.all([
+    getAction$1(client2, getBlockNumber, "getBlockNumber")({}),
+    hash2 ? getAction$1(client2, getTransaction, "getBlockNumber")({ hash: hash2 }) : void 0
+  ]);
+  const transactionBlockNumber = (transactionReceipt == null ? void 0 : transactionReceipt.blockNumber) || (transaction2 == null ? void 0 : transaction2.blockNumber);
+  if (!transactionBlockNumber)
+    return 0n;
+  return blockNumber - transactionBlockNumber + 1n;
+}
+const receiptStatuses = {
+  "0x0": "reverted",
+  "0x1": "success"
+};
+function formatTransactionReceipt(transactionReceipt) {
+  const receipt = {
+    ...transactionReceipt,
+    blockNumber: transactionReceipt.blockNumber ? BigInt(transactionReceipt.blockNumber) : null,
+    contractAddress: transactionReceipt.contractAddress ? transactionReceipt.contractAddress : null,
+    cumulativeGasUsed: transactionReceipt.cumulativeGasUsed ? BigInt(transactionReceipt.cumulativeGasUsed) : null,
+    effectiveGasPrice: transactionReceipt.effectiveGasPrice ? BigInt(transactionReceipt.effectiveGasPrice) : null,
+    gasUsed: transactionReceipt.gasUsed ? BigInt(transactionReceipt.gasUsed) : null,
+    logs: transactionReceipt.logs ? transactionReceipt.logs.map((log) => formatLog(log)) : null,
+    to: transactionReceipt.to ? transactionReceipt.to : null,
+    transactionIndex: transactionReceipt.transactionIndex ? hexToNumber$1(transactionReceipt.transactionIndex) : null,
+    status: transactionReceipt.status ? receiptStatuses[transactionReceipt.status] : null,
+    type: transactionReceipt.type ? transactionType[transactionReceipt.type] || transactionReceipt.type : null
+  };
+  if (transactionReceipt.blobGasPrice)
+    receipt.blobGasPrice = BigInt(transactionReceipt.blobGasPrice);
+  if (transactionReceipt.blobGasUsed)
+    receipt.blobGasUsed = BigInt(transactionReceipt.blobGasUsed);
+  return receipt;
+}
+async function getTransactionReceipt$1(client2, { hash: hash2 }) {
+  var _a2, _b2, _c2;
+  const receipt = await client2.request({
+    method: "eth_getTransactionReceipt",
+    params: [hash2]
+  });
+  if (!receipt)
+    throw new TransactionReceiptNotFoundError({ hash: hash2 });
+  const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transactionReceipt) == null ? void 0 : _c2.format) || formatTransactionReceipt;
+  return format2(receipt);
+}
+async function multicall(client2, parameters) {
+  var _a2;
+  const { allowFailure = true, batchSize: batchSize_, blockNumber, blockTag, multicallAddress: multicallAddress_, stateOverride } = parameters;
+  const contracts = parameters.contracts;
+  const batchSize = batchSize_ ?? (typeof ((_a2 = client2.batch) == null ? void 0 : _a2.multicall) === "object" && client2.batch.multicall.batchSize || 1024);
+  let multicallAddress = multicallAddress_;
+  if (!multicallAddress) {
+    if (!client2.chain)
+      throw new Error("client chain not configured. multicallAddress is required.");
+    multicallAddress = getChainContractAddress({
+      blockNumber,
+      chain: client2.chain,
+      contract: "multicall3"
+    });
+  }
+  const chunkedCalls = [[]];
+  let currentChunk = 0;
+  let currentChunkSize = 0;
+  for (let i2 = 0; i2 < contracts.length; i2++) {
+    const { abi: abi2, address, args, functionName } = contracts[i2];
+    try {
+      const callData = encodeFunctionData({ abi: abi2, args, functionName });
+      currentChunkSize += (callData.length - 2) / 2;
+      if (
+        // Check if batching is enabled.
+        batchSize > 0 && // Check if the current size of the batch exceeds the size limit.
+        currentChunkSize > batchSize && // Check if the current chunk is not already empty.
+        chunkedCalls[currentChunk].length > 0
+      ) {
+        currentChunk++;
+        currentChunkSize = (callData.length - 2) / 2;
+        chunkedCalls[currentChunk] = [];
+      }
+      chunkedCalls[currentChunk] = [
+        ...chunkedCalls[currentChunk],
+        {
+          allowFailure: true,
+          callData,
+          target: address
+        }
+      ];
+    } catch (err) {
+      const error = getContractError(err, {
+        abi: abi2,
+        address,
+        args,
+        docsPath: "/docs/contract/multicall",
+        functionName
+      });
+      if (!allowFailure)
+        throw error;
+      chunkedCalls[currentChunk] = [
+        ...chunkedCalls[currentChunk],
+        {
+          allowFailure: true,
+          callData: "0x",
+          target: address
+        }
+      ];
+    }
+  }
+  const aggregate3Results = await Promise.allSettled(chunkedCalls.map((calls) => getAction$1(client2, readContract, "readContract")({
+    abi: multicall3Abi,
+    address: multicallAddress,
+    args: [calls],
+    blockNumber,
+    blockTag,
+    functionName: "aggregate3",
+    stateOverride
+  })));
+  const results2 = [];
+  for (let i2 = 0; i2 < aggregate3Results.length; i2++) {
+    const result = aggregate3Results[i2];
+    if (result.status === "rejected") {
+      if (!allowFailure)
+        throw result.reason;
+      for (let j2 = 0; j2 < chunkedCalls[i2].length; j2++) {
+        results2.push({
+          status: "failure",
+          error: result.reason,
+          result: void 0
+        });
+      }
+      continue;
+    }
+    const aggregate3Result = result.value;
+    for (let j2 = 0; j2 < aggregate3Result.length; j2++) {
+      const { returnData, success } = aggregate3Result[j2];
+      const { callData } = chunkedCalls[i2][j2];
+      const { abi: abi2, address, functionName, args } = contracts[results2.length];
+      try {
+        if (callData === "0x")
+          throw new AbiDecodingZeroDataError();
+        if (!success)
+          throw new RawContractError({ data: returnData });
+        const result2 = decodeFunctionResult({
+          abi: abi2,
+          args,
+          data: returnData,
+          functionName
+        });
+        results2.push(allowFailure ? { result: result2, status: "success" } : result2);
+      } catch (err) {
+        const error = getContractError(err, {
+          abi: abi2,
+          address,
+          args,
+          docsPath: "/docs/contract/multicall",
+          functionName
+        });
+        if (!allowFailure)
+          throw error;
+        results2.push({ error, result: void 0, status: "failure" });
+      }
+    }
+  }
+  if (results2.length !== contracts.length)
+    throw new BaseError$2("multicall results mismatch");
+  return results2;
 }
 const listenersCache = /* @__PURE__ */ new Map();
 const cleanupCache = /* @__PURE__ */ new Map();
@@ -70855,22 +72947,199 @@ function poll(fn, { emitOnBegin, initialWaitTime, interval }) {
   watch();
   return unwatch;
 }
-async function getFilterChanges(_client3, { filter: filter2 }) {
-  const strict = "strict" in filter2 && filter2.strict;
-  const logs = await filter2.request({
-    method: "eth_getFilterChanges",
-    params: [filter2.id]
-  });
-  if (typeof logs[0] === "string")
-    return logs;
-  const formattedLogs = logs.map((log) => formatLog(log));
-  if (!("abi" in filter2) || !filter2.abi)
-    return formattedLogs;
-  return parseEventLogs({
-    abi: filter2.abi,
-    logs: formattedLogs,
-    strict
-  });
+function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnBegin = false, onBlock, onError, includeTransactions: includeTransactions_, poll: poll_, pollingInterval = client2.pollingInterval }) {
+  const enablePolling = (() => {
+    if (typeof poll_ !== "undefined")
+      return poll_;
+    if (client2.transport.type === "webSocket")
+      return false;
+    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
+      return false;
+    return true;
+  })();
+  const includeTransactions = includeTransactions_ ?? false;
+  let prevBlock;
+  const pollBlocks = () => {
+    const observerId = stringify$1([
+      "watchBlocks",
+      client2.uid,
+      blockTag,
+      emitMissed,
+      emitOnBegin,
+      includeTransactions,
+      pollingInterval
+    ]);
+    return observe(observerId, { onBlock, onError }, (emit) => poll(async () => {
+      var _a2;
+      try {
+        const block = await getAction$1(client2, getBlock, "getBlock")({
+          blockTag,
+          includeTransactions
+        });
+        if (block.number && (prevBlock == null ? void 0 : prevBlock.number)) {
+          if (block.number === prevBlock.number)
+            return;
+          if (block.number - prevBlock.number > 1 && emitMissed) {
+            for (let i2 = (prevBlock == null ? void 0 : prevBlock.number) + 1n; i2 < block.number; i2++) {
+              const block2 = await getAction$1(client2, getBlock, "getBlock")({
+                blockNumber: i2,
+                includeTransactions
+              });
+              emit.onBlock(block2, prevBlock);
+              prevBlock = block2;
+            }
+          }
+        }
+        if (
+          // If no previous block exists, emit.
+          !(prevBlock == null ? void 0 : prevBlock.number) || // If the block tag is "pending" with no block number, emit.
+          blockTag === "pending" && !(block == null ? void 0 : block.number) || // If the next block number is greater than the previous block number, emit.
+          // We don't want to emit blocks in the past.
+          block.number && block.number > prevBlock.number
+        ) {
+          emit.onBlock(block, prevBlock);
+          prevBlock = block;
+        }
+      } catch (err) {
+        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+      }
+    }, {
+      emitOnBegin,
+      interval: pollingInterval
+    }));
+  };
+  const subscribeBlocks = () => {
+    let active = true;
+    let unsubscribe = () => active = false;
+    (async () => {
+      try {
+        const transport = (() => {
+          if (client2.transport.type === "fallback") {
+            const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+            if (!transport2)
+              return client2.transport;
+            return transport2.value;
+          }
+          return client2.transport;
+        })();
+        const { unsubscribe: unsubscribe_ } = await transport.subscribe({
+          params: ["newHeads"],
+          onData(data) {
+            var _a2, _b2, _c2;
+            if (!active)
+              return;
+            const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.block) == null ? void 0 : _c2.format) || formatBlock;
+            const block = format2(data.result);
+            onBlock(block, prevBlock);
+            prevBlock = block;
+          },
+          onError(error) {
+            onError == null ? void 0 : onError(error);
+          }
+        });
+        unsubscribe = unsubscribe_;
+        if (!active)
+          unsubscribe();
+      } catch (err) {
+        onError == null ? void 0 : onError(err);
+      }
+    })();
+    return () => unsubscribe();
+  };
+  return enablePolling ? pollBlocks() : subscribeBlocks();
+}
+function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, onBlockNumber, onError, poll: poll_, pollingInterval = client2.pollingInterval }) {
+  const enablePolling = (() => {
+    if (typeof poll_ !== "undefined")
+      return poll_;
+    if (client2.transport.type === "webSocket")
+      return false;
+    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
+      return false;
+    return true;
+  })();
+  let prevBlockNumber;
+  const pollBlockNumber = () => {
+    const observerId = stringify$1([
+      "watchBlockNumber",
+      client2.uid,
+      emitOnBegin,
+      emitMissed,
+      pollingInterval
+    ]);
+    return observe(observerId, { onBlockNumber, onError }, (emit) => poll(async () => {
+      var _a2;
+      try {
+        const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({ cacheTime: 0 });
+        if (prevBlockNumber) {
+          if (blockNumber === prevBlockNumber)
+            return;
+          if (blockNumber - prevBlockNumber > 1 && emitMissed) {
+            for (let i2 = prevBlockNumber + 1n; i2 < blockNumber; i2++) {
+              emit.onBlockNumber(i2, prevBlockNumber);
+              prevBlockNumber = i2;
+            }
+          }
+        }
+        if (!prevBlockNumber || blockNumber > prevBlockNumber) {
+          emit.onBlockNumber(blockNumber, prevBlockNumber);
+          prevBlockNumber = blockNumber;
+        }
+      } catch (err) {
+        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+      }
+    }, {
+      emitOnBegin,
+      interval: pollingInterval
+    }));
+  };
+  const subscribeBlockNumber = () => {
+    const observerId = stringify$1([
+      "watchBlockNumber",
+      client2.uid,
+      emitOnBegin,
+      emitMissed
+    ]);
+    return observe(observerId, { onBlockNumber, onError }, (emit) => {
+      let active = true;
+      let unsubscribe = () => active = false;
+      (async () => {
+        try {
+          const transport = (() => {
+            if (client2.transport.type === "fallback") {
+              const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+              if (!transport2)
+                return client2.transport;
+              return transport2.value;
+            }
+            return client2.transport;
+          })();
+          const { unsubscribe: unsubscribe_ } = await transport.subscribe({
+            params: ["newHeads"],
+            onData(data) {
+              var _a2;
+              if (!active)
+                return;
+              const blockNumber = hexToBigInt((_a2 = data.result) == null ? void 0 : _a2.number);
+              emit.onBlockNumber(blockNumber, prevBlockNumber);
+              prevBlockNumber = blockNumber;
+            },
+            onError(error) {
+              var _a2;
+              (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, error);
+            }
+          });
+          unsubscribe = unsubscribe_;
+          if (!active)
+            unsubscribe();
+        } catch (err) {
+          onError == null ? void 0 : onError(err);
+        }
+      })();
+      return () => unsubscribe();
+    });
+  };
+  return enablePolling ? pollBlockNumber() : subscribeBlockNumber();
 }
 async function uninstallFilter(_client3, { filter: filter2 }) {
   return filter2.request({
@@ -70878,8 +73147,7 @@ async function uninstallFilter(_client3, { filter: filter2 }) {
     params: [filter2.id]
   });
 }
-function watchContractEvent(client2, parameters) {
-  const { abi: abi2, address, args, batch = true, eventName, fromBlock, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ } = parameters;
+function watchEvent(client2, { address, args, batch = true, event, events, fromBlock, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ }) {
   const enablePolling = (() => {
     if (typeof poll_ !== "undefined")
       return poll_;
@@ -70891,17 +73159,16 @@ function watchContractEvent(client2, parameters) {
       return false;
     return true;
   })();
-  const pollContractEvent = () => {
-    const strict = strict_ ?? false;
-    const observerId = stringify$2([
-      "watchContractEvent",
+  const strict = strict_ ?? false;
+  const pollEvent = () => {
+    const observerId = stringify$1([
+      "watchEvent",
       address,
       args,
       batch,
       client2.uid,
-      eventName,
+      event,
       pollingInterval,
-      strict,
       fromBlock
     ]);
     return observe(observerId, { onLogs, onError }, (emit) => {
@@ -70914,11 +73181,11 @@ function watchContractEvent(client2, parameters) {
         var _a2;
         if (!initialized) {
           try {
-            filter2 = await getAction$1(client2, createContractEventFilter, "createContractEventFilter")({
-              abi: abi2,
+            filter2 = await getAction$1(client2, createEventFilter, "createEventFilter")({
               address,
               args,
-              eventName,
+              event,
+              events,
               strict,
               fromBlock
             });
@@ -70934,14 +73201,13 @@ function watchContractEvent(client2, parameters) {
           } else {
             const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({});
             if (previousBlockNumber && previousBlockNumber !== blockNumber) {
-              logs = await getAction$1(client2, getContractEvents, "getContractEvents")({
-                abi: abi2,
+              logs = await getAction$1(client2, getLogs, "getLogs")({
                 address,
                 args,
-                eventName,
+                event,
+                events,
                 fromBlock: previousBlockNumber + 1n,
-                toBlock: blockNumber,
-                strict
+                toBlock: blockNumber
               });
             } else {
               logs = [];
@@ -70971,148 +73237,163 @@ function watchContractEvent(client2, parameters) {
       };
     });
   };
-  const subscribeContractEvent = () => {
-    const strict = strict_ ?? false;
-    const observerId = stringify$2([
-      "watchContractEvent",
-      address,
-      args,
-      batch,
-      client2.uid,
-      eventName,
-      pollingInterval,
-      strict
-    ]);
+  const subscribeEvent = () => {
     let active = true;
     let unsubscribe = () => active = false;
-    return observe(observerId, { onLogs, onError }, (emit) => {
-      (async () => {
-        try {
-          const transport = (() => {
-            if (client2.transport.type === "fallback") {
-              const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
-              if (!transport2)
-                return client2.transport;
-              return transport2.value;
-            }
-            return client2.transport;
-          })();
-          const topics = eventName ? encodeEventTopics({
-            abi: abi2,
-            eventName,
-            args
-          }) : [];
-          const { unsubscribe: unsubscribe_ } = await transport.subscribe({
-            params: ["logs", { address, topics }],
-            onData(data) {
-              var _a2;
-              if (!active)
-                return;
-              const log = data.result;
-              try {
-                const { eventName: eventName2, args: args2 } = decodeEventLog({
-                  abi: abi2,
-                  data: log.data,
-                  topics: log.topics,
-                  strict: strict_
-                });
-                const formatted = formatLog(log, {
-                  args: args2,
-                  eventName: eventName2
-                });
-                emit.onLogs([formatted]);
-              } catch (err) {
-                let eventName2;
-                let isUnnamed;
-                if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
-                  if (strict_)
-                    return;
-                  eventName2 = err.abiItem.name;
-                  isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
-                }
-                const formatted = formatLog(log, {
-                  args: isUnnamed ? [] : {},
-                  eventName: eventName2
-                });
-                emit.onLogs([formatted]);
-              }
-            },
-            onError(error) {
-              var _a2;
-              (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, error);
-            }
-          });
-          unsubscribe = unsubscribe_;
-          if (!active)
-            unsubscribe();
-        } catch (err) {
-          onError == null ? void 0 : onError(err);
+    (async () => {
+      try {
+        const transport = (() => {
+          if (client2.transport.type === "fallback") {
+            const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+            if (!transport2)
+              return client2.transport;
+            return transport2.value;
+          }
+          return client2.transport;
+        })();
+        const events_ = events ?? (event ? [event] : void 0);
+        let topics = [];
+        if (events_) {
+          topics = [
+            events_.flatMap((event2) => encodeEventTopics({
+              abi: [event2],
+              eventName: event2.name,
+              args
+            }))
+          ];
+          if (event)
+            topics = topics[0];
         }
-      })();
-      return () => unsubscribe();
+        const { unsubscribe: unsubscribe_ } = await transport.subscribe({
+          params: ["logs", { address, topics }],
+          onData(data) {
+            var _a2;
+            if (!active)
+              return;
+            const log = data.result;
+            try {
+              const { eventName, args: args2 } = decodeEventLog({
+                abi: events_ ?? [],
+                data: log.data,
+                topics: log.topics,
+                strict
+              });
+              const formatted = formatLog(log, { args: args2, eventName });
+              onLogs([formatted]);
+            } catch (err) {
+              let eventName;
+              let isUnnamed;
+              if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
+                if (strict_)
+                  return;
+                eventName = err.abiItem.name;
+                isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
+              }
+              const formatted = formatLog(log, {
+                args: isUnnamed ? [] : {},
+                eventName
+              });
+              onLogs([formatted]);
+            }
+          },
+          onError(error) {
+            onError == null ? void 0 : onError(error);
+          }
+        });
+        unsubscribe = unsubscribe_;
+        if (!active)
+          unsubscribe();
+      } catch (err) {
+        onError == null ? void 0 : onError(err);
+      }
+    })();
+    return () => unsubscribe();
+  };
+  return enablePolling ? pollEvent() : subscribeEvent();
+}
+function watchPendingTransactions(client2, { batch = true, onError, onTransactions, poll: poll_, pollingInterval = client2.pollingInterval }) {
+  const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
+  const pollPendingTransactions = () => {
+    const observerId = stringify$1([
+      "watchPendingTransactions",
+      client2.uid,
+      batch,
+      pollingInterval
+    ]);
+    return observe(observerId, { onTransactions, onError }, (emit) => {
+      let filter2;
+      const unwatch = poll(async () => {
+        var _a2;
+        try {
+          if (!filter2) {
+            try {
+              filter2 = await getAction$1(client2, createPendingTransactionFilter, "createPendingTransactionFilter")({});
+              return;
+            } catch (err) {
+              unwatch();
+              throw err;
+            }
+          }
+          const hashes = await getAction$1(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
+          if (hashes.length === 0)
+            return;
+          if (batch)
+            emit.onTransactions(hashes);
+          else
+            for (const hash2 of hashes)
+              emit.onTransactions([hash2]);
+        } catch (err) {
+          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+        }
+      }, {
+        emitOnBegin: true,
+        interval: pollingInterval
+      });
+      return async () => {
+        if (filter2)
+          await getAction$1(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
+        unwatch();
+      };
     });
   };
-  return enablePolling ? pollContractEvent() : subscribeContractEvent();
-}
-async function writeContract$1(client2, parameters) {
-  const { abi: abi2, address, args, dataSuffix, functionName, ...request } = parameters;
-  const data = encodeFunctionData({
-    abi: abi2,
-    args,
-    functionName
-  });
-  return getAction$1(client2, sendTransaction$1, "sendTransaction")({
-    data: `${data}${dataSuffix ? dataSuffix.replace("0x", "") : ""}`,
-    to: address,
-    ...request
-  });
-}
-const size$3 = 256;
-let index$2 = size$3;
-let buffer$1;
-function uid$1(length2 = 11) {
-  if (!buffer$1 || index$2 + length2 > size$3 * 2) {
-    buffer$1 = "";
-    index$2 = 0;
-    for (let i2 = 0; i2 < size$3; i2++) {
-      buffer$1 += (256 + Math.random() * 256 | 0).toString(16).substring(1);
-    }
-  }
-  return buffer$1.substring(index$2, index$2++ + length2);
-}
-function createClient(parameters) {
-  const { batch, cacheTime = parameters.pollingInterval ?? 4e3, ccipRead, key: key2 = "base", name: name2 = "Base Client", pollingInterval = 4e3, type = "base" } = parameters;
-  const chain = parameters.chain;
-  const account2 = parameters.account ? parseAccount(parameters.account) : void 0;
-  const { config: config2, request, value } = parameters.transport({
-    chain,
-    pollingInterval
-  });
-  const transport = { ...config2, ...value };
-  const client2 = {
-    account: account2,
-    batch,
-    cacheTime,
-    ccipRead,
-    chain,
-    key: key2,
-    name: name2,
-    pollingInterval,
-    request,
-    transport,
-    type,
-    uid: uid$1()
+  const subscribePendingTransactions = () => {
+    let active = true;
+    let unsubscribe = () => active = false;
+    (async () => {
+      try {
+        const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
+          params: ["newPendingTransactions"],
+          onData(data) {
+            if (!active)
+              return;
+            const transaction2 = data.result;
+            onTransactions([transaction2]);
+          },
+          onError(error) {
+            onError == null ? void 0 : onError(error);
+          }
+        });
+        unsubscribe = unsubscribe_;
+        if (!active)
+          unsubscribe();
+      } catch (err) {
+        onError == null ? void 0 : onError(err);
+      }
+    })();
+    return () => unsubscribe();
   };
-  function extend2(base2) {
-    return (extendFn) => {
-      const extended = extendFn(base2);
-      for (const key3 in client2)
-        delete extended[key3];
-      const combined = { ...base2, ...extended };
-      return Object.assign(combined, { extend: extend2(combined) });
-    };
-  }
-  return Object.assign(client2, { extend: extend2(client2) });
+  return enablePolling ? pollPendingTransactions() : subscribePendingTransactions();
+}
+async function getAddresses(client2) {
+  var _a2;
+  if (((_a2 = client2.account) == null ? void 0 : _a2.type) === "local")
+    return [client2.account.address];
+  const addresses = await client2.request({ method: "eth_accounts" });
+  return addresses.map((address) => checksumAddress(address));
+}
+async function getPermissions(client2) {
+  const permissions = await client2.request({ method: "wallet_getPermissions" });
+  return permissions;
 }
 function withRetry(fn, { delay: delay_ = 100, retryCount = 2, shouldRetry: shouldRetry2 = () => true } = {}) {
   return new Promise((resolve, reject) => {
@@ -71237,31 +73518,16 @@ function shouldRetry(error) {
   }
   return true;
 }
-function createTransport({ key: key2, name: name2, request, retryCount = 3, retryDelay = 150, timeout, type }, value) {
+function defineChain(chain) {
   return {
-    config: { key: key2, name: name2, request, retryCount, retryDelay, timeout, type },
-    request: buildRequest(request, { retryCount, retryDelay }),
-    value
+    formatters: void 0,
+    fees: void 0,
+    serializers: void 0,
+    ...chain
   };
 }
-function custom(provider2, config2 = {}) {
-  const { key: key2 = "custom", name: name2 = "Custom Provider", retryDelay } = config2;
-  return ({ retryCount: defaultRetryCount }) => createTransport({
-    key: key2,
-    name: name2,
-    request: provider2.request.bind(provider2),
-    retryCount: config2.retryCount ?? defaultRetryCount,
-    retryDelay,
-    type: "custom"
-  });
-}
-class UrlRequiredError extends BaseError$2 {
-  constructor() {
-    super("No URL was provided to the Transport. Please provide a valid RPC URL to the Transport.", {
-      docsPath: "/docs/clients/intro"
-    });
-  }
-}
+const bytesRegex = /^bytes([1-9]|1[0-9]|2[0-9]|3[0-2])?$/;
+const integerRegex = /^(u?int)(8|16|24|32|40|48|56|64|72|80|88|96|104|112|120|128|136|144|152|160|168|176|184|192|200|208|216|224|232|240|248|256)?$/;
 function withTimeout(fn, { errorInstance = new Error("timed out"), timeout, signal }) {
   return new Promise((resolve, reject) => {
     (async () => {
@@ -71304,17 +73570,21 @@ function getHttpRpcClient(url, options = {}) {
   return {
     async request(params) {
       var _a2;
-      const { body, fetchOptions = {}, onRequest = options.onRequest, onResponse = options.onResponse, timeout = options.timeout ?? 1e4 } = params;
-      const { headers, method, signal: signal_ } = { ...options.fetchOptions, ...fetchOptions };
+      const { body, onRequest = options.onRequest, onResponse = options.onResponse, timeout = options.timeout ?? 1e4 } = params;
+      const fetchOptions = {
+        ...options.fetchOptions ?? {},
+        ...params.fetchOptions ?? {}
+      };
+      const { headers, method, signal: signal_ } = fetchOptions;
       try {
         const response = await withTimeout(async ({ signal }) => {
           const init3 = {
             ...fetchOptions,
-            body: Array.isArray(body) ? stringify$2(body.map((body2) => ({
+            body: Array.isArray(body) ? stringify$1(body.map((body2) => ({
               jsonrpc: "2.0",
               id: body2.id ?? idCache.take(),
               ...body2
-            }))) : stringify$2({
+            }))) : stringify$1({
               jsonrpc: "2.0",
               id: body.id ?? idCache.take(),
               ...body
@@ -71332,7 +73602,7 @@ function getHttpRpcClient(url, options = {}) {
           const response2 = await fetch(url, init3);
           return response2;
         }, {
-          errorInstance: new TimeoutError({ body, url }),
+          errorInstance: new TimeoutError3({ body, url }),
           timeout,
           signal: true
         });
@@ -71348,7 +73618,7 @@ function getHttpRpcClient(url, options = {}) {
         if (!response.ok) {
           throw new HttpRequestError({
             body,
-            details: stringify$2(data.error) || response.statusText,
+            details: stringify$1(data.error) || response.statusText,
             headers: response.headers,
             status: response.status,
             url
@@ -71358,7 +73628,7 @@ function getHttpRpcClient(url, options = {}) {
       } catch (err) {
         if (err instanceof HttpRequestError)
           throw err;
-        if (err instanceof TimeoutError)
+        if (err instanceof TimeoutError3)
           throw err;
         throw new HttpRequestError({
           body,
@@ -71369,107 +73639,6 @@ function getHttpRpcClient(url, options = {}) {
     }
   };
 }
-function http(url, config2 = {}) {
-  const { batch, fetchOptions, key: key2 = "http", name: name2 = "HTTP JSON-RPC", onFetchRequest, onFetchResponse, retryDelay } = config2;
-  return ({ chain, retryCount: retryCount_, timeout: timeout_ }) => {
-    const { batchSize = 1e3, wait: wait2 = 0 } = typeof batch === "object" ? batch : {};
-    const retryCount = config2.retryCount ?? retryCount_;
-    const timeout = timeout_ ?? config2.timeout ?? 1e4;
-    const url_ = url || (chain == null ? void 0 : chain.rpcUrls.default.http[0]);
-    if (!url_)
-      throw new UrlRequiredError();
-    const rpcClient = getHttpRpcClient(url_, {
-      fetchOptions,
-      onRequest: onFetchRequest,
-      onResponse: onFetchResponse,
-      timeout
-    });
-    return createTransport({
-      key: key2,
-      name: name2,
-      async request({ method, params }) {
-        const body = { method, params };
-        const { schedule } = createBatchScheduler({
-          id: `${url}`,
-          wait: wait2,
-          shouldSplitBatch(requests) {
-            return requests.length > batchSize;
-          },
-          fn: (body2) => rpcClient.request({
-            body: body2
-          }),
-          sort: (a2, b3) => a2.id - b3.id
-        });
-        const fn = async (body2) => batch ? schedule(body2) : [
-          await rpcClient.request({
-            body: body2
-          })
-        ];
-        const [{ error, result }] = await fn(body);
-        if (error)
-          throw new RpcRequestError({
-            body,
-            error,
-            url: url_
-          });
-        return result;
-      },
-      retryCount,
-      retryDelay,
-      timeout,
-      type: "http"
-    }, {
-      fetchOptions,
-      url: url_
-    });
-  };
-}
-function formatFeeHistory(feeHistory) {
-  var _a2;
-  return {
-    baseFeePerGas: feeHistory.baseFeePerGas.map((value) => BigInt(value)),
-    gasUsedRatio: feeHistory.gasUsedRatio,
-    oldestBlock: BigInt(feeHistory.oldestBlock),
-    reward: (_a2 = feeHistory.reward) == null ? void 0 : _a2.map((reward) => reward.map((value) => BigInt(value)))
-  };
-}
-async function getFeeHistory(client2, { blockCount, blockNumber, blockTag = "latest", rewardPercentiles }) {
-  const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
-  const feeHistory = await client2.request({
-    method: "eth_feeHistory",
-    params: [
-      numberToHex(blockCount),
-      blockNumberHex || blockTag,
-      rewardPercentiles
-    ]
-  });
-  return formatFeeHistory(feeHistory);
-}
-async function getFilterLogs(_client3, { filter: filter2 }) {
-  const strict = filter2.strict ?? false;
-  const logs = await filter2.request({
-    method: "eth_getFilterLogs",
-    params: [filter2.id]
-  });
-  const formattedLogs = logs.map((log) => formatLog(log));
-  if (!filter2.abi)
-    return formattedLogs;
-  return parseEventLogs({
-    abi: filter2.abi,
-    logs: formattedLogs,
-    strict
-  });
-}
-function defineChain(chain) {
-  return {
-    formatters: void 0,
-    fees: void 0,
-    serializers: void 0,
-    ...chain
-  };
-}
-const bytesRegex = /^bytes([1-9]|1[0-9]|2[0-9]|3[0-2])?$/;
-const integerRegex = /^(u?int)(8|16|24|32|40|48|56|64|72|80|88|96|104|112|120|128|136|144|152|160|168|176|184|192|200|208|216|224|232|240|248|256)?$/;
 function webSocket(socketClient, { body, onError, onResponse }) {
   socketClient.request({
     body,
@@ -71690,30 +73859,6 @@ function getTypesForEIP712Domain({ domain: domain2 }) {
     (domain2 == null ? void 0 : domain2.salt) && { name: "salt", type: "bytes32" }
   ].filter(Boolean);
 }
-const receiptStatuses = {
-  "0x0": "reverted",
-  "0x1": "success"
-};
-function formatTransactionReceipt(transactionReceipt) {
-  const receipt = {
-    ...transactionReceipt,
-    blockNumber: transactionReceipt.blockNumber ? BigInt(transactionReceipt.blockNumber) : null,
-    contractAddress: transactionReceipt.contractAddress ? transactionReceipt.contractAddress : null,
-    cumulativeGasUsed: transactionReceipt.cumulativeGasUsed ? BigInt(transactionReceipt.cumulativeGasUsed) : null,
-    effectiveGasPrice: transactionReceipt.effectiveGasPrice ? BigInt(transactionReceipt.effectiveGasPrice) : null,
-    gasUsed: transactionReceipt.gasUsed ? BigInt(transactionReceipt.gasUsed) : null,
-    logs: transactionReceipt.logs ? transactionReceipt.logs.map((log) => formatLog(log)) : null,
-    to: transactionReceipt.to ? transactionReceipt.to : null,
-    transactionIndex: transactionReceipt.transactionIndex ? hexToNumber(transactionReceipt.transactionIndex) : null,
-    status: transactionReceipt.status ? receiptStatuses[transactionReceipt.status] : null,
-    type: transactionReceipt.type ? transactionType[transactionReceipt.type] || transactionReceipt.type : null
-  };
-  if (transactionReceipt.blobGasPrice)
-    receipt.blobGasPrice = BigInt(transactionReceipt.blobGasPrice);
-  if (transactionReceipt.blobGasUsed)
-    receipt.blobGasUsed = BigInt(transactionReceipt.blobGasUsed);
-  return receipt;
-}
 const presignMessagePrefix = "Ethereum Signed Message:\n";
 function hashMessage(message, to_) {
   const messageBytes = (() => {
@@ -71767,7 +73912,7 @@ function formatProof(proof) {
   return {
     ...proof,
     balance: proof.balance ? BigInt(proof.balance) : void 0,
-    nonce: proof.nonce ? hexToNumber(proof.nonce) : void 0,
+    nonce: proof.nonce ? hexToNumber$1(proof.nonce) : void 0,
     storageProof: proof.storageProof ? formatStorageProof(proof.storageProof) : void 0
   };
 }
@@ -71780,336 +73925,6 @@ async function getProof(client2, { address, blockNumber, blockTag: blockTag_, st
   });
   return formatProof(proof);
 }
-async function getStorageAt(client2, { address, blockNumber, blockTag = "latest", slot }) {
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
-  const data = await client2.request({
-    method: "eth_getStorageAt",
-    params: [address, slot, blockNumberHex || blockTag]
-  });
-  return data;
-}
-async function getTransaction(client2, { blockHash, blockNumber, blockTag: blockTag_, hash: hash2, index: index2 }) {
-  var _a2, _b2, _c2;
-  const blockTag = blockTag_ || "latest";
-  const blockNumberHex = blockNumber !== void 0 ? numberToHex(blockNumber) : void 0;
-  let transaction2 = null;
-  if (hash2) {
-    transaction2 = await client2.request({
-      method: "eth_getTransactionByHash",
-      params: [hash2]
-    });
-  } else if (blockHash) {
-    transaction2 = await client2.request({
-      method: "eth_getTransactionByBlockHashAndIndex",
-      params: [blockHash, numberToHex(index2)]
-    });
-  } else if (blockNumberHex || blockTag) {
-    transaction2 = await client2.request({
-      method: "eth_getTransactionByBlockNumberAndIndex",
-      params: [blockNumberHex || blockTag, numberToHex(index2)]
-    });
-  }
-  if (!transaction2)
-    throw new TransactionNotFoundError({
-      blockHash,
-      blockNumber,
-      blockTag,
-      hash: hash2,
-      index: index2
-    });
-  const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transaction) == null ? void 0 : _c2.format) || formatTransaction;
-  return format2(transaction2);
-}
-async function getTransactionConfirmations(client2, { hash: hash2, transactionReceipt }) {
-  const [blockNumber, transaction2] = await Promise.all([
-    getAction$1(client2, getBlockNumber, "getBlockNumber")({}),
-    hash2 ? getAction$1(client2, getTransaction, "getBlockNumber")({ hash: hash2 }) : void 0
-  ]);
-  const transactionBlockNumber = (transactionReceipt == null ? void 0 : transactionReceipt.blockNumber) || (transaction2 == null ? void 0 : transaction2.blockNumber);
-  if (!transactionBlockNumber)
-    return 0n;
-  return blockNumber - transactionBlockNumber + 1n;
-}
-async function getTransactionReceipt$1(client2, { hash: hash2 }) {
-  var _a2, _b2, _c2;
-  const receipt = await client2.request({
-    method: "eth_getTransactionReceipt",
-    params: [hash2]
-  });
-  if (!receipt)
-    throw new TransactionReceiptNotFoundError({ hash: hash2 });
-  const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transactionReceipt) == null ? void 0 : _c2.format) || formatTransactionReceipt;
-  return format2(receipt);
-}
-async function multicall(client2, parameters) {
-  var _a2;
-  const { allowFailure = true, batchSize: batchSize_, blockNumber, blockTag, multicallAddress: multicallAddress_, stateOverride } = parameters;
-  const contracts = parameters.contracts;
-  const batchSize = batchSize_ ?? (typeof ((_a2 = client2.batch) == null ? void 0 : _a2.multicall) === "object" && client2.batch.multicall.batchSize || 1024);
-  let multicallAddress = multicallAddress_;
-  if (!multicallAddress) {
-    if (!client2.chain)
-      throw new Error("client chain not configured. multicallAddress is required.");
-    multicallAddress = getChainContractAddress({
-      blockNumber,
-      chain: client2.chain,
-      contract: "multicall3"
-    });
-  }
-  const chunkedCalls = [[]];
-  let currentChunk = 0;
-  let currentChunkSize = 0;
-  for (let i2 = 0; i2 < contracts.length; i2++) {
-    const { abi: abi2, address, args, functionName } = contracts[i2];
-    try {
-      const callData = encodeFunctionData({ abi: abi2, args, functionName });
-      currentChunkSize += (callData.length - 2) / 2;
-      if (
-        // Check if batching is enabled.
-        batchSize > 0 && // Check if the current size of the batch exceeds the size limit.
-        currentChunkSize > batchSize && // Check if the current chunk is not already empty.
-        chunkedCalls[currentChunk].length > 0
-      ) {
-        currentChunk++;
-        currentChunkSize = (callData.length - 2) / 2;
-        chunkedCalls[currentChunk] = [];
-      }
-      chunkedCalls[currentChunk] = [
-        ...chunkedCalls[currentChunk],
-        {
-          allowFailure: true,
-          callData,
-          target: address
-        }
-      ];
-    } catch (err) {
-      const error = getContractError(err, {
-        abi: abi2,
-        address,
-        args,
-        docsPath: "/docs/contract/multicall",
-        functionName
-      });
-      if (!allowFailure)
-        throw error;
-      chunkedCalls[currentChunk] = [
-        ...chunkedCalls[currentChunk],
-        {
-          allowFailure: true,
-          callData: "0x",
-          target: address
-        }
-      ];
-    }
-  }
-  const aggregate3Results = await Promise.allSettled(chunkedCalls.map((calls) => getAction$1(client2, readContract, "readContract")({
-    abi: multicall3Abi,
-    address: multicallAddress,
-    args: [calls],
-    blockNumber,
-    blockTag,
-    functionName: "aggregate3",
-    stateOverride
-  })));
-  const results2 = [];
-  for (let i2 = 0; i2 < aggregate3Results.length; i2++) {
-    const result = aggregate3Results[i2];
-    if (result.status === "rejected") {
-      if (!allowFailure)
-        throw result.reason;
-      for (let j2 = 0; j2 < chunkedCalls[i2].length; j2++) {
-        results2.push({
-          status: "failure",
-          error: result.reason,
-          result: void 0
-        });
-      }
-      continue;
-    }
-    const aggregate3Result = result.value;
-    for (let j2 = 0; j2 < aggregate3Result.length; j2++) {
-      const { returnData, success } = aggregate3Result[j2];
-      const { callData } = chunkedCalls[i2][j2];
-      const { abi: abi2, address, functionName, args } = contracts[results2.length];
-      try {
-        if (callData === "0x")
-          throw new AbiDecodingZeroDataError();
-        if (!success)
-          throw new RawContractError({ data: returnData });
-        const result2 = decodeFunctionResult({
-          abi: abi2,
-          args,
-          data: returnData,
-          functionName
-        });
-        results2.push(allowFailure ? { result: result2, status: "success" } : result2);
-      } catch (err) {
-        const error = getContractError(err, {
-          abi: abi2,
-          address,
-          args,
-          docsPath: "/docs/contract/multicall",
-          functionName
-        });
-        if (!allowFailure)
-          throw error;
-        results2.push({ error, result: void 0, status: "failure" });
-      }
-    }
-  }
-  if (results2.length !== contracts.length)
-    throw new BaseError$2("multicall results mismatch");
-  return results2;
-}
-const universalSignatureValidatorByteCode = "0x60806040523480156200001157600080fd5b50604051620007003803806200070083398101604081905262000034916200056f565b6000620000438484846200004f565b9050806000526001601ff35b600080846001600160a01b0316803b806020016040519081016040528181526000908060200190933c90507f6492649264926492649264926492649264926492649264926492649264926492620000a68462000451565b036200021f57600060608085806020019051810190620000c79190620005ce565b8651929550909350915060000362000192576000836001600160a01b031683604051620000f5919062000643565b6000604051808303816000865af19150503d806000811462000134576040519150601f19603f3d011682016040523d82523d6000602084013e62000139565b606091505b5050905080620001905760405162461bcd60e51b815260206004820152601e60248201527f5369676e617475726556616c696461746f723a206465706c6f796d656e74000060448201526064015b60405180910390fd5b505b604051630b135d3f60e11b808252906001600160a01b038a1690631626ba7e90620001c4908b90869060040162000661565b602060405180830381865afa158015620001e2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200020891906200069d565b6001600160e01b031916149450505050506200044a565b805115620002b157604051630b135d3f60e11b808252906001600160a01b03871690631626ba7e9062000259908890889060040162000661565b602060405180830381865afa15801562000277573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200029d91906200069d565b6001600160e01b031916149150506200044a565b8251604114620003195760405162461bcd60e51b815260206004820152603a6024820152600080516020620006e083398151915260448201527f3a20696e76616c6964207369676e6174757265206c656e677468000000000000606482015260840162000187565b620003236200046b565b506020830151604080850151855186939260009185919081106200034b576200034b620006c9565b016020015160f81c9050601b81148015906200036b57508060ff16601c14155b15620003cf5760405162461bcd60e51b815260206004820152603b6024820152600080516020620006e083398151915260448201527f3a20696e76616c6964207369676e617475726520762076616c75650000000000606482015260840162000187565b6040805160008152602081018083528a905260ff83169181019190915260608101849052608081018390526001600160a01b038a169060019060a0016020604051602081039080840390855afa1580156200042e573d6000803e3d6000fd5b505050602060405103516001600160a01b031614955050505050505b9392505050565b60006020825110156200046357600080fd5b508051015190565b60405180606001604052806003906020820280368337509192915050565b6001600160a01b03811681146200049f57600080fd5b50565b634e487b7160e01b600052604160045260246000fd5b60005b83811015620004d5578181015183820152602001620004bb565b50506000910152565b600082601f830112620004f057600080fd5b81516001600160401b03808211156200050d576200050d620004a2565b604051601f8301601f19908116603f01168101908282118183101715620005385762000538620004a2565b816040528381528660208588010111156200055257600080fd5b62000565846020830160208901620004b8565b9695505050505050565b6000806000606084860312156200058557600080fd5b8351620005928162000489565b6020850151604086015191945092506001600160401b03811115620005b657600080fd5b620005c486828701620004de565b9150509250925092565b600080600060608486031215620005e457600080fd5b8351620005f18162000489565b60208501519093506001600160401b03808211156200060f57600080fd5b6200061d87838801620004de565b935060408601519150808211156200063457600080fd5b50620005c486828701620004de565b6000825162000657818460208701620004b8565b9190910192915050565b828152604060208201526000825180604084015262000688816060850160208701620004b8565b601f01601f1916919091016060019392505050565b600060208284031215620006b057600080fd5b81516001600160e01b0319811681146200044a57600080fd5b634e487b7160e01b600052603260045260246000fdfe5369676e617475726556616c696461746f72237265636f7665725369676e6572";
-/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-BigInt(0);
-BigInt(1);
-BigInt(2);
-function equalBytes(b1, b22) {
-  if (b1.length !== b22.length)
-    return false;
-  for (let i2 = 0; i2 < b1.length; i2++)
-    if (b1[i2] !== b22[i2])
-      return false;
-  return true;
-}
-function isBytesEqual(a_, b_) {
-  const a2 = isHex(a_) ? toBytes$1(a_) : a_;
-  const b3 = isHex(b_) ? toBytes$1(b_) : b_;
-  return equalBytes(a2, b3);
-}
-async function verifyHash(client2, { address, hash: hash2, signature: signature2, ...callRequest }) {
-  const signatureHex = isHex(signature2) ? signature2 : toHex$1(signature2);
-  try {
-    const { data } = await getAction$1(client2, call, "call")({
-      data: encodeDeployData({
-        abi: universalSignatureValidatorAbi,
-        args: [address, hash2, signatureHex],
-        bytecode: universalSignatureValidatorByteCode
-      }),
-      ...callRequest
-    });
-    return isBytesEqual(data ?? "0x0", "0x1");
-  } catch (error) {
-    if (error instanceof CallExecutionError) {
-      return false;
-    }
-    throw error;
-  }
-}
-async function verifyMessage(client2, { address, message, signature: signature2, ...callRequest }) {
-  const hash2 = hashMessage(message);
-  return verifyHash(client2, {
-    address,
-    hash: hash2,
-    signature: signature2,
-    ...callRequest
-  });
-}
-async function verifyTypedData(client2, parameters) {
-  const { address, signature: signature2, message, primaryType, types: types2, domain: domain2, ...callRequest } = parameters;
-  const hash2 = hashTypedData({ message, primaryType, types: types2, domain: domain2 });
-  return verifyHash(client2, {
-    address,
-    hash: hash2,
-    signature: signature2,
-    ...callRequest
-  });
-}
-function watchBlockNumber(client2, { emitOnBegin = false, emitMissed = false, onBlockNumber, onError, poll: poll_, pollingInterval = client2.pollingInterval }) {
-  const enablePolling = (() => {
-    if (typeof poll_ !== "undefined")
-      return poll_;
-    if (client2.transport.type === "webSocket")
-      return false;
-    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
-      return false;
-    return true;
-  })();
-  let prevBlockNumber;
-  const pollBlockNumber = () => {
-    const observerId = stringify$2([
-      "watchBlockNumber",
-      client2.uid,
-      emitOnBegin,
-      emitMissed,
-      pollingInterval
-    ]);
-    return observe(observerId, { onBlockNumber, onError }, (emit) => poll(async () => {
-      var _a2;
-      try {
-        const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({ cacheTime: 0 });
-        if (prevBlockNumber) {
-          if (blockNumber === prevBlockNumber)
-            return;
-          if (blockNumber - prevBlockNumber > 1 && emitMissed) {
-            for (let i2 = prevBlockNumber + 1n; i2 < blockNumber; i2++) {
-              emit.onBlockNumber(i2, prevBlockNumber);
-              prevBlockNumber = i2;
-            }
-          }
-        }
-        if (!prevBlockNumber || blockNumber > prevBlockNumber) {
-          emit.onBlockNumber(blockNumber, prevBlockNumber);
-          prevBlockNumber = blockNumber;
-        }
-      } catch (err) {
-        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
-      }
-    }, {
-      emitOnBegin,
-      interval: pollingInterval
-    }));
-  };
-  const subscribeBlockNumber = () => {
-    const observerId = stringify$2([
-      "watchBlockNumber",
-      client2.uid,
-      emitOnBegin,
-      emitMissed
-    ]);
-    return observe(observerId, { onBlockNumber, onError }, (emit) => {
-      let active = true;
-      let unsubscribe = () => active = false;
-      (async () => {
-        try {
-          const transport = (() => {
-            if (client2.transport.type === "fallback") {
-              const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
-              if (!transport2)
-                return client2.transport;
-              return transport2.value;
-            }
-            return client2.transport;
-          })();
-          const { unsubscribe: unsubscribe_ } = await transport.subscribe({
-            params: ["newHeads"],
-            onData(data) {
-              var _a2;
-              if (!active)
-                return;
-              const blockNumber = hexToBigInt((_a2 = data.result) == null ? void 0 : _a2.number);
-              emit.onBlockNumber(blockNumber, prevBlockNumber);
-              prevBlockNumber = blockNumber;
-            },
-            onError(error) {
-              var _a2;
-              (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, error);
-            }
-          });
-          unsubscribe = unsubscribe_;
-          if (!active)
-            unsubscribe();
-        } catch (err) {
-          onError == null ? void 0 : onError(err);
-        }
-      })();
-      return () => unsubscribe();
-    });
-  };
-  return enablePolling ? pollBlockNumber() : subscribeBlockNumber();
-}
 async function waitForTransactionReceipt(client2, {
   confirmations = 1,
   hash: hash2,
@@ -72120,7 +73935,7 @@ async function waitForTransactionReceipt(client2, {
   // exponential backoff
   timeout
 }) {
-  const observerId = stringify$2(["waitForTransactionReceipt", client2.uid, hash2]);
+  const observerId = stringify$1(["waitForTransactionReceipt", client2.uid, hash2]);
   let transaction2;
   let replacedTransaction;
   let receipt;
@@ -72220,108 +74035,1741 @@ async function waitForTransactionReceipt(client2, {
     });
   });
 }
-function watchBlocks(client2, { blockTag = "latest", emitMissed = false, emitOnBegin = false, onBlock, onError, includeTransactions: includeTransactions_, poll: poll_, pollingInterval = client2.pollingInterval }) {
-  const enablePolling = (() => {
-    if (typeof poll_ !== "undefined")
-      return poll_;
-    if (client2.transport.type === "webSocket")
-      return false;
-    if (client2.transport.type === "fallback" && client2.transport.transports[0].config.type === "webSocket")
-      return false;
-    return true;
-  })();
-  const includeTransactions = includeTransactions_ ?? false;
-  let prevBlock;
-  const pollBlocks = () => {
-    const observerId = stringify$2([
-      "watchBlocks",
-      client2.uid,
-      blockTag,
-      emitMissed,
-      emitOnBegin,
-      includeTransactions,
-      pollingInterval
-    ]);
-    return observe(observerId, { onBlock, onError }, (emit) => poll(async () => {
-      var _a2;
-      try {
-        const block = await getAction$1(client2, getBlock, "getBlock")({
-          blockTag,
-          includeTransactions
-        });
-        if (block.number && (prevBlock == null ? void 0 : prevBlock.number)) {
-          if (block.number === prevBlock.number)
-            return;
-          if (block.number - prevBlock.number > 1 && emitMissed) {
-            for (let i2 = (prevBlock == null ? void 0 : prevBlock.number) + 1n; i2 < block.number; i2++) {
-              const block2 = await getAction$1(client2, getBlock, "getBlock")({
-                blockNumber: i2,
-                includeTransactions
-              });
-              emit.onBlock(block2, prevBlock);
-              prevBlock = block2;
-            }
-          }
-        }
-        if (
-          // If no previous block exists, emit.
-          !(prevBlock == null ? void 0 : prevBlock.number) || // If the block tag is "pending" with no block number, emit.
-          blockTag === "pending" && !(block == null ? void 0 : block.number) || // If the next block number is greater than the previous block number, emit.
-          // We don't want to emit blocks in the past.
-          block.number && block.number > prevBlock.number
-        ) {
-          emit.onBlock(block, prevBlock);
-          prevBlock = block;
-        }
-      } catch (err) {
-        (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
-      }
-    }, {
-      emitOnBegin,
-      interval: pollingInterval
-    }));
-  };
-  const subscribeBlocks = () => {
-    let active = true;
-    let unsubscribe = () => active = false;
-    (async () => {
-      try {
-        const transport = (() => {
-          if (client2.transport.type === "fallback") {
-            const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
-            if (!transport2)
-              return client2.transport;
-            return transport2.value;
-          }
-          return client2.transport;
-        })();
-        const { unsubscribe: unsubscribe_ } = await transport.subscribe({
-          params: ["newHeads"],
-          onData(data) {
-            var _a2, _b2, _c2;
-            if (!active)
-              return;
-            const format2 = ((_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.block) == null ? void 0 : _c2.format) || formatBlock;
-            const block = format2(data.result);
-            onBlock(block, prevBlock);
-            prevBlock = block;
-          },
-          onError(error) {
-            onError == null ? void 0 : onError(error);
-          }
-        });
-        unsubscribe = unsubscribe_;
-        if (!active)
-          unsubscribe();
-      } catch (err) {
-        onError == null ? void 0 : onError(err);
-      }
-    })();
-    return () => unsubscribe();
-  };
-  return enablePolling ? pollBlocks() : subscribeBlocks();
+async function requestAddresses(client2) {
+  const addresses = await client2.request({ method: "eth_requestAccounts" }, { retryCount: 0 });
+  return addresses.map((address) => getAddress(address));
 }
-function watchEvent(client2, { address, args, batch = true, event, events, fromBlock, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ }) {
+async function requestPermissions(client2, permissions) {
+  return client2.request({
+    method: "wallet_requestPermissions",
+    params: [permissions]
+  }, { retryCount: 0 });
+}
+async function signTransaction(client2, parameters) {
+  var _a2, _b2, _c2, _d2;
+  const { account: account_ = client2.account, chain = client2.chain, ...transaction2 } = parameters;
+  if (!account_)
+    throw new AccountNotFoundError({
+      docsPath: "/docs/actions/wallet/signTransaction"
+    });
+  const account2 = parseAccount(account_);
+  assertRequest({
+    account: account2,
+    ...parameters
+  });
+  const chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
+  if (chain !== null)
+    assertCurrentChain({
+      currentChainId: chainId,
+      chain
+    });
+  const formatters = (chain == null ? void 0 : chain.formatters) || ((_a2 = client2.chain) == null ? void 0 : _a2.formatters);
+  const format2 = ((_b2 = formatters == null ? void 0 : formatters.transactionRequest) == null ? void 0 : _b2.format) || formatTransactionRequest;
+  if (account2.type === "local") {
+    return account2.signTransaction({
+      ...transaction2,
+      chainId
+    }, { serializer: (_d2 = (_c2 = client2.chain) == null ? void 0 : _c2.serializers) == null ? void 0 : _d2.transaction });
+  }
+  return await client2.request({
+    method: "eth_signTransaction",
+    params: [
+      {
+        ...format2(transaction2),
+        chainId: numberToHex(chainId),
+        from: account2.address
+      }
+    ]
+  }, { retryCount: 0 });
+}
+async function signMessage$1(client2, { account: account_ = client2.account, message }) {
+  if (!account_)
+    throw new AccountNotFoundError({
+      docsPath: "/docs/actions/wallet/signMessage"
+    });
+  const account2 = parseAccount(account_);
+  if (account2.type === "local")
+    return account2.signMessage({ message });
+  const message_ = (() => {
+    if (typeof message === "string")
+      return stringToHex(message);
+    if (message.raw instanceof Uint8Array)
+      return toHex$1(message.raw);
+    return message.raw;
+  })();
+  return client2.request({
+    method: "personal_sign",
+    params: [message_, account2.address]
+  }, { retryCount: 0 });
+}
+async function signTypedData(client2, parameters) {
+  const { account: account_ = client2.account, domain: domain2, message, primaryType } = parameters;
+  if (!account_)
+    throw new AccountNotFoundError({
+      docsPath: "/docs/actions/wallet/signTypedData"
+    });
+  const account2 = parseAccount(account_);
+  const types2 = {
+    EIP712Domain: getTypesForEIP712Domain({ domain: domain2 }),
+    ...parameters.types
+  };
+  validateTypedData({ domain: domain2, message, primaryType, types: types2 });
+  if (account2.type === "local")
+    return account2.signTypedData({ domain: domain2, message, primaryType, types: types2 });
+  const typedData = stringify$1({ domain: domain2 ?? {}, message, primaryType, types: types2 }, (_, value) => isHex(value) ? value.toLowerCase() : value);
+  return client2.request({
+    method: "eth_signTypedData_v4",
+    params: [account2.address, typedData]
+  }, { retryCount: 0 });
+}
+async function simulateContract$1(client2, parameters) {
+  const { abi: abi2, address, args, dataSuffix, functionName, ...callRequest } = parameters;
+  const account2 = callRequest.account ? parseAccount(callRequest.account) : client2.account;
+  const calldata = encodeFunctionData({ abi: abi2, args, functionName });
+  try {
+    const { data } = await getAction$1(client2, call, "call")({
+      batch: false,
+      data: `${calldata}${dataSuffix ? dataSuffix.replace("0x", "") : ""}`,
+      to: address,
+      ...callRequest,
+      account: account2
+    });
+    const result = decodeFunctionResult({
+      abi: abi2,
+      args,
+      functionName,
+      data: data || "0x"
+    });
+    const minimizedAbi = abi2.filter((abiItem) => "name" in abiItem && abiItem.name === parameters.functionName);
+    return {
+      result,
+      request: {
+        abi: minimizedAbi,
+        address,
+        args,
+        dataSuffix,
+        functionName,
+        ...callRequest,
+        account: account2
+      }
+    };
+  } catch (error) {
+    throw getContractError(error, {
+      abi: abi2,
+      address,
+      args,
+      docsPath: "/docs/contract/simulateContract",
+      functionName,
+      sender: account2 == null ? void 0 : account2.address
+    });
+  }
+}
+async function switchChain$1(client2, { id: id2 }) {
+  await client2.request({
+    method: "wallet_switchEthereumChain",
+    params: [
+      {
+        chainId: numberToHex(id2)
+      }
+    ]
+  }, { retryCount: 0 });
+}
+const universalSignatureValidatorByteCode = "0x60806040523480156200001157600080fd5b50604051620007003803806200070083398101604081905262000034916200056f565b6000620000438484846200004f565b9050806000526001601ff35b600080846001600160a01b0316803b806020016040519081016040528181526000908060200190933c90507f6492649264926492649264926492649264926492649264926492649264926492620000a68462000451565b036200021f57600060608085806020019051810190620000c79190620005ce565b8651929550909350915060000362000192576000836001600160a01b031683604051620000f5919062000643565b6000604051808303816000865af19150503d806000811462000134576040519150601f19603f3d011682016040523d82523d6000602084013e62000139565b606091505b5050905080620001905760405162461bcd60e51b815260206004820152601e60248201527f5369676e617475726556616c696461746f723a206465706c6f796d656e74000060448201526064015b60405180910390fd5b505b604051630b135d3f60e11b808252906001600160a01b038a1690631626ba7e90620001c4908b90869060040162000661565b602060405180830381865afa158015620001e2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200020891906200069d565b6001600160e01b031916149450505050506200044a565b805115620002b157604051630b135d3f60e11b808252906001600160a01b03871690631626ba7e9062000259908890889060040162000661565b602060405180830381865afa15801562000277573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906200029d91906200069d565b6001600160e01b031916149150506200044a565b8251604114620003195760405162461bcd60e51b815260206004820152603a6024820152600080516020620006e083398151915260448201527f3a20696e76616c6964207369676e6174757265206c656e677468000000000000606482015260840162000187565b620003236200046b565b506020830151604080850151855186939260009185919081106200034b576200034b620006c9565b016020015160f81c9050601b81148015906200036b57508060ff16601c14155b15620003cf5760405162461bcd60e51b815260206004820152603b6024820152600080516020620006e083398151915260448201527f3a20696e76616c6964207369676e617475726520762076616c75650000000000606482015260840162000187565b6040805160008152602081018083528a905260ff83169181019190915260608101849052608081018390526001600160a01b038a169060019060a0016020604051602081039080840390855afa1580156200042e573d6000803e3d6000fd5b505050602060405103516001600160a01b031614955050505050505b9392505050565b60006020825110156200046357600080fd5b508051015190565b60405180606001604052806003906020820280368337509192915050565b6001600160a01b03811681146200049f57600080fd5b50565b634e487b7160e01b600052604160045260246000fd5b60005b83811015620004d5578181015183820152602001620004bb565b50506000910152565b600082601f830112620004f057600080fd5b81516001600160401b03808211156200050d576200050d620004a2565b604051601f8301601f19908116603f01168101908282118183101715620005385762000538620004a2565b816040528381528660208588010111156200055257600080fd5b62000565846020830160208901620004b8565b9695505050505050565b6000806000606084860312156200058557600080fd5b8351620005928162000489565b6020850151604086015191945092506001600160401b03811115620005b657600080fd5b620005c486828701620004de565b9150509250925092565b600080600060608486031215620005e457600080fd5b8351620005f18162000489565b60208501519093506001600160401b03808211156200060f57600080fd5b6200061d87838801620004de565b935060408601519150808211156200063457600080fd5b50620005c486828701620004de565b6000825162000657818460208701620004b8565b9190910192915050565b828152604060208201526000825180604084015262000688816060850160208701620004b8565b601f01601f1916919091016060019392505050565b600060208284031215620006b057600080fd5b81516001600160e01b0319811681146200044a57600080fd5b634e487b7160e01b600052603260045260246000fdfe5369676e617475726556616c696461746f72237265636f7665725369676e6572";
+/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+const _0n$3 = BigInt(0);
+const _1n$4 = BigInt(1);
+const _2n$2 = BigInt(2);
+const u8a = (a2) => a2 instanceof Uint8Array;
+const hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_, i2) => i2.toString(16).padStart(2, "0"));
+function bytesToHex(bytes3) {
+  if (!u8a(bytes3))
+    throw new Error("Uint8Array expected");
+  let hex2 = "";
+  for (let i2 = 0; i2 < bytes3.length; i2++) {
+    hex2 += hexes[bytes3[i2]];
+  }
+  return hex2;
+}
+function numberToHexUnpadded(num) {
+  const hex2 = num.toString(16);
+  return hex2.length & 1 ? `0${hex2}` : hex2;
+}
+function hexToNumber(hex2) {
+  if (typeof hex2 !== "string")
+    throw new Error("hex string expected, got " + typeof hex2);
+  return BigInt(hex2 === "" ? "0" : `0x${hex2}`);
+}
+function hexToBytes(hex2) {
+  if (typeof hex2 !== "string")
+    throw new Error("hex string expected, got " + typeof hex2);
+  const len = hex2.length;
+  if (len % 2)
+    throw new Error("padded hex string expected, got unpadded hex of length " + len);
+  const array = new Uint8Array(len / 2);
+  for (let i2 = 0; i2 < array.length; i2++) {
+    const j2 = i2 * 2;
+    const hexByte = hex2.slice(j2, j2 + 2);
+    const byte = Number.parseInt(hexByte, 16);
+    if (Number.isNaN(byte) || byte < 0)
+      throw new Error("Invalid byte sequence");
+    array[i2] = byte;
+  }
+  return array;
+}
+function bytesToNumberBE(bytes3) {
+  return hexToNumber(bytesToHex(bytes3));
+}
+function bytesToNumberLE(bytes3) {
+  if (!u8a(bytes3))
+    throw new Error("Uint8Array expected");
+  return hexToNumber(bytesToHex(Uint8Array.from(bytes3).reverse()));
+}
+function numberToBytesBE(n2, len) {
+  return hexToBytes(n2.toString(16).padStart(len * 2, "0"));
+}
+function numberToBytesLE(n2, len) {
+  return numberToBytesBE(n2, len).reverse();
+}
+function numberToVarBytesBE(n2) {
+  return hexToBytes(numberToHexUnpadded(n2));
+}
+function ensureBytes(title, hex2, expectedLength) {
+  let res;
+  if (typeof hex2 === "string") {
+    try {
+      res = hexToBytes(hex2);
+    } catch (e2) {
+      throw new Error(`${title} must be valid hex string, got "${hex2}". Cause: ${e2}`);
+    }
+  } else if (u8a(hex2)) {
+    res = Uint8Array.from(hex2);
+  } else {
+    throw new Error(`${title} must be hex string or Uint8Array`);
+  }
+  const len = res.length;
+  if (typeof expectedLength === "number" && len !== expectedLength)
+    throw new Error(`${title} expected ${expectedLength} bytes, got ${len}`);
+  return res;
+}
+function concatBytes(...arrays) {
+  const r2 = new Uint8Array(arrays.reduce((sum, a2) => sum + a2.length, 0));
+  let pad3 = 0;
+  arrays.forEach((a2) => {
+    if (!u8a(a2))
+      throw new Error("Uint8Array expected");
+    r2.set(a2, pad3);
+    pad3 += a2.length;
+  });
+  return r2;
+}
+function equalBytes(b1, b22) {
+  if (b1.length !== b22.length)
+    return false;
+  for (let i2 = 0; i2 < b1.length; i2++)
+    if (b1[i2] !== b22[i2])
+      return false;
+  return true;
+}
+function utf8ToBytes(str) {
+  if (typeof str !== "string")
+    throw new Error(`utf8ToBytes expected string, got ${typeof str}`);
+  return new Uint8Array(new TextEncoder().encode(str));
+}
+function bitLen(n2) {
+  let len;
+  for (len = 0; n2 > _0n$3; n2 >>= _1n$4, len += 1)
+    ;
+  return len;
+}
+function bitGet(n2, pos) {
+  return n2 >> BigInt(pos) & _1n$4;
+}
+const bitSet = (n2, pos, value) => {
+  return n2 | (value ? _1n$4 : _0n$3) << BigInt(pos);
+};
+const bitMask = (n2) => (_2n$2 << BigInt(n2 - 1)) - _1n$4;
+const u8n = (data) => new Uint8Array(data);
+const u8fr = (arr) => Uint8Array.from(arr);
+function createHmacDrbg(hashLen, qByteLen, hmacFn) {
+  if (typeof hashLen !== "number" || hashLen < 2)
+    throw new Error("hashLen must be a number");
+  if (typeof qByteLen !== "number" || qByteLen < 2)
+    throw new Error("qByteLen must be a number");
+  if (typeof hmacFn !== "function")
+    throw new Error("hmacFn must be a function");
+  let v3 = u8n(hashLen);
+  let k2 = u8n(hashLen);
+  let i2 = 0;
+  const reset = () => {
+    v3.fill(1);
+    k2.fill(0);
+    i2 = 0;
+  };
+  const h2 = (...b3) => hmacFn(k2, v3, ...b3);
+  const reseed2 = (seed = u8n()) => {
+    k2 = h2(u8fr([0]), seed);
+    v3 = h2();
+    if (seed.length === 0)
+      return;
+    k2 = h2(u8fr([1]), seed);
+    v3 = h2();
+  };
+  const gen2 = () => {
+    if (i2++ >= 1e3)
+      throw new Error("drbg: tried 1000 values");
+    let len = 0;
+    const out = [];
+    while (len < qByteLen) {
+      v3 = h2();
+      const sl2 = v3.slice();
+      out.push(sl2);
+      len += v3.length;
+    }
+    return concatBytes(...out);
+  };
+  const genUntil = (seed, pred) => {
+    reset();
+    reseed2(seed);
+    let res = void 0;
+    while (!(res = pred(gen2())))
+      reseed2();
+    reset();
+    return res;
+  };
+  return genUntil;
+}
+const validatorFns = {
+  bigint: (val) => typeof val === "bigint",
+  function: (val) => typeof val === "function",
+  boolean: (val) => typeof val === "boolean",
+  string: (val) => typeof val === "string",
+  stringOrUint8Array: (val) => typeof val === "string" || val instanceof Uint8Array,
+  isSafeInteger: (val) => Number.isSafeInteger(val),
+  array: (val) => Array.isArray(val),
+  field: (val, object2) => object2.Fp.isValid(val),
+  hash: (val) => typeof val === "function" && Number.isSafeInteger(val.outputLen)
+};
+function validateObject(object2, validators, optValidators = {}) {
+  const checkField = (fieldName, type, isOptional) => {
+    const checkVal = validatorFns[type];
+    if (typeof checkVal !== "function")
+      throw new Error(`Invalid validator "${type}", expected function`);
+    const val = object2[fieldName];
+    if (isOptional && val === void 0)
+      return;
+    if (!checkVal(val, object2)) {
+      throw new Error(`Invalid param ${String(fieldName)}=${val} (${typeof val}), expected ${type}`);
+    }
+  };
+  for (const [fieldName, type] of Object.entries(validators))
+    checkField(fieldName, type, false);
+  for (const [fieldName, type] of Object.entries(optValidators))
+    checkField(fieldName, type, true);
+  return object2;
+}
+const ut = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  bitGet,
+  bitLen,
+  bitMask,
+  bitSet,
+  bytesToHex,
+  bytesToNumberBE,
+  bytesToNumberLE,
+  concatBytes,
+  createHmacDrbg,
+  ensureBytes,
+  equalBytes,
+  hexToBytes,
+  hexToNumber,
+  numberToBytesBE,
+  numberToBytesLE,
+  numberToHexUnpadded,
+  numberToVarBytesBE,
+  utf8ToBytes,
+  validateObject
+}, Symbol.toStringTag, { value: "Module" }));
+function isBytesEqual(a_, b_) {
+  const a2 = isHex(a_) ? toBytes$1(a_) : a_;
+  const b3 = isHex(b_) ? toBytes$1(b_) : b_;
+  return equalBytes(a2, b3);
+}
+/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+const _0n$2 = BigInt(0), _1n$3 = BigInt(1), _2n$1 = BigInt(2), _3n$1 = BigInt(3);
+const _4n = BigInt(4), _5n = BigInt(5), _8n = BigInt(8);
+BigInt(9);
+BigInt(16);
+function mod(a2, b3) {
+  const result = a2 % b3;
+  return result >= _0n$2 ? result : b3 + result;
+}
+function pow(num, power, modulo) {
+  if (modulo <= _0n$2 || power < _0n$2)
+    throw new Error("Expected power/modulo > 0");
+  if (modulo === _1n$3)
+    return _0n$2;
+  let res = _1n$3;
+  while (power > _0n$2) {
+    if (power & _1n$3)
+      res = res * num % modulo;
+    num = num * num % modulo;
+    power >>= _1n$3;
+  }
+  return res;
+}
+function pow2(x, power, modulo) {
+  let res = x;
+  while (power-- > _0n$2) {
+    res *= res;
+    res %= modulo;
+  }
+  return res;
+}
+function invert(number2, modulo) {
+  if (number2 === _0n$2 || modulo <= _0n$2) {
+    throw new Error(`invert: expected positive integers, got n=${number2} mod=${modulo}`);
+  }
+  let a2 = mod(number2, modulo);
+  let b3 = modulo;
+  let x = _0n$2, u2 = _1n$3;
+  while (a2 !== _0n$2) {
+    const q2 = b3 / a2;
+    const r2 = b3 % a2;
+    const m2 = x - u2 * q2;
+    b3 = a2, a2 = r2, x = u2, u2 = m2;
+  }
+  const gcd = b3;
+  if (gcd !== _1n$3)
+    throw new Error("invert: does not exist");
+  return mod(x, modulo);
+}
+function tonelliShanks(P2) {
+  const legendreC = (P2 - _1n$3) / _2n$1;
+  let Q2, S2, Z2;
+  for (Q2 = P2 - _1n$3, S2 = 0; Q2 % _2n$1 === _0n$2; Q2 /= _2n$1, S2++)
+    ;
+  for (Z2 = _2n$1; Z2 < P2 && pow(Z2, legendreC, P2) !== P2 - _1n$3; Z2++)
+    ;
+  if (S2 === 1) {
+    const p1div4 = (P2 + _1n$3) / _4n;
+    return function tonelliFast(Fp2, n2) {
+      const root2 = Fp2.pow(n2, p1div4);
+      if (!Fp2.eql(Fp2.sqr(root2), n2))
+        throw new Error("Cannot find square root");
+      return root2;
+    };
+  }
+  const Q1div2 = (Q2 + _1n$3) / _2n$1;
+  return function tonelliSlow(Fp2, n2) {
+    if (Fp2.pow(n2, legendreC) === Fp2.neg(Fp2.ONE))
+      throw new Error("Cannot find square root");
+    let r2 = S2;
+    let g2 = Fp2.pow(Fp2.mul(Fp2.ONE, Z2), Q2);
+    let x = Fp2.pow(n2, Q1div2);
+    let b3 = Fp2.pow(n2, Q2);
+    while (!Fp2.eql(b3, Fp2.ONE)) {
+      if (Fp2.eql(b3, Fp2.ZERO))
+        return Fp2.ZERO;
+      let m2 = 1;
+      for (let t2 = Fp2.sqr(b3); m2 < r2; m2++) {
+        if (Fp2.eql(t2, Fp2.ONE))
+          break;
+        t2 = Fp2.sqr(t2);
+      }
+      const ge2 = Fp2.pow(g2, _1n$3 << BigInt(r2 - m2 - 1));
+      g2 = Fp2.sqr(ge2);
+      x = Fp2.mul(x, ge2);
+      b3 = Fp2.mul(b3, g2);
+      r2 = m2;
+    }
+    return x;
+  };
+}
+function FpSqrt(P2) {
+  if (P2 % _4n === _3n$1) {
+    const p1div4 = (P2 + _1n$3) / _4n;
+    return function sqrt3mod4(Fp2, n2) {
+      const root2 = Fp2.pow(n2, p1div4);
+      if (!Fp2.eql(Fp2.sqr(root2), n2))
+        throw new Error("Cannot find square root");
+      return root2;
+    };
+  }
+  if (P2 % _8n === _5n) {
+    const c1 = (P2 - _5n) / _8n;
+    return function sqrt5mod8(Fp2, n2) {
+      const n22 = Fp2.mul(n2, _2n$1);
+      const v3 = Fp2.pow(n22, c1);
+      const nv = Fp2.mul(n2, v3);
+      const i2 = Fp2.mul(Fp2.mul(nv, _2n$1), v3);
+      const root2 = Fp2.mul(nv, Fp2.sub(i2, Fp2.ONE));
+      if (!Fp2.eql(Fp2.sqr(root2), n2))
+        throw new Error("Cannot find square root");
+      return root2;
+    };
+  }
+  return tonelliShanks(P2);
+}
+const FIELD_FIELDS = [
+  "create",
+  "isValid",
+  "is0",
+  "neg",
+  "inv",
+  "sqrt",
+  "sqr",
+  "eql",
+  "add",
+  "sub",
+  "mul",
+  "pow",
+  "div",
+  "addN",
+  "subN",
+  "mulN",
+  "sqrN"
+];
+function validateField(field) {
+  const initial = {
+    ORDER: "bigint",
+    MASK: "bigint",
+    BYTES: "isSafeInteger",
+    BITS: "isSafeInteger"
+  };
+  const opts = FIELD_FIELDS.reduce((map, val) => {
+    map[val] = "function";
+    return map;
+  }, initial);
+  return validateObject(field, opts);
+}
+function FpPow(f2, num, power) {
+  if (power < _0n$2)
+    throw new Error("Expected power > 0");
+  if (power === _0n$2)
+    return f2.ONE;
+  if (power === _1n$3)
+    return num;
+  let p2 = f2.ONE;
+  let d2 = num;
+  while (power > _0n$2) {
+    if (power & _1n$3)
+      p2 = f2.mul(p2, d2);
+    d2 = f2.sqr(d2);
+    power >>= _1n$3;
+  }
+  return p2;
+}
+function FpInvertBatch(f2, nums) {
+  const tmp = new Array(nums.length);
+  const lastMultiplied = nums.reduce((acc, num, i2) => {
+    if (f2.is0(num))
+      return acc;
+    tmp[i2] = acc;
+    return f2.mul(acc, num);
+  }, f2.ONE);
+  const inverted = f2.inv(lastMultiplied);
+  nums.reduceRight((acc, num, i2) => {
+    if (f2.is0(num))
+      return acc;
+    tmp[i2] = f2.mul(acc, tmp[i2]);
+    return f2.mul(acc, num);
+  }, inverted);
+  return tmp;
+}
+function nLength(n2, nBitLength) {
+  const _nBitLength = nBitLength !== void 0 ? nBitLength : n2.toString(2).length;
+  const nByteLength = Math.ceil(_nBitLength / 8);
+  return { nBitLength: _nBitLength, nByteLength };
+}
+function Field(ORDER, bitLen2, isLE2 = false, redef = {}) {
+  if (ORDER <= _0n$2)
+    throw new Error(`Expected Field ORDER > 0, got ${ORDER}`);
+  const { nBitLength: BITS, nByteLength: BYTES } = nLength(ORDER, bitLen2);
+  if (BYTES > 2048)
+    throw new Error("Field lengths over 2048 bytes are not supported");
+  const sqrtP = FpSqrt(ORDER);
+  const f2 = Object.freeze({
+    ORDER,
+    BITS,
+    BYTES,
+    MASK: bitMask(BITS),
+    ZERO: _0n$2,
+    ONE: _1n$3,
+    create: (num) => mod(num, ORDER),
+    isValid: (num) => {
+      if (typeof num !== "bigint")
+        throw new Error(`Invalid field element: expected bigint, got ${typeof num}`);
+      return _0n$2 <= num && num < ORDER;
+    },
+    is0: (num) => num === _0n$2,
+    isOdd: (num) => (num & _1n$3) === _1n$3,
+    neg: (num) => mod(-num, ORDER),
+    eql: (lhs, rhs) => lhs === rhs,
+    sqr: (num) => mod(num * num, ORDER),
+    add: (lhs, rhs) => mod(lhs + rhs, ORDER),
+    sub: (lhs, rhs) => mod(lhs - rhs, ORDER),
+    mul: (lhs, rhs) => mod(lhs * rhs, ORDER),
+    pow: (num, power) => FpPow(f2, num, power),
+    div: (lhs, rhs) => mod(lhs * invert(rhs, ORDER), ORDER),
+    // Same as above, but doesn't normalize
+    sqrN: (num) => num * num,
+    addN: (lhs, rhs) => lhs + rhs,
+    subN: (lhs, rhs) => lhs - rhs,
+    mulN: (lhs, rhs) => lhs * rhs,
+    inv: (num) => invert(num, ORDER),
+    sqrt: redef.sqrt || ((n2) => sqrtP(f2, n2)),
+    invertBatch: (lst) => FpInvertBatch(f2, lst),
+    // TODO: do we really need constant cmov?
+    // We don't have const-time bigints anyway, so probably will be not very useful
+    cmov: (a2, b3, c2) => c2 ? b3 : a2,
+    toBytes: (num) => isLE2 ? numberToBytesLE(num, BYTES) : numberToBytesBE(num, BYTES),
+    fromBytes: (bytes3) => {
+      if (bytes3.length !== BYTES)
+        throw new Error(`Fp.fromBytes: expected ${BYTES}, got ${bytes3.length}`);
+      return isLE2 ? bytesToNumberLE(bytes3) : bytesToNumberBE(bytes3);
+    }
+  });
+  return Object.freeze(f2);
+}
+function getFieldBytesLength(fieldOrder) {
+  if (typeof fieldOrder !== "bigint")
+    throw new Error("field order must be bigint");
+  const bitLength = fieldOrder.toString(2).length;
+  return Math.ceil(bitLength / 8);
+}
+function getMinHashLength(fieldOrder) {
+  const length2 = getFieldBytesLength(fieldOrder);
+  return length2 + Math.ceil(length2 / 2);
+}
+function mapHashToField(key2, fieldOrder, isLE2 = false) {
+  const len = key2.length;
+  const fieldLen = getFieldBytesLength(fieldOrder);
+  const minLen = getMinHashLength(fieldOrder);
+  if (len < 16 || len < minLen || len > 1024)
+    throw new Error(`expected ${minLen}-1024 bytes of input, got ${len}`);
+  const num = isLE2 ? bytesToNumberBE(key2) : bytesToNumberLE(key2);
+  const reduced = mod(num, fieldOrder - _1n$3) + _1n$3;
+  return isLE2 ? numberToBytesLE(reduced, fieldLen) : numberToBytesBE(reduced, fieldLen);
+}
+/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+const _0n$1 = BigInt(0);
+const _1n$2 = BigInt(1);
+function wNAF(c2, bits) {
+  const constTimeNegate = (condition, item2) => {
+    const neg3 = item2.negate();
+    return condition ? neg3 : item2;
+  };
+  const opts = (W2) => {
+    const windows = Math.ceil(bits / W2) + 1;
+    const windowSize = 2 ** (W2 - 1);
+    return { windows, windowSize };
+  };
+  return {
+    constTimeNegate,
+    // non-const time multiplication ladder
+    unsafeLadder(elm, n2) {
+      let p2 = c2.ZERO;
+      let d2 = elm;
+      while (n2 > _0n$1) {
+        if (n2 & _1n$2)
+          p2 = p2.add(d2);
+        d2 = d2.double();
+        n2 >>= _1n$2;
+      }
+      return p2;
+    },
+    /**
+     * Creates a wNAF precomputation window. Used for caching.
+     * Default window size is set by `utils.precompute()` and is equal to 8.
+     * Number of precomputed points depends on the curve size:
+     * 2^(𝑊−1) * (Math.ceil(𝑛 / 𝑊) + 1), where:
+     * - 𝑊 is the window size
+     * - 𝑛 is the bitlength of the curve order.
+     * For a 256-bit curve and window size 8, the number of precomputed points is 128 * 33 = 4224.
+     * @returns precomputed point tables flattened to a single array
+     */
+    precomputeWindow(elm, W2) {
+      const { windows, windowSize } = opts(W2);
+      const points = [];
+      let p2 = elm;
+      let base2 = p2;
+      for (let window2 = 0; window2 < windows; window2++) {
+        base2 = p2;
+        points.push(base2);
+        for (let i2 = 1; i2 < windowSize; i2++) {
+          base2 = base2.add(p2);
+          points.push(base2);
+        }
+        p2 = base2.double();
+      }
+      return points;
+    },
+    /**
+     * Implements ec multiplication using precomputed tables and w-ary non-adjacent form.
+     * @param W window size
+     * @param precomputes precomputed tables
+     * @param n scalar (we don't check here, but should be less than curve order)
+     * @returns real and fake (for const-time) points
+     */
+    wNAF(W2, precomputes, n2) {
+      const { windows, windowSize } = opts(W2);
+      let p2 = c2.ZERO;
+      let f2 = c2.BASE;
+      const mask = BigInt(2 ** W2 - 1);
+      const maxNumber = 2 ** W2;
+      const shiftBy = BigInt(W2);
+      for (let window2 = 0; window2 < windows; window2++) {
+        const offset2 = window2 * windowSize;
+        let wbits = Number(n2 & mask);
+        n2 >>= shiftBy;
+        if (wbits > windowSize) {
+          wbits -= maxNumber;
+          n2 += _1n$2;
+        }
+        const offset1 = offset2;
+        const offset22 = offset2 + Math.abs(wbits) - 1;
+        const cond1 = window2 % 2 !== 0;
+        const cond2 = wbits < 0;
+        if (wbits === 0) {
+          f2 = f2.add(constTimeNegate(cond1, precomputes[offset1]));
+        } else {
+          p2 = p2.add(constTimeNegate(cond2, precomputes[offset22]));
+        }
+      }
+      return { p: p2, f: f2 };
+    },
+    wNAFCached(P2, precomputesMap, n2, transform) {
+      const W2 = P2._WINDOW_SIZE || 1;
+      let comp = precomputesMap.get(P2);
+      if (!comp) {
+        comp = this.precomputeWindow(P2, W2);
+        if (W2 !== 1) {
+          precomputesMap.set(P2, transform(comp));
+        }
+      }
+      return this.wNAF(W2, comp, n2);
+    }
+  };
+}
+function validateBasic(curve) {
+  validateField(curve.Fp);
+  validateObject(curve, {
+    n: "bigint",
+    h: "bigint",
+    Gx: "field",
+    Gy: "field"
+  }, {
+    nBitLength: "isSafeInteger",
+    nByteLength: "isSafeInteger"
+  });
+  return Object.freeze({
+    ...nLength(curve.n, curve.nBitLength),
+    ...curve,
+    ...{ p: curve.Fp.ORDER }
+  });
+}
+/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+function validatePointOpts(curve) {
+  const opts = validateBasic(curve);
+  validateObject(opts, {
+    a: "field",
+    b: "field"
+  }, {
+    allowedPrivateKeyLengths: "array",
+    wrapPrivateKey: "boolean",
+    isTorsionFree: "function",
+    clearCofactor: "function",
+    allowInfinityPoint: "boolean",
+    fromBytes: "function",
+    toBytes: "function"
+  });
+  const { endo, Fp: Fp2, a: a2 } = opts;
+  if (endo) {
+    if (!Fp2.eql(a2, Fp2.ZERO)) {
+      throw new Error("Endomorphism can only be defined for Koblitz curves that have a=0");
+    }
+    if (typeof endo !== "object" || typeof endo.beta !== "bigint" || typeof endo.splitScalar !== "function") {
+      throw new Error("Expected endomorphism with beta: bigint and splitScalar: function");
+    }
+  }
+  return Object.freeze({ ...opts });
+}
+const { bytesToNumberBE: b2n, hexToBytes: h2b } = ut;
+const DER = {
+  // asn.1 DER encoding utils
+  Err: class DERErr extends Error {
+    constructor(m2 = "") {
+      super(m2);
+    }
+  },
+  _parseInt(data) {
+    const { Err: E2 } = DER;
+    if (data.length < 2 || data[0] !== 2)
+      throw new E2("Invalid signature integer tag");
+    const len = data[1];
+    const res = data.subarray(2, len + 2);
+    if (!len || res.length !== len)
+      throw new E2("Invalid signature integer: wrong length");
+    if (res[0] & 128)
+      throw new E2("Invalid signature integer: negative");
+    if (res[0] === 0 && !(res[1] & 128))
+      throw new E2("Invalid signature integer: unnecessary leading zero");
+    return { d: b2n(res), l: data.subarray(len + 2) };
+  },
+  toSig(hex2) {
+    const { Err: E2 } = DER;
+    const data = typeof hex2 === "string" ? h2b(hex2) : hex2;
+    if (!(data instanceof Uint8Array))
+      throw new Error("ui8a expected");
+    let l2 = data.length;
+    if (l2 < 2 || data[0] != 48)
+      throw new E2("Invalid signature tag");
+    if (data[1] !== l2 - 2)
+      throw new E2("Invalid signature: incorrect length");
+    const { d: r2, l: sBytes } = DER._parseInt(data.subarray(2));
+    const { d: s2, l: rBytesLeft } = DER._parseInt(sBytes);
+    if (rBytesLeft.length)
+      throw new E2("Invalid signature: left bytes after parsing");
+    return { r: r2, s: s2 };
+  },
+  hexFromSig(sig) {
+    const slice2 = (s3) => Number.parseInt(s3[0], 16) & 8 ? "00" + s3 : s3;
+    const h2 = (num) => {
+      const hex2 = num.toString(16);
+      return hex2.length & 1 ? `0${hex2}` : hex2;
+    };
+    const s2 = slice2(h2(sig.s));
+    const r2 = slice2(h2(sig.r));
+    const shl = s2.length / 2;
+    const rhl = r2.length / 2;
+    const sl2 = h2(shl);
+    const rl2 = h2(rhl);
+    return `30${h2(rhl + shl + 4)}02${rl2}${r2}02${sl2}${s2}`;
+  }
+};
+const _0n = BigInt(0), _1n$1 = BigInt(1);
+BigInt(2);
+const _3n = BigInt(3);
+BigInt(4);
+function weierstrassPoints(opts) {
+  const CURVE = validatePointOpts(opts);
+  const { Fp: Fp2 } = CURVE;
+  const toBytes2 = CURVE.toBytes || ((_c2, point3, _isCompressed) => {
+    const a2 = point3.toAffine();
+    return concatBytes(Uint8Array.from([4]), Fp2.toBytes(a2.x), Fp2.toBytes(a2.y));
+  });
+  const fromBytes = CURVE.fromBytes || ((bytes3) => {
+    const tail = bytes3.subarray(1);
+    const x = Fp2.fromBytes(tail.subarray(0, Fp2.BYTES));
+    const y2 = Fp2.fromBytes(tail.subarray(Fp2.BYTES, 2 * Fp2.BYTES));
+    return { x, y: y2 };
+  });
+  function weierstrassEquation(x) {
+    const { a: a2, b: b3 } = CURVE;
+    const x2 = Fp2.sqr(x);
+    const x3 = Fp2.mul(x2, x);
+    return Fp2.add(Fp2.add(x3, Fp2.mul(x, a2)), b3);
+  }
+  if (!Fp2.eql(Fp2.sqr(CURVE.Gy), weierstrassEquation(CURVE.Gx)))
+    throw new Error("bad generator point: equation left != right");
+  function isWithinCurveOrder(num) {
+    return typeof num === "bigint" && _0n < num && num < CURVE.n;
+  }
+  function assertGE(num) {
+    if (!isWithinCurveOrder(num))
+      throw new Error("Expected valid bigint: 0 < bigint < curve.n");
+  }
+  function normPrivateKeyToScalar(key2) {
+    const { allowedPrivateKeyLengths: lengths, nByteLength, wrapPrivateKey, n: n2 } = CURVE;
+    if (lengths && typeof key2 !== "bigint") {
+      if (key2 instanceof Uint8Array)
+        key2 = bytesToHex(key2);
+      if (typeof key2 !== "string" || !lengths.includes(key2.length))
+        throw new Error("Invalid key");
+      key2 = key2.padStart(nByteLength * 2, "0");
+    }
+    let num;
+    try {
+      num = typeof key2 === "bigint" ? key2 : bytesToNumberBE(ensureBytes("private key", key2, nByteLength));
+    } catch (error) {
+      throw new Error(`private key must be ${nByteLength} bytes, hex or bigint, not ${typeof key2}`);
+    }
+    if (wrapPrivateKey)
+      num = mod(num, n2);
+    assertGE(num);
+    return num;
+  }
+  const pointPrecomputes = /* @__PURE__ */ new Map();
+  function assertPrjPoint(other) {
+    if (!(other instanceof Point2))
+      throw new Error("ProjectivePoint expected");
+  }
+  class Point2 {
+    constructor(px2, py, pz) {
+      this.px = px2;
+      this.py = py;
+      this.pz = pz;
+      if (px2 == null || !Fp2.isValid(px2))
+        throw new Error("x required");
+      if (py == null || !Fp2.isValid(py))
+        throw new Error("y required");
+      if (pz == null || !Fp2.isValid(pz))
+        throw new Error("z required");
+    }
+    // Does not validate if the point is on-curve.
+    // Use fromHex instead, or call assertValidity() later.
+    static fromAffine(p2) {
+      const { x, y: y2 } = p2 || {};
+      if (!p2 || !Fp2.isValid(x) || !Fp2.isValid(y2))
+        throw new Error("invalid affine point");
+      if (p2 instanceof Point2)
+        throw new Error("projective point not allowed");
+      const is0 = (i2) => Fp2.eql(i2, Fp2.ZERO);
+      if (is0(x) && is0(y2))
+        return Point2.ZERO;
+      return new Point2(x, y2, Fp2.ONE);
+    }
+    get x() {
+      return this.toAffine().x;
+    }
+    get y() {
+      return this.toAffine().y;
+    }
+    /**
+     * Takes a bunch of Projective Points but executes only one
+     * inversion on all of them. Inversion is very slow operation,
+     * so this improves performance massively.
+     * Optimization: converts a list of projective points to a list of identical points with Z=1.
+     */
+    static normalizeZ(points) {
+      const toInv = Fp2.invertBatch(points.map((p2) => p2.pz));
+      return points.map((p2, i2) => p2.toAffine(toInv[i2])).map(Point2.fromAffine);
+    }
+    /**
+     * Converts hash string or Uint8Array to Point.
+     * @param hex short/long ECDSA hex
+     */
+    static fromHex(hex2) {
+      const P2 = Point2.fromAffine(fromBytes(ensureBytes("pointHex", hex2)));
+      P2.assertValidity();
+      return P2;
+    }
+    // Multiplies generator point by privateKey.
+    static fromPrivateKey(privateKey) {
+      return Point2.BASE.multiply(normPrivateKeyToScalar(privateKey));
+    }
+    // "Private method", don't use it directly
+    _setWindowSize(windowSize) {
+      this._WINDOW_SIZE = windowSize;
+      pointPrecomputes.delete(this);
+    }
+    // A point on curve is valid if it conforms to equation.
+    assertValidity() {
+      if (this.is0()) {
+        if (CURVE.allowInfinityPoint && !Fp2.is0(this.py))
+          return;
+        throw new Error("bad point: ZERO");
+      }
+      const { x, y: y2 } = this.toAffine();
+      if (!Fp2.isValid(x) || !Fp2.isValid(y2))
+        throw new Error("bad point: x or y not FE");
+      const left = Fp2.sqr(y2);
+      const right = weierstrassEquation(x);
+      if (!Fp2.eql(left, right))
+        throw new Error("bad point: equation left != right");
+      if (!this.isTorsionFree())
+        throw new Error("bad point: not in prime-order subgroup");
+    }
+    hasEvenY() {
+      const { y: y2 } = this.toAffine();
+      if (Fp2.isOdd)
+        return !Fp2.isOdd(y2);
+      throw new Error("Field doesn't support isOdd");
+    }
+    /**
+     * Compare one point to another.
+     */
+    equals(other) {
+      assertPrjPoint(other);
+      const { px: X1, py: Y1, pz: Z1 } = this;
+      const { px: X2, py: Y2, pz: Z2 } = other;
+      const U1 = Fp2.eql(Fp2.mul(X1, Z2), Fp2.mul(X2, Z1));
+      const U2 = Fp2.eql(Fp2.mul(Y1, Z2), Fp2.mul(Y2, Z1));
+      return U1 && U2;
+    }
+    /**
+     * Flips point to one corresponding to (x, -y) in Affine coordinates.
+     */
+    negate() {
+      return new Point2(this.px, Fp2.neg(this.py), this.pz);
+    }
+    // Renes-Costello-Batina exception-free doubling formula.
+    // There is 30% faster Jacobian formula, but it is not complete.
+    // https://eprint.iacr.org/2015/1060, algorithm 3
+    // Cost: 8M + 3S + 3*a + 2*b3 + 15add.
+    double() {
+      const { a: a2, b: b3 } = CURVE;
+      const b32 = Fp2.mul(b3, _3n);
+      const { px: X1, py: Y1, pz: Z1 } = this;
+      let X3 = Fp2.ZERO, Y3 = Fp2.ZERO, Z3 = Fp2.ZERO;
+      let t0 = Fp2.mul(X1, X1);
+      let t1 = Fp2.mul(Y1, Y1);
+      let t2 = Fp2.mul(Z1, Z1);
+      let t3 = Fp2.mul(X1, Y1);
+      t3 = Fp2.add(t3, t3);
+      Z3 = Fp2.mul(X1, Z1);
+      Z3 = Fp2.add(Z3, Z3);
+      X3 = Fp2.mul(a2, Z3);
+      Y3 = Fp2.mul(b32, t2);
+      Y3 = Fp2.add(X3, Y3);
+      X3 = Fp2.sub(t1, Y3);
+      Y3 = Fp2.add(t1, Y3);
+      Y3 = Fp2.mul(X3, Y3);
+      X3 = Fp2.mul(t3, X3);
+      Z3 = Fp2.mul(b32, Z3);
+      t2 = Fp2.mul(a2, t2);
+      t3 = Fp2.sub(t0, t2);
+      t3 = Fp2.mul(a2, t3);
+      t3 = Fp2.add(t3, Z3);
+      Z3 = Fp2.add(t0, t0);
+      t0 = Fp2.add(Z3, t0);
+      t0 = Fp2.add(t0, t2);
+      t0 = Fp2.mul(t0, t3);
+      Y3 = Fp2.add(Y3, t0);
+      t2 = Fp2.mul(Y1, Z1);
+      t2 = Fp2.add(t2, t2);
+      t0 = Fp2.mul(t2, t3);
+      X3 = Fp2.sub(X3, t0);
+      Z3 = Fp2.mul(t2, t1);
+      Z3 = Fp2.add(Z3, Z3);
+      Z3 = Fp2.add(Z3, Z3);
+      return new Point2(X3, Y3, Z3);
+    }
+    // Renes-Costello-Batina exception-free addition formula.
+    // There is 30% faster Jacobian formula, but it is not complete.
+    // https://eprint.iacr.org/2015/1060, algorithm 1
+    // Cost: 12M + 0S + 3*a + 3*b3 + 23add.
+    add(other) {
+      assertPrjPoint(other);
+      const { px: X1, py: Y1, pz: Z1 } = this;
+      const { px: X2, py: Y2, pz: Z2 } = other;
+      let X3 = Fp2.ZERO, Y3 = Fp2.ZERO, Z3 = Fp2.ZERO;
+      const a2 = CURVE.a;
+      const b3 = Fp2.mul(CURVE.b, _3n);
+      let t0 = Fp2.mul(X1, X2);
+      let t1 = Fp2.mul(Y1, Y2);
+      let t2 = Fp2.mul(Z1, Z2);
+      let t3 = Fp2.add(X1, Y1);
+      let t4 = Fp2.add(X2, Y2);
+      t3 = Fp2.mul(t3, t4);
+      t4 = Fp2.add(t0, t1);
+      t3 = Fp2.sub(t3, t4);
+      t4 = Fp2.add(X1, Z1);
+      let t5 = Fp2.add(X2, Z2);
+      t4 = Fp2.mul(t4, t5);
+      t5 = Fp2.add(t0, t2);
+      t4 = Fp2.sub(t4, t5);
+      t5 = Fp2.add(Y1, Z1);
+      X3 = Fp2.add(Y2, Z2);
+      t5 = Fp2.mul(t5, X3);
+      X3 = Fp2.add(t1, t2);
+      t5 = Fp2.sub(t5, X3);
+      Z3 = Fp2.mul(a2, t4);
+      X3 = Fp2.mul(b3, t2);
+      Z3 = Fp2.add(X3, Z3);
+      X3 = Fp2.sub(t1, Z3);
+      Z3 = Fp2.add(t1, Z3);
+      Y3 = Fp2.mul(X3, Z3);
+      t1 = Fp2.add(t0, t0);
+      t1 = Fp2.add(t1, t0);
+      t2 = Fp2.mul(a2, t2);
+      t4 = Fp2.mul(b3, t4);
+      t1 = Fp2.add(t1, t2);
+      t2 = Fp2.sub(t0, t2);
+      t2 = Fp2.mul(a2, t2);
+      t4 = Fp2.add(t4, t2);
+      t0 = Fp2.mul(t1, t4);
+      Y3 = Fp2.add(Y3, t0);
+      t0 = Fp2.mul(t5, t4);
+      X3 = Fp2.mul(t3, X3);
+      X3 = Fp2.sub(X3, t0);
+      t0 = Fp2.mul(t3, t1);
+      Z3 = Fp2.mul(t5, Z3);
+      Z3 = Fp2.add(Z3, t0);
+      return new Point2(X3, Y3, Z3);
+    }
+    subtract(other) {
+      return this.add(other.negate());
+    }
+    is0() {
+      return this.equals(Point2.ZERO);
+    }
+    wNAF(n2) {
+      return wnaf.wNAFCached(this, pointPrecomputes, n2, (comp) => {
+        const toInv = Fp2.invertBatch(comp.map((p2) => p2.pz));
+        return comp.map((p2, i2) => p2.toAffine(toInv[i2])).map(Point2.fromAffine);
+      });
+    }
+    /**
+     * Non-constant-time multiplication. Uses double-and-add algorithm.
+     * It's faster, but should only be used when you don't care about
+     * an exposed private key e.g. sig verification, which works over *public* keys.
+     */
+    multiplyUnsafe(n2) {
+      const I2 = Point2.ZERO;
+      if (n2 === _0n)
+        return I2;
+      assertGE(n2);
+      if (n2 === _1n$1)
+        return this;
+      const { endo } = CURVE;
+      if (!endo)
+        return wnaf.unsafeLadder(this, n2);
+      let { k1neg, k1, k2neg, k2 } = endo.splitScalar(n2);
+      let k1p = I2;
+      let k2p = I2;
+      let d2 = this;
+      while (k1 > _0n || k2 > _0n) {
+        if (k1 & _1n$1)
+          k1p = k1p.add(d2);
+        if (k2 & _1n$1)
+          k2p = k2p.add(d2);
+        d2 = d2.double();
+        k1 >>= _1n$1;
+        k2 >>= _1n$1;
+      }
+      if (k1neg)
+        k1p = k1p.negate();
+      if (k2neg)
+        k2p = k2p.negate();
+      k2p = new Point2(Fp2.mul(k2p.px, endo.beta), k2p.py, k2p.pz);
+      return k1p.add(k2p);
+    }
+    /**
+     * Constant time multiplication.
+     * Uses wNAF method. Windowed method may be 10% faster,
+     * but takes 2x longer to generate and consumes 2x memory.
+     * Uses precomputes when available.
+     * Uses endomorphism for Koblitz curves.
+     * @param scalar by which the point would be multiplied
+     * @returns New point
+     */
+    multiply(scalar) {
+      assertGE(scalar);
+      let n2 = scalar;
+      let point3, fake;
+      const { endo } = CURVE;
+      if (endo) {
+        const { k1neg, k1, k2neg, k2 } = endo.splitScalar(n2);
+        let { p: k1p, f: f1p } = this.wNAF(k1);
+        let { p: k2p, f: f2p } = this.wNAF(k2);
+        k1p = wnaf.constTimeNegate(k1neg, k1p);
+        k2p = wnaf.constTimeNegate(k2neg, k2p);
+        k2p = new Point2(Fp2.mul(k2p.px, endo.beta), k2p.py, k2p.pz);
+        point3 = k1p.add(k2p);
+        fake = f1p.add(f2p);
+      } else {
+        const { p: p2, f: f2 } = this.wNAF(n2);
+        point3 = p2;
+        fake = f2;
+      }
+      return Point2.normalizeZ([point3, fake])[0];
+    }
+    /**
+     * Efficiently calculate `aP + bQ`. Unsafe, can expose private key, if used incorrectly.
+     * Not using Strauss-Shamir trick: precomputation tables are faster.
+     * The trick could be useful if both P and Q are not G (not in our case).
+     * @returns non-zero affine point
+     */
+    multiplyAndAddUnsafe(Q2, a2, b3) {
+      const G2 = Point2.BASE;
+      const mul3 = (P2, a3) => a3 === _0n || a3 === _1n$1 || !P2.equals(G2) ? P2.multiplyUnsafe(a3) : P2.multiply(a3);
+      const sum = mul3(this, a2).add(mul3(Q2, b3));
+      return sum.is0() ? void 0 : sum;
+    }
+    // Converts Projective point to affine (x, y) coordinates.
+    // Can accept precomputed Z^-1 - for example, from invertBatch.
+    // (x, y, z) ∋ (x=x/z, y=y/z)
+    toAffine(iz) {
+      const { px: x, py: y2, pz: z2 } = this;
+      const is0 = this.is0();
+      if (iz == null)
+        iz = is0 ? Fp2.ONE : Fp2.inv(z2);
+      const ax = Fp2.mul(x, iz);
+      const ay = Fp2.mul(y2, iz);
+      const zz = Fp2.mul(z2, iz);
+      if (is0)
+        return { x: Fp2.ZERO, y: Fp2.ZERO };
+      if (!Fp2.eql(zz, Fp2.ONE))
+        throw new Error("invZ was invalid");
+      return { x: ax, y: ay };
+    }
+    isTorsionFree() {
+      const { h: cofactor, isTorsionFree } = CURVE;
+      if (cofactor === _1n$1)
+        return true;
+      if (isTorsionFree)
+        return isTorsionFree(Point2, this);
+      throw new Error("isTorsionFree() has not been declared for the elliptic curve");
+    }
+    clearCofactor() {
+      const { h: cofactor, clearCofactor } = CURVE;
+      if (cofactor === _1n$1)
+        return this;
+      if (clearCofactor)
+        return clearCofactor(Point2, this);
+      return this.multiplyUnsafe(CURVE.h);
+    }
+    toRawBytes(isCompressed = true) {
+      this.assertValidity();
+      return toBytes2(Point2, this, isCompressed);
+    }
+    toHex(isCompressed = true) {
+      return bytesToHex(this.toRawBytes(isCompressed));
+    }
+  }
+  Point2.BASE = new Point2(CURVE.Gx, CURVE.Gy, Fp2.ONE);
+  Point2.ZERO = new Point2(Fp2.ZERO, Fp2.ONE, Fp2.ZERO);
+  const _bits = CURVE.nBitLength;
+  const wnaf = wNAF(Point2, CURVE.endo ? Math.ceil(_bits / 2) : _bits);
+  return {
+    CURVE,
+    ProjectivePoint: Point2,
+    normPrivateKeyToScalar,
+    weierstrassEquation,
+    isWithinCurveOrder
+  };
+}
+function validateOpts(curve) {
+  const opts = validateBasic(curve);
+  validateObject(opts, {
+    hash: "hash",
+    hmac: "function",
+    randomBytes: "function"
+  }, {
+    bits2int: "function",
+    bits2int_modN: "function",
+    lowS: "boolean"
+  });
+  return Object.freeze({ lowS: true, ...opts });
+}
+function weierstrass(curveDef) {
+  const CURVE = validateOpts(curveDef);
+  const { Fp: Fp2, n: CURVE_ORDER } = CURVE;
+  const compressedLen = Fp2.BYTES + 1;
+  const uncompressedLen = 2 * Fp2.BYTES + 1;
+  function isValidFieldElement(num) {
+    return _0n < num && num < Fp2.ORDER;
+  }
+  function modN(a2) {
+    return mod(a2, CURVE_ORDER);
+  }
+  function invN(a2) {
+    return invert(a2, CURVE_ORDER);
+  }
+  const { ProjectivePoint: Point2, normPrivateKeyToScalar, weierstrassEquation, isWithinCurveOrder } = weierstrassPoints({
+    ...CURVE,
+    toBytes(_c2, point3, isCompressed) {
+      const a2 = point3.toAffine();
+      const x = Fp2.toBytes(a2.x);
+      const cat = concatBytes;
+      if (isCompressed) {
+        return cat(Uint8Array.from([point3.hasEvenY() ? 2 : 3]), x);
+      } else {
+        return cat(Uint8Array.from([4]), x, Fp2.toBytes(a2.y));
+      }
+    },
+    fromBytes(bytes3) {
+      const len = bytes3.length;
+      const head = bytes3[0];
+      const tail = bytes3.subarray(1);
+      if (len === compressedLen && (head === 2 || head === 3)) {
+        const x = bytesToNumberBE(tail);
+        if (!isValidFieldElement(x))
+          throw new Error("Point is not on curve");
+        const y2 = weierstrassEquation(x);
+        let y3 = Fp2.sqrt(y2);
+        const isYOdd = (y3 & _1n$1) === _1n$1;
+        const isHeadOdd = (head & 1) === 1;
+        if (isHeadOdd !== isYOdd)
+          y3 = Fp2.neg(y3);
+        return { x, y: y3 };
+      } else if (len === uncompressedLen && head === 4) {
+        const x = Fp2.fromBytes(tail.subarray(0, Fp2.BYTES));
+        const y2 = Fp2.fromBytes(tail.subarray(Fp2.BYTES, 2 * Fp2.BYTES));
+        return { x, y: y2 };
+      } else {
+        throw new Error(`Point of length ${len} was invalid. Expected ${compressedLen} compressed bytes or ${uncompressedLen} uncompressed bytes`);
+      }
+    }
+  });
+  const numToNByteStr = (num) => bytesToHex(numberToBytesBE(num, CURVE.nByteLength));
+  function isBiggerThanHalfOrder(number2) {
+    const HALF = CURVE_ORDER >> _1n$1;
+    return number2 > HALF;
+  }
+  function normalizeS(s2) {
+    return isBiggerThanHalfOrder(s2) ? modN(-s2) : s2;
+  }
+  const slcNum = (b3, from2, to) => bytesToNumberBE(b3.slice(from2, to));
+  class Signature2 {
+    constructor(r2, s2, recovery) {
+      this.r = r2;
+      this.s = s2;
+      this.recovery = recovery;
+      this.assertValidity();
+    }
+    // pair (bytes of r, bytes of s)
+    static fromCompact(hex2) {
+      const l2 = CURVE.nByteLength;
+      hex2 = ensureBytes("compactSignature", hex2, l2 * 2);
+      return new Signature2(slcNum(hex2, 0, l2), slcNum(hex2, l2, 2 * l2));
+    }
+    // DER encoded ECDSA signature
+    // https://bitcoin.stackexchange.com/questions/57644/what-are-the-parts-of-a-bitcoin-transaction-input-script
+    static fromDER(hex2) {
+      const { r: r2, s: s2 } = DER.toSig(ensureBytes("DER", hex2));
+      return new Signature2(r2, s2);
+    }
+    assertValidity() {
+      if (!isWithinCurveOrder(this.r))
+        throw new Error("r must be 0 < r < CURVE.n");
+      if (!isWithinCurveOrder(this.s))
+        throw new Error("s must be 0 < s < CURVE.n");
+    }
+    addRecoveryBit(recovery) {
+      return new Signature2(this.r, this.s, recovery);
+    }
+    recoverPublicKey(msgHash) {
+      const { r: r2, s: s2, recovery: rec } = this;
+      const h2 = bits2int_modN(ensureBytes("msgHash", msgHash));
+      if (rec == null || ![0, 1, 2, 3].includes(rec))
+        throw new Error("recovery id invalid");
+      const radj = rec === 2 || rec === 3 ? r2 + CURVE.n : r2;
+      if (radj >= Fp2.ORDER)
+        throw new Error("recovery id 2 or 3 invalid");
+      const prefix2 = (rec & 1) === 0 ? "02" : "03";
+      const R2 = Point2.fromHex(prefix2 + numToNByteStr(radj));
+      const ir = invN(radj);
+      const u1 = modN(-h2 * ir);
+      const u2 = modN(s2 * ir);
+      const Q2 = Point2.BASE.multiplyAndAddUnsafe(R2, u1, u2);
+      if (!Q2)
+        throw new Error("point at infinify");
+      Q2.assertValidity();
+      return Q2;
+    }
+    // Signatures should be low-s, to prevent malleability.
+    hasHighS() {
+      return isBiggerThanHalfOrder(this.s);
+    }
+    normalizeS() {
+      return this.hasHighS() ? new Signature2(this.r, modN(-this.s), this.recovery) : this;
+    }
+    // DER-encoded
+    toDERRawBytes() {
+      return hexToBytes(this.toDERHex());
+    }
+    toDERHex() {
+      return DER.hexFromSig({ r: this.r, s: this.s });
+    }
+    // padded bytes of r, then padded bytes of s
+    toCompactRawBytes() {
+      return hexToBytes(this.toCompactHex());
+    }
+    toCompactHex() {
+      return numToNByteStr(this.r) + numToNByteStr(this.s);
+    }
+  }
+  const utils2 = {
+    isValidPrivateKey(privateKey) {
+      try {
+        normPrivateKeyToScalar(privateKey);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    },
+    normPrivateKeyToScalar,
+    /**
+     * Produces cryptographically secure private key from random of size
+     * (groupLen + ceil(groupLen / 2)) with modulo bias being negligible.
+     */
+    randomPrivateKey: () => {
+      const length2 = getMinHashLength(CURVE.n);
+      return mapHashToField(CURVE.randomBytes(length2), CURVE.n);
+    },
+    /**
+     * Creates precompute table for an arbitrary EC point. Makes point "cached".
+     * Allows to massively speed-up `point.multiply(scalar)`.
+     * @returns cached point
+     * @example
+     * const fast = utils.precompute(8, ProjectivePoint.fromHex(someonesPubKey));
+     * fast.multiply(privKey); // much faster ECDH now
+     */
+    precompute(windowSize = 8, point3 = Point2.BASE) {
+      point3._setWindowSize(windowSize);
+      point3.multiply(BigInt(3));
+      return point3;
+    }
+  };
+  function getPublicKey(privateKey, isCompressed = true) {
+    return Point2.fromPrivateKey(privateKey).toRawBytes(isCompressed);
+  }
+  function isProbPub(item2) {
+    const arr = item2 instanceof Uint8Array;
+    const str = typeof item2 === "string";
+    const len = (arr || str) && item2.length;
+    if (arr)
+      return len === compressedLen || len === uncompressedLen;
+    if (str)
+      return len === 2 * compressedLen || len === 2 * uncompressedLen;
+    if (item2 instanceof Point2)
+      return true;
+    return false;
+  }
+  function getSharedSecret(privateA, publicB, isCompressed = true) {
+    if (isProbPub(privateA))
+      throw new Error("first arg must be private key");
+    if (!isProbPub(publicB))
+      throw new Error("second arg must be public key");
+    const b3 = Point2.fromHex(publicB);
+    return b3.multiply(normPrivateKeyToScalar(privateA)).toRawBytes(isCompressed);
+  }
+  const bits2int = CURVE.bits2int || function(bytes3) {
+    const num = bytesToNumberBE(bytes3);
+    const delta = bytes3.length * 8 - CURVE.nBitLength;
+    return delta > 0 ? num >> BigInt(delta) : num;
+  };
+  const bits2int_modN = CURVE.bits2int_modN || function(bytes3) {
+    return modN(bits2int(bytes3));
+  };
+  const ORDER_MASK = bitMask(CURVE.nBitLength);
+  function int2octets(num) {
+    if (typeof num !== "bigint")
+      throw new Error("bigint expected");
+    if (!(_0n <= num && num < ORDER_MASK))
+      throw new Error(`bigint expected < 2^${CURVE.nBitLength}`);
+    return numberToBytesBE(num, CURVE.nByteLength);
+  }
+  function prepSig(msgHash, privateKey, opts = defaultSigOpts) {
+    if (["recovered", "canonical"].some((k2) => k2 in opts))
+      throw new Error("sign() legacy options not supported");
+    const { hash: hash2, randomBytes: randomBytes2 } = CURVE;
+    let { lowS, prehash, extraEntropy: ent } = opts;
+    if (lowS == null)
+      lowS = true;
+    msgHash = ensureBytes("msgHash", msgHash);
+    if (prehash)
+      msgHash = ensureBytes("prehashed msgHash", hash2(msgHash));
+    const h1int = bits2int_modN(msgHash);
+    const d2 = normPrivateKeyToScalar(privateKey);
+    const seedArgs = [int2octets(d2), int2octets(h1int)];
+    if (ent != null) {
+      const e2 = ent === true ? randomBytes2(Fp2.BYTES) : ent;
+      seedArgs.push(ensureBytes("extraEntropy", e2));
+    }
+    const seed = concatBytes(...seedArgs);
+    const m2 = h1int;
+    function k2sig(kBytes) {
+      const k2 = bits2int(kBytes);
+      if (!isWithinCurveOrder(k2))
+        return;
+      const ik2 = invN(k2);
+      const q2 = Point2.BASE.multiply(k2).toAffine();
+      const r2 = modN(q2.x);
+      if (r2 === _0n)
+        return;
+      const s2 = modN(ik2 * modN(m2 + r2 * d2));
+      if (s2 === _0n)
+        return;
+      let recovery = (q2.x === r2 ? 0 : 2) | Number(q2.y & _1n$1);
+      let normS = s2;
+      if (lowS && isBiggerThanHalfOrder(s2)) {
+        normS = normalizeS(s2);
+        recovery ^= 1;
+      }
+      return new Signature2(r2, normS, recovery);
+    }
+    return { seed, k2sig };
+  }
+  const defaultSigOpts = { lowS: CURVE.lowS, prehash: false };
+  const defaultVerOpts = { lowS: CURVE.lowS, prehash: false };
+  function sign3(msgHash, privKey, opts = defaultSigOpts) {
+    const { seed, k2sig } = prepSig(msgHash, privKey, opts);
+    const C2 = CURVE;
+    const drbg = createHmacDrbg(C2.hash.outputLen, C2.nByteLength, C2.hmac);
+    return drbg(seed, k2sig);
+  }
+  Point2.BASE._setWindowSize(8);
+  function verify3(signature2, msgHash, publicKey, opts = defaultVerOpts) {
+    var _a2;
+    const sg2 = signature2;
+    msgHash = ensureBytes("msgHash", msgHash);
+    publicKey = ensureBytes("publicKey", publicKey);
+    if ("strict" in opts)
+      throw new Error("options.strict was renamed to lowS");
+    const { lowS, prehash } = opts;
+    let _sig = void 0;
+    let P2;
+    try {
+      if (typeof sg2 === "string" || sg2 instanceof Uint8Array) {
+        try {
+          _sig = Signature2.fromDER(sg2);
+        } catch (derError) {
+          if (!(derError instanceof DER.Err))
+            throw derError;
+          _sig = Signature2.fromCompact(sg2);
+        }
+      } else if (typeof sg2 === "object" && typeof sg2.r === "bigint" && typeof sg2.s === "bigint") {
+        const { r: r3, s: s3 } = sg2;
+        _sig = new Signature2(r3, s3);
+      } else {
+        throw new Error("PARSE");
+      }
+      P2 = Point2.fromHex(publicKey);
+    } catch (error) {
+      if (error.message === "PARSE")
+        throw new Error(`signature must be Signature instance, Uint8Array or hex string`);
+      return false;
+    }
+    if (lowS && _sig.hasHighS())
+      return false;
+    if (prehash)
+      msgHash = CURVE.hash(msgHash);
+    const { r: r2, s: s2 } = _sig;
+    const h2 = bits2int_modN(msgHash);
+    const is = invN(s2);
+    const u1 = modN(h2 * is);
+    const u2 = modN(r2 * is);
+    const R2 = (_a2 = Point2.BASE.multiplyAndAddUnsafe(P2, u1, u2)) == null ? void 0 : _a2.toAffine();
+    if (!R2)
+      return false;
+    const v3 = modN(R2.x);
+    return v3 === r2;
+  }
+  return {
+    CURVE,
+    getPublicKey,
+    getSharedSecret,
+    sign: sign3,
+    verify: verify3,
+    ProjectivePoint: Point2,
+    Signature: Signature2,
+    utils: utils2
+  };
+}
+class HMAC extends Hash2 {
+  constructor(hash2, _key) {
+    super();
+    this.finished = false;
+    this.destroyed = false;
+    hash$2(hash2);
+    const key2 = toBytes(_key);
+    this.iHash = hash2.create();
+    if (typeof this.iHash.update !== "function")
+      throw new Error("Expected instance of class which extends utils.Hash");
+    this.blockLen = this.iHash.blockLen;
+    this.outputLen = this.iHash.outputLen;
+    const blockLen = this.blockLen;
+    const pad3 = new Uint8Array(blockLen);
+    pad3.set(key2.length > blockLen ? hash2.create().update(key2).digest() : key2);
+    for (let i2 = 0; i2 < pad3.length; i2++)
+      pad3[i2] ^= 54;
+    this.iHash.update(pad3);
+    this.oHash = hash2.create();
+    for (let i2 = 0; i2 < pad3.length; i2++)
+      pad3[i2] ^= 54 ^ 92;
+    this.oHash.update(pad3);
+    pad3.fill(0);
+  }
+  update(buf) {
+    exists(this);
+    this.iHash.update(buf);
+    return this;
+  }
+  digestInto(out) {
+    exists(this);
+    bytes(out, this.outputLen);
+    this.finished = true;
+    this.iHash.digestInto(out);
+    this.oHash.update(out);
+    this.oHash.digestInto(out);
+    this.destroy();
+  }
+  digest() {
+    const out = new Uint8Array(this.oHash.outputLen);
+    this.digestInto(out);
+    return out;
+  }
+  _cloneInto(to) {
+    to || (to = Object.create(Object.getPrototypeOf(this), {}));
+    const { oHash, iHash, finished, destroyed, blockLen, outputLen } = this;
+    to = to;
+    to.finished = finished;
+    to.destroyed = destroyed;
+    to.blockLen = blockLen;
+    to.outputLen = outputLen;
+    to.oHash = oHash._cloneInto(to.oHash);
+    to.iHash = iHash._cloneInto(to.iHash);
+    return to;
+  }
+  destroy() {
+    this.destroyed = true;
+    this.oHash.destroy();
+    this.iHash.destroy();
+  }
+}
+const hmac$1 = (hash2, key2, message) => new HMAC(hash2, key2).update(message).digest();
+hmac$1.create = (hash2, key2) => new HMAC(hash2, key2);
+/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+function getHash(hash2) {
+  return {
+    hash: hash2,
+    hmac: (key2, ...msgs) => hmac$1(hash2, key2, concatBytes$1(...msgs)),
+    randomBytes
+  };
+}
+function createCurve(curveDef, defHash) {
+  const create = (hash2) => weierstrass({ ...curveDef, ...getHash(hash2) });
+  return Object.freeze({ ...create(defHash), create });
+}
+/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+const secp256k1P = BigInt("0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f");
+const secp256k1N = BigInt("0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141");
+const _1n = BigInt(1);
+const _2n = BigInt(2);
+const divNearest = (a2, b3) => (a2 + b3 / _2n) / b3;
+function sqrtMod(y2) {
+  const P2 = secp256k1P;
+  const _3n2 = BigInt(3), _6n = BigInt(6), _11n = BigInt(11), _22n = BigInt(22);
+  const _23n = BigInt(23), _44n = BigInt(44), _88n = BigInt(88);
+  const b22 = y2 * y2 * y2 % P2;
+  const b3 = b22 * b22 * y2 % P2;
+  const b6 = pow2(b3, _3n2, P2) * b3 % P2;
+  const b9 = pow2(b6, _3n2, P2) * b3 % P2;
+  const b11 = pow2(b9, _2n, P2) * b22 % P2;
+  const b222 = pow2(b11, _11n, P2) * b11 % P2;
+  const b44 = pow2(b222, _22n, P2) * b222 % P2;
+  const b88 = pow2(b44, _44n, P2) * b44 % P2;
+  const b176 = pow2(b88, _88n, P2) * b88 % P2;
+  const b220 = pow2(b176, _44n, P2) * b44 % P2;
+  const b223 = pow2(b220, _3n2, P2) * b3 % P2;
+  const t1 = pow2(b223, _23n, P2) * b222 % P2;
+  const t2 = pow2(t1, _6n, P2) * b22 % P2;
+  const root2 = pow2(t2, _2n, P2);
+  if (!Fp.eql(Fp.sqr(root2), y2))
+    throw new Error("Cannot find square root");
+  return root2;
+}
+const Fp = Field(secp256k1P, void 0, void 0, { sqrt: sqrtMod });
+const secp256k1 = createCurve({
+  a: BigInt(0),
+  b: BigInt(7),
+  Fp,
+  n: secp256k1N,
+  // Base point (x, y) aka generator point
+  Gx: BigInt("55066263022277343669578718895168534326250603453777594175500187360389116729240"),
+  Gy: BigInt("32670510020758816978083085130507043184471273380659243275938904335757337482424"),
+  h: BigInt(1),
+  lowS: true,
+  /**
+   * secp256k1 belongs to Koblitz curves: it has efficiently computable endomorphism.
+   * Endomorphism uses 2x less RAM, speeds up precomputation by 2x and ECDH / key recovery by 20%.
+   * For precomputed wNAF it trades off 1/2 init time & 1/3 ram for 20% perf hit.
+   * Explanation: https://gist.github.com/paulmillr/eb670806793e84df628a7c434a873066
+   */
+  endo: {
+    beta: BigInt("0x7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee"),
+    splitScalar: (k2) => {
+      const n2 = secp256k1N;
+      const a1 = BigInt("0x3086d221a7d46bcde86c90e49284eb15");
+      const b1 = -_1n * BigInt("0xe4437ed6010e88286f547fa90abfe4c3");
+      const a2 = BigInt("0x114ca50f7a8e2f3f657c1108d9d44cfd8");
+      const b22 = a1;
+      const POW_2_128 = BigInt("0x100000000000000000000000000000000");
+      const c1 = divNearest(b22 * k2, n2);
+      const c2 = divNearest(-b1 * k2, n2);
+      let k1 = mod(k2 - c1 * a1 - c2 * a2, n2);
+      let k22 = mod(-c1 * b1 - c2 * b22, n2);
+      const k1neg = k1 > POW_2_128;
+      const k2neg = k22 > POW_2_128;
+      if (k1neg)
+        k1 = n2 - k1;
+      if (k2neg)
+        k22 = n2 - k22;
+      if (k1 > POW_2_128 || k22 > POW_2_128) {
+        throw new Error("splitScalar: Endomorphism failed, k=" + k2);
+      }
+      return { k1neg, k1, k2neg, k2: k22 };
+    }
+  }
+}, sha256$1);
+BigInt(0);
+secp256k1.ProjectivePoint;
+function signatureToHex({ r: r2, s: s2, v: v3, yParity }) {
+  const yParity_ = (() => {
+    if (yParity === 0 || yParity === 1)
+      return yParity;
+    if (v3 && (v3 === 27n || v3 === 28n || v3 >= 35n))
+      return v3 % 2n === 0n ? 1 : 0;
+    throw new Error("Invalid `v` or `yParity` value");
+  })();
+  return `0x${new secp256k1.Signature(hexToBigInt(r2), hexToBigInt(s2)).toCompactHex()}${yParity_ === 0 ? "1b" : "1c"}`;
+}
+async function verifyHash(client2, { address, hash: hash2, signature: signature2, ...callRequest }) {
+  const signatureHex = (() => {
+    if (isHex(signature2))
+      return signature2;
+    if (typeof signature2 === "object" && "r" in signature2 && "s" in signature2)
+      return signatureToHex(signature2);
+    return bytesToHex$1(signature2);
+  })();
+  try {
+    const { data } = await getAction$1(client2, call, "call")({
+      data: encodeDeployData({
+        abi: universalSignatureValidatorAbi,
+        args: [address, hash2, signatureHex],
+        bytecode: universalSignatureValidatorByteCode
+      }),
+      ...callRequest
+    });
+    return isBytesEqual(data ?? "0x0", "0x1");
+  } catch (error) {
+    if (error instanceof CallExecutionError) {
+      return false;
+    }
+    throw error;
+  }
+}
+async function verifyMessage(client2, { address, message, signature: signature2, ...callRequest }) {
+  const hash2 = hashMessage(message);
+  return verifyHash(client2, {
+    address,
+    hash: hash2,
+    signature: signature2,
+    ...callRequest
+  });
+}
+async function verifyTypedData(client2, parameters) {
+  const { address, signature: signature2, message, primaryType, types: types2, domain: domain2, ...callRequest } = parameters;
+  const hash2 = hashTypedData({ message, primaryType, types: types2, domain: domain2 });
+  return verifyHash(client2, {
+    address,
+    hash: hash2,
+    signature: signature2,
+    ...callRequest
+  });
+}
+async function watchAsset(client2, params) {
+  const added = await client2.request({
+    method: "wallet_watchAsset",
+    params
+  }, { retryCount: 0 });
+  return added;
+}
+function watchContractEvent(client2, parameters) {
+  const { abi: abi2, address, args, batch = true, eventName, fromBlock, onError, onLogs, poll: poll_, pollingInterval = client2.pollingInterval, strict: strict_ } = parameters;
   const enablePolling = (() => {
     if (typeof poll_ !== "undefined")
       return poll_;
@@ -72333,16 +75781,17 @@ function watchEvent(client2, { address, args, batch = true, event, events, fromB
       return false;
     return true;
   })();
-  const strict = strict_ ?? false;
-  const pollEvent = () => {
-    const observerId = stringify$2([
-      "watchEvent",
+  const pollContractEvent = () => {
+    const strict = strict_ ?? false;
+    const observerId = stringify$1([
+      "watchContractEvent",
       address,
       args,
       batch,
       client2.uid,
-      event,
+      eventName,
       pollingInterval,
+      strict,
       fromBlock
     ]);
     return observe(observerId, { onLogs, onError }, (emit) => {
@@ -72355,11 +75804,11 @@ function watchEvent(client2, { address, args, batch = true, event, events, fromB
         var _a2;
         if (!initialized) {
           try {
-            filter2 = await getAction$1(client2, createEventFilter, "createEventFilter")({
+            filter2 = await getAction$1(client2, createContractEventFilter, "createContractEventFilter")({
+              abi: abi2,
               address,
               args,
-              event,
-              events,
+              eventName,
               strict,
               fromBlock
             });
@@ -72375,13 +75824,14 @@ function watchEvent(client2, { address, args, batch = true, event, events, fromB
           } else {
             const blockNumber = await getAction$1(client2, getBlockNumber, "getBlockNumber")({});
             if (previousBlockNumber && previousBlockNumber !== blockNumber) {
-              logs = await getAction$1(client2, getLogs, "getLogs")({
+              logs = await getAction$1(client2, getContractEvents, "getContractEvents")({
+                abi: abi2,
                 address,
                 args,
-                event,
-                events,
+                eventName,
                 fromBlock: previousBlockNumber + 1n,
-                toBlock: blockNumber
+                toBlock: blockNumber,
+                strict
               });
             } else {
               logs = [];
@@ -72411,152 +75861,276 @@ function watchEvent(client2, { address, args, batch = true, event, events, fromB
       };
     });
   };
-  const subscribeEvent = () => {
+  const subscribeContractEvent = () => {
+    const strict = strict_ ?? false;
+    const observerId = stringify$1([
+      "watchContractEvent",
+      address,
+      args,
+      batch,
+      client2.uid,
+      eventName,
+      pollingInterval,
+      strict
+    ]);
     let active = true;
     let unsubscribe = () => active = false;
-    (async () => {
-      try {
-        const transport = (() => {
-          if (client2.transport.type === "fallback") {
-            const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
-            if (!transport2)
-              return client2.transport;
-            return transport2.value;
-          }
-          return client2.transport;
-        })();
-        const events_ = events ?? (event ? [event] : void 0);
-        let topics = [];
-        if (events_) {
-          topics = [
-            events_.flatMap((event2) => encodeEventTopics({
-              abi: [event2],
-              eventName: event2.name,
-              args
-            }))
-          ];
-          if (event)
-            topics = topics[0];
-        }
-        const { unsubscribe: unsubscribe_ } = await transport.subscribe({
-          params: ["logs", { address, topics }],
-          onData(data) {
-            var _a2;
-            if (!active)
-              return;
-            const log = data.result;
-            try {
-              const { eventName, args: args2 } = decodeEventLog({
-                abi: events_ ?? [],
-                data: log.data,
-                topics: log.topics,
-                strict
-              });
-              const formatted = formatLog(log, { args: args2, eventName });
-              onLogs([formatted]);
-            } catch (err) {
-              let eventName;
-              let isUnnamed;
-              if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
-                if (strict_)
-                  return;
-                eventName = err.abiItem.name;
-                isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
-              }
-              const formatted = formatLog(log, {
-                args: isUnnamed ? [] : {},
-                eventName
-              });
-              onLogs([formatted]);
-            }
-          },
-          onError(error) {
-            onError == null ? void 0 : onError(error);
-          }
-        });
-        unsubscribe = unsubscribe_;
-        if (!active)
-          unsubscribe();
-      } catch (err) {
-        onError == null ? void 0 : onError(err);
-      }
-    })();
-    return () => unsubscribe();
-  };
-  return enablePolling ? pollEvent() : subscribeEvent();
-}
-function watchPendingTransactions(client2, { batch = true, onError, onTransactions, poll: poll_, pollingInterval = client2.pollingInterval }) {
-  const enablePolling = typeof poll_ !== "undefined" ? poll_ : client2.transport.type !== "webSocket";
-  const pollPendingTransactions = () => {
-    const observerId = stringify$2([
-      "watchPendingTransactions",
-      client2.uid,
-      batch,
-      pollingInterval
-    ]);
-    return observe(observerId, { onTransactions, onError }, (emit) => {
-      let filter2;
-      const unwatch = poll(async () => {
-        var _a2;
+    return observe(observerId, { onLogs, onError }, (emit) => {
+      (async () => {
         try {
-          if (!filter2) {
-            try {
-              filter2 = await getAction$1(client2, createPendingTransactionFilter, "createPendingTransactionFilter")({});
-              return;
-            } catch (err) {
-              unwatch();
-              throw err;
+          const transport = (() => {
+            if (client2.transport.type === "fallback") {
+              const transport2 = client2.transport.transports.find((transport3) => transport3.config.type === "webSocket");
+              if (!transport2)
+                return client2.transport;
+              return transport2.value;
             }
-          }
-          const hashes = await getAction$1(client2, getFilterChanges, "getFilterChanges")({ filter: filter2 });
-          if (hashes.length === 0)
-            return;
-          if (batch)
-            emit.onTransactions(hashes);
-          else
-            for (const hash2 of hashes)
-              emit.onTransactions([hash2]);
+            return client2.transport;
+          })();
+          const topics = eventName ? encodeEventTopics({
+            abi: abi2,
+            eventName,
+            args
+          }) : [];
+          const { unsubscribe: unsubscribe_ } = await transport.subscribe({
+            params: ["logs", { address, topics }],
+            onData(data) {
+              var _a2;
+              if (!active)
+                return;
+              const log = data.result;
+              try {
+                const { eventName: eventName2, args: args2 } = decodeEventLog({
+                  abi: abi2,
+                  data: log.data,
+                  topics: log.topics,
+                  strict: strict_
+                });
+                const formatted = formatLog(log, {
+                  args: args2,
+                  eventName: eventName2
+                });
+                emit.onLogs([formatted]);
+              } catch (err) {
+                let eventName2;
+                let isUnnamed;
+                if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
+                  if (strict_)
+                    return;
+                  eventName2 = err.abiItem.name;
+                  isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
+                }
+                const formatted = formatLog(log, {
+                  args: isUnnamed ? [] : {},
+                  eventName: eventName2
+                });
+                emit.onLogs([formatted]);
+              }
+            },
+            onError(error) {
+              var _a2;
+              (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, error);
+            }
+          });
+          unsubscribe = unsubscribe_;
+          if (!active)
+            unsubscribe();
         } catch (err) {
-          (_a2 = emit.onError) == null ? void 0 : _a2.call(emit, err);
+          onError == null ? void 0 : onError(err);
         }
-      }, {
-        emitOnBegin: true,
-        interval: pollingInterval
-      });
-      return async () => {
-        if (filter2)
-          await getAction$1(client2, uninstallFilter, "uninstallFilter")({ filter: filter2 });
-        unwatch();
-      };
+      })();
+      return () => unsubscribe();
     });
   };
-  const subscribePendingTransactions = () => {
-    let active = true;
-    let unsubscribe = () => active = false;
-    (async () => {
-      try {
-        const { unsubscribe: unsubscribe_ } = await client2.transport.subscribe({
-          params: ["newPendingTransactions"],
-          onData(data) {
-            if (!active)
-              return;
-            const transaction2 = data.result;
-            onTransactions([transaction2]);
-          },
-          onError(error) {
-            onError == null ? void 0 : onError(error);
-          }
-        });
-        unsubscribe = unsubscribe_;
-        if (!active)
-          unsubscribe();
-      } catch (err) {
-        onError == null ? void 0 : onError(err);
-      }
-    })();
-    return () => unsubscribe();
+  return enablePolling ? pollContractEvent() : subscribeContractEvent();
+}
+async function writeContract$1(client2, parameters) {
+  const { abi: abi2, address, args, dataSuffix, functionName, ...request } = parameters;
+  const data = encodeFunctionData({
+    abi: abi2,
+    args,
+    functionName
+  });
+  return getAction$1(client2, sendTransaction$1, "sendTransaction")({
+    data: `${data}${dataSuffix ? dataSuffix.replace("0x", "") : ""}`,
+    to: address,
+    ...request
+  });
+}
+function requestProviders(listener) {
+  const handler = (event) => listener(event.detail);
+  window.addEventListener("eip6963:announceProvider", handler);
+  window.dispatchEvent(new CustomEvent("eip6963:requestProvider"));
+  return () => window.removeEventListener("eip6963:announceProvider", handler);
+}
+function createStore$1() {
+  const listeners = /* @__PURE__ */ new Set();
+  let providerDetails = [];
+  const request = () => requestProviders((providerDetail) => {
+    if (providerDetails.some(({ info }) => info.uuid === providerDetail.info.uuid))
+      return;
+    providerDetails = [...providerDetails, providerDetail];
+    listeners.forEach((listener) => listener(providerDetails, { added: [providerDetail] }));
+  });
+  let unwatch = request();
+  return {
+    _listeners() {
+      return listeners;
+    },
+    clear() {
+      listeners.forEach((listener) => listener([], { removed: [...providerDetails] }));
+      providerDetails = [];
+    },
+    destroy() {
+      this.clear();
+      listeners.clear();
+      unwatch();
+    },
+    findProvider({ rdns }) {
+      return providerDetails.find((providerDetail) => providerDetail.info.rdns === rdns);
+    },
+    getProviders() {
+      return providerDetails;
+    },
+    reset() {
+      this.clear();
+      unwatch();
+      unwatch = request();
+    },
+    subscribe(listener, { emitImmediately } = {}) {
+      listeners.add(listener);
+      if (emitImmediately)
+        listener(providerDetails, { added: providerDetails });
+      return () => listeners.delete(listener);
+    }
   };
-  return enablePolling ? pollPendingTransactions() : subscribePendingTransactions();
+}
+const size$3 = 256;
+let index$2 = size$3;
+let buffer$1;
+function uid$1(length2 = 11) {
+  if (!buffer$1 || index$2 + length2 > size$3 * 2) {
+    buffer$1 = "";
+    index$2 = 0;
+    for (let i2 = 0; i2 < size$3; i2++) {
+      buffer$1 += (256 + Math.random() * 256 | 0).toString(16).substring(1);
+    }
+  }
+  return buffer$1.substring(index$2, index$2++ + length2);
+}
+function createClient(parameters) {
+  const { batch, cacheTime = parameters.pollingInterval ?? 4e3, ccipRead, key: key2 = "base", name: name2 = "Base Client", pollingInterval = 4e3, type = "base" } = parameters;
+  const chain = parameters.chain;
+  const account2 = parameters.account ? parseAccount(parameters.account) : void 0;
+  const { config: config2, request, value } = parameters.transport({
+    chain,
+    pollingInterval
+  });
+  const transport = { ...config2, ...value };
+  const client2 = {
+    account: account2,
+    batch,
+    cacheTime,
+    ccipRead,
+    chain,
+    key: key2,
+    name: name2,
+    pollingInterval,
+    request,
+    transport,
+    type,
+    uid: uid$1()
+  };
+  function extend(base2) {
+    return (extendFn) => {
+      const extended = extendFn(base2);
+      for (const key3 in client2)
+        delete extended[key3];
+      const combined = { ...base2, ...extended };
+      return Object.assign(combined, { extend: extend(combined) });
+    };
+  }
+  return Object.assign(client2, { extend: extend(client2) });
+}
+function createTransport({ key: key2, name: name2, request, retryCount = 3, retryDelay = 150, timeout, type }, value) {
+  return {
+    config: { key: key2, name: name2, request, retryCount, retryDelay, timeout, type },
+    request: buildRequest(request, { retryCount, retryDelay }),
+    value
+  };
+}
+function custom(provider2, config2 = {}) {
+  const { key: key2 = "custom", name: name2 = "Custom Provider", retryDelay } = config2;
+  return ({ retryCount: defaultRetryCount }) => createTransport({
+    key: key2,
+    name: name2,
+    request: provider2.request.bind(provider2),
+    retryCount: config2.retryCount ?? defaultRetryCount,
+    retryDelay,
+    type: "custom"
+  });
+}
+class UrlRequiredError extends BaseError$2 {
+  constructor() {
+    super("No URL was provided to the Transport. Please provide a valid RPC URL to the Transport.", {
+      docsPath: "/docs/clients/intro"
+    });
+  }
+}
+function http(url, config2 = {}) {
+  const { batch, fetchOptions, key: key2 = "http", name: name2 = "HTTP JSON-RPC", onFetchRequest, onFetchResponse, retryDelay } = config2;
+  return ({ chain, retryCount: retryCount_, timeout: timeout_ }) => {
+    const { batchSize = 1e3, wait: wait2 = 0 } = typeof batch === "object" ? batch : {};
+    const retryCount = config2.retryCount ?? retryCount_;
+    const timeout = timeout_ ?? config2.timeout ?? 1e4;
+    const url_ = url || (chain == null ? void 0 : chain.rpcUrls.default.http[0]);
+    if (!url_)
+      throw new UrlRequiredError();
+    const rpcClient = getHttpRpcClient(url_, {
+      fetchOptions,
+      onRequest: onFetchRequest,
+      onResponse: onFetchResponse,
+      timeout
+    });
+    return createTransport({
+      key: key2,
+      name: name2,
+      async request({ method, params }) {
+        const body = { method, params };
+        const { schedule } = createBatchScheduler({
+          id: `${url}`,
+          wait: wait2,
+          shouldSplitBatch(requests) {
+            return requests.length > batchSize;
+          },
+          fn: (body2) => rpcClient.request({
+            body: body2
+          }),
+          sort: (a2, b3) => a2.id - b3.id
+        });
+        const fn = async (body2) => batch ? schedule(body2) : [
+          await rpcClient.request({
+            body: body2
+          })
+        ];
+        const [{ error, result }] = await fn(body);
+        if (error)
+          throw new RpcRequestError({
+            body,
+            error,
+            url: url_
+          });
+        return result;
+      },
+      retryCount,
+      retryDelay,
+      timeout,
+      type: "http"
+    }, {
+      fetchOptions,
+      url: url_
+    });
+  };
 }
 function publicActions(client2) {
   return {
@@ -72609,121 +76183,6 @@ function publicActions(client2) {
     watchPendingTransactions: (args) => watchPendingTransactions(client2, args)
   };
 }
-async function getAddresses(client2) {
-  var _a2;
-  if (((_a2 = client2.account) == null ? void 0 : _a2.type) === "local")
-    return [client2.account.address];
-  const addresses = await client2.request({ method: "eth_accounts" });
-  return addresses.map((address) => checksumAddress(address));
-}
-async function getPermissions(client2) {
-  const permissions = await client2.request({ method: "wallet_getPermissions" });
-  return permissions;
-}
-async function requestAddresses(client2) {
-  const addresses = await client2.request({ method: "eth_requestAccounts" }, { retryCount: 0 });
-  return addresses.map((address) => getAddress(address));
-}
-async function requestPermissions(client2, permissions) {
-  return client2.request({
-    method: "wallet_requestPermissions",
-    params: [permissions]
-  }, { retryCount: 0 });
-}
-async function signMessage$1(client2, { account: account_ = client2.account, message }) {
-  if (!account_)
-    throw new AccountNotFoundError({
-      docsPath: "/docs/actions/wallet/signMessage"
-    });
-  const account2 = parseAccount(account_);
-  if (account2.type === "local")
-    return account2.signMessage({ message });
-  const message_ = (() => {
-    if (typeof message === "string")
-      return stringToHex(message);
-    if (message.raw instanceof Uint8Array)
-      return toHex$1(message.raw);
-    return message.raw;
-  })();
-  return client2.request({
-    method: "personal_sign",
-    params: [message_, account2.address]
-  }, { retryCount: 0 });
-}
-async function signTransaction(client2, parameters) {
-  var _a2, _b2, _c2, _d2;
-  const { account: account_ = client2.account, chain = client2.chain, ...transaction2 } = parameters;
-  if (!account_)
-    throw new AccountNotFoundError({
-      docsPath: "/docs/actions/wallet/signTransaction"
-    });
-  const account2 = parseAccount(account_);
-  assertRequest({
-    account: account2,
-    ...parameters
-  });
-  const chainId = await getAction$1(client2, getChainId$1, "getChainId")({});
-  if (chain !== null)
-    assertCurrentChain({
-      currentChainId: chainId,
-      chain
-    });
-  const formatters = (chain == null ? void 0 : chain.formatters) || ((_a2 = client2.chain) == null ? void 0 : _a2.formatters);
-  const format2 = ((_b2 = formatters == null ? void 0 : formatters.transactionRequest) == null ? void 0 : _b2.format) || formatTransactionRequest;
-  if (account2.type === "local") {
-    return account2.signTransaction({
-      ...transaction2,
-      chainId
-    }, { serializer: (_d2 = (_c2 = client2.chain) == null ? void 0 : _c2.serializers) == null ? void 0 : _d2.transaction });
-  }
-  return await client2.request({
-    method: "eth_signTransaction",
-    params: [
-      {
-        ...format2(transaction2),
-        chainId: numberToHex(chainId),
-        from: account2.address
-      }
-    ]
-  }, { retryCount: 0 });
-}
-async function signTypedData(client2, parameters) {
-  const { account: account_ = client2.account, domain: domain2, message, primaryType } = parameters;
-  if (!account_)
-    throw new AccountNotFoundError({
-      docsPath: "/docs/actions/wallet/signTypedData"
-    });
-  const account2 = parseAccount(account_);
-  const types2 = {
-    EIP712Domain: getTypesForEIP712Domain({ domain: domain2 }),
-    ...parameters.types
-  };
-  validateTypedData({ domain: domain2, message, primaryType, types: types2 });
-  if (account2.type === "local")
-    return account2.signTypedData({ domain: domain2, message, primaryType, types: types2 });
-  const typedData = stringify$2({ domain: domain2 ?? {}, message, primaryType, types: types2 }, (_, value) => isHex(value) ? value.toLowerCase() : value);
-  return client2.request({
-    method: "eth_signTypedData_v4",
-    params: [account2.address, typedData]
-  }, { retryCount: 0 });
-}
-async function switchChain$1(client2, { id: id2 }) {
-  await client2.request({
-    method: "wallet_switchEthereumChain",
-    params: [
-      {
-        chainId: numberToHex(id2)
-      }
-    ]
-  }, { retryCount: 0 });
-}
-async function watchAsset(client2, params) {
-  const added = await client2.request({
-    method: "wallet_watchAsset",
-    params
-  }, { retryCount: 0 });
-  return added;
-}
 function walletActions(client2) {
   return {
     addChain: (args) => addChain(client2, args),
@@ -72745,139 +76204,6 @@ function walletActions(client2) {
   };
 }
 const zeroAddress = "0x0000000000000000000000000000000000000000";
-function parseEventLogs({ abi: abi2, eventName, logs, strict = true }) {
-  return logs.map((log) => {
-    var _a2;
-    try {
-      const event = decodeEventLog({
-        ...log,
-        abi: abi2,
-        strict
-      });
-      if (eventName && !eventName.includes(event.eventName))
-        return null;
-      return { ...event, ...log };
-    } catch (err) {
-      let eventName2;
-      let isUnnamed;
-      if (err instanceof AbiEventSignatureNotFoundError)
-        return null;
-      if (err instanceof DecodeLogDataMismatch || err instanceof DecodeLogTopicsMismatch) {
-        if (strict)
-          return null;
-        eventName2 = err.abiItem.name;
-        isUnnamed = (_a2 = err.abiItem.inputs) == null ? void 0 : _a2.some((x) => !("name" in x && x.name));
-      }
-      return { ...log, args: isUnnamed ? [] : {}, eventName: eventName2 };
-    }
-  }).filter(Boolean);
-}
-async function getLogs(client2, { address, blockHash, fromBlock, toBlock, event, events: events_, args, strict: strict_ } = {}) {
-  const strict = strict_ ?? false;
-  const events = events_ ?? (event ? [event] : void 0);
-  let topics = [];
-  if (events) {
-    topics = [
-      events.flatMap((event2) => encodeEventTopics({
-        abi: [event2],
-        eventName: event2.name,
-        args
-      }))
-    ];
-    if (event)
-      topics = topics[0];
-  }
-  let logs;
-  if (blockHash) {
-    logs = await client2.request({
-      method: "eth_getLogs",
-      params: [{ address, topics, blockHash }]
-    });
-  } else {
-    logs = await client2.request({
-      method: "eth_getLogs",
-      params: [
-        {
-          address,
-          topics,
-          fromBlock: typeof fromBlock === "bigint" ? numberToHex(fromBlock) : fromBlock,
-          toBlock: typeof toBlock === "bigint" ? numberToHex(toBlock) : toBlock
-        }
-      ]
-    });
-  }
-  const formattedLogs = logs.map((log) => formatLog(log));
-  if (!events)
-    return formattedLogs;
-  return parseEventLogs({
-    abi: events,
-    logs: formattedLogs,
-    strict
-  });
-}
-async function getContractEvents(client2, parameters) {
-  const { abi: abi2, address, args, blockHash, eventName, fromBlock, toBlock, strict } = parameters;
-  const event = eventName ? getAbiItem({ abi: abi2, name: eventName }) : void 0;
-  const events = !event ? abi2.filter((x) => x.type === "event") : void 0;
-  return getAction$1(client2, getLogs, "getLogs")({
-    address,
-    args,
-    blockHash,
-    event,
-    events,
-    fromBlock,
-    toBlock,
-    strict
-  });
-}
-function requestProviders(listener) {
-  const handler = (event) => listener(event.detail);
-  window.addEventListener("eip6963:announceProvider", handler);
-  window.dispatchEvent(new CustomEvent("eip6963:requestProvider"));
-  return () => window.removeEventListener("eip6963:announceProvider", handler);
-}
-function createStore$1() {
-  const listeners = /* @__PURE__ */ new Set();
-  let providerDetails = [];
-  const request = () => requestProviders((providerDetail) => {
-    if (providerDetails.some(({ info }) => info.uuid === providerDetail.info.uuid))
-      return;
-    providerDetails = [...providerDetails, providerDetail];
-    listeners.forEach((listener) => listener(providerDetails, { added: [providerDetail] }));
-  });
-  let unwatch = request();
-  return {
-    _listeners() {
-      return listeners;
-    },
-    clear() {
-      listeners.forEach((listener) => listener([], { removed: [...providerDetails] }));
-      providerDetails = [];
-    },
-    destroy() {
-      this.clear();
-      listeners.clear();
-      unwatch();
-    },
-    findProvider({ rdns }) {
-      return providerDetails.find((providerDetail) => providerDetail.info.rdns === rdns);
-    },
-    getProviders() {
-      return providerDetails;
-    },
-    reset() {
-      this.clear();
-      unwatch();
-      unwatch = request();
-    },
-    subscribe(listener, { emitImmediately } = {}) {
-      listeners.add(listener);
-      if (emitImmediately)
-        listener(providerDetails, { added: providerDetails });
-      return () => listeners.delete(listener);
-    }
-  };
-}
 var define_import_meta_env_default$1 = { BASE_URL: "./", MODE: "production", DEV: false, PROD: true, SSR: false };
 const subscribeWithSelectorImpl = (fn) => (set, get2, api2) => {
   const origSubscribe = api2.subscribe;
@@ -72917,7 +76243,7 @@ function createJSONStorage(getStorage, options) {
         if (str2 === null) {
           return null;
         }
-        return JSON.parse(str2, options == null ? void 0 : options.reviver);
+        return JSON.parse(str2, void 0);
       };
       const str = (_a2 = storage.getItem(name2)) != null ? _a2 : null;
       if (str instanceof Promise) {
@@ -72927,7 +76253,7 @@ function createJSONStorage(getStorage, options) {
     },
     setItem: (name2, newValue) => storage.setItem(
       name2,
-      JSON.stringify(newValue, options == null ? void 0 : options.replacer)
+      JSON.stringify(newValue, void 0)
     ),
     removeItem: (name2) => storage.removeItem(name2)
   };
@@ -73263,7 +76589,7 @@ const createStoreImpl = (createState2) => {
 const createStore = (createState2) => createState2 ? createStoreImpl(createState2) : createStoreImpl;
 var eventemitter3 = { exports: {} };
 (function(module2) {
-  var has2 = Object.prototype.hasOwnProperty, prefix2 = "~";
+  var has = Object.prototype.hasOwnProperty, prefix2 = "~";
   function Events() {
   }
   if (Object.create) {
@@ -73304,7 +76630,7 @@ var eventemitter3 = { exports: {} };
     if (this._eventsCount === 0)
       return names2;
     for (name2 in events = this._events) {
-      if (has2.call(events, name2))
+      if (has.call(events, name2))
         names2.push(prefix2 ? name2.slice(1) : name2);
     }
     if (Object.getOwnPropertySymbols) {
@@ -73578,7 +76904,7 @@ const noopStorage = {
 function createConnector(createConnectorFn) {
   return createConnectorFn;
 }
-const version$3 = "2.6.17";
+const version$3 = "2.8.1";
 const getVersion$1 = () => `@wagmi/core@${version$3}`;
 var __classPrivateFieldGet$1 = function(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
@@ -73725,6 +77051,7 @@ class SwitchChainNotSupportedError extends BaseError$1 {
     });
   }
 }
+const supportsSimulationIdRegex = /(rabby|trustwallet)/;
 const targetMap = {
   coinbaseWallet: {
     id: "coinbaseWallet",
@@ -73822,6 +77149,9 @@ function injected(parameters = {}) {
     get name() {
       return getTarget().name;
     },
+    get supportsSimulation() {
+      return supportsSimulationIdRegex.test(this.id.toLowerCase());
+    },
     type: injected.type,
     async setup() {
       const provider2 = await this.getProvider();
@@ -73891,11 +77221,10 @@ function injected(parameters = {}) {
           });
           currentChainId = (chain == null ? void 0 : chain.id) ?? currentChainId;
         }
-        if (shimDisconnect) {
+        if (shimDisconnect)
           await ((_e2 = config2.storage) == null ? void 0 : _e2.removeItem(`${this.id}.disconnected`));
-          if (!parameters.target)
-            await ((_f2 = config2.storage) == null ? void 0 : _f2.setItem("injected.connected", true));
-        }
+        if (!parameters.target)
+          await ((_f2 = config2.storage) == null ? void 0 : _f2.setItem("injected.connected", true));
         return { accounts, chainId: currentChainId };
       } catch (err) {
         const error = err;
@@ -73925,9 +77254,9 @@ function injected(parameters = {}) {
       }
       if (shimDisconnect) {
         await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem(`${this.id}.disconnected`, true));
-        if (!parameters.target)
-          await ((_b2 = config2.storage) == null ? void 0 : _b2.removeItem("injected.connected"));
       }
+      if (!parameters.target)
+        await ((_b2 = config2.storage) == null ? void 0 : _b2.removeItem("injected.connected"));
     },
     async getAccounts() {
       const provider2 = await this.getProvider();
@@ -74004,8 +77333,8 @@ function injected(parameters = {}) {
         return false;
       }
     },
-    async switchChain({ chainId }) {
-      var _a2, _b2, _c2;
+    async switchChain({ addEthereumChainParameter, chainId }) {
+      var _a2, _b2, _c2, _d2;
       const provider2 = await this.getProvider();
       if (!provider2)
         throw new ProviderNotFoundError();
@@ -74017,17 +77346,15 @@ function injected(parameters = {}) {
           provider2.request({
             method: "wallet_switchEthereumChain",
             params: [{ chainId: numberToHex(chainId) }]
+          }).then(async () => {
+            const currentChainId = await this.getChainId();
+            if (currentChainId === chainId)
+              config2.emitter.emit("change", { chainId });
           }),
-          new Promise((resolve) => {
-            const listener = (data) => {
-              console.log("[injected] switchChain.listener", { data, chainId });
-              if (Number(data) === chainId) {
-                provider2.removeListener("chainChanged", listener);
-                resolve();
-              }
-            };
-            provider2.on("chainChanged", listener);
-          })
+          new Promise((resolve) => config2.emitter.once("change", ({ chainId: currentChainId }) => {
+            if (currentChainId === chainId)
+              resolve();
+          }))
         ]);
         return chain;
       } catch (err) {
@@ -74038,22 +77365,29 @@ function injected(parameters = {}) {
           try {
             const { default: blockExplorer, ...blockExplorers } = chain.blockExplorers ?? {};
             let blockExplorerUrls;
-            if (blockExplorer)
+            if (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.blockExplorerUrls)
+              blockExplorerUrls = addEthereumChainParameter.blockExplorerUrls;
+            else if (blockExplorer)
               blockExplorerUrls = [
                 blockExplorer.url,
                 ...Object.values(blockExplorers).map((x) => x.url)
               ];
+            let rpcUrls;
+            if ((_c2 = addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.rpcUrls) == null ? void 0 : _c2.length)
+              rpcUrls = addEthereumChainParameter.rpcUrls;
+            else
+              rpcUrls = [((_d2 = chain.rpcUrls.default) == null ? void 0 : _d2.http[0]) ?? ""];
+            const addEthereumChain = {
+              blockExplorerUrls,
+              chainId: numberToHex(chainId),
+              chainName: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.chainName) ?? chain.name,
+              iconUrls: addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.iconUrls,
+              nativeCurrency: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.nativeCurrency) ?? chain.nativeCurrency,
+              rpcUrls
+            };
             await provider2.request({
               method: "wallet_addEthereumChain",
-              params: [
-                {
-                  chainId: numberToHex(chainId),
-                  chainName: chain.name,
-                  nativeCurrency: chain.nativeCurrency,
-                  rpcUrls: [((_c2 = chain.rpcUrls.default) == null ? void 0 : _c2.http[0]) ?? ""],
-                  blockExplorerUrls
-                }
-              ]
+              params: [addEthereumChain]
             });
             const currentChainId = await this.getChainId();
             if (currentChainId !== chainId)
@@ -74070,7 +77404,6 @@ function injected(parameters = {}) {
     },
     async onAccountsChanged(accounts) {
       var _a2;
-      console.log("[injected] onAccountsChanged", accounts);
       if (accounts.length === 0)
         this.onDisconnect();
       else if (config2.emitter.listenerCount("connect")) {
@@ -74084,7 +77417,6 @@ function injected(parameters = {}) {
         });
     },
     onChainChanged(chain) {
-      console.log("[injected] onChainChanged", chain);
       const chainId = Number(chain);
       config2.emitter.emit("change", { chainId });
     },
@@ -74811,7 +78143,12 @@ async function sendTransaction(config2, parameters) {
     client2 = config2.getClient({ chainId });
   else
     client2 = await getConnectorClient(config2, { account: account2, chainId, connector });
+  const { connector: activeConnector } = getAccount(config2);
   const gas = await (async () => {
+    if (!("data" in parameters) || !parameters.data)
+      return void 0;
+    if (activeConnector == null ? void 0 : activeConnector.supportsSimulation)
+      return void 0;
     if (gas_ === null)
       return void 0;
     if (gas_ === void 0) {
@@ -74856,13 +78193,16 @@ async function simulateContract(config2, parameters) {
 }
 async function switchChain(config2, parameters) {
   var _a2;
-  const { chainId } = parameters;
+  const { addEthereumChainParameter, chainId } = parameters;
   const connection = config2.state.connections.get(((_a2 = parameters.connector) == null ? void 0 : _a2.uid) ?? config2.state.current);
   if (connection) {
     const connector = connection.connector;
     if (!connector.switchChain)
       throw new SwitchChainNotSupportedError({ connector });
-    const chain2 = await connector.switchChain({ chainId });
+    const chain2 = await connector.switchChain({
+      addEthereumChainParameter,
+      chainId
+    });
     return chain2;
   }
   const chain = config2.chains.find((x) => x.id === chainId);
@@ -74913,8 +78253,9 @@ async function writeContract(config2, parameters) {
     client2 = config2.getClient({ chainId });
   else
     client2 = await getConnectorClient(config2, { account: account2, chainId, connector });
+  const { connector: activeConnector } = getAccount(config2);
   let request;
-  if (__mode === "prepared")
+  if (__mode === "prepared" || (activeConnector == null ? void 0 : activeConnector.supportsSimulation))
     request = rest;
   else {
     const { request: simulateRequest } = await simulateContract(config2, {
@@ -75112,7 +78453,7 @@ function WagmiProvider(parameters) {
   const props = { value: config2 };
   return reactExports.createElement(Hydrate, parameters, reactExports.createElement(WagmiContext.Provider, props, children));
 }
-const version$2 = "2.5.20";
+const version$2 = "2.7.1";
 const getVersion = () => `wagmi@${version$2}`;
 class BaseError3 extends BaseError$1 {
   constructor() {
@@ -75166,7 +78507,7 @@ var Subscribable = class {
   }
 };
 var isServer = typeof window === "undefined" || "Deno" in globalThis;
-function noop$2() {
+function noop$1() {
   return void 0;
 }
 function functionalUpdate(updater, input2) {
@@ -75743,7 +79084,7 @@ var Query = (_d = class extends Removable {
     var _a2, _b2;
     const promise = (_a2 = __privateGet(this, _retryer)) == null ? void 0 : _a2.promise;
     (_b2 = __privateGet(this, _retryer)) == null ? void 0 : _b2.cancel(options);
-    return promise ? promise.then(noop$2).catch(noop$2) : Promise.resolve();
+    return promise ? promise.then(noop$1).catch(noop$1) : Promise.resolve();
   }
   destroy() {
     super.destroy();
@@ -76458,7 +79799,7 @@ var MutationCache = (_g = class extends Subscribable {
     const pausedMutations = this.getAll().filter((x) => x.state.isPaused);
     return notifyManager.batch(
       () => Promise.all(
-        pausedMutations.map((mutation) => mutation.continue().catch(noop$2))
+        pausedMutations.map((mutation) => mutation.continue().catch(noop$1))
       )
     );
   }
@@ -76719,7 +80060,7 @@ var QueryClient = (_h = class {
     const promises = notifyManager.batch(
       () => __privateGet(this, _queryCache).findAll(filters).map((query) => query.cancel(defaultedCancelOptions))
     );
-    return Promise.all(promises).then(noop$2).catch(noop$2);
+    return Promise.all(promises).then(noop$1).catch(noop$1);
   }
   invalidateQueries(filters = {}, options = {}) {
     return notifyManager.batch(() => {
@@ -76745,12 +80086,12 @@ var QueryClient = (_h = class {
       () => __privateGet(this, _queryCache).findAll(filters).filter((query) => !query.isDisabled()).map((query) => {
         let promise = query.fetch(void 0, fetchOptions);
         if (!fetchOptions.throwOnError) {
-          promise = promise.catch(noop$2);
+          promise = promise.catch(noop$1);
         }
         return query.state.fetchStatus === "paused" ? Promise.resolve() : promise;
       })
     );
-    return Promise.all(promises).then(noop$2);
+    return Promise.all(promises).then(noop$1);
   }
   fetchQuery(options) {
     const defaultedOptions = this.defaultQueryOptions(options);
@@ -76761,14 +80102,14 @@ var QueryClient = (_h = class {
     return query.isStaleByTime(defaultedOptions.staleTime) ? query.fetch(defaultedOptions) : Promise.resolve(query.state.data);
   }
   prefetchQuery(options) {
-    return this.fetchQuery(options).then(noop$2).catch(noop$2);
+    return this.fetchQuery(options).then(noop$1).catch(noop$1);
   }
   fetchInfiniteQuery(options) {
     options.behavior = infiniteQueryBehavior(options.pages);
     return this.fetchQuery(options);
   }
   prefetchInfiniteQuery(options) {
-    return this.fetchInfiniteQuery(options).then(noop$2).catch(noop$2);
+    return this.fetchInfiniteQuery(options).then(noop$1).catch(noop$1);
   }
   resumePausedMutations() {
     if (onlineManager.isOnline()) {
@@ -77191,7 +80532,7 @@ var QueryObserver = (_i = class extends Subscribable {
     fetchOptions
   );
   if (!(fetchOptions == null ? void 0 : fetchOptions.throwOnError)) {
-    promise = promise.catch(noop$2);
+    promise = promise.catch(noop$1);
   }
   return promise;
 }, _updateStaleTimeout = new WeakSet(), updateStaleTimeout_fn = function() {
@@ -77447,9 +80788,6 @@ var QueryClientContext = reactExports.createContext(
 );
 var useQueryClient = (queryClient2) => {
   const client2 = reactExports.useContext(QueryClientContext);
-  if (queryClient2) {
-    return queryClient2;
-  }
   if (!client2) {
     throw new Error("No QueryClient set, use QueryClientProvider to set one");
   }
@@ -77492,7 +80830,7 @@ function shouldThrowError(throwError, params) {
   }
   return !!throwError;
 }
-function noop$1() {
+function noop() {
 }
 var ensurePreventErrorBoundaryRetry = (options, errorResetBoundary) => {
   if (options.suspense || options.throwOnError) {
@@ -77526,7 +80864,7 @@ var fetchOptimistic = (defaultedOptions, observer, errorResetBoundary) => observ
   errorResetBoundary.clearReset();
 });
 function useBaseQuery(options, Observer, queryClient2) {
-  const client2 = useQueryClient(queryClient2);
+  const client2 = useQueryClient();
   const isRestoring = useIsRestoring();
   const errorResetBoundary = useQueryErrorResetBoundary();
   const defaultedOptions = client2.defaultQueryOptions(options);
@@ -77570,10 +80908,10 @@ function useBaseQuery(options, Observer, queryClient2) {
   return !defaultedOptions.notifyOnChangeProps ? observer.trackResult(result) : result;
 }
 function useQuery$1(options, queryClient2) {
-  return useBaseQuery(options, QueryObserver, queryClient2);
+  return useBaseQuery(options, QueryObserver);
 }
 function useMutation(options, queryClient2) {
-  const client2 = useQueryClient(queryClient2);
+  const client2 = useQueryClient();
   const [observer] = reactExports.useState(
     () => new MutationObserver$1(
       client2,
@@ -77593,7 +80931,7 @@ function useMutation(options, queryClient2) {
   );
   const mutate = reactExports.useCallback(
     (variables, mutateOptions) => {
-      observer.mutate(variables, mutateOptions).catch(noop$1);
+      observer.mutate(variables, mutateOptions).catch(noop);
     },
     [observer]
   );
@@ -77605,8 +80943,7 @@ function useMutation(options, queryClient2) {
 function useInfiniteQuery(options, queryClient2) {
   return useBaseQuery(
     options,
-    InfiniteQueryObserver,
-    queryClient2
+    InfiniteQueryObserver
   );
 }
 function watchChains(config2, parameters) {
@@ -78511,30 +81848,30 @@ const endpointFunctions = {
   substring,
   uriEncode
 };
-const evaluateTemplate = (template2, options) => {
+const evaluateTemplate = (template, options) => {
   const evaluatedTemplateArr = [];
   const templateContext = {
     ...options.endpointParams,
     ...options.referenceRecord
   };
   let currentIndex = 0;
-  while (currentIndex < template2.length) {
-    const openingBraceIndex = template2.indexOf("{", currentIndex);
+  while (currentIndex < template.length) {
+    const openingBraceIndex = template.indexOf("{", currentIndex);
     if (openingBraceIndex === -1) {
-      evaluatedTemplateArr.push(template2.slice(currentIndex));
+      evaluatedTemplateArr.push(template.slice(currentIndex));
       break;
     }
-    evaluatedTemplateArr.push(template2.slice(currentIndex, openingBraceIndex));
-    const closingBraceIndex = template2.indexOf("}", openingBraceIndex);
+    evaluatedTemplateArr.push(template.slice(currentIndex, openingBraceIndex));
+    const closingBraceIndex = template.indexOf("}", openingBraceIndex);
     if (closingBraceIndex === -1) {
-      evaluatedTemplateArr.push(template2.slice(openingBraceIndex));
+      evaluatedTemplateArr.push(template.slice(openingBraceIndex));
       break;
     }
-    if (template2[openingBraceIndex + 1] === "{" && template2[closingBraceIndex + 1] === "}") {
-      evaluatedTemplateArr.push(template2.slice(openingBraceIndex + 1, closingBraceIndex));
+    if (template[openingBraceIndex + 1] === "{" && template[closingBraceIndex + 1] === "}") {
+      evaluatedTemplateArr.push(template.slice(openingBraceIndex + 1, closingBraceIndex));
       currentIndex = closingBraceIndex + 2;
     }
-    const parameterName = template2.substring(openingBraceIndex + 1, closingBraceIndex);
+    const parameterName = template.substring(openingBraceIndex + 1, closingBraceIndex);
     if (parameterName.includes("#")) {
       const [refName, attrName] = parameterName.split("#");
       evaluatedTemplateArr.push(getAttr(templateContext[refName], attrName));
@@ -79759,42 +83096,35 @@ class AdaptiveRetryStrategy {
   }
 }
 let getRandomValues$1;
-const rnds8$1 = new Uint8Array(16);
-function rng$1() {
+const rnds8 = new Uint8Array(16);
+function rng() {
   if (!getRandomValues$1) {
     getRandomValues$1 = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
     if (!getRandomValues$1) {
       throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
     }
   }
-  return getRandomValues$1(rnds8$1);
+  return getRandomValues$1(rnds8);
 }
-const byteToHex$1 = [];
+const byteToHex = [];
 for (let i2 = 0; i2 < 256; ++i2) {
-  byteToHex$1.push((i2 + 256).toString(16).slice(1));
+  byteToHex.push((i2 + 256).toString(16).slice(1));
 }
 function unsafeStringify(arr, offset2 = 0) {
-  return byteToHex$1[arr[offset2 + 0]] + byteToHex$1[arr[offset2 + 1]] + byteToHex$1[arr[offset2 + 2]] + byteToHex$1[arr[offset2 + 3]] + "-" + byteToHex$1[arr[offset2 + 4]] + byteToHex$1[arr[offset2 + 5]] + "-" + byteToHex$1[arr[offset2 + 6]] + byteToHex$1[arr[offset2 + 7]] + "-" + byteToHex$1[arr[offset2 + 8]] + byteToHex$1[arr[offset2 + 9]] + "-" + byteToHex$1[arr[offset2 + 10]] + byteToHex$1[arr[offset2 + 11]] + byteToHex$1[arr[offset2 + 12]] + byteToHex$1[arr[offset2 + 13]] + byteToHex$1[arr[offset2 + 14]] + byteToHex$1[arr[offset2 + 15]];
+  return byteToHex[arr[offset2 + 0]] + byteToHex[arr[offset2 + 1]] + byteToHex[arr[offset2 + 2]] + byteToHex[arr[offset2 + 3]] + "-" + byteToHex[arr[offset2 + 4]] + byteToHex[arr[offset2 + 5]] + "-" + byteToHex[arr[offset2 + 6]] + byteToHex[arr[offset2 + 7]] + "-" + byteToHex[arr[offset2 + 8]] + byteToHex[arr[offset2 + 9]] + "-" + byteToHex[arr[offset2 + 10]] + byteToHex[arr[offset2 + 11]] + byteToHex[arr[offset2 + 12]] + byteToHex[arr[offset2 + 13]] + byteToHex[arr[offset2 + 14]] + byteToHex[arr[offset2 + 15]];
 }
 const randomUUID = typeof crypto !== "undefined" && crypto.randomUUID && crypto.randomUUID.bind(crypto);
 const native = {
   randomUUID
 };
-function v4$1(options, buf, offset2) {
+function v4(options, buf, offset2) {
   if (native.randomUUID && !buf && !options) {
     return native.randomUUID();
   }
   options = options || {};
-  const rnds = options.random || (options.rng || rng$1)();
+  const rnds = options.random || (options.rng || rng)();
   rnds[6] = rnds[6] & 15 | 64;
   rnds[8] = rnds[8] & 63 | 128;
-  if (buf) {
-    offset2 = offset2 || 0;
-    for (let i2 = 0; i2 < 16; ++i2) {
-      buf[offset2 + i2] = rnds[i2];
-    }
-    return buf;
-  }
   return unsafeStringify(rnds);
 }
 const asSdkError = (error) => {
@@ -80778,7 +84108,7 @@ const retryMiddleware = (options) => (next2, context2) => async (args) => {
     const { request } = args;
     const isRequest = HttpRequest.isInstance(request);
     if (isRequest) {
-      request.headers[INVOCATION_ID_HEADER] = v4$1();
+      request.headers[INVOCATION_ID_HEADER] = v4();
     }
     while (true) {
       try {
@@ -81809,7 +85139,7 @@ const commonParams = {
 };
 const name = "@aws-sdk/client-cognito-identity-provider";
 const description = "AWS SDK for JavaScript Cognito Identity Provider Client for Node.js, Browser and React Native";
-const version = "3.556.0";
+const version = "3.565.0";
 const scripts = {
   build: "concurrently 'yarn:build:cjs' 'yarn:build:es' 'yarn:build:types'",
   "build:cjs": "node ../../scripts/compilation/inline client-cognito-identity-provider",
@@ -81823,14 +85153,13 @@ const scripts = {
 };
 const main = "./dist-cjs/index.js";
 const types = "./dist-types/index.d.ts";
-const module$1 = "./dist-es/index.js";
+const module = "./dist-es/index.js";
 const sideEffects = false;
 const dependencies = {
   "@aws-crypto/sha256-browser": "3.0.0",
   "@aws-crypto/sha256-js": "3.0.0",
-  "@aws-sdk/client-sts": "3.556.0",
   "@aws-sdk/core": "3.556.0",
-  "@aws-sdk/credential-provider-node": "3.556.0",
+  "@aws-sdk/credential-provider-node": "3.565.0",
   "@aws-sdk/middleware-host-header": "3.535.0",
   "@aws-sdk/middleware-logger": "3.535.0",
   "@aws-sdk/middleware-recursion-detection": "3.535.0",
@@ -81894,7 +85223,7 @@ const author = {
   url: "https://aws.amazon.com/javascript/"
 };
 const license = "Apache-2.0";
-const browser$1 = {
+const browser = {
   "./dist-es/runtimeConfig": "./dist-es/runtimeConfig.browser"
 };
 const homepage = "https://github.com/aws/aws-sdk-js-v3/tree/main/clients/client-cognito-identity-provider";
@@ -81910,7 +85239,7 @@ const packageInfo = {
   scripts,
   main,
   types,
-  module: module$1,
+  module,
   sideEffects,
   dependencies,
   devDependencies,
@@ -81919,7 +85248,7 @@ const packageInfo = {
   files,
   author,
   license,
-  browser: browser$1,
+  browser,
   "react-native": {
     "./dist-es/runtimeConfig": "./dist-es/runtimeConfig.native"
   },
@@ -82242,20 +85571,20 @@ function __makeTemplateObject(cooked, raw) {
   }
   return cooked;
 }
-function __importStar(mod) {
-  if (mod && mod.__esModule)
-    return mod;
+function __importStar(mod2) {
+  if (mod2 && mod2.__esModule)
+    return mod2;
   var result = {};
-  if (mod != null) {
-    for (var k2 in mod)
-      if (Object.hasOwnProperty.call(mod, k2))
-        result[k2] = mod[k2];
+  if (mod2 != null) {
+    for (var k2 in mod2)
+      if (Object.hasOwnProperty.call(mod2, k2))
+        result[k2] = mod2[k2];
   }
-  result.default = mod;
+  result.default = mod2;
   return result;
 }
-function __importDefault(mod) {
-  return mod && mod.__esModule ? mod : { default: mod };
+function __importDefault(mod2) {
+  return mod2 && mod2.__esModule ? mod2 : { default: mod2 };
 }
 function __classPrivateFieldGet(receiver, privateMap) {
   if (!privateMap.has(receiver)) {
@@ -85213,8 +88542,8 @@ const calculateBodyLength = (body) => {
   throw new Error(`Body Length computation failed for ${body}`);
 };
 const s = "required", t = "fn", u$1 = "argv", v$1 = "ref";
-const a$1 = true, b$2 = "isSet", c = "booleanEquals", d = "error", e$1 = "endpoint", f$1 = "tree", g$1 = "PartitionResult", h = { [s]: false, "type": "String" }, i$2 = { [s]: true, "default": false, "type": "Boolean" }, j$1 = { [v$1]: "Endpoint" }, k = { [t]: c, [u$1]: [{ [v$1]: "UseFIPS" }, true] }, l$1 = { [t]: c, [u$1]: [{ [v$1]: "UseDualStack" }, true] }, m = {}, n$1 = { [t]: "getAttr", [u$1]: [{ [v$1]: g$1 }, "supportsFIPS"] }, o = { [t]: c, [u$1]: [true, { [t]: "getAttr", [u$1]: [{ [v$1]: g$1 }, "supportsDualStack"] }] }, p = [k], q$2 = [l$1], r$2 = [{ [v$1]: "Region" }];
-const _data = { version: "1.0", parameters: { Region: h, UseDualStack: i$2, UseFIPS: i$2, Endpoint: h }, rules: [{ conditions: [{ [t]: b$2, [u$1]: [j$1] }], rules: [{ conditions: p, error: "Invalid Configuration: FIPS and custom endpoint are not supported", type: d }, { conditions: q$2, error: "Invalid Configuration: Dualstack and custom endpoint are not supported", type: d }, { endpoint: { url: j$1, properties: m, headers: m }, type: e$1 }], type: f$1 }, { conditions: [{ [t]: b$2, [u$1]: r$2 }], rules: [{ conditions: [{ [t]: "aws.partition", [u$1]: r$2, assign: g$1 }], rules: [{ conditions: [k, l$1], rules: [{ conditions: [{ [t]: c, [u$1]: [a$1, n$1] }, o], rules: [{ endpoint: { url: "https://cognito-idp-fips.{Region}.{PartitionResult#dualStackDnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }, { error: "FIPS and DualStack are enabled, but this partition does not support one or both", type: d }], type: f$1 }, { conditions: p, rules: [{ conditions: [{ [t]: c, [u$1]: [n$1, a$1] }], rules: [{ endpoint: { url: "https://cognito-idp-fips.{Region}.{PartitionResult#dnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }, { error: "FIPS is enabled but this partition does not support FIPS", type: d }], type: f$1 }, { conditions: q$2, rules: [{ conditions: [o], rules: [{ endpoint: { url: "https://cognito-idp.{Region}.{PartitionResult#dualStackDnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }, { error: "DualStack is enabled but this partition does not support DualStack", type: d }], type: f$1 }, { endpoint: { url: "https://cognito-idp.{Region}.{PartitionResult#dnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }], type: f$1 }, { error: "Invalid Configuration: Missing Region", type: d }] };
+const a$1 = true, b$2 = "isSet", c = "booleanEquals", d = "error", e$1 = "endpoint", f$1 = "tree", g$1 = "PartitionResult", h = { [s]: false, "type": "String" }, i$1 = { [s]: true, "default": false, "type": "Boolean" }, j$1 = { [v$1]: "Endpoint" }, k = { [t]: c, [u$1]: [{ [v$1]: "UseFIPS" }, true] }, l$1 = { [t]: c, [u$1]: [{ [v$1]: "UseDualStack" }, true] }, m = {}, n$1 = { [t]: "getAttr", [u$1]: [{ [v$1]: g$1 }, "supportsFIPS"] }, o = { [t]: c, [u$1]: [true, { [t]: "getAttr", [u$1]: [{ [v$1]: g$1 }, "supportsDualStack"] }] }, p = [k], q$2 = [l$1], r$2 = [{ [v$1]: "Region" }];
+const _data = { version: "1.0", parameters: { Region: h, UseDualStack: i$1, UseFIPS: i$1, Endpoint: h }, rules: [{ conditions: [{ [t]: b$2, [u$1]: [j$1] }], rules: [{ conditions: p, error: "Invalid Configuration: FIPS and custom endpoint are not supported", type: d }, { conditions: q$2, error: "Invalid Configuration: Dualstack and custom endpoint are not supported", type: d }, { endpoint: { url: j$1, properties: m, headers: m }, type: e$1 }], type: f$1 }, { conditions: [{ [t]: b$2, [u$1]: r$2 }], rules: [{ conditions: [{ [t]: "aws.partition", [u$1]: r$2, assign: g$1 }], rules: [{ conditions: [k, l$1], rules: [{ conditions: [{ [t]: c, [u$1]: [a$1, n$1] }, o], rules: [{ endpoint: { url: "https://cognito-idp-fips.{Region}.{PartitionResult#dualStackDnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }, { error: "FIPS and DualStack are enabled, but this partition does not support one or both", type: d }], type: f$1 }, { conditions: p, rules: [{ conditions: [{ [t]: c, [u$1]: [n$1, a$1] }], rules: [{ endpoint: { url: "https://cognito-idp-fips.{Region}.{PartitionResult#dnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }, { error: "FIPS is enabled but this partition does not support FIPS", type: d }], type: f$1 }, { conditions: q$2, rules: [{ conditions: [o], rules: [{ endpoint: { url: "https://cognito-idp.{Region}.{PartitionResult#dualStackDnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }, { error: "DualStack is enabled but this partition does not support DualStack", type: d }], type: f$1 }, { endpoint: { url: "https://cognito-idp.{Region}.{PartitionResult#dnsSuffix}", properties: m, headers: m }, type: e$1 }], type: f$1 }], type: f$1 }, { error: "Invalid Configuration: Missing Region", type: d }] };
 const ruleSet = _data;
 const defaultEndpointResolver = (endpointParams, context2 = {}) => {
   return resolveEndpoint(ruleSet, {
@@ -85269,7 +88598,7 @@ const memoize$1 = (provider2, isExpired, requiresRefresh) => {
     }
     return resolved;
   };
-  if (isExpired === void 0) {
+  {
     return async (options) => {
       if (!hasResult || (options == null ? void 0 : options.forceRefresh)) {
         resolved = await coalesceProvider();
@@ -85277,23 +88606,6 @@ const memoize$1 = (provider2, isExpired, requiresRefresh) => {
       return resolved;
     };
   }
-  return async (options) => {
-    if (!hasResult || (options == null ? void 0 : options.forceRefresh)) {
-      resolved = await coalesceProvider();
-    }
-    if (isConstant) {
-      return resolved;
-    }
-    if (requiresRefresh && !requiresRefresh(resolved)) {
-      isConstant = true;
-      return resolved;
-    }
-    if (isExpired(resolved)) {
-      await coalesceProvider();
-      return resolved;
-    }
-    return resolved;
-  };
 };
 const DEFAULTS_MODE_OPTIONS = ["in-region", "cross-region", "mobile", "standard", "legacy"];
 const resolveDefaultsModeConfig = ({ defaultsMode } = {}) => memoize$1(async () => {
@@ -86588,9 +89900,6 @@ const buildHttpRpcRequest = async (context2, headers, path, resolvedHostname, bo
     path: basePath.endsWith("/") ? basePath.slice(0, -1) + path : basePath + path,
     headers
   };
-  if (resolvedHostname !== void 0) {
-    contents.hostname = resolvedHostname;
-  }
   if (body !== void 0) {
     contents.body = body;
   }
@@ -86717,7 +90026,7 @@ function signMessage({
     message: message.startsWith("0x") ? message : hexlify(toUtf8Bytes(message))
   });
 }
-const _excluded$1$1 = ["lifespan"], _excluded2$1$1 = ["lifespan"], _excluded3$1 = ["lifespan"], _excluded4$1 = ["lifespan"], _excluded5 = ["lifespan"], _excluded6 = ["lifespan"];
+const _excluded$1$2 = ["lifespan"], _excluded2$1 = ["lifespan"], _excluded3$1 = ["lifespan"], _excluded4$1 = ["lifespan"], _excluded5 = ["lifespan"], _excluded6 = ["lifespan"];
 async function openSession({
   lifespan,
   sessionId,
@@ -86731,13 +90040,13 @@ async function openSession({
 async function validateSession(_ref) {
   let {
     lifespan
-  } = _ref, data = _objectWithoutPropertiesLoose$5(_ref, _excluded$1$1);
+  } = _ref, data = _objectWithoutPropertiesLoose$5(_ref, _excluded$1$2);
   return makeIntent("validateSession", lifespan, data);
 }
 function finishValidateSession(_ref2) {
   let {
     lifespan
-  } = _ref2, data = _objectWithoutPropertiesLoose$5(_ref2, _excluded2$1$1);
+  } = _ref2, data = _objectWithoutPropertiesLoose$5(_ref2, _excluded2$1);
   return makeIntent("finishValidateSession", lifespan, data);
 }
 function closeSession(_ref3) {
@@ -86778,7 +90087,7 @@ class WaasAuthenticator {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError.new({
+        throw WebrpcRequestFailedError6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -86791,7 +90100,7 @@ class WaasAuthenticator {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError.new({
+        throw WebrpcRequestFailedError6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -86804,7 +90113,7 @@ class WaasAuthenticator {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError.new({
+        throw WebrpcRequestFailedError6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -86836,19 +90145,19 @@ const buildResponse = (res) => {
       if (error instanceof Error) {
         message = error.message;
       }
-      throw WebrpcBadResponseError.new({
+      throw WebrpcBadResponseError6.new({
         status: res.status,
         cause: `JSON.parse(): ${message}: response text: ${text2}`
       });
     }
     if (!res.ok) {
       const code2 = typeof data.code === "number" ? data.code : 0;
-      throw (webrpcErrorByCode[code2] || WebrpcError).new(data);
+      throw (webrpcErrorByCode[code2] || WebrpcError6).new(data);
     }
     return data;
   });
 };
-class WebrpcError extends Error {
+class WebrpcError6 extends Error {
   constructor(name2, code2, message, status, cause) {
     super(message);
     this.name = void 0;
@@ -86863,97 +90172,104 @@ class WebrpcError extends Error {
     this.msg = this.message;
     this.status = typeof status === "number" ? status : 0;
     this.cause = cause;
-    Object.setPrototypeOf(this, WebrpcError.prototype);
+    Object.setPrototypeOf(this, WebrpcError6.prototype);
   }
   static new(payload) {
     return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
   }
 }
-class WebrpcEndpointError extends WebrpcError {
+class WebrpcEndpointError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcEndpointError.prototype);
+    Object.setPrototypeOf(this, WebrpcEndpointError6.prototype);
   }
 }
-class WebrpcRequestFailedError extends WebrpcError {
+class WebrpcRequestFailedError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcRequestFailedError.prototype);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError6.prototype);
   }
 }
-class WebrpcBadRouteError extends WebrpcError {
+class WebrpcBadRouteError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadRouteError.prototype);
+    Object.setPrototypeOf(this, WebrpcBadRouteError6.prototype);
   }
 }
-class WebrpcBadMethodError extends WebrpcError {
+class WebrpcBadMethodError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadMethodError.prototype);
+    Object.setPrototypeOf(this, WebrpcBadMethodError6.prototype);
   }
 }
-class WebrpcBadRequestError extends WebrpcError {
+class WebrpcBadRequestError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadRequestError.prototype);
+    Object.setPrototypeOf(this, WebrpcBadRequestError6.prototype);
   }
 }
-class WebrpcBadResponseError extends WebrpcError {
+class WebrpcBadResponseError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadResponseError.prototype);
+    Object.setPrototypeOf(this, WebrpcBadResponseError6.prototype);
   }
 }
-class WebrpcServerPanicError extends WebrpcError {
+class WebrpcServerPanicError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcServerPanicError.prototype);
+    Object.setPrototypeOf(this, WebrpcServerPanicError6.prototype);
   }
 }
-class WebrpcInternalErrorError extends WebrpcError {
+class WebrpcInternalErrorError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcInternalErrorError.prototype);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError6.prototype);
   }
 }
-class WebrpcClientDisconnectedError extends WebrpcError {
+class WebrpcClientDisconnectedError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcClientDisconnectedError.prototype);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError6.prototype);
   }
 }
-class WebrpcStreamLostError extends WebrpcError {
+class WebrpcStreamLostError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcStreamLostError.prototype);
+    Object.setPrototypeOf(this, WebrpcStreamLostError6.prototype);
   }
 }
-class WebrpcStreamFinishedError extends WebrpcError {
+class WebrpcStreamFinishedError6 extends WebrpcError6 {
   constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcStreamFinishedError.prototype);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError6.prototype);
   }
 }
-class UnauthorizedError extends WebrpcError {
+class UnauthorizedError6 extends WebrpcError6 {
   constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, UnauthorizedError.prototype);
+    Object.setPrototypeOf(this, UnauthorizedError6.prototype);
+  }
+}
+class TenantNotFoundError extends WebrpcError6 {
+  constructor(name2 = "TenantNotFound", code2 = 1001, message = "Tenant not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, TenantNotFoundError.prototype);
   }
 }
 const webrpcErrorByCode = {
-  [0]: WebrpcEndpointError,
-  [-1]: WebrpcRequestFailedError,
-  [-2]: WebrpcBadRouteError,
-  [-3]: WebrpcBadMethodError,
-  [-4]: WebrpcBadRequestError,
-  [-5]: WebrpcBadResponseError,
-  [-6]: WebrpcServerPanicError,
-  [-7]: WebrpcInternalErrorError,
-  [-8]: WebrpcClientDisconnectedError,
-  [-9]: WebrpcStreamLostError,
-  [-10]: WebrpcStreamFinishedError,
-  [1e3]: UnauthorizedError
+  [0]: WebrpcEndpointError6,
+  [-1]: WebrpcRequestFailedError6,
+  [-2]: WebrpcBadRouteError6,
+  [-3]: WebrpcBadMethodError6,
+  [-4]: WebrpcBadRequestError6,
+  [-5]: WebrpcBadResponseError6,
+  [-6]: WebrpcServerPanicError6,
+  [-7]: WebrpcInternalErrorError6,
+  [-8]: WebrpcClientDisconnectedError6,
+  [-9]: WebrpcStreamLostError6,
+  [-10]: WebrpcStreamFinishedError6,
+  [1e3]: UnauthorizedError6,
+  [1001]: TenantNotFoundError
 };
 let FeeTokenType = /* @__PURE__ */ function(FeeTokenType2) {
   FeeTokenType2["unknown"] = "unknown";
@@ -86996,9 +90312,9 @@ function isGetSessionResponse(receipt) {
 }
 function isIntentTimeError(error) {
   var _error$cause, _error$cause2;
-  return !!(error instanceof WebrpcError && ((_error$cause = error.cause) != null && _error$cause.endsWith("intent is invalid: intent expired") || (_error$cause2 = error.cause) != null && _error$cause2.endsWith("intent is invalid: intent issued in the future")));
+  return !!(error instanceof WebrpcError6 && ((_error$cause = error.cause) != null && _error$cause.endsWith("intent is invalid: intent expired") || (_error$cause2 = error.cause) != null && _error$cause2.endsWith("intent is invalid: intent issued in the future")));
 }
-const _excluded$7 = ["token", "to", "value"], _excluded2$2 = ["token", "to", "id", "safe", "data"], _excluded3 = ["token", "to", "values", "data"], _excluded4 = ["to", "value", "abi", "func", "args"];
+const _excluded$6 = ["token", "to", "value"], _excluded2$2 = ["token", "to", "id", "safe", "data"], _excluded3 = ["token", "to", "values", "data"], _excluded4 = ["to", "value", "abi", "func", "args"];
 function feeOptions({
   lifespan,
   wallet,
@@ -87113,7 +90429,7 @@ function sendERC20(_ref) {
     token: token2,
     to,
     value
-  } = _ref, args = _objectWithoutPropertiesLoose$5(_ref, _excluded$7);
+  } = _ref, args = _objectWithoutPropertiesLoose$5(_ref, _excluded$6);
   return sendTransactions(_extends$6({
     transactions: [erc20({
       tokenAddress: token2,
@@ -87318,7 +90634,26 @@ class StoreObj {
 }
 class LocalStore {
   constructor() {
-    if (!window.localStorage) {
+    this.store = void 0;
+    if (WindowLocalStorage.isAvailable()) {
+      this.store = new WindowLocalStorage();
+    } else {
+      this.store = new MemoryStore();
+    }
+  }
+  async get(key2) {
+    return this.store.get(key2);
+  }
+  async set(key2, value) {
+    return this.store.set(key2, value);
+  }
+}
+class WindowLocalStorage {
+  static isAvailable() {
+    return typeof window === "object" && typeof window.localStorage === "object";
+  }
+  constructor() {
+    if (!WindowLocalStorage.isAvailable()) {
       throw new Error("No localStorage");
     }
   }
@@ -87333,13 +90668,29 @@ class LocalStore {
     }
   }
 }
+class MemoryStore {
+  constructor() {
+    this.store = {};
+    this.store = {};
+  }
+  async get(key2) {
+    return this.store[key2] || null;
+  }
+  async set(key2, value) {
+    if (value) {
+      this.store[key2] = value;
+    } else {
+      delete this.store[key2];
+    }
+  }
+}
 const idbName$1 = "seq-waas-session-p256k1";
 const idbStoreName$1 = "seq-waas-session";
-async function newSECP256K1SessionFromSessionId(sessionId) {
-  const db2 = await openDB(idbName$1);
-  const tx = db2.transaction(idbStoreName$1, "readonly");
-  const privateKey = await db2.get(idbStoreName$1, sessionId);
-  await tx.done;
+async function newSECP256K1SessionFromSessionId(sessionId, secureStoreBackend) {
+  const privateKey = await secureStoreBackend.get(idbName$1, idbStoreName$1, sessionId);
+  if (!privateKey) {
+    throw new Error("No private key found");
+  }
   const wallet = new Wallet$1(privateKey);
   return {
     sessionId() {
@@ -87348,28 +90699,20 @@ async function newSECP256K1SessionFromSessionId(sessionId) {
     sign(message) {
       return wallet.signMessage(message);
     },
-    clear() {
-      db2.delete(idbStoreName$1, sessionId);
+    clear: async () => {
+      await secureStoreBackend.delete(idbName$1, idbStoreName$1, sessionId);
     }
   };
 }
-async function newSECP256K1SessionFromPrivateKey(privateKey) {
+async function newSECP256K1SessionFromPrivateKey(privateKey, secureStoreBackend) {
   const wallet = new Wallet$1(privateKey);
-  const db2 = await openDB(idbName$1, 1, {
-    upgrade(db3) {
-      db3.createObjectStore(idbStoreName$1);
-    }
-  });
   const sessionId = await wallet.getAddress();
-  const tx = db2.transaction(idbStoreName$1, "readwrite");
-  await db2.put(idbStoreName$1, privateKey, sessionId);
-  await tx.done;
-  db2.close();
-  return newSECP256K1SessionFromSessionId(sessionId);
+  await secureStoreBackend.set(idbName$1, idbStoreName$1, sessionId, privateKey);
+  return newSECP256K1SessionFromSessionId(sessionId, secureStoreBackend);
 }
-async function newSECP256K1Session() {
+async function newSECP256K1Session(secureStoreBackend) {
   const wallet = Wallet$1.createRandom();
-  return newSECP256K1SessionFromPrivateKey(wallet.privateKey);
+  return newSECP256K1SessionFromPrivateKey(wallet.privateKey, secureStoreBackend);
 }
 let KeyTypes = /* @__PURE__ */ function(KeyTypes2) {
   KeyTypes2[KeyTypes2["ECDSAP256K1"] = 0] = "ECDSAP256K1";
@@ -87378,15 +90721,15 @@ let KeyTypes = /* @__PURE__ */ function(KeyTypes2) {
 }({});
 const idbName = "seq-waas-session-p256r1";
 const idbStoreName = "seq-waas-session";
-async function newSECP256R1SessionFromSessionId(sessionId) {
-  const db2 = await openDB(idbName);
-  const tx = db2.transaction(idbStoreName, "readonly");
-  const keys = await db2.get(idbStoreName, sessionId);
-  await tx.done;
+async function newSECP256R1SessionFromSessionId(sessionId, cryptoBackend, secureStoreBackend) {
+  const keys = await secureStoreBackend.get(idbName, idbStoreName, sessionId);
+  if (!keys || !keys.privateKey) {
+    throw new Error("No private key found");
+  }
   const encoder2 = new TextEncoder();
   return {
     sessionId: async () => {
-      const pubKeyRaw = await window.crypto.subtle.exportKey("raw", keys.publicKey);
+      const pubKeyRaw = await cryptoBackend.exportKey("raw", keys.publicKey);
       const pubKeyTypedRaw = new Uint8Array(pubKeyRaw.byteLength + 1);
       pubKeyTypedRaw[0] = KeyTypes.ECDSAP256R1;
       pubKeyTypedRaw.set(new Uint8Array(pubKeyRaw), 1);
@@ -87401,7 +90744,7 @@ async function newSECP256R1SessionFromSessionId(sessionId) {
           message = encoder2.encode(message);
         }
       }
-      const signatureBuff = await window.crypto.subtle.sign({
+      const signatureBuff = await cryptoBackend.sign({
         name: "ECDSA",
         hash: {
           name: "SHA-256"
@@ -87410,49 +90753,47 @@ async function newSECP256R1SessionFromSessionId(sessionId) {
       return hexlify(new Uint8Array(signatureBuff));
     },
     clear: async () => {
-      await db2.delete(idbStoreName, sessionId);
+      await secureStoreBackend.delete(idbName, idbStoreName, sessionId);
     }
   };
 }
-async function newSECP256R1SessionFromKeyPair(keyPair2) {
-  const sessionId = await pubKeyToSessionId(keyPair2.publicKey);
-  const db2 = await openDB(idbName, 1, {
-    upgrade(db3) {
-      db3.createObjectStore(idbStoreName);
-    }
-  });
-  const tx = db2.transaction(idbStoreName, "readwrite");
-  await db2.put(idbStoreName, keyPair2, sessionId);
-  await tx.done;
-  db2.close();
-  return newSECP256R1SessionFromSessionId(sessionId);
+async function newSECP256R1SessionFromKeyPair(keyPair2, cryptoBackend, secureStoreBackend) {
+  const sessionId = await pubKeyToSessionId(cryptoBackend, keyPair2.publicKey);
+  await secureStoreBackend.set(idbName, idbStoreName, sessionId, keyPair2);
+  return newSECP256R1SessionFromSessionId(sessionId, cryptoBackend, secureStoreBackend);
 }
-async function newSECP256R1Session() {
-  const generatedKeys = await window.crypto.subtle.generateKey({
+async function newSECP256R1Session(cryptoBackend, secureStoreBackend) {
+  const generatedKeys = await cryptoBackend.generateKey({
     name: "ECDSA",
     namedCurve: "P-256"
   }, false, ["sign", "verify"]);
-  return newSECP256R1SessionFromKeyPair(generatedKeys);
+  return newSECP256R1SessionFromKeyPair(generatedKeys, cryptoBackend, secureStoreBackend);
 }
-async function pubKeyToSessionId(pubKey) {
-  const pubKeyRaw = await window.crypto.subtle.exportKey("raw", pubKey);
+async function pubKeyToSessionId(cryptoBackend, pubKey) {
+  const pubKeyRaw = await cryptoBackend.exportKey("raw", pubKey);
   const pubKeyTypedRaw = new Uint8Array(pubKeyRaw.byteLength + 1);
   pubKeyTypedRaw[0] = KeyTypes.ECDSAP256R1;
   pubKeyTypedRaw.set(new Uint8Array(pubKeyRaw), 1);
   return hexlify(pubKeyTypedRaw);
 }
-async function newSessionFromSessionId(sessionId) {
-  if (window.crypto !== void 0) {
-    return newSECP256R1SessionFromSessionId(sessionId);
+async function newSessionFromSessionId(sessionId, cryptoBackend, secureStoreBackend) {
+  if (!secureStoreBackend) {
+    throw new Error("No secure store available");
+  }
+  if (cryptoBackend) {
+    return newSECP256R1SessionFromSessionId(sessionId, cryptoBackend, secureStoreBackend);
   } else {
-    return newSECP256K1SessionFromSessionId(sessionId);
+    return newSECP256K1SessionFromSessionId(sessionId, secureStoreBackend);
   }
 }
-async function newSession() {
-  if (window.crypto !== void 0) {
-    return newSECP256R1Session();
+async function newSession(cryptoBackend, secureStoreBackend) {
+  if (!secureStoreBackend) {
+    throw new Error("No secure store available");
+  }
+  if (cryptoBackend) {
+    return newSECP256R1Session(cryptoBackend, secureStoreBackend);
   } else {
-    return newSECP256K1Session();
+    return newSECP256K1Session(secureStoreBackend);
   }
 }
 const nameToId = Object.entries(networks).reduce((acc, [key2, value]) => {
@@ -87464,18 +90805,104 @@ const idToName = Object.entries(nameToId).reduce((acc, [key2, value]) => {
   return acc;
 }, {});
 function toNetworkID(network2) {
-  if (typeof network2 === "number") {
-    if (network2 in idToName) {
-      return network2;
-    } else {
-      throw new Error(`Unknown network id ${network2}`);
-    }
+  const networkNumber = typeof network2 === "number" ? network2 : parseInt(network2);
+  if (networkNumber in idToName) {
+    return networkNumber;
   }
-  const networkLower = network2.toLowerCase();
+  const networkLower = network2.toString().toLowerCase();
   if (networkLower in nameToId) {
     return nameToId[networkLower];
+  }
+  throw new Error(`Unknown network: ${network2}`);
+}
+const getDefaultSubtleCryptoBackend = () => {
+  if (isWindowSubtleCryptoAvailable()) {
+    return new WindowSubtleCryptoBackend();
   } else {
-    throw new Error(`Unknown network name ${network2}`);
+    return null;
+  }
+};
+function isWindowSubtleCryptoAvailable() {
+  return typeof window === "object" && typeof window.crypto === "object" && typeof window.crypto.subtle === "object";
+}
+class WindowSubtleCryptoBackend {
+  constructor() {
+    if (!isWindowSubtleCryptoAvailable()) {
+      throw new Error("window.crypto.subtle is not available");
+    }
+  }
+  async generateKey(algorithm, extractable, keyUsages) {
+    return window.crypto.subtle.generateKey(algorithm, extractable, keyUsages);
+  }
+  async exportKey(format2, key2) {
+    const keyData = await window.crypto.subtle.exportKey(format2, key2);
+    return new Uint8Array(keyData);
+  }
+  async digest(algorithm, data) {
+    const digest9 = await window.crypto.subtle.digest(algorithm, data);
+    return new Uint8Array(digest9);
+  }
+  async sign(algorithm, key2, data) {
+    const signature2 = await window.crypto.subtle.sign(algorithm, key2, data);
+    return new Uint8Array(signature2);
+  }
+  async verify(algorithm, key2, signature2, data) {
+    return window.crypto.subtle.verify(algorithm, key2, signature2, data);
+  }
+  getRandomValues(len) {
+    const randomValues = new Uint8Array(len);
+    return window.crypto.getRandomValues(randomValues);
+  }
+}
+const getDefaultSecureStoreBackend = () => {
+  if (isIndexedDbAvailable()) {
+    return new IndexedDbSecureStoreBackend();
+  } else {
+    return null;
+  }
+};
+function isIndexedDbAvailable() {
+  return typeof indexedDB === "object";
+}
+class IndexedDbSecureStoreBackend {
+  constructor() {
+    this.db = void 0;
+    if (!isIndexedDbAvailable()) {
+      throw new Error("IndexedDB is not available");
+    }
+    this.db = null;
+  }
+  async openDB(dbName, dbStoreName, version2) {
+    if (this.db) {
+      return this.db;
+    }
+    this.db = await openDB(dbName, 1, {
+      upgrade(db2) {
+        db2.createObjectStore(dbStoreName);
+      }
+    });
+    return this.db;
+  }
+  async get(dbName, dbStoreName, key2) {
+    const db2 = await this.openDB(dbName, dbStoreName, 1);
+    const tx = db2.transaction(dbStoreName, "readonly");
+    const value = await db2.get(dbStoreName, key2);
+    await tx.done;
+    return value;
+  }
+  async set(dbName, dbStoreName, key2, value) {
+    const db2 = await this.openDB(dbName, dbStoreName, 1);
+    const tx = db2.transaction(dbStoreName, "readwrite");
+    await db2.put(dbStoreName, value, key2);
+    await tx.done;
+    return true;
+  }
+  async delete(dbName, dbStoreName, key2) {
+    const db2 = await this.openDB(dbName, dbStoreName, 1);
+    const tx = db2.transaction(dbStoreName, "readwrite");
+    await db2.delete(dbStoreName, key2);
+    await tx.done;
+    return true;
   }
 }
 const SEQUENCE_WAAS_WALLET_KEY = "@0xsequence.waas.wallet";
@@ -87485,9 +90912,11 @@ const DEFAULT_LIFESPAN = 5 * 60;
 class SequenceWaaSBase {
   constructor(config2 = {
     network: 1
-  }, store = new LocalStore()) {
+  }, store = new LocalStore(), cryptoBackend = getDefaultSubtleCryptoBackend(), secureStoreBackend = getDefaultSecureStoreBackend()) {
     this.config = config2;
     this.store = store;
+    this.cryptoBackend = cryptoBackend;
+    this.secureStoreBackend = secureStoreBackend;
     this.VERSION = "0.0.0-dev1";
     this.status = void 0;
     this.sessionId = void 0;
@@ -87532,7 +90961,7 @@ class SequenceWaaSBase {
     if (sessionId === void 0) {
       throw new Error("session not open");
     }
-    const session = await newSessionFromSessionId(sessionId);
+    const session = await newSessionFromSessionId(sessionId, this.cryptoBackend, this.secureStoreBackend);
     return signIntent(session, intent);
   }
   async signUsingSessionKey(message) {
@@ -87540,7 +90969,7 @@ class SequenceWaaSBase {
     if (!sessionId) {
       throw new Error("session not open");
     }
-    const signer2 = await newSessionFromSessionId(sessionId);
+    const signer2 = await newSessionFromSessionId(sessionId, this.cryptoBackend, this.secureStoreBackend);
     return signer2.sign(message);
   }
   /**
@@ -87556,7 +90985,7 @@ class SequenceWaaSBase {
     const promiseGenerator = async function promiseGenerator2() {
       let sessionId = await _this.sessionId.get();
       if (!sessionId) {
-        const session = await newSession();
+        const session = await newSession(_this.cryptoBackend, _this.secureStoreBackend);
         sessionId = await session.sessionId();
         await _this.sessionId.set(sessionId);
         _this.signalObservers(_this.sessionObservers, sessionId);
@@ -87806,11 +91235,6 @@ const LOCAL = {
   rpcServer: "http://localhost:9123",
   emailRegion: "us-east-2"
 };
-function getRandomString(len) {
-  const randomValues = new Uint8Array(len);
-  window.crypto.getRandomValues(randomValues);
-  return Array.from(randomValues).map((nr) => nr.toString(16).padStart(2, "0")).join("");
-}
 class EmailAuth {
   constructor(region, clientId) {
     this.region = region;
@@ -87895,6 +91319,23 @@ class EmailAuth {
     };
   }
 }
+function getRandomString(len) {
+  return Array.from(getRandomValues(len)).map((nr) => nr.toString(16).padStart(2, "0")).join("");
+}
+function getRandomValues(len) {
+  const randomValues = new Uint8Array(len);
+  if (typeof window === "object" && typeof window.crypto === "object") {
+    return window.crypto.getRandomValues(randomValues);
+  } else {
+    console.warn("window.crypto.getRandomValues is not available. Falling back to less secure Math.random().");
+    const _randomValues = new Uint8Array(len);
+    for (let i2 = 0; i2 < len; i2++) {
+      const randomInteger = Math.floor(Math.random() * 256);
+      _randomValues[i2] = randomInteger;
+    }
+    return _randomValues;
+  }
+}
 function parseSequenceWaaSConfigKey(key2) {
   return JSON.parse(atob(key2));
 }
@@ -87914,8 +91355,10 @@ function defaultArgsOrFail(config2, preset) {
   return preconfig;
 }
 class SequenceWaaS {
-  constructor(config2, preset = LOCAL, store = new LocalStore()) {
+  constructor(config2, preset = LOCAL, store = new LocalStore(), cryptoBackend = getDefaultSubtleCryptoBackend(), secureStoreBackend = getDefaultSecureStoreBackend()) {
     this.store = store;
+    this.cryptoBackend = cryptoBackend;
+    this.secureStoreBackend = secureStoreBackend;
     this.waas = void 0;
     this.client = void 0;
     this.validationRequiredCallback = [];
@@ -87927,7 +91370,7 @@ class SequenceWaaS {
     this.config = defaultArgsOrFail(config2, preset);
     this.waas = new SequenceWaaSBase(_extends$6({
       network: 1
-    }, config2), this.store);
+    }, config2), this.store, this.cryptoBackend, this.secureStoreBackend);
     this.client = new WaasAuthenticator(this.config.rpcServer, this.fetch.bind(this));
     this.deviceName = new StoreObj(this.store, "@0xsequence.waas.auth.deviceName", void 0);
   }
@@ -88074,7 +91517,10 @@ class SequenceWaaS {
       console.error(e2);
     }
     if (closeSessionId === thisSessionId) {
-      const session = await newSessionFromSessionId(thisSessionId);
+      if (!this.secureStoreBackend) {
+        throw new Error("No secure store available");
+      }
+      const session = await newSessionFromSessionId(thisSessionId, this.cryptoBackend, this.secureStoreBackend);
       session.clear();
       await this.waas.completeSignOut();
       await this.deviceName.set(void 0);
@@ -88236,47 +91682,6 @@ class SequenceWaaS {
     return res;
   }
 }
-var getRandomValues;
-var rnds8 = new Uint8Array(16);
-function rng() {
-  if (!getRandomValues) {
-    getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto !== "undefined" && typeof msCrypto.getRandomValues === "function" && msCrypto.getRandomValues.bind(msCrypto);
-    if (!getRandomValues) {
-      throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
-    }
-  }
-  return getRandomValues(rnds8);
-}
-const REGEX = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-function validate5(uuid) {
-  return typeof uuid === "string" && REGEX.test(uuid);
-}
-var byteToHex = [];
-for (var i$1 = 0; i$1 < 256; ++i$1) {
-  byteToHex.push((i$1 + 256).toString(16).substr(1));
-}
-function stringify$1(arr) {
-  var offset2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
-  var uuid = (byteToHex[arr[offset2 + 0]] + byteToHex[arr[offset2 + 1]] + byteToHex[arr[offset2 + 2]] + byteToHex[arr[offset2 + 3]] + "-" + byteToHex[arr[offset2 + 4]] + byteToHex[arr[offset2 + 5]] + "-" + byteToHex[arr[offset2 + 6]] + byteToHex[arr[offset2 + 7]] + "-" + byteToHex[arr[offset2 + 8]] + byteToHex[arr[offset2 + 9]] + "-" + byteToHex[arr[offset2 + 10]] + byteToHex[arr[offset2 + 11]] + byteToHex[arr[offset2 + 12]] + byteToHex[arr[offset2 + 13]] + byteToHex[arr[offset2 + 14]] + byteToHex[arr[offset2 + 15]]).toLowerCase();
-  if (!validate5(uuid)) {
-    throw TypeError("Stringified UUID is invalid");
-  }
-  return uuid;
-}
-function v4(options, buf, offset2) {
-  options = options || {};
-  var rnds = options.random || (options.rng || rng)();
-  rnds[6] = rnds[6] & 15 | 64;
-  rnds[8] = rnds[8] & 63 | 128;
-  if (buf) {
-    offset2 = offset2 || 0;
-    for (var i2 = 0; i2 < 16; ++i2) {
-      buf[offset2 + i2] = rnds[i2];
-    }
-    return buf;
-  }
-  return stringify$1(rnds);
-}
 coinbaseWallet$1.type = "coinbaseWallet";
 function coinbaseWallet$1(parameters) {
   const reloadOnDisconnect = false;
@@ -88288,6 +91693,7 @@ function coinbaseWallet$1(parameters) {
   return createConnector((config2) => ({
     id: "coinbaseWalletSDK",
     name: "Coinbase Wallet",
+    supportsSimulation: true,
     type: coinbaseWallet$1.type,
     async connect({ chainId } = {}) {
       try {
@@ -88354,7 +91760,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-DgNH_3_4.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-C3z8_oub.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -88377,33 +91783,42 @@ function coinbaseWallet$1(parameters) {
         return false;
       }
     },
-    async switchChain({ chainId }) {
-      var _a2, _b2;
+    async switchChain({ addEthereumChainParameter, chainId }) {
+      var _a2, _b2, _c2, _d2;
       const chain = config2.chains.find((chain2) => chain2.id === chainId);
       if (!chain)
         throw new SwitchChainError(new ChainNotConfiguredError());
       const provider2 = await this.getProvider();
-      const chainId_ = numberToHex(chain.id);
       try {
         await provider2.request({
           method: "wallet_switchEthereumChain",
-          params: [{ chainId: chainId_ }]
+          params: [{ chainId: numberToHex(chain.id) }]
         });
         return chain;
       } catch (error) {
         if (error.code === 4902) {
           try {
+            let blockExplorerUrls;
+            if (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.blockExplorerUrls)
+              blockExplorerUrls = addEthereumChainParameter.blockExplorerUrls;
+            else
+              blockExplorerUrls = ((_a2 = chain.blockExplorers) == null ? void 0 : _a2.default.url) ? [(_b2 = chain.blockExplorers) == null ? void 0 : _b2.default.url] : [];
+            let rpcUrls;
+            if ((_c2 = addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.rpcUrls) == null ? void 0 : _c2.length)
+              rpcUrls = addEthereumChainParameter.rpcUrls;
+            else
+              rpcUrls = [((_d2 = chain.rpcUrls.default) == null ? void 0 : _d2.http[0]) ?? ""];
+            const addEthereumChain = {
+              blockExplorerUrls,
+              chainId: numberToHex(chainId),
+              chainName: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.chainName) ?? chain.name,
+              iconUrls: addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.iconUrls,
+              nativeCurrency: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.nativeCurrency) ?? chain.nativeCurrency,
+              rpcUrls
+            };
             await provider2.request({
               method: "wallet_addEthereumChain",
-              params: [
-                {
-                  chainId: chainId_,
-                  chainName: chain.name,
-                  nativeCurrency: chain.nativeCurrency,
-                  rpcUrls: [((_a2 = chain.rpcUrls.default) == null ? void 0 : _a2.http[0]) ?? ""],
-                  blockExplorerUrls: [(_b2 = chain.blockExplorers) == null ? void 0 : _b2.default.url]
-                }
-              ]
+              params: [addEthereumChain]
             });
             return chain;
           } catch (error2) {
@@ -88531,7 +91946,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DurA0YlR.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DdqhZQ4g.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -88577,8 +91992,8 @@ function walletConnect$1(parameters) {
         return false;
       }
     },
-    async switchChain({ chainId }) {
-      var _a2;
+    async switchChain({ addEthereumChainParameter, chainId }) {
+      var _a2, _b2, _c2;
       const chain = config2.chains.find((chain2) => chain2.id === chainId);
       if (!chain)
         throw new SwitchChainError(new ChainNotConfiguredError());
@@ -88588,17 +92003,27 @@ function walletConnect$1(parameters) {
         const namespaceMethods = this.getNamespaceMethods();
         const isChainApproved = namespaceChains.includes(chainId);
         if (!isChainApproved && namespaceMethods.includes("wallet_addEthereumChain")) {
+          let blockExplorerUrls;
+          if (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.blockExplorerUrls)
+            blockExplorerUrls = addEthereumChainParameter.blockExplorerUrls;
+          else
+            blockExplorerUrls = ((_a2 = chain.blockExplorers) == null ? void 0 : _a2.default.url) ? [(_b2 = chain.blockExplorers) == null ? void 0 : _b2.default.url] : [];
+          let rpcUrls;
+          if ((_c2 = addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.rpcUrls) == null ? void 0 : _c2.length)
+            rpcUrls = addEthereumChainParameter.rpcUrls;
+          else
+            rpcUrls = [...chain.rpcUrls.default.http];
+          const addEthereumChain = {
+            blockExplorerUrls,
+            chainId: numberToHex(chainId),
+            chainName: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.chainName) ?? chain.name,
+            iconUrls: addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.iconUrls,
+            nativeCurrency: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.nativeCurrency) ?? chain.nativeCurrency,
+            rpcUrls
+          };
           await provider2.request({
             method: "wallet_addEthereumChain",
-            params: [
-              {
-                chainId: numberToHex(chain.id),
-                blockExplorerUrls: [(_a2 = chain.blockExplorers) == null ? void 0 : _a2.default.url],
-                chainName: chain.name,
-                nativeCurrency: chain.nativeCurrency,
-                rpcUrls: [...chain.rpcUrls.default.http]
-              }
-            ]
+            params: [addEthereumChain]
           });
           const requestedChains = await this.getRequestedChainsIds();
           this.setRequestedChainsIds([...requestedChains, chainId]);
@@ -88768,6 +92193,9 @@ function sequenceWallet(params) {
     walletAppURL
   } = params;
   let id2 = "sequence";
+  const {
+    projectAccessKey: projectAccessKey2
+  } = connect2;
   const signInOptions = (params == null || (_params$connect = params.connect) == null || (_params$connect = _params$connect.settings) == null ? void 0 : _params$connect.signInOptions) || [];
   const signInWith = params == null || (_params$connect2 = params.connect) == null || (_params$connect2 = _params$connect2.settings) == null ? void 0 : _params$connect2.signInWith;
   const signInWithEmail = params == null || (_params$connect3 = params.connect) == null || (_params$connect3 = _params$connect3.settings) == null ? void 0 : _params$connect3.signInWithEmail;
@@ -88785,6 +92213,7 @@ function sequenceWallet(params) {
     id: "sequence",
     name: "Sequence",
     type: sequenceWallet.type,
+    params,
     async setup() {
       const provider2 = await this.getProvider();
       provider2.on("chainChanged", (chainIdHex) => {
@@ -88799,13 +92228,12 @@ function sequenceWallet(params) {
     async connect() {
       const provider2 = await this.getProvider();
       if (!provider2.isConnected()) {
-        var _e$proof, _e$proof2;
-        const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme);
-        const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthSettings);
-        const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {};
+        var _config$storage, _await$config$storage, _config$storage2, _e$proof, _e$proof2;
+        const localStorageTheme = await ((_config$storage = config2.storage) == null ? void 0 : _config$storage.getItem(LocalStorageKey.Theme));
+        const ethAuthSettings = (_await$config$storage = await ((_config$storage2 = config2.storage) == null ? void 0 : _config$storage2.getItem(LocalStorageKey.EthAuthSettings))) != null ? _await$config$storage : {};
         const connectOptionsWithTheme = _extends$5({
           authorize: true
-        }, parseEthAuthSettings, connect2, {
+        }, ethAuthSettings, connect2, {
           settings: _extends$5({
             theme: localStorageTheme || "dark"
           }, connect2 == null ? void 0 : connect2.settings)
@@ -88819,12 +92247,13 @@ function sequenceWallet(params) {
         }
         const proofString = (_e$proof = e2.proof) == null ? void 0 : _e$proof.proofString;
         const proofTypedData = (_e$proof2 = e2.proof) == null ? void 0 : _e$proof2.typedData;
-        if (proofString) {
-          const jsonEthAuthProof = JSON.stringify({
+        if (proofString && proofTypedData) {
+          var _config$storage3;
+          const jsonEthAuthProof = {
             proofString,
             typedData: proofTypedData
-          });
-          localStorage.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof);
+          };
+          await ((_config$storage3 = config2.storage) == null ? void 0 : _config$storage3.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof));
         }
       }
       const accounts = await this.getAccounts();
@@ -88839,15 +92268,15 @@ function sequenceWallet(params) {
     },
     async getAccounts() {
       const provider2 = await this.getProvider();
-      const account2 = getAddress(await provider2.getSigner().getAddress());
+      const signer2 = provider2.getSigner();
+      const account2 = getAddress(await signer2.getAddress());
       return [account2];
     },
     async getProvider() {
       try {
         const provider2 = sequence$1.getWallet();
         return provider2;
-      } catch (e2) {
-        const projectAccessKey2 = localStorage.getItem(LocalStorageKey.ProjectAccessKey);
+      } catch (err) {
         if (!projectAccessKey2) {
           throw "projectAccessKey not found";
         }
@@ -88859,7 +92288,7 @@ function sequenceWallet(params) {
           defaultEIP6492: true,
           analytics: false
         });
-        const chainId = await provider2.getChainId();
+        const chainId = provider2.getChainId();
         config2.emitter.emit("change", {
           chainId: normalizeChainId$1(chainId)
         });
@@ -88905,7 +92334,8 @@ function sequenceWallet(params) {
     async onConnect(connectinfo) {
     },
     async onDisconnect() {
-      localStorage.removeItem(LocalStorageKey.EthAuthProof);
+      var _config$storage4;
+      await ((_config$storage4 = config2.storage) == null ? void 0 : _config$storage4.removeItem(LocalStorageKey.EthAuthProof));
       config2.emitter.emit("disconnect");
     }
   }));
@@ -88922,15 +92352,6 @@ function normalizeChainId$1(chainId) {
 sequenceWaasWallet.type = "sequence-waas";
 function sequenceWaasWallet(params) {
   var _params$enableConfirm, _params$network, _sequence$network$all;
-  if (params.googleClientId) {
-    localStorage.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId);
-  }
-  if (params.appleClientId) {
-    localStorage.setItem(LocalStorageKey.WaasAppleClientID, params.appleClientId);
-  }
-  if (params.appleRedirectURI) {
-    localStorage.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI);
-  }
   const showConfirmationModal = (_params$enableConfirm = params.enableConfirmationModal) != null ? _params$enableConfirm : false;
   const initialChain = (_params$network = params.network) != null ? _params$network : 137;
   const initialChainName = (_sequence$network$all = sequence$1.network.allNetworks.find((n2) => n2.chainId === initialChain || n2.name === initialChain)) == null ? void 0 : _sequence$network$all.name;
@@ -88946,7 +92367,7 @@ function sequenceWaasWallet(params) {
     const networkName = (_sequence$network$all2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId || n2.name === initialChain)) == null ? void 0 : _sequence$network$all2.name;
     const jsonRpcProvider = new JsonRpcProvider$1(`https://nodes.sequence.app/${networkName}/${params.projectAccessKey}`);
     sequenceWaasProvider.updateJsonRpcProvider(jsonRpcProvider);
-    sequenceWaasProvider.updateNetwork(getNetwork(chainId));
+    sequenceWaasProvider.updateNetwork(getNetwork$1(chainId));
   };
   return createConnector((config2) => ({
     id: `sequence-waas`,
@@ -88954,34 +92375,42 @@ function sequenceWaasWallet(params) {
     type: sequenceWaasWallet.type,
     sequenceWaas,
     sequenceWaasProvider,
+    params,
     async setup() {
-      const isConnected = await sequenceWaas.isSignedIn();
-      if (!isConnected) {
-        const sessionHash = await sequenceWaas.getSessionHash();
-        localStorage.setItem(LocalStorageKey.WaasSessionHash, sessionHash);
+      if (typeof window !== "object") {
+        return;
       }
-      sequenceWaasProvider.on("disconnect", () => {
+      const provider2 = await this.getProvider();
+      if (params.googleClientId) {
+        var _config$storage;
+        await ((_config$storage = config2.storage) == null ? void 0 : _config$storage.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId));
+      }
+      if (params.appleClientId) {
+        var _config$storage2;
+        await ((_config$storage2 = config2.storage) == null ? void 0 : _config$storage2.setItem(LocalStorageKey.WaasAppleClientID, params.appleClientId));
+      }
+      if (params.appleRedirectURI) {
+        var _config$storage3;
+        await ((_config$storage3 = config2.storage) == null ? void 0 : _config$storage3.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI));
+      }
+      const isConnected = await provider2.sequenceWaas.isSignedIn();
+      if (!isConnected) {
+        var _config$storage4;
+        const sessionHash = await provider2.sequenceWaas.getSessionHash();
+        await ((_config$storage4 = config2.storage) == null ? void 0 : _config$storage4.setItem(LocalStorageKey.WaasSessionHash, sessionHash));
+      }
+      provider2.on("disconnect", () => {
         this.onDisconnect();
       });
     },
-    async connect({
-      chainId,
-      isReconnecting: isReconnecting2
-    } = {}) {
-      const isSignedIn = await sequenceWaas.isSignedIn();
-      let accounts = [];
-      chainId = sequenceWaasProvider.getChainId();
-      if (isSignedIn) {
-        try {
-          accounts = await this.getAccounts();
-        } catch (e2) {
-          console.log(e2);
-          await this.disconnect();
-        }
-      } else {
-        const googleIdToken = localStorage.getItem(LocalStorageKey.WaasGoogleIdToken);
-        const emailIdToken = localStorage.getItem(LocalStorageKey.WaasEmailIdToken);
-        const appleIdToken = localStorage.getItem(LocalStorageKey.WaasAppleIdToken);
+    async connect(connectInfo) {
+      const provider2 = await this.getProvider();
+      const isSignedIn = await provider2.sequenceWaas.isSignedIn();
+      if (!isSignedIn) {
+        var _config$storage5, _config$storage6, _config$storage7, _config$storage9, _config$storage10, _config$storage11;
+        const googleIdToken = await ((_config$storage5 = config2.storage) == null ? void 0 : _config$storage5.getItem(LocalStorageKey.WaasGoogleIdToken));
+        const emailIdToken = await ((_config$storage6 = config2.storage) == null ? void 0 : _config$storage6.getItem(LocalStorageKey.WaasEmailIdToken));
+        const appleIdToken = await ((_config$storage7 = config2.storage) == null ? void 0 : _config$storage7.getItem(LocalStorageKey.WaasAppleIdToken));
         let idToken;
         if (params.loginType === "google" && googleIdToken) {
           idToken = googleIdToken;
@@ -88992,48 +92421,52 @@ function sequenceWaasWallet(params) {
         }
         if (idToken) {
           try {
-            await sequenceWaas.signIn({
+            await provider2.sequenceWaas.signIn({
               idToken
             }, randomName());
           } catch (e2) {
             console.log(e2);
             await this.disconnect();
           }
-          accounts = await this.getAccounts();
+          const accounts = await this.getAccounts();
           if (accounts.length) {
-            localStorage.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType);
+            var _config$storage8;
+            await ((_config$storage8 = config2.storage) == null ? void 0 : _config$storage8.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType));
           }
         }
-        localStorage.removeItem(LocalStorageKey.WaasGoogleIdToken);
-        localStorage.removeItem(LocalStorageKey.WaasEmailIdToken);
-        localStorage.removeItem(LocalStorageKey.WaasAppleIdToken);
+        await ((_config$storage9 = config2.storage) == null ? void 0 : _config$storage9.removeItem(LocalStorageKey.WaasGoogleIdToken));
+        await ((_config$storage10 = config2.storage) == null ? void 0 : _config$storage10.removeItem(LocalStorageKey.WaasEmailIdToken));
+        await ((_config$storage11 = config2.storage) == null ? void 0 : _config$storage11.removeItem(LocalStorageKey.WaasAppleIdToken));
       }
       return {
-        accounts,
-        chainId
+        accounts: await this.getAccounts(),
+        chainId: await this.getChainId()
       };
     },
     async disconnect() {
+      var _config$storage12, _config$storage13, _config$storage14;
+      const provider2 = await this.getProvider();
       try {
-        await sequenceWaas.dropSession({
-          sessionId: await sequenceWaas.getSessionId()
+        await provider2.sequenceWaas.dropSession({
+          sessionId: await provider2.sequenceWaas.getSessionId()
         });
       } catch (e2) {
         console.log(e2);
       }
-      localStorage.removeItem(LocalStorageKey.WaasSessionHash);
-      localStorage.removeItem(LocalStorageKey.WaasActiveLoginType);
-      const sessionHash = await sequenceWaas.getSessionHash();
-      localStorage.setItem(LocalStorageKey.WaasSessionHash, sessionHash);
+      await ((_config$storage12 = config2.storage) == null ? void 0 : _config$storage12.removeItem(LocalStorageKey.WaasSessionHash));
+      await ((_config$storage13 = config2.storage) == null ? void 0 : _config$storage13.removeItem(LocalStorageKey.WaasActiveLoginType));
+      const sessionHash = await provider2.sequenceWaas.getSessionHash();
+      await ((_config$storage14 = config2.storage) == null ? void 0 : _config$storage14.setItem(LocalStorageKey.WaasSessionHash, sessionHash));
     },
     async getAccounts() {
+      const provider2 = await this.getProvider();
       try {
-        const isSignedIn = await sequenceWaas.isSignedIn();
+        const isSignedIn = await provider2.sequenceWaas.isSignedIn();
         if (isSignedIn) {
-          const address = await sequenceWaas.getAddress();
+          const address = await provider2.sequenceWaas.getAddress();
           return [getAddress(address)];
         }
-      } catch (e2) {
+      } catch (err) {
         return [];
       }
       return [];
@@ -89042,12 +92475,14 @@ function sequenceWaasWallet(params) {
       return sequenceWaasProvider;
     },
     async isAuthorized() {
-      const activeWaasOption = localStorage.getItem(LocalStorageKey.WaasActiveLoginType);
+      var _config$storage15;
+      const provider2 = await this.getProvider();
+      const activeWaasOption = await ((_config$storage15 = config2.storage) == null ? void 0 : _config$storage15.getItem(LocalStorageKey.WaasActiveLoginType));
       if (params.loginType !== activeWaasOption) {
         return false;
       }
       try {
-        return await sequenceWaas.isSignedIn();
+        return await provider2.sequenceWaas.isSignedIn();
       } catch (e2) {
         return false;
       }
@@ -89072,13 +92507,12 @@ function sequenceWaasWallet(params) {
       };
     },
     async onChainChanged(chain) {
-      const provider2 = await this.getProvider();
+      await this.getProvider();
       config2.emitter.emit("change", {
         chainId: normalizeChainId(chain)
       });
-      provider2.setDefaultChainId(normalizeChainId(chain));
     },
-    async onConnect(connectinfo) {
+    async onConnect(connectInfo) {
     },
     async onDisconnect() {
       await this.disconnect();
@@ -89111,7 +92545,7 @@ class SequenceWaasProvider extends BaseProvider {
       return [account2];
     }
     if (method === "eth_sendTransaction") {
-      const txns = await resolveProperties$1(params[0]);
+      const txns = await resolveProperties$1(params == null ? void 0 : params[0]);
       const chainId = this.getChainId();
       const feeOptionsResponse = await this.checkTransactionFeeOptions({
         transactions: [txns],
@@ -89144,7 +92578,7 @@ class SequenceWaasProvider extends BaseProvider {
         }
       }
       const response = await this.sequenceWaas.sendTransaction({
-        transactions: [await resolveProperties$1(params[0])],
+        transactions: [await resolveProperties$1(params == null ? void 0 : params[0])],
         network: chainId,
         transactionsFeeOption: selectedFeeOption,
         transactionsFeeQuote: feeOptionsResponse == null ? void 0 : feeOptionsResponse.feeQuote
@@ -89163,7 +92597,7 @@ class SequenceWaasProvider extends BaseProvider {
     if (method === "eth_sign" || method === "eth_signTypedData" || method === "eth_signTypedData_v4" || method === "personal_sign") {
       if (this.requestConfirmationHandler && this.showConfirmation) {
         const id2 = v4();
-        const confirmation = await this.requestConfirmationHandler.confirmSignMessageRequest(id2, params[0], this.currentNetwork.chainId);
+        const confirmation = await this.requestConfirmationHandler.confirmSignMessageRequest(id2, params == null ? void 0 : params[0], this.currentNetwork.chainId);
         if (!confirmation.confirmed) {
           throw new UserRejectedRequestError(new Error("User rejected sign message request"));
         }
@@ -89172,7 +92606,7 @@ class SequenceWaasProvider extends BaseProvider {
         }
       }
       const sig = await this.sequenceWaas.signMessage({
-        message: params[0],
+        message: params == null ? void 0 : params[0],
         network: this.currentNetwork.chainId
       });
       return sig.data.signature;
@@ -89248,10 +92682,12 @@ const apple = (options) => ({
   }),
   // iconBackground: '#fff',
   name: "Apple",
-  createConnector: () => {
+  createConnector: (projectAccessKey2) => {
     var _options$connect;
     const connector = sequenceWallet(_extends$5({}, options, {
-      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+      connect: _extends$5({
+        projectAccessKey: projectAccessKey2
+      }, options == null ? void 0 : options.connect, {
         settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "apple"
         })
@@ -89317,15 +92753,15 @@ const email = (options) => ({
   }),
   // iconBackground: '#fff',
   name: "Email",
-  createConnector: () => {
+  createConnector: (projectAccessKey2) => {
     var _options$connect;
-    const email2 = localStorage.getItem(EMAIL_CONNECTOR_LOCAL_STORAGE_KEY);
     const connector = sequenceWallet(_extends$5({}, options, {
-      // @ts-ignore
-      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+      connect: _extends$5({
+        projectAccessKey: projectAccessKey2
+      }, options == null ? void 0 : options.connect, {
         settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
-          signInOptions: ["email"],
-          signInWithEmail: email2 || ""
+          signInOptions: ["email"]
+          // signInWithEmail: email || ''
         })
       })
     }));
@@ -89386,10 +92822,12 @@ const facebook = (options) => ({
   }),
   // iconBackground: '#fff',
   name: "Facebook",
-  createConnector: () => {
+  createConnector: (projectAccessKey2) => {
     var _options$connect;
     const connector = sequenceWallet(_extends$5({}, options, {
-      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+      connect: _extends$5({
+        projectAccessKey: projectAccessKey2
+      }, options == null ? void 0 : options.connect, {
         settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "facebook"
         })
@@ -89455,11 +92893,12 @@ const google = (options) => ({
     isDarkMode: false
   }),
   name: "Google",
-  createConnector: () => {
+  createConnector: (projectAccessKey2) => {
     var _options$connect;
     const connector = sequenceWallet(_extends$5({}, options, {
-      // @ts-ignore
-      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+      connect: _extends$5({
+        projectAccessKey: projectAccessKey2
+      }, options == null ? void 0 : options.connect, {
         settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "google"
         })
@@ -89961,8 +93400,12 @@ const sequence = (options) => ({
   logoLight: SequenceLogo$1,
   // iconBackground: '#777',
   name: "Sequence",
-  createConnector: () => {
-    const connector = sequenceWallet(_extends$5({}, options));
+  createConnector: (projectAccessKey2) => {
+    const connector = sequenceWallet(_extends$5({}, options, {
+      connect: _extends$5({
+        projectAccessKey: projectAccessKey2
+      }, options.connect)
+    }));
     return connector;
   }
 });
@@ -90018,10 +93461,12 @@ const twitch = (options) => ({
   }),
   // iconBackground: '#fff',
   name: "Twitch",
-  createConnector: () => {
+  createConnector: (projectAccessKey2) => {
     var _options$connect;
     const connector = sequenceWallet(_extends$5({}, options, {
-      connect: _extends$5({}, options == null ? void 0 : options.connect, {
+      connect: _extends$5({
+        projectAccessKey: projectAccessKey2
+      }, options == null ? void 0 : options.connect, {
         settings: _extends$5({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
           signInWith: "twitch"
         })
@@ -90097,45 +93542,51 @@ const getDefaultConnectors = ({
   projectAccessKey: projectAccessKey2,
   appName
 }) => {
-  const connectors = getKitConnectWallets(projectAccessKey2, [email({
-    defaultNetwork: defaultChainId,
-    connect: {
-      app: appName,
-      projectAccessKey: projectAccessKey2
-    }
-  }), google({
-    defaultNetwork: defaultChainId,
-    connect: {
-      app: appName,
-      projectAccessKey: projectAccessKey2
-    }
-  }), facebook({
-    defaultNetwork: defaultChainId,
-    connect: {
-      app: appName,
-      projectAccessKey: projectAccessKey2
-    }
-  }), twitch({
-    defaultNetwork: defaultChainId,
-    connect: {
-      app: appName
-    }
-  }), apple({
-    defaultNetwork: defaultChainId,
-    connect: {
-      app: appName
-    }
-  }), sequence({
-    defaultNetwork: defaultChainId,
-    connect: {
-      app: appName,
-      projectAccessKey: projectAccessKey2
-    }
-  }), walletConnect({
-    projectId: walletConnectProjectId
-  }), metamask(), coinbaseWallet({
-    appName
-  })]);
+  const connectors = getKitConnectWallets(projectAccessKey2, [
+    email({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    google({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    facebook({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    twitch({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    apple({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    sequence({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    walletConnect({
+      projectId: walletConnectProjectId
+    }),
+    metamask()
+    // coinbaseWallet({
+    //   appName
+    // })
+  ]);
   return connectors;
 };
 const getDefaultWaasConnectors = ({
@@ -90295,7 +93746,7 @@ AppleSigninButton$1.default = void 0;
 var _react$1 = _interopRequireDefault$1(reactExports);
 var _useScript = _interopRequireDefault$1(useScript$1);
 var _appleAuthHelpers = _interopRequireDefault$1(appleAuthHelpers);
-var _excluded$6 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
+var _excluded$5 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
 function _interopRequireDefault$1(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
@@ -90313,7 +93764,7 @@ function _extends$4() {
   };
   return _extends$4.apply(this, arguments);
 }
-function ownKeys$2(object2, enumerableOnly) {
+function ownKeys$3(object2, enumerableOnly) {
   var keys = Object.keys(object2);
   if (Object.getOwnPropertySymbols) {
     var symbols = Object.getOwnPropertySymbols(object2);
@@ -90326,24 +93777,24 @@ function ownKeys$2(object2, enumerableOnly) {
   }
   return keys;
 }
-function _objectSpread$1(target) {
+function _objectSpread$2(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2] != null ? arguments[i2] : {};
     if (i2 % 2) {
-      ownKeys$2(Object(source), true).forEach(function(key2) {
-        _defineProperty$2(target, key2, source[key2]);
+      ownKeys$3(Object(source), true).forEach(function(key2) {
+        _defineProperty$3(target, key2, source[key2]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
     } else {
-      ownKeys$2(Object(source)).forEach(function(key2) {
+      ownKeys$3(Object(source)).forEach(function(key2) {
         Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
       });
     }
   }
   return target;
 }
-function _defineProperty$2(obj, key2, value) {
+function _defineProperty$3(obj, key2, value) {
   if (key2 in obj) {
     Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
   } else {
@@ -90385,7 +93836,7 @@ function _objectWithoutPropertiesLoose$4(source, excluded) {
 }
 var _style = "\n.react-apple-signin-auth-btn {\n  background-color: transparent;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 4px;\n  padding: 0 8px 0 2px;\n  font-size: 14px;\n  font-size: 1em;\n  line-height: 1;\n  border: 1px solid #000;\n  overflow: hidden;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n}\n.react-apple-signin-auth-btn-light {\n  background-color: #FFF;\n  color: #000;\n  border-color: #000;\n}\n.react-apple-signin-auth-btn-dark {\n  background-color: #000;\n  color: #FFF;\n  border-color: #FFF;\n}".replace(/ {2}|\n/g, "");
 var AppleSigninButton = function AppleSigninButton2(_ref) {
-  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$2(_ref, _excluded$6);
+  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$2(_ref, _excluded$5);
   (0, _useScript.default)(skipScript ? null : _appleAuthHelpers.default.APPLE_SCRIPT_SRC);
   var handleClick = function handleClick2(e2) {
     if (e2) {
@@ -90398,7 +93849,7 @@ var AppleSigninButton = function AppleSigninButton2(_ref) {
       onError
     });
   };
-  var props = _objectSpread$1({
+  var props = _objectSpread$2({
     children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$4({
       width: "24px",
       height: "44px",
@@ -90468,131 +93919,94 @@ function _taggedTemplateLiteral(strings, raw) {
     }
   }));
 }
-function noop() {
-}
-function createWeakMap() {
-  if (typeof WeakMap !== "undefined") {
-    return /* @__PURE__ */ new WeakMap();
-  } else {
-    return fakeSetOrMap();
+function ownKeys$2(object2, enumerableOnly) {
+  var keys = Object.keys(object2);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object2);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object2, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
   }
+  return keys;
 }
-function fakeSetOrMap() {
-  return {
-    add: noop,
-    delete: noop,
-    get: noop,
-    set: noop,
-    has: function(k2) {
-      return false;
-    }
-  };
-}
-var hop = Object.prototype.hasOwnProperty;
-var has = function(obj, prop) {
-  return hop.call(obj, prop);
-};
-function extend(target, source) {
-  for (var prop in source) {
-    if (has(source, prop)) {
-      target[prop] = source[prop];
-    }
+function _objectSpread$1(target) {
+  for (var i2 = 1; i2 < arguments.length; i2++) {
+    var source = null != arguments[i2] ? arguments[i2] : {};
+    i2 % 2 ? ownKeys$2(Object(source), true).forEach(function(key2) {
+      _defineProperty$2(target, key2, source[key2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$2(Object(source)).forEach(function(key2) {
+      Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
+    });
   }
   return target;
 }
-var reLeadingNewline = /^[ \t]*(?:\r\n|\r|\n)/;
-var reTrailingNewline = /(?:\r\n|\r|\n)[ \t]*$/;
-var reStartsWithNewlineOrIsEmpty = /^(?:[\r\n]|$)/;
-var reDetectIndentation = /(?:\r\n|\r|\n)([ \t]*)(?:[^ \t\r\n]|$)/;
-var reOnlyWhitespaceWithAtLeastOneNewline = /^[ \t]*[\r\n][ \t\r\n]*$/;
-function _outdentArray(strings, firstInterpolatedValueSetsIndentationLevel, options) {
-  var indentationLevel = 0;
-  var match2 = strings[0].match(reDetectIndentation);
-  if (match2) {
-    indentationLevel = match2[1].length;
+function _defineProperty$2(obj, key2, value) {
+  key2 = _toPropertyKey(key2);
+  if (key2 in obj) {
+    Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key2] = value;
   }
-  var reSource = "(\\r\\n|\\r|\\n).{0," + indentationLevel + "}";
-  var reMatchIndent = new RegExp(reSource, "g");
-  if (firstInterpolatedValueSetsIndentationLevel) {
-    strings = strings.slice(1);
+  return obj;
+}
+function _toPropertyKey(arg) {
+  var key2 = _toPrimitive(arg, "string");
+  return typeof key2 === "symbol" ? key2 : String(key2);
+}
+function _toPrimitive(input2, hint) {
+  if (typeof input2 !== "object" || input2 === null)
+    return input2;
+  var prim = input2[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input2, hint || "default");
+    if (typeof res !== "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-  var newline = options.newline, trimLeadingNewline = options.trimLeadingNewline, trimTrailingNewline = options.trimTrailingNewline;
-  var normalizeNewlines = typeof newline === "string";
-  var l2 = strings.length;
-  var outdentedStrings = strings.map(function(v3, i2) {
-    v3 = v3.replace(reMatchIndent, "$1");
-    if (i2 === 0 && trimLeadingNewline) {
-      v3 = v3.replace(reLeadingNewline, "");
-    }
-    if (i2 === l2 - 1 && trimTrailingNewline) {
-      v3 = v3.replace(reTrailingNewline, "");
-    }
-    if (normalizeNewlines) {
-      v3 = v3.replace(/\r\n|\n|\r/g, function(_) {
-        return newline;
-      });
-    }
-    return v3;
-  });
-  return outdentedStrings;
+  return (hint === "string" ? String : Number)(input2);
 }
-function concatStringsAndValues(strings, values) {
-  var ret = "";
-  for (var i2 = 0, l2 = strings.length; i2 < l2; i2++) {
-    ret += strings[i2];
-    if (i2 < l2 - 1) {
-      ret += values[i2];
-    }
-  }
-  return ret;
-}
-function isTemplateStringsArray(v3) {
-  return has(v3, "raw") && has(v3, "length");
-}
-function createInstance(options) {
-  var arrayAutoIndentCache = createWeakMap();
-  var arrayFirstInterpSetsIndentCache = createWeakMap();
-  function outdent(stringsOrOptions) {
-    var values = [];
-    for (var _i2 = 1; _i2 < arguments.length; _i2++) {
-      values[_i2 - 1] = arguments[_i2];
-    }
-    if (isTemplateStringsArray(stringsOrOptions)) {
-      var strings = stringsOrOptions;
-      var firstInterpolatedValueSetsIndentationLevel = (values[0] === outdent || values[0] === defaultOutdent) && reOnlyWhitespaceWithAtLeastOneNewline.test(strings[0]) && reStartsWithNewlineOrIsEmpty.test(strings[1]);
-      var cache = firstInterpolatedValueSetsIndentationLevel ? arrayFirstInterpSetsIndentCache : arrayAutoIndentCache;
-      var renderedArray = cache.get(strings);
-      if (!renderedArray) {
-        renderedArray = _outdentArray(strings, firstInterpolatedValueSetsIndentationLevel, options);
-        cache.set(strings, renderedArray);
+const dedent = createDedent({});
+function createDedent(options) {
+  dedent2.withOptions = (newOptions) => createDedent(_objectSpread$1(_objectSpread$1({}, options), newOptions));
+  return dedent2;
+  function dedent2(strings, ...values) {
+    const raw = typeof strings === "string" ? [strings] : strings.raw;
+    const {
+      escapeSpecialCharacters = Array.isArray(strings)
+    } = options;
+    let result = "";
+    for (let i2 = 0; i2 < raw.length; i2++) {
+      let next2 = raw[i2];
+      if (escapeSpecialCharacters) {
+        next2 = next2.replace(/\\\n[ \t]*/g, "").replace(/\\`/g, "`").replace(/\\\$/g, "$").replace(/\\\{/g, "{");
       }
-      if (values.length === 0) {
-        return renderedArray[0];
+      result += next2;
+      if (i2 < values.length) {
+        result += values[i2];
       }
-      var rendered = concatStringsAndValues(renderedArray, firstInterpolatedValueSetsIndentationLevel ? values.slice(1) : values);
-      return rendered;
-    } else {
-      return createInstance(extend(extend({}, options), stringsOrOptions || {}));
     }
-  }
-  var fullOutdent = extend(outdent, {
-    string: function(str) {
-      return _outdentArray([str], false, options)[0];
+    const lines = result.split("\n");
+    let mindent = null;
+    for (const l2 of lines) {
+      const m2 = l2.match(/^(\s+)\S+/);
+      if (m2) {
+        const indent = m2[1].length;
+        if (!mindent) {
+          mindent = indent;
+        } else {
+          mindent = Math.min(mindent, indent);
+        }
+      }
     }
-  });
-  return fullOutdent;
-}
-var defaultOutdent = createInstance({
-  trimLeadingNewline: true,
-  trimTrailingNewline: true
-});
-if (typeof module !== "undefined") {
-  try {
-    module.exports = defaultOutdent;
-    Object.defineProperty(defaultOutdent, "__esModule", { value: true });
-    defaultOutdent.default = defaultOutdent;
-    defaultOutdent.outdent = defaultOutdent;
-  } catch (e2) {
+    if (mindent !== null) {
+      const m2 = mindent;
+      result = lines.map((l2) => l2[0] === " " || l2[0] === "	" ? l2.slice(m2) : l2).join("\n");
+    }
+    result = result.trim();
+    if (escapeSpecialCharacters) {
+      result = result.replace(/\\n/g, "\n");
+    }
+    return result;
   }
 }
 var mockAdapter = {
@@ -90676,7 +94090,7 @@ function endFileScope() {
 }
 function getFileScope() {
   if (fileScopes.length === 0) {
-    throw new Error(defaultOutdent(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n        Styles were unable to be assigned to a file. This is generally caused by one of the following:\n\n        - You may have created styles outside of a '.css.ts' context\n        - You may have incorrect configuration. See https://vanilla-extract.style/documentation/getting-started\n      "]))));
+    throw new Error(dedent(_templateObject$2 || (_templateObject$2 = _taggedTemplateLiteral(["\n        Styles were unable to be assigned to a file. This is generally caused by one of the following:\n\n        - You may have created styles outside of a '.css.ts' context\n        - You may have incorrect configuration. See https://vanilla-extract.style/documentation/getting-started\n      "]))));
   }
   return fileScopes[0];
 }
@@ -92573,7 +95987,7 @@ var validateSelector = (selector2, targetClassName) => {
         }
       }
     } catch (err) {
-      throw new Error(defaultOutdent(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n        Invalid selector: ", "\n    \n        Style selectors must target the '&' character (along with any modifiers), e.g. ", " or ", ".\n        \n        This is to ensure that each style block only affects the styling of a single class.\n        \n        If your selector is targeting another class, you should move it to the style definition for that class, e.g. given we have styles for 'parent' and 'child' elements, instead of adding a selector of ", ") to 'parent', you should add ", " to 'child').\n        \n        If your selector is targeting something global, use the 'globalStyle' function instead, e.g. if you wanted to write ", ", you should instead write 'globalStyle(", ", { ... })'\n      "])), replaceTarget(), "`${parent} &`", "`${parent} &:hover`", "`& ${child}`", "`${parent} &`", "`& h1`", "`${parent} h1`"));
+      throw new Error(dedent(_templateObject$1 || (_templateObject$1 = _taggedTemplateLiteral(["\n        Invalid selector: ", "\n    \n        Style selectors must target the '&' character (along with any modifiers), e.g. ", " or ", ".\n        \n        This is to ensure that each style block only affects the styling of a single class.\n        \n        If your selector is targeting another class, you should move it to the style definition for that class, e.g. given we have styles for 'parent' and 'child' elements, instead of adding a selector of ", ") to 'parent', you should add ", " to 'child').\n        \n        If your selector is targeting something global, use the 'globalStyle' function instead, e.g. if you wanted to write ", ", you should instead write 'globalStyle(", ", { ... })'\n      "])), replaceTarget(), "`${parent} &`", "`${parent} &:hover`", "`& ${child}`", "`${parent} &`", "`& h1`", "`${parent} h1`"));
     }
   });
 };
@@ -92846,7 +96260,7 @@ var simplePseudoMap = {
 var simplePseudos = Object.keys(simplePseudoMap);
 var simplePseudoLookup = simplePseudoMap;
 var _templateObject;
-var createMediaQueryError = (mediaQuery, msg) => new Error(defaultOutdent(_templateObject || (_templateObject = _taggedTemplateLiteral(['\n    Invalid media query: "', '"\n\n    ', "\n\n    Read more on MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries\n  "])), mediaQuery, msg));
+var createMediaQueryError = (mediaQuery, msg) => new Error(dedent(_templateObject || (_templateObject = _taggedTemplateLiteral(['\n    Invalid media query: "', '"\n\n    ', "\n\n    Read more on MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries\n  "])), mediaQuery, msg));
 var validateMediaQuery = (mediaQuery) => {
   if (mediaQuery === "@media ") {
     throw createMediaQueryError(mediaQuery, "Query is empty");
@@ -92857,7 +96271,7 @@ var validateMediaQuery = (mediaQuery) => {
     throw createMediaQueryError(mediaQuery, e2.message);
   }
 };
-var _excluded$5 = ["vars"], _excluded2$1 = ["content"];
+var _excluded$4 = ["vars"], _excluded2 = ["content"];
 var DECLARATION$1 = "__DECLARATION";
 var UNITLESS = {
   animationIterationCount: true,
@@ -93011,7 +96425,7 @@ class Stylesheet {
   transformVars(_ref3) {
     var {
       vars: vars2
-    } = _ref3, rest = _objectWithoutProperties$1(_ref3, _excluded$5);
+    } = _ref3, rest = _objectWithoutProperties$1(_ref3, _excluded$4);
     if (!vars2) {
       return rest;
     }
@@ -93020,7 +96434,7 @@ class Stylesheet {
   transformContent(_ref4) {
     var {
       content: content2
-    } = _ref4, rest = _objectWithoutProperties$1(_ref4, _excluded2$1);
+    } = _ref4, rest = _objectWithoutProperties$1(_ref4, _excluded2);
     if (typeof content2 === "undefined") {
       return rest;
     }
@@ -93306,1433 +96720,6 @@ function murmur2(str) {
   (h2 & 65535) * 1540483477 + ((h2 >>> 16) * 59797 << 16);
   return ((h2 ^ h2 >>> 15) >>> 0).toString(36);
 }
-var ansiStyles$1 = { exports: {} };
-var colorName;
-var hasRequiredColorName;
-function requireColorName() {
-  if (hasRequiredColorName)
-    return colorName;
-  hasRequiredColorName = 1;
-  colorName = {
-    "aliceblue": [240, 248, 255],
-    "antiquewhite": [250, 235, 215],
-    "aqua": [0, 255, 255],
-    "aquamarine": [127, 255, 212],
-    "azure": [240, 255, 255],
-    "beige": [245, 245, 220],
-    "bisque": [255, 228, 196],
-    "black": [0, 0, 0],
-    "blanchedalmond": [255, 235, 205],
-    "blue": [0, 0, 255],
-    "blueviolet": [138, 43, 226],
-    "brown": [165, 42, 42],
-    "burlywood": [222, 184, 135],
-    "cadetblue": [95, 158, 160],
-    "chartreuse": [127, 255, 0],
-    "chocolate": [210, 105, 30],
-    "coral": [255, 127, 80],
-    "cornflowerblue": [100, 149, 237],
-    "cornsilk": [255, 248, 220],
-    "crimson": [220, 20, 60],
-    "cyan": [0, 255, 255],
-    "darkblue": [0, 0, 139],
-    "darkcyan": [0, 139, 139],
-    "darkgoldenrod": [184, 134, 11],
-    "darkgray": [169, 169, 169],
-    "darkgreen": [0, 100, 0],
-    "darkgrey": [169, 169, 169],
-    "darkkhaki": [189, 183, 107],
-    "darkmagenta": [139, 0, 139],
-    "darkolivegreen": [85, 107, 47],
-    "darkorange": [255, 140, 0],
-    "darkorchid": [153, 50, 204],
-    "darkred": [139, 0, 0],
-    "darksalmon": [233, 150, 122],
-    "darkseagreen": [143, 188, 143],
-    "darkslateblue": [72, 61, 139],
-    "darkslategray": [47, 79, 79],
-    "darkslategrey": [47, 79, 79],
-    "darkturquoise": [0, 206, 209],
-    "darkviolet": [148, 0, 211],
-    "deeppink": [255, 20, 147],
-    "deepskyblue": [0, 191, 255],
-    "dimgray": [105, 105, 105],
-    "dimgrey": [105, 105, 105],
-    "dodgerblue": [30, 144, 255],
-    "firebrick": [178, 34, 34],
-    "floralwhite": [255, 250, 240],
-    "forestgreen": [34, 139, 34],
-    "fuchsia": [255, 0, 255],
-    "gainsboro": [220, 220, 220],
-    "ghostwhite": [248, 248, 255],
-    "gold": [255, 215, 0],
-    "goldenrod": [218, 165, 32],
-    "gray": [128, 128, 128],
-    "green": [0, 128, 0],
-    "greenyellow": [173, 255, 47],
-    "grey": [128, 128, 128],
-    "honeydew": [240, 255, 240],
-    "hotpink": [255, 105, 180],
-    "indianred": [205, 92, 92],
-    "indigo": [75, 0, 130],
-    "ivory": [255, 255, 240],
-    "khaki": [240, 230, 140],
-    "lavender": [230, 230, 250],
-    "lavenderblush": [255, 240, 245],
-    "lawngreen": [124, 252, 0],
-    "lemonchiffon": [255, 250, 205],
-    "lightblue": [173, 216, 230],
-    "lightcoral": [240, 128, 128],
-    "lightcyan": [224, 255, 255],
-    "lightgoldenrodyellow": [250, 250, 210],
-    "lightgray": [211, 211, 211],
-    "lightgreen": [144, 238, 144],
-    "lightgrey": [211, 211, 211],
-    "lightpink": [255, 182, 193],
-    "lightsalmon": [255, 160, 122],
-    "lightseagreen": [32, 178, 170],
-    "lightskyblue": [135, 206, 250],
-    "lightslategray": [119, 136, 153],
-    "lightslategrey": [119, 136, 153],
-    "lightsteelblue": [176, 196, 222],
-    "lightyellow": [255, 255, 224],
-    "lime": [0, 255, 0],
-    "limegreen": [50, 205, 50],
-    "linen": [250, 240, 230],
-    "magenta": [255, 0, 255],
-    "maroon": [128, 0, 0],
-    "mediumaquamarine": [102, 205, 170],
-    "mediumblue": [0, 0, 205],
-    "mediumorchid": [186, 85, 211],
-    "mediumpurple": [147, 112, 219],
-    "mediumseagreen": [60, 179, 113],
-    "mediumslateblue": [123, 104, 238],
-    "mediumspringgreen": [0, 250, 154],
-    "mediumturquoise": [72, 209, 204],
-    "mediumvioletred": [199, 21, 133],
-    "midnightblue": [25, 25, 112],
-    "mintcream": [245, 255, 250],
-    "mistyrose": [255, 228, 225],
-    "moccasin": [255, 228, 181],
-    "navajowhite": [255, 222, 173],
-    "navy": [0, 0, 128],
-    "oldlace": [253, 245, 230],
-    "olive": [128, 128, 0],
-    "olivedrab": [107, 142, 35],
-    "orange": [255, 165, 0],
-    "orangered": [255, 69, 0],
-    "orchid": [218, 112, 214],
-    "palegoldenrod": [238, 232, 170],
-    "palegreen": [152, 251, 152],
-    "paleturquoise": [175, 238, 238],
-    "palevioletred": [219, 112, 147],
-    "papayawhip": [255, 239, 213],
-    "peachpuff": [255, 218, 185],
-    "peru": [205, 133, 63],
-    "pink": [255, 192, 203],
-    "plum": [221, 160, 221],
-    "powderblue": [176, 224, 230],
-    "purple": [128, 0, 128],
-    "rebeccapurple": [102, 51, 153],
-    "red": [255, 0, 0],
-    "rosybrown": [188, 143, 143],
-    "royalblue": [65, 105, 225],
-    "saddlebrown": [139, 69, 19],
-    "salmon": [250, 128, 114],
-    "sandybrown": [244, 164, 96],
-    "seagreen": [46, 139, 87],
-    "seashell": [255, 245, 238],
-    "sienna": [160, 82, 45],
-    "silver": [192, 192, 192],
-    "skyblue": [135, 206, 235],
-    "slateblue": [106, 90, 205],
-    "slategray": [112, 128, 144],
-    "slategrey": [112, 128, 144],
-    "snow": [255, 250, 250],
-    "springgreen": [0, 255, 127],
-    "steelblue": [70, 130, 180],
-    "tan": [210, 180, 140],
-    "teal": [0, 128, 128],
-    "thistle": [216, 191, 216],
-    "tomato": [255, 99, 71],
-    "turquoise": [64, 224, 208],
-    "violet": [238, 130, 238],
-    "wheat": [245, 222, 179],
-    "white": [255, 255, 255],
-    "whitesmoke": [245, 245, 245],
-    "yellow": [255, 255, 0],
-    "yellowgreen": [154, 205, 50]
-  };
-  return colorName;
-}
-var conversions;
-var hasRequiredConversions;
-function requireConversions() {
-  if (hasRequiredConversions)
-    return conversions;
-  hasRequiredConversions = 1;
-  const cssKeywords = requireColorName();
-  const reverseKeywords = {};
-  for (const key2 of Object.keys(cssKeywords)) {
-    reverseKeywords[cssKeywords[key2]] = key2;
-  }
-  const convert2 = {
-    rgb: { channels: 3, labels: "rgb" },
-    hsl: { channels: 3, labels: "hsl" },
-    hsv: { channels: 3, labels: "hsv" },
-    hwb: { channels: 3, labels: "hwb" },
-    cmyk: { channels: 4, labels: "cmyk" },
-    xyz: { channels: 3, labels: "xyz" },
-    lab: { channels: 3, labels: "lab" },
-    lch: { channels: 3, labels: "lch" },
-    hex: { channels: 1, labels: ["hex"] },
-    keyword: { channels: 1, labels: ["keyword"] },
-    ansi16: { channels: 1, labels: ["ansi16"] },
-    ansi256: { channels: 1, labels: ["ansi256"] },
-    hcg: { channels: 3, labels: ["h", "c", "g"] },
-    apple: { channels: 3, labels: ["r16", "g16", "b16"] },
-    gray: { channels: 1, labels: ["gray"] }
-  };
-  conversions = convert2;
-  for (const model of Object.keys(convert2)) {
-    if (!("channels" in convert2[model])) {
-      throw new Error("missing channels property: " + model);
-    }
-    if (!("labels" in convert2[model])) {
-      throw new Error("missing channel labels property: " + model);
-    }
-    if (convert2[model].labels.length !== convert2[model].channels) {
-      throw new Error("channel and label counts mismatch: " + model);
-    }
-    const { channels, labels } = convert2[model];
-    delete convert2[model].channels;
-    delete convert2[model].labels;
-    Object.defineProperty(convert2[model], "channels", { value: channels });
-    Object.defineProperty(convert2[model], "labels", { value: labels });
-  }
-  convert2.rgb.hsl = function(rgb) {
-    const r2 = rgb[0] / 255;
-    const g2 = rgb[1] / 255;
-    const b3 = rgb[2] / 255;
-    const min2 = Math.min(r2, g2, b3);
-    const max2 = Math.max(r2, g2, b3);
-    const delta = max2 - min2;
-    let h2;
-    let s2;
-    if (max2 === min2) {
-      h2 = 0;
-    } else if (r2 === max2) {
-      h2 = (g2 - b3) / delta;
-    } else if (g2 === max2) {
-      h2 = 2 + (b3 - r2) / delta;
-    } else if (b3 === max2) {
-      h2 = 4 + (r2 - g2) / delta;
-    }
-    h2 = Math.min(h2 * 60, 360);
-    if (h2 < 0) {
-      h2 += 360;
-    }
-    const l2 = (min2 + max2) / 2;
-    if (max2 === min2) {
-      s2 = 0;
-    } else if (l2 <= 0.5) {
-      s2 = delta / (max2 + min2);
-    } else {
-      s2 = delta / (2 - max2 - min2);
-    }
-    return [h2, s2 * 100, l2 * 100];
-  };
-  convert2.rgb.hsv = function(rgb) {
-    let rdif;
-    let gdif;
-    let bdif;
-    let h2;
-    let s2;
-    const r2 = rgb[0] / 255;
-    const g2 = rgb[1] / 255;
-    const b3 = rgb[2] / 255;
-    const v3 = Math.max(r2, g2, b3);
-    const diff = v3 - Math.min(r2, g2, b3);
-    const diffc = function(c2) {
-      return (v3 - c2) / 6 / diff + 1 / 2;
-    };
-    if (diff === 0) {
-      h2 = 0;
-      s2 = 0;
-    } else {
-      s2 = diff / v3;
-      rdif = diffc(r2);
-      gdif = diffc(g2);
-      bdif = diffc(b3);
-      if (r2 === v3) {
-        h2 = bdif - gdif;
-      } else if (g2 === v3) {
-        h2 = 1 / 3 + rdif - bdif;
-      } else if (b3 === v3) {
-        h2 = 2 / 3 + gdif - rdif;
-      }
-      if (h2 < 0) {
-        h2 += 1;
-      } else if (h2 > 1) {
-        h2 -= 1;
-      }
-    }
-    return [
-      h2 * 360,
-      s2 * 100,
-      v3 * 100
-    ];
-  };
-  convert2.rgb.hwb = function(rgb) {
-    const r2 = rgb[0];
-    const g2 = rgb[1];
-    let b3 = rgb[2];
-    const h2 = convert2.rgb.hsl(rgb)[0];
-    const w2 = 1 / 255 * Math.min(r2, Math.min(g2, b3));
-    b3 = 1 - 1 / 255 * Math.max(r2, Math.max(g2, b3));
-    return [h2, w2 * 100, b3 * 100];
-  };
-  convert2.rgb.cmyk = function(rgb) {
-    const r2 = rgb[0] / 255;
-    const g2 = rgb[1] / 255;
-    const b3 = rgb[2] / 255;
-    const k2 = Math.min(1 - r2, 1 - g2, 1 - b3);
-    const c2 = (1 - r2 - k2) / (1 - k2) || 0;
-    const m2 = (1 - g2 - k2) / (1 - k2) || 0;
-    const y2 = (1 - b3 - k2) / (1 - k2) || 0;
-    return [c2 * 100, m2 * 100, y2 * 100, k2 * 100];
-  };
-  function comparativeDistance(x, y2) {
-    return (x[0] - y2[0]) ** 2 + (x[1] - y2[1]) ** 2 + (x[2] - y2[2]) ** 2;
-  }
-  convert2.rgb.keyword = function(rgb) {
-    const reversed = reverseKeywords[rgb];
-    if (reversed) {
-      return reversed;
-    }
-    let currentClosestDistance = Infinity;
-    let currentClosestKeyword;
-    for (const keyword of Object.keys(cssKeywords)) {
-      const value = cssKeywords[keyword];
-      const distance2 = comparativeDistance(rgb, value);
-      if (distance2 < currentClosestDistance) {
-        currentClosestDistance = distance2;
-        currentClosestKeyword = keyword;
-      }
-    }
-    return currentClosestKeyword;
-  };
-  convert2.keyword.rgb = function(keyword) {
-    return cssKeywords[keyword];
-  };
-  convert2.rgb.xyz = function(rgb) {
-    let r2 = rgb[0] / 255;
-    let g2 = rgb[1] / 255;
-    let b3 = rgb[2] / 255;
-    r2 = r2 > 0.04045 ? ((r2 + 0.055) / 1.055) ** 2.4 : r2 / 12.92;
-    g2 = g2 > 0.04045 ? ((g2 + 0.055) / 1.055) ** 2.4 : g2 / 12.92;
-    b3 = b3 > 0.04045 ? ((b3 + 0.055) / 1.055) ** 2.4 : b3 / 12.92;
-    const x = r2 * 0.4124 + g2 * 0.3576 + b3 * 0.1805;
-    const y2 = r2 * 0.2126 + g2 * 0.7152 + b3 * 0.0722;
-    const z2 = r2 * 0.0193 + g2 * 0.1192 + b3 * 0.9505;
-    return [x * 100, y2 * 100, z2 * 100];
-  };
-  convert2.rgb.lab = function(rgb) {
-    const xyz = convert2.rgb.xyz(rgb);
-    let x = xyz[0];
-    let y2 = xyz[1];
-    let z2 = xyz[2];
-    x /= 95.047;
-    y2 /= 100;
-    z2 /= 108.883;
-    x = x > 8856e-6 ? x ** (1 / 3) : 7.787 * x + 16 / 116;
-    y2 = y2 > 8856e-6 ? y2 ** (1 / 3) : 7.787 * y2 + 16 / 116;
-    z2 = z2 > 8856e-6 ? z2 ** (1 / 3) : 7.787 * z2 + 16 / 116;
-    const l2 = 116 * y2 - 16;
-    const a2 = 500 * (x - y2);
-    const b3 = 200 * (y2 - z2);
-    return [l2, a2, b3];
-  };
-  convert2.hsl.rgb = function(hsl) {
-    const h2 = hsl[0] / 360;
-    const s2 = hsl[1] / 100;
-    const l2 = hsl[2] / 100;
-    let t2;
-    let t3;
-    let val;
-    if (s2 === 0) {
-      val = l2 * 255;
-      return [val, val, val];
-    }
-    if (l2 < 0.5) {
-      t2 = l2 * (1 + s2);
-    } else {
-      t2 = l2 + s2 - l2 * s2;
-    }
-    const t1 = 2 * l2 - t2;
-    const rgb = [0, 0, 0];
-    for (let i2 = 0; i2 < 3; i2++) {
-      t3 = h2 + 1 / 3 * -(i2 - 1);
-      if (t3 < 0) {
-        t3++;
-      }
-      if (t3 > 1) {
-        t3--;
-      }
-      if (6 * t3 < 1) {
-        val = t1 + (t2 - t1) * 6 * t3;
-      } else if (2 * t3 < 1) {
-        val = t2;
-      } else if (3 * t3 < 2) {
-        val = t1 + (t2 - t1) * (2 / 3 - t3) * 6;
-      } else {
-        val = t1;
-      }
-      rgb[i2] = val * 255;
-    }
-    return rgb;
-  };
-  convert2.hsl.hsv = function(hsl) {
-    const h2 = hsl[0];
-    let s2 = hsl[1] / 100;
-    let l2 = hsl[2] / 100;
-    let smin = s2;
-    const lmin = Math.max(l2, 0.01);
-    l2 *= 2;
-    s2 *= l2 <= 1 ? l2 : 2 - l2;
-    smin *= lmin <= 1 ? lmin : 2 - lmin;
-    const v3 = (l2 + s2) / 2;
-    const sv = l2 === 0 ? 2 * smin / (lmin + smin) : 2 * s2 / (l2 + s2);
-    return [h2, sv * 100, v3 * 100];
-  };
-  convert2.hsv.rgb = function(hsv) {
-    const h2 = hsv[0] / 60;
-    const s2 = hsv[1] / 100;
-    let v3 = hsv[2] / 100;
-    const hi2 = Math.floor(h2) % 6;
-    const f2 = h2 - Math.floor(h2);
-    const p2 = 255 * v3 * (1 - s2);
-    const q2 = 255 * v3 * (1 - s2 * f2);
-    const t2 = 255 * v3 * (1 - s2 * (1 - f2));
-    v3 *= 255;
-    switch (hi2) {
-      case 0:
-        return [v3, t2, p2];
-      case 1:
-        return [q2, v3, p2];
-      case 2:
-        return [p2, v3, t2];
-      case 3:
-        return [p2, q2, v3];
-      case 4:
-        return [t2, p2, v3];
-      case 5:
-        return [v3, p2, q2];
-    }
-  };
-  convert2.hsv.hsl = function(hsv) {
-    const h2 = hsv[0];
-    const s2 = hsv[1] / 100;
-    const v3 = hsv[2] / 100;
-    const vmin = Math.max(v3, 0.01);
-    let sl2;
-    let l2;
-    l2 = (2 - s2) * v3;
-    const lmin = (2 - s2) * vmin;
-    sl2 = s2 * vmin;
-    sl2 /= lmin <= 1 ? lmin : 2 - lmin;
-    sl2 = sl2 || 0;
-    l2 /= 2;
-    return [h2, sl2 * 100, l2 * 100];
-  };
-  convert2.hwb.rgb = function(hwb) {
-    const h2 = hwb[0] / 360;
-    let wh2 = hwb[1] / 100;
-    let bl2 = hwb[2] / 100;
-    const ratio = wh2 + bl2;
-    let f2;
-    if (ratio > 1) {
-      wh2 /= ratio;
-      bl2 /= ratio;
-    }
-    const i2 = Math.floor(6 * h2);
-    const v3 = 1 - bl2;
-    f2 = 6 * h2 - i2;
-    if ((i2 & 1) !== 0) {
-      f2 = 1 - f2;
-    }
-    const n2 = wh2 + f2 * (v3 - wh2);
-    let r2;
-    let g2;
-    let b3;
-    switch (i2) {
-      default:
-      case 6:
-      case 0:
-        r2 = v3;
-        g2 = n2;
-        b3 = wh2;
-        break;
-      case 1:
-        r2 = n2;
-        g2 = v3;
-        b3 = wh2;
-        break;
-      case 2:
-        r2 = wh2;
-        g2 = v3;
-        b3 = n2;
-        break;
-      case 3:
-        r2 = wh2;
-        g2 = n2;
-        b3 = v3;
-        break;
-      case 4:
-        r2 = n2;
-        g2 = wh2;
-        b3 = v3;
-        break;
-      case 5:
-        r2 = v3;
-        g2 = wh2;
-        b3 = n2;
-        break;
-    }
-    return [r2 * 255, g2 * 255, b3 * 255];
-  };
-  convert2.cmyk.rgb = function(cmyk) {
-    const c2 = cmyk[0] / 100;
-    const m2 = cmyk[1] / 100;
-    const y2 = cmyk[2] / 100;
-    const k2 = cmyk[3] / 100;
-    const r2 = 1 - Math.min(1, c2 * (1 - k2) + k2);
-    const g2 = 1 - Math.min(1, m2 * (1 - k2) + k2);
-    const b3 = 1 - Math.min(1, y2 * (1 - k2) + k2);
-    return [r2 * 255, g2 * 255, b3 * 255];
-  };
-  convert2.xyz.rgb = function(xyz) {
-    const x = xyz[0] / 100;
-    const y2 = xyz[1] / 100;
-    const z2 = xyz[2] / 100;
-    let r2;
-    let g2;
-    let b3;
-    r2 = x * 3.2406 + y2 * -1.5372 + z2 * -0.4986;
-    g2 = x * -0.9689 + y2 * 1.8758 + z2 * 0.0415;
-    b3 = x * 0.0557 + y2 * -0.204 + z2 * 1.057;
-    r2 = r2 > 31308e-7 ? 1.055 * r2 ** (1 / 2.4) - 0.055 : r2 * 12.92;
-    g2 = g2 > 31308e-7 ? 1.055 * g2 ** (1 / 2.4) - 0.055 : g2 * 12.92;
-    b3 = b3 > 31308e-7 ? 1.055 * b3 ** (1 / 2.4) - 0.055 : b3 * 12.92;
-    r2 = Math.min(Math.max(0, r2), 1);
-    g2 = Math.min(Math.max(0, g2), 1);
-    b3 = Math.min(Math.max(0, b3), 1);
-    return [r2 * 255, g2 * 255, b3 * 255];
-  };
-  convert2.xyz.lab = function(xyz) {
-    let x = xyz[0];
-    let y2 = xyz[1];
-    let z2 = xyz[2];
-    x /= 95.047;
-    y2 /= 100;
-    z2 /= 108.883;
-    x = x > 8856e-6 ? x ** (1 / 3) : 7.787 * x + 16 / 116;
-    y2 = y2 > 8856e-6 ? y2 ** (1 / 3) : 7.787 * y2 + 16 / 116;
-    z2 = z2 > 8856e-6 ? z2 ** (1 / 3) : 7.787 * z2 + 16 / 116;
-    const l2 = 116 * y2 - 16;
-    const a2 = 500 * (x - y2);
-    const b3 = 200 * (y2 - z2);
-    return [l2, a2, b3];
-  };
-  convert2.lab.xyz = function(lab) {
-    const l2 = lab[0];
-    const a2 = lab[1];
-    const b3 = lab[2];
-    let x;
-    let y2;
-    let z2;
-    y2 = (l2 + 16) / 116;
-    x = a2 / 500 + y2;
-    z2 = y2 - b3 / 200;
-    const y22 = y2 ** 3;
-    const x2 = x ** 3;
-    const z22 = z2 ** 3;
-    y2 = y22 > 8856e-6 ? y22 : (y2 - 16 / 116) / 7.787;
-    x = x2 > 8856e-6 ? x2 : (x - 16 / 116) / 7.787;
-    z2 = z22 > 8856e-6 ? z22 : (z2 - 16 / 116) / 7.787;
-    x *= 95.047;
-    y2 *= 100;
-    z2 *= 108.883;
-    return [x, y2, z2];
-  };
-  convert2.lab.lch = function(lab) {
-    const l2 = lab[0];
-    const a2 = lab[1];
-    const b3 = lab[2];
-    let h2;
-    const hr = Math.atan2(b3, a2);
-    h2 = hr * 360 / 2 / Math.PI;
-    if (h2 < 0) {
-      h2 += 360;
-    }
-    const c2 = Math.sqrt(a2 * a2 + b3 * b3);
-    return [l2, c2, h2];
-  };
-  convert2.lch.lab = function(lch) {
-    const l2 = lch[0];
-    const c2 = lch[1];
-    const h2 = lch[2];
-    const hr = h2 / 360 * 2 * Math.PI;
-    const a2 = c2 * Math.cos(hr);
-    const b3 = c2 * Math.sin(hr);
-    return [l2, a2, b3];
-  };
-  convert2.rgb.ansi16 = function(args, saturation = null) {
-    const [r2, g2, b3] = args;
-    let value = saturation === null ? convert2.rgb.hsv(args)[2] : saturation;
-    value = Math.round(value / 50);
-    if (value === 0) {
-      return 30;
-    }
-    let ansi = 30 + (Math.round(b3 / 255) << 2 | Math.round(g2 / 255) << 1 | Math.round(r2 / 255));
-    if (value === 2) {
-      ansi += 60;
-    }
-    return ansi;
-  };
-  convert2.hsv.ansi16 = function(args) {
-    return convert2.rgb.ansi16(convert2.hsv.rgb(args), args[2]);
-  };
-  convert2.rgb.ansi256 = function(args) {
-    const r2 = args[0];
-    const g2 = args[1];
-    const b3 = args[2];
-    if (r2 === g2 && g2 === b3) {
-      if (r2 < 8) {
-        return 16;
-      }
-      if (r2 > 248) {
-        return 231;
-      }
-      return Math.round((r2 - 8) / 247 * 24) + 232;
-    }
-    const ansi = 16 + 36 * Math.round(r2 / 255 * 5) + 6 * Math.round(g2 / 255 * 5) + Math.round(b3 / 255 * 5);
-    return ansi;
-  };
-  convert2.ansi16.rgb = function(args) {
-    let color2 = args % 10;
-    if (color2 === 0 || color2 === 7) {
-      if (args > 50) {
-        color2 += 3.5;
-      }
-      color2 = color2 / 10.5 * 255;
-      return [color2, color2, color2];
-    }
-    const mult = (~~(args > 50) + 1) * 0.5;
-    const r2 = (color2 & 1) * mult * 255;
-    const g2 = (color2 >> 1 & 1) * mult * 255;
-    const b3 = (color2 >> 2 & 1) * mult * 255;
-    return [r2, g2, b3];
-  };
-  convert2.ansi256.rgb = function(args) {
-    if (args >= 232) {
-      const c2 = (args - 232) * 10 + 8;
-      return [c2, c2, c2];
-    }
-    args -= 16;
-    let rem;
-    const r2 = Math.floor(args / 36) / 5 * 255;
-    const g2 = Math.floor((rem = args % 36) / 6) / 5 * 255;
-    const b3 = rem % 6 / 5 * 255;
-    return [r2, g2, b3];
-  };
-  convert2.rgb.hex = function(args) {
-    const integer = ((Math.round(args[0]) & 255) << 16) + ((Math.round(args[1]) & 255) << 8) + (Math.round(args[2]) & 255);
-    const string = integer.toString(16).toUpperCase();
-    return "000000".substring(string.length) + string;
-  };
-  convert2.hex.rgb = function(args) {
-    const match2 = args.toString(16).match(/[a-f0-9]{6}|[a-f0-9]{3}/i);
-    if (!match2) {
-      return [0, 0, 0];
-    }
-    let colorString = match2[0];
-    if (match2[0].length === 3) {
-      colorString = colorString.split("").map((char2) => {
-        return char2 + char2;
-      }).join("");
-    }
-    const integer = parseInt(colorString, 16);
-    const r2 = integer >> 16 & 255;
-    const g2 = integer >> 8 & 255;
-    const b3 = integer & 255;
-    return [r2, g2, b3];
-  };
-  convert2.rgb.hcg = function(rgb) {
-    const r2 = rgb[0] / 255;
-    const g2 = rgb[1] / 255;
-    const b3 = rgb[2] / 255;
-    const max2 = Math.max(Math.max(r2, g2), b3);
-    const min2 = Math.min(Math.min(r2, g2), b3);
-    const chroma = max2 - min2;
-    let grayscale;
-    let hue;
-    if (chroma < 1) {
-      grayscale = min2 / (1 - chroma);
-    } else {
-      grayscale = 0;
-    }
-    if (chroma <= 0) {
-      hue = 0;
-    } else if (max2 === r2) {
-      hue = (g2 - b3) / chroma % 6;
-    } else if (max2 === g2) {
-      hue = 2 + (b3 - r2) / chroma;
-    } else {
-      hue = 4 + (r2 - g2) / chroma;
-    }
-    hue /= 6;
-    hue %= 1;
-    return [hue * 360, chroma * 100, grayscale * 100];
-  };
-  convert2.hsl.hcg = function(hsl) {
-    const s2 = hsl[1] / 100;
-    const l2 = hsl[2] / 100;
-    const c2 = l2 < 0.5 ? 2 * s2 * l2 : 2 * s2 * (1 - l2);
-    let f2 = 0;
-    if (c2 < 1) {
-      f2 = (l2 - 0.5 * c2) / (1 - c2);
-    }
-    return [hsl[0], c2 * 100, f2 * 100];
-  };
-  convert2.hsv.hcg = function(hsv) {
-    const s2 = hsv[1] / 100;
-    const v3 = hsv[2] / 100;
-    const c2 = s2 * v3;
-    let f2 = 0;
-    if (c2 < 1) {
-      f2 = (v3 - c2) / (1 - c2);
-    }
-    return [hsv[0], c2 * 100, f2 * 100];
-  };
-  convert2.hcg.rgb = function(hcg) {
-    const h2 = hcg[0] / 360;
-    const c2 = hcg[1] / 100;
-    const g2 = hcg[2] / 100;
-    if (c2 === 0) {
-      return [g2 * 255, g2 * 255, g2 * 255];
-    }
-    const pure = [0, 0, 0];
-    const hi2 = h2 % 1 * 6;
-    const v3 = hi2 % 1;
-    const w2 = 1 - v3;
-    let mg2 = 0;
-    switch (Math.floor(hi2)) {
-      case 0:
-        pure[0] = 1;
-        pure[1] = v3;
-        pure[2] = 0;
-        break;
-      case 1:
-        pure[0] = w2;
-        pure[1] = 1;
-        pure[2] = 0;
-        break;
-      case 2:
-        pure[0] = 0;
-        pure[1] = 1;
-        pure[2] = v3;
-        break;
-      case 3:
-        pure[0] = 0;
-        pure[1] = w2;
-        pure[2] = 1;
-        break;
-      case 4:
-        pure[0] = v3;
-        pure[1] = 0;
-        pure[2] = 1;
-        break;
-      default:
-        pure[0] = 1;
-        pure[1] = 0;
-        pure[2] = w2;
-    }
-    mg2 = (1 - c2) * g2;
-    return [
-      (c2 * pure[0] + mg2) * 255,
-      (c2 * pure[1] + mg2) * 255,
-      (c2 * pure[2] + mg2) * 255
-    ];
-  };
-  convert2.hcg.hsv = function(hcg) {
-    const c2 = hcg[1] / 100;
-    const g2 = hcg[2] / 100;
-    const v3 = c2 + g2 * (1 - c2);
-    let f2 = 0;
-    if (v3 > 0) {
-      f2 = c2 / v3;
-    }
-    return [hcg[0], f2 * 100, v3 * 100];
-  };
-  convert2.hcg.hsl = function(hcg) {
-    const c2 = hcg[1] / 100;
-    const g2 = hcg[2] / 100;
-    const l2 = g2 * (1 - c2) + 0.5 * c2;
-    let s2 = 0;
-    if (l2 > 0 && l2 < 0.5) {
-      s2 = c2 / (2 * l2);
-    } else if (l2 >= 0.5 && l2 < 1) {
-      s2 = c2 / (2 * (1 - l2));
-    }
-    return [hcg[0], s2 * 100, l2 * 100];
-  };
-  convert2.hcg.hwb = function(hcg) {
-    const c2 = hcg[1] / 100;
-    const g2 = hcg[2] / 100;
-    const v3 = c2 + g2 * (1 - c2);
-    return [hcg[0], (v3 - c2) * 100, (1 - v3) * 100];
-  };
-  convert2.hwb.hcg = function(hwb) {
-    const w2 = hwb[1] / 100;
-    const b3 = hwb[2] / 100;
-    const v3 = 1 - b3;
-    const c2 = v3 - w2;
-    let g2 = 0;
-    if (c2 < 1) {
-      g2 = (v3 - c2) / (1 - c2);
-    }
-    return [hwb[0], c2 * 100, g2 * 100];
-  };
-  convert2.apple.rgb = function(apple2) {
-    return [apple2[0] / 65535 * 255, apple2[1] / 65535 * 255, apple2[2] / 65535 * 255];
-  };
-  convert2.rgb.apple = function(rgb) {
-    return [rgb[0] / 255 * 65535, rgb[1] / 255 * 65535, rgb[2] / 255 * 65535];
-  };
-  convert2.gray.rgb = function(args) {
-    return [args[0] / 100 * 255, args[0] / 100 * 255, args[0] / 100 * 255];
-  };
-  convert2.gray.hsl = function(args) {
-    return [0, 0, args[0]];
-  };
-  convert2.gray.hsv = convert2.gray.hsl;
-  convert2.gray.hwb = function(gray) {
-    return [0, 100, gray[0]];
-  };
-  convert2.gray.cmyk = function(gray) {
-    return [0, 0, 0, gray[0]];
-  };
-  convert2.gray.lab = function(gray) {
-    return [gray[0], 0, 0];
-  };
-  convert2.gray.hex = function(gray) {
-    const val = Math.round(gray[0] / 100 * 255) & 255;
-    const integer = (val << 16) + (val << 8) + val;
-    const string = integer.toString(16).toUpperCase();
-    return "000000".substring(string.length) + string;
-  };
-  convert2.rgb.gray = function(rgb) {
-    const val = (rgb[0] + rgb[1] + rgb[2]) / 3;
-    return [val / 255 * 100];
-  };
-  return conversions;
-}
-var route;
-var hasRequiredRoute;
-function requireRoute() {
-  if (hasRequiredRoute)
-    return route;
-  hasRequiredRoute = 1;
-  const conversions2 = requireConversions();
-  function buildGraph() {
-    const graph = {};
-    const models = Object.keys(conversions2);
-    for (let len = models.length, i2 = 0; i2 < len; i2++) {
-      graph[models[i2]] = {
-        // http://jsperf.com/1-vs-infinity
-        // micro-opt, but this is simple.
-        distance: -1,
-        parent: null
-      };
-    }
-    return graph;
-  }
-  function deriveBFS(fromModel) {
-    const graph = buildGraph();
-    const queue2 = [fromModel];
-    graph[fromModel].distance = 0;
-    while (queue2.length) {
-      const current = queue2.pop();
-      const adjacents = Object.keys(conversions2[current]);
-      for (let len = adjacents.length, i2 = 0; i2 < len; i2++) {
-        const adjacent = adjacents[i2];
-        const node2 = graph[adjacent];
-        if (node2.distance === -1) {
-          node2.distance = graph[current].distance + 1;
-          node2.parent = current;
-          queue2.unshift(adjacent);
-        }
-      }
-    }
-    return graph;
-  }
-  function link(from2, to) {
-    return function(args) {
-      return to(from2(args));
-    };
-  }
-  function wrapConversion(toModel, graph) {
-    const path = [graph[toModel].parent, toModel];
-    let fn = conversions2[graph[toModel].parent][toModel];
-    let cur = graph[toModel].parent;
-    while (graph[cur].parent) {
-      path.unshift(graph[cur].parent);
-      fn = link(conversions2[graph[cur].parent][cur], fn);
-      cur = graph[cur].parent;
-    }
-    fn.conversion = path;
-    return fn;
-  }
-  route = function(fromModel) {
-    const graph = deriveBFS(fromModel);
-    const conversion = {};
-    const models = Object.keys(graph);
-    for (let len = models.length, i2 = 0; i2 < len; i2++) {
-      const toModel = models[i2];
-      const node2 = graph[toModel];
-      if (node2.parent === null) {
-        continue;
-      }
-      conversion[toModel] = wrapConversion(toModel, graph);
-    }
-    return conversion;
-  };
-  return route;
-}
-var colorConvert;
-var hasRequiredColorConvert;
-function requireColorConvert() {
-  if (hasRequiredColorConvert)
-    return colorConvert;
-  hasRequiredColorConvert = 1;
-  const conversions2 = requireConversions();
-  const route2 = requireRoute();
-  const convert2 = {};
-  const models = Object.keys(conversions2);
-  function wrapRaw(fn) {
-    const wrappedFn = function(...args) {
-      const arg0 = args[0];
-      if (arg0 === void 0 || arg0 === null) {
-        return arg0;
-      }
-      if (arg0.length > 1) {
-        args = arg0;
-      }
-      return fn(args);
-    };
-    if ("conversion" in fn) {
-      wrappedFn.conversion = fn.conversion;
-    }
-    return wrappedFn;
-  }
-  function wrapRounded(fn) {
-    const wrappedFn = function(...args) {
-      const arg0 = args[0];
-      if (arg0 === void 0 || arg0 === null) {
-        return arg0;
-      }
-      if (arg0.length > 1) {
-        args = arg0;
-      }
-      const result = fn(args);
-      if (typeof result === "object") {
-        for (let len = result.length, i2 = 0; i2 < len; i2++) {
-          result[i2] = Math.round(result[i2]);
-        }
-      }
-      return result;
-    };
-    if ("conversion" in fn) {
-      wrappedFn.conversion = fn.conversion;
-    }
-    return wrappedFn;
-  }
-  models.forEach((fromModel) => {
-    convert2[fromModel] = {};
-    Object.defineProperty(convert2[fromModel], "channels", { value: conversions2[fromModel].channels });
-    Object.defineProperty(convert2[fromModel], "labels", { value: conversions2[fromModel].labels });
-    const routes = route2(fromModel);
-    const routeModels = Object.keys(routes);
-    routeModels.forEach((toModel) => {
-      const fn = routes[toModel];
-      convert2[fromModel][toModel] = wrapRounded(fn);
-      convert2[fromModel][toModel].raw = wrapRaw(fn);
-    });
-  });
-  colorConvert = convert2;
-  return colorConvert;
-}
-ansiStyles$1.exports;
-(function(module2) {
-  const wrapAnsi16 = (fn, offset2) => (...args) => {
-    const code2 = fn(...args);
-    return `\x1B[${code2 + offset2}m`;
-  };
-  const wrapAnsi256 = (fn, offset2) => (...args) => {
-    const code2 = fn(...args);
-    return `\x1B[${38 + offset2};5;${code2}m`;
-  };
-  const wrapAnsi16m = (fn, offset2) => (...args) => {
-    const rgb = fn(...args);
-    return `\x1B[${38 + offset2};2;${rgb[0]};${rgb[1]};${rgb[2]}m`;
-  };
-  const ansi2ansi = (n2) => n2;
-  const rgb2rgb = (r2, g2, b3) => [r2, g2, b3];
-  const setLazyProperty = (object2, property, get2) => {
-    Object.defineProperty(object2, property, {
-      get: () => {
-        const value = get2();
-        Object.defineProperty(object2, property, {
-          value,
-          enumerable: true,
-          configurable: true
-        });
-        return value;
-      },
-      enumerable: true,
-      configurable: true
-    });
-  };
-  let colorConvert2;
-  const makeDynamicStyles = (wrap2, targetSpace, identity, isBackground) => {
-    if (colorConvert2 === void 0) {
-      colorConvert2 = requireColorConvert();
-    }
-    const offset2 = isBackground ? 10 : 0;
-    const styles2 = {};
-    for (const [sourceSpace, suite] of Object.entries(colorConvert2)) {
-      const name2 = sourceSpace === "ansi16" ? "ansi" : sourceSpace;
-      if (sourceSpace === targetSpace) {
-        styles2[name2] = wrap2(identity, offset2);
-      } else if (typeof suite === "object") {
-        styles2[name2] = wrap2(suite[targetSpace], offset2);
-      }
-    }
-    return styles2;
-  };
-  function assembleStyles() {
-    const codes = /* @__PURE__ */ new Map();
-    const styles2 = {
-      modifier: {
-        reset: [0, 0],
-        // 21 isn't widely supported and 22 does the same thing
-        bold: [1, 22],
-        dim: [2, 22],
-        italic: [3, 23],
-        underline: [4, 24],
-        inverse: [7, 27],
-        hidden: [8, 28],
-        strikethrough: [9, 29]
-      },
-      color: {
-        black: [30, 39],
-        red: [31, 39],
-        green: [32, 39],
-        yellow: [33, 39],
-        blue: [34, 39],
-        magenta: [35, 39],
-        cyan: [36, 39],
-        white: [37, 39],
-        // Bright color
-        blackBright: [90, 39],
-        redBright: [91, 39],
-        greenBright: [92, 39],
-        yellowBright: [93, 39],
-        blueBright: [94, 39],
-        magentaBright: [95, 39],
-        cyanBright: [96, 39],
-        whiteBright: [97, 39]
-      },
-      bgColor: {
-        bgBlack: [40, 49],
-        bgRed: [41, 49],
-        bgGreen: [42, 49],
-        bgYellow: [43, 49],
-        bgBlue: [44, 49],
-        bgMagenta: [45, 49],
-        bgCyan: [46, 49],
-        bgWhite: [47, 49],
-        // Bright color
-        bgBlackBright: [100, 49],
-        bgRedBright: [101, 49],
-        bgGreenBright: [102, 49],
-        bgYellowBright: [103, 49],
-        bgBlueBright: [104, 49],
-        bgMagentaBright: [105, 49],
-        bgCyanBright: [106, 49],
-        bgWhiteBright: [107, 49]
-      }
-    };
-    styles2.color.gray = styles2.color.blackBright;
-    styles2.bgColor.bgGray = styles2.bgColor.bgBlackBright;
-    styles2.color.grey = styles2.color.blackBright;
-    styles2.bgColor.bgGrey = styles2.bgColor.bgBlackBright;
-    for (const [groupName, group] of Object.entries(styles2)) {
-      for (const [styleName, style2] of Object.entries(group)) {
-        styles2[styleName] = {
-          open: `\x1B[${style2[0]}m`,
-          close: `\x1B[${style2[1]}m`
-        };
-        group[styleName] = styles2[styleName];
-        codes.set(style2[0], style2[1]);
-      }
-      Object.defineProperty(styles2, groupName, {
-        value: group,
-        enumerable: false
-      });
-    }
-    Object.defineProperty(styles2, "codes", {
-      value: codes,
-      enumerable: false
-    });
-    styles2.color.close = "\x1B[39m";
-    styles2.bgColor.close = "\x1B[49m";
-    setLazyProperty(styles2.color, "ansi", () => makeDynamicStyles(wrapAnsi16, "ansi16", ansi2ansi, false));
-    setLazyProperty(styles2.color, "ansi256", () => makeDynamicStyles(wrapAnsi256, "ansi256", ansi2ansi, false));
-    setLazyProperty(styles2.color, "ansi16m", () => makeDynamicStyles(wrapAnsi16m, "rgb", rgb2rgb, false));
-    setLazyProperty(styles2.bgColor, "ansi", () => makeDynamicStyles(wrapAnsi16, "ansi16", ansi2ansi, true));
-    setLazyProperty(styles2.bgColor, "ansi256", () => makeDynamicStyles(wrapAnsi256, "ansi256", ansi2ansi, true));
-    setLazyProperty(styles2.bgColor, "ansi16m", () => makeDynamicStyles(wrapAnsi16m, "rgb", rgb2rgb, true));
-    return styles2;
-  }
-  Object.defineProperty(module2, "exports", {
-    enumerable: true,
-    get: assembleStyles
-  });
-})(ansiStyles$1);
-var ansiStylesExports = ansiStyles$1.exports;
-var browser = {
-  stdout: false,
-  stderr: false
-};
-const stringReplaceAll$1 = (string, substring2, replacer) => {
-  let index2 = string.indexOf(substring2);
-  if (index2 === -1) {
-    return string;
-  }
-  const substringLength = substring2.length;
-  let endIndex = 0;
-  let returnValue = "";
-  do {
-    returnValue += string.substr(endIndex, index2 - endIndex) + substring2 + replacer;
-    endIndex = index2 + substringLength;
-    index2 = string.indexOf(substring2, endIndex);
-  } while (index2 !== -1);
-  returnValue += string.substr(endIndex);
-  return returnValue;
-};
-const stringEncaseCRLFWithFirstIndex$1 = (string, prefix2, postfix, index2) => {
-  let endIndex = 0;
-  let returnValue = "";
-  do {
-    const gotCR = string[index2 - 1] === "\r";
-    returnValue += string.substr(endIndex, (gotCR ? index2 - 1 : index2) - endIndex) + prefix2 + (gotCR ? "\r\n" : "\n") + postfix;
-    endIndex = index2 + 1;
-    index2 = string.indexOf("\n", endIndex);
-  } while (index2 !== -1);
-  returnValue += string.substr(endIndex);
-  return returnValue;
-};
-var util = {
-  stringReplaceAll: stringReplaceAll$1,
-  stringEncaseCRLFWithFirstIndex: stringEncaseCRLFWithFirstIndex$1
-};
-var templates;
-var hasRequiredTemplates;
-function requireTemplates() {
-  if (hasRequiredTemplates)
-    return templates;
-  hasRequiredTemplates = 1;
-  const TEMPLATE_REGEX = /(?:\\(u(?:[a-f\d]{4}|\{[a-f\d]{1,6}\})|x[a-f\d]{2}|.))|(?:\{(~)?(\w+(?:\([^)]*\))?(?:\.\w+(?:\([^)]*\))?)*)(?:[ \t]|(?=\r?\n)))|(\})|((?:.|[\r\n\f])+?)/gi;
-  const STYLE_REGEX = /(?:^|\.)(\w+)(?:\(([^)]*)\))?/g;
-  const STRING_REGEX = /^(['"])((?:\\.|(?!\1)[^\\])*)\1$/;
-  const ESCAPE_REGEX = /\\(u(?:[a-f\d]{4}|{[a-f\d]{1,6}})|x[a-f\d]{2}|.)|([^\\])/gi;
-  const ESCAPES = /* @__PURE__ */ new Map([
-    ["n", "\n"],
-    ["r", "\r"],
-    ["t", "	"],
-    ["b", "\b"],
-    ["f", "\f"],
-    ["v", "\v"],
-    ["0", "\0"],
-    ["\\", "\\"],
-    ["e", "\x1B"],
-    ["a", "\x07"]
-  ]);
-  function unescape(c2) {
-    const u2 = c2[0] === "u";
-    const bracket = c2[1] === "{";
-    if (u2 && !bracket && c2.length === 5 || c2[0] === "x" && c2.length === 3) {
-      return String.fromCharCode(parseInt(c2.slice(1), 16));
-    }
-    if (u2 && bracket) {
-      return String.fromCodePoint(parseInt(c2.slice(2, -1), 16));
-    }
-    return ESCAPES.get(c2) || c2;
-  }
-  function parseArguments(name2, arguments_) {
-    const results2 = [];
-    const chunks = arguments_.trim().split(/\s*,\s*/g);
-    let matches;
-    for (const chunk of chunks) {
-      const number2 = Number(chunk);
-      if (!Number.isNaN(number2)) {
-        results2.push(number2);
-      } else if (matches = chunk.match(STRING_REGEX)) {
-        results2.push(matches[2].replace(ESCAPE_REGEX, (m2, escape2, character2) => escape2 ? unescape(escape2) : character2));
-      } else {
-        throw new Error(`Invalid Chalk template style argument: ${chunk} (in style '${name2}')`);
-      }
-    }
-    return results2;
-  }
-  function parseStyle(style2) {
-    STYLE_REGEX.lastIndex = 0;
-    const results2 = [];
-    let matches;
-    while ((matches = STYLE_REGEX.exec(style2)) !== null) {
-      const name2 = matches[1];
-      if (matches[2]) {
-        const args = parseArguments(name2, matches[2]);
-        results2.push([name2].concat(args));
-      } else {
-        results2.push([name2]);
-      }
-    }
-    return results2;
-  }
-  function buildStyle(chalk2, styles2) {
-    const enabled = {};
-    for (const layer of styles2) {
-      for (const style2 of layer.styles) {
-        enabled[style2[0]] = layer.inverse ? null : style2.slice(1);
-      }
-    }
-    let current = chalk2;
-    for (const [styleName, styles3] of Object.entries(enabled)) {
-      if (!Array.isArray(styles3)) {
-        continue;
-      }
-      if (!(styleName in current)) {
-        throw new Error(`Unknown Chalk style: ${styleName}`);
-      }
-      current = styles3.length > 0 ? current[styleName](...styles3) : current[styleName];
-    }
-    return current;
-  }
-  templates = (chalk2, temporary) => {
-    const styles2 = [];
-    const chunks = [];
-    let chunk = [];
-    temporary.replace(TEMPLATE_REGEX, (m2, escapeCharacter, inverse, style2, close2, character2) => {
-      if (escapeCharacter) {
-        chunk.push(unescape(escapeCharacter));
-      } else if (style2) {
-        const string = chunk.join("");
-        chunk = [];
-        chunks.push(styles2.length === 0 ? string : buildStyle(chalk2, styles2)(string));
-        styles2.push({ inverse, styles: parseStyle(style2) });
-      } else if (close2) {
-        if (styles2.length === 0) {
-          throw new Error("Found extraneous } in Chalk template literal");
-        }
-        chunks.push(buildStyle(chalk2, styles2)(chunk.join("")));
-        chunk = [];
-        styles2.pop();
-      } else {
-        chunk.push(character2);
-      }
-    });
-    chunks.push(chunk.join(""));
-    if (styles2.length > 0) {
-      const errMessage = `Chalk template literal is missing ${styles2.length} closing bracket${styles2.length === 1 ? "" : "s"} (\`}\`)`;
-      throw new Error(errMessage);
-    }
-    return chunks.join("");
-  };
-  return templates;
-}
-const ansiStyles = ansiStylesExports;
-const { stdout: stdoutColor, stderr: stderrColor } = browser;
-const {
-  stringReplaceAll,
-  stringEncaseCRLFWithFirstIndex
-} = util;
-const { isArray: isArray$1 } = Array;
-const levelMapping = [
-  "ansi",
-  "ansi",
-  "ansi256",
-  "ansi16m"
-];
-const styles = /* @__PURE__ */ Object.create(null);
-const applyOptions = (object2, options = {}) => {
-  if (options.level && !(Number.isInteger(options.level) && options.level >= 0 && options.level <= 3)) {
-    throw new Error("The `level` option should be an integer from 0 to 3");
-  }
-  const colorLevel = stdoutColor ? stdoutColor.level : 0;
-  object2.level = options.level === void 0 ? colorLevel : options.level;
-};
-class ChalkClass {
-  constructor(options) {
-    return chalkFactory(options);
-  }
-}
-const chalkFactory = (options) => {
-  const chalk2 = {};
-  applyOptions(chalk2, options);
-  chalk2.template = (...arguments_) => chalkTag(chalk2.template, ...arguments_);
-  Object.setPrototypeOf(chalk2, Chalk.prototype);
-  Object.setPrototypeOf(chalk2.template, chalk2);
-  chalk2.template.constructor = () => {
-    throw new Error("`chalk.constructor()` is deprecated. Use `new chalk.Instance()` instead.");
-  };
-  chalk2.template.Instance = ChalkClass;
-  return chalk2.template;
-};
-function Chalk(options) {
-  return chalkFactory(options);
-}
-for (const [styleName, style2] of Object.entries(ansiStyles)) {
-  styles[styleName] = {
-    get() {
-      const builder = createBuilder(this, createStyler(style2.open, style2.close, this._styler), this._isEmpty);
-      Object.defineProperty(this, styleName, { value: builder });
-      return builder;
-    }
-  };
-}
-styles.visible = {
-  get() {
-    const builder = createBuilder(this, this._styler, true);
-    Object.defineProperty(this, "visible", { value: builder });
-    return builder;
-  }
-};
-const usedModels = ["rgb", "hex", "keyword", "hsl", "hsv", "hwb", "ansi", "ansi256"];
-for (const model of usedModels) {
-  styles[model] = {
-    get() {
-      const { level } = this;
-      return function(...arguments_) {
-        const styler = createStyler(ansiStyles.color[levelMapping[level]][model](...arguments_), ansiStyles.color.close, this._styler);
-        return createBuilder(this, styler, this._isEmpty);
-      };
-    }
-  };
-}
-for (const model of usedModels) {
-  const bgModel = "bg" + model[0].toUpperCase() + model.slice(1);
-  styles[bgModel] = {
-    get() {
-      const { level } = this;
-      return function(...arguments_) {
-        const styler = createStyler(ansiStyles.bgColor[levelMapping[level]][model](...arguments_), ansiStyles.bgColor.close, this._styler);
-        return createBuilder(this, styler, this._isEmpty);
-      };
-    }
-  };
-}
-const proto = Object.defineProperties(() => {
-}, {
-  ...styles,
-  level: {
-    enumerable: true,
-    get() {
-      return this._generator.level;
-    },
-    set(level) {
-      this._generator.level = level;
-    }
-  }
-});
-const createStyler = (open, close2, parent2) => {
-  let openAll;
-  let closeAll;
-  if (parent2 === void 0) {
-    openAll = open;
-    closeAll = close2;
-  } else {
-    openAll = parent2.openAll + open;
-    closeAll = close2 + parent2.closeAll;
-  }
-  return {
-    open,
-    close: close2,
-    openAll,
-    closeAll,
-    parent: parent2
-  };
-};
-const createBuilder = (self2, _styler, _isEmpty) => {
-  const builder = (...arguments_) => {
-    if (isArray$1(arguments_[0]) && isArray$1(arguments_[0].raw)) {
-      return applyStyle(builder, chalkTag(builder, ...arguments_));
-    }
-    return applyStyle(builder, arguments_.length === 1 ? "" + arguments_[0] : arguments_.join(" "));
-  };
-  Object.setPrototypeOf(builder, proto);
-  builder._generator = self2;
-  builder._styler = _styler;
-  builder._isEmpty = _isEmpty;
-  return builder;
-};
-const applyStyle = (self2, string) => {
-  if (self2.level <= 0 || !string) {
-    return self2._isEmpty ? "" : string;
-  }
-  let styler = self2._styler;
-  if (styler === void 0) {
-    return string;
-  }
-  const { openAll, closeAll } = styler;
-  if (string.indexOf("\x1B") !== -1) {
-    while (styler !== void 0) {
-      string = stringReplaceAll(string, styler.close, styler.open);
-      styler = styler.parent;
-    }
-  }
-  const lfIndex = string.indexOf("\n");
-  if (lfIndex !== -1) {
-    string = stringEncaseCRLFWithFirstIndex(string, closeAll, openAll, lfIndex);
-  }
-  return openAll + string + closeAll;
-};
-let template;
-const chalkTag = (chalk2, ...strings) => {
-  const [firstString] = strings;
-  if (!isArray$1(firstString) || !isArray$1(firstString.raw)) {
-    return strings.join(" ");
-  }
-  const arguments_ = strings.slice(1);
-  const parts = [firstString.raw[0]];
-  for (let i2 = 1; i2 < firstString.length; i2++) {
-    parts.push(
-      String(arguments_[i2 - 1]).replace(/[{}\\]/g, "\\$&"),
-      String(firstString.raw[i2])
-    );
-  }
-  if (template === void 0) {
-    template = requireTemplates();
-  }
-  return template(chalk2, parts.join(""));
-};
-Object.defineProperties(Chalk.prototype, styles);
-const chalk = Chalk();
-chalk.supportsColor = stdoutColor;
-chalk.stderr = Chalk({ level: stderrColor ? stderrColor.level : 0 });
-chalk.stderr.supportsColor = stderrColor;
 var isMergeableObject = function isMergeableObject2(value) {
   return isNonNullObject(value) && !isSpecial(value);
 };
@@ -95204,7 +97191,7 @@ Object.defineProperty(Component, "__esModule", {
 Component.CopyToClipboard = void 0;
 var _react = _interopRequireDefault(reactExports);
 var _copyToClipboard = _interopRequireDefault(copyToClipboard);
-var _excluded$4 = ["text", "onCopy", "options", "children"];
+var _excluded$3 = ["text", "onCopy", "options", "children"];
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { "default": obj };
 }
@@ -95279,8 +97266,6 @@ function _defineProperties(target, props) {
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps)
     _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps)
-    _defineProperties(Constructor, staticProps);
   Object.defineProperty(Constructor, "prototype", { writable: false });
   return Constructor;
 }
@@ -95386,7 +97371,7 @@ var CopyToClipboard$1 = /* @__PURE__ */ function(_React$PureComponent) {
       _this$props2.text;
       _this$props2.onCopy;
       _this$props2.options;
-      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded$4);
+      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded$3);
       var elem = _react["default"].Children.only(children);
       return /* @__PURE__ */ _react["default"].cloneElement(elem, _objectSpread(_objectSpread({}, props), {}, {
         onClick: this.onClick
@@ -95664,36 +97649,36 @@ var qrcodegen;
         throw new RangeError("Mask value out of range");
       for (let y2 = 0; y2 < this.size; y2++) {
         for (let x = 0; x < this.size; x++) {
-          let invert;
+          let invert2;
           switch (mask) {
             case 0:
-              invert = (x + y2) % 2 == 0;
+              invert2 = (x + y2) % 2 == 0;
               break;
             case 1:
-              invert = y2 % 2 == 0;
+              invert2 = y2 % 2 == 0;
               break;
             case 2:
-              invert = x % 3 == 0;
+              invert2 = x % 3 == 0;
               break;
             case 3:
-              invert = (x + y2) % 3 == 0;
+              invert2 = (x + y2) % 3 == 0;
               break;
             case 4:
-              invert = (Math.floor(x / 3) + Math.floor(y2 / 2)) % 2 == 0;
+              invert2 = (Math.floor(x / 3) + Math.floor(y2 / 2)) % 2 == 0;
               break;
             case 5:
-              invert = x * y2 % 2 + x * y2 % 3 == 0;
+              invert2 = x * y2 % 2 + x * y2 % 3 == 0;
               break;
             case 6:
-              invert = (x * y2 % 2 + x * y2 % 3) % 2 == 0;
+              invert2 = (x * y2 % 2 + x * y2 % 3) % 2 == 0;
               break;
             case 7:
-              invert = ((x + y2) % 2 + x * y2 % 3) % 2 == 0;
+              invert2 = ((x + y2) % 2 + x * y2 % 3) % 2 == 0;
               break;
             default:
               throw new Error("Unreachable");
           }
-          if (!this.isFunction[y2][x] && invert)
+          if (!this.isFunction[y2][x] && invert2)
             this.modules[y2][x] = !this.modules[y2][x];
         }
       }
@@ -96284,9 +98269,9 @@ var dayjs_min = { exports: {} };
       return void 0 === t3;
     } }, g2 = "en", D2 = {};
     D2[g2] = M2;
-    var p2 = function(t3) {
-      return t3 instanceof b3;
-    }, S2 = function t3(e3, n3, r3) {
+    var p2 = "$isDayjsObject", S2 = function(t3) {
+      return t3 instanceof _ || !(!t3 || !t3[p2]);
+    }, w2 = function t3(e3, n3, r3) {
       var i3;
       if (!e3)
         return g2;
@@ -96301,18 +98286,18 @@ var dayjs_min = { exports: {} };
         D2[a3] = e3, i3 = a3;
       }
       return !r3 && i3 && (g2 = i3), i3 || !r3 && g2;
-    }, w2 = function(t3, e3) {
-      if (p2(t3))
+    }, O2 = function(t3, e3) {
+      if (S2(t3))
         return t3.clone();
       var n3 = "object" == typeof e3 ? e3 : {};
-      return n3.date = t3, n3.args = arguments, new b3(n3);
-    }, O2 = v3;
-    O2.l = S2, O2.i = p2, O2.w = function(t3, e3) {
-      return w2(t3, { locale: e3.$L, utc: e3.$u, x: e3.$x, $offset: e3.$offset });
+      return n3.date = t3, n3.args = arguments, new _(n3);
+    }, b3 = v3;
+    b3.l = w2, b3.i = S2, b3.w = function(t3, e3) {
+      return O2(t3, { locale: e3.$L, utc: e3.$u, x: e3.$x, $offset: e3.$offset });
     };
-    var b3 = function() {
+    var _ = function() {
       function M3(t3) {
-        this.$L = S2(t3.locale, null, true), this.parse(t3);
+        this.$L = w2(t3.locale, null, true), this.parse(t3), this.$x = this.$x || t3.x || {}, this[p2] = true;
       }
       var m3 = M3.prototype;
       return m3.parse = function(t3) {
@@ -96320,7 +98305,7 @@ var dayjs_min = { exports: {} };
           var e3 = t4.date, n3 = t4.utc;
           if (null === e3)
             return /* @__PURE__ */ new Date(NaN);
-          if (O2.u(e3))
+          if (b3.u(e3))
             return /* @__PURE__ */ new Date();
           if (e3 instanceof Date)
             return new Date(e3);
@@ -96332,33 +98317,33 @@ var dayjs_min = { exports: {} };
             }
           }
           return new Date(e3);
-        }(t3), this.$x = t3.x || {}, this.init();
+        }(t3), this.init();
       }, m3.init = function() {
         var t3 = this.$d;
         this.$y = t3.getFullYear(), this.$M = t3.getMonth(), this.$D = t3.getDate(), this.$W = t3.getDay(), this.$H = t3.getHours(), this.$m = t3.getMinutes(), this.$s = t3.getSeconds(), this.$ms = t3.getMilliseconds();
       }, m3.$utils = function() {
-        return O2;
+        return b3;
       }, m3.isValid = function() {
         return !(this.$d.toString() === l2);
       }, m3.isSame = function(t3, e3) {
-        var n3 = w2(t3);
+        var n3 = O2(t3);
         return this.startOf(e3) <= n3 && n3 <= this.endOf(e3);
       }, m3.isAfter = function(t3, e3) {
-        return w2(t3) < this.startOf(e3);
+        return O2(t3) < this.startOf(e3);
       }, m3.isBefore = function(t3, e3) {
-        return this.endOf(e3) < w2(t3);
+        return this.endOf(e3) < O2(t3);
       }, m3.$g = function(t3, e3, n3) {
-        return O2.u(t3) ? this[e3] : this.set(n3, t3);
+        return b3.u(t3) ? this[e3] : this.set(n3, t3);
       }, m3.unix = function() {
         return Math.floor(this.valueOf() / 1e3);
       }, m3.valueOf = function() {
         return this.$d.getTime();
       }, m3.startOf = function(t3, e3) {
-        var n3 = this, r3 = !!O2.u(e3) || e3, f3 = O2.p(t3), l3 = function(t4, e4) {
-          var i3 = O2.w(n3.$u ? Date.UTC(n3.$y, e4, t4) : new Date(n3.$y, e4, t4), n3);
+        var n3 = this, r3 = !!b3.u(e3) || e3, f3 = b3.p(t3), l3 = function(t4, e4) {
+          var i3 = b3.w(n3.$u ? Date.UTC(n3.$y, e4, t4) : new Date(n3.$y, e4, t4), n3);
           return r3 ? i3 : i3.endOf(a2);
         }, $3 = function(t4, e4) {
-          return O2.w(n3.toDate()[t4].apply(n3.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e4)), n3);
+          return b3.w(n3.toDate()[t4].apply(n3.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e4)), n3);
         }, y3 = this.$W, M4 = this.$M, m4 = this.$D, v5 = "set" + (this.$u ? "UTC" : "");
         switch (f3) {
           case h2:
@@ -96383,7 +98368,7 @@ var dayjs_min = { exports: {} };
       }, m3.endOf = function(t3) {
         return this.startOf(t3, false);
       }, m3.$set = function(t3, e3) {
-        var n3, o3 = O2.p(t3), f3 = "set" + (this.$u ? "UTC" : ""), l3 = (n3 = {}, n3[a2] = f3 + "Date", n3[d2] = f3 + "Date", n3[c2] = f3 + "Month", n3[h2] = f3 + "FullYear", n3[u2] = f3 + "Hours", n3[s2] = f3 + "Minutes", n3[i2] = f3 + "Seconds", n3[r2] = f3 + "Milliseconds", n3)[o3], $3 = o3 === a2 ? this.$D + (e3 - this.$W) : e3;
+        var n3, o3 = b3.p(t3), f3 = "set" + (this.$u ? "UTC" : ""), l3 = (n3 = {}, n3[a2] = f3 + "Date", n3[d2] = f3 + "Date", n3[c2] = f3 + "Month", n3[h2] = f3 + "FullYear", n3[u2] = f3 + "Hours", n3[s2] = f3 + "Minutes", n3[i2] = f3 + "Seconds", n3[r2] = f3 + "Milliseconds", n3)[o3], $3 = o3 === a2 ? this.$D + (e3 - this.$W) : e3;
         if (o3 === c2 || o3 === h2) {
           var y3 = this.clone().set(d2, 1);
           y3.$d[l3]($3), y3.init(), this.$d = y3.set(d2, Math.min(this.$D, y3.daysInMonth())).$d;
@@ -96393,13 +98378,13 @@ var dayjs_min = { exports: {} };
       }, m3.set = function(t3, e3) {
         return this.clone().$set(t3, e3);
       }, m3.get = function(t3) {
-        return this[O2.p(t3)]();
+        return this[b3.p(t3)]();
       }, m3.add = function(r3, f3) {
         var d3, l3 = this;
         r3 = Number(r3);
-        var $3 = O2.p(f3), y3 = function(t3) {
-          var e3 = w2(l3);
-          return O2.w(e3.date(e3.date() + Math.round(t3 * r3)), l3);
+        var $3 = b3.p(f3), y3 = function(t3) {
+          var e3 = O2(l3);
+          return b3.w(e3.date(e3.date() + Math.round(t3 * r3)), l3);
         };
         if ($3 === c2)
           return this.set(c2, this.$M + r3);
@@ -96410,17 +98395,17 @@ var dayjs_min = { exports: {} };
         if ($3 === o2)
           return y3(7);
         var M4 = (d3 = {}, d3[s2] = e2, d3[u2] = n2, d3[i2] = t2, d3)[$3] || 1, m4 = this.$d.getTime() + r3 * M4;
-        return O2.w(m4, this);
+        return b3.w(m4, this);
       }, m3.subtract = function(t3, e3) {
         return this.add(-1 * t3, e3);
       }, m3.format = function(t3) {
         var e3 = this, n3 = this.$locale();
         if (!this.isValid())
           return n3.invalidDate || l2;
-        var r3 = t3 || "YYYY-MM-DDTHH:mm:ssZ", i3 = O2.z(this), s3 = this.$H, u3 = this.$m, a3 = this.$M, o3 = n3.weekdays, c3 = n3.months, f3 = n3.meridiem, h3 = function(t4, n4, i4, s4) {
+        var r3 = t3 || "YYYY-MM-DDTHH:mm:ssZ", i3 = b3.z(this), s3 = this.$H, u3 = this.$m, a3 = this.$M, o3 = n3.weekdays, c3 = n3.months, f3 = n3.meridiem, h3 = function(t4, n4, i4, s4) {
           return t4 && (t4[n4] || t4(e3, r3)) || i4[n4].slice(0, s4);
         }, d3 = function(t4) {
-          return O2.s(s3 % 12 || 12, t4, "0");
+          return b3.s(s3 % 12 || 12, t4, "0");
         }, $3 = f3 || function(t4, e4, n4) {
           var r4 = t4 < 12 ? "AM" : "PM";
           return n4 ? r4.toLowerCase() : r4;
@@ -96431,11 +98416,11 @@ var dayjs_min = { exports: {} };
               case "YY":
                 return String(e3.$y).slice(-2);
               case "YYYY":
-                return O2.s(e3.$y, 4, "0");
+                return b3.s(e3.$y, 4, "0");
               case "M":
                 return a3 + 1;
               case "MM":
-                return O2.s(a3 + 1, 2, "0");
+                return b3.s(a3 + 1, 2, "0");
               case "MMM":
                 return h3(n3.monthsShort, a3, c3, 3);
               case "MMMM":
@@ -96443,7 +98428,7 @@ var dayjs_min = { exports: {} };
               case "D":
                 return e3.$D;
               case "DD":
-                return O2.s(e3.$D, 2, "0");
+                return b3.s(e3.$D, 2, "0");
               case "d":
                 return String(e3.$W);
               case "dd":
@@ -96455,7 +98440,7 @@ var dayjs_min = { exports: {} };
               case "H":
                 return String(s3);
               case "HH":
-                return O2.s(s3, 2, "0");
+                return b3.s(s3, 2, "0");
               case "h":
                 return d3(1);
               case "hh":
@@ -96467,13 +98452,13 @@ var dayjs_min = { exports: {} };
               case "m":
                 return String(u3);
               case "mm":
-                return O2.s(u3, 2, "0");
+                return b3.s(u3, 2, "0");
               case "s":
                 return String(e3.$s);
               case "ss":
-                return O2.s(e3.$s, 2, "0");
+                return b3.s(e3.$s, 2, "0");
               case "SSS":
-                return O2.s(e3.$ms, 3, "0");
+                return b3.s(e3.$ms, 3, "0");
               case "Z":
                 return i3;
             }
@@ -96483,8 +98468,8 @@ var dayjs_min = { exports: {} };
       }, m3.utcOffset = function() {
         return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
       }, m3.diff = function(r3, d3, l3) {
-        var $3, y3 = this, M4 = O2.p(d3), m4 = w2(r3), v5 = (m4.utcOffset() - this.utcOffset()) * e2, g3 = this - m4, D3 = function() {
-          return O2.m(y3, m4);
+        var $3, y3 = this, M4 = b3.p(d3), m4 = O2(r3), v5 = (m4.utcOffset() - this.utcOffset()) * e2, g3 = this - m4, D3 = function() {
+          return b3.m(y3, m4);
         };
         switch (M4) {
           case h2:
@@ -96514,7 +98499,7 @@ var dayjs_min = { exports: {} };
           default:
             $3 = g3;
         }
-        return l3 ? $3 : O2.a($3);
+        return l3 ? $3 : b3.a($3);
       }, m3.daysInMonth = function() {
         return this.endOf(c2).$D;
       }, m3.$locale = function() {
@@ -96522,10 +98507,10 @@ var dayjs_min = { exports: {} };
       }, m3.locale = function(t3, e3) {
         if (!t3)
           return this.$L;
-        var n3 = this.clone(), r3 = S2(t3, e3, true);
+        var n3 = this.clone(), r3 = w2(t3, e3, true);
         return r3 && (n3.$L = r3), n3;
       }, m3.clone = function() {
-        return O2.w(this.$d, this);
+        return b3.w(this.$d, this);
       }, m3.toDate = function() {
         return new Date(this.valueOf());
       }, m3.toJSON = function() {
@@ -96535,16 +98520,16 @@ var dayjs_min = { exports: {} };
       }, m3.toString = function() {
         return this.$d.toUTCString();
       }, M3;
-    }(), _ = b3.prototype;
-    return w2.prototype = _, [["$ms", r2], ["$s", i2], ["$m", s2], ["$H", u2], ["$W", a2], ["$M", c2], ["$y", h2], ["$D", d2]].forEach(function(t3) {
-      _[t3[1]] = function(e3) {
+    }(), k2 = _.prototype;
+    return O2.prototype = k2, [["$ms", r2], ["$s", i2], ["$m", s2], ["$H", u2], ["$W", a2], ["$M", c2], ["$y", h2], ["$D", d2]].forEach(function(t3) {
+      k2[t3[1]] = function(e3) {
         return this.$g(e3, t3[0], t3[1]);
       };
-    }), w2.extend = function(t3, e3) {
-      return t3.$i || (t3(e3, b3, w2), t3.$i = true), w2;
-    }, w2.locale = S2, w2.isDayjs = p2, w2.unix = function(t3) {
-      return w2(1e3 * t3);
-    }, w2.en = D2[g2], w2.Ls = D2, w2.p = {}, w2;
+    }), O2.extend = function(t3, e3) {
+      return t3.$i || (t3(e3, _, O2), t3.$i = true), O2;
+    }, O2.locale = w2, O2.isDayjs = S2, O2.unix = function(t3) {
+      return O2(1e3 * t3);
+    }, O2.en = D2[g2], O2.Ls = D2, O2.p = {}, O2;
   });
 })(dayjs_min);
 var dayjs_minExports = dayjs_min.exports;
@@ -96901,13 +98886,13 @@ function parseIndex(data, { getFn = Config.getFn, fieldNormWeight = Config.field
   return myIndex;
 }
 function computeScore$1(pattern, {
-  errors = 0,
+  errors: errors2 = 0,
   currentLocation = 0,
   expectedLocation = 0,
   distance: distance2 = Config.distance,
   ignoreLocation = Config.ignoreLocation
 } = {}) {
-  const accuracy = errors / pattern.length;
+  const accuracy = errors2 / pattern.length;
   if (ignoreLocation) {
     return accuracy;
   }
@@ -97863,17 +99848,18 @@ function r$1(e2) {
   if ("string" == typeof e2 || "number" == typeof e2)
     n2 += e2;
   else if ("object" == typeof e2)
-    if (Array.isArray(e2))
-      for (t2 = 0; t2 < e2.length; t2++)
+    if (Array.isArray(e2)) {
+      var o2 = e2.length;
+      for (t2 = 0; t2 < o2; t2++)
         e2[t2] && (f2 = r$1(e2[t2])) && (n2 && (n2 += " "), n2 += f2);
-    else
-      for (t2 in e2)
-        e2[t2] && (n2 && (n2 += " "), n2 += t2);
+    } else
+      for (f2 in e2)
+        e2[f2] && (n2 && (n2 += " "), n2 += f2);
   return n2;
 }
 function clsx() {
-  for (var e2, t2, f2 = 0, n2 = ""; f2 < arguments.length; )
-    (e2 = arguments[f2++]) && (t2 = r$1(e2)) && (n2 && (n2 += " "), n2 += t2);
+  for (var e2, t2, f2 = 0, n2 = "", o2 = arguments.length; f2 < o2; f2++)
+    (e2 = arguments[f2]) && (t2 = r$1(e2)) && (n2 && (n2 += " "), n2 += t2);
   return n2;
 }
 function _extends$3() {
@@ -98284,7 +100270,8 @@ function $5cb92bef7577960e$var$usePointerDownOutside(onPointerDownOutside, owner
           });
         } else
           handleAndDispatchPointerDownOutsideEvent();
-      }
+      } else
+        ownerDocument.removeEventListener("click", handleClickRef.current);
       isPointerInsideReactTreeRef.current = false;
     };
     const timerId = window.setTimeout(() => {
@@ -98422,12 +100409,11 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6 = /* @__PURE__ */ reactExports.f
           });
       }, handleMutations = function(mutations) {
         const focusedElement = document.activeElement;
-        for (const mutation of mutations) {
-          if (mutation.removedNodes.length > 0) {
-            if (!(container1 !== null && container1 !== void 0 && container1.contains(focusedElement)))
-              $d3863c46a17e8a28$var$focus(container1);
-          }
-        }
+        if (focusedElement !== document.body)
+          return;
+        for (const mutation of mutations)
+          if (mutation.removedNodes.length > 0)
+            $d3863c46a17e8a28$var$focus(container1);
       };
       document.addEventListener("focusin", handleFocusIn);
       document.addEventListener("focusout", handleFocusOut);
@@ -98755,12 +100741,21 @@ function getPaddingObject(padding2) {
   };
 }
 function rectToClientRect(rect) {
+  const {
+    x,
+    y: y2,
+    width,
+    height
+  } = rect;
   return {
-    ...rect,
-    top: rect.y,
-    left: rect.x,
-    right: rect.x + rect.width,
-    bottom: rect.y + rect.height
+    width,
+    height,
+    top: y2,
+    left: x,
+    right: x + width,
+    bottom: y2 + height,
+    x,
+    y: y2
   };
 }
 function computeCoordsFromPlacement(_ref, placement, rtl) {
@@ -98931,9 +100926,10 @@ async function detectOverflow(state, options) {
     strategy
   }));
   const rect = elementContext === "floating" ? {
-    ...rects.floating,
     x,
-    y: y2
+    y: y2,
+    width: rects.floating.width,
+    height: rects.floating.height
   } : rects.reference;
   const offsetParent = await (platform2.getOffsetParent == null ? void 0 : platform2.getOffsetParent(elements.floating));
   const offsetScale = await (platform2.isElement == null ? void 0 : platform2.isElement(offsetParent)) ? await (platform2.getScale == null ? void 0 : platform2.getScale(offsetParent)) || {
@@ -99210,7 +101206,7 @@ async function convertValueToCoords(state, options) {
     y: crossAxis * crossAxisMulti
   };
 }
-const offset = function(options) {
+const offset$1 = function(options) {
   if (options === void 0) {
     options = 0;
   }
@@ -99500,9 +101496,8 @@ function getContainingBlock(element) {
   while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
     if (isContainingBlock(currentNode)) {
       return currentNode;
-    } else {
-      currentNode = getParentNode(currentNode);
     }
+    currentNode = getParentNode(currentNode);
   }
   return null;
 }
@@ -99940,12 +101935,14 @@ function getOffsetParent(element, polyfill2) {
 const getElementRects = async function(data) {
   const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
   const getDimensionsFn = this.getDimensions;
+  const floatingDimensions = await getDimensionsFn(data.floating);
   return {
     reference: getRectRelativeToOffsetParent(data.reference, await getOffsetParentFn(data.floating), data.strategy),
     floating: {
       x: 0,
       y: 0,
-      ...await getDimensionsFn(data.floating)
+      width: floatingDimensions.width,
+      height: floatingDimensions.height
     }
   };
 };
@@ -100013,7 +102010,7 @@ function observeMove(element, onMove) {
         if (!ratio) {
           timeoutId = setTimeout(() => {
             refresh(false, 1e-7);
-          }, 100);
+          }, 1e3);
         } else {
           refresh(false, ratio);
         }
@@ -100102,6 +102099,7 @@ function autoUpdate(reference, floating, update5, options) {
     }
   };
 }
+const offset = offset$1;
 const shift = shift$1;
 const flip = flip$1;
 const size = size$1;
@@ -100452,7 +102450,7 @@ const $cf1ac5d9fe0e8206$var$CONTENT_NAME = "PopperContent";
 const [$cf1ac5d9fe0e8206$var$PopperContentProvider, $cf1ac5d9fe0e8206$var$useContentContext] = $cf1ac5d9fe0e8206$var$createPopperContext($cf1ac5d9fe0e8206$var$CONTENT_NAME);
 const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   var _arrowSize$width, _arrowSize$height, _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$trans, _middlewareData$trans2, _middlewareData$hide;
-  const { __scopePopper, side = "bottom", sideOffset = 0, align = "center", alignOffset = 0, arrowPadding = 0, collisionBoundary = [], collisionPadding: collisionPaddingProp = 0, sticky = "partial", hideWhenDetached = false, avoidCollisions = true, onPlaced, ...contentProps } = props;
+  const { __scopePopper, side = "bottom", sideOffset = 0, align = "center", alignOffset = 0, arrowPadding = 0, avoidCollisions = true, collisionBoundary = [], collisionPadding: collisionPaddingProp = 0, sticky = "partial", hideWhenDetached = false, updatePositionStrategy = "optimized", onPlaced, ...contentProps } = props;
   const context2 = $cf1ac5d9fe0e8206$var$usePopperContext($cf1ac5d9fe0e8206$var$CONTENT_NAME, __scopePopper);
   const [content2, setContent] = reactExports.useState(null);
   const composedRefs = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(
@@ -100485,7 +102483,12 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.fo
     // default to `fixed` strategy so users don't have to pick and we also avoid focus scroll issues
     strategy: "fixed",
     placement: desiredPlacement,
-    whileElementsMounted: autoUpdate,
+    whileElementsMounted: (...args) => {
+      const cleanup = autoUpdate(...args, {
+        animationFrame: updatePositionStrategy === "always"
+      });
+      return cleanup;
+    },
     elements: {
       reference: context2.anchor
     },
@@ -100523,7 +102526,8 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.fo
         arrowHeight
       }),
       hideWhenDetached && hide({
-        strategy: "referenceHidden"
+        strategy: "referenceHidden",
+        ...detectOverflowOptions
       })
     ]
   });
@@ -100731,15 +102735,15 @@ function $921a889cee6df7e8$var$usePresence(present) {
     state
   ]);
   $9f79659886946c16$export$e5c5a5f917a5871c(() => {
-    const styles2 = stylesRef.current;
+    const styles = stylesRef.current;
     const wasPresent = prevPresentRef.current;
     const hasPresentChanged = wasPresent !== present;
     if (hasPresentChanged) {
       const prevAnimationName = prevAnimationNameRef.current;
-      const currentAnimationName = $921a889cee6df7e8$var$getAnimationName(styles2);
+      const currentAnimationName = $921a889cee6df7e8$var$getAnimationName(styles);
       if (present)
         send("MOUNT");
-      else if (currentAnimationName === "none" || (styles2 === null || styles2 === void 0 ? void 0 : styles2.display) === "none")
+      else if (currentAnimationName === "none" || (styles === null || styles === void 0 ? void 0 : styles.display) === "none")
         send("UNMOUNT");
       else {
         const isAnimating = prevAnimationName !== currentAnimationName;
@@ -100794,8 +102798,8 @@ function $921a889cee6df7e8$var$usePresence(present) {
     }, [])
   };
 }
-function $921a889cee6df7e8$var$getAnimationName(styles2) {
-  return (styles2 === null || styles2 === void 0 ? void 0 : styles2.animationName) || "none";
+function $921a889cee6df7e8$var$getAnimationName(styles) {
+  return (styles === null || styles === void 0 ? void 0 : styles.animationName) || "none";
 }
 function $71cd76cc60e0454e$export$6f32135080cb4c3({ prop, defaultProp, onChange = () => {
 } }) {
@@ -100952,7 +102956,7 @@ var hideOthers = function(originalTarget, parentNode, markerName) {
     markerName = "data-aria-hidden";
   }
   var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
-  var activeParentNode = parentNode || getDefaultParent(originalTarget);
+  var activeParentNode = getDefaultParent(originalTarget);
   if (!activeParentNode) {
     return function() {
       return null;
@@ -101001,7 +103005,7 @@ function useCallbackRef(initialValue, callback) {
 var useIsomorphicLayoutEffect = typeof window !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
 var currentValues = /* @__PURE__ */ new WeakMap();
 function useMergeRefs(refs, defaultValue) {
-  var callbackRef = useCallbackRef(defaultValue || null, function(newValue) {
+  var callbackRef = useCallbackRef(null, function(newValue) {
     return refs.forEach(function(ref) {
       return assignRef(ref, newValue);
     });
@@ -101210,20 +103214,20 @@ var stylesheetSingleton = function() {
 };
 var styleHookSingleton = function() {
   var sheet = stylesheetSingleton();
-  return function(styles2, isDynamic) {
+  return function(styles, isDynamic) {
     reactExports.useEffect(function() {
-      sheet.add(styles2);
+      sheet.add(styles);
       return function() {
         sheet.remove();
       };
-    }, [styles2 && isDynamic]);
+    }, [styles && isDynamic]);
   };
 };
 var styleSingleton = function() {
   var useStyle2 = styleHookSingleton();
   var Sheet = function(_a2) {
-    var styles2 = _a2.styles, dynamic = _a2.dynamic;
-    useStyle2(styles2, dynamic);
+    var styles = _a2.styles, dynamic = _a2.dynamic;
+    useStyle2(styles, dynamic);
     return null;
   };
   return Sheet;
@@ -101319,11 +103323,11 @@ var alwaysContainsScroll = function(node2) {
   return node2.tagName === "TEXTAREA";
 };
 var elementCanBeScrolled = function(node2, overflow) {
-  var styles2 = window.getComputedStyle(node2);
+  var styles = window.getComputedStyle(node2);
   return (
     // not-not-scrollable
-    styles2[overflow] !== "hidden" && // contains scroll inside self
-    !(styles2.overflowY === styles2.overflowX && !alwaysContainsScroll(node2) && styles2[overflow] === "visible")
+    styles[overflow] !== "hidden" && // contains scroll inside self
+    !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node2) && styles[overflow] === "visible")
   );
 };
 var elementCouldBeVScrolled = function(node2) {
@@ -101398,9 +103402,9 @@ var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
     !targetInLock && target !== document.body || // self content
     targetInLock && (endTarget.contains(target) || endTarget === target)
   );
-  if (isDeltaPositive && (noOverscroll && availableScroll === 0 || !noOverscroll && delta > availableScroll)) {
+  if (isDeltaPositive && (availableScroll === 0 || !noOverscroll)) {
     shouldCancelScroll = true;
-  } else if (!isDeltaPositive && (noOverscroll && availableScrollTop === 0 || !noOverscroll && -delta > availableScrollTop)) {
+  } else if (!isDeltaPositive && (availableScrollTop === 0 || !noOverscroll)) {
     shouldCancelScroll = true;
   }
   return shouldCancelScroll;
@@ -101564,7 +103568,6 @@ var ReactRemoveScroll = reactExports.forwardRef(function(props, ref) {
   return reactExports.createElement(RemoveScroll, __assign$4({}, props, { ref, sideCar: SideCar }));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
-const $am6gm$RemoveScroll = ReactRemoveScroll;
 const $cb5cc270b50c6fcd$var$POPOVER_NAME = "Popover";
 const [$cb5cc270b50c6fcd$var$createPopoverContext, $cb5cc270b50c6fcd$export$c8393c9e73286932] = $c512c27ab02ef895$export$50c7b4e9d9f19c1($cb5cc270b50c6fcd$var$POPOVER_NAME, [
   $cf1ac5d9fe0e8206$export$722aac194ae923
@@ -101671,7 +103674,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentModal = /* @__PURE__ */ reactExports.f
     if (content2)
       return hideOthers(content2);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($am6gm$RemoveScroll, {
+  return /* @__PURE__ */ reactExports.createElement(ReactRemoveScroll, {
     as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
     allowPinchZoom: true
   }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
@@ -101815,20 +103818,6 @@ function _extends$2() {
     return target;
   };
   return _extends$2.apply(this, arguments);
-}
-function _objectWithoutPropertiesLoose$1(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key2, i2;
-  for (i2 = 0; i2 < sourceKeys.length; i2++) {
-    key2 = sourceKeys[i2];
-    if (excluded.indexOf(key2) >= 0)
-      continue;
-    target[key2] = source[key2];
-  }
-  return target;
 }
 const compareAddress$2 = (a2, b3) => {
   return a2.toLowerCase() === b3.toLowerCase();
@@ -101998,155 +103987,18 @@ const flattenPaginatedTransactionHistory = (transactionHistoryData) => {
   });
   return transactionHistory;
 };
-const getNativeToken$1 = async ({
-  accountAddress,
-  chainId
-}) => {
-  try {
-    const {
-      indexerClient
-    } = getNetworkConfigAndClients(chainId);
-    const res = await indexerClient.getEtherBalance({
-      accountAddress
-    });
-    const tokenBalance = {
-      chainId,
-      contractAddress: AddressZero,
-      accountAddress,
-      balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
-      contractType: ContractType$1.UNKNOWN,
-      blockHash: "",
-      blockNumber: 0,
-      tokenID: ""
-    };
-    return [tokenBalance];
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
+const time$1 = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
 };
-const getCoinPrices = async ({
-  tokens
-}) => {
-  try {
-    if (tokens.length === 0)
-      return [];
-    const chainId = tokens[0].chainId;
-    const {
-      apiClient
-    } = await getNetworkConfigAndClients(chainId);
-    const res = await apiClient.getCoinPrices({
-      tokens
-    });
-    return (res == null ? void 0 : res.tokenPrices) || [];
-  } catch (e2) {
-    console.error(e2);
-    return;
-  }
-};
-const getTokenBalances$1 = async ({
+const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClients, {
   accountAddress,
-  chainId,
-  contractAddress
-}, {
-  hideUnlistedTokens,
+  displayAssets,
   hideCollectibles,
-  includeMetadata: _includeMetadata = true,
   verifiedOnly
 }) => {
-  try {
-    const {
-      indexerClient
-    } = getNetworkConfigAndClients(chainId);
-    const res = await indexerClient.getTokenBalances(_extends$2({
-      accountAddress,
-      includeMetadata: _includeMetadata,
-      metadataOptions: {
-        verifiedOnly: verifiedOnly != null ? verifiedOnly : true
-      }
-    }, contractAddress ? {
-      contractAddress
-    } : {}));
-    let returnedBalances = (res == null ? void 0 : res.balances) || [];
-    if (hideUnlistedTokens && returnedBalances.length > 0) {
-      const coinPrices = await getCoinPrices({
-        tokens: returnedBalances.map((balance) => ({
-          chainId: balance.chainId,
-          contractAddress: balance.contractAddress,
-          tokenId: balance.tokenID
-        }))
-      });
-      returnedBalances = returnedBalances.filter((balance) => {
-        const price = coinPrices == null ? void 0 : coinPrices.find((price2) => compareAddress$2(price2.token.contractAddress, balance.contractAddress) && price2.token.chainId === balance.chainId);
-        return balance.contractType !== "ERC20" || !!price && price.price !== null;
-      });
-    }
-    if (hideCollectibles && returnedBalances.length > 0) {
-      returnedBalances = returnedBalances.filter((balance) => balance.contractType !== "ERC721" && balance.contractType !== "ERC1155");
-    }
-    return returnedBalances;
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const fetchBalances$1 = async ({
-  accountAddress,
-  chainId
-}, {
-  hideUnlistedTokens,
-  hideCollectibles
-}) => {
-  try {
-    const tokenBalances = (await Promise.all([getNativeToken$1({
-      accountAddress,
-      chainId
-    }), getTokenBalances$1({
-      accountAddress,
-      chainId
-    }, {
-      hideUnlistedTokens,
-      hideCollectibles
-    })])).flat();
-    return tokenBalances;
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const fetchCollectionBalance = async ({
-  accountAddress,
-  chainId,
-  collectionAddress,
-  includeMetadata: _includeMetadata2 = true,
-  verifiedOnly
-}) => {
-  try {
-    const {
-      indexerClient
-    } = await getNetworkConfigAndClients(chainId);
-    const res = await indexerClient.getTokenBalances({
-      accountAddress,
-      includeMetadata: _includeMetadata2,
-      contractAddress: collectionAddress,
-      metadataOptions: {
-        verifiedOnly: verifiedOnly != null ? verifiedOnly : true
-      }
-    });
-    return (res == null ? void 0 : res.balances) || [];
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const fetchBalancesAssetsSummary = async ({
-  accountAddress,
-  chainIds,
-  displayAssets
-}, {
-  hideUnlistedTokens,
-  hideCollectibles
-}) => {
+  const indexerClientsArr = Array.from(indexerClients.entries());
   const MAX_COLLECTIBLES_AMOUNTS = 10;
   let tokenBalances = [];
   const customDisplayAssets = displayAssets.length > 0;
@@ -102168,29 +104020,19 @@ const fetchBalancesAssetsSummary = async ({
         }
         otherAssetsByChainId[asset.chainId].push(asset);
       });
-      tokenBalances = (await Promise.all([...Object.keys(nativeTokensByChainId).map((chainId) => getNativeToken$1({
+      tokenBalances = (await Promise.all([...Object.keys(nativeTokensByChainId).map((chainId) => getNativeTokenBalance(indexerClients.get(Number(chainId)), Number(chainId), accountAddress)), ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => getTokenBalances(indexerClients.get(Number(chainId)), {
         accountAddress,
-        chainId: Number(chainId)
-      })), ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => getTokenBalances$1({
-        accountAddress,
-        chainId: Number(chainId),
-        contractAddress: asset.contractAddress
-      }, {
-        hideUnlistedTokens,
+        contractAddress: asset.contractAddress,
+        includeMetadata: false,
         hideCollectibles,
-        includeMetadata: false
+        verifiedOnly
       }))).flat()])).flat();
     } else {
-      tokenBalances = (await Promise.all([...chainIds.map((chainId) => getNativeToken$1({
+      tokenBalances = (await Promise.all([...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)), ...indexerClientsArr.map(([chainId, indexerClient]) => getTokenBalances(indexerClient, {
         accountAddress,
-        chainId
-      })), ...chainIds.map((chainId) => getTokenBalances$1({
-        accountAddress,
-        chainId
-      }, {
-        hideUnlistedTokens,
         hideCollectibles,
-        includeMetadata: false
+        includeMetadata: false,
+        verifiedOnly
       }))])).flat();
     }
     const {
@@ -102204,9 +104046,7 @@ const fetchBalancesAssetsSummary = async ({
           chainId: token2.chainId,
           contractAddress: token2.contractAddress
         }));
-        const prices2 = await getCoinPrices({
-          tokens
-        }) || [];
+        const prices2 = await getCoinPrices(apiClient, tokens) || [];
         resolve(prices2);
       } else {
         resolve([]);
@@ -102216,10 +104056,10 @@ const fetchBalancesAssetsSummary = async ({
       if (customDisplayAssets) {
         return collectionBalance;
       }
-      const balance = await fetchCollectionBalance({
+      const balance = await getCollectionBalance(indexerClients.get(collectionBalance.chainId), {
         accountAddress,
         chainId: collectionBalance.chainId,
-        collectionAddress: collectionBalance.contractAddress,
+        contractAddress: collectionBalance.contractAddress,
         includeMetadata: false
       });
       return balance;
@@ -102235,9 +104075,6 @@ const fetchBalancesAssetsSummary = async ({
         }
       });
       const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async (chainId) => {
-        const {
-          metadataClient
-        } = getNetworkConfigAndClients(chainId);
         const tokenBalances2 = erc20BalanceByChainId[Number(chainId)];
         const contractAddresses = tokenBalances2.map((balance) => balance.contractAddress);
         const result = await metadataClient.getContractInfoBatch({
@@ -102282,79 +104119,29 @@ const fetchBalancesAssetsSummary = async ({
     return [];
   }
 };
-const getCollectibleBalance = async ({
-  accountAddress,
-  chainId,
-  collectionAddress,
-  tokenId,
-  verifiedOnly
-}) => {
-  const {
-    indexerClient
-  } = getNetworkConfigAndClients(chainId);
-  const res = await indexerClient.getTokenBalances({
-    accountAddress,
-    includeMetadata: true,
-    contractAddress: collectionAddress,
-    tokenID: tokenId,
-    metadataOptions: {
-      verifiedOnly: verifiedOnly != null ? verifiedOnly : true
-    }
+const useBalancesAssetsSummary = (args) => {
+  const apiClient = useAPIClient();
+  const metadataClient = useMetadataClient();
+  const indexerClients = useIndexerClients(args.chainIds);
+  return useQuery$1({
+    queryKey: ["balancesAssetsSummary", args],
+    queryFn: () => getBalancesAssetsSummary(apiClient, metadataClient, indexerClients, args),
+    retry: true,
+    refetchInterval: time$1.oneSecond * 4,
+    refetchOnMount: true,
+    staleTime: time$1.oneSecond,
+    enabled: args.chainIds.length > 0 && !!args.accountAddress
   });
-  const tokenBalance = res.balances[0];
-  return tokenBalance;
 };
-const getCollectiblePrices = async ({
-  tokens
-}) => {
-  try {
-    if (tokens.length === 0)
-      return [];
-    const chainId = tokens[0].chainId;
-    const {
-      apiClient
-    } = await getNetworkConfigAndClients(chainId);
-    const res = await apiClient.getCollectiblePrices({
-      tokens
-    });
-    return (res == null ? void 0 : res.tokenPrices) || [];
-  } catch (e2) {
-    console.error(e2);
-    return;
-  }
-};
-const getTransactionHistory = async ({
-  chainId,
-  contractAddress,
-  accountAddress,
-  tokenId,
-  page
-}) => {
-  const {
-    indexerClient
-  } = getNetworkConfigAndClients(chainId);
-  const response = indexerClient.getTransactionHistory({
-    includeMetadata: true,
-    page,
-    filter: {
-      accountAddress,
-      contractAddress,
-      tokenID: tokenId
-    }
-  });
-  return response;
-};
-const getTransactionHistorySummary = async ({
-  chainIds,
+const getTransactionHistorySummary = async (indexerClients, {
   accountAddress
 }) => {
-  const histories = await Promise.all([...chainIds.map((chainId) => getTransactionHistory({
-    chainId,
+  const histories = await Promise.all(Array.from(indexerClients.values()).map((indexerClient) => getTransactionHistory(indexerClient, {
     accountAddress,
     page: {
       page: 1
     }
-  }))]);
+  })));
   const unorderedTransactions = histories.map((history) => history.transactions).flat();
   const orderedTransactions = unorderedTransactions.sort((a2, b3) => {
     const firstDate = new Date(a2.timestamp).getTime();
@@ -102363,171 +104150,17 @@ const getTransactionHistorySummary = async ({
   });
   return orderedTransactions;
 };
-const fetchFiatConversionRate = async ({
-  toCurrency
-}) => {
-  if (toCurrency === "USD") {
-    return 1;
-  }
-  const {
-    apiClient
-  } = getNetworkConfigAndClients(137);
-  const response = await apiClient.getExchangeRate({
-    toCurrency
-  });
-  return response.exchangeRate.value;
-};
-const fetchTokenMetadata$1 = async ({
-  tokens
-}) => {
-  const {
-    metadataClient
-  } = getNetworkConfigAndClients(tokens.chainId);
-  const response = await metadataClient.getTokenMetadata({
-    chainID: tokens.chainId.toString(),
-    contractAddress: tokens.contractAddress,
-    tokenIDs: tokens.tokenIds
-  });
-  return response.tokenMetadata;
-};
-const getContractInfo = async (args) => {
-  const {
-    metadataClient
-  } = getNetworkConfigAndClients(Number(args.chainID));
-  const response = await metadataClient.getContractInfo(args);
-  return response.contractInfo;
-};
-const _excluded$2 = ["chainIds"], _excluded2 = ["disabled"];
-const time$1 = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const useBalances$1 = (args, options) => useQuery$1({
-  queryKey: ["balances", args, options],
-  queryFn: async () => {
-    const {
-      chainIds
-    } = args, restArgs = _objectWithoutPropertiesLoose$1(args, _excluded$2);
-    const balances = await Promise.all(chainIds.map((chainId) => fetchBalances$1(_extends$2({}, restArgs, {
-      chainId
-    }), options)));
-    return balances.flat();
-  },
-  retry: true,
-  staleTime: time$1.oneSecond * 30,
-  enabled: args.chainIds.length > 0 && !!args.accountAddress
-});
-const useCollectionBalance = (args) => useQuery$1({
-  queryKey: ["collectionBalance", args],
-  queryFn: () => fetchCollectionBalance(args),
-  retry: true,
-  staleTime: time$1.oneSecond * 30,
-  enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
-});
-const useCoinPrices = (_ref) => {
-  let {
-    disabled
-  } = _ref, args = _objectWithoutPropertiesLoose$1(_ref, _excluded2);
+const useTransactionHistorySummary = (args) => {
+  const indexerClients = useIndexerClients(args.chainIds);
   return useQuery$1({
-    queryKey: ["coinPrices", args],
-    queryFn: () => getCoinPrices(args),
+    queryKey: ["transactionHistorySummary", args],
+    queryFn: () => getTransactionHistorySummary(indexerClients, args),
     retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: args.tokens.length > 0 && !disabled
+    staleTime: time$1.oneSecond,
+    refetchOnMount: true,
+    enabled: args.chainIds.length > 0 && !!args.accountAddress
   });
 };
-const useBalancesAssetsSummary = (args, options) => useQuery$1({
-  queryKey: ["balancesAssetsSummary", args, options],
-  queryFn: () => fetchBalancesAssetsSummary(args, options),
-  retry: true,
-  refetchInterval: time$1.oneSecond * 4,
-  refetchOnMount: true,
-  staleTime: time$1.oneSecond,
-  enabled: args.chainIds.length > 0 && !!args.accountAddress
-});
-const useCoinBalance = (args, options) => useQuery$1({
-  queryKey: ["coinBalance", args, options],
-  queryFn: () => {
-    if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", AddressZero)) {
-      const _response = getNativeToken$1({
-        accountAddress: args.accountAddress,
-        chainId: args.chainId
-      }).then((response2) => response2[0]);
-      return _response;
-    }
-    const response = getTokenBalances$1(args, options).then((response2) => response2[0]);
-    return response;
-  },
-  retry: true,
-  staleTime: time$1.oneSecond * 30,
-  enabled: !!args.chainId && !!args.accountAddress
-});
-const useCollectibleBalance = (args) => useQuery$1({
-  queryKey: ["collectibleBalance", args],
-  queryFn: () => getCollectibleBalance(args),
-  retry: true,
-  staleTime: time$1.oneSecond * 30,
-  enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress && !!args.tokenId
-});
-const useCollectiblePrices = (args) => useQuery$1({
-  queryKey: ["useCollectiblePrices", args],
-  queryFn: () => getCollectiblePrices(args),
-  retry: true,
-  staleTime: time$1.oneMinute,
-  enabled: args.tokens.length > 0
-});
-const useTransactionHistory = (arg) => useInfiniteQuery({
-  queryKey: ["transactionHistory", arg],
-  queryFn: ({
-    pageParam
-  }) => {
-    return getTransactionHistory(_extends$2({}, arg, {
-      page: {
-        page: pageParam
-      }
-    }));
-  },
-  getNextPageParam: ({
-    page
-  }) => {
-    if (!page.more)
-      return void 0;
-    return (page == null ? void 0 : page.page) || 1;
-  },
-  initialPageParam: 1,
-  retry: true,
-  staleTime: time$1.oneSecond * 30,
-  enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
-});
-const useTransactionHistorySummary = (args) => useQuery$1({
-  queryKey: ["transactionHistorySummary", args],
-  queryFn: () => getTransactionHistorySummary(args),
-  retry: true,
-  staleTime: time$1.oneSecond,
-  refetchOnMount: true,
-  enabled: args.chainIds.length > 0 && !!args.accountAddress
-});
-const useConversionRate = (args) => useQuery$1({
-  queryKey: ["useConversionRate", args],
-  queryFn: () => fetchFiatConversionRate(args),
-  retry: true,
-  staleTime: time$1.oneMinute * 10
-});
-const useTokenMetadata$1 = (args) => useQuery$1({
-  queryKey: ["useTokenMetadata", args],
-  queryFn: () => fetchTokenMetadata$1(args),
-  retry: true,
-  staleTime: time$1.oneMinute * 10,
-  enabled: !!args.tokens.chainId && !!args.tokens.contractAddress
-});
-const useContractInfo$1 = (args) => useQuery$1({
-  queryKey: ["useContractInfo", args],
-  queryFn: () => getContractInfo(args),
-  retry: true,
-  staleTime: time$1.oneMinute * 10,
-  enabled: !!args.chainID && !!args.contractAddress
-});
 const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
 const useNavigation$1 = () => {
   const {
@@ -102976,25 +104609,18 @@ const CoinTile = ({
   const {
     data: dataCoinPrices = [],
     isPending: isPendingCoinPrice
-  } = useCoinPrices({
-    tokens: [{
-      chainId: balance.chainId,
-      contractAddress: balance.contractAddress
-    }]
-  });
+  } = useCoinPrices([{
+    chainId: balance.chainId,
+    contractAddress: balance.contractAddress
+  }]);
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const {
     data: contractInfo,
     isPending: isPendingContractInfo
-  } = useContractInfo$1({
-    chainID: String(balance.chainId),
-    contractAddress: balance.contractAddress
-  });
+  } = useContractInfo(balance.chainId, balance.contractAddress);
   const isPending = isPendingCoinPrice || isPendingConversionRate || isPendingContractInfo;
   if (isPending) {
     return /* @__PURE__ */ React.createElement(Box, {
@@ -103071,13 +104697,7 @@ const CollectibleTile = ({
   var _tokenMetadata$;
   const {
     data: tokenMetadata
-  } = useTokenMetadata$1({
-    tokens: {
-      chainId: balance.chainId,
-      contractAddress: balance.contractAddress,
-      tokenIds: [balance.tokenID]
-    }
-  });
+  } = useTokenMetadata(balance.chainId, balance.contractAddress, [balance.tokenID]);
   const imageUrl = tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image;
   return /* @__PURE__ */ React.createElement(CollectibleTileImage, {
     imageUrl
@@ -103169,10 +104789,9 @@ const AssetSummary = () => {
   } = useBalancesAssetsSummary({
     accountAddress: address || "",
     chainIds: selectedNetworks,
-    displayAssets: displayedAssets
-  }, {
-    hideUnlistedTokens,
-    hideCollectibles
+    displayAssets: displayedAssets,
+    hideCollectibles,
+    verifiedOnly: hideUnlistedTokens
   });
   if (isPendingBalances) {
     return /* @__PURE__ */ React.createElement(SkeletonTiles, null);
@@ -103469,30 +105088,24 @@ const SendCoin = ({
   const {
     data: balances = [],
     isPending: isPendingBalances
-  } = useBalances$1({
-    accountAddress,
+  } = useBalances({
     chainIds: [chainId],
+    accountAddress,
     contractAddress
-  }, {
-    hideUnlistedTokens: false
   });
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
   const tokenBalance = balances.find((b3) => b3.contractAddress === contractAddress);
   const {
     data: coinPrices = [],
     isPending: isPendingCoinPrices
-  } = useCoinPrices({
-    tokens: [{
-      chainId,
-      contractAddress
-    }]
-  });
+  } = useCoinPrices([{
+    chainId,
+    contractAddress
+  }]);
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const isPending = isPendingBalances || isPendingCoinPrices || isPendingConversionRate;
   if (isPending) {
     return null;
@@ -103785,7 +105398,7 @@ const SendCollectible = ({
   } = useCollectibleBalance({
     accountAddress,
     chainId,
-    collectionAddress: contractAddress,
+    contractAddress,
     tokenId,
     verifiedOnly: false
   });
@@ -104098,18 +105711,14 @@ const TransactionHistoryItem = ({
   const {
     data: coinPrices = [],
     isPending: isPendingCoinPrices
-  } = useCoinPrices({
-    tokens: tokenContractAddresses.map((contractAddress) => ({
-      contractAddress,
-      chainId: transaction2.chainId
-    }))
-  });
+  } = useCoinPrices(tokenContractAddresses.map((contractAddress) => ({
+    contractAddress,
+    chainId: transaction2.chainId
+  })));
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const isPending = isPendingCoinPrices || isPendingConversionRate;
   const {
     transfers
@@ -104605,28 +106214,23 @@ const SearchWallet = () => {
   const {
     data: tokenBalancesData,
     isPending: isPendingTokenBalances
-  } = useBalances$1({
+  } = useBalances({
+    chainIds: selectedNetworks,
     accountAddress: accountAddress || "",
-    chainIds: selectedNetworks
-  }, {
-    hideUnlistedTokens
+    verifiedOnly: hideUnlistedTokens
   });
   const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b3) => b3.contractType === "ERC20" || compareAddress$2(b3.contractAddress, AddressZero))) || [];
   const {
     data: coinPrices = [],
     isPending: isPendingCoinPrices
-  } = useCoinPrices({
-    tokens: coinBalancesUnordered.map((token2) => ({
-      chainId: token2.chainId,
-      contractAddress: token2.contractAddress
-    }))
-  });
+  } = useCoinPrices(coinBalancesUnordered.map((token2) => ({
+    chainId: token2.chainId,
+    contractAddress: token2.contractAddress
+  })));
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const coinBalances = coinBalancesUnordered.sort((a2, b3) => {
     var _b$contractInfo, _b$contractInfo2;
     const isHigherFiat = Number(computeBalanceFiat({
@@ -104774,28 +106378,23 @@ const SearchWalletViewAll = ({
   const {
     data: tokenBalancesData,
     isPending: isPendingTokenBalances
-  } = useBalances$1({
+  } = useBalances({
+    chainIds: selectedNetworks,
     accountAddress: accountAddress || "",
-    chainIds: selectedNetworks
-  }, {
-    hideUnlistedTokens
+    verifiedOnly: hideUnlistedTokens
   });
   const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b3) => b3.contractType === "ERC20" || compareAddress$2(b3.contractAddress, AddressZero))) || [];
   const {
     data: coinPrices = [],
     isPending: isPendingCoinPrices
-  } = useCoinPrices({
-    tokens: coinBalancesUnordered.map((token2) => ({
-      chainId: token2.chainId,
-      contractAddress: token2.contractAddress
-    }))
-  });
+  } = useCoinPrices(coinBalancesUnordered.map((token2) => ({
+    chainId: token2.chainId,
+    contractAddress: token2.contractAddress
+  })));
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const coinBalances = coinBalancesUnordered.sort((a2, b3) => {
     var _b$contractInfo, _a$contractInfo;
     const isHigherFiat = Number(computeBalanceFiat({
@@ -105029,6 +106628,19 @@ const SettingsGeneral = () => {
     onCheckedChange: onChangeHideCollectibles
   }))));
 };
+function _objectWithoutPropertiesLoose$1(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  for (var key2 in source) {
+    if (Object.prototype.hasOwnProperty.call(source, key2)) {
+      if (excluded.indexOf(key2) >= 0)
+        continue;
+      target[key2] = source[key2];
+    }
+  }
+  return target;
+}
 const SelectedIndicator = (props) => {
   const {
     selected,
@@ -105080,7 +106692,7 @@ const SelectedIndicator = (props) => {
     }
   })));
 };
-const _excluded$1 = ["value", "selected", "children", "disabled", "onClick", "className", "hideIndicator", "squareIndicator"];
+const _excluded$1$1 = ["value", "selected", "children", "disabled", "onClick", "className", "hideIndicator", "squareIndicator"];
 const SelectButton = (props) => {
   const {
     value,
@@ -105091,7 +106703,7 @@ const SelectButton = (props) => {
     className,
     hideIndicator,
     squareIndicator = false
-  } = props, rest = _objectWithoutPropertiesLoose$1(props, _excluded$1);
+  } = props, rest = _objectWithoutPropertiesLoose$1(props, _excluded$1$1);
   return /* @__PURE__ */ React.createElement(Card, _extends$2({
     as: "button",
     clickable: true,
@@ -105204,12 +106816,10 @@ const NetworkBadge = ({
   const {
     chains: chains2
   } = useConfig();
-  const {
-    network: network2
-  } = getNetworkConfigAndClients(chainId);
+  const network2 = getNetwork(chainId);
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  const chainColor = getChainColor(chainId);
-  const chainBGColor = getChainBGColor(chainId);
+  const chainColor = getNetworkColor(chainId);
+  const chainBGColor = getNetworkBackgroundColor(chainId);
   return /* @__PURE__ */ React.createElement(Box, {
     height: "6",
     paddingY: "1",
@@ -105373,25 +106983,20 @@ const CoinDetails = ({
   } = useCoinBalance({
     accountAddress: accountAddress || "",
     contractAddress,
-    chainId
-  }, {
-    hideUnlistedTokens
+    chainId,
+    verifiedOnly: hideUnlistedTokens
   });
   const {
     data: dataCoinPrices,
     isPending: isPendingCoinPrices
-  } = useCoinPrices({
-    tokens: [{
-      chainId,
-      contractAddress
-    }]
-  });
+  } = useCoinPrices([{
+    chainId,
+    contractAddress
+  }]);
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const isPending = isPendingCoinBalance || isPendingCoinPrices || isPendingConversionRate;
   if (isPending) {
     return /* @__PURE__ */ React.createElement(CoinDetailsSkeleton, {
@@ -105546,7 +107151,7 @@ const CollectionDetails = ({
   } = useCollectionBalance({
     chainId,
     accountAddress: accountAddress || "",
-    collectionAddress: contractAddress
+    contractAddress
   });
   useScrollbarWidth();
   const contractInfo = collectionBalanceData == null || (_collectionBalanceDat = collectionBalanceData[0]) == null ? void 0 : _collectionBalanceDat.contractInfo;
@@ -105736,7 +107341,7 @@ const CollectibleDetails = ({
     isPending: isPendingCollectibleBalance
   } = useCollectibleBalance({
     accountAddress: accountAddress || "",
-    collectionAddress: contractAddress,
+    contractAddress,
     chainId,
     tokenId,
     verifiedOnly: false
@@ -105744,19 +107349,15 @@ const CollectibleDetails = ({
   const {
     data: dataCollectiblePrices,
     isPending: isPendingCollectiblePrices
-  } = useCollectiblePrices({
-    tokens: [{
-      chainId,
-      contractAddress,
-      tokenId
-    }]
-  });
+  } = useCollectiblePrices([{
+    chainId,
+    contractAddress,
+    tokenId
+  }]);
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const isPending = isPendingCollectibleBalance || isPendingCollectiblePrices || isPendingConversionRate;
   if (isPending) {
     return /* @__PURE__ */ React.createElement(CollectibleDetailsSkeleton, null);
@@ -105875,13 +107476,13 @@ const CollectibleDetails = ({
     isFetchingNextPage
   })))));
 };
-const _excluded$3 = ["buttonVariant", "text", "size"];
+const _excluded$2 = ["buttonVariant", "text", "size"];
 const CopyButton = (props) => {
   const {
     buttonVariant = "icon",
     text: text2,
     size: size2 = "xs"
-  } = props, rest = _objectWithoutPropertiesLoose$1(props, _excluded$3);
+  } = props, rest = _objectWithoutPropertiesLoose$1(props, _excluded$2);
   const [isCopied, setCopy] = reactExports.useState(false);
   reactExports.useEffect(() => {
     if (isCopied) {
@@ -105953,21 +107554,15 @@ const TransactionDetails = ({
   const {
     data: coinPricesData,
     isPending: isPendingCoinPrices
-  } = useCoinPrices({
-    tokens: coins
-  });
+  } = useCoinPrices(coins);
   const {
     data: collectiblePricesData,
     isPending: isPendingCollectiblePrices
-  } = useCollectiblePrices({
-    tokens: collectibles
-  });
+  } = useCollectiblePrices(collectibles);
   const {
     data: conversionRate = 1,
     isPending: isPendingConversionRate
-  } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  });
+  } = useExchangeRate(fiatCurrency.symbol);
   const arePricesLoading = coins.length > 0 && isPendingCoinPrices || collectibles.length > 0 && isPendingCollectiblePrices || isPendingConversionRate;
   const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
   const date = dayjs(transaction2.timestamp).format("ddd MMM DD YYYY, h:m:s a");
@@ -106698,16 +108293,16 @@ const require$$20 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$2);
   } : function(o2, v3) {
     o2["default"] = v3;
   });
-  var __importStar2 = commonjsGlobal && commonjsGlobal.__importStar || function(mod) {
-    if (mod && mod.__esModule)
-      return mod;
+  var __importStar2 = commonjsGlobal && commonjsGlobal.__importStar || function(mod2) {
+    if (mod2 && mod2.__esModule)
+      return mod2;
     var result = {};
-    if (mod != null) {
-      for (var k2 in mod)
-        if (k2 !== "default" && Object.prototype.hasOwnProperty.call(mod, k2))
-          __createBinding2(result, mod, k2);
+    if (mod2 != null) {
+      for (var k2 in mod2)
+        if (k2 !== "default" && Object.prototype.hasOwnProperty.call(mod2, k2))
+          __createBinding2(result, mod2, k2);
     }
-    __setModuleDefault2(result, mod);
+    __setModuleDefault2(result, mod2);
     return result;
   };
   Object.defineProperty(exports, "__esModule", { value: true });
@@ -107175,7 +108770,6 @@ let LocalStorageKey = /* @__PURE__ */ function(LocalStorageKey2) {
   LocalStorageKey2["Theme"] = "@kit.theme";
   LocalStorageKey2["EthAuthProof"] = "@kit.ethAuthProof";
   LocalStorageKey2["EthAuthSettings"] = "@kit.ethAuthSettings";
-  LocalStorageKey2["ProjectAccessKey"] = "@kit.projectAccessKey";
   LocalStorageKey2["WaasGoogleClientID"] = "@kit.waasGoogleClientId";
   LocalStorageKey2["WaasGoogleIdToken"] = "@kit.waasGoogleIdToken";
   LocalStorageKey2["WaasAppleClientID"] = "@kit.waasAppleClientId";
@@ -107196,27 +108790,25 @@ function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null)
     return {};
   var target = {};
-  var sourceKeys = Object.keys(source);
-  var key2, i2;
-  for (i2 = 0; i2 < sourceKeys.length; i2++) {
-    key2 = sourceKeys[i2];
-    if (excluded.indexOf(key2) >= 0)
-      continue;
-    target[key2] = source[key2];
+  for (var key2 in source) {
+    if (Object.prototype.hasOwnProperty.call(source, key2)) {
+      if (excluded.indexOf(key2) >= 0)
+        continue;
+      target[key2] = source[key2];
+    }
   }
   return target;
 }
-const _excluded = ["createConnector"];
+const _excluded$1 = ["createConnector"];
 const getKitConnectWallets = (projectAccessKey2, wallets) => {
-  localStorage.setItem(LocalStorageKey.ProjectAccessKey, projectAccessKey2);
   const connectors = [];
   wallets.forEach((wallet) => {
     const {
       createConnector: createConnector2
-    } = wallet, metaProperties = _objectWithoutPropertiesLoose(wallet, _excluded);
+    } = wallet, metaProperties = _objectWithoutPropertiesLoose(wallet, _excluded$1);
     const walletProperties = _extends$1({}, metaProperties);
     const createConnectorOverride = (config2) => {
-      const connector = createConnector2();
+      const connector = createConnector2(projectAccessKey2);
       const res = connector(config2);
       res._wallet = _extends$1({}, walletProperties);
       return res;
@@ -107232,7 +108824,7 @@ const compareAddress$1 = (a2, b3) => {
   return a2.toLowerCase() === b3.toLowerCase();
 };
 const nativeTokenInfos = {
-  1: {
+  [ChainId.MAINNET]: {
     name: "Ethereum",
     symbol: "ETH",
     logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
@@ -107240,7 +108832,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Etherscan",
     blockExplorerUrl: "https://etherscan.io"
   },
-  5: {
+  [ChainId.GOERLI]: {
     name: "Goerli",
     symbol: "ETH",
     decimals: 18,
@@ -107248,7 +108840,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Etherscan (Goerli)",
     blockExplorerUrl: "https://goerli.etherscan.io"
   },
-  10: {
+  [ChainId.OPTIMISM]: {
     name: "Optimism",
     symbol: "OP",
     logoURI: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
@@ -107256,7 +108848,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Etherscan (Optimism)",
     blockExplorerUrl: "https://optimistic.etherscan.io"
   },
-  56: {
+  [ChainId.BSC]: {
     name: "BNB",
     symbol: "BNB",
     logoURI: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png",
@@ -107264,7 +108856,7 @@ const nativeTokenInfos = {
     blockExplorerName: "BscScan",
     blockExplorerUrl: "https://bscscan.com"
   },
-  100: {
+  [ChainId.GNOSIS]: {
     name: "Gnosis",
     symbol: "GNO",
     logoURI: "https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png",
@@ -107272,7 +108864,7 @@ const nativeTokenInfos = {
     blockExplorerUrl: "https://gnosisscan.io",
     blockExplorerName: "Gnosis Scan"
   },
-  137: {
+  [ChainId.POLYGON]: {
     name: "Polygon",
     symbol: "MATIC",
     logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
@@ -107280,7 +108872,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Polyscan",
     blockExplorerUrl: "https://polygonscan.com"
   },
-  1101: {
+  [ChainId.POLYGON_ZKEVM]: {
     name: "Polygon zkEVM",
     symbol: "ETH",
     logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
@@ -107288,7 +108880,7 @@ const nativeTokenInfos = {
     blockExplorerName: "PolygonScan",
     blockExplorerUrl: "https://zkevm.polygonscan.com"
   },
-  42161: {
+  [ChainId.ARBITRUM]: {
     name: "Arbitrum",
     symbol: "ARB",
     logoURI: "https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png",
@@ -107296,7 +108888,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Arbiscan",
     blockExplorerUrl: "https://arbiscan.io"
   },
-  43114: {
+  [ChainId.AVALANCHE]: {
     name: "Avalanche",
     symbol: "AVAX",
     logoURI: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png",
@@ -107304,13 +108896,21 @@ const nativeTokenInfos = {
     blockExplorerName: "Snowtrace",
     blockExplorerUrl: "https://snowtrace.io"
   },
-  80001: {
+  [ChainId.POLYGON_MUMBAI]: {
     name: "Mumbai",
     symbol: "MATIC",
     logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
     decimals: 18,
     blockExplorerName: "Polyscan (Mumbai)",
     blockExplorerUrl: "https://mumbai.polygonscan.com"
+  },
+  [ChainId.POLYGON_AMOY]: {
+    name: "Amoy",
+    symbol: "MATIC",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "Polyscan (Amoy)",
+    blockExplorerUrl: "https://amoy.polygonscan.com"
   }
 };
 const defaultNativeTokenInfo = (chainId, wagmiChains) => {
@@ -107385,53 +108985,62 @@ const getModalPositionCss = (position2) => {
       return {};
   }
 };
-const getChainColor = (chainId, mode = "light") => {
+const getNetworkColor = (chainId, mode = "light") => {
   switch (chainId) {
-    case 1:
+    case ChainId.MAINNET:
       return mode === "light" ? "#abf" : "#abf";
-    case 137:
+    case ChainId.POLYGON:
       return mode === "light" ? "#c7a6ff" : "#c7a6ff";
-    case 42161:
+    case ChainId.ARBITRUM:
       return mode === "light" ? "#52A7E6" : "#52A7E6";
-    case 10:
+    case ChainId.OPTIMISM:
       return mode === "light" ? "#DB3132" : "#DB3132";
-    case 56:
+    case ChainId.BSC:
       return mode === "light" ? "#CB9C1D" : "#EEB445";
-    case 43114:
+    case ChainId.AVALANCHE:
       return mode === "light" ? "#E84142" : "#E84142";
-    case 100:
+    case ChainId.GNOSIS:
       return mode === "light" ? "#00193C" : "#D8E8FF";
-    case 5:
+    case ChainId.GOERLI:
       return mode === "light" ? "#A77A00" : "#FFA700";
-    case 80001:
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
       return mode === "light" ? "#D68828" : "#FFA700";
     default:
       return mode === "light" ? "#abf" : "#abf";
   }
 };
-const getChainBGColor = (chainId, mode = "light") => {
+const getNetworkBackgroundColor = (chainId, mode = "light") => {
   switch (chainId) {
-    case 1:
+    case ChainId.MAINNET:
       return mode === "light" ? "#132362" : "#132362";
-    case 137:
+    case ChainId.POLYGON:
       return mode === "light" ? "#350881" : "#350881";
-    case 42161:
+    case ChainId.ARBITRUM:
       return mode === "light" ? "#EDF7FF" : "#0C3754";
-    case 10:
+    case ChainId.OPTIMISM:
       return mode === "light" ? "#FFEAE9" : "#390B0C";
-    case 56:
+    case ChainId.BSC:
       return mode === "light" ? "#FFE8AB" : "#554018";
-    case 43114:
+    case ChainId.AVALANCHE:
       return mode === "light" ? "#FBDFDF" : "#390B0C";
-    case 100:
+    case ChainId.GNOSIS:
       return mode === "light" ? "#D8E8FF" : "#00193C";
-    case 5:
+    case ChainId.GOERLI:
       return mode === "light" ? "#FFD871" : "#554018";
-    case 80001:
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
       return mode === "light" ? "#FFE8CD" : "#554018";
     default:
       return mode === "light" ? "#132362" : "#132362";
   }
+};
+const getNetwork = (chainId) => {
+  const network2 = networks[chainId];
+  if (!network2) {
+    throw new Error(`Unknown network chainId: ${chainId}`);
+  }
+  return network2;
 };
 function walletClientToSigner(walletClient) {
   var _chain$contracts;
@@ -107466,17 +109075,35 @@ function publicClientToProvider(publicClient) {
     }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
   return new JsonRpcProvider$1(transport.url, network2);
 }
-const signEthAuthProof = async (walletClient) => {
-  const proofInformation = localStorage.getItem(LocalStorageKey.EthAuthProof);
-  if (proofInformation) {
-    const _proof = JSON.parse(proofInformation);
-    return _proof;
+const WAGMI_PREFIX = "wagmi";
+const getStorageItem = (key2) => {
+  try {
+    const json = localStorage.getItem(`${WAGMI_PREFIX}.${key2}`);
+    if (!json) {
+      return void 0;
+    }
+    const value = JSON.parse(json);
+    return value || void 0;
+  } catch (err) {
+    return void 0;
   }
-  const proofSettingsFromStorage = localStorage.getItem(LocalStorageKey.EthAuthSettings);
-  if (!proofSettingsFromStorage) {
+};
+const setStorageItem = (key2, value) => {
+  try {
+    localStorage.setItem(`${WAGMI_PREFIX}.${key2}`, JSON.stringify(value));
+  } catch (err) {
+  }
+};
+const signEthAuthProof = async (walletClient) => {
+  useConfig();
+  const proofInformation = getStorageItem(LocalStorageKey.EthAuthProof);
+  if (proofInformation) {
+    return proofInformation;
+  }
+  const proofSettings = getStorageItem(LocalStorageKey.EthAuthSettings);
+  if (!proofSettings) {
     throw new Error("No ETHAuth settings found");
   }
-  const proofSettings = JSON.parse(proofSettingsFromStorage);
   const walletAddress = walletClient.account.address;
   const proof = new Proof();
   proof.address = walletAddress;
@@ -107503,22 +109130,6 @@ const validateEthProof = async (walletClient, publicClient, proof) => {
   const provider2 = publicClientToProvider(publicClient);
   const isValid2 = await sequence$1.utils.isValidTypedDataSignature(walletAddress, proof.typedData, decodedProof.signature, provider2);
   return isValid2;
-};
-const getNetworkConfigAndClients = (chainID) => {
-  const network2 = networks[chainID];
-  if (!network2) {
-    throw "invalid network";
-  }
-  const projectAccessKey2 = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || void 0;
-  const metadataClient = new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
-  const indexerClient = new SequenceIndexer(indexerURL(network2.name), projectAccessKey2);
-  const apiClient = new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
-  return {
-    network: network2,
-    metadataClient,
-    indexerClient,
-    apiClient
-  };
 };
 function useEmailAuth({
   connector,
@@ -107682,6 +109293,8 @@ const ConnectWalletContent = (props) => {
   const {
     isConnected
   } = useAccount();
+  const wagmiConfig2 = useConfig();
+  const storage = wagmiConfig2.storage;
   const {
     config: config2 = {}
   } = props;
@@ -107751,7 +109364,7 @@ const ConnectWalletContent = (props) => {
   } = useEmailAuth({
     connector: connectors.find((c2) => c2._wallet.id === "email-waas"),
     onSuccess: async (idToken) => {
-      localStorage.setItem(LocalStorageKey.WaasEmailIdToken, idToken);
+      storage == null || storage.setItem(LocalStorageKey.WaasEmailIdToken, idToken);
       if (emailConnector) {
         connect2({
           connector: emailConnector
@@ -107893,7 +109506,6 @@ const ConnectWalletContent = (props) => {
     alignItems: "center",
     flexWrap: "wrap"
   }, socialAuthConnectors.map((connector) => {
-    var _localStorage$getItem;
     return /* @__PURE__ */ React.createElement(Box, {
       key: connector.uid,
       aspectRatio: "1/1",
@@ -107904,10 +109516,10 @@ const ConnectWalletContent = (props) => {
     }, /* @__PURE__ */ React.createElement(GoogleLogin, {
       type: "icon",
       size: "large",
-      nonce: (_localStorage$getItem = localStorage.getItem(LocalStorageKey.WaasSessionHash)) != null ? _localStorage$getItem : void 0,
+      nonce: getStorageItem(LocalStorageKey.WaasSessionHash),
       onSuccess: (credentialResponse) => {
         if (credentialResponse.credential) {
-          localStorage.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential);
+          storage == null || storage.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential);
           onConnect(connector);
         }
       },
@@ -107917,9 +109529,9 @@ const ConnectWalletContent = (props) => {
     })), connector._wallet.id === "apple-waas" && /* @__PURE__ */ React.createElement(ConnectButton, {
       connector,
       onConnect: () => {
-        const appleClientId2 = localStorage.getItem(LocalStorageKey.WaasAppleClientID) || "";
-        const appleRedirectUri = localStorage.getItem(LocalStorageKey.WaasAppleRedirectURI) || "";
-        const sessionHash = localStorage.getItem(LocalStorageKey.WaasSessionHash) || "";
+        const appleClientId2 = getStorageItem(LocalStorageKey.WaasAppleClientID);
+        const appleRedirectUri = getStorageItem(LocalStorageKey.WaasAppleRedirectURI);
+        const sessionHash = getStorageItem(LocalStorageKey.WaasSessionHash);
         dist.appleAuthHelpers.signIn({
           authOptions: {
             clientId: appleClientId2,
@@ -107931,7 +109543,7 @@ const ConnectWalletContent = (props) => {
           onSuccess: (response) => {
             var _response$authorizati;
             if ((_response$authorizati = response.authorization) != null && _response$authorizati.id_token) {
-              localStorage.setItem(LocalStorageKey.WaasAppleIdToken, response.authorization.id_token);
+              storage == null || storage.setItem(LocalStorageKey.WaasAppleIdToken, response.authorization.id_token);
               onConnect(connector);
             } else {
               console.log("Apple login error: No id_token found");
@@ -108254,6 +109866,7 @@ const SequenceLogo = (_ref) => {
     width: "396"
   })))));
 };
+const [useKitConfig, KitConfigContextProvider] = createGenericContext();
 const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext();
 const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext();
 const [useThemeContext, ThemeContextProvider] = createGenericContext();
@@ -108432,13 +110045,10 @@ let ByteSignature = /* @__PURE__ */ function(ByteSignature2) {
   ByteSignature2["AWARD_ITEM"] = "0xcf378343";
   return ByteSignature2;
 }({});
-const decodeTxnData = async (txns) => {
+const decodeTxnData = async (apiClient, txns) => {
   const mainModule2 = new Interface(mainModuleAbi);
   const callData = mainModule2.encodeFunctionData("selfExecute", [txns]);
   try {
-    const {
-      apiClient
-    } = getNetworkConfigAndClients(1);
     const {
       call: call2
     } = await apiClient.decodeContractCall({
@@ -108446,12 +110056,12 @@ const decodeTxnData = async (txns) => {
     });
     return createTxnData("", call2, 0, callData);
   } catch (err) {
-    throw new Error(err);
+    throw err;
   }
 };
-const decodeTransactions = async (accountAddress, txns) => {
+const decodeTransactions = async (apiClient, accountAddress, txns) => {
   const encodedTxns = encodeTransactions(txns);
-  const decodedTxnDatas = (await decodeTxnData(encodedTxns)).objs;
+  const decodedTxnDatas = (await decodeTxnData(apiClient, encodedTxns)).objs;
   const from2 = utils.getAddress(accountAddress);
   const txnProps = encodedTxns.map((txn, i2) => {
     const decodedTxnData = decodedTxnDatas[i2];
@@ -108684,6 +110294,398 @@ const mainModuleAbi = [{
   payable: false,
   stateMutability: "nonpayable"
 }];
+const useOpenConnectModal = () => {
+  const {
+    setOpenConnectModal,
+    openConnectModalState
+  } = useConnectModalContext();
+  return {
+    setOpenConnectModal,
+    openConnectModalState
+  };
+};
+const useTheme = () => {
+  const {
+    setTheme,
+    theme,
+    position: position2,
+    setPosition
+  } = useThemeContext();
+  return {
+    setTheme,
+    theme,
+    position: position2,
+    setPosition
+  };
+};
+const useWalletSettings = () => {
+  const {
+    setDisplayedAssets,
+    displayedAssets
+  } = useWalletConfigContext();
+  return {
+    displayedAssets,
+    setDisplayedAssets
+  };
+};
+let _pendingFeeConfirmation;
+function useWaasFeeOptions() {
+  var _connections$find;
+  const connections = useConnections();
+  const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
+  const [pendingFeeOptionConfirmation, setPendingFeeOptionConfirmation] = reactExports.useState();
+  function confirmPendingFeeOption(id2, feeTokenAddress) {
+    var _pendingFeeConfirmati;
+    (_pendingFeeConfirmati = _pendingFeeConfirmation) == null || _pendingFeeConfirmati.resolve({
+      id: id2,
+      feeTokenAddress,
+      confirmed: true
+    });
+    setPendingFeeOptionConfirmation(void 0);
+    _pendingFeeConfirmation = void 0;
+  }
+  function rejectPendingFeeOption(id2) {
+    var _pendingFeeConfirmati2;
+    (_pendingFeeConfirmati2 = _pendingFeeConfirmation) == null || _pendingFeeConfirmati2.resolve({
+      id: id2,
+      feeTokenAddress: void 0,
+      confirmed: false
+    });
+    setPendingFeeOptionConfirmation(void 0);
+    _pendingFeeConfirmation = void 0;
+  }
+  reactExports.useEffect(() => {
+    async function setup() {
+      if (!waasConnector) {
+        return;
+      }
+      const waasProvider = waasConnector.sequenceWaasProvider;
+      if (!waasProvider) {
+        return;
+      }
+      waasProvider.feeConfirmationHandler = {
+        confirmFeeOption(id2, options, txs, chainId) {
+          const pending = new Deferred();
+          setPendingFeeOptionConfirmation({
+            id: id2,
+            options,
+            chainId
+          });
+          _pendingFeeConfirmation = pending;
+          return pending.promise;
+        }
+      };
+    }
+    setup();
+  });
+  return [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption];
+}
+const useProjectAccessKey = () => {
+  const {
+    projectAccessKey: projectAccessKey2
+  } = useKitConfig();
+  return projectAccessKey2;
+};
+const useAPIClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const apiClient = reactExports.useMemo(() => {
+    return new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
+  }, [projectAccessKey2]);
+  return apiClient;
+};
+const useMetadataClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const metadataClient = reactExports.useMemo(() => {
+    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
+  }, [projectAccessKey2]);
+  return metadataClient;
+};
+const useIndexerClient = (chainId) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const network2 = networks[chainId];
+  if (!indexerClients.has(chainId)) {
+    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+  }
+  const indexerClient = indexerClients.get(chainId);
+  if (!indexerClient) {
+    throw new Error("Indexer client not found");
+  }
+  return indexerClient;
+};
+const useIndexerClients = (chainIds) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const result = /* @__PURE__ */ new Map();
+  for (const chainId of chainIds) {
+    const network2 = networks[chainId];
+    if (!indexerClients.has(chainId)) {
+      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+    }
+    const indexerClient = indexerClients.get(chainId);
+    if (!indexerClient) {
+      throw new Error("Indexer client not found");
+    }
+    result.set(chainId, indexerClient);
+  }
+  return result;
+};
+const _excluded = ["chainIds"];
+const time = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
+};
+const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
+  const res = await indexerClient.getEtherBalance({
+    accountAddress
+  });
+  const tokenBalance = {
+    chainId,
+    contractAddress: zeroAddress,
+    accountAddress,
+    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
+    contractType: ContractType$1.UNKNOWN,
+    blockHash: "",
+    blockNumber: 0,
+    tokenID: ""
+  };
+  return tokenBalance;
+};
+const getTokenBalances = async (indexerClient, args) => {
+  var _args$includeMetadata, _args$verifiedOnly;
+  const res = await indexerClient.getTokenBalances(_extends$1({
+    accountAddress: args.accountAddress,
+    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
+    }
+  }, args.contractAddress && {
+    contractAddress: args.contractAddress
+  }));
+  return (res == null ? void 0 : res.balances) || [];
+};
+const getBalances = async (indexerClient, chainId, args) => {
+  if (!args.accountAddress) {
+    return [];
+  }
+  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
+  return balances;
+};
+const useBalances = (_ref) => {
+  let {
+    chainIds
+  } = _ref, args = _objectWithoutPropertiesLoose(_ref, _excluded);
+  const indexerClients = useIndexerClients(chainIds);
+  return useQuery$1({
+    queryKey: ["balances", chainIds, args],
+    queryFn: async () => {
+      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
+      return res;
+    },
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const useCoinBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["coinBalance", args],
+    queryFn: async () => {
+      if (compareAddress$1((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
+        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
+        return res;
+      } else {
+        const res = await getTokenBalances(indexerClient, args);
+        return res[0];
+      }
+    },
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
+const useCollectibleBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectibleBalance", args],
+    queryFn: async () => {
+      var _args$verifiedOnly2;
+      const res = await indexerClient.getTokenBalances({
+        accountAddress: args.accountAddress,
+        contractAddress: args.contractAddress,
+        tokenID: args.tokenId,
+        includeMetadata: true,
+        metadataOptions: {
+          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
+        }
+      });
+      return res.balances[0];
+    },
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
+  });
+};
+const getCollectionBalance = async (indexerClient, args) => {
+  var _args$includeMetadata2, _args$verifiedOnly3;
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    contractAddress: args.contractAddress,
+    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
+    }
+  });
+  return (res == null ? void 0 : res.balances) || [];
+};
+const useCollectionBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectionBalance", args],
+    queryFn: () => getCollectionBalance(indexerClient, args),
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
+  });
+};
+const useExchangeRate = (toCurrency) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["exchangeRate", toCurrency],
+    queryFn: async () => {
+      if (toCurrency === "USD") {
+        return 1;
+      }
+      const res = await apiClient.getExchangeRate({
+        toCurrency
+      });
+      return res.exchangeRate.value;
+    },
+    retry: true,
+    staleTime: time.oneMinute * 10
+  });
+};
+const getCoinPrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCoinPrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCoinPrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["coinPrices", tokens],
+    queryFn: () => getCoinPrices(apiClient, tokens),
+    retry: true,
+    staleTime: time.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const getCollectiblePrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCollectiblePrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCollectiblePrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["useCollectiblePrices", tokens],
+    queryFn: () => getCollectiblePrices(apiClient, tokens),
+    retry: true,
+    staleTime: time.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
+    queryFn: async () => {
+      const res = await metadataClient.getTokenMetadata({
+        chainID: String(chainId),
+        contractAddress,
+        tokenIDs: tokenIds
+      });
+      return res.tokenMetadata;
+    },
+    retry: true,
+    staleTime: time.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const useContractInfo = (chainId, contractAddress) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["contractInfo", chainId, contractAddress],
+    queryFn: async () => {
+      const res = await metadataClient.getContractInfo({
+        chainID: String(chainId),
+        contractAddress
+      });
+      return res.contractInfo;
+    },
+    retry: true,
+    staleTime: time.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const getTransactionHistory = async (indexerClient, {
+  contractAddress,
+  accountAddress,
+  tokenId,
+  page
+}) => {
+  const res = indexerClient.getTransactionHistory({
+    includeMetadata: true,
+    page,
+    filter: {
+      accountAddress,
+      contractAddress,
+      tokenID: tokenId
+    }
+  });
+  return res;
+};
+const useTransactionHistory = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useInfiniteQuery({
+    queryKey: ["transactionHistory", args],
+    queryFn: ({
+      pageParam
+    }) => {
+      return getTransactionHistory(indexerClient, _extends$1({}, args, {
+        page: {
+          page: pageParam
+        }
+      }));
+    },
+    getNextPageParam: ({
+      page
+    }) => {
+      if (!page.more) {
+        return void 0;
+      }
+      return (page == null ? void 0 : page.page) || 1;
+    },
+    initialPageParam: 1,
+    retry: true,
+    staleTime: time.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
 const TxnDetailsSkeleton = () => {
   return /* @__PURE__ */ React.createElement(Box, {
     alignItems: "center",
@@ -108723,12 +110725,12 @@ const TxnDetails = ({
   txs,
   chainId
 }) => {
-  useConfig();
+  const apiClient = useAPIClient();
   const [decodingType, setDecodingType] = reactExports.useState(void 0);
   const [transferProps, setTransferProps] = reactExports.useState([]);
   const [awardItemProps, setAwardItemProps] = reactExports.useState([]);
   const getTxnProps = async () => {
-    const decodedTxnDatas = await decodeTransactions(address, txs);
+    const decodedTxnDatas = await decodeTransactions(apiClient, address, txs);
     setDecodingType(decodedTxnDatas[0].type);
     if (decodedTxnDatas[0].type === "transfer") {
       setTransferProps(decodedTxnDatas);
@@ -108777,23 +110779,15 @@ const TransferItemInfo = ({
   const {
     data: balances = [],
     isPending: isPendingBalances
-  } = useBalances$1({
-    accountAddress: address,
+  } = useBalances({
     chainIds: [chainId],
+    accountAddress: address,
     contractAddress
-  }, {
-    hideUnlistedTokens: false
   });
   const {
     data: tokenMetadata,
     isPending: isPendingTokenMetadata
-  } = useTokenMetadata$1({
-    tokens: {
-      chainId,
-      contractAddress,
-      tokenIds: (_transferProps$0$toke = (_transferProps$6 = transferProps[0]) == null ? void 0 : _transferProps$6.tokenIds) != null ? _transferProps$0$toke : []
-    }
-  });
+  } = useTokenMetadata(chainId, contractAddress, (_transferProps$0$toke = (_transferProps$6 = transferProps[0]) == null ? void 0 : _transferProps$6.tokenIds) != null ? _transferProps$0$toke : []);
   const tokenBalance = contractAddress ? balances.find((b3) => utils.getAddress(b3.contractAddress) === utils.getAddress(contractAddress)) : void 0;
   const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
   const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image : tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.logoURI;
@@ -108946,7 +110940,7 @@ const THEMES = {
   light: "light"
 };
 const KitProvider = (props) => {
-  var _connections$find, _pendingRequestConfir, _pendingRequestConfir2, _pendingRequestConfir3;
+  var _connections$find, _params, _pendingRequestConfir, _pendingRequestConfir2, _pendingRequestConfir3;
   const {
     config: config2,
     children
@@ -108979,9 +110973,11 @@ const KitProvider = (props) => {
     isConnected
   } = useAccount();
   const connections = useConnections();
+  const wagmiConfig2 = useConfig();
   const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
   const [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest] = useWaasConfirmationHandler(waasConnector);
-  const googleClientId2 = localStorage.getItem(LocalStorageKey.WaasGoogleClientID) || "";
+  const googleWaasConnector = wagmiConfig2.connectors.find((c2) => c2.id === "sequence-waas" && c2._wallet.id === "google-waas");
+  const googleClientId2 = (googleWaasConnector == null || (_params = googleWaasConnector.params) == null ? void 0 : _params.googleClientId) || "";
   const setupAnalytics2 = (projectAccessKey2) => {
     const s2 = sequence$1.initWallet(projectAccessKey2);
     const sequenceAnalytics = s2.client.analytics;
@@ -109002,9 +110998,8 @@ const KitProvider = (props) => {
     }
   };
   reactExports.useEffect(() => {
-    const projectAccessKey2 = localStorage.getItem(LocalStorageKey.ProjectAccessKey) || "";
     if (!disableAnalytics) {
-      setupAnalytics2(projectAccessKey2);
+      setupAnalytics2(config2.projectAccessKey);
     }
   }, []);
   reactExports.useEffect(() => {
@@ -109023,17 +111018,19 @@ const KitProvider = (props) => {
     else {
       localStorage.setItem(LocalStorageKey.Theme, theme);
     }
-    localStorage.setItem(LocalStorageKey.EthAuthSettings, JSON.stringify({
+    setStorageItem(LocalStorageKey.EthAuthSettings, {
       expiry,
       app,
       origin: origin || location.origin,
       nonce
-    }));
+    });
   }, [theme, ethAuth]);
   reactExports.useEffect(() => {
     setDisplayedAssets(displayedAssets);
   }, [displayedAssetsSetting]);
-  return /* @__PURE__ */ React.createElement(ThemeContextProvider, {
+  return /* @__PURE__ */ React.createElement(KitConfigContextProvider, {
+    value: config2
+  }, /* @__PURE__ */ React.createElement(ThemeContextProvider, {
     value: {
       theme,
       setTheme,
@@ -109213,94 +111210,8 @@ const KitProvider = (props) => {
     height: "4",
     width: "4",
     marginTop: "1"
-  }, /* @__PURE__ */ React.createElement(SequenceLogo, null)))))))), children)))));
+  }, /* @__PURE__ */ React.createElement(SequenceLogo, null)))))))), children))))));
 };
-const useOpenConnectModal = () => {
-  const {
-    setOpenConnectModal,
-    openConnectModalState
-  } = useConnectModalContext();
-  return {
-    setOpenConnectModal,
-    openConnectModalState
-  };
-};
-const useTheme = () => {
-  const {
-    setTheme,
-    theme,
-    position: position2,
-    setPosition
-  } = useThemeContext();
-  return {
-    setTheme,
-    theme,
-    position: position2,
-    setPosition
-  };
-};
-const useWalletSettings = () => {
-  const {
-    setDisplayedAssets,
-    displayedAssets
-  } = useWalletConfigContext();
-  return {
-    displayedAssets,
-    setDisplayedAssets
-  };
-};
-let _pendingFeeConfirmation;
-function useWaasFeeOptions() {
-  var _connections$find;
-  const connections = useConnections();
-  const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
-  const [pendingFeeOptionConfirmation, setPendingFeeOptionConfirmation] = reactExports.useState();
-  function confirmPendingFeeOption(id2, feeTokenAddress) {
-    var _pendingFeeConfirmati;
-    (_pendingFeeConfirmati = _pendingFeeConfirmation) == null || _pendingFeeConfirmati.resolve({
-      id: id2,
-      feeTokenAddress,
-      confirmed: true
-    });
-    setPendingFeeOptionConfirmation(void 0);
-    _pendingFeeConfirmation = void 0;
-  }
-  function rejectPendingFeeOption(id2) {
-    var _pendingFeeConfirmati2;
-    (_pendingFeeConfirmati2 = _pendingFeeConfirmation) == null || _pendingFeeConfirmati2.resolve({
-      id: id2,
-      feeTokenAddress: void 0,
-      confirmed: false
-    });
-    setPendingFeeOptionConfirmation(void 0);
-    _pendingFeeConfirmation = void 0;
-  }
-  reactExports.useEffect(() => {
-    async function setup() {
-      if (!waasConnector) {
-        return;
-      }
-      const waasProvider = waasConnector.sequenceWaasProvider;
-      if (!waasProvider) {
-        return;
-      }
-      waasProvider.feeConfirmationHandler = {
-        confirmFeeOption(id2, options, txs, chainId) {
-          const pending = new Deferred();
-          setPendingFeeOptionConfirmation({
-            id: id2,
-            options,
-            chainId
-          });
-          _pendingFeeConfirmation = pending;
-          return pending.promise;
-        }
-      };
-    }
-    setup();
-  });
-  return [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption];
-}
 var e = () => typeof window != "undefined" && window.localStorage.getItem("IS_PAPER_DEV") === "true", i = () => typeof window != "undefined" && window.location.origin.includes("paper.xyz"), r = () => typeof window != "undefined" && window.location.origin.includes("thirdweb.com"), n = () => {
   var t2;
   return e() ? (t2 = window.localStorage.getItem("PAPER_DEV_URL")) != null ? t2 : "http://localhost:3000" : i() || r() ? window.location.origin : "https://withpaper.com";
@@ -110183,8 +112094,8 @@ var createCache = function createCache2(options) {
       currentSheet.insert(rule);
     })];
     var serializer = middleware(omnipresentPlugins.concat(stylisPlugins, finalizingPlugins));
-    var stylis = function stylis2(styles2) {
-      return serialize(compile(styles2), serializer);
+    var stylis = function stylis2(styles) {
+      return serialize(compile(styles), serializer);
     };
     _insert = function insert(selector2, serialized, sheet, shouldCache) {
       currentSheet = sheet;
@@ -110326,19 +112237,10 @@ function handleInterpolation(mergedProps, registered, interpolation) {
             next2 = next2.next;
           }
         }
-        var styles2 = interpolation.styles + ";";
-        return styles2;
+        var styles = interpolation.styles + ";";
+        return styles;
       }
       return createStringFromObject(mergedProps, registered, interpolation);
-    }
-    case "function": {
-      if (mergedProps !== void 0) {
-        var previousCursor = cursor;
-        var result = interpolation(mergedProps);
-        cursor = previousCursor;
-        return handleInterpolation(mergedProps, registered, result);
-      }
-      break;
     }
   }
   if (registered == null) {
@@ -110397,36 +112299,35 @@ var serializeStyles = function serializeStyles2(args, registered, mergedProps) {
     return args[0];
   }
   var stringMode = true;
-  var styles2 = "";
+  var styles = "";
   cursor = void 0;
   var strings = args[0];
   if (strings == null || strings.raw === void 0) {
     stringMode = false;
-    styles2 += handleInterpolation(mergedProps, registered, strings);
+    styles += handleInterpolation(mergedProps, registered, strings);
   } else {
-    styles2 += strings[0];
+    styles += strings[0];
   }
   for (var i2 = 1; i2 < args.length; i2++) {
-    styles2 += handleInterpolation(mergedProps, registered, args[i2]);
+    styles += handleInterpolation(mergedProps, registered, args[i2]);
     if (stringMode) {
-      styles2 += strings[i2];
+      styles += strings[i2];
     }
   }
   labelPattern.lastIndex = 0;
   var identifierName = "";
   var match2;
-  while ((match2 = labelPattern.exec(styles2)) !== null) {
+  while ((match2 = labelPattern.exec(styles)) !== null) {
     identifierName += "-" + // $FlowFixMe we know it's not null
     match2[1];
   }
-  var name2 = murmur2(styles2) + identifierName;
+  var name2 = murmur2(styles) + identifierName;
   return {
     name: name2,
-    styles: styles2,
+    styles,
     next: cursor
   };
 };
-var isBrowser = true;
 function getRegisteredStyles(registered, registeredStyles, classNames) {
   var rawClassName = "";
   classNames.split(" ").forEach(function(className) {
@@ -110446,17 +112347,13 @@ var registerStyles = function registerStyles2(cache, serialized, isStringTag) {
     // the tree but if it's a string tag, we know it won't
     // so we don't have to add it to registered cache.
     // this improves memory usage since we can avoid storing the whole style string
-    (isStringTag === false || // we need to always store it if we're in compat mode and
-    // in node since emotion-server relies on whether a style is in
-    // the registered cache to know whether a style is global or not
-    // also, note that this check will be dead code eliminated in the browser
-    isBrowser === false) && cache.registered[className] === void 0
+    cache.registered[className] === void 0
   ) {
     cache.registered[className] = serialized.styles;
   }
 };
 var insertStyles = function insertStyles2(cache, serialized, isStringTag) {
-  registerStyles(cache, serialized, isStringTag);
+  registerStyles(cache, serialized);
   var className = cache.key + "-" + serialized.name;
   if (cache.inserted[serialized.name] === void 0) {
     var current = serialized;
@@ -110490,7 +112387,7 @@ var createEmotion = function createEmotion2(options) {
       args[_key] = arguments[_key];
     }
     var serialized = serializeStyles(args, cache.registered, void 0);
-    insertStyles(cache, serialized, false);
+    insertStyles(cache, serialized);
     return cache.key + "-" + serialized.name;
   };
   var keyframes2 = function keyframes22() {
@@ -110591,7 +112488,7 @@ var $ = (t2, r2, e2) => r2 in t2 ? ue(t2, r2, { enumerable: true, configurable: 
 };
 var ge = (t2, r2) => () => (r2 || t2((r2 = { exports: {} }).exports, r2), r2.exports);
 var L = ge((bt, Ie2) => {
-  Ie2.exports = { name: "@paperxyz/react-client-sdk", version: "1.1.3", description: "Paper React Client SDK for Checkout Elements", license: "Apache-2.0", main: "dist/index.js", types: "./dist/index.d.ts", type: "module", files: ["dist/**"], exports: { ".": { import: "./dist/index.js", types: "./dist/index.d.ts" } }, bugs: { url: "https://github.com/paperxyz/js-sdk/issues" }, homepage: "https://github.com/paperxyz/js-sdk", repository: { type: "git", url: "git+https://github.com/paperxyz/js-sdk.git" }, author: "Paper <support@withpaper.com>", keywords: [], scripts: { build: "tsup-node src/index.ts --env.NODE_ENV production --env.ESM_ONLY true ", "build-package-checkout": "yarn build", "dev-checkout": "tsup-node src/index.ts --env.NODE_ENV development --watch --env.ESM_ONLY true", lint: 'eslint "src/**/*.ts*"', "lint:fix": "yarn lint --fix", clean: "rm -rf .turbo && rm -rf node_modules && rm -rf dist", prepare: "cd ../../ && node ./scripts/postInstall && cd ./packages/react-client-sdk" }, peerDependencies: { react: ">=16.0.0", "react-dom": ">=16.0.0" }, devDependencies: { "@paperxyz/tsconfig": "*", "@types/react": "18.0.26", "eslint-config-paperxyz": "*", react: "^18.2.0", "react-dom": "^18.2.0", typescript: "^4.7.4" }, dependencies: { "@emotion/css": "11.10.5", "@headlessui/react": "1.7.6", "@paperxyz/js-client-sdk": "*", "@paperxyz/sdk-common-utilities": "*" } };
+  Ie2.exports = { name: "@paperxyz/react-client-sdk", version: "1.1.5", description: "Paper React Client SDK for Checkout Elements", license: "Apache-2.0", main: "dist/index.js", types: "./dist/index.d.ts", type: "module", files: ["dist/**"], exports: { ".": { import: "./dist/index.js", types: "./dist/index.d.ts" } }, bugs: { url: "https://github.com/paperxyz/js-sdk/issues" }, homepage: "https://github.com/paperxyz/js-sdk", repository: { type: "git", url: "git+https://github.com/paperxyz/js-sdk.git" }, author: "Paper <support@withpaper.com>", keywords: [], scripts: { build: "tsup-node src/index.ts --env.NODE_ENV production --env.ESM_ONLY true ", "build-package-checkout": "yarn build", "dev-checkout": "tsup-node src/index.ts --env.NODE_ENV development --watch --env.ESM_ONLY true", lint: 'eslint "src/**/*.ts*"', "lint:fix": "yarn lint --fix", clean: "rm -rf .turbo && rm -rf node_modules && rm -rf dist", prepare: "cd ../../ && node ./scripts/postInstall && cd ./packages/react-client-sdk" }, peerDependencies: { react: ">=16.0.0", "react-dom": ">=16.0.0" }, devDependencies: { "@paperxyz/tsconfig": "*", "@types/react": "18.0.26", "eslint-config-paperxyz": "*", react: "^18.2.0", "react-dom": "^18.2.0", typescript: "^4.7.4" }, dependencies: { "@emotion/css": "11.10.5", "@headlessui/react": "1.7.6", "@paperxyz/js-client-sdk": "*", "@paperxyz/sdk-common-utilities": "*" } };
 });
 var Y = reactExports.createContext({ chainName: "Polygon", setChainName: () => {
 }, clientId: "", appName: "" }), b2 = () => reactExports.useContext(Y);
@@ -110699,6 +112596,7 @@ const useCheckoutModal = () => {
     settings
   };
 };
+const [useNavigationContext, NavigationContextProvider] = createGenericContext();
 function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
@@ -110782,102 +112680,8 @@ const getPaperNetworkName = (network2) => {
   }
   return capitalize(network2.name);
 };
-const getNativeToken = async ({
-  accountAddress,
-  chainId
-}) => {
-  try {
-    const {
-      indexerClient
-    } = getNetworkConfigAndClients(chainId);
-    const res = await indexerClient.getEtherBalance({
-      accountAddress
-    });
-    const tokenBalance = {
-      chainId,
-      contractAddress: AddressZero,
-      accountAddress,
-      balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
-      contractType: ContractType$1.UNKNOWN,
-      blockHash: "",
-      blockNumber: 0,
-      tokenID: ""
-    };
-    return [tokenBalance];
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const getTokenBalances = async ({
-  accountAddress,
-  chainId,
-  verifiedOnly
-}) => {
-  try {
-    const {
-      indexerClient
-    } = getNetworkConfigAndClients(chainId);
-    const res = await indexerClient.getTokenBalances({
-      accountAddress,
-      includeMetadata: true,
-      metadataOptions: {
-        verifiedOnly: verifiedOnly != null ? verifiedOnly : true
-      }
-    });
-    return (res == null ? void 0 : res.balances) || [];
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const fetchBalances = async ({
-  accountAddress,
-  chainId
-}) => {
-  try {
-    const tokenBalances = (await Promise.all([getNativeToken({
-      accountAddress,
-      chainId
-    }), getTokenBalances({
-      accountAddress,
-      chainId
-    })])).flat();
-    return tokenBalances;
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const fetchTokenMetadata = async ({
-  chainId,
-  tokenId,
-  contractAddress
-}) => {
-  const {
-    metadataClient
-  } = getNetworkConfigAndClients(chainId);
-  const response = await metadataClient.getTokenMetadata({
-    chainID: String(chainId),
-    contractAddress,
-    tokenIDs: [tokenId]
-  });
-  return response.tokenMetadata[0];
-};
-const fetchContractInfo = async ({
-  chainID,
-  contractAddress
-}) => {
-  const {
-    metadataClient
-  } = getNetworkConfigAndClients(chainID);
-  const response = await metadataClient.getContractInfo({
-    chainID,
-    contractAddress
-  });
-  return response.contractInfo;
-};
 const fetchPaperSecret = async ({
+  apiClient,
   chainId,
   email: email2,
   contractAddress,
@@ -110890,10 +112694,7 @@ const fetchPaperSecret = async ({
   methodName,
   recipientAddress
 }) => {
-  const {
-    network: network2,
-    apiClient
-  } = await getNetworkConfigAndClients(chainId);
+  const network2 = getNetwork(chainId);
   const chainName = getPaperNetworkName(network2);
   const paramsJson = JSON.stringify(_extends({
     title: receiptTitle,
@@ -110924,37 +112725,11 @@ const fetchPaperSecret = async ({
   });
   return secret;
 };
-const time = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const useBalances = (args) => useQuery$1({
-  queryKey: ["balances", args],
-  queryFn: () => fetchBalances(args),
-  retry: true,
-  staleTime: 10 * time.oneMinute,
-  enabled: !!args.chainId && !!args.accountAddress
-});
-const useTokenMetadata = (args) => useQuery$1({
-  queryKey: ["useTokenMetadata", args],
-  queryFn: () => fetchTokenMetadata(args),
-  retry: true,
-  staleTime: 10 * time.oneMinute,
-  enabled: !!args.chainId && !!args.contractAddress
-});
-const useContractInfo = (args) => useQuery$1({
-  queryKey: ["useContractInfo", args],
-  queryFn: () => fetchContractInfo(args),
-  retry: true,
-  staleTime: 60 * time.oneMinute,
-  enabled: !!args.chainID && !!args.contractAddress
-});
-const [useNavigationContext, NavigationContextProvider] = createGenericContext();
 const PaperTransaction = ({
   settings
 }) => {
   var _settings$creditCardC, _settings$creditCardC2;
+  const apiClient = useAPIClient();
   const [emailEditState, setEmailEditState] = reactExports.useState(true);
   const [email2, setEmail] = reactExports.useState(((_settings$creditCardC = settings.creditCardCheckout) == null ? void 0 : _settings$creditCardC.email) || "");
   const [inputEmailAddress, setInputEmailAddress] = reactExports.useState(email2);
@@ -110976,12 +112751,13 @@ const PaperTransaction = ({
     setPaperSecretLoading(true);
     try {
       if (!email2) {
-        throw "No email address found";
+        throw new Error("No email address found");
       }
       if (!settings.creditCardCheckout) {
-        throw "No credit card checkout settings found";
+        throw new Error("No credit card checkout settings found");
       }
       const secret = await fetchPaperSecret(_extends({
+        apiClient,
         email: email2
       }, settings.creditCardCheckout));
       setPaperSecret(secret);
@@ -111408,24 +113184,18 @@ const OrderSummaryItem = ({
   quantityRaw,
   chainId
 }) => {
+  var _tokenMetadata$;
   const {
     chains: chains2
   } = useConfig();
   const {
     data: tokenMetadata,
     isPending: isPendingTokenMetadata
-  } = useTokenMetadata({
-    chainId,
-    contractAddress,
-    tokenId
-  });
+  } = useTokenMetadata(chainId, contractAddress, [tokenId]);
   const {
     data: contractInfo,
     isPending: isPendingContractInfo
-  } = useContractInfo({
-    chainID: String(chainId),
-    contractAddress
-  });
+  } = useContractInfo(chainId, contractAddress);
   const isPending = isPendingTokenMetadata || isPendingContractInfo;
   if (isPending) {
     return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
@@ -111435,7 +113205,7 @@ const OrderSummaryItem = ({
     name: name2 = "unknown",
     image,
     decimals = 0
-  } = tokenMetadata || {};
+  } = (_tokenMetadata$ = tokenMetadata == null ? void 0 : tokenMetadata[0]) != null ? _tokenMetadata$ : {};
   const {
     logoURI: collectionLogoURI,
     name: collectionName = "Unknown Collection"
@@ -111558,16 +113328,13 @@ const CheckoutSelection = () => {
   const {
     data: contractInfoData,
     isPending: isPendingContractInfo
-  } = useContractInfo({
-    contractAddress: (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin.contractAddress) || "",
-    chainID: String((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1)
-  });
+  } = useContractInfo((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin.contractAddress) || "");
   const {
     data: balancesData,
     isPending: isPendingBalances
   } = useBalances({
-    accountAddress: accountAddress || "",
-    chainId: (cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1
+    chainIds: [(cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1],
+    accountAddress: accountAddress || ""
   });
   const isPending = (isPendingContractInfo || isPendingBalances) && cryptoCheckoutSettings;
   const isNativeToken = compareAddress((cryptoCheckoutSettings == null || (_cryptoCheckoutSettin2 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin2.contractAddress) || "", AddressZero);
@@ -112250,7 +114017,7 @@ const Homepage = () => {
     console.log(error == null ? void 0 : error.message);
   }, [error]);
   const chainId = useChainId();
-  const { indexerClient } = getNetworkConfigAndClients(chainId);
+  const indexerClient = useIndexerClient(chainId);
   const [feeOptionBalances, setFeeOptionBalances] = React.useState([]);
   const [feeOptionAlert, setFeeOptionAlert] = React.useState(void 0);
   reactExports.useEffect(() => {
@@ -112262,7 +114029,7 @@ const Homepage = () => {
     window.location.search = searchParams2.toString();
   };
   const checkTokenBalancesForFeeOptions = async () => {
-    if (pendingFeeOptionConfirmation) {
+    if (pendingFeeOptionConfirmation && walletClient) {
       const [account2] = await walletClient.getAddresses();
       const nativeTokenBalance = await indexerClient.getEtherBalance({ accountAddress: account2 });
       const tokenBalances = await indexerClient.getTokenBalances({
@@ -112274,12 +114041,19 @@ const Homepage = () => {
       const balances = pendingFeeOptionConfirmation.options.map((option) => {
         var _a3;
         if (option.token.contractAddress === null) {
-          return { tokenName: option.token.name, decimals: option.token.decimals, balance: nativeTokenBalance.balance.balanceWei };
+          return {
+            tokenName: option.token.name,
+            decimals: option.token.decimals || 0,
+            balance: nativeTokenBalance.balance.balanceWei
+          };
         } else {
           return {
             tokenName: option.token.name,
-            decimals: option.token.decimals,
-            balance: ((_a3 = tokenBalances.balances.find((b3) => b3.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())) == null ? void 0 : _a3.balance) || "0"
+            decimals: option.token.decimals || 0,
+            balance: ((_a3 = tokenBalances.balances.find((b3) => {
+              var _a4;
+              return b3.contractAddress.toLowerCase() === ((_a4 = option.token.contractAddress) == null ? void 0 : _a4.toLowerCase());
+            })) == null ? void 0 : _a3.balance) || "0"
           };
         }
       });
@@ -112310,7 +114084,7 @@ const Homepage = () => {
     }
   }, [txnData, txnData2]);
   const signMessage2 = async () => {
-    if (!walletClient) {
+    if (!walletClient || !publicClient) {
       return;
     }
     setIsSigningMessage(true);
@@ -112343,7 +114117,7 @@ const Homepage = () => {
       return;
     }
     const [account2] = await walletClient.getAddresses();
-    sendTransaction2({ to: account2, value: "0", gas: null });
+    sendTransaction2({ to: account2, value: BigInt(0), gas: null });
   };
   const runMintNFT = async () => {
     if (!walletClient) {
@@ -112451,7 +114225,7 @@ const Homepage = () => {
                 onClick: runSendTransaction
               }
             ),
-            lastTxnDataHash && ((txnData == null ? void 0 : txnData.chainId) === chainId || txnData) && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+            networkForCurrentChainId.blockExplorer && lastTxnDataHash && ((txnData == null ? void 0 : txnData.chainId) === chainId || txnData) && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
               Text,
               {
                 as: "a",
@@ -112495,7 +114269,7 @@ const Homepage = () => {
                 onClick: runMintNFT
               }
             ),
-            lastTxnDataHash2 && ((txnData2 == null ? void 0 : txnData2.chainId) === chainId || txnData2) && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+            networkForCurrentChainId.blockExplorer && lastTxnDataHash2 && ((txnData2 == null ? void 0 : txnData2.chainId) === chainId || txnData2) && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
               Text,
               {
                 as: "a",
@@ -112556,7 +114330,7 @@ const Homepage = () => {
                             "): "
                           ] }),
                           " ",
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(BigInt(option.value), option.token.decimals) })
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(BigInt(option.value), option.token.decimals || 0) })
                         ] }),
                         /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
                           /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Text, { children: [
@@ -112567,7 +114341,7 @@ const Homepage = () => {
                           " ",
                           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(
                             BigInt(((_a3 = feeOptionBalances.find((b3) => b3.tokenName === option.token.name)) == null ? void 0 : _a3.balance) || "0"),
-                            option.token.decimals
+                            option.token.decimals || 0
                           ) })
                         ] })
                       ] }),
@@ -112586,12 +114360,12 @@ const Homepage = () => {
                     const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find(
                       (option) => option.token.name === selectedFeeOptionTokenName
                     );
-                    if (selected.token.contractAddress !== void 0) {
+                    if ((selected == null ? void 0 : selected.token.contractAddress) !== void 0) {
                       const balance = parseUnits(
-                        (_b2 = feeOptionBalances.find((b3) => b3.tokenName === selected.token.name)) == null ? void 0 : _b2.balance,
-                        selected.token.decimals
+                        ((_b2 = feeOptionBalances.find((b3) => b3.tokenName === selected.token.name)) == null ? void 0 : _b2.balance) || "0",
+                        selected.token.decimals || 0
                       );
-                      const feeOptionValue = parseUnits(selected.value, selected.token.decimals);
+                      const feeOptionValue = parseUnits(selected.value, selected.token.decimals || 0);
                       if (balance && balance < feeOptionValue) {
                         setFeeOptionAlert({
                           title: "Insufficient balance",
@@ -112887,6 +114661,7 @@ const wagmiConfig = createConfig({
   connectors: connectionMode === "waas" ? getWaasConnectors() : getUniversalConnectors()
 });
 const kitConfig = {
+  projectAccessKey,
   defaultTheme: "dark",
   signIn: {
     projectName: "Kit Demo",
@@ -112935,13 +114710,13 @@ export {
   HttpRequestError as H,
   InvalidAddressError as I,
   __vitePreload as _,
-  getDefaultExportFromCjs$1 as a,
-  bnExports as b,
+  getAugmentedNamespace as a,
+  getDefaultExportFromCjs$1 as b,
   commonjsGlobal as c,
-  require$$0$2 as d,
-  eventemitter3Exports as e,
-  global$1 as f,
-  getAugmentedNamespace as g,
+  bnExports as d,
+  require$$2$1 as e,
+  eventemitter3Exports as f,
+  global$1 as g,
   BaseError$2 as h,
   inherits_browserExports as i,
   getUrl as j,
@@ -112952,7 +114727,7 @@ export {
   encodeAbiParameters as o,
   process$1 as p,
   isHex as q,
-  require$$2$1 as r,
-  stringify$2 as s,
+  require$$0$2 as r,
+  stringify$1 as s,
   tslib_es6$2 as t
 };
