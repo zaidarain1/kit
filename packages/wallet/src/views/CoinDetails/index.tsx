@@ -1,7 +1,13 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
+import {
+  getNativeTokenInfoByChainId,
+  useExchangeRate,
+  useCoinPrices,
+  useTransactionHistory,
+  useCoinBalance
+} from '@0xsequence/kit'
 
 import { useAccount, useConfig } from 'wagmi'
 
@@ -10,7 +16,7 @@ import { CoinDetailsSkeleton } from './Skeleton'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
-import { useCoinBalance, useConversionRate, useSettings, useCoinPrices, useTransactionHistory, useNavigation } from '../../hooks'
+import { useSettings, useNavigation } from '../../hooks'
 import { HEADER_HEIGHT } from '../../constants'
 import { compareAddress, computeBalanceFiat, formatDisplay, flattenPaginatedTransactionHistory } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
@@ -42,27 +48,21 @@ export const CoinDetails = ({ contractAddress, chainId }: CoinDetailsProps) => {
 
   const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory)
 
-  const { data: dataCoinBalance, isPending: isPendingCoinBalance } = useCoinBalance(
+  const { data: dataCoinBalance, isPending: isPendingCoinBalance } = useCoinBalance({
+    accountAddress: accountAddress || '',
+    contractAddress,
+    chainId,
+    verifiedOnly: hideUnlistedTokens
+  })
+
+  const { data: dataCoinPrices, isPending: isPendingCoinPrices } = useCoinPrices([
     {
-      accountAddress: accountAddress || '',
-      contractAddress,
-      chainId
-    },
-    { hideUnlistedTokens }
-  )
+      chainId,
+      contractAddress
+    }
+  ])
 
-  const { data: dataCoinPrices, isPending: isPendingCoinPrices } = useCoinPrices({
-    tokens: [
-      {
-        chainId,
-        contractAddress
-      }
-    ]
-  })
-
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const isPending = isPendingCoinBalance || isPendingCoinPrices || isPendingConversionRate
 

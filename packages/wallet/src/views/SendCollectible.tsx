@@ -15,13 +15,13 @@ import {
   vars,
   Spinner
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector } from '@0xsequence/kit'
-import { TokenBalance, Transaction } from '@0xsequence/indexer'
+import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector, useCollectibleBalance } from '@0xsequence/kit'
+import { TokenBalance } from '@0xsequence/indexer'
 import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_1155_ABI, ERC_721_ABI, HEADER_HEIGHT } from '../constants'
-import { useCollectibleBalance, useNavigation, useOpenWalletModal } from '../hooks'
+import { useNavigation, useOpenWalletModal } from '../hooks'
 import { limitDecimals, isEthAddress, truncateAtMiddle } from '../utils'
 import * as sharedStyles from '../shared/styles.css'
 
@@ -50,9 +50,9 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
   const { sendTransaction } = useSendTransaction()
   const [isSendTxnPending, setIsSendTxnPending] = useState(false)
   const { data: tokenBalance, isPending: isPendingBalances } = useCollectibleBalance({
-    accountAddress: accountAddress,
+    accountAddress,
     chainId,
-    collectionAddress: contractAddress,
+    contractAddress,
     tokenId,
     verifiedOnly: false
   })

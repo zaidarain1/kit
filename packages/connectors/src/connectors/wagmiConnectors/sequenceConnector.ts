@@ -1,4 +1,5 @@
 import { sequence } from '0xsequence'
+import { ETHAuthProof } from '@0xsequence/auth'
 import { LocalStorageKey, EthAuthSettings } from '@0xsequence/kit'
 
 import { UserRejectedRequestError, getAddress } from 'viem'
@@ -18,6 +19,8 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
   let id = 'sequence'
   let name = 'Sequence'
+
+  const { projectAccessKey } = connect
 
   const signInOptions = params?.connect?.settings?.signInOptions || []
   const signInWith = params?.connect?.settings?.signInWith
@@ -39,12 +42,19 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
   }
 
   type Provider = sequence.provider.SequenceProvider
-  type Properties = {}
+  type Properties = { params: BaseSequenceConnectorOptions }
+  type StorageItem = {
+    [LocalStorageKey.EthAuthProof]: ETHAuthProof
+    [LocalStorageKey.Theme]: string
+    [LocalStorageKey.EthAuthSettings]: EthAuthSettings
+  }
 
-  return createConnector<Provider, Properties>(config => ({
+  return createConnector<Provider, Properties, StorageItem>(config => ({
     id: 'sequence',
     name: 'Sequence',
     type: sequenceWallet.type,
+    params,
+
     async setup() {
       const provider = await this.getProvider()
       provider.on('chainChanged', (chainIdHex: string) => {
@@ -55,17 +65,17 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         this.onDisconnect()
       })
     },
+
     async connect() {
-      const provider = (await this.getProvider()) as sequence.provider.SequenceProvider
+      const provider = await this.getProvider()
 
       if (!provider.isConnected()) {
-        const localStorageTheme = localStorage.getItem(LocalStorageKey.Theme)
-        const ethAuthSettingsRaw = localStorage.getItem(LocalStorageKey.EthAuthSettings)
-        const parseEthAuthSettings = ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : ({} as EthAuthSettings)
+        const localStorageTheme = await config.storage?.getItem(LocalStorageKey.Theme)
+        const ethAuthSettings = (await config.storage?.getItem(LocalStorageKey.EthAuthSettings)) ?? {}
 
         const connectOptionsWithTheme = {
           authorize: true,
-          ...parseEthAuthSettings,
+          ...ethAuthSettings,
           ...connect,
           settings: {
             theme: localStorageTheme || 'dark',
@@ -83,13 +93,13 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
         const proofString = e.proof?.proofString
         const proofTypedData = e.proof?.typedData
-        if (proofString) {
-          const jsonEthAuthProof = JSON.stringify({
+        if (proofString && proofTypedData) {
+          const jsonEthAuthProof: ETHAuthProof = {
             proofString,
             typedData: proofTypedData
-          })
+          }
 
-          localStorage.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
+          await config.storage?.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
         }
       }
 
@@ -100,26 +110,27 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         chainId: provider.getChainId()
       }
     },
+
     async disconnect() {
       const provider = await this.getProvider()
 
       provider.disconnect()
     },
+
     async getAccounts() {
       const provider = await this.getProvider()
-
-      const account = getAddress((await provider.getSigner().getAddress()) as `0x${string}`)
+      const signer = provider.getSigner()
+      const account = getAddress(await signer.getAddress())
 
       return [account]
     },
-    async getProvider(): Promise<sequence.provider.SequenceProvider> {
+
+    async getProvider() {
       try {
         const provider = sequence.getWallet()
 
         return provider
-      } catch (e) {
-        const projectAccessKey = localStorage.getItem(LocalStorageKey.ProjectAccessKey)
-
+      } catch (err) {
         if (!projectAccessKey) {
           throw 'projectAccessKey not found'
         }
@@ -133,12 +144,13 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
           analytics: false
         })
 
-        const chainId = await provider.getChainId()
+        const chainId = provider.getChainId()
         config.emitter.emit('change', { chainId: normalizeChainId(chainId) })
 
         return provider
       }
     },
+
     async isAuthorized() {
       try {
         const account = await this.getAccounts()
@@ -147,6 +159,7 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
         return false
       }
     },
+
     async switchChain({ chainId }) {
       const provider = await this.getProvider()
 
@@ -157,24 +170,29 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
       return chain
     },
-    async getChainId() {
-      const provider = (await this.getProvider()) as sequence.provider.SequenceProvider
 
+    async getChainId() {
+      const provider = await this.getProvider()
       const chainId = provider.getChainId()
+
       return chainId
     },
+
     async onAccountsChanged(accounts) {
       return { account: accounts[0] }
     },
+
     async onChainChanged(chain) {
       const provider = await this.getProvider()
 
       config.emitter.emit('change', { chainId: normalizeChainId(chain) })
       provider.setDefaultChainId(normalizeChainId(chain))
     },
+
     async onConnect(connectinfo) {},
+
     async onDisconnect() {
-      localStorage.removeItem(LocalStorageKey.EthAuthProof)
+      await config.storage?.removeItem(LocalStorageKey.EthAuthProof)
       config.emitter.emit('disconnect')
     }
   }))

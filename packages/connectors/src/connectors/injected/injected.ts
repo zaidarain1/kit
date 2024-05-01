@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import { injected as injectedBase } from 'wagmi/connectors'
 
 import { InjectedLogo } from './InjectedLogo'
+import { Wallet } from '@0xsequence/kit'
 
 declare global {
   interface Window {
@@ -29,7 +30,7 @@ const getInjectedWalletInformation = (): InjectedWalletInformation => {
   }
 }
 
-export const injected = () => {
+export const injected = (): Wallet => {
   const { name, logoDark, logoLight } = getInjectedWalletInformation()
 
   return {

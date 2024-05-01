@@ -2,13 +2,14 @@ import React from 'react'
 import { TokenBalance } from '@0xsequence/indexer'
 import { ethers } from 'ethers'
 import { Box, Image, Text, vars } from '@0xsequence/design-system'
+import { useCollectionBalance } from '@0xsequence/kit'
 import { useAccount } from 'wagmi'
 
 import { CollectionDetailsSkeleton } from './Skeleton'
 
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { CoinIcon } from '../../shared/CoinIcon'
-import { useCollectionBalance, useNavigation } from '../../hooks'
+import { useNavigation } from '../../hooks'
 import { formatDisplay } from '../../utils'
 
 import * as sharedStyles from '../../shared/styles.css'
@@ -25,7 +26,7 @@ export const CollectionDetails = ({ chainId, contractAddress }: CollectionDetail
   const { data: collectionBalanceData, isPending: isPendingCollectionBalance } = useCollectionBalance({
     chainId,
     accountAddress: accountAddress || '',
-    collectionAddress: contractAddress
+    contractAddress
   })
   const scrollbarWidth = useScrollbarWidth()
 

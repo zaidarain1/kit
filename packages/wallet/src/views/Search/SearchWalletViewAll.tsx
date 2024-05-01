@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
-import { Box, SearchIcon, TabsContent, TabsHeader, TabsRoot, Text, TextInput, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { Box, SearchIcon, TabsContent, TabsHeader, TabsRoot, Text, TextInput } from '@0xsequence/design-system'
+import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices, useBalances } from '@0xsequence/kit'
 import { BalanceItem } from './components/BalanceItem'
 import Fuse from 'fuse.js'
 import { useAccount, useConfig } from 'wagmi'
 
 import { Skeleton } from '../../shared/Skeleton'
-import { useBalances, useCoinPrices, useConversionRate, useSettings } from '../../hooks'
+import { useSettings } from '../../hooks'
 import { compareAddress, computeBalanceFiat } from '../../utils'
 import { useScrollbarWidth } from '../../hooks/useScrollbarWidth'
 
@@ -28,29 +28,25 @@ export const SearchWalletViewAll = ({ defaultTab }: SearchWalletViewAllProps) =>
 
   const { address: accountAddress } = useAccount()
 
-  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances(
-    {
-      accountAddress: accountAddress || '',
-      chainIds: selectedNetworks
-    },
-    { hideUnlistedTokens }
-  )
+  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances({
+    chainIds: selectedNetworks,
+    accountAddress: accountAddress || '',
+    verifiedOnly: hideUnlistedTokens
+  })
 
   const coinBalancesUnordered =
     tokenBalancesData?.filter(
       b => b.contractType === 'ERC20' || compareAddress(b.contractAddress, ethers.constants.AddressZero)
     ) || []
 
-  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices({
-    tokens: coinBalancesUnordered.map(token => ({
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices(
+    coinBalancesUnordered.map(token => ({
       chainId: token.chainId,
       contractAddress: token.contractAddress
     }))
-  })
+  )
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const coinBalances = coinBalancesUnordered.sort((a, b) => {
     const isHigherFiat =

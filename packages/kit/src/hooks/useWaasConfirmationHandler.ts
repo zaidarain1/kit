@@ -1,5 +1,4 @@
 import { commons } from '@0xsequence/core'
-import { ethers } from 'ethers'
 import { useState, useEffect } from 'react'
 import { Deferred } from '../utils/deferred'
 

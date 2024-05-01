@@ -1,8 +1,9 @@
 import { injected } from 'wagmi/connectors'
 
 import { MetamaskLogo } from './MetamaskLogo'
+import { Wallet } from '@0xsequence/kit'
 
-export const metamask = () => ({
+export const metamask = (): Wallet => ({
   id: 'metamask',
   logoDark: MetamaskLogo,
   logoLight: MetamaskLogo,

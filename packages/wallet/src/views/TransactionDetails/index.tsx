@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { Token } from '@0xsequence/api'
 import { Transaction, TxnTransfer } from '@0xsequence/indexer'
 import { ArrowRightIcon, Box, Button, Divider, GradientAvatar, Image, LinkIcon, Text } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices, useCollectiblePrices } from '@0xsequence/kit'
 import dayjs from 'dayjs'
 import { useConfig } from 'wagmi'
 
@@ -12,7 +12,7 @@ import { CopyButton } from '../../shared/CopyButton'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { Skeleton } from '../../shared/Skeleton'
 import { compareAddress, formatDisplay } from '../../utils'
-import { useCoinPrices, useConversionRate, useCollectiblePrices, useSettings } from '../../hooks'
+import { useSettings } from '../../hooks'
 
 interface TransactionDetailProps {
   transaction: Transaction
@@ -55,17 +55,11 @@ export const TransactionDetails = ({ transaction }: TransactionDetailProps) => {
     }
   })
 
-  const { data: coinPricesData, isPending: isPendingCoinPrices } = useCoinPrices({
-    tokens: coins
-  })
+  const { data: coinPricesData, isPending: isPendingCoinPrices } = useCoinPrices(coins)
 
-  const { data: collectiblePricesData, isPending: isPendingCollectiblePrices } = useCollectiblePrices({
-    tokens: collectibles
-  })
+  const { data: collectiblePricesData, isPending: isPendingCollectiblePrices } = useCollectiblePrices(collectibles)
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const arePricesLoading =
     (coins.length > 0 && isPendingCoinPrices) ||

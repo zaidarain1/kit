@@ -58,7 +58,7 @@ export const PendingTransaction = () => {
         setNavigation({
           location: 'transaction-error',
           params: {
-            error: e
+            error: e as Error
           }
         })
     }

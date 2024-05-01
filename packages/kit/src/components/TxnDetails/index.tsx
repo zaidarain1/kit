@@ -1,16 +1,18 @@
-import { Box, Card, GradientAvatar, Image, Text, vars } from '@0xsequence/design-system'
+import { Box, Card, GradientAvatar, Text } from '@0xsequence/design-system'
 
 import React, { useEffect, useState } from 'react'
 
 import { ethers } from 'ethers'
 import { useConfig } from 'wagmi'
 
-import { Skeleton, CollectibleTileImage, CoinIcon, formatDisplay, useBalances, useTokenMetadata } from '@0xsequence/kit-wallet'
+import { useTokenMetadata, useBalances } from '@0xsequence/kit'
+import { Skeleton, CollectibleTileImage, CoinIcon, formatDisplay } from '@0xsequence/kit-wallet'
 import { compareAddress, getNativeTokenInfoByChainId } from '../../utils'
 import { commons } from '@0xsequence/core'
 import { DecodingType, TransferProps, AwardItemProps, decodeTransactions } from '../../utils/txnDecoding'
-import { ContractType, TokenBalance } from '@0xsequence/indexer'
+import { ContractType } from '@0xsequence/indexer'
 import { getAddress } from 'ethers/lib/utils'
+import { useAPIClient } from '../../hooks'
 
 interface TxnDetailsProps {
   address: string
@@ -38,7 +40,7 @@ export const TxnDetailsSkeleton = () => {
 
 // @ts-ignore-next-line
 export const TxnDetails = ({ address, txs, chainId }: TxnDetailsProps) => {
-  const { chains } = useConfig()
+  const apiClient = useAPIClient()
   // const { fiatCurrency } = useSettings()
 
   const [decodingType, setDecodingType] = useState<DecodingType | undefined>(undefined)
@@ -46,11 +48,14 @@ export const TxnDetails = ({ address, txs, chainId }: TxnDetailsProps) => {
   const [awardItemProps, setAwardItemProps] = useState<AwardItemProps[]>([])
 
   const getTxnProps = async () => {
-    const decodedTxnDatas = await decodeTransactions(address, txs)
+    const decodedTxnDatas = await decodeTransactions(apiClient, address, txs)
+
     setDecodingType(decodedTxnDatas[0].type)
+
     if (decodedTxnDatas[0].type === 'transfer') {
       setTransferProps(decodedTxnDatas as TransferProps[])
     }
+
     if (decodedTxnDatas[0].type === 'awardItem') {
       setAwardItemProps(decodedTxnDatas as AwardItemProps[])
     }
@@ -91,18 +96,17 @@ const TransferItemInfo = ({ address, transferProps, chainId }: TransferItemInfoP
   const isNFT = transferProps[0]?.contractType === ContractType.ERC1155 || transferProps[0]?.contractType === ContractType.ERC721
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
 
-  const { data: balances = [], isPending: isPendingBalances } = useBalances(
-    {
-      accountAddress: address,
-      chainIds: [chainId],
-      contractAddress
-    },
-    { hideUnlistedTokens: false }
-  )
-
-  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata({
-    tokens: { chainId, contractAddress, tokenIds: transferProps[0]?.tokenIds ?? [] }
+  const { data: balances = [], isPending: isPendingBalances } = useBalances({
+    chainIds: [chainId],
+    accountAddress: address,
+    contractAddress
   })
+
+  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata(
+    chainId,
+    contractAddress,
+    transferProps[0]?.tokenIds ?? []
+  )
 
   const tokenBalance = contractAddress
     ? balances.find(b => getAddress(b.contractAddress) === getAddress(contractAddress))

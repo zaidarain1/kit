@@ -13,13 +13,20 @@ import {
   vars,
   Spinner
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector } from '@0xsequence/kit'
+import {
+  getNativeTokenInfoByChainId,
+  useAnalyticsContext,
+  ExtendedConnector,
+  useExchangeRate,
+  useCoinPrices,
+  useBalances
+} from '@0xsequence/kit'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useAccount, useChainId, useSwitchChain, useWalletClient, useConfig, useSendTransaction } from 'wagmi'
+import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
 
 import { SendItemInfo } from '../shared/SendItemInfo'
 import { ERC_20_ABI, HEADER_HEIGHT } from '../constants'
-import { useBalances, useCoinPrices, useConversionRate, useSettings, useOpenWalletModal, useNavigation } from '../hooks'
+import { useSettings, useOpenWalletModal, useNavigation } from '../hooks'
 import { compareAddress, computeBalanceFiat, limitDecimals, isEthAddress, truncateAtMiddle } from '../utils'
 import * as sharedStyles from '../shared/styles.css'
 
@@ -46,26 +53,21 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
   const [toAddress, setToAddress] = useState<string>('')
   const { sendTransaction } = useSendTransaction()
   const [isSendTxnPending, setIsSendTxnPending] = useState(false)
-  const { data: balances = [], isPending: isPendingBalances } = useBalances(
-    {
-      accountAddress: accountAddress,
-      chainIds: [chainId],
-      contractAddress
-    },
-    { hideUnlistedTokens: false }
-  )
+  const { data: balances = [], isPending: isPendingBalances } = useBalances({
+    chainIds: [chainId],
+    accountAddress: accountAddress,
+    contractAddress
+  })
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const tokenBalance = (balances as TokenBalance[]).find(b => b.contractAddress === contractAddress)
-  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices({
-    tokens: [
-      {
-        chainId,
-        contractAddress
-      }
-    ]
-  })
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices([
+    {
+      chainId,
+      contractAddress
+    }
+  ])
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({ toCurrency: fiatCurrency.symbol })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const isPending = isPendingBalances || isPendingCoinPrices || isPendingConversionRate
 

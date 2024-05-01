@@ -2,7 +2,7 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { Box, Button, ChevronRightIcon, Divider, Text, PaymentsIcon, vars } from '@0xsequence/design-system'
 
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useBalances, useContractInfo } from '@0xsequence/kit'
 
 import { useAccount, useConfig } from 'wagmi'
 
@@ -11,7 +11,7 @@ import { OrderSummaryItem } from './component/OrderSummaryItem'
 import { CoinIcon } from '../../shared/components/CoinIcon'
 import { Skeleton } from '../../shared/components/Skeleton'
 import { HEADER_HEIGHT } from '../../constants'
-import { useNavigation, useCheckoutModal, useBalances, useContractInfo } from '../../hooks'
+import { useNavigation, useCheckoutModal } from '../../hooks'
 import { compareAddress, formatDisplay } from '../../utils'
 import * as styles from './styles.css'
 
@@ -26,14 +26,14 @@ export const CheckoutSelection = () => {
   const displayCryptoCheckout = !!cryptoCheckoutSettings
   // const displayCreditCardCheckout = !!creditCardCheckoutSettings
 
-  const { data: contractInfoData, isPending: isPendingContractInfo } = useContractInfo({
-    contractAddress: cryptoCheckoutSettings?.coinQuantity?.contractAddress || '',
-    chainID: String(cryptoCheckoutSettings?.chainId || 1)
-  })
+  const { data: contractInfoData, isPending: isPendingContractInfo } = useContractInfo(
+    cryptoCheckoutSettings?.chainId || 1,
+    cryptoCheckoutSettings?.coinQuantity?.contractAddress || ''
+  )
 
   const { data: balancesData, isPending: isPendingBalances } = useBalances({
-    accountAddress: accountAddress || '',
-    chainId: cryptoCheckoutSettings?.chainId || 1
+    chainIds: [cryptoCheckoutSettings?.chainId || 1],
+    accountAddress: accountAddress || ''
   })
 
   const isPending = (isPendingContractInfo || isPendingBalances) && cryptoCheckoutSettings

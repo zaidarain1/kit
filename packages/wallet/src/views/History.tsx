@@ -1,4 +1,4 @@
-import { Box, vars } from '@0xsequence/design-system'
+import { Box } from '@0xsequence/design-system'
 import React from 'react'
 import { useAccount } from 'wagmi'
 

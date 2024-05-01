@@ -5,7 +5,7 @@ import {
   validateEthProof,
   useTheme as useKitTheme,
   useWaasFeeOptions,
-  getNetworkConfigAndClients
+  useIndexerClient
 } from '@0xsequence/kit'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
@@ -99,7 +99,7 @@ export const Homepage = () => {
 
   const chainId = useChainId()
 
-  const { indexerClient } = getNetworkConfigAndClients(chainId)
+  const indexerClient = useIndexerClient(chainId)
 
   const [feeOptionBalances, setFeeOptionBalances] = React.useState<{ tokenName: string; decimals: number; balance: string }[]>([])
 
@@ -117,7 +117,7 @@ export const Homepage = () => {
   }
 
   const checkTokenBalancesForFeeOptions = async () => {
-    if (pendingFeeOptionConfirmation) {
+    if (pendingFeeOptionConfirmation && walletClient) {
       const [account] = await walletClient.getAddresses()
       const nativeTokenBalance = await indexerClient.getEtherBalance({ accountAddress: account })
 
@@ -131,13 +131,17 @@ export const Homepage = () => {
 
       const balances = pendingFeeOptionConfirmation.options.map(option => {
         if (option.token.contractAddress === null) {
-          return { tokenName: option.token.name, decimals: option.token.decimals, balance: nativeTokenBalance.balance.balanceWei }
+          return {
+            tokenName: option.token.name,
+            decimals: option.token.decimals || 0,
+            balance: nativeTokenBalance.balance.balanceWei
+          }
         } else {
           return {
             tokenName: option.token.name,
-            decimals: option.token.decimals,
+            decimals: option.token.decimals || 0,
             balance:
-              tokenBalances.balances.find(b => b.contractAddress.toLowerCase() === option.token.contractAddress.toLowerCase())
+              tokenBalances.balances.find(b => b.contractAddress.toLowerCase() === option.token.contractAddress?.toLowerCase())
                 ?.balance || '0'
           }
         }
@@ -147,7 +151,7 @@ export const Homepage = () => {
     }
   }
 
-  const networkForCurrentChainId = allNetworks.find(n => n.chainId === chainId)
+  const networkForCurrentChainId = allNetworks.find(n => n.chainId === chainId)!
 
   const publicClient = usePublicClient({ chainId })
 
@@ -177,7 +181,7 @@ export const Homepage = () => {
   }, [txnData, txnData2])
 
   const signMessage = async () => {
-    if (!walletClient) {
+    if (!walletClient || !publicClient) {
       return
     }
 
@@ -221,7 +225,7 @@ export const Homepage = () => {
 
     const [account] = await walletClient.getAddresses()
 
-    sendTransaction({ to: account, value: '0', gas: null })
+    sendTransaction({ to: account, value: BigInt(0), gas: null })
   }
 
   const runMintNFT = async () => {
@@ -378,19 +382,21 @@ export const Homepage = () => {
                 onClick={runSendTransaction}
               />
 
-              {lastTxnDataHash && ((txnData as any)?.chainId === chainId || txnData) && (
-                <Text
-                  as="a"
-                  marginLeft="4"
-                  variant="small"
-                  underline
-                  href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${(txnData as any).hash ?? txnData}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View on {networkForCurrentChainId.blockExplorer.name}
-                </Text>
-              )}
+              {networkForCurrentChainId.blockExplorer &&
+                lastTxnDataHash &&
+                ((txnData as any)?.chainId === chainId || txnData) && (
+                  <Text
+                    as="a"
+                    marginLeft="4"
+                    variant="small"
+                    underline
+                    href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${(txnData as any).hash ?? txnData}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View on {networkForCurrentChainId.blockExplorer.name}
+                  </Text>
+                )}
               <ClickableCard
                 title="Sign message"
                 description="Sign a message with your wallet"
@@ -417,19 +423,21 @@ export const Homepage = () => {
                 isPending={isPendingMintTxn}
                 onClick={runMintNFT}
               />
-              {lastTxnDataHash2 && ((txnData2 as any)?.chainId === chainId || txnData2) && (
-                <Text
-                  as="a"
-                  marginLeft="4"
-                  variant="small"
-                  underline
-                  href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${(txnData2 as any).hash ?? txnData2}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View on {networkForCurrentChainId.blockExplorer.name}
-                </Text>
-              )}
+              {networkForCurrentChainId.blockExplorer &&
+                lastTxnDataHash2 &&
+                ((txnData2 as any)?.chainId === chainId || txnData2) && (
+                  <Text
+                    as="a"
+                    marginLeft="4"
+                    variant="small"
+                    underline
+                    href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${(txnData2 as any).hash ?? txnData2}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View on {networkForCurrentChainId.blockExplorer.name}
+                  </Text>
+                )}
 
               {isDebugMode && (
                 <ClickableCard
@@ -465,14 +473,14 @@ export const Homepage = () => {
                         <Box alignItems="flex-start" flexDirection="column" fontSize="xsmall">
                           <Box flexDirection="row">
                             <Text>Fee (in {option.token.name}): </Text>{' '}
-                            <Text>{formatUnits(BigInt(option.value), option.token.decimals)}</Text>
+                            <Text>{formatUnits(BigInt(option.value), option.token.decimals || 0)}</Text>
                           </Box>
                           <Box flexDirection="row">
                             <Text>Wallet balance for {option.token.name}: </Text>{' '}
                             <Text>
                               {formatUnits(
                                 BigInt(feeOptionBalances.find(b => b.tokenName === option.token.name)?.balance || '0'),
-                                option.token.decimals
+                                option.token.decimals || 0
                               )}
                             </Text>
                           </Box>
@@ -489,13 +497,13 @@ export const Homepage = () => {
                         option => option.token.name === selectedFeeOptionTokenName
                       )
 
-                      if (selected.token.contractAddress !== undefined) {
+                      if (selected?.token.contractAddress !== undefined) {
                         // check if wallet has enough balance, should be balance > feeOption.value
                         const balance = parseUnits(
-                          feeOptionBalances.find(b => b.tokenName === selected.token.name)?.balance,
-                          selected.token.decimals
+                          feeOptionBalances.find(b => b.tokenName === selected.token.name)?.balance || '0',
+                          selected.token.decimals || 0
                         )
-                        const feeOptionValue = parseUnits(selected.value, selected.token.decimals)
+                        const feeOptionValue = parseUnits(selected.value, selected.token.decimals || 0)
                         if (balance && balance < feeOptionValue) {
                           setFeeOptionAlert({
                             title: 'Insufficient balance',

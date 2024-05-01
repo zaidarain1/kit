@@ -23,22 +23,19 @@ export const getDefaultConnectors = ({
     email({
       defaultNetwork: defaultChainId,
       connect: {
-        app: appName,
-        projectAccessKey
+        app: appName
       }
     }),
     google({
       defaultNetwork: defaultChainId,
       connect: {
-        app: appName,
-        projectAccessKey
+        app: appName
       }
     }),
     facebook({
       defaultNetwork: defaultChainId,
       connect: {
-        app: appName,
-        projectAccessKey
+        app: appName
       }
     }),
     twitch({
@@ -56,20 +53,18 @@ export const getDefaultConnectors = ({
     sequence({
       defaultNetwork: defaultChainId,
       connect: {
-        app: appName,
-        projectAccessKey
+        app: appName
       }
     }),
     walletConnect({
       projectId: walletConnectProjectId
     }),
-    metamask(),
-    coinbaseWallet({
-      appName
-    })
+    metamask()
+    // coinbaseWallet({
+    //   appName
+    // })
   ])
 
-  /* @ts-ignore-next-line */
   return connectors
 }
 
@@ -129,6 +124,5 @@ export const getDefaultWaasConnectors = ({
 
   const connectors = getKitConnectWallets(projectAccessKey, wallets)
 
-  /* @ts-ignore-next-line */
   return connectors
 }

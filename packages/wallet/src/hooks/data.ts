@@ -1,34 +1,21 @@
-import { GetContractInfoArgs } from '@0xsequence/metadata'
-import { ethers } from 'ethers'
-import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import {
-  fetchBalances,
-  GetTokenBalancesArgs,
-  fetchCollectionBalance,
-  GetCollectionBalanceArgs,
-  getCoinPrices,
-  GetCoinPricesArgs,
-  fetchBalancesAssetsSummary,
-  getNativeToken,
-  getTokenBalances,
-  getCollectibleBalance,
-  GetCollectibleBalanceArgs,
-  getCollectiblePrices,
-  GetCollectiblePricesArgs,
   getTransactionHistory,
-  GetTransactionHistoryArgs,
-  fetchFiatConversionRate,
-  FetchFiatConversionRateArgs,
-  GetTokenBalancesOptions,
-  FetchBalancesAssetsArgs,
-  getTransactionHistorySummary,
-  GetTransactionHistorySummaryArgs,
-  fetchTokenMetadata,
-  FetchTokenMetadataArgs,
-  getContractInfo
-} from '../api/data'
+  useAPIClient,
+  useIndexerClients,
+  DisplayedAsset,
+  getNativeTokenBalance,
+  getTokenBalances,
+  getCoinPrices,
+  getCollectionBalance,
+  useMetadataClient
+} from '@0xsequence/kit'
+import { Transaction, TokenBalance, SequenceIndexer } from '@0xsequence/indexer'
+import { GetContractInfoBatchReturn, SequenceMetadata } from '@0xsequence/metadata'
+import { SequenceAPIClient, TokenPrice } from '@0xsequence/api'
+import { ethers } from 'ethers'
 
-import { compareAddress } from '../utils/helpers'
+import { compareAddress, sampleSize, sortBalancesByType } from '../utils'
 
 export const time = {
   oneSecond: 1 * 1000,
@@ -36,142 +23,260 @@ export const time = {
   oneHour: 60 * 60 * 1000
 }
 
-export interface UseBalancesArgs extends Omit<GetTokenBalancesArgs, 'chainId'> {
+export interface GetBalancesAssetsArgs {
+  accountAddress: string
   chainIds: number[]
+  displayAssets: DisplayedAsset[]
+  verifiedOnly?: boolean
+  hideCollectibles?: boolean
 }
 
-export const useBalances = (args: UseBalancesArgs, options: GetTokenBalancesOptions) =>
-  useQuery({
-    queryKey: ['balances', args, options],
-    queryFn: async () => {
-      const { chainIds, ...restArgs } = args
-      const balances = await Promise.all(chainIds.map(chainId => fetchBalances({ ...restArgs, chainId }, options)))
-      return balances.flat()
-    },
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: args.chainIds.length > 0 && !!args.accountAddress
-  })
+export const getBalancesAssetsSummary = async (
+  apiClient: SequenceAPIClient,
+  metadataClient: SequenceMetadata,
+  indexerClients: Map<number, SequenceIndexer>,
+  { accountAddress, displayAssets, hideCollectibles, verifiedOnly }: GetBalancesAssetsArgs
+) => {
+  const indexerClientsArr = Array.from(indexerClients.entries())
 
-export const useCollectionBalance = (args: GetCollectionBalanceArgs) =>
-  useQuery({
-    queryKey: ['collectionBalance', args],
-    queryFn: () => fetchCollectionBalance(args),
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress
-  })
+  const MAX_COLLECTIBLES_AMOUNTS = 10
 
-export const useCoinPrices = ({ disabled, ...args }: GetCoinPricesArgs & { disabled?: boolean }) =>
-  useQuery({
-    queryKey: ['coinPrices', args],
-    queryFn: () => getCoinPrices(args),
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: args.tokens.length > 0 && !disabled
-  })
+  let tokenBalances: TokenBalance[] = []
 
-export const useBalancesAssetsSummary = (args: FetchBalancesAssetsArgs, options: GetTokenBalancesOptions) =>
-  useQuery({
-    queryKey: ['balancesAssetsSummary', args, options],
-    queryFn: () => fetchBalancesAssetsSummary(args, options),
+  const customDisplayAssets = displayAssets.length > 0
+
+  try {
+    if (customDisplayAssets) {
+      const nativeTokens = displayAssets.filter(asset => compareAddress(asset.contractAddress, ethers.constants.AddressZero))
+      const otherAssets = displayAssets.filter(asset => !compareAddress(asset.contractAddress, ethers.constants.AddressZero))
+
+      interface AssetsByChainId {
+        [chainId: number]: DisplayedAsset[]
+      }
+
+      const nativeTokensByChainId: AssetsByChainId = {}
+      const otherAssetsByChainId: AssetsByChainId = {}
+
+      nativeTokens.forEach(asset => {
+        if (!nativeTokensByChainId[asset.chainId]) {
+          nativeTokensByChainId[asset.chainId] = []
+        }
+        nativeTokensByChainId[asset.chainId].push(asset)
+      })
+
+      otherAssets.forEach(asset => {
+        if (!otherAssetsByChainId[asset.chainId]) {
+          otherAssetsByChainId[asset.chainId] = []
+        }
+        otherAssetsByChainId[asset.chainId].push(asset)
+      })
+
+      tokenBalances = (
+        await Promise.all([
+          ...Object.keys(nativeTokensByChainId).map(chainId =>
+            getNativeTokenBalance(indexerClients.get(Number(chainId))!, Number(chainId), accountAddress)
+          ),
+          ...Object.keys(otherAssetsByChainId)
+            .map(chainId =>
+              otherAssetsByChainId[Number(chainId)].map(asset =>
+                getTokenBalances(indexerClients.get(Number(chainId))!, {
+                  accountAddress,
+                  contractAddress: asset.contractAddress,
+                  includeMetadata: false,
+                  hideCollectibles,
+                  verifiedOnly
+                })
+              )
+            )
+            .flat()
+        ])
+      ).flat()
+    } else {
+      tokenBalances = (
+        await Promise.all([
+          ...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)),
+          ...indexerClientsArr.map(([chainId, indexerClient]) =>
+            getTokenBalances(indexerClient, {
+              accountAddress,
+              hideCollectibles,
+              includeMetadata: false,
+              verifiedOnly
+            })
+          )
+        ])
+      ).flat()
+    }
+
+    const { nativeTokens, erc20Tokens, collectibles: collectionBalances } = sortBalancesByType(tokenBalances)
+
+    const fetchPricesPromise: Promise<TokenPrice[]> = new Promise(async (resolve, reject) => {
+      if (erc20Tokens.length > 0) {
+        const tokens = erc20Tokens.map(token => ({
+          chainId: token.chainId,
+          contractAddress: token.contractAddress
+        }))
+        const prices = (await getCoinPrices(apiClient, tokens)) || []
+        resolve(prices)
+      } else {
+        resolve([])
+      }
+    })
+
+    const fetchCollectiblesPromises = collectionBalances.map(async collectionBalance => {
+      if (customDisplayAssets) {
+        return collectionBalance
+      }
+      const balance = await getCollectionBalance(indexerClients.get(collectionBalance.chainId)!, {
+        accountAddress,
+        chainId: collectionBalance.chainId,
+        contractAddress: collectionBalance.contractAddress,
+        includeMetadata: false
+      })
+
+      return balance
+    })
+
+    // We need to get metadata for erc20 contracts in order to get decimals and sort by price
+    interface ContractInfoMapByChainId {
+      [chainId: number]: GetContractInfoBatchReturn
+    }
+
+    const fetchErc20ContractInfoPromise = async () => {
+      interface Erc20BalanceByChainId {
+        [chainId: number]: TokenBalance[]
+      }
+
+      const contractInfoMapByChainId: ContractInfoMapByChainId = {}
+      const erc20BalanceByChainId: Erc20BalanceByChainId = {}
+
+      erc20Tokens.forEach(erc20Token => {
+        if (!erc20BalanceByChainId[erc20Token.chainId]) {
+          erc20BalanceByChainId[erc20Token.chainId] = [erc20Token]
+        } else {
+          erc20BalanceByChainId[erc20Token.chainId].push(erc20Token)
+        }
+      })
+
+      const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async chainId => {
+        const tokenBalances = erc20BalanceByChainId[Number(chainId)]
+        const contractAddresses = tokenBalances.map(balance => balance.contractAddress)
+        const result = await metadataClient.getContractInfoBatch({
+          chainID: String(chainId),
+          contractAddresses
+        })
+        contractInfoMapByChainId[Number(chainId)] = result
+      })
+      await Promise.all([...contractInfoPromises])
+      return contractInfoMapByChainId
+    }
+
+    const [prices, contractInfoMapByChainId, ...collectionCollectibles] = await Promise.all([
+      fetchPricesPromise,
+      fetchErc20ContractInfoPromise(),
+      ...fetchCollectiblesPromises
+    ])
+
+    const erc20HighestValue = erc20Tokens.sort((a, b) => {
+      const aPriceData = prices.find(price => compareAddress(price.token.contractAddress, a.contractAddress))
+      const bPriceData = prices.find(price => compareAddress(price.token.contractAddress, b.contractAddress))
+
+      const aPrice = aPriceData?.price ? aPriceData.price.value : 0
+      const bPrice = bPriceData?.price ? bPriceData.price.value : 0
+
+      const aDecimals = contractInfoMapByChainId[a.chainId].contractInfoMap[a.contractAddress]?.decimals
+      const bDecimals = contractInfoMapByChainId[b.chainId].contractInfoMap[b.contractAddress]?.decimals
+
+      const aFormattedBalance = aDecimals === undefined ? 0 : Number(ethers.utils.formatUnits(a.balance, aDecimals))
+      const bFormattedBalance = bDecimals === undefined ? 0 : Number(ethers.utils.formatUnits(b.balance, bDecimals))
+
+      const aValue = aFormattedBalance * aPrice
+      const bValue = bFormattedBalance * bPrice
+
+      return bValue - aValue
+    })
+
+    const collectibles: TokenBalance[] = sampleSize(collectionCollectibles.flat(), MAX_COLLECTIBLES_AMOUNTS).sort((a, b) => {
+      return a.contractAddress.localeCompare(b.contractAddress)
+    })
+
+    if (hideCollectibles) {
+      const summaryBalances: TokenBalance[] = [
+        ...(nativeTokens.length > 0 ? [nativeTokens[0]] : []),
+        // the spots normally occupied by collectibles will be filled by erc20 tokens
+        ...(erc20HighestValue.length > 0 ? erc20HighestValue.slice(0, MAX_COLLECTIBLES_AMOUNTS + 1) : [])
+      ]
+
+      return summaryBalances
+    }
+
+    const summaryBalances: TokenBalance[] = [
+      ...(nativeTokens.length > 0 ? [nativeTokens[0]] : []),
+      ...(erc20HighestValue.length > 0 ? [erc20HighestValue[0]] : []),
+      ...(collectibles.length > 0 ? [...collectibles] : [])
+    ]
+
+    return summaryBalances
+  } catch (e) {
+    console.error(e)
+    return []
+  }
+}
+
+export const useBalancesAssetsSummary = (args: GetBalancesAssetsArgs) => {
+  const apiClient = useAPIClient()
+  const metadataClient = useMetadataClient()
+  const indexerClients = useIndexerClients(args.chainIds)
+
+  return useQuery({
+    queryKey: ['balancesAssetsSummary', args],
+    queryFn: () => getBalancesAssetsSummary(apiClient, metadataClient, indexerClients, args),
     retry: true,
     refetchInterval: time.oneSecond * 4,
     refetchOnMount: true,
     staleTime: time.oneSecond,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   })
+}
 
-export const useCoinBalance = (args: GetTokenBalancesArgs, options: GetTokenBalancesOptions) =>
-  useQuery({
-    queryKey: ['coinBalance', args, options],
-    queryFn: () => {
-      if (compareAddress(args?.contractAddress || '', ethers.constants.AddressZero)) {
-        const response = getNativeToken({
-          accountAddress: args.accountAddress,
-          chainId: args.chainId
-        }).then(response => response[0])
-        return response
-      }
-      const response = getTokenBalances(args, options).then(response => response[0])
-      return response
-    },
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  })
+interface GetTransactionHistorySummaryArgs {
+  chainIds: number[]
+  accountAddress: string
+}
 
-export const useCollectibleBalance = (args: GetCollectibleBalanceArgs) =>
-  useQuery({
-    queryKey: ['collectibleBalance', args],
-    queryFn: () => getCollectibleBalance(args),
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.collectionAddress && !!args.tokenId
-  })
-
-export const useCollectiblePrices = (args: GetCollectiblePricesArgs) =>
-  useQuery({
-    queryKey: ['useCollectiblePrices', args],
-    queryFn: () => getCollectiblePrices(args),
-    retry: true,
-    staleTime: time.oneMinute,
-    enabled: args.tokens.length > 0
-  })
-
-export const useTransactionHistory = (arg: Omit<GetTransactionHistoryArgs, 'page'> & { disabled?: boolean }) =>
-  useInfiniteQuery({
-    queryKey: ['transactionHistory', arg],
-    queryFn: ({ pageParam }) => {
-      return getTransactionHistory({
-        ...(arg as Omit<GetTransactionHistoryArgs, 'page'>),
-        page: { page: pageParam }
+const getTransactionHistorySummary = async (
+  indexerClients: Map<number, SequenceIndexer>,
+  { accountAddress }: GetTransactionHistorySummaryArgs
+): Promise<Transaction[]> => {
+  const histories = await Promise.all(
+    Array.from(indexerClients.values()).map(indexerClient =>
+      getTransactionHistory(indexerClient, {
+        accountAddress,
+        page: {
+          page: 1
+        }
       })
-    },
-    getNextPageParam: ({ page }) => {
-      // Note: must return undefined instead of null to stop the infinite scroll
-      if (!page.more) return undefined
+    )
+  )
 
-      return page?.page || 1
-    },
-    initialPageParam: 1,
-    retry: true,
-    staleTime: time.oneSecond * 30,
-    enabled: !!arg.chainId && !arg.disabled && !!arg.accountAddress
+  const unorderedTransactions = histories.map(history => history.transactions).flat()
+  const orderedTransactions = unorderedTransactions.sort((a, b) => {
+    const firstDate = new Date(a.timestamp).getTime()
+    const secondDate = new Date(b.timestamp).getTime()
+    return secondDate - firstDate
   })
 
-export const useTransactionHistorySummary = (args: GetTransactionHistorySummaryArgs) =>
-  useQuery({
+  return orderedTransactions
+}
+
+export const useTransactionHistorySummary = (args: GetTransactionHistorySummaryArgs) => {
+  const indexerClients = useIndexerClients(args.chainIds)
+
+  return useQuery({
     queryKey: ['transactionHistorySummary', args],
-    queryFn: () => getTransactionHistorySummary(args),
+    queryFn: () => getTransactionHistorySummary(indexerClients, args),
     retry: true,
     staleTime: time.oneSecond,
     refetchOnMount: true,
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   })
-
-export const useConversionRate = (args: FetchFiatConversionRateArgs) =>
-  useQuery({
-    queryKey: ['useConversionRate', args],
-    queryFn: () => fetchFiatConversionRate(args),
-    retry: true,
-    staleTime: time.oneMinute * 10
-  })
-
-export const useTokenMetadata = (args: FetchTokenMetadataArgs) =>
-  useQuery({
-    queryKey: ['useTokenMetadata', args],
-    queryFn: () => fetchTokenMetadata(args),
-    retry: true,
-    staleTime: time.oneMinute * 10,
-    enabled: !!args.tokens.chainId && !!args.tokens.contractAddress
-  })
-
-export const useContractInfo = (args: GetContractInfoArgs) =>
-  useQuery({
-    queryKey: ['useContractInfo', args],
-    queryFn: () => getContractInfo(args),
-    retry: true,
-    staleTime: time.oneMinute * 10,
-    enabled: !!args.chainID && !!args.contractAddress
-  })
+}

@@ -1,164 +1,9 @@
-import { Token, TokenPrice } from '@0xsequence/api'
-import { getNetworkConfigAndClients } from '@0xsequence/kit'
-import { TokenBalance, ContractType } from '@0xsequence/indexer'
-import { GetContractInfoArgs, ContractInfo, TokenMetadata } from '@0xsequence/metadata'
-import { ethers } from 'ethers'
-
+import { getNetwork } from '@0xsequence/kit'
 import { getPaperNetworkName } from '../utils'
-
-export interface GetTokenBalancesArgs {
-  accountAddress: string
-  chainId: number
-  verifiedOnly?: boolean
-}
-
-export const getNativeToken = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
-  try {
-    const { indexerClient } = getNetworkConfigAndClients(chainId)
-
-    const res = await indexerClient.getEtherBalance({ accountAddress })
-
-    const tokenBalance: TokenBalance = {
-      chainId,
-      contractAddress: ethers.constants.AddressZero,
-      accountAddress,
-      balance: res?.balance.balanceWei || '0',
-      contractType: ContractType.UNKNOWN,
-      blockHash: '',
-      blockNumber: 0,
-      tokenID: ''
-    }
-    return [tokenBalance]
-  } catch (e) {
-    console.error(e)
-    return []
-  }
-}
-
-export const getTokenBalances = async ({ accountAddress, chainId, verifiedOnly }: GetTokenBalancesArgs) => {
-  try {
-    const { indexerClient } = getNetworkConfigAndClients(chainId)
-
-    const res = await indexerClient.getTokenBalances({
-      accountAddress,
-      includeMetadata: true,
-      metadataOptions: {
-        verifiedOnly: verifiedOnly ?? true
-      }
-    })
-
-    return res?.balances || []
-  } catch (e) {
-    console.error(e)
-    return []
-  }
-}
-
-export const fetchBalances = async ({ accountAddress, chainId }: GetTokenBalancesArgs) => {
-  try {
-    const tokenBalances = (
-      await Promise.all([
-        getNativeToken({
-          accountAddress,
-          chainId
-        }),
-        getTokenBalances({
-          accountAddress,
-          chainId
-        })
-      ])
-    ).flat()
-    return tokenBalances
-  } catch (e) {
-    console.error(e)
-    return []
-  }
-}
-
-export interface GetCollectionBalanceArgs {
-  accountAddress: string
-  chainId: number
-  collectionAddress: string
-  verifiedOnly?: boolean
-}
-
-export const fetchCollectionBalance = async ({
-  accountAddress,
-  chainId,
-  collectionAddress,
-  verifiedOnly
-}: GetCollectionBalanceArgs) => {
-  try {
-    const { indexerClient } = getNetworkConfigAndClients(chainId)
-
-    const res = await indexerClient.getTokenBalances({
-      accountAddress,
-      includeMetadata: true,
-      contractAddress: collectionAddress,
-      metadataOptions: {
-        verifiedOnly: verifiedOnly ?? true
-      }
-    })
-
-    return res?.balances || []
-  } catch (e) {
-    console.error(e)
-    return []
-  }
-}
-
-export interface GetCoinPricesArgs {
-  tokens: Token[]
-}
-
-export const getCoinPrices = async ({ tokens }: GetCoinPricesArgs): Promise<TokenPrice[] | undefined> => {
-  try {
-    if (tokens.length === 0) return []
-    const chainId = tokens[0].chainId
-
-    const { apiClient } = getNetworkConfigAndClients(chainId)
-
-    const res = await apiClient.getCoinPrices({
-      tokens
-    })
-
-    return res?.tokenPrices || []
-  } catch (e) {
-    console.error(e)
-    return
-  }
-}
-
-export interface GetTokenMetadataArgs {
-  chainId: number
-  tokenId: string
-  contractAddress: string
-}
-
-export const fetchTokenMetadata = async ({ chainId, tokenId, contractAddress }: GetTokenMetadataArgs): Promise<TokenMetadata> => {
-  const { metadataClient } = getNetworkConfigAndClients(chainId)
-
-  const response = await metadataClient.getTokenMetadata({
-    chainID: String(chainId),
-    contractAddress,
-    tokenIDs: [tokenId]
-  })
-
-  return response.tokenMetadata[0]
-}
-
-export const fetchContractInfo = async ({ chainID, contractAddress }: GetContractInfoArgs): Promise<ContractInfo> => {
-  const { metadataClient } = getNetworkConfigAndClients(chainID)
-
-  const response = await metadataClient.getContractInfo({
-    chainID,
-    contractAddress
-  })
-
-  return response.contractInfo
-}
+import { SequenceAPIClient } from '@0xsequence/api'
 
 export interface FetchPaperSecretArgs {
+  apiClient: SequenceAPIClient
   chainId: number
   email: string
   abi: string
@@ -177,6 +22,7 @@ export interface MethodArguments {
 }
 
 export const fetchPaperSecret = async ({
+  apiClient,
   chainId,
   email,
   contractAddress,
@@ -189,9 +35,7 @@ export const fetchPaperSecret = async ({
   methodName,
   recipientAddress
 }: FetchPaperSecretArgs) => {
-  const { network, apiClient } = await getNetworkConfigAndClients(chainId)
-
-  // @ts-ignore-next-line
+  const network = getNetwork(chainId)
   const chainName = getPaperNetworkName(network)
 
   const paramsJson = JSON.stringify({

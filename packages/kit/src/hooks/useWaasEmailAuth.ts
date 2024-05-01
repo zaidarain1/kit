@@ -1,4 +1,3 @@
-import { SequenceWaaS } from '@0xsequence/waas'
 import { useState } from 'react'
 import { ExtendedConnector } from '../utils'
 

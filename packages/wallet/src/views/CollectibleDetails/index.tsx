@@ -1,20 +1,19 @@
 import React from 'react'
 import { ethers } from 'ethers'
 import { useAccount, useConfig } from 'wagmi'
-import { Box, Button, Image, SendIcon, Text, vars } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { Box, Button, Image, SendIcon, Text } from '@0xsequence/design-system'
+import {
+  getNativeTokenInfoByChainId,
+  useExchangeRate,
+  useTransactionHistory,
+  useCollectiblePrices,
+  useCollectibleBalance
+} from '@0xsequence/kit'
 
 import { CollectibleDetailsSkeleton } from './Skeleton'
 
 import { computeBalanceFiat, formatDisplay, flattenPaginatedTransactionHistory } from '../../utils'
-import {
-  useCollectiblePrices,
-  useCollectibleBalance,
-  useSettings,
-  useTransactionHistory,
-  useNavigation,
-  useConversionRate
-} from '../../hooks'
+import { useSettings, useNavigation } from '../../hooks'
 import { InfiniteScroll } from '../../shared/InfiniteScroll'
 import { TransactionHistoryList } from '../../shared/TransactionHistoryList'
 import { CollectibleTileImage } from '../../shared/CollectibleTileImage'
@@ -51,25 +50,21 @@ export const CollectibleDetails = ({ contractAddress, chainId, tokenId }: Collec
 
   const { data: dataCollectibleBalance, isPending: isPendingCollectibleBalance } = useCollectibleBalance({
     accountAddress: accountAddress || '',
-    collectionAddress: contractAddress,
+    contractAddress,
     chainId,
     tokenId,
     verifiedOnly: false
   })
 
-  const { data: dataCollectiblePrices, isPending: isPendingCollectiblePrices } = useCollectiblePrices({
-    tokens: [
-      {
-        chainId,
-        contractAddress,
-        tokenId
-      }
-    ]
-  })
+  const { data: dataCollectiblePrices, isPending: isPendingCollectiblePrices } = useCollectiblePrices([
+    {
+      chainId,
+      contractAddress,
+      tokenId
+    }
+  ])
 
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useConversionRate({
-    toCurrency: fiatCurrency.symbol
-  })
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol)
 
   const isPending = isPendingCollectibleBalance || isPendingCollectiblePrices || isPendingConversionRate
 
