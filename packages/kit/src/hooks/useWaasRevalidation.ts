@@ -1,10 +1,6 @@
 import { SequenceWaaS } from '@0xsequence/waas'
-import { commons } from '@0xsequence/core'
-import { ethers } from 'ethers'
-import { useState, useEffect } from 'react'
-import { Deferred } from '../utils/deferred'
+import { useEffect } from 'react'
 import { useAccount } from 'wagmi'
-import type { SequenceWaasConnector } from '@0xsequence/kit-connectors'
 
 
 export function useWaasRevalidation(

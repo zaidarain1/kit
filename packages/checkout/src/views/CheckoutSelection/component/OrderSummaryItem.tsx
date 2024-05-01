@@ -18,13 +18,13 @@ interface OrderSummaryItem {
 
 export const OrderSummaryItem = ({ contractAddress, tokenId, quantityRaw, chainId }: OrderSummaryItem) => {
   const { chains } = useConfig()
-  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata({
+  const { data: tokenMetadata, isLoading: isPendingTokenMetadata } = useTokenMetadata({
     chainId,
     contractAddress,
     tokenId
   })
 
-  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo({
+  const { data: contractInfo, isLoading: isPendingContractInfo } = useContractInfo({
     chainID: String(chainId),
     contractAddress
   })

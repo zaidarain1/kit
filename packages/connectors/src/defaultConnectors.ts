@@ -18,7 +18,7 @@ export const getDefaultConnectors = ({
   defaultChainId,
   projectAccessKey,
   appName
-}: GetDefaultConnectors): CreateConnectorFn[] => {
+}: GetDefaultConnectors): CreateConnectorFn<any>[] => {
   const connectors = getKitConnectWallets(projectAccessKey, [
     email({
       defaultNetwork: defaultChainId,
