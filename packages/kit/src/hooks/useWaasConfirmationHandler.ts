@@ -1,7 +1,6 @@
 import { commons } from '@0xsequence/core'
 import { useState, useEffect } from 'react'
 import { Deferred } from '../utils/deferred'
-import { SequenceWaasProvider } from '@0xsequence/kit-connectors'
 
 let _pendingConfirmation: Deferred<{ id: string; confirmed: boolean }> | undefined
 
@@ -36,14 +35,13 @@ export function useWaasConfirmationHandler(
         return
       }
 
-      const waasProvider = (await waasConnector.getProvider()) as SequenceWaasProvider
+      const waasProvider = waasConnector.sequenceWaasProvider
 
       if (!waasProvider) {
         return
       }
 
       waasProvider.requestConfirmationHandler = {
-        // @ts-ignore-next-line
         confirmSignTransactionRequest(
           id: string,
           txs: commons.transaction.Transaction[],
@@ -54,7 +52,6 @@ export function useWaasConfirmationHandler(
           _pendingConfirmation = pending
           return pending.promise
         },
-
         confirmSignMessageRequest(id: string, message: string, chainId: number): Promise<{ id: string; confirmed: boolean }> {
           const pending = new Deferred<{ id: string; confirmed: boolean }>()
           setPendingRequestConfirmation({ id, type: 'signMessage', message, chainId })

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { ExtendedConnector } from '../utils'
-import { SequenceWaasProvider } from '@0xsequence/kit-connectors'
 
 export function useEmailAuth({ connector, onSuccess }: { connector?: ExtendedConnector; onSuccess: (idToken: string) => void }) {
   if (!connector) {
@@ -23,8 +22,7 @@ export function useEmailAuth({ connector, onSuccess }: { connector?: ExtendedCon
 
     try {
       const connectorAny: any = connector
-      const provider = (await connectorAny.getProvider()) as SequenceWaasProvider
-      const { instance } = await provider.sequenceWaas?.email.initiateAuth({ email })
+      const { instance } = await connectorAny.sequenceWaas?.email.initiateAuth({ email })
       setInstance(instance)
       setEmail(email)
     } catch (e: any) {
@@ -39,9 +37,8 @@ export function useEmailAuth({ connector, onSuccess }: { connector?: ExtendedCon
 
     try {
       const connectorAny: any = connector
-      const provider = (await connectorAny.getProvider()) as SequenceWaasProvider
-      const sessionHash = await provider.sequenceWaas?.getSessionHash()
-      const { idToken } = await provider.sequenceWaas?.email.finalizeAuth({ instance, answer, email, sessionHash })
+      const sessionHash = await connectorAny.sequenceWaas?.getSessionHash()
+      const { idToken } = await connectorAny.sequenceWaas?.email.finalizeAuth({ instance, answer, email, sessionHash })
       onSuccess(idToken)
     } catch (e: any) {
       setError(e.message || 'Unknown error')

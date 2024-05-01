@@ -21,6 +21,8 @@ sequenceWaasWallet.type = 'sequence-waas' as const
 export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
   type Provider = SequenceWaasProvider
   type Properties = {
+    sequenceWaas: SequenceWaaS
+    sequenceWaasProvider: SequenceWaasProvider
     params: BaseSequenceWaasConnectorOptions
   }
   type StorageItem = {
@@ -65,6 +67,8 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
     id: `sequence-waas`,
     name: 'Sequence WaaS',
     type: sequenceWaasWallet.type,
+    sequenceWaas,
+    sequenceWaasProvider,
     params,
 
     async setup() {
