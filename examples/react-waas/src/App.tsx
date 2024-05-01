@@ -1,5 +1,5 @@
 import './App.css'
-import { useOpenConnectModal, useWaasFeeOptions } from '@0xsequence/kit'
+import { useOpenConnectModal, useWaasFeeOptions, useWaasRevalidation } from '@0xsequence/kit'
 import {
   useAccount,
   useChainId,
@@ -104,6 +104,8 @@ export const App = () => {
       setLastTxnDataHash(txnData.hash ?? txnData)
     }
   }, [txnData])
+
+  useWaasRevalidation()
 
   // Fee options are required when txn is not gas sponsored (not needed on testnets)
   const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions()

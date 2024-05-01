@@ -1,7 +1,7 @@
 import { SequenceWaaS, SequenceConfig, ExtendedSequenceConfig, Transaction, FeeOption } from '@0xsequence/waas'
 import { LocalStorageKey } from '@0xsequence/kit'
 import { TransactionRejectedRpcError, UserRejectedRequestError, getAddress } from 'viem'
-import { createConnector } from 'wagmi'
+import { createConnector, CreateConnectorFn } from 'wagmi'
 import { ethers } from 'ethers'
 import { v4 as uuidv4 } from 'uuid'
 import { sequence } from '0xsequence'
@@ -18,7 +18,9 @@ export type BaseSequenceWaasConnectorOptions = SequenceConfig & SequenceWaasConn
 
 sequenceWaasWallet.type = 'sequence-waas' as const
 
-export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
+export type SequenceWaasConnector = CreateConnectorFn<SequenceWaasProvider, any, {}>
+
+export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions): SequenceWaasConnector {
   type Provider = SequenceWaasProvider
   type Properties = { sequenceWaas: SequenceWaaS; sequenceWaasProvider: SequenceWaasProvider }
 
