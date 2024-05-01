@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "0xsequence": "0.0.0-20240429153138",
+    "0xsequence": "^1.9.26",
     "@0xsequence/kit": "workspace:*",
     "@tanstack/react-query": "^5.32.0",
     "react": "^18.2.0",
