@@ -208,27 +208,6 @@ export const fetchSardineClientToken = async (order: SardineCheckout, isDev: boo
 
   const { resp: { orderId, token } } = await res.json()
 
-  // const res = await apiClient.getSardineNFTCheckoutToken({
-  //   referenceId,
-  //   expiresIn: 3600,
-  //   paymentMethodTypeConfig: {
-  //     enabled: ['us_debit', 'us_credit', 'international_debit', 'international_credit', 'ach'],
-  //     default: order.defaultPaymentMethodType
-  //   },
-  //   nft: {
-  //     name: tokenMetadata?.name || 'Unknown',
-  //     imageUrl: tokenMetadata?.image || '',
-  //     network: networks[order.chainId as ChainId].name,
-  //     recipientAddress: order.recipientAddress,
-  //     platform: 'horizon',
-  //     blockchainNftId: order.blockchainNftId,
-  //     contractAddress: order.contractAddress,
-  //     executionType: 'smart_contract',
-  //     quantity: Number(order.quantity),
-  //     decimals: Number(order.decimals)
-  //   }
-  // })
-
   return ({
     token,
     orderId,

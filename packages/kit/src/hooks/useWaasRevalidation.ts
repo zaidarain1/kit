@@ -4,7 +4,6 @@ import { useAccount } from 'wagmi'
 
 
 export function useWaasRevalidation(
-  // waasConnector?: any
 ) {
   const { connector } = useAccount()
 
