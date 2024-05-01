@@ -29,7 +29,7 @@ export const PendingTransaction = () => {
 
       const pollResponse = await fetchSardineOrderStatus(orderId, isDev)
       const status = pollResponse.resp.status
-      const transactionHash = pollResponse.resp?.data?.transactionHash
+      const transactionHash = pollResponse.resp?.transactionHash
 
       console.log('transaction status poll response:', status)
 
