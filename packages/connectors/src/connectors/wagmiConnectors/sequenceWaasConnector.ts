@@ -86,8 +86,11 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
 
       const isConnected = await provider.sequenceWaas.isSignedIn()
       if (!isConnected) {
-        const sessionHash = await provider.sequenceWaas.getSessionHash()
-        await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
+        if (typeof window === 'object') {
+          // (for SSR) only run in browser client
+          const sessionHash = await provider.sequenceWaas.getSessionHash()
+          await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
+        }
       }
 
       provider.on('disconnect', () => {
