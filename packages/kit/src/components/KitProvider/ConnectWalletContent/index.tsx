@@ -32,6 +32,7 @@ import { ExtendedConnector } from '../../../utils/getKitConnectWallets'
 import * as styles from '../../styles.css'
 import { useEmailAuth } from '../../../hooks/useWaasEmailAuth'
 import { PINCodeInput } from './PINCodeInput'
+import { getStorageItem } from '../../../utils/storage'
 
 interface ConnectWalletContentProps extends KitConnectProviderProps {
   openConnectModal: boolean
@@ -266,7 +267,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                         <GoogleLogin
                           type="icon"
                           size="large"
-                          nonce={JSON.parse(localStorage.getItem('wagmi.' + LocalStorageKey.WaasSessionHash) ?? '') || undefined}
+                          nonce={getStorageItem(LocalStorageKey.WaasSessionHash)}
                           onSuccess={credentialResponse => {
                             if (credentialResponse.credential) {
                               storage?.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential)
@@ -284,16 +285,17 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                       <ConnectButton
                         connector={connector}
                         onConnect={() => {
-                          const appleClientId = localStorage.getItem('wagmi.' + LocalStorageKey.WaasAppleClientID) || ''
-                          const appleRedirectUri = localStorage.getItem('wagmi.' + LocalStorageKey.WaasAppleRedirectURI) || ''
-                          const sessionHash = localStorage.getItem('wagmi.' + LocalStorageKey.WaasSessionHash) || ''
+                          const appleClientId = getStorageItem(LocalStorageKey.WaasAppleClientID)
+                          const appleRedirectUri = getStorageItem(LocalStorageKey.WaasAppleRedirectURI)
+                          const sessionHash = getStorageItem(LocalStorageKey.WaasSessionHash)
+
                           appleAuthHelpers.signIn({
                             authOptions: {
-                              clientId: JSON.parse(appleClientId),
+                              clientId: appleClientId,
                               scope: 'openid email',
-                              redirectURI: JSON.parse(appleRedirectUri),
+                              redirectURI: appleRedirectUri,
                               usePopup: true,
-                              nonce: JSON.parse(sessionHash)
+                              nonce: sessionHash
                             },
                             onSuccess: (response: any) => {
                               if (response.authorization?.id_token) {

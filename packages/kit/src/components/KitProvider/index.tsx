@@ -27,6 +27,7 @@ import { useWaasConfirmationHandler } from '../../hooks/useWaasConfirmationHandl
 
 import { TxnDetails } from '../TxnDetails'
 import { NetworkBadge } from '@0xsequence/kit-wallet'
+import { setStorageItem } from '../../utils/storage'
 
 export declare const THEME: readonly ['dark', 'light']
 export declare type Theme = Exclude<ComponentProps<typeof ThemeProvider>['theme'], undefined>
@@ -159,15 +160,12 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     // EthAuth
     // note: keep an eye out for potential race-conditions, though they shouldn't occur.
     // If there are race conditions, the settings could be a function executed prior to being passed to wagmi
-    localStorage.setItem(
-      LocalStorageKey.EthAuthSettings,
-      JSON.stringify({
-        expiry,
-        app,
-        origin: origin || location.origin,
-        nonce
-      })
-    )
+    setStorageItem(LocalStorageKey.EthAuthSettings, {
+      expiry,
+      app,
+      origin: origin || location.origin,
+      nonce
+    })
   }, [theme, ethAuth])
 
   useEffect(() => {
