@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@0xsequence/auth": "^1.9.26",
     "@0xsequence/provider": "^1.9.26",
     "@0xsequence/waas": "^1.9.26",
     "@0xsequence/waas-ethers": "^1.9.26",

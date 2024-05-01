@@ -1,4 +1,5 @@
 import { sequence } from '0xsequence'
+import { ETHAuthProof } from '@0xsequence/auth'
 import { LocalStorageKey, EthAuthSettings } from '@0xsequence/kit'
 
 import { UserRejectedRequestError, getAddress } from 'viem'
@@ -43,9 +44,9 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
   type Provider = sequence.provider.SequenceProvider
   type Properties = { params: BaseSequenceConnectorOptions }
   type StorageItem = {
-    [LocalStorageKey.EthAuthProof]: string
+    [LocalStorageKey.EthAuthProof]: ETHAuthProof
     [LocalStorageKey.Theme]: string
-    [LocalStorageKey.EthAuthSettings]: string
+    [LocalStorageKey.EthAuthSettings]: EthAuthSettings
   }
 
   return createConnector<Provider, Properties, StorageItem>(config => ({
@@ -70,12 +71,11 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
       if (!provider.isConnected()) {
         const localStorageTheme = await config.storage?.getItem(LocalStorageKey.Theme)
-        const ethAuthSettingsRaw = await config.storage?.getItem(LocalStorageKey.EthAuthSettings)
-        const parseEthAuthSettings = (ethAuthSettingsRaw ? JSON.parse(ethAuthSettingsRaw) : {}) as EthAuthSettings
+        const ethAuthSettings = (await config.storage?.getItem(LocalStorageKey.EthAuthSettings)) ?? {}
 
         const connectOptionsWithTheme = {
           authorize: true,
-          ...parseEthAuthSettings,
+          ...ethAuthSettings,
           ...connect,
           settings: {
             theme: localStorageTheme || 'dark',
@@ -93,11 +93,11 @@ export function sequenceWallet(params: BaseSequenceConnectorOptions) {
 
         const proofString = e.proof?.proofString
         const proofTypedData = e.proof?.typedData
-        if (proofString) {
-          const jsonEthAuthProof = JSON.stringify({
+        if (proofString && proofTypedData) {
+          const jsonEthAuthProof: ETHAuthProof = {
             proofString,
             typedData: proofTypedData
-          })
+          }
 
           await config.storage?.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof)
         }
