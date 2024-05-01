@@ -14,7 +14,6 @@ const connectionMode: ConnectionMode = searchParams.get('mode') === 'universal' 
 
 // append ?debug to url to enable debug mode
 const isDebugMode = searchParams.has('debug')
-
 const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
 
 const chains = [arbitrumNova, arbitrumSepolia, mainnet, polygon] as const satisfies Chain[]

@@ -9,6 +9,7 @@ export type ConnectionMode = 'waas' | 'universal'
 
 export const connectionMode = 'waas' as ConnectionMode
 export const isDebugMode = false
+const enableConfirmationModal = false
 
 const projectAccessKey = 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
 
@@ -44,8 +45,8 @@ const getWaasConnectors = () => {
       appleClientId,
       appleRedirectURI,
       appName: 'Kit Demo',
-      projectAccessKey
-      // enableConfirmationModal: localStorage.getItem('confirmationEnabled') === 'true'
+      projectAccessKey,
+      enableConfirmationModal
     }),
     ...(isDebugMode
       ? getKitConnectWallets(projectAccessKey, [

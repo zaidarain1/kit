@@ -42,8 +42,6 @@ export const Connected = () => {
   const [lastTxnDataHash, setLastTxnDataHash] = useState<string | undefined>()
   const [lastTxnDataHash2, setLastTxnDataHash2] = useState<string | undefined>()
 
-  const [confirmationEnabled, setConfirmationEnabled] = useState<boolean>(localStorage.getItem('confirmationEnabled') === 'true')
-
   const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions()
 
   const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = useState<string | undefined>()
@@ -400,36 +398,6 @@ export const Connected = () => {
                     />
                   </Box>
                 )}
-              </Box>
-            </Box>
-          )}
-
-          {isWaasConnection && (
-            <Box marginY="3">
-              <Box as="label" flexDirection="row" alignItems="center" justifyContent="space-between">
-                <Text fontWeight="semibold" variant="small" color="text50">
-                  Confirmations
-                </Text>
-
-                <Box alignItems="center" gap="2">
-                  <Switch
-                    name="confirmations"
-                    checked={confirmationEnabled}
-                    onCheckedChange={async (checked: boolean) => {
-                      if (checked) {
-                        localStorage.setItem('confirmationEnabled', 'true')
-                        setConfirmationEnabled(true)
-                      } else {
-                        localStorage.removeItem('confirmationEnabled')
-                        setConfirmationEnabled(false)
-                      }
-
-                      await delay(300)
-
-                      window.location.reload()
-                    }}
-                  />
-                </Box>
               </Box>
             </Box>
           )}
