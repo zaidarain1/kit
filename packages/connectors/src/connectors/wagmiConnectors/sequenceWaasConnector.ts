@@ -72,6 +72,11 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
     params,
 
     async setup() {
+      if (typeof window !== 'object') {
+        // (for SSR) only run in browser client
+        return
+      }
+
       const provider = await this.getProvider()
 
       if (params.googleClientId) {
@@ -86,11 +91,8 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
 
       const isConnected = await provider.sequenceWaas.isSignedIn()
       if (!isConnected) {
-        if (typeof window === 'object') {
-          // (for SSR) only run in browser client
-          const sessionHash = await provider.sequenceWaas.getSessionHash()
-          await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
-        }
+        const sessionHash = await provider.sequenceWaas.getSessionHash()
+        await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
       }
 
       provider.on('disconnect', () => {
