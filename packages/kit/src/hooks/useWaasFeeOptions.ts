@@ -3,6 +3,7 @@ import { Deferred } from '../utils/deferred'
 import { Connector, useConnections } from 'wagmi'
 import { FeeOption } from '@0xsequence/waas'
 import { ethers } from 'ethers'
+import { SequenceWaasProvider } from '@0xsequence/kit-connectors'
 
 // null means it's native token
 let _pendingFeeConfirmation: Deferred<{ id: string; feeTokenAddress?: string | null; confirmed: boolean }> | undefined
@@ -41,8 +42,7 @@ export function useWaasFeeOptions(): [
         return
       }
 
-      // @ts-ignore-next-line
-      const waasProvider = waasConnector.sequenceWaasProvider
+      const waasProvider = (await waasConnector.getProvider()) as SequenceWaasProvider
 
       if (!waasProvider) {
         return
