@@ -1,6 +1,6 @@
-const __vite__fileDeps=["./index-C5zDbQ-w.js","./index-D2iACFfx.js","./index-D-Tlm5BR.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
-import { p as process$1, r as require$$0$2, g as global, B as Buffer, a as getAugmentedNamespace, b as getDefaultExportFromCjs, c as commonjsGlobal, _ as __vitePreload } from "./index-D2iACFfx.js";
-import { r as require$$1, e as eventsExports, U as Ug } from "./___vite-browser-external_commonjs-proxy-BiKT4qMq.js";
+const __vite__fileDeps=["./index-D-7XZqix.js","./index-Cssg05kU.js","./index-D-Tlm5BR.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+import { p as process$1, r as require$$0$2, g as global, B as Buffer, a as getAugmentedNamespace, b as getDefaultExportFromCjs, c as commonjsGlobal, _ as __vitePreload } from "./index-Cssg05kU.js";
+import { r as require$$1, e as eventsExports, U as Ug } from "./___vite-browser-external_commonjs-proxy-BOkWlShO.js";
 var chacha20poly1305 = {};
 var chacha = {};
 var binary = {};
@@ -15763,7 +15763,7 @@ class v2 {
     if (this.rpc = this.getRpcConfig(t), this.chainId = this.rpc.chains.length ? g2(this.rpc.chains) : g2(this.rpc.optionalChains), this.signer = await hv.init({ projectId: this.rpc.projectId, metadata: this.rpc.metadata, disableProviderPing: t.disableProviderPing, relayUrl: t.relayUrl, storageOptions: t.storageOptions }), this.registerEventListeners(), await this.loadPersistedSession(), this.rpc.showQrModal) {
       let s;
       try {
-        const { WalletConnectModal: i2 } = await __vitePreload(() => import("./index-C5zDbQ-w.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { WalletConnectModal: i2 } = await __vitePreload(() => import("./index-D-7XZqix.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         s = i2;
       } catch {
         throw new Error("To use QR modal, please install @walletconnect/modal package");
