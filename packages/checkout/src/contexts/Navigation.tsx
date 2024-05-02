@@ -28,7 +28,8 @@ export interface TransactionErrorNavigation {
 }
 
 export interface TransactionPendingParams {
-  transactionId: string
+  orderId: string
+  authToken: string
 }
 
 export interface TransactionPendingNavigation {

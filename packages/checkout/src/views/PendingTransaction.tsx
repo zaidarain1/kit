@@ -1,38 +1,42 @@
 import React, { useEffect } from 'react'
 import { Box, Spinner, Text } from '@0xsequence/design-system'
+import { useProjectAccessKey } from '@0xsequence/kit'
 
 import { useNavigation, useCheckoutModal } from '../hooks'
 import { TransactionPendingNavigation } from '../contexts'
+import { fetchSardineOrderStatus } from '../api'
 
 const POLLING_TIME = 10 * 1000
 
 export const PendingTransaction = () => {
   const nav = useNavigation()
+  const { settings } = useCheckoutModal()
   const {
-    params: { transactionId }
+    params: { authToken, orderId }
   } = nav.navigation as TransactionPendingNavigation
   const { setNavigation } = nav
+  const projectAccessKey = useProjectAccessKey()
 
-  const paperGetStatusUrl = `https://withpaper.com/api/v1/transaction-status/${transactionId}`
+  const isDev = settings?.sardineCheckout?.isDev || false
+  const url = isDev
+    ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true`
+    : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`
 
-  const pollForTxStatus = async () => {
-    try {
-      console.log('Polling for transaction status')
-      const pollResponse = await fetch(paperGetStatusUrl, {
-        method: 'GET',
-        headers: {
-          accept: 'application/json'
-        }
-      }).then(res => res.json())
-      const status = pollResponse.result.status
-      const transactionHash = pollResponse.result.transactionHash
+    const pollForOrderStatus = async () => {
+      try {
+        console.log('Polling for transaction status')
+        const isDev = settings?.sardineCheckout?.isDev || false
+
+        const pollResponse = await fetchSardineOrderStatus(orderId, isDev, projectAccessKey)
+        const status = pollResponse.resp.status
+        const transactionHash = pollResponse.resp?.transactionHash
 
       console.log('transaction status poll response:', status)
 
-      if (status === 'PENDING') {
+      if (status === 'Draft') {
         return
       }
-      if (status === 'TRANSFER_SUCCEEDED') {
+      if (status === 'Complete') {
         setNavigation &&
           setNavigation({
             location: 'transaction-success',
@@ -42,7 +46,7 @@ export const PendingTransaction = () => {
           })
         return
       }
-      if (status === 'TRANSFER_FAILED' || status === 'PAYMENT_FAILED') {
+      if (status === 'Declined' || status === 'Cancelled') {
         setNavigation &&
           setNavigation({
             location: 'transaction-error',
@@ -66,7 +70,7 @@ export const PendingTransaction = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      pollForTxStatus()
+      pollForOrderStatus()
     }, POLLING_TIME)
 
     return () => {
@@ -75,23 +79,16 @@ export const PendingTransaction = () => {
   }, [])
 
   return (
-    <Box style={{ height: '500px' }}>
-      <Box
-        position="absolute"
-        top="0"
-        left="0"
-        width="full"
-        height="full"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Spinner size="lg" style={{ width: '60px', height: '60px' }} />
-        <Text variant="medium" color="text50" textAlign="center" marginTop="8">
-          Transaction in progress. <br />
-          This may take a few minutes.
-        </Text>
-      </Box>
+    <Box alignItems="center" justifyContent="center" style={{ height: '620px' }}>
+      <iframe
+        src={url}
+        style={{
+          maxHeight: '500px',
+          height: '100%',
+          maxWidth: '380px',
+          width: '100%'
+        }}
+      />
     </Box>
   )
 }

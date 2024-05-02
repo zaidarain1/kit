@@ -44,7 +44,7 @@ export const NavigationHeader = ({ secondaryText, primaryText, disableBack = fal
       ) : (
         <Box />
       )}
-      <Box>
+      <Box width="full" alignItems="center" justifyContent="center" style={{ marginLeft: '40px' }}>
         <Text fontWeight="medium" variant="small" color="text50">
           {secondaryText}
         </Text>
