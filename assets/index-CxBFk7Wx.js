@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-se-8zhgm.js","./___vite-browser-external_commonjs-proxy-NCy2eZ8u.js","./index.es-BXd6RhMM.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-Cciix7G_.js","./___vite-browser-external_commonjs-proxy-B9iy6y7f.js","./index.es-JJ3zRExn.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -22587,7 +22587,7 @@ const SelectItem = reactExports.forwardRef(
     );
   }
 );
-const Select = reactExports.forwardRef(
+reactExports.forwardRef(
   (props, ref) => {
     const {
       borderRadius = "md",
@@ -47967,7 +47967,7 @@ function formatUnits$1(value, unitName) {
   }
   return formatFixed(value, unitName != null ? unitName : 18);
 }
-function parseUnits$1(value, unitName) {
+function parseUnits(value, unitName) {
   if (typeof value !== "string") {
     logger$1.throwArgumentError("value must be a string", "value", value);
   }
@@ -47983,7 +47983,7 @@ function formatEther$1(wei) {
   return formatUnits$1(wei, 18);
 }
 function parseEther(ether) {
-  return parseUnits$1(ether, 18);
+  return parseUnits(ether, 18);
 }
 const lib_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -47991,7 +47991,7 @@ const lib_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   formatEther: formatEther$1,
   formatUnits: formatUnits$1,
   parseEther,
-  parseUnits: parseUnits$1
+  parseUnits
 }, Symbol.toStringTag, { value: "Module" }));
 const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -48079,7 +48079,7 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   parseBytes32String,
   parseEther,
   parseTransaction: parse$3,
-  parseUnits: parseUnits$1,
+  parseUnits,
   poll: poll$1,
   randomBytes: randomBytes$1,
   recoverAddress,
@@ -71634,7 +71634,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DD1cTbrN.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CuVMY2KP.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -73900,37 +73900,6 @@ function hashMessage(message, to_) {
   })();
   const prefixBytes = stringToBytes(`${presignMessagePrefix}${messageBytes.length}`);
   return keccak256(concat([prefixBytes, messageBytes]), to_);
-}
-function parseUnits(value, decimals) {
-  let [integer, fraction = "0"] = value.split(".");
-  const negative = integer.startsWith("-");
-  if (negative)
-    integer = integer.slice(1);
-  fraction = fraction.replace(/(0+)$/, "");
-  if (decimals === 0) {
-    if (Math.round(Number(`.${fraction}`)) === 1)
-      integer = `${BigInt(integer) + 1n}`;
-    fraction = "";
-  } else if (fraction.length > decimals) {
-    const [left, unit, right] = [
-      fraction.slice(0, decimals - 1),
-      fraction.slice(decimals - 1, decimals),
-      fraction.slice(decimals)
-    ];
-    const rounded = Math.round(Number(`${unit}.${right}`));
-    if (rounded > 9)
-      fraction = `${BigInt(left) + BigInt(1)}0`.padStart(left.length + 1, "0");
-    else
-      fraction = `${left}${rounded}`;
-    if (fraction.length > decimals) {
-      fraction = fraction.slice(1);
-      integer = `${BigInt(integer) + 1n}`;
-    }
-    fraction = fraction.slice(0, decimals);
-  } else {
-    fraction = fraction.padEnd(decimals, "0");
-  }
-  return BigInt(`${negative ? "-" : ""}${integer}${fraction}`);
 }
 function formatStorageProof(storageProof) {
   return storageProof.map((proof) => ({
@@ -91790,7 +91759,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-se-8zhgm.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-Cciix7G_.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -91976,7 +91945,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BXd6RhMM.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-JJ3zRExn.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -105146,7 +105115,7 @@ const SendCoin = ({
   const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.logoURI;
   const symbol = isNativeCoin ? nativeTokenInfo.symbol : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
   const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
+  const amountRaw = parseUnits(amountToSendFormatted, decimals);
   const amountToSendFiat = computeBalanceFiat({
     balance: _extends$2({}, tokenBalance, {
       balance: amountRaw.toString()
@@ -105184,7 +105153,7 @@ const SendCoin = ({
       });
     }
     e2.preventDefault();
-    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
+    const sendAmount = parseUnits(amountToSendFormatted, decimals);
     if (isNativeCoin) {
       var _wallet;
       analytics == null || analytics.track({
@@ -105457,7 +105426,7 @@ const SendCollectible = ({
   const name2 = (tokenBalance == null || (_tokenBalance$tokenMe2 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe2.name) || "Unknown";
   const imageUrl = (tokenBalance == null || (_tokenBalance$tokenMe3 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe3.image) || (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.logoURI) || "";
   const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
+  const amountRaw = parseUnits(amountToSendFormatted, decimals);
   const insufficientFunds = amountRaw.gt((tokenBalance == null ? void 0 : tokenBalance.balance) || "0");
   const isNonZeroAmount = amountRaw.gt(0);
   const handleChangeAmount = (ev) => {
@@ -105503,7 +105472,7 @@ const SendCollectible = ({
         chainId
       });
     }
-    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
+    const sendAmount = parseUnits(amountToSendFormatted, decimals);
     switch (contractType) {
       case "ERC721":
         analytics == null || analytics.track({
@@ -110358,58 +110327,6 @@ const useWalletSettings = () => {
     setDisplayedAssets
   };
 };
-let _pendingFeeConfirmation;
-function useWaasFeeOptions() {
-  var _connections$find;
-  const connections = useConnections();
-  const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
-  const [pendingFeeOptionConfirmation, setPendingFeeOptionConfirmation] = reactExports.useState();
-  function confirmPendingFeeOption(id2, feeTokenAddress) {
-    var _pendingFeeConfirmati;
-    (_pendingFeeConfirmati = _pendingFeeConfirmation) == null || _pendingFeeConfirmati.resolve({
-      id: id2,
-      feeTokenAddress,
-      confirmed: true
-    });
-    setPendingFeeOptionConfirmation(void 0);
-    _pendingFeeConfirmation = void 0;
-  }
-  function rejectPendingFeeOption(id2) {
-    var _pendingFeeConfirmati2;
-    (_pendingFeeConfirmati2 = _pendingFeeConfirmation) == null || _pendingFeeConfirmati2.resolve({
-      id: id2,
-      feeTokenAddress: void 0,
-      confirmed: false
-    });
-    setPendingFeeOptionConfirmation(void 0);
-    _pendingFeeConfirmation = void 0;
-  }
-  reactExports.useEffect(() => {
-    async function setup() {
-      if (!waasConnector) {
-        return;
-      }
-      const waasProvider = waasConnector.sequenceWaasProvider;
-      if (!waasProvider) {
-        return;
-      }
-      waasProvider.feeConfirmationHandler = {
-        confirmFeeOption(id2, options, txs, chainId) {
-          const pending = new Deferred();
-          setPendingFeeOptionConfirmation({
-            id: id2,
-            options,
-            chainId
-          });
-          _pendingFeeConfirmation = pending;
-          return pending.promise;
-        }
-      };
-    }
-    setup();
-  });
-  return [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption];
-}
 const useProjectAccessKey = () => {
   const {
     projectAccessKey: projectAccessKey2
@@ -112521,36 +112438,10 @@ const abi = [
     type: "function"
   }
 ];
-const Alert = ({ title, description: description2, secondaryDescription, variant, buttonProps, children }) => {
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", background: variant, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
-    Box,
-    {
-      background: "backgroundOverlay",
-      borderRadius: "md",
-      paddingX: { sm: "4", md: "5" },
-      paddingY: "4",
-      width: "full",
-      flexDirection: "column",
-      gap: "3",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: { sm: "column", md: "row" }, gap: "2", justifyContent: "space-between", children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "1", children: [
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", fontWeight: "medium", children: title }),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", fontWeight: "medium", children: description2 }),
-            secondaryDescription && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text80", fontWeight: "medium", children: secondaryDescription })
-          ] }),
-          buttonProps ? /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { background: variant, borderRadius: "sm", width: "min", height: "min", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Button, { variant: "emphasis", shape: "square", flexShrink: "0", ...buttonProps }) }) : null
-        ] }),
-        children
-      ]
-    }
-  ) });
-};
 const searchParams$1 = new URLSearchParams(location.search);
 const connectionMode$1 = searchParams$1.get("mode") === "universal" ? "universal" : "waas";
 const isDebugMode$1 = searchParams$1.has("debug");
 const Homepage = () => {
-  var _a2;
   const { theme, setTheme } = useTheme$1();
   const { setTheme: setKitTheme } = useTheme();
   const { address, connector, isConnected } = useAccount();
@@ -112577,59 +112468,17 @@ const Homepage = () => {
   const [confirmationEnabled, setConfirmationEnabled] = React.useState(
     localStorage.getItem("confirmationEnabled") === "true"
   );
-  const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions();
-  const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React.useState();
   reactExports.useEffect(() => {
-    if (pendingFeeOptionConfirmation) {
-      setSelectedFeeOptionTokenName(pendingFeeOptionConfirmation.options[0].token.name);
+    if (error == null ? void 0 : error.message) {
+      console.log(error == null ? void 0 : error.message);
     }
-  }, [pendingFeeOptionConfirmation]);
-  reactExports.useEffect(() => {
-    console.log(error == null ? void 0 : error.message);
   }, [error]);
   const chainId = useChainId();
-  const indexerClient = useIndexerClient(chainId);
-  const [feeOptionBalances, setFeeOptionBalances] = React.useState([]);
-  const [feeOptionAlert, setFeeOptionAlert] = React.useState(void 0);
-  reactExports.useEffect(() => {
-    checkTokenBalancesForFeeOptions();
-  }, [pendingFeeOptionConfirmation]);
+  useIndexerClient(chainId);
   const handleSwitchConnectionMode = (mode) => {
     const searchParams2 = new URLSearchParams();
     searchParams2.set("mode", mode);
     window.location.search = searchParams2.toString();
-  };
-  const checkTokenBalancesForFeeOptions = async () => {
-    if (pendingFeeOptionConfirmation && walletClient) {
-      const [account2] = await walletClient.getAddresses();
-      const nativeTokenBalance = await indexerClient.getEtherBalance({ accountAddress: account2 });
-      const tokenBalances = await indexerClient.getTokenBalances({
-        accountAddress: account2
-      });
-      console.log("feeOptions", pendingFeeOptionConfirmation.options);
-      console.log("nativeTokenBalance", nativeTokenBalance);
-      console.log("tokenBalances", tokenBalances);
-      const balances = pendingFeeOptionConfirmation.options.map((option) => {
-        var _a3;
-        if (option.token.contractAddress === null) {
-          return {
-            tokenName: option.token.name,
-            decimals: option.token.decimals || 0,
-            balance: nativeTokenBalance.balance.balanceWei
-          };
-        } else {
-          return {
-            tokenName: option.token.name,
-            decimals: option.token.decimals || 0,
-            balance: ((_a3 = tokenBalances.balances.find((b2) => {
-              var _a4;
-              return b2.contractAddress.toLowerCase() === ((_a4 = option.token.contractAddress) == null ? void 0 : _a4.toLowerCase());
-            })) == null ? void 0 : _a3.balance) || "0"
-          };
-        }
-      });
-      setFeeOptionBalances(balances);
-    }
   };
   const networkForCurrentChainId = allNetworks.find((n2) => n2.chainId === chainId);
   const publicClient = usePublicClient({ chainId });
@@ -112687,8 +112536,18 @@ const Homepage = () => {
     if (!walletClient) {
       return;
     }
-    const [account2] = await walletClient.getAddresses();
-    sendTransaction2({ to: account2, value: BigInt(0), gas: null });
+    const contractAbiInterface = new Interface([
+      "function demo()"
+    ]);
+    const data = contractAbiInterface.encodeFunctionData(
+      "demo",
+      []
+    );
+    sendTransaction2({
+      to: "0x37470dac8a0255141745906c972e414b1409b470",
+      data,
+      gas: null
+    });
   };
   const runMintNFT = async () => {
     if (!walletClient) {
@@ -112808,14 +112667,6 @@ const Homepage = () => {
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(
               ClickableCard,
               {
-                title: "Sardine Checkout",
-                description: "Set orderbook order id, token contract address and token id to test checkout (on Polygon)",
-                onClick: onClickCheckout
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-              ClickableCard,
-              {
                 title: "Send transaction",
                 description: "Send a transaction with your wallet",
                 isPending: isPendingSendTxn,
@@ -112893,102 +112744,19 @@ const Homepage = () => {
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(
               ClickableCard,
               {
+                title: "NFT Checkout",
+                description: "Set orderbook order id, token contract address and token id to test checkout (on Polygon)",
+                onClick: onClickCheckout
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+              ClickableCard,
+              {
                 title: "Switch network",
                 description: `Current network: ${networkForCurrentChainId.title}`,
                 onClick: onSwitchNetwork
               }
             )
-          ] }),
-          pendingFeeOptionConfirmation && feeOptionBalances.length > 0 && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { marginY: "3", children: [
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-              Select,
-              {
-                name: "feeOption",
-                labelLocation: "top",
-                label: "Pick a fee option",
-                onValueChange: (val) => {
-                  var _a3;
-                  const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find((option) => option.token.name === val);
-                  if (selected) {
-                    setSelectedFeeOptionTokenName(selected.token.name);
-                    setFeeOptionAlert(void 0);
-                  }
-                },
-                value: selectedFeeOptionTokenName,
-                options: [
-                  ...(_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.map((option) => {
-                    var _a3;
-                    return {
-                      label: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "flex-start", flexDirection: "column", fontSize: "xsmall", children: [
-                        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Text, { children: [
-                            "Fee (in ",
-                            option.token.name,
-                            "): "
-                          ] }),
-                          " ",
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(BigInt(option.value), option.token.decimals || 0) })
-                        ] }),
-                        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Text, { children: [
-                            "Wallet balance for ",
-                            option.token.name,
-                            ": "
-                          ] }),
-                          " ",
-                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(
-                            BigInt(((_a3 = feeOptionBalances.find((b2) => b2.tokenName === option.token.name)) == null ? void 0 : _a3.balance) || "0"),
-                            option.token.decimals || 0
-                          ) })
-                        ] })
-                      ] }),
-                      value: option.token.name
-                    };
-                  })
-                ]
-              }
-            ),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { marginY: "2", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [
-              /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-                Button,
-                {
-                  onClick: () => {
-                    var _a3, _b2;
-                    const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find(
-                      (option) => option.token.name === selectedFeeOptionTokenName
-                    );
-                    if ((selected == null ? void 0 : selected.token.contractAddress) !== void 0) {
-                      const balance = parseUnits(
-                        ((_b2 = feeOptionBalances.find((b2) => b2.tokenName === selected.token.name)) == null ? void 0 : _b2.balance) || "0",
-                        selected.token.decimals || 0
-                      );
-                      const feeOptionValue = parseUnits(selected.value, selected.token.decimals || 0);
-                      if (balance && balance < feeOptionValue) {
-                        setFeeOptionAlert({
-                          title: "Insufficient balance",
-                          description: `You do not have enough balance to pay the fee with ${selected.token.name}, please make sure you have enough balance in your wallet for the selected fee option.`,
-                          secondaryDescription: "You can also switch network to Arbitrum Sepolia to test a gasless transaction.",
-                          variant: "warning"
-                        });
-                        return;
-                      }
-                      confirmPendingFeeOption(pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.id, selected.token.contractAddress);
-                    }
-                  },
-                  label: "Confirm fee option"
-                }
-              ),
-              feeOptionAlert && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { marginTop: "3", style: { maxWidth: "332px" }, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-                Alert,
-                {
-                  title: feeOptionAlert.title,
-                  description: feeOptionAlert.description,
-                  secondaryDescription: feeOptionAlert.secondaryDescription,
-                  variant: feeOptionAlert.variant,
-                  buttonProps: feeOptionAlert.buttonProps
-                }
-              ) })
-            ] })
           ] }),
           isWaasConnection && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { marginY: "3", children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { as: "label", flexDirection: "row", alignItems: "center", justifyContent: "space-between", children: [
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "semibold", variant: "small", color: "text50", children: "Confirmations" }),
@@ -113282,7 +113050,7 @@ const getWaasConnectors = () => {
   const connectors = [
     ...getDefaultWaasConnectors({
       walletConnectProjectId: "c65a6cb1aa83c4e24500130f23a437d8",
-      defaultChainId: arbitrumSepolia.id,
+      defaultChainId: arbitrumNova.id,
       waasConfigKey,
       googleClientId,
       appleClientId,
