@@ -1,3 +1,4 @@
+import { sequence } from '0xsequence'
 import React, { useEffect } from 'react'
 import { Box, CheckmarkIcon, Text } from '@0xsequence/design-system'
 
@@ -9,11 +10,12 @@ export const TransactionSuccess = () => {
   const nav = useNavigation()
   const navigation = nav.navigation as TransactionSuccessNavigation
 
+  const chainId = settings?.sardineCheckout?.chainId || 137
+  const network = sequence.network.allNetworks.find(n => n.chainId === chainId)
+
   useEffect(() => {
-    setTimeout(() => {
-      closeCheckout()
-      settings?.creditCardCheckout?.onSuccess && settings?.creditCardCheckout?.onSuccess(navigation.params.transactionHash)
-    }, 3000)
+    settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash, settings?.sardineCheckout)
+    settings?.sardineCheckout?.onSuccess && settings?.sardineCheckout?.onSuccess(navigation.params.transactionHash, settings?.sardineCheckout)
   }, [])
 
   return (
@@ -27,8 +29,22 @@ export const TransactionSuccess = () => {
         <NotificationSuccessIcon />
         <Text fontSize="xlarge">Success!</Text>
         <Text textAlign="center" variant="normal" color="text80">
-          The transaction was successful.
+          Purchase was successful, item was sent to your wallet.
         </Text>
+        {navigation.params.transactionHash && (
+          <Text
+            as="a"
+            variant="small"
+            underline
+            marginTop="6"
+            color="text100"
+            href={`${network?.blockExplorer?.rootUrl}/tx/${navigation.params.transactionHash}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View on {network?.blockExplorer?.name}
+          </Text>
+        )}
       </Box>
     </Box>
   )

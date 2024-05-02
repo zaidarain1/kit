@@ -1,13 +1,19 @@
 import React from 'react'
 import { ethers } from 'ethers'
-import { Box, Button, ChevronRightIcon, Divider, Text, PaymentsIcon, vars } from '@0xsequence/design-system'
-
-import { getNativeTokenInfoByChainId, useBalances, useContractInfo } from '@0xsequence/kit'
+import { Box, Button, ChevronRightIcon, Divider, HelpIcon, Text, TooltipPrimitive, Tooltip, PaymentsIcon, vars } from '@0xsequence/design-system'
+import {
+  getNativeTokenInfoByChainId,
+  useBalances,
+  useContractInfo,
+  useTokenMetadata,
+  useProjectAccessKey
+} from '@0xsequence/kit'
 
 import { useAccount, useConfig } from 'wagmi'
 
 import { OrderSummaryItem } from './component/OrderSummaryItem'
 
+import { fetchSardineClientToken, fetchSardineOrderStatus } from '../../api'
 import { CoinIcon } from '../../shared/components/CoinIcon'
 import { Skeleton } from '../../shared/components/Skeleton'
 import { HEADER_HEIGHT } from '../../constants'
@@ -20,15 +26,16 @@ export const CheckoutSelection = () => {
   const { setNavigation } = useNavigation()
   const { closeCheckout, settings } = useCheckoutModal()
   const { address: accountAddress } = useAccount()
+  const projectAccessKey = useProjectAccessKey()
 
   const cryptoCheckoutSettings = settings?.cryptoCheckout
-  // const creditCardCheckoutSettings = settings?.creditCardCheckout
+  const creditCardCheckoutSettings = settings?.sardineCheckout
+  const displayCreditCardCheckout = !!creditCardCheckoutSettings
   const displayCryptoCheckout = !!cryptoCheckoutSettings
-  // const displayCreditCardCheckout = !!creditCardCheckoutSettings
 
-  const { data: contractInfoData, isPending: isPendingContractInfo } = useContractInfo(
+  const { data: contractInfoData, isLoading: isPendingContractInfo } = useContractInfo(
     cryptoCheckoutSettings?.chainId || 1,
-    cryptoCheckoutSettings?.coinQuantity?.contractAddress || ''
+    cryptoCheckoutSettings?.coinQuantity?.contractAddress || '',
   )
 
   const { data: balancesData, isPending: isPendingBalances } = useBalances({
@@ -55,12 +62,37 @@ export const CheckoutSelection = () => {
 
   const orderSummaryItems = settings?.orderSummaryItems || []
 
-  const chainId = settings?.cryptoCheckout?.chainId || 1
+  const chainId = settings?.cryptoCheckout?.chainId || settings?.sardineCheckout?.chainId || 1
+
+  const { data: tokensMetadata, isLoading: isTokenMetadataLoading } = useTokenMetadata(
+    chainId,
+    orderSummaryItems[0].contractAddress,
+    [orderSummaryItems[0].tokenId]
+  )
+  const tokenMetadata = tokensMetadata ? tokensMetadata[0] : undefined
+
+  const triggerSardineTransaction = async () => {
+    console.log('trigger sardine transaction')
+
+    if (settings?.sardineCheckout) {
+      const isDev = settings?.sardineCheckout?.isDev || false
+      const { token, orderId } = await fetchSardineClientToken(settings.sardineCheckout, isDev, projectAccessKey, tokenMetadata)
+
+      setNavigation({
+        location: 'transaction-pending',
+        params: { orderId, authToken: token }
+      })
+    }
+  }
 
   const onClickPayWithCard = () => {
-    setNavigation({
-      location: 'transaction-form'
-    })
+    if (settings?.sardineCheckout) {
+      triggerSardineTransaction()
+    } else {
+      setNavigation({
+        location: 'transaction-form'
+      })
+    }
   }
 
   const onClickPayWithCrypto = () => {
@@ -82,9 +114,24 @@ export const CheckoutSelection = () => {
     >
       {orderSummaryItems.length > 0 && (
         <>
-          <Text fontWeight="normal" fontSize="normal" color="text50">
-            Order summary
-          </Text>
+          <Box flexDirection="row" gap="2" alignItems="center">
+            <Text fontWeight="normal" fontSize="normal" color="text50">
+              Order summary
+            </Text>
+            <Tooltip
+              vOffset={-2}
+              side="bottom"
+              message={
+                <>
+                  Please note that NFTs are digital assets<br/> and as such cannot delivered physically.
+                </>
+              }
+            >
+              <Box width="5" height="5">
+                <HelpIcon color="text80" />
+              </Box>
+            </Tooltip>
+          </Box>
           <Box flexDirection="column" gap="2">
             {orderSummaryItems.map((orderSummaryItem, index) => {
               return <OrderSummaryItem key={index} {...orderSummaryItem} chainId={chainId} />
@@ -120,7 +167,7 @@ export const CheckoutSelection = () => {
       )}
 
       <Box flexDirection="column" alignItems="center" justifyContent="center" gap="2">
-        {/* {displayCreditCardCheckout && (
+        {displayCreditCardCheckout && (
           <Button
             style={{
               borderRadius: vars.radii.md,
@@ -134,7 +181,7 @@ export const CheckoutSelection = () => {
             rightIcon={ChevronRightIcon}
             onClick={onClickPayWithCard}
           />
-        )} */}
+        )}
         {displayCryptoCheckout && !isInsufficientBalance && !isPending && (
           <Button
             style={{

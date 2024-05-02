@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion'
 
 import { getModalPositionCss, useTheme } from '@0xsequence/kit'
 
-import { PaperTransactionForm, PendingTransaction, TransactionError, TransactionSuccess, CheckoutSelection } from '../../views'
+import { PendingTransaction, TransactionError, TransactionSuccess, CheckoutSelection } from '../../views'
 import { History, Navigation, NavigationContextProvider, CheckoutModalContextProvider, CheckoutSettings } from '../../contexts'
 
 import { NavigationHeader } from '../../shared/components/NavigationHeader'
@@ -20,31 +20,6 @@ export type KitCheckoutProvider = {
 export const DEFAULT_LOCATION: Navigation = {
   location: 'select-method-checkout'
 }
-
-// export const DEFAULT_LOCATION: Navigation = {
-//   location: 'transaction-form',
-// }
-
-// export const DEFAULT_LOCATION: Navigation = {
-//   location: 'transaction-pending',
-//   params: {
-//     transactionId: '48a47f94-475b-41f2-8370-7b3d279ba662'
-//   }
-// }
-
-// export const DEFAULT_LOCATION: Navigation = {
-//   location: 'transaction-success',
-//   params: {
-//     transactionHash: '0x48a47f94-475b-41f2-8370-7b3d279ba662'
-//   }
-// }
-
-// export const DEFAULT_LOCATION: Navigation = {
-//   location: 'transaction-error',
-//   params: {
-//     error: new Error('an error occurred'),
-//   }
-// }
 
 export const KitCheckoutProvider = (props: KitCheckoutProvider) => {
   const queryClient = new QueryClient()
@@ -85,7 +60,7 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
         return <TransactionError />
       case 'transaction-form':
       default:
-        return <PaperTransactionForm />
+        return <CheckoutSelection />
     }
   }
 
@@ -126,6 +101,7 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
                     }
                   }}
                   scroll={false}
+                  isDismissible={navigation.location !== 'transaction-pending'}
                   backdropColor="backgroundBackdrop"
                   onClose={() => setOpenCheckoutModal(false)}
                 >
