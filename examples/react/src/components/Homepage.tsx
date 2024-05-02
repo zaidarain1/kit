@@ -493,11 +493,11 @@ export const Homepage = () => {
                   onClick={generateEthAuthProof}
                 />
               )}
-              <ClickableCard
+              {/* <ClickableCard
                 title="NFT Checkout"
                 description="Set orderbook order id, token contract address and token id to test checkout (on Polygon)"
                 onClick={onClickCheckout}
-              />
+              /> */}
               <ClickableCard
                 title="Switch network"
                 description={`Current network: ${networkForCurrentChainId.title}`}
