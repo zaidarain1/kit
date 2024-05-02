@@ -1,5 +1,14 @@
 # @0xsequence/kit-example-react-waas
 
+## 0.3.1
+
+### Patch Changes
+
+- Fixing email login
+
+- Updated dependencies []:
+  - @0xsequence/kit@2.4.2
+
 ## 0.3.0
 
 ### Minor Changes
