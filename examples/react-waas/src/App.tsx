@@ -1,5 +1,5 @@
 import { sequence } from '0xsequence'
-import { useOpenConnectModal, useWaasFeeOptions } from '@0xsequence/kit'
+import { useOpenConnectModal, useWaasFeeOptions, useWaasRevalidation } from '@0xsequence/kit'
 import { useEffect, useState } from 'react'
 import { formatUnits } from 'viem'
 import {
@@ -24,6 +24,8 @@ export const App = () => {
   const { switchChain } = useSwitchChain()
   const chainId = useChainId()
   const networkForCurrentChainId = sequence.network.allNetworks.find(n => n.chainId === chainId)
+
+  useWaasRevalidation()
 
   const switchNetwork = () => {
     if (chainId === 421614) {
@@ -102,7 +104,7 @@ export const App = () => {
 
   useEffect(() => {
     if (txnData) {
-      setLastTxnDataHash(txnData.hash ?? txnData)
+      setLastTxnDataHash(txnData)
     }
   }, [txnData])
 
@@ -153,7 +155,7 @@ export const App = () => {
                 <div>
                   <p style={{ overflowWrap: 'anywhere' }}>Transaction hash: {lastTxnDataHash}</p>
 
-                  <a target="_blank" href={`${networkForCurrentChainId?.blockExplorer.rootUrl}/tx/${lastTxnDataHash}`}>
+                  <a target="_blank" href={`${networkForCurrentChainId?.blockExplorer?.rootUrl}/tx/${lastTxnDataHash}`}>
                     View on {networkForCurrentChainId?.name} explorer
                   </a>
                 </div>
