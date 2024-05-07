@@ -123,7 +123,7 @@ export const CheckoutSelection = () => {
               side="bottom"
               message={
                 <>
-                  Please note that NFTs are digital assets<br/> and as such cannot delivered physically.
+                  Please note that NFTs are digital assets<br/> ,and as such, cannot be delivered physically.
                 </>
               }
             >

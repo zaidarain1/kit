@@ -101,7 +101,6 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
                     }
                   }}
                   scroll={false}
-                  isDismissible={navigation.location !== 'transaction-pending'}
                   backdropColor="backgroundBackdrop"
                   onClose={() => setOpenCheckoutModal(false)}
                 >
