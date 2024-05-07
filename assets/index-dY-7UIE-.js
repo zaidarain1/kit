@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CEuOE5Ue.js","./___vite-browser-external_commonjs-proxy-Bgzvstd4.js","./index.es-BxN38SBl.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-D4BjuBLS.js","./___vite-browser-external_commonjs-proxy-Cp_JekuJ.js","./index.es-DnHUvTmI.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71634,7 +71634,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-5Q-6OH__.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BF4Lsffy.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -99569,7 +99569,7 @@ const CheckoutSelection = () => {
   }, "Order summary"), /* @__PURE__ */ React.createElement(Tooltip, {
     vOffset: -2,
     side: "bottom",
-    message: /* @__PURE__ */ React.createElement(React.Fragment, null, "Please note that NFTs are digital assets", /* @__PURE__ */ React.createElement("br", null), " and as such cannot delivered physically.")
+    message: /* @__PURE__ */ React.createElement(React.Fragment, null, "Please note that NFTs are digital assets", /* @__PURE__ */ React.createElement("br", null), " ,and as such, cannot be delivered physically.")
   }, /* @__PURE__ */ React.createElement(Box, {
     width: "5",
     height: "5"
@@ -99827,7 +99827,6 @@ const KitCheckoutContent = ({
       }, getModalPositionCss(position))
     },
     scroll: false,
-    isDismissible: navigation.location !== "transaction-pending",
     backdropColor: "backgroundBackdrop",
     onClose: () => setOpenCheckoutModal(false)
   }, /* @__PURE__ */ React.createElement(Box, {
@@ -111041,7 +111040,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-CEuOE5Ue.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-D4BjuBLS.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -111227,7 +111226,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BxN38SBl.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DnHUvTmI.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
