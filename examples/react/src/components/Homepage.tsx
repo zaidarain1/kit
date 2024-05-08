@@ -417,6 +417,11 @@ export const Homepage = () => {
               <Text color="text50" fontSize="small" fontWeight="medium">
                 Demos
               </Text>
+              {/* <ClickableCard
+                title="NFT Checkout"
+                description="NFT Checkout testing"
+                onClick={onClickCheckout}
+              /> */}
               <ClickableCard
                 title="Embedded wallet"
                 description="Connect a Sequence wallet to view, swap, send, and receive collections"
