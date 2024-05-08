@@ -8,7 +8,6 @@ import type { SequenceWaasConnector } from '@0xsequence/kit-connectors'
 
 
 export function useWaasRevalidation(
-  // waasConnector?: any
 ) {
   const { connector } = useAccount()
 
@@ -30,6 +29,9 @@ export function useWaasRevalidation(
 
       sequenceWaas.onValidationRequired(() => {
         console.log('TODO: requires validation!')
+        // Trigger modal + input callback
+
+        // sequenceWaas.finishValidateSession('string')
       })
     }
     setup()
