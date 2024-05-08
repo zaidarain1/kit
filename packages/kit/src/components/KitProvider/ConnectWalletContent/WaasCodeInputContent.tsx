@@ -10,7 +10,7 @@ import { PINCodeInput } from './PINCodeInput'
 
 export interface WaasCodeInputContentProps {
   isLoading: boolean
-  onVerify: () => {}
+  onVerify: (code: string) => void
 }
 
 export const WaasCodeInputContent = ({
@@ -18,7 +18,6 @@ export const WaasCodeInputContent = ({
   onVerify
 }: WaasCodeInputContentProps) => {
   const [waasEmailPinCode, setWaasEmailPinCode] = useState<string[]>([])
-
 
   return (
     <>
@@ -36,7 +35,7 @@ export const WaasCodeInputContent = ({
               variant="primary"
               disabled={waasEmailPinCode.includes('')}
               label="Verify"
-              onClick={() => onVerify()}
+              onClick={() => onVerify(waasEmailPinCode.join(''))}
               data-id="verifyButton"
             />
           )}

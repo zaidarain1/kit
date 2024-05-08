@@ -31,6 +31,7 @@ import { KitConnectProviderProps } from '../index'
 import { Banner } from './Banner'
 import { ExtendedWalletList } from './ExtendedWalletList'
 import { GoogleLogo } from './GoogleLogo'
+import { WaasCodeInputContent } from './WaasCodeInputContent'
 
 interface ConnectWalletContentProps extends KitConnectProviderProps {
   openConnectModal: boolean
@@ -55,7 +56,6 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
 
   const [email, setEmail] = useState('')
   const [showEmailWaasPinInput, setShowEmailWaasPinInput] = useState(false)
-  const [waasEmailPinCode, setWaasEmailPinCode] = useState<string[]>([])
   const { connectors: baseConnectors, connect } = useConnect()
   const [enableGoogleTooltip, setEnableGoogleTooltip] = useState(false)
 
@@ -197,28 +197,10 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
 
   if (showEmailWaasPinInput) {
     return (
-      <>
-        <Box paddingY="6" alignItems="center" justifyContent="center" flexDirection="column">
-          <Text marginTop="5" marginBottom="4" variant="normal" color="text80">
-            Enter code received in email.
-          </Text>
-          <PINCodeInput value={waasEmailPinCode} digits={6} onChange={setWaasEmailPinCode} />
-
-          <Box gap="2" marginY="4" alignItems="center" justifyContent="center" style={{ height: '44px' }}>
-            {emailAuthLoading ? (
-              <Spinner />
-            ) : (
-              <Button
-                variant="primary"
-                disabled={waasEmailPinCode.includes('')}
-                label="Verify"
-                onClick={() => sendChallengeAnswer?.(waasEmailPinCode.join(''))}
-                data-id="verifyButton"
-              />
-            )}
-          </Box>
-        </Box>
-      </>
+      <WaasCodeInputContent
+        isLoading={emailAuthLoading}
+        onVerify={(code) => { sendChallengeAnswer?.(code) }}
+      />
     )
   }
 

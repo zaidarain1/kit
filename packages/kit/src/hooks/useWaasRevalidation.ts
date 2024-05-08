@@ -1,18 +1,46 @@
 import { SequenceWaaS } from '@0xsequence/waas'
-import { commons } from '@0xsequence/core'
-import { ethers } from 'ethers'
 import { useState, useEffect } from 'react'
-import { Deferred } from '../utils/deferred'
 import { useAccount } from 'wagmi'
-import type { SequenceWaasConnector } from '@0xsequence/kit-connectors'
 
 
-export function useWaasRevalidation(
-) {
+interface UseWaasRevalidation {
+  openWaasRevalidationModal: boolean,
+  setOpenWaasRevalidationModal: React.Dispatch<React.SetStateAction<boolean>>
+  onVerify: (code: string) => void
+  onVerifyIsLoading: boolean
+  setOnVerifyIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export function useWaasRevalidation(): UseWaasRevalidation {
+  const [openWaasRevalidationModal, setOpenWaasRevalidationModal] = useState(false)
+  const [onVerifyIsLoading, setOnVerifyIsLoading] = useState(false)
   const { connector } = useAccount()
 
   const waasConnector = connector?.type === 'sequence-waas' ? connector : undefined
 
+  const onVerify = async (code: string) => {
+    try {
+      // @ts-ignore-next-line
+      const sequenceWaas: SequenceWaaS = waasConnector.sequenceWaas
+      
+      if (!sequenceWaas) {
+        return
+      }
+
+      setOnVerifyIsLoading(true)
+      await sequenceWaas.finishValidateSession(code)
+    } catch(e) {
+      console.error(e)
+    }
+    setOnVerifyIsLoading(false)
+    setOpenWaasRevalidationModal(false)
+  }
+
+  useEffect(() => {
+    if (!openWaasRevalidationModal) {
+      setOnVerifyIsLoading(false)
+    }
+  }, [openWaasRevalidationModal])
 
   useEffect(() => {
     async function setup() {
@@ -28,14 +56,18 @@ export function useWaasRevalidation(
       }
 
       sequenceWaas.onValidationRequired(() => {
-        console.log('TODO: requires validation!')
-        // Trigger modal + input callback
-
-        // sequenceWaas.finishValidateSession('string')
+        console.log('onValidationRequire')
+        setOpenWaasRevalidationModal(true)
       })
     }
     setup()
   }, [waasConnector])
 
-  return 
+  return ({
+    openWaasRevalidationModal,
+    setOpenWaasRevalidationModal,
+    onVerifyIsLoading,
+    setOnVerifyIsLoading,
+    onVerify
+  }) 
 }
