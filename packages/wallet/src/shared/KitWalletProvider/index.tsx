@@ -10,7 +10,6 @@ import { getHeader, getContent } from './utils'
 import { History, Navigation, NavigationContextProvider, WalletModalContextProvider } from '../../contexts'
 
 import { HEADER_HEIGHT } from '../../constants'
-import * as styles from '../styles.css'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -106,13 +105,11 @@ export const KitWalletContent = ({ children }: KitWalletProviderProps) => {
                   backdropColor="backgroundBackdrop"
                   onClose={() => setOpenWalletModal(false)}
                 >
-                  <Box className={styles.walletContent} id="sequence-kit-wallet-content">
+                  <Box id="sequence-kit-wallet-content">
                     {getHeader(navigation)}
 
                     {displayScrollbar ? (
-                      <Scroll className={styles.scrollbar} style={{ paddingTop: HEADER_HEIGHT, height: 'min(800px, 80vh)' }}>
-                        {getContent(navigation)}
-                      </Scroll>
+                      <Scroll style={{ paddingTop: HEADER_HEIGHT, height: 'min(800px, 80vh)' }}>{getContent(navigation)}</Scroll>
                     ) : (
                       getContent(navigation)
                     )}

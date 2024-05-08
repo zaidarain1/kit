@@ -21,8 +21,6 @@ import {
 } from '../../contexts'
 import { ExtendedConnector, ModalPosition, getModalPositionCss } from '../../utils'
 
-import * as sharedStyles from '../styles.css'
-
 import { useWaasConfirmationHandler } from '../../hooks/useWaasConfirmationHandler'
 
 import { TxnDetails } from '../TxnDetails'
@@ -202,7 +200,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                           }}
                           onClose={() => setOpenConnectModal(false)}
                         >
-                          <Box padding="4" className={sharedStyles.walletContent}>
+                          <Box padding="4">
                             <Box
                               justifyContent="center"
                               color="text100"
@@ -221,12 +219,14 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                             />
                             <Box
                               onClick={poweredBySequenceOnClick}
-                              className={sharedStyles.clickable}
                               gap="1"
                               marginTop="4"
                               flexDirection="row"
                               alignItems="center"
                               justifyContent="center"
+                              userSelect="none"
+                              cursor="pointer"
+                              opacity={{ hover: '80' }}
                             >
                               <Text fontSize="small" color="text100">
                                 Powered by Sequence
@@ -256,7 +256,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                             rejectPendingRequest('')
                           }}
                         >
-                          <Box paddingX="4" paddingTop="4" paddingBottom="2" className={sharedStyles.walletContent}>
+                          <Box paddingX="4" paddingTop="4" paddingBottom="2">
                             <Box
                               flexDirection="column"
                               justifyContent="center"

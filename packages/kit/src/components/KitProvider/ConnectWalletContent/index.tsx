@@ -13,7 +13,8 @@ import {
   Spinner,
   Image,
   IconButton,
-  Tooltip
+  Tooltip,
+  PINCodeInput
 } from '@0xsequence/design-system'
 import { useConnect, useAccount, Connector, useConfig, Storage } from 'wagmi'
 import { LogoProps, sequenceWallet } from '@0xsequence/kit-connectors'
@@ -29,9 +30,7 @@ import { isEmailValid } from '../../../utils'
 import { KitConnectProviderProps } from '../index'
 import { ExtendedConnector } from '../../../utils/getKitConnectWallets'
 
-import * as styles from '../../styles.css'
 import { useEmailAuth } from '../../../hooks/useWaasEmailAuth'
-import { PINCodeInput } from './PINCodeInput'
 import { getStorageItem } from '../../../utils/storage'
 
 interface ConnectWalletContentProps extends KitConnectProviderProps {
@@ -268,7 +267,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                 return (
                   <Box key={connector.uid} aspectRatio="1/1" alignItems="center" justifyContent="center">
                     {connector._wallet.id === 'google-waas' && (
-                      <Box className={styles.googleWaasButtonContainer}>
+                      <Box width="10" height="10" overflow="hidden" borderRadius="sm" alignItems="center" justifyContent="center">
                         <GoogleLogin
                           type="icon"
                           size="large"
