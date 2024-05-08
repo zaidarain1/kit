@@ -1,5 +1,5 @@
-import { c as commonjsGlobal, d as bnExports, B as Buffer$7, e as require$$2$1, i as inherits_browserExports, a as getAugmentedNamespace, p as process$1, t as tslib_es6, f as eventemitter3Exports, b as getDefaultExportFromCjs } from "./index-dY-7UIE-.js";
-import { e as eventsExports, r as require$$1$2 } from "./___vite-browser-external_commonjs-proxy-Cp_JekuJ.js";
+import { c as commonjsGlobal, d as bnExports, B as Buffer$7, e as require$$2$1, i as inherits_browserExports, a as getAugmentedNamespace, p as process$1, t as tslib_es6, f as eventemitter3Exports, b as getDefaultExportFromCjs } from "./index-BUNEaHbj.js";
+import { e as eventsExports, r as require$$1$2 } from "./___vite-browser-external_commonjs-proxy-C7LGirr0.js";
 function _mergeNamespaces(n2, m2) {
   for (var i = 0; i < m2.length; i++) {
     const e2 = m2[i];
@@ -5535,7 +5535,7 @@ function requireBuffer_list() {
     }
     _createClass(BufferList, [{
       key: "push",
-      value: function push2(v2) {
+      value: function push(v2) {
         var entry = {
           data: v2,
           next: null
@@ -5549,7 +5549,7 @@ function requireBuffer_list() {
       }
     }, {
       key: "unshift",
-      value: function unshift2(v2) {
+      value: function unshift(v2) {
         var entry = {
           data: v2,
           next: this.head
@@ -6147,7 +6147,7 @@ function require_stream_writable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._writableState && this._writableState.getBuffer();
     }
   });
@@ -6162,7 +6162,7 @@ function require_stream_writable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._writableState.highWaterMark;
     }
   });
@@ -6343,7 +6343,7 @@ function require_stream_writable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._writableState.length;
     }
   });
@@ -6418,7 +6418,7 @@ function require_stream_writable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       if (this._writableState === void 0) {
         return false;
       }
@@ -6484,7 +6484,7 @@ function require_stream_duplex() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._writableState.highWaterMark;
     }
   });
@@ -6493,7 +6493,7 @@ function require_stream_duplex() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._writableState && this._writableState.getBuffer();
     }
   });
@@ -6502,7 +6502,7 @@ function require_stream_duplex() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._writableState.length;
     }
   });
@@ -6519,7 +6519,7 @@ function require_stream_duplex() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       if (this._readableState === void 0 || this._writableState === void 0) {
         return false;
       }
@@ -7018,7 +7018,7 @@ function requireAsync_iterator() {
   }), _Object$setPrototypeO), AsyncIteratorPrototype);
   var createReadableStreamAsyncIterator = function createReadableStreamAsyncIterator2(stream) {
     var _Object$create;
-    var iterator2 = Object.create(ReadableStreamAsyncIteratorPrototype, (_Object$create = {}, _defineProperty(_Object$create, kStream, {
+    var iterator = Object.create(ReadableStreamAsyncIteratorPrototype, (_Object$create = {}, _defineProperty(_Object$create, kStream, {
       value: stream,
       writable: true
     }), _defineProperty(_Object$create, kLastResolve, {
@@ -7035,43 +7035,43 @@ function requireAsync_iterator() {
       writable: true
     }), _defineProperty(_Object$create, kHandlePromise, {
       value: function value(resolve, reject) {
-        var data = iterator2[kStream].read();
+        var data = iterator[kStream].read();
         if (data) {
-          iterator2[kLastPromise] = null;
-          iterator2[kLastResolve] = null;
-          iterator2[kLastReject] = null;
+          iterator[kLastPromise] = null;
+          iterator[kLastResolve] = null;
+          iterator[kLastReject] = null;
           resolve(createIterResult(data, false));
         } else {
-          iterator2[kLastResolve] = resolve;
-          iterator2[kLastReject] = reject;
+          iterator[kLastResolve] = resolve;
+          iterator[kLastReject] = reject;
         }
       },
       writable: true
     }), _Object$create));
-    iterator2[kLastPromise] = null;
+    iterator[kLastPromise] = null;
     finished(stream, function(err) {
       if (err && err.code !== "ERR_STREAM_PREMATURE_CLOSE") {
-        var reject = iterator2[kLastReject];
+        var reject = iterator[kLastReject];
         if (reject !== null) {
-          iterator2[kLastPromise] = null;
-          iterator2[kLastResolve] = null;
-          iterator2[kLastReject] = null;
+          iterator[kLastPromise] = null;
+          iterator[kLastResolve] = null;
+          iterator[kLastReject] = null;
           reject(err);
         }
-        iterator2[kError] = err;
+        iterator[kError] = err;
         return;
       }
-      var resolve = iterator2[kLastResolve];
+      var resolve = iterator[kLastResolve];
       if (resolve !== null) {
-        iterator2[kLastPromise] = null;
-        iterator2[kLastResolve] = null;
-        iterator2[kLastReject] = null;
+        iterator[kLastPromise] = null;
+        iterator[kLastResolve] = null;
+        iterator[kLastReject] = null;
         resolve(createIterResult(void 0, true));
       }
-      iterator2[kEnded] = true;
+      iterator[kEnded] = true;
     });
-    stream.on("readable", onReadable.bind(null, iterator2));
-    return iterator2;
+    stream.on("readable", onReadable.bind(null, iterator));
+    return iterator;
   };
   async_iterator = createReadableStreamAsyncIterator;
   return async_iterator;
@@ -7196,7 +7196,7 @@ function require_stream_readable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       if (this._readableState === void 0) {
         return false;
       }
@@ -7784,7 +7784,7 @@ function require_stream_readable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._readableState.highWaterMark;
     }
   });
@@ -7793,7 +7793,7 @@ function require_stream_readable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._readableState && this._readableState.buffer;
     }
   });
@@ -7802,7 +7802,7 @@ function require_stream_readable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._readableState.flowing;
     },
     set: function set2(state2) {
@@ -7817,7 +7817,7 @@ function require_stream_readable() {
     // because otherwise some prototype manipulation in
     // userland will fail
     enumerable: false,
-    get: function get2() {
+    get: function get() {
       return this._readableState.length;
     }
   });
@@ -10795,8 +10795,8 @@ var json = {};
   ]);
   exports2.JsonStruct = (0, superstruct_12.define)("Json", (value, context) => {
     function checkStruct(innerValue, struct2) {
-      const iterator2 = struct2.validator(innerValue, context);
-      const errors2 = [...iterator2];
+      const iterator = struct2.validator(innerValue, context);
+      const errors2 = [...iterator];
       if (errors2.length > 0) {
         return errors2;
       }
@@ -11781,7 +11781,7 @@ let SemVer$d = class SemVer {
     do {
       const a2 = this.build[i];
       const b2 = other.build[i];
-      debug("prerelease compare", i, a2, b2);
+      debug("build compare", i, a2, b2);
       if (a2 === void 0 && b2 === void 0) {
         return 0;
       } else if (b2 === void 0) {
@@ -12111,646 +12111,42 @@ const coerce$1 = (version2, options) => {
   return parse$1(`${major2}.${minor2}.${patch2}${prerelease2}${build}`, options);
 };
 var coerce_1 = coerce$1;
-var iterator;
-var hasRequiredIterator;
-function requireIterator() {
-  if (hasRequiredIterator)
-    return iterator;
-  hasRequiredIterator = 1;
-  iterator = function(Yallist2) {
-    Yallist2.prototype[Symbol.iterator] = function* () {
-      for (let walker = this.head; walker; walker = walker.next) {
-        yield walker.value;
-      }
-    };
-  };
-  return iterator;
-}
-var yallist = Yallist$1;
-Yallist$1.Node = Node;
-Yallist$1.create = Yallist$1;
-function Yallist$1(list) {
-  var self2 = this;
-  if (!(self2 instanceof Yallist$1)) {
-    self2 = new Yallist$1();
-  }
-  self2.tail = null;
-  self2.head = null;
-  self2.length = 0;
-  if (list && typeof list.forEach === "function") {
-    list.forEach(function(item) {
-      self2.push(item);
-    });
-  } else if (arguments.length > 0) {
-    for (var i = 0, l2 = arguments.length; i < l2; i++) {
-      self2.push(arguments[i]);
-    }
-  }
-  return self2;
-}
-Yallist$1.prototype.removeNode = function(node) {
-  if (node.list !== this) {
-    throw new Error("removing node which does not belong to this list");
-  }
-  var next = node.next;
-  var prev = node.prev;
-  if (next) {
-    next.prev = prev;
-  }
-  if (prev) {
-    prev.next = next;
-  }
-  if (node === this.head) {
-    this.head = next;
-  }
-  if (node === this.tail) {
-    this.tail = prev;
-  }
-  node.list.length--;
-  node.next = null;
-  node.prev = null;
-  node.list = null;
-  return next;
-};
-Yallist$1.prototype.unshiftNode = function(node) {
-  if (node === this.head) {
-    return;
-  }
-  if (node.list) {
-    node.list.removeNode(node);
-  }
-  var head = this.head;
-  node.list = this;
-  node.next = head;
-  if (head) {
-    head.prev = node;
-  }
-  this.head = node;
-  if (!this.tail) {
-    this.tail = node;
-  }
-  this.length++;
-};
-Yallist$1.prototype.pushNode = function(node) {
-  if (node === this.tail) {
-    return;
-  }
-  if (node.list) {
-    node.list.removeNode(node);
-  }
-  var tail = this.tail;
-  node.list = this;
-  node.prev = tail;
-  if (tail) {
-    tail.next = node;
-  }
-  this.tail = node;
-  if (!this.head) {
-    this.head = node;
-  }
-  this.length++;
-};
-Yallist$1.prototype.push = function() {
-  for (var i = 0, l2 = arguments.length; i < l2; i++) {
-    push(this, arguments[i]);
-  }
-  return this.length;
-};
-Yallist$1.prototype.unshift = function() {
-  for (var i = 0, l2 = arguments.length; i < l2; i++) {
-    unshift(this, arguments[i]);
-  }
-  return this.length;
-};
-Yallist$1.prototype.pop = function() {
-  if (!this.tail) {
-    return void 0;
-  }
-  var res = this.tail.value;
-  this.tail = this.tail.prev;
-  if (this.tail) {
-    this.tail.next = null;
-  } else {
-    this.head = null;
-  }
-  this.length--;
-  return res;
-};
-Yallist$1.prototype.shift = function() {
-  if (!this.head) {
-    return void 0;
-  }
-  var res = this.head.value;
-  this.head = this.head.next;
-  if (this.head) {
-    this.head.prev = null;
-  } else {
-    this.tail = null;
-  }
-  this.length--;
-  return res;
-};
-Yallist$1.prototype.forEach = function(fn, thisp) {
-  thisp = thisp || this;
-  for (var walker = this.head, i = 0; walker !== null; i++) {
-    fn.call(thisp, walker.value, i, this);
-    walker = walker.next;
-  }
-};
-Yallist$1.prototype.forEachReverse = function(fn, thisp) {
-  thisp = thisp || this;
-  for (var walker = this.tail, i = this.length - 1; walker !== null; i--) {
-    fn.call(thisp, walker.value, i, this);
-    walker = walker.prev;
-  }
-};
-Yallist$1.prototype.get = function(n2) {
-  for (var i = 0, walker = this.head; walker !== null && i < n2; i++) {
-    walker = walker.next;
-  }
-  if (i === n2 && walker !== null) {
-    return walker.value;
-  }
-};
-Yallist$1.prototype.getReverse = function(n2) {
-  for (var i = 0, walker = this.tail; walker !== null && i < n2; i++) {
-    walker = walker.prev;
-  }
-  if (i === n2 && walker !== null) {
-    return walker.value;
-  }
-};
-Yallist$1.prototype.map = function(fn, thisp) {
-  thisp = thisp || this;
-  var res = new Yallist$1();
-  for (var walker = this.head; walker !== null; ) {
-    res.push(fn.call(thisp, walker.value, this));
-    walker = walker.next;
-  }
-  return res;
-};
-Yallist$1.prototype.mapReverse = function(fn, thisp) {
-  thisp = thisp || this;
-  var res = new Yallist$1();
-  for (var walker = this.tail; walker !== null; ) {
-    res.push(fn.call(thisp, walker.value, this));
-    walker = walker.prev;
-  }
-  return res;
-};
-Yallist$1.prototype.reduce = function(fn, initial) {
-  var acc;
-  var walker = this.head;
-  if (arguments.length > 1) {
-    acc = initial;
-  } else if (this.head) {
-    walker = this.head.next;
-    acc = this.head.value;
-  } else {
-    throw new TypeError("Reduce of empty list with no initial value");
-  }
-  for (var i = 0; walker !== null; i++) {
-    acc = fn(acc, walker.value, i);
-    walker = walker.next;
-  }
-  return acc;
-};
-Yallist$1.prototype.reduceReverse = function(fn, initial) {
-  var acc;
-  var walker = this.tail;
-  if (arguments.length > 1) {
-    acc = initial;
-  } else if (this.tail) {
-    walker = this.tail.prev;
-    acc = this.tail.value;
-  } else {
-    throw new TypeError("Reduce of empty list with no initial value");
-  }
-  for (var i = this.length - 1; walker !== null; i--) {
-    acc = fn(acc, walker.value, i);
-    walker = walker.prev;
-  }
-  return acc;
-};
-Yallist$1.prototype.toArray = function() {
-  var arr2 = new Array(this.length);
-  for (var i = 0, walker = this.head; walker !== null; i++) {
-    arr2[i] = walker.value;
-    walker = walker.next;
-  }
-  return arr2;
-};
-Yallist$1.prototype.toArrayReverse = function() {
-  var arr2 = new Array(this.length);
-  for (var i = 0, walker = this.tail; walker !== null; i++) {
-    arr2[i] = walker.value;
-    walker = walker.prev;
-  }
-  return arr2;
-};
-Yallist$1.prototype.slice = function(from, to) {
-  to = to || this.length;
-  if (to < 0) {
-    to += this.length;
-  }
-  from = from || 0;
-  if (from < 0) {
-    from += this.length;
-  }
-  var ret = new Yallist$1();
-  if (to < from || to < 0) {
-    return ret;
-  }
-  if (from < 0) {
-    from = 0;
-  }
-  if (to > this.length) {
-    to = this.length;
-  }
-  for (var i = 0, walker = this.head; walker !== null && i < from; i++) {
-    walker = walker.next;
-  }
-  for (; walker !== null && i < to; i++, walker = walker.next) {
-    ret.push(walker.value);
-  }
-  return ret;
-};
-Yallist$1.prototype.sliceReverse = function(from, to) {
-  to = to || this.length;
-  if (to < 0) {
-    to += this.length;
-  }
-  from = from || 0;
-  if (from < 0) {
-    from += this.length;
-  }
-  var ret = new Yallist$1();
-  if (to < from || to < 0) {
-    return ret;
-  }
-  if (from < 0) {
-    from = 0;
-  }
-  if (to > this.length) {
-    to = this.length;
-  }
-  for (var i = this.length, walker = this.tail; walker !== null && i > to; i--) {
-    walker = walker.prev;
-  }
-  for (; walker !== null && i > from; i--, walker = walker.prev) {
-    ret.push(walker.value);
-  }
-  return ret;
-};
-Yallist$1.prototype.splice = function(start, deleteCount, ...nodes) {
-  if (start > this.length) {
-    start = this.length - 1;
-  }
-  if (start < 0) {
-    start = this.length + start;
-  }
-  for (var i = 0, walker = this.head; walker !== null && i < start; i++) {
-    walker = walker.next;
-  }
-  var ret = [];
-  for (var i = 0; walker && i < deleteCount; i++) {
-    ret.push(walker.value);
-    walker = this.removeNode(walker);
-  }
-  if (walker === null) {
-    walker = this.tail;
-  }
-  if (walker !== this.head && walker !== this.tail) {
-    walker = walker.prev;
-  }
-  for (var i = 0; i < nodes.length; i++) {
-    walker = insert(this, walker, nodes[i]);
-  }
-  return ret;
-};
-Yallist$1.prototype.reverse = function() {
-  var head = this.head;
-  var tail = this.tail;
-  for (var walker = head; walker !== null; walker = walker.prev) {
-    var p2 = walker.prev;
-    walker.prev = walker.next;
-    walker.next = p2;
-  }
-  this.head = tail;
-  this.tail = head;
-  return this;
-};
-function insert(self2, node, value) {
-  var inserted = node === self2.head ? new Node(value, null, node, self2) : new Node(value, node, node.next, self2);
-  if (inserted.next === null) {
-    self2.tail = inserted;
-  }
-  if (inserted.prev === null) {
-    self2.head = inserted;
-  }
-  self2.length++;
-  return inserted;
-}
-function push(self2, item) {
-  self2.tail = new Node(item, self2.tail, null, self2);
-  if (!self2.head) {
-    self2.head = self2.tail;
-  }
-  self2.length++;
-}
-function unshift(self2, item) {
-  self2.head = new Node(item, null, self2.head, self2);
-  if (!self2.tail) {
-    self2.tail = self2.head;
-  }
-  self2.length++;
-}
-function Node(value, prev, next, list) {
-  if (!(this instanceof Node)) {
-    return new Node(value, prev, next, list);
-  }
-  this.list = list;
-  this.value = value;
-  if (prev) {
-    prev.next = this;
-    this.prev = prev;
-  } else {
-    this.prev = null;
-  }
-  if (next) {
-    next.prev = this;
-    this.next = next;
-  } else {
-    this.next = null;
-  }
-}
-try {
-  requireIterator()(Yallist$1);
-} catch (er) {
-}
-const Yallist = yallist;
-const MAX$1 = Symbol("max");
-const LENGTH = Symbol("length");
-const LENGTH_CALCULATOR = Symbol("lengthCalculator");
-const ALLOW_STALE = Symbol("allowStale");
-const MAX_AGE = Symbol("maxAge");
-const DISPOSE = Symbol("dispose");
-const NO_DISPOSE_ON_SET = Symbol("noDisposeOnSet");
-const LRU_LIST = Symbol("lruList");
-const CACHE = Symbol("cache");
-const UPDATE_AGE_ON_GET = Symbol("updateAgeOnGet");
-const naiveLength = () => 1;
 class LRUCache {
-  constructor(options) {
-    if (typeof options === "number")
-      options = { max: options };
-    if (!options)
-      options = {};
-    if (options.max && (typeof options.max !== "number" || options.max < 0))
-      throw new TypeError("max must be a non-negative number");
-    this[MAX$1] = options.max || Infinity;
-    const lc = options.length || naiveLength;
-    this[LENGTH_CALCULATOR] = typeof lc !== "function" ? naiveLength : lc;
-    this[ALLOW_STALE] = options.stale || false;
-    if (options.maxAge && typeof options.maxAge !== "number")
-      throw new TypeError("maxAge must be a number");
-    this[MAX_AGE] = options.maxAge || 0;
-    this[DISPOSE] = options.dispose;
-    this[NO_DISPOSE_ON_SET] = options.noDisposeOnSet || false;
-    this[UPDATE_AGE_ON_GET] = options.updateAgeOnGet || false;
-    this.reset();
-  }
-  // resize the cache when the max changes.
-  set max(mL) {
-    if (typeof mL !== "number" || mL < 0)
-      throw new TypeError("max must be a non-negative number");
-    this[MAX$1] = mL || Infinity;
-    trim(this);
-  }
-  get max() {
-    return this[MAX$1];
-  }
-  set allowStale(allowStale) {
-    this[ALLOW_STALE] = !!allowStale;
-  }
-  get allowStale() {
-    return this[ALLOW_STALE];
-  }
-  set maxAge(mA) {
-    if (typeof mA !== "number")
-      throw new TypeError("maxAge must be a non-negative number");
-    this[MAX_AGE] = mA;
-    trim(this);
-  }
-  get maxAge() {
-    return this[MAX_AGE];
-  }
-  // resize the cache when the lengthCalculator changes.
-  set lengthCalculator(lC) {
-    if (typeof lC !== "function")
-      lC = naiveLength;
-    if (lC !== this[LENGTH_CALCULATOR]) {
-      this[LENGTH_CALCULATOR] = lC;
-      this[LENGTH] = 0;
-      this[LRU_LIST].forEach((hit) => {
-        hit.length = this[LENGTH_CALCULATOR](hit.value, hit.key);
-        this[LENGTH] += hit.length;
-      });
-    }
-    trim(this);
-  }
-  get lengthCalculator() {
-    return this[LENGTH_CALCULATOR];
-  }
-  get length() {
-    return this[LENGTH];
-  }
-  get itemCount() {
-    return this[LRU_LIST].length;
-  }
-  rforEach(fn, thisp) {
-    thisp = thisp || this;
-    for (let walker = this[LRU_LIST].tail; walker !== null; ) {
-      const prev = walker.prev;
-      forEachStep(this, fn, walker, thisp);
-      walker = prev;
-    }
-  }
-  forEach(fn, thisp) {
-    thisp = thisp || this;
-    for (let walker = this[LRU_LIST].head; walker !== null; ) {
-      const next = walker.next;
-      forEachStep(this, fn, walker, thisp);
-      walker = next;
-    }
-  }
-  keys() {
-    return this[LRU_LIST].toArray().map((k2) => k2.key);
-  }
-  values() {
-    return this[LRU_LIST].toArray().map((k2) => k2.value);
-  }
-  reset() {
-    if (this[DISPOSE] && this[LRU_LIST] && this[LRU_LIST].length) {
-      this[LRU_LIST].forEach((hit) => this[DISPOSE](hit.key, hit.value));
-    }
-    this[CACHE] = /* @__PURE__ */ new Map();
-    this[LRU_LIST] = new Yallist();
-    this[LENGTH] = 0;
-  }
-  dump() {
-    return this[LRU_LIST].map((hit) => isStale(this, hit) ? false : {
-      k: hit.key,
-      v: hit.value,
-      e: hit.now + (hit.maxAge || 0)
-    }).toArray().filter((h2) => h2);
-  }
-  dumpLru() {
-    return this[LRU_LIST];
-  }
-  set(key, value, maxAge) {
-    maxAge = maxAge || this[MAX_AGE];
-    if (maxAge && typeof maxAge !== "number")
-      throw new TypeError("maxAge must be a number");
-    const now = maxAge ? Date.now() : 0;
-    const len = this[LENGTH_CALCULATOR](value, key);
-    if (this[CACHE].has(key)) {
-      if (len > this[MAX$1]) {
-        del(this, this[CACHE].get(key));
-        return false;
-      }
-      const node = this[CACHE].get(key);
-      const item = node.value;
-      if (this[DISPOSE]) {
-        if (!this[NO_DISPOSE_ON_SET])
-          this[DISPOSE](key, item.value);
-      }
-      item.now = now;
-      item.maxAge = maxAge;
-      item.value = value;
-      this[LENGTH] += len - item.length;
-      item.length = len;
-      this.get(key);
-      trim(this);
-      return true;
-    }
-    const hit = new Entry(key, value, len, now, maxAge);
-    if (hit.length > this[MAX$1]) {
-      if (this[DISPOSE])
-        this[DISPOSE](key, value);
-      return false;
-    }
-    this[LENGTH] += hit.length;
-    this[LRU_LIST].unshift(hit);
-    this[CACHE].set(key, this[LRU_LIST].head);
-    trim(this);
-    return true;
-  }
-  has(key) {
-    if (!this[CACHE].has(key))
-      return false;
-    const hit = this[CACHE].get(key).value;
-    return !isStale(this, hit);
+  constructor() {
+    this.max = 1e3;
+    this.map = /* @__PURE__ */ new Map();
   }
   get(key) {
-    return get(this, key, true);
-  }
-  peek(key) {
-    return get(this, key, false);
-  }
-  pop() {
-    const node = this[LRU_LIST].tail;
-    if (!node)
-      return null;
-    del(this, node);
-    return node.value;
-  }
-  del(key) {
-    del(this, this[CACHE].get(key));
-  }
-  load(arr2) {
-    this.reset();
-    const now = Date.now();
-    for (let l2 = arr2.length - 1; l2 >= 0; l2--) {
-      const hit = arr2[l2];
-      const expiresAt = hit.e || 0;
-      if (expiresAt === 0)
-        this.set(hit.k, hit.v);
-      else {
-        const maxAge = expiresAt - now;
-        if (maxAge > 0) {
-          this.set(hit.k, hit.v, maxAge);
-        }
-      }
-    }
-  }
-  prune() {
-    this[CACHE].forEach((value, key) => get(this, key, false));
-  }
-}
-const get = (self2, key, doUse) => {
-  const node = self2[CACHE].get(key);
-  if (node) {
-    const hit = node.value;
-    if (isStale(self2, hit)) {
-      del(self2, node);
-      if (!self2[ALLOW_STALE])
-        return void 0;
+    const value = this.map.get(key);
+    if (value === void 0) {
+      return void 0;
     } else {
-      if (doUse) {
-        if (self2[UPDATE_AGE_ON_GET])
-          node.value.now = Date.now();
-        self2[LRU_LIST].unshiftNode(node);
+      this.map.delete(key);
+      this.map.set(key, value);
+      return value;
+    }
+  }
+  delete(key) {
+    if (this.map.has(key)) {
+      this.map.delete(key);
+      return true;
+    } else {
+      return false;
+    }
+  }
+  set(key, value) {
+    const deleted = this.delete(key);
+    if (!deleted && value !== void 0) {
+      if (this.map.size >= this.max) {
+        const firstKey = this.map.keys().next().value;
+        this.delete(firstKey);
       }
+      this.map.set(key, value);
     }
-    return hit.value;
-  }
-};
-const isStale = (self2, hit) => {
-  if (!hit || !hit.maxAge && !self2[MAX_AGE])
-    return false;
-  const diff2 = Date.now() - hit.now;
-  return hit.maxAge ? diff2 > hit.maxAge : self2[MAX_AGE] && diff2 > self2[MAX_AGE];
-};
-const trim = (self2) => {
-  if (self2[LENGTH] > self2[MAX$1]) {
-    for (let walker = self2[LRU_LIST].tail; self2[LENGTH] > self2[MAX$1] && walker !== null; ) {
-      const prev = walker.prev;
-      del(self2, walker);
-      walker = prev;
-    }
-  }
-};
-const del = (self2, node) => {
-  if (node) {
-    const hit = node.value;
-    if (self2[DISPOSE])
-      self2[DISPOSE](hit.key, hit.value);
-    self2[LENGTH] -= hit.length;
-    self2[CACHE].delete(hit.key);
-    self2[LRU_LIST].removeNode(node);
-  }
-};
-class Entry {
-  constructor(key, value, length, now, maxAge) {
-    this.key = key;
-    this.value = value;
-    this.length = length;
-    this.now = now;
-    this.maxAge = maxAge || 0;
+    return this;
   }
 }
-const forEachStep = (self2, fn, node, thisp) => {
-  let hit = node.value;
-  if (isStale(self2, hit)) {
-    del(self2, node);
-    if (!self2[ALLOW_STALE])
-      hit = void 0;
-  }
-  if (hit)
-    fn.call(thisp, hit.value, hit.key, self2);
-};
-var lruCache = LRUCache;
+var lrucache = LRUCache;
 var range;
 var hasRequiredRange;
 function requireRange() {
@@ -12879,8 +12275,8 @@ function requireRange() {
     }
   }
   range = Range2;
-  const LRU = lruCache;
-  const cache = new LRU({ max: 1e3 });
+  const LRU = lrucache;
+  const cache = new LRU();
   const parseOptions2 = parseOptions_1;
   const Comparator2 = requireComparator();
   const debug2 = debug_1;
@@ -13058,7 +12454,7 @@ function requireRange() {
     debug2("replaceGTE0", comp, options);
     return comp.trim().replace(re2[options.includePrerelease ? t2.GTE0PRE : t2.GTE0], "");
   };
-  const hyphenReplace = (incPr) => ($0, from, fM, fm, fp, fpr, fb, to, tM, tm, tp, tpr, tb) => {
+  const hyphenReplace = (incPr) => ($0, from, fM, fm, fp, fpr, fb, to, tM, tm, tp, tpr) => {
     if (isX(fM)) {
       from = "";
     } else if (isX(fm)) {
