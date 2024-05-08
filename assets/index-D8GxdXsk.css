@@ -12138,8 +12138,4 @@ code {
 }.q888p21 {
   fill: var(--seq-colors-background-raised);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-}.u3q5o00:hover {
-  cursor: pointer;
-  opacity: 0.8;
-  user-select: none;
 }
