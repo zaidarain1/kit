@@ -41,7 +41,7 @@ export const fetchSardineClientToken = async (order: SardineCheckout, isDev: boo
             default: order.defaultPaymentMethodType
           },
           name: tokenMetadata?.name || 'Unknown',
-          imageUrl: tokenMetadata?.image || '',
+          imageUrl: tokenMetadata?.image || 'https://www.sequence.market/images/placeholder.png',
           network: networks[order.chainId as ChainId].name,
           recipientAddress: order.recipientAddress,
           platform: 'horizon',
