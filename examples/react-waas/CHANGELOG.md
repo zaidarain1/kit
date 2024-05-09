@@ -1,5 +1,16 @@
 # @0xsequence/kit-example-react-waas
 
+## 0.4.0
+
+### Minor Changes
+
+- Remove dependency on vanilla-extract
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @0xsequence/kit@2.5.0
+
 ## 0.3.1
 
 ### Patch Changes
