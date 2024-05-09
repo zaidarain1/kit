@@ -1,5 +1,14 @@
 # @0xsequence/kit
 
+## 2.5.1
+
+### Patch Changes
+
+- Removing dependency from kit to wallet
+
+- Updated dependencies []:
+  - @0xsequence/kit-connectors@2.5.1
+
 ## 2.5.0
 
 ### Minor Changes
