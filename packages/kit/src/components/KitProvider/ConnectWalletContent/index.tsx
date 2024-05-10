@@ -268,63 +268,65 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                 return (
                   <Box key={connector.uid} aspectRatio="1/1" alignItems="center" justifyContent="center">
                     {connector._wallet.id === 'google-waas' && (
-                      <Box position="relative" opacity={{ hover: '80' }}>
-                        <Box
-                          width="10"
-                          height="10"
-                          overflow="hidden"
-                          borderRadius="sm"
-                          alignItems="center"
-                          justifyContent="center"
-                          style={{ opacity: 0.0000001 }}
-                        >
-                          <GoogleLogin
-                            type="icon"
-                            size="large"
-                            nonce={getStorageItem(LocalStorageKey.WaasSessionHash)}
-                            onSuccess={credentialResponse => {
-                              if (credentialResponse.credential) {
-                                storage?.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential)
-                                onConnect(connector)
-                              }
-                            }}
-                            onError={() => {
-                              console.log('Login Failed')
-                            }}
-                          />
-                        </Box>
-                        <Box
-                          background="backgroundSecondary"
-                          borderRadius="xs"
-                          display="flex"
-                          justifyContent="center"
-                          alignItems="center"
-                          position="absolute"
-                          pointerEvents="none"
-                          style={{
-                            width: '40px',
-                            height: '40px',
-                            paddingTop: '2px',
-                            paddingBottom: '2px',
-                            paddingLeft: '12px',
-                            paddingRight: '12px',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                          }}
-                        >
+                      <Tooltip message="Google">
+                        <Box position="relative" opacity={{ hover: '80' }}>
                           <Box
-                            position="relative"
+                            width="10"
+                            height="10"
+                            overflow="hidden"
+                            borderRadius="sm"
+                            alignItems="center"
+                            justifyContent="center"
+                            style={{ opacity: 0.0000001 }}
+                          >
+                            <GoogleLogin
+                              type="icon"
+                              size="large"
+                              nonce={getStorageItem(LocalStorageKey.WaasSessionHash)}
+                              onSuccess={credentialResponse => {
+                                if (credentialResponse.credential) {
+                                  storage?.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential)
+                                  onConnect(connector)
+                                }
+                              }}
+                              onError={() => {
+                                console.log('Login Failed')
+                              }}
+                            />
+                          </Box>
+                          <Box
+                            background="backgroundSecondary"
+                            borderRadius="xs"
+                            display="flex"
+                            justifyContent="center"
+                            alignItems="center"
+                            position="absolute"
+                            pointerEvents="none"
                             style={{
-                              width: '18px',
-                              top: '2px',
-                              left: '2px'
+                              width: '40px',
+                              height: '40px',
+                              paddingTop: '2px',
+                              paddingBottom: '2px',
+                              paddingLeft: '12px',
+                              paddingRight: '12px',
+                              top: '50%',
+                              left: '50%',
+                              transform: 'translate(-50%, -50%)',
                             }}
                           >
-                            <GoogleLogo />
+                            <Box
+                              position="relative"
+                              style={{
+                                width: '18px',
+                                top: '2px',
+                                left: '2px'
+                              }}
+                            >
+                              <GoogleLogo />
+                            </Box>
                           </Box>
                         </Box>
-                      </Box>
+                      </Tooltip>
                     )}
 
                     {connector._wallet.id === 'apple-waas' && (
