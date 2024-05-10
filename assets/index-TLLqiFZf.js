@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-Suy_q128.js","./___vite-browser-external_commonjs-proxy-DG3bdwgq.js","./index.es-C206qPpS.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-BCwsCLnO.js","./___vite-browser-external_commonjs-proxy-dzVY06f3.js","./index.es-BJsXk6o7.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71750,7 +71750,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CxV5feJl.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BOzx73XA.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -82309,6 +82309,26 @@ const Banner = ({
     }
   })));
 };
+const GoogleLogo$1 = () => /* @__PURE__ */ React.createElement("svg", {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48"
+}, /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("path", {
+  fill: "#EA4335",
+  d: "M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "#4285F4",
+  d: "M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "#FBBC05",
+  d: "M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "#34A853",
+  d: "M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "none",
+  d: "M0 0h48v48H0z"
+})));
 let LocalStorageKey = /* @__PURE__ */ function(LocalStorageKey2) {
   LocalStorageKey2["Settings"] = "@kit.settings";
   LocalStorageKey2["Theme"] = "@kit.theme";
@@ -82772,6 +82792,12 @@ const ConnectWalletContent = (props) => {
     connectors: baseConnectors,
     connect: connect2
   } = useConnect();
+  const [enableGoogleTooltip, setEnableGoogleTooltip] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    setTimeout(() => {
+      setEnableGoogleTooltip(true);
+    }, 300);
+  });
   const injectedConnectors = baseConnectors.filter((c2) => c2.type === "injected" && !c2.hasOwnProperty("_wallet")).map((connector) => {
     const Logo = (props2) => {
       return /* @__PURE__ */ React.createElement(Image$1, _extends$5({
@@ -82970,13 +82996,24 @@ const ConnectWalletContent = (props) => {
       aspectRatio: "1/1",
       alignItems: "center",
       justifyContent: "center"
-    }, connector._wallet.id === "google-waas" && /* @__PURE__ */ React.createElement(Box, {
+    }, connector._wallet.id === "google-waas" && /* @__PURE__ */ React.createElement(Tooltip, {
+      message: "Google",
+      disabled: !enableGoogleTooltip
+    }, /* @__PURE__ */ React.createElement(Box, {
+      position: "relative",
+      opacity: {
+        hover: "80"
+      }
+    }, /* @__PURE__ */ React.createElement(Box, {
       width: "10",
       height: "10",
       overflow: "hidden",
       borderRadius: "sm",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
+      style: {
+        opacity: 1e-7
+      }
     }, /* @__PURE__ */ React.createElement(GoogleLogin, {
       type: "icon",
       size: "large",
@@ -82990,7 +83027,33 @@ const ConnectWalletContent = (props) => {
       onError: () => {
         console.log("Login Failed");
       }
-    })), connector._wallet.id === "apple-waas" && /* @__PURE__ */ React.createElement(ConnectButton, {
+    })), /* @__PURE__ */ React.createElement(Box, {
+      background: "backgroundSecondary",
+      borderRadius: "xs",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      pointerEvents: "none",
+      style: {
+        width: "40px",
+        height: "40px",
+        paddingTop: "2px",
+        paddingBottom: "2px",
+        paddingLeft: "12px",
+        paddingRight: "12px",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)"
+      }
+    }, /* @__PURE__ */ React.createElement(Box, {
+      position: "relative",
+      style: {
+        width: "18px",
+        top: "2px",
+        left: "2px"
+      }
+    }, /* @__PURE__ */ React.createElement(GoogleLogo$1, null))))), connector._wallet.id === "apple-waas" && /* @__PURE__ */ React.createElement(ConnectButton, {
       connector,
       onConnect: () => {
         const appleClientId2 = getStorageItem(LocalStorageKey.WaasAppleClientID);
@@ -108011,7 +108074,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-Suy_q128.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-BCwsCLnO.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108197,7 +108260,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C206qPpS.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BJsXk6o7.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
