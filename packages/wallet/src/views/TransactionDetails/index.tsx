@@ -2,12 +2,22 @@ import React from 'react'
 import { ethers } from 'ethers'
 import { Token } from '@0xsequence/api'
 import { Transaction, TxnTransfer } from '@0xsequence/indexer'
-import { ArrowRightIcon, Box, Button, Divider, GradientAvatar, Image, LinkIcon, Skeleton, Text } from '@0xsequence/design-system'
+import {
+  ArrowRightIcon,
+  Box,
+  Button,
+  Divider,
+  GradientAvatar,
+  LinkIcon,
+  NetworkImage,
+  Skeleton,
+  Text,
+  TokenImage
+} from '@0xsequence/design-system'
 import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices, useCollectiblePrices } from '@0xsequence/kit'
 import dayjs from 'dayjs'
 import { useConfig } from 'wagmi'
 
-import { CoinIcon } from '../../shared/CoinIcon'
 import { CopyButton } from '../../shared/CopyButton'
 import { NetworkBadge } from '../../shared/NetworkBadge'
 import { compareAddress, formatDisplay } from '../../utils'
@@ -124,7 +134,7 @@ export const TransactionDetails = ({ transaction }: TransactionDetailProps) => {
                 padding="2"
                 style={{ flexBasis: '100%' }}
               >
-                <CoinIcon imageUrl={logoURI} size={20} />
+                <TokenImage src={logoURI} symbol={symbol} size="sm" />
                 <Box gap="0.5" flexDirection="column" alignItems="flex-start" justifyContent="center">
                   <Text fontWeight="bold" fontSize="xsmall" color="text100">
                     {`${balanceDisplayed} ${symbol}`}
@@ -187,7 +197,7 @@ export const TransactionDetails = ({ transaction }: TransactionDetailProps) => {
           <Text fontSize="normal" fontWeight="medium" color="text50">
             Transfer
           </Text>
-          <Image width="3" src={nativeTokenInfo.logoURI} alt="network logo" />
+          <NetworkImage chainId={transaction.chainId} size="xs" />
         </Box>
         {transaction.transfers?.map((transfer, index) => (
           <Box width="full" flexDirection="column" justifyContent="center" alignItems="center" gap="4" key={`transfer-${index}`}>
