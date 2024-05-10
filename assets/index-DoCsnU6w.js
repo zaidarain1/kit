@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BCwsCLnO.js","./___vite-browser-external_commonjs-proxy-dzVY06f3.js","./index.es-BJsXk6o7.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-eKSUDtIm.js","./___vite-browser-external_commonjs-proxy-CRX0SBHh.js","./index.es-DF_7kGM4.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -14651,6 +14651,22 @@ const atoms = (props) => {
   return sprinkles(props);
 };
 atoms.properties = sprinkles.properties;
+const SEQUENCE_ASSETS_URL_PREFIX = "https://assets.sequence.info/";
+const VERSION$2 = 3;
+const sizes = {
+  xs: "small",
+  sm: "small",
+  md: "medium",
+  lg: "large",
+  xl: "large"
+};
+const getSize = (size2) => size2 ? sizes[size2] || size2 : "medium";
+const replaceSize = (url, size2) => {
+  return url.replace(/\/(small|medium|large)\//, `/${getSize(size2)}/`);
+};
+const networkImageUrl = (chainId, size2) => {
+  return SEQUENCE_ASSETS_URL_PREFIX + `images/networks/${getSize(size2)}/${chainId}.webp?v${VERSION$2}`;
+};
 function r$6(e2) {
   var t2, f2, n2 = "";
   if ("string" == typeof e2 || "number" == typeof e2)
@@ -16508,7 +16524,7 @@ const $409067139f391064$export$be92b6f5f03c0fe9 = $409067139f391064$export$6eb0f
 const $409067139f391064$export$41fb9f06171c75f4 = $409067139f391064$export$c135dce7b15bbbdc;
 const $409067139f391064$export$7c6e2c02157bb7d2 = $409067139f391064$export$aadde00976f34151;
 var COLLAPSED_HEIGHT = "64px";
-var root$3 = "_4j62fl0";
+var root$4 = "_4j62fl0";
 var trigger$1 = "_4j62fl2 _4j62fl1 fyvr11d4 fyvr11ds fyvr11bs fyvr11cg fyvr1t4 fyvr1v0 fyvr1ww fyvr1ys fyvr11h0 fyvr11ko fyvr11od fyvr128 fyvr12v7 fyvr11n4 _4efw240";
 var content$3 = "_4j62fl4 _4j62fl3 fyvr1ww fyvr1ys fyvr1so fyvr1v0 fyvr128";
 var icon = "_4j62fl5";
@@ -16545,7 +16561,7 @@ const Collapsible = (props) => {
         Box,
         {
           as: motion.div,
-          className: clsx$1(className, root$3),
+          className: clsx$1(className, root$4),
           initial: { height: isOpen ? "auto" : COLLAPSED_HEIGHT },
           animate: { height: isOpen ? "auto" : COLLAPSED_HEIGHT },
           transition: { ease: "easeOut", duration: 0.3 },
@@ -21053,7 +21069,7 @@ const useTheme$1 = () => {
   }
   return context2;
 };
-var root$2 = "_5b32m91 _5b32m90 fyvr11jg fyvr11ko fyvr11h0 fyvr11hs fyvr11nk fyvr1ko fyvr1oo fyvr1qo fyvr1mo";
+var root$3 = "_5b32m91 _5b32m90 fyvr11jg fyvr11ko fyvr11h0 fyvr11hs fyvr11nk fyvr1ko fyvr1oo fyvr1qo fyvr1mo";
 var overlay = "_5b32m93 _5b32m92 fyvr11hs fyvr1ko fyvr1oo fyvr1qo fyvr1mo";
 var contentVariants = createRuntimeFn({ defaultClassName: "_5b32m95 _5b32m94 fyvr11d8 fyvr11dw fyvr11bg fyvr11by fyvr11c4 fyvr11cm fyvr11ls fyvr11m8 fyvr12ws fyvr12wm fyvr11h0 fyvr11i4 fyvr11hs fyvr11sd fyvr1mo fyvr1om", variantClassNames: { size: { sm: "_5b32m96", lg: "_5b32m97" }, autoHeight: { true: "_5b32m98" } }, defaultVariants: {}, compoundVariants: [[{ autoHeight: true, size: "lg" }, "_5b32m99"]] });
 var close = "_5b32m9b _5b32m9a fyvr110o fyvr112o fyvr114o fyvr116o fyvr11ho fyvr1qo fyvr1ko fyvr11nk";
@@ -21076,7 +21092,7 @@ const Modal = (props) => {
   reactExports.useEffect(() => {
     setContainer(document.querySelector(root2 || "body"));
   }, [root2]);
-  return container ? /* @__PURE__ */ jsxRuntimeExports.jsx($5d3850c4d0b4e6c7$export$be92b6f5f03c0fe9, { modal: true, defaultOpen: true, onOpenChange: onClose, children: /* @__PURE__ */ jsxRuntimeExports.jsx($5d3850c4d0b4e6c7$export$602eac185826482c, { forceMount: true, container, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Box, { className: root$2, children: [
+  return container ? /* @__PURE__ */ jsxRuntimeExports.jsx($5d3850c4d0b4e6c7$export$be92b6f5f03c0fe9, { modal: true, defaultOpen: true, onOpenChange: onClose, children: /* @__PURE__ */ jsxRuntimeExports.jsx($5d3850c4d0b4e6c7$export$602eac185826482c, { forceMount: true, container, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Box, { className: root$3, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       Box,
       {
@@ -22959,7 +22975,7 @@ function $6be4966fd9bbc698$var$getState(checked) {
 }
 const $6be4966fd9bbc698$export$be92b6f5f03c0fe9 = $6be4966fd9bbc698$export$b5d5cf8927ab7262;
 const $6be4966fd9bbc698$export$6521433ed15a34db = $6be4966fd9bbc698$export$4d07bf653ea69106;
-var root$1 = "_1lp2u8e1 _1lp2u8e0 fyvr11dc fyvr11e0 fyvr11c0 fyvr11co fyvr1ss fyvr1uo fyvr1wk fyvr1yg fyvr11t1 fyvr11hw fyvr12v7 fyvr12o1 _4efw240";
+var root$2 = "_1lp2u8e1 _1lp2u8e0 fyvr11dc fyvr11e0 fyvr11c0 fyvr11co fyvr1ss fyvr1uo fyvr1wk fyvr1yg fyvr11t1 fyvr11hw fyvr12v7 fyvr12o1 _4efw240";
 var thumb = "_1lp2u8e3 _1lp2u8e2 fyvr11dc fyvr11e0 fyvr11c0 fyvr11co fyvr11ho fyvr1ko fyvr1oo fyvr1k fyvr140 fyvr11o1";
 const Switch = (props) => {
   const {
@@ -22984,7 +23000,7 @@ const Switch = (props) => {
       children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         $6be4966fd9bbc698$export$be92b6f5f03c0fe9,
         {
-          className: root$1,
+          className: root$2,
           disabled,
           ...rest,
           children: /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { position: "relative", width: "full", height: "full", children: /* @__PURE__ */ jsxRuntimeExports.jsx($6be4966fd9bbc698$export$6521433ed15a34db, { className: thumb }) })
@@ -23589,9 +23605,41 @@ reactExports.forwardRef(
     );
   }
 );
-var root$4 = createRuntimeFn({ defaultClassName: "bnrreb5 bnrreb0 fyvr11ls fyvr11m8 fyvr11jg fyvr11ko fyvr11h0", variantClassNames: { size: { xs: "bnrreb6", sm: "bnrreb7", md: "bnrreb8", lg: "bnrreb9", xl: "bnrreba" }, borderRadius: { circle: "bnrrebb bnrreb1 fyvr11dc fyvr11e0 fyvr11c0 fyvr11co", lg: "bnrrebc bnrreb2 fyvr11d8 fyvr11dw fyvr11bw fyvr11ck", md: "bnrrebd bnrreb3 fyvr11d4 fyvr11ds fyvr11bs fyvr11cg", sm: "bnrrebe bnrreb4 fyvr11d0 fyvr11do fyvr11bo fyvr11cc" } }, defaultVariants: {}, compoundVariants: [] });
-var img = "bnrrebf";
-var fallback = "bnrrebh bnrrebg fyvr11dc fyvr11e0 fyvr11c0 fyvr11co fyvr11ls fyvr11m8 fyvr11jg fyvr11ko fyvr11sj fyvr128 fyvr15o fyvr11h0";
+var root$1 = createRuntimeFn({ defaultClassName: "_18h918k5 _18h918k0 fyvr11ls fyvr11m8 fyvr11jg fyvr11ko fyvr11h0", variantClassNames: { size: { xs: "_18h918k6", sm: "_18h918k7", md: "_18h918k8", lg: "_18h918k9", xl: "_18h918ka" }, borderRadius: { circle: "_18h918kb _18h918k1 fyvr11dc fyvr11e0 fyvr11c0 fyvr11co", lg: "_18h918kc _18h918k2 fyvr11d8 fyvr11dw fyvr11bw fyvr11ck", md: "_18h918kd _18h918k3 fyvr11d4 fyvr11ds fyvr11bs fyvr11cg", sm: "_18h918ke _18h918k4 fyvr11d0 fyvr11do fyvr11bo fyvr11cc" } }, defaultVariants: {}, compoundVariants: [] });
+var img$1 = "_18h918kf";
+const NetworkImage = reactExports.memo((props) => {
+  const {
+    chainId,
+    borderRadius = "circle",
+    className,
+    disableAnimation = false,
+    style,
+    src,
+    size: size2 = "md",
+    ...boxProps
+  } = props;
+  const logoURI = src || replaceSize(networkImageUrl(chainId), size2);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Box,
+    {
+      className: clsx$1(className, root$1({ borderRadius, size: size2 })),
+      style,
+      flexShrink: "0",
+      ...boxProps,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Image$1,
+        {
+          className: img$1,
+          disableAnimation,
+          src: logoURI
+        }
+      )
+    }
+  );
+});
+var root$5 = createRuntimeFn({ defaultClassName: "bnrreb1 bnrreb0 fyvr11jg fyvr11ko fyvr11hw fyvr11h0", variantClassNames: { size: { xs: "bnrreb2", sm: "bnrreb3", md: "bnrreb4", lg: "bnrreb5", xl: "bnrreb6" } }, defaultVariants: {}, compoundVariants: [] });
+var img = "bnrreb7";
+var fallback = "bnrreb9 bnrreb8 fyvr11dc fyvr11e0 fyvr11c0 fyvr11co fyvr11ls fyvr11m8 fyvr11jg fyvr11ko fyvr11sj fyvr128 fyvr15o fyvr11h0";
 const TokenImage = reactExports.memo((props) => {
   const {
     borderRadius = "circle",
@@ -23601,33 +23649,61 @@ const TokenImage = reactExports.memo((props) => {
     src,
     symbol,
     size: size2 = "md",
+    withNetwork,
     ...boxProps
   } = props;
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     Box,
     {
-      className: clsx$1(className, root$4({ borderRadius, size: size2 })),
+      className: clsx$1(className, root$5({ size: size2 })),
       style,
       flexShrink: "0",
       ...boxProps,
-      children: src ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Image$1,
-        {
-          className: img,
-          disableAnimation,
-          src
-        }
-      ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Text,
-        {
-          className: fallback,
-          variant: "normal",
-          fontWeight: "medium",
-          color: "text50",
-          uppercase: true,
-          children: symbol == null ? void 0 : symbol.replace(/\s/, "").slice(0, 4)
-        }
-      )
+      children: [
+        src ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Image$1,
+          {
+            className: img,
+            disableAnimation,
+            borderRadius,
+            overflow: "hidden",
+            src
+          }
+        ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Text,
+          {
+            className: fallback,
+            variant: "normal",
+            fontWeight: "medium",
+            color: "text50",
+            borderRadius,
+            overflow: "hidden",
+            uppercase: true,
+            children: symbol == null ? void 0 : symbol.replace(/\s/, "").slice(0, 4)
+          }
+        ),
+        withNetwork && /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Box,
+          {
+            position: "absolute",
+            zIndex: "1",
+            borderRadius: "circle",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "backgroundPrimary",
+            background: "backgroundPrimary",
+            placeItems: "center",
+            style: { width: 16 + 2, height: 16 + 2, right: -2, bottom: -2 },
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              NetworkImage,
+              {
+                chainId: withNetwork,
+                style: { width: 16, height: 16 }
+              }
+            )
+          }
+        )
+      ]
     }
   );
 });
@@ -71750,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BOzx73XA.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DcFp58yS.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84443,7 +84519,7 @@ const NetworkBadge$1 = ({
     chains: chains2
   } = useConfig();
   const network2 = getNetwork(chainId);
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
+  getNativeTokenInfoByChainId(chainId, chains2);
   const chainColor = getNetworkColor(chainId);
   const chainBGColor = getNetworkBackgroundColor(chainId);
   return /* @__PURE__ */ React.createElement(Box, {
@@ -84460,11 +84536,9 @@ const NetworkBadge$1 = ({
     justifyContent: "center",
     alignItems: "center",
     width: "fit"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    style: {
-      width: "14px"
-    },
-    src: nativeTokenInfo.logoURI
+  }, /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
   }), /* @__PURE__ */ React.createElement(Text, {
     fontWeight: "bold",
     fontSize: "xsmall",
@@ -92203,50 +92277,14 @@ const useSettings = () => {
     setSelectedNetworks
   });
 };
-const DefaultIcon$1 = ({
-  size: _size = 30
-}) => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "circle",
-    background: "backgroundInverse",
-    flexShrink: "0",
-    style: {
-      width: `${_size}px`,
-      height: `${_size}px`
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "large",
-    color: "textInverse100"
-  }, "?"));
-};
-const CoinIcon$1 = ({
-  imageUrl,
-  size: _size = 30
-}) => {
-  if (imageUrl) {
-    return /* @__PURE__ */ React.createElement(Image$1, {
-      src: imageUrl,
-      borderRadius: "circle",
-      style: {
-        width: `${_size}px`,
-        height: `${_size}px`
-      }
-    });
-  }
-  return /* @__PURE__ */ React.createElement(DefaultIcon$1, {
-    size: _size
-  });
-};
 const CoinTileContent = ({
-  networkLogoUrl,
   logoUrl,
   tokenName,
   balance,
   balanceFiat,
   priceChangePercentage,
-  symbol
+  symbol,
+  chainId
 }) => {
   const {
     fiatCurrency
@@ -92264,9 +92302,10 @@ const CoinTileContent = ({
     gap: "1"
   }, /* @__PURE__ */ React.createElement(Box, {
     marginBottom: "1"
-  }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
-    size: 36,
-    imageUrl: logoUrl
+  }, /* @__PURE__ */ React.createElement(TokenImage, {
+    src: logoUrl,
+    symbol,
+    size: "xl"
   })), /* @__PURE__ */ React.createElement(Box, {
     marginBottom: "3"
   }, /* @__PURE__ */ React.createElement(Box, {
@@ -92283,9 +92322,9 @@ const CoinTileContent = ({
       textOverflow: "ellipsis",
       overflow: "hidden"
     }
-  }, tokenName), /* @__PURE__ */ React.createElement(CoinIcon$1, {
-    size: 12,
-    imageUrl: networkLogoUrl
+  }, tokenName), /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
   })), /* @__PURE__ */ React.createElement(Text, {
     color: "text50",
     whiteSpace: "nowrap",
@@ -92351,7 +92390,7 @@ const CoinTile = ({
     const _formattedBalance = formatUnits$1(balance.balance, nativeTokenInfo.decimals);
     const _balanceDisplayed = formatDisplay$1(_formattedBalance);
     return /* @__PURE__ */ React.createElement(CoinTileContent, {
-      networkLogoUrl: nativeTokenInfo.logoURI,
+      chainId: balance.chainId,
       logoUrl: nativeTokenInfo.logoURI,
       tokenName: nativeTokenInfo.name,
       balance: _balanceDisplayed,
@@ -92374,7 +92413,7 @@ const CoinTile = ({
   const symbol = (contractInfo == null ? void 0 : contractInfo.name) || "TOKEN";
   const url = contractInfo == null ? void 0 : contractInfo.logoURI;
   return /* @__PURE__ */ React.createElement(CoinTileContent, {
-    networkLogoUrl: nativeTokenInfo.logoURI,
+    chainId: balance.chainId,
     logoUrl: url,
     tokenName: name2,
     balance: balanceDisplayed,
@@ -92671,15 +92710,12 @@ const SendItemInfo = ({
   chainId,
   showSquareImage
 }) => {
-  const {
-    chains: chains2
-  } = useConfig();
+  useConfig();
   const {
     fiatCurrency
   } = useSettings();
   const formattedBalance = formatUnits$1(balance, decimals);
   const balanceDisplayed = formatDisplay$1(formattedBalance);
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
   return /* @__PURE__ */ React.createElement(Box, {
     alignItems: "flex-end",
     justifyContent: "space-between"
@@ -92693,9 +92729,9 @@ const SendItemInfo = ({
     }
   }, /* @__PURE__ */ React.createElement(CollectibleTileImage, {
     imageUrl
-  })) : /* @__PURE__ */ React.createElement(CoinIcon$1, {
-    imageUrl,
-    size: 40
+  })) : /* @__PURE__ */ React.createElement(TokenImage, {
+    src: imageUrl,
+    size: "xl"
   }), /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start"
@@ -92706,9 +92742,9 @@ const SendItemInfo = ({
   }, /* @__PURE__ */ React.createElement(Text, {
     variant: "medium",
     color: "text100"
-  }, name2), /* @__PURE__ */ React.createElement(CoinIcon$1, {
-    imageUrl: nativeTokenInfo.logoURI,
-    size: 12
+  }, name2), /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
   })), /* @__PURE__ */ React.createElement(Text, {
     color: "text50",
     variant: "normal"
@@ -93389,7 +93425,7 @@ const TransactionHistoryItem = ({
   const {
     transfers
   } = transaction2;
-  const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
+  getNativeTokenInfoByChainId(transaction2.chainId, chains2);
   const getTransactionIconByType = (transferType) => {
     switch (transferType) {
       case TxnTransferType.SEND:
@@ -93473,16 +93509,16 @@ const TransactionHistoryItem = ({
       fontWeight: "medium",
       fontSize: "normal",
       color: "text100"
-    }, getTansactionLabelByType(transfer.transferType)), /* @__PURE__ */ React.createElement(Image$1, {
-      src: nativeTokenInfo.logoURI,
-      width: "3"
+    }, getTansactionLabelByType(transfer.transferType)), /* @__PURE__ */ React.createElement(NetworkImage, {
+      chainId: transaction2.chainId,
+      size: "xs"
     })), isFirstItem && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
       fontWeight: "medium",
       fontSize: "normal",
       color: "text50"
     }, date))), amounts.map((amount, index2) => {
       var _transfer$contractInf, _transfer$contractInf2, _transfer$tokenIds, _transfer$contractInf4, _transfer$contractInf5, _coinPrices$find;
-      const nativeTokenInfo2 = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
+      const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
       const isNativeToken = compareAddress$1(transfer.contractAddress, AddressZero);
       const isCollectible = ((_transfer$contractInf = transfer.contractInfo) == null ? void 0 : _transfer$contractInf.type) === "ERC721" || ((_transfer$contractInf2 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf2.type) === "ERC1155";
       let decimals;
@@ -93492,11 +93528,11 @@ const TransactionHistoryItem = ({
         decimals = ((_transfer$tokenMetada = transfer.tokenMetadata) == null || (_transfer$tokenMetada = _transfer$tokenMetada[tokenId]) == null ? void 0 : _transfer$tokenMetada.decimals) || 0;
       } else {
         var _transfer$contractInf3;
-        decimals = isNativeToken ? nativeTokenInfo2.decimals : (_transfer$contractInf3 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf3.decimals;
+        decimals = isNativeToken ? nativeTokenInfo.decimals : (_transfer$contractInf3 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf3.decimals;
       }
       const amountValue = formatUnits$1(amount, decimals);
-      const symbol = isNativeToken ? nativeTokenInfo2.symbol : ((_transfer$contractInf4 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf4.symbol) || "";
-      const tokenLogoUri = isNativeToken ? nativeTokenInfo2.logoURI : (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.logoURI;
+      const symbol = isNativeToken ? nativeTokenInfo.symbol : ((_transfer$contractInf4 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf4.symbol) || "";
+      const tokenLogoUri = isNativeToken ? nativeTokenInfo.logoURI : (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.logoURI;
       const fiatConversionRate = (_coinPrices$find = coinPrices.find((coinPrice) => compareAddress$1(coinPrice.token.contractAddress, transfer.contractAddress))) == null || (_coinPrices$find = _coinPrices$find.price) == null ? void 0 : _coinPrices$find.value;
       return /* @__PURE__ */ React.createElement(Box, {
         key: index2,
@@ -93751,7 +93787,7 @@ const History = () => {
 const BalanceItem = ({
   balance
 }) => {
-  var _balance$contractInfo, _balance$contractInfo2;
+  var _balance$contractInfo, _balance$contractInfo2, _balance$contractInfo3;
   const {
     chains: chains2
   } = useConfig();
@@ -93762,16 +93798,17 @@ const BalanceItem = ({
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
   const logoURI = isNativeToken ? nativeTokenInfo.logoURI : balance == null || (_balance$contractInfo = balance.contractInfo) == null ? void 0 : _balance$contractInfo.logoURI;
   const tokenName = isNativeToken ? nativeTokenInfo.name : (balance == null || (_balance$contractInfo2 = balance.contractInfo) == null ? void 0 : _balance$contractInfo2.name) || "Unknown";
+  const symbol = isNativeToken ? nativeTokenInfo.symbol : balance == null || (_balance$contractInfo3 = balance.contractInfo) == null ? void 0 : _balance$contractInfo3.symbol;
   const getQuantity = () => {
-    var _balance$contractInfo3, _balance$contractInfo4;
+    var _balance$contractInfo4, _balance$contractInfo5;
     if (balance.contractType === "ERC721" || balance.contractType === "ERC1155") {
       return balance.balance;
     }
-    const decimals = isNativeToken ? nativeTokenInfo.decimals : balance == null || (_balance$contractInfo3 = balance.contractInfo) == null ? void 0 : _balance$contractInfo3.decimals;
+    const decimals = isNativeToken ? nativeTokenInfo.decimals : balance == null || (_balance$contractInfo4 = balance.contractInfo) == null ? void 0 : _balance$contractInfo4.decimals;
     const bal = formatUnits$1(balance.balance, decimals || 0);
     const displayBalance = formatDisplay$1(bal);
-    const symbol = isNativeToken ? nativeTokenInfo.symbol : balance == null || (_balance$contractInfo4 = balance.contractInfo) == null ? void 0 : _balance$contractInfo4.symbol;
-    return `${displayBalance} ${symbol}`;
+    const symbol2 = isNativeToken ? nativeTokenInfo.symbol : balance == null || (_balance$contractInfo5 = balance.contractInfo) == null ? void 0 : _balance$contractInfo5.symbol;
+    return `${displayBalance} ${symbol2}`;
   };
   const onClick = () => {
     const isCollection = balance.contractType === "ERC721" || balance.contractType === "ERC1155";
@@ -93810,9 +93847,10 @@ const BalanceItem = ({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
-    imageUrl: logoURI,
-    size: 30
+  }, /* @__PURE__ */ React.createElement(TokenImage, {
+    src: logoURI,
+    symbol,
+    size: "md"
   }), /* @__PURE__ */ React.createElement(Box, {
     gap: "1",
     flexDirection: "row",
@@ -93829,13 +93867,9 @@ const BalanceItem = ({
       // @ts-ignore-next-line
       textWrap: "nowrap"
     }
-  }, tokenName), /* @__PURE__ */ React.createElement(Image$1, {
-    src: nativeTokenInfo.logoURI,
-    alt: "network logo",
-    style: {
-      width: "12px",
-      height: "12px"
-    }
+  }, tokenName), /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId: balance.chainId,
+    size: "xs"
   }))), /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "row",
     alignItems: "center",
@@ -94509,7 +94543,7 @@ const NetworkBadge = ({
     chains: chains2
   } = useConfig();
   const network2 = getNetwork(chainId);
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
+  getNativeTokenInfoByChainId(chainId, chains2);
   const chainColor = getNetworkColor(chainId);
   const chainBGColor = getNetworkBackgroundColor(chainId);
   return /* @__PURE__ */ React.createElement(Box, {
@@ -94526,11 +94560,9 @@ const NetworkBadge = ({
     justifyContent: "center",
     alignItems: "center",
     width: "fit"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    style: {
-      width: "14px"
-    },
-    src: nativeTokenInfo.logoURI
+  }, /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
   }), /* @__PURE__ */ React.createElement(Text, {
     fontWeight: "bold",
     fontSize: "xsmall",
@@ -94893,9 +94925,9 @@ const CollectionDetails = ({
     gap: "2",
     justifyContent: "center",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
-    imageUrl: collectionLogoURI,
-    size: 32
+  }, /* @__PURE__ */ React.createElement(TokenImage, {
+    src: collectionLogoURI,
+    size: "lg"
   }), /* @__PURE__ */ React.createElement(Text, {
     fontWeight: "bold",
     fontSize: "large",
@@ -95094,7 +95126,7 @@ const CollectibleDetails = ({
       }
     });
   };
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
+  getNativeTokenInfoByChainId(chainId, chains2);
   const collectionLogo = dataCollectibleBalance == null || (_dataCollectibleBalan = dataCollectibleBalance.contractInfo) == null ? void 0 : _dataCollectibleBalan.logoURI;
   const collectionName = (dataCollectibleBalance == null || (_dataCollectibleBalan2 = dataCollectibleBalance.contractInfo) == null ? void 0 : _dataCollectibleBalan2.name) || "Unknown Collection";
   const decimals = (dataCollectibleBalance == null || (_dataCollectibleBalan3 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan3.decimals) || 0;
@@ -95147,10 +95179,9 @@ const CollectibleDetails = ({
     fontWeight: "bold",
     fontSize: "small",
     color: "text100"
-  }, collectionName), /* @__PURE__ */ React.createElement(Image$1, {
-    width: "3",
-    src: nativeTokenInfo.logoURI,
-    alt: "collection logo"
+  }, collectionName), /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
   }))), /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
     justifyContent: "center",
@@ -95338,9 +95369,10 @@ const TransactionDetails = ({
         style: {
           flexBasis: "100%"
         }
-      }, /* @__PURE__ */ React.createElement(CoinIcon$1, {
-        imageUrl: logoURI,
-        size: 20
+      }, /* @__PURE__ */ React.createElement(TokenImage, {
+        src: logoURI,
+        symbol,
+        size: "sm"
       }), /* @__PURE__ */ React.createElement(Box, {
         gap: "0.5",
         flexDirection: "column",
@@ -95431,10 +95463,9 @@ const TransactionDetails = ({
     fontSize: "normal",
     fontWeight: "medium",
     color: "text50"
-  }, "Transfer"), /* @__PURE__ */ React.createElement(Image$1, {
-    width: "3",
-    src: nativeTokenInfo.logoURI,
-    alt: "network logo"
+  }, "Transfer"), /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId: transaction2.chainId,
+    size: "xs"
   })), (_transaction$transfer2 = transaction2.transfers) == null ? void 0 : _transaction$transfer2.map((transfer, index2) => /* @__PURE__ */ React.createElement(Box, {
     width: "full",
     flexDirection: "column",
@@ -96256,45 +96287,6 @@ const NotificationErrorIcon = () => /* @__PURE__ */ React.createElement(Box, {
 }, /* @__PURE__ */ React.createElement(SvgCloseIcon, {
   size: "xl"
 }));
-const DefaultIcon = ({
-  size: _size = 30
-}) => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: "circle",
-    background: "backgroundInverse",
-    style: {
-      width: `${_size}px`,
-      height: `${_size}px`
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    style: {
-      fontSize: `${_size - 4}px`
-    },
-    display: "inline-block",
-    variant: "large",
-    color: "textInverse100"
-  }, "?"));
-};
-const CoinIcon = ({
-  imageUrl,
-  size: _size = 30
-}) => {
-  if (imageUrl) {
-    return /* @__PURE__ */ React.createElement(Image$1, {
-      src: imageUrl,
-      borderRadius: "circle",
-      style: {
-        width: `${_size}px`,
-        height: `${_size}px`
-      }
-    });
-  }
-  return /* @__PURE__ */ React.createElement(DefaultIcon, {
-    size: _size
-  });
-};
 const compareAddress = (a2, b2) => {
   return a2.toLowerCase() === b2.toLowerCase();
 };
@@ -96377,7 +96369,7 @@ const OrderSummaryItem = ({
   if (isPending) {
     return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
   }
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, [...chains2]);
+  getNativeTokenInfoByChainId(chainId, [...chains2]);
   const {
     name: name2 = "unknown",
     image,
@@ -96421,17 +96413,17 @@ const OrderSummaryItem = ({
   }, /* @__PURE__ */ React.createElement(Box, {
     gap: "1",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon, {
-    size: 12,
-    imageUrl: collectionLogoURI
+  }, /* @__PURE__ */ React.createElement(TokenImage, {
+    src: collectionLogoURI,
+    size: "xs"
   }), /* @__PURE__ */ React.createElement(Text, {
     marginLeft: "1",
     fontSize: "small",
     color: "text80",
     fontWeight: "bold"
-  }, collectionName), /* @__PURE__ */ React.createElement(CoinIcon, {
-    size: 12,
-    imageUrl: nativeTokenInfo.logoURI
+  }, collectionName), /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
   })), /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
     alignItems: "flex-start",
@@ -96636,9 +96628,9 @@ const CheckoutSelection = () => {
     flexDirection: "row",
     gap: "1",
     alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(CoinIcon, {
-    imageUrl: coinImageUrl,
-    size: 12
+  }, /* @__PURE__ */ React.createElement(TokenImage, {
+    src: coinImageUrl,
+    size: "xs"
   }), /* @__PURE__ */ React.createElement(Text, {
     fontWeight: "normal",
     fontSize: "normal",
@@ -96666,9 +96658,9 @@ const CheckoutSelection = () => {
       height: "56px"
     },
     width: "full",
-    leftIcon: () => /* @__PURE__ */ React.createElement(CoinIcon, {
-      size: 20,
-      imageUrl: coinImageUrl
+    leftIcon: () => /* @__PURE__ */ React.createElement(TokenImage, {
+      src: coinImageUrl,
+      size: "sm"
     }),
     variant: "primary",
     label: `Pay with ${coinSymbol}`,
@@ -96681,9 +96673,9 @@ const CheckoutSelection = () => {
     label: /* @__PURE__ */ React.createElement(Box, {
       placeItems: "center",
       gap: "2"
-    }, /* @__PURE__ */ React.createElement(CoinIcon, {
-      size: 20,
-      imageUrl: coinImageUrl
+    }, /* @__PURE__ */ React.createElement(TokenImage, {
+      src: coinImageUrl,
+      size: "sm"
     }), /* @__PURE__ */ React.createElement(Text, null, "Insufficient $", coinSymbol)),
     onClick: onClickPayWithCrypto,
     disabled: true
@@ -108074,7 +108066,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-BCwsCLnO.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-eKSUDtIm.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108260,7 +108252,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BJsXk6o7.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DF_7kGM4.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
