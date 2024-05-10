@@ -2,7 +2,7 @@ import { KitConfig, getKitConnectWallets } from '@0xsequence/kit'
 import { getDefaultConnectors, getDefaultWaasConnectors, mock } from '@0xsequence/kit-connectors'
 import { Chain, arbitrumNova, arbitrumSepolia, mainnet, polygon } from 'wagmi/chains'
 import { findNetworkConfig, allNetworks } from '@0xsequence/network'
-import { createConfig, http } from 'wagmi'
+import { createConfig, createStorage, http, noopStorage } from 'wagmi'
 import { Transport, zeroAddress } from 'viem'
 
 export type ConnectionMode = 'waas' | 'universal'
@@ -83,6 +83,9 @@ export const wagmiConfig = createConfig({
   transports,
   chains,
   connectors: connectionMode === 'waas' ? getWaasConnectors() : getUniversalConnectors(),
+  storage: createStorage({
+    storage: typeof window !== 'undefined' && window.localStorage ? window.localStorage : noopStorage
+  }),
   ssr: true
 })
 
