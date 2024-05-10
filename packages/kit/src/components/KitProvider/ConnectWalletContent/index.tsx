@@ -59,6 +59,11 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   const [showEmailWaasPinInput, setShowEmailWaasPinInput] = useState(false)
   const [waasEmailPinCode, setWaasEmailPinCode] = useState<string[]>([])
   const { connectors: baseConnectors, connect } = useConnect()
+  const [enableGoogleTooltip, setEnableGoogleTooltip] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => { setEnableGoogleTooltip(true) },300)
+  })
 
   // EIP-6963 connectors will not have the _wallet property
   const injectedConnectors: ExtendedConnector[] = baseConnectors
@@ -268,7 +273,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
                 return (
                   <Box key={connector.uid} aspectRatio="1/1" alignItems="center" justifyContent="center">
                     {connector._wallet.id === 'google-waas' && (
-                      <Tooltip message="Google">
+                      <Tooltip message="Google" disabled={!enableGoogleTooltip}>
                         <Box position="relative" opacity={{ hover: '80' }}>
                           <Box
                             width="10"
