@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-eKSUDtIm.js","./___vite-browser-external_commonjs-proxy-CRX0SBHh.js","./index.es-DF_7kGM4.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-BCJLEreN.js","./___vite-browser-external_commonjs-proxy-BDKuWnvV.js","./index.es-juDmu4Q-.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DcFp58yS.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CVFrKUL5.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -81662,283 +81662,6 @@ function useWriteContract(parameters = {}) {
     writeContractAsync: mutateAsync
   };
 }
-var dist = {};
-var AppleSigninButton$1 = {};
-var useScript$1 = {};
-Object.defineProperty(useScript$1, "__esModule", {
-  value: true
-});
-useScript$1.default = void 0;
-var _react$2 = reactExports;
-function useScript(src) {
-  (0, _react$2.useEffect)(
-    function() {
-      if (!src) {
-        return;
-      }
-      var script = document.querySelectorAll('script[src="'.concat(src, '"]'))[0];
-      if (!script) {
-        script = document.createElement("script");
-        script.src = src;
-        script.async = true;
-        document.body.appendChild(script);
-      }
-    },
-    [src]
-    // Only re-run effect if script src changes
-  );
-}
-var _default$3 = useScript;
-useScript$1.default = _default$3;
-var appleAuthHelpers = {};
-var waitForVar$1 = {};
-Object.defineProperty(waitForVar$1, "__esModule", {
-  value: true
-});
-waitForVar$1.default = void 0;
-var waitForVar = function waitForVar2(name2) {
-  var _ref = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
-    pollFrequency: 1e3,
-    retries: 100,
-    parent: window
-  }, _ref$pollFrequency = _ref.pollFrequency, pollFrequency = _ref$pollFrequency === void 0 ? 1e3 : _ref$pollFrequency, _ref$retries = _ref.retries, inRetries = _ref$retries === void 0 ? 100 : _ref$retries, _ref$parent = _ref.parent, parent2 = _ref$parent === void 0 ? window : _ref$parent;
-  if (parent2 && parent2.hasOwnProperty(name2)) {
-    return Promise.resolve(parent2[name2]);
-  }
-  if (!inRetries) {
-    return Promise.resolve(void 0);
-  }
-  var retries = inRetries - 1;
-  return new Promise(function(resolve) {
-    return setTimeout(resolve, typeof pollFrequency === "function" ? pollFrequency({
-      retries
-    }) : pollFrequency);
-  }).then(function() {
-    return waitForVar2(name2, {
-      pollFrequency,
-      parent: parent2,
-      retries
-    });
-  });
-};
-var _default$2 = waitForVar;
-waitForVar$1.default = _default$2;
-Object.defineProperty(appleAuthHelpers, "__esModule", {
-  value: true
-});
-appleAuthHelpers.default = void 0;
-var _waitForVar = _interopRequireDefault$2(waitForVar$1);
-function _interopRequireDefault$2(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-var APPLE_SCRIPT_SRC = "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
-var signIn = function signIn2(_ref) {
-  var authOptions = _ref.authOptions, onSuccess = _ref.onSuccess, onError = _ref.onError;
-  return (
-    /** wait for apple sript to load */
-    (0, _waitForVar.default)("AppleID").then(function() {
-      if (!window.AppleID) {
-        console.error(new Error("Error loading apple script"));
-      }
-      window.AppleID.auth.init(authOptions);
-      return window.AppleID.auth.signIn().then(function(response) {
-        if (onSuccess) {
-          onSuccess(response);
-        }
-        return response;
-      }).catch(function(err) {
-        if (onError) {
-          onError(err);
-        } else {
-          console.error(err);
-        }
-        return null;
-      });
-    }).catch(function(err) {
-      if (onError) {
-        onError(err);
-      } else {
-        console.error(err);
-      }
-      return null;
-    })
-  );
-};
-var _default$1 = {
-  APPLE_SCRIPT_SRC,
-  signIn
-};
-appleAuthHelpers.default = _default$1;
-Object.defineProperty(AppleSigninButton$1, "__esModule", {
-  value: true
-});
-AppleSigninButton$1.default = void 0;
-var _react$1 = _interopRequireDefault$1(reactExports);
-var _useScript = _interopRequireDefault$1(useScript$1);
-var _appleAuthHelpers = _interopRequireDefault$1(appleAuthHelpers);
-var _excluded$6 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
-function _interopRequireDefault$1(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-function _extends$6() {
-  _extends$6 = Object.assign || function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$6.apply(this, arguments);
-}
-function ownKeys$1(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) {
-      symbols = symbols.filter(function(sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    }
-    keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread$1(target) {
-  for (var i2 = 1; i2 < arguments.length; i2++) {
-    var source = arguments[i2] != null ? arguments[i2] : {};
-    if (i2 % 2) {
-      ownKeys$1(Object(source), true).forEach(function(key2) {
-        _defineProperty$1(target, key2, source[key2]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys$1(Object(source)).forEach(function(key2) {
-        Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
-      });
-    }
-  }
-  return target;
-}
-function _defineProperty$1(obj, key2, value) {
-  if (key2 in obj) {
-    Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
-  } else {
-    obj[key2] = value;
-  }
-  return obj;
-}
-function _objectWithoutProperties$1(source, excluded) {
-  if (source == null)
-    return {};
-  var target = _objectWithoutPropertiesLoose$4(source, excluded);
-  var key2, i2;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
-      key2 = sourceSymbolKeys[i2];
-      if (excluded.indexOf(key2) >= 0)
-        continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key2))
-        continue;
-      target[key2] = source[key2];
-    }
-  }
-  return target;
-}
-function _objectWithoutPropertiesLoose$4(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key2, i2;
-  for (i2 = 0; i2 < sourceKeys.length; i2++) {
-    key2 = sourceKeys[i2];
-    if (excluded.indexOf(key2) >= 0)
-      continue;
-    target[key2] = source[key2];
-  }
-  return target;
-}
-var _style = "\n.react-apple-signin-auth-btn {\n  background-color: transparent;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 4px;\n  padding: 0 8px 0 2px;\n  font-size: 14px;\n  font-size: 1em;\n  line-height: 1;\n  border: 1px solid #000;\n  overflow: hidden;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n}\n.react-apple-signin-auth-btn-light {\n  background-color: #FFF;\n  color: #000;\n  border-color: #000;\n}\n.react-apple-signin-auth-btn-dark {\n  background-color: #000;\n  color: #FFF;\n  border-color: #FFF;\n}".replace(/ {2}|\n/g, "");
-var AppleSigninButton = function AppleSigninButton2(_ref) {
-  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$1(_ref, _excluded$6);
-  (0, _useScript.default)(skipScript ? null : _appleAuthHelpers.default.APPLE_SCRIPT_SRC);
-  var handleClick = function handleClick2(e2) {
-    if (e2) {
-      e2.preventDefault();
-      e2.stopPropagation();
-    }
-    _appleAuthHelpers.default.signIn({
-      authOptions,
-      onSuccess,
-      onError
-    });
-  };
-  var props = _objectSpread$1({
-    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$6({
-      width: "24px",
-      height: "44px",
-      viewBox: "0 0 24 44"
-    }, iconProps), /* @__PURE__ */ _react$1.default.createElement("g", {
-      stroke: "none",
-      strokeWidth: "1",
-      fill: "none",
-      fillRule: "evenodd"
-    }, /* @__PURE__ */ _react$1.default.createElement("rect", {
-      fill: uiType === "light" ? "#FFF" : "#000",
-      x: "0",
-      y: "0",
-      width: "24",
-      height: "44"
-    }), /* @__PURE__ */ _react$1.default.createElement("path", {
-      d: "M12.2337427,16.9879688 C12.8896607,16.9879688 13.7118677,16.5445313 14.2014966,15.9532812 C14.6449341,15.4174609 14.968274,14.6691602 14.968274,13.9208594 C14.968274,13.8192383 14.9590357,13.7176172 14.9405591,13.6344727 C14.2107349,13.6621875 13.3330982,14.1241016 12.8065162,14.7430664 C12.3907935,15.2142188 12.012024,15.9532812 12.012024,16.7108203 C12.012024,16.8216797 12.0305005,16.9325391 12.0397388,16.9694922 C12.0859302,16.9787305 12.1598365,16.9879688 12.2337427,16.9879688 Z M9.92417241,28.1662891 C10.8202857,28.1662891 11.2175318,27.5658008 12.3353638,27.5658008 C13.4716724,27.5658008 13.721106,28.1478125 14.7188404,28.1478125 C15.6980982,28.1478125 16.3540162,27.2424609 16.972981,26.3555859 C17.6658521,25.339375 17.9522388,24.3416406 17.9707154,24.2954492 C17.9060474,24.2769727 16.0306763,23.5101953 16.0306763,21.3576758 C16.0306763,19.491543 17.5088013,18.6508594 17.5919459,18.5861914 C16.612688,17.1819727 15.1253248,17.1450195 14.7188404,17.1450195 C13.6194849,17.1450195 12.7233716,17.8101758 12.1598365,17.8101758 C11.5501099,17.8101758 10.7463794,17.1819727 9.79483648,17.1819727 C7.98413335,17.1819727 6.14571538,18.6785742 6.14571538,21.5054883 C6.14571538,23.2607617 6.8293482,25.1176563 7.67003179,26.3186328 C8.39061773,27.3348438 9.01882085,28.1662891 9.92417241,28.1662891 Z",
-      fill: uiType === "light" ? "#000" : "#FFF",
-      fillRule: "nonzero"
-    }))), buttonExtraChildren),
-    onClick: handleClick
-  }, rest);
-  if (render) {
-    return render(props);
-  }
-  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$6({
-    className: "".concat(noDefaultStyle ? "" : "react-apple-signin-auth-btn react-apple-signin-auth-btn-".concat(uiType)).concat(className ? " ".concat(className) : ""),
-    type: "button",
-    "aria-label": "Signin with apple ID"
-  }, props)), noDefaultStyle ? null : /* @__PURE__ */ _react$1.default.createElement("style", null, _style));
-};
-var _default = AppleSigninButton;
-AppleSigninButton$1.default = _default;
-(function(exports) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(exports, "appleAuthHelpers", {
-    enumerable: true,
-    get: function get2() {
-      return _appleAuthHelpers2.default;
-    }
-  });
-  Object.defineProperty(exports, "useScript", {
-    enumerable: true,
-    get: function get2() {
-      return _useScript2.default;
-    }
-  });
-  exports.default = void 0;
-  var _AppleSigninButton = _interopRequireDefault2(AppleSigninButton$1);
-  var _appleAuthHelpers2 = _interopRequireDefault2(appleAuthHelpers);
-  var _useScript2 = _interopRequireDefault2(useScript$1);
-  function _interopRequireDefault2(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
-  }
-  var _default2 = _AppleSigninButton.default;
-  exports.default = _default2;
-})(dist);
 var utils = {};
 const require$$0$2 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$b);
 const require$$1 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$f);
@@ -82310,6 +82033,283 @@ const require$$20 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$2);
     return strings_2.Utf8ErrorReason;
   } });
 })(utils);
+var dist = {};
+var AppleSigninButton$1 = {};
+var useScript$1 = {};
+Object.defineProperty(useScript$1, "__esModule", {
+  value: true
+});
+useScript$1.default = void 0;
+var _react$2 = reactExports;
+function useScript(src) {
+  (0, _react$2.useEffect)(
+    function() {
+      if (!src) {
+        return;
+      }
+      var script = document.querySelectorAll('script[src="'.concat(src, '"]'))[0];
+      if (!script) {
+        script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    },
+    [src]
+    // Only re-run effect if script src changes
+  );
+}
+var _default$3 = useScript;
+useScript$1.default = _default$3;
+var appleAuthHelpers = {};
+var waitForVar$1 = {};
+Object.defineProperty(waitForVar$1, "__esModule", {
+  value: true
+});
+waitForVar$1.default = void 0;
+var waitForVar = function waitForVar2(name2) {
+  var _ref = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
+    pollFrequency: 1e3,
+    retries: 100,
+    parent: window
+  }, _ref$pollFrequency = _ref.pollFrequency, pollFrequency = _ref$pollFrequency === void 0 ? 1e3 : _ref$pollFrequency, _ref$retries = _ref.retries, inRetries = _ref$retries === void 0 ? 100 : _ref$retries, _ref$parent = _ref.parent, parent2 = _ref$parent === void 0 ? window : _ref$parent;
+  if (parent2 && parent2.hasOwnProperty(name2)) {
+    return Promise.resolve(parent2[name2]);
+  }
+  if (!inRetries) {
+    return Promise.resolve(void 0);
+  }
+  var retries = inRetries - 1;
+  return new Promise(function(resolve) {
+    return setTimeout(resolve, typeof pollFrequency === "function" ? pollFrequency({
+      retries
+    }) : pollFrequency);
+  }).then(function() {
+    return waitForVar2(name2, {
+      pollFrequency,
+      parent: parent2,
+      retries
+    });
+  });
+};
+var _default$2 = waitForVar;
+waitForVar$1.default = _default$2;
+Object.defineProperty(appleAuthHelpers, "__esModule", {
+  value: true
+});
+appleAuthHelpers.default = void 0;
+var _waitForVar = _interopRequireDefault$2(waitForVar$1);
+function _interopRequireDefault$2(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+var APPLE_SCRIPT_SRC = "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
+var signIn = function signIn2(_ref) {
+  var authOptions = _ref.authOptions, onSuccess = _ref.onSuccess, onError = _ref.onError;
+  return (
+    /** wait for apple sript to load */
+    (0, _waitForVar.default)("AppleID").then(function() {
+      if (!window.AppleID) {
+        console.error(new Error("Error loading apple script"));
+      }
+      window.AppleID.auth.init(authOptions);
+      return window.AppleID.auth.signIn().then(function(response) {
+        if (onSuccess) {
+          onSuccess(response);
+        }
+        return response;
+      }).catch(function(err) {
+        if (onError) {
+          onError(err);
+        } else {
+          console.error(err);
+        }
+        return null;
+      });
+    }).catch(function(err) {
+      if (onError) {
+        onError(err);
+      } else {
+        console.error(err);
+      }
+      return null;
+    })
+  );
+};
+var _default$1 = {
+  APPLE_SCRIPT_SRC,
+  signIn
+};
+appleAuthHelpers.default = _default$1;
+Object.defineProperty(AppleSigninButton$1, "__esModule", {
+  value: true
+});
+AppleSigninButton$1.default = void 0;
+var _react$1 = _interopRequireDefault$1(reactExports);
+var _useScript = _interopRequireDefault$1(useScript$1);
+var _appleAuthHelpers = _interopRequireDefault$1(appleAuthHelpers);
+var _excluded$6 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
+function _interopRequireDefault$1(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _extends$6() {
+  _extends$6 = Object.assign || function(target) {
+    for (var i2 = 1; i2 < arguments.length; i2++) {
+      var source = arguments[i2];
+      for (var key2 in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key2)) {
+          target[key2] = source[key2];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$6.apply(this, arguments);
+}
+function ownKeys$1(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) {
+      symbols = symbols.filter(function(sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread$1(target) {
+  for (var i2 = 1; i2 < arguments.length; i2++) {
+    var source = arguments[i2] != null ? arguments[i2] : {};
+    if (i2 % 2) {
+      ownKeys$1(Object(source), true).forEach(function(key2) {
+        _defineProperty$1(target, key2, source[key2]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys$1(Object(source)).forEach(function(key2) {
+        Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
+      });
+    }
+  }
+  return target;
+}
+function _defineProperty$1(obj, key2, value) {
+  if (key2 in obj) {
+    Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key2] = value;
+  }
+  return obj;
+}
+function _objectWithoutProperties$1(source, excluded) {
+  if (source == null)
+    return {};
+  var target = _objectWithoutPropertiesLoose$4(source, excluded);
+  var key2, i2;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
+      key2 = sourceSymbolKeys[i2];
+      if (excluded.indexOf(key2) >= 0)
+        continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key2))
+        continue;
+      target[key2] = source[key2];
+    }
+  }
+  return target;
+}
+function _objectWithoutPropertiesLoose$4(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key2, i2;
+  for (i2 = 0; i2 < sourceKeys.length; i2++) {
+    key2 = sourceKeys[i2];
+    if (excluded.indexOf(key2) >= 0)
+      continue;
+    target[key2] = source[key2];
+  }
+  return target;
+}
+var _style = "\n.react-apple-signin-auth-btn {\n  background-color: transparent;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 4px;\n  padding: 0 8px 0 2px;\n  font-size: 14px;\n  font-size: 1em;\n  line-height: 1;\n  border: 1px solid #000;\n  overflow: hidden;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n}\n.react-apple-signin-auth-btn-light {\n  background-color: #FFF;\n  color: #000;\n  border-color: #000;\n}\n.react-apple-signin-auth-btn-dark {\n  background-color: #000;\n  color: #FFF;\n  border-color: #FFF;\n}".replace(/ {2}|\n/g, "");
+var AppleSigninButton = function AppleSigninButton2(_ref) {
+  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$1(_ref, _excluded$6);
+  (0, _useScript.default)(skipScript ? null : _appleAuthHelpers.default.APPLE_SCRIPT_SRC);
+  var handleClick = function handleClick2(e2) {
+    if (e2) {
+      e2.preventDefault();
+      e2.stopPropagation();
+    }
+    _appleAuthHelpers.default.signIn({
+      authOptions,
+      onSuccess,
+      onError
+    });
+  };
+  var props = _objectSpread$1({
+    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$6({
+      width: "24px",
+      height: "44px",
+      viewBox: "0 0 24 44"
+    }, iconProps), /* @__PURE__ */ _react$1.default.createElement("g", {
+      stroke: "none",
+      strokeWidth: "1",
+      fill: "none",
+      fillRule: "evenodd"
+    }, /* @__PURE__ */ _react$1.default.createElement("rect", {
+      fill: uiType === "light" ? "#FFF" : "#000",
+      x: "0",
+      y: "0",
+      width: "24",
+      height: "44"
+    }), /* @__PURE__ */ _react$1.default.createElement("path", {
+      d: "M12.2337427,16.9879688 C12.8896607,16.9879688 13.7118677,16.5445313 14.2014966,15.9532812 C14.6449341,15.4174609 14.968274,14.6691602 14.968274,13.9208594 C14.968274,13.8192383 14.9590357,13.7176172 14.9405591,13.6344727 C14.2107349,13.6621875 13.3330982,14.1241016 12.8065162,14.7430664 C12.3907935,15.2142188 12.012024,15.9532812 12.012024,16.7108203 C12.012024,16.8216797 12.0305005,16.9325391 12.0397388,16.9694922 C12.0859302,16.9787305 12.1598365,16.9879688 12.2337427,16.9879688 Z M9.92417241,28.1662891 C10.8202857,28.1662891 11.2175318,27.5658008 12.3353638,27.5658008 C13.4716724,27.5658008 13.721106,28.1478125 14.7188404,28.1478125 C15.6980982,28.1478125 16.3540162,27.2424609 16.972981,26.3555859 C17.6658521,25.339375 17.9522388,24.3416406 17.9707154,24.2954492 C17.9060474,24.2769727 16.0306763,23.5101953 16.0306763,21.3576758 C16.0306763,19.491543 17.5088013,18.6508594 17.5919459,18.5861914 C16.612688,17.1819727 15.1253248,17.1450195 14.7188404,17.1450195 C13.6194849,17.1450195 12.7233716,17.8101758 12.1598365,17.8101758 C11.5501099,17.8101758 10.7463794,17.1819727 9.79483648,17.1819727 C7.98413335,17.1819727 6.14571538,18.6785742 6.14571538,21.5054883 C6.14571538,23.2607617 6.8293482,25.1176563 7.67003179,26.3186328 C8.39061773,27.3348438 9.01882085,28.1662891 9.92417241,28.1662891 Z",
+      fill: uiType === "light" ? "#000" : "#FFF",
+      fillRule: "nonzero"
+    }))), buttonExtraChildren),
+    onClick: handleClick
+  }, rest);
+  if (render) {
+    return render(props);
+  }
+  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$6({
+    className: "".concat(noDefaultStyle ? "" : "react-apple-signin-auth-btn react-apple-signin-auth-btn-".concat(uiType)).concat(className ? " ".concat(className) : ""),
+    type: "button",
+    "aria-label": "Signin with apple ID"
+  }, props)), noDefaultStyle ? null : /* @__PURE__ */ _react$1.default.createElement("style", null, _style));
+};
+var _default = AppleSigninButton;
+AppleSigninButton$1.default = _default;
+(function(exports) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, "appleAuthHelpers", {
+    enumerable: true,
+    get: function get2() {
+      return _appleAuthHelpers2.default;
+    }
+  });
+  Object.defineProperty(exports, "useScript", {
+    enumerable: true,
+    get: function get2() {
+      return _useScript2.default;
+    }
+  });
+  exports.default = void 0;
+  var _AppleSigninButton = _interopRequireDefault2(AppleSigninButton$1);
+  var _appleAuthHelpers2 = _interopRequireDefault2(appleAuthHelpers);
+  var _useScript2 = _interopRequireDefault2(useScript$1);
+  function _interopRequireDefault2(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+  }
+  var _default2 = _AppleSigninButton.default;
+  exports.default = _default2;
+})(dist);
 function _extends$5() {
   _extends$5 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
@@ -82324,87 +82324,6 @@ function _extends$5() {
   };
   return _extends$5.apply(this, arguments);
 }
-const ExtendedWalletList = ({
-  onConnect,
-  connectors
-}) => {
-  const {
-    theme
-  } = useTheme$1();
-  const {
-    isPending
-  } = useConnect();
-  return /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    marginTop: "5"
-  }, connectors.map((connector) => {
-    const Logo = theme === "dark" ? connector._wallet.logoDark : connector._wallet.logoLight;
-    const walletName = connector._wallet.name;
-    const connectorId = connector._wallet.id;
-    return /* @__PURE__ */ React.createElement(Button, {
-      key: connectorId,
-      width: "full",
-      shape: "square",
-      leftIcon: () => /* @__PURE__ */ React.createElement(Box, {
-        justifyContent: "center",
-        alignItems: "center",
-        style: {
-          backgroundColor: connector._wallet.iconBackground
-        },
-        width: "8",
-        height: "8",
-        overflow: "hidden"
-      }, /* @__PURE__ */ React.createElement(Logo, {
-        style: {
-          width: 30
-        }
-      })),
-      onClick: () => onConnect(connector),
-      label: /* @__PURE__ */ React.createElement(Text, null, walletName, isPending)
-    });
-  }));
-};
-const Banner = ({
-  config: _config = {}
-}) => {
-  const {
-    signIn: signIn3 = {}
-  } = _config;
-  const {
-    logoUrl
-  } = signIn3;
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, logoUrl && /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "5",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    src: logoUrl,
-    style: {
-      height: "110px"
-    }
-  })));
-};
-const GoogleLogo$1 = () => /* @__PURE__ */ React.createElement("svg", {
-  version: "1.1",
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 48 48"
-}, /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("path", {
-  fill: "#EA4335",
-  d: "M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
-}), /* @__PURE__ */ React.createElement("path", {
-  fill: "#4285F4",
-  d: "M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
-}), /* @__PURE__ */ React.createElement("path", {
-  fill: "#FBBC05",
-  d: "M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
-}), /* @__PURE__ */ React.createElement("path", {
-  fill: "#34A853",
-  d: "M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
-}), /* @__PURE__ */ React.createElement("path", {
-  fill: "none",
-  d: "M0 0h48v48H0z"
-})));
 let LocalStorageKey = /* @__PURE__ */ function(LocalStorageKey2) {
   LocalStorageKey2["Settings"] = "@kit.settings";
   LocalStorageKey2["Theme"] = "@kit.theme";
@@ -82735,7 +82654,6 @@ const setStorageItem = (key2, value) => {
   }
 };
 const signEthAuthProof = async (walletClient) => {
-  useConfig();
   const proofInformation = getStorageItem(LocalStorageKey.EthAuthProof);
   if (proofInformation) {
     return proofInformation;
@@ -82774,6 +82692,1045 @@ const validateEthProof = async (walletClient, publicClient, proof) => {
 const capitalize$1 = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
+const [useKitConfig, KitConfigContextProvider] = createGenericContext$1();
+const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext$1();
+const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext$1();
+const [useThemeContext, ThemeContextProvider] = createGenericContext$1();
+const [useWalletConfigContext, WalletConfigContextProvider] = createGenericContext$1();
+class Deferred {
+  constructor() {
+    this._resolve = () => {
+    };
+    this._reject = () => {
+    };
+    this._promise = new Promise((resolve, reject) => {
+      this._reject = reject;
+      this._resolve = resolve;
+    });
+  }
+  get promise() {
+    return this._promise;
+  }
+  resolve(value) {
+    this._resolve(value);
+  }
+  reject(value) {
+    this._reject(value);
+  }
+}
+let _pendingConfirmation;
+function useWaasConfirmationHandler(waasConnector) {
+  const [pendingRequestConfirmation, setPendingRequestConfirmation] = reactExports.useState();
+  function confirmPendingRequest(id2) {
+    var _pendingConfirmation2;
+    (_pendingConfirmation2 = _pendingConfirmation) == null || _pendingConfirmation2.resolve({
+      id: id2,
+      confirmed: true
+    });
+    setPendingRequestConfirmation(void 0);
+    _pendingConfirmation = void 0;
+  }
+  function rejectPendingRequest(id2) {
+    var _pendingConfirmation3;
+    (_pendingConfirmation3 = _pendingConfirmation) == null || _pendingConfirmation3.resolve({
+      id: id2,
+      confirmed: false
+    });
+    setPendingRequestConfirmation(void 0);
+    _pendingConfirmation = void 0;
+  }
+  reactExports.useEffect(() => {
+    async function setup() {
+      if (!waasConnector) {
+        return;
+      }
+      const waasProvider = waasConnector.sequenceWaasProvider;
+      if (!waasProvider) {
+        return;
+      }
+      waasProvider.requestConfirmationHandler = {
+        confirmSignTransactionRequest(id2, txs, chainId) {
+          const pending = new Deferred();
+          setPendingRequestConfirmation({
+            id: id2,
+            type: "signTransaction",
+            txs: Array.isArray(txs) ? txs : [txs],
+            chainId
+          });
+          _pendingConfirmation = pending;
+          return pending.promise;
+        },
+        confirmSignMessageRequest(id2, message, chainId) {
+          const pending = new Deferred();
+          setPendingRequestConfirmation({
+            id: id2,
+            type: "signMessage",
+            message,
+            chainId
+          });
+          _pendingConfirmation = pending;
+          return pending.promise;
+        }
+      };
+    }
+    setup();
+  });
+  return [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest];
+}
+const useOpenConnectModal = () => {
+  const {
+    setOpenConnectModal,
+    openConnectModalState
+  } = useConnectModalContext();
+  return {
+    setOpenConnectModal,
+    openConnectModalState
+  };
+};
+const useTheme = () => {
+  const {
+    setTheme,
+    theme,
+    position,
+    setPosition
+  } = useThemeContext();
+  return {
+    setTheme,
+    theme,
+    position,
+    setPosition
+  };
+};
+const useWalletSettings = () => {
+  const {
+    setDisplayedAssets,
+    displayedAssets
+  } = useWalletConfigContext();
+  return {
+    displayedAssets,
+    setDisplayedAssets
+  };
+};
+const useProjectAccessKey = () => {
+  const {
+    projectAccessKey: projectAccessKey2
+  } = useKitConfig();
+  return projectAccessKey2;
+};
+const useAPIClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const apiClient = reactExports.useMemo(() => {
+    return new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
+  }, [projectAccessKey2]);
+  return apiClient;
+};
+const useMetadataClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const metadataClient = reactExports.useMemo(() => {
+    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
+  }, [projectAccessKey2]);
+  return metadataClient;
+};
+const useIndexerClient = (chainId) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const network2 = networks[chainId];
+  if (!indexerClients.has(chainId)) {
+    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+  }
+  const indexerClient = indexerClients.get(chainId);
+  if (!indexerClient) {
+    throw new Error("Indexer client not found");
+  }
+  return indexerClient;
+};
+const useIndexerClients = (chainIds) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const result = /* @__PURE__ */ new Map();
+  for (const chainId of chainIds) {
+    const network2 = networks[chainId];
+    if (!indexerClients.has(chainId)) {
+      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+    }
+    const indexerClient = indexerClients.get(chainId);
+    if (!indexerClient) {
+      throw new Error("Indexer client not found");
+    }
+    result.set(chainId, indexerClient);
+  }
+  return result;
+};
+const _excluded$5 = ["chainIds"];
+const time$1 = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
+};
+const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
+  const res = await indexerClient.getEtherBalance({
+    accountAddress
+  });
+  const tokenBalance = {
+    chainId,
+    contractAddress: zeroAddress,
+    accountAddress,
+    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
+    contractType: ContractType$1.UNKNOWN,
+    blockHash: "",
+    blockNumber: 0,
+    tokenID: ""
+  };
+  return tokenBalance;
+};
+const getTokenBalances = async (indexerClient, args) => {
+  var _args$includeMetadata, _args$verifiedOnly;
+  const res = await indexerClient.getTokenBalances(_extends$5({
+    accountAddress: args.accountAddress,
+    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
+    }
+  }, args.contractAddress && {
+    contractAddress: args.contractAddress
+  }));
+  return (res == null ? void 0 : res.balances) || [];
+};
+const getBalances = async (indexerClient, chainId, args) => {
+  if (!args.accountAddress) {
+    return [];
+  }
+  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
+  return balances;
+};
+const useBalances = (_ref) => {
+  let {
+    chainIds
+  } = _ref, args = _objectWithoutPropertiesLoose$3(_ref, _excluded$5);
+  const indexerClients = useIndexerClients(chainIds);
+  return useQuery$1({
+    queryKey: ["balances", chainIds, args],
+    queryFn: async () => {
+      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
+      return res;
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const useCoinBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["coinBalance", args],
+    queryFn: async () => {
+      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
+        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
+        return res;
+      } else {
+        const res = await getTokenBalances(indexerClient, args);
+        return res[0];
+      }
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
+const useCollectibleBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectibleBalance", args],
+    queryFn: async () => {
+      var _args$verifiedOnly2;
+      const res = await indexerClient.getTokenBalances({
+        accountAddress: args.accountAddress,
+        contractAddress: args.contractAddress,
+        tokenID: args.tokenId,
+        includeMetadata: true,
+        metadataOptions: {
+          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
+        }
+      });
+      return res.balances[0];
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
+  });
+};
+const getCollectionBalance = async (indexerClient, args) => {
+  var _args$includeMetadata2, _args$verifiedOnly3;
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    contractAddress: args.contractAddress,
+    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
+    }
+  });
+  return (res == null ? void 0 : res.balances) || [];
+};
+const useCollectionBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectionBalance", args],
+    queryFn: () => getCollectionBalance(indexerClient, args),
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
+  });
+};
+const useExchangeRate = (toCurrency) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["exchangeRate", toCurrency],
+    queryFn: async () => {
+      if (toCurrency === "USD") {
+        return 1;
+      }
+      const res = await apiClient.getExchangeRate({
+        toCurrency
+      });
+      return res.exchangeRate.value;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10
+  });
+};
+const getCoinPrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCoinPrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCoinPrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["coinPrices", tokens],
+    queryFn: () => getCoinPrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const getCollectiblePrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCollectiblePrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCollectiblePrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["useCollectiblePrices", tokens],
+    queryFn: () => getCollectiblePrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
+    queryFn: async () => {
+      const res = await metadataClient.getTokenMetadata({
+        chainID: String(chainId),
+        contractAddress,
+        tokenIDs: tokenIds
+      });
+      return res.tokenMetadata;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const useContractInfo = (chainId, contractAddress) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["contractInfo", chainId, contractAddress],
+    queryFn: async () => {
+      const res = await metadataClient.getContractInfo({
+        chainID: String(chainId),
+        contractAddress
+      });
+      return res.contractInfo;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const getTransactionHistory = async (indexerClient, {
+  contractAddress,
+  accountAddress,
+  tokenId,
+  page
+}) => {
+  const res = indexerClient.getTransactionHistory({
+    includeMetadata: true,
+    page,
+    filter: {
+      accountAddress,
+      contractAddress,
+      tokenID: tokenId
+    }
+  });
+  return res;
+};
+const useTransactionHistory = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useInfiniteQuery({
+    queryKey: ["transactionHistory", args],
+    queryFn: ({
+      pageParam
+    }) => {
+      return getTransactionHistory(indexerClient, _extends$5({}, args, {
+        page: {
+          page: pageParam
+        }
+      }));
+    },
+    getNextPageParam: ({
+      page
+    }) => {
+      if (!page.more) {
+        return void 0;
+      }
+      return (page == null ? void 0 : page.page) || 1;
+    },
+    initialPageParam: 1,
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
+let DecodingType = /* @__PURE__ */ function(DecodingType2) {
+  DecodingType2["APPROVE"] = "approve";
+  DecodingType2["TRANSFER"] = "transfer";
+  DecodingType2["SWAP"] = "swap";
+  DecodingType2["AWARD_ITEM"] = "awardItem";
+  DecodingType2["UNIMPLEMENTED"] = "unimplemented";
+  DecodingType2["UNKNOWN"] = "unknown";
+  return DecodingType2;
+}({});
+const transformArgs = (args) => {
+  return Object.fromEntries(args.map((arg, i2) => [arg.name && !arg.name.startsWith("unnamed") ? arg.name : `_${i2}`, Array.isArray(arg.value) ? arg.type.startsWith("(") && (arg.type.endsWith(")") || arg.type.endsWith(")[]")) ? transformArgs(arg.value) : arg.value : arg.value]));
+};
+const createTxnData = (to, call2, value, data) => {
+  const args = transformArgs(call2.args);
+  const byteSignature = hexDataSlice(data, 0, 4);
+  let objs = [];
+  switch (call2.signature) {
+    case "execute((bool,bool,uint256,address,uint256,bytes)[],uint256,bytes)":
+    case "selfExecute((bool,bool,uint256,address,uint256,bytes)[])": {
+      const txns = call2.args[0].value;
+      objs = txns.map((txn) => txn.call ? createTxnData(txn.target, txn.call, txn.value, txn.data) : {
+        to: txn.target,
+        signature: "",
+        byteSignature: hexDataSlice(txn.data, 0, 4),
+        methodName: "",
+        args: {},
+        objs: [],
+        value: BigNumber.from(txn.value).toString(),
+        data: hexlify(txn.data)
+      });
+    }
+  }
+  return {
+    to,
+    signature: call2.signature,
+    byteSignature,
+    methodName: call2.function,
+    args,
+    objs,
+    value: BigNumber.from(value).toString(),
+    data: hexlify(data)
+  };
+};
+const encodeTransactions = (transactions2) => {
+  return transactions2.map((transaction2) => {
+    if ("target" in transaction2) {
+      return transaction2;
+    } else {
+      return _extends$5({}, transaction2, {
+        target: transaction2.to
+      });
+    }
+  }).map((transaction2) => {
+    var _transaction$delegate, _transaction$revertOn, _transaction$gasLimit, _transaction$target, _transaction$value, _transaction$data;
+    return {
+      delegateCall: (_transaction$delegate = transaction2.delegateCall) != null ? _transaction$delegate : false,
+      revertOnError: (_transaction$revertOn = transaction2.revertOnError) != null ? _transaction$revertOn : false,
+      gasLimit: (_transaction$gasLimit = transaction2.gasLimit) != null ? _transaction$gasLimit : 0,
+      target: (_transaction$target = transaction2.target) != null ? _transaction$target : "0x0000000000000000000000000000000000000000",
+      value: (_transaction$value = transaction2.value) != null ? _transaction$value : 0,
+      data: (_transaction$data = transaction2.data) != null ? _transaction$data : "0x"
+    };
+  });
+};
+let ByteSignature = /* @__PURE__ */ function(ByteSignature2) {
+  ByteSignature2["SEQUENCE_DEPLOY"] = "0x32c02a14";
+  ByteSignature2["SEQUENCE_PUBLISH_CONFIG"] = "0x44d466c2";
+  ByteSignature2["SEQUENCE_UPDATE_IMAGE_HASH"] = "0x29561426";
+  ByteSignature2["SEQUENCE_UPDATE_IMPLEMENTATION"] = "0x025b22bc";
+  ByteSignature2["SEQUENCE_REQUIRE_SESSION_NONCE"] = "0x8853baa0";
+  ByteSignature2["EXECUTE"] = "0x7a9a1628";
+  ByteSignature2["SELF_EXECUTE"] = "0x61c2926c";
+  ByteSignature2["APPROVE"] = "0x095ea7b3";
+  ByteSignature2["TRANSFER"] = "0xa9059cbb";
+  ByteSignature2["DEPOSIT"] = "0xd0e30db0";
+  ByteSignature2["WITHDRAW"] = "0x2e1a7d4d";
+  ByteSignature2["ERC721_SAFE_TRANSFER_FROM"] = "0x42842e0e";
+  ByteSignature2["ERC721_SAFE_TRANSFER_FROM_WITH_DATA"] = "0xb88d4fde";
+  ByteSignature2["ERC1155_SAFE_TRANSFER_FROM"] = "0xf242432a";
+  ByteSignature2["ERC1155_SAFE_BATCH_TRANSFER_FROM"] = "0x2eb2c2d6";
+  ByteSignature2["NIFTYSWAP_BUY_TOKENS"] = "0xd93e8aaa";
+  ByteSignature2["TRANSFORM_ERC20"] = "0x415565b0";
+  ByteSignature2["OUTBOUND_TRANSFER_TO"] = "0xa44bbb15";
+  ByteSignature2["CELER_SEND"] = "0xa5977fbb";
+  ByteSignature2["UNISWAPV3_MULTICALL"] = "0x5ae401dc";
+  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_TOKENS"] = "0x38ed1739";
+  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_TOKENS"] = "0x8803dbee";
+  ByteSignature2["UNISWAPV2_SWAP_EXACT_ETH_FOR_TOKENS"] = "0x7ff36ab5";
+  ByteSignature2["UNISWAPV2_SWAP_ETH_FOR_EXACT_TOKENS"] = "0xfb3bdb41";
+  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_ETH"] = "0x4a25d94a";
+  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_ETH"] = "0x18cbafe5";
+  ByteSignature2["AWARD_ITEM"] = "0xcf378343";
+  return ByteSignature2;
+}({});
+const decodeTxnData = async (apiClient, txns) => {
+  const mainModule2 = new Interface(mainModuleAbi);
+  const callData = mainModule2.encodeFunctionData("selfExecute", [txns]);
+  try {
+    const {
+      call: call2
+    } = await apiClient.decodeContractCall({
+      callData
+    });
+    return createTxnData("", call2, 0, callData);
+  } catch (err) {
+    throw err;
+  }
+};
+const decodeTransactions = async (apiClient, accountAddress, txns) => {
+  const encodedTxns = encodeTransactions(txns);
+  const decodedTxnDatas = (await decodeTxnData(apiClient, encodedTxns)).objs;
+  const from = utils.getAddress(accountAddress);
+  const txnProps = encodedTxns.map((txn, i2) => {
+    const decodedTxnData = decodedTxnDatas[i2];
+    const data = txn.data.toString();
+    const value = BigNumber.from(txn.value).toString();
+    const target = txn.target;
+    if (data === "0x" || !data) {
+      return {
+        signature: "",
+        byteSignature: "",
+        type: DecodingType.TRANSFER,
+        methodName: "nativeTokenTransfer",
+        transferType: TxnTransferType.SEND,
+        contractAddress: AddressZero,
+        contractType: ContractType$1.UNKNOWN,
+        from,
+        to: utils.getAddress(txn.target),
+        tokenIds: ["0"],
+        amounts: [value],
+        target,
+        value
+      };
+    }
+    if (!decodedTxnData) {
+      return void 0;
+    }
+    const contractAddress = utils.getAddress(txn.target);
+    const baseDecoding = {
+      type: DecodingType.UNIMPLEMENTED,
+      signature: decodedTxnData.signature,
+      byteSignature: decodedTxnData.byteSignature,
+      methodName: decodedTxnData.methodName,
+      target,
+      value
+    };
+    switch (decodedTxnData.byteSignature) {
+      case ByteSignature.TRANSFER: {
+        const {
+          args
+        } = decodedTxnData;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC20,
+          from,
+          to: utils.getAddress(args.recipient),
+          tokenIds: ["0"],
+          amounts: [String(args.amount)]
+        });
+      }
+      case ByteSignature.ERC721_SAFE_TRANSFER_FROM:
+      case ByteSignature.ERC721_SAFE_TRANSFER_FROM_WITH_DATA: {
+        const args = decodedTxnData.args;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC721,
+          from,
+          to: utils.getAddress(args.to),
+          tokenIds: [args.tokenId],
+          amounts: ["1"]
+        });
+      }
+      case ByteSignature.ERC1155_SAFE_TRANSFER_FROM: {
+        const args = decodedTxnData.args;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC1155,
+          from,
+          to: utils.getAddress(args._to),
+          tokenIds: [args._id],
+          amounts: [args._amount]
+        });
+      }
+      case ByteSignature.ERC1155_SAFE_BATCH_TRANSFER_FROM: {
+        const {
+          args
+        } = decodedTxnData;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC1155,
+          from,
+          to: utils.getAddress(args._to),
+          tokenIds: args._ids,
+          amounts: args._amounts
+        });
+      }
+      case ByteSignature.AWARD_ITEM: {
+        const {
+          args
+        } = decodedTxnData;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.AWARD_ITEM,
+          contractAddress,
+          // @ts-ignore-next-line
+          to: utils.getAddress(args._0),
+          amount: "1"
+        });
+      }
+    }
+    return void 0;
+  });
+  return txnProps.flatMap((txn) => {
+    if (txn) {
+      return [txn];
+    }
+    return [];
+  });
+};
+const mainModuleAbi = [{
+  type: "function",
+  name: "nonce",
+  constant: true,
+  inputs: [],
+  outputs: [{
+    type: "uint256"
+  }],
+  payable: false,
+  stateMutability: "view"
+}, {
+  type: "function",
+  name: "readNonce",
+  constant: true,
+  inputs: [{
+    type: "uint256"
+  }],
+  outputs: [{
+    type: "uint256"
+  }],
+  payable: false,
+  stateMutability: "view"
+}, {
+  type: "function",
+  name: "updateImplementation",
+  constant: false,
+  inputs: [{
+    type: "address"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}, {
+  type: "function",
+  name: "selfExecute",
+  constant: false,
+  inputs: [{
+    components: [{
+      type: "bool",
+      name: "delegateCall"
+    }, {
+      type: "bool",
+      name: "revertOnError"
+    }, {
+      type: "uint256",
+      name: "gasLimit"
+    }, {
+      type: "address",
+      name: "target"
+    }, {
+      type: "uint256",
+      name: "value"
+    }, {
+      type: "bytes",
+      name: "data"
+    }],
+    type: "tuple[]"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}, {
+  type: "function",
+  name: "execute",
+  constant: false,
+  inputs: [{
+    components: [{
+      type: "bool",
+      name: "delegateCall"
+    }, {
+      type: "bool",
+      name: "revertOnError"
+    }, {
+      type: "uint256",
+      name: "gasLimit"
+    }, {
+      type: "address",
+      name: "target"
+    }, {
+      type: "uint256",
+      name: "value"
+    }, {
+      type: "bytes",
+      name: "data"
+    }],
+    type: "tuple[]"
+  }, {
+    type: "uint256"
+  }, {
+    type: "bytes"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}, {
+  type: "function",
+  name: "createContract",
+  inputs: [{
+    type: "bytes"
+  }],
+  payable: true,
+  stateMutability: "payable"
+}, {
+  type: "function",
+  name: "setExtraImageHash",
+  constant: false,
+  inputs: [{
+    type: "bytes32",
+    name: "imageHash"
+  }, {
+    type: "uint256",
+    name: "expiration"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}];
+const CollectibleTileImage$1 = ({
+  imageUrl
+}) => {
+  return /* @__PURE__ */ React.createElement(Card, {
+    padding: "0",
+    aspectRatio: "1/1",
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+    borderRadius: "sm",
+    background: "backgroundSecondary"
+  }, /* @__PURE__ */ React.createElement(Image$1, {
+    style: {
+      height: "100%"
+    },
+    src: imageUrl
+  }));
+};
+const TxnDetailsSkeleton = () => {
+  return /* @__PURE__ */ React.createElement(Box, {
+    alignItems: "center",
+    justifyContent: "space-between"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 30,
+      height: 30
+    },
+    borderRadius: "circle"
+  }), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    gap: "2",
+    alignItems: "flex-start"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 100,
+      height: 14
+    }
+  }), /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 75,
+      height: 14
+    }
+  }))), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    gap: "2",
+    alignItems: "flex-end"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 100,
+      height: 14
+    }
+  }), /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 50,
+      height: 12
+    }
+  })));
+};
+const TxnDetails = ({
+  address,
+  txs,
+  chainId
+}) => {
+  const apiClient = useAPIClient();
+  const [decodingType, setDecodingType] = reactExports.useState(void 0);
+  const [transferProps, setTransferProps] = reactExports.useState([]);
+  const [awardItemProps, setAwardItemProps] = reactExports.useState([]);
+  const getTxnProps = async () => {
+    const decodedTxnDatas = await decodeTransactions(apiClient, address, txs);
+    setDecodingType(decodedTxnDatas[0].type);
+    if (decodedTxnDatas[0].type === "transfer") {
+      setTransferProps(decodedTxnDatas);
+    }
+    if (decodedTxnDatas[0].type === "awardItem") {
+      setAwardItemProps(decodedTxnDatas);
+    }
+  };
+  reactExports.useEffect(() => {
+    getTxnProps();
+  }, []);
+  if (!decodingType) {
+    return /* @__PURE__ */ React.createElement(TxnDetailsSkeleton, null);
+  }
+  if (decodingType === DecodingType.UNKNOWN) {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null);
+  }
+  if (transferProps.length >= 1) {
+    return /* @__PURE__ */ React.createElement(TransferItemInfo, {
+      address,
+      transferProps,
+      chainId
+    });
+  }
+  if (awardItemProps.length >= 1) {
+    return /* @__PURE__ */ React.createElement(AwardItemInfo, {
+      awardItemProps: awardItemProps[0]
+    });
+  }
+};
+const TransferItemInfo = ({
+  address,
+  transferProps,
+  chainId
+}) => {
+  var _transferProps$, _transferProps$2, _transferProps$3, _transferProps$4, _transferProps$5, _transferProps$0$toke, _transferProps$6, _tokenBalance$contrac, _tokenMetadata$, _tokenBalance$contrac2, _tokenMetadata$2, _tokenBalance$contrac3, _tokenBalance$contrac4, _transferProps$0$amou, _transferProps$7, _transferProps$8, _transferProps$0$type, _transferProps$9, _tokenMetadata$3;
+  const {
+    chains: chains2
+  } = useConfig();
+  const contractAddress = (_transferProps$ = transferProps[0]) == null ? void 0 : _transferProps$.contractAddress;
+  const toAddress = (_transferProps$2 = transferProps[0]) == null ? void 0 : _transferProps$2.to;
+  const isNativeCoin = contractAddress ? compareAddress$2(contractAddress, AddressZero) : true;
+  const is1155 = ((_transferProps$3 = transferProps[0]) == null ? void 0 : _transferProps$3.contractType) === ContractType$1.ERC1155;
+  const isNFT = ((_transferProps$4 = transferProps[0]) == null ? void 0 : _transferProps$4.contractType) === ContractType$1.ERC1155 || ((_transferProps$5 = transferProps[0]) == null ? void 0 : _transferProps$5.contractType) === ContractType$1.ERC721;
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
+  const {
+    data: balances = []
+  } = useBalances({
+    chainIds: [chainId],
+    accountAddress: address,
+    contractAddress
+  });
+  const {
+    data: tokenMetadata
+  } = useTokenMetadata(chainId, contractAddress, (_transferProps$0$toke = (_transferProps$6 = transferProps[0]) == null ? void 0 : _transferProps$6.tokenIds) != null ? _transferProps$0$toke : []);
+  const tokenBalance = contractAddress ? balances.find((b2) => compareAddress$2(b2.contractAddress, contractAddress)) : void 0;
+  const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
+  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image : tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.logoURI;
+  const name2 = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata == null || (_tokenMetadata$2 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$2.name : (tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.name) || "";
+  const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? "" : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
+  const amountSending = (_transferProps$0$amou = (_transferProps$7 = transferProps[0]) == null || (_transferProps$7 = _transferProps$7.amounts) == null ? void 0 : _transferProps$7[0]) != null ? _transferProps$0$amou : (_transferProps$8 = transferProps[0]) == null ? void 0 : _transferProps$8.value;
+  const showSquareImage = isNFT;
+  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, capitalize$1((_transferProps$0$type = (_transferProps$9 = transferProps[0]) == null ? void 0 : _transferProps$9.type) != null ? _transferProps$0$type : ""))), /* @__PURE__ */ React.createElement(Box, {
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "2"
+  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      width: "40px"
+    }
+  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
+    imageUrl
+  })) : /* @__PURE__ */ React.createElement(TokenImage, {
+    src: imageUrl,
+    symbol,
+    size: "md"
+  }), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "flex-start"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "1"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, name2)), /* @__PURE__ */ React.createElement(Text, {
+    color: "text50",
+    variant: "normal"
+  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    fontSize: "normal",
+    color: "text50"
+  }, "To"), /* @__PURE__ */ React.createElement(Box, {
+    marginTop: "2",
+    borderRadius: "md",
+    background: "backgroundSecondary",
+    width: "full",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "4",
+    style: {
+      height: "52px"
+    }
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+    address: toAddress,
+    style: {
+      width: "20px"
+    }
+  }), /* @__PURE__ */ React.createElement(Text, {
+    color: "text100"
+  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 12)}`)))));
+};
+const AwardItemInfo = ({
+  awardItemProps
+}) => {
+  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, "Mint")), /* @__PURE__ */ React.createElement(Box, {
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      width: "40px"
+    }
+  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
+    imageUrl: "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0/image.jpeg"
+  })), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "flex-start"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "1"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, "Waas Demo NFT")), /* @__PURE__ */ React.createElement(Text, {
+    color: "text50",
+    variant: "normal"
+  }, awardItemProps.amount)))), awardItemProps.to !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    fontSize: "normal",
+    color: "text50"
+  }, "To"), /* @__PURE__ */ React.createElement(Box, {
+    marginTop: "2",
+    borderRadius: "md",
+    background: "backgroundSecondary",
+    width: "full",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "4",
+    style: {
+      height: "52px"
+    }
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+    address: awardItemProps.to,
+    style: {
+      width: "20px"
+    }
+  }), /* @__PURE__ */ React.createElement(Text, {
+    color: "text100"
+  }, `0x${truncateAtMiddle$2(awardItemProps.to.substring(2), 12)}`)))));
+};
+const truncateAtMiddle$2 = (text2, truncateAt) => {
+  let finalText = text2;
+  if (text2.length >= truncateAt) {
+    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
+  }
+  return finalText;
+};
 function useEmailAuth({
   connector,
   onSuccess
@@ -82783,9 +83740,9 @@ function useEmailAuth({
       inProgress: false,
       loading: false,
       error: void 0,
-      initiateAuth: async (email3) => {
+      initiateAuth: async (_email) => {
       },
-      sendChallengeAnswer: async (answer) => {
+      sendChallengeAnswer: async (_answer) => {
       }
     };
   }
@@ -82839,6 +83796,87 @@ function useEmailAuth({
     sendChallengeAnswer: instance ? sendChallengeAnswer : void 0
   };
 }
+const Banner = ({
+  config: _config = {}
+}) => {
+  const {
+    signIn: signIn3 = {}
+  } = _config;
+  const {
+    logoUrl
+  } = signIn3;
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, logoUrl && /* @__PURE__ */ React.createElement(Box, {
+    marginTop: "5",
+    justifyContent: "center",
+    alignItems: "center"
+  }, /* @__PURE__ */ React.createElement(Image$1, {
+    src: logoUrl,
+    style: {
+      height: "110px"
+    }
+  })));
+};
+const ExtendedWalletList = ({
+  onConnect,
+  connectors
+}) => {
+  const {
+    theme
+  } = useTheme$1();
+  const {
+    isPending
+  } = useConnect();
+  return /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    gap: "2",
+    marginTop: "5"
+  }, connectors.map((connector) => {
+    const Logo = theme === "dark" ? connector._wallet.logoDark : connector._wallet.logoLight;
+    const walletName = connector._wallet.name;
+    const connectorId = connector._wallet.id;
+    return /* @__PURE__ */ React.createElement(Button, {
+      key: connectorId,
+      width: "full",
+      shape: "square",
+      leftIcon: () => /* @__PURE__ */ React.createElement(Box, {
+        justifyContent: "center",
+        alignItems: "center",
+        style: {
+          backgroundColor: connector._wallet.iconBackground
+        },
+        width: "8",
+        height: "8",
+        overflow: "hidden"
+      }, /* @__PURE__ */ React.createElement(Logo, {
+        style: {
+          width: 30
+        }
+      })),
+      onClick: () => onConnect(connector),
+      label: /* @__PURE__ */ React.createElement(Text, null, walletName, isPending)
+    });
+  }));
+};
+const GoogleLogo$1 = () => /* @__PURE__ */ React.createElement("svg", {
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 48 48"
+}, /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("path", {
+  fill: "#EA4335",
+  d: "M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "#4285F4",
+  d: "M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "#FBBC05",
+  d: "M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "#34A853",
+  d: "M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+}), /* @__PURE__ */ React.createElement("path", {
+  fill: "none",
+  d: "M0 0h48v48H0z"
+})));
 const ConnectWalletContent = (props) => {
   dist.useScript(dist.appleAuthHelpers.APPLE_SCRIPT_SRC);
   const {
@@ -83216,6 +84254,38 @@ const ConnectButton = (props) => {
     height: "6"
   })));
 };
+const NetworkBadge$1 = ({
+  chainId
+}) => {
+  var _network$title;
+  const network2 = getNetwork(chainId);
+  const chainColor = getNetworkColor(chainId);
+  const chainBGColor = getNetworkBackgroundColor(chainId);
+  return /* @__PURE__ */ React.createElement(Box, {
+    height: "6",
+    paddingY: "1",
+    paddingLeft: "1.5",
+    paddingRight: "2",
+    gap: "1",
+    style: {
+      background: chainBGColor
+    },
+    borderRadius: "xs",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "fit"
+  }, /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
+  }), /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "bold",
+    fontSize: "xsmall",
+    style: {
+      color: chainColor
+    }
+  }, capitalize$1((_network$title = network2.title) != null ? _network$title : network2.name)));
+};
 function _objectDestructuringEmpty(obj) {
   if (obj == null)
     throw new TypeError("Cannot destructure " + obj);
@@ -83468,1084 +84538,6 @@ const SequenceLogo$1 = (_ref) => {
     height: "317.67001",
     width: "396"
   })))));
-};
-const [useKitConfig, KitConfigContextProvider] = createGenericContext$1();
-const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext$1();
-const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext$1();
-const [useThemeContext, ThemeContextProvider] = createGenericContext$1();
-const [useWalletConfigContext, WalletConfigContextProvider] = createGenericContext$1();
-class Deferred {
-  constructor() {
-    this._resolve = () => {
-    };
-    this._reject = () => {
-    };
-    this._promise = new Promise((resolve, reject) => {
-      this._reject = reject;
-      this._resolve = resolve;
-    });
-  }
-  get promise() {
-    return this._promise;
-  }
-  resolve(value) {
-    this._resolve(value);
-  }
-  reject(value) {
-    this._reject(value);
-  }
-}
-let _pendingConfirmation;
-function useWaasConfirmationHandler(waasConnector) {
-  const [pendingRequestConfirmation, setPendingRequestConfirmation] = reactExports.useState();
-  function confirmPendingRequest(id2) {
-    var _pendingConfirmation2;
-    (_pendingConfirmation2 = _pendingConfirmation) == null || _pendingConfirmation2.resolve({
-      id: id2,
-      confirmed: true
-    });
-    setPendingRequestConfirmation(void 0);
-    _pendingConfirmation = void 0;
-  }
-  function rejectPendingRequest(id2) {
-    var _pendingConfirmation3;
-    (_pendingConfirmation3 = _pendingConfirmation) == null || _pendingConfirmation3.resolve({
-      id: id2,
-      confirmed: false
-    });
-    setPendingRequestConfirmation(void 0);
-    _pendingConfirmation = void 0;
-  }
-  reactExports.useEffect(() => {
-    async function setup() {
-      if (!waasConnector) {
-        return;
-      }
-      const waasProvider = waasConnector.sequenceWaasProvider;
-      if (!waasProvider) {
-        return;
-      }
-      waasProvider.requestConfirmationHandler = {
-        confirmSignTransactionRequest(id2, txs, chainId) {
-          const pending = new Deferred();
-          setPendingRequestConfirmation({
-            id: id2,
-            type: "signTransaction",
-            txs: Array.isArray(txs) ? txs : [txs],
-            chainId
-          });
-          _pendingConfirmation = pending;
-          return pending.promise;
-        },
-        confirmSignMessageRequest(id2, message, chainId) {
-          const pending = new Deferred();
-          setPendingRequestConfirmation({
-            id: id2,
-            type: "signMessage",
-            message,
-            chainId
-          });
-          _pendingConfirmation = pending;
-          return pending.promise;
-        }
-      };
-    }
-    setup();
-  });
-  return [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest];
-}
-let DecodingType = /* @__PURE__ */ function(DecodingType2) {
-  DecodingType2["APPROVE"] = "approve";
-  DecodingType2["TRANSFER"] = "transfer";
-  DecodingType2["SWAP"] = "swap";
-  DecodingType2["AWARD_ITEM"] = "awardItem";
-  DecodingType2["UNIMPLEMENTED"] = "unimplemented";
-  DecodingType2["UNKNOWN"] = "unknown";
-  return DecodingType2;
-}({});
-const transformArgs = (args) => {
-  return Object.fromEntries(args.map((arg, i2) => [arg.name && !arg.name.startsWith("unnamed") ? arg.name : `_${i2}`, Array.isArray(arg.value) ? arg.type.startsWith("(") && (arg.type.endsWith(")") || arg.type.endsWith(")[]")) ? transformArgs(arg.value) : arg.value : arg.value]));
-};
-const createTxnData = (to, call2, value, data) => {
-  const args = transformArgs(call2.args);
-  const byteSignature = hexDataSlice(data, 0, 4);
-  let objs = [];
-  switch (call2.signature) {
-    case "execute((bool,bool,uint256,address,uint256,bytes)[],uint256,bytes)":
-    case "selfExecute((bool,bool,uint256,address,uint256,bytes)[])": {
-      const txns = call2.args[0].value;
-      objs = txns.map((txn) => txn.call ? createTxnData(txn.target, txn.call, txn.value, txn.data) : {
-        to: txn.target,
-        signature: "",
-        byteSignature: hexDataSlice(txn.data, 0, 4),
-        methodName: "",
-        args: {},
-        objs: [],
-        value: BigNumber.from(txn.value).toString(),
-        data: hexlify(txn.data)
-      });
-    }
-  }
-  return {
-    to,
-    signature: call2.signature,
-    byteSignature,
-    methodName: call2.function,
-    args,
-    objs,
-    value: BigNumber.from(value).toString(),
-    data: hexlify(data)
-  };
-};
-const encodeTransactions = (transactions2) => {
-  return transactions2.map((transaction2) => {
-    if ("target" in transaction2) {
-      return transaction2;
-    } else {
-      return _extends$5({}, transaction2, {
-        target: transaction2.to
-      });
-    }
-  }).map((transaction2) => {
-    var _transaction$delegate, _transaction$revertOn, _transaction$gasLimit, _transaction$target, _transaction$value, _transaction$data;
-    return {
-      delegateCall: (_transaction$delegate = transaction2.delegateCall) != null ? _transaction$delegate : false,
-      revertOnError: (_transaction$revertOn = transaction2.revertOnError) != null ? _transaction$revertOn : false,
-      gasLimit: (_transaction$gasLimit = transaction2.gasLimit) != null ? _transaction$gasLimit : 0,
-      target: (_transaction$target = transaction2.target) != null ? _transaction$target : "0x0000000000000000000000000000000000000000",
-      value: (_transaction$value = transaction2.value) != null ? _transaction$value : 0,
-      data: (_transaction$data = transaction2.data) != null ? _transaction$data : "0x"
-    };
-  });
-};
-let ByteSignature = /* @__PURE__ */ function(ByteSignature2) {
-  ByteSignature2["SEQUENCE_DEPLOY"] = "0x32c02a14";
-  ByteSignature2["SEQUENCE_PUBLISH_CONFIG"] = "0x44d466c2";
-  ByteSignature2["SEQUENCE_UPDATE_IMAGE_HASH"] = "0x29561426";
-  ByteSignature2["SEQUENCE_UPDATE_IMPLEMENTATION"] = "0x025b22bc";
-  ByteSignature2["SEQUENCE_REQUIRE_SESSION_NONCE"] = "0x8853baa0";
-  ByteSignature2["EXECUTE"] = "0x7a9a1628";
-  ByteSignature2["SELF_EXECUTE"] = "0x61c2926c";
-  ByteSignature2["APPROVE"] = "0x095ea7b3";
-  ByteSignature2["TRANSFER"] = "0xa9059cbb";
-  ByteSignature2["DEPOSIT"] = "0xd0e30db0";
-  ByteSignature2["WITHDRAW"] = "0x2e1a7d4d";
-  ByteSignature2["ERC721_SAFE_TRANSFER_FROM"] = "0x42842e0e";
-  ByteSignature2["ERC721_SAFE_TRANSFER_FROM_WITH_DATA"] = "0xb88d4fde";
-  ByteSignature2["ERC1155_SAFE_TRANSFER_FROM"] = "0xf242432a";
-  ByteSignature2["ERC1155_SAFE_BATCH_TRANSFER_FROM"] = "0x2eb2c2d6";
-  ByteSignature2["NIFTYSWAP_BUY_TOKENS"] = "0xd93e8aaa";
-  ByteSignature2["TRANSFORM_ERC20"] = "0x415565b0";
-  ByteSignature2["OUTBOUND_TRANSFER_TO"] = "0xa44bbb15";
-  ByteSignature2["CELER_SEND"] = "0xa5977fbb";
-  ByteSignature2["UNISWAPV3_MULTICALL"] = "0x5ae401dc";
-  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_TOKENS"] = "0x38ed1739";
-  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_TOKENS"] = "0x8803dbee";
-  ByteSignature2["UNISWAPV2_SWAP_EXACT_ETH_FOR_TOKENS"] = "0x7ff36ab5";
-  ByteSignature2["UNISWAPV2_SWAP_ETH_FOR_EXACT_TOKENS"] = "0xfb3bdb41";
-  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_ETH"] = "0x4a25d94a";
-  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_ETH"] = "0x18cbafe5";
-  ByteSignature2["AWARD_ITEM"] = "0xcf378343";
-  return ByteSignature2;
-}({});
-const decodeTxnData = async (apiClient, txns) => {
-  const mainModule2 = new Interface(mainModuleAbi);
-  const callData = mainModule2.encodeFunctionData("selfExecute", [txns]);
-  try {
-    const {
-      call: call2
-    } = await apiClient.decodeContractCall({
-      callData
-    });
-    return createTxnData("", call2, 0, callData);
-  } catch (err) {
-    throw err;
-  }
-};
-const decodeTransactions = async (apiClient, accountAddress, txns) => {
-  const encodedTxns = encodeTransactions(txns);
-  const decodedTxnDatas = (await decodeTxnData(apiClient, encodedTxns)).objs;
-  const from = utils.getAddress(accountAddress);
-  const txnProps = encodedTxns.map((txn, i2) => {
-    const decodedTxnData = decodedTxnDatas[i2];
-    const data = txn.data.toString();
-    const value = BigNumber.from(txn.value).toString();
-    const target = txn.target;
-    if (data === "0x" || !data) {
-      return {
-        signature: "",
-        byteSignature: "",
-        type: DecodingType.TRANSFER,
-        methodName: "nativeTokenTransfer",
-        transferType: TxnTransferType.SEND,
-        contractAddress: AddressZero,
-        contractType: ContractType$1.UNKNOWN,
-        from,
-        to: utils.getAddress(txn.target),
-        tokenIds: ["0"],
-        amounts: [value],
-        target,
-        value
-      };
-    }
-    if (!decodedTxnData) {
-      return void 0;
-    }
-    const contractAddress = utils.getAddress(txn.target);
-    const baseDecoding = {
-      type: DecodingType.UNIMPLEMENTED,
-      signature: decodedTxnData.signature,
-      byteSignature: decodedTxnData.byteSignature,
-      methodName: decodedTxnData.methodName,
-      target,
-      value
-    };
-    switch (decodedTxnData.byteSignature) {
-      case ByteSignature.TRANSFER: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC20,
-          from,
-          to: utils.getAddress(args.recipient),
-          tokenIds: ["0"],
-          amounts: [String(args.amount)]
-        });
-      }
-      case ByteSignature.ERC721_SAFE_TRANSFER_FROM:
-      case ByteSignature.ERC721_SAFE_TRANSFER_FROM_WITH_DATA: {
-        const args = decodedTxnData.args;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC721,
-          from,
-          to: utils.getAddress(args.to),
-          tokenIds: [args.tokenId],
-          amounts: ["1"]
-        });
-      }
-      case ByteSignature.ERC1155_SAFE_TRANSFER_FROM: {
-        const args = decodedTxnData.args;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC1155,
-          from,
-          to: utils.getAddress(args._to),
-          tokenIds: [args._id],
-          amounts: [args._amount]
-        });
-      }
-      case ByteSignature.ERC1155_SAFE_BATCH_TRANSFER_FROM: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC1155,
-          from,
-          to: utils.getAddress(args._to),
-          tokenIds: args._ids,
-          amounts: args._amounts
-        });
-      }
-      case ByteSignature.AWARD_ITEM: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.AWARD_ITEM,
-          contractAddress,
-          // @ts-ignore-next-line
-          to: utils.getAddress(args._0),
-          amount: "1"
-        });
-      }
-    }
-    return void 0;
-  });
-  return txnProps.flatMap((txn) => {
-    if (txn) {
-      return [txn];
-    }
-    return [];
-  });
-};
-const mainModuleAbi = [{
-  type: "function",
-  name: "nonce",
-  constant: true,
-  inputs: [],
-  outputs: [{
-    type: "uint256"
-  }],
-  payable: false,
-  stateMutability: "view"
-}, {
-  type: "function",
-  name: "readNonce",
-  constant: true,
-  inputs: [{
-    type: "uint256"
-  }],
-  outputs: [{
-    type: "uint256"
-  }],
-  payable: false,
-  stateMutability: "view"
-}, {
-  type: "function",
-  name: "updateImplementation",
-  constant: false,
-  inputs: [{
-    type: "address"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "selfExecute",
-  constant: false,
-  inputs: [{
-    components: [{
-      type: "bool",
-      name: "delegateCall"
-    }, {
-      type: "bool",
-      name: "revertOnError"
-    }, {
-      type: "uint256",
-      name: "gasLimit"
-    }, {
-      type: "address",
-      name: "target"
-    }, {
-      type: "uint256",
-      name: "value"
-    }, {
-      type: "bytes",
-      name: "data"
-    }],
-    type: "tuple[]"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "execute",
-  constant: false,
-  inputs: [{
-    components: [{
-      type: "bool",
-      name: "delegateCall"
-    }, {
-      type: "bool",
-      name: "revertOnError"
-    }, {
-      type: "uint256",
-      name: "gasLimit"
-    }, {
-      type: "address",
-      name: "target"
-    }, {
-      type: "uint256",
-      name: "value"
-    }, {
-      type: "bytes",
-      name: "data"
-    }],
-    type: "tuple[]"
-  }, {
-    type: "uint256"
-  }, {
-    type: "bytes"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "createContract",
-  inputs: [{
-    type: "bytes"
-  }],
-  payable: true,
-  stateMutability: "payable"
-}, {
-  type: "function",
-  name: "setExtraImageHash",
-  constant: false,
-  inputs: [{
-    type: "bytes32",
-    name: "imageHash"
-  }, {
-    type: "uint256",
-    name: "expiration"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}];
-const useOpenConnectModal = () => {
-  const {
-    setOpenConnectModal,
-    openConnectModalState
-  } = useConnectModalContext();
-  return {
-    setOpenConnectModal,
-    openConnectModalState
-  };
-};
-const useTheme = () => {
-  const {
-    setTheme,
-    theme,
-    position,
-    setPosition
-  } = useThemeContext();
-  return {
-    setTheme,
-    theme,
-    position,
-    setPosition
-  };
-};
-const useWalletSettings = () => {
-  const {
-    setDisplayedAssets,
-    displayedAssets
-  } = useWalletConfigContext();
-  return {
-    displayedAssets,
-    setDisplayedAssets
-  };
-};
-const useProjectAccessKey = () => {
-  const {
-    projectAccessKey: projectAccessKey2
-  } = useKitConfig();
-  return projectAccessKey2;
-};
-const useAPIClient = () => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const apiClient = reactExports.useMemo(() => {
-    return new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
-  }, [projectAccessKey2]);
-  return apiClient;
-};
-const useMetadataClient = () => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const metadataClient = reactExports.useMemo(() => {
-    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
-  }, [projectAccessKey2]);
-  return metadataClient;
-};
-const useIndexerClient = (chainId) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
-  const network2 = networks[chainId];
-  if (!indexerClients.has(chainId)) {
-    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
-  }
-  const indexerClient = indexerClients.get(chainId);
-  if (!indexerClient) {
-    throw new Error("Indexer client not found");
-  }
-  return indexerClient;
-};
-const useIndexerClients = (chainIds) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
-  const result = /* @__PURE__ */ new Map();
-  for (const chainId of chainIds) {
-    const network2 = networks[chainId];
-    if (!indexerClients.has(chainId)) {
-      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
-    }
-    const indexerClient = indexerClients.get(chainId);
-    if (!indexerClient) {
-      throw new Error("Indexer client not found");
-    }
-    result.set(chainId, indexerClient);
-  }
-  return result;
-};
-const _excluded$5 = ["chainIds"];
-const time$1 = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
-  const res = await indexerClient.getEtherBalance({
-    accountAddress
-  });
-  const tokenBalance = {
-    chainId,
-    contractAddress: zeroAddress,
-    accountAddress,
-    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
-    contractType: ContractType$1.UNKNOWN,
-    blockHash: "",
-    blockNumber: 0,
-    tokenID: ""
-  };
-  return tokenBalance;
-};
-const getTokenBalances = async (indexerClient, args) => {
-  var _args$includeMetadata, _args$verifiedOnly;
-  const res = await indexerClient.getTokenBalances(_extends$5({
-    accountAddress: args.accountAddress,
-    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
-    }
-  }, args.contractAddress && {
-    contractAddress: args.contractAddress
-  }));
-  return (res == null ? void 0 : res.balances) || [];
-};
-const getBalances = async (indexerClient, chainId, args) => {
-  if (!args.accountAddress) {
-    return [];
-  }
-  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
-  return balances;
-};
-const useBalances = (_ref) => {
-  let {
-    chainIds
-  } = _ref, args = _objectWithoutPropertiesLoose$3(_ref, _excluded$5);
-  const indexerClients = useIndexerClients(chainIds);
-  return useQuery$1({
-    queryKey: ["balances", chainIds, args],
-    queryFn: async () => {
-      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
-      return res;
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const useCoinBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["coinBalance", args],
-    queryFn: async () => {
-      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
-        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
-        return res;
-      } else {
-        const res = await getTokenBalances(indexerClient, args);
-        return res[0];
-      }
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
-};
-const useCollectibleBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectibleBalance", args],
-    queryFn: async () => {
-      var _args$verifiedOnly2;
-      const res = await indexerClient.getTokenBalances({
-        accountAddress: args.accountAddress,
-        contractAddress: args.contractAddress,
-        tokenID: args.tokenId,
-        includeMetadata: true,
-        metadataOptions: {
-          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
-        }
-      });
-      return res.balances[0];
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
-  });
-};
-const getCollectionBalance = async (indexerClient, args) => {
-  var _args$includeMetadata2, _args$verifiedOnly3;
-  const res = await indexerClient.getTokenBalances({
-    accountAddress: args.accountAddress,
-    contractAddress: args.contractAddress,
-    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
-    }
-  });
-  return (res == null ? void 0 : res.balances) || [];
-};
-const useCollectionBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectionBalance", args],
-    queryFn: () => getCollectionBalance(indexerClient, args),
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
-  });
-};
-const useExchangeRate = (toCurrency) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["exchangeRate", toCurrency],
-    queryFn: async () => {
-      if (toCurrency === "USD") {
-        return 1;
-      }
-      const res = await apiClient.getExchangeRate({
-        toCurrency
-      });
-      return res.exchangeRate.value;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10
-  });
-};
-const getCoinPrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCoinPrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCoinPrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["coinPrices", tokens],
-    queryFn: () => getCoinPrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const getCollectiblePrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCollectiblePrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCollectiblePrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["useCollectiblePrices", tokens],
-    queryFn: () => getCollectiblePrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
-    queryFn: async () => {
-      const res = await metadataClient.getTokenMetadata({
-        chainID: String(chainId),
-        contractAddress,
-        tokenIDs: tokenIds
-      });
-      return res.tokenMetadata;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const useContractInfo = (chainId, contractAddress) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["contractInfo", chainId, contractAddress],
-    queryFn: async () => {
-      const res = await metadataClient.getContractInfo({
-        chainID: String(chainId),
-        contractAddress
-      });
-      return res.contractInfo;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const getTransactionHistory = async (indexerClient, {
-  contractAddress,
-  accountAddress,
-  tokenId,
-  page
-}) => {
-  const res = indexerClient.getTransactionHistory({
-    includeMetadata: true,
-    page,
-    filter: {
-      accountAddress,
-      contractAddress,
-      tokenID: tokenId
-    }
-  });
-  return res;
-};
-const useTransactionHistory = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useInfiniteQuery({
-    queryKey: ["transactionHistory", args],
-    queryFn: ({
-      pageParam
-    }) => {
-      return getTransactionHistory(indexerClient, _extends$5({}, args, {
-        page: {
-          page: pageParam
-        }
-      }));
-    },
-    getNextPageParam: ({
-      page
-    }) => {
-      if (!page.more) {
-        return void 0;
-      }
-      return (page == null ? void 0 : page.page) || 1;
-    },
-    initialPageParam: 1,
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
-};
-const CollectibleTileImage$1 = ({
-  imageUrl
-}) => {
-  return /* @__PURE__ */ React.createElement(Card, {
-    padding: "0",
-    aspectRatio: "1/1",
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    borderRadius: "sm",
-    background: "backgroundSecondary"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    style: {
-      height: "100%"
-    },
-    src: imageUrl
-  }));
-};
-const TxnDetailsSkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 30,
-      height: 30
-    },
-    borderRadius: "circle"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 100,
-      height: 14
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 75,
-      height: 14
-    }
-  }))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    alignItems: "flex-end"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 100,
-      height: 14
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 50,
-      height: 12
-    }
-  })));
-};
-const TxnDetails = ({
-  address,
-  txs,
-  chainId
-}) => {
-  const apiClient = useAPIClient();
-  const [decodingType, setDecodingType] = reactExports.useState(void 0);
-  const [transferProps, setTransferProps] = reactExports.useState([]);
-  const [awardItemProps, setAwardItemProps] = reactExports.useState([]);
-  const getTxnProps = async () => {
-    const decodedTxnDatas = await decodeTransactions(apiClient, address, txs);
-    setDecodingType(decodedTxnDatas[0].type);
-    if (decodedTxnDatas[0].type === "transfer") {
-      setTransferProps(decodedTxnDatas);
-    }
-    if (decodedTxnDatas[0].type === "awardItem") {
-      setAwardItemProps(decodedTxnDatas);
-    }
-  };
-  reactExports.useEffect(() => {
-    getTxnProps();
-  }, []);
-  if (!decodingType) {
-    return /* @__PURE__ */ React.createElement(TxnDetailsSkeleton, null);
-  }
-  if (decodingType === DecodingType.UNKNOWN) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null);
-  }
-  if (transferProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(TransferItemInfo, {
-      address,
-      transferProps,
-      chainId
-    });
-  }
-  if (awardItemProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(AwardItemInfo, {
-      awardItemProps: awardItemProps[0]
-    });
-  }
-};
-const TransferItemInfo = ({
-  address,
-  transferProps,
-  chainId
-}) => {
-  var _transferProps$, _transferProps$2, _transferProps$3, _transferProps$4, _transferProps$5, _transferProps$0$toke, _transferProps$6, _tokenBalance$contrac, _tokenMetadata$, _tokenBalance$contrac2, _tokenMetadata$2, _tokenBalance$contrac3, _tokenBalance$contrac4, _transferProps$0$amou, _transferProps$7, _transferProps$8, _transferProps$0$type, _transferProps$9, _tokenMetadata$3;
-  const {
-    chains: chains2
-  } = useConfig();
-  const contractAddress = (_transferProps$ = transferProps[0]) == null ? void 0 : _transferProps$.contractAddress;
-  const toAddress = (_transferProps$2 = transferProps[0]) == null ? void 0 : _transferProps$2.to;
-  const isNativeCoin = contractAddress ? compareAddress$2(contractAddress, AddressZero) : true;
-  const is1155 = ((_transferProps$3 = transferProps[0]) == null ? void 0 : _transferProps$3.contractType) === ContractType$1.ERC1155;
-  const isNFT = ((_transferProps$4 = transferProps[0]) == null ? void 0 : _transferProps$4.contractType) === ContractType$1.ERC1155 || ((_transferProps$5 = transferProps[0]) == null ? void 0 : _transferProps$5.contractType) === ContractType$1.ERC721;
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  const {
-    data: balances = [],
-    isPending: isPendingBalances
-  } = useBalances({
-    chainIds: [chainId],
-    accountAddress: address,
-    contractAddress
-  });
-  const {
-    data: tokenMetadata,
-    isPending: isPendingTokenMetadata
-  } = useTokenMetadata(chainId, contractAddress, (_transferProps$0$toke = (_transferProps$6 = transferProps[0]) == null ? void 0 : _transferProps$6.tokenIds) != null ? _transferProps$0$toke : []);
-  const tokenBalance = contractAddress ? balances.find((b2) => compareAddress$2(b2.contractAddress, contractAddress)) : void 0;
-  const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
-  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image : tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.logoURI;
-  const name2 = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata == null || (_tokenMetadata$2 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$2.name : (tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.name) || "";
-  const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? "" : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
-  tokenBalance !== void 0 ? formatUnits$1(tokenBalance.balance, decimals) : "";
-  const amountSending = (_transferProps$0$amou = (_transferProps$7 = transferProps[0]) == null || (_transferProps$7 = _transferProps$7.amounts) == null ? void 0 : _transferProps$7[0]) != null ? _transferProps$0$amou : (_transferProps$8 = transferProps[0]) == null ? void 0 : _transferProps$8.value;
-  const showSquareImage = isNFT;
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, capitalize$1((_transferProps$0$type = (_transferProps$9 = transferProps[0]) == null ? void 0 : _transferProps$9.type) != null ? _transferProps$0$type : ""))), /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "2"
-  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
-    imageUrl
-  })) : /* @__PURE__ */ React.createElement(TokenImage, {
-    src: imageUrl,
-    symbol,
-    size: "md"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, name2)), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    variant: "normal"
-  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    borderRadius: "md",
-    background: "backgroundSecondary",
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "4",
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: toAddress,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 12)}`)))));
-};
-const AwardItemInfo = ({
-  awardItemProps
-}) => {
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, "Mint")), /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
-    imageUrl: "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0/image.jpeg"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, "Waas Demo NFT")), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    variant: "normal"
-  }, awardItemProps.amount)))), awardItemProps.to !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    borderRadius: "md",
-    background: "backgroundSecondary",
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "4",
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: awardItemProps.to,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$2(awardItemProps.to.substring(2), 12)}`)))));
-};
-const truncateAtMiddle$2 = (text2, truncateAt) => {
-  let finalText = text2;
-  if (text2.length >= truncateAt) {
-    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
-  }
-  return finalText;
-};
-const NetworkBadge$1 = ({
-  chainId
-}) => {
-  var _network$title;
-  const {
-    chains: chains2
-  } = useConfig();
-  const network2 = getNetwork(chainId);
-  getNativeTokenInfoByChainId(chainId, chains2);
-  const chainColor = getNetworkColor(chainId);
-  const chainBGColor = getNetworkBackgroundColor(chainId);
-  return /* @__PURE__ */ React.createElement(Box, {
-    height: "6",
-    paddingY: "1",
-    paddingLeft: "1.5",
-    paddingRight: "2",
-    gap: "1",
-    style: {
-      background: chainBGColor
-    },
-    borderRadius: "xs",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "fit"
-  }, /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    fontSize: "xsmall",
-    style: {
-      color: chainColor
-    }
-  }, capitalize$1((_network$title = network2.title) != null ? _network$title : network2.name)));
 };
 const THEMES = {
   dark: "dark",
@@ -84826,339 +84818,6 @@ const KitProvider = (props) => {
     marginTop: "1"
   }, /* @__PURE__ */ React.createElement(SequenceLogo$1, null)))))))), children))))));
 };
-var Component = {};
-var toggleSelection = function() {
-  var selection = document.getSelection();
-  if (!selection.rangeCount) {
-    return function() {
-    };
-  }
-  var active = document.activeElement;
-  var ranges = [];
-  for (var i2 = 0; i2 < selection.rangeCount; i2++) {
-    ranges.push(selection.getRangeAt(i2));
-  }
-  switch (active.tagName.toUpperCase()) {
-    case "INPUT":
-    case "TEXTAREA":
-      active.blur();
-      break;
-    default:
-      active = null;
-      break;
-  }
-  selection.removeAllRanges();
-  return function() {
-    selection.type === "Caret" && selection.removeAllRanges();
-    if (!selection.rangeCount) {
-      ranges.forEach(function(range2) {
-        selection.addRange(range2);
-      });
-    }
-    active && active.focus();
-  };
-};
-var deselectCurrent = toggleSelection;
-var clipboardToIE11Formatting = {
-  "text/plain": "Text",
-  "text/html": "Url",
-  "default": "Text"
-};
-var defaultMessage = "Copy to clipboard: #{key}, Enter";
-function format$1(message) {
-  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
-  return message.replace(/#{\s*key\s*}/g, copyKey);
-}
-function copy(text2, options) {
-  var debug2, message, reselectPrevious, range2, selection, mark, success = false;
-  if (!options) {
-    options = {};
-  }
-  debug2 = options.debug || false;
-  try {
-    reselectPrevious = deselectCurrent();
-    range2 = document.createRange();
-    selection = document.getSelection();
-    mark = document.createElement("span");
-    mark.textContent = text2;
-    mark.ariaHidden = "true";
-    mark.style.all = "unset";
-    mark.style.position = "fixed";
-    mark.style.top = 0;
-    mark.style.clip = "rect(0, 0, 0, 0)";
-    mark.style.whiteSpace = "pre";
-    mark.style.webkitUserSelect = "text";
-    mark.style.MozUserSelect = "text";
-    mark.style.msUserSelect = "text";
-    mark.style.userSelect = "text";
-    mark.addEventListener("copy", function(e2) {
-      e2.stopPropagation();
-      if (options.format) {
-        e2.preventDefault();
-        if (typeof e2.clipboardData === "undefined") {
-          debug2 && console.warn("unable to use e.clipboardData");
-          debug2 && console.warn("trying IE specific stuff");
-          window.clipboardData.clearData();
-          var format2 = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"];
-          window.clipboardData.setData(format2, text2);
-        } else {
-          e2.clipboardData.clearData();
-          e2.clipboardData.setData(options.format, text2);
-        }
-      }
-      if (options.onCopy) {
-        e2.preventDefault();
-        options.onCopy(e2.clipboardData);
-      }
-    });
-    document.body.appendChild(mark);
-    range2.selectNodeContents(mark);
-    selection.addRange(range2);
-    var successful = document.execCommand("copy");
-    if (!successful) {
-      throw new Error("copy command was unsuccessful");
-    }
-    success = true;
-  } catch (err) {
-    debug2 && console.error("unable to copy using execCommand: ", err);
-    debug2 && console.warn("trying IE specific stuff");
-    try {
-      window.clipboardData.setData(options.format || "text", text2);
-      options.onCopy && options.onCopy(window.clipboardData);
-      success = true;
-    } catch (err2) {
-      debug2 && console.error("unable to copy using clipboardData: ", err2);
-      debug2 && console.error("falling back to prompt");
-      message = format$1("message" in options ? options.message : defaultMessage);
-      window.prompt(message, text2);
-    }
-  } finally {
-    if (selection) {
-      if (typeof selection.removeRange == "function") {
-        selection.removeRange(range2);
-      } else {
-        selection.removeAllRanges();
-      }
-    }
-    if (mark) {
-      document.body.removeChild(mark);
-    }
-    reselectPrevious();
-  }
-  return success;
-}
-var copyToClipboard = copy;
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
-    return typeof obj2;
-  } : function(obj2) {
-    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-  }, _typeof(obj);
-}
-Object.defineProperty(Component, "__esModule", {
-  value: true
-});
-Component.CopyToClipboard = void 0;
-var _react = _interopRequireDefault(reactExports);
-var _copyToClipboard = _interopRequireDefault(copyToClipboard);
-var _excluded$4 = ["text", "onCopy", "options", "children"];
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { "default": obj };
-}
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function(sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread(target) {
-  for (var i2 = 1; i2 < arguments.length; i2++) {
-    var source = null != arguments[i2] ? arguments[i2] : {};
-    i2 % 2 ? ownKeys(Object(source), true).forEach(function(key2) {
-      _defineProperty(target, key2, source[key2]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key2) {
-      Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
-    });
-  }
-  return target;
-}
-function _objectWithoutProperties(source, excluded) {
-  if (source == null)
-    return {};
-  var target = _objectWithoutPropertiesLoose$2(source, excluded);
-  var key2, i2;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
-      key2 = sourceSymbolKeys[i2];
-      if (excluded.indexOf(key2) >= 0)
-        continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key2))
-        continue;
-      target[key2] = source[key2];
-    }
-  }
-  return target;
-}
-function _objectWithoutPropertiesLoose$2(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key2, i2;
-  for (i2 = 0; i2 < sourceKeys.length; i2++) {
-    key2 = sourceKeys[i2];
-    if (excluded.indexOf(key2) >= 0)
-      continue;
-    target[key2] = source[key2];
-  }
-  return target;
-}
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-function _defineProperties(target, props) {
-  for (var i2 = 0; i2 < props.length; i2++) {
-    var descriptor = props[i2];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor)
-      descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps)
-    _defineProperties(Constructor.prototype, protoProps);
-  Object.defineProperty(Constructor, "prototype", { writable: false });
-  return Constructor;
-}
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
-  Object.defineProperty(subClass, "prototype", { writable: false });
-  if (superClass)
-    _setPrototypeOf(subClass, superClass);
-}
-function _setPrototypeOf(o2, p2) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
-    o3.__proto__ = p3;
-    return o3;
-  };
-  return _setPrototypeOf(o2, p2);
-}
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived), result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-function _possibleConstructorReturn(self2, call2) {
-  if (call2 && (_typeof(call2) === "object" || typeof call2 === "function")) {
-    return call2;
-  } else if (call2 !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return _assertThisInitialized(self2);
-}
-function _assertThisInitialized(self2) {
-  if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self2;
-}
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct)
-    return false;
-  if (Reflect.construct.sham)
-    return false;
-  if (typeof Proxy === "function")
-    return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
-    }));
-    return true;
-  } catch (e2) {
-    return false;
-  }
-}
-function _getPrototypeOf(o2) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o3) {
-    return o3.__proto__ || Object.getPrototypeOf(o3);
-  };
-  return _getPrototypeOf(o2);
-}
-function _defineProperty(obj, key2, value) {
-  if (key2 in obj) {
-    Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
-  } else {
-    obj[key2] = value;
-  }
-  return obj;
-}
-var CopyToClipboard$1 = /* @__PURE__ */ function(_React$PureComponent) {
-  _inherits(CopyToClipboard2, _React$PureComponent);
-  var _super = _createSuper(CopyToClipboard2);
-  function CopyToClipboard2() {
-    var _this;
-    _classCallCheck(this, CopyToClipboard2);
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "onClick", function(event) {
-      var _this$props = _this.props, text2 = _this$props.text, onCopy = _this$props.onCopy, children = _this$props.children, options = _this$props.options;
-      var elem = _react["default"].Children.only(children);
-      var result = (0, _copyToClipboard["default"])(text2, options);
-      if (onCopy) {
-        onCopy(text2, result);
-      }
-      if (elem && elem.props && typeof elem.props.onClick === "function") {
-        elem.props.onClick(event);
-      }
-    });
-    return _this;
-  }
-  _createClass(CopyToClipboard2, [{
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props;
-      _this$props2.text;
-      _this$props2.onCopy;
-      _this$props2.options;
-      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded$4);
-      var elem = _react["default"].Children.only(children);
-      return /* @__PURE__ */ _react["default"].cloneElement(elem, _objectSpread(_objectSpread({}, props), {}, {
-        onClick: this.onClick
-      }));
-    }
-  }]);
-  return CopyToClipboard2;
-}(_react["default"].PureComponent);
-Component.CopyToClipboard = CopyToClipboard$1;
-_defineProperty(CopyToClipboard$1, "defaultProps", {
-  onCopy: void 0,
-  options: void 0
-});
-var _require = Component, CopyToClipboard = _require.CopyToClipboard;
-CopyToClipboard.CopyToClipboard = CopyToClipboard;
-var lib = CopyToClipboard;
 var __defProp2 = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
@@ -86013,6 +85672,339 @@ var QRCode = (props) => {
   }
   return /* @__PURE__ */ React.createElement(QRCodeCanvas, __spreadValues({}, otherProps));
 };
+var Component = {};
+var toggleSelection = function() {
+  var selection = document.getSelection();
+  if (!selection.rangeCount) {
+    return function() {
+    };
+  }
+  var active = document.activeElement;
+  var ranges = [];
+  for (var i2 = 0; i2 < selection.rangeCount; i2++) {
+    ranges.push(selection.getRangeAt(i2));
+  }
+  switch (active.tagName.toUpperCase()) {
+    case "INPUT":
+    case "TEXTAREA":
+      active.blur();
+      break;
+    default:
+      active = null;
+      break;
+  }
+  selection.removeAllRanges();
+  return function() {
+    selection.type === "Caret" && selection.removeAllRanges();
+    if (!selection.rangeCount) {
+      ranges.forEach(function(range2) {
+        selection.addRange(range2);
+      });
+    }
+    active && active.focus();
+  };
+};
+var deselectCurrent = toggleSelection;
+var clipboardToIE11Formatting = {
+  "text/plain": "Text",
+  "text/html": "Url",
+  "default": "Text"
+};
+var defaultMessage = "Copy to clipboard: #{key}, Enter";
+function format$1(message) {
+  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
+  return message.replace(/#{\s*key\s*}/g, copyKey);
+}
+function copy(text2, options) {
+  var debug2, message, reselectPrevious, range2, selection, mark, success = false;
+  if (!options) {
+    options = {};
+  }
+  debug2 = options.debug || false;
+  try {
+    reselectPrevious = deselectCurrent();
+    range2 = document.createRange();
+    selection = document.getSelection();
+    mark = document.createElement("span");
+    mark.textContent = text2;
+    mark.ariaHidden = "true";
+    mark.style.all = "unset";
+    mark.style.position = "fixed";
+    mark.style.top = 0;
+    mark.style.clip = "rect(0, 0, 0, 0)";
+    mark.style.whiteSpace = "pre";
+    mark.style.webkitUserSelect = "text";
+    mark.style.MozUserSelect = "text";
+    mark.style.msUserSelect = "text";
+    mark.style.userSelect = "text";
+    mark.addEventListener("copy", function(e2) {
+      e2.stopPropagation();
+      if (options.format) {
+        e2.preventDefault();
+        if (typeof e2.clipboardData === "undefined") {
+          debug2 && console.warn("unable to use e.clipboardData");
+          debug2 && console.warn("trying IE specific stuff");
+          window.clipboardData.clearData();
+          var format2 = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"];
+          window.clipboardData.setData(format2, text2);
+        } else {
+          e2.clipboardData.clearData();
+          e2.clipboardData.setData(options.format, text2);
+        }
+      }
+      if (options.onCopy) {
+        e2.preventDefault();
+        options.onCopy(e2.clipboardData);
+      }
+    });
+    document.body.appendChild(mark);
+    range2.selectNodeContents(mark);
+    selection.addRange(range2);
+    var successful = document.execCommand("copy");
+    if (!successful) {
+      throw new Error("copy command was unsuccessful");
+    }
+    success = true;
+  } catch (err) {
+    debug2 && console.error("unable to copy using execCommand: ", err);
+    debug2 && console.warn("trying IE specific stuff");
+    try {
+      window.clipboardData.setData(options.format || "text", text2);
+      options.onCopy && options.onCopy(window.clipboardData);
+      success = true;
+    } catch (err2) {
+      debug2 && console.error("unable to copy using clipboardData: ", err2);
+      debug2 && console.error("falling back to prompt");
+      message = format$1("message" in options ? options.message : defaultMessage);
+      window.prompt(message, text2);
+    }
+  } finally {
+    if (selection) {
+      if (typeof selection.removeRange == "function") {
+        selection.removeRange(range2);
+      } else {
+        selection.removeAllRanges();
+      }
+    }
+    if (mark) {
+      document.body.removeChild(mark);
+    }
+    reselectPrevious();
+  }
+  return success;
+}
+var copyToClipboard = copy;
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+    return typeof obj2;
+  } : function(obj2) {
+    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof(obj);
+}
+Object.defineProperty(Component, "__esModule", {
+  value: true
+});
+Component.CopyToClipboard = void 0;
+var _react = _interopRequireDefault(reactExports);
+var _copyToClipboard = _interopRequireDefault(copyToClipboard);
+var _excluded$4 = ["text", "onCopy", "options", "children"];
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { "default": obj };
+}
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread(target) {
+  for (var i2 = 1; i2 < arguments.length; i2++) {
+    var source = null != arguments[i2] ? arguments[i2] : {};
+    i2 % 2 ? ownKeys(Object(source), true).forEach(function(key2) {
+      _defineProperty(target, key2, source[key2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key2) {
+      Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
+    });
+  }
+  return target;
+}
+function _objectWithoutProperties(source, excluded) {
+  if (source == null)
+    return {};
+  var target = _objectWithoutPropertiesLoose$2(source, excluded);
+  var key2, i2;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
+      key2 = sourceSymbolKeys[i2];
+      if (excluded.indexOf(key2) >= 0)
+        continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key2))
+        continue;
+      target[key2] = source[key2];
+    }
+  }
+  return target;
+}
+function _objectWithoutPropertiesLoose$2(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key2, i2;
+  for (i2 = 0; i2 < sourceKeys.length; i2++) {
+    key2 = sourceKeys[i2];
+    if (excluded.indexOf(key2) >= 0)
+      continue;
+    target[key2] = source[key2];
+  }
+  return target;
+}
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+function _defineProperties(target, props) {
+  for (var i2 = 0; i2 < props.length; i2++) {
+    var descriptor = props[i2];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor)
+      descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps)
+    _defineProperties(Constructor.prototype, protoProps);
+  Object.defineProperty(Constructor, "prototype", { writable: false });
+  return Constructor;
+}
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
+  Object.defineProperty(subClass, "prototype", { writable: false });
+  if (superClass)
+    _setPrototypeOf(subClass, superClass);
+}
+function _setPrototypeOf(o2, p2) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+    o3.__proto__ = p3;
+    return o3;
+  };
+  return _setPrototypeOf(o2, p2);
+}
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived), result;
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+    return _possibleConstructorReturn(this, result);
+  };
+}
+function _possibleConstructorReturn(self2, call2) {
+  if (call2 && (_typeof(call2) === "object" || typeof call2 === "function")) {
+    return call2;
+  } else if (call2 !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+  return _assertThisInitialized(self2);
+}
+function _assertThisInitialized(self2) {
+  if (self2 === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return self2;
+}
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct)
+    return false;
+  if (Reflect.construct.sham)
+    return false;
+  if (typeof Proxy === "function")
+    return true;
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+    }));
+    return true;
+  } catch (e2) {
+    return false;
+  }
+}
+function _getPrototypeOf(o2) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o3) {
+    return o3.__proto__ || Object.getPrototypeOf(o3);
+  };
+  return _getPrototypeOf(o2);
+}
+function _defineProperty(obj, key2, value) {
+  if (key2 in obj) {
+    Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key2] = value;
+  }
+  return obj;
+}
+var CopyToClipboard$1 = /* @__PURE__ */ function(_React$PureComponent) {
+  _inherits(CopyToClipboard2, _React$PureComponent);
+  var _super = _createSuper(CopyToClipboard2);
+  function CopyToClipboard2() {
+    var _this;
+    _classCallCheck(this, CopyToClipboard2);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    _this = _super.call.apply(_super, [this].concat(args));
+    _defineProperty(_assertThisInitialized(_this), "onClick", function(event) {
+      var _this$props = _this.props, text2 = _this$props.text, onCopy = _this$props.onCopy, children = _this$props.children, options = _this$props.options;
+      var elem = _react["default"].Children.only(children);
+      var result = (0, _copyToClipboard["default"])(text2, options);
+      if (onCopy) {
+        onCopy(text2, result);
+      }
+      if (elem && elem.props && typeof elem.props.onClick === "function") {
+        elem.props.onClick(event);
+      }
+    });
+    return _this;
+  }
+  _createClass(CopyToClipboard2, [{
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props;
+      _this$props2.text;
+      _this$props2.onCopy;
+      _this$props2.options;
+      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded$4);
+      var elem = _react["default"].Children.only(children);
+      return /* @__PURE__ */ _react["default"].cloneElement(elem, _objectSpread(_objectSpread({}, props), {}, {
+        onClick: this.onClick
+      }));
+    }
+  }]);
+  return CopyToClipboard2;
+}(_react["default"].PureComponent);
+Component.CopyToClipboard = CopyToClipboard$1;
+_defineProperty(CopyToClipboard$1, "defaultProps", {
+  onCopy: void 0,
+  options: void 0
+});
+var _require = Component, CopyToClipboard = _require.CopyToClipboard;
+CopyToClipboard.CopyToClipboard = CopyToClipboard;
+var lib = CopyToClipboard;
 var dayjs_min = { exports: {} };
 (function(module2, exports) {
   !function(t2, e2) {
@@ -91812,7 +91804,7 @@ const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClient
         verifiedOnly
       }))).flat()])).flat();
     } else {
-      tokenBalances = (await Promise.all([...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)), ...indexerClientsArr.map(([chainId, indexerClient]) => getTokenBalances(indexerClient, {
+      tokenBalances = (await Promise.all([...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)), ...indexerClientsArr.map(([_chainId, indexerClient]) => getTokenBalances(indexerClient, {
         accountAddress,
         hideCollectibles,
         includeMetadata: false,
@@ -91824,7 +91816,7 @@ const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClient
       erc20Tokens,
       collectibles: collectionBalances
     } = sortBalancesByType(tokenBalances);
-    const fetchPricesPromise = new Promise(async (resolve, reject) => {
+    const fetchPricesPromise = new Promise(async (resolve) => {
       if (erc20Tokens.length > 0) {
         const tokens = erc20Tokens.map((token) => ({
           chainId: token.chainId,
@@ -92575,15 +92567,7 @@ const AssetSummary = () => {
     }));
   }));
 };
-const useScrollbarWidth = () => {
-  const [scrollbarWidth, setScrollbarWidth] = reactExports.useState("0px");
-  reactExports.useEffect(() => {
-    setScrollbarWidth(navigator.userAgent.match(/chrome|chromium|crios/i) ? "13px" : "0px");
-  }, []);
-  return scrollbarWidth;
-};
 const Home = () => {
-  useScrollbarWidth();
   return /* @__PURE__ */ React.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
@@ -92710,7 +92694,6 @@ const SendItemInfo = ({
   chainId,
   showSquareImage
 }) => {
-  useConfig();
   const {
     fiatCurrency
   } = useSettings();
@@ -92783,7 +92766,6 @@ const SendCoin = ({
     switchChainAsync
   } = useSwitchChain();
   const amountInputRef = reactExports.useRef(null);
-  useOpenWalletModal();
   const {
     fiatCurrency
   } = useSettings();
@@ -92878,7 +92860,7 @@ const SendCoin = ({
         value: BigInt(sendAmount.toString()),
         gas: null
       }, {
-        onSettled: (result, error) => {
+        onSettled: (result) => {
           if (result) {
             setNavigation({
               location: "home"
@@ -92902,7 +92884,7 @@ const SendCoin = ({
         data: new Interface(ERC_20_ABI).encodeFunctionData("transfer", [toAddress, sendAmount.toHexString()]),
         gas: null
       }, {
-        onSettled: (result, error) => {
+        onSettled: (result) => {
           if (result) {
             setNavigation({
               location: "home"
@@ -93089,7 +93071,6 @@ const SendCollectible = ({
     switchChain: switchChain2
   } = useSwitchChain();
   const amountInputRef = reactExports.useRef(null);
-  useOpenWalletModal();
   const [amount, setAmount] = reactExports.useState("0");
   const [toAddress, setToAddress] = reactExports.useState("");
   const [showAmountControls, setShowAmountControls] = reactExports.useState(false);
@@ -93194,7 +93175,7 @@ const SendCollectible = ({
           data: new Interface(ERC_721_ABI).encodeFunctionData("safeTransferFrom", [accountAddress, toAddress, tokenId]),
           gas: null
         }, {
-          onSettled: (result, error) => {
+          onSettled: (result) => {
             if (result) {
               setNavigation({
                 location: "home"
@@ -93219,7 +93200,7 @@ const SendCollectible = ({
           data: new Interface(ERC_1155_ABI).encodeFunctionData("safeBatchTransferFrom", [accountAddress, toAddress, [tokenId], [sendAmount.toHexString()], []]),
           gas: null
         }, {
-          onSettled: (result, error) => {
+          onSettled: (result) => {
             if (result) {
               setNavigation({
                 location: "home"
@@ -93425,7 +93406,6 @@ const TransactionHistoryItem = ({
   const {
     transfers
   } = transaction2;
-  getNativeTokenInfoByChainId(transaction2.chainId, chains2);
   const getTransactionIconByType = (transferType) => {
     switch (transferType) {
       case TxnTransferType.SEND:
@@ -93766,7 +93746,6 @@ const History = () => {
   const {
     address: accountAddress
   } = useAccount();
-  useScrollbarWidth();
   const {
     data: transactionHistory = [],
     isPending: isPendingTransactionHistory
@@ -93934,7 +93913,6 @@ const SearchWallet = () => {
   const {
     address: accountAddress
   } = useAccount();
-  useScrollbarWidth();
   const {
     data: tokenBalancesData,
     isPending: isPendingTokenBalances
@@ -94092,7 +94070,6 @@ const SearchWalletViewAll = ({
   } = useSettings();
   const [search2, setSearch] = reactExports.useState("");
   const [selectedTab, setSelectedTab] = reactExports.useState(defaultTab);
-  useScrollbarWidth();
   reactExports.useEffect(() => {
     setSearch("");
   }, [selectedTab]);
@@ -94310,7 +94287,6 @@ const SettingsMenu = () => {
   }))));
 };
 const SettingsGeneral = () => {
-  useTheme();
   const {
     hideUnlistedTokens,
     setHideUnlistedTokens,
@@ -94455,7 +94431,6 @@ const SettingsCurrency = () => {
     fiatCurrency,
     setFiatCurrency
   } = useSettings();
-  useScrollbarWidth();
   return /* @__PURE__ */ React.createElement(Box, {
     paddingBottom: "5",
     paddingX: "4",
@@ -94535,15 +94510,52 @@ const SettingsNetwork = () => {
     }, chain.name)));
   }))));
 };
+const useIntersectionObserver = (ref, options) => {
+  var _entry$isIntersecting;
+  const [entry, setEntry] = reactExports.useState(null);
+  const observer = reactExports.useMemo(() => new IntersectionObserver(([entry2]) => setEntry(entry2), options), []);
+  reactExports.useEffect(() => {
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      if (ref.current) {
+        observer.disconnect();
+      }
+    };
+  }, [ref.current, observer]);
+  return (_entry$isIntersecting = entry == null ? void 0 : entry.isIntersecting) != null ? _entry$isIntersecting : false;
+};
+const InfiniteScroll = (props) => {
+  const {
+    onLoad,
+    hasMore = true,
+    children
+  } = props;
+  const [pageNumber, setPageNumber] = reactExports.useState(0);
+  const [isLoading, setLoading] = reactExports.useState(false);
+  const bottomRef = reactExports.useRef(null);
+  const isBottom = useIntersectionObserver(bottomRef);
+  reactExports.useEffect(() => {
+    if (isBottom && hasMore && !isLoading) {
+      handleLoad();
+    }
+  }, [isBottom]);
+  const handleLoad = async () => {
+    setLoading(true);
+    await onLoad(pageNumber);
+    setPageNumber((pageNumber2) => pageNumber2 + 1);
+    setLoading(false);
+  };
+  return /* @__PURE__ */ React.createElement(React.Fragment, null, children, /* @__PURE__ */ React.createElement("div", {
+    ref: bottomRef
+  }));
+};
 const NetworkBadge = ({
   chainId
 }) => {
   var _network$title;
-  const {
-    chains: chains2
-  } = useConfig();
   const network2 = getNetwork(chainId);
-  getNativeTokenInfoByChainId(chainId, chains2);
   const chainColor = getNetworkColor(chainId);
   const chainBGColor = getNetworkBackgroundColor(chainId);
   return /* @__PURE__ */ React.createElement(Box, {
@@ -94574,7 +94586,6 @@ const NetworkBadge = ({
 const CoinDetailsSkeleton = ({
   chainId
 }) => {
-  useScrollbarWidth();
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
@@ -94637,47 +94648,6 @@ const CoinDetailsSkeleton = ({
     }
   }), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(TransactionHistorySkeleton, null))));
 };
-const useIntersectionObserver = (ref, options) => {
-  var _entry$isIntersecting;
-  const [entry, setEntry] = reactExports.useState(null);
-  const observer = reactExports.useMemo(() => new IntersectionObserver(([entry2]) => setEntry(entry2), options), []);
-  reactExports.useEffect(() => {
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => {
-      if (ref.current) {
-        observer.disconnect();
-      }
-    };
-  }, [ref.current, observer]);
-  return (_entry$isIntersecting = entry == null ? void 0 : entry.isIntersecting) != null ? _entry$isIntersecting : false;
-};
-const InfiniteScroll = (props) => {
-  const {
-    onLoad,
-    hasMore = true,
-    children
-  } = props;
-  const [pageNumber, setPageNumber] = reactExports.useState(0);
-  const [isLoading, setLoading] = reactExports.useState(false);
-  const bottomRef = reactExports.useRef(null);
-  const isBottom = useIntersectionObserver(bottomRef);
-  reactExports.useEffect(() => {
-    if (isBottom && hasMore && !isLoading) {
-      handleLoad();
-    }
-  }, [isBottom]);
-  const handleLoad = async () => {
-    setLoading(true);
-    await onLoad(pageNumber);
-    setPageNumber((pageNumber2) => pageNumber2 + 1);
-    setLoading(false);
-  };
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, children, /* @__PURE__ */ React.createElement("div", {
-    ref: bottomRef
-  }));
-};
 const CoinDetails = ({
   contractAddress,
   chainId
@@ -94693,7 +94663,6 @@ const CoinDetails = ({
     fiatCurrency,
     hideUnlistedTokens
   } = useSettings();
-  useScrollbarWidth();
   const {
     address: accountAddress
   } = useAccount();
@@ -94821,7 +94790,6 @@ const CoinDetails = ({
 const CollectionDetailsSkeleton = ({
   chainId
 }) => {
-  useScrollbarWidth();
   return /* @__PURE__ */ React.createElement(Box, {
     paddingX: "4",
     paddingBottom: "5",
@@ -94893,7 +94861,6 @@ const CollectionDetails = ({
     accountAddress: accountAddress || "",
     contractAddress
   });
-  useScrollbarWidth();
   const contractInfo = collectionBalanceData == null || (_collectionBalanceDat = collectionBalanceData[0]) == null ? void 0 : _collectionBalanceDat.contractInfo;
   const collectionLogoURI = contractInfo == null ? void 0 : contractInfo.logoURI;
   if (isPendingCollectionBalance) {
@@ -94991,7 +94958,6 @@ const CollectionDetails = ({
   }))));
 };
 const CollectibleDetailsSkeleton = () => {
-  useScrollbarWidth();
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
       paddingTop: HEADER_HEIGHT$1
@@ -95065,9 +95031,6 @@ const CollectibleDetails = ({
 }) => {
   var _dataCollectibleBalan, _dataCollectibleBalan2, _dataCollectibleBalan3, _dataCollectibleBalan4, _dataCollectibleBalan5, _dataCollectiblePrice;
   const {
-    chains: chains2
-  } = useConfig();
-  const {
     address: accountAddress
   } = useAccount();
   const {
@@ -95076,7 +95039,6 @@ const CollectibleDetails = ({
   const {
     setNavigation
   } = useNavigation$1();
-  useScrollbarWidth();
   const {
     data: dataTransactionHistory,
     isPending: isPendingTransactionHistory,
@@ -95126,7 +95088,6 @@ const CollectibleDetails = ({
       }
     });
   };
-  getNativeTokenInfoByChainId(chainId, chains2);
   const collectionLogo = dataCollectibleBalance == null || (_dataCollectibleBalan = dataCollectibleBalance.contractInfo) == null ? void 0 : _dataCollectibleBalan.logoURI;
   const collectionName = (dataCollectibleBalance == null || (_dataCollectibleBalan2 = dataCollectibleBalance.contractInfo) == null ? void 0 : _dataCollectibleBalan2.name) || "Unknown Collection";
   const decimals = (dataCollectibleBalance == null || (_dataCollectibleBalan3 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan3.decimals) || 0;
@@ -95530,6 +95491,48 @@ const TransactionDetails = ({
     text: transaction2.txnHash
   }))));
 };
+const NavigationHeader$1 = ({
+  secondaryText,
+  primaryText
+}) => {
+  const {
+    goBack,
+    history
+  } = useNavigation$1();
+  const onClickBack = () => {
+    goBack();
+  };
+  return /* @__PURE__ */ React.createElement(Box, {
+    background: "backgroundPrimary",
+    zIndex: "20",
+    position: "fixed",
+    width: "full",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingX: "4",
+    style: {
+      height: HEADER_HEIGHT$1,
+      paddingTop: "6px"
+    }
+  }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
+    onClick: onClickBack,
+    icon: SvgChevronLeftIcon,
+    size: "xs"
+  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "medium",
+    variant: "small",
+    color: "text50"
+  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "medium",
+    variant: "small",
+    color: "text100"
+  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      width: "44px"
+    }
+  }));
+};
 const AccountInformation = /* @__PURE__ */ reactExports.forwardRef(({
   onClickAccount
 }, ref) => {
@@ -95786,48 +95789,6 @@ const WalletHeader = () => {
     setOpenWalletDropdown
   })))));
 };
-const NavigationHeader$1 = ({
-  secondaryText,
-  primaryText
-}) => {
-  const {
-    goBack,
-    history
-  } = useNavigation$1();
-  const onClickBack = () => {
-    goBack();
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundPrimary",
-    zIndex: "20",
-    position: "fixed",
-    width: "full",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingX: "4",
-    style: {
-      height: HEADER_HEIGHT$1,
-      paddingTop: "6px"
-    }
-  }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: onClickBack,
-    icon: SvgChevronLeftIcon,
-    size: "xs"
-  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text50"
-  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text100"
-  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "44px"
-    }
-  }));
-};
 const getContent = (navigation) => {
   const {
     location: location2
@@ -96039,6 +96000,61 @@ function _extends$2() {
   };
   return _extends$2.apply(this, arguments);
 }
+const HEADER_HEIGHT = "54px";
+const NavigationHeader = ({
+  secondaryText,
+  primaryText,
+  disableBack: _disableBack = false
+}) => {
+  const {
+    goBack,
+    history
+  } = useNavigation();
+  const onClickBack = () => {
+    goBack();
+  };
+  return /* @__PURE__ */ React.createElement(Box, {
+    background: "backgroundPrimary",
+    zIndex: "20",
+    position: "fixed",
+    width: "full",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    style: {
+      height: HEADER_HEIGHT,
+      paddingTop: "6px",
+      backgroundColor: vars.colors.backgroundPrimary
+    }
+  }, history.length > 0 && !_disableBack ? /* @__PURE__ */ React.createElement(IconButton, {
+    onClick: onClickBack,
+    icon: SvgChevronLeftIcon,
+    size: "sm",
+    style: {
+      background: "rgba(0,0,0,0)",
+      width: "44px"
+    }
+  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, {
+    width: "full",
+    alignItems: "center",
+    justifyContent: "center",
+    style: {
+      marginLeft: "40px"
+    }
+  }, /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "medium",
+    variant: "small",
+    color: "text50"
+  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "medium",
+    variant: "small",
+    color: "text100"
+  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      width: "44px"
+    }
+  }));
+};
 const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMetadata) => {
   const randomNumber = Math.floor(Math.random() * 1e6);
   const timestamp = (/* @__PURE__ */ new Date()).getTime();
@@ -96186,7 +96202,6 @@ const PendingTransaction = () => {
 const TransactionSuccess = () => {
   var _settings$sardineChec, _network$blockExplore, _network$blockExplore2;
   const {
-    closeCheckout,
     settings
   } = useCheckoutModal();
   const nav = useNavigation();
@@ -96355,9 +96370,6 @@ const OrderSummaryItem = ({
 }) => {
   var _tokenMetadata$;
   const {
-    chains: chains2
-  } = useConfig();
-  const {
     data: tokenMetadata,
     isPending: isPendingTokenMetadata
   } = useTokenMetadata(chainId, contractAddress, [tokenId]);
@@ -96369,7 +96381,6 @@ const OrderSummaryItem = ({
   if (isPending) {
     return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
   }
-  getNativeTokenInfoByChainId(chainId, [...chains2]);
   const {
     name: name2 = "unknown",
     image,
@@ -96483,7 +96494,6 @@ const OrderSummarySkeleton = () => {
     }
   }));
 };
-const HEADER_HEIGHT = "54px";
 const CheckoutSelection = () => {
   var _cryptoCheckoutSettin, _cryptoCheckoutSettin2, _cryptoCheckoutSettin4, _settings$cryptoCheck, _settings$sardineChec;
   const {
@@ -96533,8 +96543,7 @@ const CheckoutSelection = () => {
   const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
   const chainId = (settings == null || (_settings$cryptoCheck = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck.chainId) || (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.chainId) || 1;
   const {
-    data: tokensMetadata,
-    isLoading: isTokenMetadataLoading
+    data: tokensMetadata
   } = useTokenMetadata(chainId, orderSummaryItems[0].contractAddress, [orderSummaryItems[0].tokenId]);
   const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
   const triggerSardineTransaction = async () => {
@@ -96692,60 +96701,6 @@ const CheckoutSelection = () => {
     fontSize: "small",
     color: "text50"
   }, "Balance: ", `${formatDisplay(userBalance)} ${coinSymbol}`)));
-};
-const NavigationHeader = ({
-  secondaryText,
-  primaryText,
-  disableBack: _disableBack = false
-}) => {
-  const {
-    goBack,
-    history
-  } = useNavigation();
-  const onClickBack = () => {
-    goBack();
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundPrimary",
-    zIndex: "20",
-    position: "fixed",
-    width: "full",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    style: {
-      height: HEADER_HEIGHT,
-      paddingTop: "6px",
-      backgroundColor: vars.colors.backgroundPrimary
-    }
-  }, history.length > 0 && !_disableBack ? /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: onClickBack,
-    icon: SvgChevronLeftIcon,
-    size: "sm",
-    style: {
-      background: "rgba(0,0,0,0)",
-      width: "44px"
-    }
-  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    alignItems: "center",
-    justifyContent: "center",
-    style: {
-      marginLeft: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text50"
-  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text100"
-  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "44px"
-    }
-  }));
 };
 const DEFAULT_LOCATION = {
   location: "select-method-checkout"
@@ -108066,7 +108021,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-eKSUDtIm.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-BCJLEreN.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108252,7 +108207,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DF_7kGM4.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-juDmu4Q-.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -108455,41 +108410,6 @@ function _extends() {
   };
   return _extends.apply(this, arguments);
 }
-const getAppleLogo = ({
-  isDarkMode
-}) => {
-  const fillColor = isDarkMode ? "white" : "black";
-  const AppleLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 29 34",
-      fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
-      d: "M27.702 11.5918C27.5049 11.7448 24.0243 13.7068 24.0243 18.0694C24.0243 23.1155 28.4532 24.9007 28.5858 24.9449C28.5654 25.0537 27.8822 27.3897 26.2506 29.77C24.7958 31.8646 23.2765 33.9558 20.9651 33.9558C18.6538 33.9558 18.0589 32.6127 15.3907 32.6127C12.7904 32.6127 11.8659 34 9.75169 34C7.63748 34 6.1623 32.0618 4.46618 29.6816C2.50154 26.8865 0.914185 22.5443 0.914185 18.423C0.914185 11.8128 5.21057 8.30703 9.43897 8.30703C11.6857 8.30703 13.5586 9.78278 14.9692 9.78278C16.3118 9.78278 18.4056 8.21862 20.9617 8.21862C21.9304 8.21862 25.4111 8.30703 27.702 11.5918ZM19.7483 5.42014C20.8054 4.16542 21.5532 2.42444 21.5532 0.683468C21.5532 0.442044 21.5328 0.19722 21.4886 0C19.7687 0.0646065 17.7224 1.14591 16.4886 2.57746C15.5199 3.67917 14.6157 5.42014 14.6157 7.18492C14.6157 7.45014 14.6599 7.71537 14.6803 7.80038C14.7891 7.82078 14.9658 7.84458 15.1426 7.84458C16.6857 7.84458 18.6266 6.81088 19.7483 5.42014Z",
-      fill: fillColor
-    }));
-  };
-  return AppleLogo;
-};
-const getAppleMonochromeLogo = ({
-  isDarkMode
-}) => {
-  const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
-  const AppleOtcLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 41 40",
-      fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
-      d: "M27.166 20.8774C27.1338 17.335 30.0617 15.633 30.1936 15.5493C28.5463 13.1395 25.9852 12.8113 25.0714 12.7727C22.8932 12.5507 20.8179 14.0565 19.7111 14.0565C18.6043 14.0565 16.8991 12.8049 15.0909 12.8403C12.7131 12.8757 10.5221 14.2205 9.2962 16.3505C6.8284 20.6297 8.66557 26.9777 11.0722 30.4557C12.2498 32.1545 13.6494 34.0689 15.493 33.9981C17.2691 33.9273 17.9383 32.8495 20.0811 32.8495C22.224 32.8495 22.8289 33.9981 24.7014 33.9627C26.6094 33.9241 27.8191 32.2253 28.9871 30.5201C30.3352 28.5478 30.8918 26.6366 30.924 26.5369C30.8822 26.5208 27.2046 25.1116 27.166 20.8774Z",
-      fill: fillColor
-    }), /* @__PURE__ */ React.createElement("path", {
-      d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z",
-      fill: fillColor
-    }));
-  };
-  return AppleOtcLogo;
-};
 sequenceWallet.type = "sequence";
 function sequenceWallet(params) {
   var _params$connect, _params$connect2, _params$connect3;
@@ -108642,7 +108562,7 @@ function sequenceWallet(params) {
       });
       provider2.setDefaultChainId(normalizeChainId$1(chain));
     },
-    async onConnect(connectinfo) {
+    async onConnect(_connectinfo) {
     },
     async onDisconnect() {
       var _config$storage4;
@@ -108714,7 +108634,7 @@ function sequenceWaasWallet(params) {
         this.onDisconnect();
       });
     },
-    async connect(connectInfo) {
+    async connect(_connectInfo) {
       const provider2 = await this.getProvider();
       const isSignedIn = await provider2.sequenceWaas.isSignedIn();
       if (!isSignedIn) {
@@ -108818,12 +108738,11 @@ function sequenceWaasWallet(params) {
       };
     },
     async onChainChanged(chain) {
-      await this.getProvider();
       config2.emitter.emit("change", {
         chainId: normalizeChainId(chain)
       });
     },
-    async onConnect(connectInfo) {
+    async onConnect(_connectInfo) {
     },
     async onDisconnect() {
       await this.disconnect();
@@ -108976,6 +108895,41 @@ function normalizeChainId(chainId) {
     return Number(chainId);
   return chainId;
 }
+const getAppleLogo = ({
+  isDarkMode
+}) => {
+  const fillColor = isDarkMode ? "white" : "black";
+  const AppleLogo = (props) => {
+    return /* @__PURE__ */ React.createElement("svg", _extends({
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 29 34",
+      fill: "none"
+    }, props), /* @__PURE__ */ React.createElement("path", {
+      d: "M27.702 11.5918C27.5049 11.7448 24.0243 13.7068 24.0243 18.0694C24.0243 23.1155 28.4532 24.9007 28.5858 24.9449C28.5654 25.0537 27.8822 27.3897 26.2506 29.77C24.7958 31.8646 23.2765 33.9558 20.9651 33.9558C18.6538 33.9558 18.0589 32.6127 15.3907 32.6127C12.7904 32.6127 11.8659 34 9.75169 34C7.63748 34 6.1623 32.0618 4.46618 29.6816C2.50154 26.8865 0.914185 22.5443 0.914185 18.423C0.914185 11.8128 5.21057 8.30703 9.43897 8.30703C11.6857 8.30703 13.5586 9.78278 14.9692 9.78278C16.3118 9.78278 18.4056 8.21862 20.9617 8.21862C21.9304 8.21862 25.4111 8.30703 27.702 11.5918ZM19.7483 5.42014C20.8054 4.16542 21.5532 2.42444 21.5532 0.683468C21.5532 0.442044 21.5328 0.19722 21.4886 0C19.7687 0.0646065 17.7224 1.14591 16.4886 2.57746C15.5199 3.67917 14.6157 5.42014 14.6157 7.18492C14.6157 7.45014 14.6599 7.71537 14.6803 7.80038C14.7891 7.82078 14.9658 7.84458 15.1426 7.84458C16.6857 7.84458 18.6266 6.81088 19.7483 5.42014Z",
+      fill: fillColor
+    }));
+  };
+  return AppleLogo;
+};
+const getAppleMonochromeLogo = ({
+  isDarkMode
+}) => {
+  const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
+  const AppleOtcLogo = (props) => {
+    return /* @__PURE__ */ React.createElement("svg", _extends({
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 41 40",
+      fill: "none"
+    }, props), /* @__PURE__ */ React.createElement("path", {
+      d: "M27.166 20.8774C27.1338 17.335 30.0617 15.633 30.1936 15.5493C28.5463 13.1395 25.9852 12.8113 25.0714 12.7727C22.8932 12.5507 20.8179 14.0565 19.7111 14.0565C18.6043 14.0565 16.8991 12.8049 15.0909 12.8403C12.7131 12.8757 10.5221 14.2205 9.2962 16.3505C6.8284 20.6297 8.66557 26.9777 11.0722 30.4557C12.2498 32.1545 13.6494 34.0689 15.493 33.9981C17.2691 33.9273 17.9383 32.8495 20.0811 32.8495C22.224 32.8495 22.8289 33.9981 24.7014 33.9627C26.6094 33.9241 27.8191 32.2253 28.9871 30.5201C30.3352 28.5478 30.8918 26.6366 30.924 26.5369C30.8822 26.5208 27.2046 25.1116 27.166 20.8774Z",
+      fill: fillColor
+    }), /* @__PURE__ */ React.createElement("path", {
+      d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z",
+      fill: fillColor
+    }));
+  };
+  return AppleOtcLogo;
+};
 const apple = (options) => ({
   id: "apple",
   isSequenceBased: true,
@@ -109805,24 +109759,6 @@ const walletConnect = (options) => ({
     return connector;
   }
 });
-const googleWaas = (options) => ({
-  id: "google-waas",
-  logoDark: GoogleLogo,
-  logoLight: GoogleLogo,
-  monochromeLogoDark: getMonochromeGoogleLogo({
-    isDarkMode: true
-  }),
-  monochromeLogoLight: getMonochromeGoogleLogo({
-    isDarkMode: false
-  }),
-  name: "Google",
-  createConnector: () => {
-    const connector = sequenceWaasWallet(_extends({}, options, {
-      loginType: "google"
-    }));
-    return connector;
-  }
-});
 const appleWaas = (options) => ({
   id: "apple-waas",
   logoDark: getAppleLogo({
@@ -109841,6 +109777,24 @@ const appleWaas = (options) => ({
   createConnector: () => {
     const connector = sequenceWaasWallet(_extends({}, options, {
       loginType: "apple"
+    }));
+    return connector;
+  }
+});
+const googleWaas = (options) => ({
+  id: "google-waas",
+  logoDark: GoogleLogo,
+  logoLight: GoogleLogo,
+  monochromeLogoDark: getMonochromeGoogleLogo({
+    isDarkMode: true
+  }),
+  monochromeLogoLight: getMonochromeGoogleLogo({
+    isDarkMode: false
+  }),
+  name: "Google",
+  createConnector: () => {
+    const connector = sequenceWaasWallet(_extends({}, options, {
+      loginType: "google"
     }));
     return connector;
   }
