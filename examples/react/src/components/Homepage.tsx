@@ -248,14 +248,10 @@ export const Homepage = () => {
     }
 
     // const [account] = await walletClient.getAddresses()
-    const contractAbiInterface = new ethers.utils.Interface([
-      'function demo()'
-    ])
+    const contractAbiInterface = new ethers.utils.Interface(['function demo()'])
 
     // sendTransaction({ to: account, value: BigInt(0), gas: null })
-    const data = contractAbiInterface.encodeFunctionData(
-      'demo', []
-    ) as `0x${string}`
+    const data = contractAbiInterface.encodeFunctionData('demo', []) as `0x${string}`
 
     sendTransaction({
       to: '0x37470dac8a0255141745906c972e414b1409b470',
@@ -654,7 +650,7 @@ export const Homepage = () => {
               <Box gap="2" flexDirection="column" marginTop="10" width="1/2">
                 <ConnectionModeSelect
                   mode="waas"
-                  title="Wallet as a Service (WaaS)"
+                  title="Embedded (WaaS)"
                   description="Connect to an embedded wallet for a seamless experience."
                   onClick={handleSwitchConnectionMode}
                 />
