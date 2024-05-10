@@ -1,3 +1,4 @@
+import { SequenceWaasProvider } from '@0xsequence/kit-connectors'
 import { SequenceWaaS } from '@0xsequence/waas'
 import { useState, useEffect } from 'react'
 import { useAccount } from 'wagmi'
@@ -30,6 +31,7 @@ export function useWaasRevalidation(): UseWaasRevalidation {
       setOnVerifyIsLoading(true)
       await sequenceWaas.finishValidateSession(code)
     } catch(e) {
+      console.log('error...')
       console.error(e)
     }
     setOnVerifyIsLoading(false)
@@ -54,6 +56,12 @@ export function useWaasRevalidation(): UseWaasRevalidation {
       if (!sequenceWaas) {
         return
       }
+
+      // @ts-ignore-next-line
+      // waasConnector.triggerSessionValidation = () => {
+      //   console.log('validation required')
+      //   setOpenWaasRevalidationModal(true)
+      // }
 
       sequenceWaas.onValidationRequired(() => {
         console.log('onValidationRequire')

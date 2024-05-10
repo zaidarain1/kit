@@ -9,6 +9,9 @@ import { Connector, useAccount, useConfig, useConnections } from 'wagmi'
 
 import '@0xsequence/design-system/styles.css'
 
+import { ConnectWalletContent } from './ConnectWalletContent'
+import { WaasCodeInputContent } from './ConnectWalletContent/WaasCodeInputContent'
+import { SequenceLogo } from './SequenceLogo'
 import { DEFAULT_SESSION_EXPIRATION, LocalStorageKey } from '../../constants'
 import {
   KitConfigContextProvider,
@@ -21,6 +24,8 @@ import { useWaasConfirmationHandler } from '../../hooks/useWaasConfirmationHandl
 import { ExtendedConnector, ModalPosition, getModalPositionCss } from '../../utils'
 import { setStorageItem } from '../../utils/storage'
 import { TxnDetails } from '../TxnDetails'
+import { useWaasRevalidation } from '../../hooks'
+
 
 import { ConnectWalletContent } from './ConnectWalletContent'
 import { NetworkBadge } from './NetworkBadge'
@@ -99,6 +104,14 @@ export const KitProvider = (props: KitConnectProviderProps) => {
 
   const [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest] = useWaasConfirmationHandler(waasConnector)
 
+  const {
+    openWaasRevalidationModal,
+    setOpenWaasRevalidationModal,
+    onVerifyIsLoading,
+    setOnVerifyIsLoading,
+    onVerify
+  } = useWaasRevalidation()
+  
   const googleWaasConnector = wagmiConfig.connectors.find(
     c => c.id === 'sequence-waas' && (c as ExtendedConnector)._wallet.id === 'google-waas'
   ) as ExtendedConnector | undefined
@@ -346,6 +359,41 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                                 <SequenceLogo />
                               </Box>
                             </Box>
+                          </Box>
+                        </Modal>
+                      )}
+                    </AnimatePresence>
+                    <AnimatePresence>
+                      {openWaasRevalidationModal && (
+                        <Modal
+                          isDismissible={true}
+                          onClose={() => setOpenWaasRevalidationModal(false)}
+                          scroll={false}
+                          backdropColor="backgroundBackdrop"
+                          size="sm"
+                          contentProps={{
+                            style: {
+                              maxWidth: '364px',
+                              ...getModalPositionCss(position)
+                            }
+                          }}
+                        >
+                          <Box paddingX="4" paddingTop="4" paddingBottom="2" className={sharedStyles.walletContent}>
+                            <Box
+                              flexDirection="column"
+                              justifyContent="center"
+                              color="text100"
+                              alignItems="center"
+                              fontWeight="medium"
+                              style={{
+                                marginTop: '4px'
+                              }}
+                            >
+                              <Text as="h1" variant="large" marginBottom="5">
+                                Validate Session
+                              </Text>
+                            </Box>  
+                            <WaasCodeInputContent onVerify={onVerify} isLoading={onVerifyIsLoading} />
                           </Box>
                         </Modal>
                       )}

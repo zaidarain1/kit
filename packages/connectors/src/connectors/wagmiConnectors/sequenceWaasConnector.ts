@@ -243,6 +243,7 @@ export class SequenceWaasProvider extends ethers.providers.BaseProvider implemen
     super(network)
   }
 
+  triggerSessionValidation: (() => void ) | undefined
   requestConfirmationHandler: WaasRequestConfirmationHandler | undefined
   feeConfirmationHandler: WaasFeeOptionConfirmationHandler | undefined
 
@@ -255,7 +256,25 @@ export class SequenceWaasProvider extends ethers.providers.BaseProvider implemen
   updateNetwork(network: ethers.providers.Network) {
     this.currentNetwork = network
   }
+  async checkAndValidateSession() {
+    let isSessionValid = false
+    try {
+      isSessionValid = await this.sequenceWaas.isSessionValid()
+    } catch(e) {
+      console.error('session valid error', e)
+      isSessionValid = false
+    } 
 
+    console.log('is session valid.....', isSessionValid)
+    if (!isSessionValid) {
+      this.triggerSessionValidation && this.triggerSessionValidation()
+      console.log('validate sessions s....')
+      await this.sequenceWaas.validateSession()
+      console.log('validate sessions e....')
+      await this.sequenceWaas.waitForSessionValid()
+      console.log('finished waiting for validation')
+    }
+  }
   async request({ method, params }: { method: string; params?: any[] }) {
     if (method === 'eth_accounts') {
       const address = await this.sequenceWaas.getAddress()
@@ -306,6 +325,8 @@ export class SequenceWaasProvider extends ethers.providers.BaseProvider implemen
         }
       }
 
+      // await this.checkAndValidateSession()
+
       const response = await this.sequenceWaas.sendTransaction({
         transactions: [await ethers.utils.resolveProperties(params?.[0])],
         network: chainId,
@@ -349,6 +370,10 @@ export class SequenceWaasProvider extends ethers.providers.BaseProvider implemen
           throw new UserRejectedRequestError(new Error('User confirmation ids do not match'))
         }
       }
+
+      console.log('b4 check and validate')
+      // await this.checkAndValidateSession()
+      console.log('b4 signing')
       const sig = await this.sequenceWaas.signMessage({ message: params?.[0], network: this.currentNetwork.chainId })
 
       return sig.data.signature
