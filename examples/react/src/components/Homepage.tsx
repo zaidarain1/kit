@@ -419,7 +419,7 @@ export const Homepage = () => {
                 onClick={onClickCheckout}
               /> */}
               <ClickableCard
-                title="Embedded wallet"
+                title="Inventory"
                 description="Connect a Sequence wallet to view, swap, send, and receive collections"
                 onClick={() => setOpenWalletModal(true)}
               />
@@ -650,7 +650,7 @@ export const Homepage = () => {
               <Box gap="2" flexDirection="column" marginTop="10" width="1/2">
                 <ConnectionModeSelect
                   mode="waas"
-                  title="Embedded (WaaS)"
+                  title="Inventory (WaaS)"
                   description="Connect to an embedded wallet for a seamless experience."
                   onClick={handleSwitchConnectionMode}
                 />
