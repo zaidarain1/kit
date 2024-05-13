@@ -1,24 +1,27 @@
 'use client'
 
-import { KitConfig, KitProvider } from '@0xsequence/kit'
+import { KitProvider } from '@0xsequence/kit/components'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Config, WagmiProvider } from 'wagmi'
+import { State, WagmiProvider } from 'wagmi'
+
+import { kitConfig, wagmiConfig } from '@/config'
 
 const queryClient = new QueryClient()
 
 export interface ProvidersProps {
-  wagmiConfig: Config
-  kitConfig: KitConfig
+  initialState: State
   children: React.ReactNode
+  // wagmiConfig: Config
+  // kitConfig: KitConfig
 }
 
 export const Providers = (props: ProvidersProps) => {
-  const { wagmiConfig, kitConfig, children } = props
+  const { initialState, children /* , wagmiConfig, kitConfig */ } = props
 
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={wagmiConfig} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
         <KitProvider config={kitConfig}>
           <KitWalletProvider>
