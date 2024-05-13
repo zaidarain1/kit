@@ -1,4 +1,5 @@
 import { Wallet } from '@0xsequence/kit'
+import { CreateConnectorFn } from 'wagmi'
 
 import { sequenceWaasWallet, BaseSequenceWaasConnectorOptions } from '../wagmiConnectors/sequenceWaasConnector'
 
@@ -18,5 +19,5 @@ export const emailWaas = (options: EmailWaasOptions): Wallet => ({
       loginType: 'email'
     })
     return connector
-  }
+  } 
 })

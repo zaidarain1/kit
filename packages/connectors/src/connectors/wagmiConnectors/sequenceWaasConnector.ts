@@ -18,9 +18,7 @@ export type BaseSequenceWaasConnectorOptions = SequenceConfig & SequenceWaasConn
 
 sequenceWaasWallet.type = 'sequence-waas' as const
 
-export type SequenceWaasConnector = CreateConnectorFn<SequenceWaasProvider, any, {}>
-
-export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions): SequenceWaasConnector {
+export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
   type Provider = SequenceWaasProvider
   type Properties = {
     sequenceWaas: SequenceWaaS
