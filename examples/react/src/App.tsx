@@ -1,7 +1,7 @@
 import '@0xsequence/design-system/styles.css'
 
 import { ThemeProvider } from '@0xsequence/design-system'
-import { KitProvider } from '@0xsequence/kit'
+import { KitProvider } from '@0xsequence/kit/components'
 import { KitCheckoutProvider } from '@0xsequence/kit-checkout'
 import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

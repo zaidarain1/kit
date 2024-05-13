@@ -2,7 +2,6 @@
 
 import { Box, Image, Button } from '@0xsequence/design-system'
 import { useOpenConnectModal } from '@0xsequence/kit/hooks'
-import { useEffect, useState } from 'react'
 import { useAccount } from 'wagmi'
 
 import { Connected } from './components/Connected'

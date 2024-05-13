@@ -1,6 +1,6 @@
 import { Box, Text, Card, Button, Select, SignoutIcon } from '@0xsequence/design-system'
 import { signEthAuthProof, validateEthProof } from '@0xsequence/kit'
-import { useIndexerClient, useWaasFeeOptions } from '@0xsequence/kit/hooks'
+import { useIndexerClient, useWaasFeeOptions, useStorage } from '@0xsequence/kit/hooks'
 import { CheckoutSettings } from '@0xsequence/kit-checkout'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { allNetworks } from '@0xsequence/network'

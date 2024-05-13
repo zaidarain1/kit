@@ -1,5 +1,3 @@
-'use client'
-
 import { sequence } from '0xsequence'
 import React from 'react'
 
