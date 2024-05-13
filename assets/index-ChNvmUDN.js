@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-C-TzBlls.js","./___vite-browser-external_commonjs-proxy-DAAlPToO.js","./index.es-CYNju8ul.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CkPH4BBJ.js","./___vite-browser-external_commonjs-proxy-DkHUugHh.js","./index.es-ODknoF3v.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-B6W3FZRX.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DN2Ajsz4.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84818,6 +84818,867 @@ const KitProvider = (props) => {
     marginTop: "1"
   }, /* @__PURE__ */ React.createElement(SequenceLogo$1, null)))))))), children))))));
 };
+const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericContext$1();
+const useCheckoutModal = () => {
+  const {
+    triggerCheckout,
+    closeCheckout,
+    settings
+  } = useCheckoutModalContext();
+  return {
+    triggerCheckout,
+    closeCheckout,
+    settings
+  };
+};
+const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
+function _extends$4() {
+  _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
+    for (var i2 = 1; i2 < arguments.length; i2++) {
+      var source = arguments[i2];
+      for (var key2 in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key2)) {
+          target[key2] = source[key2];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$4.apply(this, arguments);
+}
+const HEADER_HEIGHT$1 = "54px";
+const NavigationHeader$1 = ({
+  secondaryText,
+  primaryText,
+  disableBack: _disableBack = false
+}) => {
+  const {
+    goBack,
+    history
+  } = useNavigation$1();
+  const onClickBack = () => {
+    goBack();
+  };
+  return /* @__PURE__ */ React.createElement(Box, {
+    background: "backgroundPrimary",
+    zIndex: "20",
+    position: "fixed",
+    width: "full",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    style: {
+      height: HEADER_HEIGHT$1,
+      paddingTop: "6px",
+      backgroundColor: vars.colors.backgroundPrimary
+    }
+  }, history.length > 0 && !_disableBack ? /* @__PURE__ */ React.createElement(IconButton, {
+    onClick: onClickBack,
+    icon: SvgChevronLeftIcon,
+    size: "sm",
+    style: {
+      background: "rgba(0,0,0,0)",
+      width: "44px"
+    }
+  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, {
+    width: "full",
+    alignItems: "center",
+    justifyContent: "center",
+    style: {
+      marginLeft: "40px"
+    }
+  }, /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "medium",
+    variant: "small",
+    color: "text50"
+  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "medium",
+    variant: "small",
+    color: "text100"
+  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      width: "44px"
+    }
+  }));
+};
+const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMetadata) => {
+  const randomNumber = Math.floor(Math.random() * 1e6);
+  const timestamp = (/* @__PURE__ */ new Date()).getTime();
+  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
+  const accessKey = isDev ? "17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA" : projectAccessKey2;
+  const url = isDev ? "https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutToken" : "https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken";
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Access-Key": `${accessKey || ""}`
+    },
+    body: JSON.stringify({
+      params: {
+        referenceId,
+        expiresIn: 3600,
+        paymentMethodTypeConfig: {
+          enabled: ["us_debit", "us_credit", "international_debit", "international_credit", "ach"],
+          default: order.defaultPaymentMethodType
+        },
+        name: (tokenMetadata == null ? void 0 : tokenMetadata.name) || "Unknown",
+        imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://www.sequence.market/images/placeholder.png",
+        network: networks[order.chainId].name,
+        recipientAddress: order.recipientAddress,
+        platform: "horizon",
+        blockchainNftId: order.blockchainNftId,
+        contractAddress: order.contractAddress,
+        executionType: "smart_contract",
+        quantity: Number(order.quantity),
+        decimals: Number(order.decimals)
+      }
+    })
+  });
+  const {
+    resp: {
+      orderId,
+      token
+    }
+  } = await res.json();
+  return {
+    token,
+    orderId
+  };
+};
+const fetchSardineOrderStatus = async (orderId, isDev, projectAccessKey2) => {
+  const accessKey = isDev ? "17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA" : projectAccessKey2;
+  const url = isDev ? "https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutOrderStatus" : "https://api.sequence.app/rpc/API/GetSardineNFTCheckoutOrderStatus";
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Access-Key": `${accessKey}`
+    },
+    body: JSON.stringify({
+      orderId
+    })
+  });
+  const json = await response.json();
+  console.log("json:", json);
+  return json;
+};
+const POLLING_TIME = 10 * 1e3;
+const PendingTransaction = () => {
+  var _settings$sardineChec;
+  const nav = useNavigation$1();
+  const {
+    settings
+  } = useCheckoutModal();
+  const {
+    params: {
+      authToken,
+      orderId
+    }
+  } = nav.navigation;
+  const {
+    setNavigation
+  } = nav;
+  const projectAccessKey2 = useProjectAccessKey();
+  const isDev = (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.isDev) || false;
+  const url = isDev ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true` : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`;
+  const pollForOrderStatus = async () => {
+    try {
+      var _settings$sardineChec2, _pollResponse$resp;
+      console.log("Polling for transaction status");
+      const isDev2 = (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.isDev) || false;
+      const pollResponse = await fetchSardineOrderStatus(orderId, isDev2, projectAccessKey2);
+      const status = pollResponse.resp.status;
+      const transactionHash = (_pollResponse$resp = pollResponse.resp) == null ? void 0 : _pollResponse$resp.transactionHash;
+      console.log("transaction status poll response:", status);
+      if (status === "Draft") {
+        return;
+      }
+      if (status === "Complete") {
+        setNavigation && setNavigation({
+          location: "transaction-success",
+          params: {
+            transactionHash
+          }
+        });
+        return;
+      }
+      if (status === "Declined" || status === "Cancelled") {
+        setNavigation && setNavigation({
+          location: "transaction-error",
+          params: {
+            error: new Error("Failed to transfer collectible")
+          }
+        });
+        return;
+      }
+    } catch (e2) {
+      console.error("An error occurred while fetching the transaction status");
+      setNavigation && setNavigation({
+        location: "transaction-error",
+        params: {
+          error: e2
+        }
+      });
+    }
+  };
+  reactExports.useEffect(() => {
+    const interval = setInterval(() => {
+      pollForOrderStatus();
+    }, POLLING_TIME);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+  return /* @__PURE__ */ React.createElement(Box, {
+    alignItems: "center",
+    justifyContent: "center",
+    style: {
+      height: "620px"
+    }
+  }, /* @__PURE__ */ React.createElement("iframe", {
+    src: url,
+    style: {
+      maxHeight: "500px",
+      height: "100%",
+      maxWidth: "380px",
+      width: "100%"
+    }
+  }));
+};
+const TransactionSuccess = () => {
+  var _settings$sardineChec, _network$blockExplore, _network$blockExplore2;
+  const {
+    settings
+  } = useCheckoutModal();
+  const nav = useNavigation$1();
+  const navigation = nav.navigation;
+  const chainId = (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.chainId) || 137;
+  const network2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId);
+  reactExports.useEffect(() => {
+    var _settings$sardineChec2, _settings$sardineChec3, _settings$sardineChec4, _settings$sardineChec5;
+    (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.onSuccess) && (settings == null || (_settings$sardineChec3 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
+    (settings == null || (_settings$sardineChec4 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec4.onSuccess) && (settings == null || (_settings$sardineChec5 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec5.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
+  }, []);
+  return /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      height: "500px"
+    }
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "center",
+    position: "absolute",
+    style: {
+      top: "50%",
+      right: "50%",
+      transform: "translate(50%, -50%)"
+    }
+  }, /* @__PURE__ */ React.createElement(NotificationSuccessIcon, null), /* @__PURE__ */ React.createElement(Text, {
+    fontSize: "xlarge"
+  }, "Success!"), /* @__PURE__ */ React.createElement(Text, {
+    textAlign: "center",
+    variant: "normal",
+    color: "text80"
+  }, "Purchase was successful, item was sent to your wallet."), navigation.params.transactionHash && /* @__PURE__ */ React.createElement(Text, {
+    as: "a",
+    variant: "small",
+    underline: true,
+    marginTop: "6",
+    color: "text100",
+    href: `${network2 == null || (_network$blockExplore = network2.blockExplorer) == null ? void 0 : _network$blockExplore.rootUrl}/tx/${navigation.params.transactionHash}`,
+    target: "_blank",
+    rel: "noreferrer"
+  }, "View on ", network2 == null || (_network$blockExplore2 = network2.blockExplorer) == null ? void 0 : _network$blockExplore2.name)));
+};
+const NotificationSuccessIcon = () => /* @__PURE__ */ React.createElement(Box, {
+  color: "white",
+  background: "positive",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "16",
+  height: "16",
+  borderRadius: "circle",
+  marginBottom: "2"
+}, /* @__PURE__ */ React.createElement(SvgCheckmarkIcon, {
+  size: "xl"
+}));
+const TransactionError = () => {
+  const {
+    closeCheckout,
+    settings
+  } = useCheckoutModal();
+  const nav = useNavigation$1();
+  const navigation = nav.navigation;
+  reactExports.useEffect(() => {
+    setTimeout(() => {
+      var _settings$sardineChec, _settings$sardineChec2;
+      closeCheckout();
+      (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.onError) && (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.onError(navigation.params.error, settings == null ? void 0 : settings.sardineCheckout));
+    }, 3e3);
+  }, []);
+  return /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      height: "500px"
+    }
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "center",
+    position: "absolute",
+    style: {
+      top: "50%",
+      right: "50%",
+      transform: "translate(50%, -50%)"
+    }
+  }, /* @__PURE__ */ React.createElement(NotificationErrorIcon, null), /* @__PURE__ */ React.createElement(Text, {
+    fontSize: "xlarge"
+  }, "Error"), /* @__PURE__ */ React.createElement(Text, {
+    textAlign: "center",
+    variant: "normal",
+    color: "text80"
+  }, "An error occurred while processing the transaction.")));
+};
+const NotificationErrorIcon = () => /* @__PURE__ */ React.createElement(Box, {
+  color: "white",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "16",
+  height: "16",
+  borderRadius: "circle",
+  marginBottom: "2",
+  background: "negative"
+}, /* @__PURE__ */ React.createElement(SvgCloseIcon, {
+  size: "xl"
+}));
+const compareAddress$1 = (a2, b2) => {
+  return a2.toLowerCase() === b2.toLowerCase();
+};
+var ValueType$1 = /* @__PURE__ */ function(ValueType2) {
+  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
+  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
+  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
+  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
+  return ValueType2;
+}(ValueType$1 || {});
+const formatDisplay$1 = (_val) => {
+  if (isNaN(Number(_val))) {
+    console.error(`display format error ${_val} is not a number`);
+    return "NaN";
+  }
+  const val = Number(_val);
+  if (val === 0) {
+    return "0";
+  }
+  let valMode;
+  if (val > 1e8) {
+    valMode = ValueType$1.VERY_LARGE;
+  } else if (val < 1e-10) {
+    valMode = ValueType$1.VERY_TINY;
+  } else if (val < 1) {
+    valMode = ValueType$1.FRACTION;
+  } else {
+    valMode = ValueType$1.MIXED;
+  }
+  let notation = void 0;
+  let config2;
+  switch (valMode) {
+    case ValueType$1.VERY_LARGE:
+      notation = "compact";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType$1.VERY_TINY:
+      notation = "scientific";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType$1.FRACTION:
+      notation = "standard";
+      config2 = {
+        maximumSignificantDigits: 4
+      };
+      break;
+    default:
+      notation = "standard";
+      config2 = {
+        maximumFractionDigits: 2
+      };
+  }
+  return Intl.NumberFormat("en-US", _extends$4({
+    notation
+  }, config2)).format(val);
+};
+const OrderSummaryItem = ({
+  contractAddress,
+  tokenId,
+  quantityRaw,
+  chainId
+}) => {
+  var _tokenMetadata$;
+  const {
+    data: tokenMetadata,
+    isPending: isPendingTokenMetadata
+  } = useTokenMetadata(chainId, contractAddress, [tokenId]);
+  const {
+    data: contractInfo,
+    isPending: isPendingContractInfo
+  } = useContractInfo(chainId, contractAddress);
+  const isPending = isPendingTokenMetadata || isPendingContractInfo;
+  if (isPending) {
+    return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
+  }
+  const {
+    name: name2 = "unknown",
+    image,
+    decimals = 0
+  } = (_tokenMetadata$ = tokenMetadata == null ? void 0 : tokenMetadata[0]) != null ? _tokenMetadata$ : {};
+  const {
+    logoURI: collectionLogoURI,
+    name: collectionName = "Unknown Collection"
+  } = contractInfo || {};
+  const balanceFormatted = formatUnits$1(quantityRaw, decimals);
+  return /* @__PURE__ */ React.createElement(Card, {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    aspectRatio: "1/1",
+    height: "full",
+    justifyContent: "center",
+    alignItems: "center",
+    style: {
+      width: "80px"
+    }
+  }, /* @__PURE__ */ React.createElement(Image$1, {
+    src: image,
+    borderRadius: "md",
+    style: {
+      maxWidth: "80px",
+      height: "80px",
+      objectFit: "cover"
+    }
+  })), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    gap: "1",
+    alignItems: "center"
+  }, /* @__PURE__ */ React.createElement(TokenImage, {
+    src: collectionLogoURI,
+    size: "xs"
+  }), /* @__PURE__ */ React.createElement(Text, {
+    marginLeft: "1",
+    fontSize: "small",
+    color: "text80",
+    fontWeight: "bold"
+  }, collectionName), /* @__PURE__ */ React.createElement(NetworkImage, {
+    chainId,
+    size: "xs"
+  })), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    style: {
+      width: "180px"
+    }
+  }, /* @__PURE__ */ React.createElement(Text, {
+    color: "text100",
+    fontSize: "normal",
+    fontWeight: "normal"
+  }, name2), /* @__PURE__ */ React.createElement(Text, {
+    color: "text50",
+    fontSize: "normal",
+    fontWeight: "normal"
+  }, `#${tokenId}`)))), /* @__PURE__ */ React.createElement(Box, {
+    height: "full",
+    fontSize: "small",
+    color: "text50",
+    fontWeight: "bold"
+  }, `x${formatDisplay$1(balanceFormatted)}`));
+};
+const OrderSummarySkeleton = () => {
+  return /* @__PURE__ */ React.createElement(Card, {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: "80px",
+      height: "80px"
+    }
+  }), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: "100px",
+      height: "14px"
+    }
+  }), /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: "180px",
+      height: "34px"
+    }
+  }))), /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: "14px",
+      height: "14px"
+    }
+  }));
+};
+const CheckoutSelection = () => {
+  var _cryptoCheckoutSettin, _cryptoCheckoutSettin2, _cryptoCheckoutSettin4, _settings$cryptoCheck, _settings$sardineChec;
+  const {
+    chains: chains2
+  } = useConfig();
+  const {
+    setNavigation
+  } = useNavigation$1();
+  const {
+    closeCheckout,
+    settings
+  } = useCheckoutModal();
+  const {
+    address: accountAddress
+  } = useAccount();
+  const projectAccessKey2 = useProjectAccessKey();
+  const cryptoCheckoutSettings = settings == null ? void 0 : settings.cryptoCheckout;
+  const creditCardCheckoutSettings = settings == null ? void 0 : settings.sardineCheckout;
+  const displayCreditCardCheckout = !!creditCardCheckoutSettings;
+  const displayCryptoCheckout = !!cryptoCheckoutSettings;
+  const {
+    data: contractInfoData,
+    isLoading: isPendingContractInfo
+  } = useContractInfo((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin.contractAddress) || "");
+  const {
+    data: balancesData,
+    isPending: isPendingBalances
+  } = useBalances({
+    chainIds: [(cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1],
+    accountAddress: accountAddress || ""
+  });
+  const isPending = (isPendingContractInfo || isPendingBalances) && cryptoCheckoutSettings;
+  const isNativeToken = compareAddress$1((cryptoCheckoutSettings == null || (_cryptoCheckoutSettin2 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin2.contractAddress) || "", AddressZero);
+  const nativeTokenInfo = getNativeTokenInfoByChainId((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, chains2);
+  const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : (contractInfoData == null ? void 0 : contractInfoData.decimals) || 0;
+  const coinSymbol = isNativeToken ? nativeTokenInfo.symbol : (contractInfoData == null ? void 0 : contractInfoData.symbol) || "COIN";
+  const coinImageUrl = isNativeToken ? nativeTokenInfo.logoURI : (contractInfoData == null ? void 0 : contractInfoData.logoURI) || "";
+  const coinBalance = balancesData == null ? void 0 : balancesData.find((balance) => {
+    var _cryptoCheckoutSettin3;
+    return compareAddress$1(balance.contractAddress, (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin3 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin3.contractAddress) || "");
+  });
+  const userBalanceRaw = coinBalance ? coinBalance.balance : "0";
+  const requestedAmountRaw = (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin4 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin4.amountRequiredRaw) || "0";
+  const userBalance = formatUnits$1(userBalanceRaw, coinDecimals);
+  const requestAmount = formatUnits$1(requestedAmountRaw, coinDecimals);
+  const isInsufficientBalance = BigNumber.from(userBalanceRaw).lt(BigNumber.from(requestedAmountRaw));
+  const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
+  const chainId = (settings == null || (_settings$cryptoCheck = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck.chainId) || (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.chainId) || 1;
+  const {
+    data: tokensMetadata
+  } = useTokenMetadata(chainId, orderSummaryItems[0].contractAddress, [orderSummaryItems[0].tokenId]);
+  const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
+  const triggerSardineTransaction = async () => {
+    console.log("trigger sardine transaction");
+    if (settings != null && settings.sardineCheckout) {
+      var _settings$sardineChec2;
+      const isDev = (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.isDev) || false;
+      const {
+        token,
+        orderId
+      } = await fetchSardineClientToken(settings.sardineCheckout, isDev, projectAccessKey2, tokenMetadata);
+      setNavigation({
+        location: "transaction-pending",
+        params: {
+          orderId,
+          authToken: token
+        }
+      });
+    }
+  };
+  const onClickPayWithCard = () => {
+    if (settings != null && settings.sardineCheckout) {
+      triggerSardineTransaction();
+    } else {
+      setNavigation({
+        location: "transaction-form"
+      });
+    }
+  };
+  const onClickPayWithCrypto = () => {
+    var _settings$cryptoCheck2;
+    console.log("trigger transaction");
+    const transaction2 = settings == null || (_settings$cryptoCheck2 = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck2.triggerTransaction;
+    transaction2 && transaction2();
+    closeCheckout();
+  };
+  return /* @__PURE__ */ React.createElement(Box, {
+    paddingX: "5",
+    paddingBottom: "5",
+    style: {
+      marginTop: HEADER_HEIGHT$1
+    },
+    flexDirection: "column",
+    gap: "3"
+  }, orderSummaryItems.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    gap: "2",
+    alignItems: "center"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "normal",
+    fontSize: "normal",
+    color: "text50"
+  }, "Order summary"), /* @__PURE__ */ React.createElement(Tooltip, {
+    vOffset: -2,
+    side: "bottom",
+    message: /* @__PURE__ */ React.createElement(React.Fragment, null, "Please note that NFTs are digital assets", /* @__PURE__ */ React.createElement("br", null), " ,and as such, cannot be delivered physically.")
+  }, /* @__PURE__ */ React.createElement(Box, {
+    width: "5",
+    height: "5"
+  }, /* @__PURE__ */ React.createElement(SvgHelpIcon, {
+    color: "text80"
+  })))), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    gap: "2"
+  }, orderSummaryItems.map((orderSummaryItem, index2) => {
+    return /* @__PURE__ */ React.createElement(OrderSummaryItem, _extends$4({
+      key: index2
+    }, orderSummaryItem, {
+      chainId
+    }));
+  })), /* @__PURE__ */ React.createElement(Box, {
+    marginTop: "2"
+  }, /* @__PURE__ */ React.createElement(Divider, {
+    color: "backgroundSecondary",
+    style: {
+      margin: "0px"
+    }
+  }))), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
+    justifyContent: "space-between",
+    alignItems: "center"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "normal",
+    fontSize: "normal",
+    color: "text50"
+  }, "Total"), isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: "100px",
+      height: "17px"
+    }
+  }) : /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    gap: "1",
+    alignItems: "center"
+  }, /* @__PURE__ */ React.createElement(TokenImage, {
+    src: coinImageUrl,
+    size: "xs"
+  }), /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "normal",
+    fontSize: "normal",
+    color: "text100"
+  }, `${formatDisplay$1(requestAmount)} ${coinSymbol}`))), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "2"
+  }, displayCreditCardCheckout && /* @__PURE__ */ React.createElement(Button, {
+    style: {
+      borderRadius: vars.radii.md,
+      height: "56px"
+    },
+    width: "full",
+    borderRadius: "md",
+    leftIcon: SvgPaymentsIcon,
+    variant: "primary",
+    label: "Pay with credit card",
+    rightIcon: SvgChevronRightIcon,
+    onClick: onClickPayWithCard
+  }), displayCryptoCheckout && !isInsufficientBalance && !isPending && /* @__PURE__ */ React.createElement(Button, {
+    style: {
+      borderRadius: vars.radii.md,
+      height: "56px"
+    },
+    width: "full",
+    leftIcon: () => /* @__PURE__ */ React.createElement(TokenImage, {
+      src: coinImageUrl,
+      size: "sm"
+    }),
+    variant: "primary",
+    label: `Pay with ${coinSymbol}`,
+    rightIcon: SvgChevronRightIcon,
+    onClick: onClickPayWithCrypto
+  }), displayCryptoCheckout && (isInsufficientBalance || isPending) && /* @__PURE__ */ React.createElement(Button, {
+    shape: "square",
+    width: "full",
+    variant: "glass",
+    label: /* @__PURE__ */ React.createElement(Box, {
+      placeItems: "center",
+      gap: "2"
+    }, /* @__PURE__ */ React.createElement(TokenImage, {
+      src: coinImageUrl,
+      size: "sm"
+    }), /* @__PURE__ */ React.createElement(Text, null, "Insufficient $", coinSymbol)),
+    onClick: onClickPayWithCrypto,
+    disabled: true
+  })), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
+    width: "full",
+    justifyContent: "flex-end"
+  }, isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: "102px",
+      height: "14px"
+    }
+  }) : /* @__PURE__ */ React.createElement(Text, {
+    fontWeight: "bold",
+    fontSize: "small",
+    color: "text50"
+  }, "Balance: ", `${formatDisplay$1(userBalance)} ${coinSymbol}`)));
+};
+const DEFAULT_LOCATION$1 = {
+  location: "select-method-checkout"
+};
+const KitCheckoutProvider = (props) => {
+  const queryClient2 = new QueryClient();
+  return /* @__PURE__ */ React.createElement(QueryClientProvider, {
+    client: queryClient2
+  }, /* @__PURE__ */ React.createElement(KitCheckoutContent, props));
+};
+const KitCheckoutContent = ({
+  children
+}) => {
+  const {
+    theme,
+    position
+  } = useTheme();
+  const [openCheckoutModal, setOpenCheckoutModal] = reactExports.useState(false);
+  const [settings, setSettings] = reactExports.useState();
+  const [history, setHistory] = reactExports.useState([]);
+  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
+  const triggerCheckout = (settings2) => {
+    setSettings(settings2);
+    setOpenCheckoutModal(true);
+  };
+  const closeCheckout = () => {
+    setOpenCheckoutModal(false);
+  };
+  const getContent2 = () => {
+    const {
+      location: location2
+    } = navigation;
+    switch (location2) {
+      case "select-method-checkout":
+        return /* @__PURE__ */ React.createElement(CheckoutSelection, null);
+      case "transaction-pending":
+        return /* @__PURE__ */ React.createElement(PendingTransaction, null);
+      case "transaction-success":
+        return /* @__PURE__ */ React.createElement(TransactionSuccess, null);
+      case "transaction-error":
+        return /* @__PURE__ */ React.createElement(TransactionError, null);
+      case "transaction-form":
+      default:
+        return /* @__PURE__ */ React.createElement(CheckoutSelection, null);
+    }
+  };
+  const getHeader2 = () => {
+    const {
+      location: location2
+    } = navigation;
+    switch (location2) {
+      case "select-method-checkout":
+        return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+          primaryText: "Checkout"
+        });
+      case "transaction-success":
+      case "transaction-error":
+      case "transaction-pending":
+        return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+          disableBack: true,
+          primaryText: "Pay with credit or debit card"
+        });
+      case "transaction-form":
+      default:
+        return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+          primaryText: "Pay with credit or debit card"
+        });
+    }
+  };
+  reactExports.useEffect(() => {
+    if (openCheckoutModal) {
+      setHistory([]);
+    }
+  }, [openCheckoutModal]);
+  return /* @__PURE__ */ React.createElement(CheckoutModalContextProvider, {
+    value: {
+      triggerCheckout,
+      closeCheckout,
+      settings,
+      theme
+    }
+  }, /* @__PURE__ */ React.createElement(NavigationContextProvider$1, {
+    value: {
+      history,
+      setHistory
+    }
+  }, /* @__PURE__ */ React.createElement("div", {
+    id: "kit-checkout"
+  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
+    root: "#kit-checkout",
+    scope: "kit",
+    theme
+  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openCheckoutModal && /* @__PURE__ */ React.createElement(Modal, {
+    contentProps: {
+      style: _extends$4({
+        maxWidth: "400px",
+        height: "auto"
+      }, getModalPositionCss(position))
+    },
+    scroll: false,
+    backdropColor: "backgroundBackdrop",
+    onClose: () => setOpenCheckoutModal(false)
+  }, /* @__PURE__ */ React.createElement(Box, {
+    id: "sequence-kit-checkout-content"
+  }, getHeader2(), getContent2()))))), children));
+};
+const useNavigation$1 = () => {
+  const {
+    setHistory,
+    history
+  } = useNavigationContext$1();
+  const setNavigation = (navigation2) => {
+    const childElement = document.getElementById("sequence-kit-wallet-content");
+    const parentElement = childElement == null ? void 0 : childElement.parentElement;
+    parentElement == null || parentElement.scrollTo(0, 0);
+    const newHistory = [...history, navigation2];
+    setHistory(newHistory);
+  };
+  const goBack = () => {
+    const newHistory = [...history];
+    newHistory.pop();
+    setHistory(newHistory);
+  };
+  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
+  return {
+    setNavigation,
+    history,
+    setHistory,
+    goBack,
+    navigation
+  };
+};
 var __defProp2 = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
@@ -87625,8 +88486,8 @@ function clsx() {
     (e2 = arguments[f2]) && (t2 = r$1(e2)) && (n2 && (n2 += " "), n2 += t2);
   return n2;
 }
-function _extends$4() {
-  _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$3() {
+  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -87637,7 +88498,7 @@ function _extends$4() {
     }
     return target;
   };
-  return _extends$4.apply(this, arguments);
+  return _extends$3.apply(this, arguments);
 }
 function $e42e1063c40fb3ef$export$b9ecd428b558ff10(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
   return function handleEvent(event) {
@@ -87768,11 +88629,11 @@ const $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ reactExports.f
       } else
         return child;
     });
-    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$4({}, slotProps, {
+    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
       ref: forwardedRef
     }), /* @__PURE__ */ reactExports.isValidElement(newElement) ? /* @__PURE__ */ reactExports.cloneElement(newElement, void 0, newChildren) : null);
   }
-  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$4({}, slotProps, {
+  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
     ref: forwardedRef
   }), children);
 });
@@ -87850,7 +88711,7 @@ const $8927f6f2acc4f386$export$250ffa63cdc0d034 = $8927f6f2acc4f386$var$NODES.re
     reactExports.useEffect(() => {
       window[Symbol.for("radix-ui")] = true;
     }, []);
-    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$4({}, primitiveProps, {
+    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$3({}, primitiveProps, {
       ref: forwardedRef
     }));
   });
@@ -87998,7 +88859,7 @@ const $5cb92bef7577960e$export$177fb62ff3ec1f22 = /* @__PURE__ */ reactExports.f
     document.addEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
     return () => document.removeEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$4({}, layerProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({}, layerProps, {
     ref: composedRefs,
     style: {
       pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
@@ -88270,7 +89131,7 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6 = /* @__PURE__ */ reactExports.f
     trapped,
     focusScope.paused
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$4({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({
     tabIndex: -1
   }, scopeProps, {
     ref: composedRefs,
@@ -90145,7 +91006,7 @@ function useFloating(options) {
 }
 const $7e8f5cd07187803e$export$21b07c8f274aebd5 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.svg, _extends$4({}, arrowProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.svg, _extends$3({}, arrowProps, {
     ref: forwardedRef,
     width,
     height,
@@ -90218,7 +91079,7 @@ const $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d = /* @__PURE__ */ reactExports.fo
   reactExports.useEffect(() => {
     context2.onAnchorChange((virtualRef === null || virtualRef === void 0 ? void 0 : virtualRef.current) || ref.current);
   });
-  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$4({}, anchorProps, {
+  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({}, anchorProps, {
     ref: composedRefs
   }));
 });
@@ -90348,7 +91209,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.fo
     arrowX,
     arrowY,
     shouldHideArrow: cannotCenterArrow
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$4({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({
     "data-side": placedSide,
     "data-align": placedAlign
   }, contentProps, {
@@ -90399,7 +91260,7 @@ const $cf1ac5d9fe0e8206$export$79d62cd4e10a3fd0 = /* @__PURE__ */ reactExports.f
         }[contentContext.placedSide],
         visibility: contentContext.shouldHideArrow ? "hidden" : void 0
       }
-    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9, _extends$4({}, arrowProps, {
+    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9, _extends$3({}, arrowProps, {
       ref: forwardedRef,
       style: {
         ...arrowProps.style,
@@ -91399,7 +92260,7 @@ const $cb5cc270b50c6fcd$export$96e5381f42521a79 = /* @__PURE__ */ reactExports.f
     onCustomAnchorAdd,
     onCustomAnchorRemove
   ]);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$4({}, popperScope, anchorProps, {
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({}, popperScope, anchorProps, {
     ref: forwardedRef
   }));
 });
@@ -91409,7 +92270,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$TRIGGER_NAME, __scopePopover);
   const popperScope = $cb5cc270b50c6fcd$var$usePopperScope(__scopePopover);
   const composedTriggerRef = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context2.triggerRef);
-  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$4({
+  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$3({
     type: "button",
     "aria-haspopup": "dialog",
     "aria-expanded": context2.open,
@@ -91419,7 +92280,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
     ref: composedTriggerRef,
     onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, context2.onOpenToggle)
   }));
-  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$4({
+  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({
     asChild: true
   }, popperScope), trigger2);
 });
@@ -91434,9 +92295,9 @@ const $cb5cc270b50c6fcd$export$d7e1f420b25549ff = /* @__PURE__ */ reactExports.f
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
     present: forceMount || context2.open
-  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$4({}, contentProps, {
+  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$3({}, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$4({}, contentProps, {
+  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$3({}, contentProps, {
     ref: forwardedRef
   })));
 });
@@ -91453,7 +92314,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentModal = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement(ReactRemoveScroll, {
     as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
     allowPinchZoom: true
-  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$4({}, props, {
+  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
     ref: composedRefs,
     trapFocus: context2.open,
     disableOutsidePointerEvents: true,
@@ -91484,7 +92345,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentNonModal = /* @__PURE__ */ reactExport
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   const hasInteractedOutsideRef = reactExports.useRef(false);
   const hasPointerDownOutsideRef = reactExports.useRef(false);
-  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$4({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
     ref: forwardedRef,
     trapFocus: false,
     disableOutsidePointerEvents: false,
@@ -91536,7 +92397,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentImpl = /* @__PURE__ */ reactExports.fo
     onPointerDownOutside,
     onFocusOutside,
     onDismiss: () => context2.onOpenChange(false)
-  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$4({
+  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$3({
     "data-state": $cb5cc270b50c6fcd$var$getState(context2.open),
     role: "dialog",
     id: context2.contentId
@@ -91581,8 +92442,8 @@ const useOpenWalletModal = () => {
     openWalletModalState
   };
 };
-function _extends$3() {
-  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$2() {
+  _extends$2 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -91593,9 +92454,9 @@ function _extends$3() {
     }
     return target;
   };
-  return _extends$3.apply(this, arguments);
+  return _extends$2.apply(this, arguments);
 }
-const compareAddress$1 = (a2, b2) => {
+const compareAddress = (a2, b2) => {
   return a2.toLowerCase() === b2.toLowerCase();
 };
 const truncateAtMiddle$1 = (text2, truncateAt) => {
@@ -91608,14 +92469,14 @@ const truncateAtMiddle$1 = (text2, truncateAt) => {
 const formatAddress$1 = (text2) => {
   return `0x${truncateAtMiddle$1((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
 };
-var ValueType$1 = /* @__PURE__ */ function(ValueType2) {
+var ValueType = /* @__PURE__ */ function(ValueType2) {
   ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
   ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
   ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
   ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
   return ValueType2;
-}(ValueType$1 || {});
-const formatDisplay$1 = (_val) => {
+}(ValueType || {});
+const formatDisplay = (_val) => {
   if (isNaN(Number(_val))) {
     console.error(`display format error ${_val} is not a number`);
     return "NaN";
@@ -91626,30 +92487,30 @@ const formatDisplay$1 = (_val) => {
   }
   let valMode;
   if (val > 1e8) {
-    valMode = ValueType$1.VERY_LARGE;
+    valMode = ValueType.VERY_LARGE;
   } else if (val < 1e-10) {
-    valMode = ValueType$1.VERY_TINY;
+    valMode = ValueType.VERY_TINY;
   } else if (val < 1) {
-    valMode = ValueType$1.FRACTION;
+    valMode = ValueType.FRACTION;
   } else {
-    valMode = ValueType$1.MIXED;
+    valMode = ValueType.MIXED;
   }
   let notation = void 0;
   let config2;
   switch (valMode) {
-    case ValueType$1.VERY_LARGE:
+    case ValueType.VERY_LARGE:
       notation = "compact";
       config2 = {
         maximumFractionDigits: 4
       };
       break;
-    case ValueType$1.VERY_TINY:
+    case ValueType.VERY_TINY:
       notation = "scientific";
       config2 = {
         maximumFractionDigits: 4
       };
       break;
-    case ValueType$1.FRACTION:
+    case ValueType.FRACTION:
       notation = "standard";
       config2 = {
         maximumSignificantDigits: 4
@@ -91661,7 +92522,7 @@ const formatDisplay$1 = (_val) => {
         maximumFractionDigits: 2
       };
   }
-  return Intl.NumberFormat("en-US", _extends$3({
+  return Intl.NumberFormat("en-US", _extends$2({
     notation
   }, config2)).format(val);
 };
@@ -91708,7 +92569,7 @@ const getPercentageColor = (value) => {
 };
 const getPercentagePriceChange = (balance, prices) => {
   var _priceForToken$price;
-  const priceForToken = prices.find((p2) => compareAddress$1(p2.token.contractAddress, balance.contractAddress));
+  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
   if (!priceForToken) {
     return 0;
   }
@@ -91723,7 +92584,7 @@ const computeBalanceFiat = ({
 }) => {
   var _priceForToken$price2;
   let totalUsd = 0;
-  const priceForToken = prices.find((p2) => compareAddress$1(p2.token.contractAddress, balance.contractAddress));
+  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
   if (!priceForToken) {
     return "0.00";
   }
@@ -91780,8 +92641,8 @@ const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClient
   const customDisplayAssets = displayAssets.length > 0;
   try {
     if (customDisplayAssets) {
-      const _nativeTokens = displayAssets.filter((asset) => compareAddress$1(asset.contractAddress, AddressZero));
-      const otherAssets = displayAssets.filter((asset) => !compareAddress$1(asset.contractAddress, AddressZero));
+      const _nativeTokens = displayAssets.filter((asset) => compareAddress(asset.contractAddress, AddressZero));
+      const otherAssets = displayAssets.filter((asset) => !compareAddress(asset.contractAddress, AddressZero));
       const nativeTokensByChainId = {};
       const otherAssetsByChainId = {};
       _nativeTokens.forEach((asset) => {
@@ -91865,8 +92726,8 @@ const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClient
     const [prices, contractInfoMapByChainId, ...collectionCollectibles] = await Promise.all([fetchPricesPromise, fetchErc20ContractInfoPromise(), ...fetchCollectiblesPromises]);
     const erc20HighestValue = erc20Tokens.sort((a2, b2) => {
       var _contractInfoMapByCha, _contractInfoMapByCha2;
-      const aPriceData = prices.find((price) => compareAddress$1(price.token.contractAddress, a2.contractAddress));
-      const bPriceData = prices.find((price) => compareAddress$1(price.token.contractAddress, b2.contractAddress));
+      const aPriceData = prices.find((price) => compareAddress(price.token.contractAddress, a2.contractAddress));
+      const bPriceData = prices.find((price) => compareAddress(price.token.contractAddress, b2.contractAddress));
       const aPrice = aPriceData != null && aPriceData.price ? aPriceData.price.value : 0;
       const bPrice = bPriceData != null && bPriceData.price ? bPriceData.price.value : 0;
       const aDecimals = (_contractInfoMapByCha = contractInfoMapByChainId[a2.chainId].contractInfoMap[a2.contractAddress]) == null ? void 0 : _contractInfoMapByCha.decimals;
@@ -91937,12 +92798,12 @@ const useTransactionHistorySummary = (args) => {
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   });
 };
-const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext();
-const useNavigation$1 = () => {
+const [useNavigationContext, NavigationContextProvider] = createGenericContext();
+const useNavigation = () => {
   const {
     setHistory,
     history
-  } = useNavigationContext$1();
+  } = useNavigationContext();
   const setNavigation = (navigation) => {
     const childElement = document.getElementById("sequence-kit-wallet-content");
     const parentElement = childElement == null ? void 0 : childElement.parentElement;
@@ -92185,7 +93046,7 @@ const supportedFiatCurrencies = [{
   decimals: 2
 }];
 const defaultFiatCurrency = supportedFiatCurrencies[0];
-const HEADER_HEIGHT$1 = "54px";
+const HEADER_HEIGHT = "54px";
 const useSettings = () => {
   const {
     chains: chains2
@@ -92232,7 +93093,7 @@ const useSettings = () => {
   const [settings, setSettings] = reactExports.useState(defaultSettings);
   const setHideUnlistedTokens = (newState) => {
     const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$3({}, oldSettings, {
+    const newSettings = _extends$2({}, oldSettings, {
       hideUnlistedTokens: newState
     });
     localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
@@ -92240,7 +93101,7 @@ const useSettings = () => {
   };
   const setHideCollectibles = (newState) => {
     const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$3({}, oldSettings, {
+    const newSettings = _extends$2({}, oldSettings, {
       hideCollectibles: newState
     });
     localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
@@ -92248,7 +93109,7 @@ const useSettings = () => {
   };
   const setFiatCurrency = (newFiatCurrency) => {
     const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$3({}, oldSettings, {
+    const newSettings = _extends$2({}, oldSettings, {
       fiatCurrency: newFiatCurrency
     });
     localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
@@ -92256,13 +93117,13 @@ const useSettings = () => {
   };
   const setSelectedNetworks = (newSelectedNetworks) => {
     const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$3({}, oldSettings, {
+    const newSettings = _extends$2({}, oldSettings, {
       selectedNetworks: newSelectedNetworks
     });
     localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
     setSettings(newSettings);
   };
-  return _extends$3({}, settings, {
+  return _extends$2({}, settings, {
     setFiatCurrency,
     setHideCollectibles,
     setHideUnlistedTokens,
@@ -92345,7 +93206,7 @@ const CoinTile = ({
   const {
     fiatCurrency
   } = useSettings();
-  const isNativeToken = compareAddress$1(balance.contractAddress, AddressZero);
+  const isNativeToken = compareAddress(balance.contractAddress, AddressZero);
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
   const {
     data: dataCoinPrices = [],
@@ -92380,7 +93241,7 @@ const CoinTile = ({
     });
     const _priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
     const _formattedBalance = formatUnits$1(balance.balance, nativeTokenInfo.decimals);
-    const _balanceDisplayed = formatDisplay$1(_formattedBalance);
+    const _balanceDisplayed = formatDisplay(_formattedBalance);
     return /* @__PURE__ */ React.createElement(CoinTileContent, {
       chainId: balance.chainId,
       logoUrl: nativeTokenInfo.logoURI,
@@ -92400,7 +93261,7 @@ const CoinTile = ({
   });
   const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
   const formattedBalance = formatUnits$1(balance.balance, decimals);
-  const balanceDisplayed = formatDisplay$1(formattedBalance);
+  const balanceDisplayed = formatDisplay(formattedBalance);
   const name2 = (contractInfo == null ? void 0 : contractInfo.name) || "Unknown";
   const symbol = (contractInfo == null ? void 0 : contractInfo.name) || "TOKEN";
   const url = contractInfo == null ? void 0 : contractInfo.logoURI;
@@ -92465,7 +93326,7 @@ const AssetSummary = () => {
   } = useAccount();
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const {
     displayedAssets
   } = useWalletSettings();
@@ -92602,7 +93463,7 @@ const Receive = () => {
   };
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     padding: "5",
@@ -92698,7 +93559,7 @@ const SendItemInfo = ({
     fiatCurrency
   } = useSettings();
   const formattedBalance = formatUnits$1(balance, decimals);
-  const balanceDisplayed = formatDisplay$1(formattedBalance);
+  const balanceDisplayed = formatDisplay(formattedBalance);
   return /* @__PURE__ */ React.createElement(Box, {
     alignItems: "flex-end",
     justifyContent: "space-between"
@@ -92747,7 +93608,7 @@ const SendCoin = ({
   var _connector$_wallet, _tokenBalance$contrac, _tokenBalance$contrac2, _tokenBalance$contrac3, _tokenBalance$contrac4;
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const {
     analytics
   } = useAnalyticsContext();
@@ -92800,7 +93661,7 @@ const SendCoin = ({
   if (isPending) {
     return null;
   }
-  const isNativeCoin = compareAddress$1(contractAddress, AddressZero);
+  const isNativeCoin = compareAddress(contractAddress, AddressZero);
   const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
   const name2 = isNativeCoin ? nativeTokenInfo.name : (tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.name) || "";
   const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.logoURI;
@@ -92808,7 +93669,7 @@ const SendCoin = ({
   const amountToSendFormatted = amount === "" ? "0" : amount;
   const amountRaw = parseUnits(amountToSendFormatted, decimals);
   const amountToSendFiat = computeBalanceFiat({
-    balance: _extends$3({}, tokenBalance, {
+    balance: _extends$2({}, tokenBalance, {
       balance: amountRaw.toString()
     }),
     prices: coinPrices,
@@ -92899,7 +93760,7 @@ const SendCoin = ({
     padding: "5",
     paddingTop: "3",
     style: {
-      marginTop: HEADER_HEIGHT$1
+      marginTop: HEADER_HEIGHT
     },
     gap: "2",
     flexDirection: "column",
@@ -93052,7 +93913,7 @@ const SendCollectible = ({
   var _connector$_wallet, _tokenBalance$tokenMe, _tokenBalance$tokenMe2, _tokenBalance$tokenMe3, _tokenBalance$contrac;
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const {
     analytics
   } = useAnalyticsContext();
@@ -93218,7 +94079,7 @@ const SendCollectible = ({
     padding: "5",
     paddingTop: "3",
     style: {
-      marginTop: HEADER_HEIGHT$1
+      marginTop: HEADER_HEIGHT
     },
     gap: "2",
     flexDirection: "column",
@@ -93375,7 +94236,7 @@ const TransactionHistoryItem = ({
   } = useSettings();
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const onClickTransaction = () => {
     setNavigation({
       location: "transaction-details",
@@ -93499,7 +94360,7 @@ const TransactionHistoryItem = ({
     }, date))), amounts.map((amount, index2) => {
       var _transfer$contractInf, _transfer$contractInf2, _transfer$tokenIds, _transfer$contractInf4, _transfer$contractInf5, _coinPrices$find;
       const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
-      const isNativeToken = compareAddress$1(transfer.contractAddress, AddressZero);
+      const isNativeToken = compareAddress(transfer.contractAddress, AddressZero);
       const isCollectible = ((_transfer$contractInf = transfer.contractInfo) == null ? void 0 : _transfer$contractInf.type) === "ERC721" || ((_transfer$contractInf2 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf2.type) === "ERC1155";
       let decimals;
       const tokenId = (_transfer$tokenIds = transfer.tokenIds) == null ? void 0 : _transfer$tokenIds[index2];
@@ -93513,7 +94374,7 @@ const TransactionHistoryItem = ({
       const amountValue = formatUnits$1(amount, decimals);
       const symbol = isNativeToken ? nativeTokenInfo.symbol : ((_transfer$contractInf4 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf4.symbol) || "";
       const tokenLogoUri = isNativeToken ? nativeTokenInfo.logoURI : (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.logoURI;
-      const fiatConversionRate = (_coinPrices$find = coinPrices.find((coinPrice) => compareAddress$1(coinPrice.token.contractAddress, transfer.contractAddress))) == null || (_coinPrices$find = _coinPrices$find.price) == null ? void 0 : _coinPrices$find.value;
+      const fiatConversionRate = (_coinPrices$find = coinPrices.find((coinPrice) => compareAddress(coinPrice.token.contractAddress, transfer.contractAddress))) == null || (_coinPrices$find = _coinPrices$find.price) == null ? void 0 : _coinPrices$find.value;
       return /* @__PURE__ */ React.createElement(Box, {
         key: index2,
         flexDirection: "row",
@@ -93527,7 +94388,7 @@ const TransactionHistoryItem = ({
         src: tokenLogoUri,
         width: "5",
         alt: "token logo"
-      }), getTransferAmountLabel(formatDisplay$1(amountValue), symbol, transfer.transferType)), isPending && /* @__PURE__ */ React.createElement(Skeleton, {
+      }), getTransferAmountLabel(formatDisplay(amountValue), symbol, transfer.transferType)), isPending && /* @__PURE__ */ React.createElement(Skeleton, {
         style: {
           width: "35px",
           height: "20px"
@@ -93772,8 +94633,8 @@ const BalanceItem = ({
   } = useConfig();
   const {
     setNavigation
-  } = useNavigation$1();
-  const isNativeToken = compareAddress$1(balance.contractAddress, AddressZero);
+  } = useNavigation();
+  const isNativeToken = compareAddress(balance.contractAddress, AddressZero);
   const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
   const logoURI = isNativeToken ? nativeTokenInfo.logoURI : balance == null || (_balance$contractInfo = balance.contractInfo) == null ? void 0 : _balance$contractInfo.logoURI;
   const tokenName = isNativeToken ? nativeTokenInfo.name : (balance == null || (_balance$contractInfo2 = balance.contractInfo) == null ? void 0 : _balance$contractInfo2.name) || "Unknown";
@@ -93785,7 +94646,7 @@ const BalanceItem = ({
     }
     const decimals = isNativeToken ? nativeTokenInfo.decimals : balance == null || (_balance$contractInfo4 = balance.contractInfo) == null ? void 0 : _balance$contractInfo4.decimals;
     const bal = formatUnits$1(balance.balance, decimals || 0);
-    const displayBalance = formatDisplay$1(bal);
+    const displayBalance = formatDisplay(bal);
     const symbol2 = isNativeToken ? nativeTokenInfo.symbol : balance == null || (_balance$contractInfo5 = balance.contractInfo) == null ? void 0 : _balance$contractInfo5.symbol;
     return `${displayBalance} ${symbol2}`;
   };
@@ -93868,7 +94729,7 @@ const WalletLink = ({
 }) => {
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const onClick = () => {
     setNavigation(toLocation);
   };
@@ -93921,7 +94782,7 @@ const SearchWallet = () => {
     accountAddress: accountAddress || "",
     verifiedOnly: hideUnlistedTokens
   });
-  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress$1(b2.contractAddress, AddressZero))) || [];
+  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress(b2.contractAddress, AddressZero))) || [];
   const {
     data: coinPrices = [],
     isPending: isPendingCoinPrices
@@ -93961,7 +94822,7 @@ const SearchWallet = () => {
     };
   });
   const indexedCoinBalances = coinBalances.map((balance, index2) => {
-    if (compareAddress$1(balance.contractAddress, AddressZero)) {
+    if (compareAddress(balance.contractAddress, AddressZero)) {
       const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
       return {
         index: index2,
@@ -94084,7 +94945,7 @@ const SearchWalletViewAll = ({
     accountAddress: accountAddress || "",
     verifiedOnly: hideUnlistedTokens
   });
-  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress$1(b2.contractAddress, AddressZero))) || [];
+  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress(b2.contractAddress, AddressZero))) || [];
   const {
     data: coinPrices = [],
     isPending: isPendingCoinPrices
@@ -94126,7 +94987,7 @@ const SearchWalletViewAll = ({
     };
   });
   const indexedCoinBalances = coinBalances.map((balance, index2) => {
-    if (compareAddress$1(balance.contractAddress, AddressZero)) {
+    if (compareAddress(balance.contractAddress, AddressZero)) {
       const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
       return {
         index: index2,
@@ -94228,7 +95089,7 @@ const SearchWalletViewAll = ({
 const SettingsMenu = () => {
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const onClickGeneral = () => {
     setNavigation({
       location: "settings-general"
@@ -94246,7 +95107,7 @@ const SettingsMenu = () => {
   };
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     padding: "5",
@@ -94301,7 +95162,7 @@ const SettingsGeneral = () => {
   };
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     gap: "2",
@@ -94406,7 +95267,7 @@ const SelectButton = (props) => {
     hideIndicator,
     squareIndicator = false
   } = props, rest = _objectWithoutPropertiesLoose$1(props, _excluded$1$1);
-  return /* @__PURE__ */ React.createElement(Card, _extends$3({
+  return /* @__PURE__ */ React.createElement(Card, _extends$2({
     as: "button",
     clickable: true,
     className: clsx(className),
@@ -94476,7 +95337,7 @@ const SettingsNetwork = () => {
   };
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     padding: "5",
@@ -94588,7 +95449,7 @@ const CoinDetailsSkeleton = ({
 }) => {
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
@@ -94658,7 +95519,7 @@ const CoinDetails = ({
   } = useConfig();
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const {
     fiatCurrency,
     hideUnlistedTokens
@@ -94704,13 +95565,13 @@ const CoinDetails = ({
       chainId
     });
   }
-  const isNativeToken = compareAddress$1(contractAddress, AddressZero);
+  const isNativeToken = compareAddress(contractAddress, AddressZero);
   const logo = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).logoURI : dataCoinBalance == null || (_dataCoinBalance$cont = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont.logoURI;
   const symbol = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).symbol : dataCoinBalance == null || (_dataCoinBalance$cont2 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont2.symbol;
   const name2 = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).name : dataCoinBalance == null || (_dataCoinBalance$cont3 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont3.name;
   const decimals = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).decimals : dataCoinBalance == null || (_dataCoinBalance$cont4 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont4.decimals;
   const formattedBalance = formatUnits$1((dataCoinBalance == null ? void 0 : dataCoinBalance.balance) || "0", decimals);
-  const balanceDisplayed = formatDisplay$1(formattedBalance);
+  const balanceDisplayed = formatDisplay(formattedBalance);
   const coinBalanceFiat = dataCoinBalance ? computeBalanceFiat({
     balance: dataCoinBalance,
     prices: dataCoinPrices || [],
@@ -94728,7 +95589,7 @@ const CoinDetails = ({
   };
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
@@ -94849,7 +95710,7 @@ const CollectionDetails = ({
   var _collectionBalanceDat;
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const {
     address: accountAddress
   } = useAccount();
@@ -94923,7 +95784,7 @@ const CollectionDetails = ({
     var _balance$tokenMetadat, _balance$tokenMetadat2, _balance$tokenMetadat3;
     const unformattedBalance = balance.balance;
     const decimals = (balance == null || (_balance$tokenMetadat = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat.decimals) || 0;
-    const formattedBalance = formatDisplay$1(formatUnits$1(unformattedBalance, decimals));
+    const formattedBalance = formatDisplay(formatUnits$1(unformattedBalance, decimals));
     return /* @__PURE__ */ React.createElement(Box, {
       key: index2,
       onClick: () => onClickItem(balance),
@@ -94960,7 +95821,7 @@ const CollectionDetails = ({
 const CollectibleDetailsSkeleton = () => {
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
@@ -95038,7 +95899,7 @@ const CollectibleDetails = ({
   } = useSettings();
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const {
     data: dataTransactionHistory,
     isPending: isPendingTransactionHistory,
@@ -95093,7 +95954,7 @@ const CollectibleDetails = ({
   const decimals = (dataCollectibleBalance == null || (_dataCollectibleBalan3 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan3.decimals) || 0;
   const rawBalance = (dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.balance) || "0";
   const balance = formatUnits$1(rawBalance, decimals);
-  const formattedBalance = formatDisplay$1(Number(balance));
+  const formattedBalance = formatDisplay(Number(balance));
   const valueFiat = dataCollectibleBalance ? computeBalanceFiat({
     balance: dataCollectibleBalance,
     prices: dataCollectiblePrices || [],
@@ -95102,7 +95963,7 @@ const CollectibleDetails = ({
   }) : "0";
   return /* @__PURE__ */ React.createElement(Box, {
     style: {
-      paddingTop: HEADER_HEIGHT$1
+      paddingTop: HEADER_HEIGHT
     }
   }, /* @__PURE__ */ React.createElement(Box, {
     flexDirection: "column",
@@ -95213,11 +96074,11 @@ const CopyButton = (props) => {
   return /* @__PURE__ */ React.createElement(lib.CopyToClipboard, {
     text: text2,
     onCopy: handleCopy
-  }, /* @__PURE__ */ React.createElement(IconButton, _extends$3({
+  }, /* @__PURE__ */ React.createElement(IconButton, _extends$2({
     size: size2,
     icon: isCopied ? SvgCheckmarkIcon : SvgCopyIcon
   }, rest, {
-    style: _extends$3({
+    style: _extends$2({
       background: backgroundColor
     }, props == null ? void 0 : props.style),
     label: buttonVariant === "with-label" ? label : void 0
@@ -95242,7 +96103,7 @@ const TransactionDetails = ({
       (_transfer$tokenIds = transfer.tokenIds) == null || _transfer$tokenIds.forEach((tokenId) => {
         const foundCollectible = collectibles.find((collectible) => {
           var _transfer$contractInf3;
-          return collectible.chainId === transaction2.chainId && compareAddress$1(collectible.contractAddress, ((_transfer$contractInf3 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf3.address) || "") && collectible.tokenId === tokenId;
+          return collectible.chainId === transaction2.chainId && compareAddress(collectible.contractAddress, ((_transfer$contractInf3 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf3.address) || "") && collectible.tokenId === tokenId;
         });
         if (!foundCollectible) {
           var _transfer$contractInf4;
@@ -95256,7 +96117,7 @@ const TransactionDetails = ({
     } else {
       var _transfer$contractInf5;
       const contractAddress = (transfer == null || (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.address) || AddressZero;
-      const foundCoin = coins.find((coin) => coin.chainId === transaction2.chainId && compareAddress$1(coin.contractAddress, contractAddress));
+      const foundCoin = coins.find((coin) => coin.chainId === transaction2.chainId && compareAddress(coin.contractAddress, contractAddress));
       if (!foundCoin) {
         coins.push({
           chainId: transaction2.chainId,
@@ -95291,7 +96152,7 @@ const TransactionDetails = ({
     var _transfer$contractInf6, _transfer$contractInf7, _transfer$contractInf8, _transfer$amounts;
     const recipientAddress = transfer.to;
     const recipientAddressFormatted = recipientAddress.substring(0, 10) + "..." + recipientAddress.substring(transfer.to.length - 4, transfer.to.length);
-    const isNativeToken = compareAddress$1((transfer == null || (_transfer$contractInf6 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf6.address) || "", AddressZero);
+    const isNativeToken = compareAddress((transfer == null || (_transfer$contractInf6 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf6.address) || "", AddressZero);
     const logoURI = isNativeToken ? nativeTokenInfo.logoURI : transfer == null || (_transfer$contractInf7 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf7.logoURI;
     const symbol = isNativeToken ? nativeTokenInfo.symbol : (transfer == null || (_transfer$contractInf8 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf8.symbol) || "";
     return /* @__PURE__ */ React.createElement(React.Fragment, null, (_transfer$amounts = transfer.amounts) == null ? void 0 : _transfer$amounts.map((amount, index2) => {
@@ -95302,13 +96163,13 @@ const TransactionDetails = ({
       const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : (transfer == null || (_transfer$contractInf9 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf9.decimals) || 0;
       const decimals = isCollectible ? collectibleDecimals : coinDecimals;
       const formattedBalance = formatUnits$1(amount, decimals);
-      const balanceDisplayed = formatDisplay$1(formattedBalance);
+      const balanceDisplayed = formatDisplay(formattedBalance);
       const fiatPrice = isCollectible ? collectiblePricesData == null || (_collectiblePricesDat = collectiblePricesData.find((collectible) => {
         var _transfer$contractInf10, _transfer$tokenIds3;
-        return compareAddress$1(collectible.token.contractAddress, ((_transfer$contractInf10 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf10.address) || "") && collectible.token.tokenId === ((_transfer$tokenIds3 = transfer.tokenIds) == null ? void 0 : _transfer$tokenIds3[index2]) && collectible.token.chainId === transaction2.chainId;
+        return compareAddress(collectible.token.contractAddress, ((_transfer$contractInf10 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf10.address) || "") && collectible.token.tokenId === ((_transfer$tokenIds3 = transfer.tokenIds) == null ? void 0 : _transfer$tokenIds3[index2]) && collectible.token.chainId === transaction2.chainId;
       })) == null || (_collectiblePricesDat = _collectiblePricesDat.price) == null ? void 0 : _collectiblePricesDat.value : coinPricesData == null || (_coinPricesData$find = coinPricesData.find((coin) => {
         var _transfer$contractInf11;
-        return compareAddress$1(coin.token.contractAddress, ((_transfer$contractInf11 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf11.address) || AddressZero) && coin.token.chainId === transaction2.chainId;
+        return compareAddress(coin.token.contractAddress, ((_transfer$contractInf11 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf11.address) || AddressZero) && coin.token.chainId === transaction2.chainId;
       })) == null || (_coinPricesData$find = _coinPricesData$find.price) == null ? void 0 : _coinPricesData$find.value;
       const fiatValue = (parseFloat(formattedBalance) * (conversionRate * (fiatPrice || 0))).toFixed(2);
       return /* @__PURE__ */ React.createElement(Box, {
@@ -95491,14 +96352,14 @@ const TransactionDetails = ({
     text: transaction2.txnHash
   }))));
 };
-const NavigationHeader$1 = ({
+const NavigationHeader = ({
   secondaryText,
   primaryText
 }) => {
   const {
     goBack,
     history
-  } = useNavigation$1();
+  } = useNavigation();
   const onClickBack = () => {
     goBack();
   };
@@ -95512,7 +96373,7 @@ const NavigationHeader$1 = ({
     justifyContent: "space-between",
     paddingX: "4",
     style: {
-      height: HEADER_HEIGHT$1,
+      height: HEADER_HEIGHT,
       paddingTop: "6px"
     }
   }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
@@ -95575,7 +96436,7 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
 }, ref) => {
   const {
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const {
     setOpenWalletModal
   } = useOpenWalletModal();
@@ -95719,7 +96580,7 @@ const WalletHeader = () => {
     goBack,
     history,
     setNavigation
-  } = useNavigation$1();
+  } = useNavigation();
   const hasDropdownOpened = reactExports.useRef(false);
   reactExports.useEffect(() => {
     if (!openWalletModalState) {
@@ -95762,7 +96623,7 @@ const WalletHeader = () => {
     width: "full",
     paddingX: "4",
     style: {
-      height: HEADER_HEIGHT$1,
+      height: HEADER_HEIGHT,
       paddingTop: "6px"
     }
   }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
@@ -95854,41 +96715,41 @@ const getHeader = (navigation) => {
   } = navigation;
   switch (location2) {
     case "search":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         primaryText: "Search wallet"
       });
     case "search-view-all":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Search wallet / ",
         primaryText: "View all"
       });
     case "settings":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Wallet / ",
         primaryText: "Settings"
       });
     case "settings-general":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Wallet / Settings / ",
         primaryText: "General"
       });
     case "settings-currency":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Wallet / Settings / ",
         primaryText: "Currency"
       });
     case "settings-networks":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Wallet / Settings / ",
         primaryText: "Networks"
       });
     case "receive":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Wallet / ",
         primaryText: "Receive"
       });
     case "history":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Wallet / ",
         primaryText: "History"
       });
@@ -95897,13 +96758,13 @@ const getHeader = (navigation) => {
     case "collectible-details":
       return /* @__PURE__ */ React.createElement(WalletHeader, null);
     case "transaction-details":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "",
         primaryText: ""
       });
     case "send-collectible":
     case "send-coin":
-      return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
+      return /* @__PURE__ */ React.createElement(NavigationHeader, {
         secondaryText: "Wallet / ",
         primaryText: "Send"
       });
@@ -95912,7 +96773,7 @@ const getHeader = (navigation) => {
       return /* @__PURE__ */ React.createElement(WalletHeader, null);
   }
 };
-const DEFAULT_LOCATION$1 = {
+const DEFAULT_LOCATION = {
   location: "home"
 };
 const KitWalletProvider = (props) => {
@@ -95930,7 +96791,7 @@ const KitWalletContent = ({
   } = useTheme();
   const [openWalletModal, setOpenWalletModal] = reactExports.useState(false);
   const [history, setHistory] = reactExports.useState([]);
-  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
+  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION;
   const displayScrollbar = navigation.location === "home" || navigation.location === "collection-details" || navigation.location === "collectible-details" || navigation.location === "coin-details" || navigation.location === "history" || navigation.location === "search" || navigation.location === "search-view-all" || navigation.location === "settings-currency";
   reactExports.useEffect(() => {
     if (openWalletModal) {
@@ -95942,7 +96803,7 @@ const KitWalletContent = ({
       setOpenWalletModal,
       openWalletModalState: openWalletModal
     }
-  }, /* @__PURE__ */ React.createElement(NavigationContextProvider$1, {
+  }, /* @__PURE__ */ React.createElement(NavigationContextProvider, {
     value: {
       setHistory,
       history
@@ -95955,7 +96816,7 @@ const KitWalletContent = ({
     theme
   }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openWalletModal && /* @__PURE__ */ React.createElement(Modal, {
     contentProps: {
-      style: _extends$3({
+      style: _extends$2({
         maxWidth: "400px",
         height: "fit-content"
       }, getModalPositionCss(position))
@@ -95967,871 +96828,10 @@ const KitWalletContent = ({
     id: "sequence-kit-wallet-content"
   }, getHeader(navigation), displayScrollbar ? /* @__PURE__ */ React.createElement(Scroll, {
     style: {
-      paddingTop: HEADER_HEIGHT$1,
+      paddingTop: HEADER_HEIGHT,
       height: "min(800px, 80vh)"
     }
   }, getContent(navigation)) : getContent(navigation)))))), children));
-};
-const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericContext$1();
-const useCheckoutModal = () => {
-  const {
-    triggerCheckout,
-    closeCheckout,
-    settings
-  } = useCheckoutModalContext();
-  return {
-    triggerCheckout,
-    closeCheckout,
-    settings
-  };
-};
-const [useNavigationContext, NavigationContextProvider] = createGenericContext$1();
-function _extends$2() {
-  _extends$2 = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$2.apply(this, arguments);
-}
-const HEADER_HEIGHT = "54px";
-const NavigationHeader = ({
-  secondaryText,
-  primaryText,
-  disableBack: _disableBack = false
-}) => {
-  const {
-    goBack,
-    history
-  } = useNavigation();
-  const onClickBack = () => {
-    goBack();
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundPrimary",
-    zIndex: "20",
-    position: "fixed",
-    width: "full",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    style: {
-      height: HEADER_HEIGHT,
-      paddingTop: "6px",
-      backgroundColor: vars.colors.backgroundPrimary
-    }
-  }, history.length > 0 && !_disableBack ? /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: onClickBack,
-    icon: SvgChevronLeftIcon,
-    size: "sm",
-    style: {
-      background: "rgba(0,0,0,0)",
-      width: "44px"
-    }
-  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    alignItems: "center",
-    justifyContent: "center",
-    style: {
-      marginLeft: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text50"
-  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text100"
-  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "44px"
-    }
-  }));
-};
-const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMetadata) => {
-  const randomNumber = Math.floor(Math.random() * 1e6);
-  const timestamp = (/* @__PURE__ */ new Date()).getTime();
-  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
-  const accessKey = isDev ? "17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA" : projectAccessKey2;
-  const url = isDev ? "https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutToken" : "https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken";
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Access-Key": `${accessKey || ""}`
-    },
-    body: JSON.stringify({
-      params: {
-        referenceId,
-        expiresIn: 3600,
-        paymentMethodTypeConfig: {
-          enabled: ["us_debit", "us_credit", "international_debit", "international_credit", "ach"],
-          default: order.defaultPaymentMethodType
-        },
-        name: (tokenMetadata == null ? void 0 : tokenMetadata.name) || "Unknown",
-        imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://www.sequence.market/images/placeholder.png",
-        network: networks[order.chainId].name,
-        recipientAddress: order.recipientAddress,
-        platform: "horizon",
-        blockchainNftId: order.blockchainNftId,
-        contractAddress: order.contractAddress,
-        executionType: "smart_contract",
-        quantity: Number(order.quantity),
-        decimals: Number(order.decimals)
-      }
-    })
-  });
-  const {
-    resp: {
-      orderId,
-      token
-    }
-  } = await res.json();
-  return {
-    token,
-    orderId
-  };
-};
-const fetchSardineOrderStatus = async (orderId, isDev, projectAccessKey2) => {
-  const accessKey = isDev ? "17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA" : projectAccessKey2;
-  const url = isDev ? "https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutOrderStatus" : "https://api.sequence.app/rpc/API/GetSardineNFTCheckoutOrderStatus";
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Access-Key": `${accessKey}`
-    },
-    body: JSON.stringify({
-      orderId
-    })
-  });
-  const json = await response.json();
-  console.log("json:", json);
-  return json;
-};
-const POLLING_TIME = 10 * 1e3;
-const PendingTransaction = () => {
-  var _settings$sardineChec;
-  const nav = useNavigation();
-  const {
-    settings
-  } = useCheckoutModal();
-  const {
-    params: {
-      authToken,
-      orderId
-    }
-  } = nav.navigation;
-  const {
-    setNavigation
-  } = nav;
-  const projectAccessKey2 = useProjectAccessKey();
-  const isDev = (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.isDev) || false;
-  const url = isDev ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true` : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`;
-  const pollForOrderStatus = async () => {
-    try {
-      var _settings$sardineChec2, _pollResponse$resp;
-      console.log("Polling for transaction status");
-      const isDev2 = (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.isDev) || false;
-      const pollResponse = await fetchSardineOrderStatus(orderId, isDev2, projectAccessKey2);
-      const status = pollResponse.resp.status;
-      const transactionHash = (_pollResponse$resp = pollResponse.resp) == null ? void 0 : _pollResponse$resp.transactionHash;
-      console.log("transaction status poll response:", status);
-      if (status === "Draft") {
-        return;
-      }
-      if (status === "Complete") {
-        setNavigation && setNavigation({
-          location: "transaction-success",
-          params: {
-            transactionHash
-          }
-        });
-        return;
-      }
-      if (status === "Declined" || status === "Cancelled") {
-        setNavigation && setNavigation({
-          location: "transaction-error",
-          params: {
-            error: new Error("Failed to transfer collectible")
-          }
-        });
-        return;
-      }
-    } catch (e2) {
-      console.error("An error occurred while fetching the transaction status");
-      setNavigation && setNavigation({
-        location: "transaction-error",
-        params: {
-          error: e2
-        }
-      });
-    }
-  };
-  reactExports.useEffect(() => {
-    const interval = setInterval(() => {
-      pollForOrderStatus();
-    }, POLLING_TIME);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "center",
-    style: {
-      height: "620px"
-    }
-  }, /* @__PURE__ */ React.createElement("iframe", {
-    src: url,
-    style: {
-      maxHeight: "500px",
-      height: "100%",
-      maxWidth: "380px",
-      width: "100%"
-    }
-  }));
-};
-const TransactionSuccess = () => {
-  var _settings$sardineChec, _network$blockExplore, _network$blockExplore2;
-  const {
-    settings
-  } = useCheckoutModal();
-  const nav = useNavigation();
-  const navigation = nav.navigation;
-  const chainId = (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.chainId) || 137;
-  const network2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId);
-  reactExports.useEffect(() => {
-    var _settings$sardineChec2, _settings$sardineChec3, _settings$sardineChec4, _settings$sardineChec5;
-    (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.onSuccess) && (settings == null || (_settings$sardineChec3 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
-    (settings == null || (_settings$sardineChec4 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec4.onSuccess) && (settings == null || (_settings$sardineChec5 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec5.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
-  }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      height: "500px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "center",
-    position: "absolute",
-    style: {
-      top: "50%",
-      right: "50%",
-      transform: "translate(50%, -50%)"
-    }
-  }, /* @__PURE__ */ React.createElement(NotificationSuccessIcon, null), /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "xlarge"
-  }, "Success!"), /* @__PURE__ */ React.createElement(Text, {
-    textAlign: "center",
-    variant: "normal",
-    color: "text80"
-  }, "Purchase was successful, item was sent to your wallet."), navigation.params.transactionHash && /* @__PURE__ */ React.createElement(Text, {
-    as: "a",
-    variant: "small",
-    underline: true,
-    marginTop: "6",
-    color: "text100",
-    href: `${network2 == null || (_network$blockExplore = network2.blockExplorer) == null ? void 0 : _network$blockExplore.rootUrl}/tx/${navigation.params.transactionHash}`,
-    target: "_blank",
-    rel: "noreferrer"
-  }, "View on ", network2 == null || (_network$blockExplore2 = network2.blockExplorer) == null ? void 0 : _network$blockExplore2.name)));
-};
-const NotificationSuccessIcon = () => /* @__PURE__ */ React.createElement(Box, {
-  color: "white",
-  background: "positive",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "16",
-  height: "16",
-  borderRadius: "circle",
-  marginBottom: "2"
-}, /* @__PURE__ */ React.createElement(SvgCheckmarkIcon, {
-  size: "xl"
-}));
-const TransactionError = () => {
-  const {
-    closeCheckout,
-    settings
-  } = useCheckoutModal();
-  const nav = useNavigation();
-  const navigation = nav.navigation;
-  reactExports.useEffect(() => {
-    setTimeout(() => {
-      var _settings$sardineChec, _settings$sardineChec2;
-      closeCheckout();
-      (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.onError) && (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.onError(navigation.params.error, settings == null ? void 0 : settings.sardineCheckout));
-    }, 3e3);
-  }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      height: "500px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "center",
-    position: "absolute",
-    style: {
-      top: "50%",
-      right: "50%",
-      transform: "translate(50%, -50%)"
-    }
-  }, /* @__PURE__ */ React.createElement(NotificationErrorIcon, null), /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "xlarge"
-  }, "Error"), /* @__PURE__ */ React.createElement(Text, {
-    textAlign: "center",
-    variant: "normal",
-    color: "text80"
-  }, "An error occurred while processing the transaction.")));
-};
-const NotificationErrorIcon = () => /* @__PURE__ */ React.createElement(Box, {
-  color: "white",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "16",
-  height: "16",
-  borderRadius: "circle",
-  marginBottom: "2",
-  background: "negative"
-}, /* @__PURE__ */ React.createElement(SvgCloseIcon, {
-  size: "xl"
-}));
-const compareAddress = (a2, b2) => {
-  return a2.toLowerCase() === b2.toLowerCase();
-};
-var ValueType = /* @__PURE__ */ function(ValueType2) {
-  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
-  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
-  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
-  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
-  return ValueType2;
-}(ValueType || {});
-const formatDisplay = (_val) => {
-  if (isNaN(Number(_val))) {
-    console.error(`display format error ${_val} is not a number`);
-    return "NaN";
-  }
-  const val = Number(_val);
-  if (val === 0) {
-    return "0";
-  }
-  let valMode;
-  if (val > 1e8) {
-    valMode = ValueType.VERY_LARGE;
-  } else if (val < 1e-10) {
-    valMode = ValueType.VERY_TINY;
-  } else if (val < 1) {
-    valMode = ValueType.FRACTION;
-  } else {
-    valMode = ValueType.MIXED;
-  }
-  let notation = void 0;
-  let config2;
-  switch (valMode) {
-    case ValueType.VERY_LARGE:
-      notation = "compact";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType.VERY_TINY:
-      notation = "scientific";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType.FRACTION:
-      notation = "standard";
-      config2 = {
-        maximumSignificantDigits: 4
-      };
-      break;
-    default:
-      notation = "standard";
-      config2 = {
-        maximumFractionDigits: 2
-      };
-  }
-  return Intl.NumberFormat("en-US", _extends$2({
-    notation
-  }, config2)).format(val);
-};
-const OrderSummaryItem = ({
-  contractAddress,
-  tokenId,
-  quantityRaw,
-  chainId
-}) => {
-  var _tokenMetadata$;
-  const {
-    data: tokenMetadata,
-    isPending: isPendingTokenMetadata
-  } = useTokenMetadata(chainId, contractAddress, [tokenId]);
-  const {
-    data: contractInfo,
-    isPending: isPendingContractInfo
-  } = useContractInfo(chainId, contractAddress);
-  const isPending = isPendingTokenMetadata || isPendingContractInfo;
-  if (isPending) {
-    return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
-  }
-  const {
-    name: name2 = "unknown",
-    image,
-    decimals = 0
-  } = (_tokenMetadata$ = tokenMetadata == null ? void 0 : tokenMetadata[0]) != null ? _tokenMetadata$ : {};
-  const {
-    logoURI: collectionLogoURI,
-    name: collectionName = "Unknown Collection"
-  } = contractInfo || {};
-  const balanceFormatted = formatUnits$1(quantityRaw, decimals);
-  return /* @__PURE__ */ React.createElement(Card, {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    aspectRatio: "1/1",
-    height: "full",
-    justifyContent: "center",
-    alignItems: "center",
-    style: {
-      width: "80px"
-    }
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    src: image,
-    borderRadius: "md",
-    style: {
-      maxWidth: "80px",
-      height: "80px",
-      objectFit: "cover"
-    }
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    gap: "1",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(TokenImage, {
-    src: collectionLogoURI,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    marginLeft: "1",
-    fontSize: "small",
-    color: "text80",
-    fontWeight: "bold"
-  }, collectionName), /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    style: {
-      width: "180px"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontSize: "normal",
-    fontWeight: "normal"
-  }, name2), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontSize: "normal",
-    fontWeight: "normal"
-  }, `#${tokenId}`)))), /* @__PURE__ */ React.createElement(Box, {
-    height: "full",
-    fontSize: "small",
-    color: "text50",
-    fontWeight: "bold"
-  }, `x${formatDisplay(balanceFormatted)}`));
-};
-const OrderSummarySkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Card, {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "80px",
-      height: "80px"
-    }
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "100px",
-      height: "14px"
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "180px",
-      height: "34px"
-    }
-  }))), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "14px",
-      height: "14px"
-    }
-  }));
-};
-const CheckoutSelection = () => {
-  var _cryptoCheckoutSettin, _cryptoCheckoutSettin2, _cryptoCheckoutSettin4, _settings$cryptoCheck, _settings$sardineChec;
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    closeCheckout,
-    settings
-  } = useCheckoutModal();
-  const {
-    address: accountAddress
-  } = useAccount();
-  const projectAccessKey2 = useProjectAccessKey();
-  const cryptoCheckoutSettings = settings == null ? void 0 : settings.cryptoCheckout;
-  const creditCardCheckoutSettings = settings == null ? void 0 : settings.sardineCheckout;
-  const displayCreditCardCheckout = !!creditCardCheckoutSettings;
-  const displayCryptoCheckout = !!cryptoCheckoutSettings;
-  const {
-    data: contractInfoData,
-    isLoading: isPendingContractInfo
-  } = useContractInfo((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin.contractAddress) || "");
-  const {
-    data: balancesData,
-    isPending: isPendingBalances
-  } = useBalances({
-    chainIds: [(cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1],
-    accountAddress: accountAddress || ""
-  });
-  const isPending = (isPendingContractInfo || isPendingBalances) && cryptoCheckoutSettings;
-  const isNativeToken = compareAddress((cryptoCheckoutSettings == null || (_cryptoCheckoutSettin2 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin2.contractAddress) || "", AddressZero);
-  const nativeTokenInfo = getNativeTokenInfoByChainId((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, chains2);
-  const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : (contractInfoData == null ? void 0 : contractInfoData.decimals) || 0;
-  const coinSymbol = isNativeToken ? nativeTokenInfo.symbol : (contractInfoData == null ? void 0 : contractInfoData.symbol) || "COIN";
-  const coinImageUrl = isNativeToken ? nativeTokenInfo.logoURI : (contractInfoData == null ? void 0 : contractInfoData.logoURI) || "";
-  const coinBalance = balancesData == null ? void 0 : balancesData.find((balance) => {
-    var _cryptoCheckoutSettin3;
-    return compareAddress(balance.contractAddress, (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin3 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin3.contractAddress) || "");
-  });
-  const userBalanceRaw = coinBalance ? coinBalance.balance : "0";
-  const requestedAmountRaw = (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin4 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin4.amountRequiredRaw) || "0";
-  const userBalance = formatUnits$1(userBalanceRaw, coinDecimals);
-  const requestAmount = formatUnits$1(requestedAmountRaw, coinDecimals);
-  const isInsufficientBalance = BigNumber.from(userBalanceRaw).lt(BigNumber.from(requestedAmountRaw));
-  const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
-  const chainId = (settings == null || (_settings$cryptoCheck = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck.chainId) || (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.chainId) || 1;
-  const {
-    data: tokensMetadata
-  } = useTokenMetadata(chainId, orderSummaryItems[0].contractAddress, [orderSummaryItems[0].tokenId]);
-  const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
-  const triggerSardineTransaction = async () => {
-    console.log("trigger sardine transaction");
-    if (settings != null && settings.sardineCheckout) {
-      var _settings$sardineChec2;
-      const isDev = (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.isDev) || false;
-      const {
-        token,
-        orderId
-      } = await fetchSardineClientToken(settings.sardineCheckout, isDev, projectAccessKey2, tokenMetadata);
-      setNavigation({
-        location: "transaction-pending",
-        params: {
-          orderId,
-          authToken: token
-        }
-      });
-    }
-  };
-  const onClickPayWithCard = () => {
-    if (settings != null && settings.sardineCheckout) {
-      triggerSardineTransaction();
-    } else {
-      setNavigation({
-        location: "transaction-form"
-      });
-    }
-  };
-  const onClickPayWithCrypto = () => {
-    var _settings$cryptoCheck2;
-    console.log("trigger transaction");
-    const transaction2 = settings == null || (_settings$cryptoCheck2 = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck2.triggerTransaction;
-    transaction2 && transaction2();
-    closeCheckout();
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "5",
-    paddingBottom: "5",
-    style: {
-      marginTop: HEADER_HEIGHT
-    },
-    flexDirection: "column",
-    gap: "3"
-  }, orderSummaryItems.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    gap: "2",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "normal",
-    fontSize: "normal",
-    color: "text50"
-  }, "Order summary"), /* @__PURE__ */ React.createElement(Tooltip, {
-    vOffset: -2,
-    side: "bottom",
-    message: /* @__PURE__ */ React.createElement(React.Fragment, null, "Please note that NFTs are digital assets", /* @__PURE__ */ React.createElement("br", null), " ,and as such, cannot be delivered physically.")
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "5",
-    height: "5"
-  }, /* @__PURE__ */ React.createElement(SvgHelpIcon, {
-    color: "text80"
-  })))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2"
-  }, orderSummaryItems.map((orderSummaryItem, index2) => {
-    return /* @__PURE__ */ React.createElement(OrderSummaryItem, _extends$2({
-      key: index2
-    }, orderSummaryItem, {
-      chainId
-    }));
-  })), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2"
-  }, /* @__PURE__ */ React.createElement(Divider, {
-    color: "backgroundSecondary",
-    style: {
-      margin: "0px"
-    }
-  }))), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "normal",
-    fontSize: "normal",
-    color: "text50"
-  }, "Total"), isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "100px",
-      height: "17px"
-    }
-  }) : /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    gap: "1",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(TokenImage, {
-    src: coinImageUrl,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "normal",
-    fontSize: "normal",
-    color: "text100"
-  }, `${formatDisplay(requestAmount)} ${coinSymbol}`))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "2"
-  }, displayCreditCardCheckout && /* @__PURE__ */ React.createElement(Button, {
-    style: {
-      borderRadius: vars.radii.md,
-      height: "56px"
-    },
-    width: "full",
-    borderRadius: "md",
-    leftIcon: SvgPaymentsIcon,
-    variant: "primary",
-    label: "Pay with credit card",
-    rightIcon: SvgChevronRightIcon,
-    onClick: onClickPayWithCard
-  }), displayCryptoCheckout && !isInsufficientBalance && !isPending && /* @__PURE__ */ React.createElement(Button, {
-    style: {
-      borderRadius: vars.radii.md,
-      height: "56px"
-    },
-    width: "full",
-    leftIcon: () => /* @__PURE__ */ React.createElement(TokenImage, {
-      src: coinImageUrl,
-      size: "sm"
-    }),
-    variant: "primary",
-    label: `Pay with ${coinSymbol}`,
-    rightIcon: SvgChevronRightIcon,
-    onClick: onClickPayWithCrypto
-  }), displayCryptoCheckout && (isInsufficientBalance || isPending) && /* @__PURE__ */ React.createElement(Button, {
-    shape: "square",
-    width: "full",
-    variant: "glass",
-    label: /* @__PURE__ */ React.createElement(Box, {
-      placeItems: "center",
-      gap: "2"
-    }, /* @__PURE__ */ React.createElement(TokenImage, {
-      src: coinImageUrl,
-      size: "sm"
-    }), /* @__PURE__ */ React.createElement(Text, null, "Insufficient $", coinSymbol)),
-    onClick: onClickPayWithCrypto,
-    disabled: true
-  })), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    justifyContent: "flex-end"
-  }, isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "102px",
-      height: "14px"
-    }
-  }) : /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    fontSize: "small",
-    color: "text50"
-  }, "Balance: ", `${formatDisplay(userBalance)} ${coinSymbol}`)));
-};
-const DEFAULT_LOCATION = {
-  location: "select-method-checkout"
-};
-const KitCheckoutProvider = (props) => {
-  const queryClient2 = new QueryClient();
-  return /* @__PURE__ */ React.createElement(QueryClientProvider, {
-    client: queryClient2
-  }, /* @__PURE__ */ React.createElement(KitCheckoutContent, props));
-};
-const KitCheckoutContent = ({
-  children
-}) => {
-  const {
-    theme,
-    position
-  } = useTheme();
-  const [openCheckoutModal, setOpenCheckoutModal] = reactExports.useState(false);
-  const [settings, setSettings] = reactExports.useState();
-  const [history, setHistory] = reactExports.useState([]);
-  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION;
-  const triggerCheckout = (settings2) => {
-    setSettings(settings2);
-    setOpenCheckoutModal(true);
-  };
-  const closeCheckout = () => {
-    setOpenCheckoutModal(false);
-  };
-  const getContent2 = () => {
-    const {
-      location: location2
-    } = navigation;
-    switch (location2) {
-      case "select-method-checkout":
-        return /* @__PURE__ */ React.createElement(CheckoutSelection, null);
-      case "transaction-pending":
-        return /* @__PURE__ */ React.createElement(PendingTransaction, null);
-      case "transaction-success":
-        return /* @__PURE__ */ React.createElement(TransactionSuccess, null);
-      case "transaction-error":
-        return /* @__PURE__ */ React.createElement(TransactionError, null);
-      case "transaction-form":
-      default:
-        return /* @__PURE__ */ React.createElement(CheckoutSelection, null);
-    }
-  };
-  const getHeader2 = () => {
-    const {
-      location: location2
-    } = navigation;
-    switch (location2) {
-      case "select-method-checkout":
-        return /* @__PURE__ */ React.createElement(NavigationHeader, {
-          primaryText: "Checkout"
-        });
-      case "transaction-success":
-      case "transaction-error":
-      case "transaction-pending":
-        return /* @__PURE__ */ React.createElement(NavigationHeader, {
-          disableBack: true,
-          primaryText: "Pay with credit or debit card"
-        });
-      case "transaction-form":
-      default:
-        return /* @__PURE__ */ React.createElement(NavigationHeader, {
-          primaryText: "Pay with credit or debit card"
-        });
-    }
-  };
-  reactExports.useEffect(() => {
-    if (openCheckoutModal) {
-      setHistory([]);
-    }
-  }, [openCheckoutModal]);
-  return /* @__PURE__ */ React.createElement(CheckoutModalContextProvider, {
-    value: {
-      triggerCheckout,
-      closeCheckout,
-      settings,
-      theme
-    }
-  }, /* @__PURE__ */ React.createElement(NavigationContextProvider, {
-    value: {
-      history,
-      setHistory
-    }
-  }, /* @__PURE__ */ React.createElement("div", {
-    id: "kit-checkout"
-  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
-    root: "#kit-checkout",
-    scope: "kit",
-    theme
-  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openCheckoutModal && /* @__PURE__ */ React.createElement(Modal, {
-    contentProps: {
-      style: _extends$2({
-        maxWidth: "400px",
-        height: "auto"
-      }, getModalPositionCss(position))
-    },
-    scroll: false,
-    backdropColor: "backgroundBackdrop",
-    onClose: () => setOpenCheckoutModal(false)
-  }, /* @__PURE__ */ React.createElement(Box, {
-    id: "sequence-kit-checkout-content"
-  }, getHeader2(), getContent2()))))), children));
-};
-const useNavigation = () => {
-  const {
-    setHistory,
-    history
-  } = useNavigationContext();
-  const setNavigation = (navigation2) => {
-    const childElement = document.getElementById("sequence-kit-wallet-content");
-    const parentElement = childElement == null ? void 0 : childElement.parentElement;
-    parentElement == null || parentElement.scrollTo(0, 0);
-    const newHistory = [...history, navigation2];
-    setHistory(newHistory);
-  };
-  const goBack = () => {
-    const newHistory = [...history];
-    newHistory.pop();
-    setHistory(newHistory);
-  };
-  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION;
-  return {
-    setNavigation,
-    history,
-    setHistory,
-    goBack,
-    navigation
-  };
 };
 const messageToSign = "Two roads diverged in a yellow wood";
 const bottomPageLinks = [
@@ -96878,118 +96878,6 @@ const socialLinks = [
     icon: "img/social/github.svg"
   }
 ];
-const Footer = () => {
-  const { theme } = useTheme$1();
-  const isMobile = useMediaQuery("isMobile");
-  const onClickLinkUrl = (url) => {
-    if (typeof window !== "undefined") {
-      window.open(url);
-    }
-  };
-  const Links = () => {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", gap: "4", children: bottomPageLinks.map((link, index2) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-      Box,
-      {
-        onClick: () => onClickLinkUrl(link.url),
-        opacity: { hover: "80" },
-        cursor: "pointer",
-        userSelect: "none",
-        gap: "4",
-        children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "small", color: "text50", children: link.label })
-      },
-      index2
-    )) });
-  };
-  const Socials = () => {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: socialLinks.map((socialLink, index2) => {
-      return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-        Box,
-        {
-          opacity: { hover: "80" },
-          cursor: "pointer",
-          userSelect: "none",
-          onClick: () => {
-            if (typeof window !== "undefined") {
-              window.open(socialLink.url);
-            }
-          },
-          children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-            Image$1,
-            {
-              height: "3",
-              src: socialLink.icon,
-              alt: socialLink.id,
-              style: {
-                filter: theme === "dark" ? "invert(0)" : "invert(1)"
-              }
-            }
-          )
-        },
-        index2
-      );
-    }) });
-  };
-  if (isMobile) {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
-      Box,
-      {
-        flexDirection: "column",
-        padding: "5",
-        gap: "2",
-        style: { height: "60px" },
-        position: "fixed",
-        bottom: "0",
-        width: "full",
-        justifyContent: "center",
-        alignItems: "center",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
-        ]
-      }
-    );
-  }
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { padding: "5", style: { height: "60px" }, position: "fixed", bottom: "0", width: "full", justifyContent: "space-between", children: [
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
-  ] });
-};
-const truncateAtMiddle = (text2, truncateAt) => {
-  let finalText = text2;
-  if (text2.length >= truncateAt) {
-    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
-  }
-  return finalText;
-};
-const formatAddress = (text2) => {
-  return `0x${truncateAtMiddle((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
-};
-const delay = (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
-const getCheckoutSettings = (blockchainNftId, recipientAddress, tokenContractAddress, tokenId, chainId, quantity, isDev) => {
-  const checkoutSettings = {
-    sardineCheckout: {
-      chainId,
-      defaultPaymentMethodType: "us_debit",
-      platform: "horizon",
-      contractAddress: "0xB537a160472183f2150d42EB1c3DD6684A55f74c",
-      blockchainNftId,
-      recipientAddress,
-      quantity,
-      isDev
-    },
-    orderSummaryItems: [
-      {
-        chainId,
-        contractAddress: tokenContractAddress,
-        tokenId,
-        quantityRaw: String(quantity)
-      }
-    ]
-  };
-  return checkoutSettings;
-};
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
@@ -97184,6 +97072,118 @@ const abi = [
     type: "function"
   }
 ];
+const truncateAtMiddle = (text2, truncateAt) => {
+  let finalText = text2;
+  if (text2.length >= truncateAt) {
+    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
+  }
+  return finalText;
+};
+const formatAddress = (text2) => {
+  return `0x${truncateAtMiddle((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
+};
+const delay = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+const getCheckoutSettings = (blockchainNftId, recipientAddress, tokenContractAddress, tokenId, chainId, quantity, isDev) => {
+  const checkoutSettings = {
+    sardineCheckout: {
+      chainId,
+      defaultPaymentMethodType: "us_debit",
+      platform: "horizon",
+      contractAddress: "0xB537a160472183f2150d42EB1c3DD6684A55f74c",
+      blockchainNftId,
+      recipientAddress,
+      quantity,
+      isDev
+    },
+    orderSummaryItems: [
+      {
+        chainId,
+        contractAddress: tokenContractAddress,
+        tokenId,
+        quantityRaw: String(quantity)
+      }
+    ]
+  };
+  return checkoutSettings;
+};
+const Footer = () => {
+  const { theme } = useTheme$1();
+  const isMobile = useMediaQuery("isMobile");
+  const onClickLinkUrl = (url) => {
+    if (typeof window !== "undefined") {
+      window.open(url);
+    }
+  };
+  const Links = () => {
+    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", gap: "4", children: bottomPageLinks.map((link, index2) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+      Box,
+      {
+        onClick: () => onClickLinkUrl(link.url),
+        opacity: { hover: "80" },
+        cursor: "pointer",
+        userSelect: "none",
+        gap: "4",
+        children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "small", color: "text50", children: link.label })
+      },
+      index2
+    )) });
+  };
+  const Socials = () => {
+    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: socialLinks.map((socialLink, index2) => {
+      return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+        Box,
+        {
+          opacity: { hover: "80" },
+          cursor: "pointer",
+          userSelect: "none",
+          onClick: () => {
+            if (typeof window !== "undefined") {
+              window.open(socialLink.url);
+            }
+          },
+          children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+            Image$1,
+            {
+              height: "3",
+              src: socialLink.icon,
+              alt: socialLink.id,
+              style: {
+                filter: theme === "dark" ? "invert(0)" : "invert(1)"
+              }
+            }
+          )
+        },
+        index2
+      );
+    }) });
+  };
+  if (isMobile) {
+    return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+      Box,
+      {
+        flexDirection: "column",
+        padding: "5",
+        gap: "2",
+        style: { height: "60px" },
+        position: "fixed",
+        bottom: "0",
+        width: "full",
+        justifyContent: "center",
+        alignItems: "center",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
+        ]
+      }
+    );
+  }
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { padding: "5", style: { height: "60px" }, position: "fixed", bottom: "0", width: "full", justifyContent: "space-between", children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
+  ] });
+};
 const searchParams$1 = new URLSearchParams(location.search);
 const connectionMode$1 = searchParams$1.get("mode") === "universal" ? "universal" : "waas";
 const isDebugMode$1 = searchParams$1.has("debug");
@@ -97220,7 +97220,6 @@ const Homepage = () => {
     }
   }, [error]);
   const chainId = useChainId();
-  useIndexerClient(chainId);
   const handleSwitchConnectionMode = (mode) => {
     const searchParams2 = new URLSearchParams();
     searchParams2.set("mode", mode);
@@ -108021,7 +108020,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-C-TzBlls.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-CkPH4BBJ.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108207,7 +108206,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CYNju8ul.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-ODknoF3v.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -108412,29 +108411,14 @@ function _extends() {
 }
 sequenceWallet.type = "sequence";
 function sequenceWallet(params) {
-  var _params$connect, _params$connect2, _params$connect3;
   const {
     defaultNetwork,
     connect: connect2,
     walletAppURL
   } = params;
-  let id2 = "sequence";
   const {
     projectAccessKey: projectAccessKey2
   } = connect2;
-  const signInOptions = (params == null || (_params$connect = params.connect) == null || (_params$connect = _params$connect.settings) == null ? void 0 : _params$connect.signInOptions) || [];
-  const signInWith = params == null || (_params$connect2 = params.connect) == null || (_params$connect2 = _params$connect2.settings) == null ? void 0 : _params$connect2.signInWith;
-  const signInWithEmail = params == null || (_params$connect3 = params.connect) == null || (_params$connect3 = _params$connect3.settings) == null ? void 0 : _params$connect3.signInWithEmail;
-  if (signInWithEmail) {
-    id2 = "email";
-  } else if (signInWith) {
-    id2 = signInWith;
-    `${signInWith[0].toUpperCase()}${signInWith.slice(1)}`;
-  } else if (signInOptions.length > 0) {
-    const newId = signInOptions[0];
-    `${id2[0].toUpperCase()}${id2.slice(1)}`;
-    id2 = newId;
-  }
   return createConnector((config2) => ({
     id: "sequence",
     name: "Sequence",
