@@ -4,7 +4,7 @@ import { SequenceWaaS, SequenceConfig, ExtendedSequenceConfig, Transaction, FeeO
 import { ethers } from 'ethers'
 import { v4 as uuidv4 } from 'uuid'
 import { TransactionRejectedRpcError, UserRejectedRequestError, getAddress } from 'viem'
-import { createConnector } from 'wagmi'
+import { createConnector, CreateConnectorFn } from 'wagmi'
 
 export interface SequenceWaasConnectConfig {
   googleClientId?: string

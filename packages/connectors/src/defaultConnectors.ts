@@ -3,7 +3,7 @@ import { CreateConnectorFn } from 'wagmi'
 
 import { apple, coinbaseWallet, email, facebook, google, metamask, sequence, twitch, walletConnect } from './connectors'
 import { appleWaas } from './connectors/apple/appleWaas'
-// import { emailWaas } from './connectors/email/emailWaas'
+import { emailWaas } from './connectors/email/emailWaas'
 import { googleWaas } from './connectors/google/googleWaas'
 
 interface GetDefaultConnectors {

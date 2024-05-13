@@ -26,10 +26,7 @@ import { setStorageItem } from '../../utils/storage'
 import { TxnDetails } from '../TxnDetails'
 import { useWaasRevalidation } from '../../hooks'
 
-
-import { ConnectWalletContent } from './ConnectWalletContent'
 import { NetworkBadge } from './NetworkBadge'
-import { SequenceLogo } from './SequenceLogo'
 
 export declare const THEME: readonly ['dark', 'light']
 export declare type Theme = Exclude<ComponentProps<typeof ThemeProvider>['theme'], undefined>
@@ -378,7 +375,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                             }
                           }}
                         >
-                          <Box paddingX="4" paddingTop="4" paddingBottom="2" className={sharedStyles.walletContent}>
+                          <Box paddingX="4" paddingTop="4" paddingBottom="2">
                             <Box
                               flexDirection="column"
                               justifyContent="center"

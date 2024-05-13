@@ -4,8 +4,8 @@ import {
   Button,
   Text,
   Spinner,
+  PINCodeInput
 } from '@0xsequence/design-system'
-import { PINCodeInput } from './PINCodeInput'
 
 
 export interface WaasCodeInputContentProps {
