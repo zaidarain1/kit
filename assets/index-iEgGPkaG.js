@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BCJLEreN.js","./___vite-browser-external_commonjs-proxy-BDKuWnvV.js","./index.es-juDmu4Q-.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-BeZva422.js","./___vite-browser-external_commonjs-proxy-DvX-4r6z.js","./index.es-DluodKY9.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CVFrKUL5.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DBmOuyG8.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -97397,7 +97397,7 @@ const Homepage = () => {
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(
               ClickableCard,
               {
-                title: "Embedded wallet",
+                title: "Inventory",
                 description: "Connect a Sequence wallet to view, swap, send, and receive collections",
                 onClick: () => setOpenWalletModal(true)
               }
@@ -97542,7 +97542,7 @@ const Homepage = () => {
               ConnectionModeSelect,
               {
                 mode: "waas",
-                title: "Embedded (WaaS)",
+                title: "Inventory (WaaS)",
                 description: "Connect to an embedded wallet for a seamless experience.",
                 onClick: handleSwitchConnectionMode
               }
@@ -108021,7 +108021,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-BCJLEreN.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-BeZva422.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108207,7 +108207,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-juDmu4Q-.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DluodKY9.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,

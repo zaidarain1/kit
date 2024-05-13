@@ -1,5 +1,5 @@
-import { c as commonjsGlobal, d as bnExports, B as Buffer$7, e as require$$2$1, i as inherits_browserExports, a as getAugmentedNamespace, p as process$1, t as tslib_es6, f as eventemitter3Exports, b as getDefaultExportFromCjs } from "./index-BgN_RxA_.js";
-import { e as eventsExports, r as require$$1$2 } from "./___vite-browser-external_commonjs-proxy-BDKuWnvV.js";
+import { c as commonjsGlobal, d as bnExports, B as Buffer$7, e as require$$2$1, i as inherits_browserExports, a as getAugmentedNamespace, p as process$1, t as tslib_es6, f as eventemitter3Exports, b as getDefaultExportFromCjs } from "./index-iEgGPkaG.js";
+import { e as eventsExports, r as require$$1$2 } from "./___vite-browser-external_commonjs-proxy-DvX-4r6z.js";
 function _mergeNamespaces(n2, m2) {
   for (var i = 0; i < m2.length; i++) {
     const e2 = m2[i];
