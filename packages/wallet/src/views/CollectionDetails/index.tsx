@@ -1,6 +1,6 @@
 import { Box, Image, Text, TokenImage, vars } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useCollectionBalance } from '@0xsequence/kit'
+import { useCollectionBalance } from '@0xsequence/kit/hooks'
 import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount } from 'wagmi'

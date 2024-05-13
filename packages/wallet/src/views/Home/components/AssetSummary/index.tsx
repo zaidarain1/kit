@@ -1,6 +1,6 @@
 import { Box, vars } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { useWalletSettings } from '@0xsequence/kit'
+import { useWalletSettings } from '@0xsequence/kit/hooks'
 import React from 'react'
 import { useAccount } from 'wagmi'
 
@@ -10,7 +10,6 @@ import { sortBalancesByType } from '../../../../utils'
 import { CoinTile } from './CoinTile'
 import { CollectibleTile } from './CollectibleTile'
 import { SkeletonTiles } from './SkeletonTiles'
-
 
 export const AssetSummary = () => {
   const { address } = useAccount()

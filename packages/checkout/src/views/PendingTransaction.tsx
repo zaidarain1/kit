@@ -1,5 +1,5 @@
 import { Box } from '@0xsequence/design-system'
-import { useProjectAccessKey } from '@0xsequence/kit'
+import { useProjectAccessKey } from '@0xsequence/kit/hooks'
 import React, { useEffect } from 'react'
 
 import { fetchSardineOrderStatus } from '../api'

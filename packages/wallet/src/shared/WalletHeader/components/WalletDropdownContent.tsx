@@ -11,7 +11,7 @@ import {
   TransactionIcon,
   vars
 } from '@0xsequence/design-system'
-import { useTheme } from '@0xsequence/kit'
+import { useTheme } from '@0xsequence/kit/hooks'
 import React, { forwardRef } from 'react'
 import { useDisconnect, useAccount } from 'wagmi'
 

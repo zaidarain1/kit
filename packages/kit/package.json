@@ -52,6 +52,17 @@
   },
   "files": [
     "src",
-    "dist"
-  ]
+    "dist",
+    "components",
+    "hooks",
+    "contexts"
+  ],
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "components/index.ts",
+      "hooks/index.ts",
+      "contexts/index.ts"
+    ]
+  }
 }

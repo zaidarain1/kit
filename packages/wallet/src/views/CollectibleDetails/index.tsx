@@ -1,5 +1,5 @@
 import { Box, Button, Image, NetworkImage, SendIcon, Text } from '@0xsequence/design-system'
-import { useExchangeRate, useTransactionHistory, useCollectiblePrices, useCollectibleBalance } from '@0xsequence/kit'
+import { useExchangeRate, useTransactionHistory, useCollectiblePrices, useCollectibleBalance } from '@0xsequence/kit/hooks'
 import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount } from 'wagmi'

@@ -1,10 +1,10 @@
 import { Box } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { getNativeTokenInfoByChainId, useContractInfo, useExchangeRate, useCoinPrices } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { useContractInfo, useExchangeRate, useCoinPrices } from '@0xsequence/kit/hooks'
 import { ethers } from 'ethers'
 import React from 'react'
 import { useConfig } from 'wagmi'
-
 
 import { useSettings } from '../../../../../hooks'
 import { computeBalanceFiat, formatDisplay, getPercentagePriceChange, compareAddress } from '../../../../../utils'

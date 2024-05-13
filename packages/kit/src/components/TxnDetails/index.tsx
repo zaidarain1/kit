@@ -1,7 +1,7 @@
 import { commons } from '@0xsequence/core'
 import { Box, Card, GradientAvatar, Skeleton, Text, TokenImage } from '@0xsequence/design-system'
 import { ContractType } from '@0xsequence/indexer'
-import { useTokenMetadata, useBalances } from '@0xsequence/kit'
+import { useTokenMetadata, useBalances } from '@0xsequence/kit/hooks'
 import { ethers } from 'ethers'
 import React, { useEffect, useState } from 'react'
 import { useConfig } from 'wagmi'

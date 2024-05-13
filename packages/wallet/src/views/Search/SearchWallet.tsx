@@ -1,5 +1,6 @@
 import { Box, SearchIcon, Skeleton, Text, TextInput } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices, useBalances } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { useExchangeRate, useCoinPrices, useBalances } from '@0xsequence/kit/hooks'
 import { ethers } from 'ethers'
 import Fuse from 'fuse.js'
 import React, { useState } from 'react'

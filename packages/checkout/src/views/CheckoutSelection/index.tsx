@@ -11,7 +11,8 @@ import {
   Skeleton,
   TokenImage
 } from '@0xsequence/design-system'
-import { getNativeTokenInfoByChainId, useBalances, useContractInfo, useTokenMetadata, useProjectAccessKey } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { useBalances, useContractInfo, useTokenMetadata, useProjectAccessKey } from '@0xsequence/kit/hooks'
 import { ethers } from 'ethers'
 import React from 'react'
 import { useAccount, useConfig } from 'wagmi'

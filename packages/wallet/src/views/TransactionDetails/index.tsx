@@ -12,7 +12,8 @@ import {
   TokenImage
 } from '@0xsequence/design-system'
 import { Transaction, TxnTransfer } from '@0xsequence/indexer'
-import { getNativeTokenInfoByChainId, useExchangeRate, useCoinPrices, useCollectiblePrices } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId } from '@0xsequence/kit'
+import { useExchangeRate, useCoinPrices, useCollectiblePrices } from '@0xsequence/kit/hooks'
 import dayjs from 'dayjs'
 import { ethers } from 'ethers'
 import React from 'react'

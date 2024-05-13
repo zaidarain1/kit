@@ -1,5 +1,5 @@
 import { Box, Card, Image, Text, Skeleton, TokenImage, NetworkImage } from '@0xsequence/design-system'
-import { useContractInfo, useTokenMetadata } from '@0xsequence/kit'
+import { useContractInfo, useTokenMetadata } from '@0xsequence/kit/hooks'
 import { ethers } from 'ethers'
 import React from 'react'
 

@@ -1,16 +1,16 @@
 import { SequenceAPIClient, TokenPrice } from '@0xsequence/api'
 import { Transaction, TokenBalance, SequenceIndexer } from '@0xsequence/indexer'
+import { DisplayedAsset } from '@0xsequence/kit'
 import {
   getTransactionHistory,
   useAPIClient,
   useIndexerClients,
-  DisplayedAsset,
   getNativeTokenBalance,
   getTokenBalances,
   getCoinPrices,
   getCollectionBalance,
   useMetadataClient
-} from '@0xsequence/kit'
+} from '@0xsequence/kit/hooks'
 import { GetContractInfoBatchReturn, SequenceMetadata } from '@0xsequence/metadata'
 import { useQuery } from '@tanstack/react-query'
 import { ethers } from 'ethers'
