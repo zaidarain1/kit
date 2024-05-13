@@ -235,7 +235,7 @@ export const Connected = () => {
               Demos
             </Text>
             <CardButton
-              title="Embedded wallet"
+              title="Inventory"
               description="Connect a Sequence wallet to view, swap, send, and receive collections"
               onClick={() => setOpenWalletModal(true)}
             />
