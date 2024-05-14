@@ -14,8 +14,8 @@ const WAAS_ACTIVE_LOGIN_TYPE = 'waasActiveLoginType'
 
 // TODO: remove all of this.. we should not be storing these in local storage
 export enum LocalStorageKey {
-  Settings = `${PREFIX}.${SETTINGS}`,
-  Theme = `${PREFIX}.${THEME}`,
+  Settings = `${PREFIX}.${SETTINGS}`, // Wallet settings
+  Theme = `${PREFIX}.${THEME}`, // Wallet theme
   EthAuthProof = `${PREFIX}.${ETHAUTH_PROOF}`,
   EthAuthSettings = `${PREFIX}.${ETHAUTH_SETTINGS}`,
   WaasGoogleClientID = `${PREFIX}.${WAAS_GOOGLE_CLIENT_ID}`,

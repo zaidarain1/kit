@@ -30,6 +30,7 @@ export const Connected = () => {
   // const { setOpenConnectModal } = useOpenConnectModal()
   // const { triggerCheckout } = useCheckoutModal()
   const { data: walletClient } = useWalletClient()
+  const storage = useStorage()
   const { switchChain } = useSwitchChain()
   const storage = useStorage()
 

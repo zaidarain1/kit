@@ -17,7 +17,7 @@ import {
   TextInput
 } from '@0xsequence/design-system'
 import { getModalPositionCss, signEthAuthProof, validateEthProof } from '@0xsequence/kit'
-import { useOpenConnectModal, useTheme as useKitTheme } from '@0xsequence/kit/hooks'
+import { useOpenConnectModal, useTheme as useKitTheme, useStorage } from '@0xsequence/kit/hooks'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { allNetworks } from '@0xsequence/network'

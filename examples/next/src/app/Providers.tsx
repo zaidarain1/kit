@@ -20,8 +20,6 @@ export interface ProvidersProps {
 export const Providers = (props: ProvidersProps) => {
   const { initialState, children /* , wagmiConfig, kitConfig */ } = props
 
-  console.log('initialState', initialState)
-
   return (
     <WagmiProvider config={wagmiConfig} initialState={initialState}>
       <QueryClientProvider client={queryClient}>
