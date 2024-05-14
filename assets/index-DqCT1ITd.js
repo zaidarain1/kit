@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DYpAUrq2.js","./___vite-browser-external_commonjs-proxy-DkJKcFTp.js","./index.es-QAVrvXlo.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-Cz8OgDyI.js","./___vite-browser-external_commonjs-proxy-Cuf2cN5b.js","./index.es-CqijfBer.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CXSinUy5.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CmnA0pd8.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -82634,31 +82634,12 @@ function publicClientToProvider(publicClient) {
     }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
   return new JsonRpcProvider$1(transport.url, network2);
 }
-const WAGMI_PREFIX = "wagmi";
-const getStorageItem = (key2) => {
-  try {
-    const json = localStorage.getItem(`${WAGMI_PREFIX}.${key2}`);
-    if (!json) {
-      return void 0;
-    }
-    const value = JSON.parse(json);
-    return value || void 0;
-  } catch (err) {
-    return void 0;
-  }
-};
-const setStorageItem = (key2, value) => {
-  try {
-    localStorage.setItem(`${WAGMI_PREFIX}.${key2}`, JSON.stringify(value));
-  } catch (err) {
-  }
-};
-const signEthAuthProof = async (walletClient) => {
-  const proofInformation = getStorageItem(LocalStorageKey.EthAuthProof);
+const signEthAuthProof = async (walletClient, storage) => {
+  const proofInformation = await storage.getItem(LocalStorageKey.EthAuthProof);
   if (proofInformation) {
     return proofInformation;
   }
-  const proofSettings = getStorageItem(LocalStorageKey.EthAuthSettings);
+  const proofSettings = await storage.getItem(LocalStorageKey.EthAuthSettings);
   if (!proofSettings) {
     throw new Error("No ETHAuth settings found");
   }
@@ -82697,86 +82678,6 @@ const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext$1()
 const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext$1();
 const [useThemeContext, ThemeContextProvider] = createGenericContext$1();
 const [useWalletConfigContext, WalletConfigContextProvider] = createGenericContext$1();
-class Deferred {
-  constructor() {
-    this._resolve = () => {
-    };
-    this._reject = () => {
-    };
-    this._promise = new Promise((resolve, reject) => {
-      this._reject = reject;
-      this._resolve = resolve;
-    });
-  }
-  get promise() {
-    return this._promise;
-  }
-  resolve(value) {
-    this._resolve(value);
-  }
-  reject(value) {
-    this._reject(value);
-  }
-}
-let _pendingConfirmation;
-function useWaasConfirmationHandler(waasConnector) {
-  const [pendingRequestConfirmation, setPendingRequestConfirmation] = reactExports.useState();
-  function confirmPendingRequest(id2) {
-    var _pendingConfirmation2;
-    (_pendingConfirmation2 = _pendingConfirmation) == null || _pendingConfirmation2.resolve({
-      id: id2,
-      confirmed: true
-    });
-    setPendingRequestConfirmation(void 0);
-    _pendingConfirmation = void 0;
-  }
-  function rejectPendingRequest(id2) {
-    var _pendingConfirmation3;
-    (_pendingConfirmation3 = _pendingConfirmation) == null || _pendingConfirmation3.resolve({
-      id: id2,
-      confirmed: false
-    });
-    setPendingRequestConfirmation(void 0);
-    _pendingConfirmation = void 0;
-  }
-  reactExports.useEffect(() => {
-    async function setup() {
-      if (!waasConnector) {
-        return;
-      }
-      const waasProvider = waasConnector.sequenceWaasProvider;
-      if (!waasProvider) {
-        return;
-      }
-      waasProvider.requestConfirmationHandler = {
-        confirmSignTransactionRequest(id2, txs, chainId) {
-          const pending = new Deferred();
-          setPendingRequestConfirmation({
-            id: id2,
-            type: "signTransaction",
-            txs: Array.isArray(txs) ? txs : [txs],
-            chainId
-          });
-          _pendingConfirmation = pending;
-          return pending.promise;
-        },
-        confirmSignMessageRequest(id2, message, chainId) {
-          const pending = new Deferred();
-          setPendingRequestConfirmation({
-            id: id2,
-            type: "signMessage",
-            message,
-            chainId
-          });
-          _pendingConfirmation = pending;
-          return pending.promise;
-        }
-      };
-    }
-    setup();
-  });
-  return [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest];
-}
 const useOpenConnectModal = () => {
   const {
     setOpenConnectModal,
@@ -82811,6 +82712,27 @@ const useWalletSettings = () => {
     setDisplayedAssets
   };
 };
+class Deferred {
+  constructor() {
+    this._resolve = () => {
+    };
+    this._reject = () => {
+    };
+    this._promise = new Promise((resolve, reject) => {
+      this._reject = reject;
+      this._resolve = resolve;
+    });
+  }
+  get promise() {
+    return this._promise;
+  }
+  resolve(value) {
+    this._resolve(value);
+  }
+  reject(value) {
+    this._reject(value);
+  }
+}
 const useProjectAccessKey = () => {
   const {
     projectAccessKey: projectAccessKey2
@@ -82864,6 +82786,24 @@ const useIndexerClients = (chainIds) => {
     result.set(chainId, indexerClient);
   }
   return result;
+};
+const useStorage = () => {
+  const config2 = useConfig();
+  if (!config2.storage) {
+    return null;
+  }
+  return config2.storage;
+};
+const useStorageItem = (key2) => {
+  const storage = useStorage();
+  return useQuery$1({
+    queryKey: ["storage", key2],
+    queryFn: async () => {
+      return storage == null ? void 0 : storage.getItem(key2);
+    },
+    retry: true,
+    enabled: !!storage
+  });
 };
 const _excluded$5 = ["chainIds"];
 const time$1 = {
@@ -83117,6 +83057,65 @@ const useTransactionHistory = (args) => {
     enabled: !!args.chainId && !!args.accountAddress
   });
 };
+let _pendingConfirmation;
+function useWaasConfirmationHandler(waasConnector) {
+  const [pendingRequestConfirmation, setPendingRequestConfirmation] = reactExports.useState();
+  function confirmPendingRequest(id2) {
+    var _pendingConfirmation2;
+    (_pendingConfirmation2 = _pendingConfirmation) == null || _pendingConfirmation2.resolve({
+      id: id2,
+      confirmed: true
+    });
+    setPendingRequestConfirmation(void 0);
+    _pendingConfirmation = void 0;
+  }
+  function rejectPendingRequest(id2) {
+    var _pendingConfirmation3;
+    (_pendingConfirmation3 = _pendingConfirmation) == null || _pendingConfirmation3.resolve({
+      id: id2,
+      confirmed: false
+    });
+    setPendingRequestConfirmation(void 0);
+    _pendingConfirmation = void 0;
+  }
+  reactExports.useEffect(() => {
+    async function setup() {
+      if (!waasConnector) {
+        return;
+      }
+      const waasProvider = waasConnector.sequenceWaasProvider;
+      if (!waasProvider) {
+        return;
+      }
+      waasProvider.requestConfirmationHandler = {
+        confirmSignTransactionRequest(id2, txs, chainId) {
+          const pending = new Deferred();
+          setPendingRequestConfirmation({
+            id: id2,
+            type: "signTransaction",
+            txs: Array.isArray(txs) ? txs : [txs],
+            chainId
+          });
+          _pendingConfirmation = pending;
+          return pending.promise;
+        },
+        confirmSignMessageRequest(id2, message, chainId) {
+          const pending = new Deferred();
+          setPendingRequestConfirmation({
+            id: id2,
+            type: "signMessage",
+            message,
+            chainId
+          });
+          _pendingConfirmation = pending;
+          return pending.promise;
+        }
+      };
+    }
+    setup();
+  });
+  return [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest];
+}
 let DecodingType = /* @__PURE__ */ function(DecodingType2) {
   DecodingType2["APPROVE"] = "approve";
   DecodingType2["TRANSFER"] = "transfer";
@@ -83879,11 +83878,23 @@ const GoogleLogo$1 = () => /* @__PURE__ */ React.createElement("svg", {
 })));
 const ConnectWalletContent = (props) => {
   dist.useScript(dist.appleAuthHelpers.APPLE_SCRIPT_SRC);
+  const storage = useStorage();
+  const {
+    data: sessionHash,
+    isPending: isPendingNonce
+  } = useStorageItem(LocalStorageKey.WaasSessionHash);
+  const {
+    data: appleClientId2,
+    isPending: isPendingAppleClientId
+  } = useStorageItem(LocalStorageKey.WaasAppleClientID);
+  const {
+    data: appleRedirectUri,
+    isPending: isPendingAppleRedirectUri
+  } = useStorageItem(LocalStorageKey.WaasAppleRedirectURI);
+  const isPendingStorage = isPendingNonce || isPendingAppleClientId || isPendingAppleRedirectUri;
   const {
     isConnected
   } = useAccount();
-  const wagmiConfig2 = useConfig();
-  const storage = wagmiConfig2.storage;
   const {
     config: config2 = {}
   } = props;
@@ -84089,7 +84100,7 @@ const ConnectWalletContent = (props) => {
     width: "full",
     label: "Continue",
     rightIcon: SvgChevronRightIcon
-  }), emailAuthInProgress && /* @__PURE__ */ React.createElement(Spinner, null))), socialAuthConnectors.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, emailConnector && showEmailInput && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Divider, {
+  }), emailAuthInProgress && /* @__PURE__ */ React.createElement(Spinner, null))), socialAuthConnectors.length > 0 && !isPendingStorage && /* @__PURE__ */ React.createElement(React.Fragment, null, emailConnector && showEmailInput && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Divider, {
     color: "backgroundSecondary"
   }), /* @__PURE__ */ React.createElement(Box, {
     justifyContent: "center",
@@ -84131,7 +84142,7 @@ const ConnectWalletContent = (props) => {
     }, /* @__PURE__ */ React.createElement(GoogleLogin, {
       type: "icon",
       size: "large",
-      nonce: getStorageItem(LocalStorageKey.WaasSessionHash),
+      nonce: sessionHash,
       onSuccess: (credentialResponse) => {
         if (credentialResponse.credential) {
           storage == null || storage.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential);
@@ -84167,19 +84178,16 @@ const ConnectWalletContent = (props) => {
         top: "2px",
         left: "2px"
       }
-    }, /* @__PURE__ */ React.createElement(GoogleLogo$1, null))))), connector._wallet.id === "apple-waas" && /* @__PURE__ */ React.createElement(ConnectButton, {
+    }, /* @__PURE__ */ React.createElement(GoogleLogo$1, null))))), connector._wallet.id === "apple-waas" && appleClientId2 && appleRedirectUri && /* @__PURE__ */ React.createElement(ConnectButton, {
       connector,
       onConnect: () => {
-        const appleClientId2 = getStorageItem(LocalStorageKey.WaasAppleClientID);
-        const appleRedirectUri = getStorageItem(LocalStorageKey.WaasAppleRedirectURI);
-        const sessionHash = getStorageItem(LocalStorageKey.WaasSessionHash);
         dist.appleAuthHelpers.signIn({
           authOptions: {
             clientId: appleClientId2,
-            scope: "openid email",
             redirectURI: appleRedirectUri,
-            usePopup: true,
-            nonce: sessionHash
+            nonce: sessionHash,
+            scope: "openid email",
+            usePopup: true
           },
           onSuccess: (response) => {
             var _response$authorizati;
@@ -84572,8 +84580,9 @@ const KitProvider = (props) => {
     address,
     isConnected
   } = useAccount();
-  const connections = useConnections();
   const wagmiConfig2 = useConfig();
+  const storage = useStorage();
+  const connections = useConnections();
   const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
   const [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest] = useWaasConfirmationHandler(waasConnector);
   const googleWaasConnector = wagmiConfig2.connectors.find((c2) => c2.id === "sequence-waas" && c2._wallet.id === "google-waas");
@@ -84618,7 +84627,7 @@ const KitProvider = (props) => {
     else {
       localStorage.setItem(LocalStorageKey.Theme, theme);
     }
-    setStorageItem(LocalStorageKey.EthAuthSettings, {
+    storage == null || storage.setItem(LocalStorageKey.EthAuthSettings, {
       expiry,
       app,
       origin: origin || location.origin,
@@ -97193,6 +97202,7 @@ const Homepage = () => {
   const { disconnect: disconnect2 } = useDisconnect();
   const { data: walletClient } = useWalletClient();
   const { switchChain: switchChain2 } = useSwitchChain();
+  const storage = useStorage();
   const [isCheckoutInfoModalOpen, setIsCheckoutInfoModalOpen] = React.useState(false);
   const [checkoutOrderId, setCheckoutOrderId] = React.useState("");
   const [checkoutTokenContractAddress, setCheckoutTokenContractAddress] = React.useState("");
@@ -97224,11 +97234,11 @@ const Homepage = () => {
   const networkForCurrentChainId = allNetworks.find((n2) => n2.chainId === chainId);
   const publicClient = usePublicClient({ chainId });
   const generateEthAuthProof = async () => {
-    if (!walletClient || !publicClient) {
+    if (!walletClient || !publicClient || !storage) {
       return;
     }
     try {
-      const proof = await signEthAuthProof(walletClient);
+      const proof = await signEthAuthProof(walletClient, storage);
       console.log("proof:", proof);
       const isValid2 = await validateEthProof(walletClient, publicClient, proof);
       console.log("isValid?:", isValid2);
@@ -108016,7 +108026,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-DYpAUrq2.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-Cz8OgDyI.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108202,7 +108212,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-QAVrvXlo.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CqijfBer.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
