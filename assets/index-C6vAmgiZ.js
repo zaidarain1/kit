@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CkPH4BBJ.js","./___vite-browser-external_commonjs-proxy-DkHUugHh.js","./index.es-ODknoF3v.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DYpAUrq2.js","./___vite-browser-external_commonjs-proxy-DkJKcFTp.js","./index.es-QAVrvXlo.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -20999,18 +20999,18 @@ function setElementVars(element, varsOrContract, tokens2) {
     }
   }
 }
-const THEMES$1 = ["dark", "light"];
+const THEMES = ["dark", "light"];
 const DEFAULT_THEME = "dark";
 const THEME_ATTR = "data-theme";
 const STORAGE_KEY = "@sequence.theme";
-const isTheme = (theme) => THEMES$1.includes(theme);
+const isTheme = (theme) => THEMES.includes(theme);
 const isThemeOverrides = (theme) => typeof theme === "object" && theme !== null && !Array.isArray(theme);
 const getStorageKey = (scope) => scope ? `${STORAGE_KEY}.${scope}` : STORAGE_KEY;
 const getTheme = (scope) => {
   const persistedTheme = localStorage.getItem(
     getStorageKey(scope)
   );
-  if (persistedTheme && THEMES$1.includes(persistedTheme)) {
+  if (persistedTheme && THEMES.includes(persistedTheme)) {
     return persistedTheme;
   }
   return DEFAULT_THEME;
@@ -21053,7 +21053,7 @@ const ThemeProvider = (props) => {
       theme,
       root: props.root,
       setTheme: (mode) => {
-        if (THEMES$1.includes(mode)) {
+        if (THEMES.includes(mode)) {
           localStorage.setItem(getStorageKey(props.scope), mode);
           setTheme(mode);
         }
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DN2Ajsz4.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CXSinUy5.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84539,10 +84539,6 @@ const SequenceLogo$1 = (_ref) => {
     width: "396"
   })))));
 };
-const THEMES = {
-  dark: "dark",
-  light: "light"
-};
 const KitProvider = (props) => {
   var _connections$find, _params, _pendingRequestConfir, _pendingRequestConfir2, _pendingRequestConfir3;
   const {
@@ -84568,7 +84564,7 @@ const KitProvider = (props) => {
     projectName
   } = signIn3;
   const [openConnectModal, setOpenConnectModal] = reactExports.useState(false);
-  const [theme, setTheme] = reactExports.useState(defaultTheme || THEMES.dark);
+  const [theme, setTheme] = reactExports.useState(defaultTheme || "dark");
   const [modalPosition, setModalPosition] = reactExports.useState(position);
   const [displayedAssets, setDisplayedAssets] = reactExports.useState(displayedAssetsSetting);
   const [analytics, setAnalytics] = reactExports.useState();
@@ -108020,7 +108016,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-CkPH4BBJ.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-DYpAUrq2.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108206,7 +108202,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-ODknoF3v.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-QAVrvXlo.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
