@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-Cz8OgDyI.js","./___vite-browser-external_commonjs-proxy-Cuf2cN5b.js","./index.es-CqijfBer.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CkoyNBtk.js","./___vite-browser-external_commonjs-proxy-D4uAlCUH.js","./index.es-BneEzSDm.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CmnA0pd8.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CDaY4MT7.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -81662,6 +81662,283 @@ function useWriteContract(parameters = {}) {
     writeContractAsync: mutateAsync
   };
 }
+var dist = {};
+var AppleSigninButton$1 = {};
+var useScript$1 = {};
+Object.defineProperty(useScript$1, "__esModule", {
+  value: true
+});
+useScript$1.default = void 0;
+var _react$2 = reactExports;
+function useScript(src) {
+  (0, _react$2.useEffect)(
+    function() {
+      if (!src) {
+        return;
+      }
+      var script = document.querySelectorAll('script[src="'.concat(src, '"]'))[0];
+      if (!script) {
+        script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    },
+    [src]
+    // Only re-run effect if script src changes
+  );
+}
+var _default$3 = useScript;
+useScript$1.default = _default$3;
+var appleAuthHelpers = {};
+var waitForVar$1 = {};
+Object.defineProperty(waitForVar$1, "__esModule", {
+  value: true
+});
+waitForVar$1.default = void 0;
+var waitForVar = function waitForVar2(name2) {
+  var _ref = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
+    pollFrequency: 1e3,
+    retries: 100,
+    parent: window
+  }, _ref$pollFrequency = _ref.pollFrequency, pollFrequency = _ref$pollFrequency === void 0 ? 1e3 : _ref$pollFrequency, _ref$retries = _ref.retries, inRetries = _ref$retries === void 0 ? 100 : _ref$retries, _ref$parent = _ref.parent, parent2 = _ref$parent === void 0 ? window : _ref$parent;
+  if (parent2 && parent2.hasOwnProperty(name2)) {
+    return Promise.resolve(parent2[name2]);
+  }
+  if (!inRetries) {
+    return Promise.resolve(void 0);
+  }
+  var retries = inRetries - 1;
+  return new Promise(function(resolve) {
+    return setTimeout(resolve, typeof pollFrequency === "function" ? pollFrequency({
+      retries
+    }) : pollFrequency);
+  }).then(function() {
+    return waitForVar2(name2, {
+      pollFrequency,
+      parent: parent2,
+      retries
+    });
+  });
+};
+var _default$2 = waitForVar;
+waitForVar$1.default = _default$2;
+Object.defineProperty(appleAuthHelpers, "__esModule", {
+  value: true
+});
+appleAuthHelpers.default = void 0;
+var _waitForVar = _interopRequireDefault$2(waitForVar$1);
+function _interopRequireDefault$2(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+var APPLE_SCRIPT_SRC = "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
+var signIn = function signIn2(_ref) {
+  var authOptions = _ref.authOptions, onSuccess = _ref.onSuccess, onError = _ref.onError;
+  return (
+    /** wait for apple sript to load */
+    (0, _waitForVar.default)("AppleID").then(function() {
+      if (!window.AppleID) {
+        console.error(new Error("Error loading apple script"));
+      }
+      window.AppleID.auth.init(authOptions);
+      return window.AppleID.auth.signIn().then(function(response) {
+        if (onSuccess) {
+          onSuccess(response);
+        }
+        return response;
+      }).catch(function(err) {
+        if (onError) {
+          onError(err);
+        } else {
+          console.error(err);
+        }
+        return null;
+      });
+    }).catch(function(err) {
+      if (onError) {
+        onError(err);
+      } else {
+        console.error(err);
+      }
+      return null;
+    })
+  );
+};
+var _default$1 = {
+  APPLE_SCRIPT_SRC,
+  signIn
+};
+appleAuthHelpers.default = _default$1;
+Object.defineProperty(AppleSigninButton$1, "__esModule", {
+  value: true
+});
+AppleSigninButton$1.default = void 0;
+var _react$1 = _interopRequireDefault$1(reactExports);
+var _useScript = _interopRequireDefault$1(useScript$1);
+var _appleAuthHelpers = _interopRequireDefault$1(appleAuthHelpers);
+var _excluded$6 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
+function _interopRequireDefault$1(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function _extends$6() {
+  _extends$6 = Object.assign || function(target) {
+    for (var i2 = 1; i2 < arguments.length; i2++) {
+      var source = arguments[i2];
+      for (var key2 in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key2)) {
+          target[key2] = source[key2];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$6.apply(this, arguments);
+}
+function ownKeys$1(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) {
+      symbols = symbols.filter(function(sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+    }
+    keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread$1(target) {
+  for (var i2 = 1; i2 < arguments.length; i2++) {
+    var source = arguments[i2] != null ? arguments[i2] : {};
+    if (i2 % 2) {
+      ownKeys$1(Object(source), true).forEach(function(key2) {
+        _defineProperty$1(target, key2, source[key2]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys$1(Object(source)).forEach(function(key2) {
+        Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
+      });
+    }
+  }
+  return target;
+}
+function _defineProperty$1(obj, key2, value) {
+  if (key2 in obj) {
+    Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key2] = value;
+  }
+  return obj;
+}
+function _objectWithoutProperties$1(source, excluded) {
+  if (source == null)
+    return {};
+  var target = _objectWithoutPropertiesLoose$4(source, excluded);
+  var key2, i2;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
+      key2 = sourceSymbolKeys[i2];
+      if (excluded.indexOf(key2) >= 0)
+        continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key2))
+        continue;
+      target[key2] = source[key2];
+    }
+  }
+  return target;
+}
+function _objectWithoutPropertiesLoose$4(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key2, i2;
+  for (i2 = 0; i2 < sourceKeys.length; i2++) {
+    key2 = sourceKeys[i2];
+    if (excluded.indexOf(key2) >= 0)
+      continue;
+    target[key2] = source[key2];
+  }
+  return target;
+}
+var _style = "\n.react-apple-signin-auth-btn {\n  background-color: transparent;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 4px;\n  padding: 0 8px 0 2px;\n  font-size: 14px;\n  font-size: 1em;\n  line-height: 1;\n  border: 1px solid #000;\n  overflow: hidden;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n}\n.react-apple-signin-auth-btn-light {\n  background-color: #FFF;\n  color: #000;\n  border-color: #000;\n}\n.react-apple-signin-auth-btn-dark {\n  background-color: #000;\n  color: #FFF;\n  border-color: #FFF;\n}".replace(/ {2}|\n/g, "");
+var AppleSigninButton = function AppleSigninButton2(_ref) {
+  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$1(_ref, _excluded$6);
+  (0, _useScript.default)(skipScript ? null : _appleAuthHelpers.default.APPLE_SCRIPT_SRC);
+  var handleClick = function handleClick2(e2) {
+    if (e2) {
+      e2.preventDefault();
+      e2.stopPropagation();
+    }
+    _appleAuthHelpers.default.signIn({
+      authOptions,
+      onSuccess,
+      onError
+    });
+  };
+  var props = _objectSpread$1({
+    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$6({
+      width: "24px",
+      height: "44px",
+      viewBox: "0 0 24 44"
+    }, iconProps), /* @__PURE__ */ _react$1.default.createElement("g", {
+      stroke: "none",
+      strokeWidth: "1",
+      fill: "none",
+      fillRule: "evenodd"
+    }, /* @__PURE__ */ _react$1.default.createElement("rect", {
+      fill: uiType === "light" ? "#FFF" : "#000",
+      x: "0",
+      y: "0",
+      width: "24",
+      height: "44"
+    }), /* @__PURE__ */ _react$1.default.createElement("path", {
+      d: "M12.2337427,16.9879688 C12.8896607,16.9879688 13.7118677,16.5445313 14.2014966,15.9532812 C14.6449341,15.4174609 14.968274,14.6691602 14.968274,13.9208594 C14.968274,13.8192383 14.9590357,13.7176172 14.9405591,13.6344727 C14.2107349,13.6621875 13.3330982,14.1241016 12.8065162,14.7430664 C12.3907935,15.2142188 12.012024,15.9532812 12.012024,16.7108203 C12.012024,16.8216797 12.0305005,16.9325391 12.0397388,16.9694922 C12.0859302,16.9787305 12.1598365,16.9879688 12.2337427,16.9879688 Z M9.92417241,28.1662891 C10.8202857,28.1662891 11.2175318,27.5658008 12.3353638,27.5658008 C13.4716724,27.5658008 13.721106,28.1478125 14.7188404,28.1478125 C15.6980982,28.1478125 16.3540162,27.2424609 16.972981,26.3555859 C17.6658521,25.339375 17.9522388,24.3416406 17.9707154,24.2954492 C17.9060474,24.2769727 16.0306763,23.5101953 16.0306763,21.3576758 C16.0306763,19.491543 17.5088013,18.6508594 17.5919459,18.5861914 C16.612688,17.1819727 15.1253248,17.1450195 14.7188404,17.1450195 C13.6194849,17.1450195 12.7233716,17.8101758 12.1598365,17.8101758 C11.5501099,17.8101758 10.7463794,17.1819727 9.79483648,17.1819727 C7.98413335,17.1819727 6.14571538,18.6785742 6.14571538,21.5054883 C6.14571538,23.2607617 6.8293482,25.1176563 7.67003179,26.3186328 C8.39061773,27.3348438 9.01882085,28.1662891 9.92417241,28.1662891 Z",
+      fill: uiType === "light" ? "#000" : "#FFF",
+      fillRule: "nonzero"
+    }))), buttonExtraChildren),
+    onClick: handleClick
+  }, rest);
+  if (render) {
+    return render(props);
+  }
+  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$6({
+    className: "".concat(noDefaultStyle ? "" : "react-apple-signin-auth-btn react-apple-signin-auth-btn-".concat(uiType)).concat(className ? " ".concat(className) : ""),
+    type: "button",
+    "aria-label": "Signin with apple ID"
+  }, props)), noDefaultStyle ? null : /* @__PURE__ */ _react$1.default.createElement("style", null, _style));
+};
+var _default = AppleSigninButton;
+AppleSigninButton$1.default = _default;
+(function(exports) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, "appleAuthHelpers", {
+    enumerable: true,
+    get: function get2() {
+      return _appleAuthHelpers2.default;
+    }
+  });
+  Object.defineProperty(exports, "useScript", {
+    enumerable: true,
+    get: function get2() {
+      return _useScript2.default;
+    }
+  });
+  exports.default = void 0;
+  var _AppleSigninButton = _interopRequireDefault2(AppleSigninButton$1);
+  var _appleAuthHelpers2 = _interopRequireDefault2(appleAuthHelpers);
+  var _useScript2 = _interopRequireDefault2(useScript$1);
+  function _interopRequireDefault2(obj) {
+    return obj && obj.__esModule ? obj : { default: obj };
+  }
+  var _default2 = _AppleSigninButton.default;
+  exports.default = _default2;
+})(dist);
 var utils = {};
 const require$$0$2 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$b);
 const require$$1 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$f);
@@ -82033,283 +82310,6 @@ const require$$20 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$2);
     return strings_2.Utf8ErrorReason;
   } });
 })(utils);
-var dist = {};
-var AppleSigninButton$1 = {};
-var useScript$1 = {};
-Object.defineProperty(useScript$1, "__esModule", {
-  value: true
-});
-useScript$1.default = void 0;
-var _react$2 = reactExports;
-function useScript(src) {
-  (0, _react$2.useEffect)(
-    function() {
-      if (!src) {
-        return;
-      }
-      var script = document.querySelectorAll('script[src="'.concat(src, '"]'))[0];
-      if (!script) {
-        script = document.createElement("script");
-        script.src = src;
-        script.async = true;
-        document.body.appendChild(script);
-      }
-    },
-    [src]
-    // Only re-run effect if script src changes
-  );
-}
-var _default$3 = useScript;
-useScript$1.default = _default$3;
-var appleAuthHelpers = {};
-var waitForVar$1 = {};
-Object.defineProperty(waitForVar$1, "__esModule", {
-  value: true
-});
-waitForVar$1.default = void 0;
-var waitForVar = function waitForVar2(name2) {
-  var _ref = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
-    pollFrequency: 1e3,
-    retries: 100,
-    parent: window
-  }, _ref$pollFrequency = _ref.pollFrequency, pollFrequency = _ref$pollFrequency === void 0 ? 1e3 : _ref$pollFrequency, _ref$retries = _ref.retries, inRetries = _ref$retries === void 0 ? 100 : _ref$retries, _ref$parent = _ref.parent, parent2 = _ref$parent === void 0 ? window : _ref$parent;
-  if (parent2 && parent2.hasOwnProperty(name2)) {
-    return Promise.resolve(parent2[name2]);
-  }
-  if (!inRetries) {
-    return Promise.resolve(void 0);
-  }
-  var retries = inRetries - 1;
-  return new Promise(function(resolve) {
-    return setTimeout(resolve, typeof pollFrequency === "function" ? pollFrequency({
-      retries
-    }) : pollFrequency);
-  }).then(function() {
-    return waitForVar2(name2, {
-      pollFrequency,
-      parent: parent2,
-      retries
-    });
-  });
-};
-var _default$2 = waitForVar;
-waitForVar$1.default = _default$2;
-Object.defineProperty(appleAuthHelpers, "__esModule", {
-  value: true
-});
-appleAuthHelpers.default = void 0;
-var _waitForVar = _interopRequireDefault$2(waitForVar$1);
-function _interopRequireDefault$2(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-var APPLE_SCRIPT_SRC = "https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js";
-var signIn = function signIn2(_ref) {
-  var authOptions = _ref.authOptions, onSuccess = _ref.onSuccess, onError = _ref.onError;
-  return (
-    /** wait for apple sript to load */
-    (0, _waitForVar.default)("AppleID").then(function() {
-      if (!window.AppleID) {
-        console.error(new Error("Error loading apple script"));
-      }
-      window.AppleID.auth.init(authOptions);
-      return window.AppleID.auth.signIn().then(function(response) {
-        if (onSuccess) {
-          onSuccess(response);
-        }
-        return response;
-      }).catch(function(err) {
-        if (onError) {
-          onError(err);
-        } else {
-          console.error(err);
-        }
-        return null;
-      });
-    }).catch(function(err) {
-      if (onError) {
-        onError(err);
-      } else {
-        console.error(err);
-      }
-      return null;
-    })
-  );
-};
-var _default$1 = {
-  APPLE_SCRIPT_SRC,
-  signIn
-};
-appleAuthHelpers.default = _default$1;
-Object.defineProperty(AppleSigninButton$1, "__esModule", {
-  value: true
-});
-AppleSigninButton$1.default = void 0;
-var _react$1 = _interopRequireDefault$1(reactExports);
-var _useScript = _interopRequireDefault$1(useScript$1);
-var _appleAuthHelpers = _interopRequireDefault$1(appleAuthHelpers);
-var _excluded$6 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
-function _interopRequireDefault$1(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-function _extends$6() {
-  _extends$6 = Object.assign || function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$6.apply(this, arguments);
-}
-function ownKeys$1(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) {
-      symbols = symbols.filter(function(sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    }
-    keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread$1(target) {
-  for (var i2 = 1; i2 < arguments.length; i2++) {
-    var source = arguments[i2] != null ? arguments[i2] : {};
-    if (i2 % 2) {
-      ownKeys$1(Object(source), true).forEach(function(key2) {
-        _defineProperty$1(target, key2, source[key2]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys$1(Object(source)).forEach(function(key2) {
-        Object.defineProperty(target, key2, Object.getOwnPropertyDescriptor(source, key2));
-      });
-    }
-  }
-  return target;
-}
-function _defineProperty$1(obj, key2, value) {
-  if (key2 in obj) {
-    Object.defineProperty(obj, key2, { value, enumerable: true, configurable: true, writable: true });
-  } else {
-    obj[key2] = value;
-  }
-  return obj;
-}
-function _objectWithoutProperties$1(source, excluded) {
-  if (source == null)
-    return {};
-  var target = _objectWithoutPropertiesLoose$4(source, excluded);
-  var key2, i2;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
-      key2 = sourceSymbolKeys[i2];
-      if (excluded.indexOf(key2) >= 0)
-        continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key2))
-        continue;
-      target[key2] = source[key2];
-    }
-  }
-  return target;
-}
-function _objectWithoutPropertiesLoose$4(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key2, i2;
-  for (i2 = 0; i2 < sourceKeys.length; i2++) {
-    key2 = sourceKeys[i2];
-    if (excluded.indexOf(key2) >= 0)
-      continue;
-    target[key2] = source[key2];
-  }
-  return target;
-}
-var _style = "\n.react-apple-signin-auth-btn {\n  background-color: transparent;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 4px;\n  padding: 0 8px 0 2px;\n  font-size: 14px;\n  font-size: 1em;\n  line-height: 1;\n  border: 1px solid #000;\n  overflow: hidden;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n}\n.react-apple-signin-auth-btn-light {\n  background-color: #FFF;\n  color: #000;\n  border-color: #000;\n}\n.react-apple-signin-auth-btn-dark {\n  background-color: #000;\n  color: #FFF;\n  border-color: #FFF;\n}".replace(/ {2}|\n/g, "");
-var AppleSigninButton = function AppleSigninButton2(_ref) {
-  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$1(_ref, _excluded$6);
-  (0, _useScript.default)(skipScript ? null : _appleAuthHelpers.default.APPLE_SCRIPT_SRC);
-  var handleClick = function handleClick2(e2) {
-    if (e2) {
-      e2.preventDefault();
-      e2.stopPropagation();
-    }
-    _appleAuthHelpers.default.signIn({
-      authOptions,
-      onSuccess,
-      onError
-    });
-  };
-  var props = _objectSpread$1({
-    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$6({
-      width: "24px",
-      height: "44px",
-      viewBox: "0 0 24 44"
-    }, iconProps), /* @__PURE__ */ _react$1.default.createElement("g", {
-      stroke: "none",
-      strokeWidth: "1",
-      fill: "none",
-      fillRule: "evenodd"
-    }, /* @__PURE__ */ _react$1.default.createElement("rect", {
-      fill: uiType === "light" ? "#FFF" : "#000",
-      x: "0",
-      y: "0",
-      width: "24",
-      height: "44"
-    }), /* @__PURE__ */ _react$1.default.createElement("path", {
-      d: "M12.2337427,16.9879688 C12.8896607,16.9879688 13.7118677,16.5445313 14.2014966,15.9532812 C14.6449341,15.4174609 14.968274,14.6691602 14.968274,13.9208594 C14.968274,13.8192383 14.9590357,13.7176172 14.9405591,13.6344727 C14.2107349,13.6621875 13.3330982,14.1241016 12.8065162,14.7430664 C12.3907935,15.2142188 12.012024,15.9532812 12.012024,16.7108203 C12.012024,16.8216797 12.0305005,16.9325391 12.0397388,16.9694922 C12.0859302,16.9787305 12.1598365,16.9879688 12.2337427,16.9879688 Z M9.92417241,28.1662891 C10.8202857,28.1662891 11.2175318,27.5658008 12.3353638,27.5658008 C13.4716724,27.5658008 13.721106,28.1478125 14.7188404,28.1478125 C15.6980982,28.1478125 16.3540162,27.2424609 16.972981,26.3555859 C17.6658521,25.339375 17.9522388,24.3416406 17.9707154,24.2954492 C17.9060474,24.2769727 16.0306763,23.5101953 16.0306763,21.3576758 C16.0306763,19.491543 17.5088013,18.6508594 17.5919459,18.5861914 C16.612688,17.1819727 15.1253248,17.1450195 14.7188404,17.1450195 C13.6194849,17.1450195 12.7233716,17.8101758 12.1598365,17.8101758 C11.5501099,17.8101758 10.7463794,17.1819727 9.79483648,17.1819727 C7.98413335,17.1819727 6.14571538,18.6785742 6.14571538,21.5054883 C6.14571538,23.2607617 6.8293482,25.1176563 7.67003179,26.3186328 C8.39061773,27.3348438 9.01882085,28.1662891 9.92417241,28.1662891 Z",
-      fill: uiType === "light" ? "#000" : "#FFF",
-      fillRule: "nonzero"
-    }))), buttonExtraChildren),
-    onClick: handleClick
-  }, rest);
-  if (render) {
-    return render(props);
-  }
-  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$6({
-    className: "".concat(noDefaultStyle ? "" : "react-apple-signin-auth-btn react-apple-signin-auth-btn-".concat(uiType)).concat(className ? " ".concat(className) : ""),
-    type: "button",
-    "aria-label": "Signin with apple ID"
-  }, props)), noDefaultStyle ? null : /* @__PURE__ */ _react$1.default.createElement("style", null, _style));
-};
-var _default = AppleSigninButton;
-AppleSigninButton$1.default = _default;
-(function(exports) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(exports, "appleAuthHelpers", {
-    enumerable: true,
-    get: function get2() {
-      return _appleAuthHelpers2.default;
-    }
-  });
-  Object.defineProperty(exports, "useScript", {
-    enumerable: true,
-    get: function get2() {
-      return _useScript2.default;
-    }
-  });
-  exports.default = void 0;
-  var _AppleSigninButton = _interopRequireDefault2(AppleSigninButton$1);
-  var _appleAuthHelpers2 = _interopRequireDefault2(appleAuthHelpers);
-  var _useScript2 = _interopRequireDefault2(useScript$1);
-  function _interopRequireDefault2(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
-  }
-  var _default2 = _AppleSigninButton.default;
-  exports.default = _default2;
-})(dist);
 function _extends$5() {
   _extends$5 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
@@ -82345,152 +82345,7 @@ const defaultSignInOptions = {
   socialAuthOptions: ["google", "facebook", "twitch", "apple", "google-waas", "apple-waas"]
 };
 const DEFAULT_SESSION_EXPIRATION = 60 * 60 * 24 * 7;
-function _objectWithoutPropertiesLoose$3(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  for (var key2 in source) {
-    if (Object.prototype.hasOwnProperty.call(source, key2)) {
-      if (excluded.indexOf(key2) >= 0)
-        continue;
-      target[key2] = source[key2];
-    }
-  }
-  return target;
-}
-const _excluded$1$2 = ["createConnector"];
-const getKitConnectWallets = (projectAccessKey2, wallets) => {
-  const connectors = [];
-  wallets.forEach((wallet) => {
-    const {
-      createConnector: createConnector2
-    } = wallet, metaProperties = _objectWithoutPropertiesLoose$3(wallet, _excluded$1$2);
-    const walletProperties = _extends$5({}, metaProperties);
-    const createConnectorOverride = (config2) => {
-      const connector = createConnector2(projectAccessKey2);
-      const res = connector(config2);
-      res._wallet = _extends$5({}, walletProperties);
-      return res;
-    };
-    connectors.push(createConnectorOverride);
-  });
-  return connectors;
-};
-const isEmailValid = (email2) => {
-  return /^\S+@\S+\.\S{2,}$/.test(email2);
-};
-const compareAddress$2 = (a2, b2) => {
-  return a2.toLowerCase() === b2.toLowerCase();
-};
-const nativeTokenInfos = {
-  [ChainId.MAINNET]: {
-    name: "Ethereum",
-    symbol: "ETH",
-    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
-    decimals: 18,
-    blockExplorerName: "Etherscan",
-    blockExplorerUrl: "https://etherscan.io"
-  },
-  [ChainId.GOERLI]: {
-    name: "Goerli",
-    symbol: "ETH",
-    decimals: 18,
-    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
-    blockExplorerName: "Etherscan (Goerli)",
-    blockExplorerUrl: "https://goerli.etherscan.io"
-  },
-  [ChainId.OPTIMISM]: {
-    name: "Optimism",
-    symbol: "OP",
-    logoURI: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
-    decimals: 18,
-    blockExplorerName: "Etherscan (Optimism)",
-    blockExplorerUrl: "https://optimistic.etherscan.io"
-  },
-  [ChainId.BSC]: {
-    name: "BNB",
-    symbol: "BNB",
-    logoURI: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png",
-    decimals: 18,
-    blockExplorerName: "BscScan",
-    blockExplorerUrl: "https://bscscan.com"
-  },
-  [ChainId.GNOSIS]: {
-    name: "Gnosis",
-    symbol: "GNO",
-    logoURI: "https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png",
-    decimals: 18,
-    blockExplorerUrl: "https://gnosisscan.io",
-    blockExplorerName: "Gnosis Scan"
-  },
-  [ChainId.POLYGON]: {
-    name: "Polygon",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan",
-    blockExplorerUrl: "https://polygonscan.com"
-  },
-  [ChainId.POLYGON_ZKEVM]: {
-    name: "Polygon zkEVM",
-    symbol: "ETH",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "PolygonScan",
-    blockExplorerUrl: "https://zkevm.polygonscan.com"
-  },
-  [ChainId.ARBITRUM]: {
-    name: "Arbitrum",
-    symbol: "ARB",
-    logoURI: "https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png",
-    decimals: 18,
-    blockExplorerName: "Arbiscan",
-    blockExplorerUrl: "https://arbiscan.io"
-  },
-  [ChainId.AVALANCHE]: {
-    name: "Avalanche",
-    symbol: "AVAX",
-    logoURI: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png",
-    decimals: 18,
-    blockExplorerName: "Snowtrace",
-    blockExplorerUrl: "https://snowtrace.io"
-  },
-  [ChainId.POLYGON_MUMBAI]: {
-    name: "Mumbai",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan (Mumbai)",
-    blockExplorerUrl: "https://mumbai.polygonscan.com"
-  },
-  [ChainId.POLYGON_AMOY]: {
-    name: "Amoy",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan (Amoy)",
-    blockExplorerUrl: "https://amoy.polygonscan.com"
-  }
-};
-const defaultNativeTokenInfo = (chainId, wagmiChains) => {
-  const foundChain = wagmiChains.find((chain) => chain.id === chainId);
-  if (foundChain) {
-    var _foundChain$blockExpl, _foundChain$blockExpl2;
-    return {
-      name: foundChain.nativeCurrency.name,
-      symbol: foundChain.nativeCurrency.symbol,
-      decimals: foundChain.nativeCurrency.decimals,
-      logoURI: nativeTokenInfos[1].logoURI,
-      blockExplorerName: (_foundChain$blockExpl = foundChain.blockExplorers) == null ? void 0 : _foundChain$blockExpl.default.name,
-      blockExplorerUrl: (_foundChain$blockExpl2 = foundChain.blockExplorers) == null ? void 0 : _foundChain$blockExpl2.default.url
-    };
-  }
-  return;
-};
-const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
-  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[1];
-};
-const createGenericContext$1 = () => {
+const createGenericContext$2 = () => {
   const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
   const useGenericContext = () => {
     const contextIsDefined = reactExports.useContext(genericContext);
@@ -82501,216 +82356,28 @@ const createGenericContext$1 = () => {
   };
   return [useGenericContext, genericContext.Provider];
 };
-const getModalPositionCss = (position) => {
-  switch (position) {
-    case "top-right":
-      return {
-        top: "0px",
-        right: "0px"
-      };
-    case "top-left":
-      return {
-        top: "0px",
-        left: "0px"
-      };
-    case "top-center":
-      return {
-        top: "0px"
-      };
-    case "bottom-right":
-      return {
-        bottom: "0px",
-        right: "0px"
-      };
-    case "bottom-left":
-      return {
-        bottom: "0px",
-        left: "0px"
-      };
-    case "bottom-center":
-      return {
-        bottom: "0px"
-      };
-    case "middle-right":
-      return {
-        right: "0px"
-      };
-    case "middle-left":
-      return {
-        left: "0px"
-      };
-    case "center":
-    default:
-      return {};
+const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext$2();
+const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext$2();
+const [useKitConfig, KitConfigContextProvider] = createGenericContext$2();
+const [useThemeContext, ThemeContextProvider] = createGenericContext$2();
+const [useWalletConfigContext, WalletConfigContextProvider] = createGenericContext$2();
+const useStorage = () => {
+  const config2 = useConfig();
+  if (!config2.storage) {
+    return null;
   }
+  return config2.storage;
 };
-const getNetworkColor = (chainId, mode = "light") => {
-  switch (chainId) {
-    case ChainId.MAINNET:
-      return mode === "light" ? "#abf" : "#abf";
-    case ChainId.POLYGON:
-      return mode === "light" ? "#c7a6ff" : "#c7a6ff";
-    case ChainId.ARBITRUM:
-      return mode === "light" ? "#52A7E6" : "#52A7E6";
-    case ChainId.OPTIMISM:
-      return mode === "light" ? "#DB3132" : "#DB3132";
-    case ChainId.BSC:
-      return mode === "light" ? "#CB9C1D" : "#EEB445";
-    case ChainId.AVALANCHE:
-      return mode === "light" ? "#E84142" : "#E84142";
-    case ChainId.GNOSIS:
-      return mode === "light" ? "#00193C" : "#D8E8FF";
-    case ChainId.GOERLI:
-      return mode === "light" ? "#A77A00" : "#FFA700";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
-      return mode === "light" ? "#D68828" : "#FFA700";
-    default:
-      return mode === "light" ? "#abf" : "#abf";
-  }
-};
-const getNetworkBackgroundColor = (chainId, mode = "light") => {
-  switch (chainId) {
-    case ChainId.MAINNET:
-      return mode === "light" ? "#132362" : "#132362";
-    case ChainId.POLYGON:
-      return mode === "light" ? "#350881" : "#350881";
-    case ChainId.ARBITRUM:
-      return mode === "light" ? "#EDF7FF" : "#0C3754";
-    case ChainId.OPTIMISM:
-      return mode === "light" ? "#FFEAE9" : "#390B0C";
-    case ChainId.BSC:
-      return mode === "light" ? "#FFE8AB" : "#554018";
-    case ChainId.AVALANCHE:
-      return mode === "light" ? "#FBDFDF" : "#390B0C";
-    case ChainId.GNOSIS:
-      return mode === "light" ? "#D8E8FF" : "#00193C";
-    case ChainId.GOERLI:
-      return mode === "light" ? "#FFD871" : "#554018";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
-      return mode === "light" ? "#FFE8CD" : "#554018";
-    default:
-      return mode === "light" ? "#132362" : "#132362";
-  }
-};
-const getNetwork = (chainId) => {
-  const network2 = networks[chainId];
-  if (!network2) {
-    throw new Error(`Unknown network chainId: ${chainId}`);
-  }
-  return network2;
-};
-function walletClientToSigner(walletClient) {
-  var _chain$contracts;
-  const {
-    account: account2,
-    chain,
-    transport
-  } = walletClient;
-  const network2 = {
-    chainId: chain.id,
-    name: chain.name,
-    ensAddress: (_chain$contracts = chain.contracts) == null || (_chain$contracts = _chain$contracts.ensRegistry) == null ? void 0 : _chain$contracts.address
-  };
-  const provider2 = new Web3Provider(transport, network2);
-  const signer2 = provider2.getSigner(account2.address);
-  return signer2;
-}
-function publicClientToProvider(publicClient) {
-  var _chain$contracts2;
-  const {
-    chain,
-    transport
-  } = publicClient;
-  const network2 = {
-    chainId: chain.id,
-    name: chain.name,
-    ensAddress: (_chain$contracts2 = chain.contracts) == null || (_chain$contracts2 = _chain$contracts2.ensRegistry) == null ? void 0 : _chain$contracts2.address
-  };
-  if (transport.type === "fallback")
-    return new FallbackProvider(transport.transports.map(({
-      value
-    }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
-  return new JsonRpcProvider$1(transport.url, network2);
-}
-const signEthAuthProof = async (walletClient, storage) => {
-  const proofInformation = await storage.getItem(LocalStorageKey.EthAuthProof);
-  if (proofInformation) {
-    return proofInformation;
-  }
-  const proofSettings = await storage.getItem(LocalStorageKey.EthAuthSettings);
-  if (!proofSettings) {
-    throw new Error("No ETHAuth settings found");
-  }
-  const walletAddress = walletClient.account.address;
-  const proof = new Proof();
-  proof.address = walletAddress;
-  proof.claims.app = proofSettings.app || "app";
-  proof.claims.ogn = proofSettings.origin;
-  proof.claims.n = proofSettings.nonce;
-  proof.setExpiryIn(proofSettings.expiry ? Math.max(proofSettings.expiry, 200) : DEFAULT_SESSION_EXPIRATION);
-  const typedData = proof.messageTypedData();
-  typedData.domain.verifyingContract;
-  const signer2 = walletClientToSigner(walletClient);
-  const signature2 = await signer2._signTypedData(typedData.domain, typedData.types, typedData.message);
-  proof.signature = signature2;
-  const ethAuth = new ETHAuth();
-  const proofString = await ethAuth.encodeProof(proof, true);
-  return {
-    typedData,
-    proofString
-  };
-};
-const validateEthProof = async (walletClient, publicClient, proof) => {
-  const walletAddress = walletClient.account.address;
-  const ethAuth = new ETHAuth();
-  const decodedProof = await ethAuth.decodeProof(proof.proofString, true);
-  const provider2 = publicClientToProvider(publicClient);
-  const isValid2 = await sequence$1.utils.isValidTypedDataSignature(walletAddress, proof.typedData, decodedProof.signature, provider2);
-  return isValid2;
-};
-const capitalize$1 = (word) => {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-};
-const [useKitConfig, KitConfigContextProvider] = createGenericContext$1();
-const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext$1();
-const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext$1();
-const [useThemeContext, ThemeContextProvider] = createGenericContext$1();
-const [useWalletConfigContext, WalletConfigContextProvider] = createGenericContext$1();
-const useOpenConnectModal = () => {
-  const {
-    setOpenConnectModal,
-    openConnectModalState
-  } = useConnectModalContext();
-  return {
-    setOpenConnectModal,
-    openConnectModalState
-  };
-};
-const useTheme = () => {
-  const {
-    setTheme,
-    theme,
-    position,
-    setPosition
-  } = useThemeContext();
-  return {
-    setTheme,
-    theme,
-    position,
-    setPosition
-  };
-};
-const useWalletSettings = () => {
-  const {
-    setDisplayedAssets,
-    displayedAssets
-  } = useWalletConfigContext();
-  return {
-    displayedAssets,
-    setDisplayedAssets
-  };
+const useStorageItem = (key2) => {
+  const storage = useStorage();
+  return useQuery$1({
+    queryKey: ["storage", key2],
+    queryFn: async () => {
+      return storage == null ? void 0 : storage.getItem(key2);
+    },
+    retry: true,
+    enabled: !!storage
+  });
 };
 class Deferred {
   constructor() {
@@ -82733,330 +82400,6 @@ class Deferred {
     this._reject(value);
   }
 }
-const useProjectAccessKey = () => {
-  const {
-    projectAccessKey: projectAccessKey2
-  } = useKitConfig();
-  return projectAccessKey2;
-};
-const useAPIClient = () => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const apiClient = reactExports.useMemo(() => {
-    return new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
-  }, [projectAccessKey2]);
-  return apiClient;
-};
-const useMetadataClient = () => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const metadataClient = reactExports.useMemo(() => {
-    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
-  }, [projectAccessKey2]);
-  return metadataClient;
-};
-const useIndexerClient = (chainId) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
-  const network2 = networks[chainId];
-  if (!indexerClients.has(chainId)) {
-    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
-  }
-  const indexerClient = indexerClients.get(chainId);
-  if (!indexerClient) {
-    throw new Error("Indexer client not found");
-  }
-  return indexerClient;
-};
-const useIndexerClients = (chainIds) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
-  const result = /* @__PURE__ */ new Map();
-  for (const chainId of chainIds) {
-    const network2 = networks[chainId];
-    if (!indexerClients.has(chainId)) {
-      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
-    }
-    const indexerClient = indexerClients.get(chainId);
-    if (!indexerClient) {
-      throw new Error("Indexer client not found");
-    }
-    result.set(chainId, indexerClient);
-  }
-  return result;
-};
-const useStorage = () => {
-  const config2 = useConfig();
-  if (!config2.storage) {
-    return null;
-  }
-  return config2.storage;
-};
-const useStorageItem = (key2) => {
-  const storage = useStorage();
-  return useQuery$1({
-    queryKey: ["storage", key2],
-    queryFn: async () => {
-      return storage == null ? void 0 : storage.getItem(key2);
-    },
-    retry: true,
-    enabled: !!storage
-  });
-};
-const _excluded$5 = ["chainIds"];
-const time$1 = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
-  const res = await indexerClient.getEtherBalance({
-    accountAddress
-  });
-  const tokenBalance = {
-    chainId,
-    contractAddress: zeroAddress,
-    accountAddress,
-    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
-    contractType: ContractType$1.UNKNOWN,
-    blockHash: "",
-    blockNumber: 0,
-    tokenID: ""
-  };
-  return tokenBalance;
-};
-const getTokenBalances = async (indexerClient, args) => {
-  var _args$includeMetadata, _args$verifiedOnly;
-  const res = await indexerClient.getTokenBalances(_extends$5({
-    accountAddress: args.accountAddress,
-    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
-    }
-  }, args.contractAddress && {
-    contractAddress: args.contractAddress
-  }));
-  return (res == null ? void 0 : res.balances) || [];
-};
-const getBalances = async (indexerClient, chainId, args) => {
-  if (!args.accountAddress) {
-    return [];
-  }
-  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
-  return balances;
-};
-const useBalances = (_ref) => {
-  let {
-    chainIds
-  } = _ref, args = _objectWithoutPropertiesLoose$3(_ref, _excluded$5);
-  const indexerClients = useIndexerClients(chainIds);
-  return useQuery$1({
-    queryKey: ["balances", chainIds, args],
-    queryFn: async () => {
-      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
-      return res;
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const useCoinBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["coinBalance", args],
-    queryFn: async () => {
-      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
-        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
-        return res;
-      } else {
-        const res = await getTokenBalances(indexerClient, args);
-        return res[0];
-      }
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
-};
-const useCollectibleBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectibleBalance", args],
-    queryFn: async () => {
-      var _args$verifiedOnly2;
-      const res = await indexerClient.getTokenBalances({
-        accountAddress: args.accountAddress,
-        contractAddress: args.contractAddress,
-        tokenID: args.tokenId,
-        includeMetadata: true,
-        metadataOptions: {
-          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
-        }
-      });
-      return res.balances[0];
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
-  });
-};
-const getCollectionBalance = async (indexerClient, args) => {
-  var _args$includeMetadata2, _args$verifiedOnly3;
-  const res = await indexerClient.getTokenBalances({
-    accountAddress: args.accountAddress,
-    contractAddress: args.contractAddress,
-    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
-    }
-  });
-  return (res == null ? void 0 : res.balances) || [];
-};
-const useCollectionBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectionBalance", args],
-    queryFn: () => getCollectionBalance(indexerClient, args),
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
-  });
-};
-const useExchangeRate = (toCurrency) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["exchangeRate", toCurrency],
-    queryFn: async () => {
-      if (toCurrency === "USD") {
-        return 1;
-      }
-      const res = await apiClient.getExchangeRate({
-        toCurrency
-      });
-      return res.exchangeRate.value;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10
-  });
-};
-const getCoinPrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCoinPrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCoinPrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["coinPrices", tokens],
-    queryFn: () => getCoinPrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const getCollectiblePrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCollectiblePrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCollectiblePrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["useCollectiblePrices", tokens],
-    queryFn: () => getCollectiblePrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
-    queryFn: async () => {
-      const res = await metadataClient.getTokenMetadata({
-        chainID: String(chainId),
-        contractAddress,
-        tokenIDs: tokenIds
-      });
-      return res.tokenMetadata;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const useContractInfo = (chainId, contractAddress) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["contractInfo", chainId, contractAddress],
-    queryFn: async () => {
-      const res = await metadataClient.getContractInfo({
-        chainID: String(chainId),
-        contractAddress
-      });
-      return res.contractInfo;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const getTransactionHistory = async (indexerClient, {
-  contractAddress,
-  accountAddress,
-  tokenId,
-  page
-}) => {
-  const res = indexerClient.getTransactionHistory({
-    includeMetadata: true,
-    page,
-    filter: {
-      accountAddress,
-      contractAddress,
-      tokenID: tokenId
-    }
-  });
-  return res;
-};
-const useTransactionHistory = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useInfiniteQuery({
-    queryKey: ["transactionHistory", args],
-    queryFn: ({
-      pageParam
-    }) => {
-      return getTransactionHistory(indexerClient, _extends$5({}, args, {
-        page: {
-          page: pageParam
-        }
-      }));
-    },
-    getNextPageParam: ({
-      page
-    }) => {
-      if (!page.more) {
-        return void 0;
-      }
-      return (page == null ? void 0 : page.page) || 1;
-    },
-    initialPageParam: 1,
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
-};
 let _pendingConfirmation;
 function useWaasConfirmationHandler(waasConnector) {
   const [pendingRequestConfirmation, setPendingRequestConfirmation] = reactExports.useState();
@@ -83116,619 +82459,48 @@ function useWaasConfirmationHandler(waasConnector) {
   });
   return [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest];
 }
-let DecodingType = /* @__PURE__ */ function(DecodingType2) {
-  DecodingType2["APPROVE"] = "approve";
-  DecodingType2["TRANSFER"] = "transfer";
-  DecodingType2["SWAP"] = "swap";
-  DecodingType2["AWARD_ITEM"] = "awardItem";
-  DecodingType2["UNIMPLEMENTED"] = "unimplemented";
-  DecodingType2["UNKNOWN"] = "unknown";
-  return DecodingType2;
-}({});
-const transformArgs = (args) => {
-  return Object.fromEntries(args.map((arg, i2) => [arg.name && !arg.name.startsWith("unnamed") ? arg.name : `_${i2}`, Array.isArray(arg.value) ? arg.type.startsWith("(") && (arg.type.endsWith(")") || arg.type.endsWith(")[]")) ? transformArgs(arg.value) : arg.value : arg.value]));
-};
-const createTxnData = (to, call2, value, data) => {
-  const args = transformArgs(call2.args);
-  const byteSignature = hexDataSlice(data, 0, 4);
-  let objs = [];
-  switch (call2.signature) {
-    case "execute((bool,bool,uint256,address,uint256,bytes)[],uint256,bytes)":
-    case "selfExecute((bool,bool,uint256,address,uint256,bytes)[])": {
-      const txns = call2.args[0].value;
-      objs = txns.map((txn) => txn.call ? createTxnData(txn.target, txn.call, txn.value, txn.data) : {
-        to: txn.target,
-        signature: "",
-        byteSignature: hexDataSlice(txn.data, 0, 4),
-        methodName: "",
-        args: {},
-        objs: [],
-        value: BigNumber.from(txn.value).toString(),
-        data: hexlify(txn.data)
-      });
-    }
-  }
-  return {
-    to,
-    signature: call2.signature,
-    byteSignature,
-    methodName: call2.function,
-    args,
-    objs,
-    value: BigNumber.from(value).toString(),
-    data: hexlify(data)
-  };
-};
-const encodeTransactions = (transactions2) => {
-  return transactions2.map((transaction2) => {
-    if ("target" in transaction2) {
-      return transaction2;
-    } else {
-      return _extends$5({}, transaction2, {
-        target: transaction2.to
-      });
-    }
-  }).map((transaction2) => {
-    var _transaction$delegate, _transaction$revertOn, _transaction$gasLimit, _transaction$target, _transaction$value, _transaction$data;
-    return {
-      delegateCall: (_transaction$delegate = transaction2.delegateCall) != null ? _transaction$delegate : false,
-      revertOnError: (_transaction$revertOn = transaction2.revertOnError) != null ? _transaction$revertOn : false,
-      gasLimit: (_transaction$gasLimit = transaction2.gasLimit) != null ? _transaction$gasLimit : 0,
-      target: (_transaction$target = transaction2.target) != null ? _transaction$target : "0x0000000000000000000000000000000000000000",
-      value: (_transaction$value = transaction2.value) != null ? _transaction$value : 0,
-      data: (_transaction$data = transaction2.data) != null ? _transaction$data : "0x"
-    };
-  });
-};
-let ByteSignature = /* @__PURE__ */ function(ByteSignature2) {
-  ByteSignature2["SEQUENCE_DEPLOY"] = "0x32c02a14";
-  ByteSignature2["SEQUENCE_PUBLISH_CONFIG"] = "0x44d466c2";
-  ByteSignature2["SEQUENCE_UPDATE_IMAGE_HASH"] = "0x29561426";
-  ByteSignature2["SEQUENCE_UPDATE_IMPLEMENTATION"] = "0x025b22bc";
-  ByteSignature2["SEQUENCE_REQUIRE_SESSION_NONCE"] = "0x8853baa0";
-  ByteSignature2["EXECUTE"] = "0x7a9a1628";
-  ByteSignature2["SELF_EXECUTE"] = "0x61c2926c";
-  ByteSignature2["APPROVE"] = "0x095ea7b3";
-  ByteSignature2["TRANSFER"] = "0xa9059cbb";
-  ByteSignature2["DEPOSIT"] = "0xd0e30db0";
-  ByteSignature2["WITHDRAW"] = "0x2e1a7d4d";
-  ByteSignature2["ERC721_SAFE_TRANSFER_FROM"] = "0x42842e0e";
-  ByteSignature2["ERC721_SAFE_TRANSFER_FROM_WITH_DATA"] = "0xb88d4fde";
-  ByteSignature2["ERC1155_SAFE_TRANSFER_FROM"] = "0xf242432a";
-  ByteSignature2["ERC1155_SAFE_BATCH_TRANSFER_FROM"] = "0x2eb2c2d6";
-  ByteSignature2["NIFTYSWAP_BUY_TOKENS"] = "0xd93e8aaa";
-  ByteSignature2["TRANSFORM_ERC20"] = "0x415565b0";
-  ByteSignature2["OUTBOUND_TRANSFER_TO"] = "0xa44bbb15";
-  ByteSignature2["CELER_SEND"] = "0xa5977fbb";
-  ByteSignature2["UNISWAPV3_MULTICALL"] = "0x5ae401dc";
-  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_TOKENS"] = "0x38ed1739";
-  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_TOKENS"] = "0x8803dbee";
-  ByteSignature2["UNISWAPV2_SWAP_EXACT_ETH_FOR_TOKENS"] = "0x7ff36ab5";
-  ByteSignature2["UNISWAPV2_SWAP_ETH_FOR_EXACT_TOKENS"] = "0xfb3bdb41";
-  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_ETH"] = "0x4a25d94a";
-  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_ETH"] = "0x18cbafe5";
-  ByteSignature2["AWARD_ITEM"] = "0xcf378343";
-  return ByteSignature2;
-}({});
-const decodeTxnData = async (apiClient, txns) => {
-  const mainModule2 = new Interface(mainModuleAbi);
-  const callData = mainModule2.encodeFunctionData("selfExecute", [txns]);
-  try {
-    const {
-      call: call2
-    } = await apiClient.decodeContractCall({
-      callData
-    });
-    return createTxnData("", call2, 0, callData);
-  } catch (err) {
-    throw err;
-  }
-};
-const decodeTransactions = async (apiClient, accountAddress, txns) => {
-  const encodedTxns = encodeTransactions(txns);
-  const decodedTxnDatas = (await decodeTxnData(apiClient, encodedTxns)).objs;
-  const from = utils.getAddress(accountAddress);
-  const txnProps = encodedTxns.map((txn, i2) => {
-    const decodedTxnData = decodedTxnDatas[i2];
-    const data = txn.data.toString();
-    const value = BigNumber.from(txn.value).toString();
-    const target = txn.target;
-    if (data === "0x" || !data) {
+const getModalPositionCss = (position) => {
+  switch (position) {
+    case "top-right":
       return {
-        signature: "",
-        byteSignature: "",
-        type: DecodingType.TRANSFER,
-        methodName: "nativeTokenTransfer",
-        transferType: TxnTransferType.SEND,
-        contractAddress: AddressZero,
-        contractType: ContractType$1.UNKNOWN,
-        from,
-        to: utils.getAddress(txn.target),
-        tokenIds: ["0"],
-        amounts: [value],
-        target,
-        value
+        top: "0px",
+        right: "0px"
       };
-    }
-    if (!decodedTxnData) {
-      return void 0;
-    }
-    const contractAddress = utils.getAddress(txn.target);
-    const baseDecoding = {
-      type: DecodingType.UNIMPLEMENTED,
-      signature: decodedTxnData.signature,
-      byteSignature: decodedTxnData.byteSignature,
-      methodName: decodedTxnData.methodName,
-      target,
-      value
-    };
-    switch (decodedTxnData.byteSignature) {
-      case ByteSignature.TRANSFER: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC20,
-          from,
-          to: utils.getAddress(args.recipient),
-          tokenIds: ["0"],
-          amounts: [String(args.amount)]
-        });
-      }
-      case ByteSignature.ERC721_SAFE_TRANSFER_FROM:
-      case ByteSignature.ERC721_SAFE_TRANSFER_FROM_WITH_DATA: {
-        const args = decodedTxnData.args;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC721,
-          from,
-          to: utils.getAddress(args.to),
-          tokenIds: [args.tokenId],
-          amounts: ["1"]
-        });
-      }
-      case ByteSignature.ERC1155_SAFE_TRANSFER_FROM: {
-        const args = decodedTxnData.args;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC1155,
-          from,
-          to: utils.getAddress(args._to),
-          tokenIds: [args._id],
-          amounts: [args._amount]
-        });
-      }
-      case ByteSignature.ERC1155_SAFE_BATCH_TRANSFER_FROM: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.TRANSFER,
-          transferType: TxnTransferType.SEND,
-          contractAddress,
-          contractType: ContractType$1.ERC1155,
-          from,
-          to: utils.getAddress(args._to),
-          tokenIds: args._ids,
-          amounts: args._amounts
-        });
-      }
-      case ByteSignature.AWARD_ITEM: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
-          type: DecodingType.AWARD_ITEM,
-          contractAddress,
-          // @ts-ignore-next-line
-          to: utils.getAddress(args._0),
-          amount: "1"
-        });
-      }
-    }
-    return void 0;
-  });
-  return txnProps.flatMap((txn) => {
-    if (txn) {
-      return [txn];
-    }
-    return [];
-  });
-};
-const mainModuleAbi = [{
-  type: "function",
-  name: "nonce",
-  constant: true,
-  inputs: [],
-  outputs: [{
-    type: "uint256"
-  }],
-  payable: false,
-  stateMutability: "view"
-}, {
-  type: "function",
-  name: "readNonce",
-  constant: true,
-  inputs: [{
-    type: "uint256"
-  }],
-  outputs: [{
-    type: "uint256"
-  }],
-  payable: false,
-  stateMutability: "view"
-}, {
-  type: "function",
-  name: "updateImplementation",
-  constant: false,
-  inputs: [{
-    type: "address"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "selfExecute",
-  constant: false,
-  inputs: [{
-    components: [{
-      type: "bool",
-      name: "delegateCall"
-    }, {
-      type: "bool",
-      name: "revertOnError"
-    }, {
-      type: "uint256",
-      name: "gasLimit"
-    }, {
-      type: "address",
-      name: "target"
-    }, {
-      type: "uint256",
-      name: "value"
-    }, {
-      type: "bytes",
-      name: "data"
-    }],
-    type: "tuple[]"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "execute",
-  constant: false,
-  inputs: [{
-    components: [{
-      type: "bool",
-      name: "delegateCall"
-    }, {
-      type: "bool",
-      name: "revertOnError"
-    }, {
-      type: "uint256",
-      name: "gasLimit"
-    }, {
-      type: "address",
-      name: "target"
-    }, {
-      type: "uint256",
-      name: "value"
-    }, {
-      type: "bytes",
-      name: "data"
-    }],
-    type: "tuple[]"
-  }, {
-    type: "uint256"
-  }, {
-    type: "bytes"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "createContract",
-  inputs: [{
-    type: "bytes"
-  }],
-  payable: true,
-  stateMutability: "payable"
-}, {
-  type: "function",
-  name: "setExtraImageHash",
-  constant: false,
-  inputs: [{
-    type: "bytes32",
-    name: "imageHash"
-  }, {
-    type: "uint256",
-    name: "expiration"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}];
-const CollectibleTileImage$1 = ({
-  imageUrl
-}) => {
-  return /* @__PURE__ */ React.createElement(Card, {
-    padding: "0",
-    aspectRatio: "1/1",
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    borderRadius: "sm",
-    background: "backgroundSecondary"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    style: {
-      height: "100%"
-    },
-    src: imageUrl
-  }));
-};
-const TxnDetailsSkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 30,
-      height: 30
-    },
-    borderRadius: "circle"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 100,
-      height: 14
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 75,
-      height: 14
-    }
-  }))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    alignItems: "flex-end"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 100,
-      height: 14
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 50,
-      height: 12
-    }
-  })));
-};
-const TxnDetails = ({
-  address,
-  txs,
-  chainId
-}) => {
-  const apiClient = useAPIClient();
-  const [decodingType, setDecodingType] = reactExports.useState(void 0);
-  const [transferProps, setTransferProps] = reactExports.useState([]);
-  const [awardItemProps, setAwardItemProps] = reactExports.useState([]);
-  const getTxnProps = async () => {
-    const decodedTxnDatas = await decodeTransactions(apiClient, address, txs);
-    setDecodingType(decodedTxnDatas[0].type);
-    if (decodedTxnDatas[0].type === "transfer") {
-      setTransferProps(decodedTxnDatas);
-    }
-    if (decodedTxnDatas[0].type === "awardItem") {
-      setAwardItemProps(decodedTxnDatas);
-    }
-  };
-  reactExports.useEffect(() => {
-    getTxnProps();
-  }, []);
-  if (!decodingType) {
-    return /* @__PURE__ */ React.createElement(TxnDetailsSkeleton, null);
+    case "top-left":
+      return {
+        top: "0px",
+        left: "0px"
+      };
+    case "top-center":
+      return {
+        top: "0px"
+      };
+    case "bottom-right":
+      return {
+        bottom: "0px",
+        right: "0px"
+      };
+    case "bottom-left":
+      return {
+        bottom: "0px",
+        left: "0px"
+      };
+    case "bottom-center":
+      return {
+        bottom: "0px"
+      };
+    case "middle-right":
+      return {
+        right: "0px"
+      };
+    case "middle-left":
+      return {
+        left: "0px"
+      };
+    case "center":
+    default:
+      return {};
   }
-  if (decodingType === DecodingType.UNKNOWN) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null);
-  }
-  if (transferProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(TransferItemInfo, {
-      address,
-      transferProps,
-      chainId
-    });
-  }
-  if (awardItemProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(AwardItemInfo, {
-      awardItemProps: awardItemProps[0]
-    });
-  }
-};
-const TransferItemInfo = ({
-  address,
-  transferProps,
-  chainId
-}) => {
-  var _transferProps$, _transferProps$2, _transferProps$3, _transferProps$4, _transferProps$5, _transferProps$0$toke, _transferProps$6, _tokenBalance$contrac, _tokenMetadata$, _tokenBalance$contrac2, _tokenMetadata$2, _tokenBalance$contrac3, _tokenBalance$contrac4, _transferProps$0$amou, _transferProps$7, _transferProps$8, _transferProps$0$type, _transferProps$9, _tokenMetadata$3;
-  const {
-    chains: chains2
-  } = useConfig();
-  const contractAddress = (_transferProps$ = transferProps[0]) == null ? void 0 : _transferProps$.contractAddress;
-  const toAddress = (_transferProps$2 = transferProps[0]) == null ? void 0 : _transferProps$2.to;
-  const isNativeCoin = contractAddress ? compareAddress$2(contractAddress, AddressZero) : true;
-  const is1155 = ((_transferProps$3 = transferProps[0]) == null ? void 0 : _transferProps$3.contractType) === ContractType$1.ERC1155;
-  const isNFT = ((_transferProps$4 = transferProps[0]) == null ? void 0 : _transferProps$4.contractType) === ContractType$1.ERC1155 || ((_transferProps$5 = transferProps[0]) == null ? void 0 : _transferProps$5.contractType) === ContractType$1.ERC721;
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  const {
-    data: balances = []
-  } = useBalances({
-    chainIds: [chainId],
-    accountAddress: address,
-    contractAddress
-  });
-  const {
-    data: tokenMetadata
-  } = useTokenMetadata(chainId, contractAddress, (_transferProps$0$toke = (_transferProps$6 = transferProps[0]) == null ? void 0 : _transferProps$6.tokenIds) != null ? _transferProps$0$toke : []);
-  const tokenBalance = contractAddress ? balances.find((b2) => compareAddress$2(b2.contractAddress, contractAddress)) : void 0;
-  const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
-  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image : tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.logoURI;
-  const name2 = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata == null || (_tokenMetadata$2 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$2.name : (tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.name) || "";
-  const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? "" : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
-  const amountSending = (_transferProps$0$amou = (_transferProps$7 = transferProps[0]) == null || (_transferProps$7 = _transferProps$7.amounts) == null ? void 0 : _transferProps$7[0]) != null ? _transferProps$0$amou : (_transferProps$8 = transferProps[0]) == null ? void 0 : _transferProps$8.value;
-  const showSquareImage = isNFT;
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, capitalize$1((_transferProps$0$type = (_transferProps$9 = transferProps[0]) == null ? void 0 : _transferProps$9.type) != null ? _transferProps$0$type : ""))), /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "2"
-  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
-    imageUrl
-  })) : /* @__PURE__ */ React.createElement(TokenImage, {
-    src: imageUrl,
-    symbol,
-    size: "md"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, name2)), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    variant: "normal"
-  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    borderRadius: "md",
-    background: "backgroundSecondary",
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "4",
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: toAddress,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 12)}`)))));
-};
-const AwardItemInfo = ({
-  awardItemProps
-}) => {
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, "Mint")), /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
-    imageUrl: "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0/image.jpeg"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, "Waas Demo NFT")), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    variant: "normal"
-  }, awardItemProps.amount)))), awardItemProps.to !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    borderRadius: "md",
-    background: "backgroundSecondary",
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "4",
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: awardItemProps.to,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$2(awardItemProps.to.substring(2), 12)}`)))));
-};
-const truncateAtMiddle$2 = (text2, truncateAt) => {
-  let finalText = text2;
-  if (text2.length >= truncateAt) {
-    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
-  }
-  return finalText;
 };
 function useEmailAuth({
   connector,
@@ -83795,6 +82567,15 @@ function useEmailAuth({
     sendChallengeAnswer: instance ? sendChallengeAnswer : void 0
   };
 }
+const isEmailValid = (email2) => {
+  return /^\S+@\S+\.\S{2,}$/.test(email2);
+};
+const compareAddress$2 = (a2, b2) => {
+  return a2.toLowerCase() === b2.toLowerCase();
+};
+const capitalize$1 = (word) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
 const Banner = ({
   config: _config = {}
 }) => {
@@ -84547,6 +83328,741 @@ const SequenceLogo$1 = (_ref) => {
     width: "396"
   })))));
 };
+const useProjectAccessKey = () => {
+  const {
+    projectAccessKey: projectAccessKey2
+  } = useKitConfig();
+  return projectAccessKey2;
+};
+const useAPIClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const apiClient = reactExports.useMemo(() => {
+    return new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
+  }, [projectAccessKey2]);
+  return apiClient;
+};
+const nativeTokenInfos = {
+  [ChainId.MAINNET]: {
+    name: "Ethereum",
+    symbol: "ETH",
+    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
+    decimals: 18,
+    blockExplorerName: "Etherscan",
+    blockExplorerUrl: "https://etherscan.io"
+  },
+  [ChainId.GOERLI]: {
+    name: "Goerli",
+    symbol: "ETH",
+    decimals: 18,
+    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
+    blockExplorerName: "Etherscan (Goerli)",
+    blockExplorerUrl: "https://goerli.etherscan.io"
+  },
+  [ChainId.OPTIMISM]: {
+    name: "Optimism",
+    symbol: "OP",
+    logoURI: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
+    decimals: 18,
+    blockExplorerName: "Etherscan (Optimism)",
+    blockExplorerUrl: "https://optimistic.etherscan.io"
+  },
+  [ChainId.BSC]: {
+    name: "BNB",
+    symbol: "BNB",
+    logoURI: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png",
+    decimals: 18,
+    blockExplorerName: "BscScan",
+    blockExplorerUrl: "https://bscscan.com"
+  },
+  [ChainId.GNOSIS]: {
+    name: "Gnosis",
+    symbol: "GNO",
+    logoURI: "https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png",
+    decimals: 18,
+    blockExplorerUrl: "https://gnosisscan.io",
+    blockExplorerName: "Gnosis Scan"
+  },
+  [ChainId.POLYGON]: {
+    name: "Polygon",
+    symbol: "MATIC",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "Polyscan",
+    blockExplorerUrl: "https://polygonscan.com"
+  },
+  [ChainId.POLYGON_ZKEVM]: {
+    name: "Polygon zkEVM",
+    symbol: "ETH",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "PolygonScan",
+    blockExplorerUrl: "https://zkevm.polygonscan.com"
+  },
+  [ChainId.ARBITRUM]: {
+    name: "Arbitrum",
+    symbol: "ARB",
+    logoURI: "https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png",
+    decimals: 18,
+    blockExplorerName: "Arbiscan",
+    blockExplorerUrl: "https://arbiscan.io"
+  },
+  [ChainId.AVALANCHE]: {
+    name: "Avalanche",
+    symbol: "AVAX",
+    logoURI: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png",
+    decimals: 18,
+    blockExplorerName: "Snowtrace",
+    blockExplorerUrl: "https://snowtrace.io"
+  },
+  [ChainId.POLYGON_MUMBAI]: {
+    name: "Mumbai",
+    symbol: "MATIC",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "Polyscan (Mumbai)",
+    blockExplorerUrl: "https://mumbai.polygonscan.com"
+  },
+  [ChainId.POLYGON_AMOY]: {
+    name: "Amoy",
+    symbol: "MATIC",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "Polyscan (Amoy)",
+    blockExplorerUrl: "https://amoy.polygonscan.com"
+  }
+};
+const defaultNativeTokenInfo = (chainId, wagmiChains) => {
+  const foundChain = wagmiChains.find((chain) => chain.id === chainId);
+  if (foundChain) {
+    var _foundChain$blockExpl, _foundChain$blockExpl2;
+    return {
+      name: foundChain.nativeCurrency.name,
+      symbol: foundChain.nativeCurrency.symbol,
+      decimals: foundChain.nativeCurrency.decimals,
+      logoURI: nativeTokenInfos[1].logoURI,
+      blockExplorerName: (_foundChain$blockExpl = foundChain.blockExplorers) == null ? void 0 : _foundChain$blockExpl.default.name,
+      blockExplorerUrl: (_foundChain$blockExpl2 = foundChain.blockExplorers) == null ? void 0 : _foundChain$blockExpl2.default.url
+    };
+  }
+  return;
+};
+const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
+  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[1];
+};
+let DecodingType = /* @__PURE__ */ function(DecodingType2) {
+  DecodingType2["APPROVE"] = "approve";
+  DecodingType2["TRANSFER"] = "transfer";
+  DecodingType2["SWAP"] = "swap";
+  DecodingType2["AWARD_ITEM"] = "awardItem";
+  DecodingType2["UNIMPLEMENTED"] = "unimplemented";
+  DecodingType2["UNKNOWN"] = "unknown";
+  return DecodingType2;
+}({});
+const transformArgs = (args) => {
+  return Object.fromEntries(args.map((arg, i2) => [arg.name && !arg.name.startsWith("unnamed") ? arg.name : `_${i2}`, Array.isArray(arg.value) ? arg.type.startsWith("(") && (arg.type.endsWith(")") || arg.type.endsWith(")[]")) ? transformArgs(arg.value) : arg.value : arg.value]));
+};
+const createTxnData = (to, call2, value, data) => {
+  const args = transformArgs(call2.args);
+  const byteSignature = hexDataSlice(data, 0, 4);
+  let objs = [];
+  switch (call2.signature) {
+    case "execute((bool,bool,uint256,address,uint256,bytes)[],uint256,bytes)":
+    case "selfExecute((bool,bool,uint256,address,uint256,bytes)[])": {
+      const txns = call2.args[0].value;
+      objs = txns.map((txn) => txn.call ? createTxnData(txn.target, txn.call, txn.value, txn.data) : {
+        to: txn.target,
+        signature: "",
+        byteSignature: hexDataSlice(txn.data, 0, 4),
+        methodName: "",
+        args: {},
+        objs: [],
+        value: BigNumber.from(txn.value).toString(),
+        data: hexlify(txn.data)
+      });
+    }
+  }
+  return {
+    to,
+    signature: call2.signature,
+    byteSignature,
+    methodName: call2.function,
+    args,
+    objs,
+    value: BigNumber.from(value).toString(),
+    data: hexlify(data)
+  };
+};
+const encodeTransactions = (transactions2) => {
+  return transactions2.map((transaction2) => {
+    if ("target" in transaction2) {
+      return transaction2;
+    } else {
+      return _extends$5({}, transaction2, {
+        target: transaction2.to
+      });
+    }
+  }).map((transaction2) => {
+    var _transaction$delegate, _transaction$revertOn, _transaction$gasLimit, _transaction$target, _transaction$value, _transaction$data;
+    return {
+      delegateCall: (_transaction$delegate = transaction2.delegateCall) != null ? _transaction$delegate : false,
+      revertOnError: (_transaction$revertOn = transaction2.revertOnError) != null ? _transaction$revertOn : false,
+      gasLimit: (_transaction$gasLimit = transaction2.gasLimit) != null ? _transaction$gasLimit : 0,
+      target: (_transaction$target = transaction2.target) != null ? _transaction$target : "0x0000000000000000000000000000000000000000",
+      value: (_transaction$value = transaction2.value) != null ? _transaction$value : 0,
+      data: (_transaction$data = transaction2.data) != null ? _transaction$data : "0x"
+    };
+  });
+};
+let ByteSignature = /* @__PURE__ */ function(ByteSignature2) {
+  ByteSignature2["SEQUENCE_DEPLOY"] = "0x32c02a14";
+  ByteSignature2["SEQUENCE_PUBLISH_CONFIG"] = "0x44d466c2";
+  ByteSignature2["SEQUENCE_UPDATE_IMAGE_HASH"] = "0x29561426";
+  ByteSignature2["SEQUENCE_UPDATE_IMPLEMENTATION"] = "0x025b22bc";
+  ByteSignature2["SEQUENCE_REQUIRE_SESSION_NONCE"] = "0x8853baa0";
+  ByteSignature2["EXECUTE"] = "0x7a9a1628";
+  ByteSignature2["SELF_EXECUTE"] = "0x61c2926c";
+  ByteSignature2["APPROVE"] = "0x095ea7b3";
+  ByteSignature2["TRANSFER"] = "0xa9059cbb";
+  ByteSignature2["DEPOSIT"] = "0xd0e30db0";
+  ByteSignature2["WITHDRAW"] = "0x2e1a7d4d";
+  ByteSignature2["ERC721_SAFE_TRANSFER_FROM"] = "0x42842e0e";
+  ByteSignature2["ERC721_SAFE_TRANSFER_FROM_WITH_DATA"] = "0xb88d4fde";
+  ByteSignature2["ERC1155_SAFE_TRANSFER_FROM"] = "0xf242432a";
+  ByteSignature2["ERC1155_SAFE_BATCH_TRANSFER_FROM"] = "0x2eb2c2d6";
+  ByteSignature2["NIFTYSWAP_BUY_TOKENS"] = "0xd93e8aaa";
+  ByteSignature2["TRANSFORM_ERC20"] = "0x415565b0";
+  ByteSignature2["OUTBOUND_TRANSFER_TO"] = "0xa44bbb15";
+  ByteSignature2["CELER_SEND"] = "0xa5977fbb";
+  ByteSignature2["UNISWAPV3_MULTICALL"] = "0x5ae401dc";
+  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_TOKENS"] = "0x38ed1739";
+  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_TOKENS"] = "0x8803dbee";
+  ByteSignature2["UNISWAPV2_SWAP_EXACT_ETH_FOR_TOKENS"] = "0x7ff36ab5";
+  ByteSignature2["UNISWAPV2_SWAP_ETH_FOR_EXACT_TOKENS"] = "0xfb3bdb41";
+  ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_ETH"] = "0x4a25d94a";
+  ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_ETH"] = "0x18cbafe5";
+  ByteSignature2["AWARD_ITEM"] = "0xcf378343";
+  return ByteSignature2;
+}({});
+const decodeTxnData = async (apiClient, txns) => {
+  const mainModule2 = new Interface(mainModuleAbi);
+  const callData = mainModule2.encodeFunctionData("selfExecute", [txns]);
+  try {
+    const {
+      call: call2
+    } = await apiClient.decodeContractCall({
+      callData
+    });
+    return createTxnData("", call2, 0, callData);
+  } catch (err) {
+    throw err;
+  }
+};
+const decodeTransactions = async (apiClient, accountAddress, txns) => {
+  const encodedTxns = encodeTransactions(txns);
+  const decodedTxnDatas = (await decodeTxnData(apiClient, encodedTxns)).objs;
+  const from = utils.getAddress(accountAddress);
+  const txnProps = encodedTxns.map((txn, i2) => {
+    const decodedTxnData = decodedTxnDatas[i2];
+    const data = txn.data.toString();
+    const value = BigNumber.from(txn.value).toString();
+    const target = txn.target;
+    if (data === "0x" || !data) {
+      return {
+        signature: "",
+        byteSignature: "",
+        type: DecodingType.TRANSFER,
+        methodName: "nativeTokenTransfer",
+        transferType: TxnTransferType.SEND,
+        contractAddress: AddressZero,
+        contractType: ContractType$1.UNKNOWN,
+        from,
+        to: utils.getAddress(txn.target),
+        tokenIds: ["0"],
+        amounts: [value],
+        target,
+        value
+      };
+    }
+    if (!decodedTxnData) {
+      return void 0;
+    }
+    const contractAddress = utils.getAddress(txn.target);
+    const baseDecoding = {
+      type: DecodingType.UNIMPLEMENTED,
+      signature: decodedTxnData.signature,
+      byteSignature: decodedTxnData.byteSignature,
+      methodName: decodedTxnData.methodName,
+      target,
+      value
+    };
+    switch (decodedTxnData.byteSignature) {
+      case ByteSignature.TRANSFER: {
+        const {
+          args
+        } = decodedTxnData;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC20,
+          from,
+          to: utils.getAddress(args.recipient),
+          tokenIds: ["0"],
+          amounts: [String(args.amount)]
+        });
+      }
+      case ByteSignature.ERC721_SAFE_TRANSFER_FROM:
+      case ByteSignature.ERC721_SAFE_TRANSFER_FROM_WITH_DATA: {
+        const args = decodedTxnData.args;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC721,
+          from,
+          to: utils.getAddress(args.to),
+          tokenIds: [args.tokenId],
+          amounts: ["1"]
+        });
+      }
+      case ByteSignature.ERC1155_SAFE_TRANSFER_FROM: {
+        const args = decodedTxnData.args;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC1155,
+          from,
+          to: utils.getAddress(args._to),
+          tokenIds: [args._id],
+          amounts: [args._amount]
+        });
+      }
+      case ByteSignature.ERC1155_SAFE_BATCH_TRANSFER_FROM: {
+        const {
+          args
+        } = decodedTxnData;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.TRANSFER,
+          transferType: TxnTransferType.SEND,
+          contractAddress,
+          contractType: ContractType$1.ERC1155,
+          from,
+          to: utils.getAddress(args._to),
+          tokenIds: args._ids,
+          amounts: args._amounts
+        });
+      }
+      case ByteSignature.AWARD_ITEM: {
+        const {
+          args
+        } = decodedTxnData;
+        return _extends$5({}, baseDecoding, {
+          type: DecodingType.AWARD_ITEM,
+          contractAddress,
+          // @ts-ignore-next-line
+          to: utils.getAddress(args._0),
+          amount: "1"
+        });
+      }
+    }
+    return void 0;
+  });
+  return txnProps.flatMap((txn) => {
+    if (txn) {
+      return [txn];
+    }
+    return [];
+  });
+};
+const mainModuleAbi = [{
+  type: "function",
+  name: "nonce",
+  constant: true,
+  inputs: [],
+  outputs: [{
+    type: "uint256"
+  }],
+  payable: false,
+  stateMutability: "view"
+}, {
+  type: "function",
+  name: "readNonce",
+  constant: true,
+  inputs: [{
+    type: "uint256"
+  }],
+  outputs: [{
+    type: "uint256"
+  }],
+  payable: false,
+  stateMutability: "view"
+}, {
+  type: "function",
+  name: "updateImplementation",
+  constant: false,
+  inputs: [{
+    type: "address"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}, {
+  type: "function",
+  name: "selfExecute",
+  constant: false,
+  inputs: [{
+    components: [{
+      type: "bool",
+      name: "delegateCall"
+    }, {
+      type: "bool",
+      name: "revertOnError"
+    }, {
+      type: "uint256",
+      name: "gasLimit"
+    }, {
+      type: "address",
+      name: "target"
+    }, {
+      type: "uint256",
+      name: "value"
+    }, {
+      type: "bytes",
+      name: "data"
+    }],
+    type: "tuple[]"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}, {
+  type: "function",
+  name: "execute",
+  constant: false,
+  inputs: [{
+    components: [{
+      type: "bool",
+      name: "delegateCall"
+    }, {
+      type: "bool",
+      name: "revertOnError"
+    }, {
+      type: "uint256",
+      name: "gasLimit"
+    }, {
+      type: "address",
+      name: "target"
+    }, {
+      type: "uint256",
+      name: "value"
+    }, {
+      type: "bytes",
+      name: "data"
+    }],
+    type: "tuple[]"
+  }, {
+    type: "uint256"
+  }, {
+    type: "bytes"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}, {
+  type: "function",
+  name: "createContract",
+  inputs: [{
+    type: "bytes"
+  }],
+  payable: true,
+  stateMutability: "payable"
+}, {
+  type: "function",
+  name: "setExtraImageHash",
+  constant: false,
+  inputs: [{
+    type: "bytes32",
+    name: "imageHash"
+  }, {
+    type: "uint256",
+    name: "expiration"
+  }],
+  outputs: [],
+  payable: false,
+  stateMutability: "nonpayable"
+}];
+const CollectibleTileImage$1 = ({
+  imageUrl
+}) => {
+  return /* @__PURE__ */ React.createElement(Card, {
+    padding: "0",
+    aspectRatio: "1/1",
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+    borderRadius: "sm",
+    background: "backgroundSecondary"
+  }, /* @__PURE__ */ React.createElement(Image$1, {
+    style: {
+      height: "100%"
+    },
+    src: imageUrl
+  }));
+};
+const TxnDetailsSkeleton = () => {
+  return /* @__PURE__ */ React.createElement(Box, {
+    alignItems: "center",
+    justifyContent: "space-between"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 30,
+      height: 30
+    },
+    borderRadius: "circle"
+  }), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    gap: "2",
+    alignItems: "flex-start"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 100,
+      height: 14
+    }
+  }), /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 75,
+      height: 14
+    }
+  }))), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    gap: "2",
+    alignItems: "flex-end"
+  }, /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 100,
+      height: 14
+    }
+  }), /* @__PURE__ */ React.createElement(Skeleton, {
+    style: {
+      width: 50,
+      height: 12
+    }
+  })));
+};
+const TxnDetails = ({
+  address,
+  txs,
+  chainId
+}) => {
+  const apiClient = useAPIClient();
+  const [decodingType, setDecodingType] = reactExports.useState(void 0);
+  const [transferProps, setTransferProps] = reactExports.useState([]);
+  const [awardItemProps, setAwardItemProps] = reactExports.useState([]);
+  const getTxnProps = async () => {
+    const decodedTxnDatas = await decodeTransactions(apiClient, address, txs);
+    setDecodingType(decodedTxnDatas[0].type);
+    if (decodedTxnDatas[0].type === "transfer") {
+      setTransferProps(decodedTxnDatas);
+    }
+    if (decodedTxnDatas[0].type === "awardItem") {
+      setAwardItemProps(decodedTxnDatas);
+    }
+  };
+  reactExports.useEffect(() => {
+    getTxnProps();
+  }, []);
+  if (!decodingType) {
+    return /* @__PURE__ */ React.createElement(TxnDetailsSkeleton, null);
+  }
+  if (decodingType === DecodingType.UNKNOWN) {
+    return /* @__PURE__ */ React.createElement(React.Fragment, null);
+  }
+  if (transferProps.length >= 1) {
+    return /* @__PURE__ */ React.createElement(TransferItemInfo, {
+      address,
+      transferProps,
+      chainId
+    });
+  }
+  if (awardItemProps.length >= 1) {
+    return /* @__PURE__ */ React.createElement(AwardItemInfo, {
+      awardItemProps: awardItemProps[0]
+    });
+  }
+};
+const TransferItemInfo = ({
+  address,
+  transferProps,
+  chainId
+}) => {
+  var _transferProps$, _transferProps$2, _transferProps$3, _transferProps$4, _transferProps$5, _transferProps$0$toke, _transferProps$6, _tokenBalance$contrac, _tokenMetadata$, _tokenBalance$contrac2, _tokenMetadata$2, _tokenBalance$contrac3, _tokenBalance$contrac4, _transferProps$0$amou, _transferProps$7, _transferProps$8, _transferProps$0$type, _transferProps$9, _tokenMetadata$3;
+  const {
+    chains: chains2
+  } = useConfig();
+  const contractAddress = (_transferProps$ = transferProps[0]) == null ? void 0 : _transferProps$.contractAddress;
+  const toAddress = (_transferProps$2 = transferProps[0]) == null ? void 0 : _transferProps$2.to;
+  const isNativeCoin = contractAddress ? compareAddress$2(contractAddress, AddressZero) : true;
+  const is1155 = ((_transferProps$3 = transferProps[0]) == null ? void 0 : _transferProps$3.contractType) === ContractType$1.ERC1155;
+  const isNFT = ((_transferProps$4 = transferProps[0]) == null ? void 0 : _transferProps$4.contractType) === ContractType$1.ERC1155 || ((_transferProps$5 = transferProps[0]) == null ? void 0 : _transferProps$5.contractType) === ContractType$1.ERC721;
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
+  const {
+    data: balances = []
+  } = useBalances({
+    chainIds: [chainId],
+    accountAddress: address,
+    contractAddress
+  });
+  const {
+    data: tokenMetadata
+  } = useTokenMetadata(chainId, contractAddress, (_transferProps$0$toke = (_transferProps$6 = transferProps[0]) == null ? void 0 : _transferProps$6.tokenIds) != null ? _transferProps$0$toke : []);
+  const tokenBalance = contractAddress ? balances.find((b2) => compareAddress$2(b2.contractAddress, contractAddress)) : void 0;
+  const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
+  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image : tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.logoURI;
+  const name2 = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata == null || (_tokenMetadata$2 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$2.name : (tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.name) || "";
+  const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? "" : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
+  const amountSending = (_transferProps$0$amou = (_transferProps$7 = transferProps[0]) == null || (_transferProps$7 = _transferProps$7.amounts) == null ? void 0 : _transferProps$7[0]) != null ? _transferProps$0$amou : (_transferProps$8 = transferProps[0]) == null ? void 0 : _transferProps$8.value;
+  const showSquareImage = isNFT;
+  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, capitalize$1((_transferProps$0$type = (_transferProps$9 = transferProps[0]) == null ? void 0 : _transferProps$9.type) != null ? _transferProps$0$type : ""))), /* @__PURE__ */ React.createElement(Box, {
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "2"
+  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      width: "40px"
+    }
+  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
+    imageUrl
+  })) : /* @__PURE__ */ React.createElement(TokenImage, {
+    src: imageUrl,
+    symbol,
+    size: "md"
+  }), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "flex-start"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "1"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, name2)), /* @__PURE__ */ React.createElement(Text, {
+    color: "text50",
+    variant: "normal"
+  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    fontSize: "normal",
+    color: "text50"
+  }, "To"), /* @__PURE__ */ React.createElement(Box, {
+    marginTop: "2",
+    borderRadius: "md",
+    background: "backgroundSecondary",
+    width: "full",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "4",
+    style: {
+      height: "52px"
+    }
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+    address: toAddress,
+    style: {
+      width: "20px"
+    }
+  }), /* @__PURE__ */ React.createElement(Text, {
+    color: "text100"
+  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 12)}`)))));
+};
+const AwardItemInfo = ({
+  awardItemProps
+}) => {
+  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, "Mint")), /* @__PURE__ */ React.createElement(Box, {
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+    marginBottom: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    style: {
+      width: "40px"
+    }
+  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
+    imageUrl: "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0/image.jpeg"
+  })), /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "column",
+    alignItems: "flex-start"
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "1"
+  }, /* @__PURE__ */ React.createElement(Text, {
+    variant: "medium",
+    color: "text100"
+  }, "Waas Demo NFT")), /* @__PURE__ */ React.createElement(Text, {
+    color: "text50",
+    variant: "normal"
+  }, awardItemProps.amount)))), awardItemProps.to !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
+    fontSize: "normal",
+    color: "text50"
+  }, "To"), /* @__PURE__ */ React.createElement(Box, {
+    marginTop: "2",
+    borderRadius: "md",
+    background: "backgroundSecondary",
+    width: "full",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "4",
+    style: {
+      height: "52px"
+    }
+  }, /* @__PURE__ */ React.createElement(Box, {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2"
+  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
+    address: awardItemProps.to,
+    style: {
+      width: "20px"
+    }
+  }), /* @__PURE__ */ React.createElement(Text, {
+    color: "text100"
+  }, `0x${truncateAtMiddle$2(awardItemProps.to.substring(2), 12)}`)))));
+};
+const truncateAtMiddle$2 = (text2, truncateAt) => {
+  let finalText = text2;
+  if (text2.length >= truncateAt) {
+    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
+  }
+  return finalText;
+};
 const KitProvider = (props) => {
   var _connections$find, _params, _pendingRequestConfir, _pendingRequestConfir2, _pendingRequestConfir3;
   const {
@@ -84823,20 +84339,490 @@ const KitProvider = (props) => {
     marginTop: "1"
   }, /* @__PURE__ */ React.createElement(SequenceLogo$1, null)))))))), children))))));
 };
-const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericContext$1();
-const useCheckoutModal = () => {
+function _objectWithoutPropertiesLoose$3(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  for (var key2 in source) {
+    if (Object.prototype.hasOwnProperty.call(source, key2)) {
+      if (excluded.indexOf(key2) >= 0)
+        continue;
+      target[key2] = source[key2];
+    }
+  }
+  return target;
+}
+const _excluded$1$2 = ["createConnector"];
+const getKitConnectWallets = (projectAccessKey2, wallets) => {
+  const connectors = [];
+  wallets.forEach((wallet) => {
+    const {
+      createConnector: createConnector2
+    } = wallet, metaProperties = _objectWithoutPropertiesLoose$3(wallet, _excluded$1$2);
+    const walletProperties = _extends$5({}, metaProperties);
+    const createConnectorOverride = (config2) => {
+      const connector = createConnector2(projectAccessKey2);
+      const res = connector(config2);
+      res._wallet = _extends$5({}, walletProperties);
+      return res;
+    };
+    connectors.push(createConnectorOverride);
+  });
+  return connectors;
+};
+const getNetworkColor = (chainId, mode = "light") => {
+  switch (chainId) {
+    case ChainId.MAINNET:
+      return mode === "light" ? "#abf" : "#abf";
+    case ChainId.POLYGON:
+      return mode === "light" ? "#c7a6ff" : "#c7a6ff";
+    case ChainId.ARBITRUM:
+      return mode === "light" ? "#52A7E6" : "#52A7E6";
+    case ChainId.OPTIMISM:
+      return mode === "light" ? "#DB3132" : "#DB3132";
+    case ChainId.BSC:
+      return mode === "light" ? "#CB9C1D" : "#EEB445";
+    case ChainId.AVALANCHE:
+      return mode === "light" ? "#E84142" : "#E84142";
+    case ChainId.GNOSIS:
+      return mode === "light" ? "#00193C" : "#D8E8FF";
+    case ChainId.GOERLI:
+      return mode === "light" ? "#A77A00" : "#FFA700";
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
+      return mode === "light" ? "#D68828" : "#FFA700";
+    default:
+      return mode === "light" ? "#abf" : "#abf";
+  }
+};
+const getNetworkBackgroundColor = (chainId, mode = "light") => {
+  switch (chainId) {
+    case ChainId.MAINNET:
+      return mode === "light" ? "#132362" : "#132362";
+    case ChainId.POLYGON:
+      return mode === "light" ? "#350881" : "#350881";
+    case ChainId.ARBITRUM:
+      return mode === "light" ? "#EDF7FF" : "#0C3754";
+    case ChainId.OPTIMISM:
+      return mode === "light" ? "#FFEAE9" : "#390B0C";
+    case ChainId.BSC:
+      return mode === "light" ? "#FFE8AB" : "#554018";
+    case ChainId.AVALANCHE:
+      return mode === "light" ? "#FBDFDF" : "#390B0C";
+    case ChainId.GNOSIS:
+      return mode === "light" ? "#D8E8FF" : "#00193C";
+    case ChainId.GOERLI:
+      return mode === "light" ? "#FFD871" : "#554018";
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
+      return mode === "light" ? "#FFE8CD" : "#554018";
+    default:
+      return mode === "light" ? "#132362" : "#132362";
+  }
+};
+const getNetwork = (chainId) => {
+  const network2 = networks[chainId];
+  if (!network2) {
+    throw new Error(`Unknown network chainId: ${chainId}`);
+  }
+  return network2;
+};
+function walletClientToSigner(walletClient) {
+  var _chain$contracts;
   const {
-    triggerCheckout,
-    closeCheckout,
-    settings
-  } = useCheckoutModalContext();
+    account: account2,
+    chain,
+    transport
+  } = walletClient;
+  const network2 = {
+    chainId: chain.id,
+    name: chain.name,
+    ensAddress: (_chain$contracts = chain.contracts) == null || (_chain$contracts = _chain$contracts.ensRegistry) == null ? void 0 : _chain$contracts.address
+  };
+  const provider2 = new Web3Provider(transport, network2);
+  const signer2 = provider2.getSigner(account2.address);
+  return signer2;
+}
+function publicClientToProvider(publicClient) {
+  var _chain$contracts2;
+  const {
+    chain,
+    transport
+  } = publicClient;
+  const network2 = {
+    chainId: chain.id,
+    name: chain.name,
+    ensAddress: (_chain$contracts2 = chain.contracts) == null || (_chain$contracts2 = _chain$contracts2.ensRegistry) == null ? void 0 : _chain$contracts2.address
+  };
+  if (transport.type === "fallback")
+    return new FallbackProvider(transport.transports.map(({
+      value
+    }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
+  return new JsonRpcProvider$1(transport.url, network2);
+}
+const signEthAuthProof = async (walletClient, storage) => {
+  const proofInformation = await storage.getItem(LocalStorageKey.EthAuthProof);
+  if (proofInformation) {
+    return proofInformation;
+  }
+  const proofSettings = await storage.getItem(LocalStorageKey.EthAuthSettings);
+  if (!proofSettings) {
+    throw new Error("No ETHAuth settings found");
+  }
+  const walletAddress = walletClient.account.address;
+  const proof = new Proof();
+  proof.address = walletAddress;
+  proof.claims.app = proofSettings.app || "app";
+  proof.claims.ogn = proofSettings.origin;
+  proof.claims.n = proofSettings.nonce;
+  proof.setExpiryIn(proofSettings.expiry ? Math.max(proofSettings.expiry, 200) : DEFAULT_SESSION_EXPIRATION);
+  const typedData = proof.messageTypedData();
+  typedData.domain.verifyingContract;
+  const signer2 = walletClientToSigner(walletClient);
+  const signature2 = await signer2._signTypedData(typedData.domain, typedData.types, typedData.message);
+  proof.signature = signature2;
+  const ethAuth = new ETHAuth();
+  const proofString = await ethAuth.encodeProof(proof, true);
   return {
-    triggerCheckout,
-    closeCheckout,
-    settings
+    typedData,
+    proofString
   };
 };
-const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
+const validateEthProof = async (walletClient, publicClient, proof) => {
+  const walletAddress = walletClient.account.address;
+  const ethAuth = new ETHAuth();
+  const decodedProof = await ethAuth.decodeProof(proof.proofString, true);
+  const provider2 = publicClientToProvider(publicClient);
+  const isValid2 = await sequence$1.utils.isValidTypedDataSignature(walletAddress, proof.typedData, decodedProof.signature, provider2);
+  return isValid2;
+};
+const useOpenConnectModal = () => {
+  const {
+    setOpenConnectModal,
+    openConnectModalState
+  } = useConnectModalContext();
+  return {
+    setOpenConnectModal,
+    openConnectModalState
+  };
+};
+const useTheme = () => {
+  const {
+    setTheme,
+    theme,
+    position,
+    setPosition
+  } = useThemeContext();
+  return {
+    setTheme,
+    theme,
+    position,
+    setPosition
+  };
+};
+const useWalletSettings = () => {
+  const {
+    setDisplayedAssets,
+    displayedAssets
+  } = useWalletConfigContext();
+  return {
+    displayedAssets,
+    setDisplayedAssets
+  };
+};
+const useMetadataClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const metadataClient = reactExports.useMemo(() => {
+    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
+  }, [projectAccessKey2]);
+  return metadataClient;
+};
+const useIndexerClient = (chainId) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const network2 = networks[chainId];
+  if (!indexerClients.has(chainId)) {
+    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+  }
+  const indexerClient = indexerClients.get(chainId);
+  if (!indexerClient) {
+    throw new Error("Indexer client not found");
+  }
+  return indexerClient;
+};
+const useIndexerClients = (chainIds) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const result = /* @__PURE__ */ new Map();
+  for (const chainId of chainIds) {
+    const network2 = networks[chainId];
+    if (!indexerClients.has(chainId)) {
+      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+    }
+    const indexerClient = indexerClients.get(chainId);
+    if (!indexerClient) {
+      throw new Error("Indexer client not found");
+    }
+    result.set(chainId, indexerClient);
+  }
+  return result;
+};
+const _excluded$5 = ["chainIds"];
+const time$1 = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
+};
+const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
+  const res = await indexerClient.getEtherBalance({
+    accountAddress
+  });
+  const tokenBalance = {
+    chainId,
+    contractAddress: zeroAddress,
+    accountAddress,
+    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
+    contractType: ContractType$1.UNKNOWN,
+    blockHash: "",
+    blockNumber: 0,
+    tokenID: ""
+  };
+  return tokenBalance;
+};
+const getTokenBalances = async (indexerClient, args) => {
+  var _args$includeMetadata, _args$verifiedOnly;
+  const res = await indexerClient.getTokenBalances(_extends$5({
+    accountAddress: args.accountAddress,
+    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
+    }
+  }, args.contractAddress && {
+    contractAddress: args.contractAddress
+  }));
+  return (res == null ? void 0 : res.balances) || [];
+};
+const getBalances = async (indexerClient, chainId, args) => {
+  if (!args.accountAddress) {
+    return [];
+  }
+  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
+  return balances;
+};
+const useBalances = (_ref) => {
+  let {
+    chainIds
+  } = _ref, args = _objectWithoutPropertiesLoose$3(_ref, _excluded$5);
+  const indexerClients = useIndexerClients(chainIds);
+  return useQuery$1({
+    queryKey: ["balances", chainIds, args],
+    queryFn: async () => {
+      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
+      return res;
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const useCoinBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["coinBalance", args],
+    queryFn: async () => {
+      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
+        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
+        return res;
+      } else {
+        const res = await getTokenBalances(indexerClient, args);
+        return res[0];
+      }
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
+const useCollectibleBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectibleBalance", args],
+    queryFn: async () => {
+      var _args$verifiedOnly2;
+      const res = await indexerClient.getTokenBalances({
+        accountAddress: args.accountAddress,
+        contractAddress: args.contractAddress,
+        tokenID: args.tokenId,
+        includeMetadata: true,
+        metadataOptions: {
+          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
+        }
+      });
+      return res.balances[0];
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
+  });
+};
+const getCollectionBalance = async (indexerClient, args) => {
+  var _args$includeMetadata2, _args$verifiedOnly3;
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    contractAddress: args.contractAddress,
+    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
+    }
+  });
+  return (res == null ? void 0 : res.balances) || [];
+};
+const useCollectionBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectionBalance", args],
+    queryFn: () => getCollectionBalance(indexerClient, args),
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
+  });
+};
+const useExchangeRate = (toCurrency) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["exchangeRate", toCurrency],
+    queryFn: async () => {
+      if (toCurrency === "USD") {
+        return 1;
+      }
+      const res = await apiClient.getExchangeRate({
+        toCurrency
+      });
+      return res.exchangeRate.value;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10
+  });
+};
+const getCoinPrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCoinPrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCoinPrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["coinPrices", tokens],
+    queryFn: () => getCoinPrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const getCollectiblePrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCollectiblePrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCollectiblePrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["useCollectiblePrices", tokens],
+    queryFn: () => getCollectiblePrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
+    queryFn: async () => {
+      const res = await metadataClient.getTokenMetadata({
+        chainID: String(chainId),
+        contractAddress,
+        tokenIDs: tokenIds
+      });
+      return res.tokenMetadata;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const useContractInfo = (chainId, contractAddress) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["contractInfo", chainId, contractAddress],
+    queryFn: async () => {
+      const res = await metadataClient.getContractInfo({
+        chainID: String(chainId),
+        contractAddress
+      });
+      return res.contractInfo;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const getTransactionHistory = async (indexerClient, {
+  contractAddress,
+  accountAddress,
+  tokenId,
+  page
+}) => {
+  const res = indexerClient.getTransactionHistory({
+    includeMetadata: true,
+    page,
+    filter: {
+      accountAddress,
+      contractAddress,
+      tokenID: tokenId
+    }
+  });
+  return res;
+};
+const useTransactionHistory = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useInfiniteQuery({
+    queryKey: ["transactionHistory", args],
+    queryFn: ({
+      pageParam
+    }) => {
+      return getTransactionHistory(indexerClient, _extends$5({}, args, {
+        page: {
+          page: pageParam
+        }
+      }));
+    },
+    getNextPageParam: ({
+      page
+    }) => {
+      if (!page.more) {
+        return void 0;
+      }
+      return (page == null ? void 0 : page.page) || 1;
+    },
+    initialPageParam: 1,
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
 function _extends$4() {
   _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
@@ -84851,7 +84837,46 @@ function _extends$4() {
   };
   return _extends$4.apply(this, arguments);
 }
+const createGenericContext$1 = () => {
+  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
+  const useGenericContext = () => {
+    const contextIsDefined = reactExports.useContext(genericContext);
+    if (!contextIsDefined) {
+      throw new Error("useGenericContext must be used within a Provider");
+    }
+    return contextIsDefined;
+  };
+  return [useGenericContext, genericContext.Provider];
+};
+const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericContext$1();
+const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
 const HEADER_HEIGHT$1 = "54px";
+const useNavigation$1 = () => {
+  const {
+    setHistory,
+    history
+  } = useNavigationContext$1();
+  const setNavigation = (navigation2) => {
+    const childElement = document.getElementById("sequence-kit-wallet-content");
+    const parentElement = childElement == null ? void 0 : childElement.parentElement;
+    parentElement == null || parentElement.scrollTo(0, 0);
+    const newHistory = [...history, navigation2];
+    setHistory(newHistory);
+  };
+  const goBack = () => {
+    const newHistory = [...history];
+    newHistory.pop();
+    setHistory(newHistory);
+  };
+  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
+  return {
+    setNavigation,
+    history,
+    setHistory,
+    goBack,
+    navigation
+  };
+};
 const NavigationHeader$1 = ({
   secondaryText,
   primaryText,
@@ -84966,6 +84991,18 @@ const fetchSardineOrderStatus = async (orderId, isDev, projectAccessKey2) => {
   const json = await response.json();
   console.log("json:", json);
   return json;
+};
+const useCheckoutModal = () => {
+  const {
+    triggerCheckout,
+    closeCheckout,
+    settings
+  } = useCheckoutModalContext();
+  return {
+    triggerCheckout,
+    closeCheckout,
+    settings
+  };
 };
 const POLLING_TIME = 10 * 1e3;
 const PendingTransaction = () => {
@@ -85657,32 +85694,6 @@ const KitCheckoutContent = ({
   }, /* @__PURE__ */ React.createElement(Box, {
     id: "sequence-kit-checkout-content"
   }, getHeader2(), getContent2()))))), children));
-};
-const useNavigation$1 = () => {
-  const {
-    setHistory,
-    history
-  } = useNavigationContext$1();
-  const setNavigation = (navigation2) => {
-    const childElement = document.getElementById("sequence-kit-wallet-content");
-    const parentElement = childElement == null ? void 0 : childElement.parentElement;
-    parentElement == null || parentElement.scrollTo(0, 0);
-    const newHistory = [...history, navigation2];
-    setHistory(newHistory);
-  };
-  const goBack = () => {
-    const newHistory = [...history];
-    newHistory.pop();
-    setHistory(newHistory);
-  };
-  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
-  return {
-    setNavigation,
-    history,
-    setHistory,
-    goBack,
-    navigation
-  };
 };
 var __defProp2 = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -92425,28 +92436,6 @@ const $cb5cc270b50c6fcd$export$be92b6f5f03c0fe9 = $cb5cc270b50c6fcd$export$5b6b1
 const $cb5cc270b50c6fcd$export$b688253958b8dfe7 = $cb5cc270b50c6fcd$export$96e5381f42521a79;
 const $cb5cc270b50c6fcd$export$41fb9f06171c75f4 = $cb5cc270b50c6fcd$export$7dacb05d26466c3;
 const $cb5cc270b50c6fcd$export$7c6e2c02157bb7d2 = $cb5cc270b50c6fcd$export$d7e1f420b25549ff;
-const createGenericContext = () => {
-  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
-  const useGenericContext = () => {
-    const contextIsDefined = reactExports.useContext(genericContext);
-    if (!contextIsDefined) {
-      throw new Error("useGenericContext must be used within a Provider");
-    }
-    return contextIsDefined;
-  };
-  return [useGenericContext, genericContext.Provider];
-};
-const [useWalletModalContext, WalletModalContextProvider] = createGenericContext();
-const useOpenWalletModal = () => {
-  const {
-    setOpenWalletModal,
-    openWalletModalState
-  } = useWalletModalContext();
-  return {
-    setOpenWalletModal,
-    openWalletModalState
-  };
-};
 function _extends$2() {
   _extends$2 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
@@ -92461,6 +92450,253 @@ function _extends$2() {
   };
   return _extends$2.apply(this, arguments);
 }
+const ERC_1155_ABI = [{
+  inputs: [{
+    internalType: "address",
+    name: "_from",
+    type: "address"
+  }, {
+    internalType: "address",
+    name: "_to",
+    type: "address"
+  }, {
+    internalType: "uint256[]",
+    name: "_ids",
+    type: "uint256[]"
+  }, {
+    internalType: "uint256[]",
+    name: "_amounts",
+    type: "uint256[]"
+  }, {
+    internalType: "bytes",
+    name: "_data",
+    type: "bytes"
+  }],
+  name: "safeBatchTransferFrom",
+  outputs: [],
+  stateMutability: "nonpayable",
+  type: "function"
+}];
+const ERC_20_ABI = [{
+  constant: false,
+  inputs: [{
+    internalType: "address",
+    name: "recipient",
+    type: "address"
+  }, {
+    internalType: "uint256",
+    name: "amount",
+    type: "uint256"
+  }],
+  name: "transfer",
+  outputs: [{
+    internalType: "bool",
+    name: "",
+    type: "bool"
+  }],
+  payable: false,
+  stateMutability: "nonpayable",
+  type: "function"
+}];
+const ERC_721_ABI = [{
+  inputs: [{
+    internalType: "address",
+    name: "from",
+    type: "address"
+  }, {
+    internalType: "address",
+    name: "to",
+    type: "address"
+  }, {
+    internalType: "uint256",
+    name: "tokenId",
+    type: "uint256"
+  }],
+  name: "safeTransferFrom",
+  outputs: [],
+  stateMutability: "nonpayable",
+  type: "function"
+}];
+const supportedFiatCurrencies = [{
+  symbol: "USD",
+  sign: "$",
+  name: {
+    message: "US Dollar"
+  },
+  decimals: 2
+}, {
+  symbol: "CAD",
+  sign: "$",
+  name: {
+    message: "Canadian Dollar"
+  },
+  decimals: 2
+}, {
+  symbol: "GBP",
+  sign: "£",
+  name: {
+    message: "British Pound Sterling"
+  },
+  decimals: 2
+}, {
+  symbol: "EUR",
+  sign: "€",
+  name: {
+    message: "Euro"
+  },
+  decimals: 2
+}, {
+  symbol: "CNY",
+  sign: "¥",
+  name: {
+    message: "Chinese Yuan"
+  },
+  decimals: 2
+}, {
+  symbol: "JPY",
+  sign: "¥",
+  name: {
+    message: "Japanese Yen"
+  },
+  decimals: 2
+}, {
+  symbol: "KRW",
+  sign: "₩",
+  name: {
+    message: "South Korean Won"
+  },
+  decimals: 2
+}, {
+  symbol: "SGD",
+  sign: "$",
+  name: {
+    message: "Singapore Dollar"
+  },
+  decimals: 2
+}, {
+  symbol: "CHF",
+  sign: "CHF ",
+  name: {
+    message: "Swiss Franc"
+  },
+  decimals: 2
+}, {
+  symbol: "AUD",
+  sign: "$",
+  name: {
+    message: "Australian Dollar"
+  },
+  decimals: 2
+}, {
+  symbol: "NZD",
+  sign: "$",
+  name: {
+    message: "New Zealand Dollar"
+  },
+  decimals: 2
+}, {
+  symbol: "SEK",
+  sign: "kr ",
+  name: {
+    message: "Swedish Krona"
+  },
+  decimals: 2
+}, {
+  symbol: "NOK",
+  sign: "kr ",
+  name: {
+    message: "Norwegian Krone"
+  },
+  decimals: 2
+}, {
+  symbol: "MXN",
+  sign: "$",
+  name: {
+    message: "Mexican Peso"
+  },
+  decimals: 2
+}, {
+  symbol: "INR",
+  sign: "₹",
+  name: {
+    message: "Indian Rupee"
+  },
+  decimals: 2
+}, {
+  symbol: "ZAR",
+  sign: "R ",
+  name: {
+    message: "South African Rand"
+  },
+  decimals: 2
+}, {
+  symbol: "TRY",
+  sign: "₺",
+  name: {
+    message: "Turkish Lira"
+  },
+  decimals: 2
+}, {
+  symbol: "BRL",
+  sign: "R$",
+  name: {
+    message: "Brazilian Real"
+  },
+  decimals: 2
+}, {
+  symbol: "DKK",
+  sign: "kr ",
+  name: {
+    message: "Danish Krone"
+  },
+  decimals: 2
+}, {
+  symbol: "PLN",
+  sign: "zł ",
+  name: {
+    message: "Polish Zloty"
+  },
+  decimals: 2
+}, {
+  symbol: "THB",
+  sign: "฿",
+  name: {
+    message: "Thai Baht"
+  },
+  decimals: 2
+}, {
+  symbol: "IDR",
+  sign: "Rp",
+  name: {
+    message: "Indonesian Rupiah"
+  },
+  decimals: 2
+}];
+const defaultFiatCurrency = supportedFiatCurrencies[0];
+const HEADER_HEIGHT = "54px";
+const createGenericContext = () => {
+  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
+  const useGenericContext = () => {
+    const contextIsDefined = reactExports.useContext(genericContext);
+    if (!contextIsDefined) {
+      throw new Error("useGenericContext must be used within a Provider");
+    }
+    return contextIsDefined;
+  };
+  return [useGenericContext, genericContext.Provider];
+};
+const [useWalletModalContext, WalletModalContextProvider] = createGenericContext();
+const [useNavigationContext, NavigationContextProvider] = createGenericContext();
+const useOpenWalletModal = () => {
+  const {
+    setOpenWalletModal,
+    openWalletModalState
+  } = useWalletModalContext();
+  return {
+    setOpenWalletModal,
+    openWalletModalState
+  };
+};
 const compareAddress = (a2, b2) => {
   return a2.toLowerCase() === b2.toLowerCase();
 };
@@ -92803,7 +93039,6 @@ const useTransactionHistorySummary = (args) => {
     enabled: args.chainIds.length > 0 && !!args.accountAddress
   });
 };
-const [useNavigationContext, NavigationContextProvider] = createGenericContext();
 const useNavigation = () => {
   const {
     setHistory,
@@ -92828,230 +93063,6 @@ const useNavigation = () => {
     goBack
   };
 };
-const ERC_1155_ABI = [{
-  inputs: [{
-    internalType: "address",
-    name: "_from",
-    type: "address"
-  }, {
-    internalType: "address",
-    name: "_to",
-    type: "address"
-  }, {
-    internalType: "uint256[]",
-    name: "_ids",
-    type: "uint256[]"
-  }, {
-    internalType: "uint256[]",
-    name: "_amounts",
-    type: "uint256[]"
-  }, {
-    internalType: "bytes",
-    name: "_data",
-    type: "bytes"
-  }],
-  name: "safeBatchTransferFrom",
-  outputs: [],
-  stateMutability: "nonpayable",
-  type: "function"
-}];
-const ERC_20_ABI = [{
-  constant: false,
-  inputs: [{
-    internalType: "address",
-    name: "recipient",
-    type: "address"
-  }, {
-    internalType: "uint256",
-    name: "amount",
-    type: "uint256"
-  }],
-  name: "transfer",
-  outputs: [{
-    internalType: "bool",
-    name: "",
-    type: "bool"
-  }],
-  payable: false,
-  stateMutability: "nonpayable",
-  type: "function"
-}];
-const ERC_721_ABI = [{
-  inputs: [{
-    internalType: "address",
-    name: "from",
-    type: "address"
-  }, {
-    internalType: "address",
-    name: "to",
-    type: "address"
-  }, {
-    internalType: "uint256",
-    name: "tokenId",
-    type: "uint256"
-  }],
-  name: "safeTransferFrom",
-  outputs: [],
-  stateMutability: "nonpayable",
-  type: "function"
-}];
-const supportedFiatCurrencies = [{
-  symbol: "USD",
-  sign: "$",
-  name: {
-    message: "US Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "CAD",
-  sign: "$",
-  name: {
-    message: "Canadian Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "GBP",
-  sign: "£",
-  name: {
-    message: "British Pound Sterling"
-  },
-  decimals: 2
-}, {
-  symbol: "EUR",
-  sign: "€",
-  name: {
-    message: "Euro"
-  },
-  decimals: 2
-}, {
-  symbol: "CNY",
-  sign: "¥",
-  name: {
-    message: "Chinese Yuan"
-  },
-  decimals: 2
-}, {
-  symbol: "JPY",
-  sign: "¥",
-  name: {
-    message: "Japanese Yen"
-  },
-  decimals: 2
-}, {
-  symbol: "KRW",
-  sign: "₩",
-  name: {
-    message: "South Korean Won"
-  },
-  decimals: 2
-}, {
-  symbol: "SGD",
-  sign: "$",
-  name: {
-    message: "Singapore Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "CHF",
-  sign: "CHF ",
-  name: {
-    message: "Swiss Franc"
-  },
-  decimals: 2
-}, {
-  symbol: "AUD",
-  sign: "$",
-  name: {
-    message: "Australian Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "NZD",
-  sign: "$",
-  name: {
-    message: "New Zealand Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "SEK",
-  sign: "kr ",
-  name: {
-    message: "Swedish Krona"
-  },
-  decimals: 2
-}, {
-  symbol: "NOK",
-  sign: "kr ",
-  name: {
-    message: "Norwegian Krone"
-  },
-  decimals: 2
-}, {
-  symbol: "MXN",
-  sign: "$",
-  name: {
-    message: "Mexican Peso"
-  },
-  decimals: 2
-}, {
-  symbol: "INR",
-  sign: "₹",
-  name: {
-    message: "Indian Rupee"
-  },
-  decimals: 2
-}, {
-  symbol: "ZAR",
-  sign: "R ",
-  name: {
-    message: "South African Rand"
-  },
-  decimals: 2
-}, {
-  symbol: "TRY",
-  sign: "₺",
-  name: {
-    message: "Turkish Lira"
-  },
-  decimals: 2
-}, {
-  symbol: "BRL",
-  sign: "R$",
-  name: {
-    message: "Brazilian Real"
-  },
-  decimals: 2
-}, {
-  symbol: "DKK",
-  sign: "kr ",
-  name: {
-    message: "Danish Krone"
-  },
-  decimals: 2
-}, {
-  symbol: "PLN",
-  sign: "zł ",
-  name: {
-    message: "Polish Zloty"
-  },
-  decimals: 2
-}, {
-  symbol: "THB",
-  sign: "฿",
-  name: {
-    message: "Thai Baht"
-  },
-  decimals: 2
-}, {
-  symbol: "IDR",
-  sign: "Rp",
-  name: {
-    message: "Indonesian Rupiah"
-  },
-  decimals: 2
-}];
-const defaultFiatCurrency = supportedFiatCurrencies[0];
-const HEADER_HEIGHT = "54px";
 const useSettings = () => {
   const {
     chains: chains2
@@ -108026,7 +108037,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-Cz8OgDyI.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-CkoyNBtk.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108212,7 +108223,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CqijfBer.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BneEzSDm.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
