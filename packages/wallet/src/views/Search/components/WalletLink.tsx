@@ -1,7 +1,7 @@
 import { Box, Text, ChevronRightIcon } from '@0xsequence/design-system'
 import React from 'react'
 
-import { Navigation } from '../../../contexts'
+import { Navigation } from '../../../states'
 import { useNavigation } from '../../../hooks'
 
 interface WalletLinkProps {

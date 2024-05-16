@@ -1,7 +1,9 @@
-import { useWalletModalContext } from '../contexts/WalletModal'
+import { useSnapshot } from 'valtio'
+
+import { setOpenWalletModal, walletModalState } from '../states/WalletModal'
 
 export const useOpenWalletModal = () => {
-  const { setOpenWalletModal, openWalletModalState } = useWalletModalContext()
+  const { openWalletModalState } = useSnapshot(walletModalState)
 
   return { setOpenWalletModal, openWalletModalState }
 }

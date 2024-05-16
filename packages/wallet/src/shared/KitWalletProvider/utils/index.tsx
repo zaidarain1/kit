@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Navigation } from '../../../contexts'
+import { Navigation } from '../../../states'
 import {
   CoinDetails,
   CollectibleDetails,

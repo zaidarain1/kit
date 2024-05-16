@@ -1,14 +1,16 @@
-import { useNavigationContext, Navigation, History } from '../contexts/Navigation'
+import { useSnapshot, INTERNAL_Snapshot } from 'valtio'
 
-interface UseNavigation {
-  setNavigation: (navigation: Navigation) => void
-  setHistory?: (history: History) => void
-  history: History
-  goBack: () => void
-}
+import { setHistory, navigationState, Navigation, History } from '../states/Navigation'
 
-export const useNavigation = (): UseNavigation => {
-  const { setHistory, history } = useNavigationContext()
+// interface UseNavigation {
+//   setNavigation: (navigation: Navigation) => void
+//   setHistory: (history: History) => void
+//   history: INTERNAL_Snapshot<History>
+//   goBack: () => void
+// }
+
+export const useNavigation = () => {
+  const { history } = useSnapshot(navigationState)
 
   const setNavigation = (navigation: Navigation) => {
     // Scroll to top of page when navigating to a new page
@@ -17,13 +19,13 @@ export const useNavigation = (): UseNavigation => {
     parentElement?.scrollTo(0, 0)
 
     const newHistory = navigation.location === 'home' ? [] : [...history, navigation]
-    setHistory(newHistory)
+    setHistory(newHistory as History)
   }
 
   const goBack = () => {
     const newHistory = [...history]
     newHistory.pop()
-    setHistory(newHistory)
+    setHistory(newHistory as History)
   }
 
   return { setNavigation, history, setHistory, goBack }

@@ -1,6 +1,6 @@
 import { Transaction } from '@0xsequence/indexer'
 
-import { createGenericContext } from './genericContext'
+import { proxy } from 'valtio'
 
 export interface CollectionDetailsParams {
   contractAddress: string
@@ -97,9 +97,14 @@ export type Navigation =
 
 export type History = Navigation[]
 
-type NavigationContext = {
-  setHistory: (history: History) => void
+type NavigationState = {
   history: History
 }
 
-export const [useNavigationContext, NavigationContextProvider] = createGenericContext<NavigationContext>()
+export const navigationState = proxy<NavigationState>({
+  history: []
+})
+
+export const setHistory = (history: History) => {
+  navigationState.history = history
+}
