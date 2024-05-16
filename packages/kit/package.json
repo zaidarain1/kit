@@ -13,7 +13,12 @@
   "types": "dist/0xsequence-kit.cjs.d.ts",
   "author": "Horizon Blockchain Games",
   "license": "Apache-2.0",
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
+    "build": "echo 'hi'",
     "test": "echo",
     "typecheck": "tsc --noEmit"
   },
@@ -48,9 +53,5 @@
     "ethers": "5.7.2",
     "viem": "^2.12.0",
     "wagmi": "^2.9.5"
-  },
-  "files": [
-    "src",
-    "dist"
-  ]
+  }
 }

@@ -4,21 +4,17 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "build": "pnpm dev && pnpm typecheck && preconstruct build",
-    "watch": "preconstruct watch",
     "clean": "rimraf -g ./**/node_modules",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish",
-    "deps": "pnpx taze -r",
     "test": "pnpm -r test",
     "lint": "eslint -c .eslintrc.js 'packages/**/src/**/*.{ts,tsx}'",
     "lint:fix": "eslint -c .eslintrc.js --fix 'packages/**/src/**/*.{ts,tsx}'",
     "format": "prettier --list-different --write './{packages,examples}/*/src/**/*.{ts,tsx}'",
     "audit:fix": "pnpm audit --fix",
     "typecheck": "tsc --noEmit",
-    "dev": "preconstruct dev",
-    "postinstall": "preconstruct dev",
+    "deps": "pnpx taze -r",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "pnpm build && changeset publish",
     "start:react": "pnpm --filter @0xsequence/kit-example-react start",
     "serve:react": "pnpm --filter @0xsequence/kit-example-react serve",
     "build:react": "pnpm --filter @0xsequence/kit-example-react build",
@@ -29,15 +25,8 @@
   "devDependencies": {
     "@0xsequence/kit": "workspace:*",
     "@0xsequence/kit-connectors": "workspace:*",
-    "@babel/core": "^7.24.5",
-    "@babel/plugin-transform-class-properties": "^7.24.1",
-    "@babel/preset-env": "^7.24.5",
-    "@babel/preset-react": "^7.24.1",
-    "@babel/preset-typescript": "^7.24.1",
-    "@babel/runtime": "^7.24.5",
     "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.3",
-    "@preconstruct/cli": "^2.8.4",
+    "@changesets/cli": "^2.25.2",
     "@types/node": "^20.12.12",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
@@ -61,10 +50,5 @@
   "workspaces": [
     "packages/*",
     "examples/*"
-  ],
-  "preconstruct": {
-    "packages": [
-      "packages/*"
-    ]
-  }
+  ]
 }
