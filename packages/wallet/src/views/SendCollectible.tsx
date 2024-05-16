@@ -15,7 +15,7 @@ import {
   Card
 } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector, useCollectibleBalance } from '@0xsequence/kit'
+import { getNativeTokenInfoByChainId, useAnalytics, ExtendedConnector, useCollectibleBalance } from '@0xsequence/kit'
 import { ethers } from 'ethers'
 import React, { useRef, useState, ChangeEvent, useEffect } from 'react'
 import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
@@ -33,7 +33,7 @@ interface SendCollectibleProps {
 
 export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendCollectibleProps) => {
   const { setNavigation } = useNavigation()
-  const { analytics } = useAnalyticsContext()
+  const { analytics } = useAnalytics()
   const { chains } = useConfig()
   const connectedChainId = useChainId()
   const { address: accountAddress = '', connector } = useAccount()

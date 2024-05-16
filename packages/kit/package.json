@@ -29,7 +29,8 @@
     "@0xsequence/network": "^1.9.26",
     "@0xsequence/provider": "^1.9.26",
     "@0xsequence/utils": "^1.9.26",
-    "framer-motion": "^8.5.2"
+    "framer-motion": "^8.5.2",
+    "valtio": "^1.13.2"
   },
   "peerDependencies": {
     "0xsequence": ">=1.9.26",

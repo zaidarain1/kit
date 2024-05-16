@@ -27,14 +27,9 @@ export { getNetwork, getNetworkColor, getNetworkBackgroundColor } from './utils/
 export { walletClientToSigner, publicClientToProvider } from './utils/adapters'
 export { signEthAuthProof, validateEthProof } from './utils/ethAuth'
 
-// Contexts
-export { useKitConfig, KitConfigContextProvider } from './contexts/KitConfig'
-export { useAnalyticsContext, AnalyticsContextProvider } from './contexts/Analytics'
-export { useConnectModalContext, ConnectModalContextProvider } from './contexts/ConnectModal'
-export { useThemeContext, ThemeContextProvider } from './contexts/Theme'
-export { useWalletConfigContext, WalletConfigContextProvider } from './contexts/WalletSettings'
-
 // Hooks
+export { useAnalytics } from './hooks/useAnalytics'
+export { useKitConfig } from './hooks/useKitConfig'
 export { useOpenConnectModal } from './hooks/useOpenConnectModal'
 export { useTheme } from './hooks/useTheme'
 export { useWalletSettings } from './hooks/useWalletSettings'

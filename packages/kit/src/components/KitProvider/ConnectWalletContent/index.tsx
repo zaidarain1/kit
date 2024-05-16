@@ -21,6 +21,7 @@ import { appleAuthHelpers, useScript } from 'react-apple-signin-auth'
 import { useConnect, useAccount } from 'wagmi'
 
 import { LocalStorageKey, defaultSignInOptions } from '../../../constants'
+import { useOpenConnectModal } from '../../../hooks/useOpenConnectModal'
 import { useStorage, useStorageItem } from '../../../hooks/useStorage'
 import { useEmailAuth } from '../../../hooks/useWaasEmailAuth'
 import { ExtendedConnector, KitConfig } from '../../../types'
@@ -31,12 +32,7 @@ import { Banner } from './Banner'
 import { ExtendedWalletList } from './ExtendedWalletList'
 import { GoogleLogo } from './GoogleLogo'
 
-interface ConnectWalletContentProps extends KitConnectProviderProps {
-  openConnectModal: boolean
-  setOpenConnectModal: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
+export const ConnectWalletContent = (props: KitConnectProviderProps) => {
   useScript(appleAuthHelpers.APPLE_SCRIPT_SRC)
 
   const storage = useStorage()
@@ -54,7 +50,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
     walletAuthOptions = defaultSignInOptions.walletAuthOptions
   } = signIn
 
-  const { openConnectModal, setOpenConnectModal } = props
+  const { openConnectModalState, setOpenConnectModal } = useOpenConnectModal()
 
   const [email, setEmail] = useState('')
   const [showEmailWaasPinInput, setShowEmailWaasPinInput] = useState(false)
@@ -140,10 +136,10 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
   })
 
   useEffect(() => {
-    if (isConnected && openConnectModal) {
+    if (isConnected && openConnectModalState) {
       setOpenConnectModal(false)
     }
-  }, [isConnected, openConnectModal])
+  }, [isConnected, openConnectModalState])
 
   const onConnect = (connector: ExtendedConnector) => {
     if (signIn.useMock && mockConnector) {
