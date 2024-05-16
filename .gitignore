@@ -4,11 +4,13 @@ node_modules/
 cache/
 build/
 dist/
+/packages/*/dist/**
 
-test_chain/
+.next/
+
+.turbo
 
 *.js.map
-PROD.env
 
 .DS_Store
 .vscode
@@ -17,8 +19,3 @@ PROD.env
 .cache
 package-lock.json
 coverage
-.rts2_cache*
-
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*

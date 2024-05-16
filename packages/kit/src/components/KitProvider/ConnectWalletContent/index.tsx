@@ -29,6 +29,12 @@ import { KitConnectProviderProps } from '../index'
 import { Banner } from './Banner'
 import { ExtendedWalletList } from './ExtendedWalletList'
 
+declare global {
+  interface Window {
+    ethereum: any
+  }
+}
+
 interface ConnectWalletContentProps extends KitConnectProviderProps {
   openConnectModal: boolean
   setOpenConnectModal: React.Dispatch<React.SetStateAction<boolean>>

@@ -4,8 +4,10 @@
   "license": "Apache-2.0",
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf -g ./**/node_modules",
-    "test": "pnpm -r test",
+    "build": "turbo run build --filter={packages/*}",
+    "build:clean": "turbo run build:clean",
+    "reinstall": "rimraf -g ./**/node_modules && pnpm install",
+    "test": "turbo run test",
     "lint": "eslint -c .eslintrc.js 'packages/**/src/**/*.{ts,tsx}'",
     "lint:fix": "eslint -c .eslintrc.js --fix 'packages/**/src/**/*.{ts,tsx}'",
     "format": "prettier --list-different --write './{packages,examples}/*/src/**/*.{ts,tsx}'",
@@ -43,12 +45,9 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rimraf": "^5.0.7",
+    "turbo": "1.13.3",
     "typescript": "~5.4.5",
     "wagmi": "^2.9.5"
   },
-  "resolutions": {},
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ]
+  "resolutions": {}
 }

@@ -8,17 +8,29 @@
     "wallet"
   ],
   "repository": "https://github.com/0xsequence/kit/tree/master/packages/kit",
-  "main": "dist/0xsequence-kit.cjs.js",
-  "module": "dist/0xsequence-kit.esm.js",
-  "types": "dist/0xsequence-kit.cjs.d.ts",
   "author": "Horizon Blockchain Games",
   "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
   "files": [
     "src",
     "dist"
   ],
   "scripts": {
-    "build": "echo 'hi'",
+    "build": "pnpm build:clean && pnpm build:esm && pnpm build:cjs && pnpm build:types",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs/",
+    "build:esm": "tsc --module es2022 --outDir dist/esm/",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types/",
+    "build:clean": "rimraf -g ./dist",
     "test": "echo",
     "typecheck": "tsc --noEmit"
   },
