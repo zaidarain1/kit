@@ -1,3 +1,5 @@
+'use client'
+
 import { createGenericContext } from './genericContext'
 
 export interface SelectCheckoutNavigation {

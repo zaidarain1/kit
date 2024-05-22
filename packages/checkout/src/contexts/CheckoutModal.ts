@@ -1,3 +1,5 @@
+'use client'
+
 import { Theme } from '@0xsequence/kit'
 
 import { createGenericContext } from './genericContext'
