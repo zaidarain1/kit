@@ -6,15 +6,15 @@ import { KitWalletProvider } from '@0xsequence/kit-wallet'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiProvider } from 'wagmi'
 
-import { wagmiConfig, kitConfig } from './config'
+import { wagmiConfig, kitConfig } from '../config'
 
 const queryClient = new QueryClient()
 
-export interface Web3ProviderProps {
+export interface ProvidersProps {
   children: React.ReactNode
 }
 
-export const Web3Provider = (props: Web3ProviderProps) => {
+export const Providers = (props: ProvidersProps) => {
   const { children } = props
 
   return (
