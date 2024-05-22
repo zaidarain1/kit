@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-KoV3ZGCG.js","./___vite-browser-external_commonjs-proxy-B-cSWyK0.js","./index.es-pmuHIzee.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-wOhYXIXp.js","./___vite-browser-external_commonjs-proxy-C1NZ33AZ.js","./index.es-C3UduLJD.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -22719,7 +22719,7 @@ const SelectItem = reactExports.forwardRef(
     );
   }
 );
-reactExports.forwardRef(
+const Select = reactExports.forwardRef(
   (props, ref) => {
     const {
       borderRadius = "md",
@@ -48159,7 +48159,7 @@ function formatUnits$1(value, unitName) {
   }
   return formatFixed(value, unitName != null ? unitName : 18);
 }
-function parseUnits(value, unitName) {
+function parseUnits$1(value, unitName) {
   if (typeof value !== "string") {
     logger$1.throwArgumentError("value must be a string", "value", value);
   }
@@ -48175,7 +48175,7 @@ function formatEther$1(wei) {
   return formatUnits$1(wei, 18);
 }
 function parseEther(ether) {
-  return parseUnits(ether, 18);
+  return parseUnits$1(ether, 18);
 }
 const lib_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -48183,7 +48183,7 @@ const lib_esm = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   formatEther: formatEther$1,
   formatUnits: formatUnits$1,
   parseEther,
-  parseUnits
+  parseUnits: parseUnits$1
 }, Symbol.toStringTag, { value: "Module" }));
 const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -48271,7 +48271,7 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   parseBytes32String,
   parseEther,
   parseTransaction: parse$2,
-  parseUnits,
+  parseUnits: parseUnits$1,
   poll: poll$1,
   randomBytes: randomBytes$1,
   recoverAddress,
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-XVd28I1a.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-C29RW31Y.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -74092,6 +74092,37 @@ function hashMessage(message, to_) {
   })();
   const prefixBytes = stringToBytes(`${presignMessagePrefix}${messageBytes.length}`);
   return keccak256(concat([prefixBytes, messageBytes]), to_);
+}
+function parseUnits(value, decimals) {
+  let [integer, fraction = "0"] = value.split(".");
+  const negative = integer.startsWith("-");
+  if (negative)
+    integer = integer.slice(1);
+  fraction = fraction.replace(/(0+)$/, "");
+  if (decimals === 0) {
+    if (Math.round(Number(`.${fraction}`)) === 1)
+      integer = `${BigInt(integer) + 1n}`;
+    fraction = "";
+  } else if (fraction.length > decimals) {
+    const [left, unit, right] = [
+      fraction.slice(0, decimals - 1),
+      fraction.slice(decimals - 1, decimals),
+      fraction.slice(decimals)
+    ];
+    const rounded = Math.round(Number(`${unit}.${right}`));
+    if (rounded > 9)
+      fraction = `${BigInt(left) + BigInt(1)}0`.padStart(left.length + 1, "0");
+    else
+      fraction = `${left}${rounded}`;
+    if (fraction.length > decimals) {
+      fraction = fraction.slice(1);
+      integer = `${BigInt(integer) + 1n}`;
+    }
+    fraction = fraction.slice(0, decimals);
+  } else {
+    fraction = fraction.padEnd(decimals, "0");
+  }
+  return BigInt(`${negative ? "-" : ""}${integer}${fraction}`);
 }
 function formatStorageProof(storageProof) {
   return storageProof.map((proof) => ({
@@ -83410,19 +83441,28 @@ const useProjectAccessKey = () => {
 };
 const useAPIClient = () => {
   const projectAccessKey2 = useProjectAccessKey();
+  const {
+    isDev = false
+  } = useKitConfig();
+  const clientUrl = isDev ? "https://dev-api.sequence.app" : "https://api.sequence.app";
   const apiClient = reactExports.useMemo(() => {
-    return new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
+    return new SequenceAPIClient(clientUrl, projectAccessKey2);
   }, [projectAccessKey2]);
   return apiClient;
 };
+const _excluded$2$1 = ["isDev"];
 const useIndexerClient = (chainId) => {
   const projectAccessKey2 = useProjectAccessKey();
+  const {
+    isDev = false
+  } = useKitConfig();
   const indexerClients = reactExports.useMemo(() => {
     return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
+  }, [projectAccessKey2, isDev]);
   const network2 = networks[chainId];
+  const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
   if (!indexerClients.has(chainId)) {
-    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+    indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
   }
   const indexerClient = indexerClients.get(chainId);
   if (!indexerClient) {
@@ -83432,14 +83472,19 @@ const useIndexerClient = (chainId) => {
 };
 const useIndexerClients = (chainIds) => {
   const projectAccessKey2 = useProjectAccessKey();
+  const _useKitConfig = useKitConfig(), {
+    isDev = false
+  } = _useKitConfig;
+  _objectWithoutPropertiesLoose$3(_useKitConfig, _excluded$2$1);
   const indexerClients = reactExports.useMemo(() => {
     return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
+  }, [projectAccessKey2, isDev]);
   const result = /* @__PURE__ */ new Map();
   for (const chainId of chainIds) {
     const network2 = networks[chainId];
+    const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
     if (!indexerClients.has(chainId)) {
-      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+      indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
     }
     const indexerClient = indexerClients.get(chainId);
     if (!indexerClient) {
@@ -83451,8 +83496,12 @@ const useIndexerClients = (chainIds) => {
 };
 const useMetadataClient = () => {
   const projectAccessKey2 = useProjectAccessKey();
+  const {
+    isDev = false
+  } = useKitConfig();
   const metadataClient = reactExports.useMemo(() => {
-    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
+    const clientUrl = isDev ? "https://dev-metadata.sequence.app" : "https://metadata.sequence.app";
+    return new SequenceMetadata(clientUrl, projectAccessKey2);
   }, [projectAccessKey2]);
   return metadataClient;
 };
@@ -84827,6 +84876,58 @@ const useWalletSettings = () => {
     setDisplayedAssets
   };
 };
+let _pendingFeeConfirmation;
+function useWaasFeeOptions() {
+  var _connections$find;
+  const connections = useConnections();
+  const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
+  const [pendingFeeOptionConfirmation, setPendingFeeOptionConfirmation] = reactExports.useState();
+  function confirmPendingFeeOption(id2, feeTokenAddress) {
+    var _pendingFeeConfirmati;
+    (_pendingFeeConfirmati = _pendingFeeConfirmation) == null || _pendingFeeConfirmati.resolve({
+      id: id2,
+      feeTokenAddress,
+      confirmed: true
+    });
+    setPendingFeeOptionConfirmation(void 0);
+    _pendingFeeConfirmation = void 0;
+  }
+  function rejectPendingFeeOption(id2) {
+    var _pendingFeeConfirmati2;
+    (_pendingFeeConfirmati2 = _pendingFeeConfirmation) == null || _pendingFeeConfirmati2.resolve({
+      id: id2,
+      feeTokenAddress: void 0,
+      confirmed: false
+    });
+    setPendingFeeOptionConfirmation(void 0);
+    _pendingFeeConfirmation = void 0;
+  }
+  reactExports.useEffect(() => {
+    async function setup() {
+      if (!waasConnector) {
+        return;
+      }
+      const waasProvider = waasConnector.sequenceWaasProvider;
+      if (!waasProvider) {
+        return;
+      }
+      waasProvider.feeConfirmationHandler = {
+        confirmFeeOption(id2, options, txs, chainId) {
+          const pending = new Deferred();
+          setPendingFeeOptionConfirmation({
+            id: id2,
+            options,
+            chainId
+          });
+          _pendingFeeConfirmation = pending;
+          return pending.promise;
+        }
+      };
+    }
+    setup();
+  });
+  return [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption];
+}
 function _extends$4() {
   _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
@@ -93687,7 +93788,7 @@ const SendCoin = ({
   const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.logoURI;
   const symbol = isNativeCoin ? nativeTokenInfo.symbol : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
   const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits(amountToSendFormatted, decimals);
+  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
   const amountToSendFiat = computeBalanceFiat({
     balance: _extends$2({}, tokenBalance, {
       balance: amountRaw.toString()
@@ -93725,7 +93826,7 @@ const SendCoin = ({
       });
     }
     e2.preventDefault();
-    const sendAmount = parseUnits(amountToSendFormatted, decimals);
+    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
     if (isNativeCoin) {
       var _wallet;
       analytics == null || analytics.track({
@@ -93994,7 +94095,7 @@ const SendCollectible = ({
   const name2 = (tokenBalance == null || (_tokenBalance$tokenMe2 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe2.name) || "Unknown";
   const imageUrl = (tokenBalance == null || (_tokenBalance$tokenMe3 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe3.image) || (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.logoURI) || "";
   const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits(amountToSendFormatted, decimals);
+  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
   const insufficientFunds = amountRaw.gt((tokenBalance == null ? void 0 : tokenBalance.balance) || "0");
   const isNonZeroAmount = amountRaw.gt(0);
   const handleChangeAmount = (ev) => {
@@ -94040,7 +94141,7 @@ const SendCollectible = ({
         chainId
       });
     }
-    const sendAmount = parseUnits(amountToSendFormatted, decimals);
+    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
     switch (contractType) {
       case "ERC721":
         analytics == null || analytics.track({
@@ -97128,6 +97229,31 @@ const getCheckoutSettings = (blockchainNftId, recipientAddress, tokenContractAdd
   };
   return checkoutSettings;
 };
+const Alert = ({ title, description: description2, secondaryDescription, variant, buttonProps, children }) => {
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", background: variant, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+    Box,
+    {
+      background: "backgroundOverlay",
+      borderRadius: "md",
+      paddingX: { sm: "4", md: "5" },
+      paddingY: "4",
+      width: "full",
+      flexDirection: "column",
+      gap: "3",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: { sm: "column", md: "row" }, gap: "2", justifyContent: "space-between", children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "1", children: [
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", fontWeight: "medium", children: title }),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", fontWeight: "medium", children: description2 }),
+            secondaryDescription && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text80", fontWeight: "medium", children: secondaryDescription })
+          ] }),
+          buttonProps ? /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { background: variant, borderRadius: "sm", width: "min", height: "min", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Button, { variant: "emphasis", shape: "square", flexShrink: "0", ...buttonProps }) }) : null
+        ] }),
+        children
+      ]
+    }
+  ) });
+};
 const Footer = () => {
   const { theme } = useTheme$1();
   const isMobile = useMediaQuery("isMobile");
@@ -97208,6 +97334,7 @@ const searchParams$1 = new URLSearchParams(location.search);
 const connectionMode$1 = searchParams$1.get("mode") === "universal" ? "universal" : "waas";
 const isDebugMode$1 = searchParams$1.has("debug");
 const Homepage = () => {
+  var _a2;
   const { theme, setTheme } = useTheme$1();
   const { setTheme: setKitTheme } = useTheme();
   const { address, connector, isConnected } = useAccount();
@@ -97235,16 +97362,61 @@ const Homepage = () => {
   const [confirmationEnabled, setConfirmationEnabled] = React.useState(
     localStorage.getItem("confirmationEnabled") === "true"
   );
+  const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions();
+  const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React.useState();
+  reactExports.useEffect(() => {
+    if (pendingFeeOptionConfirmation) {
+      setSelectedFeeOptionTokenName(pendingFeeOptionConfirmation.options[0].token.name);
+    }
+  }, [pendingFeeOptionConfirmation]);
   reactExports.useEffect(() => {
     if (error == null ? void 0 : error.message) {
       console.log(error == null ? void 0 : error.message);
     }
   }, [error]);
   const chainId = useChainId();
+  const indexerClient = useIndexerClient(chainId);
+  const [feeOptionBalances, setFeeOptionBalances] = React.useState([]);
+  const [feeOptionAlert, setFeeOptionAlert] = React.useState(void 0);
+  reactExports.useEffect(() => {
+    checkTokenBalancesForFeeOptions();
+  }, [pendingFeeOptionConfirmation]);
   const handleSwitchConnectionMode = (mode) => {
     const searchParams2 = new URLSearchParams();
     searchParams2.set("mode", mode);
     window.location.search = searchParams2.toString();
+  };
+  const checkTokenBalancesForFeeOptions = async () => {
+    if (pendingFeeOptionConfirmation && walletClient) {
+      const [account2] = await walletClient.getAddresses();
+      const nativeTokenBalance = await indexerClient.getEtherBalance({ accountAddress: account2 });
+      const tokenBalances = await indexerClient.getTokenBalances({
+        accountAddress: account2
+      });
+      console.log("feeOptions", pendingFeeOptionConfirmation.options);
+      console.log("nativeTokenBalance", nativeTokenBalance);
+      console.log("tokenBalances", tokenBalances);
+      const balances = pendingFeeOptionConfirmation.options.map((option) => {
+        var _a3;
+        if (option.token.contractAddress === null) {
+          return {
+            tokenName: option.token.name,
+            decimals: option.token.decimals || 0,
+            balance: nativeTokenBalance.balance.balanceWei
+          };
+        } else {
+          return {
+            tokenName: option.token.name,
+            decimals: option.token.decimals || 0,
+            balance: ((_a3 = tokenBalances.balances.find((b2) => {
+              var _a4;
+              return b2.contractAddress.toLowerCase() === ((_a4 = option.token.contractAddress) == null ? void 0 : _a4.toLowerCase());
+            })) == null ? void 0 : _a3.balance) || "0"
+          };
+        }
+      });
+      setFeeOptionBalances(balances);
+    }
   };
   const networkForCurrentChainId = allNetworks.find((n2) => n2.chainId === chainId);
   const publicClient = usePublicClient({ chainId });
@@ -97507,6 +97679,97 @@ const Homepage = () => {
                 onClick: onSwitchNetwork
               }
             )
+          ] }),
+          pendingFeeOptionConfirmation && feeOptionBalances.length > 0 && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { marginY: "3", children: [
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+              Select,
+              {
+                name: "feeOption",
+                labelLocation: "top",
+                label: "Pick a fee option",
+                onValueChange: (val) => {
+                  var _a3;
+                  const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find((option) => option.token.name === val);
+                  if (selected) {
+                    setSelectedFeeOptionTokenName(selected.token.name);
+                    setFeeOptionAlert(void 0);
+                  }
+                },
+                value: selectedFeeOptionTokenName,
+                options: [
+                  ...(_a2 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a2.map((option) => {
+                    var _a3;
+                    return {
+                      label: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "flex-start", flexDirection: "column", fontSize: "xsmall", children: [
+                        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Text, { children: [
+                            "Fee (in ",
+                            option.token.name,
+                            "): "
+                          ] }),
+                          " ",
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(BigInt(option.value), option.token.decimals || 0) })
+                        ] }),
+                        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", children: [
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Text, { children: [
+                            "Wallet balance for ",
+                            option.token.name,
+                            ": "
+                          ] }),
+                          " ",
+                          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { children: formatUnits(
+                            BigInt(((_a3 = feeOptionBalances.find((b2) => b2.tokenName === option.token.name)) == null ? void 0 : _a3.balance) || "0"),
+                            option.token.decimals || 0
+                          ) })
+                        ] })
+                      ] }),
+                      value: option.token.name
+                    };
+                  })
+                ]
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { marginY: "2", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [
+              /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+                Button,
+                {
+                  onClick: () => {
+                    var _a3, _b2;
+                    const selected = (_a3 = pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.options) == null ? void 0 : _a3.find(
+                      (option) => option.token.name === selectedFeeOptionTokenName
+                    );
+                    if ((selected == null ? void 0 : selected.token.contractAddress) !== void 0) {
+                      const balance = parseUnits(
+                        ((_b2 = feeOptionBalances.find((b2) => b2.tokenName === selected.token.name)) == null ? void 0 : _b2.balance) || "0",
+                        selected.token.decimals || 0
+                      );
+                      const feeOptionValue = parseUnits(selected.value, selected.token.decimals || 0);
+                      if (balance && balance < feeOptionValue) {
+                        setFeeOptionAlert({
+                          title: "Insufficient balance",
+                          description: `You do not have enough balance to pay the fee with ${selected.token.name}, please make sure you have enough balance in your wallet for the selected fee option.`,
+                          secondaryDescription: "You can also switch network to Arbitrum Sepolia to test a gasless transaction.",
+                          variant: "warning"
+                        });
+                        return;
+                      }
+                      confirmPendingFeeOption(pendingFeeOptionConfirmation == null ? void 0 : pendingFeeOptionConfirmation.id, selected.token.contractAddress);
+                    }
+                  },
+                  label: "Confirm fee option"
+                }
+              ),
+              feeOptionAlert && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { marginTop: "3", style: { maxWidth: "332px" }, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+                Alert,
+                {
+                  title: feeOptionAlert.title,
+                  description: feeOptionAlert.description,
+                  secondaryDescription: feeOptionAlert.secondaryDescription,
+                  variant: feeOptionAlert.variant,
+                  buttonProps: feeOptionAlert.buttonProps
+                }
+              ) })
+            ] })
           ] }),
           isWaasConnection && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { marginY: "3", children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { as: "label", flexDirection: "row", alignItems: "center", justifyContent: "space-between", children: [
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "semibold", variant: "small", color: "text50", children: "Confirmations" }),
@@ -108041,7 +108304,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-KoV3ZGCG.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-wOhYXIXp.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108227,7 +108490,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-pmuHIzee.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C3UduLJD.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -108588,10 +108851,12 @@ function normalizeChainId$1(chainId) {
 sequenceWaasWallet.type = "sequence-waas";
 function sequenceWaasWallet(params) {
   var _params$enableConfirm, _params$network, _sequence$network$all;
+  const isDev = !!(params != null && params.isDev);
+  const nodesUrl = isDev ? "https://dev-nodes.sequence.app" : "https://nodes.sequence.app";
   const showConfirmationModal = (_params$enableConfirm = params.enableConfirmationModal) != null ? _params$enableConfirm : false;
   const initialChain = (_params$network = params.network) != null ? _params$network : 137;
   const initialChainName = (_sequence$network$all = sequence$1.network.allNetworks.find((n2) => n2.chainId === initialChain || n2.name === initialChain)) == null ? void 0 : _sequence$network$all.name;
-  const initialJsonRpcProvider = new JsonRpcProvider$1(`https://nodes.sequence.app/${initialChainName != null ? initialChainName : "polygon"}/${params.projectAccessKey}`);
+  const initialJsonRpcProvider = new JsonRpcProvider$1(`${nodesUrl}/${initialChainName != null ? initialChainName : "polygon"}/${params.projectAccessKey}`);
   const sequenceWaas = new SequenceWaaS({
     network: initialChain,
     projectAccessKey: params.projectAccessKey,
@@ -108601,7 +108866,7 @@ function sequenceWaasWallet(params) {
   const updateNetwork = async (chainId) => {
     var _sequence$network$all2;
     const networkName = (_sequence$network$all2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId || n2.name === initialChain)) == null ? void 0 : _sequence$network$all2.name;
-    const jsonRpcProvider = new JsonRpcProvider$1(`https://nodes.sequence.app/${networkName}/${params.projectAccessKey}`);
+    const jsonRpcProvider = new JsonRpcProvider$1(`${nodesUrl}/${networkName}/${params.projectAccessKey}`);
     sequenceWaasProvider.updateJsonRpcProvider(jsonRpcProvider);
     sequenceWaasProvider.updateNetwork(getNetwork$1(chainId));
   };
@@ -109789,6 +110054,22 @@ const appleWaas = (options) => ({
     return connector;
   }
 });
+const emailWaas = (options) => ({
+  id: "email-waas",
+  logoDark: getEmailLogo({
+    isDarkMode: true
+  }),
+  logoLight: getEmailLogo({
+    isDarkMode: false
+  }),
+  name: "Email",
+  createConnector: () => {
+    const connector = sequenceWaasWallet(_extends({}, options, {
+      loginType: "email"
+    }));
+    return connector;
+  }
+});
 const googleWaas = (options) => ({
   id: "google-waas",
   logoDark: GoogleLogo,
@@ -109869,25 +110150,28 @@ const getDefaultWaasConnectors = ({
   walletConnectProjectId,
   appName,
   defaultChainId,
-  enableConfirmationModal
+  enableConfirmationModal,
+  isDev: _isDev = false
 }) => {
-  const wallets = [
-    // emailWaas({ projectAccessKey, waasConfigKey, enableConfirmationModal, network: defaultChainId }),
-    coinbaseWallet({
-      appName
-    }),
-    metamask(),
-    walletConnect({
-      projectId: walletConnectProjectId
-    })
-  ];
+  const wallets = [emailWaas({
+    projectAccessKey: projectAccessKey2,
+    waasConfigKey: waasConfigKey2,
+    enableConfirmationModal,
+    network: defaultChainId,
+    isDev: _isDev
+  }), coinbaseWallet({
+    appName
+  }), metamask(), walletConnect({
+    projectId: walletConnectProjectId
+  })];
   if (googleClientId2) {
     wallets.push(googleWaas({
       projectAccessKey: projectAccessKey2,
       googleClientId: googleClientId2,
       waasConfigKey: waasConfigKey2,
       enableConfirmationModal,
-      network: defaultChainId
+      network: defaultChainId,
+      isDev: _isDev
     }));
   }
   if (appleClientId2 && appleRedirectURI2) {
@@ -109897,7 +110181,8 @@ const getDefaultWaasConnectors = ({
       appleRedirectURI: appleRedirectURI2,
       waasConfigKey: waasConfigKey2,
       enableConfirmationModal,
-      network: defaultChainId
+      network: defaultChainId,
+      isDev: _isDev
     }));
   }
   const connectors = getKitConnectWallets(projectAccessKey2, wallets);
@@ -110010,7 +110295,7 @@ const polygon = /* @__PURE__ */ defineChain({
 const searchParams = new URLSearchParams(location.search);
 const connectionMode = searchParams.get("mode") === "universal" ? "universal" : "waas";
 const isDebugMode = searchParams.has("debug");
-const projectAccessKey = "AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI";
+const projectAccessKey = isDebugMode ? "AQAAAAAAAAK2JvvZhWqZ51riasWBftkrVXE" : "AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI";
 const chains = [arbitrumNova, arbitrumSepolia, mainnet, polygon];
 const transports = chains.reduce((acc, chain) => {
   const network2 = findNetworkConfig(allNetworks, chain.id);
@@ -110025,8 +110310,8 @@ chains.forEach((chain) => {
     return;
   transports[chain.id] = http(network2.rpcUrl);
 });
-const waasConfigKey = "eyJwcm9qZWN0SWQiOjE2ODE1LCJycGNTZXJ2ZXIiOiJodHRwczovL3dhYXMuc2VxdWVuY2UuYXBwIn0=";
-const googleClientId = "970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com";
+const waasConfigKey = isDebugMode ? "eyJwcm9qZWN0SWQiOjY5NCwicnBjU2VydmVyIjoiaHR0cHM6Ly9kZXYtd2Fhcy5zZXF1ZW5jZS5hcHAiLCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI1NGF0bjV1cGk2M3FjNTlhMWVtM3ZiaHJzbiJ9" : "eyJwcm9qZWN0SWQiOjE2ODE1LCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI2N2V2NXVvc3ZxMzVmcGI2OXI3NnJoYnVoIiwicnBjU2VydmVyIjoiaHR0cHM6Ly93YWFzLnNlcXVlbmNlLmFwcCJ9";
+const googleClientId = isDebugMode ? "603294233249-6h5saeg2uiu8akpcbar3r2aqjp6j7oem.apps.googleusercontent.com" : "970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com";
 const appleClientId = "com.horizon.sequence.waas";
 const appleRedirectURI = "https://" + window.location.host;
 const getWaasConnectors = () => {
@@ -110040,13 +110325,16 @@ const getWaasConnectors = () => {
       appleRedirectURI,
       appName: "Kit Demo",
       projectAccessKey,
-      enableConfirmationModal: localStorage.getItem("confirmationEnabled") === "true"
-    }),
-    ...isDebugMode ? getKitConnectWallets(projectAccessKey, [
-      mock({
-        accounts: ["0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9"]
-      })
-    ]) : []
+      enableConfirmationModal: localStorage.getItem("confirmationEnabled") === "true",
+      isDev: isDebugMode
+    })
+    // ...(isDebugMode
+    //   ? getKitConnectWallets(projectAccessKey, [
+    //       mock({
+    //         accounts: ['0xCb88b6315507e9d8c35D81AFB7F190aB6c3227C9']
+    //       })
+    //     ])
+    //   : [])
   ];
   return connectors;
 };
@@ -110072,6 +110360,7 @@ const wagmiConfig = createConfig({
   connectors: connectionMode === "waas" ? getWaasConnectors() : getUniversalConnectors()
 });
 const kitConfig = {
+  isDev: isDebugMode,
   projectAccessKey,
   defaultTheme: "dark",
   signIn: {
