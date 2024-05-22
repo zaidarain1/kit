@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CO4t4qDX.js","./___vite-browser-external_commonjs-proxy-BWPtq7er.js","./index.es-gzdlT0Xp.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-KoV3ZGCG.js","./___vite-browser-external_commonjs-proxy-B-cSWyK0.js","./index.es-pmuHIzee.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71826,7 +71826,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BoUAqsGL.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-XVd28I1a.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -83047,6 +83047,63 @@ const AppleWaasConnectButton = (props) => {
   }) : null;
 };
 const getLogo = (theme, walletProps) => theme === "dark" ? walletProps.logoDark || walletProps.monochromeLogoDark : walletProps.logoLight || walletProps.monochromeLogoLight;
+const getNetworkColor = (chainId, mode = "light") => {
+  switch (chainId) {
+    case ChainId.MAINNET:
+      return mode === "light" ? "#abf" : "#abf";
+    case ChainId.POLYGON:
+      return mode === "light" ? "#c7a6ff" : "#c7a6ff";
+    case ChainId.ARBITRUM:
+      return mode === "light" ? "#52A7E6" : "#52A7E6";
+    case ChainId.OPTIMISM:
+      return mode === "light" ? "#DB3132" : "#DB3132";
+    case ChainId.BSC:
+      return mode === "light" ? "#CB9C1D" : "#EEB445";
+    case ChainId.AVALANCHE:
+      return mode === "light" ? "#E84142" : "#E84142";
+    case ChainId.GNOSIS:
+      return mode === "light" ? "#00193C" : "#D8E8FF";
+    case ChainId.GOERLI:
+      return mode === "light" ? "#A77A00" : "#FFA700";
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
+      return mode === "light" ? "#D68828" : "#FFA700";
+    default:
+      return mode === "light" ? "#abf" : "#abf";
+  }
+};
+const getNetworkBackgroundColor = (chainId, mode = "light") => {
+  switch (chainId) {
+    case ChainId.MAINNET:
+      return mode === "light" ? "#132362" : "#132362";
+    case ChainId.POLYGON:
+      return mode === "light" ? "#350881" : "#350881";
+    case ChainId.ARBITRUM:
+      return mode === "light" ? "#EDF7FF" : "#0C3754";
+    case ChainId.OPTIMISM:
+      return mode === "light" ? "#FFEAE9" : "#390B0C";
+    case ChainId.BSC:
+      return mode === "light" ? "#FFE8AB" : "#554018";
+    case ChainId.AVALANCHE:
+      return mode === "light" ? "#FBDFDF" : "#390B0C";
+    case ChainId.GNOSIS:
+      return mode === "light" ? "#D8E8FF" : "#00193C";
+    case ChainId.GOERLI:
+      return mode === "light" ? "#FFD871" : "#554018";
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
+      return mode === "light" ? "#FFE8CD" : "#554018";
+    default:
+      return mode === "light" ? "#132362" : "#132362";
+  }
+};
+const getNetwork = (chainId) => {
+  const network2 = networks[chainId];
+  if (!network2) {
+    throw new Error(`Unknown network chainId: ${chainId}`);
+  }
+  return network2;
+};
 const NetworkBadge$1 = ({
   chainId
 }) => {
@@ -83332,6 +83389,19 @@ const SequenceLogo$1 = (_ref) => {
     width: "396"
   })))));
 };
+function _objectWithoutPropertiesLoose$3(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  for (var key2 in source) {
+    if (Object.prototype.hasOwnProperty.call(source, key2)) {
+      if (excluded.indexOf(key2) >= 0)
+        continue;
+      target[key2] = source[key2];
+    }
+  }
+  return target;
+}
 const useProjectAccessKey = () => {
   const {
     projectAccessKey: projectAccessKey2
@@ -83344,6 +83414,299 @@ const useAPIClient = () => {
     return new SequenceAPIClient("https://api.sequence.app", projectAccessKey2);
   }, [projectAccessKey2]);
   return apiClient;
+};
+const useIndexerClient = (chainId) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const network2 = networks[chainId];
+  if (!indexerClients.has(chainId)) {
+    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+  }
+  const indexerClient = indexerClients.get(chainId);
+  if (!indexerClient) {
+    throw new Error("Indexer client not found");
+  }
+  return indexerClient;
+};
+const useIndexerClients = (chainIds) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2]);
+  const result = /* @__PURE__ */ new Map();
+  for (const chainId of chainIds) {
+    const network2 = networks[chainId];
+    if (!indexerClients.has(chainId)) {
+      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
+    }
+    const indexerClient = indexerClients.get(chainId);
+    if (!indexerClient) {
+      throw new Error("Indexer client not found");
+    }
+    result.set(chainId, indexerClient);
+  }
+  return result;
+};
+const useMetadataClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const metadataClient = reactExports.useMemo(() => {
+    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
+  }, [projectAccessKey2]);
+  return metadataClient;
+};
+const _excluded$1$2 = ["chainIds"];
+const time$1 = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
+};
+const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
+  const res = await indexerClient.getEtherBalance({
+    accountAddress
+  });
+  const tokenBalance = {
+    chainId,
+    contractAddress: zeroAddress,
+    accountAddress,
+    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
+    contractType: ContractType$1.UNKNOWN,
+    blockHash: "",
+    blockNumber: 0,
+    tokenID: ""
+  };
+  return tokenBalance;
+};
+const getTokenBalances = async (indexerClient, args) => {
+  var _args$includeMetadata, _args$verifiedOnly;
+  const res = await indexerClient.getTokenBalances(_extends$5({
+    accountAddress: args.accountAddress,
+    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
+    }
+  }, args.contractAddress && {
+    contractAddress: args.contractAddress
+  }));
+  return (res == null ? void 0 : res.balances) || [];
+};
+const getBalances = async (indexerClient, chainId, args) => {
+  if (!args.accountAddress) {
+    return [];
+  }
+  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
+  return balances;
+};
+const useBalances = (_ref) => {
+  let {
+    chainIds
+  } = _ref, args = _objectWithoutPropertiesLoose$3(_ref, _excluded$1$2);
+  const indexerClients = useIndexerClients(chainIds);
+  return useQuery$1({
+    queryKey: ["balances", chainIds, args],
+    queryFn: async () => {
+      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
+      return res;
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const useCoinBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["coinBalance", args],
+    queryFn: async () => {
+      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
+        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
+        return res;
+      } else {
+        const res = await getTokenBalances(indexerClient, args);
+        return res[0];
+      }
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
+const useCollectibleBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectibleBalance", args],
+    queryFn: async () => {
+      var _args$verifiedOnly2;
+      const res = await indexerClient.getTokenBalances({
+        accountAddress: args.accountAddress,
+        contractAddress: args.contractAddress,
+        tokenID: args.tokenId,
+        includeMetadata: true,
+        metadataOptions: {
+          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
+        }
+      });
+      return res.balances[0];
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
+  });
+};
+const getCollectionBalance = async (indexerClient, args) => {
+  var _args$includeMetadata2, _args$verifiedOnly3;
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    contractAddress: args.contractAddress,
+    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
+    metadataOptions: {
+      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
+    }
+  });
+  return (res == null ? void 0 : res.balances) || [];
+};
+const useCollectionBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectionBalance", args],
+    queryFn: () => getCollectionBalance(indexerClient, args),
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
+  });
+};
+const useExchangeRate = (toCurrency) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["exchangeRate", toCurrency],
+    queryFn: async () => {
+      if (toCurrency === "USD") {
+        return 1;
+      }
+      const res = await apiClient.getExchangeRate({
+        toCurrency
+      });
+      return res.exchangeRate.value;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10
+  });
+};
+const getCoinPrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCoinPrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCoinPrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["coinPrices", tokens],
+    queryFn: () => getCoinPrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const getCollectiblePrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCollectiblePrices({
+    tokens
+  });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCollectiblePrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["useCollectiblePrices", tokens],
+    queryFn: () => getCollectiblePrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
+    queryFn: async () => {
+      const res = await metadataClient.getTokenMetadata({
+        chainID: String(chainId),
+        contractAddress,
+        tokenIDs: tokenIds
+      });
+      return res.tokenMetadata;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const useContractInfo = (chainId, contractAddress) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["contractInfo", chainId, contractAddress],
+    queryFn: async () => {
+      const res = await metadataClient.getContractInfo({
+        chainID: String(chainId),
+        contractAddress
+      });
+      return res.contractInfo;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const getTransactionHistory = async (indexerClient, {
+  contractAddress,
+  accountAddress,
+  tokenId,
+  page
+}) => {
+  const res = indexerClient.getTransactionHistory({
+    includeMetadata: true,
+    page,
+    filter: {
+      accountAddress,
+      contractAddress,
+      tokenID: tokenId
+    }
+  });
+  return res;
+};
+const useTransactionHistory = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useInfiniteQuery({
+    queryKey: ["transactionHistory", args],
+    queryFn: ({
+      pageParam
+    }) => {
+      return getTransactionHistory(indexerClient, _extends$5({}, args, {
+        page: {
+          page: pageParam
+        }
+      }));
+    },
+    getNextPageParam: ({
+      page
+    }) => {
+      if (!page.more) {
+        return void 0;
+      }
+      return (page == null ? void 0 : page.page) || 1;
+    },
+    initialPageParam: 1,
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
 };
 const nativeTokenInfos = {
   [ChainId.MAINNET]: {
@@ -84343,26 +84706,13 @@ const KitProvider = (props) => {
     marginTop: "1"
   }, /* @__PURE__ */ React.createElement(SequenceLogo$1, null)))))))), children))))));
 };
-function _objectWithoutPropertiesLoose$3(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  for (var key2 in source) {
-    if (Object.prototype.hasOwnProperty.call(source, key2)) {
-      if (excluded.indexOf(key2) >= 0)
-        continue;
-      target[key2] = source[key2];
-    }
-  }
-  return target;
-}
-const _excluded$1$2 = ["createConnector"];
+const _excluded$5 = ["createConnector"];
 const getKitConnectWallets = (projectAccessKey2, wallets) => {
   const connectors = [];
   wallets.forEach((wallet) => {
     const {
       createConnector: createConnector2
-    } = wallet, metaProperties = _objectWithoutPropertiesLoose$3(wallet, _excluded$1$2);
+    } = wallet, metaProperties = _objectWithoutPropertiesLoose$3(wallet, _excluded$5);
     const walletProperties = _extends$5({}, metaProperties);
     const createConnectorOverride = (config2) => {
       const connector = createConnector2(projectAccessKey2);
@@ -84373,63 +84723,6 @@ const getKitConnectWallets = (projectAccessKey2, wallets) => {
     connectors.push(createConnectorOverride);
   });
   return connectors;
-};
-const getNetworkColor = (chainId, mode = "light") => {
-  switch (chainId) {
-    case ChainId.MAINNET:
-      return mode === "light" ? "#abf" : "#abf";
-    case ChainId.POLYGON:
-      return mode === "light" ? "#c7a6ff" : "#c7a6ff";
-    case ChainId.ARBITRUM:
-      return mode === "light" ? "#52A7E6" : "#52A7E6";
-    case ChainId.OPTIMISM:
-      return mode === "light" ? "#DB3132" : "#DB3132";
-    case ChainId.BSC:
-      return mode === "light" ? "#CB9C1D" : "#EEB445";
-    case ChainId.AVALANCHE:
-      return mode === "light" ? "#E84142" : "#E84142";
-    case ChainId.GNOSIS:
-      return mode === "light" ? "#00193C" : "#D8E8FF";
-    case ChainId.GOERLI:
-      return mode === "light" ? "#A77A00" : "#FFA700";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
-      return mode === "light" ? "#D68828" : "#FFA700";
-    default:
-      return mode === "light" ? "#abf" : "#abf";
-  }
-};
-const getNetworkBackgroundColor = (chainId, mode = "light") => {
-  switch (chainId) {
-    case ChainId.MAINNET:
-      return mode === "light" ? "#132362" : "#132362";
-    case ChainId.POLYGON:
-      return mode === "light" ? "#350881" : "#350881";
-    case ChainId.ARBITRUM:
-      return mode === "light" ? "#EDF7FF" : "#0C3754";
-    case ChainId.OPTIMISM:
-      return mode === "light" ? "#FFEAE9" : "#390B0C";
-    case ChainId.BSC:
-      return mode === "light" ? "#FFE8AB" : "#554018";
-    case ChainId.AVALANCHE:
-      return mode === "light" ? "#FBDFDF" : "#390B0C";
-    case ChainId.GNOSIS:
-      return mode === "light" ? "#D8E8FF" : "#00193C";
-    case ChainId.GOERLI:
-      return mode === "light" ? "#FFD871" : "#554018";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
-      return mode === "light" ? "#FFE8CD" : "#554018";
-    default:
-      return mode === "light" ? "#132362" : "#132362";
-  }
-};
-const getNetwork = (chainId) => {
-  const network2 = networks[chainId];
-  if (!network2) {
-    throw new Error(`Unknown network chainId: ${chainId}`);
-  }
-  return network2;
 };
 function walletClientToSigner(walletClient) {
   var _chain$contracts;
@@ -84533,299 +84826,6 @@ const useWalletSettings = () => {
     displayedAssets,
     setDisplayedAssets
   };
-};
-const useMetadataClient = () => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const metadataClient = reactExports.useMemo(() => {
-    return new SequenceMetadata("https://metadata.sequence.app", projectAccessKey2);
-  }, [projectAccessKey2]);
-  return metadataClient;
-};
-const useIndexerClient = (chainId) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
-  const network2 = networks[chainId];
-  if (!indexerClients.has(chainId)) {
-    indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
-  }
-  const indexerClient = indexerClients.get(chainId);
-  if (!indexerClient) {
-    throw new Error("Indexer client not found");
-  }
-  return indexerClient;
-};
-const useIndexerClients = (chainIds) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2]);
-  const result = /* @__PURE__ */ new Map();
-  for (const chainId of chainIds) {
-    const network2 = networks[chainId];
-    if (!indexerClients.has(chainId)) {
-      indexerClients.set(chainId, new SequenceIndexer(indexerURL(network2.name), projectAccessKey2));
-    }
-    const indexerClient = indexerClients.get(chainId);
-    if (!indexerClient) {
-      throw new Error("Indexer client not found");
-    }
-    result.set(chainId, indexerClient);
-  }
-  return result;
-};
-const _excluded$5 = ["chainIds"];
-const time$1 = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
-  const res = await indexerClient.getEtherBalance({
-    accountAddress
-  });
-  const tokenBalance = {
-    chainId,
-    contractAddress: zeroAddress,
-    accountAddress,
-    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
-    contractType: ContractType$1.UNKNOWN,
-    blockHash: "",
-    blockNumber: 0,
-    tokenID: ""
-  };
-  return tokenBalance;
-};
-const getTokenBalances = async (indexerClient, args) => {
-  var _args$includeMetadata, _args$verifiedOnly;
-  const res = await indexerClient.getTokenBalances(_extends$5({
-    accountAddress: args.accountAddress,
-    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
-    }
-  }, args.contractAddress && {
-    contractAddress: args.contractAddress
-  }));
-  return (res == null ? void 0 : res.balances) || [];
-};
-const getBalances = async (indexerClient, chainId, args) => {
-  if (!args.accountAddress) {
-    return [];
-  }
-  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
-  return balances;
-};
-const useBalances = (_ref) => {
-  let {
-    chainIds
-  } = _ref, args = _objectWithoutPropertiesLoose$3(_ref, _excluded$5);
-  const indexerClients = useIndexerClients(chainIds);
-  return useQuery$1({
-    queryKey: ["balances", chainIds, args],
-    queryFn: async () => {
-      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
-      return res;
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const useCoinBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["coinBalance", args],
-    queryFn: async () => {
-      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
-        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
-        return res;
-      } else {
-        const res = await getTokenBalances(indexerClient, args);
-        return res[0];
-      }
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
-};
-const useCollectibleBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectibleBalance", args],
-    queryFn: async () => {
-      var _args$verifiedOnly2;
-      const res = await indexerClient.getTokenBalances({
-        accountAddress: args.accountAddress,
-        contractAddress: args.contractAddress,
-        tokenID: args.tokenId,
-        includeMetadata: true,
-        metadataOptions: {
-          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
-        }
-      });
-      return res.balances[0];
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
-  });
-};
-const getCollectionBalance = async (indexerClient, args) => {
-  var _args$includeMetadata2, _args$verifiedOnly3;
-  const res = await indexerClient.getTokenBalances({
-    accountAddress: args.accountAddress,
-    contractAddress: args.contractAddress,
-    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
-    }
-  });
-  return (res == null ? void 0 : res.balances) || [];
-};
-const useCollectionBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectionBalance", args],
-    queryFn: () => getCollectionBalance(indexerClient, args),
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
-  });
-};
-const useExchangeRate = (toCurrency) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["exchangeRate", toCurrency],
-    queryFn: async () => {
-      if (toCurrency === "USD") {
-        return 1;
-      }
-      const res = await apiClient.getExchangeRate({
-        toCurrency
-      });
-      return res.exchangeRate.value;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10
-  });
-};
-const getCoinPrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCoinPrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCoinPrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["coinPrices", tokens],
-    queryFn: () => getCoinPrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const getCollectiblePrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCollectiblePrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCollectiblePrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["useCollectiblePrices", tokens],
-    queryFn: () => getCollectiblePrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
-    queryFn: async () => {
-      const res = await metadataClient.getTokenMetadata({
-        chainID: String(chainId),
-        contractAddress,
-        tokenIDs: tokenIds
-      });
-      return res.tokenMetadata;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const useContractInfo = (chainId, contractAddress) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["contractInfo", chainId, contractAddress],
-    queryFn: async () => {
-      const res = await metadataClient.getContractInfo({
-        chainID: String(chainId),
-        contractAddress
-      });
-      return res.contractInfo;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const getTransactionHistory = async (indexerClient, {
-  contractAddress,
-  accountAddress,
-  tokenId,
-  page
-}) => {
-  const res = indexerClient.getTransactionHistory({
-    includeMetadata: true,
-    page,
-    filter: {
-      accountAddress,
-      contractAddress,
-      tokenID: tokenId
-    }
-  });
-  return res;
-};
-const useTransactionHistory = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useInfiniteQuery({
-    queryKey: ["transactionHistory", args],
-    queryFn: ({
-      pageParam
-    }) => {
-      return getTransactionHistory(indexerClient, _extends$5({}, args, {
-        page: {
-          page: pageParam
-        }
-      }));
-    },
-    getNextPageParam: ({
-      page
-    }) => {
-      if (!page.more) {
-        return void 0;
-      }
-      return (page == null ? void 0 : page.page) || 1;
-    },
-    initialPageParam: 1,
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
 };
 function _extends$4() {
   _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
@@ -108041,7 +108041,7 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-CO4t4qDX.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-KoV3ZGCG.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
         let SDK;
         if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
           SDK = CoinbaseWalletSDK.default;
@@ -108227,7 +108227,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-gzdlT0Xp.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-pmuHIzee.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
