@@ -33,6 +33,7 @@ import { allNetworks } from '@0xsequence/network'
 import { ethers } from 'ethers'
 import { AnimatePresence } from 'framer-motion'
 import React, { useEffect } from 'react'
+import { formatUnits, parseUnits } from 'viem'
 import {
   useDisconnect,
   useAccount,
@@ -44,7 +45,6 @@ import {
   useWriteContract,
   useConnections
 } from 'wagmi'
-import { formatUnits, parseUnits } from 'viem'
 
 import { ConnectionMode } from '../config'
 import { messageToSign } from '../constants'
@@ -97,7 +97,7 @@ export const Homepage = () => {
     localStorage.getItem('confirmationEnabled') === 'true'
   )
 
-  const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions()
+  const [pendingFeeOptionConfirmation, confirmPendingFeeOption] = useWaasFeeOptions()
 
   const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React.useState<string | undefined>()
 

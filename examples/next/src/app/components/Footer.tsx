@@ -1,5 +1,5 @@
-import React from 'react'
 import { Box, Button, Image, Text, useMediaQuery, useTheme } from '@0xsequence/design-system'
+import React from 'react'
 
 interface BottomPageLink {
   label: string
