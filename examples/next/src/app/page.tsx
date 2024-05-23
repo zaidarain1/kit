@@ -16,10 +16,10 @@ export default function Home() {
       {!isConnected ? (
         <Box flexDirection="column" alignItems="center" justifyContent="center" gap="5" height="vh">
           <Box background="white" padding="2" borderRadius="sm">
-            <Image alt="Next" src="next.svg" height="3" />
+            <Image alt="Next" src="next.svg" height="3" disableAnimation />
           </Box>
           <Box flexDirection="row" alignItems="center" justifyContent="center" gap="3">
-            <Image alt="Sequence Kit Logo" style={{ width: '48px' }} src="kit-logo.svg" />
+            <Image alt="Sequence Kit Logo" style={{ width: '48px' }} src="kit-logo.svg" disableAnimation />
             <Image
               alt="Sequence Kit Text Logo"
               style={{
@@ -27,6 +27,7 @@ export default function Home() {
                 // filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
               }}
               src="kit-logo-text.svg"
+              disableAnimation
             />
           </Box>
           <Box gap="2" flexDirection="row" alignItems="center">
