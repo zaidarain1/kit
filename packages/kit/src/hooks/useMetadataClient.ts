@@ -1,14 +1,14 @@
 import { SequenceMetadata } from '@0xsequence/metadata'
 import { useMemo } from 'react'
 
-import { useProjectAccessKey } from './useProjectAccessKey'
-
 import { useKitConfig } from '../contexts/KitConfig'
+
+import { useProjectAccessKey } from './useProjectAccessKey'
 
 export const useMetadataClient = () => {
   const projectAccessKey = useProjectAccessKey()
 
-  const { isDev = false } = useKitConfig() 
+  const { isDev = false } = useKitConfig()
 
   const metadataClient = useMemo(() => {
     const clientUrl = isDev ? 'https://dev-metadata.sequence.app' : 'https://metadata.sequence.app'

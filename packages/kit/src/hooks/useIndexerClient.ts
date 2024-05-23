@@ -2,14 +2,14 @@ import { SequenceIndexer } from '@0xsequence/indexer'
 import { ChainId, networks } from '@0xsequence/network'
 import { useMemo } from 'react'
 
-import { useProjectAccessKey } from './useProjectAccessKey'
-
 import { useKitConfig } from '../contexts/KitConfig'
+
+import { useProjectAccessKey } from './useProjectAccessKey'
 
 export const useIndexerClient = (chainId: ChainId) => {
   const projectAccessKey = useProjectAccessKey()
 
-  const { isDev = false } = useKitConfig() 
+  const { isDev = false } = useKitConfig()
 
   const indexerClients = useMemo(() => {
     return new Map<ChainId, SequenceIndexer>()
@@ -17,7 +17,6 @@ export const useIndexerClient = (chainId: ChainId) => {
 
   const network = networks[chainId]
   const clientUrl = isDev ? `https://dev-${network.name}-indexer.sequence.app` : `https://${network.name}-indexer.sequence.app`
-
 
   if (!indexerClients.has(chainId)) {
     indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey))
@@ -35,7 +34,7 @@ export const useIndexerClient = (chainId: ChainId) => {
 export const useIndexerClients = (chainIds: ChainId[]) => {
   const projectAccessKey = useProjectAccessKey()
 
-  const { isDev = false, ...rest } = useKitConfig() 
+  const { isDev = false } = useKitConfig()
 
   const indexerClients = useMemo(() => {
     return new Map<ChainId, SequenceIndexer>()
