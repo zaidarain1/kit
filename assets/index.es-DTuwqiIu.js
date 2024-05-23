@@ -1,6 +1,6 @@
-const __vite__fileDeps=["./index-FirV7aUJ.js","./index-Bg5F0fLx.js","./index-Dso1Hl_w.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
-import { p as process$1, r as require$$0$1, g as global, B as Buffer, a as getDefaultExportFromCjs, c as commonjsGlobal, b as getAugmentedNamespace, _ as __vitePreload } from "./index-Bg5F0fLx.js";
-import { r as require$$3, e as eventsExports, W as Wg } from "./___vite-browser-external_commonjs-proxy-nGueUmBt.js";
+const __vite__fileDeps=["./index-DBQ9rt-V.js","./index-B2F9b3rW.js","./index-Dso1Hl_w.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+import { p as process$1, r as require$$0$1, g as global, B as Buffer, a as getDefaultExportFromCjs, c as commonjsGlobal, b as getAugmentedNamespace, _ as __vitePreload } from "./index-B2F9b3rW.js";
+import { r as require$$3, e as eventsExports, W as Wg } from "./___vite-browser-external_commonjs-proxy-Dwr0oS7H.js";
 var __spreadArray = function(to2, from2, pack) {
   if (pack || arguments.length === 2)
     for (var i3 = 0, l2 = from2.length, ar2; i3 < l2; i3++) {
@@ -19748,7 +19748,7 @@ class C {
     if (this.rpc = this.getRpcConfig(t), this.chainId = this.rpc.chains.length ? m2(this.rpc.chains) : m2(this.rpc.optionalChains), this.signer = await hv.init({ projectId: this.rpc.projectId, metadata: this.rpc.metadata, disableProviderPing: t.disableProviderPing, relayUrl: t.relayUrl, storageOptions: t.storageOptions }), this.registerEventListeners(), await this.loadPersistedSession(), this.rpc.showQrModal) {
       let s2;
       try {
-        const { WalletConnectModal: i3 } = await __vitePreload(() => import("./index-FirV7aUJ.js").then((n4) => n4.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { WalletConnectModal: i3 } = await __vitePreload(() => import("./index-DBQ9rt-V.js").then((n4) => n4.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         s2 = i3;
       } catch {
         throw new Error("To use QR modal, please install @walletconnect/modal package");

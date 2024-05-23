@@ -1,4 +1,4 @@
-import { a as getDefaultExportFromCjs, b as getAugmentedNamespace } from "./index-Bg5F0fLx.js";
+import { a as getDefaultExportFromCjs, b as getAugmentedNamespace } from "./index-B2F9b3rW.js";
 var events = { exports: {} };
 var R = typeof Reflect === "object" ? Reflect : null;
 var ReflectApply = R && typeof R.apply === "function" ? R.apply : function ReflectApply2(target, receiver, args) {
