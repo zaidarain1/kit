@@ -117,7 +117,7 @@ export const defaultNativeTokenInfo = (chainId: number, wagmiChains: readonly [C
       name: foundChain.nativeCurrency.name,
       symbol: foundChain.nativeCurrency.symbol,
       decimals: foundChain.nativeCurrency.decimals,
-      logoURI: nativeTokenInfos[1].logoURI,
+      logoURI: nativeTokenInfos[ChainId.MAINNET]!.logoURI,
       blockExplorerName: foundChain.blockExplorers?.default.name,
       blockExplorerUrl: foundChain.blockExplorers?.default.url
     }
@@ -127,5 +127,5 @@ export const defaultNativeTokenInfo = (chainId: number, wagmiChains: readonly [C
 }
 
 export const getNativeTokenInfoByChainId = (chainId: number, wagmiChains: readonly [Chain, ...Chain[]]) => {
-  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[1]
+  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[ChainId.MAINNET]!
 }

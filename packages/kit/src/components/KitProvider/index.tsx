@@ -2,6 +2,7 @@
 
 import { sequence } from '0xsequence'
 import { Box, Button, Card, Collapsible, Modal, Text, ThemeProvider } from '@0xsequence/design-system'
+import { ChainId } from '@0xsequence/network'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import { ethers } from 'ethers'
 import { AnimatePresence } from 'framer-motion'
@@ -39,7 +40,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     position = 'center',
     displayedAssets: displayedAssetsSetting = [],
     ethAuth = {} as EthAuthSettings,
-    disableAnalytics = false,
+    disableAnalytics = false
   } = config
 
   const defaultAppName = signIn.projectName || 'app'
@@ -249,7 +250,7 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                                   <TxnDetails
                                     address={address ?? ''}
                                     txs={pendingRequestConfirmation.txs ?? []}
-                                    chainId={pendingRequestConfirmation.chainId ?? 137}
+                                    chainId={pendingRequestConfirmation.chainId ?? ChainId.POLYGON}
                                   />
 
                                   <Collapsible label="Transaction data" marginTop="4">

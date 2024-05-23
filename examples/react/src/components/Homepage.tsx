@@ -29,7 +29,7 @@ import {
 } from '@0xsequence/kit'
 import { useCheckoutModal } from '@0xsequence/kit-checkout'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
-import { allNetworks } from '@0xsequence/network'
+import { ChainId, allNetworks } from '@0xsequence/network'
 import { ethers } from 'ethers'
 import { AnimatePresence } from 'framer-motion'
 import React, { useEffect } from 'react'
@@ -369,7 +369,7 @@ export const Homepage = () => {
         address || '',
         checkoutTokenContractAddress,
         checkoutTokenId,
-        137,
+        ChainId.POLYGON,
         1,
         true
       )
@@ -382,10 +382,10 @@ export const Homepage = () => {
   }
 
   const onSwitchNetwork = () => {
-    if (chainId === 421614) {
-      switchChain({ chainId: 42170 })
+    if (chainId === ChainId.ARBITRUM_SEPOLIA) {
+      switchChain({ chainId: ChainId.ARBITRUM_NOVA })
     } else {
-      switchChain({ chainId: 421614 })
+      switchChain({ chainId: ChainId.ARBITRUM_SEPOLIA })
     }
 
     setLastTxnDataHash(undefined)
