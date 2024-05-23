@@ -1,4 +1,4 @@
-import { h as BaseError, j as getUrl, s as stringify, k as isAddress, I as InvalidAddressError, l as decodeErrorResult, m as call, n as concat, o as encodeAbiParameters, H as HttpRequestError, q as isHex } from "./index-DV4D2rAR.js";
+import { h as BaseError, j as getUrl, s as stringify, k as decodeErrorResult, l as isAddressEqual, m as call, n as concat, o as encodeAbiParameters, H as HttpRequestError, q as isHex } from "./index-Bg5F0fLx.js";
 class OffchainLookupError extends BaseError {
   constructor({ callbackSelector, cause, data, extraData, sender, urls }) {
     var _a;
@@ -57,13 +57,6 @@ class OffchainLookupSenderMismatchError extends BaseError {
       value: "OffchainLookupSenderMismatchError"
     });
   }
-}
-function isAddressEqual(a, b) {
-  if (!isAddress(a, { strict: false }))
-    throw new InvalidAddressError({ address: a });
-  if (!isAddress(b, { strict: false }))
-    throw new InvalidAddressError({ address: b });
-  return a.toLowerCase() === b.toLowerCase();
 }
 const offchainLookupSignature = "0x556f1830";
 const offchainLookupAbiItem = {

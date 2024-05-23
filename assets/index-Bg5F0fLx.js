@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-wOhYXIXp.js","./___vite-browser-external_commonjs-proxy-C1NZ33AZ.js","./index.es-C3UduLJD.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CY5NnKWe.js","./hooks.module-BEnuDAGi.js","./___vite-browser-external_commonjs-proxy-nGueUmBt.js","./index-CNKdprj1.js","./index.es-CSojiMss.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -14229,7 +14229,7 @@ function __importStar$1(mod2) {
 function __importDefault$1(mod2) {
   return mod2 && mod2.__esModule ? mod2 : { default: mod2 };
 }
-function __classPrivateFieldGet$3(receiver, state, kind, f2) {
+function __classPrivateFieldGet$2(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
     throw new TypeError("Private accessor was defined without a getter");
   if (typeof state === "function" ? receiver !== state || !f2 : !state.has(receiver))
@@ -14324,7 +14324,7 @@ const tslib_es6$1 = {
   __makeTemplateObject: __makeTemplateObject$1,
   __importStar: __importStar$1,
   __importDefault: __importDefault$1,
-  __classPrivateFieldGet: __classPrivateFieldGet$3,
+  __classPrivateFieldGet: __classPrivateFieldGet$2,
   __classPrivateFieldSet: __classPrivateFieldSet$1,
   __classPrivateFieldIn,
   __addDisposableResource,
@@ -14341,7 +14341,7 @@ const tslib_es6$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   __asyncValues: __asyncValues$1,
   __await: __await$1,
   __awaiter: __awaiter$f,
-  __classPrivateFieldGet: __classPrivateFieldGet$3,
+  __classPrivateFieldGet: __classPrivateFieldGet$2,
   __classPrivateFieldIn,
   __classPrivateFieldSet: __classPrivateFieldSet$1,
   __createBinding: __createBinding$1,
@@ -17565,7 +17565,7 @@ const arrow$2$1 = (options) => ({
     };
   }
 });
-const flip$2 = function(options) {
+const flip$3 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -17670,7 +17670,7 @@ function getSideOffsets$1(overflow, rect) {
 function isAnySideFullyClipped$1(overflow) {
   return sides$1.some((side) => overflow[side] >= 0);
 }
-const hide$2 = function(options) {
+const hide$3 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -17757,7 +17757,7 @@ async function convertValueToCoords$1(state, options) {
     y: crossAxis * crossAxisMulti
   };
 }
-const offset$2 = function(options) {
+const offset$3 = function(options) {
   if (options === void 0) {
     options = 0;
   }
@@ -17778,7 +17778,7 @@ const offset$2 = function(options) {
     }
   };
 };
-const shift$2 = function(options) {
+const shift$3 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -17846,7 +17846,7 @@ const shift$2 = function(options) {
     }
   };
 };
-const limitShift$2 = function(options) {
+const limitShift$3 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -17911,7 +17911,7 @@ const limitShift$2 = function(options) {
     }
   };
 };
-const size$5 = function(options) {
+const size$6 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -18961,20 +18961,20 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1 = /* @__PURE__ */ reactExports.
       reference: context2.anchor
     },
     middleware: [
-      offset$2({
+      offset$3({
         mainAxis: sideOffset + arrowHeight,
         alignmentAxis: alignOffset
       }),
-      avoidCollisions && shift$2({
+      avoidCollisions && shift$3({
         mainAxis: true,
         crossAxis: false,
-        limiter: sticky === "partial" ? limitShift$2() : void 0,
+        limiter: sticky === "partial" ? limitShift$3() : void 0,
         ...detectOverflowOptions
       }),
-      avoidCollisions && flip$2({
+      avoidCollisions && flip$3({
         ...detectOverflowOptions
       }),
-      size$5({
+      size$6({
         ...detectOverflowOptions,
         apply: ({ elements, rects, availableWidth, availableHeight }) => {
           const { width: anchorWidth, height: anchorHeight } = rects.reference;
@@ -18993,7 +18993,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1 = /* @__PURE__ */ reactExports.
         arrowWidth,
         arrowHeight
       }),
-      hideWhenDetached && hide$2({
+      hideWhenDetached && hide$3({
         strategy: "referenceHidden",
         ...detectOverflowOptions
       })
@@ -20538,12 +20538,10 @@ const cyrb53 = (str, seed = 0) => {
   return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 const createGradient = (a2, b2, c2) => {
-  const randID = Math.random().toString(36).slice(2, 12);
   const hueA = a2 % 360;
   const hueB = (a2 + 120) % 360;
   const hueC = c2 % 360;
   return {
-    id: cyrb53(randID),
     a: `hsl(${hueA}deg 100% 40%)`,
     b: `hsl(${hueB}deg 100% 50%)`,
     c: `hsl(${hueC}deg 100% 50%)`
@@ -20626,7 +20624,7 @@ const GradientAvatar = reactExports.memo((props) => {
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             "linearGradient",
             {
-              id: `gradient-background-${gradients[0].id}`,
+              id: `gradient-background-${address}`,
               x1: "0",
               y1: "0",
               x2: "1",
@@ -20637,16 +20635,16 @@ const GradientAvatar = reactExports.memo((props) => {
               ]
             }
           ),
-          gradients.map((gradient) => /* @__PURE__ */ jsxRuntimeExports.jsxs(reactExports.Fragment, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("radialGradient", { id: `gradient-primary-${gradient.id}`, children: [
+          gradients.map((gradient, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs(reactExports.Fragment, { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("radialGradient", { id: `gradient-primary-${address}-${idx}`, children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("stop", { offset: "0", stopColor: gradient.a }),
               /* @__PURE__ */ jsxRuntimeExports.jsx("stop", { offset: "1", stopColor: gradient.b })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("radialGradient", { id: `gradient-secondary-${gradient.id}`, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("radialGradient", { id: `gradient-secondary-${address}-${idx}`, children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx("stop", { offset: "0", stopColor: gradient.c }),
               /* @__PURE__ */ jsxRuntimeExports.jsx("stop", { offset: "1", stopColor: gradient.b })
             ] })
-          ] }, gradient.id))
+          ] }, idx))
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("g", { clipPath: "url(#circle-clip)", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -20654,14 +20652,14 @@ const GradientAvatar = reactExports.memo((props) => {
             {
               width: "100%",
               height: "100%",
-              fill: `url(#gradient-background-${gradients[0].id})`
+              fill: `url(#gradient-background-${address})`
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("g", { filter: "url(#blur)", children: gradients.map((gradient) => /* @__PURE__ */ jsxRuntimeExports.jsxs(reactExports.Fragment, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("g", { filter: "url(#blur)", children: gradients.map((gradient, idx) => /* @__PURE__ */ jsxRuntimeExports.jsxs(reactExports.Fragment, { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "circle",
               {
-                fill: `url(#gradient-primary-${gradient.id})`,
+                fill: `url(#gradient-primary-${address}-${idx})`,
                 cx: gradient.x,
                 cy: gradient.y,
                 r: gradient.r
@@ -20670,13 +20668,13 @@ const GradientAvatar = reactExports.memo((props) => {
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "circle",
               {
-                fill: `url(#gradient-secondary-${gradient.id})`,
+                fill: `url(#gradient-secondary-${address}-${idx})`,
                 cx: gradient.y,
                 cy: gradient.x,
                 r: gradient.r / 2
               }
             )
-          ] }, gradient.id)) })
+          ] }, idx)) })
         ] })
       ]
     }
@@ -25070,7 +25068,7 @@ function _extends$l() {
 }
 const WebRPCVersion$3 = "v1";
 const WebRPCSchemaVersion$3 = "v0.4.0";
-const WebRPCSchemaHash$3 = "3c1782dee5a602d773450bdb42c84515771d30d1";
+const WebRPCSchemaHash$3 = "da72de09959c34a964bb84662ed6bd510f78f5cb";
 let SortOrder$2 = /* @__PURE__ */ function(SortOrder2) {
   SortOrder2["DESC"] = "DESC";
   SortOrder2["ASC"] = "ASC";
@@ -25089,7 +25087,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25102,7 +25100,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25115,7 +25113,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25128,7 +25126,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25141,7 +25139,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25157,7 +25155,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25173,7 +25171,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25186,7 +25184,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25200,7 +25198,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25214,7 +25212,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25227,7 +25225,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25241,7 +25239,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25255,7 +25253,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25268,7 +25266,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25281,7 +25279,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25294,7 +25292,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25307,7 +25305,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25320,7 +25318,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25333,7 +25331,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25346,7 +25344,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25359,7 +25357,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25372,7 +25370,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25385,7 +25383,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25398,7 +25396,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25411,7 +25409,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25425,7 +25423,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25438,7 +25436,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25451,7 +25449,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25464,7 +25462,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25477,7 +25475,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25490,7 +25488,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25503,7 +25501,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25516,7 +25514,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25529,7 +25527,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25542,7 +25540,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25555,7 +25553,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25568,7 +25566,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25581,7 +25579,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25594,7 +25592,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25607,7 +25605,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25620,7 +25618,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25634,7 +25632,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25647,7 +25645,7 @@ class API {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$6.new({
+        throw WebrpcRequestFailedError$7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -25679,19 +25677,19 @@ const buildResponse$7 = (res) => {
       if (error instanceof Error) {
         message = error.message;
       }
-      throw WebrpcBadResponseError$6.new({
+      throw WebrpcBadResponseError$7.new({
         status: res.status,
         cause: `JSON.parse(): ${message}: response text: ${text2}`
       });
     }
     if (!res.ok) {
       const code2 = typeof data.code === "number" ? data.code : 0;
-      throw (webrpcErrorByCode$6[code2] || WebrpcError$6).new(data);
+      throw (webrpcErrorByCode$7[code2] || WebrpcError$7).new(data);
     }
     return data;
   });
 };
-let WebrpcError$6 = class WebrpcError extends Error {
+let WebrpcError$7 = class WebrpcError extends Error {
   constructor(name2, code2, message, status, cause) {
     super(message);
     this.name = void 0;
@@ -25712,115 +25710,115 @@ let WebrpcError$6 = class WebrpcError extends Error {
     return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
   }
 };
-let WebrpcEndpointError$6 = class WebrpcEndpointError extends WebrpcError$6 {
+let WebrpcEndpointError$7 = class WebrpcEndpointError extends WebrpcError$7 {
   constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcEndpointError.prototype);
   }
 };
-let WebrpcRequestFailedError$6 = class WebrpcRequestFailedError extends WebrpcError$6 {
+let WebrpcRequestFailedError$7 = class WebrpcRequestFailedError extends WebrpcError$7 {
   constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcRequestFailedError.prototype);
   }
 };
-let WebrpcBadRouteError$6 = class WebrpcBadRouteError extends WebrpcError$6 {
+let WebrpcBadRouteError$7 = class WebrpcBadRouteError extends WebrpcError$7 {
   constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRouteError.prototype);
   }
 };
-let WebrpcBadMethodError$6 = class WebrpcBadMethodError extends WebrpcError$6 {
+let WebrpcBadMethodError$7 = class WebrpcBadMethodError extends WebrpcError$7 {
   constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadMethodError.prototype);
   }
 };
-let WebrpcBadRequestError$6 = class WebrpcBadRequestError extends WebrpcError$6 {
+let WebrpcBadRequestError$7 = class WebrpcBadRequestError extends WebrpcError$7 {
   constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRequestError.prototype);
   }
 };
-let WebrpcBadResponseError$6 = class WebrpcBadResponseError extends WebrpcError$6 {
+let WebrpcBadResponseError$7 = class WebrpcBadResponseError extends WebrpcError$7 {
   constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadResponseError.prototype);
   }
 };
-let WebrpcServerPanicError$6 = class WebrpcServerPanicError extends WebrpcError$6 {
+let WebrpcServerPanicError$7 = class WebrpcServerPanicError extends WebrpcError$7 {
   constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcServerPanicError.prototype);
   }
 };
-let WebrpcInternalErrorError$6 = class WebrpcInternalErrorError extends WebrpcError$6 {
+let WebrpcInternalErrorError$7 = class WebrpcInternalErrorError extends WebrpcError$7 {
   constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcInternalErrorError.prototype);
   }
 };
-let WebrpcClientDisconnectedError$6 = class WebrpcClientDisconnectedError extends WebrpcError$6 {
+let WebrpcClientDisconnectedError$7 = class WebrpcClientDisconnectedError extends WebrpcError$7 {
   constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcClientDisconnectedError.prototype);
   }
 };
-let WebrpcStreamLostError$6 = class WebrpcStreamLostError extends WebrpcError$6 {
+let WebrpcStreamLostError$7 = class WebrpcStreamLostError extends WebrpcError$7 {
   constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamLostError.prototype);
   }
 };
-let WebrpcStreamFinishedError$6 = class WebrpcStreamFinishedError extends WebrpcError$6 {
+let WebrpcStreamFinishedError$7 = class WebrpcStreamFinishedError extends WebrpcError$7 {
   constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamFinishedError.prototype);
   }
 };
-let UnauthorizedError$6 = class UnauthorizedError extends WebrpcError$6 {
+let UnauthorizedError$6 = class UnauthorizedError extends WebrpcError$7 {
   constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnauthorizedError.prototype);
   }
 };
-let PermissionDeniedError$4 = class PermissionDeniedError extends WebrpcError$6 {
+let PermissionDeniedError$4 = class PermissionDeniedError extends WebrpcError$7 {
   constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, PermissionDeniedError.prototype);
   }
 };
-let SessionExpiredError$4 = class SessionExpiredError extends WebrpcError$6 {
+let SessionExpiredError$4 = class SessionExpiredError extends WebrpcError$7 {
   constructor(name2 = "SessionExpired", code2 = 1002, message = "Session expired", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, SessionExpiredError.prototype);
   }
 };
-let AbortedError$3 = class AbortedError extends WebrpcError$6 {
+let AbortedError$3 = class AbortedError extends WebrpcError$7 {
   constructor(name2 = "Aborted", code2 = 1005, message = "Request aborted", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, AbortedError.prototype);
   }
 };
-let InvalidArgumentError$4 = class InvalidArgumentError extends WebrpcError$6 {
+let InvalidArgumentError$5 = class InvalidArgumentError extends WebrpcError$7 {
   constructor(name2 = "InvalidArgument", code2 = 2e3, message = "Invalid argument", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, InvalidArgumentError.prototype);
   }
 };
-let UnavailableError$3 = class UnavailableError extends WebrpcError$6 {
+let UnavailableError$3 = class UnavailableError extends WebrpcError$7 {
   constructor(name2 = "Unavailable", code2 = 2002, message = "Unavailable resource", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnavailableError.prototype);
   }
 };
-let QueryFailedError$4 = class QueryFailedError extends WebrpcError$6 {
+let QueryFailedError$4 = class QueryFailedError extends WebrpcError$7 {
   constructor(name2 = "QueryFailed", code2 = 2003, message = "Query failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, QueryFailedError.prototype);
   }
 };
-let NotFoundError$5 = class NotFoundError extends WebrpcError$6 {
+let NotFoundError$6 = class NotFoundError extends WebrpcError$7 {
   constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, NotFoundError.prototype);
@@ -25848,26 +25846,26 @@ let errors$3 = /* @__PURE__ */ function(errors2) {
   errors2["NotFound"] = "NotFound";
   return errors2;
 }({});
-const webrpcErrorByCode$6 = {
-  [0]: WebrpcEndpointError$6,
-  [-1]: WebrpcRequestFailedError$6,
-  [-2]: WebrpcBadRouteError$6,
-  [-3]: WebrpcBadMethodError$6,
-  [-4]: WebrpcBadRequestError$6,
-  [-5]: WebrpcBadResponseError$6,
-  [-6]: WebrpcServerPanicError$6,
-  [-7]: WebrpcInternalErrorError$6,
-  [-8]: WebrpcClientDisconnectedError$6,
-  [-9]: WebrpcStreamLostError$6,
-  [-10]: WebrpcStreamFinishedError$6,
+const webrpcErrorByCode$7 = {
+  [0]: WebrpcEndpointError$7,
+  [-1]: WebrpcRequestFailedError$7,
+  [-2]: WebrpcBadRouteError$7,
+  [-3]: WebrpcBadMethodError$7,
+  [-4]: WebrpcBadRequestError$7,
+  [-5]: WebrpcBadResponseError$7,
+  [-6]: WebrpcServerPanicError$7,
+  [-7]: WebrpcInternalErrorError$7,
+  [-8]: WebrpcClientDisconnectedError$7,
+  [-9]: WebrpcStreamLostError$7,
+  [-10]: WebrpcStreamFinishedError$7,
   [1e3]: UnauthorizedError$6,
   [1001]: PermissionDeniedError$4,
   [1002]: SessionExpiredError$4,
   [1005]: AbortedError$3,
-  [2e3]: InvalidArgumentError$4,
+  [2e3]: InvalidArgumentError$5,
   [2002]: UnavailableError$3,
   [2003]: QueryFailedError$4,
-  [3e3]: NotFoundError$5
+  [3e3]: NotFoundError$6
 };
 const fetch$5 = typeof global$1 === "object" ? global$1.fetch : window.fetch;
 class SequenceAPIClient extends API {
@@ -25895,8 +25893,8 @@ const api$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
   __proto__: null,
   API,
   AbortedError: AbortedError$3,
-  InvalidArgumentError: InvalidArgumentError$4,
-  NotFoundError: NotFoundError$5,
+  InvalidArgumentError: InvalidArgumentError$5,
+  NotFoundError: NotFoundError$6,
   PermissionDeniedError: PermissionDeniedError$4,
   QueryFailedError: QueryFailedError$4,
   SequenceAPIClient,
@@ -25907,18 +25905,18 @@ const api$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
   WebRPCSchemaHash: WebRPCSchemaHash$3,
   WebRPCSchemaVersion: WebRPCSchemaVersion$3,
   WebRPCVersion: WebRPCVersion$3,
-  WebrpcBadMethodError: WebrpcBadMethodError$6,
-  WebrpcBadRequestError: WebrpcBadRequestError$6,
-  WebrpcBadResponseError: WebrpcBadResponseError$6,
-  WebrpcBadRouteError: WebrpcBadRouteError$6,
-  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$6,
-  WebrpcEndpointError: WebrpcEndpointError$6,
-  WebrpcError: WebrpcError$6,
-  WebrpcInternalErrorError: WebrpcInternalErrorError$6,
-  WebrpcRequestFailedError: WebrpcRequestFailedError$6,
-  WebrpcServerPanicError: WebrpcServerPanicError$6,
-  WebrpcStreamFinishedError: WebrpcStreamFinishedError$6,
-  WebrpcStreamLostError: WebrpcStreamLostError$6,
+  WebrpcBadMethodError: WebrpcBadMethodError$7,
+  WebrpcBadRequestError: WebrpcBadRequestError$7,
+  WebrpcBadResponseError: WebrpcBadResponseError$7,
+  WebrpcBadRouteError: WebrpcBadRouteError$7,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$7,
+  WebrpcEndpointError: WebrpcEndpointError$7,
+  WebrpcError: WebrpcError$7,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$7,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$7,
+  WebrpcServerPanicError: WebrpcServerPanicError$7,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$7,
+  WebrpcStreamLostError: WebrpcStreamLostError$7,
   errors: errors$3
 }, Symbol.toStringTag, { value: "Module" }));
 var bn = { exports: {} };
@@ -49098,7 +49096,7 @@ const networks = {
     chainId: ChainId.OPTIMISM_KOVAN,
     type: NetworkType.TESTNET,
     name: "optimism-kovan",
-    title: "Optimistic Kovan",
+    title: "Optimism Kovan",
     logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_KOVAN}.webp`,
     testnet: true,
     blockExplorer: {
@@ -49111,7 +49109,7 @@ const networks = {
     chainId: ChainId.OPTIMISM_GOERLI,
     type: NetworkType.TESTNET,
     name: "optimism-goerli",
-    title: "Optimistic Goerli",
+    title: "Optimism Goerli",
     logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_GOERLI}.webp`,
     testnet: true,
     blockExplorer: {
@@ -49124,7 +49122,7 @@ const networks = {
     chainId: ChainId.OPTIMISM_SEPOLIA,
     type: NetworkType.TESTNET,
     name: "optimism-sepolia",
-    title: "Optimistic Sepolia",
+    title: "Optimism Sepolia",
     logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_SEPOLIA}.webp`,
     testnet: true,
     blockExplorer: {
@@ -53071,7 +53069,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53084,7 +53082,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53097,7 +53095,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53110,7 +53108,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53123,7 +53121,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53137,7 +53135,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53150,7 +53148,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53163,7 +53161,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53176,7 +53174,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53189,7 +53187,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53203,7 +53201,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53218,7 +53216,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53231,7 +53229,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53245,7 +53243,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53259,7 +53257,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53273,7 +53271,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53286,7 +53284,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53300,7 +53298,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53314,7 +53312,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53327,7 +53325,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53341,7 +53339,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53355,7 +53353,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53369,7 +53367,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53383,7 +53381,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53396,7 +53394,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53409,7 +53407,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53422,7 +53420,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53436,7 +53434,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53449,7 +53447,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53463,7 +53461,7 @@ class Relayer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$5.new({
+        throw WebrpcRequestFailedError$6.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -53495,19 +53493,19 @@ const buildResponse$6 = (res) => {
       if (error instanceof Error) {
         message = error.message;
       }
-      throw WebrpcBadResponseError$5.new({
+      throw WebrpcBadResponseError$6.new({
         status: res.status,
         cause: `JSON.parse(): ${message}: response text: ${text2}`
       });
     }
     if (!res.ok) {
       const code2 = typeof data.code === "number" ? data.code : 0;
-      throw (webrpcErrorByCode$5[code2] || WebrpcError$5).new(data);
+      throw (webrpcErrorByCode$6[code2] || WebrpcError$6).new(data);
     }
     return data;
   });
 };
-let WebrpcError$5 = class WebrpcError2 extends Error {
+let WebrpcError$6 = class WebrpcError2 extends Error {
   constructor(name2, code2, message, status, cause) {
     super(message);
     this.name = void 0;
@@ -53528,115 +53526,115 @@ let WebrpcError$5 = class WebrpcError2 extends Error {
     return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
   }
 };
-let WebrpcEndpointError$5 = class WebrpcEndpointError2 extends WebrpcError$5 {
+let WebrpcEndpointError$6 = class WebrpcEndpointError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcEndpointError2.prototype);
   }
 };
-let WebrpcRequestFailedError$5 = class WebrpcRequestFailedError2 extends WebrpcError$5 {
+let WebrpcRequestFailedError$6 = class WebrpcRequestFailedError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcRequestFailedError2.prototype);
   }
 };
-let WebrpcBadRouteError$5 = class WebrpcBadRouteError2 extends WebrpcError$5 {
+let WebrpcBadRouteError$6 = class WebrpcBadRouteError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRouteError2.prototype);
   }
 };
-let WebrpcBadMethodError$5 = class WebrpcBadMethodError2 extends WebrpcError$5 {
+let WebrpcBadMethodError$6 = class WebrpcBadMethodError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadMethodError2.prototype);
   }
 };
-let WebrpcBadRequestError$5 = class WebrpcBadRequestError2 extends WebrpcError$5 {
+let WebrpcBadRequestError$6 = class WebrpcBadRequestError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRequestError2.prototype);
   }
 };
-let WebrpcBadResponseError$5 = class WebrpcBadResponseError2 extends WebrpcError$5 {
+let WebrpcBadResponseError$6 = class WebrpcBadResponseError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadResponseError2.prototype);
   }
 };
-let WebrpcServerPanicError$5 = class WebrpcServerPanicError2 extends WebrpcError$5 {
+let WebrpcServerPanicError$6 = class WebrpcServerPanicError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcServerPanicError2.prototype);
   }
 };
-let WebrpcInternalErrorError$5 = class WebrpcInternalErrorError2 extends WebrpcError$5 {
+let WebrpcInternalErrorError$6 = class WebrpcInternalErrorError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcInternalErrorError2.prototype);
   }
 };
-let WebrpcClientDisconnectedError$5 = class WebrpcClientDisconnectedError2 extends WebrpcError$5 {
+let WebrpcClientDisconnectedError$6 = class WebrpcClientDisconnectedError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcClientDisconnectedError2.prototype);
   }
 };
-let WebrpcStreamLostError$5 = class WebrpcStreamLostError2 extends WebrpcError$5 {
+let WebrpcStreamLostError$6 = class WebrpcStreamLostError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamLostError2.prototype);
   }
 };
-let WebrpcStreamFinishedError$5 = class WebrpcStreamFinishedError2 extends WebrpcError$5 {
+let WebrpcStreamFinishedError$6 = class WebrpcStreamFinishedError2 extends WebrpcError$6 {
   constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamFinishedError2.prototype);
   }
 };
-let UnauthorizedError$5 = class UnauthorizedError2 extends WebrpcError$5 {
+let UnauthorizedError$5 = class UnauthorizedError2 extends WebrpcError$6 {
   constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnauthorizedError2.prototype);
   }
 };
-let PermissionDeniedError$3 = class PermissionDeniedError2 extends WebrpcError$5 {
+let PermissionDeniedError$3 = class PermissionDeniedError2 extends WebrpcError$6 {
   constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, PermissionDeniedError2.prototype);
   }
 };
-let MethodNotFoundError$2 = class MethodNotFoundError extends WebrpcError$5 {
+let MethodNotFoundError$2 = class MethodNotFoundError extends WebrpcError$6 {
   constructor(name2 = "MethodNotFound", code2 = 1003, message = "Method not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, MethodNotFoundError.prototype);
   }
 };
-let AbortedError$2 = class AbortedError2 extends WebrpcError$5 {
+let AbortedError$2 = class AbortedError2 extends WebrpcError$6 {
   constructor(name2 = "Aborted", code2 = 1005, message = "Request aborted", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, AbortedError2.prototype);
   }
 };
-let InvalidArgumentError$3 = class InvalidArgumentError2 extends WebrpcError$5 {
+let InvalidArgumentError$4 = class InvalidArgumentError2 extends WebrpcError$6 {
   constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, InvalidArgumentError2.prototype);
   }
 };
-let UnavailableError$2 = class UnavailableError2 extends WebrpcError$5 {
+let UnavailableError$2 = class UnavailableError2 extends WebrpcError$6 {
   constructor(name2 = "Unavailable", code2 = 2002, message = "Unavailable resource", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnavailableError2.prototype);
   }
 };
-let QueryFailedError$3 = class QueryFailedError2 extends WebrpcError$5 {
+let QueryFailedError$3 = class QueryFailedError2 extends WebrpcError$6 {
   constructor(name2 = "QueryFailed", code2 = 2003, message = "Query failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, QueryFailedError2.prototype);
   }
 };
-let NotFoundError$4 = class NotFoundError2 extends WebrpcError$5 {
+let NotFoundError$5 = class NotFoundError2 extends WebrpcError$6 {
   constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, NotFoundError2.prototype);
@@ -53664,26 +53662,26 @@ let errors$2 = /* @__PURE__ */ function(errors2) {
   errors2["NotFound"] = "NotFound";
   return errors2;
 }({});
-const webrpcErrorByCode$5 = {
-  [0]: WebrpcEndpointError$5,
-  [-1]: WebrpcRequestFailedError$5,
-  [-2]: WebrpcBadRouteError$5,
-  [-3]: WebrpcBadMethodError$5,
-  [-4]: WebrpcBadRequestError$5,
-  [-5]: WebrpcBadResponseError$5,
-  [-6]: WebrpcServerPanicError$5,
-  [-7]: WebrpcInternalErrorError$5,
-  [-8]: WebrpcClientDisconnectedError$5,
-  [-9]: WebrpcStreamLostError$5,
-  [-10]: WebrpcStreamFinishedError$5,
+const webrpcErrorByCode$6 = {
+  [0]: WebrpcEndpointError$6,
+  [-1]: WebrpcRequestFailedError$6,
+  [-2]: WebrpcBadRouteError$6,
+  [-3]: WebrpcBadMethodError$6,
+  [-4]: WebrpcBadRequestError$6,
+  [-5]: WebrpcBadResponseError$6,
+  [-6]: WebrpcServerPanicError$6,
+  [-7]: WebrpcInternalErrorError$6,
+  [-8]: WebrpcClientDisconnectedError$6,
+  [-9]: WebrpcStreamLostError$6,
+  [-10]: WebrpcStreamFinishedError$6,
   [1e3]: UnauthorizedError$5,
   [1001]: PermissionDeniedError$3,
   [1003]: MethodNotFoundError$2,
   [1005]: AbortedError$2,
-  [2001]: InvalidArgumentError$3,
+  [2001]: InvalidArgumentError$4,
   [2002]: UnavailableError$2,
   [2003]: QueryFailedError$3,
-  [3e3]: NotFoundError$4
+  [3e3]: NotFoundError$5
 };
 var relayer_gen = /* @__PURE__ */ Object.freeze({
   __proto__: null,
@@ -53695,26 +53693,26 @@ var relayer_gen = /* @__PURE__ */ Object.freeze({
   FeeTokenType: FeeTokenType$1,
   SortOrder: SortOrder$1,
   Relayer,
-  WebrpcError: WebrpcError$5,
-  WebrpcEndpointError: WebrpcEndpointError$5,
-  WebrpcRequestFailedError: WebrpcRequestFailedError$5,
-  WebrpcBadRouteError: WebrpcBadRouteError$5,
-  WebrpcBadMethodError: WebrpcBadMethodError$5,
-  WebrpcBadRequestError: WebrpcBadRequestError$5,
-  WebrpcBadResponseError: WebrpcBadResponseError$5,
-  WebrpcServerPanicError: WebrpcServerPanicError$5,
-  WebrpcInternalErrorError: WebrpcInternalErrorError$5,
-  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$5,
-  WebrpcStreamLostError: WebrpcStreamLostError$5,
-  WebrpcStreamFinishedError: WebrpcStreamFinishedError$5,
+  WebrpcError: WebrpcError$6,
+  WebrpcEndpointError: WebrpcEndpointError$6,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$6,
+  WebrpcBadRouteError: WebrpcBadRouteError$6,
+  WebrpcBadMethodError: WebrpcBadMethodError$6,
+  WebrpcBadRequestError: WebrpcBadRequestError$6,
+  WebrpcBadResponseError: WebrpcBadResponseError$6,
+  WebrpcServerPanicError: WebrpcServerPanicError$6,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$6,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$6,
+  WebrpcStreamLostError: WebrpcStreamLostError$6,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$6,
   UnauthorizedError: UnauthorizedError$5,
   PermissionDeniedError: PermissionDeniedError$3,
   MethodNotFoundError: MethodNotFoundError$2,
   AbortedError: AbortedError$2,
-  InvalidArgumentError: InvalidArgumentError$3,
+  InvalidArgumentError: InvalidArgumentError$4,
   UnavailableError: UnavailableError$2,
   QueryFailedError: QueryFailedError$3,
-  NotFoundError: NotFoundError$4,
+  NotFoundError: NotFoundError$5,
   errors: errors$2
 });
 const FINAL_STATUSES = [ETHTxnStatus.DROPPED, ETHTxnStatus.SUCCEEDED, ETHTxnStatus.PARTIALLY_FAILED, ETHTxnStatus.FAILED];
@@ -55461,7 +55459,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55474,7 +55472,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55487,7 +55485,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55500,7 +55498,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55513,7 +55511,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55527,7 +55525,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55542,7 +55540,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55555,7 +55553,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55569,7 +55567,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55583,7 +55581,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55594,7 +55592,7 @@ class Indexer {
           return {};
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55607,7 +55605,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55621,7 +55619,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55634,7 +55632,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55647,7 +55645,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55660,7 +55658,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55673,7 +55671,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55687,7 +55685,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55700,7 +55698,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55713,7 +55711,7 @@ class Indexer {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$4.new({
+        throw WebrpcRequestFailedError$5.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -55757,7 +55755,7 @@ const sseResponse = async (res, options, retryFetch) => {
     return;
   }
   if (!res.body) {
-    onError(WebrpcBadResponseError$4.new({
+    onError(WebrpcBadResponseError$5.new({
       status: res.status,
       cause: "Invalid response, missing body"
     }), retryFetch);
@@ -55773,7 +55771,7 @@ const sseResponse = async (res, options, retryFetch) => {
   try {
     intervalId = setInterval(() => {
       if (Date.now() - lastReadTime > timeout) {
-        throw WebrpcStreamLostError$4.new({
+        throw WebrpcStreamLostError$5.new({
           cause: "Stream timed out"
         });
       }
@@ -55797,14 +55795,14 @@ const sseResponse = async (res, options, retryFetch) => {
           message = error.message;
         }
         if (error instanceof DOMException && error.name === "AbortError") {
-          onError(WebrpcRequestFailedError$4.new({
+          onError(WebrpcRequestFailedError$5.new({
             message: "AbortError",
             cause: `AbortError: ${message}`
           }), () => {
             throw new Error("Abort signal cannot be used to reconnect");
           });
         } else {
-          onError(WebrpcStreamLostError$4.new({
+          onError(WebrpcStreamLostError$5.new({
             cause: `reader.read(): ${message}`
           }), retryFetch);
         }
@@ -55821,14 +55819,14 @@ const sseResponse = async (res, options, retryFetch) => {
           if (data.hasOwnProperty("webrpcError")) {
             const error = data.webrpcError;
             const code2 = typeof error.code === "number" ? error.code : 0;
-            onError((webrpcErrorByCode$4[code2] || WebrpcError$4).new(error), retryFetch);
+            onError((webrpcErrorByCode$5[code2] || WebrpcError$5).new(error), retryFetch);
             return;
           }
         } catch (error) {
           if (error instanceof Error && error.message === "Abort signal cannot be used to reconnect") {
             throw error;
           }
-          onError(WebrpcBadResponseError$4.new({
+          onError(WebrpcBadResponseError$5.new({
             status: res.status,
             // @ts-ignore
             cause: `JSON.parse(): ${error.message}`
@@ -55844,7 +55842,7 @@ const sseResponse = async (res, options, retryFetch) => {
       return;
     }
   } catch (error) {
-    if (error instanceof WebrpcStreamLostError$4) {
+    if (error instanceof WebrpcStreamLostError$5) {
       onError(error, retryFetch);
     } else {
       throw error;
@@ -55873,19 +55871,19 @@ const buildResponse$5 = (res) => {
       if (error instanceof Error) {
         message = error.message;
       }
-      throw WebrpcBadResponseError$4.new({
+      throw WebrpcBadResponseError$5.new({
         status: res.status,
         cause: `JSON.parse(): ${message}: response text: ${text2}`
       });
     }
     if (!res.ok) {
       const code2 = typeof data.code === "number" ? data.code : 0;
-      throw (webrpcErrorByCode$4[code2] || WebrpcError$4).new(data);
+      throw (webrpcErrorByCode$5[code2] || WebrpcError$5).new(data);
     }
     return data;
   });
 };
-let WebrpcError$4 = class WebrpcError3 extends Error {
+let WebrpcError$5 = class WebrpcError3 extends Error {
   constructor(name2, code2, message, status, cause) {
     super(message);
     this.name = void 0;
@@ -55906,145 +55904,145 @@ let WebrpcError$4 = class WebrpcError3 extends Error {
     return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
   }
 };
-let WebrpcEndpointError$4 = class WebrpcEndpointError3 extends WebrpcError$4 {
+let WebrpcEndpointError$5 = class WebrpcEndpointError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcEndpointError3.prototype);
   }
 };
-let WebrpcRequestFailedError$4 = class WebrpcRequestFailedError3 extends WebrpcError$4 {
+let WebrpcRequestFailedError$5 = class WebrpcRequestFailedError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcRequestFailedError3.prototype);
   }
 };
-let WebrpcBadRouteError$4 = class WebrpcBadRouteError3 extends WebrpcError$4 {
+let WebrpcBadRouteError$5 = class WebrpcBadRouteError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRouteError3.prototype);
   }
 };
-let WebrpcBadMethodError$4 = class WebrpcBadMethodError3 extends WebrpcError$4 {
+let WebrpcBadMethodError$5 = class WebrpcBadMethodError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadMethodError3.prototype);
   }
 };
-let WebrpcBadRequestError$4 = class WebrpcBadRequestError3 extends WebrpcError$4 {
+let WebrpcBadRequestError$5 = class WebrpcBadRequestError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRequestError3.prototype);
   }
 };
-let WebrpcBadResponseError$4 = class WebrpcBadResponseError3 extends WebrpcError$4 {
+let WebrpcBadResponseError$5 = class WebrpcBadResponseError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadResponseError3.prototype);
   }
 };
-let WebrpcServerPanicError$4 = class WebrpcServerPanicError3 extends WebrpcError$4 {
+let WebrpcServerPanicError$5 = class WebrpcServerPanicError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcServerPanicError3.prototype);
   }
 };
-let WebrpcInternalErrorError$4 = class WebrpcInternalErrorError3 extends WebrpcError$4 {
+let WebrpcInternalErrorError$5 = class WebrpcInternalErrorError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcInternalErrorError3.prototype);
   }
 };
-let WebrpcClientDisconnectedError$4 = class WebrpcClientDisconnectedError3 extends WebrpcError$4 {
+let WebrpcClientDisconnectedError$5 = class WebrpcClientDisconnectedError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcClientDisconnectedError3.prototype);
   }
 };
-let WebrpcStreamLostError$4 = class WebrpcStreamLostError3 extends WebrpcError$4 {
+let WebrpcStreamLostError$5 = class WebrpcStreamLostError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamLostError3.prototype);
   }
 };
-let WebrpcStreamFinishedError$4 = class WebrpcStreamFinishedError3 extends WebrpcError$4 {
+let WebrpcStreamFinishedError$5 = class WebrpcStreamFinishedError3 extends WebrpcError$5 {
   constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamFinishedError3.prototype);
   }
 };
-let UnauthorizedError$4 = class UnauthorizedError3 extends WebrpcError$4 {
+let UnauthorizedError$4 = class UnauthorizedError3 extends WebrpcError$5 {
   constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnauthorizedError3.prototype);
   }
 };
-let PermissionDeniedError$2 = class PermissionDeniedError3 extends WebrpcError$4 {
+let PermissionDeniedError$2 = class PermissionDeniedError3 extends WebrpcError$5 {
   constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, PermissionDeniedError3.prototype);
   }
 };
-let SessionExpiredError$3 = class SessionExpiredError2 extends WebrpcError$4 {
+let SessionExpiredError$3 = class SessionExpiredError2 extends WebrpcError$5 {
   constructor(name2 = "SessionExpired", code2 = 1002, message = "Session expired", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, SessionExpiredError2.prototype);
   }
 };
-let MethodNotFoundError$1 = class MethodNotFoundError2 extends WebrpcError$4 {
+let MethodNotFoundError$1 = class MethodNotFoundError2 extends WebrpcError$5 {
   constructor(name2 = "MethodNotFound", code2 = 1003, message = "Method not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, MethodNotFoundError2.prototype);
   }
 };
-let RequestConflictError$1 = class RequestConflictError extends WebrpcError$4 {
+let RequestConflictError$1 = class RequestConflictError extends WebrpcError$5 {
   constructor(name2 = "RequestConflict", code2 = 1004, message = "Conflict with target resource", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, RequestConflictError.prototype);
   }
 };
-let AbortedError$1 = class AbortedError3 extends WebrpcError$4 {
+let AbortedError$1 = class AbortedError3 extends WebrpcError$5 {
   constructor(name2 = "Aborted", code2 = 1005, message = "Request aborted", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, AbortedError3.prototype);
   }
 };
-let TimeoutError$2 = class TimeoutError extends WebrpcError$4 {
+let TimeoutError$2 = class TimeoutError extends WebrpcError$5 {
   constructor(name2 = "Timeout", code2 = 2e3, message = "Request timed out", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, TimeoutError.prototype);
   }
 };
-let InvalidArgumentError$2 = class InvalidArgumentError3 extends WebrpcError$4 {
+let InvalidArgumentError$3 = class InvalidArgumentError3 extends WebrpcError$5 {
   constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, InvalidArgumentError3.prototype);
   }
 };
-let UnavailableError$1 = class UnavailableError3 extends WebrpcError$4 {
+let UnavailableError$1 = class UnavailableError3 extends WebrpcError$5 {
   constructor(name2 = "Unavailable", code2 = 2002, message = "Unavailable resource", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnavailableError3.prototype);
   }
 };
-let QueryFailedError$2 = class QueryFailedError3 extends WebrpcError$4 {
+let QueryFailedError$2 = class QueryFailedError3 extends WebrpcError$5 {
   constructor(name2 = "QueryFailed", code2 = 2003, message = "Query failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, QueryFailedError3.prototype);
   }
 };
-let NotFoundError$3 = class NotFoundError3 extends WebrpcError$4 {
+let NotFoundError$4 = class NotFoundError3 extends WebrpcError$5 {
   constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, NotFoundError3.prototype);
   }
 };
-let ProjectNotFoundError$1 = class ProjectNotFoundError extends WebrpcError$4 {
+let ProjectNotFoundError$1 = class ProjectNotFoundError extends WebrpcError$5 {
   constructor(name2 = "ProjectNotFound", code2 = 3002, message = "Project not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, ProjectNotFoundError.prototype);
   }
 };
-class MetadataCallFailedError extends WebrpcError$4 {
+class MetadataCallFailedError extends WebrpcError$5 {
   constructor(name2 = "MetadataCallFailed", code2 = 3003, message = "Metadata service call failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, MetadataCallFailedError.prototype);
@@ -56077,18 +56075,18 @@ let errors$1 = /* @__PURE__ */ function(errors2) {
   errors2["MetadataCallFailed"] = "MetadataCallFailed";
   return errors2;
 }({});
-const webrpcErrorByCode$4 = {
-  [0]: WebrpcEndpointError$4,
-  [-1]: WebrpcRequestFailedError$4,
-  [-2]: WebrpcBadRouteError$4,
-  [-3]: WebrpcBadMethodError$4,
-  [-4]: WebrpcBadRequestError$4,
-  [-5]: WebrpcBadResponseError$4,
-  [-6]: WebrpcServerPanicError$4,
-  [-7]: WebrpcInternalErrorError$4,
-  [-8]: WebrpcClientDisconnectedError$4,
-  [-9]: WebrpcStreamLostError$4,
-  [-10]: WebrpcStreamFinishedError$4,
+const webrpcErrorByCode$5 = {
+  [0]: WebrpcEndpointError$5,
+  [-1]: WebrpcRequestFailedError$5,
+  [-2]: WebrpcBadRouteError$5,
+  [-3]: WebrpcBadMethodError$5,
+  [-4]: WebrpcBadRequestError$5,
+  [-5]: WebrpcBadResponseError$5,
+  [-6]: WebrpcServerPanicError$5,
+  [-7]: WebrpcInternalErrorError$5,
+  [-8]: WebrpcClientDisconnectedError$5,
+  [-9]: WebrpcStreamLostError$5,
+  [-10]: WebrpcStreamFinishedError$5,
   [1e3]: UnauthorizedError$4,
   [1001]: PermissionDeniedError$2,
   [1002]: SessionExpiredError$3,
@@ -56096,10 +56094,10 @@ const webrpcErrorByCode$4 = {
   [1004]: RequestConflictError$1,
   [1005]: AbortedError$1,
   [2e3]: TimeoutError$2,
-  [2001]: InvalidArgumentError$2,
+  [2001]: InvalidArgumentError$3,
   [2002]: UnavailableError$1,
   [2003]: QueryFailedError$2,
-  [3e3]: NotFoundError$3,
+  [3e3]: NotFoundError$4,
   [3002]: ProjectNotFoundError$1,
   [3003]: MetadataCallFailedError
 };
@@ -56132,10 +56130,10 @@ const indexer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   EventLogDataType,
   EventLogType,
   Indexer,
-  InvalidArgumentError: InvalidArgumentError$2,
+  InvalidArgumentError: InvalidArgumentError$3,
   MetadataCallFailedError,
   MethodNotFoundError: MethodNotFoundError$1,
-  NotFoundError: NotFoundError$3,
+  NotFoundError: NotFoundError$4,
   OrderStatus,
   PermissionDeniedError: PermissionDeniedError$2,
   ProjectNotFoundError: ProjectNotFoundError$1,
@@ -56153,18 +56151,18 @@ const indexer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   WebRPCSchemaHash: WebRPCSchemaHash$1,
   WebRPCSchemaVersion: WebRPCSchemaVersion$1,
   WebRPCVersion: WebRPCVersion$1,
-  WebrpcBadMethodError: WebrpcBadMethodError$4,
-  WebrpcBadRequestError: WebrpcBadRequestError$4,
-  WebrpcBadResponseError: WebrpcBadResponseError$4,
-  WebrpcBadRouteError: WebrpcBadRouteError$4,
-  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$4,
-  WebrpcEndpointError: WebrpcEndpointError$4,
-  WebrpcError: WebrpcError$4,
-  WebrpcInternalErrorError: WebrpcInternalErrorError$4,
-  WebrpcRequestFailedError: WebrpcRequestFailedError$4,
-  WebrpcServerPanicError: WebrpcServerPanicError$4,
-  WebrpcStreamFinishedError: WebrpcStreamFinishedError$4,
-  WebrpcStreamLostError: WebrpcStreamLostError$4,
+  WebrpcBadMethodError: WebrpcBadMethodError$5,
+  WebrpcBadRequestError: WebrpcBadRequestError$5,
+  WebrpcBadResponseError: WebrpcBadResponseError$5,
+  WebrpcBadRouteError: WebrpcBadRouteError$5,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$5,
+  WebrpcEndpointError: WebrpcEndpointError$5,
+  WebrpcError: WebrpcError$5,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$5,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$5,
+  WebrpcServerPanicError: WebrpcServerPanicError$5,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$5,
+  WebrpcStreamLostError: WebrpcStreamLostError$5,
   errors: errors$1
 }, Symbol.toStringTag, { value: "Module" }));
 function _extends$c() {
@@ -56225,7 +56223,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56238,7 +56236,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56251,7 +56249,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56264,7 +56262,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56277,7 +56275,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56290,7 +56288,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56303,7 +56301,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56318,7 +56316,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56331,7 +56329,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56344,7 +56342,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56358,7 +56356,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56372,7 +56370,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56385,7 +56383,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56398,7 +56396,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56411,7 +56409,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56424,7 +56422,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56437,7 +56435,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56451,7 +56449,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56464,7 +56462,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56477,7 +56475,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56490,7 +56488,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56503,7 +56501,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56516,7 +56514,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56529,7 +56527,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56542,7 +56540,7 @@ class Metadata {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56567,7 +56565,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56580,7 +56578,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56594,7 +56592,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56607,7 +56605,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56620,7 +56618,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56633,7 +56631,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56646,7 +56644,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56660,7 +56658,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56674,7 +56672,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56688,7 +56686,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56701,7 +56699,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56714,7 +56712,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56727,7 +56725,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56740,7 +56738,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56753,7 +56751,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56766,7 +56764,7 @@ class Collections {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError$3.new({
+        throw WebrpcRequestFailedError$4.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -56798,19 +56796,19 @@ const buildResponse$4 = (res) => {
       if (error instanceof Error) {
         message = error.message;
       }
-      throw WebrpcBadResponseError$3.new({
+      throw WebrpcBadResponseError$4.new({
         status: res.status,
         cause: `JSON.parse(): ${message}: response text: ${text2}`
       });
     }
     if (!res.ok) {
       const code2 = typeof data.code === "number" ? data.code : 0;
-      throw (webrpcErrorByCode$3[code2] || WebrpcError$3).new(data);
+      throw (webrpcErrorByCode$4[code2] || WebrpcError$4).new(data);
     }
     return data;
   });
 };
-let WebrpcError$3 = class WebrpcError4 extends Error {
+let WebrpcError$4 = class WebrpcError4 extends Error {
   constructor(name2, code2, message, status, cause) {
     super(message);
     this.name = void 0;
@@ -56831,139 +56829,139 @@ let WebrpcError$3 = class WebrpcError4 extends Error {
     return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
   }
 };
-let WebrpcEndpointError$3 = class WebrpcEndpointError4 extends WebrpcError$3 {
+let WebrpcEndpointError$4 = class WebrpcEndpointError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcEndpointError4.prototype);
   }
 };
-let WebrpcRequestFailedError$3 = class WebrpcRequestFailedError4 extends WebrpcError$3 {
+let WebrpcRequestFailedError$4 = class WebrpcRequestFailedError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcRequestFailedError4.prototype);
   }
 };
-let WebrpcBadRouteError$3 = class WebrpcBadRouteError4 extends WebrpcError$3 {
+let WebrpcBadRouteError$4 = class WebrpcBadRouteError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRouteError4.prototype);
   }
 };
-let WebrpcBadMethodError$3 = class WebrpcBadMethodError4 extends WebrpcError$3 {
+let WebrpcBadMethodError$4 = class WebrpcBadMethodError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadMethodError4.prototype);
   }
 };
-let WebrpcBadRequestError$3 = class WebrpcBadRequestError4 extends WebrpcError$3 {
+let WebrpcBadRequestError$4 = class WebrpcBadRequestError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadRequestError4.prototype);
   }
 };
-let WebrpcBadResponseError$3 = class WebrpcBadResponseError4 extends WebrpcError$3 {
+let WebrpcBadResponseError$4 = class WebrpcBadResponseError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcBadResponseError4.prototype);
   }
 };
-let WebrpcServerPanicError$3 = class WebrpcServerPanicError4 extends WebrpcError$3 {
+let WebrpcServerPanicError$4 = class WebrpcServerPanicError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcServerPanicError4.prototype);
   }
 };
-let WebrpcInternalErrorError$3 = class WebrpcInternalErrorError4 extends WebrpcError$3 {
+let WebrpcInternalErrorError$4 = class WebrpcInternalErrorError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcInternalErrorError4.prototype);
   }
 };
-let WebrpcClientDisconnectedError$3 = class WebrpcClientDisconnectedError4 extends WebrpcError$3 {
+let WebrpcClientDisconnectedError$4 = class WebrpcClientDisconnectedError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcClientDisconnectedError4.prototype);
   }
 };
-let WebrpcStreamLostError$3 = class WebrpcStreamLostError4 extends WebrpcError$3 {
+let WebrpcStreamLostError$4 = class WebrpcStreamLostError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamLostError4.prototype);
   }
 };
-let WebrpcStreamFinishedError$3 = class WebrpcStreamFinishedError4 extends WebrpcError$3 {
+let WebrpcStreamFinishedError$4 = class WebrpcStreamFinishedError4 extends WebrpcError$4 {
   constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, WebrpcStreamFinishedError4.prototype);
   }
 };
-let UnauthorizedError$3 = class UnauthorizedError4 extends WebrpcError$3 {
+let UnauthorizedError$3 = class UnauthorizedError4 extends WebrpcError$4 {
   constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnauthorizedError4.prototype);
   }
 };
-let PermissionDeniedError$1 = class PermissionDeniedError4 extends WebrpcError$3 {
+let PermissionDeniedError$1 = class PermissionDeniedError4 extends WebrpcError$4 {
   constructor(name2 = "PermissionDenied", code2 = 1001, message = "Permission denied", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, PermissionDeniedError4.prototype);
   }
 };
-let SessionExpiredError$2 = class SessionExpiredError3 extends WebrpcError$3 {
+let SessionExpiredError$2 = class SessionExpiredError3 extends WebrpcError$4 {
   constructor(name2 = "SessionExpired", code2 = 1002, message = "Session expired", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, SessionExpiredError3.prototype);
   }
 };
-class MethodNotFoundError3 extends WebrpcError$3 {
+class MethodNotFoundError3 extends WebrpcError$4 {
   constructor(name2 = "MethodNotFound", code2 = 1003, message = "Method not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, MethodNotFoundError3.prototype);
   }
 }
-class RequestConflictError2 extends WebrpcError$3 {
+class RequestConflictError2 extends WebrpcError$4 {
   constructor(name2 = "RequestConflict", code2 = 1004, message = "Conflict with target resource", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, RequestConflictError2.prototype);
   }
 }
-class FailError extends WebrpcError$3 {
+class FailError extends WebrpcError$4 {
   constructor(name2 = "Fail", code2 = 1005, message = "Request Failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, FailError.prototype);
   }
 }
-let TimeoutError$1 = class TimeoutError2 extends WebrpcError$3 {
+let TimeoutError$1 = class TimeoutError2 extends WebrpcError$4 {
   constructor(name2 = "Timeout", code2 = 2e3, message = "Request timed out", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, TimeoutError2.prototype);
   }
 };
-let InvalidArgumentError$1 = class InvalidArgumentError4 extends WebrpcError$3 {
+let InvalidArgumentError$2 = class InvalidArgumentError4 extends WebrpcError$4 {
   constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, InvalidArgumentError4.prototype);
   }
 };
-class RequiredArgumentError extends WebrpcError$3 {
+class RequiredArgumentError extends WebrpcError$4 {
   constructor(name2 = "RequiredArgument", code2 = 2002, message = "Required argument missing", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, RequiredArgumentError.prototype);
   }
 }
-let NotFoundError$2 = class NotFoundError4 extends WebrpcError$3 {
+let NotFoundError$3 = class NotFoundError4 extends WebrpcError$4 {
   constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, NotFoundError4.prototype);
   }
 };
-class ProjectNotFoundError2 extends WebrpcError$3 {
+class ProjectNotFoundError2 extends WebrpcError$4 {
   constructor(name2 = "ProjectNotFound", code2 = 3002, message = "Project not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, ProjectNotFoundError2.prototype);
   }
 }
-let ChainNotFoundError$1 = class ChainNotFoundError extends WebrpcError$3 {
+let ChainNotFoundError$1 = class ChainNotFoundError extends WebrpcError$4 {
   constructor(name2 = "ChainNotFound", code2 = 3003, message = "Chain not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, ChainNotFoundError.prototype);
@@ -56995,18 +56993,18 @@ let errors = /* @__PURE__ */ function(errors2) {
   errors2["ChainNotFound"] = "ChainNotFound";
   return errors2;
 }({});
-const webrpcErrorByCode$3 = {
-  [0]: WebrpcEndpointError$3,
-  [-1]: WebrpcRequestFailedError$3,
-  [-2]: WebrpcBadRouteError$3,
-  [-3]: WebrpcBadMethodError$3,
-  [-4]: WebrpcBadRequestError$3,
-  [-5]: WebrpcBadResponseError$3,
-  [-6]: WebrpcServerPanicError$3,
-  [-7]: WebrpcInternalErrorError$3,
-  [-8]: WebrpcClientDisconnectedError$3,
-  [-9]: WebrpcStreamLostError$3,
-  [-10]: WebrpcStreamFinishedError$3,
+const webrpcErrorByCode$4 = {
+  [0]: WebrpcEndpointError$4,
+  [-1]: WebrpcRequestFailedError$4,
+  [-2]: WebrpcBadRouteError$4,
+  [-3]: WebrpcBadMethodError$4,
+  [-4]: WebrpcBadRequestError$4,
+  [-5]: WebrpcBadResponseError$4,
+  [-6]: WebrpcServerPanicError$4,
+  [-7]: WebrpcInternalErrorError$4,
+  [-8]: WebrpcClientDisconnectedError$4,
+  [-9]: WebrpcStreamLostError$4,
+  [-10]: WebrpcStreamFinishedError$4,
   [1e3]: UnauthorizedError$3,
   [1001]: PermissionDeniedError$1,
   [1002]: SessionExpiredError$2,
@@ -57014,9 +57012,9 @@ const webrpcErrorByCode$3 = {
   [1004]: RequestConflictError2,
   [1005]: FailError,
   [2e3]: TimeoutError$1,
-  [2001]: InvalidArgumentError$1,
+  [2001]: InvalidArgumentError$2,
   [2002]: RequiredArgumentError,
-  [3e3]: NotFoundError$2,
+  [3e3]: NotFoundError$3,
   [3002]: ProjectNotFoundError2,
   [3003]: ChainNotFoundError$1
 };
@@ -57066,10 +57064,10 @@ const metadata$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePr
   Collections,
   ContractType,
   FailError,
-  InvalidArgumentError: InvalidArgumentError$1,
+  InvalidArgumentError: InvalidArgumentError$2,
   Metadata,
   MethodNotFoundError: MethodNotFoundError3,
-  NotFoundError: NotFoundError$2,
+  NotFoundError: NotFoundError$3,
   PermissionDeniedError: PermissionDeniedError$1,
   ProjectNotFoundError: ProjectNotFoundError2,
   PropertyType,
@@ -57085,18 +57083,18 @@ const metadata$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePr
   WebRPCSchemaHash,
   WebRPCSchemaVersion,
   WebRPCVersion,
-  WebrpcBadMethodError: WebrpcBadMethodError$3,
-  WebrpcBadRequestError: WebrpcBadRequestError$3,
-  WebrpcBadResponseError: WebrpcBadResponseError$3,
-  WebrpcBadRouteError: WebrpcBadRouteError$3,
-  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$3,
-  WebrpcEndpointError: WebrpcEndpointError$3,
-  WebrpcError: WebrpcError$3,
-  WebrpcInternalErrorError: WebrpcInternalErrorError$3,
-  WebrpcRequestFailedError: WebrpcRequestFailedError$3,
-  WebrpcServerPanicError: WebrpcServerPanicError$3,
-  WebrpcStreamFinishedError: WebrpcStreamFinishedError$3,
-  WebrpcStreamLostError: WebrpcStreamLostError$3,
+  WebrpcBadMethodError: WebrpcBadMethodError$4,
+  WebrpcBadRequestError: WebrpcBadRequestError$4,
+  WebrpcBadResponseError: WebrpcBadResponseError$4,
+  WebrpcBadRouteError: WebrpcBadRouteError$4,
+  WebrpcClientDisconnectedError: WebrpcClientDisconnectedError$4,
+  WebrpcEndpointError: WebrpcEndpointError$4,
+  WebrpcError: WebrpcError$4,
+  WebrpcInternalErrorError: WebrpcInternalErrorError$4,
+  WebrpcRequestFailedError: WebrpcRequestFailedError$4,
+  WebrpcServerPanicError: WebrpcServerPanicError$4,
+  WebrpcStreamFinishedError: WebrpcStreamFinishedError$4,
+  WebrpcStreamLostError: WebrpcStreamLostError$4,
   errors
 }, Symbol.toStringTag, { value: "Module" }));
 function useGateway(uri, gateway) {
@@ -58162,92 +58160,136 @@ class Sessions {
     this.hostname = void 0;
     this.fetch = void 0;
     this.path = "/rpc/Sessions/";
-    this.ping = (headers) => {
-      return this.fetch(this.url("Ping"), createHTTPRequest$3({}, headers)).then((res) => {
+    this.ping = (headers, signal) => {
+      return this.fetch(this.url("Ping"), createHTTPRequest$3({}, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {};
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.config = (args, headers) => {
-      return this.fetch(this.url("Config"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.config = (args, headers, signal) => {
+      return this.fetch(this.url("Config"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {
             version: _data2.version,
             config: _data2.config
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.wallets = (args, headers) => {
-      return this.fetch(this.url("Wallets"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.wallets = (args, headers, signal) => {
+      return this.fetch(this.url("Wallets"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {
             wallets: _data2.wallets
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.deployHash = (args, headers) => {
-      return this.fetch(this.url("DeployHash"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.deployHash = (args, headers, signal) => {
+      return this.fetch(this.url("DeployHash"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {
             deployHash: _data2.deployHash,
             context: _data2.context
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.configUpdates = (args, headers) => {
-      return this.fetch(this.url("ConfigUpdates"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.configUpdates = (args, headers, signal) => {
+      return this.fetch(this.url("ConfigUpdates"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {
             updates: _data2.updates
           };
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.migrations = (args, headers) => {
-      return this.fetch(this.url("Migrations"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.migrations = (args, headers, signal) => {
+      return this.fetch(this.url("Migrations"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {
             migrations: _data2.migrations
           };
         });
-      });
-    };
-    this.saveConfig = (args, headers) => {
-      return this.fetch(this.url("SaveConfig"), createHTTPRequest$3(args, headers)).then((res) => {
-        return buildResponse$3(res).then((_data2) => {
-          return {};
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
-    this.saveWallet = (args, headers) => {
-      return this.fetch(this.url("SaveWallet"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.saveConfig = (args, headers, signal) => {
+      return this.fetch(this.url("SaveConfig"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {};
         });
-      });
-    };
-    this.saveSignature = (args, headers) => {
-      return this.fetch(this.url("SaveSignature"), createHTTPRequest$3(args, headers)).then((res) => {
-        return buildResponse$3(res).then((_data2) => {
-          return {};
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
-    this.saveSignerSignatures = (args, headers) => {
-      return this.fetch(this.url("SaveSignerSignatures"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.saveWallet = (args, headers, signal) => {
+      return this.fetch(this.url("SaveWallet"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {};
         });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
       });
     };
-    this.saveMigration = (args, headers) => {
-      return this.fetch(this.url("SaveMigration"), createHTTPRequest$3(args, headers)).then((res) => {
+    this.saveSignature = (args, headers, signal) => {
+      return this.fetch(this.url("SaveSignature"), createHTTPRequest$3(args, headers, signal)).then((res) => {
         return buildResponse$3(res).then((_data2) => {
           return {};
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.saveSignerSignatures = (args, headers, signal) => {
+      return this.fetch(this.url("SaveSignerSignatures"), createHTTPRequest$3(args, headers, signal)).then((res) => {
+        return buildResponse$3(res).then((_data2) => {
+          return {};
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.saveMigration = (args, headers, signal) => {
+      return this.fetch(this.url("SaveMigration"), createHTTPRequest$3(args, headers, signal)).then((res) => {
+        return buildResponse$3(res).then((_data2) => {
+          return {};
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$3.new({
+          cause: `fetch(): ${error.message || ""}`
         });
       });
     };
@@ -58258,13 +58300,14 @@ class Sessions {
     return this.hostname + this.path + name2;
   }
 }
-const createHTTPRequest$3 = (body = {}, headers = {}) => {
+const createHTTPRequest$3 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
     headers: _extends$b({}, headers, {
       "Content-Type": "application/json"
     }),
-    body: JSON.stringify(body || {})
+    body: JSON.stringify(body || {}),
+    signal
   };
 };
 const buildResponse$3 = (res) => {
@@ -58272,18 +58315,136 @@ const buildResponse$3 = (res) => {
     let data;
     try {
       data = JSON.parse(text2);
-    } catch (err) {
-      throw {
-        code: "unknown",
-        msg: `expecting JSON, got: ${text2}`,
-        status: res.status
-      };
+    } catch (error) {
+      let message = "";
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      throw WebrpcBadResponseError$3.new({
+        status: res.status,
+        cause: `JSON.parse(): ${message}: response text: ${text2}`
+      });
     }
     if (!res.ok) {
-      throw data;
+      const code2 = typeof data.code === "number" ? data.code : 0;
+      throw (webrpcErrorByCode$3[code2] || WebrpcError$3).new(data);
     }
     return data;
   });
+};
+let WebrpcError$3 = class WebrpcError5 extends Error {
+  constructor(name2, code2, message, status, cause) {
+    super(message);
+    this.name = void 0;
+    this.code = void 0;
+    this.message = void 0;
+    this.status = void 0;
+    this.cause = void 0;
+    this.msg = void 0;
+    this.name = name2 || "WebrpcError";
+    this.code = typeof code2 === "number" ? code2 : 0;
+    this.message = message || `endpoint error ${this.code}`;
+    this.msg = this.message;
+    this.status = typeof status === "number" ? status : 0;
+    this.cause = cause;
+    Object.setPrototypeOf(this, WebrpcError5.prototype);
+  }
+  static new(payload) {
+    return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
+  }
+};
+let WebrpcEndpointError$3 = class WebrpcEndpointError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcEndpointError5.prototype);
+  }
+};
+let WebrpcRequestFailedError$3 = class WebrpcRequestFailedError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError5.prototype);
+  }
+};
+let WebrpcBadRouteError$3 = class WebrpcBadRouteError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRouteError5.prototype);
+  }
+};
+let WebrpcBadMethodError$3 = class WebrpcBadMethodError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadMethodError5.prototype);
+  }
+};
+let WebrpcBadRequestError$3 = class WebrpcBadRequestError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadRequestError5.prototype);
+  }
+};
+let WebrpcBadResponseError$3 = class WebrpcBadResponseError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcBadResponseError5.prototype);
+  }
+};
+let WebrpcServerPanicError$3 = class WebrpcServerPanicError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcServerPanicError5.prototype);
+  }
+};
+let WebrpcInternalErrorError$3 = class WebrpcInternalErrorError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError5.prototype);
+  }
+};
+let WebrpcClientDisconnectedError$3 = class WebrpcClientDisconnectedError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError5.prototype);
+  }
+};
+let WebrpcStreamLostError$3 = class WebrpcStreamLostError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamLostError5.prototype);
+  }
+};
+let WebrpcStreamFinishedError$3 = class WebrpcStreamFinishedError5 extends WebrpcError$3 {
+  constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError5.prototype);
+  }
+};
+let InvalidArgumentError$1 = class InvalidArgumentError5 extends WebrpcError$3 {
+  constructor(name2 = "InvalidArgument", code2 = 1, message = "invalid argument", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, InvalidArgumentError5.prototype);
+  }
+};
+let NotFoundError$2 = class NotFoundError5 extends WebrpcError$3 {
+  constructor(name2 = "NotFound", code2 = 2, message = "not found", status = 0, cause) {
+    super(name2, code2, message, status, cause);
+    Object.setPrototypeOf(this, NotFoundError5.prototype);
+  }
+};
+const webrpcErrorByCode$3 = {
+  [0]: WebrpcEndpointError$3,
+  [-1]: WebrpcRequestFailedError$3,
+  [-2]: WebrpcBadRouteError$3,
+  [-3]: WebrpcBadMethodError$3,
+  [-4]: WebrpcBadRequestError$3,
+  [-5]: WebrpcBadResponseError$3,
+  [-6]: WebrpcServerPanicError$3,
+  [-7]: WebrpcInternalErrorError$3,
+  [-8]: WebrpcClientDisconnectedError$3,
+  [-9]: WebrpcStreamLostError$3,
+  [-10]: WebrpcStreamFinishedError$3,
+  [1]: InvalidArgumentError$1,
+  [2]: NotFoundError$2
 };
 class RemoteConfigTracker {
   constructor(hostname, onlyRecoverable = true) {
@@ -59847,7 +60008,7 @@ const buildResponse$2 = (res) => {
     return data;
   });
 };
-let WebrpcError$2 = class WebrpcError5 extends Error {
+let WebrpcError$2 = class WebrpcError6 extends Error {
   constructor(name2, code2, message, status, cause) {
     super(message);
     this.name = void 0;
@@ -59862,76 +60023,76 @@ let WebrpcError$2 = class WebrpcError5 extends Error {
     this.msg = this.message;
     this.status = typeof status === "number" ? status : 0;
     this.cause = cause;
-    Object.setPrototypeOf(this, WebrpcError5.prototype);
+    Object.setPrototypeOf(this, WebrpcError6.prototype);
   }
   static new(payload) {
     return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
   }
 };
-let WebrpcEndpointError$2 = class WebrpcEndpointError5 extends WebrpcError$2 {
+let WebrpcEndpointError$2 = class WebrpcEndpointError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcEndpointError5.prototype);
+    Object.setPrototypeOf(this, WebrpcEndpointError6.prototype);
   }
 };
-let WebrpcRequestFailedError$2 = class WebrpcRequestFailedError5 extends WebrpcError$2 {
+let WebrpcRequestFailedError$2 = class WebrpcRequestFailedError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcRequestFailedError5.prototype);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError6.prototype);
   }
 };
-let WebrpcBadRouteError$2 = class WebrpcBadRouteError5 extends WebrpcError$2 {
+let WebrpcBadRouteError$2 = class WebrpcBadRouteError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadRouteError5.prototype);
+    Object.setPrototypeOf(this, WebrpcBadRouteError6.prototype);
   }
 };
-let WebrpcBadMethodError$2 = class WebrpcBadMethodError5 extends WebrpcError$2 {
+let WebrpcBadMethodError$2 = class WebrpcBadMethodError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadMethodError5.prototype);
+    Object.setPrototypeOf(this, WebrpcBadMethodError6.prototype);
   }
 };
-let WebrpcBadRequestError$2 = class WebrpcBadRequestError5 extends WebrpcError$2 {
+let WebrpcBadRequestError$2 = class WebrpcBadRequestError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadRequestError5.prototype);
+    Object.setPrototypeOf(this, WebrpcBadRequestError6.prototype);
   }
 };
-let WebrpcBadResponseError$2 = class WebrpcBadResponseError5 extends WebrpcError$2 {
+let WebrpcBadResponseError$2 = class WebrpcBadResponseError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadResponseError5.prototype);
+    Object.setPrototypeOf(this, WebrpcBadResponseError6.prototype);
   }
 };
-let WebrpcServerPanicError$2 = class WebrpcServerPanicError5 extends WebrpcError$2 {
+let WebrpcServerPanicError$2 = class WebrpcServerPanicError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcServerPanicError5.prototype);
+    Object.setPrototypeOf(this, WebrpcServerPanicError6.prototype);
   }
 };
-let WebrpcInternalErrorError$2 = class WebrpcInternalErrorError5 extends WebrpcError$2 {
+let WebrpcInternalErrorError$2 = class WebrpcInternalErrorError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcInternalErrorError5.prototype);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError6.prototype);
   }
 };
-let WebrpcClientDisconnectedError$2 = class WebrpcClientDisconnectedError5 extends WebrpcError$2 {
+let WebrpcClientDisconnectedError$2 = class WebrpcClientDisconnectedError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcClientDisconnectedError5.prototype);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError6.prototype);
   }
 };
-let WebrpcStreamLostError$2 = class WebrpcStreamLostError5 extends WebrpcError$2 {
+let WebrpcStreamLostError$2 = class WebrpcStreamLostError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcStreamLostError5.prototype);
+    Object.setPrototypeOf(this, WebrpcStreamLostError6.prototype);
   }
 };
-let WebrpcStreamFinishedError$2 = class WebrpcStreamFinishedError5 extends WebrpcError$2 {
+let WebrpcStreamFinishedError$2 = class WebrpcStreamFinishedError6 extends WebrpcError$2 {
   constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcStreamFinishedError5.prototype);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError6.prototype);
   }
 };
 let UnauthorizedError$2 = class UnauthorizedError5 extends WebrpcError$2 {
@@ -59952,10 +60113,10 @@ class AbortedError4 extends WebrpcError$2 {
     Object.setPrototypeOf(this, AbortedError4.prototype);
   }
 }
-class InvalidArgumentError5 extends WebrpcError$2 {
+class InvalidArgumentError6 extends WebrpcError$2 {
   constructor(name2 = "InvalidArgument", code2 = 2001, message = "Invalid argument", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, InvalidArgumentError5.prototype);
+    Object.setPrototypeOf(this, InvalidArgumentError6.prototype);
   }
 }
 class UnavailableError4 extends WebrpcError$2 {
@@ -59976,10 +60137,10 @@ class ValidationFailedError extends WebrpcError$2 {
     Object.setPrototypeOf(this, ValidationFailedError.prototype);
   }
 }
-let NotFoundError$1 = class NotFoundError5 extends WebrpcError$2 {
+let NotFoundError$1 = class NotFoundError6 extends WebrpcError$2 {
   constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, NotFoundError5.prototype);
+    Object.setPrototypeOf(this, NotFoundError6.prototype);
   }
 };
 const webrpcErrorByCode$2 = {
@@ -59997,7 +60158,7 @@ const webrpcErrorByCode$2 = {
   [1e3]: UnauthorizedError$2,
   [1002]: SessionExpiredError$1,
   [1005]: AbortedError4,
-  [2001]: InvalidArgumentError5,
+  [2001]: InvalidArgumentError6,
   [2002]: UnavailableError4,
   [2003]: QueryFailedError$1,
   [2004]: ValidationFailedError,
@@ -62558,7 +62719,7 @@ var SessionExpiredError5 = class _SessionExpiredError extends WebrpcError$1 {
     Object.setPrototypeOf(this, _SessionExpiredError.prototype);
   }
 };
-var NotFoundError6 = class _NotFoundError extends WebrpcError$1 {
+var NotFoundError7 = class _NotFoundError extends WebrpcError$1 {
   constructor(name2 = "NotFound", code2 = 3e3, message = "Resource not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, _NotFoundError.prototype);
@@ -62597,7 +62758,7 @@ var webrpcErrorByCode$1 = {
   [1e3]: UnauthorizedError$1,
   [2e3]: PermissionDeniedError5,
   [2001]: SessionExpiredError5,
-  [3e3]: NotFoundError6,
+  [3e3]: NotFoundError7,
   [4e3]: InvalidAppKeyError,
   [4001]: QueryFailedError5,
   [4002]: InvalidProjectIdError
@@ -65997,7 +66158,7 @@ const setupAnalytics = (projectAccessKey2, server) => {
 };
 var packageJson = {
   name: "@0xsequence/provider",
-  version: "1.9.26",
+  version: "1.9.27",
   description: "provider sub-package for Sequence",
   repository: "https://github.com/0xsequence/sequence.js/tree/master/packages/provider",
   source: "src/index.ts",
@@ -66799,7 +66960,7 @@ function GoogleLogin({ onSuccess, onError, useOneTap, promptMomentNotification, 
   ]);
   return React.createElement("div", { ...containerProps, ref: btnContainerRef, style: { height: containerHeightMap[size2], ...containerProps === null || containerProps === void 0 ? void 0 : containerProps.style } });
 }
-const version$4 = "2.10.2";
+const version$4 = "2.12.0";
 const getContractAddress = (address) => address;
 const getUrl = (url) => url;
 const getVersion$2 = () => `viem@${version$4}`;
@@ -66990,7 +67151,7 @@ function isHex(value, { strict = true } = {}) {
     return false;
   return strict ? /^0x[0-9a-fA-F]*$/.test(value) : value.startsWith("0x");
 }
-function size$4(value) {
+function size$5(value) {
   if (isHex(value, { strict: false }))
     return Math.ceil((value.length - 2) / 2);
   return value.length;
@@ -67082,9 +67243,9 @@ function stringToBytes(value, opts = {}) {
   return bytes3;
 }
 function assertSize(hexOrBytes, { size: size2 }) {
-  if (size$4(hexOrBytes) > size2)
+  if (size$5(hexOrBytes) > size2)
     throw new SizeOverflowError({
-      givenSize: size$4(hexOrBytes),
+      givenSize: size$5(hexOrBytes),
       maxSize: size2
     });
 }
@@ -67329,7 +67490,7 @@ class AbiEncodingArrayLengthMismatchError extends BaseError$2 {
 }
 class AbiEncodingBytesSizeMismatchError extends BaseError$2 {
   constructor({ expectedSize, value }) {
-    super(`Size of bytes "${value}" (bytes${size$4(value)}) does not match expected size (bytes${expectedSize}).`);
+    super(`Size of bytes "${value}" (bytes${size$5(value)}) does not match expected size (bytes${expectedSize}).`);
     Object.defineProperty(this, "name", {
       enumerable: true,
       configurable: true,
@@ -67936,7 +68097,10 @@ function keccak256(value, to_) {
     return bytes3;
   return toHex$1(bytes3);
 }
+const checksumAddressCache = /* @__PURE__ */ new LruMap(8192);
 function checksumAddress(address_, chainId) {
+  if (checksumAddressCache.has(`${address_}.${chainId}`))
+    return checksumAddressCache.get(`${address_}.${chainId}`);
   const hexAddress = address_.substring(2).toLowerCase();
   const hash2 = keccak256(stringToBytes(hexAddress), "bytes");
   const address = hexAddress.split("");
@@ -67948,12 +68112,14 @@ function checksumAddress(address_, chainId) {
       address[i2 + 1] = address[i2 + 1].toUpperCase();
     }
   }
-  return `0x${address.join("")}`;
+  const result = `0x${address.join("")}`;
+  checksumAddressCache.set(`${address_}.${chainId}`, result);
+  return result;
 }
 function getAddress(address, chainId) {
   if (!isAddress(address, { strict: false }))
     throw new InvalidAddressError({ address });
-  return checksumAddress(address);
+  return checksumAddress(address, chainId);
 }
 const addressRegex = /^0x[a-fA-F0-9]{40}$/;
 const isAddressCache = /* @__PURE__ */ new LruMap(8192);
@@ -67983,19 +68149,19 @@ function slice(value, start, end, { strict } = {}) {
   });
 }
 function assertStartOffset(value, start) {
-  if (typeof start === "number" && start > 0 && start > size$4(value) - 1)
+  if (typeof start === "number" && start > 0 && start > size$5(value) - 1)
     throw new SliceOffsetOutOfBoundsError({
       offset: start,
       position: "start",
-      size: size$4(value)
+      size: size$5(value)
     });
 }
 function assertEndOffset(value, start, end) {
-  if (typeof start === "number" && typeof end === "number" && size$4(value) !== end - start) {
+  if (typeof start === "number" && typeof end === "number" && size$5(value) !== end - start) {
     throw new SliceOffsetOutOfBoundsError({
       offset: end,
       position: "end",
-      size: size$4(value)
+      size: size$5(value)
     });
   }
 }
@@ -68073,7 +68239,7 @@ function encodeParams(preparedParams) {
     if (dynamic)
       staticSize += 32;
     else
-      staticSize += size$4(encoded);
+      staticSize += size$5(encoded);
   }
   const staticParams = [];
   const dynamicParams = [];
@@ -68083,7 +68249,7 @@ function encodeParams(preparedParams) {
     if (dynamic) {
       staticParams.push(numberToHex(staticSize + dynamicSize, { size: 32 }));
       dynamicParams.push(encoded);
-      dynamicSize += size$4(encoded);
+      dynamicSize += size$5(encoded);
     } else {
       staticParams.push(encoded);
     }
@@ -68132,7 +68298,7 @@ function encodeArray(value, { length, param }) {
 }
 function encodeBytes(value, { param }) {
   const [, paramSize] = param.type.split("bytes");
-  const bytesSize = size$4(value);
+  const bytesSize = size$5(value);
   if (!paramSize) {
     let value_ = value;
     if (bytesSize % 32 !== 0)
@@ -68145,9 +68311,9 @@ function encodeBytes(value, { param }) {
       encoded: concat([padHex(numberToHex(bytesSize, { size: 32 })), value_])
     };
   }
-  if (bytesSize !== parseInt(paramSize))
+  if (bytesSize !== Number.parseInt(paramSize))
     throw new AbiEncodingBytesSizeMismatchError({
-      expectedSize: parseInt(paramSize),
+      expectedSize: Number.parseInt(paramSize),
       value
     });
   return { dynamic: false, encoded: padHex(value, { dir: "right" }) };
@@ -68168,7 +68334,7 @@ function encodeNumber(value, { signed: signed2 }) {
 }
 function encodeString(value) {
   const hexValue2 = stringToHex(value);
-  const partsLength = Math.ceil(size$4(hexValue2) / 32);
+  const partsLength = Math.ceil(size$5(hexValue2) / 32);
   const parts = [];
   for (let i2 = 0; i2 < partsLength; i2++) {
     parts.push(padHex(slice(hexValue2, i2 * 32, (i2 + 1) * 32), {
@@ -68178,7 +68344,7 @@ function encodeString(value) {
   return {
     dynamic: true,
     encoded: concat([
-      padHex(numberToHex(size$4(hexValue2), { size: 32 })),
+      padHex(numberToHex(size$5(hexValue2), { size: 32 })),
       ...parts
     ])
   };
@@ -69656,12 +69822,115 @@ function getEstimateGasError(err, { docsPath: docsPath2, ...args }) {
     ...args
   });
 }
+class AccountStateConflictError extends BaseError$2 {
+  constructor({ address }) {
+    super(`State for account "${address}" is set multiple times.`);
+    Object.defineProperty(this, "name", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "AccountStateConflictError"
+    });
+  }
+}
+class StateAssignmentConflictError extends BaseError$2 {
+  constructor() {
+    super("state and stateDiff are set on the same account.");
+    Object.defineProperty(this, "name", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: "StateAssignmentConflictError"
+    });
+  }
+}
+function prettyStateMapping(stateMapping) {
+  return stateMapping.reduce((pretty, { slot, value }) => {
+    return `${pretty}        ${slot}: ${value}
+`;
+  }, "");
+}
+function prettyStateOverride(stateOverride) {
+  return stateOverride.reduce((pretty, { address, ...state }) => {
+    let val = `${pretty}    ${address}:
+`;
+    if (state.nonce)
+      val += `      nonce: ${state.nonce}
+`;
+    if (state.balance)
+      val += `      balance: ${state.balance}
+`;
+    if (state.code)
+      val += `      code: ${state.code}
+`;
+    if (state.state) {
+      val += "      state:\n";
+      val += prettyStateMapping(state.state);
+    }
+    if (state.stateDiff) {
+      val += "      stateDiff:\n";
+      val += prettyStateMapping(state.stateDiff);
+    }
+    return val;
+  }, "  State Override:\n").slice(0, -1);
+}
+function serializeStateMapping(stateMapping) {
+  if (!stateMapping || stateMapping.length === 0)
+    return void 0;
+  return stateMapping.reduce((acc, { slot, value }) => {
+    if (slot.length !== 66)
+      throw new InvalidBytesLengthError({
+        size: slot.length,
+        targetSize: 66,
+        type: "hex"
+      });
+    if (value.length !== 66)
+      throw new InvalidBytesLengthError({
+        size: value.length,
+        targetSize: 66,
+        type: "hex"
+      });
+    acc[slot] = value;
+    return acc;
+  }, {});
+}
+function serializeAccountStateOverride(parameters) {
+  const { balance, nonce, state, stateDiff, code: code2 } = parameters;
+  const rpcAccountStateOverride = {};
+  if (code2 !== void 0)
+    rpcAccountStateOverride.code = code2;
+  if (balance !== void 0)
+    rpcAccountStateOverride.balance = numberToHex(balance);
+  if (nonce !== void 0)
+    rpcAccountStateOverride.nonce = numberToHex(nonce);
+  if (state !== void 0)
+    rpcAccountStateOverride.state = serializeStateMapping(state);
+  if (stateDiff !== void 0) {
+    if (rpcAccountStateOverride.state)
+      throw new StateAssignmentConflictError();
+    rpcAccountStateOverride.stateDiff = serializeStateMapping(stateDiff);
+  }
+  return rpcAccountStateOverride;
+}
+function serializeStateOverride(parameters) {
+  if (!parameters)
+    return void 0;
+  const rpcStateOverride = {};
+  for (const { address, ...accountState } of parameters) {
+    if (!isAddress(address, { strict: false }))
+      throw new InvalidAddressError({ address });
+    if (rpcStateOverride[address])
+      throw new AccountStateConflictError({ address });
+    rpcStateOverride[address] = serializeAccountStateOverride(accountState);
+  }
+  return rpcStateOverride;
+}
 async function estimateGas(client2, args) {
   var _a2, _b2, _c2;
   const account_ = args.account ?? client2.account;
   const account2 = account_ ? parseAccount(account_) : void 0;
   try {
-    const { accessList, blobs, blobVersionedHashes, blockNumber, blockTag, data, gas, gasPrice, maxFeePerBlobGas, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, ...rest } = await prepareTransactionRequest(client2, {
+    const { accessList, blobs, blobVersionedHashes, blockNumber, blockTag, data, gas, gasPrice, maxFeePerBlobGas, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride, ...rest } = await prepareTransactionRequest(client2, {
       ...args,
       parameters: (
         // Some RPC Providers do not compute versioned hashes from blobs. We will need
@@ -69671,6 +69940,7 @@ async function estimateGas(client2, args) {
     });
     const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
     const block = blockNumberHex || blockTag;
+    const rpcStateOverride = serializeStateOverride(stateOverride);
     assertRequest(args);
     const chainFormat = (_c2 = (_b2 = (_a2 = client2.chain) == null ? void 0 : _a2.formatters) == null ? void 0 : _b2.transactionRequest) == null ? void 0 : _c2.format;
     const format2 = chainFormat || formatTransactionRequest;
@@ -69693,7 +69963,7 @@ async function estimateGas(client2, args) {
     });
     const balance = await client2.request({
       method: "eth_estimateGas",
-      params: block ? [request, block] : [request]
+      params: rpcStateOverride ? [request, block ?? "latest", rpcStateOverride] : block ? [request, block] : [request]
     });
     return BigInt(balance);
   } catch (err) {
@@ -70075,7 +70345,7 @@ const staticCursor = {
   position: 0,
   positionReadCount: /* @__PURE__ */ new Map(),
   recursiveReadCount: 0,
-  recursiveReadLimit: Infinity,
+  recursiveReadLimit: Number.POSITIVE_INFINITY,
   assertReadLimit() {
     if (this.recursiveReadCount >= this.recursiveReadLimit)
       throw new RecursiveReadLimitExceededError({
@@ -70220,7 +70490,7 @@ const staticCursor = {
     return () => this.position = oldPosition;
   },
   _touch() {
-    if (this.recursiveReadLimit === Infinity)
+    if (this.recursiveReadLimit === Number.POSITIVE_INFINITY)
       return;
     const count = this.getReadCount();
     this.positionReadCount.set(this.position, count + 1);
@@ -70239,7 +70509,7 @@ function createCursor(bytes3, { recursiveReadLimit = 8192 } = {}) {
 function toBlobs(parameters) {
   const to = parameters.to ?? (typeof parameters.data === "string" ? "hex" : "bytes");
   const data = typeof parameters.data === "string" ? hexToBytes$1(parameters.data) : parameters.data;
-  const size_ = size$4(data);
+  const size_ = size$5(data);
   if (!size_)
     throw new EmptyBlobError();
   if (size_ > maxBytesPerTransaction)
@@ -70722,13 +70992,13 @@ function bytesToString(bytes_, opts = {}) {
 function decodeAbiParameters(params, data) {
   const bytes3 = typeof data === "string" ? hexToBytes$1(data) : data;
   const cursor = createCursor(bytes3);
-  if (size$4(bytes3) === 0 && params.length > 0)
+  if (size$5(bytes3) === 0 && params.length > 0)
     throw new AbiDecodingZeroDataError();
-  if (size$4(data) && size$4(data) < 32)
+  if (size$5(data) && size$5(data) < 32)
     throw new AbiDecodingDataSizeTooSmallError({
       data: typeof data === "string" ? data : bytesToHex$1(data),
       params,
-      size: size$4(data)
+      size: size$5(data)
     });
   let consumed = 0;
   const values = [];
@@ -70834,12 +71104,12 @@ function decodeBytes(cursor, param, { staticPosition }) {
     cursor.setPosition(staticPosition + 32);
     return [bytesToHex$1(data), 32];
   }
-  const value = bytesToHex$1(cursor.readBytes(parseInt(size2), 32));
+  const value = bytesToHex$1(cursor.readBytes(Number.parseInt(size2), 32));
   return [value, 32];
 }
 function decodeNumber(cursor, param) {
   const signed2 = param.type.startsWith("int");
-  const size2 = parseInt(param.type.split("int")[1] || "256");
+  const size2 = Number.parseInt(param.type.split("int")[1] || "256");
   const value = cursor.readBytes(32);
   return [
     size2 > 48 ? bytesToBigInt(value, { signed: signed2 }) : bytesToNumber(value, { signed: signed2 }),
@@ -70905,6 +71175,10 @@ function hasDynamicChild(param) {
     return true;
   return false;
 }
+const hash = (value) => keccak256(toBytes$1(value));
+function hashSignature(sig) {
+  return hash(sig);
+}
 function execTyped(regex, string) {
   const match = regex.exec(string);
   return match == null ? void 0 : match.groups;
@@ -70957,10 +71231,6 @@ function formatAbiItem(abiItem) {
   else if (abiItem.type === "fallback")
     return "fallback()";
   return "receive() external payable";
-}
-const hash = (value) => keccak256(toBytes$1(value));
-function hashSignature(sig) {
-  return hash(sig);
 }
 function normalizeSignature(signature2) {
   let active = true;
@@ -71257,58 +71527,6 @@ function formatAbiItemWithArgs({ abiItem, args, includeFunctionName = true, incl
   if (!abiItem.inputs)
     return;
   return `${includeFunctionName ? abiItem.name : ""}(${abiItem.inputs.map((input2, i2) => `${includeName && input2.name ? `${input2.name}: ` : ""}${typeof args[i2] === "object" ? stringify(args[i2]) : args[i2]}`).join(", ")})`;
-}
-class AccountStateConflictError extends BaseError$2 {
-  constructor({ address }) {
-    super(`State for account "${address}" is set multiple times.`);
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "AccountStateConflictError"
-    });
-  }
-}
-class StateAssignmentConflictError extends BaseError$2 {
-  constructor() {
-    super("state and stateDiff are set on the same account.");
-    Object.defineProperty(this, "name", {
-      enumerable: true,
-      configurable: true,
-      writable: true,
-      value: "StateAssignmentConflictError"
-    });
-  }
-}
-function prettyStateMapping(stateMapping) {
-  return stateMapping.reduce((pretty, { slot, value }) => {
-    return `${pretty}        ${slot}: ${value}
-`;
-  }, "");
-}
-function prettyStateOverride(stateOverride) {
-  return stateOverride.reduce((pretty, { address, ...state }) => {
-    let val = `${pretty}    ${address}:
-`;
-    if (state.nonce)
-      val += `      nonce: ${state.nonce}
-`;
-    if (state.balance)
-      val += `      balance: ${state.balance}
-`;
-    if (state.code)
-      val += `      code: ${state.code}
-`;
-    if (state.state) {
-      val += "      state:\n";
-      val += prettyStateMapping(state.state);
-    }
-    if (state.stateDiff) {
-      val += "      stateDiff:\n";
-      val += prettyStateMapping(state.stateDiff);
-    }
-    return val;
-  }, "  State Override:\n").slice(0, -1);
 }
 class CallExecutionError extends BaseError$2 {
   constructor(cause, { account: account_, docsPath: docsPath2, chain, data, gas, gasPrice, maxFeePerGas, maxPriorityFeePerGas, nonce, to, value, stateOverride }) {
@@ -71782,7 +72000,7 @@ async function call(client2, args) {
     assertRequest(args);
     const blockNumberHex = blockNumber ? numberToHex(blockNumber) : void 0;
     const block = blockNumberHex || blockTag;
-    const rpcStateOverride = parseStateOverride(stateOverride);
+    const rpcStateOverride = serializeStateOverride(stateOverride);
     const chainFormat = (_d2 = (_c2 = (_b2 = client2.chain) == null ? void 0 : _b2.formatters) == null ? void 0 : _c2.transactionRequest) == null ? void 0 : _d2.format;
     const format2 = chainFormat || formatTransactionRequest;
     const request = format2({
@@ -71826,7 +72044,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-C29RW31Y.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CzXR33pt.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -71913,57 +72131,6 @@ function getRevertErrorData(err) {
     return void 0;
   const error = err.walk();
   return typeof (error == null ? void 0 : error.data) === "object" ? (_a2 = error.data) == null ? void 0 : _a2.data : error.data;
-}
-function parseStateMapping(stateMapping) {
-  if (!stateMapping || stateMapping.length === 0)
-    return void 0;
-  return stateMapping.reduce((acc, { slot, value }) => {
-    if (slot.length !== 66)
-      throw new InvalidBytesLengthError({
-        size: slot.length,
-        targetSize: 66,
-        type: "hex"
-      });
-    if (value.length !== 66)
-      throw new InvalidBytesLengthError({
-        size: value.length,
-        targetSize: 66,
-        type: "hex"
-      });
-    acc[slot] = value;
-    return acc;
-  }, {});
-}
-function parseAccountStateOverride(args) {
-  const { balance, nonce, state, stateDiff, code: code2 } = args;
-  const rpcAccountStateOverride = {};
-  if (code2 !== void 0)
-    rpcAccountStateOverride.code = code2;
-  if (balance !== void 0)
-    rpcAccountStateOverride.balance = numberToHex(balance);
-  if (nonce !== void 0)
-    rpcAccountStateOverride.nonce = numberToHex(nonce);
-  if (state !== void 0)
-    rpcAccountStateOverride.state = parseStateMapping(state);
-  if (stateDiff !== void 0) {
-    if (rpcAccountStateOverride.state)
-      throw new StateAssignmentConflictError();
-    rpcAccountStateOverride.stateDiff = parseStateMapping(stateDiff);
-  }
-  return rpcAccountStateOverride;
-}
-function parseStateOverride(args) {
-  if (!args)
-    return void 0;
-  const rpcStateOverride = {};
-  for (const { address, ...accountState } of args) {
-    if (!isAddress(address, { strict: false }))
-      throw new InvalidAddressError({ address });
-    if (rpcStateOverride[address])
-      throw new AccountStateConflictError({ address });
-    rpcStateOverride[address] = parseAccountStateOverride(accountState);
-  }
-  return rpcStateOverride;
 }
 async function readContract(client2, parameters) {
   const { abi: abi2, address, args, functionName, ...rest } = parameters;
@@ -72223,7 +72390,7 @@ function parseNftUri(uri_) {
   if (!erc_namespace)
     throw new EnsAvatarInvalidNftUriError({ reason: "ERC namespace not found" });
   return {
-    chainID: parseInt(chainID),
+    chainID: Number.parseInt(chainID),
     namespace: erc_namespace.toLowerCase(),
     contractAddress,
     tokenID
@@ -72628,7 +72795,7 @@ function getCache(cacheKey2) {
     response
   };
 }
-async function withCache(fn, { cacheKey: cacheKey2, cacheTime = Infinity }) {
+async function withCache(fn, { cacheKey: cacheKey2, cacheTime = Number.POSITIVE_INFINITY }) {
   const cache = getCache(cacheKey2);
   const response = cache.response.get();
   if (response && cacheTime > 0) {
@@ -72727,7 +72894,7 @@ function decodeEventLog(parameters) {
               abiItem,
               data,
               params: nonIndexedInputs,
-              size: size$4(data)
+              size: size$5(data)
             });
           throw err;
         }
@@ -73700,7 +73867,7 @@ function buildRequest(request, options = {}) {
         if (error && error instanceof HttpRequestError) {
           const retryAfter = (_a2 = error == null ? void 0 : error.headers) == null ? void 0 : _a2.get("Retry-After");
           if (retryAfter == null ? void 0 : retryAfter.match(/\d/))
-            return parseInt(retryAfter) * 1e3;
+            return Number.parseInt(retryAfter) * 1e3;
         }
         return ~~(1 << count) * retryDelay;
       },
@@ -73739,6 +73906,13 @@ function shouldRetry(error) {
     return false;
   }
   return true;
+}
+function isAddressEqual(a2, b2) {
+  if (!isAddress(a2, { strict: false }))
+    throw new InvalidAddressError({ address: a2 });
+  if (!isAddress(b2, { strict: false }))
+    throw new InvalidAddressError({ address: b2 });
+  return a2.toLowerCase() === b2.toLowerCase();
 }
 function defineChain(chain) {
   return {
@@ -74040,7 +74214,7 @@ function validateTypedData(parameters) {
         const [_type, base2, size_] = integerMatch;
         numberToHex(value, {
           signed: base2 === "int",
-          size: parseInt(size_) / 8
+          size: Number.parseInt(size_) / 8
         });
       }
       if (type === "address" && typeof value === "string" && !isAddress(value))
@@ -74048,10 +74222,10 @@ function validateTypedData(parameters) {
       const bytesMatch = type.match(bytesRegex);
       if (bytesMatch) {
         const [_type, size_] = bytesMatch;
-        if (size_ && size$4(value) !== parseInt(size_))
+        if (size_ && size$5(value) !== Number.parseInt(size_))
           throw new BytesSizeMismatchError({
-            expectedSize: parseInt(size_),
-            givenSize: size$4(value)
+            expectedSize: Number.parseInt(size_),
+            givenSize: size$5(value)
           });
       }
       const struct2 = types2[type];
@@ -74158,6 +74332,7 @@ async function waitForTransactionReceipt(client2, {
   timeout
 }) {
   const observerId = stringify(["waitForTransactionReceipt", client2.uid, hash2]);
+  let count = 0;
   let transaction2;
   let replacedTransaction;
   let receipt;
@@ -74172,14 +74347,16 @@ async function waitForTransactionReceipt(client2, {
         poll: true,
         pollingInterval,
         async onBlockNumber(blockNumber_) {
-          if (retrying)
-            return;
-          let blockNumber = blockNumber_;
           const done = (fn) => {
             _unwatch();
             fn();
             _unobserve();
           };
+          let blockNumber = blockNumber_;
+          if (retrying)
+            return;
+          if (count > retryCount)
+            done(() => emit.reject(new WaitForTransactionReceiptTimeoutError({ hash: hash2 })));
           try {
             if (receipt) {
               if (confirmations > 1 && (!receipt.blockNumber || blockNumber - receipt.blockNumber + 1n < confirmations))
@@ -74251,6 +74428,8 @@ async function waitForTransactionReceipt(client2, {
             } else {
               done(() => emit.reject(err));
             }
+          } finally {
+            count++;
           }
         }
       });
@@ -76227,14 +76406,14 @@ function createStore$1() {
     }
   };
 }
-const size$3 = 256;
-let index$2 = size$3;
+const size$4 = 256;
+let index$2 = size$4;
 let buffer$1;
 function uid$1(length = 11) {
-  if (!buffer$1 || index$2 + length > size$3 * 2) {
+  if (!buffer$1 || index$2 + length > size$4 * 2) {
     buffer$1 = "";
     index$2 = 0;
-    for (let i2 = 0; i2 < size$3; i2++) {
+    for (let i2 = 0; i2 < size$4; i2++) {
       buffer$1 += (256 + Math.random() * 256 | 0).toString(16).substring(1);
     }
   }
@@ -76320,7 +76499,7 @@ function http(url, config2 = {}) {
       async request({ method, params }) {
         const body = { method, params };
         const { schedule } = createBatchScheduler({
-          id: `${url}`,
+          id: url_,
           wait: wait2,
           shouldSplitBatch(requests) {
             return requests.length > batchSize;
@@ -76353,6 +76532,71 @@ function http(url, config2 = {}) {
       url: url_
     });
   };
+}
+function parseSiweMessage(message) {
+  var _a2, _b2, _c2;
+  const { scheme, statement, ...prefix } = ((_a2 = message.match(prefixRegex)) == null ? void 0 : _a2.groups) ?? {};
+  const { chainId, expirationTime, issuedAt, notBefore, requestId, ...suffix } = ((_b2 = message.match(suffixRegex)) == null ? void 0 : _b2.groups) ?? {};
+  const resources = (_c2 = message.split("Resources:")[1]) == null ? void 0 : _c2.split("\n- ").slice(1);
+  return {
+    ...prefix,
+    ...suffix,
+    ...chainId ? { chainId: Number(chainId) } : {},
+    ...expirationTime ? { expirationTime: new Date(expirationTime) } : {},
+    ...issuedAt ? { issuedAt: new Date(issuedAt) } : {},
+    ...notBefore ? { notBefore: new Date(notBefore) } : {},
+    ...requestId ? { requestId } : {},
+    ...resources ? { resources } : {},
+    ...scheme ? { scheme } : {},
+    ...statement ? { statement } : {}
+  };
+}
+const prefixRegex = /^(?:(?<scheme>[a-zA-Z][a-zA-Z0-9+-.]*):\/\/)?(?<domain>[a-zA-Z0-9+-.]*) (?:wants you to sign in with your Ethereum account:\n)(?<address>0x[a-fA-F0-9]{40})\n\n(?:(?<statement>.*)\n\n)?/;
+const suffixRegex = /(?:URI: (?<uri>.+))\n(?:Version: (?<version>.+))\n(?:Chain ID: (?<chainId>\d+))\n(?:Nonce: (?<nonce>[a-zA-Z0-9]+))\n(?:Issued At: (?<issuedAt>.+))(?:\nExpiration Time: (?<expirationTime>.+))?(?:\nNot Before: (?<notBefore>.+))?(?:\nRequest ID: (?<requestId>.+))?/;
+function validateSiweMessage(parameters) {
+  const { address, domain: domain2, message, nonce, scheme, time: time2 = /* @__PURE__ */ new Date() } = parameters;
+  if (domain2 && message.domain !== domain2)
+    return false;
+  if (nonce && message.nonce !== nonce)
+    return false;
+  if (scheme && message.scheme !== scheme)
+    return false;
+  if (message.expirationTime && time2 >= message.expirationTime)
+    return false;
+  if (message.notBefore && time2 < message.notBefore)
+    return false;
+  try {
+    if (!message.address)
+      return false;
+    if (address && !isAddressEqual(message.address, address))
+      return false;
+  } catch {
+    return false;
+  }
+  return true;
+}
+async function verifySiweMessage(client2, parameters) {
+  const { address, domain: domain2, message, nonce, scheme, signature: signature2, time: time2 = /* @__PURE__ */ new Date(), ...callRequest } = parameters;
+  const parsed = parseSiweMessage(message);
+  if (!parsed.address)
+    return false;
+  const isValid2 = validateSiweMessage({
+    address,
+    domain: domain2,
+    message: parsed,
+    nonce,
+    scheme,
+    time: time2
+  });
+  if (!isValid2)
+    return false;
+  const hash2 = hashMessage(message);
+  return verifyHash(client2, {
+    address: parsed.address,
+    hash: hash2,
+    signature: signature2,
+    ...callRequest
+  });
 }
 function publicActions(client2) {
   return {
@@ -76395,6 +76639,7 @@ function publicActions(client2) {
     sendRawTransaction: (args) => sendRawTransaction(client2, args),
     simulateContract: (args) => simulateContract$1(client2, args),
     verifyMessage: (args) => verifyMessage(client2, args),
+    verifySiweMessage: (args) => verifySiweMessage(client2, args),
     verifyTypedData: (args) => verifyTypedData(client2, args),
     uninstallFilter: (args) => uninstallFilter(client2, args),
     waitForTransactionReceipt: (args) => waitForTransactionReceipt(client2, args),
@@ -76988,14 +77233,6 @@ var eventemitter3 = { exports: {} };
 })(eventemitter3);
 var eventemitter3Exports = eventemitter3.exports;
 const EventEmitter = /* @__PURE__ */ getDefaultExportFromCjs$1(eventemitter3Exports);
-var __classPrivateFieldGet$2 = function(receiver, state, kind, f2) {
-  if (kind === "a" && !f2)
-    throw new TypeError("Private accessor was defined without a getter");
-  if (typeof state === "function" ? receiver !== state || !f2 : !state.has(receiver))
-    throw new TypeError("Cannot read private member from an object whose class did not declare it");
-  return kind === "m" ? f2 : kind === "a" ? f2.call(receiver) : f2 ? f2.value : state.get(receiver);
-};
-var _Emitter_emitter;
 class Emitter {
   constructor(uid2) {
     Object.defineProperty(this, "uid", {
@@ -77004,26 +77241,30 @@ class Emitter {
       writable: true,
       value: uid2
     });
-    _Emitter_emitter.set(this, new EventEmitter());
+    Object.defineProperty(this, "_emitter", {
+      enumerable: true,
+      configurable: true,
+      writable: true,
+      value: new EventEmitter()
+    });
   }
   on(eventName, fn) {
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").on(eventName, fn);
+    this._emitter.on(eventName, fn);
   }
   once(eventName, fn) {
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").once(eventName, fn);
+    this._emitter.once(eventName, fn);
   }
   off(eventName, fn) {
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").off(eventName, fn);
+    this._emitter.off(eventName, fn);
   }
   emit(eventName, ...params) {
     const data = params[0];
-    __classPrivateFieldGet$2(this, _Emitter_emitter, "f").emit(eventName, { uid: this.uid, ...data });
+    this._emitter.emit(eventName, { uid: this.uid, ...data });
   }
   listenerCount(eventName) {
-    return __classPrivateFieldGet$2(this, _Emitter_emitter, "f").listenerCount(eventName);
+    return this._emitter.listenerCount(eventName);
   }
 }
-_Emitter_emitter = /* @__PURE__ */ new WeakMap();
 function createEmitter(uid2) {
   return new Emitter(uid2);
 }
@@ -77126,7 +77367,7 @@ const noopStorage = {
 function createConnector(createConnectorFn) {
   return createConnectorFn;
 }
-const version$3 = "2.9.1";
+const version$3 = "2.10.3";
 const getVersion$1 = () => `@wagmi/core@${version$3}`;
 var __classPrivateFieldGet$1 = function(receiver, state, kind, f2) {
   if (kind === "a" && !f2)
@@ -77474,6 +77715,14 @@ function injected(parameters = {}) {
         connect2 = this.onConnect.bind(this);
         provider2.on("connect", connect2);
       }
+      try {
+        await provider2.request({
+          // `'wallet_revokePermissions'` added in `viem@2.10.3`
+          method: "wallet_revokePermissions",
+          params: [{ eth_accounts: {} }]
+        });
+      } catch {
+      }
       if (shimDisconnect) {
         await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem(`${this.id}.disconnected`, true));
       }
@@ -77707,14 +77956,14 @@ function findProvider(window2, select) {
     return ethereum;
   return void 0;
 }
-const size$2 = 256;
-let index$1 = size$2;
+const size$3 = 256;
+let index$1 = size$3;
 let buffer;
 function uid(length = 11) {
-  if (!buffer || index$1 + length > size$2 * 2) {
+  if (!buffer || index$1 + length > size$3 * 2) {
     buffer = "";
     index$1 = 0;
-    for (let i2 = 0; i2 < size$2; i2++) {
+    for (let i2 = 0; i2 < size$3; i2++) {
       buffer += (256 + Math.random() * 256 | 0).toString(16).substring(1);
     }
   }
@@ -78116,7 +78365,7 @@ async function getConnectorClient(config2, parameters = {}) {
   account2.address = getAddress(account2.address);
   const chain = config2.chains.find((chain2) => chain2.id === chainId);
   const provider2 = await connection.connector.getProvider({ chainId });
-  if (parameters.account && !connection.accounts.includes(account2.address))
+  if (parameters.account && !connection.accounts.some((x) => x.toLowerCase() === account2.address.toLowerCase()))
     throw new ConnectorAccountNotFoundError({
       address: account2.address,
       connector
@@ -78314,7 +78563,7 @@ async function reconnect(config2, parameters = {}) {
   const connections = [];
   const providers = [];
   for (const connector of sorted) {
-    const provider_ = await connector.getProvider();
+    const provider_ = await connector.getProvider().catch(() => void 0);
     if (!provider_)
       continue;
     if (providers.some((provider2) => provider2 === provider_))
@@ -78753,7 +79002,7 @@ function WagmiProvider(parameters) {
   const props = { value: config2 };
   return reactExports.createElement(Hydrate, parameters, reactExports.createElement(WagmiContext.Provider, props, children));
 }
-const version$2 = "2.8.1";
+const version$2 = "2.9.5";
 const getVersion = () => `wagmi@${version$2}`;
 class BaseError3 extends BaseError$1 {
   constructor() {
@@ -80968,22 +81217,29 @@ var InfiniteQueryObserver = class extends QueryObserver {
     });
   }
   createResult(query, options) {
-    var _a2, _b2, _c2, _d2;
+    var _a2, _b2;
     const { state } = query;
-    const result = super.createResult(query, options);
-    const { isFetching, isRefetching } = result;
-    const isFetchingNextPage = isFetching && ((_b2 = (_a2 = state.fetchMeta) == null ? void 0 : _a2.fetchMore) == null ? void 0 : _b2.direction) === "forward";
-    const isFetchingPreviousPage = isFetching && ((_d2 = (_c2 = state.fetchMeta) == null ? void 0 : _c2.fetchMore) == null ? void 0 : _d2.direction) === "backward";
-    return {
-      ...result,
+    const parentResult = super.createResult(query, options);
+    const { isFetching, isRefetching, isError, isRefetchError } = parentResult;
+    const fetchDirection = (_b2 = (_a2 = state.fetchMeta) == null ? void 0 : _a2.fetchMore) == null ? void 0 : _b2.direction;
+    const isFetchNextPageError = isError && fetchDirection === "forward";
+    const isFetchingNextPage = isFetching && fetchDirection === "forward";
+    const isFetchPreviousPageError = isError && fetchDirection === "backward";
+    const isFetchingPreviousPage = isFetching && fetchDirection === "backward";
+    const result = {
+      ...parentResult,
       fetchNextPage: this.fetchNextPage,
       fetchPreviousPage: this.fetchPreviousPage,
       hasNextPage: hasNextPage(options, state.data),
       hasPreviousPage: hasPreviousPage(options, state.data),
+      isFetchNextPageError,
       isFetchingNextPage,
+      isFetchPreviousPageError,
       isFetchingPreviousPage,
+      isRefetchError: isRefetchError && !isFetchNextPageError && !isFetchPreviousPageError,
       isRefetching: isRefetching && !isFetchingNextPage && !isFetchingPreviousPage
     };
+    return result;
   }
 };
 var MutationObserver$1 = (_j = class extends Subscribable {
@@ -81577,7 +81833,6 @@ function useConnectors(parameters = {}) {
 function useConnect(parameters = {}) {
   const { mutation } = parameters;
   const config2 = useConfig(parameters);
-  const connectors = useConnectors({ config: config2 });
   const mutationOptions = connectMutationOptions(config2);
   const { mutate, mutateAsync, ...result } = useMutation({
     ...mutation,
@@ -81593,7 +81848,7 @@ function useConnect(parameters = {}) {
     ...result,
     connect: mutate,
     connectAsync: mutateAsync,
-    connectors
+    connectors: useConnectors({ config: config2 })
   };
 }
 function useConnections(parameters = {}) {
@@ -89697,7 +89952,7 @@ async function detectOverflow(state, options) {
     right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
   };
 }
-const arrow$2 = (options) => ({
+const arrow$3 = (options) => ({
   name: "arrow",
   options,
   async fn(state) {
@@ -89759,7 +90014,7 @@ const arrow$2 = (options) => ({
     };
   }
 });
-const flip$1 = function(options) {
+const flip$2 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -89864,7 +90119,7 @@ function getSideOffsets(overflow, rect) {
 function isAnySideFullyClipped(overflow) {
   return sides.some((side) => overflow[side] >= 0);
 }
-const hide$1 = function(options) {
+const hide$2 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -89951,7 +90206,7 @@ async function convertValueToCoords(state, options) {
     y: crossAxis * crossAxisMulti
   };
 }
-const offset$1 = function(options) {
+const offset$2 = function(options) {
   if (options === void 0) {
     options = 0;
   }
@@ -89981,7 +90236,7 @@ const offset$1 = function(options) {
     }
   };
 };
-const shift$1 = function(options) {
+const shift$2 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -90049,7 +90304,7 @@ const shift$1 = function(options) {
     }
   };
 };
-const limitShift$1 = function(options) {
+const limitShift$2 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -90114,7 +90369,7 @@ const limitShift$1 = function(options) {
     }
   };
 };
-const size$1 = function(options) {
+const size$2 = function(options) {
   if (options === void 0) {
     options = {};
   }
@@ -90150,16 +90405,16 @@ const size$1 = function(options) {
         widthSide = side;
         heightSide = alignment === "end" ? "top" : "bottom";
       }
-      const overflowAvailableHeight = height - overflow[heightSide];
-      const overflowAvailableWidth = width - overflow[widthSide];
+      const maximumClippingHeight = height - overflow.top - overflow.bottom;
+      const maximumClippingWidth = width - overflow.left - overflow.right;
+      const overflowAvailableHeight = min(height - overflow[heightSide], maximumClippingHeight);
+      const overflowAvailableWidth = min(width - overflow[widthSide], maximumClippingWidth);
       const noShift = !state.middlewareData.shift;
       let availableHeight = overflowAvailableHeight;
       let availableWidth = overflowAvailableWidth;
       if (isYAxis) {
-        const maximumClippingWidth = width - overflow.left - overflow.right;
         availableWidth = alignment || noShift ? min(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
       } else {
-        const maximumClippingHeight = height - overflow.top - overflow.bottom;
         availableHeight = alignment || noShift ? min(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
       }
       if (noShift && !alignment) {
@@ -90857,13 +91112,13 @@ function autoUpdate(reference, floating, update5, options) {
     }
   };
 }
-const offset = offset$1;
-const shift = shift$1;
-const flip = flip$1;
-const size = size$1;
-const hide = hide$1;
-const arrow$1 = arrow$2;
-const limitShift = limitShift$1;
+const offset$1 = offset$2;
+const shift$1 = shift$2;
+const flip$1 = flip$2;
+const size$1 = size$2;
+const hide$1 = hide$2;
+const arrow$2 = arrow$3;
+const limitShift$1 = limitShift$2;
 const computePosition = (reference, floating, options) => {
   const cache = /* @__PURE__ */ new Map();
   const mergedOptions = {
@@ -90878,37 +91133,6 @@ const computePosition = (reference, floating, options) => {
     ...mergedOptions,
     platform: platformWithCache
   });
-};
-const arrow = (options) => {
-  function isRef(value) {
-    return {}.hasOwnProperty.call(value, "current");
-  }
-  return {
-    name: "arrow",
-    options,
-    fn(state) {
-      const {
-        element,
-        padding: padding2
-      } = typeof options === "function" ? options(state) : options;
-      if (element && isRef(element)) {
-        if (element.current != null) {
-          return arrow$1({
-            element: element.current,
-            padding: padding2
-          }).fn(state);
-        }
-        return {};
-      }
-      if (element) {
-        return arrow$1({
-          element,
-          padding: padding2
-        }).fn(state);
-      }
-      return {};
-    }
-  };
 };
 var index = typeof document !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
 function deepEqual(a2, b2) {
@@ -91125,6 +91349,65 @@ function useFloating(options) {
     floatingStyles
   }), [data, update5, refs, elements, floatingStyles]);
 }
+const arrow$1 = (options) => {
+  function isRef(value) {
+    return {}.hasOwnProperty.call(value, "current");
+  }
+  return {
+    name: "arrow",
+    options,
+    fn(state) {
+      const {
+        element,
+        padding: padding2
+      } = typeof options === "function" ? options(state) : options;
+      if (element && isRef(element)) {
+        if (element.current != null) {
+          return arrow$2({
+            element: element.current,
+            padding: padding2
+          }).fn(state);
+        }
+        return {};
+      }
+      if (element) {
+        return arrow$2({
+          element,
+          padding: padding2
+        }).fn(state);
+      }
+      return {};
+    }
+  };
+};
+const offset = (options, deps) => ({
+  ...offset$1(options),
+  options: [options, deps]
+});
+const shift = (options, deps) => ({
+  ...shift$1(options),
+  options: [options, deps]
+});
+const limitShift = (options, deps) => ({
+  ...limitShift$1(options),
+  options: [options, deps]
+});
+const flip = (options, deps) => ({
+  ...flip$1(options),
+  options: [options, deps]
+});
+const size = (options, deps) => ({
+  ...size$1(options),
+  options: [options, deps]
+});
+const hide = (options, deps) => ({
+  ...hide$1(options),
+  options: [options, deps]
+});
+const arrow = (options, deps) => ({
+  ...arrow$1(options),
+  options: [options, deps]
+});
 const $7e8f5cd07187803e$export$21b07c8f274aebd5 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
   return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.svg, _extends$3({}, arrowProps, {
@@ -98456,7 +98739,7 @@ const evaluateCondition = ({ assign, ...fnArgs }, options) => {
     throw new EndpointError(`'${assign}' is already defined in Reference Record.`);
   }
   const value = callFunction(fnArgs, options);
-  (_b2 = (_a2 = options.logger) == null ? void 0 : _a2.debug) == null ? void 0 : _b2.call(_a2, debugId, `evaluateCondition: ${toDebugString(fnArgs)} = ${toDebugString(value)}`);
+  (_b2 = (_a2 = options.logger) == null ? void 0 : _a2.debug) == null ? void 0 : _b2.call(_a2, `${debugId} evaluateCondition: ${toDebugString(fnArgs)} = ${toDebugString(value)}`);
   return {
     result: value === "" ? true : !!value,
     ...assign != null && { toAssign: { name: assign, value } }
@@ -98478,7 +98761,7 @@ const evaluateConditions = (conditions = [], options) => {
     }
     if (toAssign) {
       conditionsReferenceRecord[toAssign.name] = toAssign.value;
-      (_b2 = (_a2 = options.logger) == null ? void 0 : _a2.debug) == null ? void 0 : _b2.call(_a2, debugId, `assign: ${toAssign.name} := ${toDebugString(toAssign.value)}`);
+      (_b2 = (_a2 = options.logger) == null ? void 0 : _a2.debug) == null ? void 0 : _b2.call(_a2, `${debugId} assign: ${toAssign.name} := ${toDebugString(toAssign.value)}`);
     }
   }
   return { result: true, referenceRecord: conditionsReferenceRecord };
@@ -98539,7 +98822,7 @@ const evaluateEndpointRule = (endpointRule, options) => {
     referenceRecord: { ...options.referenceRecord, ...referenceRecord }
   };
   const { url, properties, headers } = endpoint;
-  (_b2 = (_a2 = options.logger) == null ? void 0 : _a2.debug) == null ? void 0 : _b2.call(_a2, debugId, `Resolving endpoint from template: ${toDebugString(endpoint)}`);
+  (_b2 = (_a2 = options.logger) == null ? void 0 : _a2.debug) == null ? void 0 : _b2.call(_a2, `${debugId} Resolving endpoint from template: ${toDebugString(endpoint)}`);
   return {
     ...headers != void 0 && {
       headers: getEndpointHeaders(headers, endpointRuleOptions)
@@ -99251,7 +99534,7 @@ const endpointMiddleware = ({ config: config2, instructions }) => {
     });
   };
 };
-const deserializerMiddleware = (options, deserializer) => (next, context2) => async (args) => {
+const deserializerMiddleware = (options, deserializer) => (next) => async (args) => {
   const { response } = await next(args);
   try {
     const parsed = await deserializer(response, options);
@@ -100219,12 +100502,19 @@ class FetchHttpHandler {
     const { port, method } = request;
     const url = `${request.protocol}//${auth2}${request.hostname}${port ? `:${port}` : ""}${path}`;
     const body = method === "GET" || method === "HEAD" ? void 0 : request.body;
-    const requestOptions = { body, headers: new Headers(request.headers), method };
+    const requestOptions = {
+      body,
+      headers: new Headers(request.headers),
+      method
+    };
+    if (body) {
+      requestOptions.duplex = "half";
+    }
     if (typeof AbortController !== "undefined") {
-      requestOptions["signal"] = abortSignal;
+      requestOptions.signal = abortSignal;
     }
     if (keepAliveSupport.supported) {
-      requestOptions["keepalive"] = keepAlive;
+      requestOptions.keepalive = keepAlive;
     }
     const fetchRequest = new Request(url, requestOptions);
     const raceOfPromises = [
@@ -100290,20 +100580,25 @@ async function collectBlob(blob) {
   return new Uint8Array(arrayBuffer);
 }
 async function collectStream(stream) {
-  let res = new Uint8Array(0);
+  const chunks = [];
   const reader2 = stream.getReader();
   let isDone = false;
+  let length = 0;
   while (!isDone) {
     const { done, value } = await reader2.read();
     if (value) {
-      const prior = res;
-      res = new Uint8Array(prior.length + value.length);
-      res.set(prior);
-      res.set(value, prior.length);
+      chunks.push(value);
+      length += value.length;
     }
     isDone = done;
   }
-  return res;
+  const collected = new Uint8Array(length);
+  let offset2 = 0;
+  for (const chunk of chunks) {
+    collected.set(chunk, offset2);
+    offset2 += chunk.length;
+  }
+  return collected;
 }
 function readToBase64(blob) {
   return new Promise((resolve, reject) => {
@@ -101682,7 +101977,7 @@ const commonParams = {
 };
 const name = "@aws-sdk/client-cognito-identity-provider";
 const description = "AWS SDK for JavaScript Cognito Identity Provider Client for Node.js, Browser and React Native";
-const version = "3.569.0";
+const version = "3.582.0";
 const scripts = {
   build: "concurrently 'yarn:build:cjs' 'yarn:build:es' 'yarn:build:types'",
   "build:cjs": "node ../../scripts/compilation/inline client-cognito-identity-provider",
@@ -101701,44 +101996,44 @@ const sideEffects = false;
 const dependencies = {
   "@aws-crypto/sha256-browser": "3.0.0",
   "@aws-crypto/sha256-js": "3.0.0",
-  "@aws-sdk/client-sso-oidc": "3.569.0",
-  "@aws-sdk/client-sts": "3.569.0",
-  "@aws-sdk/core": "3.567.0",
-  "@aws-sdk/credential-provider-node": "3.569.0",
-  "@aws-sdk/middleware-host-header": "3.567.0",
-  "@aws-sdk/middleware-logger": "3.568.0",
-  "@aws-sdk/middleware-recursion-detection": "3.567.0",
-  "@aws-sdk/middleware-user-agent": "3.567.0",
-  "@aws-sdk/region-config-resolver": "3.567.0",
-  "@aws-sdk/types": "3.567.0",
-  "@aws-sdk/util-endpoints": "3.567.0",
-  "@aws-sdk/util-user-agent-browser": "3.567.0",
-  "@aws-sdk/util-user-agent-node": "3.568.0",
-  "@smithy/config-resolver": "^2.2.0",
-  "@smithy/core": "^1.4.2",
-  "@smithy/fetch-http-handler": "^2.5.0",
-  "@smithy/hash-node": "^2.2.0",
-  "@smithy/invalid-dependency": "^2.2.0",
-  "@smithy/middleware-content-length": "^2.2.0",
-  "@smithy/middleware-endpoint": "^2.5.1",
-  "@smithy/middleware-retry": "^2.3.1",
-  "@smithy/middleware-serde": "^2.3.0",
-  "@smithy/middleware-stack": "^2.2.0",
-  "@smithy/node-config-provider": "^2.3.0",
-  "@smithy/node-http-handler": "^2.5.0",
-  "@smithy/protocol-http": "^3.3.0",
-  "@smithy/smithy-client": "^2.5.1",
-  "@smithy/types": "^2.12.0",
-  "@smithy/url-parser": "^2.2.0",
-  "@smithy/util-base64": "^2.3.0",
-  "@smithy/util-body-length-browser": "^2.2.0",
-  "@smithy/util-body-length-node": "^2.3.0",
-  "@smithy/util-defaults-mode-browser": "^2.2.1",
-  "@smithy/util-defaults-mode-node": "^2.3.1",
-  "@smithy/util-endpoints": "^1.2.0",
-  "@smithy/util-middleware": "^2.2.0",
-  "@smithy/util-retry": "^2.2.0",
-  "@smithy/util-utf8": "^2.3.0",
+  "@aws-sdk/client-sso-oidc": "3.582.0",
+  "@aws-sdk/client-sts": "3.582.0",
+  "@aws-sdk/core": "3.582.0",
+  "@aws-sdk/credential-provider-node": "3.582.0",
+  "@aws-sdk/middleware-host-header": "3.577.0",
+  "@aws-sdk/middleware-logger": "3.577.0",
+  "@aws-sdk/middleware-recursion-detection": "3.577.0",
+  "@aws-sdk/middleware-user-agent": "3.577.0",
+  "@aws-sdk/region-config-resolver": "3.577.0",
+  "@aws-sdk/types": "3.577.0",
+  "@aws-sdk/util-endpoints": "3.577.0",
+  "@aws-sdk/util-user-agent-browser": "3.577.0",
+  "@aws-sdk/util-user-agent-node": "3.577.0",
+  "@smithy/config-resolver": "^3.0.0",
+  "@smithy/core": "^2.0.1",
+  "@smithy/fetch-http-handler": "^3.0.1",
+  "@smithy/hash-node": "^3.0.0",
+  "@smithy/invalid-dependency": "^3.0.0",
+  "@smithy/middleware-content-length": "^3.0.0",
+  "@smithy/middleware-endpoint": "^3.0.0",
+  "@smithy/middleware-retry": "^3.0.1",
+  "@smithy/middleware-serde": "^3.0.0",
+  "@smithy/middleware-stack": "^3.0.0",
+  "@smithy/node-config-provider": "^3.0.0",
+  "@smithy/node-http-handler": "^3.0.0",
+  "@smithy/protocol-http": "^4.0.0",
+  "@smithy/smithy-client": "^3.0.1",
+  "@smithy/types": "^3.0.0",
+  "@smithy/url-parser": "^3.0.0",
+  "@smithy/util-base64": "^3.0.0",
+  "@smithy/util-body-length-browser": "^3.0.0",
+  "@smithy/util-body-length-node": "^3.0.0",
+  "@smithy/util-defaults-mode-browser": "^3.0.1",
+  "@smithy/util-defaults-mode-node": "^3.0.1",
+  "@smithy/util-endpoints": "^2.0.0",
+  "@smithy/util-middleware": "^3.0.0",
+  "@smithy/util-retry": "^3.0.0",
+  "@smithy/util-utf8": "^3.0.0",
   tslib: "^2.6.2"
 };
 const devDependencies = {
@@ -106631,7 +106926,7 @@ class WaasAuthenticator {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError6.new({
+        throw WebrpcRequestFailedError7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -106644,7 +106939,7 @@ class WaasAuthenticator {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError6.new({
+        throw WebrpcRequestFailedError7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -106657,7 +106952,7 @@ class WaasAuthenticator {
           };
         });
       }, (error) => {
-        throw WebrpcRequestFailedError6.new({
+        throw WebrpcRequestFailedError7.new({
           cause: `fetch(): ${error.message || ""}`
         });
       });
@@ -106689,19 +106984,19 @@ const buildResponse = (res) => {
       if (error instanceof Error) {
         message = error.message;
       }
-      throw WebrpcBadResponseError6.new({
+      throw WebrpcBadResponseError7.new({
         status: res.status,
         cause: `JSON.parse(): ${message}: response text: ${text2}`
       });
     }
     if (!res.ok) {
       const code2 = typeof data.code === "number" ? data.code : 0;
-      throw (webrpcErrorByCode[code2] || WebrpcError6).new(data);
+      throw (webrpcErrorByCode[code2] || WebrpcError7).new(data);
     }
     return data;
   });
 };
-class WebrpcError6 extends Error {
+class WebrpcError7 extends Error {
   constructor(name2, code2, message, status, cause) {
     super(message);
     this.name = void 0;
@@ -106716,102 +107011,102 @@ class WebrpcError6 extends Error {
     this.msg = this.message;
     this.status = typeof status === "number" ? status : 0;
     this.cause = cause;
-    Object.setPrototypeOf(this, WebrpcError6.prototype);
+    Object.setPrototypeOf(this, WebrpcError7.prototype);
   }
   static new(payload) {
     return new this(payload.error, payload.code, payload.message || payload.msg, payload.status, payload.cause);
   }
 }
-class WebrpcEndpointError6 extends WebrpcError6 {
+class WebrpcEndpointError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcEndpoint", code2 = 0, message = "endpoint error", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcEndpointError6.prototype);
+    Object.setPrototypeOf(this, WebrpcEndpointError7.prototype);
   }
 }
-class WebrpcRequestFailedError6 extends WebrpcError6 {
+class WebrpcRequestFailedError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcRequestFailed", code2 = -1, message = "request failed", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcRequestFailedError6.prototype);
+    Object.setPrototypeOf(this, WebrpcRequestFailedError7.prototype);
   }
 }
-class WebrpcBadRouteError6 extends WebrpcError6 {
+class WebrpcBadRouteError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcBadRoute", code2 = -2, message = "bad route", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadRouteError6.prototype);
+    Object.setPrototypeOf(this, WebrpcBadRouteError7.prototype);
   }
 }
-class WebrpcBadMethodError6 extends WebrpcError6 {
+class WebrpcBadMethodError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcBadMethod", code2 = -3, message = "bad method", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadMethodError6.prototype);
+    Object.setPrototypeOf(this, WebrpcBadMethodError7.prototype);
   }
 }
-class WebrpcBadRequestError6 extends WebrpcError6 {
+class WebrpcBadRequestError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcBadRequest", code2 = -4, message = "bad request", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadRequestError6.prototype);
+    Object.setPrototypeOf(this, WebrpcBadRequestError7.prototype);
   }
 }
-class WebrpcBadResponseError6 extends WebrpcError6 {
+class WebrpcBadResponseError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcBadResponse", code2 = -5, message = "bad response", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcBadResponseError6.prototype);
+    Object.setPrototypeOf(this, WebrpcBadResponseError7.prototype);
   }
 }
-class WebrpcServerPanicError6 extends WebrpcError6 {
+class WebrpcServerPanicError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcServerPanic", code2 = -6, message = "server panic", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcServerPanicError6.prototype);
+    Object.setPrototypeOf(this, WebrpcServerPanicError7.prototype);
   }
 }
-class WebrpcInternalErrorError6 extends WebrpcError6 {
+class WebrpcInternalErrorError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcInternalError", code2 = -7, message = "internal error", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcInternalErrorError6.prototype);
+    Object.setPrototypeOf(this, WebrpcInternalErrorError7.prototype);
   }
 }
-class WebrpcClientDisconnectedError6 extends WebrpcError6 {
+class WebrpcClientDisconnectedError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcClientDisconnected", code2 = -8, message = "client disconnected", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcClientDisconnectedError6.prototype);
+    Object.setPrototypeOf(this, WebrpcClientDisconnectedError7.prototype);
   }
 }
-class WebrpcStreamLostError6 extends WebrpcError6 {
+class WebrpcStreamLostError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcStreamLost", code2 = -9, message = "stream lost", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcStreamLostError6.prototype);
+    Object.setPrototypeOf(this, WebrpcStreamLostError7.prototype);
   }
 }
-class WebrpcStreamFinishedError6 extends WebrpcError6 {
+class WebrpcStreamFinishedError7 extends WebrpcError7 {
   constructor(name2 = "WebrpcStreamFinished", code2 = -10, message = "stream finished", status = 0, cause) {
     super(name2, code2, message, status, cause);
-    Object.setPrototypeOf(this, WebrpcStreamFinishedError6.prototype);
+    Object.setPrototypeOf(this, WebrpcStreamFinishedError7.prototype);
   }
 }
-class UnauthorizedError6 extends WebrpcError6 {
+class UnauthorizedError6 extends WebrpcError7 {
   constructor(name2 = "Unauthorized", code2 = 1e3, message = "Unauthorized access", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, UnauthorizedError6.prototype);
   }
 }
-class TenantNotFoundError extends WebrpcError6 {
+class TenantNotFoundError extends WebrpcError7 {
   constructor(name2 = "TenantNotFound", code2 = 1001, message = "Tenant not found", status = 0, cause) {
     super(name2, code2, message, status, cause);
     Object.setPrototypeOf(this, TenantNotFoundError.prototype);
   }
 }
 const webrpcErrorByCode = {
-  [0]: WebrpcEndpointError6,
-  [-1]: WebrpcRequestFailedError6,
-  [-2]: WebrpcBadRouteError6,
-  [-3]: WebrpcBadMethodError6,
-  [-4]: WebrpcBadRequestError6,
-  [-5]: WebrpcBadResponseError6,
-  [-6]: WebrpcServerPanicError6,
-  [-7]: WebrpcInternalErrorError6,
-  [-8]: WebrpcClientDisconnectedError6,
-  [-9]: WebrpcStreamLostError6,
-  [-10]: WebrpcStreamFinishedError6,
+  [0]: WebrpcEndpointError7,
+  [-1]: WebrpcRequestFailedError7,
+  [-2]: WebrpcBadRouteError7,
+  [-3]: WebrpcBadMethodError7,
+  [-4]: WebrpcBadRequestError7,
+  [-5]: WebrpcBadResponseError7,
+  [-6]: WebrpcServerPanicError7,
+  [-7]: WebrpcInternalErrorError7,
+  [-8]: WebrpcClientDisconnectedError7,
+  [-9]: WebrpcStreamLostError7,
+  [-10]: WebrpcStreamFinishedError7,
   [1e3]: UnauthorizedError6,
   [1001]: TenantNotFoundError
 };
@@ -106856,7 +107151,7 @@ function isGetSessionResponse(receipt) {
 }
 function isIntentTimeError(error) {
   var _error$cause, _error$cause2;
-  return !!(error instanceof WebrpcError6 && ((_error$cause = error.cause) != null && _error$cause.endsWith("intent is invalid: intent expired") || (_error$cause2 = error.cause) != null && _error$cause2.endsWith("intent is invalid: intent issued in the future")));
+  return !!(error instanceof WebrpcError7 && ((_error$cause = error.cause) != null && _error$cause.endsWith("intent is invalid: intent expired") || (_error$cause2 = error.cause) != null && _error$cause2.endsWith("intent is invalid: intent issued in the future")));
 }
 const _excluded = ["token", "to", "value"], _excluded2 = ["token", "to", "id", "safe", "data"], _excluded3 = ["token", "to", "values", "data"], _excluded4 = ["to", "value", "abi", "func", "args"];
 function feeOptions({
@@ -107775,10 +108070,6 @@ class SequenceWaaSBase {
     return this.signIntent(newIntent);
   }
 }
-const LOCAL = {
-  rpcServer: "http://localhost:9123",
-  emailRegion: "us-east-2"
-};
 class EmailAuth {
   constructor(region, clientId) {
     this.region = region;
@@ -107883,10 +108174,10 @@ function getRandomValues(len) {
 function parseSequenceWaaSConfigKey(key2) {
   return JSON.parse(atob(key2));
 }
-function defaultArgsOrFail(config2, preset) {
+function defaultArgsOrFail(config2) {
   const key2 = config2.waasConfigKey;
   const keyOverrides = key2 ? parseSequenceWaaSConfigKey(key2) : {};
-  const preconfig = _extends$1({}, preset, config2, keyOverrides);
+  const preconfig = _extends$1({}, config2, keyOverrides);
   if (preconfig.network === void 0) {
     preconfig.network = 1;
   }
@@ -107899,7 +108190,7 @@ function defaultArgsOrFail(config2, preset) {
   return preconfig;
 }
 class SequenceWaaS {
-  constructor(config2, preset = LOCAL, store = new LocalStore(), cryptoBackend = getDefaultSubtleCryptoBackend(), secureStoreBackend = getDefaultSecureStoreBackend()) {
+  constructor(config2, store = new LocalStore(), cryptoBackend = getDefaultSubtleCryptoBackend(), secureStoreBackend = getDefaultSecureStoreBackend()) {
     this.store = store;
     this.cryptoBackend = cryptoBackend;
     this.secureStoreBackend = secureStoreBackend;
@@ -107911,7 +108202,7 @@ class SequenceWaaS {
     this.deviceName = void 0;
     this.emailClient = void 0;
     this.lastDate = void 0;
-    this.config = defaultArgsOrFail(config2, preset);
+    this.config = defaultArgsOrFail(config2);
     this.waas = new SequenceWaaSBase(_extends$1({
       network: 1
     }, config2), this.store, this.cryptoBackend, this.secureStoreBackend);
@@ -108227,7 +108518,190 @@ class SequenceWaaS {
   }
 }
 coinbaseWallet$1.type = "coinbaseWallet";
-function coinbaseWallet$1(parameters) {
+function coinbaseWallet$1(parameters = {}) {
+  if (parameters.version === "3" || parameters.headlessMode)
+    return version3(parameters);
+  return version4(parameters);
+}
+function version4(parameters) {
+  let sdk;
+  let walletProvider;
+  let accountsChanged;
+  let chainChanged;
+  let disconnect2;
+  return createConnector((config2) => ({
+    id: "coinbaseWalletSDK",
+    name: "Coinbase Wallet",
+    supportsSimulation: true,
+    type: coinbaseWallet$1.type,
+    async connect({ chainId } = {}) {
+      try {
+        const provider2 = await this.getProvider();
+        const accounts = (await provider2.request({
+          method: "eth_requestAccounts"
+        })).map((x) => getAddress(x));
+        if (!accountsChanged) {
+          accountsChanged = this.onAccountsChanged.bind(this);
+          provider2.on("accountsChanged", accountsChanged);
+        }
+        if (!chainChanged) {
+          chainChanged = this.onChainChanged.bind(this);
+          provider2.on("chainChanged", chainChanged);
+        }
+        if (!disconnect2) {
+          disconnect2 = this.onDisconnect.bind(this);
+          provider2.on("disconnect", disconnect2);
+        }
+        let currentChainId = await this.getChainId();
+        if (chainId && currentChainId !== chainId) {
+          const chain = await this.switchChain({ chainId }).catch((error) => {
+            if (error.code === UserRejectedRequestError.code)
+              throw error;
+            return { id: currentChainId };
+          });
+          currentChainId = (chain == null ? void 0 : chain.id) ?? currentChainId;
+        }
+        return { accounts, chainId: currentChainId };
+      } catch (error) {
+        if (/(user closed modal|accounts received is empty|user denied account)/i.test(error.message))
+          throw new UserRejectedRequestError(error);
+        throw error;
+      }
+    },
+    async disconnect() {
+      var _a2;
+      const provider2 = await this.getProvider();
+      if (accountsChanged) {
+        provider2.removeListener("accountsChanged", accountsChanged);
+        accountsChanged = void 0;
+      }
+      if (chainChanged) {
+        provider2.removeListener("chainChanged", chainChanged);
+        chainChanged = void 0;
+      }
+      if (disconnect2) {
+        provider2.removeListener("disconnect", disconnect2);
+        disconnect2 = void 0;
+      }
+      provider2.disconnect();
+      (_a2 = provider2.close) == null ? void 0 : _a2.call(provider2);
+    },
+    async getAccounts() {
+      const provider2 = await this.getProvider();
+      return (await provider2.request({
+        method: "eth_accounts"
+      })).map((x) => getAddress(x));
+    },
+    async getChainId() {
+      const provider2 = await this.getProvider();
+      const chainId = await provider2.request({
+        method: "eth_chainId"
+      });
+      return Number(chainId);
+    },
+    async getProvider() {
+      if (!walletProvider) {
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CY5NnKWe.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const CoinbaseSDK = (() => {
+          if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
+            return CoinbaseSDK_.default;
+          return CoinbaseSDK_;
+        })();
+        sdk = new CoinbaseSDK({
+          ...parameters,
+          appChainIds: config2.chains.map((x) => x.id)
+        });
+        walletProvider = sdk.makeWeb3Provider({
+          ...parameters,
+          options: parameters.preference ?? "all"
+        });
+      }
+      return walletProvider;
+    },
+    async isAuthorized() {
+      try {
+        const accounts = await this.getAccounts();
+        return !!accounts.length;
+      } catch {
+        return false;
+      }
+    },
+    async switchChain({ addEthereumChainParameter, chainId }) {
+      var _a2, _b2, _c2, _d2;
+      const chain = config2.chains.find((chain2) => chain2.id === chainId);
+      if (!chain)
+        throw new SwitchChainError(new ChainNotConfiguredError());
+      const provider2 = await this.getProvider();
+      try {
+        await provider2.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: numberToHex(chain.id) }]
+        });
+        return chain;
+      } catch (error) {
+        if (error.code === 4902) {
+          try {
+            let blockExplorerUrls;
+            if (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.blockExplorerUrls)
+              blockExplorerUrls = addEthereumChainParameter.blockExplorerUrls;
+            else
+              blockExplorerUrls = ((_a2 = chain.blockExplorers) == null ? void 0 : _a2.default.url) ? [(_b2 = chain.blockExplorers) == null ? void 0 : _b2.default.url] : [];
+            let rpcUrls;
+            if ((_c2 = addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.rpcUrls) == null ? void 0 : _c2.length)
+              rpcUrls = addEthereumChainParameter.rpcUrls;
+            else
+              rpcUrls = [((_d2 = chain.rpcUrls.default) == null ? void 0 : _d2.http[0]) ?? ""];
+            const addEthereumChain = {
+              blockExplorerUrls,
+              chainId: numberToHex(chainId),
+              chainName: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.chainName) ?? chain.name,
+              iconUrls: addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.iconUrls,
+              nativeCurrency: (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.nativeCurrency) ?? chain.nativeCurrency,
+              rpcUrls
+            };
+            await provider2.request({
+              method: "wallet_addEthereumChain",
+              params: [addEthereumChain]
+            });
+            return chain;
+          } catch (error2) {
+            throw new UserRejectedRequestError(error2);
+          }
+        }
+        throw new SwitchChainError(error);
+      }
+    },
+    onAccountsChanged(accounts) {
+      if (accounts.length === 0)
+        this.onDisconnect();
+      else
+        config2.emitter.emit("change", {
+          accounts: accounts.map((x) => getAddress(x))
+        });
+    },
+    onChainChanged(chain) {
+      const chainId = Number(chain);
+      config2.emitter.emit("change", { chainId });
+    },
+    async onDisconnect(_error) {
+      config2.emitter.emit("disconnect");
+      const provider2 = await this.getProvider();
+      if (accountsChanged) {
+        provider2.removeListener("accountsChanged", accountsChanged);
+        accountsChanged = void 0;
+      }
+      if (chainChanged) {
+        provider2.removeListener("chainChanged", chainChanged);
+        chainChanged = void 0;
+      }
+      if (disconnect2) {
+        provider2.removeListener("disconnect", disconnect2);
+        disconnect2 = void 0;
+      }
+    }
+  }));
+}
+function version3(parameters) {
   const reloadOnDisconnect = false;
   let sdk;
   let walletProvider;
@@ -108304,12 +108778,12 @@ function coinbaseWallet$1(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: CoinbaseWalletSDK } = await __vitePreload(() => import("./index-wOhYXIXp.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CNKdprj1.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
-        if (typeof CoinbaseWalletSDK !== "function" && typeof CoinbaseWalletSDK.default === "function")
-          SDK = CoinbaseWalletSDK.default;
+        if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
+          SDK = SDK_.default;
         else
-          SDK = CoinbaseWalletSDK;
+          SDK = SDK_;
         sdk = new SDK({ reloadOnDisconnect, ...parameters });
         const walletExtensionChainId = (_a2 = sdk.walletExtension) == null ? void 0 : _a2.getChainId();
         const chain = config2.chains.find((chain2) => parameters.chainId ? chain2.id === parameters.chainId : chain2.id === walletExtensionChainId) || config2.chains[0];
@@ -108408,6 +108882,12 @@ function walletConnect$1(parameters) {
   let provider_;
   let providerPromise;
   const NAMESPACE = "eip155";
+  let accountsChanged;
+  let chainChanged;
+  let connect2;
+  let displayUri;
+  let sessionDelete;
+  let disconnect2;
   return createConnector((config2) => ({
     id: "walletConnect",
     name: "WalletConnect",
@@ -108416,8 +108896,14 @@ function walletConnect$1(parameters) {
       const provider2 = await this.getProvider().catch(() => null);
       if (!provider2)
         return;
-      provider2.on("connect", this.onConnect.bind(this));
-      provider2.on("session_delete", this.onSessionDelete.bind(this));
+      if (!connect2) {
+        connect2 = this.onConnect.bind(this);
+        provider2.on("connect", connect2);
+      }
+      if (!sessionDelete) {
+        sessionDelete = this.onSessionDelete.bind(this);
+        provider2.on("session_delete", sessionDelete);
+      }
     },
     async connect({ chainId, ...rest } = {}) {
       var _a2, _b2;
@@ -108425,7 +108911,10 @@ function walletConnect$1(parameters) {
         const provider2 = await this.getProvider();
         if (!provider2)
           throw new ProviderNotFoundError();
-        provider2.on("display_uri", this.onDisplayUri);
+        if (!displayUri) {
+          displayUri = this.onDisplayUri;
+          provider2.on("display_uri", displayUri);
+        }
         let targetChainId = chainId;
         if (!targetChainId) {
           const state = await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem("state")) ?? {};
@@ -108450,12 +108939,30 @@ function walletConnect$1(parameters) {
         }
         const accounts = (await provider2.enable()).map((x) => getAddress(x));
         const currentChainId = await this.getChainId();
-        provider2.removeListener("display_uri", this.onDisplayUri);
-        provider2.removeListener("connect", this.onConnect.bind(this));
-        provider2.on("accountsChanged", this.onAccountsChanged.bind(this));
-        provider2.on("chainChanged", this.onChainChanged);
-        provider2.on("disconnect", this.onDisconnect.bind(this));
-        provider2.on("session_delete", this.onSessionDelete.bind(this));
+        if (displayUri) {
+          provider2.removeListener("display_uri", displayUri);
+          displayUri = void 0;
+        }
+        if (connect2) {
+          provider2.removeListener("connect", connect2);
+          connect2 = void 0;
+        }
+        if (!accountsChanged) {
+          accountsChanged = this.onAccountsChanged.bind(this);
+          provider2.on("accountsChanged", accountsChanged);
+        }
+        if (!chainChanged) {
+          chainChanged = this.onChainChanged.bind(this);
+          provider2.on("chainChanged", chainChanged);
+        }
+        if (!disconnect2) {
+          disconnect2 = this.onDisconnect.bind(this);
+          provider2.on("disconnect", disconnect2);
+        }
+        if (!sessionDelete) {
+          sessionDelete = this.onSessionDelete.bind(this);
+          provider2.on("session_delete", sessionDelete);
+        }
         return { accounts, chainId: currentChainId };
       } catch (error) {
         if (/(user rejected|connection request reset)/i.test(error == null ? void 0 : error.message)) {
@@ -108472,11 +108979,26 @@ function walletConnect$1(parameters) {
         if (!/No matching key/i.test(error.message))
           throw error;
       } finally {
-        provider2 == null ? void 0 : provider2.removeListener("accountsChanged", this.onAccountsChanged.bind(this));
-        provider2 == null ? void 0 : provider2.removeListener("chainChanged", this.onChainChanged);
-        provider2 == null ? void 0 : provider2.removeListener("disconnect", this.onDisconnect.bind(this));
-        provider2 == null ? void 0 : provider2.removeListener("session_delete", this.onSessionDelete.bind(this));
-        provider2 == null ? void 0 : provider2.on("connect", this.onConnect.bind(this));
+        if (chainChanged) {
+          provider2 == null ? void 0 : provider2.removeListener("chainChanged", chainChanged);
+          chainChanged = void 0;
+        }
+        if (disconnect2) {
+          provider2 == null ? void 0 : provider2.removeListener("disconnect", disconnect2);
+          disconnect2 = void 0;
+        }
+        if (!connect2) {
+          connect2 = this.onConnect.bind(this);
+          provider2 == null ? void 0 : provider2.on("connect", connect2);
+        }
+        if (accountsChanged) {
+          provider2 == null ? void 0 : provider2.removeListener("accountsChanged", accountsChanged);
+          accountsChanged = void 0;
+        }
+        if (sessionDelete) {
+          provider2 == null ? void 0 : provider2.removeListener("session_delete", sessionDelete);
+          sessionDelete = void 0;
+        }
         this.setRequestedChainsIds([]);
       }
     },
@@ -108490,7 +109012,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C3UduLJD.js"), true ? __vite__mapDeps([2,1]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CSojiMss.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -108538,15 +109060,36 @@ function walletConnect$1(parameters) {
     },
     async switchChain({ addEthereumChainParameter, chainId }) {
       var _a2, _b2, _c2;
-      const chain = config2.chains.find((chain2) => chain2.id === chainId);
+      const provider2 = await this.getProvider();
+      if (!provider2)
+        throw new ProviderNotFoundError();
+      const chain = config2.chains.find((x) => x.id === chainId);
       if (!chain)
         throw new SwitchChainError(new ChainNotConfiguredError());
       try {
-        const provider2 = await this.getProvider();
-        const namespaceChains = this.getNamespaceChainsIds();
-        const namespaceMethods = this.getNamespaceMethods();
-        const isChainApproved = namespaceChains.includes(chainId);
-        if (!isChainApproved && namespaceMethods.includes("wallet_addEthereumChain")) {
+        await Promise.all([
+          new Promise((resolve) => {
+            const listener = ({ chainId: currentChainId }) => {
+              if (currentChainId === chainId) {
+                config2.emitter.off("change", listener);
+                resolve();
+              }
+            };
+            config2.emitter.on("change", listener);
+          }),
+          provider2.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: numberToHex(chainId) }]
+          })
+        ]);
+        const requestedChains = await this.getRequestedChainsIds();
+        this.setRequestedChainsIds([...requestedChains, chainId]);
+        return chain;
+      } catch (err) {
+        const error = err;
+        if (/(user rejected)/i.test(error.message))
+          throw new UserRejectedRequestError(error);
+        try {
           let blockExplorerUrls;
           if (addEthereumChainParameter == null ? void 0 : addEthereumChainParameter.blockExplorerUrls)
             blockExplorerUrls = addEthereumChainParameter.blockExplorerUrls;
@@ -108571,17 +109114,10 @@ function walletConnect$1(parameters) {
           });
           const requestedChains = await this.getRequestedChainsIds();
           this.setRequestedChainsIds([...requestedChains, chainId]);
+          return chain;
+        } catch (error2) {
+          throw new UserRejectedRequestError(error2);
         }
-        await provider2.request({
-          method: "wallet_switchEthereumChain",
-          params: [{ chainId: numberToHex(chainId) }]
-        });
-        return chain;
-      } catch (error) {
-        const message = typeof error === "string" ? error : error == null ? void 0 : error.message;
-        if (/user rejected request/i.test(message))
-          throw new UserRejectedRequestError(error);
-        throw new SwitchChainError(error);
       }
     },
     onAccountsChanged(accounts) {
@@ -108605,11 +109141,26 @@ function walletConnect$1(parameters) {
       this.setRequestedChainsIds([]);
       config2.emitter.emit("disconnect");
       const provider2 = await this.getProvider();
-      provider2.removeListener("accountsChanged", this.onAccountsChanged.bind(this));
-      provider2.removeListener("chainChanged", this.onChainChanged);
-      provider2.removeListener("disconnect", this.onDisconnect.bind(this));
-      provider2.removeListener("session_delete", this.onSessionDelete.bind(this));
-      provider2.on("connect", this.onConnect.bind(this));
+      if (accountsChanged) {
+        provider2.removeListener("accountsChanged", accountsChanged);
+        accountsChanged = void 0;
+      }
+      if (chainChanged) {
+        provider2.removeListener("chainChanged", chainChanged);
+        chainChanged = void 0;
+      }
+      if (disconnect2) {
+        provider2.removeListener("disconnect", disconnect2);
+        disconnect2 = void 0;
+      }
+      if (sessionDelete) {
+        provider2.removeListener("session_delete", sessionDelete);
+        sessionDelete = void 0;
+      }
+      if (!connect2) {
+        connect2 = this.onConnect.bind(this);
+        provider2.on("connect", connect2);
+      }
     },
     onDisplayUri(uri) {
       config2.emitter.emit("message", { type: "display_uri", data: uri });
@@ -108623,13 +109174,6 @@ function walletConnect$1(parameters) {
         return [];
       const chainIds = (_c2 = (_b2 = (_a2 = provider_.session) == null ? void 0 : _a2.namespaces[NAMESPACE]) == null ? void 0 : _b2.chains) == null ? void 0 : _c2.map((chain) => parseInt(chain.split(":")[1] || ""));
       return chainIds ?? [];
-    },
-    getNamespaceMethods() {
-      var _a2, _b2;
-      if (!provider_)
-        return [];
-      const methods = (_b2 = (_a2 = provider_.session) == null ? void 0 : _a2.namespaces[NAMESPACE]) == null ? void 0 : _b2.methods;
-      return methods ?? [];
     },
     async getRequestedChainsIds() {
       var _a2;
@@ -108645,22 +109189,8 @@ function walletConnect$1(parameters) {
      * There may be a scenario where a dapp adds a chain to the
      * connector later on, however, this chain will not have been approved or rejected
      * by the wallet. In this case, the chain is considered stale.
-     *
-     * There are exceptions however:
-     * -  If the wallet supports dynamic chain addition via `eth_addEthereumChain`,
-     *    then the chain is not considered stale.
-     * -  If the `isNewChainsStale` flag is falsy on the connector, then the chain is
-     *    not considered stale.
-     *
-     * For the above cases, chain validation occurs dynamically when the user
-     * attempts to switch chain.
-     *
-     * Also check that dapp supports at least 1 chain from previously approved session.
      */
     async isChainsStale() {
-      const namespaceMethods = this.getNamespaceMethods();
-      if (namespaceMethods.includes("wallet_addEthereumChain"))
-        return false;
       if (!isNewChainsStale)
         return false;
       const connectorChains = config2.chains.map((x) => x.id);
@@ -110408,20 +110938,19 @@ root.render(
 export {
   Buffer2 as B,
   HttpRequestError as H,
-  InvalidAddressError as I,
   __vitePreload as _,
-  getAugmentedNamespace as a,
-  getDefaultExportFromCjs$1 as b,
+  getDefaultExportFromCjs$1 as a,
+  getAugmentedNamespace as b,
   commonjsGlobal as c,
   bnExports as d,
-  require$$2$1 as e,
-  eventemitter3Exports as f,
+  eventemitter3Exports as e,
+  require$$2$1 as f,
   global$1 as g,
   BaseError$2 as h,
   inherits_browserExports as i,
   getUrl as j,
-  isAddress as k,
-  decodeErrorResult as l,
+  decodeErrorResult as k,
+  isAddressEqual as l,
   call as m,
   concat as n,
   encodeAbiParameters as o,

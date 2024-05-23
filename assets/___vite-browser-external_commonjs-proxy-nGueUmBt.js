@@ -1,4 +1,4 @@
-import { b as getDefaultExportFromCjs, a as getAugmentedNamespace } from "./index-DV4D2rAR.js";
+import { a as getDefaultExportFromCjs, b as getAugmentedNamespace } from "./index-Bg5F0fLx.js";
 var events = { exports: {} };
 var R = typeof Reflect === "object" ? Reflect : null;
 var ReflectApply = R && typeof R.apply === "function" ? R.apply : function ReflectApply2(target, receiver, args) {
@@ -365,15 +365,15 @@ function eventTargetAgnosticAddListener(emitter, name, listener, flags) {
   }
 }
 var eventsExports = events.exports;
-const Ug = /* @__PURE__ */ getDefaultExportFromCjs(eventsExports);
+const Wg = /* @__PURE__ */ getDefaultExportFromCjs(eventsExports);
 const __viteBrowserExternal = {};
 const __viteBrowserExternal$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: __viteBrowserExternal
 }, Symbol.toStringTag, { value: "Module" }));
-const require$$1 = /* @__PURE__ */ getAugmentedNamespace(__viteBrowserExternal$1);
+const require$$3 = /* @__PURE__ */ getAugmentedNamespace(__viteBrowserExternal$1);
 export {
-  Ug as U,
+  Wg as W,
   eventsExports as e,
-  require$$1 as r
+  require$$3 as r
 };
