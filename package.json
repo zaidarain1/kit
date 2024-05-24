@@ -17,10 +17,10 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "changeset:publish": "pnpm build && changeset publish",
-    "start:react": "pnpm --filter @0xsequence/kit-example-react start",
+    "dev:react": "pnpm --filter @0xsequence/kit-example-react dev",
     "serve:react": "pnpm --filter @0xsequence/kit-example-react serve",
     "build:react": "pnpm --filter @0xsequence/kit-example-react build",
-    "start:next": "pnpm --filter @0xsequence/kit-example-next dev",
+    "dev:next": "pnpm --filter @0xsequence/kit-example-next dev",
     "serve:next": "pnpm --filter @0xsequence/kit-example-next start",
     "build:next": "pnpm --filter @0xsequence/kit-example-next build"
   },
