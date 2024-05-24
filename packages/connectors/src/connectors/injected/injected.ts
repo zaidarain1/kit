@@ -1,17 +1,8 @@
 import { Wallet } from '@0xsequence/kit'
-import { ethers } from 'ethers'
 import React from 'react'
 import { injected as injectedBase } from 'wagmi/connectors'
 
 import { InjectedLogo } from './InjectedLogo'
-
-
-declare global {
-  interface Window {
-    /* @ts-ignore-next-line */
-    ethereum?: ethers.providers.ExternalProvider
-  }
-}
 
 export interface MoreExternalProviders {
   isSequence?: boolean
