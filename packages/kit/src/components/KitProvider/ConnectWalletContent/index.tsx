@@ -29,12 +29,6 @@ import { KitConnectProviderProps } from '../index'
 import { Banner } from './Banner'
 import { ExtendedWalletList } from './ExtendedWalletList'
 
-declare global {
-  interface Window {
-    ethereum: any
-  }
-}
-
 interface ConnectWalletContentProps extends KitConnectProviderProps {
   openConnectModal: boolean
   setOpenConnectModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -153,7 +147,7 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
 
     // Open Metamask download page if Metamask window.ethereum is not found
     if (connector._wallet.id === 'metamask' && typeof window !== 'undefined') {
-      const isMetamaskFound = !!window?.ethereum?._metamask
+      const isMetamaskFound = !!(window as any)?.ethereum?._metamask
 
       if (!isMetamaskFound) {
         window.open('https://metamask.io/download/')
