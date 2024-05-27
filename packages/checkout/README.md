@@ -83,7 +83,7 @@ An example usecase might be interacting with a minting contract.
 The actual cryptoTransaction must be passed down to the `triggerTransaction` field.
 
 ```js
-cons checkoutConfig = {
+const checkoutConfig = {
   {...},
   cryptoCheckout: {
     chainId: 137,
@@ -107,4 +107,25 @@ This field specific the list of collectibles that will show up in the order summ
         quantityRaw: '100'
       },
     ]
+```
+
+### Adding Funds with a Credit Card
+Kit allows users to buy cryptocurrencies using credit card. Calling the triggerAddFunds function will cause a modal to appear.
+
+```js
+  import { useAddFundsModal } from '@0xsequence/kit-checkout'
+
+  const MyComponent = () => {
+    const { triggerAddFunds } = useAddFundsModal()
+
+    const onClick = () => {
+      triggerAddFunds({
+        walletAddress: recipientAddress,
+      })
+    }
+
+    return (
+      <button onClick={onClick}>Add Funds</button>
+    )
+  }
 ```

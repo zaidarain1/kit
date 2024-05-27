@@ -6,9 +6,23 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AnimatePresence } from 'framer-motion'
 import React, { useState, useEffect } from 'react'
 
-import { History, Navigation, NavigationContextProvider, CheckoutModalContextProvider, CheckoutSettings } from '../../contexts'
+import {
+  History,
+  Navigation,
+  NavigationContextProvider,
+  CheckoutModalContextProvider,
+  CheckoutSettings,
+  AddFundsContextProvider,
+  AddFundsSettings
+} from '../../contexts'
 import { NavigationHeader } from '../../shared/components/NavigationHeader'
-import { PendingTransaction, TransactionError, TransactionSuccess, CheckoutSelection } from '../../views'
+import {
+  PendingTransaction,
+  TransactionError,
+  TransactionSuccess,
+  CheckoutSelection,
+  AddFundsContent,
+} from '../../views'
 
 import '@0xsequence/design-system/styles.css'
 
@@ -33,7 +47,9 @@ export const KitCheckoutProvider = (props: KitCheckoutProvider) => {
 export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
   const { theme, position } = useTheme()
   const [openCheckoutModal, setOpenCheckoutModal] = useState<boolean>(false)
+  const [openAddFundsModal, setOpenAddFundsModal] = useState<boolean>(false)
   const [settings, setSettings] = useState<CheckoutSettings>()
+  const [addFundsSettings, setAddFundsSettings] = useState<AddFundsSettings>()
   const [history, setHistory] = useState<History>([])
   const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION
 
@@ -46,7 +62,16 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
     setOpenCheckoutModal(false)
   }
 
-  const getContent = () => {
+  const triggerAddFunds = (settings: AddFundsSettings) => {
+    setAddFundsSettings(settings)
+    setOpenAddFundsModal(true)
+  }
+
+  const closeAddFunds = () => {
+    setOpenAddFundsModal(false)
+  }
+
+  const getCheckoutContent = () => {
     const { location } = navigation
     switch (location) {
       case 'select-method-checkout':
@@ -63,7 +88,7 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
     }
   }
 
-  const getHeader = () => {
+  const getCheckoutHeader = () => {
     const { location } = navigation
     switch (location) {
       case 'select-method-checkout':
@@ -78,42 +103,92 @@ export const KitCheckoutContent = ({ children }: KitCheckoutProvider) => {
     }
   }
 
+  const getAddFundsHeader = () => {
+    const { location } = navigation
+    switch (location) {
+      default:
+        return <NavigationHeader primaryText="Add funds with credit card or debit card" />
+    }
+  }
+
+  const getAddFundsContent = () => {
+    const { location } = navigation
+    switch (location) {
+      default:
+        return <AddFundsContent />
+    }
+  }
+
   useEffect(() => {
-    if (openCheckoutModal) {
+    if (openCheckoutModal || openAddFundsModal) {
       setHistory([])
     }
-  }, [openCheckoutModal])
+  }, [openCheckoutModal, openAddFundsModal])
 
   return (
-    <CheckoutModalContextProvider value={{ triggerCheckout, closeCheckout, settings, theme }}>
-      <NavigationContextProvider value={{ history, setHistory }}>
-        <div id="kit-checkout">
-          <ThemeProvider root="#kit-checkout" scope="kit" theme={theme}>
-            <AnimatePresence>
-              {openCheckoutModal && (
-                <Modal
-                  contentProps={{
-                    style: {
-                      maxWidth: '400px',
-                      height: 'auto',
-                      ...getModalPositionCss(position)
-                    }
-                  }}
-                  scroll={false}
-                  backdropColor="backgroundBackdrop"
-                  onClose={() => setOpenCheckoutModal(false)}
-                >
-                  <Box id="sequence-kit-checkout-content">
-                    {getHeader()}
-                    {getContent()}
-                  </Box>
-                </Modal>
-              )}
-            </AnimatePresence>
-          </ThemeProvider>
-        </div>
-        {children}
-      </NavigationContextProvider>
-    </CheckoutModalContextProvider>
+    <AddFundsContextProvider
+      value={{
+        triggerAddFunds,
+        closeAddFunds,
+        addFundsSettings,
+      }}
+    >
+      <CheckoutModalContextProvider
+        value={{
+          triggerCheckout,
+          closeCheckout,
+          settings,
+          theme,
+        }}
+      >
+        <NavigationContextProvider value={{ history, setHistory }}>
+          <div id="kit-checkout">
+            <ThemeProvider root="#kit-checkout" scope="kit" theme={theme}>
+              <AnimatePresence>
+                {openCheckoutModal && (
+                  <Modal
+                    contentProps={{
+                      style: {
+                        maxWidth: '400px',
+                        height: 'auto',
+                        ...getModalPositionCss(position)
+                      }
+                    }}
+                    scroll={false}
+                    backdropColor="backgroundBackdrop"
+                    onClose={() => setOpenCheckoutModal(false)}
+                  >
+                    <Box id="sequence-kit-checkout-content">
+                      {getCheckoutHeader()}
+                      {getCheckoutContent()}
+                    </Box>
+                  </Modal>
+                )}
+                {openAddFundsModal && (
+                  <Modal
+                    contentProps={{
+                      style: {
+                        maxWidth: '400px',
+                        height: 'auto',
+                        ...getModalPositionCss(position)
+                      }
+                    }}
+                    scroll={false}
+                    backdropColor="backgroundBackdrop"
+                    onClose={() => setOpenAddFundsModal(false)}
+                  >
+                    <Box id="sequence-kit-add-funds-content">
+                      {getAddFundsHeader()}
+                      {getAddFundsContent()}
+                    </Box>
+                  </Modal>
+                )}
+              </AnimatePresence>
+            </ThemeProvider>
+          </div>
+          {children}
+        </NavigationContextProvider>
+      </CheckoutModalContextProvider>
+    </AddFundsContextProvider>
   )
 }
