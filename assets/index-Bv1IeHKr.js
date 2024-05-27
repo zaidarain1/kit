@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BiVbDWpy.js","./hooks.module-CxuG3ogl.js","./___vite-browser-external_commonjs-proxy-Dwr0oS7H.js","./index-pztXHJkP.js","./index.es-DTuwqiIu.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-sCWfZHrl.js","./hooks.module-CXEa4MPE.js","./___vite-browser-external_commonjs-proxy-B5NtBNPt.js","./index-CJfNl-Q7.js","./index.es-Ccnm476s.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -15374,8 +15374,8 @@ function $921a889cee6df7e8$var$usePresence$1(present) {
 function $921a889cee6df7e8$var$getAnimationName$1(styles) {
   return (styles === null || styles === void 0 ? void 0 : styles.animationName) || "none";
 }
-function _extends$m() {
-  _extends$m = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$i() {
+  _extends$i = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -15386,7 +15386,7 @@ function _extends$m() {
     }
     return target;
   };
-  return _extends$m.apply(this, arguments);
+  return _extends$i.apply(this, arguments);
 }
 const $5e63c961fc1ce211$export$8c6ed5c666ac1360$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, ...slotProps } = props;
@@ -15402,11 +15402,11 @@ const $5e63c961fc1ce211$export$8c6ed5c666ac1360$1 = /* @__PURE__ */ reactExports
       } else
         return child;
     });
-    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$m({}, slotProps, {
+    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$i({}, slotProps, {
       ref: forwardedRef
     }), /* @__PURE__ */ reactExports.isValidElement(newElement) ? /* @__PURE__ */ reactExports.cloneElement(newElement, void 0, newChildren) : null);
   }
-  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$m({}, slotProps, {
+  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$i({}, slotProps, {
     ref: forwardedRef
   }), children);
 });
@@ -16811,7 +16811,7 @@ const $5cb92bef7577960e$export$177fb62ff3ec1f22$1 = /* @__PURE__ */ reactExports
     document.addEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE$1, handleUpdate);
     return () => document.removeEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE$1, handleUpdate);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, layerProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, layerProps, {
     ref: composedRefs,
     style: {
       pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
@@ -17084,7 +17084,7 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6$1 = /* @__PURE__ */ reactExports
     trapped,
     focusScope.paused
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
     tabIndex: -1
   }, scopeProps, {
     ref: composedRefs,
@@ -18878,7 +18878,7 @@ function useFloating$1(options) {
 }
 const $7e8f5cd07187803e$export$21b07c8f274aebd5$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.svg, _extends$m({}, arrowProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.svg, _extends$i({}, arrowProps, {
     ref: forwardedRef,
     width,
     height,
@@ -18910,7 +18910,7 @@ const $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d$1 = /* @__PURE__ */ reactExports.
   reactExports.useEffect(() => {
     context2.onAnchorChange((virtualRef === null || virtualRef === void 0 ? void 0 : virtualRef.current) || ref.current);
   });
-  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, anchorProps, {
+  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, anchorProps, {
     ref: composedRefs
   }));
 });
@@ -19040,7 +19040,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1 = /* @__PURE__ */ reactExports.
     arrowX,
     arrowY,
     shouldHideArrow: cannotCenterArrow
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
     "data-side": placedSide,
     "data-align": placedAlign
   }, contentProps, {
@@ -19091,7 +19091,7 @@ const $cf1ac5d9fe0e8206$export$79d62cd4e10a3fd0$1 = /* @__PURE__ */ reactExports
         }[contentContext.placedSide],
         visibility: contentContext.shouldHideArrow ? "hidden" : void 0
       }
-    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9$1, _extends$m({}, arrowProps, {
+    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9$1, _extends$i({}, arrowProps, {
       ref: forwardedRef,
       style: {
         ...arrowProps.style,
@@ -19159,7 +19159,7 @@ const $cf1ac5d9fe0e8206$export$21b07c8f274aebd5 = $cf1ac5d9fe0e8206$export$79d62
 const $f1701beae083dbae$export$602eac185826482c = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   var _globalThis$document;
   const { container = globalThis === null || globalThis === void 0 ? void 0 : (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.body, ...portalProps } = props;
-  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, portalProps, {
+  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, portalProps, {
     ref: forwardedRef
   })), container) : null;
 });
@@ -20163,7 +20163,7 @@ const $6cc32821e9371a1c$export$2ce376c2cc3355c8 = /* @__PURE__ */ reactExports.f
         rootContext.onClose();
     }
   };
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends$m({}, itemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends$i({}, itemProps, {
     ref: composedRefs,
     disabled,
     onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10$1(props.onClick, handleSelect),
@@ -20209,11 +20209,11 @@ const $6cc32821e9371a1c$var$MenuItemImpl = /* @__PURE__ */ reactExports.forwardR
     scope: __scopeMenu,
     disabled,
     textValue: textValue !== null && textValue !== void 0 ? textValue : textContent
-  }, /* @__PURE__ */ reactExports.createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends$i({
     asChild: true
   }, rovingFocusGroupScope, {
     focusable: !disabled
-  }), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
     role: "menuitem",
     "data-highlighted": isFocused ? "" : void 0,
     "aria-disabled": disabled || void 0,
@@ -20249,7 +20249,7 @@ const $6cc32821e9371a1c$export$f6f243521332502d = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
     scope: props.__scopeMenu,
     checked
-  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$i({
     role: "menuitemcheckbox",
     "aria-checked": $6cc32821e9371a1c$var$isIndeterminate(checked) ? "mixed" : checked
   }, checkboxItemProps, {
@@ -20278,7 +20278,7 @@ const $6cc32821e9371a1c$export$69bd225e9817f6d0 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
     scope: props.__scopeMenu,
     checked
-  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$i({
     role: "menuitemradio",
     "aria-checked": checked
   }, radioItemProps, {
@@ -20301,7 +20301,7 @@ const $6cc32821e9371a1c$export$a2593e23056970a3 = /* @__PURE__ */ reactExports.f
   const indicatorContext = $6cc32821e9371a1c$var$useItemIndicatorContext($6cc32821e9371a1c$var$ITEM_INDICATOR_NAME, __scopeMenu);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || $6cc32821e9371a1c$var$isIndeterminate(indicatorContext.checked) || indicatorContext.checked === true
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({}, itemIndicatorProps, {
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({}, itemIndicatorProps, {
     ref: forwardedRef,
     "data-state": $6cc32821e9371a1c$var$getCheckedState(indicatorContext.checked)
   })));
@@ -20329,21 +20329,21 @@ $d08ef79370b62062$var$createDropdownMenuContext($d08ef79370b62062$var$DROPDOWN_M
 const $d08ef79370b62062$export$53a69729da201fa9 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...checkboxItemProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends$m({}, menuScope, checkboxItemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends$i({}, menuScope, checkboxItemProps, {
     ref: forwardedRef
   }));
 });
 const $d08ef79370b62062$export$e4f69b41b1637536 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...radioItemProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends$m({}, menuScope, radioItemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends$i({}, menuScope, radioItemProps, {
     ref: forwardedRef
   }));
 });
 const $d08ef79370b62062$export$42355ae145153fb6 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...itemIndicatorProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends$m({}, menuScope, itemIndicatorProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends$i({}, menuScope, itemIndicatorProps, {
     ref: forwardedRef
   }));
 });
@@ -20758,7 +20758,7 @@ const $5d3850c4d0b4e6c7$export$bd1d06c79be19e17 = /* @__PURE__ */ reactExports.f
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, props.__scopeDialog);
   return context2.modal ? /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends$m({}, overlayProps, {
+  }, /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends$i({}, overlayProps, {
     ref: forwardedRef
   }))) : null;
 });
@@ -20774,7 +20774,7 @@ const $5d3850c4d0b4e6c7$var$DialogOverlayImpl = /* @__PURE__ */ reactExports.for
       shards: [
         context2.contentRef
       ]
-    }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+    }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
       "data-state": $5d3850c4d0b4e6c7$var$getState(context2.open)
     }, overlayProps, {
       ref: forwardedRef,
@@ -20792,9 +20792,9 @@ const $5d3850c4d0b4e6c7$export$b6d9565de1e068cf = /* @__PURE__ */ reactExports.f
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends$m({}, contentProps, {
+  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends$i({}, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends$m({}, contentProps, {
+  })) : /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends$i({}, contentProps, {
     ref: forwardedRef
   })));
 });
@@ -20807,7 +20807,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentModal = /* @__PURE__ */ reactExports.fo
     if (content2)
       return hideOthers$1(content2);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$i({}, props, {
     ref: composedRefs,
     trapFocus: context2.open,
     disableOutsidePointerEvents: true,
@@ -20833,7 +20833,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentNonModal = /* @__PURE__ */ reactExports
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
   const hasInteractedOutsideRef = reactExports.useRef(false);
   const hasPointerDownOutsideRef = reactExports.useRef(false);
-  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$i({}, props, {
     ref: forwardedRef,
     trapFocus: false,
     disableOutsidePointerEvents: false,
@@ -20878,7 +20878,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentImpl = /* @__PURE__ */ reactExports.for
     trapped: trapFocus,
     onMountAutoFocus: onOpenAutoFocus,
     onUnmountAutoFocus: onCloseAutoFocus
-  }, /* @__PURE__ */ reactExports.createElement($5cb92bef7577960e$export$177fb62ff3ec1f22$1, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($5cb92bef7577960e$export$177fb62ff3ec1f22$1, _extends$i({
     role: "dialog",
     id: context2.contentId,
     "aria-describedby": context2.descriptionId,
@@ -20893,7 +20893,7 @@ const $5d3850c4d0b4e6c7$var$CLOSE_NAME = "DialogClose";
 const $5d3850c4d0b4e6c7$export$fba2fb7cd781b7ac = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDialog, ...closeProps } = props;
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CLOSE_NAME, __scopeDialog);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
     type: "button"
   }, closeProps, {
     ref: forwardedRef,
@@ -21731,7 +21731,7 @@ function $ae6933e535247d3d$export$7d15b64cf5a3a4c4(value, [min2, max2]) {
   return Math.min(max2, Math.max(min2, value));
 }
 const $ea1ef594cf570d83$export$439d29a4e110a164 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({}, props, {
     ref: forwardedRef,
     style: {
       // See: https://github.com/twbs/bootstrap/blob/master/scss/mixins/_screen-reader.scss
@@ -21864,9 +21864,9 @@ const $cc7e05a45900e73f$export$3ac1e88a1c0b9f1 = /* @__PURE__ */ reactExports.fo
       resetTypeahead();
     }
   };
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$i({
     asChild: true
-  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
     type: "button",
     role: "combobox",
     "aria-controls": context2.contentId,
@@ -21923,7 +21923,7 @@ const $cc7e05a45900e73f$export$e288731fd71264f0 = /* @__PURE__ */ reactExports.f
     onValueNodeHasChildrenChange,
     hasChildren
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({}, valueProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({}, valueProps, {
     ref: composedRefs,
     style: {
       pointerEvents: "none"
@@ -21932,7 +21932,7 @@ const $cc7e05a45900e73f$export$e288731fd71264f0 = /* @__PURE__ */ reactExports.f
 });
 const $cc7e05a45900e73f$export$99b400cabb58c515 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, children, ...iconProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({
     "aria-hidden": true
   }, iconProps, {
     ref: forwardedRef
@@ -21953,7 +21953,7 @@ const $cc7e05a45900e73f$export$c973a4b3cb86a03d = /* @__PURE__ */ reactExports.f
       scope: props.__scopeSelect
     }, /* @__PURE__ */ reactExports.createElement("div", null, props.children))), frag) : null;
   }
-  return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectContentImpl, _extends$i({}, props, {
     ref: forwardedRef
   }));
 });
@@ -22180,7 +22180,7 @@ const $cc7e05a45900e73f$var$SelectContentImpl = /* @__PURE__ */ reactExports.for
     onPointerDownOutside,
     onFocusOutside: (event) => event.preventDefault(),
     onDismiss: () => context2.onOpenChange(false)
-  }, /* @__PURE__ */ reactExports.createElement(SelectPosition, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement(SelectPosition, _extends$i({
     role: "listbox",
     id: context2.contentId,
     "data-state": context2.open ? "open" : "closed",
@@ -22374,7 +22374,7 @@ const $cc7e05a45900e73f$var$SelectItemAlignedPosition = /* @__PURE__ */ reactExp
       position: "fixed",
       zIndex: contentZIndex
     }
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({}, popperProps, {
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, popperProps, {
     ref: composedRefs,
     style: {
       // When we get the height of the content, it includes borders. If we were to set
@@ -22389,7 +22389,7 @@ const $cc7e05a45900e73f$var$SelectItemAlignedPosition = /* @__PURE__ */ reactExp
 const $cc7e05a45900e73f$var$SelectPopperPosition = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, align = "start", collisionPadding = $cc7e05a45900e73f$var$CONTENT_MARGIN, ...popperProps } = props;
   const popperScope = $cc7e05a45900e73f$var$usePopperScope(__scopeSelect);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$m({}, popperScope, popperProps, {
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$i({}, popperScope, popperProps, {
     ref: forwardedRef,
     align,
     collisionPadding,
@@ -22419,7 +22419,7 @@ const $cc7e05a45900e73f$export$9ed6e7b40248d36d = /* @__PURE__ */ reactExports.f
     }
   }), /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$Collection.Slot, {
     scope: __scopeSelect
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
     "data-radix-select-viewport": "",
     role: "presentation"
   }, viewportProps, {
@@ -22467,7 +22467,7 @@ const $cc7e05a45900e73f$export$ee25a334c55de1f4 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectGroupContextProvider, {
     scope: __scopeSelect,
     id: groupId
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
     role: "group",
     "aria-labelledby": groupId
   }, groupProps, {
@@ -22513,7 +22513,7 @@ const $cc7e05a45900e73f$export$13ef48a934230896 = /* @__PURE__ */ reactExports.f
     value,
     disabled,
     textValue
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
     role: "option",
     "aria-labelledby": textId,
     "data-highlighted": isFocused ? "" : void 0,
@@ -22599,7 +22599,7 @@ const $cc7e05a45900e73f$export$3572fb0fb821ff49 = /* @__PURE__ */ reactExports.f
     onNativeOptionRemove,
     nativeOption
   ]);
-  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({
     id: itemContext.textId
   }, itemTextProps, {
     ref: composedRefs
@@ -22631,7 +22631,7 @@ const $cc7e05a45900e73f$var$BubbleSelect = /* @__PURE__ */ reactExports.forwardR
   ]);
   return /* @__PURE__ */ reactExports.createElement($ea1ef594cf570d83$export$439d29a4e110a164, {
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement("select", _extends$m({}, selectProps, {
+  }, /* @__PURE__ */ reactExports.createElement("select", _extends$i({}, selectProps, {
     ref: composedRefs,
     defaultValue: value
   })));
@@ -23313,7 +23313,7 @@ const $054eb8030ebde76e$var$ToastImpl = /* @__PURE__ */ reactExports.forwardRef(
         handleClose();
       context2.isFocusedToastEscapeKeyDownRef.current = false;
     })
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.li, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.li, _extends$i({
     // Ensure toasts are announced as status list or status when focused
     role: "status",
     "aria-live": "off",
@@ -23455,7 +23455,7 @@ const $054eb8030ebde76e$export$3019feecfda683d2 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$var$ToastAnnounceExclude, {
     altText,
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$export$811e70f61c205839, _extends$m({}, actionProps, {
+  }, /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$export$811e70f61c205839, _extends$i({}, actionProps, {
     ref: forwardedRef
   })));
 });
@@ -23472,7 +23472,7 @@ const $054eb8030ebde76e$export$811e70f61c205839 = /* @__PURE__ */ reactExports.f
   const interactiveContext = $054eb8030ebde76e$var$useToastInteractiveContext($054eb8030ebde76e$var$CLOSE_NAME, __scopeToast);
   return /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$var$ToastAnnounceExclude, {
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
     type: "button"
   }, closeProps, {
     ref: forwardedRef,
@@ -23481,7 +23481,7 @@ const $054eb8030ebde76e$export$811e70f61c205839 = /* @__PURE__ */ reactExports.f
 });
 const $054eb8030ebde76e$var$ToastAnnounceExclude = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeToast, altText, ...announceExcludeProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
     "data-radix-toast-announce-exclude": "",
     "data-radix-toast-announce-alt": altText || void 0
   }, announceExcludeProps, {
@@ -23851,9 +23851,9 @@ const $a093c7e1ec25a057$export$8c610744efcf8a1d = /* @__PURE__ */ reactExports.f
   }, [
     handlePointerUp
   ]);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$m({
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$i({
     asChild: true
-  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$m({
+  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
     // We purposefully avoid adding `type=button` here because tooltip triggers are also
     // commonly anchors and the anchor `type` attribute signifies MIME type.
     "aria-describedby": context2.open ? context2.contentId : void 0,
@@ -23897,11 +23897,11 @@ const $a093c7e1ec25a057$export$e9003e2be37ec060 = /* @__PURE__ */ reactExports.f
   const context2 = $a093c7e1ec25a057$var$useTooltipContext($a093c7e1ec25a057$var$CONTENT_NAME, props.__scopeTooltip);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, context2.disableHoverableContent ? /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$m({
+  }, context2.disableHoverableContent ? /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$i({
     side
   }, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentHoverable, _extends$m({
+  })) : /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentHoverable, _extends$i({
     side
   }, contentProps, {
     ref: forwardedRef
@@ -23989,7 +23989,7 @@ const $a093c7e1ec25a057$var$TooltipContentHoverable = /* @__PURE__ */ reactExpor
     onClose,
     handleRemoveGraceArea
   ]);
-  return /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$m({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$i({}, props, {
     ref: composedRefs
   }));
 });
@@ -24032,7 +24032,7 @@ const $a093c7e1ec25a057$var$TooltipContentImpl = /* @__PURE__ */ reactExports.fo
     onPointerDownOutside,
     onFocusOutside: (event) => event.preventDefault(),
     onDismiss: onClose
-  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$m({
+  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$i({
     "data-state": context2.stateAttribute
   }, popperScope, contentProps, {
     ref: forwardedRef,
@@ -24057,7 +24057,7 @@ const $a093c7e1ec25a057$export$c27ee0ad710f7559 = /* @__PURE__ */ reactExports.f
   const { __scopeTooltip, ...arrowProps } = props;
   const popperScope = $a093c7e1ec25a057$var$usePopperScope(__scopeTooltip);
   const visuallyHiddenContentContext = $a093c7e1ec25a057$var$useVisuallyHiddenContentContext($a093c7e1ec25a057$var$ARROW_NAME, __scopeTooltip);
-  return visuallyHiddenContentContext.isInside ? null : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$21b07c8f274aebd5, _extends$m({}, popperScope, arrowProps, {
+  return visuallyHiddenContentContext.isInside ? null : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$21b07c8f274aebd5, _extends$i({}, popperScope, arrowProps, {
     ref: forwardedRef
   }));
 });
@@ -25052,8 +25052,8 @@ const abi$1$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   walletContracts
 }, Symbol.toStringTag, { value: "Module" }));
 const global$1 = globalThis || void 0 || self;
-function _extends$l() {
-  _extends$l = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$h() {
+  _extends$h = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -25064,7 +25064,7 @@ function _extends$l() {
     }
     return target;
   };
-  return _extends$l.apply(this, arguments);
+  return _extends$h.apply(this, arguments);
 }
 const WebRPCVersion$3 = "v1";
 const WebRPCSchemaVersion$3 = "v0.4.0";
@@ -25660,7 +25660,7 @@ class API {
 const createHTTPRequest$7 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$l({}, headers, {
+    headers: _extends$h({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -25883,7 +25883,7 @@ class SequenceAPIClient extends API {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$l({}, init3.headers, headers);
+      init3.headers = _extends$h({}, init3.headers, headers);
       return fetch$5(input2, init3);
     };
     this.fetch = this._fetch;
@@ -49389,8 +49389,8 @@ const jwtDecodeClaims = (jwt) => {
   const claims = JSON.parse(gBase64.decode(parts[1]));
   return claims;
 };
-function _extends$k() {
-  _extends$k = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$g() {
+  _extends$g = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -49401,7 +49401,7 @@ function _extends$k() {
     }
     return target;
   };
-  return _extends$k.apply(this, arguments);
+  return _extends$g.apply(this, arguments);
 }
 var logLevel = /* @__PURE__ */ function(logLevel2) {
   logLevel2[logLevel2["DEBUG"] = 1] = "DEBUG";
@@ -49418,7 +49418,7 @@ class Logger2 {
     this.configure(config2);
   }
   configure(config2) {
-    this.config = _extends$k({}, this.config, config2);
+    this.config = _extends$g({}, this.config, config2);
     switch (this.config.logLevel) {
       case "DEBUG":
         this.logLevel = logLevel.DEBUG;
@@ -49606,7 +49606,7 @@ const sleep$1 = (t2) => {
   });
 };
 const encodeTypedDataHash = (typedData) => {
-  const types2 = _extends$k({}, typedData.types);
+  const types2 = _extends$g({}, typedData.types);
   delete types2["EIP712Domain"];
   return TypedDataEncoder.hash(typedData.domain, types2, typedData.message);
 };
@@ -49658,8 +49658,8 @@ const utils$1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   subDigestOf,
   urlClean
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$j() {
-  _extends$j = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$f() {
+  _extends$f = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -49670,7 +49670,7 @@ function _extends$j() {
     }
     return target;
   };
-  return _extends$j.apply(this, arguments);
+  return _extends$f.apply(this, arguments);
 }
 function isNetworkConfig(cand) {
   return cand && cand.chainId !== void 0 && cand.name !== void 0 && cand.rpcUrl !== void 0 && cand.relayer !== void 0;
@@ -49888,16 +49888,16 @@ const genUrls = (network2) => {
     indexerUrl: indexerURL(network2)
   };
 };
-const allNetworks = validateAndSortNetworks([_extends$j({}, networks[ChainId.POLYGON], genUrls("polygon"), {
+const allNetworks = validateAndSortNetworks([_extends$f({}, networks[ChainId.POLYGON], genUrls("polygon"), {
   isDefaultChain: true,
   isAuthChain: true
-}), _extends$j({}, networks[ChainId.MAINNET], genUrls("mainnet")), _extends$j({}, networks[ChainId.BSC], genUrls("bsc")), _extends$j({}, networks[ChainId.AVALANCHE], genUrls("avalanche")), _extends$j({}, networks[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$j({}, networks[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$j({}, networks[ChainId.OPTIMISM], genUrls("optimism")), _extends$j({}, networks[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$j({}, networks[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$j({}, networks[ChainId.GNOSIS], genUrls("gnosis")), _extends$j({}, networks[ChainId.RINKEBY], genUrls("rinkeby"), {
+}), _extends$f({}, networks[ChainId.MAINNET], genUrls("mainnet")), _extends$f({}, networks[ChainId.BSC], genUrls("bsc")), _extends$f({}, networks[ChainId.AVALANCHE], genUrls("avalanche")), _extends$f({}, networks[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$f({}, networks[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$f({}, networks[ChainId.OPTIMISM], genUrls("optimism")), _extends$f({}, networks[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$f({}, networks[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$f({}, networks[ChainId.GNOSIS], genUrls("gnosis")), _extends$f({}, networks[ChainId.RINKEBY], genUrls("rinkeby"), {
   disabled: true
-}), _extends$j({}, networks[ChainId.GOERLI], genUrls("goerli"), {
+}), _extends$f({}, networks[ChainId.GOERLI], genUrls("goerli"), {
   disabled: true
-}), _extends$j({}, networks[ChainId.SEPOLIA], genUrls("sepolia")), _extends$j({}, networks[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
+}), _extends$f({}, networks[ChainId.SEPOLIA], genUrls("sepolia")), _extends$f({}, networks[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
   disabled: true
-}), _extends$j({}, networks[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$j({}, networks[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$j({}, networks[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$j({}, networks[ChainId.BASE], genUrls("base")), _extends$j({}, networks[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$j({}, networks[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$j({}, networks[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$j({}, networks[ChainId.XAI], genUrls("xai")), _extends$j({}, networks[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$j({}, networks[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$j({}, networks[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$j({}, networks[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$j({}, networks[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$j({}, networks[ChainId.HARDHAT], {
+}), _extends$f({}, networks[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$f({}, networks[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$f({}, networks[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$f({}, networks[ChainId.BASE], genUrls("base")), _extends$f({}, networks[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$f({}, networks[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$f({}, networks[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$f({}, networks[ChainId.XAI], genUrls("xai")), _extends$f({}, networks[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$f({}, networks[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$f({}, networks[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$f({}, networks[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$f({}, networks[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$f({}, networks[ChainId.HARDHAT], {
   rpcUrl: "http://localhost:8545",
   relayer: {
     url: "http://localhost:3000",
@@ -49905,7 +49905,7 @@ const allNetworks = validateAndSortNetworks([_extends$j({}, networks[ChainId.POL
       url: "http://localhost:8545"
     }
   }
-}), _extends$j({}, networks[ChainId.HARDHAT_2], {
+}), _extends$f({}, networks[ChainId.HARDHAT_2], {
   rpcUrl: "http://localhost:9545",
   relayer: {
     url: "http://localhost:3000",
@@ -50509,8 +50509,8 @@ const network$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   updateNetworkConfig,
   validateAndSortNetworks
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$i() {
-  _extends$i = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$e() {
+  _extends$e = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -50521,7 +50521,7 @@ function _extends$i() {
     }
     return target;
   };
-  return _extends$i.apply(this, arguments);
+  return _extends$e.apply(this, arguments);
 }
 var config$2 = /* @__PURE__ */ Object.freeze({
   __proto__: null
@@ -50755,13 +50755,13 @@ function encodeSigners$1(config2, signatures, subdigests, _) {
     const bytes3 = arrayify(signature2.signature);
     weight = weight.add(s2.weight);
     if (signature2.isDynamic || bytes3.length !== 66) {
-      return _extends$i({}, s2, {
+      return _extends$e({}, s2, {
         isDynamic: true,
         signature: signature2.signature,
         address: s2.address
       });
     }
-    return _extends$i({}, s2, {
+    return _extends$e({}, s2, {
       isDynamic: false,
       signature: signature2.signature
     });
@@ -51439,7 +51439,7 @@ function decodeChainedSignature(signature2) {
     throw new Error(`Expected first link of chained signature to be a simple signature (not chained)`);
   }
   const suffix = chain.slice(1);
-  return _extends$i({}, main2, {
+  return _extends$e({}, main2, {
     suffix
   });
 }
@@ -51459,7 +51459,7 @@ async function recoverSignature(signature2, payload, provider2) {
       version: 2,
       type: signature2.type,
       subdigest,
-      config: _extends$i({
+      config: _extends$e({
         version: 2
       }, signature2.decoded, {
         tree
@@ -51471,20 +51471,20 @@ async function recoverSignature(signature2, payload, provider2) {
   }
   const result = [];
   let mutatedPayload = signedPayload;
-  for (const sig of [_extends$i({}, signature2, {
+  for (const sig of [_extends$e({}, signature2, {
     suffix: void 0
   }), ...signature2.suffix]) {
     const recovered = await recoverSignature(sig, mutatedPayload, provider2);
     result.unshift(recovered);
     const nextMessage = setImageHashStruct(imageHash(deepestConfigOfSignature(recovered)));
-    mutatedPayload = _extends$i({}, mutatedPayload, {
+    mutatedPayload = _extends$e({}, mutatedPayload, {
       message: nextMessage,
       digest: keccak256$2(nextMessage)
     });
   }
   const main2 = result[0];
   const suffix = result.slice(1);
-  return _extends$i({}, main2, {
+  return _extends$e({}, main2, {
     suffix
   });
 }
@@ -51597,7 +51597,7 @@ function subdigestsOfDecoded(utopology) {
 async function trimSignature(signature2) {
   const decoded = typeof signature2 === "string" ? decodeSignature(signature2) : signature2;
   if (isUnrecoveredChainedSignature(decoded)) {
-    const _trimmed = await Promise.all([trimSignature(_extends$i({}, decoded, {
+    const _trimmed = await Promise.all([trimSignature(_extends$e({}, decoded, {
       suffix: void 0
     })), ...decoded.suffix.map((s2) => trimSignature(s2))]);
     return encodeChain(_trimmed[0], _trimmed.slice(1));
@@ -51605,8 +51605,8 @@ async function trimSignature(signature2) {
   const {
     trimmed
   } = await trimUnrecoveredTree(decoded.decoded.tree);
-  return encodeSignature(_extends$i({}, decoded, {
-    decoded: _extends$i({}, decoded.decoded, {
+  return encodeSignature(_extends$e({}, decoded, {
+    decoded: _extends$e({}, decoded.decoded, {
       tree: trimmed
     })
   }));
@@ -51661,7 +51661,7 @@ async function trimUnrecoveredTree(tree, trimStaticDigest = true) {
   if (isNodeLeaf(tree) && isEncodedSignerLeaf(tree.nodeHash)) {
     return {
       weight: 0,
-      trimmed: _extends$i({}, decodeSignerLeaf(tree.nodeHash))
+      trimmed: _extends$e({}, decodeSignerLeaf(tree.nodeHash))
     };
   }
   if (isUnrecoveredSignatureLeaf(tree) || isSignerLeaf(tree) && tree.signature !== void 0) {
@@ -52022,7 +52022,7 @@ const ConfigCoder = {
   },
   fromSimple: (config2) => {
     var _config$subdigests;
-    return toWalletConfig(_extends$i({}, config2, {
+    return toWalletConfig(_extends$e({}, config2, {
       members: [...config2.signers, ...((_config$subdigests = config2.subdigests) != null ? _config$subdigests : []).map((subdigest) => ({
         subdigest
       }))]
@@ -52301,7 +52301,7 @@ const MetaTransactionsType = `tuple(
   bytes data
 )[]`;
 function intendTransactionBundle(bundle, wallet, chainId, id2) {
-  return _extends$i({}, bundle, {
+  return _extends$e({}, bundle, {
     chainId,
     intent: {
       id: id2,
@@ -52464,13 +52464,13 @@ const unwind = (wallet, transactions2) => {
     if (tx.to === wallet && hexlify(txData.slice(0, 4)) === selfExecuteSelector) {
       const data = txData.slice(4);
       const decoded = defaultAbiCoder.decode([selfExecuteAbi], data)[0];
-      unwound.push(...unwind(tx.to, decoded.map((d2) => _extends$i({}, d2, {
+      unwound.push(...unwind(tx.to, decoded.map((d2) => _extends$e({}, d2, {
         to: d2.target
       }))));
     } else {
       try {
         const innerTransactions = walletInterface.decodeFunctionData("execute", txData)[0];
-        const unwoundTransactions = unwind(wallet, innerTransactions.map((tx2) => _extends$i({}, tx2, {
+        const unwoundTransactions = unwind(wallet, innerTransactions.map((tx2) => _extends$e({}, tx2, {
           to: tx2.target
         })));
         unwound.push(...unwoundTransactions);
@@ -52711,8 +52711,8 @@ var index$6 = /* @__PURE__ */ Object.freeze({
   MIGRATION_NONCE_SPACE,
   v1v2
 });
-function _extends$h() {
-  _extends$h = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$d() {
+  _extends$d = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -52723,7 +52723,7 @@ function _extends$h() {
     }
     return target;
   };
-  return _extends$h.apply(this, arguments);
+  return _extends$d.apply(this, arguments);
 }
 function validateMigrations(migrations) {
   for (const [version2, migration2] of Object.entries(migrations)) {
@@ -52797,7 +52797,7 @@ class Migrator {
     }
     const unsignedMigration = migration2.buildTransaction(address, this.contexts, nextConfig);
     const signedBundle = await wallet.signTransactionBundle(unsignedMigration.tx);
-    return _extends$h({}, unsignedMigration, {
+    return _extends$d({}, unsignedMigration, {
       tx: signedBundle
     });
   }
@@ -52820,8 +52820,8 @@ const migration$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   migrator,
   version: version$5
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$g() {
-  _extends$g = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$c() {
+  _extends$c = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -52832,7 +52832,7 @@ function _extends$g() {
     }
     return target;
   };
-  return _extends$g.apply(this, arguments);
+  return _extends$c.apply(this, arguments);
 }
 const DEFAULT_GAS_LIMIT = BigNumber.from(8e5);
 const ProviderRelayerDefaults = {
@@ -52849,7 +52849,7 @@ class ProviderRelayer {
     this.waitPollRate = void 0;
     this.deltaBlocksLog = void 0;
     this.fromBlockLog = void 0;
-    const opts = _extends$g({}, ProviderRelayerDefaults, options);
+    const opts = _extends$c({}, ProviderRelayerDefaults, options);
     this.provider = opts.provider;
     this.waitPollRate = opts.waitPollRate;
     this.deltaBlocksLog = opts.deltaBlocksLog;
@@ -52948,7 +52948,7 @@ class ProviderRelayer {
         const found = txs.find((tx) => tx.logs.find((l2) => l2.topics.length === 0 && l2.data.replace("0x", "") === normalMetaTxnId || l2.topics.length === 1 && // TxFailed event topic
         l2.topics[0] === "0x3dbd1590ea96dd3253a91f24e64e3a502e1225d602a5731357bc12643070ccd7" && l2.data.length >= 64 && l2.data.replace("0x", "").startsWith(normalMetaTxnId)));
         if (found) {
-          return _extends$g({
+          return _extends$c({
             receipt: found
           }, await retry(() => _this2.provider.getTransaction(found.transactionHash), `unable to get transaction ${found.transactionHash}`));
         }
@@ -52975,7 +52975,7 @@ class LocalRelayer extends ProviderRelayer {
   constructor(options) {
     super(Signer$1.isSigner(options) ? {
       provider: options.provider
-    } : _extends$g({}, options, {
+    } : _extends$c({}, options, {
       provider: options.signer.provider
     }));
     this.signer = void 0;
@@ -53008,7 +53008,7 @@ class LocalRelayer extends ProviderRelayer {
       logger.warn(`LocalRelayer doesn't accept fee quotes`);
     }
     const data = index$1$2.transaction.encodeBundleExecData(signedTxs);
-    const responsePromise = this.signer.sendTransaction(_extends$g({
+    const responsePromise = this.signer.sendTransaction(_extends$c({
       to: signedTxs.entrypoint,
       data
     }, this.txnOptions, {
@@ -53476,7 +53476,7 @@ class Relayer {
 const createHTTPRequest$6 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$g({}, headers, {
+    headers: _extends$c({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -53738,7 +53738,7 @@ class RpcRelayer {
       if (projectAccessKey2 && projectAccessKey2.length > 0) {
         headers["X-Access-Key"] = projectAccessKey2;
       }
-      init3.headers = _extends$g({}, init3.headers, headers);
+      init3.headers = _extends$c({}, init3.headers, headers);
       return fetch$4(input2, init3);
     };
     this.service = new Relayer(options.url, this._fetch);
@@ -54155,8 +54155,8 @@ const signhub$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   isSignerStatusPending,
   signers: index$5
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$f() {
-  _extends$f = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$b() {
+  _extends$b = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -54167,7 +54167,7 @@ function _extends$f() {
     }
     return target;
   };
-  return _extends$f.apply(this, arguments);
+  return _extends$b.apply(this, arguments);
 }
 async function resolveArrayProperties$1(object) {
   if (Array.isArray(object)) {
@@ -54217,7 +54217,7 @@ class Wallet2 extends Signer$1 {
   }
   static newWallet(options) {
     const address = index$1$2.context.addressOf(options.context, options.coders.config.imageHashOf(options.config));
-    return new Wallet2(_extends$f({}, options, {
+    return new Wallet2(_extends$b({}, options, {
       address
     }));
   }
@@ -54288,7 +54288,7 @@ class Wallet2 extends Signer$1 {
     }
     if (!this.relayer)
       throw new Error("Wallet deploy requires a relayer");
-    return this.relayer.relay(_extends$f({}, deployTx, {
+    return this.relayer.relay(_extends$b({}, deployTx, {
       chainId: this.chainId,
       intent: {
         id: hexlify(randomBytes$1(32)),
@@ -54329,7 +54329,7 @@ class Wallet2 extends Signer$1 {
     if (this.coders.config.hasSubdigest(this.config, subdigest)) {
       return this.coders.signature.encodeSigners(this.config, /* @__PURE__ */ new Map(), [subdigest], this.chainId).encoded;
     }
-    const childMetadata = _extends$f({}, metadata2, {
+    const childMetadata = _extends$b({}, metadata2, {
       // Keep other metadata fields
       digest: digest9,
       chainId: this.chainId,
@@ -54343,7 +54343,7 @@ class Wallet2 extends Signer$1 {
       metadata: childMetadata,
       callback: (status, onNewMetadata) => {
         const parts2 = statusToSignatureParts(status);
-        const newMetadata = _extends$f({}, childMetadata, {
+        const newMetadata = _extends$b({}, childMetadata, {
           parts: parts2
         });
         onNewMetadata(newMetadata);
@@ -54401,7 +54401,7 @@ class Wallet2 extends Signer$1 {
     }
     const defaultedNonce = await this.fetchNonceOrSpace(nonce);
     const digest9 = index$1$2.transaction.digestOfTransactions(defaultedNonce, transactions2);
-    const meta = _extends$f({
+    const meta = _extends$b({
       digest: digest9,
       transactions: transactions2
     }, metadata2);
@@ -54454,7 +54454,7 @@ class Wallet2 extends Signer$1 {
     const simulations = await relayer2.simulate(this.address, ...transactions2);
     return transactions2.map((tx, i2) => {
       const gasLimit = tx.gasLimit ? BigNumber.from(tx.gasLimit).toNumber() : simulations[i2].gasLimit;
-      return _extends$f({}, tx, simulations[i2], {
+      return _extends$b({}, tx, simulations[i2], {
         gasLimit
       });
     });
@@ -54468,8 +54468,8 @@ class Wallet2 extends Signer$1 {
     throw new Error("Method not implemented.");
   }
 }
-function _extends$e() {
-  _extends$e = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$a() {
+  _extends$a = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -54480,7 +54480,7 @@ function _extends$e() {
     }
     return target;
   };
-  return _extends$e.apply(this, arguments);
+  return _extends$a.apply(this, arguments);
 }
 function isPromise(value) {
   return !!value && typeof value.then === "function";
@@ -54742,7 +54742,7 @@ class Account {
       throw new Error(`Relayer not found for chainId ${chainId}`);
     if (isRelayer(found.relayer))
       return found.relayer;
-    return new RpcRelayer(_extends$e({}, found.relayer, this.projectAccessKey ? {
+    return new RpcRelayer(_extends$a({}, found.relayer, this.projectAccessKey ? {
       projectAccessKey: this.projectAccessKey
     } : {
       jwtAuth: this.jwt
@@ -54861,7 +54861,7 @@ class Account {
     const counterfactualImageHash = await counterfactualImageHashPromise;
     const checkpoint = index$7.coderFor(lastVersion).config.checkpointOf(config2);
     return {
-      original: _extends$e({}, counterfactualImageHash, {
+      original: _extends$a({}, counterfactualImageHash, {
         version: await counterFactualVersionPromise
       }),
       onChain: {
@@ -55039,7 +55039,7 @@ class Account {
   }
   async editConfig(changes) {
     const currentConfig = await this.status(0).then((s2) => s2.config);
-    const newConfig = this.coders.config.editConfig(currentConfig, _extends$e({}, changes, {
+    const newConfig = this.coders.config.editConfig(currentConfig, _extends$a({}, changes, {
       checkpoint: this.coders.config.checkpointOf(currentConfig).add(1)
     }));
     return this.updateConfig(newConfig);
@@ -55114,7 +55114,7 @@ class Account {
   }
   async doBootstrap(chainId, feeQuote, prestatus) {
     const bootstrapTxs = await this.bootstrapTransactions(chainId, prestatus);
-    return this.relayer(chainId).relay(_extends$e({}, bootstrapTxs, {
+    return this.relayer(chainId).relay(_extends$a({}, bootstrapTxs, {
       chainId
     }), feeQuote);
   }
@@ -55142,7 +55142,7 @@ class Account {
       space: options.nonceSpace
     } : void 0;
     const signed2 = await wallet.signTransactions(txs, nonceOptions, metadata2);
-    return _extends$e({}, signed2, {
+    return _extends$a({}, signed2, {
       signature: await this.decorateSignature(signed2.signature, status)
     });
   }
@@ -55244,7 +55244,7 @@ class Account {
     const decoratedBundle = await this.decorateTransactions(signedBundle, wstatus);
     const data = index$1$2.transaction.encodeBundleExecData(decoratedBundle);
     const res = await this.relayer(chainId).getFeeOptionsRaw(decoratedBundle.entrypoint, data, options);
-    return _extends$e({}, res, {
+    return _extends$a({}, res, {
       decorated: decoratedBundle
     });
   }
@@ -55320,7 +55320,7 @@ class Account {
         }
         const coder = index$7.genericCoderFor(latestConfig.version);
         const signers = coder.config.signersOf(latestConfig);
-        return signers.map((signer2) => _extends$e({}, signer2, {
+        return signers.map((signer2) => _extends$a({}, signer2, {
           network: chainId
         }));
       } catch (error) {
@@ -55375,8 +55375,8 @@ const account$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   Account,
   isAccount
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$d() {
-  _extends$d = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$9() {
+  _extends$9 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -55387,7 +55387,7 @@ function _extends$d() {
     }
     return target;
   };
-  return _extends$d.apply(this, arguments);
+  return _extends$9.apply(this, arguments);
 }
 const WebRPCVersion$1 = "v1";
 const WebRPCSchemaVersion$1 = "v0.4.0";
@@ -55854,7 +55854,7 @@ const sseResponse = async (res, options, retryFetch) => {
 const createHTTPRequest$5 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$d({}, headers, {
+    headers: _extends$9({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -56117,7 +56117,7 @@ class SequenceIndexer extends Indexer {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$d({}, init3.headers, headers);
+      init3.headers = _extends$9({}, init3.headers, headers);
       return fetch$3(input2, init3);
     };
     this.fetch = this._fetch;
@@ -56165,8 +56165,8 @@ const indexer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   WebrpcStreamLostError: WebrpcStreamLostError$5,
   errors: errors$1
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$c() {
-  _extends$c = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$8() {
+  _extends$8 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -56177,7 +56177,7 @@ function _extends$c() {
     }
     return target;
   };
-  return _extends$c.apply(this, arguments);
+  return _extends$8.apply(this, arguments);
 }
 const WebRPCVersion = "v1";
 const WebRPCSchemaVersion = "v0.4.0";
@@ -56779,7 +56779,7 @@ class Collections {
 const createHTTPRequest$4 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$c({}, headers, {
+    headers: _extends$8({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -57034,7 +57034,7 @@ class SequenceMetadata extends Metadata {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$c({}, init3.headers, headers);
+      init3.headers = _extends$8({}, init3.headers, headers);
       return fetch$2(input2, init3);
     };
     this.fetch = this._fetch;
@@ -57050,7 +57050,7 @@ class SequenceCollections extends Collections {
       if (jwtAuth2 && jwtAuth2.length > 0) {
         headers["Authorization"] = `BEARER ${jwtAuth2}`;
       }
-      init3.headers = _extends$c({}, init3.headers, headers);
+      init3.headers = _extends$8({}, init3.headers, headers);
       return fetch$2(input2, init3);
     };
     this.fetch = this._fetch;
@@ -57490,8 +57490,8 @@ var debug$1 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   DebugConfigTracker
 });
-function _extends$b() {
-  _extends$b = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$7() {
+  _extends$7 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -57502,7 +57502,7 @@ function _extends$b() {
     }
     return target;
   };
-  return _extends$b.apply(this, arguments);
+  return _extends$7.apply(this, arguments);
 }
 class MemoryTrackerStore {
   constructor() {
@@ -57907,7 +57907,7 @@ class LocalConfigTracker {
       const subdigestsOfSigner = await Promise.all(signers.map((s2) => _this.store.loadSubdigestsOfSigner(s2)));
       const subdigests = [...new Set(subdigestsOfSigner.flat())];
       const payloads = await Promise.all([...new Set(subdigests)].map(async function(s2) {
-        return _extends$b({}, await _this.payloadOfSubdigest({
+        return _extends$7({}, await _this.payloadOfSubdigest({
           subdigest: s2
         }), {
           subdigest: s2
@@ -58303,7 +58303,7 @@ class Sessions {
 const createHTTPRequest$3 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$b({}, headers, {
+    headers: _extends$7({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -58710,17 +58710,17 @@ function encodeV2ConfigTree(tree) {
       node: tree.nodeHash
     };
   } else {
-    return _extends$b({}, tree);
+    return _extends$7({}, tree);
   }
 }
 function decodeConfig(version2, config2) {
   switch (version2) {
     case 1:
-      return _extends$b({}, config2, {
+      return _extends$7({}, config2, {
         version: version2
       });
     case 2:
-      return _extends$b({}, config2, {
+      return _extends$7({}, config2, {
         version: version2,
         tree: decodeV2ConfigTree(config2.tree)
       });
@@ -58731,7 +58731,7 @@ function decodeConfig(version2, config2) {
 function decodeV2ConfigTree(tree) {
   switch (typeof tree) {
     case "object":
-      const tree_ = _extends$b({}, tree);
+      const tree_ = _extends$7({}, tree);
       if (tree_.left !== void 0) {
         tree_.left = decodeV2ConfigTree(tree_.left);
       }
@@ -59459,8 +59459,8 @@ class AuthError extends Error {
   }
 }
 const ErrAccountIsRequired = new AuthError("auth error: account address is empty");
-function _extends$a() {
-  _extends$a = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$6() {
+  _extends$6 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -59471,7 +59471,7 @@ function _extends$a() {
     }
     return target;
   };
-  return _extends$a.apply(this, arguments);
+  return _extends$6.apply(this, arguments);
 }
 function isSessionDumpV1(obj) {
   return obj.config && obj.metadata && obj.version === void 0;
@@ -59498,7 +59498,7 @@ class Session {
       address: this.account.address
     };
     if (this.services) {
-      return _extends$a({}, base2, await this.services.dump());
+      return _extends$6({}, base2, await this.services.dump());
     }
     return base2;
   }
@@ -59544,7 +59544,7 @@ class Session {
       }
       return void 0;
     };
-    return Session.open(_extends$a({}, args, {
+    return Session.open(_extends$6({}, args, {
       orchestrator,
       referenceSigner,
       threshold,
@@ -59571,7 +59571,7 @@ class Session {
       networks: networks2,
       tracker: tracker2,
       services
-    } = _extends$a({}, SessionSettingsDefault, settings);
+    } = _extends$6({}, SessionSettingsDefault, settings);
     const referenceChainId = (_findNetworkConfig$ch = (_findNetworkConfig = findNetworkConfig(networks2, (_settings$services$se = settings == null || (_settings$services = settings.services) == null ? void 0 : _settings$services.sequenceApiChainId) != null ? _settings$services$se : ChainId.MAINNET)) == null ? void 0 : _findNetworkConfig.chainId) != null ? _findNetworkConfig$ch : (_networks$ = networks2[0]) == null ? void 0 : _networks$.chainId;
     if (!referenceChainId)
       throw Error("No reference chain found");
@@ -59688,11 +59688,11 @@ class Session {
       networks: networks2,
       tracker: tracker2,
       services
-    } = _extends$a({}, SessionSettingsDefault, settings);
+    } = _extends$6({}, SessionSettingsDefault, settings);
     let account2;
     if (isSessionDumpV1(dump)) {
       var _dump$jwt$expiration, _dump$jwt, _dump$jwt2;
-      const oldAddress = dump.config.address || index$1$2.context.addressOf(contexts[1], v1.config.ConfigCoder.imageHashOf(_extends$a({}, dump.config, {
+      const oldAddress = dump.config.address || index$1$2.context.addressOf(contexts[1], v1.config.ConfigCoder.imageHashOf(_extends$6({}, dump.config, {
         version: 1
       })));
       const jwtExpired = ((_dump$jwt$expiration = (_dump$jwt = dump.jwt) == null ? void 0 : _dump$jwt.expiration) != null ? _dump$jwt$expiration : 0) < Math.floor(Date.now() / 1e3);
@@ -59762,8 +59762,8 @@ const auth$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   isSessionDumpV2,
   signAuthorization
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$9() {
-  _extends$9 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$5() {
+  _extends$5 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -59774,7 +59774,7 @@ function _extends$9() {
     }
     return target;
   };
-  return _extends$9.apply(this, arguments);
+  return _extends$5.apply(this, arguments);
 }
 class Guard {
   constructor(hostname, fetch2) {
@@ -59979,7 +59979,7 @@ class Guard {
 const createHTTPRequest$2 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$9({}, headers, {
+    headers: _extends$5({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -60227,7 +60227,7 @@ class GuardSigner {
         }
       });
     }
-    return _extends$9({}, response, {
+    return _extends$5({}, response, {
       methods: response.methods.map(parseAuthMethod)
     });
   }
@@ -60433,8 +60433,8 @@ const guard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   isSignedOwnershipProof,
   signOwnershipProof
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$8() {
-  _extends$8 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$4() {
+  _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -60445,7 +60445,7 @@ function _extends$8() {
     }
     return target;
   };
-  return _extends$8.apply(this, arguments);
+  return _extends$4.apply(this, arguments);
 }
 let JsonRpcMethod = /* @__PURE__ */ function(JsonRpcMethod2) {
   JsonRpcMethod2["ethCall"] = "eth_call";
@@ -60718,7 +60718,7 @@ class Multicall {
         }
       });
     };
-    this.options = options ? _extends$8({}, Multicall.DefaultOptions, options) : Multicall.DefaultOptions;
+    this.options = options ? _extends$4({}, Multicall.DefaultOptions, options) : Multicall.DefaultOptions;
     if (this.options.batchSize <= 0)
       throw new Error(`Invalid batch size of ${this.options.batchSize}`);
   }
@@ -60736,7 +60736,7 @@ class Multicall {
     return cand !== void 0 && cand.batchSize !== void 0 && cand.timeWindow !== void 0 && cand.contract !== void 0;
   }
 }
-Multicall.DefaultOptions = _extends$8({}, DefaultMulticallOptions);
+Multicall.DefaultOptions = _extends$4({}, DefaultMulticallOptions);
 const ProxyMethods = ["getNetwork", "getBlockNumber", "getGasPrice", "getTransactionCount", "getStorageAt", "sendTransaction", "estimateGas", "getBlock", "getTransaction", "getTransactionReceipt", "getLogs", "emit", "litenerCount", "addListener", "removeListener", "waitForTransaction", "detectNetwork", "getBlockWithTransactions"];
 class MulticallProvider extends BaseProvider {
   constructor(provider2, multicall2) {
@@ -63214,8 +63214,8 @@ function isCreateContractCall(data) {
     return false;
   }
 }
-function _extends$7() {
-  _extends$7 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$3() {
+  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -63226,7 +63226,7 @@ function _extends$7() {
     }
     return target;
   };
-  return _extends$7.apply(this, arguments);
+  return _extends$3.apply(this, arguments);
 }
 function isProviderTransport(transport) {
   return transport && typeof transport === "object" && typeof transport.register === "function" && typeof transport.unregister === "function" && typeof transport.openWallet === "function" && typeof transport.closeWallet === "function" && typeof transport.isOpened === "function" && typeof transport.isConnected === "function" && typeof transport.on === "function";
@@ -63555,7 +63555,7 @@ class BaseProviderTransport {
     logger.info("closing wallet and flushing!");
     this.pendingMessageRequests.length = 0;
     this.responseCallbacks.forEach((responseCallback) => {
-      responseCallback(_extends$7({}, new Error("wallet closed"), {
+      responseCallback(_extends$3({}, new Error("wallet closed"), {
         code: 4001
       }));
     });
@@ -64973,7 +64973,7 @@ function toExtended(transactions2) {
     throw new Error("No transaction provided");
   }
   const [first, ...rest] = transactions2;
-  return _extends$7({}, first, {
+  return _extends$3({}, first, {
     auxiliary: rest
   });
 }
@@ -65309,7 +65309,7 @@ class WalletRequestHandler {
       } catch (err) {
         logger.error(err);
         response.result = null;
-        response.error = _extends$7({}, new Error(err), {
+        response.error = _extends$3({}, new Error(err), {
           code: 4001
         });
       }
@@ -65425,7 +65425,7 @@ class WalletRequestHandler {
   sendMessageRequest(message) {
     return new Promise((resolve) => {
       this.sendAsync(message.data, (error, response) => {
-        const responseMessage = _extends$7({}, message, {
+        const responseMessage = _extends$3({}, message, {
           data: response
         });
         resolve(responseMessage);
@@ -65468,7 +65468,7 @@ class WalletRequestHandler {
     }
     if (jsonRpcResponse) {
       return this.account.networks.map((n2) => {
-        const network2 = _extends$7({}, n2);
+        const network2 = _extends$3({}, n2);
         network2.provider = void 0;
         network2.relayer = void 0;
         return network2;
@@ -65485,7 +65485,7 @@ class WalletRequestHandler {
       walletContext: this.account.contexts,
       accountAddress: this.account.address,
       // The dapp shouldn't access the relayer directly, and the provider (as an object) is not serializable.
-      networks: this.account.networks.map((n2) => _extends$7({}, n2, {
+      networks: this.account.networks.map((n2) => _extends$3({}, n2, {
         provider: void 0,
         relayer: void 0
       }))
@@ -65886,7 +65886,7 @@ class SequenceProvider extends BaseProvider {
     });
   }
   authorize(options) {
-    return this.client.connect(_extends$7({}, options, {
+    return this.client.connect(_extends$3({}, options, {
       authorize: true
     }));
   }
@@ -66301,7 +66301,7 @@ class SequenceClient {
     this.transport.on("connect", (response) => {
       var _this$callbacks$conne;
       const chainIdHex = hexValue(this.getChainId());
-      (_this$callbacks$conne = this.callbacks.connect) == null || _this$callbacks$conne.forEach((cb2) => cb2(_extends$7({}, response, {
+      (_this$callbacks$conne = this.callbacks.connect) == null || _this$callbacks$conne.forEach((cb2) => cb2(_extends$3({}, response, {
         // Ignore the full connect response
         // use the chainId defined locally
         chainId: chainIdHex
@@ -66435,7 +66435,7 @@ class SequenceClient {
     }
     await this.openWallet(void 0, {
       type: "connect",
-      options: _extends$7({}, options, {
+      options: _extends$3({}, options, {
         networkId: this.getChainId(),
         clientVersion: packageJson.version
       })
@@ -66631,8 +66631,8 @@ const initWallet = (projectAccessKey2, partialConfig) => {
   if (sequenceWalletProvider) {
     return sequenceWalletProvider;
   }
-  const config2 = _extends$7({}, DefaultProviderConfig, partialConfig, {
-    transports: _extends$7({}, DefaultProviderConfig.transports, partialConfig == null ? void 0 : partialConfig.transports)
+  const config2 = _extends$3({}, DefaultProviderConfig, partialConfig, {
+    transports: _extends$3({}, DefaultProviderConfig.transports, partialConfig == null ? void 0 : partialConfig.transports)
   });
   const rpcProviders = {};
   const newNetworks = (_config$networks$filt = (_config$networks = config2.networks) == null ? void 0 : _config$networks.filter((n2) => {
@@ -66641,7 +66641,7 @@ const initWallet = (projectAccessKey2, partialConfig) => {
   const combinedNetworks = allNetworks.map((n2) => {
     var _config$networks2;
     const network2 = (_config$networks2 = config2.networks) == null ? void 0 : _config$networks2.find((cn) => cn.chainId === n2.chainId);
-    return network2 ? _extends$7({}, n2, network2) : n2;
+    return network2 ? _extends$3({}, n2, network2) : n2;
   }).concat(newNetworks).map((network2) => {
     if (network2.rpcUrl.includes(projectAccessKey2)) {
       return network2;
@@ -72044,7 +72044,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-zkGYqycG.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-D15OIlnU.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -81948,6 +81948,166 @@ function useWriteContract(parameters = {}) {
     writeContractAsync: mutateAsync
   };
 }
+var LocalStorageKey;
+(function(LocalStorageKey2) {
+  LocalStorageKey2["Settings"] = "@kit.settings";
+  LocalStorageKey2["Theme"] = "@kit.theme";
+  LocalStorageKey2["EthAuthProof"] = "@kit.ethAuthProof";
+  LocalStorageKey2["EthAuthSettings"] = "@kit.ethAuthSettings";
+  LocalStorageKey2["WaasGoogleClientID"] = "@kit.waasGoogleClientId";
+  LocalStorageKey2["WaasGoogleIdToken"] = "@kit.waasGoogleIdToken";
+  LocalStorageKey2["WaasAppleClientID"] = "@kit.waasAppleClientId";
+  LocalStorageKey2["WaasAppleRedirectURI"] = "@kit.waasAppleRedirectURI";
+  LocalStorageKey2["WaasAppleIdToken"] = "@kit.waasAppleIdToken";
+  LocalStorageKey2["WaasSessionHash"] = "@kit.waasSessionHash";
+  LocalStorageKey2["WaasActiveLoginType"] = "@kit.waasActiveLoginType";
+  LocalStorageKey2["WaasEmailIdToken"] = "@kit.waasEmailIdToken";
+})(LocalStorageKey || (LocalStorageKey = {}));
+const defaultSignInOptions = {
+  showEmailInput: true,
+  walletAuthOptions: ["sequence", "sequence-waas", "metamask", "wallet-connect", "coinbase-wallet"],
+  socialAuthOptions: ["google", "facebook", "twitch", "apple", "google-waas", "apple-waas"]
+};
+const DEFAULT_SESSION_EXPIRATION = 60 * 60 * 24 * 7;
+const createGenericContext$2 = () => {
+  const genericContext = reactExports.createContext(void 0);
+  const useGenericContext = () => {
+    const contextIsDefined = reactExports.useContext(genericContext);
+    if (!contextIsDefined) {
+      throw new Error("useGenericContext must be used within a Provider");
+    }
+    return contextIsDefined;
+  };
+  return [useGenericContext, genericContext.Provider];
+};
+const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext$2();
+const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext$2();
+const [useKitConfig, KitConfigContextProvider] = createGenericContext$2();
+const [useThemeContext, ThemeContextProvider] = createGenericContext$2();
+const [useWalletConfigContext, WalletConfigContextProvider] = createGenericContext$2();
+const useStorage = () => {
+  const config2 = useConfig();
+  if (!config2.storage) {
+    return null;
+  }
+  return config2.storage;
+};
+const useStorageItem = (key2) => {
+  const storage = useStorage();
+  return useQuery$1({
+    queryKey: ["storage", key2],
+    queryFn: async () => {
+      return storage == null ? void 0 : storage.getItem(key2);
+    },
+    retry: true,
+    enabled: !!storage
+  });
+};
+class Deferred {
+  constructor() {
+    __publicField(this, "_resolve", () => {
+    });
+    __publicField(this, "_reject", () => {
+    });
+    __publicField(this, "_promise", new Promise((resolve, reject) => {
+      this._reject = reject;
+      this._resolve = resolve;
+    }));
+  }
+  get promise() {
+    return this._promise;
+  }
+  resolve(value) {
+    this._resolve(value);
+  }
+  reject(value) {
+    this._reject(value);
+  }
+}
+let _pendingConfirmation;
+function useWaasConfirmationHandler(waasConnector) {
+  const [pendingRequestConfirmation, setPendingRequestConfirmation] = reactExports.useState();
+  function confirmPendingRequest(id2) {
+    _pendingConfirmation == null ? void 0 : _pendingConfirmation.resolve({ id: id2, confirmed: true });
+    setPendingRequestConfirmation(void 0);
+    _pendingConfirmation = void 0;
+  }
+  function rejectPendingRequest(id2) {
+    _pendingConfirmation == null ? void 0 : _pendingConfirmation.resolve({ id: id2, confirmed: false });
+    setPendingRequestConfirmation(void 0);
+    _pendingConfirmation = void 0;
+  }
+  reactExports.useEffect(() => {
+    async function setup() {
+      if (!waasConnector) {
+        return;
+      }
+      const waasProvider = waasConnector.sequenceWaasProvider;
+      if (!waasProvider) {
+        return;
+      }
+      waasProvider.requestConfirmationHandler = {
+        confirmSignTransactionRequest(id2, txs, chainId) {
+          const pending = new Deferred();
+          setPendingRequestConfirmation({ id: id2, type: "signTransaction", txs: Array.isArray(txs) ? txs : [txs], chainId });
+          _pendingConfirmation = pending;
+          return pending.promise;
+        },
+        confirmSignMessageRequest(id2, message, chainId) {
+          const pending = new Deferred();
+          setPendingRequestConfirmation({ id: id2, type: "signMessage", message, chainId });
+          _pendingConfirmation = pending;
+          return pending.promise;
+        }
+      };
+    }
+    setup();
+  });
+  return [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest];
+}
+const getModalPositionCss = (position) => {
+  switch (position) {
+    case "top-right":
+      return {
+        top: "0px",
+        right: "0px"
+      };
+    case "top-left":
+      return {
+        top: "0px",
+        left: "0px"
+      };
+    case "top-center":
+      return {
+        top: "0px"
+      };
+    case "bottom-right":
+      return {
+        bottom: "0px",
+        right: "0px"
+      };
+    case "bottom-left":
+      return {
+        bottom: "0px",
+        left: "0px"
+      };
+    case "bottom-center":
+      return {
+        bottom: "0px"
+      };
+    case "middle-right":
+      return {
+        right: "0px"
+      };
+    case "middle-left":
+      return {
+        left: "0px"
+      };
+    case "center":
+    default:
+      return {};
+  }
+};
 var dist = {};
 var AppleSigninButton$1 = {};
 var useScript$1 = {};
@@ -82062,12 +82222,12 @@ AppleSigninButton$1.default = void 0;
 var _react$1 = _interopRequireDefault$1(reactExports);
 var _useScript = _interopRequireDefault$1(useScript$1);
 var _appleAuthHelpers = _interopRequireDefault$1(appleAuthHelpers);
-var _excluded$6 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
+var _excluded$4 = ["onSuccess", "onError", "skipScript", "authOptions", "iconProps", "render", "uiType", "className", "noDefaultStyle", "buttonExtraChildren"];
 function _interopRequireDefault$1(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
-function _extends$6() {
-  _extends$6 = Object.assign || function(target) {
+function _extends$2() {
+  _extends$2 = Object.assign || function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -82078,7 +82238,7 @@ function _extends$6() {
     }
     return target;
   };
-  return _extends$6.apply(this, arguments);
+  return _extends$2.apply(this, arguments);
 }
 function ownKeys$1(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -82121,7 +82281,7 @@ function _defineProperty$1(obj, key2, value) {
 function _objectWithoutProperties$1(source, excluded) {
   if (source == null)
     return {};
-  var target = _objectWithoutPropertiesLoose$4(source, excluded);
+  var target = _objectWithoutPropertiesLoose$2(source, excluded);
   var key2, i2;
   if (Object.getOwnPropertySymbols) {
     var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
@@ -82136,7 +82296,7 @@ function _objectWithoutProperties$1(source, excluded) {
   }
   return target;
 }
-function _objectWithoutPropertiesLoose$4(source, excluded) {
+function _objectWithoutPropertiesLoose$2(source, excluded) {
   if (source == null)
     return {};
   var target = {};
@@ -82152,7 +82312,7 @@ function _objectWithoutPropertiesLoose$4(source, excluded) {
 }
 var _style = "\n.react-apple-signin-auth-btn {\n  background-color: transparent;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  border-radius: 4px;\n  padding: 0 8px 0 2px;\n  font-size: 14px;\n  font-size: 1em;\n  line-height: 1;\n  border: 1px solid #000;\n  overflow: hidden;\n  display: inline-flex;\n  justify-content: center;\n  align-items: center;\n}\n.react-apple-signin-auth-btn-light {\n  background-color: #FFF;\n  color: #000;\n  border-color: #000;\n}\n.react-apple-signin-auth-btn-dark {\n  background-color: #000;\n  color: #FFF;\n  border-color: #FFF;\n}".replace(/ {2}|\n/g, "");
 var AppleSigninButton = function AppleSigninButton2(_ref) {
-  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$1(_ref, _excluded$6);
+  var onSuccess = _ref.onSuccess, onError = _ref.onError, _ref$skipScript = _ref.skipScript, skipScript = _ref$skipScript === void 0 ? false : _ref$skipScript, authOptions = _ref.authOptions, iconProps = _ref.iconProps, render = _ref.render, _ref$uiType = _ref.uiType, uiType = _ref$uiType === void 0 ? "dark" : _ref$uiType, className = _ref.className, _ref$noDefaultStyle = _ref.noDefaultStyle, noDefaultStyle = _ref$noDefaultStyle === void 0 ? false : _ref$noDefaultStyle, _ref$buttonExtraChild = _ref.buttonExtraChildren, buttonExtraChildren = _ref$buttonExtraChild === void 0 ? "Continue with Apple" : _ref$buttonExtraChild, rest = _objectWithoutProperties$1(_ref, _excluded$4);
   (0, _useScript.default)(skipScript ? null : _appleAuthHelpers.default.APPLE_SCRIPT_SRC);
   var handleClick = function handleClick2(e2) {
     if (e2) {
@@ -82166,7 +82326,7 @@ var AppleSigninButton = function AppleSigninButton2(_ref) {
     });
   };
   var props = _objectSpread$1({
-    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$6({
+    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$2({
       width: "24px",
       height: "44px",
       viewBox: "0 0 24 44"
@@ -82191,7 +82351,7 @@ var AppleSigninButton = function AppleSigninButton2(_ref) {
   if (render) {
     return render(props);
   }
-  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$6({
+  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$2({
     className: "".concat(noDefaultStyle ? "" : "react-apple-signin-auth-btn react-apple-signin-auth-btn-".concat(uiType)).concat(className ? " ".concat(className) : ""),
     type: "button",
     "aria-label": "Signin with apple ID"
@@ -82225,6 +82385,732 @@ AppleSigninButton$1.default = _default;
   var _default2 = _AppleSigninButton.default;
   exports.default = _default2;
 })(dist);
+function useEmailAuth({ connector, onSuccess }) {
+  if (!connector) {
+    return {
+      inProgress: false,
+      loading: false,
+      error: void 0,
+      initiateAuth: async (_email) => {
+      },
+      sendChallengeAnswer: async (_answer) => {
+      }
+    };
+  }
+  const [email2, setEmail] = reactExports.useState("");
+  const [error, setError] = reactExports.useState();
+  const [loading, setLoading] = reactExports.useState(false);
+  const [instance, setInstance] = reactExports.useState("");
+  const initiateAuth = async (email3) => {
+    var _a2;
+    setLoading(true);
+    try {
+      const connectorAny = connector;
+      const { instance: instance2 } = await ((_a2 = connectorAny.sequenceWaas) == null ? void 0 : _a2.email.initiateAuth({ email: email3 }));
+      setInstance(instance2);
+      setEmail(email3);
+    } catch (e2) {
+      setError(e2.message || "Unknown error");
+    } finally {
+      setLoading(false);
+    }
+  };
+  const sendChallengeAnswer = async (answer) => {
+    var _a2, _b2;
+    setLoading(true);
+    try {
+      const connectorAny = connector;
+      const sessionHash = await ((_a2 = connectorAny.sequenceWaas) == null ? void 0 : _a2.getSessionHash());
+      const { idToken } = await ((_b2 = connectorAny.sequenceWaas) == null ? void 0 : _b2.email.finalizeAuth({ instance, answer, email: email2, sessionHash }));
+      onSuccess(idToken);
+    } catch (e2) {
+      setError(e2.message || "Unknown error");
+      setLoading(false);
+    }
+  };
+  return {
+    inProgress: loading || !!instance,
+    loading,
+    error,
+    initiateAuth,
+    sendChallengeAnswer: instance ? sendChallengeAnswer : void 0
+  };
+}
+const isEmailValid = (email2) => {
+  return /^\S+@\S+\.\S{2,}$/.test(email2);
+};
+const compareAddress$2 = (a2, b2) => {
+  return a2.toLowerCase() === b2.toLowerCase();
+};
+var ValueType$2;
+(function(ValueType2) {
+  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
+  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
+  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
+  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
+})(ValueType$2 || (ValueType$2 = {}));
+const capitalize$1 = (word) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+const Banner = ({ config: config2 = {} }) => {
+  const { signIn: signIn3 = {} } = config2;
+  const { logoUrl } = signIn3;
+  return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: logoUrl && jsxRuntimeExports$1.jsx(Box, { marginTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Image$1, { src: logoUrl, style: { height: "110px" } }) }) });
+};
+const ExtendedWalletList = ({ onConnect, connectors }) => {
+  const { theme } = useTheme$1();
+  const { isPending } = useConnect();
+  return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", marginTop: "5", children: connectors.map((connector) => {
+    const Logo = theme === "dark" ? connector._wallet.logoDark : connector._wallet.logoLight;
+    const walletName = connector._wallet.name;
+    const connectorId = connector._wallet.id;
+    return jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", leftIcon: () => jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", style: { backgroundColor: connector._wallet.iconBackground }, width: "8", height: "8", overflow: "hidden", children: jsxRuntimeExports$1.jsx(Logo, { style: { width: 30 } }) }), onClick: () => onConnect(connector), label: jsxRuntimeExports$1.jsxs(Text, { children: [walletName, isPending] }) }, connectorId);
+  }) });
+};
+const ConnectWalletContent = (props) => {
+  dist.useScript(dist.appleAuthHelpers.APPLE_SCRIPT_SRC);
+  const storage = useStorage();
+  const { isConnected } = useAccount();
+  const { config: config2 = {} } = props;
+  const { signIn: signIn3 = {} } = config2;
+  const { showEmailInput = defaultSignInOptions.showEmailInput, socialAuthOptions = defaultSignInOptions.socialAuthOptions, walletAuthOptions = defaultSignInOptions.walletAuthOptions } = signIn3;
+  const { openConnectModal, setOpenConnectModal } = props;
+  const [email2, setEmail] = reactExports.useState("");
+  const [showEmailWaasPinInput, setShowEmailWaasPinInput] = reactExports.useState(false);
+  const [waasEmailPinCode, setWaasEmailPinCode] = reactExports.useState([]);
+  const { connectors: baseConnectors, connect: connect2 } = useConnect();
+  const injectedConnectors = baseConnectors.filter((c2) => c2.type === "injected" && !c2.hasOwnProperty("_wallet")).map((connector) => {
+    const Logo = (props2) => {
+      return jsxRuntimeExports$1.jsx(Image$1, { src: connector.icon, alt: connector.name, disableAnimation: true, ...props2 });
+    };
+    return {
+      ...connector,
+      _wallet: {
+        id: connector.id,
+        name: connector.name,
+        logoLight: Logo,
+        logoDark: Logo
+      }
+    };
+  });
+  const connectors = baseConnectors.filter((c2) => !!(c2 == null ? void 0 : c2._wallet));
+  const [showExtendedList, setShowExtendedList] = reactExports.useState(false);
+  const mockConnector = connectors.find((connector) => {
+    return connector._wallet.id === "mock";
+  });
+  const emailConnector = connectors.find((c2) => c2._wallet.id.includes("email"));
+  const walletConnectors = [
+    ...connectors.filter((connector) => {
+      const foundOption = walletAuthOptions.find((authOption) => authOption === connector._wallet.id) && !injectedConnectors.some((injected2) => injected2.name === connector.name);
+      return !!foundOption;
+    }).sort((a2, b2) => {
+      return walletAuthOptions.indexOf(a2._wallet.id) - walletAuthOptions.indexOf(b2._wallet.id);
+    }),
+    ...injectedConnectors
+  ];
+  const socialAuthConnectors = connectors.filter((connector) => {
+    const foundOption = socialAuthOptions.find((authOption) => authOption === connector._wallet.id);
+    return !!foundOption;
+  }).sort((a2, b2) => {
+    return socialAuthOptions.indexOf(a2._wallet.id) - socialAuthOptions.indexOf(b2._wallet.id);
+  });
+  const displayExtendedListButton = walletConnectors.length > 7;
+  const onChangeEmail = (ev) => {
+    setEmail(ev.target.value);
+  };
+  const { inProgress: emailAuthInProgress, loading: emailAuthLoading, initiateAuth: initiateEmailAuth, sendChallengeAnswer } = useEmailAuth({
+    connector: connectors.find((c2) => c2._wallet.id === "email-waas"),
+    onSuccess: async (idToken) => {
+      storage == null ? void 0 : storage.setItem(LocalStorageKey.WaasEmailIdToken, idToken);
+      if (emailConnector) {
+        connect2({ connector: emailConnector });
+      }
+    }
+  });
+  reactExports.useEffect(() => {
+    if (isConnected && openConnectModal) {
+      setOpenConnectModal(false);
+    }
+  }, [isConnected, openConnectModal]);
+  const onConnect = (connector) => {
+    var _a2;
+    if (signIn3.useMock && mockConnector) {
+      connect2({ connector: mockConnector });
+      return;
+    }
+    if (connector._wallet.id === "email") {
+      const email3 = prompt("Auto-email login, please specify the email address:");
+      if ("setEmail" in connector) {
+        connector.setEmail(email3);
+      }
+    }
+    if (connector._wallet.id === "metamask" && typeof window !== "undefined") {
+      const isMetamaskFound = !!((_a2 = window == null ? void 0 : window.ethereum) == null ? void 0 : _a2._metamask);
+      if (!isMetamaskFound) {
+        window.open("https://metamask.io/download/");
+        return;
+      }
+    }
+    connect2({ connector });
+  };
+  const onConnectInlineEmail = async (e2) => {
+    e2.preventDefault();
+    if (signIn3.useMock && mockConnector) {
+      connect2({ connector: mockConnector });
+      return;
+    }
+    if (emailConnector) {
+      if ("setEmail" in emailConnector) {
+        emailConnector.setEmail(email2);
+      }
+      if (emailConnector._wallet.id === "email-waas") {
+        try {
+          await initiateEmailAuth(email2);
+          setShowEmailWaasPinInput(true);
+        } catch (e3) {
+          console.log(e3);
+        }
+      } else {
+        connect2({ connector: emailConnector });
+      }
+    }
+  };
+  if (showEmailWaasPinInput) {
+    return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: jsxRuntimeExports$1.jsxs(Box, { paddingY: "6", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { marginTop: "5", marginBottom: "4", variant: "normal", color: "text80", children: "Enter code received in email." }), jsxRuntimeExports$1.jsx(PINCodeInput, { value: waasEmailPinCode, digits: 6, onChange: setWaasEmailPinCode }), jsxRuntimeExports$1.jsx(Box, { gap: "2", marginY: "4", alignItems: "center", justifyContent: "center", style: { height: "44px" }, children: emailAuthLoading ? jsxRuntimeExports$1.jsx(Spinner, {}) : jsxRuntimeExports$1.jsx(Button, { variant: "primary", disabled: waasEmailPinCode.includes(""), label: "Verify", onClick: () => sendChallengeAnswer == null ? void 0 : sendChallengeAnswer(waasEmailPinCode.join("")), "data-id": "verifyButton" }) })] }) });
+  }
+  if (showExtendedList) {
+    return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Box, { position: "absolute", top: "4", children: jsxRuntimeExports$1.jsx(IconButton, { icon: SvgChevronLeftIcon, onClick: () => setShowExtendedList(false), size: "xs" }) }), jsxRuntimeExports$1.jsx(ExtendedWalletList, { connectors: walletConnectors, onConnect })] });
+  }
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Banner, { config: config2 }), jsxRuntimeExports$1.jsxs(Box, { marginTop: "6", children: [emailConnector && showEmailInput && jsxRuntimeExports$1.jsxs("form", { onSubmit: onConnectInlineEmail, children: [jsxRuntimeExports$1.jsx(TextInput, { onChange: onChangeEmail, value: email2, name: "email", placeholder: "Enter email", "data-1p-ignore": true }), jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "center", marginTop: "4", children: [!emailAuthInProgress && jsxRuntimeExports$1.jsx(Button, { type: "submit", disabled: !isEmailValid(email2), width: "full", label: "Continue", rightIcon: SvgChevronRightIcon }), emailAuthInProgress && jsxRuntimeExports$1.jsx(Spinner, {})] })] }), socialAuthConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [emailConnector && showEmailInput && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or sign in via" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap", children: socialAuthConnectors.map((connector) => {
+    return jsxRuntimeExports$1.jsxs(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: [connector._wallet.id === "google-waas" && jsxRuntimeExports$1.jsx(GoogleWaasConnectButton, { connector, onConnect }), connector._wallet.id === "apple-waas" && jsxRuntimeExports$1.jsx(AppleWaasConnectButton, { connector, onConnect }), !connector._wallet.id.includes("waas") && jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect })] }, connector.uid);
+  }) })] }), walletConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [(emailConnector && showEmailInput || socialAuthConnectors.length > 0) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid)) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] })] });
+};
+const ConnectButton = (props) => {
+  const { connector, label, onConnect } = props;
+  const { theme } = useTheme$1();
+  const walletProps = connector._wallet;
+  const Logo = getLogo(theme, walletProps);
+  return jsxRuntimeExports$1.jsx(Tooltip, { message: label || walletProps.name, children: jsxRuntimeExports$1.jsx(Card, { clickable: true, width: "10", height: "10", padding: "2", borderRadius: "xs", justifyContent: "center", alignItems: "center", onClick: () => onConnect(connector), children: jsxRuntimeExports$1.jsx(Box, { as: Logo, width: "6", height: "6" }) }) });
+};
+const GoogleWaasConnectButton = (props) => {
+  const { connector, onConnect } = props;
+  const storage = useStorage();
+  const { data: sessionHash, isPending: isPendingNonce } = useStorageItem(LocalStorageKey.WaasSessionHash);
+  const [enableGoogleTooltip, setEnableGoogleTooltip] = reactExports.useState(false);
+  const { theme } = useTheme$1();
+  const walletProps = connector._wallet;
+  const Logo = getLogo(theme, walletProps);
+  reactExports.useEffect(() => {
+    setTimeout(() => {
+      setEnableGoogleTooltip(true);
+    }, 300);
+  });
+  return !isPendingNonce ? jsxRuntimeExports$1.jsx(Tooltip, { message: "Google", disabled: !enableGoogleTooltip, children: jsxRuntimeExports$1.jsxs(Card, { clickable: true, background: "transparent", borderRadius: "xs", padding: "0", width: "10", height: "10", position: "relative", children: [jsxRuntimeExports$1.jsx(Box, { width: "10", height: "10", overflow: "hidden", borderRadius: "sm", alignItems: "center", justifyContent: "center", style: { opacity: 1e-7 }, children: jsxRuntimeExports$1.jsx(GoogleLogin, { type: "icon", size: "large", width: 40, nonce: sessionHash, onSuccess: (credentialResponse) => {
+    if (credentialResponse.credential) {
+      console.log(credentialResponse);
+      storage == null ? void 0 : storage.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential);
+      onConnect(connector);
+    }
+  }, onError: () => {
+    console.log("Login Failed");
+  } }) }), jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", borderRadius: "xs", display: "flex", justifyContent: "center", alignItems: "center", position: "absolute", pointerEvents: "none", width: "10", height: "10", top: "0", right: "0", children: jsxRuntimeExports$1.jsx(Box, { as: Logo, width: "6", height: "6" }) })] }) }) : null;
+};
+const AppleWaasConnectButton = (props) => {
+  const { connector, onConnect } = props;
+  const storage = useStorage();
+  const { data: sessionHash, isPending: isPendingNonce } = useStorageItem(LocalStorageKey.WaasSessionHash);
+  const { data: appleClientId2 } = useStorageItem(LocalStorageKey.WaasAppleClientID);
+  const { data: appleRedirectUri } = useStorageItem(LocalStorageKey.WaasAppleRedirectURI);
+  return !isPendingNonce && appleClientId2 && appleRedirectUri ? jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect: () => {
+    dist.appleAuthHelpers.signIn({
+      authOptions: {
+        clientId: appleClientId2,
+        redirectURI: appleRedirectUri,
+        nonce: sessionHash,
+        scope: "openid email",
+        usePopup: true
+      },
+      onSuccess: (response) => {
+        var _a2;
+        if ((_a2 = response.authorization) == null ? void 0 : _a2.id_token) {
+          storage == null ? void 0 : storage.setItem(LocalStorageKey.WaasAppleIdToken, response.authorization.id_token);
+          onConnect(connector);
+        } else {
+          console.log("Apple login error: No id_token found");
+        }
+      },
+      onError: (error) => console.error(error)
+    });
+  } }) : null;
+};
+const getLogo = (theme, walletProps) => theme === "dark" ? walletProps.logoDark || walletProps.monochromeLogoDark : walletProps.logoLight || walletProps.monochromeLogoLight;
+const getNetworkColor = (chainId, mode = "light") => {
+  switch (chainId) {
+    case ChainId.MAINNET:
+      return mode === "light" ? "#abf" : "#abf";
+    case ChainId.POLYGON:
+      return mode === "light" ? "#c7a6ff" : "#c7a6ff";
+    case ChainId.ARBITRUM:
+      return mode === "light" ? "#52A7E6" : "#52A7E6";
+    case ChainId.OPTIMISM:
+      return mode === "light" ? "#DB3132" : "#DB3132";
+    case ChainId.BSC:
+      return mode === "light" ? "#CB9C1D" : "#EEB445";
+    case ChainId.AVALANCHE:
+      return mode === "light" ? "#E84142" : "#E84142";
+    case ChainId.GNOSIS:
+      return mode === "light" ? "#00193C" : "#D8E8FF";
+    case ChainId.GOERLI:
+      return mode === "light" ? "#A77A00" : "#FFA700";
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
+      return mode === "light" ? "#D68828" : "#FFA700";
+    default:
+      return mode === "light" ? "#abf" : "#abf";
+  }
+};
+const getNetworkBackgroundColor = (chainId, mode = "light") => {
+  switch (chainId) {
+    case ChainId.MAINNET:
+      return mode === "light" ? "#132362" : "#132362";
+    case ChainId.POLYGON:
+      return mode === "light" ? "#350881" : "#350881";
+    case ChainId.ARBITRUM:
+      return mode === "light" ? "#EDF7FF" : "#0C3754";
+    case ChainId.OPTIMISM:
+      return mode === "light" ? "#FFEAE9" : "#390B0C";
+    case ChainId.BSC:
+      return mode === "light" ? "#FFE8AB" : "#554018";
+    case ChainId.AVALANCHE:
+      return mode === "light" ? "#FBDFDF" : "#390B0C";
+    case ChainId.GNOSIS:
+      return mode === "light" ? "#D8E8FF" : "#00193C";
+    case ChainId.GOERLI:
+      return mode === "light" ? "#FFD871" : "#554018";
+    case ChainId.POLYGON_MUMBAI:
+    case ChainId.POLYGON_AMOY:
+      return mode === "light" ? "#FFE8CD" : "#554018";
+    default:
+      return mode === "light" ? "#132362" : "#132362";
+  }
+};
+const getNetwork = (chainId) => {
+  const network2 = networks[chainId];
+  if (!network2) {
+    throw new Error(`Unknown network chainId: ${chainId}`);
+  }
+  return network2;
+};
+const NetworkBadge$1 = ({ chainId }) => {
+  const network2 = getNetwork(chainId);
+  const chainColor = getNetworkColor(chainId);
+  const chainBGColor = getNetworkBackgroundColor(chainId);
+  return jsxRuntimeExports$1.jsxs(Box, { height: "6", paddingY: "1", paddingLeft: "1.5", paddingRight: "2", gap: "1", style: {
+    background: chainBGColor
+  }, borderRadius: "xs", flexDirection: "row", justifyContent: "center", alignItems: "center", width: "fit", children: [jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "xsmall", style: {
+    color: chainColor
+  }, children: capitalize$1(network2.title ?? network2.name) })] });
+};
+const SequenceLogo$1 = ({ ...props }) => {
+  return jsxRuntimeExports$1.jsx(React.Fragment, { children: jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", style: { fill: "none" }, id: "svg1316", version: "1.1", viewBox: "0 0 396 396", ...props, children: [jsxRuntimeExports$1.jsx("g", { transform: "translate(0,38)", id: "g1256", clipPath: "url(#clip0_5_131)", children: jsxRuntimeExports$1.jsxs("g", { id: "g1254", clipPath: "url(#clip1_5_131)", children: [jsxRuntimeExports$1.jsx("path", { style: { fill: "#111111" }, id: "path1232", d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint0_linear_5_13" }, id: "path1234", d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint1_linear_5_131" }, id: "path1236", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint2_linear_5_131)" }, id: "path1238", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint3_linear_5_131)" }, id: "path1240", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint4_linear_5_131)" }, id: "path1242", d: "m 98.9999,238.126 c 0,-10.965 -8.8648,-19.854 -19.8,-19.854 -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.966 8.8648,19.855 19.8,19.855 10.9352,0 19.8,-8.889 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint5_linear_5_131)" }, id: "path1244", d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint6_linear_5_131)" }, id: "path1246", d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint7_linear_5_131)" }, id: "path1248", d: "M 316.8,59.5632 H 158.4 c -10.935,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.865,19.8544 19.8,19.8544 h 158.4 c 10.935,0 19.8,-8.8892 19.8,-19.8544 0,-10.9653 -8.865,-19.8544 -19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint8_linear_5_131)" }, id: "path1250", d: "M 316.8,218.272 H 158.4 c -10.935,0 -19.8,8.889 -19.8,19.854 0,10.966 8.865,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.889 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint9_linear_5_131)" }, id: "path1252", d: "M 237.6,138.981 H 79.2 c -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.965 8.8648,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.89 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z" })] }) }), jsxRuntimeExports$1.jsxs("defs", { id: "defs1314", children: [jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "318", x2: "198", y1: "4.0585401e-05", x1: "198", id: "paint0_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1258", stopColor: "#1D273D" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1260", stopColor: "#0D0F13", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "63", x2: "92.5", y1: "99", x1: "65.5", id: "paint1_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1263", stopColor: "#4462FE" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1265", stopColor: "#7D69FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "97.591103", x2: "96.137703", y1: "99.291199", x1: "62.879902", id: "paint2_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1268", stopColor: "#3757FD" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1270", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "97.591103", x2: "96.137703", y1: "99.291199", x1: "62.879902", id: "paint3_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1273", stopColor: "#2447FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1275", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "223.5", x2: "91.5", y1: "251.5", x1: "65", id: "paint4_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1278", stopColor: "#BC3EE6" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1280", stopColor: "#D972F1", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "146", x2: "329.5", y1: "172", x1: "305", id: "paint5_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1283", stopColor: "#29BDFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1285", stopColor: "#96E7FB", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "176.772", x2: "334.56699", y1: "178.418", x1: "300.17999", id: "paint6_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1288", stopColor: "#23BBFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1290", stopColor: "#85E7FF", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "60", x2: "317.5", y1: "99", x1: "154.5", id: "paint7_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1293", stopColor: "#23BBFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1295", stopColor: "#85E7FF", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "218", x2: "312.5", y1: "258", x1: "156", id: "paint8_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1298", stopColor: "#2447FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1300", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "139", x2: "235.5", y1: "179", x1: "86.000099", id: "paint9_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1303", stopColor: "#6634FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1305", stopColor: "#9C6DFF", offset: "1" })] }), jsxRuntimeExports$1.jsx("clipPath", { id: "clip0_5_131", children: jsxRuntimeExports$1.jsx("rect", { style: { fill: "#ffffff" }, y: "0", x: "0", id: "rect1308", height: "317.67001", width: "396" }) }), jsxRuntimeExports$1.jsx("clipPath", { id: "clip1_5_131", children: jsxRuntimeExports$1.jsx("rect", { style: { fill: "#ffffff" }, y: "0", x: "0", id: "rect1311", height: "317.67001", width: "396" }) })] })] }) });
+};
+const useProjectAccessKey = () => {
+  const { projectAccessKey: projectAccessKey2 } = useKitConfig();
+  return projectAccessKey2;
+};
+const useAPIClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const { isDev = false } = useKitConfig();
+  const clientUrl = isDev ? "https://dev-api.sequence.app" : "https://api.sequence.app";
+  const apiClient = reactExports.useMemo(() => {
+    return new SequenceAPIClient(clientUrl, projectAccessKey2);
+  }, [projectAccessKey2]);
+  return apiClient;
+};
+const useIndexerClient = (chainId) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const { isDev = false } = useKitConfig();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2, isDev]);
+  const network2 = networks[chainId];
+  const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
+  if (!indexerClients.has(chainId)) {
+    indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
+  }
+  const indexerClient = indexerClients.get(chainId);
+  if (!indexerClient) {
+    throw new Error("Indexer client not found");
+  }
+  return indexerClient;
+};
+const useIndexerClients = (chainIds) => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const { isDev = false } = useKitConfig();
+  const indexerClients = reactExports.useMemo(() => {
+    return /* @__PURE__ */ new Map();
+  }, [projectAccessKey2, isDev]);
+  const result = /* @__PURE__ */ new Map();
+  for (const chainId of chainIds) {
+    const network2 = networks[chainId];
+    const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
+    if (!indexerClients.has(chainId)) {
+      indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
+    }
+    const indexerClient = indexerClients.get(chainId);
+    if (!indexerClient) {
+      throw new Error("Indexer client not found");
+    }
+    result.set(chainId, indexerClient);
+  }
+  return result;
+};
+const useMetadataClient = () => {
+  const projectAccessKey2 = useProjectAccessKey();
+  const { isDev = false } = useKitConfig();
+  const metadataClient = reactExports.useMemo(() => {
+    const clientUrl = isDev ? "https://dev-metadata.sequence.app" : "https://metadata.sequence.app";
+    return new SequenceMetadata(clientUrl, projectAccessKey2);
+  }, [projectAccessKey2]);
+  return metadataClient;
+};
+const time$1 = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
+};
+const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
+  const res = await indexerClient.getEtherBalance({ accountAddress });
+  const tokenBalance = {
+    chainId,
+    contractAddress: zeroAddress,
+    accountAddress,
+    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
+    contractType: ContractType$1.UNKNOWN,
+    blockHash: "",
+    blockNumber: 0,
+    tokenID: ""
+  };
+  return tokenBalance;
+};
+const getTokenBalances = async (indexerClient, args) => {
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    includeMetadata: args.includeMetadata ?? true,
+    metadataOptions: {
+      verifiedOnly: args.verifiedOnly ?? true
+    },
+    ...args.contractAddress && { contractAddress: args.contractAddress }
+  });
+  return (res == null ? void 0 : res.balances) || [];
+};
+const getBalances = async (indexerClient, chainId, args) => {
+  if (!args.accountAddress) {
+    return [];
+  }
+  const balances = (await Promise.allSettled([
+    getNativeTokenBalance(indexerClient, chainId, args.accountAddress),
+    getTokenBalances(indexerClient, args)
+  ])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
+  return balances;
+};
+const useBalances = ({ chainIds, ...args }) => {
+  const indexerClients = useIndexerClients(chainIds);
+  return useQuery$1({
+    queryKey: ["balances", chainIds, args],
+    queryFn: async () => {
+      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
+      return res;
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const useCoinBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["coinBalance", args],
+    queryFn: async () => {
+      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
+        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
+        return res;
+      } else {
+        const res = await getTokenBalances(indexerClient, args);
+        return res[0];
+      }
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
+const useCollectibleBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectibleBalance", args],
+    queryFn: async () => {
+      const res = await indexerClient.getTokenBalances({
+        accountAddress: args.accountAddress,
+        contractAddress: args.contractAddress,
+        tokenID: args.tokenId,
+        includeMetadata: true,
+        metadataOptions: {
+          verifiedOnly: args.verifiedOnly ?? true
+        }
+      });
+      return res.balances[0];
+    },
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
+  });
+};
+const getCollectionBalance = async (indexerClient, args) => {
+  const res = await indexerClient.getTokenBalances({
+    accountAddress: args.accountAddress,
+    contractAddress: args.contractAddress,
+    includeMetadata: args.includeMetadata ?? true,
+    metadataOptions: {
+      verifiedOnly: args.verifiedOnly ?? true
+    }
+  });
+  return (res == null ? void 0 : res.balances) || [];
+};
+const useCollectionBalance = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useQuery$1({
+    queryKey: ["collectionBalance", args],
+    queryFn: () => getCollectionBalance(indexerClient, args),
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
+  });
+};
+const useExchangeRate = (toCurrency) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["exchangeRate", toCurrency],
+    queryFn: async () => {
+      if (toCurrency === "USD") {
+        return 1;
+      }
+      const res = await apiClient.getExchangeRate({ toCurrency });
+      return res.exchangeRate.value;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10
+  });
+};
+const getCoinPrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCoinPrices({ tokens });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCoinPrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["coinPrices", tokens],
+    queryFn: () => getCoinPrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const getCollectiblePrices = async (apiClient, tokens) => {
+  if (tokens.length === 0) {
+    return [];
+  }
+  const res = await apiClient.getCollectiblePrices({ tokens });
+  return (res == null ? void 0 : res.tokenPrices) || [];
+};
+const useCollectiblePrices = (tokens) => {
+  const apiClient = useAPIClient();
+  return useQuery$1({
+    queryKey: ["useCollectiblePrices", tokens],
+    queryFn: () => getCollectiblePrices(apiClient, tokens),
+    retry: true,
+    staleTime: time$1.oneMinute,
+    enabled: tokens.length > 0
+  });
+};
+const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
+    queryFn: async () => {
+      const res = await metadataClient.getTokenMetadata({
+        chainID: String(chainId),
+        contractAddress,
+        tokenIDs: tokenIds
+      });
+      return res.tokenMetadata;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const useContractInfo = (chainId, contractAddress) => {
+  const metadataClient = useMetadataClient();
+  return useQuery$1({
+    queryKey: ["contractInfo", chainId, contractAddress],
+    queryFn: async () => {
+      const res = await metadataClient.getContractInfo({
+        chainID: String(chainId),
+        contractAddress
+      });
+      return res.contractInfo;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 10,
+    enabled: !!chainId && !!contractAddress
+  });
+};
+const getTransactionHistory = async (indexerClient, { contractAddress, accountAddress, tokenId, page }) => {
+  const res = indexerClient.getTransactionHistory({
+    includeMetadata: true,
+    page,
+    filter: {
+      accountAddress,
+      contractAddress,
+      tokenID: tokenId
+    }
+  });
+  return res;
+};
+const useTransactionHistory = (args) => {
+  const indexerClient = useIndexerClient(args.chainId);
+  return useInfiniteQuery({
+    queryKey: ["transactionHistory", args],
+    queryFn: ({ pageParam }) => {
+      return getTransactionHistory(indexerClient, {
+        ...args,
+        page: { page: pageParam }
+      });
+    },
+    getNextPageParam: ({ page }) => {
+      if (!page.more) {
+        return void 0;
+      }
+      return (page == null ? void 0 : page.page) || 1;
+    },
+    initialPageParam: 1,
+    retry: true,
+    staleTime: time$1.oneSecond * 30,
+    enabled: !!args.chainId && !!args.accountAddress
+  });
+};
+const nativeTokenInfos = {
+  [ChainId.MAINNET]: {
+    name: "Ethereum",
+    symbol: "ETH",
+    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
+    decimals: 18,
+    blockExplorerName: "Etherscan",
+    blockExplorerUrl: "https://etherscan.io"
+  },
+  [ChainId.GOERLI]: {
+    name: "Goerli",
+    symbol: "ETH",
+    decimals: 18,
+    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
+    blockExplorerName: "Etherscan (Goerli)",
+    blockExplorerUrl: "https://goerli.etherscan.io"
+  },
+  [ChainId.OPTIMISM]: {
+    name: "Optimism",
+    symbol: "OP",
+    logoURI: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
+    decimals: 18,
+    blockExplorerName: "Etherscan (Optimism)",
+    blockExplorerUrl: "https://optimistic.etherscan.io"
+  },
+  [ChainId.BSC]: {
+    name: "BNB",
+    symbol: "BNB",
+    logoURI: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png",
+    decimals: 18,
+    blockExplorerName: "BscScan",
+    blockExplorerUrl: "https://bscscan.com"
+  },
+  [ChainId.GNOSIS]: {
+    name: "Gnosis",
+    symbol: "GNO",
+    logoURI: "https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png",
+    decimals: 18,
+    blockExplorerUrl: "https://gnosisscan.io",
+    blockExplorerName: "Gnosis Scan"
+  },
+  [ChainId.POLYGON]: {
+    name: "Polygon",
+    symbol: "MATIC",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "Polyscan",
+    blockExplorerUrl: "https://polygonscan.com"
+  },
+  [ChainId.POLYGON_ZKEVM]: {
+    name: "Polygon zkEVM",
+    symbol: "ETH",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "PolygonScan",
+    blockExplorerUrl: "https://zkevm.polygonscan.com"
+  },
+  [ChainId.ARBITRUM]: {
+    name: "Arbitrum",
+    symbol: "ARB",
+    logoURI: "https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png",
+    decimals: 18,
+    blockExplorerName: "Arbiscan",
+    blockExplorerUrl: "https://arbiscan.io"
+  },
+  [ChainId.AVALANCHE]: {
+    name: "Avalanche",
+    symbol: "AVAX",
+    logoURI: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png",
+    decimals: 18,
+    blockExplorerName: "Snowtrace",
+    blockExplorerUrl: "https://snowtrace.io"
+  },
+  [ChainId.POLYGON_MUMBAI]: {
+    name: "Mumbai",
+    symbol: "MATIC",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "Polyscan (Mumbai)",
+    blockExplorerUrl: "https://mumbai.polygonscan.com"
+  },
+  [ChainId.POLYGON_AMOY]: {
+    name: "Amoy",
+    symbol: "MATIC",
+    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
+    decimals: 18,
+    blockExplorerName: "Polyscan (Amoy)",
+    blockExplorerUrl: "https://amoy.polygonscan.com"
+  }
+};
+const defaultNativeTokenInfo = (chainId, wagmiChains) => {
+  var _a2, _b2;
+  const foundChain = wagmiChains.find((chain) => chain.id === chainId);
+  if (foundChain) {
+    return {
+      name: foundChain.nativeCurrency.name,
+      symbol: foundChain.nativeCurrency.symbol,
+      decimals: foundChain.nativeCurrency.decimals,
+      logoURI: nativeTokenInfos[ChainId.MAINNET].logoURI,
+      blockExplorerName: (_a2 = foundChain.blockExplorers) == null ? void 0 : _a2.default.name,
+      blockExplorerUrl: (_b2 = foundChain.blockExplorers) == null ? void 0 : _b2.default.url
+    };
+  }
+  return;
+};
+const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
+  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[ChainId.MAINNET];
+};
 var utils = {};
 const require$$0$2 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$b);
 const require$$1 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$f);
@@ -82596,1541 +83482,20 @@ const require$$20 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$2);
     return strings_2.Utf8ErrorReason;
   } });
 })(utils);
-function _extends$5() {
-  _extends$5 = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$5.apply(this, arguments);
-}
-let LocalStorageKey = /* @__PURE__ */ function(LocalStorageKey2) {
-  LocalStorageKey2["Settings"] = "@kit.settings";
-  LocalStorageKey2["Theme"] = "@kit.theme";
-  LocalStorageKey2["EthAuthProof"] = "@kit.ethAuthProof";
-  LocalStorageKey2["EthAuthSettings"] = "@kit.ethAuthSettings";
-  LocalStorageKey2["WaasGoogleClientID"] = "@kit.waasGoogleClientId";
-  LocalStorageKey2["WaasGoogleIdToken"] = "@kit.waasGoogleIdToken";
-  LocalStorageKey2["WaasAppleClientID"] = "@kit.waasAppleClientId";
-  LocalStorageKey2["WaasAppleRedirectURI"] = "@kit.waasAppleRedirectURI";
-  LocalStorageKey2["WaasAppleIdToken"] = "@kit.waasAppleIdToken";
-  LocalStorageKey2["WaasSessionHash"] = "@kit.waasSessionHash";
-  LocalStorageKey2["WaasActiveLoginType"] = "@kit.waasActiveLoginType";
-  LocalStorageKey2["WaasEmailIdToken"] = "@kit.waasEmailIdToken";
-  return LocalStorageKey2;
-}({});
-const defaultSignInOptions = {
-  showEmailInput: true,
-  walletAuthOptions: ["sequence", "sequence-waas", "metamask", "wallet-connect", "coinbase-wallet"],
-  socialAuthOptions: ["google", "facebook", "twitch", "apple", "google-waas", "apple-waas"]
-};
-const DEFAULT_SESSION_EXPIRATION = 60 * 60 * 24 * 7;
-const createGenericContext$2 = () => {
-  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
-  const useGenericContext = () => {
-    const contextIsDefined = reactExports.useContext(genericContext);
-    if (!contextIsDefined) {
-      throw new Error("useGenericContext must be used within a Provider");
-    }
-    return contextIsDefined;
-  };
-  return [useGenericContext, genericContext.Provider];
-};
-const [useAnalyticsContext, AnalyticsContextProvider] = createGenericContext$2();
-const [useConnectModalContext, ConnectModalContextProvider] = createGenericContext$2();
-const [useKitConfig, KitConfigContextProvider] = createGenericContext$2();
-const [useThemeContext, ThemeContextProvider] = createGenericContext$2();
-const [useWalletConfigContext, WalletConfigContextProvider] = createGenericContext$2();
-const useStorage = () => {
-  const config2 = useConfig();
-  if (!config2.storage) {
-    return null;
-  }
-  return config2.storage;
-};
-const useStorageItem = (key2) => {
-  const storage = useStorage();
-  return useQuery$1({
-    queryKey: ["storage", key2],
-    queryFn: async () => {
-      return storage == null ? void 0 : storage.getItem(key2);
-    },
-    retry: true,
-    enabled: !!storage
-  });
-};
-class Deferred {
-  constructor() {
-    this._resolve = () => {
-    };
-    this._reject = () => {
-    };
-    this._promise = new Promise((resolve, reject) => {
-      this._reject = reject;
-      this._resolve = resolve;
-    });
-  }
-  get promise() {
-    return this._promise;
-  }
-  resolve(value) {
-    this._resolve(value);
-  }
-  reject(value) {
-    this._reject(value);
-  }
-}
-let _pendingConfirmation;
-function useWaasConfirmationHandler(waasConnector) {
-  const [pendingRequestConfirmation, setPendingRequestConfirmation] = reactExports.useState();
-  function confirmPendingRequest(id2) {
-    var _pendingConfirmation2;
-    (_pendingConfirmation2 = _pendingConfirmation) == null || _pendingConfirmation2.resolve({
-      id: id2,
-      confirmed: true
-    });
-    setPendingRequestConfirmation(void 0);
-    _pendingConfirmation = void 0;
-  }
-  function rejectPendingRequest(id2) {
-    var _pendingConfirmation3;
-    (_pendingConfirmation3 = _pendingConfirmation) == null || _pendingConfirmation3.resolve({
-      id: id2,
-      confirmed: false
-    });
-    setPendingRequestConfirmation(void 0);
-    _pendingConfirmation = void 0;
-  }
-  reactExports.useEffect(() => {
-    async function setup() {
-      if (!waasConnector) {
-        return;
-      }
-      const waasProvider = waasConnector.sequenceWaasProvider;
-      if (!waasProvider) {
-        return;
-      }
-      waasProvider.requestConfirmationHandler = {
-        confirmSignTransactionRequest(id2, txs, chainId) {
-          const pending = new Deferred();
-          setPendingRequestConfirmation({
-            id: id2,
-            type: "signTransaction",
-            txs: Array.isArray(txs) ? txs : [txs],
-            chainId
-          });
-          _pendingConfirmation = pending;
-          return pending.promise;
-        },
-        confirmSignMessageRequest(id2, message, chainId) {
-          const pending = new Deferred();
-          setPendingRequestConfirmation({
-            id: id2,
-            type: "signMessage",
-            message,
-            chainId
-          });
-          _pendingConfirmation = pending;
-          return pending.promise;
-        }
-      };
-    }
-    setup();
-  });
-  return [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest];
-}
-const getModalPositionCss = (position) => {
-  switch (position) {
-    case "top-right":
-      return {
-        top: "0px",
-        right: "0px"
-      };
-    case "top-left":
-      return {
-        top: "0px",
-        left: "0px"
-      };
-    case "top-center":
-      return {
-        top: "0px"
-      };
-    case "bottom-right":
-      return {
-        bottom: "0px",
-        right: "0px"
-      };
-    case "bottom-left":
-      return {
-        bottom: "0px",
-        left: "0px"
-      };
-    case "bottom-center":
-      return {
-        bottom: "0px"
-      };
-    case "middle-right":
-      return {
-        right: "0px"
-      };
-    case "middle-left":
-      return {
-        left: "0px"
-      };
-    case "center":
-    default:
-      return {};
-  }
-};
-function useEmailAuth({
-  connector,
-  onSuccess
-}) {
-  if (!connector) {
-    return {
-      inProgress: false,
-      loading: false,
-      error: void 0,
-      initiateAuth: async (_email) => {
-      },
-      sendChallengeAnswer: async (_answer) => {
-      }
-    };
-  }
-  const [email2, setEmail] = reactExports.useState("");
-  const [error, setError] = reactExports.useState();
-  const [loading, setLoading] = reactExports.useState(false);
-  const [instance, setInstance] = reactExports.useState("");
-  const initiateAuth = async (email3) => {
-    setLoading(true);
-    try {
-      var _connectorAny$sequenc;
-      const connectorAny = connector;
-      const {
-        instance: instance2
-      } = await ((_connectorAny$sequenc = connectorAny.sequenceWaas) == null ? void 0 : _connectorAny$sequenc.email.initiateAuth({
-        email: email3
-      }));
-      setInstance(instance2);
-      setEmail(email3);
-    } catch (e2) {
-      setError(e2.message || "Unknown error");
-    } finally {
-      setLoading(false);
-    }
-  };
-  const sendChallengeAnswer = async (answer) => {
-    setLoading(true);
-    try {
-      var _connectorAny$sequenc2, _connectorAny$sequenc3;
-      const connectorAny = connector;
-      const sessionHash = await ((_connectorAny$sequenc2 = connectorAny.sequenceWaas) == null ? void 0 : _connectorAny$sequenc2.getSessionHash());
-      const {
-        idToken
-      } = await ((_connectorAny$sequenc3 = connectorAny.sequenceWaas) == null ? void 0 : _connectorAny$sequenc3.email.finalizeAuth({
-        instance,
-        answer,
-        email: email2,
-        sessionHash
-      }));
-      onSuccess(idToken);
-    } catch (e2) {
-      setError(e2.message || "Unknown error");
-      setLoading(false);
-    }
-  };
-  return {
-    inProgress: loading || !!instance,
-    loading,
-    error,
-    initiateAuth,
-    sendChallengeAnswer: instance ? sendChallengeAnswer : void 0
-  };
-}
-const isEmailValid = (email2) => {
-  return /^\S+@\S+\.\S{2,}$/.test(email2);
-};
-const compareAddress$2 = (a2, b2) => {
-  return a2.toLowerCase() === b2.toLowerCase();
-};
-const capitalize$1 = (word) => {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-};
-const Banner = ({
-  config: _config = {}
-}) => {
-  const {
-    signIn: signIn3 = {}
-  } = _config;
-  const {
-    logoUrl
-  } = signIn3;
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, logoUrl && /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "5",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    src: logoUrl,
-    style: {
-      height: "110px"
-    }
-  })));
-};
-const ExtendedWalletList = ({
-  onConnect,
-  connectors
-}) => {
-  const {
-    theme
-  } = useTheme$1();
-  const {
-    isPending
-  } = useConnect();
-  return /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    marginTop: "5"
-  }, connectors.map((connector) => {
-    const Logo = theme === "dark" ? connector._wallet.logoDark : connector._wallet.logoLight;
-    const walletName = connector._wallet.name;
-    const connectorId = connector._wallet.id;
-    return /* @__PURE__ */ React.createElement(Button, {
-      key: connectorId,
-      width: "full",
-      shape: "square",
-      leftIcon: () => /* @__PURE__ */ React.createElement(Box, {
-        justifyContent: "center",
-        alignItems: "center",
-        style: {
-          backgroundColor: connector._wallet.iconBackground
-        },
-        width: "8",
-        height: "8",
-        overflow: "hidden"
-      }, /* @__PURE__ */ React.createElement(Logo, {
-        style: {
-          width: 30
-        }
-      })),
-      onClick: () => onConnect(connector),
-      label: /* @__PURE__ */ React.createElement(Text, null, walletName, isPending)
-    });
-  }));
-};
-const ConnectWalletContent = (props) => {
-  dist.useScript(dist.appleAuthHelpers.APPLE_SCRIPT_SRC);
-  const storage = useStorage();
-  const {
-    isConnected
-  } = useAccount();
-  const {
-    config: config2 = {}
-  } = props;
-  const {
-    signIn: signIn3 = {}
-  } = config2;
-  const {
-    showEmailInput = defaultSignInOptions.showEmailInput,
-    socialAuthOptions = defaultSignInOptions.socialAuthOptions,
-    walletAuthOptions = defaultSignInOptions.walletAuthOptions
-  } = signIn3;
-  const {
-    openConnectModal,
-    setOpenConnectModal
-  } = props;
-  const [email2, setEmail] = reactExports.useState("");
-  const [showEmailWaasPinInput, setShowEmailWaasPinInput] = reactExports.useState(false);
-  const [waasEmailPinCode, setWaasEmailPinCode] = reactExports.useState([]);
-  const {
-    connectors: baseConnectors,
-    connect: connect2
-  } = useConnect();
-  const injectedConnectors = baseConnectors.filter((c2) => c2.type === "injected" && !c2.hasOwnProperty("_wallet")).map((connector) => {
-    const Logo = (props2) => {
-      return /* @__PURE__ */ React.createElement(Image$1, _extends$5({
-        src: connector.icon,
-        alt: connector.name,
-        disableAnimation: true
-      }, props2));
-    };
-    return _extends$5({}, connector, {
-      _wallet: {
-        id: connector.id,
-        name: connector.name,
-        logoLight: Logo,
-        logoDark: Logo
-      }
-    });
-  });
-  const connectors = baseConnectors.filter((c2) => !!(c2 != null && c2._wallet));
-  const [showExtendedList, setShowExtendedList] = reactExports.useState(false);
-  const mockConnector = connectors.find((connector) => {
-    return connector._wallet.id === "mock";
-  });
-  const emailConnector = connectors.find((c2) => c2._wallet.id.includes("email"));
-  const walletConnectors = [...connectors.filter((connector) => {
-    const foundOption = walletAuthOptions.find((authOption) => authOption === connector._wallet.id) && !injectedConnectors.some((injected2) => injected2.name === connector.name);
-    return !!foundOption;
-  }).sort((a2, b2) => {
-    return walletAuthOptions.indexOf(a2._wallet.id) - walletAuthOptions.indexOf(b2._wallet.id);
-  }), ...injectedConnectors];
-  const socialAuthConnectors = connectors.filter((connector) => {
-    const foundOption = socialAuthOptions.find((authOption) => authOption === connector._wallet.id);
-    return !!foundOption;
-  }).sort((a2, b2) => {
-    return socialAuthOptions.indexOf(a2._wallet.id) - socialAuthOptions.indexOf(b2._wallet.id);
-  });
-  const displayExtendedListButton = walletConnectors.length > 7;
-  const onChangeEmail = (ev) => {
-    setEmail(ev.target.value);
-  };
-  const {
-    inProgress: emailAuthInProgress,
-    loading: emailAuthLoading,
-    initiateAuth: initiateEmailAuth,
-    sendChallengeAnswer
-  } = useEmailAuth({
-    connector: connectors.find((c2) => c2._wallet.id === "email-waas"),
-    onSuccess: async (idToken) => {
-      storage == null || storage.setItem(LocalStorageKey.WaasEmailIdToken, idToken);
-      if (emailConnector) {
-        connect2({
-          connector: emailConnector
-        });
-      }
-    }
-  });
-  reactExports.useEffect(() => {
-    if (isConnected && openConnectModal) {
-      setOpenConnectModal(false);
-    }
-  }, [isConnected, openConnectModal]);
-  const onConnect = (connector) => {
-    if (signIn3.useMock && mockConnector) {
-      connect2({
-        connector: mockConnector
-      });
-      return;
-    }
-    if (connector._wallet.id === "email") {
-      const email3 = prompt("Auto-email login, please specify the email address:");
-      if ("setEmail" in connector) {
-        connector.setEmail(email3);
-      }
-    }
-    if (connector._wallet.id === "metamask" && typeof window !== "undefined") {
-      var _window;
-      const isMetamaskFound = !!((_window = window) != null && (_window = _window.ethereum) != null && _window._metamask);
-      if (!isMetamaskFound) {
-        window.open("https://metamask.io/download/");
-        return;
-      }
-    }
-    connect2({
-      connector
-    });
-  };
-  const onConnectInlineEmail = async (e2) => {
-    e2.preventDefault();
-    if (signIn3.useMock && mockConnector) {
-      connect2({
-        connector: mockConnector
-      });
-      return;
-    }
-    if (emailConnector) {
-      if ("setEmail" in emailConnector) {
-        emailConnector.setEmail(email2);
-      }
-      if (emailConnector._wallet.id === "email-waas") {
-        try {
-          await initiateEmailAuth(email2);
-          setShowEmailWaasPinInput(true);
-        } catch (e3) {
-          console.log(e3);
-        }
-      } else {
-        connect2({
-          connector: emailConnector
-        });
-      }
-    }
-  };
-  if (showEmailWaasPinInput) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Box, {
-      paddingY: "6",
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "column"
-    }, /* @__PURE__ */ React.createElement(Text, {
-      marginTop: "5",
-      marginBottom: "4",
-      variant: "normal",
-      color: "text80"
-    }, "Enter code received in email."), /* @__PURE__ */ React.createElement(PINCodeInput, {
-      value: waasEmailPinCode,
-      digits: 6,
-      onChange: setWaasEmailPinCode
-    }), /* @__PURE__ */ React.createElement(Box, {
-      gap: "2",
-      marginY: "4",
-      alignItems: "center",
-      justifyContent: "center",
-      style: {
-        height: "44px"
-      }
-    }, emailAuthLoading ? /* @__PURE__ */ React.createElement(Spinner, null) : /* @__PURE__ */ React.createElement(Button, {
-      variant: "primary",
-      disabled: waasEmailPinCode.includes(""),
-      label: "Verify",
-      onClick: () => sendChallengeAnswer == null ? void 0 : sendChallengeAnswer(waasEmailPinCode.join("")),
-      "data-id": "verifyButton"
-    }))));
-  }
-  if (showExtendedList) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Box, {
-      position: "absolute",
-      top: "4"
-    }, /* @__PURE__ */ React.createElement(IconButton, {
-      icon: SvgChevronLeftIcon,
-      onClick: () => setShowExtendedList(false),
-      size: "xs"
-    })), /* @__PURE__ */ React.createElement(ExtendedWalletList, {
-      connectors: walletConnectors,
-      onConnect
-    }));
-  }
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Banner, {
-    config: config2
-  }), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "6"
-  }, emailConnector && showEmailInput && /* @__PURE__ */ React.createElement("form", {
-    onSubmit: onConnectInlineEmail
-  }, /* @__PURE__ */ React.createElement(TextInput, {
-    onChange: onChangeEmail,
-    value: email2,
-    name: "email",
-    placeholder: "Enter email",
-    "data-1p-ignore": true
-  }), /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "4"
-  }, !emailAuthInProgress && /* @__PURE__ */ React.createElement(Button, {
-    type: "submit",
-    disabled: !isEmailValid(email2),
-    width: "full",
-    label: "Continue",
-    rightIcon: SvgChevronRightIcon
-  }), emailAuthInProgress && /* @__PURE__ */ React.createElement(Spinner, null))), socialAuthConnectors.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, emailConnector && showEmailInput && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Divider, {
-    color: "backgroundSecondary"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "small",
-    color: "text50"
-  }, "or sign in via"))), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    gap: "2",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap"
-  }, socialAuthConnectors.map((connector) => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      key: connector.uid,
-      aspectRatio: "1/1",
-      alignItems: "center",
-      justifyContent: "center"
-    }, connector._wallet.id === "google-waas" && /* @__PURE__ */ React.createElement(GoogleWaasConnectButton, {
-      connector,
-      onConnect
-    }), connector._wallet.id === "apple-waas" && /* @__PURE__ */ React.createElement(AppleWaasConnectButton, {
-      connector,
-      onConnect
-    }), !connector._wallet.id.includes("waas") && /* @__PURE__ */ React.createElement(ConnectButton, {
-      connector,
-      onConnect
-    }));
-  }))), walletConnectors.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, (emailConnector && showEmailInput || socialAuthConnectors.length > 0) && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Divider, {
-    color: "backgroundSecondary"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "small",
-    color: "text50"
-  }, "or select a wallet"))), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    gap: "2",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  }, walletConnectors.slice(0, 7).map((connector) => /* @__PURE__ */ React.createElement(ConnectButton, {
-    key: connector.uid,
-    connector,
-    onConnect
-  }))), displayExtendedListButton && /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "4",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Button, {
-    shape: "square",
-    size: "xs",
-    onClick: () => setShowExtendedList(true),
-    label: "More options",
-    rightIcon: SvgChevronRightIcon
-  })))));
-};
-const ConnectButton = (props) => {
-  const {
-    connector,
-    label,
-    onConnect
-  } = props;
-  const {
-    theme
-  } = useTheme$1();
-  const walletProps = connector._wallet;
-  const Logo = getLogo(theme, walletProps);
-  return /* @__PURE__ */ React.createElement(Tooltip, {
-    message: label || walletProps.name
-  }, /* @__PURE__ */ React.createElement(Card, {
-    clickable: true,
-    width: "10",
-    height: "10",
-    padding: "2",
-    borderRadius: "xs",
-    justifyContent: "center",
-    alignItems: "center",
-    onClick: () => onConnect(connector)
-  }, /* @__PURE__ */ React.createElement(Box, {
-    as: Logo,
-    width: "6",
-    height: "6"
-  })));
-};
-const GoogleWaasConnectButton = (props) => {
-  const {
-    connector,
-    onConnect
-  } = props;
-  const storage = useStorage();
-  const {
-    data: sessionHash,
-    isPending: isPendingNonce
-  } = useStorageItem(LocalStorageKey.WaasSessionHash);
-  const [enableGoogleTooltip, setEnableGoogleTooltip] = reactExports.useState(false);
-  const {
-    theme
-  } = useTheme$1();
-  const walletProps = connector._wallet;
-  const Logo = getLogo(theme, walletProps);
-  reactExports.useEffect(() => {
-    setTimeout(() => {
-      setEnableGoogleTooltip(true);
-    }, 300);
-  });
-  return !isPendingNonce ? /* @__PURE__ */ React.createElement(Tooltip, {
-    message: "Google",
-    disabled: !enableGoogleTooltip
-  }, /* @__PURE__ */ React.createElement(Card, {
-    clickable: true,
-    background: "transparent",
-    borderRadius: "xs",
-    padding: "0",
-    width: "10",
-    height: "10",
-    position: "relative"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "10",
-    height: "10",
-    overflow: "hidden",
-    borderRadius: "sm",
-    alignItems: "center",
-    justifyContent: "center",
-    style: {
-      opacity: 1e-7
-    }
-  }, /* @__PURE__ */ React.createElement(GoogleLogin, {
-    type: "icon",
-    size: "large",
-    width: 40,
-    nonce: sessionHash,
-    onSuccess: (credentialResponse) => {
-      if (credentialResponse.credential) {
-        console.log(credentialResponse);
-        storage == null || storage.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential);
-        onConnect(connector);
-      }
-    },
-    onError: () => {
-      console.log("Login Failed");
-    }
-  })), /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundSecondary",
-    borderRadius: "xs",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    pointerEvents: "none",
-    width: "10",
-    height: "10",
-    top: "0",
-    right: "0"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    as: Logo,
-    width: "6",
-    height: "6"
-  })))) : null;
-};
-const AppleWaasConnectButton = (props) => {
-  const {
-    connector,
-    onConnect
-  } = props;
-  const storage = useStorage();
-  const {
-    data: sessionHash,
-    isPending: isPendingNonce
-  } = useStorageItem(LocalStorageKey.WaasSessionHash);
-  const {
-    data: appleClientId2
-  } = useStorageItem(LocalStorageKey.WaasAppleClientID);
-  const {
-    data: appleRedirectUri
-  } = useStorageItem(LocalStorageKey.WaasAppleRedirectURI);
-  return !isPendingNonce && appleClientId2 && appleRedirectUri ? /* @__PURE__ */ React.createElement(ConnectButton, {
-    connector,
-    onConnect: () => {
-      dist.appleAuthHelpers.signIn({
-        authOptions: {
-          clientId: appleClientId2,
-          redirectURI: appleRedirectUri,
-          nonce: sessionHash,
-          scope: "openid email",
-          usePopup: true
-        },
-        onSuccess: (response) => {
-          var _response$authorizati;
-          if ((_response$authorizati = response.authorization) != null && _response$authorizati.id_token) {
-            storage == null || storage.setItem(LocalStorageKey.WaasAppleIdToken, response.authorization.id_token);
-            onConnect(connector);
-          } else {
-            console.log("Apple login error: No id_token found");
-          }
-        },
-        onError: (error) => console.error(error)
-      });
-    }
-  }) : null;
-};
-const getLogo = (theme, walletProps) => theme === "dark" ? walletProps.logoDark || walletProps.monochromeLogoDark : walletProps.logoLight || walletProps.monochromeLogoLight;
-const getNetworkColor = (chainId, mode = "light") => {
-  switch (chainId) {
-    case ChainId.MAINNET:
-      return mode === "light" ? "#abf" : "#abf";
-    case ChainId.POLYGON:
-      return mode === "light" ? "#c7a6ff" : "#c7a6ff";
-    case ChainId.ARBITRUM:
-      return mode === "light" ? "#52A7E6" : "#52A7E6";
-    case ChainId.OPTIMISM:
-      return mode === "light" ? "#DB3132" : "#DB3132";
-    case ChainId.BSC:
-      return mode === "light" ? "#CB9C1D" : "#EEB445";
-    case ChainId.AVALANCHE:
-      return mode === "light" ? "#E84142" : "#E84142";
-    case ChainId.GNOSIS:
-      return mode === "light" ? "#00193C" : "#D8E8FF";
-    case ChainId.GOERLI:
-      return mode === "light" ? "#A77A00" : "#FFA700";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
-      return mode === "light" ? "#D68828" : "#FFA700";
-    default:
-      return mode === "light" ? "#abf" : "#abf";
-  }
-};
-const getNetworkBackgroundColor = (chainId, mode = "light") => {
-  switch (chainId) {
-    case ChainId.MAINNET:
-      return mode === "light" ? "#132362" : "#132362";
-    case ChainId.POLYGON:
-      return mode === "light" ? "#350881" : "#350881";
-    case ChainId.ARBITRUM:
-      return mode === "light" ? "#EDF7FF" : "#0C3754";
-    case ChainId.OPTIMISM:
-      return mode === "light" ? "#FFEAE9" : "#390B0C";
-    case ChainId.BSC:
-      return mode === "light" ? "#FFE8AB" : "#554018";
-    case ChainId.AVALANCHE:
-      return mode === "light" ? "#FBDFDF" : "#390B0C";
-    case ChainId.GNOSIS:
-      return mode === "light" ? "#D8E8FF" : "#00193C";
-    case ChainId.GOERLI:
-      return mode === "light" ? "#FFD871" : "#554018";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
-      return mode === "light" ? "#FFE8CD" : "#554018";
-    default:
-      return mode === "light" ? "#132362" : "#132362";
-  }
-};
-const getNetwork = (chainId) => {
-  const network2 = networks[chainId];
-  if (!network2) {
-    throw new Error(`Unknown network chainId: ${chainId}`);
-  }
-  return network2;
-};
-const NetworkBadge$1 = ({
-  chainId
-}) => {
-  var _network$title;
-  const network2 = getNetwork(chainId);
-  const chainColor = getNetworkColor(chainId);
-  const chainBGColor = getNetworkBackgroundColor(chainId);
-  return /* @__PURE__ */ React.createElement(Box, {
-    height: "6",
-    paddingY: "1",
-    paddingLeft: "1.5",
-    paddingRight: "2",
-    gap: "1",
-    style: {
-      background: chainBGColor
-    },
-    borderRadius: "xs",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "fit"
-  }, /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    fontSize: "xsmall",
-    style: {
-      color: chainColor
-    }
-  }, capitalize$1((_network$title = network2.title) != null ? _network$title : network2.name)));
-};
-function _objectDestructuringEmpty(obj) {
-  if (obj == null)
-    throw new TypeError("Cannot destructure " + obj);
-}
-const SequenceLogo$1 = (_ref) => {
-  let props = _extends$5({}, (_objectDestructuringEmpty(_ref), _ref));
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("svg", _extends$5({
-    xmlns: "http://www.w3.org/2000/svg",
-    style: {
-      fill: "none"
-    },
-    id: "svg1316",
-    version: "1.1",
-    viewBox: "0 0 396 396"
-  }, props), /* @__PURE__ */ React.createElement("g", {
-    transform: "translate(0,38)",
-    id: "g1256",
-    clipPath: "url(#clip0_5_131)"
-  }, /* @__PURE__ */ React.createElement("g", {
-    id: "g1254",
-    clipPath: "url(#clip1_5_131)"
-  }, /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "#111111"
-    },
-    id: "path1232",
-    d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint0_linear_5_13"
-    },
-    id: "path1234",
-    d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint1_linear_5_131"
-    },
-    id: "path1236",
-    d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint2_linear_5_131)"
-    },
-    id: "path1238",
-    d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint3_linear_5_131)"
-    },
-    id: "path1240",
-    d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint4_linear_5_131)"
-    },
-    id: "path1242",
-    d: "m 98.9999,238.126 c 0,-10.965 -8.8648,-19.854 -19.8,-19.854 -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.966 8.8648,19.855 19.8,19.855 10.9352,0 19.8,-8.889 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint5_linear_5_131)"
-    },
-    id: "path1244",
-    d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint6_linear_5_131)"
-    },
-    id: "path1246",
-    d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint7_linear_5_131)"
-    },
-    id: "path1248",
-    d: "M 316.8,59.5632 H 158.4 c -10.935,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.865,19.8544 19.8,19.8544 h 158.4 c 10.935,0 19.8,-8.8892 19.8,-19.8544 0,-10.9653 -8.865,-19.8544 -19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint8_linear_5_131)"
-    },
-    id: "path1250",
-    d: "M 316.8,218.272 H 158.4 c -10.935,0 -19.8,8.889 -19.8,19.854 0,10.966 8.865,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.889 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint9_linear_5_131)"
-    },
-    id: "path1252",
-    d: "M 237.6,138.981 H 79.2 c -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.965 8.8648,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.89 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }))), /* @__PURE__ */ React.createElement("defs", {
-    id: "defs1314"
-  }, /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "318",
-    x2: "198",
-    y1: "4.0585401e-05",
-    x1: "198",
-    id: "paint0_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1258",
-    stopColor: "#1D273D"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1260",
-    stopColor: "#0D0F13",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "63",
-    x2: "92.5",
-    y1: "99",
-    x1: "65.5",
-    id: "paint1_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1263",
-    stopColor: "#4462FE"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1265",
-    stopColor: "#7D69FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "97.591103",
-    x2: "96.137703",
-    y1: "99.291199",
-    x1: "62.879902",
-    id: "paint2_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1268",
-    stopColor: "#3757FD"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1270",
-    stopColor: "#6980FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "97.591103",
-    x2: "96.137703",
-    y1: "99.291199",
-    x1: "62.879902",
-    id: "paint3_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1273",
-    stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1275",
-    stopColor: "#6980FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "223.5",
-    x2: "91.5",
-    y1: "251.5",
-    x1: "65",
-    id: "paint4_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1278",
-    stopColor: "#BC3EE6"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1280",
-    stopColor: "#D972F1",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "146",
-    x2: "329.5",
-    y1: "172",
-    x1: "305",
-    id: "paint5_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1283",
-    stopColor: "#29BDFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1285",
-    stopColor: "#96E7FB",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "176.772",
-    x2: "334.56699",
-    y1: "178.418",
-    x1: "300.17999",
-    id: "paint6_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1288",
-    stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1290",
-    stopColor: "#85E7FF",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "60",
-    x2: "317.5",
-    y1: "99",
-    x1: "154.5",
-    id: "paint7_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1293",
-    stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1295",
-    stopColor: "#85E7FF",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "218",
-    x2: "312.5",
-    y1: "258",
-    x1: "156",
-    id: "paint8_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1298",
-    stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1300",
-    stopColor: "#6980FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "139",
-    x2: "235.5",
-    y1: "179",
-    x1: "86.000099",
-    id: "paint9_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1303",
-    stopColor: "#6634FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1305",
-    stopColor: "#9C6DFF",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
-    id: "clip0_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
-    style: {
-      fill: "#ffffff"
-    },
-    y: "0",
-    x: "0",
-    id: "rect1308",
-    height: "317.67001",
-    width: "396"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
-    id: "clip1_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
-    style: {
-      fill: "#ffffff"
-    },
-    y: "0",
-    x: "0",
-    id: "rect1311",
-    height: "317.67001",
-    width: "396"
-  })))));
-};
-function _objectWithoutPropertiesLoose$3(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  for (var key2 in source) {
-    if (Object.prototype.hasOwnProperty.call(source, key2)) {
-      if (excluded.indexOf(key2) >= 0)
-        continue;
-      target[key2] = source[key2];
-    }
-  }
-  return target;
-}
-const useProjectAccessKey = () => {
-  const {
-    projectAccessKey: projectAccessKey2
-  } = useKitConfig();
-  return projectAccessKey2;
-};
-const useAPIClient = () => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const {
-    isDev = false
-  } = useKitConfig();
-  const clientUrl = isDev ? "https://dev-api.sequence.app" : "https://api.sequence.app";
-  const apiClient = reactExports.useMemo(() => {
-    return new SequenceAPIClient(clientUrl, projectAccessKey2);
-  }, [projectAccessKey2]);
-  return apiClient;
-};
-const _excluded$2$1 = ["isDev"];
-const useIndexerClient = (chainId) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const {
-    isDev = false
-  } = useKitConfig();
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2, isDev]);
-  const network2 = networks[chainId];
-  const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
-  if (!indexerClients.has(chainId)) {
-    indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
-  }
-  const indexerClient = indexerClients.get(chainId);
-  if (!indexerClient) {
-    throw new Error("Indexer client not found");
-  }
-  return indexerClient;
-};
-const useIndexerClients = (chainIds) => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const _useKitConfig = useKitConfig(), {
-    isDev = false
-  } = _useKitConfig;
-  _objectWithoutPropertiesLoose$3(_useKitConfig, _excluded$2$1);
-  const indexerClients = reactExports.useMemo(() => {
-    return /* @__PURE__ */ new Map();
-  }, [projectAccessKey2, isDev]);
-  const result = /* @__PURE__ */ new Map();
-  for (const chainId of chainIds) {
-    const network2 = networks[chainId];
-    const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
-    if (!indexerClients.has(chainId)) {
-      indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
-    }
-    const indexerClient = indexerClients.get(chainId);
-    if (!indexerClient) {
-      throw new Error("Indexer client not found");
-    }
-    result.set(chainId, indexerClient);
-  }
-  return result;
-};
-const useMetadataClient = () => {
-  const projectAccessKey2 = useProjectAccessKey();
-  const {
-    isDev = false
-  } = useKitConfig();
-  const metadataClient = reactExports.useMemo(() => {
-    const clientUrl = isDev ? "https://dev-metadata.sequence.app" : "https://metadata.sequence.app";
-    return new SequenceMetadata(clientUrl, projectAccessKey2);
-  }, [projectAccessKey2]);
-  return metadataClient;
-};
-const _excluded$1$2 = ["chainIds"];
-const time$1 = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const getNativeTokenBalance = async (indexerClient, chainId, accountAddress) => {
-  const res = await indexerClient.getEtherBalance({
-    accountAddress
-  });
-  const tokenBalance = {
-    chainId,
-    contractAddress: zeroAddress,
-    accountAddress,
-    balance: (res == null ? void 0 : res.balance.balanceWei) || "0",
-    contractType: ContractType$1.UNKNOWN,
-    blockHash: "",
-    blockNumber: 0,
-    tokenID: ""
-  };
-  return tokenBalance;
-};
-const getTokenBalances = async (indexerClient, args) => {
-  var _args$includeMetadata, _args$verifiedOnly;
-  const res = await indexerClient.getTokenBalances(_extends$5({
-    accountAddress: args.accountAddress,
-    includeMetadata: (_args$includeMetadata = args.includeMetadata) != null ? _args$includeMetadata : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly = args.verifiedOnly) != null ? _args$verifiedOnly : true
-    }
-  }, args.contractAddress && {
-    contractAddress: args.contractAddress
-  }));
-  return (res == null ? void 0 : res.balances) || [];
-};
-const getBalances = async (indexerClient, chainId, args) => {
-  if (!args.accountAddress) {
-    return [];
-  }
-  const balances = (await Promise.allSettled([getNativeTokenBalance(indexerClient, chainId, args.accountAddress), getTokenBalances(indexerClient, args)])).map((res) => res.status === "fulfilled" ? res.value : []).flat();
-  return balances;
-};
-const useBalances = (_ref) => {
-  let {
-    chainIds
-  } = _ref, args = _objectWithoutPropertiesLoose$3(_ref, _excluded$1$2);
-  const indexerClients = useIndexerClients(chainIds);
-  return useQuery$1({
-    queryKey: ["balances", chainIds, args],
-    queryFn: async () => {
-      const res = (await Promise.all(Array.from(indexerClients.entries()).map(([chainId, indexerClient]) => getBalances(indexerClient, chainId, args)))).flat();
-      return res;
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const useCoinBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["coinBalance", args],
-    queryFn: async () => {
-      if (compareAddress$2((args == null ? void 0 : args.contractAddress) || "", zeroAddress)) {
-        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress);
-        return res;
-      } else {
-        const res = await getTokenBalances(indexerClient, args);
-        return res[0];
-      }
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
-};
-const useCollectibleBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectibleBalance", args],
-    queryFn: async () => {
-      var _args$verifiedOnly2;
-      const res = await indexerClient.getTokenBalances({
-        accountAddress: args.accountAddress,
-        contractAddress: args.contractAddress,
-        tokenID: args.tokenId,
-        includeMetadata: true,
-        metadataOptions: {
-          verifiedOnly: (_args$verifiedOnly2 = args.verifiedOnly) != null ? _args$verifiedOnly2 : true
-        }
-      });
-      return res.balances[0];
-    },
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
-  });
-};
-const getCollectionBalance = async (indexerClient, args) => {
-  var _args$includeMetadata2, _args$verifiedOnly3;
-  const res = await indexerClient.getTokenBalances({
-    accountAddress: args.accountAddress,
-    contractAddress: args.contractAddress,
-    includeMetadata: (_args$includeMetadata2 = args.includeMetadata) != null ? _args$includeMetadata2 : true,
-    metadataOptions: {
-      verifiedOnly: (_args$verifiedOnly3 = args.verifiedOnly) != null ? _args$verifiedOnly3 : true
-    }
-  });
-  return (res == null ? void 0 : res.balances) || [];
-};
-const useCollectionBalance = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useQuery$1({
-    queryKey: ["collectionBalance", args],
-    queryFn: () => getCollectionBalance(indexerClient, args),
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
-  });
-};
-const useExchangeRate = (toCurrency) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["exchangeRate", toCurrency],
-    queryFn: async () => {
-      if (toCurrency === "USD") {
-        return 1;
-      }
-      const res = await apiClient.getExchangeRate({
-        toCurrency
-      });
-      return res.exchangeRate.value;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10
-  });
-};
-const getCoinPrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCoinPrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCoinPrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["coinPrices", tokens],
-    queryFn: () => getCoinPrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const getCollectiblePrices = async (apiClient, tokens) => {
-  if (tokens.length === 0) {
-    return [];
-  }
-  const res = await apiClient.getCollectiblePrices({
-    tokens
-  });
-  return (res == null ? void 0 : res.tokenPrices) || [];
-};
-const useCollectiblePrices = (tokens) => {
-  const apiClient = useAPIClient();
-  return useQuery$1({
-    queryKey: ["useCollectiblePrices", tokens],
-    queryFn: () => getCollectiblePrices(apiClient, tokens),
-    retry: true,
-    staleTime: time$1.oneMinute,
-    enabled: tokens.length > 0
-  });
-};
-const useTokenMetadata = (chainId, contractAddress, tokenIds) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["tokenMetadata", chainId, contractAddress, tokenIds],
-    queryFn: async () => {
-      const res = await metadataClient.getTokenMetadata({
-        chainID: String(chainId),
-        contractAddress,
-        tokenIDs: tokenIds
-      });
-      return res.tokenMetadata;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const useContractInfo = (chainId, contractAddress) => {
-  const metadataClient = useMetadataClient();
-  return useQuery$1({
-    queryKey: ["contractInfo", chainId, contractAddress],
-    queryFn: async () => {
-      const res = await metadataClient.getContractInfo({
-        chainID: String(chainId),
-        contractAddress
-      });
-      return res.contractInfo;
-    },
-    retry: true,
-    staleTime: time$1.oneMinute * 10,
-    enabled: !!chainId && !!contractAddress
-  });
-};
-const getTransactionHistory = async (indexerClient, {
-  contractAddress,
-  accountAddress,
-  tokenId,
-  page
-}) => {
-  const res = indexerClient.getTransactionHistory({
-    includeMetadata: true,
-    page,
-    filter: {
-      accountAddress,
-      contractAddress,
-      tokenID: tokenId
-    }
-  });
-  return res;
-};
-const useTransactionHistory = (args) => {
-  const indexerClient = useIndexerClient(args.chainId);
-  return useInfiniteQuery({
-    queryKey: ["transactionHistory", args],
-    queryFn: ({
-      pageParam
-    }) => {
-      return getTransactionHistory(indexerClient, _extends$5({}, args, {
-        page: {
-          page: pageParam
-        }
-      }));
-    },
-    getNextPageParam: ({
-      page
-    }) => {
-      if (!page.more) {
-        return void 0;
-      }
-      return (page == null ? void 0 : page.page) || 1;
-    },
-    initialPageParam: 1,
-    retry: true,
-    staleTime: time$1.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
-  });
-};
-const nativeTokenInfos = {
-  [ChainId.MAINNET]: {
-    name: "Ethereum",
-    symbol: "ETH",
-    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
-    decimals: 18,
-    blockExplorerName: "Etherscan",
-    blockExplorerUrl: "https://etherscan.io"
-  },
-  [ChainId.GOERLI]: {
-    name: "Goerli",
-    symbol: "ETH",
-    decimals: 18,
-    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
-    blockExplorerName: "Etherscan (Goerli)",
-    blockExplorerUrl: "https://goerli.etherscan.io"
-  },
-  [ChainId.OPTIMISM]: {
-    name: "Optimism",
-    symbol: "OP",
-    logoURI: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
-    decimals: 18,
-    blockExplorerName: "Etherscan (Optimism)",
-    blockExplorerUrl: "https://optimistic.etherscan.io"
-  },
-  [ChainId.BSC]: {
-    name: "BNB",
-    symbol: "BNB",
-    logoURI: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png",
-    decimals: 18,
-    blockExplorerName: "BscScan",
-    blockExplorerUrl: "https://bscscan.com"
-  },
-  [ChainId.GNOSIS]: {
-    name: "Gnosis",
-    symbol: "GNO",
-    logoURI: "https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png",
-    decimals: 18,
-    blockExplorerUrl: "https://gnosisscan.io",
-    blockExplorerName: "Gnosis Scan"
-  },
-  [ChainId.POLYGON]: {
-    name: "Polygon",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan",
-    blockExplorerUrl: "https://polygonscan.com"
-  },
-  [ChainId.POLYGON_ZKEVM]: {
-    name: "Polygon zkEVM",
-    symbol: "ETH",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "PolygonScan",
-    blockExplorerUrl: "https://zkevm.polygonscan.com"
-  },
-  [ChainId.ARBITRUM]: {
-    name: "Arbitrum",
-    symbol: "ARB",
-    logoURI: "https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png",
-    decimals: 18,
-    blockExplorerName: "Arbiscan",
-    blockExplorerUrl: "https://arbiscan.io"
-  },
-  [ChainId.AVALANCHE]: {
-    name: "Avalanche",
-    symbol: "AVAX",
-    logoURI: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png",
-    decimals: 18,
-    blockExplorerName: "Snowtrace",
-    blockExplorerUrl: "https://snowtrace.io"
-  },
-  [ChainId.POLYGON_MUMBAI]: {
-    name: "Mumbai",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan (Mumbai)",
-    blockExplorerUrl: "https://mumbai.polygonscan.com"
-  },
-  [ChainId.POLYGON_AMOY]: {
-    name: "Amoy",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan (Amoy)",
-    blockExplorerUrl: "https://amoy.polygonscan.com"
-  }
-};
-const defaultNativeTokenInfo = (chainId, wagmiChains) => {
-  const foundChain = wagmiChains.find((chain) => chain.id === chainId);
-  if (foundChain) {
-    var _foundChain$blockExpl, _foundChain$blockExpl2;
-    return {
-      name: foundChain.nativeCurrency.name,
-      symbol: foundChain.nativeCurrency.symbol,
-      decimals: foundChain.nativeCurrency.decimals,
-      logoURI: nativeTokenInfos[1].logoURI,
-      blockExplorerName: (_foundChain$blockExpl = foundChain.blockExplorers) == null ? void 0 : _foundChain$blockExpl.default.name,
-      blockExplorerUrl: (_foundChain$blockExpl2 = foundChain.blockExplorers) == null ? void 0 : _foundChain$blockExpl2.default.url
-    };
-  }
-  return;
-};
-const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
-  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[1];
-};
-let DecodingType = /* @__PURE__ */ function(DecodingType2) {
+var DecodingType;
+(function(DecodingType2) {
   DecodingType2["APPROVE"] = "approve";
   DecodingType2["TRANSFER"] = "transfer";
   DecodingType2["SWAP"] = "swap";
   DecodingType2["AWARD_ITEM"] = "awardItem";
   DecodingType2["UNIMPLEMENTED"] = "unimplemented";
   DecodingType2["UNKNOWN"] = "unknown";
-  return DecodingType2;
-}({});
+})(DecodingType || (DecodingType = {}));
 const transformArgs = (args) => {
-  return Object.fromEntries(args.map((arg, i2) => [arg.name && !arg.name.startsWith("unnamed") ? arg.name : `_${i2}`, Array.isArray(arg.value) ? arg.type.startsWith("(") && (arg.type.endsWith(")") || arg.type.endsWith(")[]")) ? transformArgs(arg.value) : arg.value : arg.value]));
+  return Object.fromEntries(args.map((arg, i2) => [
+    arg.name && !arg.name.startsWith("unnamed") ? arg.name : `_${i2}`,
+    Array.isArray(arg.value) ? arg.type.startsWith("(") && (arg.type.endsWith(")") || arg.type.endsWith(")[]")) ? transformArgs(arg.value) : arg.value : arg.value
+  ]));
 };
 const createTxnData = (to, call2, value, data) => {
   const args = transformArgs(call2.args);
@@ -84168,23 +83533,19 @@ const encodeTransactions = (transactions2) => {
     if ("target" in transaction2) {
       return transaction2;
     } else {
-      return _extends$5({}, transaction2, {
-        target: transaction2.to
-      });
+      return { ...transaction2, target: transaction2.to };
     }
-  }).map((transaction2) => {
-    var _transaction$delegate, _transaction$revertOn, _transaction$gasLimit, _transaction$target, _transaction$value, _transaction$data;
-    return {
-      delegateCall: (_transaction$delegate = transaction2.delegateCall) != null ? _transaction$delegate : false,
-      revertOnError: (_transaction$revertOn = transaction2.revertOnError) != null ? _transaction$revertOn : false,
-      gasLimit: (_transaction$gasLimit = transaction2.gasLimit) != null ? _transaction$gasLimit : 0,
-      target: (_transaction$target = transaction2.target) != null ? _transaction$target : "0x0000000000000000000000000000000000000000",
-      value: (_transaction$value = transaction2.value) != null ? _transaction$value : 0,
-      data: (_transaction$data = transaction2.data) != null ? _transaction$data : "0x"
-    };
-  });
+  }).map((transaction2) => ({
+    delegateCall: transaction2.delegateCall ?? false,
+    revertOnError: transaction2.revertOnError ?? false,
+    gasLimit: transaction2.gasLimit ?? 0,
+    target: transaction2.target ?? "0x0000000000000000000000000000000000000000",
+    value: transaction2.value ?? 0,
+    data: transaction2.data ?? "0x"
+  }));
 };
-let ByteSignature = /* @__PURE__ */ function(ByteSignature2) {
+var ByteSignature;
+(function(ByteSignature2) {
   ByteSignature2["SEQUENCE_DEPLOY"] = "0x32c02a14";
   ByteSignature2["SEQUENCE_PUBLISH_CONFIG"] = "0x44d466c2";
   ByteSignature2["SEQUENCE_UPDATE_IMAGE_HASH"] = "0x29561426";
@@ -84212,17 +83573,12 @@ let ByteSignature = /* @__PURE__ */ function(ByteSignature2) {
   ByteSignature2["UNISWAPV2_SWAP_TOKENS_FOR_EXACT_ETH"] = "0x4a25d94a";
   ByteSignature2["UNISWAPV2_SWAP_EXACT_TOKENS_FOR_ETH"] = "0x18cbafe5";
   ByteSignature2["AWARD_ITEM"] = "0xcf378343";
-  return ByteSignature2;
-}({});
+})(ByteSignature || (ByteSignature = {}));
 const decodeTxnData = async (apiClient, txns) => {
   const mainModule2 = new Interface(mainModuleAbi);
   const callData = mainModule2.encodeFunctionData("selfExecute", [txns]);
   try {
-    const {
-      call: call2
-    } = await apiClient.decodeContractCall({
-      callData
-    });
+    const { call: call2 } = await apiClient.decodeContractCall({ callData });
     return createTxnData("", call2, 0, callData);
   } catch (err) {
     throw err;
@@ -84268,10 +83624,9 @@ const decodeTransactions = async (apiClient, accountAddress, txns) => {
     };
     switch (decodedTxnData.byteSignature) {
       case ByteSignature.TRANSFER: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
+        const { args } = decodedTxnData;
+        return {
+          ...baseDecoding,
           type: DecodingType.TRANSFER,
           transferType: TxnTransferType.SEND,
           contractAddress,
@@ -84280,12 +83635,13 @@ const decodeTransactions = async (apiClient, accountAddress, txns) => {
           to: utils.getAddress(args.recipient),
           tokenIds: ["0"],
           amounts: [String(args.amount)]
-        });
+        };
       }
       case ByteSignature.ERC721_SAFE_TRANSFER_FROM:
       case ByteSignature.ERC721_SAFE_TRANSFER_FROM_WITH_DATA: {
         const args = decodedTxnData.args;
-        return _extends$5({}, baseDecoding, {
+        return {
+          ...baseDecoding,
           type: DecodingType.TRANSFER,
           transferType: TxnTransferType.SEND,
           contractAddress,
@@ -84294,11 +83650,12 @@ const decodeTransactions = async (apiClient, accountAddress, txns) => {
           to: utils.getAddress(args.to),
           tokenIds: [args.tokenId],
           amounts: ["1"]
-        });
+        };
       }
       case ByteSignature.ERC1155_SAFE_TRANSFER_FROM: {
         const args = decodedTxnData.args;
-        return _extends$5({}, baseDecoding, {
+        return {
+          ...baseDecoding,
           type: DecodingType.TRANSFER,
           transferType: TxnTransferType.SEND,
           contractAddress,
@@ -84307,13 +83664,12 @@ const decodeTransactions = async (apiClient, accountAddress, txns) => {
           to: utils.getAddress(args._to),
           tokenIds: [args._id],
           amounts: [args._amount]
-        });
+        };
       }
       case ByteSignature.ERC1155_SAFE_BATCH_TRANSFER_FROM: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
+        const { args } = decodedTxnData;
+        return {
+          ...baseDecoding,
           type: DecodingType.TRANSFER,
           transferType: TxnTransferType.SEND,
           contractAddress,
@@ -84322,19 +83678,18 @@ const decodeTransactions = async (apiClient, accountAddress, txns) => {
           to: utils.getAddress(args._to),
           tokenIds: args._ids,
           amounts: args._amounts
-        });
+        };
       }
       case ByteSignature.AWARD_ITEM: {
-        const {
-          args
-        } = decodedTxnData;
-        return _extends$5({}, baseDecoding, {
+        const { args } = decodedTxnData;
+        return {
+          ...baseDecoding,
           type: DecodingType.AWARD_ITEM,
           contractAddress,
           // @ts-ignore-next-line
           to: utils.getAddress(args._0),
           amount: "1"
-        });
+        };
       }
     }
     return void 0;
@@ -84346,201 +83701,184 @@ const decodeTransactions = async (apiClient, accountAddress, txns) => {
     return [];
   });
 };
-const mainModuleAbi = [{
-  type: "function",
-  name: "nonce",
-  constant: true,
-  inputs: [],
-  outputs: [{
-    type: "uint256"
-  }],
-  payable: false,
-  stateMutability: "view"
-}, {
-  type: "function",
-  name: "readNonce",
-  constant: true,
-  inputs: [{
-    type: "uint256"
-  }],
-  outputs: [{
-    type: "uint256"
-  }],
-  payable: false,
-  stateMutability: "view"
-}, {
-  type: "function",
-  name: "updateImplementation",
-  constant: false,
-  inputs: [{
-    type: "address"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "selfExecute",
-  constant: false,
-  inputs: [{
-    components: [{
-      type: "bool",
-      name: "delegateCall"
-    }, {
-      type: "bool",
-      name: "revertOnError"
-    }, {
-      type: "uint256",
-      name: "gasLimit"
-    }, {
-      type: "address",
-      name: "target"
-    }, {
-      type: "uint256",
-      name: "value"
-    }, {
-      type: "bytes",
-      name: "data"
-    }],
-    type: "tuple[]"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "execute",
-  constant: false,
-  inputs: [{
-    components: [{
-      type: "bool",
-      name: "delegateCall"
-    }, {
-      type: "bool",
-      name: "revertOnError"
-    }, {
-      type: "uint256",
-      name: "gasLimit"
-    }, {
-      type: "address",
-      name: "target"
-    }, {
-      type: "uint256",
-      name: "value"
-    }, {
-      type: "bytes",
-      name: "data"
-    }],
-    type: "tuple[]"
-  }, {
-    type: "uint256"
-  }, {
-    type: "bytes"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}, {
-  type: "function",
-  name: "createContract",
-  inputs: [{
-    type: "bytes"
-  }],
-  payable: true,
-  stateMutability: "payable"
-}, {
-  type: "function",
-  name: "setExtraImageHash",
-  constant: false,
-  inputs: [{
-    type: "bytes32",
-    name: "imageHash"
-  }, {
-    type: "uint256",
-    name: "expiration"
-  }],
-  outputs: [],
-  payable: false,
-  stateMutability: "nonpayable"
-}];
-const CollectibleTileImage$1 = ({
-  imageUrl
-}) => {
-  return /* @__PURE__ */ React.createElement(Card, {
-    padding: "0",
-    aspectRatio: "1/1",
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    borderRadius: "sm",
-    background: "backgroundSecondary"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    style: {
-      height: "100%"
-    },
-    src: imageUrl
-  }));
+const mainModuleAbi = [
+  {
+    type: "function",
+    name: "nonce",
+    constant: true,
+    inputs: [],
+    outputs: [
+      {
+        type: "uint256"
+      }
+    ],
+    payable: false,
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "readNonce",
+    constant: true,
+    inputs: [
+      {
+        type: "uint256"
+      }
+    ],
+    outputs: [
+      {
+        type: "uint256"
+      }
+    ],
+    payable: false,
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "updateImplementation",
+    constant: false,
+    inputs: [
+      {
+        type: "address"
+      }
+    ],
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "selfExecute",
+    constant: false,
+    inputs: [
+      {
+        components: [
+          {
+            type: "bool",
+            name: "delegateCall"
+          },
+          {
+            type: "bool",
+            name: "revertOnError"
+          },
+          {
+            type: "uint256",
+            name: "gasLimit"
+          },
+          {
+            type: "address",
+            name: "target"
+          },
+          {
+            type: "uint256",
+            name: "value"
+          },
+          {
+            type: "bytes",
+            name: "data"
+          }
+        ],
+        type: "tuple[]"
+      }
+    ],
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "execute",
+    constant: false,
+    inputs: [
+      {
+        components: [
+          {
+            type: "bool",
+            name: "delegateCall"
+          },
+          {
+            type: "bool",
+            name: "revertOnError"
+          },
+          {
+            type: "uint256",
+            name: "gasLimit"
+          },
+          {
+            type: "address",
+            name: "target"
+          },
+          {
+            type: "uint256",
+            name: "value"
+          },
+          {
+            type: "bytes",
+            name: "data"
+          }
+        ],
+        type: "tuple[]"
+      },
+      {
+        type: "uint256"
+      },
+      {
+        type: "bytes"
+      }
+    ],
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable"
+  },
+  {
+    type: "function",
+    name: "createContract",
+    inputs: [
+      {
+        type: "bytes"
+      }
+    ],
+    payable: true,
+    stateMutability: "payable"
+  },
+  {
+    type: "function",
+    name: "setExtraImageHash",
+    constant: false,
+    inputs: [
+      {
+        type: "bytes32",
+        name: "imageHash"
+      },
+      {
+        type: "uint256",
+        name: "expiration"
+      }
+    ],
+    outputs: [],
+    payable: false,
+    stateMutability: "nonpayable"
+  }
+];
+const CollectibleTileImage$1 = ({ imageUrl }) => {
+  return jsxRuntimeExports$1.jsx(Card, { padding: "0", aspectRatio: "1/1", justifyContent: "center", alignItems: "center", overflow: "hidden", borderRadius: "sm", background: "backgroundSecondary", children: jsxRuntimeExports$1.jsx(Image$1, { style: { height: "100%" }, src: imageUrl }) });
 };
 const TxnDetailsSkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 30,
-      height: 30
-    },
-    borderRadius: "circle"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 100,
-      height: 14
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 75,
-      height: 14
-    }
-  }))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    alignItems: "flex-end"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 100,
-      height: 14
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: 50,
-      height: 12
-    }
-  })));
+  return jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { justifyContent: "center", alignItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: 30, height: 30 }, borderRadius: "circle" }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: 100, height: 14 } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: 75, height: 14 } })] })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-end", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: 100, height: 14 } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: 50, height: 12 } })] })] });
 };
-const TxnDetails = ({
-  address,
-  txs,
-  chainId
-}) => {
+const TxnDetails = ({ address, txs, chainId }) => {
   const apiClient = useAPIClient();
   const [decodingType, setDecodingType] = reactExports.useState(void 0);
   const [transferProps, setTransferProps] = reactExports.useState([]);
   const [awardItemProps, setAwardItemProps] = reactExports.useState([]);
   const getTxnProps = async () => {
+    var _a2;
     const decodedTxnDatas = await decodeTransactions(apiClient, address, txs);
-    setDecodingType(decodedTxnDatas[0].type);
-    if (decodedTxnDatas[0].type === "transfer") {
+    const type = (_a2 = decodedTxnDatas[0]) == null ? void 0 : _a2.type;
+    setDecodingType(type);
+    if (type === DecodingType.TRANSFER) {
       setTransferProps(decodedTxnDatas);
     }
-    if (decodedTxnDatas[0].type === "awardItem") {
+    if (type === DecodingType.AWARD_ITEM) {
       setAwardItemProps(decodedTxnDatas);
     }
   };
@@ -84548,184 +83886,44 @@ const TxnDetails = ({
     getTxnProps();
   }, []);
   if (!decodingType) {
-    return /* @__PURE__ */ React.createElement(TxnDetailsSkeleton, null);
+    return jsxRuntimeExports$1.jsx(TxnDetailsSkeleton, {});
   }
   if (decodingType === DecodingType.UNKNOWN) {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null);
+    return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, {});
   }
-  if (transferProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(TransferItemInfo, {
-      address,
-      transferProps,
-      chainId
-    });
+  if (transferProps[0]) {
+    return jsxRuntimeExports$1.jsx(TransferItemInfo, { address, transferProps: transferProps[0], chainId });
   }
-  if (awardItemProps.length >= 1) {
-    return /* @__PURE__ */ React.createElement(AwardItemInfo, {
-      awardItemProps: awardItemProps[0]
-    });
+  if (awardItemProps[0]) {
+    return jsxRuntimeExports$1.jsx(AwardItemInfo, { awardItemProps: awardItemProps[0] });
   }
 };
-const TransferItemInfo = ({
-  address,
-  transferProps,
-  chainId
-}) => {
-  var _transferProps$, _transferProps$2, _transferProps$3, _transferProps$4, _transferProps$5, _transferProps$0$toke, _transferProps$6, _tokenBalance$contrac, _tokenMetadata$, _tokenBalance$contrac2, _tokenMetadata$2, _tokenBalance$contrac3, _tokenBalance$contrac4, _transferProps$0$amou, _transferProps$7, _transferProps$8, _transferProps$0$type, _transferProps$9, _tokenMetadata$3;
-  const {
-    chains: chains2
-  } = useConfig();
-  const contractAddress = (_transferProps$ = transferProps[0]) == null ? void 0 : _transferProps$.contractAddress;
-  const toAddress = (_transferProps$2 = transferProps[0]) == null ? void 0 : _transferProps$2.to;
+const TransferItemInfo = ({ address, transferProps, chainId }) => {
+  var _a2, _b2, _c2, _d2, _e2, _f2, _g2;
+  const { chains: chains2 } = useConfig();
+  const contractAddress = transferProps.contractAddress;
+  const toAddress = transferProps.to;
   const isNativeCoin = contractAddress ? compareAddress$2(contractAddress, AddressZero) : true;
-  const is1155 = ((_transferProps$3 = transferProps[0]) == null ? void 0 : _transferProps$3.contractType) === ContractType$1.ERC1155;
-  const isNFT = ((_transferProps$4 = transferProps[0]) == null ? void 0 : _transferProps$4.contractType) === ContractType$1.ERC1155 || ((_transferProps$5 = transferProps[0]) == null ? void 0 : _transferProps$5.contractType) === ContractType$1.ERC721;
+  const is1155 = transferProps.contractType === ContractType$1.ERC1155;
+  const isNFT = transferProps.contractType === ContractType$1.ERC1155 || transferProps.contractType === ContractType$1.ERC721;
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  const {
-    data: balances = []
-  } = useBalances({
+  const { data: balances = [] } = useBalances({
     chainIds: [chainId],
     accountAddress: address,
     contractAddress
   });
-  const {
-    data: tokenMetadata
-  } = useTokenMetadata(chainId, contractAddress, (_transferProps$0$toke = (_transferProps$6 = transferProps[0]) == null ? void 0 : _transferProps$6.tokenIds) != null ? _transferProps$0$toke : []);
+  const { data: tokenMetadata } = useTokenMetadata(chainId, contractAddress, transferProps.tokenIds ?? []);
   const tokenBalance = contractAddress ? balances.find((b2) => compareAddress$2(b2.contractAddress, contractAddress)) : void 0;
-  const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
-  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image : tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.logoURI;
-  const name2 = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata == null || (_tokenMetadata$2 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$2.name : (tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.name) || "";
-  const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? "" : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
-  const amountSending = (_transferProps$0$amou = (_transferProps$7 = transferProps[0]) == null || (_transferProps$7 = _transferProps$7.amounts) == null ? void 0 : _transferProps$7[0]) != null ? _transferProps$0$amou : (_transferProps$8 = transferProps[0]) == null ? void 0 : _transferProps$8.value;
+  const decimals = isNativeCoin ? nativeTokenInfo.decimals : ((_a2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _a2.decimals) || 18;
+  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : isNFT ? (_b2 = tokenMetadata == null ? void 0 : tokenMetadata[0]) == null ? void 0 : _b2.image : (_c2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _c2.logoURI;
+  const name2 = isNativeCoin ? nativeTokenInfo.name : isNFT ? (_d2 = tokenMetadata == null ? void 0 : tokenMetadata[0]) == null ? void 0 : _d2.name : ((_e2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _e2.name) || "";
+  const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? "" : ((_f2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _f2.symbol) || "";
+  const amountSending = transferProps.amounts[0] ?? transferProps.value;
   const showSquareImage = isNFT;
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, capitalize$1((_transferProps$0$type = (_transferProps$9 = transferProps[0]) == null ? void 0 : _transferProps$9.type) != null ? _transferProps$0$type : ""))), /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "2"
-  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
-    imageUrl
-  })) : /* @__PURE__ */ React.createElement(TokenImage, {
-    src: imageUrl,
-    symbol,
-    size: "md"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, name2)), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    variant: "normal"
-  }, " ", `${formatUnits$1(amountSending, is1155 ? tokenMetadata == null || (_tokenMetadata$3 = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$3.decimals : isNFT ? 0 : decimals)} ${symbol} `)))), toAddress !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    borderRadius: "md",
-    background: "backgroundSecondary",
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "4",
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: toAddress,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$2(toAddress.substring(2), 12)}`)))));
+  return jsxRuntimeExports$1.jsxs(Card, { children: [jsxRuntimeExports$1.jsx(Box, { marginBottom: "2", children: jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", children: capitalize$1(transferProps.type ?? "") }) }), jsxRuntimeExports$1.jsx(Box, { alignItems: "flex-end", justifyContent: "space-between", marginBottom: "2", children: jsxRuntimeExports$1.jsxs(Box, { justifyContent: "space-between", alignItems: "center", gap: "2", children: [showSquareImage ? jsxRuntimeExports$1.jsx(Box, { style: { width: "40px" }, children: jsxRuntimeExports$1.jsx(CollectibleTileImage$1, { imageUrl }) }) : jsxRuntimeExports$1.jsx(TokenImage, { src: imageUrl, symbol, size: "md" }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", alignItems: "center", gap: "1", children: jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", children: name2 }) }), jsxRuntimeExports$1.jsxs(Text, { color: "text50", variant: "normal", children: [" ", `${formatUnits$1(amountSending, is1155 ? (_g2 = tokenMetadata == null ? void 0 : tokenMetadata[0]) == null ? void 0 : _g2.decimals : isNFT ? 0 : decimals)} ${symbol} `] })] })] }) }), toAddress !== void 0 && jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", children: "To" }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", borderRadius: "md", background: "backgroundSecondary", width: "full", flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: "4", style: { height: "52px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(GradientAvatar, { address: toAddress, style: { width: "20px" } }), jsxRuntimeExports$1.jsx(Text, { color: "text100", children: `0x${truncateAtMiddle$2(toAddress.substring(2), 12)}` })] }) })] })] });
 };
-const AwardItemInfo = ({
-  awardItemProps
-}) => {
-  return /* @__PURE__ */ React.createElement(Card, null, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, "Mint")), /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "flex-end",
-    justifyContent: "space-between",
-    marginBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage$1, {
-    imageUrl: "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0/image.jpeg"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, "Waas Demo NFT")), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    variant: "normal"
-  }, awardItemProps.amount)))), awardItemProps.to !== void 0 && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    borderRadius: "md",
-    background: "backgroundSecondary",
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "4",
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: awardItemProps.to,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$2(awardItemProps.to.substring(2), 12)}`)))));
+const AwardItemInfo = ({ awardItemProps }) => {
+  return jsxRuntimeExports$1.jsxs(Card, { children: [jsxRuntimeExports$1.jsx(Box, { marginBottom: "2", children: jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", children: "Mint" }) }), jsxRuntimeExports$1.jsx(Box, { alignItems: "flex-end", justifyContent: "space-between", marginBottom: "2", children: jsxRuntimeExports$1.jsxs(Box, { justifyContent: "space-between", alignItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Box, { style: { width: "40px" }, children: jsxRuntimeExports$1.jsx(CollectibleTileImage$1, { imageUrl: "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0/image.jpeg" }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", alignItems: "center", gap: "1", children: jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", children: "Waas Demo NFT" }) }), jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "normal", children: awardItemProps.amount })] })] }) }), awardItemProps.to !== void 0 && jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", children: "To" }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", borderRadius: "md", background: "backgroundSecondary", width: "full", flexDirection: "row", justifyContent: "space-between", alignItems: "center", padding: "4", style: { height: "52px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(GradientAvatar, { address: awardItemProps.to, style: { width: "20px" } }), jsxRuntimeExports$1.jsx(Text, { color: "text100", children: `0x${truncateAtMiddle$2(awardItemProps.to.substring(2), 12)}` })] }) })] })] });
 };
 const truncateAtMiddle$2 = (text2, truncateAt) => {
   let finalText = text2;
@@ -84735,45 +83933,25 @@ const truncateAtMiddle$2 = (text2, truncateAt) => {
   return finalText;
 };
 const KitProvider = (props) => {
-  var _connections$find, _params, _pendingRequestConfir, _pendingRequestConfir2, _pendingRequestConfir3;
-  const {
-    config: config2,
-    children
-  } = props;
-  const {
-    defaultTheme = "dark",
-    signIn: signIn3 = {},
-    position = "center",
-    displayedAssets: displayedAssetsSetting = [],
-    ethAuth = {},
-    disableAnalytics = false
-  } = config2;
+  var _a2, _b2;
+  const { config: config2, children } = props;
+  const { defaultTheme = "dark", signIn: signIn3 = {}, position = "center", displayedAssets: displayedAssetsSetting = [], ethAuth = {}, disableAnalytics = false } = config2;
   const defaultAppName = signIn3.projectName || "app";
-  const {
-    expiry = DEFAULT_SESSION_EXPIRATION,
-    app = defaultAppName,
-    origin,
-    nonce
-  } = ethAuth;
-  const {
-    projectName
-  } = signIn3;
+  const { expiry = DEFAULT_SESSION_EXPIRATION, app = defaultAppName, origin, nonce } = ethAuth;
+  const { projectName } = signIn3;
   const [openConnectModal, setOpenConnectModal] = reactExports.useState(false);
   const [theme, setTheme] = reactExports.useState(defaultTheme || "dark");
   const [modalPosition, setModalPosition] = reactExports.useState(position);
   const [displayedAssets, setDisplayedAssets] = reactExports.useState(displayedAssetsSetting);
   const [analytics, setAnalytics] = reactExports.useState();
-  const {
-    address,
-    isConnected
-  } = useAccount();
+  const { address, isConnected } = useAccount();
   const wagmiConfig2 = useConfig();
   const storage = useStorage();
   const connections = useConnections();
-  const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
+  const waasConnector = (_a2 = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _a2.connector;
   const [pendingRequestConfirmation, confirmPendingRequest, rejectPendingRequest] = useWaasConfirmationHandler(waasConnector);
   const googleWaasConnector = wagmiConfig2.connectors.find((c2) => c2.id === "sequence-waas" && c2._wallet.id === "google-waas");
-  const googleClientId2 = (googleWaasConnector == null || (_params = googleWaasConnector.params) == null ? void 0 : _params.googleClientId) || "";
+  const googleClientId2 = ((_b2 = googleWaasConnector == null ? void 0 : googleWaasConnector.params) == null ? void 0 : _b2.googleClientId) || "";
   const setupAnalytics2 = (projectAccessKey2) => {
     const s2 = sequence$1.initWallet(projectAccessKey2);
     const sequenceAnalytics = s2.client.analytics;
@@ -84781,11 +83959,11 @@ const KitProvider = (props) => {
   };
   reactExports.useEffect(() => {
     if (!isConnected) {
-      analytics == null || analytics.reset();
+      analytics == null ? void 0 : analytics.reset();
       return;
     }
     if (address) {
-      analytics == null || analytics.identify(address.toLowerCase());
+      analytics == null ? void 0 : analytics.identify(address.toLowerCase());
     }
   }, [analytics, address, isConnected]);
   const poweredBySequenceOnClick = () => {
@@ -84814,7 +83992,7 @@ const KitProvider = (props) => {
     else {
       localStorage.setItem(LocalStorageKey.Theme, theme);
     }
-    storage == null || storage.setItem(LocalStorageKey.EthAuthSettings, {
+    storage == null ? void 0 : storage.setItem(LocalStorageKey.EthAuthSettings, {
       expiry,
       app,
       origin: origin || location.origin,
@@ -84824,204 +84002,42 @@ const KitProvider = (props) => {
   reactExports.useEffect(() => {
     setDisplayedAssets(displayedAssets);
   }, [displayedAssetsSetting]);
-  return /* @__PURE__ */ React.createElement(KitConfigContextProvider, {
-    value: config2
-  }, /* @__PURE__ */ React.createElement(ThemeContextProvider, {
-    value: {
-      theme,
-      setTheme,
-      position: modalPosition,
-      setPosition: setModalPosition
-    }
-  }, /* @__PURE__ */ React.createElement(GoogleOAuthProvider, {
-    clientId: googleClientId2
-  }, /* @__PURE__ */ React.createElement(ConnectModalContextProvider, {
-    value: {
-      setOpenConnectModal,
-      openConnectModalState: openConnectModal
-    }
-  }, /* @__PURE__ */ React.createElement(WalletConfigContextProvider, {
-    value: {
-      setDisplayedAssets,
-      displayedAssets
-    }
-  }, /* @__PURE__ */ React.createElement(AnalyticsContextProvider, {
-    value: {
-      setAnalytics,
-      analytics
-    }
-  }, /* @__PURE__ */ React.createElement("div", {
-    id: "kit-provider"
-  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
-    root: "#kit-provider",
-    scope: "kit",
-    theme
-  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openConnectModal && /* @__PURE__ */ React.createElement(Modal, {
-    scroll: false,
-    backdropColor: "backgroundBackdrop",
-    size: "sm",
-    contentProps: {
-      style: _extends$5({
-        maxWidth: "364px"
-      }, getModalPositionCss(position))
-    },
-    onClose: () => setOpenConnectModal(false)
-  }, /* @__PURE__ */ React.createElement(Box, {
-    padding: "4"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "center",
-    color: "text100",
-    alignItems: "center",
-    fontWeight: "medium",
+  return jsxRuntimeExports$1.jsx(KitConfigContextProvider, { value: config2, children: jsxRuntimeExports$1.jsx(ThemeContextProvider, { value: {
+    theme,
+    setTheme,
+    position: modalPosition,
+    setPosition: setModalPosition
+  }, children: jsxRuntimeExports$1.jsx(GoogleOAuthProvider, { clientId: googleClientId2, children: jsxRuntimeExports$1.jsx(ConnectModalContextProvider, { value: { setOpenConnectModal, openConnectModalState: openConnectModal }, children: jsxRuntimeExports$1.jsx(WalletConfigContextProvider, { value: { setDisplayedAssets, displayedAssets }, children: jsxRuntimeExports$1.jsxs(AnalyticsContextProvider, { value: { setAnalytics, analytics }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-provider", children: jsxRuntimeExports$1.jsxs(ThemeProvider, { root: "#kit-provider", scope: "kit", theme, children: [jsxRuntimeExports$1.jsx(AnimatePresence, { children: openConnectModal && jsxRuntimeExports$1.jsx(Modal, { scroll: false, backdropColor: "backgroundBackdrop", size: "sm", contentProps: {
     style: {
-      marginTop: "4px"
+      maxWidth: "364px",
+      ...getModalPositionCss(position)
     }
-  }, /* @__PURE__ */ React.createElement(Text, null, "Sign in ", projectName ? `to ${projectName}` : "")), /* @__PURE__ */ React.createElement(ConnectWalletContent, _extends$5({
-    openConnectModal,
-    setOpenConnectModal
-  }, props)), /* @__PURE__ */ React.createElement(Box, {
-    onClick: poweredBySequenceOnClick,
-    gap: "1",
-    marginTop: "4",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    userSelect: "none",
-    cursor: "pointer",
-    opacity: {
-      hover: "80"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "small",
-    color: "text100"
-  }, "Powered by Sequence"), /* @__PURE__ */ React.createElement(Box, {
-    height: "5",
-    width: "5"
-  }, /* @__PURE__ */ React.createElement(SequenceLogo$1, null)))))), /* @__PURE__ */ React.createElement(AnimatePresence, null, pendingRequestConfirmation && /* @__PURE__ */ React.createElement(Modal, {
-    scroll: false,
-    backdropColor: "backgroundBackdrop",
-    size: "sm",
-    contentProps: {
-      style: _extends$5({
-        maxWidth: "364px"
-      }, getModalPositionCss(position))
-    },
-    isDismissible: false,
-    onClose: () => {
-      rejectPendingRequest("");
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "4",
-    paddingTop: "4",
-    paddingBottom: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    justifyContent: "center",
-    color: "text100",
-    alignItems: "center",
-    fontWeight: "medium",
+  }, onClose: () => setOpenConnectModal(false), children: jsxRuntimeExports$1.jsxs(Box, { padding: "4", children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
+    marginTop: "4px"
+  }, children: jsxRuntimeExports$1.jsxs(Text, { children: ["Sign in ", projectName ? `to ${projectName}` : ""] }) }), jsxRuntimeExports$1.jsx(ConnectWalletContent, { openConnectModal, setOpenConnectModal, ...props }), jsxRuntimeExports$1.jsxs(Box, { onClick: poweredBySequenceOnClick, gap: "1", marginTop: "4", flexDirection: "row", alignItems: "center", justifyContent: "center", userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "small", color: "text100", children: "Powered by Sequence" }), jsxRuntimeExports$1.jsx(Box, { height: "5", width: "5", children: jsxRuntimeExports$1.jsx(SequenceLogo$1, {}) })] })] }) }) }), jsxRuntimeExports$1.jsx(AnimatePresence, { children: pendingRequestConfirmation && jsxRuntimeExports$1.jsx(Modal, { scroll: false, backdropColor: "backgroundBackdrop", size: "sm", contentProps: {
     style: {
-      marginTop: "4px"
+      maxWidth: "364px",
+      ...getModalPositionCss(position)
     }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    as: "h1",
-    variant: "large",
-    marginBottom: "5"
-  }, "Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"), pendingRequestConfirmation.type === "signMessage" && /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    width: "full"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "Message"), /* @__PURE__ */ React.createElement(Card, {
-    marginTop: "2",
-    paddingY: "6"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "normal",
-    marginBottom: "4"
-  }, toUtf8String((_pendingRequestConfir = pendingRequestConfirmation.message) != null ? _pendingRequestConfir : "")))), pendingRequestConfirmation.type === "signTransaction" && /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    width: "full"
-  }, /* @__PURE__ */ React.createElement(TxnDetails, {
-    address: address != null ? address : "",
-    txs: (_pendingRequestConfir2 = pendingRequestConfirmation.txs) != null ? _pendingRequestConfir2 : [],
-    chainId: (_pendingRequestConfir3 = pendingRequestConfirmation.chainId) != null ? _pendingRequestConfir3 : 137
-  }), /* @__PURE__ */ React.createElement(Collapsible, {
-    label: "Transaction data",
-    marginTop: "4"
-  }, /* @__PURE__ */ React.createElement(Card, {
-    overflowX: "scroll",
-    marginY: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "code",
-    marginBottom: "4"
-  }, JSON.stringify(pendingRequestConfirmation.txs, null, 2))))), pendingRequestConfirmation.chainId && /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    marginTop: "3",
-    justifyContent: "flex-end",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "1/2",
-    justifyContent: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "small",
-    color: "text50"
-  }, "Network")), /* @__PURE__ */ React.createElement(Box, {
-    width: "1/2",
-    justifyContent: "flex-end"
-  }, /* @__PURE__ */ React.createElement(NetworkBadge$1, {
-    chainId: pendingRequestConfirmation.chainId
-  }))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    gap: "2",
-    width: "full",
-    marginTop: "5"
-  }, /* @__PURE__ */ React.createElement(Button, {
-    width: "full",
-    shape: "square",
-    size: "lg",
-    label: "Reject",
-    onClick: () => {
-      rejectPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
-    }
-  }), /* @__PURE__ */ React.createElement(Button, {
-    alignItems: "center",
-    textAlign: "center",
-    width: "full",
-    shape: "square",
-    size: "lg",
-    label: "Confirm",
-    variant: "primary",
-    onClick: () => {
-      confirmPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
-    }
-  }))), /* @__PURE__ */ React.createElement(Box, {
-    gap: "1",
-    marginTop: "4",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "small",
-    color: "text80"
-  }, "Powered by Sequence"), /* @__PURE__ */ React.createElement(Box, {
-    height: "4",
-    width: "4",
-    marginTop: "1"
-  }, /* @__PURE__ */ React.createElement(SequenceLogo$1, null)))))))), children))))));
+  }, isDismissible: false, onClose: () => {
+    rejectPendingRequest("");
+  }, children: jsxRuntimeExports$1.jsxs(Box, { paddingX: "4", paddingTop: "4", paddingBottom: "2", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
+    marginTop: "4px"
+  }, children: [jsxRuntimeExports$1.jsxs(Text, { as: "h1", variant: "large", marginBottom: "5", children: ["Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"] }), pendingRequestConfirmation.type === "signMessage" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", children: "Message" }), jsxRuntimeExports$1.jsx(Card, { marginTop: "2", paddingY: "6", children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", marginBottom: "4", children: toUtf8String(pendingRequestConfirmation.message ?? "") }) })] }), pendingRequestConfirmation.type === "signTransaction" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(TxnDetails, { address: address ?? "", txs: pendingRequestConfirmation.txs ?? [], chainId: pendingRequestConfirmation.chainId ?? ChainId.POLYGON }), jsxRuntimeExports$1.jsx(Collapsible, { label: "Transaction data", marginTop: "4", children: jsxRuntimeExports$1.jsx(Card, { overflowX: "scroll", marginY: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "code", marginBottom: "4", children: JSON.stringify(pendingRequestConfirmation.txs, null, 2) }) }) })] }), pendingRequestConfirmation.chainId && jsxRuntimeExports$1.jsxs(Box, { width: "full", marginTop: "3", justifyContent: "flex-end", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-start", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Network" }) }), jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-end", children: jsxRuntimeExports$1.jsx(NetworkBadge$1, { chainId: pendingRequestConfirmation.chainId }) })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", width: "full", marginTop: "5", children: [jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", size: "lg", label: "Reject", onClick: () => {
+    rejectPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
+  } }), jsxRuntimeExports$1.jsx(Button, { alignItems: "center", textAlign: "center", width: "full", shape: "square", size: "lg", label: "Confirm", variant: "primary", onClick: () => {
+    confirmPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
+  } })] })] }), jsxRuntimeExports$1.jsxs(Box, { gap: "1", marginTop: "4", flexDirection: "row", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "small", color: "text80", children: "Powered by Sequence" }), jsxRuntimeExports$1.jsx(Box, { height: "4", width: "4", marginTop: "1", children: jsxRuntimeExports$1.jsx(SequenceLogo$1, {}) })] })] }) }) })] }) }), children] }) }) }) }) }) });
 };
-const _excluded$5 = ["createConnector"];
 const getKitConnectWallets = (projectAccessKey2, wallets) => {
   const connectors = [];
   wallets.forEach((wallet) => {
-    const {
-      createConnector: createConnector2
-    } = wallet, metaProperties = _objectWithoutPropertiesLoose$3(wallet, _excluded$5);
-    const walletProperties = _extends$5({}, metaProperties);
+    const { createConnector: createConnector2, ...metaProperties } = wallet;
+    const walletProperties = { ...metaProperties };
     const createConnectorOverride = (config2) => {
       const connector = createConnector2(projectAccessKey2);
       const res = connector(config2);
-      res._wallet = _extends$5({}, walletProperties);
+      res._wallet = { ...walletProperties };
       return res;
     };
     connectors.push(createConnectorOverride);
@@ -85029,36 +84045,27 @@ const getKitConnectWallets = (projectAccessKey2, wallets) => {
   return connectors;
 };
 function walletClientToSigner(walletClient) {
-  var _chain$contracts;
-  const {
-    account: account2,
-    chain,
-    transport
-  } = walletClient;
+  var _a2, _b2;
+  const { account: account2, chain, transport } = walletClient;
   const network2 = {
     chainId: chain.id,
     name: chain.name,
-    ensAddress: (_chain$contracts = chain.contracts) == null || (_chain$contracts = _chain$contracts.ensRegistry) == null ? void 0 : _chain$contracts.address
+    ensAddress: (_b2 = (_a2 = chain.contracts) == null ? void 0 : _a2.ensRegistry) == null ? void 0 : _b2.address
   };
   const provider2 = new Web3Provider(transport, network2);
   const signer2 = provider2.getSigner(account2.address);
   return signer2;
 }
 function publicClientToProvider(publicClient) {
-  var _chain$contracts2;
-  const {
-    chain,
-    transport
-  } = publicClient;
+  var _a2, _b2;
+  const { chain, transport } = publicClient;
   const network2 = {
     chainId: chain.id,
     name: chain.name,
-    ensAddress: (_chain$contracts2 = chain.contracts) == null || (_chain$contracts2 = _chain$contracts2.ensRegistry) == null ? void 0 : _chain$contracts2.address
+    ensAddress: (_b2 = (_a2 = chain.contracts) == null ? void 0 : _a2.ensRegistry) == null ? void 0 : _b2.address
   };
   if (transport.type === "fallback")
-    return new FallbackProvider(transport.transports.map(({
-      value
-    }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
+    return new FallbackProvider(transport.transports.map(({ value }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
   return new JsonRpcProvider$1(transport.url, network2);
 }
 const signEthAuthProof = async (walletClient, storage) => {
@@ -85098,22 +84105,11 @@ const validateEthProof = async (walletClient, publicClient, proof) => {
   return isValid2;
 };
 const useOpenConnectModal = () => {
-  const {
-    setOpenConnectModal,
-    openConnectModalState
-  } = useConnectModalContext();
-  return {
-    setOpenConnectModal,
-    openConnectModalState
-  };
+  const { setOpenConnectModal, openConnectModalState } = useConnectModalContext();
+  return { setOpenConnectModal, openConnectModalState };
 };
 const useTheme = () => {
-  const {
-    setTheme,
-    theme,
-    position,
-    setPosition
-  } = useThemeContext();
+  const { setTheme, theme, position, setPosition } = useThemeContext();
   return {
     setTheme,
     theme,
@@ -85122,10 +84118,7 @@ const useTheme = () => {
   };
 };
 const useWalletSettings = () => {
-  const {
-    setDisplayedAssets,
-    displayedAssets
-  } = useWalletConfigContext();
+  const { setDisplayedAssets, displayedAssets } = useWalletConfigContext();
   return {
     displayedAssets,
     setDisplayedAssets
@@ -85133,27 +84126,17 @@ const useWalletSettings = () => {
 };
 let _pendingFeeConfirmation;
 function useWaasFeeOptions() {
-  var _connections$find;
+  var _a2;
   const connections = useConnections();
-  const waasConnector = (_connections$find = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _connections$find.connector;
+  const waasConnector = (_a2 = connections.find((c2) => c2.connector.id.includes("waas"))) == null ? void 0 : _a2.connector;
   const [pendingFeeOptionConfirmation, setPendingFeeOptionConfirmation] = reactExports.useState();
   function confirmPendingFeeOption(id2, feeTokenAddress) {
-    var _pendingFeeConfirmati;
-    (_pendingFeeConfirmati = _pendingFeeConfirmation) == null || _pendingFeeConfirmati.resolve({
-      id: id2,
-      feeTokenAddress,
-      confirmed: true
-    });
+    _pendingFeeConfirmation == null ? void 0 : _pendingFeeConfirmation.resolve({ id: id2, feeTokenAddress, confirmed: true });
     setPendingFeeOptionConfirmation(void 0);
     _pendingFeeConfirmation = void 0;
   }
   function rejectPendingFeeOption(id2) {
-    var _pendingFeeConfirmati2;
-    (_pendingFeeConfirmati2 = _pendingFeeConfirmation) == null || _pendingFeeConfirmati2.resolve({
-      id: id2,
-      feeTokenAddress: void 0,
-      confirmed: false
-    });
+    _pendingFeeConfirmation == null ? void 0 : _pendingFeeConfirmation.resolve({ id: id2, feeTokenAddress: void 0, confirmed: false });
     setPendingFeeOptionConfirmation(void 0);
     _pendingFeeConfirmation = void 0;
   }
@@ -85169,11 +84152,7 @@ function useWaasFeeOptions() {
       waasProvider.feeConfirmationHandler = {
         confirmFeeOption(id2, options, txs, chainId) {
           const pending = new Deferred();
-          setPendingFeeOptionConfirmation({
-            id: id2,
-            options,
-            chainId
-          });
+          setPendingFeeOptionConfirmation({ id: id2, options, chainId });
           _pendingFeeConfirmation = pending;
           return pending.promise;
         }
@@ -85183,22 +84162,8 @@ function useWaasFeeOptions() {
   });
   return [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption];
 }
-function _extends$4() {
-  _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$4.apply(this, arguments);
-}
 const createGenericContext$1 = () => {
-  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
+  const genericContext = reactExports.createContext(void 0);
   const useGenericContext = () => {
     const contextIsDefined = reactExports.useContext(genericContext);
     if (!contextIsDefined) {
@@ -85212,14 +84177,11 @@ const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericCon
 const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
 const HEADER_HEIGHT$1 = "54px";
 const useNavigation$1 = () => {
-  const {
-    setHistory,
-    history
-  } = useNavigationContext$1();
+  const { setHistory, history } = useNavigationContext$1();
   const setNavigation = (navigation2) => {
     const childElement = document.getElementById("sequence-kit-wallet-content");
     const parentElement = childElement == null ? void 0 : childElement.parentElement;
-    parentElement == null || parentElement.scrollTo(0, 0);
+    parentElement == null ? void 0 : parentElement.scrollTo(0, 0);
     const newHistory = [...history, navigation2];
     setHistory(newHistory);
   };
@@ -85229,67 +84191,23 @@ const useNavigation$1 = () => {
     setHistory(newHistory);
   };
   const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
-  return {
-    setNavigation,
-    history,
-    setHistory,
-    goBack,
-    navigation
-  };
+  return { setNavigation, history, setHistory, goBack, navigation };
 };
-const NavigationHeader$1 = ({
-  secondaryText,
-  primaryText,
-  disableBack: _disableBack = false
-}) => {
-  const {
-    goBack,
-    history
-  } = useNavigation$1();
+const NavigationHeader$1 = ({ secondaryText, primaryText, disableBack = false }) => {
+  const { goBack, history } = useNavigation$1();
   const onClickBack = () => {
     goBack();
   };
-  return /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundPrimary",
-    zIndex: "20",
-    position: "fixed",
-    width: "full",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    style: {
-      height: HEADER_HEIGHT$1,
-      paddingTop: "6px",
-      backgroundColor: vars.colors.backgroundPrimary
-    }
-  }, history.length > 0 && !_disableBack ? /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: onClickBack,
-    icon: SvgChevronLeftIcon,
-    size: "sm",
-    style: {
-      background: "rgba(0,0,0,0)",
-      width: "44px"
-    }
-  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    alignItems: "center",
-    justifyContent: "center",
-    style: {
-      marginLeft: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text50"
-  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text100"
-  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "44px"
-    }
-  }));
+  return jsxRuntimeExports$1.jsxs(Box, { background: "backgroundPrimary", zIndex: "20", position: "fixed", width: "full", flexDirection: "row", alignItems: "center", justifyContent: "space-between", style: {
+    height: HEADER_HEIGHT$1,
+    paddingTop: "6px",
+    backgroundColor: vars.colors.backgroundPrimary
+  }, children: [history.length > 0 && !disableBack ? jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickBack, icon: SvgChevronLeftIcon, size: "sm", style: {
+    background: "rgba(0,0,0,0)",
+    width: "44px"
+  } }) : jsxRuntimeExports$1.jsx(Box, {}), jsxRuntimeExports$1.jsxs(Box, { width: "full", alignItems: "center", justifyContent: "center", style: { marginLeft: "40px" }, children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text50", children: secondaryText }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text100", children: primaryText })] }), jsxRuntimeExports$1.jsx(Box, { style: {
+    width: "44px"
+  } })] });
 };
 const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMetadata) => {
   const randomNumber = Math.floor(Math.random() * 1e6);
@@ -85324,12 +84242,7 @@ const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMet
       }
     })
   });
-  const {
-    resp: {
-      orderId,
-      token
-    }
-  } = await res.json();
+  const { resp: { orderId, token } } = await res.json();
   return {
     token,
     orderId
@@ -85353,44 +84266,27 @@ const fetchSardineOrderStatus = async (orderId, isDev, projectAccessKey2) => {
   return json;
 };
 const useCheckoutModal = () => {
-  const {
-    triggerCheckout,
-    closeCheckout,
-    settings
-  } = useCheckoutModalContext();
-  return {
-    triggerCheckout,
-    closeCheckout,
-    settings
-  };
+  const { triggerCheckout, closeCheckout, settings } = useCheckoutModalContext();
+  return { triggerCheckout, closeCheckout, settings };
 };
 const POLLING_TIME = 10 * 1e3;
 const PendingTransaction = () => {
-  var _settings$sardineChec;
+  var _a2;
   const nav = useNavigation$1();
-  const {
-    settings
-  } = useCheckoutModal();
-  const {
-    params: {
-      authToken,
-      orderId
-    }
-  } = nav.navigation;
-  const {
-    setNavigation
-  } = nav;
+  const { settings } = useCheckoutModal();
+  const { params: { authToken, orderId } } = nav.navigation;
+  const { setNavigation } = nav;
   const projectAccessKey2 = useProjectAccessKey();
-  const isDev = (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.isDev) || false;
+  const isDev = ((_a2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a2.isDev) || false;
   const url = isDev ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true` : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`;
   const pollForOrderStatus = async () => {
+    var _a3, _b2;
     try {
-      var _settings$sardineChec2, _pollResponse$resp;
       console.log("Polling for transaction status");
-      const isDev2 = (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.isDev) || false;
+      const isDev2 = ((_a3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a3.isDev) || false;
       const pollResponse = await fetchSardineOrderStatus(orderId, isDev2, projectAccessKey2);
       const status = pollResponse.resp.status;
-      const transactionHash = (_pollResponse$resp = pollResponse.resp) == null ? void 0 : _pollResponse$resp.transactionHash;
+      const transactionHash = (_b2 = pollResponse.resp) == null ? void 0 : _b2.transactionHash;
       console.log("transaction status poll response:", status);
       if (status === "Draft") {
         return;
@@ -85431,135 +84327,52 @@ const PendingTransaction = () => {
       clearInterval(interval);
     };
   }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "center",
-    justifyContent: "center",
-    style: {
-      height: "620px"
-    }
-  }, /* @__PURE__ */ React.createElement("iframe", {
-    src: url,
-    style: {
-      maxHeight: "500px",
-      height: "100%",
-      maxWidth: "380px",
-      width: "100%"
-    }
-  }));
+  return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "center", style: { height: "620px" }, children: jsxRuntimeExports$1.jsx("iframe", { src: url, style: {
+    maxHeight: "500px",
+    height: "100%",
+    maxWidth: "380px",
+    width: "100%"
+  } }) });
 };
 const TransactionSuccess = () => {
-  var _settings$sardineChec, _network$blockExplore, _network$blockExplore2;
-  const {
-    settings
-  } = useCheckoutModal();
+  var _a2, _b2, _c2;
+  const { settings } = useCheckoutModal();
   const nav = useNavigation$1();
   const navigation = nav.navigation;
-  const chainId = (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.chainId) || 137;
+  const chainId = ((_a2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a2.chainId) || ChainId.POLYGON;
   const network2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId);
   reactExports.useEffect(() => {
-    var _settings$sardineChec2, _settings$sardineChec3, _settings$sardineChec4, _settings$sardineChec5;
-    (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.onSuccess) && (settings == null || (_settings$sardineChec3 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
-    (settings == null || (_settings$sardineChec4 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec4.onSuccess) && (settings == null || (_settings$sardineChec5 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec5.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
+    var _a3, _b3, _c3, _d2;
+    ((_a3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a3.onSuccess) && ((_b3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _b3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
+    ((_c3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _c3.onSuccess) && ((_d2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _d2.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
   }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      height: "500px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "center",
-    position: "absolute",
-    style: {
-      top: "50%",
-      right: "50%",
-      transform: "translate(50%, -50%)"
-    }
-  }, /* @__PURE__ */ React.createElement(NotificationSuccessIcon, null), /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "xlarge"
-  }, "Success!"), /* @__PURE__ */ React.createElement(Text, {
-    textAlign: "center",
-    variant: "normal",
-    color: "text80"
-  }, "Purchase was successful, item was sent to your wallet."), navigation.params.transactionHash && /* @__PURE__ */ React.createElement(Text, {
-    as: "a",
-    variant: "small",
-    underline: true,
-    marginTop: "6",
-    color: "text100",
-    href: `${network2 == null || (_network$blockExplore = network2.blockExplorer) == null ? void 0 : _network$blockExplore.rootUrl}/tx/${navigation.params.transactionHash}`,
-    target: "_blank",
-    rel: "noreferrer"
-  }, "View on ", network2 == null || (_network$blockExplore2 = network2.blockExplorer) == null ? void 0 : _network$blockExplore2.name)));
+  return jsxRuntimeExports$1.jsx(Box, { style: { height: "500px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationSuccessIcon, {}), jsxRuntimeExports$1.jsx(Text, { fontSize: "xlarge", children: "Success!" }), jsxRuntimeExports$1.jsx(Text, { textAlign: "center", variant: "normal", color: "text80", children: "Purchase was successful, item was sent to your wallet." }), navigation.params.transactionHash && jsxRuntimeExports$1.jsxs(Text, { as: "a", variant: "small", underline: true, marginTop: "6", color: "text100", href: `${(_b2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _b2.rootUrl}/tx/${navigation.params.transactionHash}`, target: "_blank", rel: "noreferrer", children: ["View on ", (_c2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _c2.name] })] }) });
 };
-const NotificationSuccessIcon = () => /* @__PURE__ */ React.createElement(Box, {
-  color: "white",
-  background: "positive",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "16",
-  height: "16",
-  borderRadius: "circle",
-  marginBottom: "2"
-}, /* @__PURE__ */ React.createElement(SvgCheckmarkIcon, {
-  size: "xl"
-}));
+const NotificationSuccessIcon = () => jsxRuntimeExports$1.jsx(Box, { color: "white", background: "positive", alignItems: "center", justifyContent: "center", width: "16", height: "16", borderRadius: "circle", marginBottom: "2", children: jsxRuntimeExports$1.jsx(SvgCheckmarkIcon, { size: "xl" }) });
 const TransactionError = () => {
-  const {
-    closeCheckout,
-    settings
-  } = useCheckoutModal();
+  const { closeCheckout, settings } = useCheckoutModal();
   const nav = useNavigation$1();
   const navigation = nav.navigation;
   reactExports.useEffect(() => {
     setTimeout(() => {
-      var _settings$sardineChec, _settings$sardineChec2;
+      var _a2, _b2;
       closeCheckout();
-      (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.onError) && (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.onError(navigation.params.error, settings == null ? void 0 : settings.sardineCheckout));
+      ((_a2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a2.onError) && ((_b2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _b2.onError(navigation.params.error, settings == null ? void 0 : settings.sardineCheckout));
     }, 3e3);
   }, []);
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      height: "500px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "center",
-    position: "absolute",
-    style: {
-      top: "50%",
-      right: "50%",
-      transform: "translate(50%, -50%)"
-    }
-  }, /* @__PURE__ */ React.createElement(NotificationErrorIcon, null), /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "xlarge"
-  }, "Error"), /* @__PURE__ */ React.createElement(Text, {
-    textAlign: "center",
-    variant: "normal",
-    color: "text80"
-  }, "An error occurred while processing the transaction.")));
+  return jsxRuntimeExports$1.jsx(Box, { style: { height: "500px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationErrorIcon, {}), jsxRuntimeExports$1.jsx(Text, { fontSize: "xlarge", children: "Error" }), jsxRuntimeExports$1.jsx(Text, { textAlign: "center", variant: "normal", color: "text80", children: "An error occurred while processing the transaction." })] }) });
 };
-const NotificationErrorIcon = () => /* @__PURE__ */ React.createElement(Box, {
-  color: "white",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "16",
-  height: "16",
-  borderRadius: "circle",
-  marginBottom: "2",
-  background: "negative"
-}, /* @__PURE__ */ React.createElement(SvgCloseIcon, {
-  size: "xl"
-}));
+const NotificationErrorIcon = () => jsxRuntimeExports$1.jsx(Box, { color: "white", alignItems: "center", justifyContent: "center", width: "16", height: "16", borderRadius: "circle", marginBottom: "2", background: "negative", children: jsxRuntimeExports$1.jsx(SvgCloseIcon, { size: "xl" }) });
 const compareAddress$1 = (a2, b2) => {
   return a2.toLowerCase() === b2.toLowerCase();
 };
-var ValueType$1 = /* @__PURE__ */ function(ValueType2) {
+var ValueType$1;
+(function(ValueType2) {
   ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
   ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
   ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
   ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
-  return ValueType2;
-}(ValueType$1 || {});
+})(ValueType$1 || (ValueType$1 = {}));
 const formatDisplay$1 = (_val) => {
   if (isNaN(Number(_val))) {
     console.error(`display format error ${_val} is not a number`);
@@ -85606,214 +84419,77 @@ const formatDisplay$1 = (_val) => {
         maximumFractionDigits: 2
       };
   }
-  return Intl.NumberFormat("en-US", _extends$4({
-    notation
-  }, config2)).format(val);
+  return Intl.NumberFormat("en-US", {
+    notation,
+    ...config2
+  }).format(val);
 };
-const OrderSummaryItem = ({
-  contractAddress,
-  tokenId,
-  quantityRaw,
-  chainId
-}) => {
-  var _tokenMetadata$;
-  const {
-    data: tokenMetadata,
-    isPending: isPendingTokenMetadata
-  } = useTokenMetadata(chainId, contractAddress, [tokenId]);
-  const {
-    data: contractInfo,
-    isPending: isPendingContractInfo
-  } = useContractInfo(chainId, contractAddress);
+const OrderSummaryItem = ({ contractAddress, tokenId, quantityRaw, chainId }) => {
+  const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata(chainId, contractAddress, [tokenId]);
+  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo(chainId, contractAddress);
   const isPending = isPendingTokenMetadata || isPendingContractInfo;
   if (isPending) {
-    return /* @__PURE__ */ React.createElement(OrderSummarySkeleton, null);
+    return jsxRuntimeExports$1.jsx(OrderSummarySkeleton, {});
   }
-  const {
-    name: name2 = "unknown",
-    image,
-    decimals = 0
-  } = (_tokenMetadata$ = tokenMetadata == null ? void 0 : tokenMetadata[0]) != null ? _tokenMetadata$ : {};
-  const {
-    logoURI: collectionLogoURI,
-    name: collectionName = "Unknown Collection"
-  } = contractInfo || {};
+  const { name: name2 = "unknown", image, decimals = 0 } = (tokenMetadata == null ? void 0 : tokenMetadata[0]) ?? {};
+  const { logoURI: collectionLogoURI, name: collectionName = "Unknown Collection" } = contractInfo || {};
   const balanceFormatted = formatUnits$1(quantityRaw, decimals);
-  return /* @__PURE__ */ React.createElement(Card, {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    aspectRatio: "1/1",
-    height: "full",
-    justifyContent: "center",
-    alignItems: "center",
-    style: {
-      width: "80px"
-    }
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    src: image,
-    borderRadius: "md",
-    style: {
-      maxWidth: "80px",
-      height: "80px",
-      objectFit: "cover"
-    }
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    gap: "1",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(TokenImage, {
-    src: collectionLogoURI,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    marginLeft: "1",
-    fontSize: "small",
-    color: "text80",
-    fontWeight: "bold"
-  }, collectionName), /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    style: {
-      width: "180px"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontSize: "normal",
-    fontWeight: "normal"
-  }, name2), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontSize: "normal",
-    fontWeight: "normal"
-  }, `#${tokenId}`)))), /* @__PURE__ */ React.createElement(Box, {
-    height: "full",
-    fontSize: "small",
-    color: "text50",
-    fontWeight: "bold"
-  }, `x${formatDisplay$1(balanceFormatted)}`));
+  return jsxRuntimeExports$1.jsxs(Card, { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Box, { aspectRatio: "1/1", height: "full", justifyContent: "center", alignItems: "center", style: { width: "80px" }, children: jsxRuntimeExports$1.jsx(Image$1, { src: image, borderRadius: "md", style: { maxWidth: "80px", height: "80px", objectFit: "cover" } }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "flex-start", justifyContent: "center", gap: "2", children: [jsxRuntimeExports$1.jsxs(Box, { gap: "1", alignItems: "center", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: collectionLogoURI, size: "xs" }), jsxRuntimeExports$1.jsx(Text, { marginLeft: "1", fontSize: "small", color: "text80", fontWeight: "bold", children: collectionName }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "flex-start", justifyContent: "center", style: {
+    width: "180px"
+  }, children: [jsxRuntimeExports$1.jsx(Text, { color: "text100", fontSize: "normal", fontWeight: "normal", children: name2 }), jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "normal", fontWeight: "normal", children: `#${tokenId}` })] })] })] }), jsxRuntimeExports$1.jsx(Box, { height: "full", fontSize: "small", color: "text50", fontWeight: "bold", children: `x${formatDisplay$1(balanceFormatted)}` })] });
 };
 const OrderSummarySkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Card, {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "80px",
-      height: "80px"
-    }
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "100px",
-      height: "14px"
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "180px",
-      height: "34px"
-    }
-  }))), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "14px",
-      height: "14px"
-    }
-  }));
+  return jsxRuntimeExports$1.jsxs(Card, { flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "80px", height: "80px" } }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "flex-start", justifyContent: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "100px", height: "14px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "180px", height: "34px" } })] })] }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "14px", height: "14px" } })] });
 };
 const CheckoutSelection = () => {
-  var _cryptoCheckoutSettin, _cryptoCheckoutSettin2, _cryptoCheckoutSettin4, _settings$cryptoCheck, _settings$sardineChec;
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    setNavigation
-  } = useNavigation$1();
-  const {
-    closeCheckout,
-    settings
-  } = useCheckoutModal();
-  const {
-    address: accountAddress
-  } = useAccount();
+  var _a2, _b2, _c2, _d2, _e2;
+  const { chains: chains2 } = useConfig();
+  const { setNavigation } = useNavigation$1();
+  const { closeCheckout, settings } = useCheckoutModal();
+  const { address: accountAddress } = useAccount();
   const projectAccessKey2 = useProjectAccessKey();
   const cryptoCheckoutSettings = settings == null ? void 0 : settings.cryptoCheckout;
   const creditCardCheckoutSettings = settings == null ? void 0 : settings.sardineCheckout;
   const displayCreditCardCheckout = !!creditCardCheckoutSettings;
   const displayCryptoCheckout = !!cryptoCheckoutSettings;
-  const {
-    data: contractInfoData,
-    isLoading: isPendingContractInfo
-  } = useContractInfo((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin.contractAddress) || "");
-  const {
-    data: balancesData,
-    isPending: isPendingBalances
-  } = useBalances({
+  const { data: contractInfoData, isLoading: isPendingContractInfo } = useContractInfo((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, ((_a2 = cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _a2.contractAddress) || "");
+  const { data: balancesData, isPending: isPendingBalances } = useBalances({
     chainIds: [(cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1],
     accountAddress: accountAddress || ""
   });
   const isPending = (isPendingContractInfo || isPendingBalances) && cryptoCheckoutSettings;
-  const isNativeToken = compareAddress$1((cryptoCheckoutSettings == null || (_cryptoCheckoutSettin2 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin2.contractAddress) || "", AddressZero);
+  const isNativeToken = compareAddress$1(((_b2 = cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _b2.contractAddress) || "", AddressZero);
   const nativeTokenInfo = getNativeTokenInfoByChainId((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, chains2);
   const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : (contractInfoData == null ? void 0 : contractInfoData.decimals) || 0;
   const coinSymbol = isNativeToken ? nativeTokenInfo.symbol : (contractInfoData == null ? void 0 : contractInfoData.symbol) || "COIN";
   const coinImageUrl = isNativeToken ? nativeTokenInfo.logoURI : (contractInfoData == null ? void 0 : contractInfoData.logoURI) || "";
   const coinBalance = balancesData == null ? void 0 : balancesData.find((balance) => {
-    var _cryptoCheckoutSettin3;
-    return compareAddress$1(balance.contractAddress, (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin3 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin3.contractAddress) || "");
+    var _a3;
+    return compareAddress$1(balance.contractAddress, ((_a3 = cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _a3.contractAddress) || "");
   });
   const userBalanceRaw = coinBalance ? coinBalance.balance : "0";
-  const requestedAmountRaw = (cryptoCheckoutSettings == null || (_cryptoCheckoutSettin4 = cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _cryptoCheckoutSettin4.amountRequiredRaw) || "0";
+  const requestedAmountRaw = ((_c2 = cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _c2.amountRequiredRaw) || "0";
   const userBalance = formatUnits$1(userBalanceRaw, coinDecimals);
   const requestAmount = formatUnits$1(requestedAmountRaw, coinDecimals);
   const isInsufficientBalance = BigNumber.from(userBalanceRaw).lt(BigNumber.from(requestedAmountRaw));
   const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
-  const chainId = (settings == null || (_settings$cryptoCheck = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck.chainId) || (settings == null || (_settings$sardineChec = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec.chainId) || 1;
-  const {
-    data: tokensMetadata
-  } = useTokenMetadata(chainId, orderSummaryItems[0].contractAddress, [orderSummaryItems[0].tokenId]);
+  const chainId = ((_d2 = settings == null ? void 0 : settings.cryptoCheckout) == null ? void 0 : _d2.chainId) || ((_e2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _e2.chainId) || 1;
+  const { data: tokensMetadata } = useTokenMetadata(chainId, orderSummaryItems[0].contractAddress, [orderSummaryItems[0].tokenId]);
   const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
   const triggerSardineTransaction = async () => {
+    var _a3;
     console.log("trigger sardine transaction");
-    if (settings != null && settings.sardineCheckout) {
-      var _settings$sardineChec2;
-      const isDev = (settings == null || (_settings$sardineChec2 = settings.sardineCheckout) == null ? void 0 : _settings$sardineChec2.isDev) || false;
-      const {
-        token,
-        orderId
-      } = await fetchSardineClientToken(settings.sardineCheckout, isDev, projectAccessKey2, tokenMetadata);
+    if (settings == null ? void 0 : settings.sardineCheckout) {
+      const isDev = ((_a3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a3.isDev) || false;
+      const { token, orderId } = await fetchSardineClientToken(settings.sardineCheckout, isDev, projectAccessKey2, tokenMetadata);
       setNavigation({
         location: "transaction-pending",
-        params: {
-          orderId,
-          authToken: token
-        }
+        params: { orderId, authToken: token }
       });
     }
   };
   const onClickPayWithCard = () => {
-    if (settings != null && settings.sardineCheckout) {
+    if (settings == null ? void 0 : settings.sardineCheckout) {
       triggerSardineTransaction();
     } else {
       setNavigation({
@@ -85822,150 +84498,35 @@ const CheckoutSelection = () => {
     }
   };
   const onClickPayWithCrypto = () => {
-    var _settings$cryptoCheck2;
+    var _a3;
     console.log("trigger transaction");
-    const transaction2 = settings == null || (_settings$cryptoCheck2 = settings.cryptoCheckout) == null ? void 0 : _settings$cryptoCheck2.triggerTransaction;
+    const transaction2 = (_a3 = settings == null ? void 0 : settings.cryptoCheckout) == null ? void 0 : _a3.triggerTransaction;
     transaction2 && transaction2();
     closeCheckout();
   };
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "5",
-    paddingBottom: "5",
-    style: {
-      marginTop: HEADER_HEIGHT$1
-    },
-    flexDirection: "column",
-    gap: "3"
-  }, orderSummaryItems.length > 0 && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    gap: "2",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "normal",
-    fontSize: "normal",
-    color: "text50"
-  }, "Order summary"), /* @__PURE__ */ React.createElement(Tooltip, {
-    vOffset: -2,
-    side: "bottom",
-    message: /* @__PURE__ */ React.createElement(React.Fragment, null, "Please note that NFTs are digital assets", /* @__PURE__ */ React.createElement("br", null), " ,and as such, cannot be delivered physically.")
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "5",
-    height: "5"
-  }, /* @__PURE__ */ React.createElement(SvgHelpIcon, {
-    color: "text80"
-  })))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2"
-  }, orderSummaryItems.map((orderSummaryItem, index2) => {
-    return /* @__PURE__ */ React.createElement(OrderSummaryItem, _extends$4({
-      key: index2
-    }, orderSummaryItem, {
-      chainId
-    }));
-  })), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2"
-  }, /* @__PURE__ */ React.createElement(Divider, {
-    color: "backgroundSecondary",
-    style: {
-      margin: "0px"
-    }
-  }))), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "normal",
-    fontSize: "normal",
-    color: "text50"
-  }, "Total"), isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "100px",
-      height: "17px"
-    }
-  }) : /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    gap: "1",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(TokenImage, {
-    src: coinImageUrl,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "normal",
-    fontSize: "normal",
-    color: "text100"
-  }, `${formatDisplay$1(requestAmount)} ${coinSymbol}`))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "2"
-  }, displayCreditCardCheckout && /* @__PURE__ */ React.createElement(Button, {
-    style: {
-      borderRadius: vars.radii.md,
-      height: "56px"
-    },
-    width: "full",
-    borderRadius: "md",
-    leftIcon: SvgPaymentsIcon,
-    variant: "primary",
-    label: "Pay with credit card",
-    rightIcon: SvgChevronRightIcon,
-    onClick: onClickPayWithCard
-  }), displayCryptoCheckout && !isInsufficientBalance && !isPending && /* @__PURE__ */ React.createElement(Button, {
-    style: {
-      borderRadius: vars.radii.md,
-      height: "56px"
-    },
-    width: "full",
-    leftIcon: () => /* @__PURE__ */ React.createElement(TokenImage, {
-      src: coinImageUrl,
-      size: "sm"
-    }),
-    variant: "primary",
-    label: `Pay with ${coinSymbol}`,
-    rightIcon: SvgChevronRightIcon,
-    onClick: onClickPayWithCrypto
-  }), displayCryptoCheckout && (isInsufficientBalance || isPending) && /* @__PURE__ */ React.createElement(Button, {
-    shape: "square",
-    width: "full",
-    variant: "glass",
-    label: /* @__PURE__ */ React.createElement(Box, {
-      placeItems: "center",
-      gap: "2"
-    }, /* @__PURE__ */ React.createElement(TokenImage, {
-      src: coinImageUrl,
-      size: "sm"
-    }), /* @__PURE__ */ React.createElement(Text, null, "Insufficient $", coinSymbol)),
-    onClick: onClickPayWithCrypto,
-    disabled: true
-  })), displayCryptoCheckout && /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    justifyContent: "flex-end"
-  }, isPending ? /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "102px",
-      height: "14px"
-    }
-  }) : /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    fontSize: "small",
-    color: "text50"
-  }, "Balance: ", `${formatDisplay$1(userBalance)} ${coinSymbol}`)));
+  return jsxRuntimeExports$1.jsxs(Box, { paddingX: "5", paddingBottom: "5", style: {
+    marginTop: HEADER_HEIGHT$1
+  }, flexDirection: "column", gap: "3", children: [orderSummaryItems.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "normal", color: "text50", children: "Order summary" }), jsxRuntimeExports$1.jsx(Tooltip, { vOffset: -2, side: "bottom", message: jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: ["Please note that NFTs are digital assets", jsxRuntimeExports$1.jsx("br", {}), " ,and as such, cannot be delivered physically."] }), children: jsxRuntimeExports$1.jsx(Box, { width: "5", height: "5", children: jsxRuntimeExports$1.jsx(SvgHelpIcon, { color: "text80" }) }) })] }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", children: orderSummaryItems.map((orderSummaryItem, index2) => {
+    return jsxRuntimeExports$1.jsx(OrderSummaryItem, { ...orderSummaryItem, chainId }, index2);
+  }) }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", children: jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary", style: {
+    margin: "0px"
+  } }) })] }), displayCryptoCheckout && jsxRuntimeExports$1.jsxs(Box, { justifyContent: "space-between", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "normal", color: "text50", children: "Total" }), isPending ? jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "100px", height: "17px" } }) : jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: coinImageUrl, size: "xs" }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "normal", color: "text100", children: `${formatDisplay$1(requestAmount)} ${coinSymbol}` })] })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "2", children: [displayCreditCardCheckout && jsxRuntimeExports$1.jsx(Button, { style: {
+    borderRadius: vars.radii.md,
+    height: "56px"
+  }, width: "full", borderRadius: "md", leftIcon: SvgPaymentsIcon, variant: "primary", label: "Pay with credit card", rightIcon: SvgChevronRightIcon, onClick: onClickPayWithCard }), displayCryptoCheckout && !isInsufficientBalance && !isPending && jsxRuntimeExports$1.jsx(Button, { style: {
+    borderRadius: vars.radii.md,
+    height: "56px"
+  }, width: "full", leftIcon: () => jsxRuntimeExports$1.jsx(TokenImage, { src: coinImageUrl, size: "sm" }), variant: "primary", label: `Pay with ${coinSymbol}`, rightIcon: SvgChevronRightIcon, onClick: onClickPayWithCrypto }), displayCryptoCheckout && (isInsufficientBalance || isPending) && jsxRuntimeExports$1.jsx(Button, { shape: "square", width: "full", variant: "glass", label: jsxRuntimeExports$1.jsxs(Box, { placeItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: coinImageUrl, size: "sm" }), jsxRuntimeExports$1.jsxs(Text, { children: ["Insufficient $", coinSymbol] })] }), onClick: onClickPayWithCrypto, disabled: true })] }), displayCryptoCheckout && jsxRuntimeExports$1.jsx(Box, { width: "full", justifyContent: "flex-end", children: isPending ? jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "102px", height: "14px" } }) : jsxRuntimeExports$1.jsxs(Text, { fontWeight: "bold", fontSize: "small", color: "text50", children: ["Balance: ", `${formatDisplay$1(userBalance)} ${coinSymbol}`] }) })] });
 };
 const DEFAULT_LOCATION$1 = {
   location: "select-method-checkout"
 };
 const KitCheckoutProvider = (props) => {
   const queryClient2 = new QueryClient();
-  return /* @__PURE__ */ React.createElement(QueryClientProvider, {
-    client: queryClient2
-  }, /* @__PURE__ */ React.createElement(KitCheckoutContent, props));
+  return jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient2, children: jsxRuntimeExports$1.jsx(KitCheckoutContent, { ...props }) });
 };
-const KitCheckoutContent = ({
-  children
-}) => {
-  const {
-    theme,
-    position
-  } = useTheme();
+const KitCheckoutContent = ({ children }) => {
+  const { theme, position } = useTheme();
   const [openCheckoutModal, setOpenCheckoutModal] = reactExports.useState(false);
   const [settings, setSettings] = reactExports.useState();
   const [history, setHistory] = reactExports.useState([]);
@@ -85978,44 +84539,33 @@ const KitCheckoutContent = ({
     setOpenCheckoutModal(false);
   };
   const getContent2 = () => {
-    const {
-      location: location2
-    } = navigation;
+    const { location: location2 } = navigation;
     switch (location2) {
       case "select-method-checkout":
-        return /* @__PURE__ */ React.createElement(CheckoutSelection, null);
+        return jsxRuntimeExports$1.jsx(CheckoutSelection, {});
       case "transaction-pending":
-        return /* @__PURE__ */ React.createElement(PendingTransaction, null);
+        return jsxRuntimeExports$1.jsx(PendingTransaction, {});
       case "transaction-success":
-        return /* @__PURE__ */ React.createElement(TransactionSuccess, null);
+        return jsxRuntimeExports$1.jsx(TransactionSuccess, {});
       case "transaction-error":
-        return /* @__PURE__ */ React.createElement(TransactionError, null);
+        return jsxRuntimeExports$1.jsx(TransactionError, {});
       case "transaction-form":
       default:
-        return /* @__PURE__ */ React.createElement(CheckoutSelection, null);
+        return jsxRuntimeExports$1.jsx(CheckoutSelection, {});
     }
   };
   const getHeader2 = () => {
-    const {
-      location: location2
-    } = navigation;
+    const { location: location2 } = navigation;
     switch (location2) {
       case "select-method-checkout":
-        return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
-          primaryText: "Checkout"
-        });
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Checkout" });
       case "transaction-success":
       case "transaction-error":
       case "transaction-pending":
-        return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
-          disableBack: true,
-          primaryText: "Pay with credit or debit card"
-        });
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { disableBack: true, primaryText: "Pay with credit or debit card" });
       case "transaction-form":
       default:
-        return /* @__PURE__ */ React.createElement(NavigationHeader$1, {
-          primaryText: "Pay with credit or debit card"
-        });
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Pay with credit or debit card" });
     }
   };
   reactExports.useEffect(() => {
@@ -86023,37 +84573,711 @@ const KitCheckoutContent = ({
       setHistory([]);
     }
   }, [openCheckoutModal]);
-  return /* @__PURE__ */ React.createElement(CheckoutModalContextProvider, {
-    value: {
-      triggerCheckout,
-      closeCheckout,
-      settings,
-      theme
+  return jsxRuntimeExports$1.jsx(CheckoutModalContextProvider, { value: { triggerCheckout, closeCheckout, settings, theme }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider$1, { value: { history, setHistory }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-checkout", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-checkout", scope: "kit", theme, children: jsxRuntimeExports$1.jsx(AnimatePresence, { children: openCheckoutModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+    style: {
+      maxWidth: "400px",
+      height: "auto",
+      ...getModalPositionCss(position)
     }
-  }, /* @__PURE__ */ React.createElement(NavigationContextProvider$1, {
-    value: {
-      history,
-      setHistory
+  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenCheckoutModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-checkout-content", children: [getHeader2(), getContent2()] }) }) }) }) }), children] }) });
+};
+const ERC_1155_ABI = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_from",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "_to",
+        type: "address"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_ids",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_amounts",
+        type: "uint256[]"
+      },
+      {
+        internalType: "bytes",
+        name: "_data",
+        type: "bytes"
+      }
+    ],
+    name: "safeBatchTransferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
+const ERC_20_ABI = [
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: "address",
+        name: "recipient",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "transfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
+const ERC_721_ABI = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "from",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256"
+      }
+    ],
+    name: "safeTransferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
+const supportedFiatCurrencies = [
+  { symbol: "USD", sign: "$", name: { message: "US Dollar" }, decimals: 2 },
+  { symbol: "CAD", sign: "$", name: { message: "Canadian Dollar" }, decimals: 2 },
+  { symbol: "GBP", sign: "£", name: { message: "British Pound Sterling" }, decimals: 2 },
+  { symbol: "EUR", sign: "€", name: { message: "Euro" }, decimals: 2 },
+  { symbol: "CNY", sign: "¥", name: { message: "Chinese Yuan" }, decimals: 2 },
+  { symbol: "JPY", sign: "¥", name: { message: "Japanese Yen" }, decimals: 2 },
+  { symbol: "KRW", sign: "₩", name: { message: "South Korean Won" }, decimals: 2 },
+  { symbol: "SGD", sign: "$", name: { message: "Singapore Dollar" }, decimals: 2 },
+  { symbol: "CHF", sign: "CHF ", name: { message: "Swiss Franc" }, decimals: 2 },
+  { symbol: "AUD", sign: "$", name: { message: "Australian Dollar" }, decimals: 2 },
+  { symbol: "NZD", sign: "$", name: { message: "New Zealand Dollar" }, decimals: 2 },
+  { symbol: "SEK", sign: "kr ", name: { message: "Swedish Krona" }, decimals: 2 },
+  { symbol: "NOK", sign: "kr ", name: { message: "Norwegian Krone" }, decimals: 2 },
+  { symbol: "MXN", sign: "$", name: { message: "Mexican Peso" }, decimals: 2 },
+  { symbol: "INR", sign: "₹", name: { message: "Indian Rupee" }, decimals: 2 },
+  { symbol: "ZAR", sign: "R ", name: { message: "South African Rand" }, decimals: 2 },
+  { symbol: "TRY", sign: "₺", name: { message: "Turkish Lira" }, decimals: 2 },
+  { symbol: "BRL", sign: "R$", name: { message: "Brazilian Real" }, decimals: 2 },
+  { symbol: "DKK", sign: "kr ", name: { message: "Danish Krone" }, decimals: 2 },
+  { symbol: "PLN", sign: "zł ", name: { message: "Polish Zloty" }, decimals: 2 },
+  { symbol: "THB", sign: "฿", name: { message: "Thai Baht" }, decimals: 2 },
+  { symbol: "IDR", sign: "Rp", name: { message: "Indonesian Rupiah" }, decimals: 2 }
+];
+const defaultFiatCurrency = supportedFiatCurrencies[0];
+const HEADER_HEIGHT = "54px";
+const createGenericContext = () => {
+  const genericContext = reactExports.createContext(void 0);
+  const useGenericContext = () => {
+    const contextIsDefined = reactExports.useContext(genericContext);
+    if (!contextIsDefined) {
+      throw new Error("useGenericContext must be used within a Provider");
     }
-  }, /* @__PURE__ */ React.createElement("div", {
-    id: "kit-checkout"
-  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
-    root: "#kit-checkout",
-    scope: "kit",
-    theme
-  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openCheckoutModal && /* @__PURE__ */ React.createElement(Modal, {
-    contentProps: {
-      style: _extends$4({
-        maxWidth: "400px",
-        height: "auto"
-      }, getModalPositionCss(position))
-    },
-    scroll: false,
-    backdropColor: "backgroundBackdrop",
-    onClose: () => setOpenCheckoutModal(false)
-  }, /* @__PURE__ */ React.createElement(Box, {
-    id: "sequence-kit-checkout-content"
-  }, getHeader2(), getContent2()))))), children));
+    return contextIsDefined;
+  };
+  return [useGenericContext, genericContext.Provider];
+};
+const [useWalletModalContext, WalletModalContextProvider] = createGenericContext();
+const [useNavigationContext, NavigationContextProvider] = createGenericContext();
+const useOpenWalletModal = () => {
+  const { setOpenWalletModal, openWalletModalState } = useWalletModalContext();
+  return { setOpenWalletModal, openWalletModalState };
+};
+const compareAddress = (a2, b2) => {
+  return a2.toLowerCase() === b2.toLowerCase();
+};
+const truncateAtMiddle$1 = (text2, truncateAt) => {
+  let finalText = text2;
+  if (text2.length >= truncateAt) {
+    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
+  }
+  return finalText;
+};
+const formatAddress$1 = (text2) => {
+  return `0x${truncateAtMiddle$1((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
+};
+var ValueType;
+(function(ValueType2) {
+  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
+  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
+  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
+  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
+})(ValueType || (ValueType = {}));
+const formatDisplay = (_val) => {
+  if (isNaN(Number(_val))) {
+    console.error(`display format error ${_val} is not a number`);
+    return "NaN";
+  }
+  const val = Number(_val);
+  if (val === 0) {
+    return "0";
+  }
+  let valMode;
+  if (val > 1e8) {
+    valMode = ValueType.VERY_LARGE;
+  } else if (val < 1e-10) {
+    valMode = ValueType.VERY_TINY;
+  } else if (val < 1) {
+    valMode = ValueType.FRACTION;
+  } else {
+    valMode = ValueType.MIXED;
+  }
+  let notation = void 0;
+  let config2;
+  switch (valMode) {
+    case ValueType.VERY_LARGE:
+      notation = "compact";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType.VERY_TINY:
+      notation = "scientific";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType.FRACTION:
+      notation = "standard";
+      config2 = {
+        maximumSignificantDigits: 4
+      };
+      break;
+    default:
+      notation = "standard";
+      config2 = {
+        maximumFractionDigits: 2
+      };
+  }
+  return Intl.NumberFormat("en-US", {
+    notation,
+    ...config2
+  }).format(val);
+};
+const capitalize = (word) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+const limitDecimals = (value, decimals) => {
+  const splitValue = value.split(".");
+  if (splitValue.length === 1) {
+    return value;
+  }
+  return `${splitValue[0]}.${splitValue[1].slice(0, decimals)}`;
+};
+const isEthAddress = (value) => {
+  const ethAddressRegEx = /0x[a-fA-F0-9]{40}/;
+  const isEthAddress2 = ethAddressRegEx.test(value);
+  return isEthAddress2;
+};
+const sampleSize = (collection, n2) => {
+  const length = collection.length;
+  if (!length || n2 < 1) {
+    return [];
+  }
+  n2 = n2 > length ? length : n2;
+  const sampled = new Array(n2);
+  const indexes = /* @__PURE__ */ new Set();
+  while (indexes.size < n2) {
+    indexes.add(Math.floor(Math.random() * length));
+  }
+  let index2 = 0;
+  for (const i2 of indexes) {
+    sampled[index2++] = collection[i2];
+  }
+  return sampled;
+};
+const getPercentageColor = (value) => {
+  if (value > 0) {
+    return vars.colors.positive;
+  } else if (value < 0) {
+    return vars.colors.negative;
+  } else {
+    return vars.colors.text50;
+  }
+};
+const getPercentagePriceChange = (balance, prices) => {
+  var _a2;
+  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
+  if (!priceForToken) {
+    return 0;
+  }
+  const price24HourChange = ((_a2 = priceForToken == null ? void 0 : priceForToken.price24hChange) == null ? void 0 : _a2.value) || 0;
+  return price24HourChange;
+};
+const computeBalanceFiat = ({ balance, prices, decimals, conversionRate }) => {
+  var _a2;
+  let totalUsd = 0;
+  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
+  if (!priceForToken) {
+    return "0.00";
+  }
+  const priceFiat = ((_a2 = priceForToken.price) == null ? void 0 : _a2.value) || 0;
+  const valueFormatted = formatUnits$1(balance.balance, decimals);
+  const usdValue = parseFloat(valueFormatted) * priceFiat;
+  totalUsd += usdValue;
+  const fiatValue = totalUsd * conversionRate;
+  return `${fiatValue.toFixed(2)}`;
+};
+const sortBalancesByType = (balances) => {
+  const nativeTokens = [];
+  const erc20Tokens = [];
+  const collectibles = [];
+  balances.forEach((balance) => {
+    if (balance.contractAddress === AddressZero) {
+      nativeTokens.push(balance);
+    } else if (balance.contractType === "ERC20") {
+      erc20Tokens.push(balance);
+    } else if (balance.contractType === "ERC721" || balance.contractType === "ERC1155") {
+      collectibles.push(balance);
+    }
+  });
+  const sortedNativeTokens = nativeTokens.sort((a2, b2) => a2.tokenID.localeCompare(b2.tokenID));
+  const sortedErc20Tokens = erc20Tokens.sort((a2, b2) => a2.tokenID.localeCompare(b2.tokenID));
+  const sortedCollectibles = collectibles.sort((a2, b2) => a2.tokenID.localeCompare(b2.tokenID));
+  return {
+    nativeTokens: sortedNativeTokens,
+    erc20Tokens: sortedErc20Tokens,
+    collectibles: sortedCollectibles
+  };
+};
+const flattenPaginatedTransactionHistory = (transactionHistoryData) => {
+  const transactionHistory = [];
+  transactionHistoryData == null ? void 0 : transactionHistoryData.pages.forEach((page) => {
+    transactionHistory.push(...page.transactions);
+  });
+  return transactionHistory;
+};
+const time = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
+};
+const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClients, { accountAddress, displayAssets, hideCollectibles, verifiedOnly }) => {
+  const indexerClientsArr = Array.from(indexerClients.entries());
+  const MAX_COLLECTIBLES_AMOUNTS = 10;
+  let tokenBalances = [];
+  const customDisplayAssets = displayAssets.length > 0;
+  try {
+    if (customDisplayAssets) {
+      const nativeTokens2 = displayAssets.filter((asset) => compareAddress(asset.contractAddress, AddressZero));
+      const otherAssets = displayAssets.filter((asset) => !compareAddress(asset.contractAddress, AddressZero));
+      const nativeTokensByChainId = {};
+      const otherAssetsByChainId = {};
+      nativeTokens2.forEach((asset) => {
+        if (!nativeTokensByChainId[asset.chainId]) {
+          nativeTokensByChainId[asset.chainId] = [];
+        }
+        nativeTokensByChainId[asset.chainId].push(asset);
+      });
+      otherAssets.forEach((asset) => {
+        if (!otherAssetsByChainId[asset.chainId]) {
+          otherAssetsByChainId[asset.chainId] = [];
+        }
+        otherAssetsByChainId[asset.chainId].push(asset);
+      });
+      tokenBalances = (await Promise.all([
+        ...Object.keys(nativeTokensByChainId).map((chainId) => getNativeTokenBalance(indexerClients.get(Number(chainId)), Number(chainId), accountAddress)),
+        ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => getTokenBalances(indexerClients.get(Number(chainId)), {
+          accountAddress,
+          contractAddress: asset.contractAddress,
+          includeMetadata: false,
+          hideCollectibles,
+          verifiedOnly
+        }))).flat()
+      ])).flat();
+    } else {
+      tokenBalances = (await Promise.all([
+        ...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)),
+        ...indexerClientsArr.map(([_chainId, indexerClient]) => getTokenBalances(indexerClient, {
+          accountAddress,
+          hideCollectibles,
+          includeMetadata: false,
+          verifiedOnly
+        }))
+      ])).flat();
+    }
+    const { nativeTokens, erc20Tokens, collectibles: collectionBalances } = sortBalancesByType(tokenBalances);
+    const fetchPricesPromise = new Promise(async (resolve) => {
+      if (erc20Tokens.length > 0) {
+        const tokens = erc20Tokens.map((token) => ({
+          chainId: token.chainId,
+          contractAddress: token.contractAddress
+        }));
+        const prices2 = await getCoinPrices(apiClient, tokens) || [];
+        resolve(prices2);
+      } else {
+        resolve([]);
+      }
+    });
+    const fetchCollectiblesPromises = collectionBalances.map(async (collectionBalance) => {
+      if (customDisplayAssets) {
+        return collectionBalance;
+      }
+      const balance = await getCollectionBalance(indexerClients.get(collectionBalance.chainId), {
+        accountAddress,
+        chainId: collectionBalance.chainId,
+        contractAddress: collectionBalance.contractAddress,
+        includeMetadata: false
+      });
+      return balance;
+    });
+    const fetchErc20ContractInfoPromise = async () => {
+      const contractInfoMapByChainId2 = {};
+      const erc20BalanceByChainId = {};
+      erc20Tokens.forEach((erc20Token) => {
+        if (!erc20BalanceByChainId[erc20Token.chainId]) {
+          erc20BalanceByChainId[erc20Token.chainId] = [erc20Token];
+        } else {
+          erc20BalanceByChainId[erc20Token.chainId].push(erc20Token);
+        }
+      });
+      const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async (chainId) => {
+        const tokenBalances2 = erc20BalanceByChainId[Number(chainId)];
+        const contractAddresses = tokenBalances2.map((balance) => balance.contractAddress);
+        const result = await metadataClient.getContractInfoBatch({
+          chainID: String(chainId),
+          contractAddresses
+        });
+        contractInfoMapByChainId2[Number(chainId)] = result;
+      });
+      await Promise.all([...contractInfoPromises]);
+      return contractInfoMapByChainId2;
+    };
+    const [prices, contractInfoMapByChainId, ...collectionCollectibles] = await Promise.all([
+      fetchPricesPromise,
+      fetchErc20ContractInfoPromise(),
+      ...fetchCollectiblesPromises
+    ]);
+    const erc20HighestValue = erc20Tokens.sort((a2, b2) => {
+      var _a2, _b2;
+      const aPriceData = prices.find((price) => compareAddress(price.token.contractAddress, a2.contractAddress));
+      const bPriceData = prices.find((price) => compareAddress(price.token.contractAddress, b2.contractAddress));
+      const aPrice = (aPriceData == null ? void 0 : aPriceData.price) ? aPriceData.price.value : 0;
+      const bPrice = (bPriceData == null ? void 0 : bPriceData.price) ? bPriceData.price.value : 0;
+      const aDecimals = (_a2 = contractInfoMapByChainId[a2.chainId].contractInfoMap[a2.contractAddress]) == null ? void 0 : _a2.decimals;
+      const bDecimals = (_b2 = contractInfoMapByChainId[b2.chainId].contractInfoMap[b2.contractAddress]) == null ? void 0 : _b2.decimals;
+      const aFormattedBalance = aDecimals === void 0 ? 0 : Number(formatUnits$1(a2.balance, aDecimals));
+      const bFormattedBalance = bDecimals === void 0 ? 0 : Number(formatUnits$1(b2.balance, bDecimals));
+      const aValue = aFormattedBalance * aPrice;
+      const bValue = bFormattedBalance * bPrice;
+      return bValue - aValue;
+    });
+    const collectibles = sampleSize(collectionCollectibles.flat(), MAX_COLLECTIBLES_AMOUNTS).sort((a2, b2) => {
+      return a2.contractAddress.localeCompare(b2.contractAddress);
+    });
+    if (hideCollectibles) {
+      const summaryBalances2 = [
+        ...nativeTokens.length > 0 ? [nativeTokens[0]] : [],
+        // the spots normally occupied by collectibles will be filled by erc20 tokens
+        ...erc20HighestValue.length > 0 ? erc20HighestValue.slice(0, MAX_COLLECTIBLES_AMOUNTS + 1) : []
+      ];
+      return summaryBalances2;
+    }
+    const summaryBalances = [
+      ...nativeTokens.length > 0 ? [nativeTokens[0]] : [],
+      ...erc20HighestValue.length > 0 ? [erc20HighestValue[0]] : [],
+      ...collectibles.length > 0 ? [...collectibles] : []
+    ];
+    return summaryBalances;
+  } catch (e2) {
+    console.error(e2);
+    return [];
+  }
+};
+const useBalancesAssetsSummary = (args) => {
+  const apiClient = useAPIClient();
+  const metadataClient = useMetadataClient();
+  const indexerClients = useIndexerClients(args.chainIds);
+  return useQuery$1({
+    queryKey: ["balancesAssetsSummary", args],
+    queryFn: () => getBalancesAssetsSummary(apiClient, metadataClient, indexerClients, args),
+    retry: true,
+    refetchInterval: time.oneSecond * 4,
+    refetchOnMount: true,
+    staleTime: time.oneSecond,
+    enabled: args.chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const getTransactionHistorySummary = async (indexerClients, { accountAddress }) => {
+  const histories = await Promise.all(Array.from(indexerClients.values()).map((indexerClient) => getTransactionHistory(indexerClient, {
+    accountAddress,
+    page: {
+      page: 1
+    }
+  })));
+  const unorderedTransactions = histories.map((history) => history.transactions).flat();
+  const orderedTransactions = unorderedTransactions.sort((a2, b2) => {
+    const firstDate = new Date(a2.timestamp).getTime();
+    const secondDate = new Date(b2.timestamp).getTime();
+    return secondDate - firstDate;
+  });
+  return orderedTransactions;
+};
+const useTransactionHistorySummary = (args) => {
+  const indexerClients = useIndexerClients(args.chainIds);
+  return useQuery$1({
+    queryKey: ["transactionHistorySummary", args],
+    queryFn: () => getTransactionHistorySummary(indexerClients, args),
+    retry: true,
+    staleTime: time.oneSecond,
+    refetchOnMount: true,
+    enabled: args.chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const useNavigation = () => {
+  const { setHistory, history } = useNavigationContext();
+  const setNavigation = (navigation) => {
+    const childElement = document.getElementById("sequence-kit-wallet-content");
+    const parentElement = childElement == null ? void 0 : childElement.parentElement;
+    parentElement == null ? void 0 : parentElement.scrollTo(0, 0);
+    const newHistory = navigation.location === "home" ? [] : [...history, navigation];
+    setHistory(newHistory);
+  };
+  const goBack = () => {
+    const newHistory = [...history];
+    newHistory.pop();
+    setHistory(newHistory);
+  };
+  return { setNavigation, history, setHistory, goBack };
+};
+const useSettings = () => {
+  const { chains: chains2 } = useConfig();
+  const getSettingsFromStorage = () => {
+    let hideUnlistedTokens = true;
+    let hideCollectibles = false;
+    let fiatCurrency = defaultFiatCurrency;
+    let selectedNetworks = chains2.map((chain) => chain.id);
+    try {
+      const settingsStorage = localStorage.getItem(LocalStorageKey.Settings);
+      const settings2 = JSON.parse(settingsStorage || "{}");
+      if ((settings2 == null ? void 0 : settings2.hideUnlistedTokens) !== void 0) {
+        hideUnlistedTokens = settings2 == null ? void 0 : settings2.hideUnlistedTokens;
+      }
+      if ((settings2 == null ? void 0 : settings2.hideCollectibles) !== void 0) {
+        hideCollectibles = settings2 == null ? void 0 : settings2.hideCollectibles;
+      }
+      if ((settings2 == null ? void 0 : settings2.fiatCurrency) !== void 0) {
+        fiatCurrency = settings2 == null ? void 0 : settings2.fiatCurrency;
+      }
+      if ((settings2 == null ? void 0 : settings2.selectedNetworks) !== void 0) {
+        let areSelectedNetworksValid = true;
+        settings2.selectedNetworks.forEach((chainId) => {
+          if (chains2.find((chain) => chain.id === chainId) === void 0) {
+            areSelectedNetworksValid = false;
+          }
+        });
+        if (areSelectedNetworksValid) {
+          selectedNetworks = settings2 == null ? void 0 : settings2.selectedNetworks;
+        }
+      }
+    } catch (e2) {
+      console.error(e2, "Failed to fetch settings");
+    }
+    return {
+      hideUnlistedTokens,
+      hideCollectibles,
+      fiatCurrency,
+      selectedNetworks
+    };
+  };
+  const defaultSettings = getSettingsFromStorage();
+  const [settings, setSettings] = reactExports.useState(defaultSettings);
+  const setHideUnlistedTokens = (newState) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      hideUnlistedTokens: newState
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  const setHideCollectibles = (newState) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      hideCollectibles: newState
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  const setFiatCurrency = (newFiatCurrency) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      fiatCurrency: newFiatCurrency
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  const setSelectedNetworks = (newSelectedNetworks) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      selectedNetworks: newSelectedNetworks
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  return {
+    ...settings,
+    setFiatCurrency,
+    setHideCollectibles,
+    setHideUnlistedTokens,
+    setSelectedNetworks
+  };
+};
+const CoinTileContent = ({ logoUrl, tokenName, balance, balanceFiat, priceChangePercentage, symbol, chainId }) => {
+  const { fiatCurrency } = useSettings();
+  const priceChangeSymbol = priceChangePercentage > 0 ? "+" : "";
+  return jsxRuntimeExports$1.jsxs(Box, { background: "backgroundSecondary", width: "full", height: "full", borderRadius: "md", padding: "4", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", gap: "1", children: [jsxRuntimeExports$1.jsx(Box, { marginBottom: "1", children: jsxRuntimeExports$1.jsx(TokenImage, { src: logoUrl, symbol, size: "xl" }) }), jsxRuntimeExports$1.jsxs(Box, { marginBottom: "3", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", justifyContent: "flex-start", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", whiteSpace: "nowrap", color: "text100", style: { maxWidth: "130px", textOverflow: "ellipsis", overflow: "hidden" }, children: tokenName }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" })] }), jsxRuntimeExports$1.jsx(Text, { color: "text50", whiteSpace: "nowrap", style: { display: "block", maxWidth: "150px", textOverflow: "ellipsis", overflow: "hidden" }, children: `${balance} ${symbol}` })] }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", color: "text100", children: `${fiatCurrency.sign}${balanceFiat}` }) }), jsxRuntimeExports$1.jsx(Text, { style: { color: getPercentageColor(priceChangePercentage) }, children: `${priceChangeSymbol}${priceChangePercentage.toFixed(2)}%` })] })] });
+};
+const CoinTile = ({ balance }) => {
+  const { chains: chains2 } = useConfig();
+  const { fiatCurrency } = useSettings();
+  const isNativeToken = compareAddress(balance.contractAddress, AddressZero);
+  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
+  const { data: dataCoinPrices = [], isPending: isPendingCoinPrice } = useCoinPrices([
+    {
+      chainId: balance.chainId,
+      contractAddress: balance.contractAddress
+    }
+  ]);
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo(balance.chainId, balance.contractAddress);
+  const isPending = isPendingCoinPrice || isPendingConversionRate || isPendingContractInfo;
+  if (isPending) {
+    return jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", width: "full", height: "full", borderRadius: "md" });
+  }
+  if (isNativeToken) {
+    const computedBalance2 = computeBalanceFiat({
+      balance,
+      prices: dataCoinPrices,
+      conversionRate,
+      decimals: nativeTokenInfo.decimals
+    });
+    const priceChangePercentage2 = getPercentagePriceChange(balance, dataCoinPrices);
+    const formattedBalance2 = formatUnits$1(balance.balance, nativeTokenInfo.decimals);
+    const balanceDisplayed2 = formatDisplay(formattedBalance2);
+    return jsxRuntimeExports$1.jsx(CoinTileContent, { chainId: balance.chainId, logoUrl: nativeTokenInfo.logoURI, tokenName: nativeTokenInfo.name, balance: balanceDisplayed2, balanceFiat: computedBalance2, priceChangePercentage: priceChangePercentage2, symbol: nativeTokenInfo.symbol });
+  }
+  const decimals = (contractInfo == null ? void 0 : contractInfo.decimals) ?? 18;
+  const computedBalance = computeBalanceFiat({
+    balance,
+    prices: dataCoinPrices,
+    conversionRate,
+    decimals
+  });
+  const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
+  const formattedBalance = formatUnits$1(balance.balance, decimals);
+  const balanceDisplayed = formatDisplay(formattedBalance);
+  const name2 = (contractInfo == null ? void 0 : contractInfo.name) || "Unknown";
+  const symbol = (contractInfo == null ? void 0 : contractInfo.name) || "TOKEN";
+  const url = contractInfo == null ? void 0 : contractInfo.logoURI;
+  return jsxRuntimeExports$1.jsx(CoinTileContent, { chainId: balance.chainId, logoUrl: url, tokenName: name2, balance: balanceDisplayed, balanceFiat: computedBalance, priceChangePercentage, symbol });
+};
+const CollectibleTileImage = ({ imageUrl }) => {
+  return jsxRuntimeExports$1.jsx(Card, { padding: "0", aspectRatio: "1/1", justifyContent: "center", alignItems: "center", overflow: "hidden", borderRadius: "sm", background: "backgroundSecondary", children: jsxRuntimeExports$1.jsx(Image$1, { style: { height: "100%" }, src: imageUrl }) });
+};
+const CollectibleTile = ({ balance }) => {
+  var _a2;
+  const { data: tokenMetadata } = useTokenMetadata(balance.chainId, balance.contractAddress, [balance.tokenID]);
+  const imageUrl = (_a2 = tokenMetadata == null ? void 0 : tokenMetadata[0]) == null ? void 0 : _a2.image;
+  return jsxRuntimeExports$1.jsx(CollectibleTileImage, { imageUrl });
+};
+const SkeletonTiles = () => {
+  return jsxRuntimeExports$1.jsx(Box, { style: {
+    display: "grid",
+    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+    gap: vars.space[2]
+  }, children: Array(12).fill(null).map((_, i2) => jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Skeleton, { height: "full", width: "full", aspectRatio: "1/1" }) }, i2)) });
+};
+const AssetSummary = () => {
+  const { address } = useAccount();
+  const { setNavigation } = useNavigation();
+  const { displayedAssets } = useWalletSettings();
+  const { hideUnlistedTokens, hideCollectibles, selectedNetworks } = useSettings();
+  const { data: balances = [], isPending: isPendingBalances } = useBalancesAssetsSummary({
+    accountAddress: address || "",
+    chainIds: selectedNetworks,
+    displayAssets: displayedAssets,
+    hideCollectibles,
+    verifiedOnly: hideUnlistedTokens
+  });
+  if (isPendingBalances) {
+    return jsxRuntimeExports$1.jsx(SkeletonTiles, {});
+  }
+  const { nativeTokens, erc20Tokens, collectibles } = sortBalancesByType(balances);
+  const onClickItem = (balance) => {
+    if (balance.contractType === "ERC1155" || balance.contractType === "ERC721") {
+      setNavigation && setNavigation({
+        location: "collectible-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId,
+          tokenId: balance.tokenID
+        }
+      });
+    } else if (balance.contractType === "ERC20") {
+      setNavigation && setNavigation({
+        location: "coin-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId
+        }
+      });
+    } else {
+      setNavigation && setNavigation({
+        location: "coin-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId
+        }
+      });
+    }
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { style: {
+    display: "grid",
+    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+    gap: vars.space[2]
+  }, children: [nativeTokens.map((balance, index2) => {
+    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CoinTile, { balance }) }, index2);
+  }), erc20Tokens.map((balance, index2) => {
+    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CoinTile, { balance }) }, index2);
+  }), collectibles.map((balance, index2) => {
+    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CollectibleTile, { balance }) }, index2);
+  })] });
+};
+const Home = () => {
+  return jsxRuntimeExports$1.jsx(Box, { paddingX: "4", paddingBottom: "5", gap: "4", flexDirection: "column", children: jsxRuntimeExports$1.jsx(AssetSummary, {}) });
 };
 var __defProp2 = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -87045,7 +86269,7 @@ Object.defineProperty(Component, "__esModule", {
 Component.CopyToClipboard = void 0;
 var _react = _interopRequireDefault(reactExports);
 var _copyToClipboard = _interopRequireDefault(copyToClipboard);
-var _excluded$4 = ["text", "onCopy", "options", "children"];
+var _excluded$3 = ["text", "onCopy", "options", "children"];
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { "default": obj };
 }
@@ -87073,7 +86297,7 @@ function _objectSpread(target) {
 function _objectWithoutProperties(source, excluded) {
   if (source == null)
     return {};
-  var target = _objectWithoutPropertiesLoose$2(source, excluded);
+  var target = _objectWithoutPropertiesLoose$1(source, excluded);
   var key2, i2;
   if (Object.getOwnPropertySymbols) {
     var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
@@ -87088,7 +86312,7 @@ function _objectWithoutProperties(source, excluded) {
   }
   return target;
 }
-function _objectWithoutPropertiesLoose$2(source, excluded) {
+function _objectWithoutPropertiesLoose$1(source, excluded) {
   if (source == null)
     return {};
   var target = {};
@@ -87225,7 +86449,7 @@ var CopyToClipboard$1 = /* @__PURE__ */ function(_React$PureComponent) {
       _this$props2.text;
       _this$props2.onCopy;
       _this$props2.options;
-      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded$4);
+      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded$3);
       var elem = _react["default"].Children.only(children);
       return /* @__PURE__ */ _react["default"].cloneElement(elem, _objectSpread(_objectSpread({}, props), {}, {
         onClick: this.onClick
@@ -87242,6 +86466,337 @@ _defineProperty(CopyToClipboard$1, "defaultProps", {
 var _require = Component, CopyToClipboard = _require.CopyToClipboard;
 CopyToClipboard.CopyToClipboard = CopyToClipboard;
 var lib = CopyToClipboard;
+const Receive = () => {
+  const { address, chain } = useAccount();
+  const { chains: chains2 } = useConfig();
+  const [isCopied, setCopied] = reactExports.useState(false);
+  const nativeTokenInfo = getNativeTokenInfoByChainId((chain == null ? void 0 : chain.id) || 1, chains2);
+  reactExports.useEffect(() => {
+    if (isCopied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 4e3);
+    }
+  }, [isCopied]);
+  const onClickCopy = () => {
+    setCopied(true);
+  };
+  const onClickShare = () => {
+    if (typeof window !== "undefined") {
+      window.open(`https://twitter.com/intent/tweet?text=Here%20is%20my%20address%20${address}`);
+    }
+  };
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { padding: "5", paddingTop: "3", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "4", children: [jsxRuntimeExports$1.jsx(Box, { marginTop: "1", width: "fit", background: "white", borderRadius: "md", alignItems: "center", justifyContent: "center", padding: "4", children: jsxRuntimeExports$1.jsx(QRCode, { value: address || "", size: 200, bgColor: "white", fgColor: "black", "data-id": "receiveQR" }) }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", textAlign: "center", lineHeight: "inherit", style: { fontWeight: "700" }, children: "My Wallet" }), jsxRuntimeExports$1.jsx(Image$1, { width: "5", src: nativeTokenInfo.logoURI, alt: "icon" })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", style: { maxWidth: "180px", textAlign: "center" }, children: jsxRuntimeExports$1.jsx(Text, { textAlign: "center", color: "text50", style: {
+    fontSize: "14px",
+    maxWidth: "180px",
+    overflowWrap: "anywhere"
+  }, children: address }) })] }), jsxRuntimeExports$1.jsxs(Box, { gap: "3", children: [jsxRuntimeExports$1.jsx(lib.CopyToClipboard, { text: address || "", children: jsxRuntimeExports$1.jsx(Button, { onClick: onClickCopy, leftIcon: SvgCopyIcon, label: isCopied ? "Copied!" : "Copy" }) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickShare, leftIcon: SvgShareIcon, label: "Share" })] }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", style: { maxWidth: "260px", textAlign: "center" }, children: jsxRuntimeExports$1.jsx(Text, { color: "text100", variant: "small", style: {
+    maxWidth: "260px",
+    overflowWrap: "anywhere"
+  }, children: `This is a ${nativeTokenInfo.name} address. Please only send assets on the ${nativeTokenInfo.name} network.` }) })] }) });
+};
+const SendItemInfo = ({ imageUrl, name: name2, decimals, balance, symbol, fiatValue, chainId, showSquareImage }) => {
+  const { fiatCurrency } = useSettings();
+  const formattedBalance = formatUnits$1(balance, decimals);
+  const balanceDisplayed = formatDisplay(formattedBalance);
+  return jsxRuntimeExports$1.jsxs(Box, { alignItems: "flex-end", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { justifyContent: "space-between", alignItems: "center", gap: "2", children: [showSquareImage ? jsxRuntimeExports$1.jsx(Box, { style: { width: "40px" }, children: jsxRuntimeExports$1.jsx(CollectibleTileImage, { imageUrl }) }) : jsxRuntimeExports$1.jsx(TokenImage, { src: imageUrl, size: "xl" }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", gap: "1", children: [jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", children: name2 }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" })] }), jsxRuntimeExports$1.jsxs(Text, { color: "text50", variant: "normal", children: [" ", `${balanceDisplayed} ${symbol} available`] })] })] }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", alignItems: "flex-end", justifyContent: "flex-end", children: fiatValue && jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", children: `${fiatCurrency.sign}${fiatValue}` }) })] });
+};
+const SendCoin = ({ chainId, contractAddress }) => {
+  var _a2, _b2, _c2, _d2, _e2;
+  const { setNavigation } = useNavigation();
+  const { analytics } = useAnalyticsContext();
+  const { chains: chains2 } = useConfig();
+  const connectedChainId = useChainId();
+  const { address: accountAddress = "", connector } = useAccount();
+  const isConnectorSequenceBased = !!((_a2 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _a2.isSequenceBased);
+  const isCorrectChainId = connectedChainId === chainId;
+  const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased;
+  const { switchChainAsync } = useSwitchChain();
+  const amountInputRef = reactExports.useRef(null);
+  const { fiatCurrency } = useSettings();
+  const [amount, setAmount] = reactExports.useState("0");
+  const [toAddress, setToAddress] = reactExports.useState("");
+  const { sendTransaction: sendTransaction2 } = useSendTransaction();
+  const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
+  const { data: balances = [], isPending: isPendingBalances } = useBalances({
+    chainIds: [chainId],
+    accountAddress,
+    contractAddress
+  });
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
+  const tokenBalance = balances.find((b2) => b2.contractAddress === contractAddress);
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices([
+    {
+      chainId,
+      contractAddress
+    }
+  ]);
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const isPending = isPendingBalances || isPendingCoinPrices || isPendingConversionRate;
+  if (isPending) {
+    return null;
+  }
+  const isNativeCoin = compareAddress(contractAddress, AddressZero);
+  const decimals = isNativeCoin ? nativeTokenInfo.decimals : ((_b2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _b2.decimals) || 18;
+  const name2 = isNativeCoin ? nativeTokenInfo.name : ((_c2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _c2.name) || "";
+  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : (_d2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _d2.logoURI;
+  const symbol = isNativeCoin ? nativeTokenInfo.symbol : ((_e2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _e2.symbol) || "";
+  const amountToSendFormatted = amount === "" ? "0" : amount;
+  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
+  const amountToSendFiat = computeBalanceFiat({
+    balance: {
+      ...tokenBalance,
+      balance: amountRaw.toString()
+    },
+    prices: coinPrices,
+    conversionRate,
+    decimals
+  });
+  const insufficientFunds = amountRaw.gt((tokenBalance == null ? void 0 : tokenBalance.balance) || "0");
+  const isNonZeroAmount = amountRaw.gt(0);
+  const handleChangeAmount = (ev) => {
+    const { value } = ev.target;
+    const formattedValue = limitDecimals(value, decimals);
+    setAmount(formattedValue);
+  };
+  const handleMax = () => {
+    var _a3;
+    (_a3 = amountInputRef.current) == null ? void 0 : _a3.focus();
+    const maxAmount = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
+    setAmount(maxAmount);
+  };
+  const handlePaste = async () => {
+    const result = await navigator.clipboard.readText();
+    setToAddress(result);
+  };
+  const handleToAddressClear = () => {
+    setToAddress("");
+  };
+  const executeTransaction = async (e2) => {
+    var _a3, _b3;
+    if (!isCorrectChainId && isConnectorSequenceBased) {
+      await switchChainAsync({ chainId });
+    }
+    e2.preventDefault();
+    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
+    if (isNativeCoin) {
+      analytics == null ? void 0 : analytics.track({
+        event: "SEND_TRANSACTION_REQUEST",
+        props: {
+          walletClient: ((_a3 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _a3.id) || "unknown",
+          source: "sequence-kit/wallet"
+        }
+      });
+      setIsSendTxnPending(true);
+      sendTransaction2({
+        to: toAddress,
+        value: BigInt(sendAmount.toString()),
+        gas: null
+      }, {
+        onSettled: (result) => {
+          if (result) {
+            setNavigation({
+              location: "home"
+            });
+          }
+          setIsSendTxnPending(false);
+        }
+      });
+    } else {
+      analytics == null ? void 0 : analytics.track({
+        event: "SEND_TRANSACTION_REQUEST",
+        props: {
+          walletClient: ((_b3 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _b3.id) || "unknown",
+          source: "sequence-kit/wallet"
+        }
+      });
+      setIsSendTxnPending(true);
+      sendTransaction2({
+        to: tokenBalance == null ? void 0 : tokenBalance.contractAddress,
+        data: new Interface(ERC_20_ABI).encodeFunctionData("transfer", [
+          toAddress,
+          sendAmount.toHexString()
+        ]),
+        gas: null
+      }, {
+        onSettled: (result) => {
+          if (result) {
+            setNavigation({
+              location: "home"
+            });
+          }
+          setIsSendTxnPending(false);
+        }
+      });
+    }
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { padding: "5", paddingTop: "3", style: {
+    marginTop: HEADER_HEIGHT
+  }, gap: "2", flexDirection: "column", as: "form", onSubmit: executeTransaction, pointerEvents: isSendTxnPending ? "none" : "auto", children: [jsxRuntimeExports$1.jsxs(Box, { background: "backgroundSecondary", borderRadius: "md", padding: "4", gap: "2", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(SendItemInfo, { imageUrl, decimals, name: name2, symbol, balance: (tokenBalance == null ? void 0 : tokenBalance.balance) || "0", fiatValue: computeBalanceFiat({
+    balance: tokenBalance,
+    prices: coinPrices,
+    conversionRate,
+    decimals
+  }), chainId }), jsxRuntimeExports$1.jsx(NumericInput, { ref: amountInputRef, style: { fontSize: vars.fontSizes.xlarge, fontWeight: vars.fontWeights.bold }, name: "amount", value: amount, onChange: handleChangeAmount, controls: jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", whiteSpace: "nowrap", children: `~${fiatCurrency.sign}${amountToSendFiat}` }), jsxRuntimeExports$1.jsx(Button, { size: "xs", shape: "square", label: "Max", onClick: handleMax, "data-id": "maxCoin", flexShrink: "0" }), jsxRuntimeExports$1.jsx(Text, { fontSize: "xlarge", fontWeight: "bold", color: "text100", children: symbol })] }) }), insufficientFunds && jsxRuntimeExports$1.jsx(Text, { as: "div", variant: "normal", color: "negative", marginTop: "2", children: "Insufficient Funds" })] }), jsxRuntimeExports$1.jsxs(Box, { background: "backgroundSecondary", borderRadius: "md", padding: "4", gap: "2", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", children: "To" }), isEthAddress(toAddress) ? jsxRuntimeExports$1.jsxs(Card, { clickable: true, width: "full", flexDirection: "row", justifyContent: "space-between", alignItems: "center", onClick: handleToAddressClear, style: { height: "52px" }, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(GradientAvatar, { address: toAddress, style: { width: "20px" } }), jsxRuntimeExports$1.jsx(Text, { color: "text100", children: `0x${truncateAtMiddle$1(toAddress.substring(2), 8)}` })] }), jsxRuntimeExports$1.jsx(SvgCloseIcon, { size: "xs" })] }) : jsxRuntimeExports$1.jsx(TextInput, { value: toAddress, onChange: (ev) => setToAddress(ev.target.value), placeholder: `${nativeTokenInfo.name} Address (0x...)`, name: "to-address", "data-1p-ignore": true, controls: jsxRuntimeExports$1.jsx(Button, { size: "xs", shape: "square", label: "Paste", onClick: handlePaste, "data-id": "to-address", flexShrink: "0", leftIcon: SvgCopyIcon }) })] }), showSwitchNetwork && jsxRuntimeExports$1.jsxs(Box, { marginTop: "3", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "negative", marginBottom: "2", children: "The wallet is connected to the wrong network. Please switch network before proceeding" }), jsxRuntimeExports$1.jsx(Button, { marginTop: "2", width: "full", variant: "primary", type: "button", label: "Switch Network", onClick: async () => await switchChainAsync({ chainId }), disabled: isCorrectChainId, style: { height: "52px", borderRadius: vars.radii.md } })] }), jsxRuntimeExports$1.jsx(Box, { style: { height: "52px" }, alignItems: "center", justifyContent: "center", children: isSendTxnPending ? jsxRuntimeExports$1.jsx(Spinner, {}) : jsxRuntimeExports$1.jsx(Button, { color: "text100", marginTop: "3", width: "full", variant: "primary", type: "submit", disabled: !isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || !isCorrectChainId && !isConnectorSequenceBased, label: "Send", rightIcon: SvgChevronRightIcon, style: { height: "52px", borderRadius: vars.radii.md } }) })] });
+};
+const SendCollectible = ({ chainId, contractAddress, tokenId }) => {
+  var _a2, _b2, _c2, _d2, _e2;
+  const { setNavigation } = useNavigation();
+  const { analytics } = useAnalyticsContext();
+  const { chains: chains2 } = useConfig();
+  const connectedChainId = useChainId();
+  const { address: accountAddress = "", connector } = useAccount();
+  const isConnectorSequenceBased = !!((_a2 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _a2.isSequenceBased);
+  const isCorrectChainId = connectedChainId === chainId;
+  const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased;
+  const { switchChain: switchChain2 } = useSwitchChain();
+  const amountInputRef = reactExports.useRef(null);
+  const [amount, setAmount] = reactExports.useState("0");
+  const [toAddress, setToAddress] = reactExports.useState("");
+  const [showAmountControls, setShowAmountControls] = reactExports.useState(false);
+  const { sendTransaction: sendTransaction2 } = useSendTransaction();
+  const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
+  const { data: tokenBalance, isPending: isPendingBalances } = useCollectibleBalance({
+    accountAddress,
+    chainId,
+    contractAddress,
+    tokenId,
+    verifiedOnly: false
+  });
+  const { contractType } = tokenBalance;
+  reactExports.useEffect(() => {
+    if (tokenBalance) {
+      if (contractType === "ERC721") {
+        setAmount("1");
+        setShowAmountControls(false);
+      } else if (contractType === "ERC1155") {
+        if (Number(formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals)) >= 1) {
+          setAmount("1");
+        }
+        setShowAmountControls(true);
+      }
+    }
+  }, [tokenBalance]);
+  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
+  const isPending = isPendingBalances;
+  if (isPending) {
+    return null;
+  }
+  const decimals = ((_b2 = tokenBalance == null ? void 0 : tokenBalance.tokenMetadata) == null ? void 0 : _b2.decimals) || 0;
+  const name2 = ((_c2 = tokenBalance == null ? void 0 : tokenBalance.tokenMetadata) == null ? void 0 : _c2.name) || "Unknown";
+  const imageUrl = ((_d2 = tokenBalance == null ? void 0 : tokenBalance.tokenMetadata) == null ? void 0 : _d2.image) || ((_e2 = tokenBalance == null ? void 0 : tokenBalance.contractInfo) == null ? void 0 : _e2.logoURI) || "";
+  const amountToSendFormatted = amount === "" ? "0" : amount;
+  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
+  const insufficientFunds = amountRaw.gt((tokenBalance == null ? void 0 : tokenBalance.balance) || "0");
+  const isNonZeroAmount = amountRaw.gt(0);
+  const handleChangeAmount = (ev) => {
+    const { value } = ev.target;
+    const formattedValue = limitDecimals(value, decimals);
+    setAmount(formattedValue);
+  };
+  const handleSubtractOne = () => {
+    var _a3;
+    (_a3 = amountInputRef.current) == null ? void 0 : _a3.focus();
+    const decrementedAmount = Number(amount) - 1;
+    const newAmount = Math.max(decrementedAmount, 0).toString();
+    setAmount(newAmount);
+  };
+  const handleAddOne = () => {
+    var _a3;
+    (_a3 = amountInputRef.current) == null ? void 0 : _a3.focus();
+    const incrementedAmount = Number(amount) + 1;
+    const maxAmount2 = Number(formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals));
+    const newAmount = Math.min(incrementedAmount, maxAmount2).toString();
+    setAmount(newAmount);
+  };
+  const handleMax = () => {
+    var _a3;
+    (_a3 = amountInputRef.current) == null ? void 0 : _a3.focus();
+    const maxAmount2 = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
+    setAmount(maxAmount2);
+  };
+  const handlePaste = async () => {
+    const result = await navigator.clipboard.readText();
+    setToAddress(result);
+  };
+  const handleToAddressClear = () => {
+    setToAddress("");
+  };
+  const executeTransaction = async (e2) => {
+    var _a3, _b3;
+    e2.preventDefault();
+    if (!isCorrectChainId && isConnectorSequenceBased) {
+      switchChain2({ chainId });
+    }
+    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
+    switch (contractType) {
+      case "ERC721":
+        analytics == null ? void 0 : analytics.track({
+          event: "SEND_TRANSACTION_REQUEST",
+          props: {
+            walletClient: ((_a3 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _a3.id) || "unknown",
+            source: "sequence-kit/wallet"
+          }
+        });
+        setIsSendTxnPending(true);
+        sendTransaction2({
+          to: tokenBalance.contractAddress,
+          data: new Interface(ERC_721_ABI).encodeFunctionData("safeTransferFrom", [
+            accountAddress,
+            toAddress,
+            tokenId
+          ]),
+          gas: null
+        }, {
+          onSettled: (result) => {
+            if (result) {
+              setNavigation({
+                location: "home"
+              });
+            }
+            setIsSendTxnPending(false);
+          }
+        });
+        break;
+      case "ERC1155":
+      default:
+        analytics == null ? void 0 : analytics.track({
+          event: "SEND_TRANSACTION_REQUEST",
+          props: {
+            walletClient: ((_b3 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _b3.id) || "unknown",
+            source: "sequence-kit/wallet"
+          }
+        });
+        setIsSendTxnPending(true);
+        sendTransaction2({
+          to: tokenBalance.contractAddress,
+          data: new Interface(ERC_1155_ABI).encodeFunctionData("safeBatchTransferFrom", [
+            accountAddress,
+            toAddress,
+            [tokenId],
+            [sendAmount.toHexString()],
+            []
+          ]),
+          gas: null
+        }, {
+          onSettled: (result) => {
+            if (result) {
+              setNavigation({
+                location: "home"
+              });
+            }
+            setIsSendTxnPending(false);
+          }
+        });
+    }
+  };
+  const maxAmount = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
+  const isMinimum = Number(amount) === 0;
+  const isMaximum = Number(amount) >= Number(maxAmount);
+  return jsxRuntimeExports$1.jsxs(Box, { padding: "5", paddingTop: "3", style: {
+    marginTop: HEADER_HEIGHT
+  }, gap: "2", flexDirection: "column", as: "form", onSubmit: executeTransaction, pointerEvents: isSendTxnPending ? "none" : "auto", children: [jsxRuntimeExports$1.jsxs(Box, { background: "backgroundSecondary", borderRadius: "md", padding: "4", gap: "2", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(SendItemInfo, { imageUrl, showSquareImage: true, decimals, name: name2, symbol: "", balance: (tokenBalance == null ? void 0 : tokenBalance.balance) || "0", chainId }), jsxRuntimeExports$1.jsx(NumericInput, { ref: amountInputRef, style: { fontSize: vars.fontSizes.xlarge, fontWeight: vars.fontWeights.bold }, name: "amount", value: amount, onChange: handleChangeAmount, disabled: !showAmountControls, controls: jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: showAmountControls && jsxRuntimeExports$1.jsxs(Box, { gap: "2", children: [jsxRuntimeExports$1.jsx(Button, { disabled: isMinimum, size: "xs", onClick: handleSubtractOne, leftIcon: SvgSubtractIcon }), jsxRuntimeExports$1.jsx(Button, { disabled: isMaximum, size: "xs", onClick: handleAddOne, leftIcon: SvgAddIcon }), jsxRuntimeExports$1.jsx(Button, { size: "xs", shape: "square", label: "Max", onClick: handleMax, "data-id": "maxCoin", flexShrink: "0" })] }) }) }), insufficientFunds && jsxRuntimeExports$1.jsx(Text, { as: "div", variant: "normal", color: "negative", marginTop: "2", children: "Insufficient Balance" })] }), jsxRuntimeExports$1.jsxs(Box, { background: "backgroundSecondary", borderRadius: "md", padding: "4", gap: "2", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", children: "To" }), isEthAddress(toAddress) ? jsxRuntimeExports$1.jsxs(Card, { clickable: true, width: "full", flexDirection: "row", justifyContent: "space-between", alignItems: "center", onClick: handleToAddressClear, style: { height: "52px" }, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(GradientAvatar, { address: toAddress, style: { width: "20px" } }), jsxRuntimeExports$1.jsx(Text, { color: "text100", children: `0x${truncateAtMiddle$1(toAddress.substring(2), 8)}` })] }), jsxRuntimeExports$1.jsx(SvgCloseIcon, { size: "xs" })] }) : jsxRuntimeExports$1.jsx(TextInput, { value: toAddress, onChange: (ev) => setToAddress(ev.target.value), placeholder: `${nativeTokenInfo.name} Address (0x...)`, name: "to-address", "data-1p-ignore": true, controls: jsxRuntimeExports$1.jsx(Button, { size: "xs", shape: "square", label: "Paste", onClick: handlePaste, "data-id": "to-address", flexShrink: "0", leftIcon: SvgCopyIcon }) })] }), showSwitchNetwork && jsxRuntimeExports$1.jsxs(Box, { marginTop: "3", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "negative", marginBottom: "2", children: "The wallet is connected to the wrong network. Please switch network before proceeding" }), jsxRuntimeExports$1.jsx(Button, { marginTop: "2", width: "full", variant: "primary", type: "button", label: "Switch Network", onClick: () => switchChain2({ chainId }), disabled: isCorrectChainId, style: { height: "52px", borderRadius: vars.radii.md } })] }), jsxRuntimeExports$1.jsx(Box, { style: { height: "52px" }, alignItems: "center", justifyContent: "center", children: isSendTxnPending ? jsxRuntimeExports$1.jsx(Spinner, {}) : jsxRuntimeExports$1.jsx(Button, { color: "text100", marginTop: "3", width: "full", variant: "primary", type: "submit", disabled: !isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || !isCorrectChainId && !isConnectorSequenceBased, label: "Send", rightIcon: SvgChevronRightIcon, style: { height: "52px", borderRadius: vars.radii.md } }) })] });
+};
 var dayjs_min = { exports: {} };
 (function(module2, exports) {
   !function(t2, e2) {
@@ -87534,6 +87089,200 @@ var dayjs_min = { exports: {} };
 })(dayjs_min);
 var dayjs_minExports = dayjs_min.exports;
 const dayjs = /* @__PURE__ */ getDefaultExportFromCjs$1(dayjs_minExports);
+const TransactionHistoryItem = ({ transaction: transaction2 }) => {
+  var _a2;
+  const { chains: chains2 } = useConfig();
+  const { fiatCurrency } = useSettings();
+  const { setNavigation } = useNavigation();
+  const onClickTransaction = () => {
+    setNavigation({
+      location: "transaction-details",
+      params: {
+        transaction: transaction2
+      }
+    });
+  };
+  const tokenContractAddresses = [];
+  (_a2 = transaction2.transfers) == null ? void 0 : _a2.forEach((transfer) => {
+    const tokenContractAddress = transfer.contractAddress;
+    if (!tokenContractAddresses.includes(tokenContractAddress)) {
+      tokenContractAddresses.push(tokenContractAddress);
+    }
+  });
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices(tokenContractAddresses.map((contractAddress) => ({
+    contractAddress,
+    chainId: transaction2.chainId
+  })));
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const isPending = isPendingCoinPrices || isPendingConversionRate;
+  const { transfers } = transaction2;
+  const getTransactionIconByType = (transferType) => {
+    switch (transferType) {
+      case TxnTransferType.SEND:
+        return jsxRuntimeExports$1.jsx(SvgArrowRightIcon, { style: {
+          transform: "rotate(270deg)",
+          width: "16px"
+        } });
+      case TxnTransferType.RECEIVE:
+        return jsxRuntimeExports$1.jsx(SvgArrowRightIcon, { style: {
+          transform: "rotate(90deg)",
+          width: "16px"
+        } });
+      case TxnTransferType.UNKNOWN:
+      default:
+        return jsxRuntimeExports$1.jsx(SvgTransactionIcon, { style: { width: "14px" } });
+    }
+  };
+  const getTansactionLabelByType = (transferType) => {
+    switch (transferType) {
+      case TxnTransferType.SEND:
+        return "Sent";
+      case TxnTransferType.RECEIVE:
+        return "Received";
+      case TxnTransferType.UNKNOWN:
+      default:
+        return "Transacted";
+    }
+  };
+  const getTransferAmountLabel = (amount, symbol, transferType) => {
+    let sign3 = "";
+    if (transferType === TxnTransferType.SEND) {
+      sign3 = "-";
+    } else if (transferType === TxnTransferType.RECEIVE) {
+      sign3 = "+";
+    }
+    let textColor = "text50";
+    if (transferType === TxnTransferType.SEND) {
+      textColor = vars.colors.negative;
+    } else if (transferType === TxnTransferType.RECEIVE) {
+      textColor = vars.colors.positive;
+    }
+    return jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "normal", style: { color: textColor }, children: `${sign3}${amount} ${symbol}` });
+  };
+  const getTransfer = ({ transfer, isFirstItem }) => {
+    const { amounts } = transfer;
+    const date = dayjs(transaction2.timestamp).format("MMM DD, YYYY");
+    return jsxRuntimeExports$1.jsxs(Box, { gap: "2", width: "full", flexDirection: "column", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { color: "text50", gap: "1", flexDirection: "row", justifyContent: "center", alignItems: "center", children: [getTransactionIconByType(transfer.transferType), jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", fontSize: "normal", color: "text100", children: getTansactionLabelByType(transfer.transferType) }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId: transaction2.chainId, size: "xs" })] }), isFirstItem && jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", fontSize: "normal", color: "text50", children: date }) })] }), amounts.map((amount, index2) => {
+      var _a3, _b2, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2;
+      const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
+      const isNativeToken = compareAddress(transfer.contractAddress, AddressZero);
+      const isCollectible = ((_a3 = transfer.contractInfo) == null ? void 0 : _a3.type) === "ERC721" || ((_b2 = transfer.contractInfo) == null ? void 0 : _b2.type) === "ERC1155";
+      let decimals;
+      const tokenId = (_c2 = transfer.tokenIds) == null ? void 0 : _c2[index2];
+      if (isCollectible && tokenId) {
+        decimals = ((_e2 = (_d2 = transfer.tokenMetadata) == null ? void 0 : _d2[tokenId]) == null ? void 0 : _e2.decimals) || 0;
+      } else {
+        decimals = isNativeToken ? nativeTokenInfo.decimals : (_f2 = transfer.contractInfo) == null ? void 0 : _f2.decimals;
+      }
+      const amountValue = formatUnits$1(amount, decimals);
+      const symbol = isNativeToken ? nativeTokenInfo.symbol : ((_g2 = transfer.contractInfo) == null ? void 0 : _g2.symbol) || "";
+      const tokenLogoUri = isNativeToken ? nativeTokenInfo.logoURI : (_h2 = transfer.contractInfo) == null ? void 0 : _h2.logoURI;
+      const fiatConversionRate = (_j2 = (_i2 = coinPrices.find((coinPrice) => compareAddress(coinPrice.token.contractAddress, transfer.contractAddress))) == null ? void 0 : _i2.price) == null ? void 0 : _j2.value;
+      return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "center", alignItems: "center", children: [tokenLogoUri && jsxRuntimeExports$1.jsx(Image$1, { src: tokenLogoUri, width: "5", alt: "token logo" }), getTransferAmountLabel(formatDisplay(amountValue), symbol, transfer.transferType)] }), isPending && jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "35px", height: "20px" } }), fiatConversionRate && jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", fontSize: "normal", color: "text50", children: `${fiatCurrency.sign}${(Number(amountValue) * fiatConversionRate * conversionRate).toFixed(2)}` })] }, index2);
+    })] });
+  };
+  return jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", borderRadius: "md", padding: "4", gap: "2", alignItems: "center", justifyContent: "center", flexDirection: "column", userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, onClick: () => onClickTransaction(), children: transfers == null ? void 0 : transfers.map((transfer, position) => {
+    return jsxRuntimeExports$1.jsx(Box, { width: "full", children: getTransfer({
+      transfer,
+      isFirstItem: position === 0
+    }) }, `${transaction2.txnHash}-${position}`);
+  }) });
+};
+const TransactionHistorySkeleton = () => {
+  const getTransactionItem = () => {
+    return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", width: "full", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "65px", height: "20px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "75px", height: "17px" } })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "120px", height: "20px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "35px", height: "17px" } })] })] });
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "3", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "70px", height: "17px" } }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", children: Array(8).fill(null).map((_, index2) => {
+    return jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", padding: "4", gap: "2", alignItems: "center", justifyContent: "center", flexDirection: "column", background: "backgroundSecondary", children: getTransactionItem() }, index2);
+  }) })] });
+};
+const TransactionHistoryList = ({ transactions: transactions2, isPending, isFetchingNextPage }) => {
+  const transactionPeriods = [
+    {
+      id: "today",
+      label: "Today"
+    },
+    {
+      id: "yesterday",
+      label: "Yesterday"
+    },
+    {
+      id: "week",
+      label: "Last Week"
+    },
+    {
+      id: "month",
+      label: "Last Month"
+    },
+    {
+      id: "year",
+      label: "Last Year"
+    },
+    {
+      id: "years",
+      label: "Past Years"
+    }
+  ];
+  const transactionsByTime = reactExports.useMemo(() => {
+    const todayTreshold = new Date((/* @__PURE__ */ new Date()).setHours(0, 0, 0, 0)).getTime();
+    const yesterdayTreshold = new Date((/* @__PURE__ */ new Date()).setDate(new Date(todayTreshold).getDate() - 1)).getTime();
+    const weekTreshold = new Date((/* @__PURE__ */ new Date()).setDate((/* @__PURE__ */ new Date()).getDate() - 7)).getTime();
+    const monthTreshold = new Date((/* @__PURE__ */ new Date()).setDate((/* @__PURE__ */ new Date()).getDate() - 30)).getTime();
+    const yearTreshold = new Date((/* @__PURE__ */ new Date()).setDate((/* @__PURE__ */ new Date()).getDate() - 365)).getTime();
+    const transactionsByTime2 = {
+      today: [],
+      yesterday: [],
+      week: [],
+      month: [],
+      year: [],
+      years: []
+    };
+    transactions2.forEach((transaction2) => {
+      const transactionTime = new Date(transaction2.timestamp).getTime();
+      if (transactionTime > todayTreshold) {
+        transactionsByTime2.today.push(transaction2);
+      } else if (transactionTime > yesterdayTreshold) {
+        transactionsByTime2.yesterday.push(transaction2);
+      } else if (transactionTime > weekTreshold) {
+        transactionsByTime2.week.push(transaction2);
+      } else if (transactionTime > monthTreshold) {
+        transactionsByTime2.month.push(transaction2);
+      } else if (transactionTime > yearTreshold) {
+        transactionsByTime2.year.push(transaction2);
+      } else {
+        transactionsByTime2.years.push(transaction2);
+      }
+    });
+    return transactionsByTime2;
+  }, [transactions2]);
+  if (isPending) {
+    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", children: jsxRuntimeExports$1.jsx(TransactionHistorySkeleton, {}) });
+  }
+  const TimeLabel = ({ label }) => {
+    return jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { color: "text50", fontWeight: "medium", fontSize: "normal", children: label }) });
+  };
+  const TransactionsList = ({ transactions: transactions3 }) => {
+    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", children: transactions3.map((transaction2, index2) => {
+      return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", children: jsxRuntimeExports$1.jsx(TransactionHistoryItem, { transaction: transaction2 }) }, `${transaction2.txnHash}-${index2}`);
+    }) });
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "5", children: [transactionPeriods.map((period) => {
+    const txs = transactionsByTime[period.id];
+    if (txs.length === 0) {
+      return null;
+    }
+    return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "3", children: [jsxRuntimeExports$1.jsx(TimeLabel, { label: period.label }), jsxRuntimeExports$1.jsx(TransactionsList, { transactions: txs })] }, period.id);
+  }), transactions2.length === 0 && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "3", children: [jsxRuntimeExports$1.jsx(TimeLabel, { label: "History" }), jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "No Recent Transaction History Found" })] }), isFetchingNextPage && jsxRuntimeExports$1.jsx(Box, { margin: "4", alignItems: "center", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) })] });
+};
+const History = () => {
+  const { selectedNetworks } = useSettings();
+  const { address: accountAddress } = useAccount();
+  const { data: transactionHistory = [], isPending: isPendingTransactionHistory } = useTransactionHistorySummary({
+    accountAddress: accountAddress || "",
+    chainIds: selectedNetworks
+  });
+  return jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Box, { paddingX: "4", paddingBottom: "5", paddingTop: "3", children: jsxRuntimeExports$1.jsx(TransactionHistoryList, { transactions: transactionHistory, isPending: isPendingTransactionHistory, isFetchingNextPage: false }) }) });
+};
 function isArray(value) {
   return !Array.isArray ? getTag(value) === "[object Array]" : Array.isArray(value);
 }
@@ -88843,6 +88592,274 @@ Fuse.config = Config;
 {
   register(ExtendedSearch);
 }
+const BalanceItem = ({ balance }) => {
+  var _a2, _b2, _c2;
+  const { chains: chains2 } = useConfig();
+  const { setNavigation } = useNavigation();
+  const isNativeToken = compareAddress(balance.contractAddress, AddressZero);
+  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
+  const logoURI = isNativeToken ? nativeTokenInfo.logoURI : (_a2 = balance == null ? void 0 : balance.contractInfo) == null ? void 0 : _a2.logoURI;
+  const tokenName = isNativeToken ? nativeTokenInfo.name : ((_b2 = balance == null ? void 0 : balance.contractInfo) == null ? void 0 : _b2.name) || "Unknown";
+  const symbol = isNativeToken ? nativeTokenInfo.symbol : (_c2 = balance == null ? void 0 : balance.contractInfo) == null ? void 0 : _c2.symbol;
+  const getQuantity = () => {
+    var _a3, _b3;
+    if (balance.contractType === "ERC721" || balance.contractType === "ERC1155") {
+      return balance.balance;
+    }
+    const decimals = isNativeToken ? nativeTokenInfo.decimals : (_a3 = balance == null ? void 0 : balance.contractInfo) == null ? void 0 : _a3.decimals;
+    const bal = formatUnits$1(balance.balance, decimals || 0);
+    const displayBalance = formatDisplay(bal);
+    const symbol2 = isNativeToken ? nativeTokenInfo.symbol : (_b3 = balance == null ? void 0 : balance.contractInfo) == null ? void 0 : _b3.symbol;
+    return `${displayBalance} ${symbol2}`;
+  };
+  const onClick = () => {
+    const isCollection = balance.contractType === "ERC721" || balance.contractType === "ERC1155";
+    if (isCollection) {
+      setNavigation({
+        location: "collection-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId
+        }
+      });
+    } else {
+      setNavigation({
+        location: "coin-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId
+        }
+      });
+    }
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { onClick, width: "full", flexDirection: "row", justifyContent: "space-between", alignItems: "center", userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, children: [jsxRuntimeExports$1.jsxs(Box, { gap: "3", flexDirection: "row", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: logoURI, symbol, size: "md" }), jsxRuntimeExports$1.jsxs(Box, { gap: "1", flexDirection: "row", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(Text, { color: "text100", fontWeight: "bold", fontSize: "normal", style: {
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+    maxWidth: "250px",
+    // @ts-ignore-next-line
+    textWrap: "nowrap"
+  }, children: tokenName }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId: balance.chainId, size: "xs" })] })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "1", children: [jsxRuntimeExports$1.jsx(Text, { color: "text50", fontWeight: "bold", fontSize: "normal", children: getQuantity() }), jsxRuntimeExports$1.jsx(SvgChevronRightIcon, { color: "text50" })] })] }, balance.contractAddress);
+};
+const WalletLink = ({ toLocation, label }) => {
+  const { setNavigation } = useNavigation();
+  const onClick = () => {
+    setNavigation(toLocation);
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { onClick, width: "full", flexDirection: "row", justifyContent: "space-between", alignItems: "center", userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, children: [jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "normal", fontWeight: "medium", children: label }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "normal", fontWeight: "medium", children: "View all" }), jsxRuntimeExports$1.jsx(SvgChevronRightIcon, { color: "text50", size: "sm" })] })] });
+};
+const SearchWallet = () => {
+  const { chains: chains2 } = useConfig();
+  const { fiatCurrency, hideUnlistedTokens, selectedNetworks } = useSettings();
+  const [search2, setSearch] = reactExports.useState("");
+  const { address: accountAddress } = useAccount();
+  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances({
+    chainIds: selectedNetworks,
+    accountAddress: accountAddress || "",
+    verifiedOnly: hideUnlistedTokens
+  });
+  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress(b2.contractAddress, AddressZero))) || [];
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices(coinBalancesUnordered.map((token) => ({
+    chainId: token.chainId,
+    contractAddress: token.contractAddress
+  })));
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const coinBalances = coinBalancesUnordered.sort((a2, b2) => {
+    var _a2, _b2;
+    const isHigherFiat = Number(computeBalanceFiat({
+      balance: b2,
+      prices: coinPrices,
+      conversionRate,
+      decimals: ((_a2 = b2.contractInfo) == null ? void 0 : _a2.decimals) || 18
+    })) - Number(computeBalanceFiat({
+      balance: a2,
+      prices: coinPrices,
+      conversionRate,
+      decimals: ((_b2 = b2.contractInfo) == null ? void 0 : _b2.decimals) || 18
+    }));
+    return isHigherFiat;
+  });
+  const collectionBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC721" || b2.contractType === "ERC1155")) || [];
+  const collectionBalances = collectionBalancesUnordered.sort((a2, b2) => {
+    return Number(b2.balance) - Number(a2.balance);
+  });
+  const isPending = isPendingTokenBalances || isPendingCoinPrices || isPendingConversionRate;
+  const indexedCollectionBalances = collectionBalances.map((balance, index2) => {
+    var _a2;
+    return {
+      index: index2,
+      name: ((_a2 = balance.contractInfo) == null ? void 0 : _a2.name) || "Unknown"
+    };
+  });
+  const indexedCoinBalances = coinBalances.map((balance, index2) => {
+    var _a2;
+    if (compareAddress(balance.contractAddress, AddressZero)) {
+      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
+      return {
+        index: index2,
+        name: nativeTokenInfo.name
+      };
+    } else {
+      return {
+        index: index2,
+        name: ((_a2 = balance.contractInfo) == null ? void 0 : _a2.name) || "Unknown"
+      };
+    }
+  });
+  const coinBalancesAmount = coinBalances.length;
+  const collectionBalancesAmount = collectionBalances.length;
+  const fuzzySearchCoinBalances = new Fuse(indexedCoinBalances, {
+    keys: ["name"]
+  });
+  const fuzzySearchCollections = new Fuse(indexedCollectionBalances, {
+    keys: ["name"]
+  });
+  const foundCoinBalances = (search2 === "" ? indexedCoinBalances : fuzzySearchCoinBalances.search(search2).map((result) => result.item)).slice(0, 5);
+  const foundCollectionBalances = (search2 === "" ? indexedCollectionBalances : fuzzySearchCollections.search(search2).map((result) => result.item)).slice(0, 5);
+  return jsxRuntimeExports$1.jsxs(Box, { paddingX: "4", paddingBottom: "5", paddingTop: "3", flexDirection: "column", gap: "10", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(Box, { width: "full", children: jsxRuntimeExports$1.jsx(TextInput, { autoFocus: true, name: "search wallet", leftIcon: SvgSearchIcon, value: search2, onChange: (ev) => setSearch(ev.target.value), placeholder: "Search your wallet", "data-1p-ignore": true }) }), jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "5", children: [jsxRuntimeExports$1.jsx(WalletLink, { toLocation: {
+    location: "search-view-all",
+    params: {
+      defaultTab: "collections"
+    }
+  }, label: `Collections (${collectionBalancesAmount})` }), isPending ? Array(5).fill(null).map((_, i2) => jsxRuntimeExports$1.jsx(Skeleton, { width: "full", height: "8" }, i2)) : foundCollectionBalances.length === 0 ? jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "No collections found" }) : foundCollectionBalances.map((indexedItem, index2) => {
+    const balance = collectionBalances[indexedItem.index];
+    return jsxRuntimeExports$1.jsx(BalanceItem, { balance }, index2);
+  })] }), jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "5", children: [jsxRuntimeExports$1.jsx(WalletLink, { toLocation: {
+    location: "search-view-all",
+    params: {
+      defaultTab: "coins"
+    }
+  }, label: `Coins (${coinBalancesAmount})` }), isPending ? Array(5).fill(null).map((_, i2) => jsxRuntimeExports$1.jsx(Skeleton, { width: "full", height: "8" }, i2)) : foundCoinBalances.length === 0 ? jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "No coins found" }) : foundCoinBalances.map((indexItem, index2) => {
+    const balance = coinBalances[indexItem.index];
+    return jsxRuntimeExports$1.jsx(BalanceItem, { balance }, index2);
+  })] })] });
+};
+const SearchWalletViewAll = ({ defaultTab }) => {
+  const { chains: chains2 } = useConfig();
+  const { fiatCurrency, hideUnlistedTokens, selectedNetworks } = useSettings();
+  const [search2, setSearch] = reactExports.useState("");
+  const [selectedTab, setSelectedTab] = reactExports.useState(defaultTab);
+  reactExports.useEffect(() => {
+    setSearch("");
+  }, [selectedTab]);
+  const { address: accountAddress } = useAccount();
+  const { data: tokenBalancesData, isPending: isPendingTokenBalances } = useBalances({
+    chainIds: selectedNetworks,
+    accountAddress: accountAddress || "",
+    verifiedOnly: hideUnlistedTokens
+  });
+  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress(b2.contractAddress, AddressZero))) || [];
+  const { data: coinPrices = [], isPending: isPendingCoinPrices } = useCoinPrices(coinBalancesUnordered.map((token) => ({
+    chainId: token.chainId,
+    contractAddress: token.contractAddress
+  })));
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const coinBalances = coinBalancesUnordered.sort((a2, b2) => {
+    var _a2, _b2;
+    const isHigherFiat = Number(computeBalanceFiat({
+      balance: b2,
+      prices: coinPrices,
+      conversionRate,
+      decimals: ((_a2 = b2.contractInfo) == null ? void 0 : _a2.decimals) || 18
+    })) - Number(computeBalanceFiat({
+      balance: a2,
+      prices: coinPrices,
+      conversionRate,
+      decimals: ((_b2 = a2.contractInfo) == null ? void 0 : _b2.decimals) || 18
+    }));
+    return isHigherFiat;
+  });
+  const collectionBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC721" || b2.contractType === "ERC1155")) || [];
+  const collectionBalances = collectionBalancesUnordered.sort((a2, b2) => {
+    return Number(b2.balance) - Number(a2.balance);
+  });
+  const coinBalancesAmount = coinBalances.length;
+  const collectionBalancesAmount = collectionBalances.length;
+  const isPending = isPendingTokenBalances || isPendingCoinPrices || isPendingConversionRate;
+  const indexedCollectionBalances = collectionBalances.map((balance, index2) => {
+    var _a2;
+    return {
+      index: index2,
+      name: ((_a2 = balance.contractInfo) == null ? void 0 : _a2.name) || "Unknown"
+    };
+  });
+  const indexedCoinBalances = coinBalances.map((balance, index2) => {
+    var _a2;
+    if (compareAddress(balance.contractAddress, AddressZero)) {
+      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
+      return {
+        index: index2,
+        name: nativeTokenInfo.name
+      };
+    } else {
+      return {
+        index: index2,
+        name: ((_a2 = balance.contractInfo) == null ? void 0 : _a2.name) || "Unknown"
+      };
+    }
+  });
+  const fuzzySearchCoinBalances = new Fuse(indexedCoinBalances, {
+    keys: ["name"]
+  });
+  const fuzzySearchCollections = new Fuse(indexedCollectionBalances, {
+    keys: ["name"]
+  });
+  const foundCoinBalances = search2 === "" ? indexedCoinBalances : fuzzySearchCoinBalances.search(search2).map((result) => result.item);
+  const foundCollectionBalances = search2 === "" ? indexedCollectionBalances : fuzzySearchCollections.search(search2).map((result) => result.item);
+  const TabsHeaderSkeleton = () => {
+    return jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "360px", height: "48px" } });
+  };
+  const ItemsSkeletons = () => {
+    return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: Array(8).fill(null).map((_, i2) => jsxRuntimeExports$1.jsx(Skeleton, { width: "full", height: "8" }, i2)) });
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { paddingX: "4", paddingBottom: "5", paddingTop: "3", flexDirection: "column", gap: "5", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(Box, { width: "full", children: jsxRuntimeExports$1.jsx(TextInput, { autoFocus: true, name: "search wallet", leftIcon: SvgSearchIcon, value: search2, onChange: (ev) => setSearch(ev.target.value), placeholder: "Search your wallet", "data-1p-ignore": true }) }), jsxRuntimeExports$1.jsx(Box, { width: "full", children: jsxRuntimeExports$1.jsxs(TabsRoot, { value: selectedTab, onValueChange: (value) => setSelectedTab(value), children: [jsxRuntimeExports$1.jsxs(Box, { marginBottom: "5", children: [!isPending && jsxRuntimeExports$1.jsx(TabsHeader, { value: selectedTab, tabs: [
+    { label: `Collections (${collectionBalancesAmount})`, value: "collections" },
+    { label: `Coins (${coinBalancesAmount})`, value: "coins" }
+  ] }), isPending && jsxRuntimeExports$1.jsx(TabsHeaderSkeleton, {})] }), jsxRuntimeExports$1.jsx(TabsContent, { value: "collections", children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "3", children: [isPending && jsxRuntimeExports$1.jsx(ItemsSkeletons, {}), !isPending && foundCollectionBalances.length === 0 && jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "No Collectibles Found" }), !isPending && foundCollectionBalances.length > 0 && foundCollectionBalances.map((indexItem, index2) => {
+    const collectionBalance = collectionBalances[indexItem.index];
+    return jsxRuntimeExports$1.jsx(BalanceItem, { balance: collectionBalance }, index2);
+  })] }) }), jsxRuntimeExports$1.jsx(TabsContent, { value: "coins", children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "3", children: [isPending && jsxRuntimeExports$1.jsx(ItemsSkeletons, {}), !isPending && coinBalances.length == 0 && jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "No Coins Found" }), !isPending && foundCoinBalances.length > 0 && foundCoinBalances.map((indexedItem, index2) => {
+    const coinBalance = coinBalances[indexedItem.index];
+    return jsxRuntimeExports$1.jsx(BalanceItem, { balance: coinBalance }, index2);
+  })] }) })] }) })] });
+};
+const SettingsMenu = () => {
+  const { setNavigation } = useNavigation();
+  const onClickGeneral = () => {
+    setNavigation({
+      location: "settings-general"
+    });
+  };
+  const onClickCurrency = () => {
+    setNavigation({
+      location: "settings-currency"
+    });
+  };
+  const onClickNetworks = () => {
+    setNavigation({
+      location: "settings-networks"
+    });
+  };
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsx(Box, { padding: "5", paddingTop: "3", children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", children: [jsxRuntimeExports$1.jsx(Button, { onClick: onClickGeneral, leftIcon: SvgSettingsIcon, rightIcon: SvgChevronRightIcon, width: "full", label: "General", style: {
+    height: "52px",
+    borderRadius: vars.radii.md
+  } }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickCurrency, leftIcon: SvgCurrencyIcon, rightIcon: SvgChevronRightIcon, width: "full", label: "Currency", style: {
+    height: "52px",
+    borderRadius: vars.radii.md
+  } }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickNetworks, leftIcon: SvgNetworkIcon, rightIcon: SvgChevronRightIcon, width: "full", label: "Networks", style: {
+    height: "52px",
+    borderRadius: vars.radii.md
+  } })] }) }) });
+};
+const SettingsGeneral = () => {
+  const { hideUnlistedTokens, setHideUnlistedTokens, hideCollectibles, setHideCollectibles } = useSettings();
+  const onChangeHideUnlistedTokens = () => {
+    setHideUnlistedTokens(!hideUnlistedTokens);
+  };
+  const onChangeHideCollectibles = () => {
+    setHideCollectibles(!hideCollectibles);
+  };
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { gap: "2", padding: "5", paddingTop: "3", flexDirection: "column", children: [jsxRuntimeExports$1.jsxs(Card, { flexDirection: "row", justifyContent: "space-between", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { color: "text100", fontWeight: "bold", children: "Hide unlisted tokens" }), jsxRuntimeExports$1.jsx(Switch, { checked: hideUnlistedTokens, onCheckedChange: onChangeHideUnlistedTokens })] }), jsxRuntimeExports$1.jsxs(Card, { flexDirection: "row", justifyContent: "space-between", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { color: "text100", fontWeight: "bold", children: "Hide collectibles" }), jsxRuntimeExports$1.jsx(Switch, { checked: hideCollectibles, onCheckedChange: onChangeHideCollectibles })] })] }) });
+};
 function r$1(e2) {
   var t2, f2, n2 = "";
   if ("string" == typeof e2 || "number" == typeof e2)
@@ -88862,8 +88879,361 @@ function clsx() {
     (e2 = arguments[f2]) && (t2 = r$1(e2)) && (n2 && (n2 += " "), n2 += t2);
   return n2;
 }
-function _extends$3() {
-  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
+const SelectedIndicator = (props) => {
+  const { selected, className, squareIndicator = false } = props;
+  return jsxRuntimeExports$1.jsx(Box, { borderStyle: "solid", borderColor: squareIndicator && selected ? "transparent" : "borderNormal", borderWidth: "thin", position: "relative", alignItems: "center", justifyContent: "center", flexShrink: "0", className, style: {
+    borderRadius: squareIndicator ? "4px" : vars.radii.circle,
+    width: "20px",
+    height: "20px"
+  }, children: jsxRuntimeExports$1.jsx(Box, { as: motion.div, background: squareIndicator ? "borderNormal" : "backgroundInverse", position: "absolute", color: "textInverse100", initial: { opacity: selected ? 1 : 0, scale: selected ? 1 : 0.5 }, animate: { opacity: selected ? 1 : 0, scale: selected ? 1 : 0.5 }, transition: { ease: "backOut" }, style: {
+    borderRadius: squareIndicator ? "4px" : vars.radii.circle,
+    width: squareIndicator ? "20px" : "14px",
+    height: squareIndicator ? "20px" : "14px"
+  }, justifyContent: "center", alignItems: "center", children: squareIndicator && jsxRuntimeExports$1.jsx(SvgCheckmarkIcon, { color: "white", style: { width: "14px", height: "14px" } }) }) });
+};
+const SelectButton = (props) => {
+  const { value, selected, children, disabled, onClick, className, hideIndicator, squareIndicator = false, ...rest } = props;
+  return jsxRuntimeExports$1.jsxs(Card, { as: "button", clickable: true, className: clsx(className), disabled, onClick: () => onClick(value), userSelect: "none", alignItems: "center", justifyContent: "space-between", textAlign: "left", width: "full", border: "none", style: {
+    appearance: "none"
+  }, ...rest, children: [children, !hideIndicator && jsxRuntimeExports$1.jsx(SelectedIndicator, { selected, squareIndicator })] });
+};
+const SettingsCurrency = () => {
+  const { fiatCurrency, setFiatCurrency } = useSettings();
+  return jsxRuntimeExports$1.jsx(Box, { paddingBottom: "5", paddingX: "4", paddingTop: "3", children: jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", children: supportedFiatCurrencies.map((currency) => {
+    return jsxRuntimeExports$1.jsx(SelectButton, { value: currency.symbol, selected: currency.symbol === fiatCurrency.symbol, onClick: () => setFiatCurrency && setFiatCurrency(currency), children: jsxRuntimeExports$1.jsxs(Box, { gap: "2", justifyContent: "flex-start", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { color: "text100", fontWeight: "bold", children: currency.symbol }), jsxRuntimeExports$1.jsx(Text, { color: "text50", children: currency.name.message })] }) }, currency.symbol);
+  }) }) });
+};
+const SettingsNetwork = () => {
+  const { selectedNetworks, setSelectedNetworks } = useSettings();
+  const { chains: chains2 } = useConfig();
+  const onClickNetwork = (chainId) => {
+    if (selectedNetworks.includes(chainId)) {
+      if (selectedNetworks.length === 1) {
+        return;
+      }
+      setSelectedNetworks(selectedNetworks.filter((id2) => id2 !== chainId));
+    } else {
+      setSelectedNetworks([...selectedNetworks, chainId]);
+    }
+  };
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { padding: "5", paddingTop: "3", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "bold", color: "text50", children: "Networks" }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", marginTop: "4", children: chains2.map((chain) => {
+    return jsxRuntimeExports$1.jsx(SelectButton, { disabled: selectedNetworks.length === 1 && selectedNetworks.includes(chain.id), selected: selectedNetworks.includes(chain.id), onClick: () => onClickNetwork(chain.id), value: chain.id, squareIndicator: true, children: jsxRuntimeExports$1.jsxs(Box, { gap: "2", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: `https://assets.sequence.info/images/networks/medium/${chain.id}.webp` }), jsxRuntimeExports$1.jsx(Text, { color: "text100", variant: "normal", fontWeight: "bold", children: chain.name })] }) }, chain.id);
+  }) })] }) });
+};
+const useIntersectionObserver = (ref, options) => {
+  const [entry, setEntry] = reactExports.useState(null);
+  const observer = reactExports.useMemo(() => new IntersectionObserver(([entry2]) => setEntry(entry2), options), []);
+  reactExports.useEffect(() => {
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      if (ref.current) {
+        observer.disconnect();
+      }
+    };
+  }, [ref.current, observer]);
+  return (entry == null ? void 0 : entry.isIntersecting) ?? false;
+};
+const InfiniteScroll = (props) => {
+  const { onLoad, hasMore = true, children } = props;
+  const [pageNumber, setPageNumber] = reactExports.useState(0);
+  const [isLoading, setLoading] = reactExports.useState(false);
+  const bottomRef = reactExports.useRef(null);
+  const isBottom = useIntersectionObserver(bottomRef);
+  reactExports.useEffect(() => {
+    if (isBottom && hasMore && !isLoading) {
+      handleLoad();
+    }
+  }, [isBottom]);
+  const handleLoad = async () => {
+    setLoading(true);
+    await onLoad(pageNumber);
+    setPageNumber((pageNumber2) => pageNumber2 + 1);
+    setLoading(false);
+  };
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [children, jsxRuntimeExports$1.jsx("div", { ref: bottomRef })] });
+};
+const NetworkBadge = ({ chainId }) => {
+  const network2 = getNetwork(chainId);
+  const chainColor = getNetworkColor(chainId);
+  const chainBGColor = getNetworkBackgroundColor(chainId);
+  return jsxRuntimeExports$1.jsxs(Box, { height: "6", paddingY: "1", paddingLeft: "1.5", paddingRight: "2", gap: "1", style: {
+    background: chainBGColor
+  }, borderRadius: "xs", flexDirection: "row", justifyContent: "center", alignItems: "center", width: "fit", children: [jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "xsmall", style: {
+    color: chainColor
+  }, children: capitalize(network2.title ?? network2.name) })] });
+};
+const CoinDetailsSkeleton = ({ chainId }) => {
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "10", paddingBottom: "5", paddingX: "4", paddingTop: "0", style: { marginTop: "-20px" }, children: [jsxRuntimeExports$1.jsxs(Box, { marginBottom: "10", gap: "2", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "32px", height: "32px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { height: "24px", width: "70px" } }), jsxRuntimeExports$1.jsx(NetworkBadge, { chainId })] }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", color: "text50", fontSize: "normal", children: "Balance" }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "150px", height: "36px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "33px", height: "17px" } })] })] }), jsxRuntimeExports$1.jsx(Button, { color: "text100", marginTop: "4", marginBottom: "10", width: "full", variant: "primary", leftIcon: SvgSendIcon, label: "Send", disabled: true, onClick: () => {
+  } }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(TransactionHistorySkeleton, {}) })] }) });
+};
+const CoinDetails = ({ contractAddress, chainId }) => {
+  var _a2, _b2, _c2, _d2;
+  const { chains: chains2 } = useConfig();
+  const { setNavigation } = useNavigation();
+  const { fiatCurrency, hideUnlistedTokens } = useSettings();
+  const { address: accountAddress } = useAccount();
+  const { data: dataTransactionHistory, isPending: isPendingTransactionHistory, fetchNextPage, hasNextPage: hasNextPage2, isFetchingNextPage } = useTransactionHistory({
+    chainId,
+    accountAddress: accountAddress || "",
+    contractAddress
+  });
+  const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory);
+  const { data: dataCoinBalance, isPending: isPendingCoinBalance } = useCoinBalance({
+    accountAddress: accountAddress || "",
+    contractAddress,
+    chainId,
+    verifiedOnly: hideUnlistedTokens
+  });
+  const { data: dataCoinPrices, isPending: isPendingCoinPrices } = useCoinPrices([
+    {
+      chainId,
+      contractAddress
+    }
+  ]);
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const isPending = isPendingCoinBalance || isPendingCoinPrices || isPendingConversionRate;
+  if (isPending) {
+    return jsxRuntimeExports$1.jsx(CoinDetailsSkeleton, { chainId });
+  }
+  const isNativeToken = compareAddress(contractAddress, AddressZero);
+  const logo = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).logoURI : (_a2 = dataCoinBalance == null ? void 0 : dataCoinBalance.contractInfo) == null ? void 0 : _a2.logoURI;
+  const symbol = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).symbol : (_b2 = dataCoinBalance == null ? void 0 : dataCoinBalance.contractInfo) == null ? void 0 : _b2.symbol;
+  const name2 = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).name : (_c2 = dataCoinBalance == null ? void 0 : dataCoinBalance.contractInfo) == null ? void 0 : _c2.name;
+  const decimals = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).decimals : (_d2 = dataCoinBalance == null ? void 0 : dataCoinBalance.contractInfo) == null ? void 0 : _d2.decimals;
+  const formattedBalance = formatUnits$1((dataCoinBalance == null ? void 0 : dataCoinBalance.balance) || "0", decimals);
+  const balanceDisplayed = formatDisplay(formattedBalance);
+  const coinBalanceFiat = dataCoinBalance ? computeBalanceFiat({
+    balance: dataCoinBalance,
+    prices: dataCoinPrices || [],
+    conversionRate,
+    decimals: decimals || 0
+  }) : "0";
+  const onClickSend = () => {
+    setNavigation({
+      location: "send-coin",
+      params: {
+        chainId,
+        contractAddress
+      }
+    });
+  };
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "10", paddingBottom: "5", paddingX: "4", paddingTop: "0", style: { marginTop: "-20px" }, children: [jsxRuntimeExports$1.jsxs(Box, { marginBottom: "10", gap: "2", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Image$1, { width: "8", src: logo, alt: "logo" }), jsxRuntimeExports$1.jsx(Text, { color: "text100", fontWeight: "bold", fontSize: "large", children: name2 }), jsxRuntimeExports$1.jsx(NetworkBadge, { chainId })] }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", color: "text50", fontSize: "normal", children: "Balance" }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", color: "text100", fontSize: "xlarge", children: `${balanceDisplayed} ${symbol}` }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", color: "text50", fontSize: "normal", children: `${fiatCurrency.sign}${coinBalanceFiat}` })] })] }), jsxRuntimeExports$1.jsx(Button, { width: "full", variant: "primary", leftIcon: SvgSendIcon, color: "text100", label: "Send", onClick: onClickSend }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(InfiniteScroll, { onLoad: () => fetchNextPage(), hasMore: hasNextPage2, children: jsxRuntimeExports$1.jsx(TransactionHistoryList, { transactions: transactionHistory, isPending: isPendingTransactionHistory, isFetchingNextPage }) }) })] }) });
+};
+const CollectionDetailsSkeleton = ({ chainId }) => {
+  return jsxRuntimeExports$1.jsxs(Box, { paddingX: "4", paddingBottom: "5", paddingTop: "3", marginTop: "8", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "10", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "32px", height: "32px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "100px", height: "24px" } }), jsxRuntimeExports$1.jsx(NetworkBadge, { chainId }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "142px", height: "17px" } })] }), jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "168px", height: "20px" } }), jsxRuntimeExports$1.jsx(Box, { style: {
+    display: "grid",
+    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+    gap: vars.space[2]
+  }, width: "full", marginTop: "3", children: Array(8).fill(null).map((_, i2) => jsxRuntimeExports$1.jsx(Skeleton, { width: "full", aspectRatio: "1/1" }, i2)) })] })] });
+};
+const CollectionDetails = ({ chainId, contractAddress }) => {
+  var _a2;
+  const { setNavigation } = useNavigation();
+  const { address: accountAddress } = useAccount();
+  const { data: collectionBalanceData, isPending: isPendingCollectionBalance } = useCollectionBalance({
+    chainId,
+    accountAddress: accountAddress || "",
+    contractAddress
+  });
+  const contractInfo = (_a2 = collectionBalanceData == null ? void 0 : collectionBalanceData[0]) == null ? void 0 : _a2.contractInfo;
+  const collectionLogoURI = contractInfo == null ? void 0 : contractInfo.logoURI;
+  if (isPendingCollectionBalance) {
+    return jsxRuntimeExports$1.jsx(CollectionDetailsSkeleton, { chainId });
+  }
+  const onClickItem = (balance) => {
+    setNavigation && setNavigation({
+      location: "collectible-details",
+      params: {
+        contractAddress: balance.contractAddress,
+        chainId: balance.chainId,
+        tokenId: balance.tokenID
+      }
+    });
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { paddingX: "4", paddingBottom: "5", paddingTop: "3", marginTop: "8", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "10", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: collectionLogoURI, size: "lg" }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "large", color: "text100", children: (contractInfo == null ? void 0 : contractInfo.name) || "Unknown" }), jsxRuntimeExports$1.jsx(NetworkBadge, { chainId }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", fontSize: "normal", color: "text50", children: `${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0} Unique Collectibles` })] }), jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", fontSize: "normal", color: "text50", children: `Owned (${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0})` }), jsxRuntimeExports$1.jsx(Box, { style: {
+    display: "grid",
+    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+    gap: vars.space[2]
+  }, width: "full", marginTop: "3", children: collectionBalanceData == null ? void 0 : collectionBalanceData.map((balance, index2) => {
+    var _a3, _b2, _c2;
+    const unformattedBalance = balance.balance;
+    const decimals = ((_a3 = balance == null ? void 0 : balance.tokenMetadata) == null ? void 0 : _a3.decimals) || 0;
+    const formattedBalance = formatDisplay(formatUnits$1(unformattedBalance, decimals));
+    return jsxRuntimeExports$1.jsxs(Box, { onClick: () => onClickItem(balance), userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, children: [jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", aspectRatio: "1/1", width: "full", borderRadius: "md", justifyContent: "center", alignItems: "center", marginBottom: "2", children: jsxRuntimeExports$1.jsx(Image$1, { style: { height: "100%" }, src: (_b2 = balance.tokenMetadata) == null ? void 0 : _b2.image }) }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "normal", color: "text100", children: `${(_c2 = balance.tokenMetadata) == null ? void 0 : _c2.name}` }) }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsxs(Text, { marginTop: "1", fontWeight: "medium", fontSize: "normal", color: "text50", children: [formattedBalance, " Owned"] }) })] }, index2);
+  }) })] })] });
+};
+const CollectibleDetailsSkeleton = () => {
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "10", paddingBottom: "5", paddingX: "4", paddingTop: "0", style: {
+    marginTop: "-20px"
+  }, children: [jsxRuntimeExports$1.jsxs(Box, { gap: "3", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "120px", height: "30px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "140px", height: "40px" } })] }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "347px", height: "347px" } }) }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", color: "text50", fontSize: "normal", children: "Balance" }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "44px", height: "36px" } }), jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "34px", height: "17px" } })] })] }), jsxRuntimeExports$1.jsx(Button, { color: "text100", marginTop: "4", width: "full", variant: "primary", leftIcon: SvgSendIcon, label: "Send", onClick: () => {
+  } })] }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", fontWeight: "medium", children: "This week" }), jsxRuntimeExports$1.jsx(TransactionHistorySkeleton, {})] })] }) });
+};
+const CollectibleDetails = ({ contractAddress, chainId, tokenId }) => {
+  var _a2, _b2, _c2, _d2, _e2, _f2;
+  const { address: accountAddress } = useAccount();
+  const { fiatCurrency } = useSettings();
+  const { setNavigation } = useNavigation();
+  const { data: dataTransactionHistory, isPending: isPendingTransactionHistory, fetchNextPage, hasNextPage: hasNextPage2, isFetchingNextPage } = useTransactionHistory({
+    chainId,
+    accountAddress: accountAddress || "",
+    contractAddress,
+    tokenId
+  });
+  const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory);
+  const { data: dataCollectibleBalance, isPending: isPendingCollectibleBalance } = useCollectibleBalance({
+    accountAddress: accountAddress || "",
+    contractAddress,
+    chainId,
+    tokenId,
+    verifiedOnly: false
+  });
+  const { data: dataCollectiblePrices, isPending: isPendingCollectiblePrices } = useCollectiblePrices([
+    {
+      chainId,
+      contractAddress,
+      tokenId
+    }
+  ]);
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const isPending = isPendingCollectibleBalance || isPendingCollectiblePrices || isPendingConversionRate;
+  if (isPending) {
+    return jsxRuntimeExports$1.jsx(CollectibleDetailsSkeleton, {});
+  }
+  const onClickSend = () => {
+    setNavigation({
+      location: "send-collectible",
+      params: {
+        chainId,
+        contractAddress,
+        tokenId
+      }
+    });
+  };
+  const collectionLogo = (_a2 = dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.contractInfo) == null ? void 0 : _a2.logoURI;
+  const collectionName = ((_b2 = dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.contractInfo) == null ? void 0 : _b2.name) || "Unknown Collection";
+  const decimals = ((_c2 = dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.tokenMetadata) == null ? void 0 : _c2.decimals) || 0;
+  const rawBalance = (dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.balance) || "0";
+  const balance = formatUnits$1(rawBalance, decimals);
+  const formattedBalance = formatDisplay(Number(balance));
+  const valueFiat = dataCollectibleBalance ? computeBalanceFiat({
+    balance: dataCollectibleBalance,
+    prices: dataCollectiblePrices || [],
+    conversionRate,
+    decimals
+  }) : "0";
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "10", paddingBottom: "5", paddingX: "4", paddingTop: "0", style: {
+    marginTop: "-20px"
+  }, children: [jsxRuntimeExports$1.jsxs(Box, { gap: "3", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Image$1, { borderRadius: "circle", width: "8", src: collectionLogo, alt: "collection logo", style: {
+    objectFit: "cover"
+  } }), jsxRuntimeExports$1.jsxs(Box, { gap: "1", flexDirection: "row", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "small", color: "text100", children: collectionName }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" })] })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { color: "text100", fontWeight: "bold", fontSize: "large", children: ((_d2 = dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.tokenMetadata) == null ? void 0 : _d2.name) || "Unknown Collectible" }), jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "small", fontWeight: "medium", children: `#${tokenId}` })] })] }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(CollectibleTileImage, { imageUrl: (_e2 = dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.tokenMetadata) == null ? void 0 : _e2.image }) }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", color: "text50", fontSize: "normal", children: "Balance" }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "flex-end", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", color: "text100", fontSize: "xlarge", children: formattedBalance }), dataCollectiblePrices && ((_f2 = dataCollectiblePrices[0].price) == null ? void 0 : _f2.value) && jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", color: "text50", fontSize: "normal", children: `${fiatCurrency.symbol} ${valueFiat}` })] })] }), jsxRuntimeExports$1.jsx(Button, { color: "text100", marginTop: "4", width: "full", variant: "primary", leftIcon: SvgSendIcon, label: "Send", onClick: onClickSend })] }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(InfiniteScroll, { onLoad: () => fetchNextPage(), hasMore: hasNextPage2, children: jsxRuntimeExports$1.jsx(TransactionHistoryList, { transactions: transactionHistory, isPending: isPendingTransactionHistory, isFetchingNextPage }) }) })] }) });
+};
+const CopyButton = (props) => {
+  const { buttonVariant = "icon", text: text2, size: size2 = "xs", ...rest } = props;
+  const [isCopied, setCopy] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    if (isCopied) {
+      setTimeout(() => {
+        setCopy(false);
+      }, 4e3);
+    }
+  }, [isCopied]);
+  const handleCopy = () => {
+    setCopy(true);
+  };
+  const label = isCopied ? "Copied!" : "Copy";
+  const backgroundColor = buttonVariant === "icon" ? "rgba(0,0,0,0)" : vars.colors.buttonGlass;
+  return jsxRuntimeExports$1.jsx(lib.CopyToClipboard, { text: text2, onCopy: handleCopy, children: jsxRuntimeExports$1.jsx(IconButton, { size: size2, icon: isCopied ? SvgCheckmarkIcon : SvgCopyIcon, ...rest, style: { background: backgroundColor, ...props == null ? void 0 : props.style }, label: buttonVariant === "with-label" ? label : void 0 }) });
+};
+const TransactionDetails = ({ transaction: transaction2 }) => {
+  var _a2, _b2;
+  const { chains: chains2 } = useConfig();
+  const { fiatCurrency } = useSettings();
+  const coins = [];
+  const collectibles = [];
+  (_a2 = transaction2.transfers) == null ? void 0 : _a2.forEach((transfer) => {
+    var _a3, _b3, _c2, _d2;
+    if (((_a3 = transfer.contractInfo) == null ? void 0 : _a3.type) === "ERC721" || ((_b3 = transfer.contractInfo) == null ? void 0 : _b3.type) === "ERC1155") {
+      (_c2 = transfer.tokenIds) == null ? void 0 : _c2.forEach((tokenId) => {
+        var _a4;
+        const foundCollectible = collectibles.find((collectible) => {
+          var _a5;
+          return collectible.chainId === transaction2.chainId && compareAddress(collectible.contractAddress, ((_a5 = transfer.contractInfo) == null ? void 0 : _a5.address) || "") && collectible.tokenId === tokenId;
+        });
+        if (!foundCollectible) {
+          collectibles.push({
+            chainId: transaction2.chainId,
+            contractAddress: ((_a4 = transfer.contractInfo) == null ? void 0 : _a4.address) || "",
+            tokenId
+          });
+        }
+      });
+    } else {
+      const contractAddress = ((_d2 = transfer == null ? void 0 : transfer.contractInfo) == null ? void 0 : _d2.address) || AddressZero;
+      const foundCoin = coins.find((coin) => coin.chainId === transaction2.chainId && compareAddress(coin.contractAddress, contractAddress));
+      if (!foundCoin) {
+        coins.push({
+          chainId: transaction2.chainId,
+          contractAddress
+        });
+      }
+    }
+  });
+  const { data: coinPricesData, isPending: isPendingCoinPrices } = useCoinPrices(coins);
+  const { data: collectiblePricesData, isPending: isPendingCollectiblePrices } = useCollectiblePrices(collectibles);
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const arePricesLoading = coins.length > 0 && isPendingCoinPrices || collectibles.length > 0 && isPendingCollectiblePrices || isPendingConversionRate;
+  const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
+  const date = dayjs(transaction2.timestamp).format("ddd MMM DD YYYY, h:m:s a");
+  const onClickBlockExplorer = () => {
+    if (typeof window !== "undefined") {
+      window.open(`${nativeTokenInfo.blockExplorerUrl}/tx/${transaction2.txnHash}`, "_blank");
+    }
+  };
+  const Transfer = ({ transfer }) => {
+    var _a3, _b3, _c2, _d2;
+    const recipientAddress = transfer.to;
+    const recipientAddressFormatted = recipientAddress.substring(0, 10) + "..." + recipientAddress.substring(transfer.to.length - 4, transfer.to.length);
+    const isNativeToken = compareAddress(((_a3 = transfer == null ? void 0 : transfer.contractInfo) == null ? void 0 : _a3.address) || "", AddressZero);
+    const logoURI = isNativeToken ? nativeTokenInfo.logoURI : (_b3 = transfer == null ? void 0 : transfer.contractInfo) == null ? void 0 : _b3.logoURI;
+    const symbol = isNativeToken ? nativeTokenInfo.symbol : ((_c2 = transfer == null ? void 0 : transfer.contractInfo) == null ? void 0 : _c2.symbol) || "";
+    return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: (_d2 = transfer.amounts) == null ? void 0 : _d2.map((amount, index2) => {
+      var _a4, _b4, _c3, _d3, _e2, _f2, _g2, _h2;
+      const isCollectible = transfer.contractType === "ERC721" || transfer.contractType === "ERC1155";
+      const tokenId = ((_a4 = transfer.tokenIds) == null ? void 0 : _a4[index2]) || "0";
+      const collectibleDecimals = ((_c3 = (_b4 = transfer == null ? void 0 : transfer.tokenMetadata) == null ? void 0 : _b4[tokenId]) == null ? void 0 : _c3.decimals) || 0;
+      const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : ((_d3 = transfer == null ? void 0 : transfer.contractInfo) == null ? void 0 : _d3.decimals) || 0;
+      const decimals = isCollectible ? collectibleDecimals : coinDecimals;
+      const formattedBalance = formatUnits$1(amount, decimals);
+      const balanceDisplayed = formatDisplay(formattedBalance);
+      const fiatPrice = isCollectible ? (_f2 = (_e2 = collectiblePricesData == null ? void 0 : collectiblePricesData.find((collectible) => {
+        var _a5, _b5;
+        return compareAddress(collectible.token.contractAddress, ((_a5 = transfer.contractInfo) == null ? void 0 : _a5.address) || "") && collectible.token.tokenId === ((_b5 = transfer.tokenIds) == null ? void 0 : _b5[index2]) && collectible.token.chainId === transaction2.chainId;
+      })) == null ? void 0 : _e2.price) == null ? void 0 : _f2.value : (_h2 = (_g2 = coinPricesData == null ? void 0 : coinPricesData.find((coin) => {
+        var _a5;
+        return compareAddress(coin.token.contractAddress, ((_a5 = transfer.contractInfo) == null ? void 0 : _a5.address) || AddressZero) && coin.token.chainId === transaction2.chainId;
+      })) == null ? void 0 : _g2.price) == null ? void 0 : _h2.value;
+      const fiatValue = (parseFloat(formattedBalance) * (conversionRate * (fiatPrice || 0))).toFixed(2);
+      return jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: "row", gap: "2", justifyContent: "space-between", alignItems: "center", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "flex-start", alignItems: "center", gap: "2", height: "12", borderRadius: "md", background: "buttonGlass", padding: "2", style: { flexBasis: "100%" }, children: [jsxRuntimeExports$1.jsx(TokenImage, { src: logoURI, symbol, size: "sm" }), jsxRuntimeExports$1.jsxs(Box, { gap: "0.5", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "xsmall", color: "text100", children: `${balanceDisplayed} ${symbol}` }), arePricesLoading ? jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "44px", height: "12px" } }) : jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "xsmall", color: "text50", children: fiatPrice ? `${fiatCurrency.sign}${fiatValue}` : "" })] })] }), jsxRuntimeExports$1.jsx(SvgArrowRightIcon, { color: "text50", style: { width: "16px" } }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "flex-start", alignItems: "center", gap: "2", height: "12", borderRadius: "md", background: "buttonGlass", padding: "2", style: { flexBasis: "100%" }, children: [jsxRuntimeExports$1.jsx(GradientAvatar, { address: recipientAddress, style: { width: "20px" } }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", fontSize: "xsmall", color: "text100", children: recipientAddressFormatted })] })] }, index2);
+    }) });
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { padding: "5", paddingTop: "3", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "10", marginTop: "5", children: [jsxRuntimeExports$1.jsxs(Box, { marginTop: "6", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "1", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", fontWeight: "medium", children: "Transaction details" }), jsxRuntimeExports$1.jsx(Text, { marginBottom: "1", fontSize: "small", fontWeight: "medium", color: "text50", children: date }), jsxRuntimeExports$1.jsx(NetworkBadge, { chainId: transaction2.chainId })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "4", width: "full", padding: "4", background: "backgroundSecondary", borderRadius: "md", children: [jsxRuntimeExports$1.jsxs(Box, { width: "full", gap: "1", flexDirection: "row", alignItems: "center", justifyContent: "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", fontWeight: "medium", color: "text50", children: "Transfer" }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId: transaction2.chainId, size: "xs" })] }), (_b2 = transaction2.transfers) == null ? void 0 : _b2.map((transfer, index2) => jsxRuntimeExports$1.jsx(Box, { width: "full", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "4", children: jsxRuntimeExports$1.jsx(Transfer, { transfer }) }, `transfer-${index2}`))] }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickBlockExplorer, width: "full", borderRadius: "md", rightIcon: SvgLinkIcon, label: `View on ${nativeTokenInfo.blockExplorerName}` }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: "column", gap: "2", justifyContent: "center", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", margin: "0", style: { marginBottom: "-4px" } }), jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "normal", fontWeight: "medium", children: "Status" }), jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", fontWeight: "medium", color: "text100", children: "Complete" })] }), jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: "column", gap: "2", justifyContent: "center", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", margin: "0", style: { marginBottom: "-4px" } }), jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "normal", fontWeight: "medium", children: "Transaction Hash" }), jsxRuntimeExports$1.jsx(Text, { color: "text100", fontSize: "normal", fontWeight: "medium", style: { overflowWrap: "anywhere" }, children: transaction2.txnHash }), jsxRuntimeExports$1.jsx(CopyButton, { marginTop: "2", buttonVariant: "with-label", text: transaction2.txnHash })] })] })] });
+};
+const NavigationHeader = ({ secondaryText, primaryText }) => {
+  const { goBack, history } = useNavigation();
+  const onClickBack = () => {
+    goBack();
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { background: "backgroundPrimary", zIndex: "20", position: "fixed", width: "full", flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingX: "4", style: {
+    height: HEADER_HEIGHT,
+    paddingTop: "6px"
+  }, children: [history.length > 0 ? jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickBack, icon: SvgChevronLeftIcon, size: "xs" }) : jsxRuntimeExports$1.jsx(Box, {}), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text50", children: secondaryText }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text100", children: primaryText })] }), jsxRuntimeExports$1.jsx(Box, { style: {
+    width: "44px"
+  } })] });
+};
+function _extends$1() {
+  _extends$1 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -88874,7 +89244,7 @@ function _extends$3() {
     }
     return target;
   };
-  return _extends$3.apply(this, arguments);
+  return _extends$1.apply(this, arguments);
 }
 function $e42e1063c40fb3ef$export$b9ecd428b558ff10(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
   return function handleEvent(event) {
@@ -89005,11 +89375,11 @@ const $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ reactExports.f
       } else
         return child;
     });
-    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
+    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$1({}, slotProps, {
       ref: forwardedRef
     }), /* @__PURE__ */ reactExports.isValidElement(newElement) ? /* @__PURE__ */ reactExports.cloneElement(newElement, void 0, newChildren) : null);
   }
-  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
+  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$1({}, slotProps, {
     ref: forwardedRef
   }), children);
 });
@@ -89087,7 +89457,7 @@ const $8927f6f2acc4f386$export$250ffa63cdc0d034 = $8927f6f2acc4f386$var$NODES.re
     reactExports.useEffect(() => {
       window[Symbol.for("radix-ui")] = true;
     }, []);
-    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$3({}, primitiveProps, {
+    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$1({}, primitiveProps, {
       ref: forwardedRef
     }));
   });
@@ -89235,7 +89605,7 @@ const $5cb92bef7577960e$export$177fb62ff3ec1f22 = /* @__PURE__ */ reactExports.f
     document.addEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
     return () => document.removeEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({}, layerProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({}, layerProps, {
     ref: composedRefs,
     style: {
       pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
@@ -89507,7 +89877,7 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6 = /* @__PURE__ */ reactExports.f
     trapped,
     focusScope.paused
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({
     tabIndex: -1
   }, scopeProps, {
     ref: composedRefs,
@@ -91410,7 +91780,7 @@ const arrow = (options, deps) => ({
 });
 const $7e8f5cd07187803e$export$21b07c8f274aebd5 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.svg, _extends$3({}, arrowProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.svg, _extends$1({}, arrowProps, {
     ref: forwardedRef,
     width,
     height,
@@ -91483,7 +91853,7 @@ const $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d = /* @__PURE__ */ reactExports.fo
   reactExports.useEffect(() => {
     context2.onAnchorChange((virtualRef === null || virtualRef === void 0 ? void 0 : virtualRef.current) || ref.current);
   });
-  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({}, anchorProps, {
+  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({}, anchorProps, {
     ref: composedRefs
   }));
 });
@@ -91613,7 +91983,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.fo
     arrowX,
     arrowY,
     shouldHideArrow: cannotCenterArrow
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({
     "data-side": placedSide,
     "data-align": placedAlign
   }, contentProps, {
@@ -91664,7 +92034,7 @@ const $cf1ac5d9fe0e8206$export$79d62cd4e10a3fd0 = /* @__PURE__ */ reactExports.f
         }[contentContext.placedSide],
         visibility: contentContext.shouldHideArrow ? "hidden" : void 0
       }
-    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9, _extends$3({}, arrowProps, {
+    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9, _extends$1({}, arrowProps, {
       ref: forwardedRef,
       style: {
         ...arrowProps.style,
@@ -92664,7 +93034,7 @@ const $cb5cc270b50c6fcd$export$96e5381f42521a79 = /* @__PURE__ */ reactExports.f
     onCustomAnchorAdd,
     onCustomAnchorRemove
   ]);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({}, popperScope, anchorProps, {
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$1({}, popperScope, anchorProps, {
     ref: forwardedRef
   }));
 });
@@ -92674,7 +93044,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$TRIGGER_NAME, __scopePopover);
   const popperScope = $cb5cc270b50c6fcd$var$usePopperScope(__scopePopover);
   const composedTriggerRef = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context2.triggerRef);
-  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$3({
+  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$1({
     type: "button",
     "aria-haspopup": "dialog",
     "aria-expanded": context2.open,
@@ -92684,7 +93054,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
     ref: composedTriggerRef,
     onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, context2.onOpenToggle)
   }));
-  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({
+  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$1({
     asChild: true
   }, popperScope), trigger2);
 });
@@ -92699,9 +93069,9 @@ const $cb5cc270b50c6fcd$export$d7e1f420b25549ff = /* @__PURE__ */ reactExports.f
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
     present: forceMount || context2.open
-  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$3({}, contentProps, {
+  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$1({}, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$3({}, contentProps, {
+  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$1({}, contentProps, {
     ref: forwardedRef
   })));
 });
@@ -92718,7 +93088,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentModal = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement(ReactRemoveScroll, {
     as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
     allowPinchZoom: true
-  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
+  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$1({}, props, {
     ref: composedRefs,
     trapFocus: context2.open,
     disableOutsidePointerEvents: true,
@@ -92749,7 +93119,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentNonModal = /* @__PURE__ */ reactExport
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   const hasInteractedOutsideRef = reactExports.useRef(false);
   const hasPointerDownOutsideRef = reactExports.useRef(false);
-  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$1({}, props, {
     ref: forwardedRef,
     trapFocus: false,
     disableOutsidePointerEvents: false,
@@ -92801,7 +93171,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentImpl = /* @__PURE__ */ reactExports.fo
     onPointerDownOutside,
     onFocusOutside,
     onDismiss: () => context2.onOpenChange(false)
-  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$3({
+  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$1({
     "data-state": $cb5cc270b50c6fcd$var$getState(context2.open),
     role: "dialog",
     id: context2.contentId
@@ -92824,3995 +93194,9 @@ const $cb5cc270b50c6fcd$export$be92b6f5f03c0fe9 = $cb5cc270b50c6fcd$export$5b6b1
 const $cb5cc270b50c6fcd$export$b688253958b8dfe7 = $cb5cc270b50c6fcd$export$96e5381f42521a79;
 const $cb5cc270b50c6fcd$export$41fb9f06171c75f4 = $cb5cc270b50c6fcd$export$7dacb05d26466c3;
 const $cb5cc270b50c6fcd$export$7c6e2c02157bb7d2 = $cb5cc270b50c6fcd$export$d7e1f420b25549ff;
-function _extends$2() {
-  _extends$2 = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$2.apply(this, arguments);
-}
-const ERC_1155_ABI = [{
-  inputs: [{
-    internalType: "address",
-    name: "_from",
-    type: "address"
-  }, {
-    internalType: "address",
-    name: "_to",
-    type: "address"
-  }, {
-    internalType: "uint256[]",
-    name: "_ids",
-    type: "uint256[]"
-  }, {
-    internalType: "uint256[]",
-    name: "_amounts",
-    type: "uint256[]"
-  }, {
-    internalType: "bytes",
-    name: "_data",
-    type: "bytes"
-  }],
-  name: "safeBatchTransferFrom",
-  outputs: [],
-  stateMutability: "nonpayable",
-  type: "function"
-}];
-const ERC_20_ABI = [{
-  constant: false,
-  inputs: [{
-    internalType: "address",
-    name: "recipient",
-    type: "address"
-  }, {
-    internalType: "uint256",
-    name: "amount",
-    type: "uint256"
-  }],
-  name: "transfer",
-  outputs: [{
-    internalType: "bool",
-    name: "",
-    type: "bool"
-  }],
-  payable: false,
-  stateMutability: "nonpayable",
-  type: "function"
-}];
-const ERC_721_ABI = [{
-  inputs: [{
-    internalType: "address",
-    name: "from",
-    type: "address"
-  }, {
-    internalType: "address",
-    name: "to",
-    type: "address"
-  }, {
-    internalType: "uint256",
-    name: "tokenId",
-    type: "uint256"
-  }],
-  name: "safeTransferFrom",
-  outputs: [],
-  stateMutability: "nonpayable",
-  type: "function"
-}];
-const supportedFiatCurrencies = [{
-  symbol: "USD",
-  sign: "$",
-  name: {
-    message: "US Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "CAD",
-  sign: "$",
-  name: {
-    message: "Canadian Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "GBP",
-  sign: "£",
-  name: {
-    message: "British Pound Sterling"
-  },
-  decimals: 2
-}, {
-  symbol: "EUR",
-  sign: "€",
-  name: {
-    message: "Euro"
-  },
-  decimals: 2
-}, {
-  symbol: "CNY",
-  sign: "¥",
-  name: {
-    message: "Chinese Yuan"
-  },
-  decimals: 2
-}, {
-  symbol: "JPY",
-  sign: "¥",
-  name: {
-    message: "Japanese Yen"
-  },
-  decimals: 2
-}, {
-  symbol: "KRW",
-  sign: "₩",
-  name: {
-    message: "South Korean Won"
-  },
-  decimals: 2
-}, {
-  symbol: "SGD",
-  sign: "$",
-  name: {
-    message: "Singapore Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "CHF",
-  sign: "CHF ",
-  name: {
-    message: "Swiss Franc"
-  },
-  decimals: 2
-}, {
-  symbol: "AUD",
-  sign: "$",
-  name: {
-    message: "Australian Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "NZD",
-  sign: "$",
-  name: {
-    message: "New Zealand Dollar"
-  },
-  decimals: 2
-}, {
-  symbol: "SEK",
-  sign: "kr ",
-  name: {
-    message: "Swedish Krona"
-  },
-  decimals: 2
-}, {
-  symbol: "NOK",
-  sign: "kr ",
-  name: {
-    message: "Norwegian Krone"
-  },
-  decimals: 2
-}, {
-  symbol: "MXN",
-  sign: "$",
-  name: {
-    message: "Mexican Peso"
-  },
-  decimals: 2
-}, {
-  symbol: "INR",
-  sign: "₹",
-  name: {
-    message: "Indian Rupee"
-  },
-  decimals: 2
-}, {
-  symbol: "ZAR",
-  sign: "R ",
-  name: {
-    message: "South African Rand"
-  },
-  decimals: 2
-}, {
-  symbol: "TRY",
-  sign: "₺",
-  name: {
-    message: "Turkish Lira"
-  },
-  decimals: 2
-}, {
-  symbol: "BRL",
-  sign: "R$",
-  name: {
-    message: "Brazilian Real"
-  },
-  decimals: 2
-}, {
-  symbol: "DKK",
-  sign: "kr ",
-  name: {
-    message: "Danish Krone"
-  },
-  decimals: 2
-}, {
-  symbol: "PLN",
-  sign: "zł ",
-  name: {
-    message: "Polish Zloty"
-  },
-  decimals: 2
-}, {
-  symbol: "THB",
-  sign: "฿",
-  name: {
-    message: "Thai Baht"
-  },
-  decimals: 2
-}, {
-  symbol: "IDR",
-  sign: "Rp",
-  name: {
-    message: "Indonesian Rupiah"
-  },
-  decimals: 2
-}];
-const defaultFiatCurrency = supportedFiatCurrencies[0];
-const HEADER_HEIGHT = "54px";
-const createGenericContext = () => {
-  const genericContext = /* @__PURE__ */ reactExports.createContext(void 0);
-  const useGenericContext = () => {
-    const contextIsDefined = reactExports.useContext(genericContext);
-    if (!contextIsDefined) {
-      throw new Error("useGenericContext must be used within a Provider");
-    }
-    return contextIsDefined;
-  };
-  return [useGenericContext, genericContext.Provider];
-};
-const [useWalletModalContext, WalletModalContextProvider] = createGenericContext();
-const [useNavigationContext, NavigationContextProvider] = createGenericContext();
-const useOpenWalletModal = () => {
-  const {
-    setOpenWalletModal,
-    openWalletModalState
-  } = useWalletModalContext();
-  return {
-    setOpenWalletModal,
-    openWalletModalState
-  };
-};
-const compareAddress = (a2, b2) => {
-  return a2.toLowerCase() === b2.toLowerCase();
-};
-const truncateAtMiddle$1 = (text2, truncateAt) => {
-  let finalText = text2;
-  if (text2.length >= truncateAt) {
-    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
-  }
-  return finalText;
-};
-const formatAddress$1 = (text2) => {
-  return `0x${truncateAtMiddle$1((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
-};
-var ValueType = /* @__PURE__ */ function(ValueType2) {
-  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
-  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
-  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
-  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
-  return ValueType2;
-}(ValueType || {});
-const formatDisplay = (_val) => {
-  if (isNaN(Number(_val))) {
-    console.error(`display format error ${_val} is not a number`);
-    return "NaN";
-  }
-  const val = Number(_val);
-  if (val === 0) {
-    return "0";
-  }
-  let valMode;
-  if (val > 1e8) {
-    valMode = ValueType.VERY_LARGE;
-  } else if (val < 1e-10) {
-    valMode = ValueType.VERY_TINY;
-  } else if (val < 1) {
-    valMode = ValueType.FRACTION;
-  } else {
-    valMode = ValueType.MIXED;
-  }
-  let notation = void 0;
-  let config2;
-  switch (valMode) {
-    case ValueType.VERY_LARGE:
-      notation = "compact";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType.VERY_TINY:
-      notation = "scientific";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType.FRACTION:
-      notation = "standard";
-      config2 = {
-        maximumSignificantDigits: 4
-      };
-      break;
-    default:
-      notation = "standard";
-      config2 = {
-        maximumFractionDigits: 2
-      };
-  }
-  return Intl.NumberFormat("en-US", _extends$2({
-    notation
-  }, config2)).format(val);
-};
-const capitalize = (word) => {
-  return word.charAt(0).toUpperCase() + word.slice(1);
-};
-const limitDecimals = (value, decimals) => {
-  const splitValue = value.split(".");
-  if (splitValue.length === 1) {
-    return value;
-  }
-  return `${splitValue[0]}.${splitValue[1].slice(0, decimals)}`;
-};
-const isEthAddress = (value) => {
-  const ethAddressRegEx = /0x[a-fA-F0-9]{40}/;
-  const isEthAddress2 = ethAddressRegEx.test(value);
-  return isEthAddress2;
-};
-const sampleSize = (collection, n2) => {
-  const length = collection.length;
-  if (!length || n2 < 1) {
-    return [];
-  }
-  n2 = n2 > length ? length : n2;
-  const sampled = new Array(n2);
-  const indexes = /* @__PURE__ */ new Set();
-  while (indexes.size < n2) {
-    indexes.add(Math.floor(Math.random() * length));
-  }
-  let index2 = 0;
-  for (const i2 of indexes) {
-    sampled[index2++] = collection[i2];
-  }
-  return sampled;
-};
-const getPercentageColor = (value) => {
-  if (value > 0) {
-    return vars.colors.positive;
-  } else if (value < 0) {
-    return vars.colors.negative;
-  } else {
-    return vars.colors.text50;
-  }
-};
-const getPercentagePriceChange = (balance, prices) => {
-  var _priceForToken$price;
-  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
-  if (!priceForToken) {
-    return 0;
-  }
-  const price24HourChange = (priceForToken == null || (_priceForToken$price = priceForToken.price24hChange) == null ? void 0 : _priceForToken$price.value) || 0;
-  return price24HourChange;
-};
-const computeBalanceFiat = ({
-  balance,
-  prices,
-  decimals,
-  conversionRate
-}) => {
-  var _priceForToken$price2;
-  let totalUsd = 0;
-  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
-  if (!priceForToken) {
-    return "0.00";
-  }
-  const priceFiat = ((_priceForToken$price2 = priceForToken.price) == null ? void 0 : _priceForToken$price2.value) || 0;
-  const valueFormatted = formatUnits$1(balance.balance, decimals);
-  const usdValue = parseFloat(valueFormatted) * priceFiat;
-  totalUsd += usdValue;
-  const fiatValue = totalUsd * conversionRate;
-  return `${fiatValue.toFixed(2)}`;
-};
-const sortBalancesByType = (balances) => {
-  const nativeTokens = [];
-  const erc20Tokens = [];
-  const collectibles = [];
-  balances.forEach((balance) => {
-    if (balance.contractAddress === AddressZero) {
-      nativeTokens.push(balance);
-    } else if (balance.contractType === "ERC20") {
-      erc20Tokens.push(balance);
-    } else if (balance.contractType === "ERC721" || balance.contractType === "ERC1155") {
-      collectibles.push(balance);
-    }
-  });
-  const sortedNativeTokens = nativeTokens.sort((a2, b2) => a2.tokenID.localeCompare(b2.tokenID));
-  const sortedErc20Tokens = erc20Tokens.sort((a2, b2) => a2.tokenID.localeCompare(b2.tokenID));
-  const sortedCollectibles = collectibles.sort((a2, b2) => a2.tokenID.localeCompare(b2.tokenID));
-  return {
-    nativeTokens: sortedNativeTokens,
-    erc20Tokens: sortedErc20Tokens,
-    collectibles: sortedCollectibles
-  };
-};
-const flattenPaginatedTransactionHistory = (transactionHistoryData) => {
-  const transactionHistory = [];
-  transactionHistoryData == null || transactionHistoryData.pages.forEach((page) => {
-    transactionHistory.push(...page.transactions);
-  });
-  return transactionHistory;
-};
-const time = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClients, {
-  accountAddress,
-  displayAssets,
-  hideCollectibles,
-  verifiedOnly
-}) => {
-  const indexerClientsArr = Array.from(indexerClients.entries());
-  const MAX_COLLECTIBLES_AMOUNTS = 10;
-  let tokenBalances = [];
-  const customDisplayAssets = displayAssets.length > 0;
-  try {
-    if (customDisplayAssets) {
-      const _nativeTokens = displayAssets.filter((asset) => compareAddress(asset.contractAddress, AddressZero));
-      const otherAssets = displayAssets.filter((asset) => !compareAddress(asset.contractAddress, AddressZero));
-      const nativeTokensByChainId = {};
-      const otherAssetsByChainId = {};
-      _nativeTokens.forEach((asset) => {
-        if (!nativeTokensByChainId[asset.chainId]) {
-          nativeTokensByChainId[asset.chainId] = [];
-        }
-        nativeTokensByChainId[asset.chainId].push(asset);
-      });
-      otherAssets.forEach((asset) => {
-        if (!otherAssetsByChainId[asset.chainId]) {
-          otherAssetsByChainId[asset.chainId] = [];
-        }
-        otherAssetsByChainId[asset.chainId].push(asset);
-      });
-      tokenBalances = (await Promise.all([...Object.keys(nativeTokensByChainId).map((chainId) => getNativeTokenBalance(indexerClients.get(Number(chainId)), Number(chainId), accountAddress)), ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => getTokenBalances(indexerClients.get(Number(chainId)), {
-        accountAddress,
-        contractAddress: asset.contractAddress,
-        includeMetadata: false,
-        hideCollectibles,
-        verifiedOnly
-      }))).flat()])).flat();
-    } else {
-      tokenBalances = (await Promise.all([...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)), ...indexerClientsArr.map(([_chainId, indexerClient]) => getTokenBalances(indexerClient, {
-        accountAddress,
-        hideCollectibles,
-        includeMetadata: false,
-        verifiedOnly
-      }))])).flat();
-    }
-    const {
-      nativeTokens,
-      erc20Tokens,
-      collectibles: collectionBalances
-    } = sortBalancesByType(tokenBalances);
-    const fetchPricesPromise = new Promise(async (resolve) => {
-      if (erc20Tokens.length > 0) {
-        const tokens = erc20Tokens.map((token) => ({
-          chainId: token.chainId,
-          contractAddress: token.contractAddress
-        }));
-        const prices2 = await getCoinPrices(apiClient, tokens) || [];
-        resolve(prices2);
-      } else {
-        resolve([]);
-      }
-    });
-    const fetchCollectiblesPromises = collectionBalances.map(async (collectionBalance) => {
-      if (customDisplayAssets) {
-        return collectionBalance;
-      }
-      const balance = await getCollectionBalance(indexerClients.get(collectionBalance.chainId), {
-        accountAddress,
-        chainId: collectionBalance.chainId,
-        contractAddress: collectionBalance.contractAddress,
-        includeMetadata: false
-      });
-      return balance;
-    });
-    const fetchErc20ContractInfoPromise = async () => {
-      const contractInfoMapByChainId2 = {};
-      const erc20BalanceByChainId = {};
-      erc20Tokens.forEach((erc20Token) => {
-        if (!erc20BalanceByChainId[erc20Token.chainId]) {
-          erc20BalanceByChainId[erc20Token.chainId] = [erc20Token];
-        } else {
-          erc20BalanceByChainId[erc20Token.chainId].push(erc20Token);
-        }
-      });
-      const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async (chainId) => {
-        const tokenBalances2 = erc20BalanceByChainId[Number(chainId)];
-        const contractAddresses = tokenBalances2.map((balance) => balance.contractAddress);
-        const result = await metadataClient.getContractInfoBatch({
-          chainID: String(chainId),
-          contractAddresses
-        });
-        contractInfoMapByChainId2[Number(chainId)] = result;
-      });
-      await Promise.all([...contractInfoPromises]);
-      return contractInfoMapByChainId2;
-    };
-    const [prices, contractInfoMapByChainId, ...collectionCollectibles] = await Promise.all([fetchPricesPromise, fetchErc20ContractInfoPromise(), ...fetchCollectiblesPromises]);
-    const erc20HighestValue = erc20Tokens.sort((a2, b2) => {
-      var _contractInfoMapByCha, _contractInfoMapByCha2;
-      const aPriceData = prices.find((price) => compareAddress(price.token.contractAddress, a2.contractAddress));
-      const bPriceData = prices.find((price) => compareAddress(price.token.contractAddress, b2.contractAddress));
-      const aPrice = aPriceData != null && aPriceData.price ? aPriceData.price.value : 0;
-      const bPrice = bPriceData != null && bPriceData.price ? bPriceData.price.value : 0;
-      const aDecimals = (_contractInfoMapByCha = contractInfoMapByChainId[a2.chainId].contractInfoMap[a2.contractAddress]) == null ? void 0 : _contractInfoMapByCha.decimals;
-      const bDecimals = (_contractInfoMapByCha2 = contractInfoMapByChainId[b2.chainId].contractInfoMap[b2.contractAddress]) == null ? void 0 : _contractInfoMapByCha2.decimals;
-      const aFormattedBalance = aDecimals === void 0 ? 0 : Number(formatUnits$1(a2.balance, aDecimals));
-      const bFormattedBalance = bDecimals === void 0 ? 0 : Number(formatUnits$1(b2.balance, bDecimals));
-      const aValue = aFormattedBalance * aPrice;
-      const bValue = bFormattedBalance * bPrice;
-      return bValue - aValue;
-    });
-    const collectibles = sampleSize(collectionCollectibles.flat(), MAX_COLLECTIBLES_AMOUNTS).sort((a2, b2) => {
-      return a2.contractAddress.localeCompare(b2.contractAddress);
-    });
-    if (hideCollectibles) {
-      const _summaryBalances = [
-        ...nativeTokens.length > 0 ? [nativeTokens[0]] : [],
-        // the spots normally occupied by collectibles will be filled by erc20 tokens
-        ...erc20HighestValue.length > 0 ? erc20HighestValue.slice(0, MAX_COLLECTIBLES_AMOUNTS + 1) : []
-      ];
-      return _summaryBalances;
-    }
-    const summaryBalances = [...nativeTokens.length > 0 ? [nativeTokens[0]] : [], ...erc20HighestValue.length > 0 ? [erc20HighestValue[0]] : [], ...collectibles.length > 0 ? [...collectibles] : []];
-    return summaryBalances;
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const useBalancesAssetsSummary = (args) => {
-  const apiClient = useAPIClient();
-  const metadataClient = useMetadataClient();
-  const indexerClients = useIndexerClients(args.chainIds);
-  return useQuery$1({
-    queryKey: ["balancesAssetsSummary", args],
-    queryFn: () => getBalancesAssetsSummary(apiClient, metadataClient, indexerClients, args),
-    retry: true,
-    refetchInterval: time.oneSecond * 4,
-    refetchOnMount: true,
-    staleTime: time.oneSecond,
-    enabled: args.chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const getTransactionHistorySummary = async (indexerClients, {
-  accountAddress
-}) => {
-  const histories = await Promise.all(Array.from(indexerClients.values()).map((indexerClient) => getTransactionHistory(indexerClient, {
-    accountAddress,
-    page: {
-      page: 1
-    }
-  })));
-  const unorderedTransactions = histories.map((history) => history.transactions).flat();
-  const orderedTransactions = unorderedTransactions.sort((a2, b2) => {
-    const firstDate = new Date(a2.timestamp).getTime();
-    const secondDate = new Date(b2.timestamp).getTime();
-    return secondDate - firstDate;
-  });
-  return orderedTransactions;
-};
-const useTransactionHistorySummary = (args) => {
-  const indexerClients = useIndexerClients(args.chainIds);
-  return useQuery$1({
-    queryKey: ["transactionHistorySummary", args],
-    queryFn: () => getTransactionHistorySummary(indexerClients, args),
-    retry: true,
-    staleTime: time.oneSecond,
-    refetchOnMount: true,
-    enabled: args.chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const useNavigation = () => {
-  const {
-    setHistory,
-    history
-  } = useNavigationContext();
-  const setNavigation = (navigation) => {
-    const childElement = document.getElementById("sequence-kit-wallet-content");
-    const parentElement = childElement == null ? void 0 : childElement.parentElement;
-    parentElement == null || parentElement.scrollTo(0, 0);
-    const newHistory = navigation.location === "home" ? [] : [...history, navigation];
-    setHistory(newHistory);
-  };
-  const goBack = () => {
-    const newHistory = [...history];
-    newHistory.pop();
-    setHistory(newHistory);
-  };
-  return {
-    setNavigation,
-    history,
-    setHistory,
-    goBack
-  };
-};
-const useSettings = () => {
-  const {
-    chains: chains2
-  } = useConfig();
-  const getSettingsFromStorage = () => {
-    let hideUnlistedTokens = true;
-    let hideCollectibles = false;
-    let fiatCurrency = defaultFiatCurrency;
-    let selectedNetworks = chains2.map((chain) => chain.id);
-    try {
-      const settingsStorage = localStorage.getItem(LocalStorageKey.Settings);
-      const settings2 = JSON.parse(settingsStorage || "{}");
-      if ((settings2 == null ? void 0 : settings2.hideUnlistedTokens) !== void 0) {
-        hideUnlistedTokens = settings2 == null ? void 0 : settings2.hideUnlistedTokens;
-      }
-      if ((settings2 == null ? void 0 : settings2.hideCollectibles) !== void 0) {
-        hideCollectibles = settings2 == null ? void 0 : settings2.hideCollectibles;
-      }
-      if ((settings2 == null ? void 0 : settings2.fiatCurrency) !== void 0) {
-        fiatCurrency = settings2 == null ? void 0 : settings2.fiatCurrency;
-      }
-      if ((settings2 == null ? void 0 : settings2.selectedNetworks) !== void 0) {
-        let areSelectedNetworksValid = true;
-        settings2.selectedNetworks.forEach((chainId) => {
-          if (chains2.find((chain) => chain.id === chainId) === void 0) {
-            areSelectedNetworksValid = false;
-          }
-        });
-        if (areSelectedNetworksValid) {
-          selectedNetworks = settings2 == null ? void 0 : settings2.selectedNetworks;
-        }
-      }
-    } catch (e2) {
-      console.error(e2, "Failed to fetch settings");
-    }
-    return {
-      hideUnlistedTokens,
-      hideCollectibles,
-      fiatCurrency,
-      selectedNetworks
-    };
-  };
-  const defaultSettings = getSettingsFromStorage();
-  const [settings, setSettings] = reactExports.useState(defaultSettings);
-  const setHideUnlistedTokens = (newState) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$2({}, oldSettings, {
-      hideUnlistedTokens: newState
-    });
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  const setHideCollectibles = (newState) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$2({}, oldSettings, {
-      hideCollectibles: newState
-    });
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  const setFiatCurrency = (newFiatCurrency) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$2({}, oldSettings, {
-      fiatCurrency: newFiatCurrency
-    });
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  const setSelectedNetworks = (newSelectedNetworks) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = _extends$2({}, oldSettings, {
-      selectedNetworks: newSelectedNetworks
-    });
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  return _extends$2({}, settings, {
-    setFiatCurrency,
-    setHideCollectibles,
-    setHideUnlistedTokens,
-    setSelectedNetworks
-  });
-};
-const CoinTileContent = ({
-  logoUrl,
-  tokenName,
-  balance,
-  balanceFiat,
-  priceChangePercentage,
-  symbol,
-  chainId
-}) => {
-  const {
-    fiatCurrency
-  } = useSettings();
-  const priceChangeSymbol = priceChangePercentage > 0 ? "+" : "";
-  return /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundSecondary",
-    width: "full",
-    height: "full",
-    borderRadius: "md",
-    padding: "4",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "1"
-  }, /* @__PURE__ */ React.createElement(TokenImage, {
-    src: logoUrl,
-    symbol,
-    size: "xl"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "3"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    gap: "1",
-    justifyContent: "flex-start",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    whiteSpace: "nowrap",
-    color: "text100",
-    style: {
-      maxWidth: "130px",
-      textOverflow: "ellipsis",
-      overflow: "hidden"
-    }
-  }, tokenName), /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  })), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    whiteSpace: "nowrap",
-    style: {
-      display: "block",
-      maxWidth: "150px",
-      textOverflow: "ellipsis",
-      overflow: "hidden"
-    }
-  }, `${balance} ${symbol}`)), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    color: "text100"
-  }, `${fiatCurrency.sign}${balanceFiat}`)), /* @__PURE__ */ React.createElement(Text, {
-    style: {
-      color: getPercentageColor(priceChangePercentage)
-    }
-  }, `${priceChangeSymbol}${priceChangePercentage.toFixed(2)}%`)));
-};
-const CoinTile = ({
-  balance
-}) => {
-  var _contractInfo$decimal;
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    fiatCurrency
-  } = useSettings();
-  const isNativeToken = compareAddress(balance.contractAddress, AddressZero);
-  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
-  const {
-    data: dataCoinPrices = [],
-    isPending: isPendingCoinPrice
-  } = useCoinPrices([{
-    chainId: balance.chainId,
-    contractAddress: balance.contractAddress
-  }]);
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const {
-    data: contractInfo,
-    isPending: isPendingContractInfo
-  } = useContractInfo(balance.chainId, balance.contractAddress);
-  const isPending = isPendingCoinPrice || isPendingConversionRate || isPendingContractInfo;
-  if (isPending) {
-    return /* @__PURE__ */ React.createElement(Box, {
-      background: "backgroundSecondary",
-      width: "full",
-      height: "full",
-      borderRadius: "md"
-    });
-  }
-  if (isNativeToken) {
-    const _computedBalance = computeBalanceFiat({
-      balance,
-      prices: dataCoinPrices,
-      conversionRate,
-      decimals: nativeTokenInfo.decimals
-    });
-    const _priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
-    const _formattedBalance = formatUnits$1(balance.balance, nativeTokenInfo.decimals);
-    const _balanceDisplayed = formatDisplay(_formattedBalance);
-    return /* @__PURE__ */ React.createElement(CoinTileContent, {
-      chainId: balance.chainId,
-      logoUrl: nativeTokenInfo.logoURI,
-      tokenName: nativeTokenInfo.name,
-      balance: _balanceDisplayed,
-      balanceFiat: _computedBalance,
-      priceChangePercentage: _priceChangePercentage,
-      symbol: nativeTokenInfo.symbol
-    });
-  }
-  const decimals = (_contractInfo$decimal = contractInfo == null ? void 0 : contractInfo.decimals) != null ? _contractInfo$decimal : 18;
-  const computedBalance = computeBalanceFiat({
-    balance,
-    prices: dataCoinPrices,
-    conversionRate,
-    decimals
-  });
-  const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
-  const formattedBalance = formatUnits$1(balance.balance, decimals);
-  const balanceDisplayed = formatDisplay(formattedBalance);
-  const name2 = (contractInfo == null ? void 0 : contractInfo.name) || "Unknown";
-  const symbol = (contractInfo == null ? void 0 : contractInfo.name) || "TOKEN";
-  const url = contractInfo == null ? void 0 : contractInfo.logoURI;
-  return /* @__PURE__ */ React.createElement(CoinTileContent, {
-    chainId: balance.chainId,
-    logoUrl: url,
-    tokenName: name2,
-    balance: balanceDisplayed,
-    balanceFiat: computedBalance,
-    priceChangePercentage,
-    symbol
-  });
-};
-const CollectibleTileImage = ({
-  imageUrl
-}) => {
-  return /* @__PURE__ */ React.createElement(Card, {
-    padding: "0",
-    aspectRatio: "1/1",
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    borderRadius: "sm",
-    background: "backgroundSecondary"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    style: {
-      height: "100%"
-    },
-    src: imageUrl
-  }));
-};
-const CollectibleTile = ({
-  balance
-}) => {
-  var _tokenMetadata$;
-  const {
-    data: tokenMetadata
-  } = useTokenMetadata(balance.chainId, balance.contractAddress, [balance.tokenID]);
-  const imageUrl = tokenMetadata == null || (_tokenMetadata$ = tokenMetadata[0]) == null ? void 0 : _tokenMetadata$.image;
-  return /* @__PURE__ */ React.createElement(CollectibleTileImage, {
-    imageUrl
-  });
-};
-const SkeletonTiles = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      display: "grid",
-      gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
-      gap: vars.space[2]
-    }
-  }, Array(12).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Box, {
-    key: i2
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    height: "full",
-    width: "full",
-    aspectRatio: "1/1"
-  }))));
-};
-const AssetSummary = () => {
-  const {
-    address
-  } = useAccount();
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    displayedAssets
-  } = useWalletSettings();
-  const {
-    hideUnlistedTokens,
-    hideCollectibles,
-    selectedNetworks
-  } = useSettings();
-  const {
-    data: balances = [],
-    isPending: isPendingBalances
-  } = useBalancesAssetsSummary({
-    accountAddress: address || "",
-    chainIds: selectedNetworks,
-    displayAssets: displayedAssets,
-    hideCollectibles,
-    verifiedOnly: hideUnlistedTokens
-  });
-  if (isPendingBalances) {
-    return /* @__PURE__ */ React.createElement(SkeletonTiles, null);
-  }
-  const {
-    nativeTokens,
-    erc20Tokens,
-    collectibles
-  } = sortBalancesByType(balances);
-  const onClickItem = (balance) => {
-    if (balance.contractType === "ERC1155" || balance.contractType === "ERC721") {
-      setNavigation && setNavigation({
-        location: "collectible-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId,
-          tokenId: balance.tokenID
-        }
-      });
-    } else if (balance.contractType === "ERC20") {
-      setNavigation && setNavigation({
-        location: "coin-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId
-        }
-      });
-    } else {
-      setNavigation && setNavigation({
-        location: "coin-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId
-        }
-      });
-    }
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      display: "grid",
-      gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
-      gap: vars.space[2]
-    }
-  }, nativeTokens.map((balance, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      key: index2,
-      userSelect: "none",
-      cursor: "pointer",
-      opacity: {
-        hover: "80"
-      },
-      aspectRatio: "1/1",
-      onClick: () => onClickItem(balance)
-    }, /* @__PURE__ */ React.createElement(CoinTile, {
-      balance
-    }));
-  }), erc20Tokens.map((balance, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      key: index2,
-      userSelect: "none",
-      cursor: "pointer",
-      opacity: {
-        hover: "80"
-      },
-      aspectRatio: "1/1",
-      onClick: () => onClickItem(balance)
-    }, /* @__PURE__ */ React.createElement(CoinTile, {
-      balance
-    }));
-  }), collectibles.map((balance, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      key: index2,
-      userSelect: "none",
-      cursor: "pointer",
-      opacity: {
-        hover: "80"
-      },
-      aspectRatio: "1/1",
-      onClick: () => onClickItem(balance)
-    }, /* @__PURE__ */ React.createElement(CollectibleTile, {
-      balance
-    }));
-  }));
-};
-const Home = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "4",
-    paddingBottom: "5",
-    gap: "4",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(AssetSummary, null));
-};
-const Receive = () => {
-  const {
-    address,
-    chain
-  } = useAccount();
-  const {
-    chains: chains2
-  } = useConfig();
-  const [isCopied, setCopied] = reactExports.useState(false);
-  const nativeTokenInfo = getNativeTokenInfoByChainId((chain == null ? void 0 : chain.id) || 1, chains2);
-  reactExports.useEffect(() => {
-    if (isCopied) {
-      setTimeout(() => {
-        setCopied(false);
-      }, 4e3);
-    }
-  }, [isCopied]);
-  const onClickCopy = () => {
-    setCopied(true);
-  };
-  const onClickShare = () => {
-    if (typeof window !== "undefined") {
-      window.open(`https://twitter.com/intent/tweet?text=Here%20is%20my%20address%20${address}`);
-    }
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    padding: "5",
-    paddingTop: "3",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "4"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "1",
-    width: "fit",
-    background: "white",
-    borderRadius: "md",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "4"
-  }, /* @__PURE__ */ React.createElement(QRCode, {
-    value: address || "",
-    size: 200,
-    bgColor: "white",
-    fgColor: "black",
-    "data-id": "receiveQR"
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100",
-    textAlign: "center",
-    lineHeight: "inherit",
-    style: {
-      fontWeight: "700"
-    }
-  }, "My Wallet"), /* @__PURE__ */ React.createElement(Image$1, {
-    width: "5",
-    src: nativeTokenInfo.logoURI,
-    alt: "icon"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "2",
-    style: {
-      maxWidth: "180px",
-      textAlign: "center"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    textAlign: "center",
-    color: "text50",
-    style: {
-      fontSize: "14px",
-      maxWidth: "180px",
-      overflowWrap: "anywhere"
-    }
-  }, address))), /* @__PURE__ */ React.createElement(Box, {
-    gap: "3"
-  }, /* @__PURE__ */ React.createElement(lib.CopyToClipboard, {
-    text: address || ""
-  }, /* @__PURE__ */ React.createElement(Button, {
-    onClick: onClickCopy,
-    leftIcon: SvgCopyIcon,
-    label: isCopied ? "Copied!" : "Copy"
-  })), /* @__PURE__ */ React.createElement(Button, {
-    onClick: onClickShare,
-    leftIcon: SvgShareIcon,
-    label: "Share"
-  })), /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "center",
-    alignItems: "center",
-    style: {
-      maxWidth: "260px",
-      textAlign: "center"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    variant: "small",
-    style: {
-      maxWidth: "260px",
-      overflowWrap: "anywhere"
-    }
-  }, `This is a ${nativeTokenInfo.name} address. Please only send assets on the ${nativeTokenInfo.name} network.`))));
-};
-const SendItemInfo = ({
-  imageUrl,
-  name: name2,
-  decimals,
-  balance,
-  symbol,
-  fiatValue,
-  chainId,
-  showSquareImage
-}) => {
-  const {
-    fiatCurrency
-  } = useSettings();
-  const formattedBalance = formatUnits$1(balance, decimals);
-  const balanceDisplayed = formatDisplay(formattedBalance);
-  return /* @__PURE__ */ React.createElement(Box, {
-    alignItems: "flex-end",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "2"
-  }, showSquareImage ? /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "40px"
-    }
-  }, /* @__PURE__ */ React.createElement(CollectibleTileImage, {
-    imageUrl
-  })) : /* @__PURE__ */ React.createElement(TokenImage, {
-    src: imageUrl,
-    size: "xl"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "medium",
-    color: "text100"
-  }, name2), /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  })), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    variant: "normal"
-  }, " ", `${balanceDisplayed} ${symbol} available`))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "flex-end",
-    justifyContent: "flex-end"
-  }, fiatValue && /* @__PURE__ */ React.createElement(Text, {
-    variant: "normal",
-    color: "text100"
-  }, `${fiatCurrency.sign}${fiatValue}`)));
-};
-const SendCoin = ({
-  chainId,
-  contractAddress
-}) => {
-  var _connector$_wallet, _tokenBalance$contrac, _tokenBalance$contrac2, _tokenBalance$contrac3, _tokenBalance$contrac4;
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    analytics
-  } = useAnalyticsContext();
-  const {
-    chains: chains2
-  } = useConfig();
-  const connectedChainId = useChainId();
-  const {
-    address: accountAddress = "",
-    connector
-  } = useAccount();
-  const isConnectorSequenceBased = !!(connector != null && (_connector$_wallet = connector._wallet) != null && _connector$_wallet.isSequenceBased);
-  const isCorrectChainId = connectedChainId === chainId;
-  const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased;
-  const {
-    switchChainAsync
-  } = useSwitchChain();
-  const amountInputRef = reactExports.useRef(null);
-  const {
-    fiatCurrency
-  } = useSettings();
-  const [amount, setAmount] = reactExports.useState("0");
-  const [toAddress, setToAddress] = reactExports.useState("");
-  const {
-    sendTransaction: sendTransaction2
-  } = useSendTransaction();
-  const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
-  const {
-    data: balances = [],
-    isPending: isPendingBalances
-  } = useBalances({
-    chainIds: [chainId],
-    accountAddress,
-    contractAddress
-  });
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  const tokenBalance = balances.find((b2) => b2.contractAddress === contractAddress);
-  const {
-    data: coinPrices = [],
-    isPending: isPendingCoinPrices
-  } = useCoinPrices([{
-    chainId,
-    contractAddress
-  }]);
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const isPending = isPendingBalances || isPendingCoinPrices || isPendingConversionRate;
-  if (isPending) {
-    return null;
-  }
-  const isNativeCoin = compareAddress(contractAddress, AddressZero);
-  const decimals = isNativeCoin ? nativeTokenInfo.decimals : (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.decimals) || 18;
-  const name2 = isNativeCoin ? nativeTokenInfo.name : (tokenBalance == null || (_tokenBalance$contrac2 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac2.name) || "";
-  const imageUrl = isNativeCoin ? nativeTokenInfo.logoURI : tokenBalance == null || (_tokenBalance$contrac3 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac3.logoURI;
-  const symbol = isNativeCoin ? nativeTokenInfo.symbol : (tokenBalance == null || (_tokenBalance$contrac4 = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac4.symbol) || "";
-  const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
-  const amountToSendFiat = computeBalanceFiat({
-    balance: _extends$2({}, tokenBalance, {
-      balance: amountRaw.toString()
-    }),
-    prices: coinPrices,
-    conversionRate,
-    decimals
-  });
-  const insufficientFunds = amountRaw.gt((tokenBalance == null ? void 0 : tokenBalance.balance) || "0");
-  const isNonZeroAmount = amountRaw.gt(0);
-  const handleChangeAmount = (ev) => {
-    const {
-      value
-    } = ev.target;
-    const formattedValue = limitDecimals(value, decimals);
-    setAmount(formattedValue);
-  };
-  const handleMax = () => {
-    var _amountInputRef$curre;
-    (_amountInputRef$curre = amountInputRef.current) == null || _amountInputRef$curre.focus();
-    const maxAmount = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
-    setAmount(maxAmount);
-  };
-  const handlePaste = async () => {
-    const result = await navigator.clipboard.readText();
-    setToAddress(result);
-  };
-  const handleToAddressClear = () => {
-    setToAddress("");
-  };
-  const executeTransaction = async (e2) => {
-    if (!isCorrectChainId && isConnectorSequenceBased) {
-      await switchChainAsync({
-        chainId
-      });
-    }
-    e2.preventDefault();
-    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
-    if (isNativeCoin) {
-      var _wallet;
-      analytics == null || analytics.track({
-        event: "SEND_TRANSACTION_REQUEST",
-        props: {
-          walletClient: (connector == null || (_wallet = connector._wallet) == null ? void 0 : _wallet.id) || "unknown",
-          source: "sequence-kit/wallet"
-        }
-      });
-      setIsSendTxnPending(true);
-      sendTransaction2({
-        to: toAddress,
-        value: BigInt(sendAmount.toString()),
-        gas: null
-      }, {
-        onSettled: (result) => {
-          if (result) {
-            setNavigation({
-              location: "home"
-            });
-          }
-          setIsSendTxnPending(false);
-        }
-      });
-    } else {
-      var _wallet2;
-      analytics == null || analytics.track({
-        event: "SEND_TRANSACTION_REQUEST",
-        props: {
-          walletClient: (connector == null || (_wallet2 = connector._wallet) == null ? void 0 : _wallet2.id) || "unknown",
-          source: "sequence-kit/wallet"
-        }
-      });
-      setIsSendTxnPending(true);
-      sendTransaction2({
-        to: tokenBalance == null ? void 0 : tokenBalance.contractAddress,
-        data: new Interface(ERC_20_ABI).encodeFunctionData("transfer", [toAddress, sendAmount.toHexString()]),
-        gas: null
-      }, {
-        onSettled: (result) => {
-          if (result) {
-            setNavigation({
-              location: "home"
-            });
-          }
-          setIsSendTxnPending(false);
-        }
-      });
-    }
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    padding: "5",
-    paddingTop: "3",
-    style: {
-      marginTop: HEADER_HEIGHT
-    },
-    gap: "2",
-    flexDirection: "column",
-    as: "form",
-    onSubmit: executeTransaction,
-    pointerEvents: isSendTxnPending ? "none" : "auto"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundSecondary",
-    borderRadius: "md",
-    padding: "4",
-    gap: "2",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(SendItemInfo, {
-    imageUrl,
-    decimals,
-    name: name2,
-    symbol,
-    balance: (tokenBalance == null ? void 0 : tokenBalance.balance) || "0",
-    fiatValue: computeBalanceFiat({
-      balance: tokenBalance,
-      prices: coinPrices,
-      conversionRate,
-      decimals
-    }),
-    chainId
-  }), /* @__PURE__ */ React.createElement(NumericInput, {
-    ref: amountInputRef,
-    style: {
-      fontSize: vars.fontSizes.xlarge,
-      fontWeight: vars.fontWeights.bold
-    },
-    name: "amount",
-    value: amount,
-    onChange: handleChangeAmount,
-    controls: /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Text, {
-      variant: "small",
-      color: "text50",
-      whiteSpace: "nowrap"
-    }, `~${fiatCurrency.sign}${amountToSendFiat}`), /* @__PURE__ */ React.createElement(Button, {
-      size: "xs",
-      shape: "square",
-      label: "Max",
-      onClick: handleMax,
-      "data-id": "maxCoin",
-      flexShrink: "0"
-    }), /* @__PURE__ */ React.createElement(Text, {
-      fontSize: "xlarge",
-      fontWeight: "bold",
-      color: "text100"
-    }, symbol))
-  }), insufficientFunds && /* @__PURE__ */ React.createElement(Text, {
-    as: "div",
-    variant: "normal",
-    color: "negative",
-    marginTop: "2"
-  }, "Insufficient Funds")), /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundSecondary",
-    borderRadius: "md",
-    padding: "4",
-    gap: "2",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), isEthAddress(toAddress) ? /* @__PURE__ */ React.createElement(Card, {
-    clickable: true,
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    onClick: handleToAddressClear,
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: toAddress,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$1(toAddress.substring(2), 8)}`)), /* @__PURE__ */ React.createElement(SvgCloseIcon, {
-    size: "xs"
-  })) : /* @__PURE__ */ React.createElement(TextInput, {
-    value: toAddress,
-    onChange: (ev) => setToAddress(ev.target.value),
-    placeholder: `${nativeTokenInfo.name} Address (0x...)`,
-    name: "to-address",
-    "data-1p-ignore": true,
-    controls: /* @__PURE__ */ React.createElement(Button, {
-      size: "xs",
-      shape: "square",
-      label: "Paste",
-      onClick: handlePaste,
-      "data-id": "to-address",
-      flexShrink: "0",
-      leftIcon: SvgCopyIcon
-    })
-  })), showSwitchNetwork && /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "small",
-    color: "negative",
-    marginBottom: "2"
-  }, "The wallet is connected to the wrong network. Please switch network before proceeding"), /* @__PURE__ */ React.createElement(Button, {
-    marginTop: "2",
-    width: "full",
-    variant: "primary",
-    type: "button",
-    label: "Switch Network",
-    onClick: async () => await switchChainAsync({
-      chainId
-    }),
-    disabled: isCorrectChainId,
-    style: {
-      height: "52px",
-      borderRadius: vars.radii.md
-    }
-  })), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      height: "52px"
-    },
-    alignItems: "center",
-    justifyContent: "center"
-  }, isSendTxnPending ? /* @__PURE__ */ React.createElement(Spinner, null) : /* @__PURE__ */ React.createElement(Button, {
-    color: "text100",
-    marginTop: "3",
-    width: "full",
-    variant: "primary",
-    type: "submit",
-    disabled: !isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || !isCorrectChainId && !isConnectorSequenceBased,
-    label: "Send",
-    rightIcon: SvgChevronRightIcon,
-    style: {
-      height: "52px",
-      borderRadius: vars.radii.md
-    }
-  })));
-};
-const SendCollectible = ({
-  chainId,
-  contractAddress,
-  tokenId
-}) => {
-  var _connector$_wallet, _tokenBalance$tokenMe, _tokenBalance$tokenMe2, _tokenBalance$tokenMe3, _tokenBalance$contrac;
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    analytics
-  } = useAnalyticsContext();
-  const {
-    chains: chains2
-  } = useConfig();
-  const connectedChainId = useChainId();
-  const {
-    address: accountAddress = "",
-    connector
-  } = useAccount();
-  const isConnectorSequenceBased = !!(connector != null && (_connector$_wallet = connector._wallet) != null && _connector$_wallet.isSequenceBased);
-  const isCorrectChainId = connectedChainId === chainId;
-  const showSwitchNetwork = !isCorrectChainId && !isConnectorSequenceBased;
-  const {
-    switchChain: switchChain2
-  } = useSwitchChain();
-  const amountInputRef = reactExports.useRef(null);
-  const [amount, setAmount] = reactExports.useState("0");
-  const [toAddress, setToAddress] = reactExports.useState("");
-  const [showAmountControls, setShowAmountControls] = reactExports.useState(false);
-  const {
-    sendTransaction: sendTransaction2
-  } = useSendTransaction();
-  const [isSendTxnPending, setIsSendTxnPending] = reactExports.useState(false);
-  const {
-    data: tokenBalance,
-    isPending: isPendingBalances
-  } = useCollectibleBalance({
-    accountAddress,
-    chainId,
-    contractAddress,
-    tokenId,
-    verifiedOnly: false
-  });
-  const {
-    contractType
-  } = tokenBalance;
-  reactExports.useEffect(() => {
-    if (tokenBalance) {
-      if (contractType === "ERC721") {
-        setAmount("1");
-        setShowAmountControls(false);
-      } else if (contractType === "ERC1155") {
-        if (Number(formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals)) >= 1) {
-          setAmount("1");
-        }
-        setShowAmountControls(true);
-      }
-    }
-  }, [tokenBalance]);
-  const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains2);
-  const isPending = isPendingBalances;
-  if (isPending) {
-    return null;
-  }
-  const decimals = (tokenBalance == null || (_tokenBalance$tokenMe = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe.decimals) || 0;
-  const name2 = (tokenBalance == null || (_tokenBalance$tokenMe2 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe2.name) || "Unknown";
-  const imageUrl = (tokenBalance == null || (_tokenBalance$tokenMe3 = tokenBalance.tokenMetadata) == null ? void 0 : _tokenBalance$tokenMe3.image) || (tokenBalance == null || (_tokenBalance$contrac = tokenBalance.contractInfo) == null ? void 0 : _tokenBalance$contrac.logoURI) || "";
-  const amountToSendFormatted = amount === "" ? "0" : amount;
-  const amountRaw = parseUnits$1(amountToSendFormatted, decimals);
-  const insufficientFunds = amountRaw.gt((tokenBalance == null ? void 0 : tokenBalance.balance) || "0");
-  const isNonZeroAmount = amountRaw.gt(0);
-  const handleChangeAmount = (ev) => {
-    const {
-      value
-    } = ev.target;
-    const formattedValue = limitDecimals(value, decimals);
-    setAmount(formattedValue);
-  };
-  const handleSubtractOne = () => {
-    var _amountInputRef$curre;
-    (_amountInputRef$curre = amountInputRef.current) == null || _amountInputRef$curre.focus();
-    const decrementedAmount = Number(amount) - 1;
-    const newAmount = Math.max(decrementedAmount, 0).toString();
-    setAmount(newAmount);
-  };
-  const handleAddOne = () => {
-    var _amountInputRef$curre2;
-    (_amountInputRef$curre2 = amountInputRef.current) == null || _amountInputRef$curre2.focus();
-    const incrementedAmount = Number(amount) + 1;
-    const maxAmount2 = Number(formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals));
-    const newAmount = Math.min(incrementedAmount, maxAmount2).toString();
-    setAmount(newAmount);
-  };
-  const handleMax = () => {
-    var _amountInputRef$curre3;
-    (_amountInputRef$curre3 = amountInputRef.current) == null || _amountInputRef$curre3.focus();
-    const maxAmount2 = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
-    setAmount(maxAmount2);
-  };
-  const handlePaste = async () => {
-    const result = await navigator.clipboard.readText();
-    setToAddress(result);
-  };
-  const handleToAddressClear = () => {
-    setToAddress("");
-  };
-  const executeTransaction = async (e2) => {
-    var _wallet, _wallet2;
-    e2.preventDefault();
-    if (!isCorrectChainId && isConnectorSequenceBased) {
-      switchChain2({
-        chainId
-      });
-    }
-    const sendAmount = parseUnits$1(amountToSendFormatted, decimals);
-    switch (contractType) {
-      case "ERC721":
-        analytics == null || analytics.track({
-          event: "SEND_TRANSACTION_REQUEST",
-          props: {
-            walletClient: (connector == null || (_wallet = connector._wallet) == null ? void 0 : _wallet.id) || "unknown",
-            source: "sequence-kit/wallet"
-          }
-        });
-        setIsSendTxnPending(true);
-        sendTransaction2({
-          to: tokenBalance.contractAddress,
-          data: new Interface(ERC_721_ABI).encodeFunctionData("safeTransferFrom", [accountAddress, toAddress, tokenId]),
-          gas: null
-        }, {
-          onSettled: (result) => {
-            if (result) {
-              setNavigation({
-                location: "home"
-              });
-            }
-            setIsSendTxnPending(false);
-          }
-        });
-        break;
-      case "ERC1155":
-      default:
-        analytics == null || analytics.track({
-          event: "SEND_TRANSACTION_REQUEST",
-          props: {
-            walletClient: (connector == null || (_wallet2 = connector._wallet) == null ? void 0 : _wallet2.id) || "unknown",
-            source: "sequence-kit/wallet"
-          }
-        });
-        setIsSendTxnPending(true);
-        sendTransaction2({
-          to: tokenBalance.contractAddress,
-          data: new Interface(ERC_1155_ABI).encodeFunctionData("safeBatchTransferFrom", [accountAddress, toAddress, [tokenId], [sendAmount.toHexString()], []]),
-          gas: null
-        }, {
-          onSettled: (result) => {
-            if (result) {
-              setNavigation({
-                location: "home"
-              });
-            }
-            setIsSendTxnPending(false);
-          }
-        });
-    }
-  };
-  const maxAmount = formatUnits$1((tokenBalance == null ? void 0 : tokenBalance.balance) || 0, decimals).toString();
-  const isMinimum = Number(amount) === 0;
-  const isMaximum = Number(amount) >= Number(maxAmount);
-  return /* @__PURE__ */ React.createElement(Box, {
-    padding: "5",
-    paddingTop: "3",
-    style: {
-      marginTop: HEADER_HEIGHT
-    },
-    gap: "2",
-    flexDirection: "column",
-    as: "form",
-    onSubmit: executeTransaction,
-    pointerEvents: isSendTxnPending ? "none" : "auto"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundSecondary",
-    borderRadius: "md",
-    padding: "4",
-    gap: "2",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(SendItemInfo, {
-    imageUrl,
-    showSquareImage: true,
-    decimals,
-    name: name2,
-    symbol: "",
-    balance: (tokenBalance == null ? void 0 : tokenBalance.balance) || "0",
-    chainId
-  }), /* @__PURE__ */ React.createElement(NumericInput, {
-    ref: amountInputRef,
-    style: {
-      fontSize: vars.fontSizes.xlarge,
-      fontWeight: vars.fontWeights.bold
-    },
-    name: "amount",
-    value: amount,
-    onChange: handleChangeAmount,
-    disabled: !showAmountControls,
-    controls: /* @__PURE__ */ React.createElement(React.Fragment, null, showAmountControls && /* @__PURE__ */ React.createElement(Box, {
-      gap: "2"
-    }, /* @__PURE__ */ React.createElement(Button, {
-      disabled: isMinimum,
-      size: "xs",
-      onClick: handleSubtractOne,
-      leftIcon: SvgSubtractIcon
-    }), /* @__PURE__ */ React.createElement(Button, {
-      disabled: isMaximum,
-      size: "xs",
-      onClick: handleAddOne,
-      leftIcon: SvgAddIcon
-    }), /* @__PURE__ */ React.createElement(Button, {
-      size: "xs",
-      shape: "square",
-      label: "Max",
-      onClick: handleMax,
-      "data-id": "maxCoin",
-      flexShrink: "0"
-    })))
-  }), insufficientFunds && /* @__PURE__ */ React.createElement(Text, {
-    as: "div",
-    variant: "normal",
-    color: "negative",
-    marginTop: "2"
-  }, "Insufficient Balance")), /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundSecondary",
-    borderRadius: "md",
-    padding: "4",
-    gap: "2",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50"
-  }, "To"), isEthAddress(toAddress) ? /* @__PURE__ */ React.createElement(Card, {
-    clickable: true,
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    onClick: handleToAddressClear,
-    style: {
-      height: "52px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    address: toAddress,
-    style: {
-      width: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, `0x${truncateAtMiddle$1(toAddress.substring(2), 8)}`)), /* @__PURE__ */ React.createElement(SvgCloseIcon, {
-    size: "xs"
-  })) : /* @__PURE__ */ React.createElement(TextInput, {
-    value: toAddress,
-    onChange: (ev) => setToAddress(ev.target.value),
-    placeholder: `${nativeTokenInfo.name} Address (0x...)`,
-    name: "to-address",
-    "data-1p-ignore": true,
-    controls: /* @__PURE__ */ React.createElement(Button, {
-      size: "xs",
-      shape: "square",
-      label: "Paste",
-      onClick: handlePaste,
-      "data-id": "to-address",
-      flexShrink: "0",
-      leftIcon: SvgCopyIcon
-    })
-  })), showSwitchNetwork && /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "small",
-    color: "negative",
-    marginBottom: "2"
-  }, "The wallet is connected to the wrong network. Please switch network before proceeding"), /* @__PURE__ */ React.createElement(Button, {
-    marginTop: "2",
-    width: "full",
-    variant: "primary",
-    type: "button",
-    label: "Switch Network",
-    onClick: () => switchChain2({
-      chainId
-    }),
-    disabled: isCorrectChainId,
-    style: {
-      height: "52px",
-      borderRadius: vars.radii.md
-    }
-  })), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      height: "52px"
-    },
-    alignItems: "center",
-    justifyContent: "center"
-  }, isSendTxnPending ? /* @__PURE__ */ React.createElement(Spinner, null) : /* @__PURE__ */ React.createElement(Button, {
-    color: "text100",
-    marginTop: "3",
-    width: "full",
-    variant: "primary",
-    type: "submit",
-    disabled: !isNonZeroAmount || !isEthAddress(toAddress) || insufficientFunds || !isCorrectChainId && !isConnectorSequenceBased,
-    label: "Send",
-    rightIcon: SvgChevronRightIcon,
-    style: {
-      height: "52px",
-      borderRadius: vars.radii.md
-    }
-  })));
-};
-const TransactionHistoryItem = ({
-  transaction: transaction2
-}) => {
-  var _transaction$transfer;
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    fiatCurrency
-  } = useSettings();
-  const {
-    setNavigation
-  } = useNavigation();
-  const onClickTransaction = () => {
-    setNavigation({
-      location: "transaction-details",
-      params: {
-        transaction: transaction2
-      }
-    });
-  };
-  const tokenContractAddresses = [];
-  (_transaction$transfer = transaction2.transfers) == null || _transaction$transfer.forEach((transfer) => {
-    const tokenContractAddress = transfer.contractAddress;
-    if (!tokenContractAddresses.includes(tokenContractAddress)) {
-      tokenContractAddresses.push(tokenContractAddress);
-    }
-  });
-  const {
-    data: coinPrices = [],
-    isPending: isPendingCoinPrices
-  } = useCoinPrices(tokenContractAddresses.map((contractAddress) => ({
-    contractAddress,
-    chainId: transaction2.chainId
-  })));
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const isPending = isPendingCoinPrices || isPendingConversionRate;
-  const {
-    transfers
-  } = transaction2;
-  const getTransactionIconByType = (transferType) => {
-    switch (transferType) {
-      case TxnTransferType.SEND:
-        return /* @__PURE__ */ React.createElement(SvgArrowRightIcon, {
-          style: {
-            transform: "rotate(270deg)",
-            width: "16px"
-          }
-        });
-      case TxnTransferType.RECEIVE:
-        return /* @__PURE__ */ React.createElement(SvgArrowRightIcon, {
-          style: {
-            transform: "rotate(90deg)",
-            width: "16px"
-          }
-        });
-      case TxnTransferType.UNKNOWN:
-      default:
-        return /* @__PURE__ */ React.createElement(SvgTransactionIcon, {
-          style: {
-            width: "14px"
-          }
-        });
-    }
-  };
-  const getTansactionLabelByType = (transferType) => {
-    switch (transferType) {
-      case TxnTransferType.SEND:
-        return "Sent";
-      case TxnTransferType.RECEIVE:
-        return "Received";
-      case TxnTransferType.UNKNOWN:
-      default:
-        return "Transacted";
-    }
-  };
-  const getTransferAmountLabel = (amount, symbol, transferType) => {
-    let sign3 = "";
-    if (transferType === TxnTransferType.SEND) {
-      sign3 = "-";
-    } else if (transferType === TxnTransferType.RECEIVE) {
-      sign3 = "+";
-    }
-    let textColor = "text50";
-    if (transferType === TxnTransferType.SEND) {
-      textColor = vars.colors.negative;
-    } else if (transferType === TxnTransferType.RECEIVE) {
-      textColor = vars.colors.positive;
-    }
-    return /* @__PURE__ */ React.createElement(Text, {
-      fontWeight: "bold",
-      fontSize: "normal",
-      style: {
-        color: textColor
-      }
-    }, `${sign3}${amount} ${symbol}`);
-  };
-  const getTransfer = ({
-    transfer,
-    isFirstItem
-  }) => {
-    const {
-      amounts
-    } = transfer;
-    const date = dayjs(transaction2.timestamp).format("MMM DD, YYYY");
-    return /* @__PURE__ */ React.createElement(Box, {
-      gap: "2",
-      width: "full",
-      flexDirection: "column",
-      justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Box, {
-      flexDirection: "row",
-      justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Box, {
-      color: "text50",
-      gap: "1",
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center"
-    }, getTransactionIconByType(transfer.transferType), /* @__PURE__ */ React.createElement(Text, {
-      fontWeight: "medium",
-      fontSize: "normal",
-      color: "text100"
-    }, getTansactionLabelByType(transfer.transferType)), /* @__PURE__ */ React.createElement(NetworkImage, {
-      chainId: transaction2.chainId,
-      size: "xs"
-    })), isFirstItem && /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-      fontWeight: "medium",
-      fontSize: "normal",
-      color: "text50"
-    }, date))), amounts.map((amount, index2) => {
-      var _transfer$contractInf, _transfer$contractInf2, _transfer$tokenIds, _transfer$contractInf4, _transfer$contractInf5, _coinPrices$find;
-      const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
-      const isNativeToken = compareAddress(transfer.contractAddress, AddressZero);
-      const isCollectible = ((_transfer$contractInf = transfer.contractInfo) == null ? void 0 : _transfer$contractInf.type) === "ERC721" || ((_transfer$contractInf2 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf2.type) === "ERC1155";
-      let decimals;
-      const tokenId = (_transfer$tokenIds = transfer.tokenIds) == null ? void 0 : _transfer$tokenIds[index2];
-      if (isCollectible && tokenId) {
-        var _transfer$tokenMetada;
-        decimals = ((_transfer$tokenMetada = transfer.tokenMetadata) == null || (_transfer$tokenMetada = _transfer$tokenMetada[tokenId]) == null ? void 0 : _transfer$tokenMetada.decimals) || 0;
-      } else {
-        var _transfer$contractInf3;
-        decimals = isNativeToken ? nativeTokenInfo.decimals : (_transfer$contractInf3 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf3.decimals;
-      }
-      const amountValue = formatUnits$1(amount, decimals);
-      const symbol = isNativeToken ? nativeTokenInfo.symbol : ((_transfer$contractInf4 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf4.symbol) || "";
-      const tokenLogoUri = isNativeToken ? nativeTokenInfo.logoURI : (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.logoURI;
-      const fiatConversionRate = (_coinPrices$find = coinPrices.find((coinPrice) => compareAddress(coinPrice.token.contractAddress, transfer.contractAddress))) == null || (_coinPrices$find = _coinPrices$find.price) == null ? void 0 : _coinPrices$find.value;
-      return /* @__PURE__ */ React.createElement(Box, {
-        key: index2,
-        flexDirection: "row",
-        justifyContent: "space-between"
-      }, /* @__PURE__ */ React.createElement(Box, {
-        flexDirection: "row",
-        gap: "2",
-        justifyContent: "center",
-        alignItems: "center"
-      }, tokenLogoUri && /* @__PURE__ */ React.createElement(Image$1, {
-        src: tokenLogoUri,
-        width: "5",
-        alt: "token logo"
-      }), getTransferAmountLabel(formatDisplay(amountValue), symbol, transfer.transferType)), isPending && /* @__PURE__ */ React.createElement(Skeleton, {
-        style: {
-          width: "35px",
-          height: "20px"
-        }
-      }), fiatConversionRate && /* @__PURE__ */ React.createElement(Text, {
-        fontWeight: "medium",
-        fontSize: "normal",
-        color: "text50"
-      }, `${fiatCurrency.sign}${(Number(amountValue) * fiatConversionRate * conversionRate).toFixed(2)}`));
-    }));
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundSecondary",
-    borderRadius: "md",
-    padding: "4",
-    gap: "2",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    userSelect: "none",
-    cursor: "pointer",
-    opacity: {
-      hover: "80"
-    },
-    onClick: () => onClickTransaction()
-  }, transfers == null ? void 0 : transfers.map((transfer, position) => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      key: `${transaction2.txnHash}-${position}`,
-      width: "full"
-    }, getTransfer({
-      transfer,
-      isFirstItem: position === 0
-    }));
-  }));
-};
-const TransactionHistorySkeleton = () => {
-  const getTransactionItem = () => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      flexDirection: "column",
-      gap: "2",
-      width: "full",
-      justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Box, {
-      flexDirection: "row",
-      justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Skeleton, {
-      style: {
-        width: "65px",
-        height: "20px"
-      }
-    }), /* @__PURE__ */ React.createElement(Skeleton, {
-      style: {
-        width: "75px",
-        height: "17px"
-      }
-    })), /* @__PURE__ */ React.createElement(Box, {
-      flexDirection: "row",
-      justifyContent: "space-between"
-    }, /* @__PURE__ */ React.createElement(Skeleton, {
-      style: {
-        width: "120px",
-        height: "20px"
-      }
-    }), /* @__PURE__ */ React.createElement(Skeleton, {
-      style: {
-        width: "35px",
-        height: "17px"
-      }
-    })));
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "3"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "70px",
-      height: "17px"
-    }
-  }), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2"
-  }, Array(8).fill(null).map((_, index2) => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      borderRadius: "md",
-      padding: "4",
-      gap: "2",
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "column",
-      background: "backgroundSecondary",
-      key: index2
-    }, getTransactionItem());
-  })));
-};
-const TransactionHistoryList = ({
-  transactions: transactions2,
-  isPending,
-  isFetchingNextPage
-}) => {
-  const transactionPeriods = [{
-    id: "today",
-    label: "Today"
-  }, {
-    id: "yesterday",
-    label: "Yesterday"
-  }, {
-    id: "week",
-    label: "Last Week"
-  }, {
-    id: "month",
-    label: "Last Month"
-  }, {
-    id: "year",
-    label: "Last Year"
-  }, {
-    id: "years",
-    label: "Past Years"
-  }];
-  const transactionsByTime = reactExports.useMemo(() => {
-    const todayTreshold = new Date((/* @__PURE__ */ new Date()).setHours(0, 0, 0, 0)).getTime();
-    const yesterdayTreshold = new Date((/* @__PURE__ */ new Date()).setDate(new Date(todayTreshold).getDate() - 1)).getTime();
-    const weekTreshold = new Date((/* @__PURE__ */ new Date()).setDate((/* @__PURE__ */ new Date()).getDate() - 7)).getTime();
-    const monthTreshold = new Date((/* @__PURE__ */ new Date()).setDate((/* @__PURE__ */ new Date()).getDate() - 30)).getTime();
-    const yearTreshold = new Date((/* @__PURE__ */ new Date()).setDate((/* @__PURE__ */ new Date()).getDate() - 365)).getTime();
-    const transactionsByTime2 = {
-      today: [],
-      yesterday: [],
-      week: [],
-      month: [],
-      year: [],
-      years: []
-    };
-    transactions2.forEach((transaction2) => {
-      const transactionTime = new Date(transaction2.timestamp).getTime();
-      if (transactionTime > todayTreshold) {
-        transactionsByTime2.today.push(transaction2);
-      } else if (transactionTime > yesterdayTreshold) {
-        transactionsByTime2.yesterday.push(transaction2);
-      } else if (transactionTime > weekTreshold) {
-        transactionsByTime2.week.push(transaction2);
-      } else if (transactionTime > monthTreshold) {
-        transactionsByTime2.month.push(transaction2);
-      } else if (transactionTime > yearTreshold) {
-        transactionsByTime2.year.push(transaction2);
-      } else {
-        transactionsByTime2.years.push(transaction2);
-      }
-    });
-    return transactionsByTime2;
-  }, [transactions2]);
-  if (isPending) {
-    return /* @__PURE__ */ React.createElement(Box, {
-      flexDirection: "column",
-      gap: "2"
-    }, /* @__PURE__ */ React.createElement(TransactionHistorySkeleton, null));
-  }
-  const TimeLabel = ({
-    label
-  }) => {
-    return /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-      color: "text50",
-      fontWeight: "medium",
-      fontSize: "normal"
-    }, label));
-  };
-  const TransactionsList = ({
-    transactions: transactions3
-  }) => {
-    return /* @__PURE__ */ React.createElement(Box, {
-      flexDirection: "column",
-      gap: "2"
-    }, transactions3.map((transaction2, index2) => {
-      return /* @__PURE__ */ React.createElement(Box, {
-        key: `${transaction2.txnHash}-${index2}`,
-        flexDirection: "column",
-        gap: "2"
-      }, /* @__PURE__ */ React.createElement(TransactionHistoryItem, {
-        transaction: transaction2
-      }));
-    }));
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "5"
-  }, transactionPeriods.map((period) => {
-    const txs = transactionsByTime[period.id];
-    if (txs.length === 0) {
-      return null;
-    }
-    return /* @__PURE__ */ React.createElement(Box, {
-      key: period.id,
-      flexDirection: "column",
-      gap: "3"
-    }, /* @__PURE__ */ React.createElement(TimeLabel, {
-      label: period.label
-    }), /* @__PURE__ */ React.createElement(TransactionsList, {
-      transactions: txs
-    }));
-  }), transactions2.length === 0 && /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "3"
-  }, /* @__PURE__ */ React.createElement(TimeLabel, {
-    label: "History"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, "No Recent Transaction History Found")), isFetchingNextPage && /* @__PURE__ */ React.createElement(Box, {
-    margin: "4",
-    alignItems: "center",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Spinner, null)));
-};
-const History = () => {
-  const {
-    selectedNetworks
-  } = useSettings();
-  const {
-    address: accountAddress
-  } = useAccount();
-  const {
-    data: transactionHistory = [],
-    isPending: isPendingTransactionHistory
-  } = useTransactionHistorySummary({
-    accountAddress: accountAddress || "",
-    chainIds: selectedNetworks
-  });
-  return /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "4",
-    paddingBottom: "5",
-    paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
-    transactions: transactionHistory,
-    isPending: isPendingTransactionHistory,
-    isFetchingNextPage: false
-  })));
-};
-const BalanceItem = ({
-  balance
-}) => {
-  var _balance$contractInfo, _balance$contractInfo2, _balance$contractInfo3;
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    setNavigation
-  } = useNavigation();
-  const isNativeToken = compareAddress(balance.contractAddress, AddressZero);
-  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
-  const logoURI = isNativeToken ? nativeTokenInfo.logoURI : balance == null || (_balance$contractInfo = balance.contractInfo) == null ? void 0 : _balance$contractInfo.logoURI;
-  const tokenName = isNativeToken ? nativeTokenInfo.name : (balance == null || (_balance$contractInfo2 = balance.contractInfo) == null ? void 0 : _balance$contractInfo2.name) || "Unknown";
-  const symbol = isNativeToken ? nativeTokenInfo.symbol : balance == null || (_balance$contractInfo3 = balance.contractInfo) == null ? void 0 : _balance$contractInfo3.symbol;
-  const getQuantity = () => {
-    var _balance$contractInfo4, _balance$contractInfo5;
-    if (balance.contractType === "ERC721" || balance.contractType === "ERC1155") {
-      return balance.balance;
-    }
-    const decimals = isNativeToken ? nativeTokenInfo.decimals : balance == null || (_balance$contractInfo4 = balance.contractInfo) == null ? void 0 : _balance$contractInfo4.decimals;
-    const bal = formatUnits$1(balance.balance, decimals || 0);
-    const displayBalance = formatDisplay(bal);
-    const symbol2 = isNativeToken ? nativeTokenInfo.symbol : balance == null || (_balance$contractInfo5 = balance.contractInfo) == null ? void 0 : _balance$contractInfo5.symbol;
-    return `${displayBalance} ${symbol2}`;
-  };
-  const onClick = () => {
-    const isCollection = balance.contractType === "ERC721" || balance.contractType === "ERC1155";
-    if (isCollection) {
-      setNavigation({
-        location: "collection-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId
-        }
-      });
-    } else {
-      setNavigation({
-        location: "coin-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId
-        }
-      });
-    }
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    key: balance.contractAddress,
-    onClick,
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    userSelect: "none",
-    cursor: "pointer",
-    opacity: {
-      hover: "80"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    gap: "3",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(TokenImage, {
-    src: logoURI,
-    symbol,
-    size: "md"
-  }), /* @__PURE__ */ React.createElement(Box, {
-    gap: "1",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontWeight: "bold",
-    fontSize: "normal",
-    style: {
-      textOverflow: "ellipsis",
-      overflow: "hidden",
-      maxWidth: "250px",
-      // @ts-ignore-next-line
-      textWrap: "nowrap"
-    }
-  }, tokenName), /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId: balance.chainId,
-    size: "xs"
-  }))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontWeight: "bold",
-    fontSize: "normal"
-  }, getQuantity()), /* @__PURE__ */ React.createElement(SvgChevronRightIcon, {
-    color: "text50"
-  })));
-};
-const WalletLink = ({
-  toLocation,
-  label
-}) => {
-  const {
-    setNavigation
-  } = useNavigation();
-  const onClick = () => {
-    setNavigation(toLocation);
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    onClick,
-    width: "full",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    userSelect: "none",
-    cursor: "pointer",
-    opacity: {
-      hover: "80"
-    }
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontSize: "normal",
-    fontWeight: "medium"
-  }, label), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontSize: "normal",
-    fontWeight: "medium"
-  }, "View all"), /* @__PURE__ */ React.createElement(SvgChevronRightIcon, {
-    color: "text50",
-    size: "sm"
-  })));
-};
-const SearchWallet = () => {
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    fiatCurrency,
-    hideUnlistedTokens,
-    selectedNetworks
-  } = useSettings();
-  const [search2, setSearch] = reactExports.useState("");
-  const {
-    address: accountAddress
-  } = useAccount();
-  const {
-    data: tokenBalancesData,
-    isPending: isPendingTokenBalances
-  } = useBalances({
-    chainIds: selectedNetworks,
-    accountAddress: accountAddress || "",
-    verifiedOnly: hideUnlistedTokens
-  });
-  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress(b2.contractAddress, AddressZero))) || [];
-  const {
-    data: coinPrices = [],
-    isPending: isPendingCoinPrices
-  } = useCoinPrices(coinBalancesUnordered.map((token) => ({
-    chainId: token.chainId,
-    contractAddress: token.contractAddress
-  })));
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const coinBalances = coinBalancesUnordered.sort((a2, b2) => {
-    var _b$contractInfo, _b$contractInfo2;
-    const isHigherFiat = Number(computeBalanceFiat({
-      balance: b2,
-      prices: coinPrices,
-      conversionRate,
-      decimals: ((_b$contractInfo = b2.contractInfo) == null ? void 0 : _b$contractInfo.decimals) || 18
-    })) - Number(computeBalanceFiat({
-      balance: a2,
-      prices: coinPrices,
-      conversionRate,
-      decimals: ((_b$contractInfo2 = b2.contractInfo) == null ? void 0 : _b$contractInfo2.decimals) || 18
-    }));
-    return isHigherFiat;
-  });
-  const collectionBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC721" || b2.contractType === "ERC1155")) || [];
-  const collectionBalances = collectionBalancesUnordered.sort((a2, b2) => {
-    return Number(b2.balance) - Number(a2.balance);
-  });
-  const isPending = isPendingTokenBalances || isPendingCoinPrices || isPendingConversionRate;
-  const indexedCollectionBalances = collectionBalances.map((balance, index2) => {
-    var _balance$contractInfo;
-    return {
-      index: index2,
-      name: ((_balance$contractInfo = balance.contractInfo) == null ? void 0 : _balance$contractInfo.name) || "Unknown"
-    };
-  });
-  const indexedCoinBalances = coinBalances.map((balance, index2) => {
-    if (compareAddress(balance.contractAddress, AddressZero)) {
-      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
-      return {
-        index: index2,
-        name: nativeTokenInfo.name
-      };
-    } else {
-      var _balance$contractInfo2;
-      return {
-        index: index2,
-        name: ((_balance$contractInfo2 = balance.contractInfo) == null ? void 0 : _balance$contractInfo2.name) || "Unknown"
-      };
-    }
-  });
-  const coinBalancesAmount = coinBalances.length;
-  const collectionBalancesAmount = collectionBalances.length;
-  const fuzzySearchCoinBalances = new Fuse(indexedCoinBalances, {
-    keys: ["name"]
-  });
-  const fuzzySearchCollections = new Fuse(indexedCollectionBalances, {
-    keys: ["name"]
-  });
-  const foundCoinBalances = (search2 === "" ? indexedCoinBalances : fuzzySearchCoinBalances.search(search2).map((result) => result.item)).slice(0, 5);
-  const foundCollectionBalances = (search2 === "" ? indexedCollectionBalances : fuzzySearchCollections.search(search2).map((result) => result.item)).slice(0, 5);
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "4",
-    paddingBottom: "5",
-    paddingTop: "3",
-    flexDirection: "column",
-    gap: "10",
-    alignItems: "center",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "full"
-  }, /* @__PURE__ */ React.createElement(TextInput, {
-    autoFocus: true,
-    name: "search wallet",
-    leftIcon: SvgSearchIcon,
-    value: search2,
-    onChange: (ev) => setSearch(ev.target.value),
-    placeholder: "Search your wallet",
-    "data-1p-ignore": true
-  })), /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "5"
-  }, /* @__PURE__ */ React.createElement(WalletLink, {
-    toLocation: {
-      location: "search-view-all",
-      params: {
-        defaultTab: "collections"
-      }
-    },
-    label: `Collections (${collectionBalancesAmount})`
-  }), isPending ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton, {
-    key: i2,
-    width: "full",
-    height: "8"
-  })) : foundCollectionBalances.length === 0 ? /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, "No collections found") : foundCollectionBalances.map((indexedItem, index2) => {
-    const balance = collectionBalances[indexedItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
-      key: index2,
-      balance
-    });
-  })), /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "5"
-  }, /* @__PURE__ */ React.createElement(WalletLink, {
-    toLocation: {
-      location: "search-view-all",
-      params: {
-        defaultTab: "coins"
-      }
-    },
-    label: `Coins (${coinBalancesAmount})`
-  }), isPending ? Array(5).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton, {
-    key: i2,
-    width: "full",
-    height: "8"
-  })) : foundCoinBalances.length === 0 ? /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, "No coins found") : foundCoinBalances.map((indexItem, index2) => {
-    const balance = coinBalances[indexItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
-      key: index2,
-      balance
-    });
-  })));
-};
-const SearchWalletViewAll = ({
-  defaultTab
-}) => {
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    fiatCurrency,
-    hideUnlistedTokens,
-    selectedNetworks
-  } = useSettings();
-  const [search2, setSearch] = reactExports.useState("");
-  const [selectedTab, setSelectedTab] = reactExports.useState(defaultTab);
-  reactExports.useEffect(() => {
-    setSearch("");
-  }, [selectedTab]);
-  const {
-    address: accountAddress
-  } = useAccount();
-  const {
-    data: tokenBalancesData,
-    isPending: isPendingTokenBalances
-  } = useBalances({
-    chainIds: selectedNetworks,
-    accountAddress: accountAddress || "",
-    verifiedOnly: hideUnlistedTokens
-  });
-  const coinBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC20" || compareAddress(b2.contractAddress, AddressZero))) || [];
-  const {
-    data: coinPrices = [],
-    isPending: isPendingCoinPrices
-  } = useCoinPrices(coinBalancesUnordered.map((token) => ({
-    chainId: token.chainId,
-    contractAddress: token.contractAddress
-  })));
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const coinBalances = coinBalancesUnordered.sort((a2, b2) => {
-    var _b$contractInfo, _a$contractInfo;
-    const isHigherFiat = Number(computeBalanceFiat({
-      balance: b2,
-      prices: coinPrices,
-      conversionRate,
-      decimals: ((_b$contractInfo = b2.contractInfo) == null ? void 0 : _b$contractInfo.decimals) || 18
-    })) - Number(computeBalanceFiat({
-      balance: a2,
-      prices: coinPrices,
-      conversionRate,
-      decimals: ((_a$contractInfo = a2.contractInfo) == null ? void 0 : _a$contractInfo.decimals) || 18
-    }));
-    return isHigherFiat;
-  });
-  const collectionBalancesUnordered = (tokenBalancesData == null ? void 0 : tokenBalancesData.filter((b2) => b2.contractType === "ERC721" || b2.contractType === "ERC1155")) || [];
-  const collectionBalances = collectionBalancesUnordered.sort((a2, b2) => {
-    return Number(b2.balance) - Number(a2.balance);
-  });
-  const coinBalancesAmount = coinBalances.length;
-  const collectionBalancesAmount = collectionBalances.length;
-  const isPending = isPendingTokenBalances || isPendingCoinPrices || isPendingConversionRate;
-  const indexedCollectionBalances = collectionBalances.map((balance, index2) => {
-    var _balance$contractInfo;
-    return {
-      index: index2,
-      name: ((_balance$contractInfo = balance.contractInfo) == null ? void 0 : _balance$contractInfo.name) || "Unknown"
-    };
-  });
-  const indexedCoinBalances = coinBalances.map((balance, index2) => {
-    if (compareAddress(balance.contractAddress, AddressZero)) {
-      const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
-      return {
-        index: index2,
-        name: nativeTokenInfo.name
-      };
-    } else {
-      var _balance$contractInfo2;
-      return {
-        index: index2,
-        name: ((_balance$contractInfo2 = balance.contractInfo) == null ? void 0 : _balance$contractInfo2.name) || "Unknown"
-      };
-    }
-  });
-  const fuzzySearchCoinBalances = new Fuse(indexedCoinBalances, {
-    keys: ["name"]
-  });
-  const fuzzySearchCollections = new Fuse(indexedCollectionBalances, {
-    keys: ["name"]
-  });
-  const foundCoinBalances = search2 === "" ? indexedCoinBalances : fuzzySearchCoinBalances.search(search2).map((result) => result.item);
-  const foundCollectionBalances = search2 === "" ? indexedCollectionBalances : fuzzySearchCollections.search(search2).map((result) => result.item);
-  const TabsHeaderSkeleton = () => {
-    return /* @__PURE__ */ React.createElement(Skeleton, {
-      style: {
-        width: "360px",
-        height: "48px"
-      }
-    });
-  };
-  const ItemsSkeletons = () => {
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, Array(8).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton, {
-      key: i2,
-      width: "full",
-      height: "8"
-    })));
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "4",
-    paddingBottom: "5",
-    paddingTop: "3",
-    flexDirection: "column",
-    gap: "5",
-    alignItems: "center",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "full"
-  }, /* @__PURE__ */ React.createElement(TextInput, {
-    autoFocus: true,
-    name: "search wallet",
-    leftIcon: SvgSearchIcon,
-    value: search2,
-    onChange: (ev) => setSearch(ev.target.value),
-    placeholder: "Search your wallet",
-    "data-1p-ignore": true
-  })), /* @__PURE__ */ React.createElement(Box, {
-    width: "full"
-  }, /* @__PURE__ */ React.createElement(TabsRoot, {
-    value: selectedTab,
-    onValueChange: (value) => setSelectedTab(value)
-  }, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "5"
-  }, !isPending && /* @__PURE__ */ React.createElement(TabsHeader, {
-    value: selectedTab,
-    tabs: [{
-      label: `Collections (${collectionBalancesAmount})`,
-      value: "collections"
-    }, {
-      label: `Coins (${coinBalancesAmount})`,
-      value: "coins"
-    }]
-  }), isPending && /* @__PURE__ */ React.createElement(TabsHeaderSkeleton, null)), /* @__PURE__ */ React.createElement(TabsContent, {
-    value: "collections"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "3"
-  }, isPending && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isPending && foundCollectionBalances.length === 0 && /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, "No Collectibles Found"), !isPending && foundCollectionBalances.length > 0 && foundCollectionBalances.map((indexItem, index2) => {
-    const collectionBalance = collectionBalances[indexItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
-      key: index2,
-      balance: collectionBalance
-    });
-  }))), /* @__PURE__ */ React.createElement(TabsContent, {
-    value: "coins"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "3"
-  }, isPending && /* @__PURE__ */ React.createElement(ItemsSkeletons, null), !isPending && coinBalances.length == 0 && /* @__PURE__ */ React.createElement(Text, {
-    color: "text100"
-  }, "No Coins Found"), !isPending && foundCoinBalances.length > 0 && foundCoinBalances.map((indexedItem, index2) => {
-    const coinBalance = coinBalances[indexedItem.index];
-    return /* @__PURE__ */ React.createElement(BalanceItem, {
-      key: index2,
-      balance: coinBalance
-    });
-  }))))));
-};
-const SettingsMenu = () => {
-  const {
-    setNavigation
-  } = useNavigation();
-  const onClickGeneral = () => {
-    setNavigation({
-      location: "settings-general"
-    });
-  };
-  const onClickCurrency = () => {
-    setNavigation({
-      location: "settings-currency"
-    });
-  };
-  const onClickNetworks = () => {
-    setNavigation({
-      location: "settings-networks"
-    });
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    padding: "5",
-    paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2"
-  }, /* @__PURE__ */ React.createElement(Button, {
-    onClick: onClickGeneral,
-    leftIcon: SvgSettingsIcon,
-    rightIcon: SvgChevronRightIcon,
-    width: "full",
-    label: "General",
-    style: {
-      height: "52px",
-      borderRadius: vars.radii.md
-    }
-  }), /* @__PURE__ */ React.createElement(Button, {
-    onClick: onClickCurrency,
-    leftIcon: SvgCurrencyIcon,
-    rightIcon: SvgChevronRightIcon,
-    width: "full",
-    label: "Currency",
-    style: {
-      height: "52px",
-      borderRadius: vars.radii.md
-    }
-  }), /* @__PURE__ */ React.createElement(Button, {
-    onClick: onClickNetworks,
-    leftIcon: SvgNetworkIcon,
-    rightIcon: SvgChevronRightIcon,
-    width: "full",
-    label: "Networks",
-    style: {
-      height: "52px",
-      borderRadius: vars.radii.md
-    }
-  }))));
-};
-const SettingsGeneral = () => {
-  const {
-    hideUnlistedTokens,
-    setHideUnlistedTokens,
-    hideCollectibles,
-    setHideCollectibles
-  } = useSettings();
-  const onChangeHideUnlistedTokens = () => {
-    setHideUnlistedTokens(!hideUnlistedTokens);
-  };
-  const onChangeHideCollectibles = () => {
-    setHideCollectibles(!hideCollectibles);
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    gap: "2",
-    padding: "5",
-    paddingTop: "3",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Card, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontWeight: "bold"
-  }, "Hide unlisted tokens"), /* @__PURE__ */ React.createElement(Switch, {
-    checked: hideUnlistedTokens,
-    onCheckedChange: onChangeHideUnlistedTokens
-  })), /* @__PURE__ */ React.createElement(Card, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontWeight: "bold"
-  }, "Hide collectibles"), /* @__PURE__ */ React.createElement(Switch, {
-    checked: hideCollectibles,
-    onCheckedChange: onChangeHideCollectibles
-  }))));
-};
-function _objectWithoutPropertiesLoose$1(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {};
-  for (var key2 in source) {
-    if (Object.prototype.hasOwnProperty.call(source, key2)) {
-      if (excluded.indexOf(key2) >= 0)
-        continue;
-      target[key2] = source[key2];
-    }
-  }
-  return target;
-}
-const SelectedIndicator = (props) => {
-  const {
-    selected,
-    className,
-    squareIndicator = false
-  } = props;
-  return /* @__PURE__ */ React.createElement(Box, {
-    borderStyle: "solid",
-    borderColor: squareIndicator && selected ? "transparent" : "borderNormal",
-    borderWidth: "thin",
-    position: "relative",
-    alignItems: "center",
-    justifyContent: "center",
-    flexShrink: "0",
-    className,
-    style: {
-      borderRadius: squareIndicator ? "4px" : vars.radii.circle,
-      width: "20px",
-      height: "20px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    as: motion.div,
-    background: squareIndicator ? "borderNormal" : "backgroundInverse",
-    position: "absolute",
-    color: "textInverse100",
-    initial: {
-      opacity: selected ? 1 : 0,
-      scale: selected ? 1 : 0.5
-    },
-    animate: {
-      opacity: selected ? 1 : 0,
-      scale: selected ? 1 : 0.5
-    },
-    transition: {
-      ease: "backOut"
-    },
-    style: {
-      borderRadius: squareIndicator ? "4px" : vars.radii.circle,
-      width: squareIndicator ? "20px" : "14px",
-      height: squareIndicator ? "20px" : "14px"
-    },
-    justifyContent: "center",
-    alignItems: "center"
-  }, squareIndicator && /* @__PURE__ */ React.createElement(SvgCheckmarkIcon, {
-    color: "white",
-    style: {
-      width: "14px",
-      height: "14px"
-    }
-  })));
-};
-const _excluded$1$1 = ["value", "selected", "children", "disabled", "onClick", "className", "hideIndicator", "squareIndicator"];
-const SelectButton = (props) => {
-  const {
-    value,
-    selected,
-    children,
-    disabled,
-    onClick,
-    className,
-    hideIndicator,
-    squareIndicator = false
-  } = props, rest = _objectWithoutPropertiesLoose$1(props, _excluded$1$1);
-  return /* @__PURE__ */ React.createElement(Card, _extends$2({
-    as: "button",
-    clickable: true,
-    className: clsx(className),
-    disabled,
-    onClick: () => onClick(value),
-    userSelect: "none",
-    alignItems: "center",
-    justifyContent: "space-between",
-    textAlign: "left",
-    width: "full",
-    border: "none",
-    style: {
-      appearance: "none"
-    }
-  }, rest), children, !hideIndicator && /* @__PURE__ */ React.createElement(SelectedIndicator, {
-    selected,
-    squareIndicator
-  }));
-};
-const SettingsCurrency = () => {
-  const {
-    fiatCurrency,
-    setFiatCurrency
-  } = useSettings();
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingBottom: "5",
-    paddingX: "4",
-    paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2"
-  }, supportedFiatCurrencies.map((currency) => {
-    return /* @__PURE__ */ React.createElement(SelectButton, {
-      key: currency.symbol,
-      value: currency.symbol,
-      selected: currency.symbol === fiatCurrency.symbol,
-      onClick: () => setFiatCurrency && setFiatCurrency(currency)
-    }, /* @__PURE__ */ React.createElement(Box, {
-      gap: "2",
-      justifyContent: "flex-start",
-      alignItems: "center"
-    }, /* @__PURE__ */ React.createElement(Text, {
-      color: "text100",
-      fontWeight: "bold"
-    }, currency.symbol), /* @__PURE__ */ React.createElement(Text, {
-      color: "text50"
-    }, currency.name.message)));
-  })));
-};
-const SettingsNetwork = () => {
-  const {
-    selectedNetworks,
-    setSelectedNetworks
-  } = useSettings();
-  const {
-    chains: chains2
-  } = useConfig();
-  const onClickNetwork = (chainId) => {
-    if (selectedNetworks.includes(chainId)) {
-      if (selectedNetworks.length === 1) {
-        return;
-      }
-      setSelectedNetworks(selectedNetworks.filter((id2) => id2 !== chainId));
-    } else {
-      setSelectedNetworks([...selectedNetworks, chainId]);
-    }
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    padding: "5",
-    paddingTop: "3"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    variant: "small",
-    fontWeight: "bold",
-    color: "text50"
-  }, "Networks"), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    marginTop: "4"
-  }, chains2.map((chain) => {
-    return /* @__PURE__ */ React.createElement(SelectButton, {
-      disabled: selectedNetworks.length === 1 && selectedNetworks.includes(chain.id),
-      key: chain.id,
-      selected: selectedNetworks.includes(chain.id),
-      onClick: () => onClickNetwork(chain.id),
-      value: chain.id,
-      squareIndicator: true
-    }, /* @__PURE__ */ React.createElement(Box, {
-      gap: "2",
-      justifyContent: "center",
-      alignItems: "center"
-    }, /* @__PURE__ */ React.createElement(TokenImage, {
-      src: `https://assets.sequence.info/images/networks/medium/${chain.id}.webp`
-    }), /* @__PURE__ */ React.createElement(Text, {
-      color: "text100",
-      variant: "normal",
-      fontWeight: "bold"
-    }, chain.name)));
-  }))));
-};
-const useIntersectionObserver = (ref, options) => {
-  var _entry$isIntersecting;
-  const [entry, setEntry] = reactExports.useState(null);
-  const observer = reactExports.useMemo(() => new IntersectionObserver(([entry2]) => setEntry(entry2), options), []);
-  reactExports.useEffect(() => {
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => {
-      if (ref.current) {
-        observer.disconnect();
-      }
-    };
-  }, [ref.current, observer]);
-  return (_entry$isIntersecting = entry == null ? void 0 : entry.isIntersecting) != null ? _entry$isIntersecting : false;
-};
-const InfiniteScroll = (props) => {
-  const {
-    onLoad,
-    hasMore = true,
-    children
-  } = props;
-  const [pageNumber, setPageNumber] = reactExports.useState(0);
-  const [isLoading, setLoading] = reactExports.useState(false);
-  const bottomRef = reactExports.useRef(null);
-  const isBottom = useIntersectionObserver(bottomRef);
-  reactExports.useEffect(() => {
-    if (isBottom && hasMore && !isLoading) {
-      handleLoad();
-    }
-  }, [isBottom]);
-  const handleLoad = async () => {
-    setLoading(true);
-    await onLoad(pageNumber);
-    setPageNumber((pageNumber2) => pageNumber2 + 1);
-    setLoading(false);
-  };
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, children, /* @__PURE__ */ React.createElement("div", {
-    ref: bottomRef
-  }));
-};
-const NetworkBadge = ({
-  chainId
-}) => {
-  var _network$title;
-  const network2 = getNetwork(chainId);
-  const chainColor = getNetworkColor(chainId);
-  const chainBGColor = getNetworkBackgroundColor(chainId);
-  return /* @__PURE__ */ React.createElement(Box, {
-    height: "6",
-    paddingY: "1",
-    paddingLeft: "1.5",
-    paddingRight: "2",
-    gap: "1",
-    style: {
-      background: chainBGColor
-    },
-    borderRadius: "xs",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "fit"
-  }, /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    fontSize: "xsmall",
-    style: {
-      color: chainColor
-    }
-  }, capitalize((_network$title = network2.title) != null ? _network$title : network2.name)));
-};
-const CoinDetailsSkeleton = ({
-  chainId
-}) => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "10",
-    paddingBottom: "5",
-    paddingX: "4",
-    paddingTop: "0",
-    style: {
-      marginTop: "-20px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "10",
-    gap: "2",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "32px",
-      height: "32px"
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      height: "24px",
-      width: "70px"
-    }
-  }), /* @__PURE__ */ React.createElement(NetworkBadge, {
-    chainId
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    color: "text50",
-    fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "150px",
-      height: "36px"
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "33px",
-      height: "17px"
-    }
-  }))), /* @__PURE__ */ React.createElement(Button, {
-    color: "text100",
-    marginTop: "4",
-    marginBottom: "10",
-    width: "full",
-    variant: "primary",
-    leftIcon: SvgSendIcon,
-    label: "Send",
-    disabled: true,
-    onClick: () => {
-    }
-  }), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(TransactionHistorySkeleton, null))));
-};
-const CoinDetails = ({
-  contractAddress,
-  chainId
-}) => {
-  var _dataCoinBalance$cont, _dataCoinBalance$cont2, _dataCoinBalance$cont3, _dataCoinBalance$cont4;
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    fiatCurrency,
-    hideUnlistedTokens
-  } = useSettings();
-  const {
-    address: accountAddress
-  } = useAccount();
-  const {
-    data: dataTransactionHistory,
-    isPending: isPendingTransactionHistory,
-    fetchNextPage,
-    hasNextPage: hasNextPage2,
-    isFetchingNextPage
-  } = useTransactionHistory({
-    chainId,
-    accountAddress: accountAddress || "",
-    contractAddress
-  });
-  const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory);
-  const {
-    data: dataCoinBalance,
-    isPending: isPendingCoinBalance
-  } = useCoinBalance({
-    accountAddress: accountAddress || "",
-    contractAddress,
-    chainId,
-    verifiedOnly: hideUnlistedTokens
-  });
-  const {
-    data: dataCoinPrices,
-    isPending: isPendingCoinPrices
-  } = useCoinPrices([{
-    chainId,
-    contractAddress
-  }]);
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const isPending = isPendingCoinBalance || isPendingCoinPrices || isPendingConversionRate;
-  if (isPending) {
-    return /* @__PURE__ */ React.createElement(CoinDetailsSkeleton, {
-      chainId
-    });
-  }
-  const isNativeToken = compareAddress(contractAddress, AddressZero);
-  const logo = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).logoURI : dataCoinBalance == null || (_dataCoinBalance$cont = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont.logoURI;
-  const symbol = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).symbol : dataCoinBalance == null || (_dataCoinBalance$cont2 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont2.symbol;
-  const name2 = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).name : dataCoinBalance == null || (_dataCoinBalance$cont3 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont3.name;
-  const decimals = isNativeToken ? getNativeTokenInfoByChainId(chainId, chains2).decimals : dataCoinBalance == null || (_dataCoinBalance$cont4 = dataCoinBalance.contractInfo) == null ? void 0 : _dataCoinBalance$cont4.decimals;
-  const formattedBalance = formatUnits$1((dataCoinBalance == null ? void 0 : dataCoinBalance.balance) || "0", decimals);
-  const balanceDisplayed = formatDisplay(formattedBalance);
-  const coinBalanceFiat = dataCoinBalance ? computeBalanceFiat({
-    balance: dataCoinBalance,
-    prices: dataCoinPrices || [],
-    conversionRate,
-    decimals: decimals || 0
-  }) : "0";
-  const onClickSend = () => {
-    setNavigation({
-      location: "send-coin",
-      params: {
-        chainId,
-        contractAddress
-      }
-    });
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "10",
-    paddingBottom: "5",
-    paddingX: "4",
-    paddingTop: "0",
-    style: {
-      marginTop: "-20px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    marginBottom: "10",
-    gap: "2",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    width: "8",
-    src: logo,
-    alt: "logo"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontWeight: "bold",
-    fontSize: "large"
-  }, name2), /* @__PURE__ */ React.createElement(NetworkBadge, {
-    chainId
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    color: "text50",
-    fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    color: "text100",
-    fontSize: "xlarge"
-  }, `${balanceDisplayed} ${symbol}`), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    color: "text50",
-    fontSize: "normal"
-  }, `${fiatCurrency.sign}${coinBalanceFiat}`))), /* @__PURE__ */ React.createElement(Button, {
-    width: "full",
-    variant: "primary",
-    leftIcon: SvgSendIcon,
-    color: "text100",
-    label: "Send",
-    onClick: onClickSend
-  }), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(InfiniteScroll, {
-    onLoad: () => fetchNextPage(),
-    hasMore: hasNextPage2
-  }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
-    transactions: transactionHistory,
-    isPending: isPendingTransactionHistory,
-    isFetchingNextPage
-  })))));
-};
-const CollectionDetailsSkeleton = ({
-  chainId
-}) => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "4",
-    paddingBottom: "5",
-    paddingTop: "3",
-    marginTop: "8",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "10"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "32px",
-      height: "32px"
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "100px",
-      height: "24px"
-    }
-  }), /* @__PURE__ */ React.createElement(NetworkBadge, {
-    chainId
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "142px",
-      height: "17px"
-    }
-  })), /* @__PURE__ */ React.createElement(Box, {
-    width: "full"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "168px",
-      height: "20px"
-    }
-  }), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      display: "grid",
-      gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
-      gap: vars.space[2]
-    },
-    width: "full",
-    marginTop: "3"
-  }, Array(8).fill(null).map((_, i2) => /* @__PURE__ */ React.createElement(Skeleton, {
-    key: i2,
-    width: "full",
-    aspectRatio: "1/1"
-  })))));
-};
-const CollectionDetails = ({
-  chainId,
-  contractAddress
-}) => {
-  var _collectionBalanceDat;
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    address: accountAddress
-  } = useAccount();
-  const {
-    data: collectionBalanceData,
-    isPending: isPendingCollectionBalance
-  } = useCollectionBalance({
-    chainId,
-    accountAddress: accountAddress || "",
-    contractAddress
-  });
-  const contractInfo = collectionBalanceData == null || (_collectionBalanceDat = collectionBalanceData[0]) == null ? void 0 : _collectionBalanceDat.contractInfo;
-  const collectionLogoURI = contractInfo == null ? void 0 : contractInfo.logoURI;
-  if (isPendingCollectionBalance) {
-    return /* @__PURE__ */ React.createElement(CollectionDetailsSkeleton, {
-      chainId
-    });
-  }
-  const onClickItem = (balance) => {
-    setNavigation && setNavigation({
-      location: "collectible-details",
-      params: {
-        contractAddress: balance.contractAddress,
-        chainId: balance.chainId,
-        tokenId: balance.tokenID
-      }
-    });
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    paddingX: "4",
-    paddingBottom: "5",
-    paddingTop: "3",
-    marginTop: "8",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "10"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "2",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(TokenImage, {
-    src: collectionLogoURI,
-    size: "lg"
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    fontSize: "large",
-    color: "text100"
-  }, (contractInfo == null ? void 0 : contractInfo.name) || "Unknown"), /* @__PURE__ */ React.createElement(NetworkBadge, {
-    chainId
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    fontSize: "normal",
-    color: "text50"
-  }, `${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0} Unique Collectibles`)), /* @__PURE__ */ React.createElement(Box, {
-    width: "full"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    fontSize: "normal",
-    color: "text50"
-  }, `Owned (${(collectionBalanceData == null ? void 0 : collectionBalanceData.length) || 0})`), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      display: "grid",
-      gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
-      gap: vars.space[2]
-    },
-    width: "full",
-    marginTop: "3"
-  }, collectionBalanceData == null ? void 0 : collectionBalanceData.map((balance, index2) => {
-    var _balance$tokenMetadat, _balance$tokenMetadat2, _balance$tokenMetadat3;
-    const unformattedBalance = balance.balance;
-    const decimals = (balance == null || (_balance$tokenMetadat = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat.decimals) || 0;
-    const formattedBalance = formatDisplay(formatUnits$1(unformattedBalance, decimals));
-    return /* @__PURE__ */ React.createElement(Box, {
-      key: index2,
-      onClick: () => onClickItem(balance),
-      userSelect: "none",
-      cursor: "pointer",
-      opacity: {
-        hover: "80"
-      }
-    }, /* @__PURE__ */ React.createElement(Box, {
-      background: "backgroundSecondary",
-      aspectRatio: "1/1",
-      width: "full",
-      borderRadius: "md",
-      justifyContent: "center",
-      alignItems: "center",
-      marginBottom: "2"
-    }, /* @__PURE__ */ React.createElement(Image$1, {
-      style: {
-        height: "100%"
-      },
-      src: (_balance$tokenMetadat2 = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat2.image
-    })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-      fontWeight: "bold",
-      fontSize: "normal",
-      color: "text100"
-    }, `${(_balance$tokenMetadat3 = balance.tokenMetadata) == null ? void 0 : _balance$tokenMetadat3.name}`)), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-      marginTop: "1",
-      fontWeight: "medium",
-      fontSize: "normal",
-      color: "text50"
-    }, formattedBalance, " Owned")));
-  }))));
-};
-const CollectibleDetailsSkeleton = () => {
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "10",
-    paddingBottom: "5",
-    paddingX: "4",
-    paddingTop: "0",
-    style: {
-      marginTop: "-20px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    gap: "3",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "120px",
-      height: "30px"
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "140px",
-      height: "40px"
-    }
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "347px",
-      height: "347px"
-    }
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    color: "text50",
-    fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "44px",
-      height: "36px"
-    }
-  }), /* @__PURE__ */ React.createElement(Skeleton, {
-    style: {
-      width: "34px",
-      height: "17px"
-    }
-  }))), /* @__PURE__ */ React.createElement(Button, {
-    color: "text100",
-    marginTop: "4",
-    width: "full",
-    variant: "primary",
-    leftIcon: SvgSendIcon,
-    label: "Send",
-    onClick: () => {
-    }
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    color: "text50",
-    fontWeight: "medium"
-  }, "This week"), /* @__PURE__ */ React.createElement(TransactionHistorySkeleton, null))));
-};
-const CollectibleDetails = ({
-  contractAddress,
-  chainId,
-  tokenId
-}) => {
-  var _dataCollectibleBalan, _dataCollectibleBalan2, _dataCollectibleBalan3, _dataCollectibleBalan4, _dataCollectibleBalan5, _dataCollectiblePrice;
-  const {
-    address: accountAddress
-  } = useAccount();
-  const {
-    fiatCurrency
-  } = useSettings();
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    data: dataTransactionHistory,
-    isPending: isPendingTransactionHistory,
-    fetchNextPage,
-    hasNextPage: hasNextPage2,
-    isFetchingNextPage
-  } = useTransactionHistory({
-    chainId,
-    accountAddress: accountAddress || "",
-    contractAddress,
-    tokenId
-  });
-  const transactionHistory = flattenPaginatedTransactionHistory(dataTransactionHistory);
-  const {
-    data: dataCollectibleBalance,
-    isPending: isPendingCollectibleBalance
-  } = useCollectibleBalance({
-    accountAddress: accountAddress || "",
-    contractAddress,
-    chainId,
-    tokenId,
-    verifiedOnly: false
-  });
-  const {
-    data: dataCollectiblePrices,
-    isPending: isPendingCollectiblePrices
-  } = useCollectiblePrices([{
-    chainId,
-    contractAddress,
-    tokenId
-  }]);
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const isPending = isPendingCollectibleBalance || isPendingCollectiblePrices || isPendingConversionRate;
-  if (isPending) {
-    return /* @__PURE__ */ React.createElement(CollectibleDetailsSkeleton, null);
-  }
-  const onClickSend = () => {
-    setNavigation({
-      location: "send-collectible",
-      params: {
-        chainId,
-        contractAddress,
-        tokenId
-      }
-    });
-  };
-  const collectionLogo = dataCollectibleBalance == null || (_dataCollectibleBalan = dataCollectibleBalance.contractInfo) == null ? void 0 : _dataCollectibleBalan.logoURI;
-  const collectionName = (dataCollectibleBalance == null || (_dataCollectibleBalan2 = dataCollectibleBalance.contractInfo) == null ? void 0 : _dataCollectibleBalan2.name) || "Unknown Collection";
-  const decimals = (dataCollectibleBalance == null || (_dataCollectibleBalan3 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan3.decimals) || 0;
-  const rawBalance = (dataCollectibleBalance == null ? void 0 : dataCollectibleBalance.balance) || "0";
-  const balance = formatUnits$1(rawBalance, decimals);
-  const formattedBalance = formatDisplay(Number(balance));
-  const valueFiat = dataCollectibleBalance ? computeBalanceFiat({
-    balance: dataCollectibleBalance,
-    prices: dataCollectiblePrices || [],
-    conversionRate,
-    decimals
-  }) : "0";
-  return /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      paddingTop: HEADER_HEIGHT
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    gap: "10",
-    paddingBottom: "5",
-    paddingX: "4",
-    paddingTop: "0",
-    style: {
-      marginTop: "-20px"
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    gap: "3",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    gap: "2",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Image$1, {
-    borderRadius: "circle",
-    width: "8",
-    src: collectionLogo,
-    alt: "collection logo",
-    style: {
-      objectFit: "cover"
-    }
-  }), /* @__PURE__ */ React.createElement(Box, {
-    gap: "1",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    fontSize: "small",
-    color: "text100"
-  }, collectionName), /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId,
-    size: "xs"
-  }))), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontWeight: "bold",
-    fontSize: "large"
-  }, (dataCollectibleBalance == null || (_dataCollectibleBalan4 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan4.name) || "Unknown Collectible"), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontSize: "small",
-    fontWeight: "medium"
-  }, `#${tokenId}`))), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(CollectibleTileImage, {
-    imageUrl: dataCollectibleBalance == null || (_dataCollectibleBalan5 = dataCollectibleBalance.tokenMetadata) == null ? void 0 : _dataCollectibleBalan5.image
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    color: "text50",
-    fontSize: "normal"
-  }, "Balance"), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    justifyContent: "space-between"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "bold",
-    color: "text100",
-    fontSize: "xlarge"
-  }, formattedBalance), dataCollectiblePrices && ((_dataCollectiblePrice = dataCollectiblePrices[0].price) == null ? void 0 : _dataCollectiblePrice.value) && /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    color: "text50",
-    fontSize: "normal"
-  }, `${fiatCurrency.symbol} ${valueFiat}`))), /* @__PURE__ */ React.createElement(Button, {
-    color: "text100",
-    marginTop: "4",
-    width: "full",
-    variant: "primary",
-    leftIcon: SvgSendIcon,
-    label: "Send",
-    onClick: onClickSend
-  })), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(InfiniteScroll, {
-    onLoad: () => fetchNextPage(),
-    hasMore: hasNextPage2
-  }, /* @__PURE__ */ React.createElement(TransactionHistoryList, {
-    transactions: transactionHistory,
-    isPending: isPendingTransactionHistory,
-    isFetchingNextPage
-  })))));
-};
-const _excluded$3 = ["buttonVariant", "text", "size"];
-const CopyButton = (props) => {
-  const {
-    buttonVariant = "icon",
-    text: text2,
-    size: size2 = "xs"
-  } = props, rest = _objectWithoutPropertiesLoose$1(props, _excluded$3);
-  const [isCopied, setCopy] = reactExports.useState(false);
-  reactExports.useEffect(() => {
-    if (isCopied) {
-      setTimeout(() => {
-        setCopy(false);
-      }, 4e3);
-    }
-  }, [isCopied]);
-  const handleCopy = () => {
-    setCopy(true);
-  };
-  const label = isCopied ? "Copied!" : "Copy";
-  const backgroundColor = buttonVariant === "icon" ? "rgba(0,0,0,0)" : vars.colors.buttonGlass;
-  return /* @__PURE__ */ React.createElement(lib.CopyToClipboard, {
-    text: text2,
-    onCopy: handleCopy
-  }, /* @__PURE__ */ React.createElement(IconButton, _extends$2({
-    size: size2,
-    icon: isCopied ? SvgCheckmarkIcon : SvgCopyIcon
-  }, rest, {
-    style: _extends$2({
-      background: backgroundColor
-    }, props == null ? void 0 : props.style),
-    label: buttonVariant === "with-label" ? label : void 0
-  })));
-};
-const TransactionDetails = ({
-  transaction: transaction2
-}) => {
-  var _transaction$transfer, _transaction$transfer2;
-  const {
-    chains: chains2
-  } = useConfig();
-  const {
-    fiatCurrency
-  } = useSettings();
-  const coins = [];
-  const collectibles = [];
-  (_transaction$transfer = transaction2.transfers) == null || _transaction$transfer.forEach((transfer) => {
-    var _transfer$contractInf, _transfer$contractInf2;
-    if (((_transfer$contractInf = transfer.contractInfo) == null ? void 0 : _transfer$contractInf.type) === "ERC721" || ((_transfer$contractInf2 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf2.type) === "ERC1155") {
-      var _transfer$tokenIds;
-      (_transfer$tokenIds = transfer.tokenIds) == null || _transfer$tokenIds.forEach((tokenId) => {
-        const foundCollectible = collectibles.find((collectible) => {
-          var _transfer$contractInf3;
-          return collectible.chainId === transaction2.chainId && compareAddress(collectible.contractAddress, ((_transfer$contractInf3 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf3.address) || "") && collectible.tokenId === tokenId;
-        });
-        if (!foundCollectible) {
-          var _transfer$contractInf4;
-          collectibles.push({
-            chainId: transaction2.chainId,
-            contractAddress: ((_transfer$contractInf4 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf4.address) || "",
-            tokenId
-          });
-        }
-      });
-    } else {
-      var _transfer$contractInf5;
-      const contractAddress = (transfer == null || (_transfer$contractInf5 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf5.address) || AddressZero;
-      const foundCoin = coins.find((coin) => coin.chainId === transaction2.chainId && compareAddress(coin.contractAddress, contractAddress));
-      if (!foundCoin) {
-        coins.push({
-          chainId: transaction2.chainId,
-          contractAddress
-        });
-      }
-    }
-  });
-  const {
-    data: coinPricesData,
-    isPending: isPendingCoinPrices
-  } = useCoinPrices(coins);
-  const {
-    data: collectiblePricesData,
-    isPending: isPendingCollectiblePrices
-  } = useCollectiblePrices(collectibles);
-  const {
-    data: conversionRate = 1,
-    isPending: isPendingConversionRate
-  } = useExchangeRate(fiatCurrency.symbol);
-  const arePricesLoading = coins.length > 0 && isPendingCoinPrices || collectibles.length > 0 && isPendingCollectiblePrices || isPendingConversionRate;
-  const nativeTokenInfo = getNativeTokenInfoByChainId(transaction2.chainId, chains2);
-  const date = dayjs(transaction2.timestamp).format("ddd MMM DD YYYY, h:m:s a");
-  const onClickBlockExplorer = () => {
-    if (typeof window !== "undefined") {
-      window.open(`${nativeTokenInfo.blockExplorerUrl}/tx/${transaction2.txnHash}`, "_blank");
-    }
-  };
-  const Transfer = ({
-    transfer
-  }) => {
-    var _transfer$contractInf6, _transfer$contractInf7, _transfer$contractInf8, _transfer$amounts;
-    const recipientAddress = transfer.to;
-    const recipientAddressFormatted = recipientAddress.substring(0, 10) + "..." + recipientAddress.substring(transfer.to.length - 4, transfer.to.length);
-    const isNativeToken = compareAddress((transfer == null || (_transfer$contractInf6 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf6.address) || "", AddressZero);
-    const logoURI = isNativeToken ? nativeTokenInfo.logoURI : transfer == null || (_transfer$contractInf7 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf7.logoURI;
-    const symbol = isNativeToken ? nativeTokenInfo.symbol : (transfer == null || (_transfer$contractInf8 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf8.symbol) || "";
-    return /* @__PURE__ */ React.createElement(React.Fragment, null, (_transfer$amounts = transfer.amounts) == null ? void 0 : _transfer$amounts.map((amount, index2) => {
-      var _transfer$tokenIds2, _transfer$tokenMetada, _transfer$contractInf9, _collectiblePricesDat, _coinPricesData$find;
-      const isCollectible = transfer.contractType === "ERC721" || transfer.contractType === "ERC1155";
-      const tokenId = ((_transfer$tokenIds2 = transfer.tokenIds) == null ? void 0 : _transfer$tokenIds2[index2]) || "0";
-      const collectibleDecimals = (transfer == null || (_transfer$tokenMetada = transfer.tokenMetadata) == null || (_transfer$tokenMetada = _transfer$tokenMetada[tokenId]) == null ? void 0 : _transfer$tokenMetada.decimals) || 0;
-      const coinDecimals = isNativeToken ? nativeTokenInfo.decimals : (transfer == null || (_transfer$contractInf9 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf9.decimals) || 0;
-      const decimals = isCollectible ? collectibleDecimals : coinDecimals;
-      const formattedBalance = formatUnits$1(amount, decimals);
-      const balanceDisplayed = formatDisplay(formattedBalance);
-      const fiatPrice = isCollectible ? collectiblePricesData == null || (_collectiblePricesDat = collectiblePricesData.find((collectible) => {
-        var _transfer$contractInf10, _transfer$tokenIds3;
-        return compareAddress(collectible.token.contractAddress, ((_transfer$contractInf10 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf10.address) || "") && collectible.token.tokenId === ((_transfer$tokenIds3 = transfer.tokenIds) == null ? void 0 : _transfer$tokenIds3[index2]) && collectible.token.chainId === transaction2.chainId;
-      })) == null || (_collectiblePricesDat = _collectiblePricesDat.price) == null ? void 0 : _collectiblePricesDat.value : coinPricesData == null || (_coinPricesData$find = coinPricesData.find((coin) => {
-        var _transfer$contractInf11;
-        return compareAddress(coin.token.contractAddress, ((_transfer$contractInf11 = transfer.contractInfo) == null ? void 0 : _transfer$contractInf11.address) || AddressZero) && coin.token.chainId === transaction2.chainId;
-      })) == null || (_coinPricesData$find = _coinPricesData$find.price) == null ? void 0 : _coinPricesData$find.value;
-      const fiatValue = (parseFloat(formattedBalance) * (conversionRate * (fiatPrice || 0))).toFixed(2);
-      return /* @__PURE__ */ React.createElement(Box, {
-        key: index2,
-        width: "full",
-        flexDirection: "row",
-        gap: "2",
-        justifyContent: "space-between",
-        alignItems: "center"
-      }, /* @__PURE__ */ React.createElement(Box, {
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        gap: "2",
-        height: "12",
-        borderRadius: "md",
-        background: "buttonGlass",
-        padding: "2",
-        style: {
-          flexBasis: "100%"
-        }
-      }, /* @__PURE__ */ React.createElement(TokenImage, {
-        src: logoURI,
-        symbol,
-        size: "sm"
-      }), /* @__PURE__ */ React.createElement(Box, {
-        gap: "0.5",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        justifyContent: "center"
-      }, /* @__PURE__ */ React.createElement(Text, {
-        fontWeight: "bold",
-        fontSize: "xsmall",
-        color: "text100"
-      }, `${balanceDisplayed} ${symbol}`), arePricesLoading ? /* @__PURE__ */ React.createElement(Skeleton, {
-        style: {
-          width: "44px",
-          height: "12px"
-        }
-      }) : /* @__PURE__ */ React.createElement(Text, {
-        fontWeight: "bold",
-        fontSize: "xsmall",
-        color: "text50"
-      }, fiatPrice ? `${fiatCurrency.sign}${fiatValue}` : ""))), /* @__PURE__ */ React.createElement(SvgArrowRightIcon, {
-        color: "text50",
-        style: {
-          width: "16px"
-        }
-      }), /* @__PURE__ */ React.createElement(Box, {
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        gap: "2",
-        height: "12",
-        borderRadius: "md",
-        background: "buttonGlass",
-        padding: "2",
-        style: {
-          flexBasis: "100%"
-        }
-      }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-        address: recipientAddress,
-        style: {
-          width: "20px"
-        }
-      }), /* @__PURE__ */ React.createElement(Text, {
-        fontWeight: "bold",
-        fontSize: "xsmall",
-        color: "text100"
-      }, recipientAddressFormatted)));
-    }));
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    padding: "5",
-    paddingTop: "3",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "10",
-    marginTop: "5"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    marginTop: "6",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "1"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    fontWeight: "medium"
-  }, "Transaction details"), /* @__PURE__ */ React.createElement(Text, {
-    marginBottom: "1",
-    fontSize: "small",
-    fontWeight: "medium",
-    color: "text50"
-  }, date), /* @__PURE__ */ React.createElement(NetworkBadge, {
-    chainId: transaction2.chainId
-  })), /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: "4",
-    width: "full",
-    padding: "4",
-    background: "backgroundSecondary",
-    borderRadius: "md"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    gap: "1",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    fontWeight: "medium",
-    color: "text50"
-  }, "Transfer"), /* @__PURE__ */ React.createElement(NetworkImage, {
-    chainId: transaction2.chainId,
-    size: "xs"
-  })), (_transaction$transfer2 = transaction2.transfers) == null ? void 0 : _transaction$transfer2.map((transfer, index2) => /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "4",
-    key: `transfer-${index2}`
-  }, /* @__PURE__ */ React.createElement(Transfer, {
-    transfer
-  })))), /* @__PURE__ */ React.createElement(Button, {
-    onClick: onClickBlockExplorer,
-    width: "full",
-    borderRadius: "md",
-    rightIcon: SvgLinkIcon,
-    label: `View on ${nativeTokenInfo.blockExplorerName}`
-  }), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    flexDirection: "column",
-    gap: "2",
-    justifyContent: "center",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Divider, {
-    width: "full",
-    margin: "0",
-    style: {
-      marginBottom: "-4px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontSize: "normal",
-    fontWeight: "medium"
-  }, "Status"), /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "normal",
-    fontWeight: "medium",
-    color: "text100"
-  }, "Complete")), /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    flexDirection: "column",
-    gap: "2",
-    justifyContent: "center",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Divider, {
-    width: "full",
-    margin: "0",
-    style: {
-      marginBottom: "-4px"
-    }
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text50",
-    fontSize: "normal",
-    fontWeight: "medium"
-  }, "Transaction Hash"), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontSize: "normal",
-    fontWeight: "medium",
-    style: {
-      overflowWrap: "anywhere"
-    }
-  }, transaction2.txnHash), /* @__PURE__ */ React.createElement(CopyButton, {
-    marginTop: "2",
-    buttonVariant: "with-label",
-    text: transaction2.txnHash
-  }))));
-};
-const NavigationHeader = ({
-  secondaryText,
-  primaryText
-}) => {
-  const {
-    goBack,
-    history
-  } = useNavigation();
-  const onClickBack = () => {
-    goBack();
-  };
-  return /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundPrimary",
-    zIndex: "20",
-    position: "fixed",
-    width: "full",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingX: "4",
-    style: {
-      height: HEADER_HEIGHT,
-      paddingTop: "6px"
-    }
-  }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: onClickBack,
-    icon: SvgChevronLeftIcon,
-    size: "xs"
-  }) : /* @__PURE__ */ React.createElement(Box, null), /* @__PURE__ */ React.createElement(Box, null, /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text50"
-  }, secondaryText), /* @__PURE__ */ React.createElement(Text, {
-    fontWeight: "medium",
-    variant: "small",
-    color: "text100"
-  }, primaryText)), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "44px"
-    }
-  }));
-};
-const AccountInformation = /* @__PURE__ */ reactExports.forwardRef(({
-  onClickAccount
-}, ref) => {
-  const {
-    address
-  } = useAccount();
-  return /* @__PURE__ */ React.createElement(Box, {
-    gap: "2",
-    alignItems: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    width: "full",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center"
-  }, /* @__PURE__ */ React.createElement(Box, {
+const AccountInformation = reactExports.forwardRef(({ onClickAccount }, ref) => {
+  const { address } = useAccount();
+  return jsxRuntimeExports$1.jsx(Box, { gap: "2", alignItems: "center", children: jsxRuntimeExports$1.jsx(Box, { width: "full", flexDirection: "column", alignItems: "center", justifyContent: "center", children: jsxRuntimeExports$1.jsxs(Box, {
     onClick: onClickAccount,
     gap: "2",
     alignItems: "center",
@@ -96820,39 +93204,18 @@ const AccountInformation = /* @__PURE__ */ reactExports.forwardRef(({
     position: "relative",
     userSelect: "none",
     cursor: "pointer",
-    opacity: {
-      hover: "80"
-    },
-    ref
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    size: "sm",
-    address: address || ""
-  }), /* @__PURE__ */ React.createElement(Text, {
-    color: "text100",
-    fontWeight: "medium",
-    variant: "normal"
-  }, formatAddress$1(address || "")), /* @__PURE__ */ React.createElement(SvgChevronDownIcon, {
-    color: "text100"
-  }))));
+    opacity: { hover: "80" },
+    // @ts-ignore-next-line
+    ref,
+    children: [jsxRuntimeExports$1.jsx(GradientAvatar, { size: "sm", address: address || "" }), jsxRuntimeExports$1.jsx(Text, { color: "text100", fontWeight: "medium", variant: "normal", children: formatAddress$1(address || "") }), jsxRuntimeExports$1.jsx(SvgChevronDownIcon, { color: "text100" })]
+  }) }) });
 });
-const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
-  setOpenWalletDropdown
-}, ref) => {
-  const {
-    setNavigation
-  } = useNavigation();
-  const {
-    setOpenWalletModal
-  } = useOpenWalletModal();
-  const {
-    address
-  } = useAccount();
-  const {
-    disconnect: disconnect2
-  } = useDisconnect();
-  const {
-    theme
-  } = useTheme();
+const WalletDropdownContent = reactExports.forwardRef(({ setOpenWalletDropdown }, ref) => {
+  const { setNavigation } = useNavigation();
+  const { setOpenWalletModal } = useOpenWalletModal();
+  const { address } = useAccount();
+  const { disconnect: disconnect2 } = useDisconnect();
+  const { theme } = useTheme();
   const onClickReceive = () => {
     setOpenWalletDropdown(false);
     setNavigation({
@@ -96886,105 +93249,20 @@ const WalletDropdownContent = /* @__PURE__ */ reactExports.forwardRef(({
         return vars.colors.transparent;
     }
   };
-  return /* @__PURE__ */ React.createElement(Box, {
-    padding: "3",
-    ref,
-    zIndex: "30",
-    borderRadius: "md",
-    style: {
-      position: "relative",
-      pointerEvents: "auto",
-      width: "370px",
-      backdropFilter: "blur(12.5px)",
-      top: "16px",
-      left: "15px",
-      background: getDropdownBackgroundColor()
-    }
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start"
-  }, /* @__PURE__ */ React.createElement(Box, {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "3",
-    marginLeft: "2",
-    color: "text100"
-  }, /* @__PURE__ */ React.createElement(GradientAvatar, {
-    style: {
-      width: "28px"
-    },
-    size: "md",
-    address: address || ""
-  }), /* @__PURE__ */ React.createElement(Text, {
-    fontSize: "large",
-    style: {
-      fontWeight: "700"
-    },
-    color: "text100"
-  }, formatAddress$1(address || "")), /* @__PURE__ */ React.createElement(CopyButton, {
-    buttonVariant: "icon",
-    size: "md",
-    text: address || "",
-    color: "text100",
-    style: {
-      marginLeft: "-16px"
-    }
-  })), /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: () => setOpenWalletDropdown(false),
-    size: "xs",
-    background: "buttonGlass",
-    icon: SvgCloseIcon
-  })), /* @__PURE__ */ React.createElement(Box, {
-    gap: "2",
-    marginTop: "3",
-    flexDirection: "column"
-  }, /* @__PURE__ */ React.createElement(Button, {
-    variant: "glass",
-    style: {
-      borderRadius: vars.radii.md
-    },
-    width: "full",
-    leftIcon: SvgQrCodeIcon,
-    label: "Receive",
-    onClick: onClickReceive
-  }), /* @__PURE__ */ React.createElement(Button, {
-    style: {
-      borderRadius: vars.radii.md
-    },
-    width: "full",
-    leftIcon: SvgTransactionIcon,
-    label: "History",
-    onClick: onClickHistory
-  }), /* @__PURE__ */ React.createElement(Button, {
-    style: {
-      borderRadius: vars.radii.md
-    },
-    width: "full",
-    leftIcon: SvgSettingsIcon,
-    label: "Settings",
-    onClick: onClickSettings
-  }), /* @__PURE__ */ React.createElement(Button, {
-    label: "Sign Out",
-    style: {
-      borderRadius: vars.radii.md
-    },
-    width: "full",
-    leftIcon: SvgSignoutIcon,
-    onClick: onClickSignout
-  })));
+  return jsxRuntimeExports$1.jsxs(Box, { padding: "3", ref, zIndex: "30", borderRadius: "md", style: {
+    position: "relative",
+    pointerEvents: "auto",
+    width: "370px",
+    backdropFilter: "blur(12.5px)",
+    top: "16px",
+    left: "15px",
+    background: getDropdownBackgroundColor()
+  }, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "3", marginLeft: "2", color: "text100", children: [jsxRuntimeExports$1.jsx(GradientAvatar, { style: { width: "28px" }, size: "md", address: address || "" }), jsxRuntimeExports$1.jsx(Text, { fontSize: "large", style: { fontWeight: "700" }, color: "text100", children: formatAddress$1(address || "") }), jsxRuntimeExports$1.jsx(CopyButton, { buttonVariant: "icon", size: "md", text: address || "", color: "text100", style: { marginLeft: "-16px" } })] }), jsxRuntimeExports$1.jsx(IconButton, { onClick: () => setOpenWalletDropdown(false), size: "xs", background: "buttonGlass", icon: SvgCloseIcon })] }), jsxRuntimeExports$1.jsxs(Box, { gap: "2", marginTop: "3", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Button, { variant: "glass", style: { borderRadius: vars.radii.md }, width: "full", leftIcon: SvgQrCodeIcon, label: "Receive", onClick: onClickReceive }), jsxRuntimeExports$1.jsx(Button, { style: { borderRadius: vars.radii.md }, width: "full", leftIcon: SvgTransactionIcon, label: "History", onClick: onClickHistory }), jsxRuntimeExports$1.jsx(Button, { style: { borderRadius: vars.radii.md }, width: "full", leftIcon: SvgSettingsIcon, label: "Settings", onClick: onClickSettings }), jsxRuntimeExports$1.jsx(Button, { label: "Sign Out", style: { borderRadius: vars.radii.md }, width: "full", leftIcon: SvgSignoutIcon, onClick: onClickSignout })] })] });
 });
 const WalletHeader = () => {
-  const {
-    openWalletModalState
-  } = useOpenWalletModal();
+  const { openWalletModalState } = useOpenWalletModal();
   const [openWalletDropdown, setOpenWalletDropdown] = reactExports.useState(false);
-  const {
-    goBack,
-    history,
-    setNavigation
-  } = useNavigation();
+  const { goBack, history, setNavigation } = useNavigation();
   const hasDropdownOpened = reactExports.useRef(false);
   reactExports.useEffect(() => {
     if (!openWalletModalState) {
@@ -97013,168 +93291,78 @@ const WalletHeader = () => {
       location: "search"
     });
   };
-  return /* @__PURE__ */ React.createElement(Box, {
-    as: motion.div
-  }, /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$be92b6f5f03c0fe9, {
-    open: openWalletDropdown
-  }, /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$b688253958b8dfe7, null), /* @__PURE__ */ React.createElement(Box, {
-    background: "backgroundPrimary",
-    zIndex: "20",
-    position: "fixed",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "full",
-    paddingX: "4",
-    style: {
-      height: HEADER_HEIGHT,
-      paddingTop: "6px"
-    }
-  }, history.length > 0 ? /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: onClickBack,
-    icon: SvgChevronLeftIcon,
-    size: "xs"
-  }) : /* @__PURE__ */ React.createElement(IconButton, {
-    onClick: onClickSearch,
-    icon: SvgSearchIcon,
-    size: "xs"
-  }), /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$41fb9f06171c75f4, {
-    asChild: true
-  }, /* @__PURE__ */ React.createElement(AccountInformation, {
-    onClickAccount
-  })), /* @__PURE__ */ React.createElement(Box, {
-    style: {
-      width: "44px"
-    }
-  })), /* @__PURE__ */ React.createElement(AnimatePresence, null, openWalletDropdown && /* @__PURE__ */ React.createElement($cb5cc270b50c6fcd$export$7c6e2c02157bb7d2, {
-    asChild: true,
-    side: "bottom",
-    align: "start"
-  }, /* @__PURE__ */ React.createElement(WalletDropdownContent, {
-    setOpenWalletDropdown
-  })))));
+  return jsxRuntimeExports$1.jsx(Box, { as: motion.div, children: jsxRuntimeExports$1.jsxs($cb5cc270b50c6fcd$export$be92b6f5f03c0fe9, { open: openWalletDropdown, children: [jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$b688253958b8dfe7, {}), jsxRuntimeExports$1.jsxs(Box, { background: "backgroundPrimary", zIndex: "20", position: "fixed", flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "full", paddingX: "4", style: {
+    height: HEADER_HEIGHT,
+    paddingTop: "6px"
+  }, children: [history.length > 0 ? jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickBack, icon: SvgChevronLeftIcon, size: "xs" }) : jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickSearch, icon: SvgSearchIcon, size: "xs" }), jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$41fb9f06171c75f4, { asChild: true, children: jsxRuntimeExports$1.jsx(AccountInformation, { onClickAccount }) }), jsxRuntimeExports$1.jsx(Box, { style: { width: "44px" } })] }), jsxRuntimeExports$1.jsx(AnimatePresence, { children: openWalletDropdown && jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$7c6e2c02157bb7d2, { asChild: true, side: "bottom", align: "start", children: jsxRuntimeExports$1.jsx(WalletDropdownContent, { setOpenWalletDropdown }) }) })] }) });
 };
 const getContent = (navigation) => {
-  const {
-    location: location2
-  } = navigation;
+  const { location: location2 } = navigation;
   switch (location2) {
     case "send-coin":
-      return /* @__PURE__ */ React.createElement(SendCoin, {
-        chainId: navigation.params.chainId,
-        contractAddress: navigation.params.contractAddress
-      });
+      return jsxRuntimeExports$1.jsx(SendCoin, { chainId: navigation.params.chainId, contractAddress: navigation.params.contractAddress });
     case "send-collectible":
-      return /* @__PURE__ */ React.createElement(SendCollectible, {
-        chainId: navigation.params.chainId,
-        contractAddress: navigation.params.contractAddress,
-        tokenId: navigation.params.tokenId
-      });
+      return jsxRuntimeExports$1.jsx(SendCollectible, { chainId: navigation.params.chainId, contractAddress: navigation.params.contractAddress, tokenId: navigation.params.tokenId });
     case "receive":
-      return /* @__PURE__ */ React.createElement(Receive, null);
+      return jsxRuntimeExports$1.jsx(Receive, {});
     case "history":
-      return /* @__PURE__ */ React.createElement(History, null);
+      return jsxRuntimeExports$1.jsx(History, {});
     case "search":
-      return /* @__PURE__ */ React.createElement(SearchWallet, null);
+      return jsxRuntimeExports$1.jsx(SearchWallet, {});
     case "search-view-all":
-      return /* @__PURE__ */ React.createElement(SearchWalletViewAll, {
-        defaultTab: navigation.params.defaultTab
-      });
+      return jsxRuntimeExports$1.jsx(SearchWalletViewAll, { defaultTab: navigation.params.defaultTab });
     case "settings":
-      return /* @__PURE__ */ React.createElement(SettingsMenu, null);
+      return jsxRuntimeExports$1.jsx(SettingsMenu, {});
     case "settings-general":
-      return /* @__PURE__ */ React.createElement(SettingsGeneral, null);
+      return jsxRuntimeExports$1.jsx(SettingsGeneral, {});
     case "settings-currency":
-      return /* @__PURE__ */ React.createElement(SettingsCurrency, null);
+      return jsxRuntimeExports$1.jsx(SettingsCurrency, {});
     case "settings-networks":
-      return /* @__PURE__ */ React.createElement(SettingsNetwork, null);
+      return jsxRuntimeExports$1.jsx(SettingsNetwork, {});
     case "coin-details":
-      return /* @__PURE__ */ React.createElement(CoinDetails, {
-        contractAddress: navigation.params.contractAddress,
-        chainId: navigation.params.chainId
-      });
+      return jsxRuntimeExports$1.jsx(CoinDetails, { contractAddress: navigation.params.contractAddress, chainId: navigation.params.chainId });
     case "collectible-details":
-      return /* @__PURE__ */ React.createElement(CollectibleDetails, {
-        contractAddress: navigation.params.contractAddress,
-        chainId: navigation.params.chainId,
-        tokenId: navigation.params.tokenId
-      });
+      return jsxRuntimeExports$1.jsx(CollectibleDetails, { contractAddress: navigation.params.contractAddress, chainId: navigation.params.chainId, tokenId: navigation.params.tokenId });
     case "collection-details":
-      return /* @__PURE__ */ React.createElement(CollectionDetails, {
-        contractAddress: navigation.params.contractAddress,
-        chainId: navigation.params.chainId
-      });
+      return jsxRuntimeExports$1.jsx(CollectionDetails, { contractAddress: navigation.params.contractAddress, chainId: navigation.params.chainId });
     case "transaction-details":
-      return /* @__PURE__ */ React.createElement(TransactionDetails, {
-        transaction: navigation.params.transaction
-      });
+      return jsxRuntimeExports$1.jsx(TransactionDetails, { transaction: navigation.params.transaction });
     case "home":
     default:
-      return /* @__PURE__ */ React.createElement(Home, null);
+      return jsxRuntimeExports$1.jsx(Home, {});
   }
 };
 const getHeader = (navigation) => {
-  const {
-    location: location2
-  } = navigation;
+  const { location: location2 } = navigation;
   switch (location2) {
     case "search":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        primaryText: "Search wallet"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { primaryText: "Search wallet" });
     case "search-view-all":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Search wallet / ",
-        primaryText: "View all"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Search wallet / ", primaryText: "View all" });
     case "settings":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Wallet / ",
-        primaryText: "Settings"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Wallet / ", primaryText: "Settings" });
     case "settings-general":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Wallet / Settings / ",
-        primaryText: "General"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Wallet / Settings / ", primaryText: "General" });
     case "settings-currency":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Wallet / Settings / ",
-        primaryText: "Currency"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Wallet / Settings / ", primaryText: "Currency" });
     case "settings-networks":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Wallet / Settings / ",
-        primaryText: "Networks"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Wallet / Settings / ", primaryText: "Networks" });
     case "receive":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Wallet / ",
-        primaryText: "Receive"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Wallet / ", primaryText: "Receive" });
     case "history":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Wallet / ",
-        primaryText: "History"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Wallet / ", primaryText: "History" });
     case "coin-details":
-      return /* @__PURE__ */ React.createElement(WalletHeader, null);
+      return jsxRuntimeExports$1.jsx(WalletHeader, {});
     case "collectible-details":
-      return /* @__PURE__ */ React.createElement(WalletHeader, null);
+      return jsxRuntimeExports$1.jsx(WalletHeader, {});
     case "transaction-details":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "",
-        primaryText: ""
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "", primaryText: "" });
     case "send-collectible":
     case "send-coin":
-      return /* @__PURE__ */ React.createElement(NavigationHeader, {
-        secondaryText: "Wallet / ",
-        primaryText: "Send"
-      });
+      return jsxRuntimeExports$1.jsx(NavigationHeader, { secondaryText: "Wallet / ", primaryText: "Send" });
     case "home":
     default:
-      return /* @__PURE__ */ React.createElement(WalletHeader, null);
+      return jsxRuntimeExports$1.jsx(WalletHeader, {});
   }
 };
 const DEFAULT_LOCATION = {
@@ -97182,17 +93370,10 @@ const DEFAULT_LOCATION = {
 };
 const KitWalletProvider = (props) => {
   const queryClient2 = new QueryClient();
-  return /* @__PURE__ */ React.createElement(QueryClientProvider, {
-    client: queryClient2
-  }, /* @__PURE__ */ React.createElement(KitWalletContent, props));
+  return jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient2, children: jsxRuntimeExports$1.jsx(KitWalletContent, { ...props }) });
 };
-const KitWalletContent = ({
-  children
-}) => {
-  const {
-    theme,
-    position
-  } = useTheme();
+const KitWalletContent = ({ children }) => {
+  const { theme, position } = useTheme();
   const [openWalletModal, setOpenWalletModal] = reactExports.useState(false);
   const [history, setHistory] = reactExports.useState([]);
   const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION;
@@ -97202,40 +93383,13 @@ const KitWalletContent = ({
       setHistory([]);
     }
   }, [openWalletModal]);
-  return /* @__PURE__ */ React.createElement(WalletModalContextProvider, {
-    value: {
-      setOpenWalletModal,
-      openWalletModalState: openWalletModal
-    }
-  }, /* @__PURE__ */ React.createElement(NavigationContextProvider, {
-    value: {
-      setHistory,
-      history
-    }
-  }, /* @__PURE__ */ React.createElement("div", {
-    id: "kit-provider"
-  }, /* @__PURE__ */ React.createElement(ThemeProvider, {
-    root: "#kit-provider",
-    scope: "kit",
-    theme
-  }, /* @__PURE__ */ React.createElement(AnimatePresence, null, openWalletModal && /* @__PURE__ */ React.createElement(Modal, {
-    contentProps: {
-      style: _extends$2({
-        maxWidth: "400px",
-        height: "fit-content"
-      }, getModalPositionCss(position))
-    },
-    scroll: false,
-    backdropColor: "backgroundBackdrop",
-    onClose: () => setOpenWalletModal(false)
-  }, /* @__PURE__ */ React.createElement(Box, {
-    id: "sequence-kit-wallet-content"
-  }, getHeader(navigation), displayScrollbar ? /* @__PURE__ */ React.createElement(Scroll, {
+  return jsxRuntimeExports$1.jsx(WalletModalContextProvider, { value: { setOpenWalletModal, openWalletModalState: openWalletModal }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider, { value: { setHistory, history }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-provider", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-provider", scope: "kit", theme, children: jsxRuntimeExports$1.jsx(AnimatePresence, { children: openWalletModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
     style: {
-      paddingTop: HEADER_HEIGHT,
-      height: "min(800px, 80vh)"
+      maxWidth: "400px",
+      height: "fit-content",
+      ...getModalPositionCss(position)
     }
-  }, getContent(navigation)) : getContent(navigation)))))), children));
+  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenWalletModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-wallet-content", children: [getHeader(navigation), displayScrollbar ? jsxRuntimeExports$1.jsx(Scroll, { style: { paddingTop: HEADER_HEIGHT, height: "min(800px, 80vh)" }, children: getContent(navigation) }) : getContent(navigation)] }) }) }) }) }), children] }) });
 };
 const messageToSign = "Two roads diverged in a yellow wood";
 const bottomPageLinks = [
@@ -97645,7 +93799,7 @@ const Homepage = () => {
   const [confirmationEnabled, setConfirmationEnabled] = React.useState(
     localStorage.getItem("confirmationEnabled") === "true"
   );
-  const [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption] = useWaasFeeOptions();
+  const [pendingFeeOptionConfirmation, confirmPendingFeeOption] = useWaasFeeOptions();
   const [selectedFeeOptionTokenName, setSelectedFeeOptionTokenName] = React.useState();
   reactExports.useEffect(() => {
     if (pendingFeeOptionConfirmation) {
@@ -97836,7 +93990,7 @@ const Homepage = () => {
         address || "",
         checkoutTokenContractAddress,
         checkoutTokenId,
-        137,
+        ChainId.POLYGON,
         1,
         true
       );
@@ -97847,10 +94001,10 @@ const Homepage = () => {
     return /* @__PURE__ */ jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickChangeTheme, icon: theme === "dark" ? SvgSunIcon : SvgMoonIcon });
   };
   const onSwitchNetwork = () => {
-    if (chainId === 421614) {
-      switchChain2({ chainId: 42170 });
+    if (chainId === ChainId.ARBITRUM_SEPOLIA) {
+      switchChain2({ chainId: ChainId.ARBITRUM_NOVA });
     } else {
-      switchChain2({ chainId: 421614 });
+      switchChain2({ chainId: ChainId.ARBITRUM_SEPOLIA });
     }
     setLastTxnDataHash(void 0);
     setLastTxnDataHash2(void 0);
@@ -98216,6 +94370,144 @@ const ConnectionModeSelect = (props) => {
     }
   );
 };
+sequenceWallet.type = "sequence";
+function sequenceWallet(params) {
+  const { defaultNetwork, connect: connect2, walletAppURL } = params;
+  const { projectAccessKey: projectAccessKey2 } = connect2;
+  return createConnector((config2) => ({
+    id: "sequence",
+    name: "Sequence",
+    type: sequenceWallet.type,
+    params,
+    setEmail(email2) {
+      if (params.connect.settings) {
+        params.connect.settings.signInWithEmail = email2;
+      }
+    },
+    async setup() {
+      const provider2 = await this.getProvider();
+      provider2.on("chainChanged", (chainIdHex) => {
+        config2.emitter.emit("change", { chainId: normalizeChainId$1(chainIdHex) });
+      });
+      provider2.on("disconnect", () => {
+        this.onDisconnect();
+      });
+    },
+    async connect() {
+      var _a2, _b2, _c2, _d2, _e2;
+      const provider2 = await this.getProvider();
+      if (!provider2.isConnected()) {
+        const localStorageTheme = await ((_a2 = config2.storage) == null ? void 0 : _a2.getItem(LocalStorageKey.Theme));
+        const ethAuthSettings = await ((_b2 = config2.storage) == null ? void 0 : _b2.getItem(LocalStorageKey.EthAuthSettings)) ?? {};
+        const connectOptionsWithTheme = {
+          authorize: true,
+          ...ethAuthSettings,
+          ...connect2,
+          settings: {
+            theme: localStorageTheme || "dark",
+            ...connect2 == null ? void 0 : connect2.settings
+          }
+        };
+        const e2 = await provider2.connect(connectOptionsWithTheme);
+        if (e2.error) {
+          throw new UserRejectedRequestError(new Error(e2.error));
+        }
+        if (!e2.connected) {
+          throw new UserRejectedRequestError(new Error("Wallet connection rejected"));
+        }
+        const proofString = (_c2 = e2.proof) == null ? void 0 : _c2.proofString;
+        const proofTypedData = (_d2 = e2.proof) == null ? void 0 : _d2.typedData;
+        if (proofString && proofTypedData) {
+          const jsonEthAuthProof = {
+            proofString,
+            typedData: proofTypedData
+          };
+          await ((_e2 = config2.storage) == null ? void 0 : _e2.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof));
+        }
+      }
+      const accounts = await this.getAccounts();
+      return {
+        accounts: [...accounts],
+        chainId: provider2.getChainId()
+      };
+    },
+    async disconnect() {
+      const provider2 = await this.getProvider();
+      provider2.disconnect();
+    },
+    async getAccounts() {
+      const provider2 = await this.getProvider();
+      const signer2 = provider2.getSigner();
+      const account2 = getAddress(await signer2.getAddress());
+      return [account2];
+    },
+    async getProvider() {
+      try {
+        const provider2 = sequence$1.getWallet();
+        return provider2;
+      } catch (err) {
+        if (!projectAccessKey2) {
+          throw "projectAccessKey not found";
+        }
+        const provider2 = sequence$1.initWallet(projectAccessKey2, {
+          defaultNetwork,
+          transports: {
+            walletAppURL: walletAppURL || "https://sequence.app"
+          },
+          defaultEIP6492: true,
+          analytics: false
+        });
+        const chainId = provider2.getChainId();
+        config2.emitter.emit("change", { chainId: normalizeChainId$1(chainId) });
+        return provider2;
+      }
+    },
+    async isAuthorized() {
+      try {
+        const account2 = await this.getAccounts();
+        return !!account2;
+      } catch (e2) {
+        return false;
+      }
+    },
+    async switchChain({ chainId }) {
+      const provider2 = await this.getProvider();
+      const chain = config2.chains.find((c2) => c2.id === chainId) || config2.chains[0];
+      provider2.setDefaultChainId(normalizeChainId$1(chainId));
+      config2.emitter.emit("change", { chainId });
+      return chain;
+    },
+    async getChainId() {
+      const provider2 = await this.getProvider();
+      const chainId = provider2.getChainId();
+      return chainId;
+    },
+    async onAccountsChanged(accounts) {
+      return { account: accounts[0] };
+    },
+    async onChainChanged(chain) {
+      const provider2 = await this.getProvider();
+      config2.emitter.emit("change", { chainId: normalizeChainId$1(chain) });
+      provider2.setDefaultChainId(normalizeChainId$1(chain));
+    },
+    async onConnect(_connectinfo) {
+    },
+    async onDisconnect() {
+      var _a2;
+      await ((_a2 = config2.storage) == null ? void 0 : _a2.removeItem(LocalStorageKey.EthAuthProof));
+      config2.emitter.emit("disconnect");
+    }
+  }));
+}
+function normalizeChainId$1(chainId) {
+  if (typeof chainId === "object")
+    return normalizeChainId$1(chainId.chainId);
+  if (typeof chainId === "string")
+    return Number.parseInt(chainId, chainId.trim().substring(0, 2) === "0x" ? 16 : 10);
+  if (typeof chainId === "bigint")
+    return Number(chainId);
+  return chainId;
+}
 function canonicalize(obj) {
   var buffer2 = "";
   serialize2(obj);
@@ -106777,8 +103069,8 @@ class SignUpCommand extends Command.classBuilder().ep({
   ];
 }).s("AWSCognitoIdentityProviderService", "SignUp", {}).n("CognitoIdentityProviderClient", "SignUpCommand").f(SignUpRequestFilterSensitiveLog, void 0).ser(se_SignUpCommand).de(de_SignUpCommand).build() {
 }
-function _extends$1() {
-  _extends$1 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -106789,7 +103081,7 @@ function _extends$1() {
     }
     return target;
   };
-  return _extends$1.apply(this, arguments);
+  return _extends.apply(this, arguments);
 }
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null)
@@ -106821,7 +103113,7 @@ function makeIntent(name2, lifespan, data) {
 async function signIntent(session, intent) {
   const hash2 = hashIntent(intent);
   const signature2 = await session.sign(new Uint8Array(hash2));
-  return _extends$1({}, intent, {
+  return _extends({}, intent, {
     signatures: [{
       sessionId: await session.sessionId(),
       signature: signature2
@@ -106967,7 +103259,7 @@ class WaasAuthenticator {
 const createHTTPRequest = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$1({}, headers, {
+    headers: _extends({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -107269,7 +103561,7 @@ function sendERC20(_ref) {
     to,
     value
   } = _ref, args = _objectWithoutPropertiesLoose(_ref, _excluded);
-  return sendTransactions(_extends$1({
+  return sendTransactions(_extends({
     transactions: [erc20({
       tokenAddress: token,
       to,
@@ -107285,7 +103577,7 @@ function sendERC721(_ref2) {
     safe,
     data
   } = _ref2, args = _objectWithoutPropertiesLoose(_ref2, _excluded2);
-  return sendTransactions(_extends$1({
+  return sendTransactions(_extends({
     transactions: [erc721({
       tokenAddress: token,
       to,
@@ -107306,7 +103598,7 @@ function sendERC1155(_ref3) {
     id: v3.id,
     amount: BigNumber.from(v3.amount).toString()
   }));
-  return sendTransactions(_extends$1({
+  return sendTransactions(_extends({
     transactions: [erc1155({
       tokenAddress: token,
       to,
@@ -107323,7 +103615,7 @@ function sendDelayedEncode(_ref4) {
     func,
     args
   } = _ref4, otherArgs = _objectWithoutPropertiesLoose(_ref4, _excluded4);
-  return sendTransactions(_extends$1({
+  return sendTransactions(_extends({
     transactions: [delayedEncode({
       to,
       value: BigNumber.from(value).toString(),
@@ -107346,7 +103638,7 @@ function erc20(data) {
       value: sendERC20Args.value.toString()
     };
   } else if (transactionERC20.tokenAddress !== void 0) {
-    return _extends$1({
+    return _extends({
       type: "erc20send"
     }, transactionERC20);
   } else {
@@ -107366,7 +103658,7 @@ function erc721(data) {
       safe: sendERC721Args.safe
     };
   } else if (transactionERC721.tokenAddress !== void 0) {
-    return _extends$1({
+    return _extends({
       type: "erc721send"
     }, transactionERC721);
   } else {
@@ -107781,7 +104073,7 @@ class SequenceWaaSBase {
   }
   async commonArgs(args) {
     var _args$lifespan;
-    return _extends$1({}, args, {
+    return _extends({}, args, {
       identifier: args == null ? void 0 : args.identifier,
       wallet: await this.getWalletAddress(),
       lifespan: (_args$lifespan = args == null ? void 0 : args.lifespan) != null ? _args$lifespan : DEFAULT_LIFESPAN,
@@ -107960,7 +104252,7 @@ class SequenceWaaSBase {
    */
   async signMessage(args) {
     var _args$lifespan3;
-    const packet = signMessage(_extends$1({
+    const packet = signMessage(_extends({
       chainId: toNetworkID(args.network || this.config.network)
     }, args, {
       lifespan: (_args$lifespan3 = args.lifespan) != null ? _args$lifespan3 : DEFAULT_LIFESPAN,
@@ -108177,7 +104469,7 @@ function parseSequenceWaaSConfigKey(key2) {
 function defaultArgsOrFail(config2) {
   const key2 = config2.waasConfigKey;
   const keyOverrides = key2 ? parseSequenceWaaSConfigKey(key2) : {};
-  const preconfig = _extends$1({}, config2, keyOverrides);
+  const preconfig = _extends({}, config2, keyOverrides);
   if (preconfig.network === void 0) {
     preconfig.network = 1;
   }
@@ -108203,7 +104495,7 @@ class SequenceWaaS {
     this.emailClient = void 0;
     this.lastDate = void 0;
     this.config = defaultArgsOrFail(config2);
-    this.waas = new SequenceWaaSBase(_extends$1({
+    this.waas = new SequenceWaaSBase(_extends({
       network: 1
     }, config2), this.store, this.cryptoBackend, this.secureStoreBackend);
     this.client = new WaasAuthenticator(this.config.rpcServer, this.fetch.bind(this));
@@ -108368,7 +104660,7 @@ class SequenceWaaS {
     }
     const intent = await this.waas.listSessions();
     const res = await this.sendIntent(intent);
-    return res.data.map((session) => _extends$1({}, session, {
+    return res.data.map((session) => _extends({}, session, {
       isThis: session.id === sessionId
     }));
   }
@@ -108427,7 +104719,7 @@ class SequenceWaaS {
       return args;
     }
     const identifier = `ts-sdk-${Date.now()}-${await this.waas.getSessionId()}`;
-    return _extends$1({}, args, {
+    return _extends({}, args, {
       identifier
     });
   }
@@ -108517,6 +104809,327 @@ class SequenceWaaS {
     return res;
   }
 }
+sequenceWaasWallet.type = "sequence-waas";
+function sequenceWaasWallet(params) {
+  var _a2;
+  const isDev = !!(params == null ? void 0 : params.isDev);
+  const nodesUrl = isDev ? "https://dev-nodes.sequence.app" : "https://nodes.sequence.app";
+  const showConfirmationModal = params.enableConfirmationModal ?? false;
+  const initialChain = params.network ?? 137;
+  const initialChainName = (_a2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === initialChain || n2.name === initialChain)) == null ? void 0 : _a2.name;
+  const initialJsonRpcProvider = new JsonRpcProvider$1(`${nodesUrl}/${initialChainName ?? "polygon"}/${params.projectAccessKey}`);
+  const sequenceWaas = new SequenceWaaS({
+    network: initialChain,
+    projectAccessKey: params.projectAccessKey,
+    waasConfigKey: params.waasConfigKey
+  });
+  const sequenceWaasProvider = new SequenceWaasProvider(sequenceWaas, initialJsonRpcProvider, initialChain, showConfirmationModal);
+  const updateNetwork = async (chainId) => {
+    var _a3;
+    const networkName = (_a3 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId || n2.name === initialChain)) == null ? void 0 : _a3.name;
+    const jsonRpcProvider = new JsonRpcProvider$1(`${nodesUrl}/${networkName}/${params.projectAccessKey}`);
+    sequenceWaasProvider.updateJsonRpcProvider(jsonRpcProvider);
+    sequenceWaasProvider.updateNetwork(getNetwork$1(chainId));
+  };
+  return createConnector((config2) => ({
+    id: `sequence-waas`,
+    name: "Sequence WaaS",
+    type: sequenceWaasWallet.type,
+    sequenceWaas,
+    sequenceWaasProvider,
+    params,
+    async setup() {
+      var _a3, _b2, _c2, _d2;
+      if (typeof window !== "object") {
+        return;
+      }
+      const provider2 = await this.getProvider();
+      if (params.googleClientId) {
+        await ((_a3 = config2.storage) == null ? void 0 : _a3.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId));
+      }
+      if (params.appleClientId) {
+        await ((_b2 = config2.storage) == null ? void 0 : _b2.setItem(LocalStorageKey.WaasAppleClientID, params.appleClientId));
+      }
+      if (params.appleRedirectURI) {
+        await ((_c2 = config2.storage) == null ? void 0 : _c2.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI));
+      }
+      const isConnected = await provider2.sequenceWaas.isSignedIn();
+      if (!isConnected) {
+        const sessionHash = await provider2.sequenceWaas.getSessionHash();
+        await ((_d2 = config2.storage) == null ? void 0 : _d2.setItem(LocalStorageKey.WaasSessionHash, sessionHash));
+      }
+      provider2.on("disconnect", () => {
+        this.onDisconnect();
+      });
+    },
+    async connect(_connectInfo) {
+      var _a3, _b2, _c2, _d2, _e2, _f2, _g2;
+      const provider2 = await this.getProvider();
+      const isSignedIn = await provider2.sequenceWaas.isSignedIn();
+      if (!isSignedIn) {
+        const googleIdToken = await ((_a3 = config2.storage) == null ? void 0 : _a3.getItem(LocalStorageKey.WaasGoogleIdToken));
+        const emailIdToken = await ((_b2 = config2.storage) == null ? void 0 : _b2.getItem(LocalStorageKey.WaasEmailIdToken));
+        const appleIdToken = await ((_c2 = config2.storage) == null ? void 0 : _c2.getItem(LocalStorageKey.WaasAppleIdToken));
+        let idToken;
+        if (params.loginType === "google" && googleIdToken) {
+          idToken = googleIdToken;
+        } else if (params.loginType === "email" && emailIdToken) {
+          idToken = emailIdToken;
+        } else if (params.loginType === "apple" && appleIdToken) {
+          idToken = appleIdToken;
+        }
+        if (idToken) {
+          try {
+            await provider2.sequenceWaas.signIn({ idToken }, randomName());
+          } catch (e2) {
+            console.log(e2);
+            await this.disconnect();
+          }
+          const accounts = await this.getAccounts();
+          if (accounts.length) {
+            await ((_d2 = config2.storage) == null ? void 0 : _d2.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType));
+          }
+        }
+        await ((_e2 = config2.storage) == null ? void 0 : _e2.removeItem(LocalStorageKey.WaasGoogleIdToken));
+        await ((_f2 = config2.storage) == null ? void 0 : _f2.removeItem(LocalStorageKey.WaasEmailIdToken));
+        await ((_g2 = config2.storage) == null ? void 0 : _g2.removeItem(LocalStorageKey.WaasAppleIdToken));
+      }
+      return {
+        accounts: await this.getAccounts(),
+        chainId: await this.getChainId()
+      };
+    },
+    async disconnect() {
+      var _a3, _b2, _c2;
+      const provider2 = await this.getProvider();
+      try {
+        await provider2.sequenceWaas.dropSession({ sessionId: await provider2.sequenceWaas.getSessionId() });
+      } catch (e2) {
+        console.log(e2);
+      }
+      await ((_a3 = config2.storage) == null ? void 0 : _a3.removeItem(LocalStorageKey.WaasSessionHash));
+      await ((_b2 = config2.storage) == null ? void 0 : _b2.removeItem(LocalStorageKey.WaasActiveLoginType));
+      const sessionHash = await provider2.sequenceWaas.getSessionHash();
+      await ((_c2 = config2.storage) == null ? void 0 : _c2.setItem(LocalStorageKey.WaasSessionHash, sessionHash));
+    },
+    async getAccounts() {
+      const provider2 = await this.getProvider();
+      try {
+        const isSignedIn = await provider2.sequenceWaas.isSignedIn();
+        if (isSignedIn) {
+          const address = await provider2.sequenceWaas.getAddress();
+          return [getAddress(address)];
+        }
+      } catch (err) {
+        return [];
+      }
+      return [];
+    },
+    async getProvider() {
+      return sequenceWaasProvider;
+    },
+    async isAuthorized() {
+      var _a3;
+      const provider2 = await this.getProvider();
+      const activeWaasOption = await ((_a3 = config2.storage) == null ? void 0 : _a3.getItem(LocalStorageKey.WaasActiveLoginType));
+      if (params.loginType !== activeWaasOption) {
+        return false;
+      }
+      try {
+        return await provider2.sequenceWaas.isSignedIn();
+      } catch (e2) {
+        return false;
+      }
+    },
+    async switchChain({ chainId }) {
+      const chain = config2.chains.find((c2) => c2.id === chainId) || config2.chains[0];
+      updateNetwork(chainId);
+      config2.emitter.emit("change", { chainId });
+      return chain;
+    },
+    async getChainId() {
+      const provider2 = await this.getProvider();
+      return provider2.getChainId();
+    },
+    async onAccountsChanged(accounts) {
+      return { account: accounts[0] };
+    },
+    async onChainChanged(chain) {
+      config2.emitter.emit("change", { chainId: normalizeChainId(chain) });
+    },
+    async onConnect(_connectInfo) {
+    },
+    async onDisconnect() {
+      await this.disconnect();
+    }
+  }));
+}
+class SequenceWaasProvider extends BaseProvider {
+  constructor(sequenceWaas, jsonRpcProvider, network2, showConfirmation) {
+    super(network2);
+    __publicField(this, "sequenceWaas");
+    __publicField(this, "jsonRpcProvider");
+    __publicField(this, "showConfirmation");
+    __publicField(this, "requestConfirmationHandler");
+    __publicField(this, "feeConfirmationHandler");
+    __publicField(this, "currentNetwork", this.network);
+    this.sequenceWaas = sequenceWaas;
+    this.jsonRpcProvider = jsonRpcProvider;
+    this.showConfirmation = showConfirmation;
+  }
+  updateJsonRpcProvider(jsonRpcProvider) {
+    this.jsonRpcProvider = jsonRpcProvider;
+  }
+  updateNetwork(network2) {
+    this.currentNetwork = network2;
+  }
+  async request({ method, params }) {
+    if (method === "eth_accounts") {
+      const address = await this.sequenceWaas.getAddress();
+      const account2 = getAddress(address);
+      return [account2];
+    }
+    if (method === "eth_sendTransaction") {
+      const txns = await resolveProperties$1(params == null ? void 0 : params[0]);
+      const chainId = this.getChainId();
+      const feeOptionsResponse = await this.checkTransactionFeeOptions({ transactions: [txns], chainId });
+      const feeOptions2 = feeOptionsResponse == null ? void 0 : feeOptionsResponse.feeOptions;
+      let selectedFeeOption;
+      if (!(feeOptionsResponse == null ? void 0 : feeOptionsResponse.isSponsored) && feeOptions2 && feeOptions2.length > 0) {
+        if (!this.feeConfirmationHandler) {
+          throw new TransactionRejectedRpcError(new Error("Unable to send transaction: please use UseWaasFeeOptions hook and pick a fee option"));
+        }
+        const id2 = v4();
+        const confirmation = await this.feeConfirmationHandler.confirmFeeOption(id2, feeOptions2, txns, chainId);
+        if (!confirmation.confirmed) {
+          throw new UserRejectedRequestError(new Error("User rejected send transaction request"));
+        }
+        if (id2 !== confirmation.id) {
+          throw new UserRejectedRequestError(new Error("User confirmation ids do not match"));
+        }
+        selectedFeeOption = feeOptions2.find((feeOption) => feeOption.token.contractAddress === confirmation.feeTokenAddress);
+      }
+      if (this.requestConfirmationHandler && this.showConfirmation) {
+        const id2 = v4();
+        const confirmation = await this.requestConfirmationHandler.confirmSignTransactionRequest(id2, txns, chainId);
+        if (!confirmation.confirmed) {
+          throw new UserRejectedRequestError(new Error("User rejected send transaction request"));
+        }
+        if (id2 !== confirmation.id) {
+          throw new UserRejectedRequestError(new Error("User confirmation ids do not match"));
+        }
+      }
+      const response = await this.sequenceWaas.sendTransaction({
+        transactions: [await resolveProperties$1(params == null ? void 0 : params[0])],
+        network: chainId,
+        transactionsFeeOption: selectedFeeOption,
+        transactionsFeeQuote: feeOptionsResponse == null ? void 0 : feeOptionsResponse.feeQuote
+      });
+      console.log("response", response);
+      if (response.code === "transactionFailed") {
+        throw new TransactionRejectedRpcError(new Error(`Unable to send transaction: ${response.data.error}`));
+      }
+      if (response.code === "transactionReceipt") {
+        const { txHash } = response.data;
+        return this.getTransaction(txHash);
+      }
+    }
+    if (method === "eth_sign" || method === "eth_signTypedData" || method === "eth_signTypedData_v4" || method === "personal_sign") {
+      if (this.requestConfirmationHandler && this.showConfirmation) {
+        const id2 = v4();
+        const confirmation = await this.requestConfirmationHandler.confirmSignMessageRequest(id2, params == null ? void 0 : params[0], this.currentNetwork.chainId);
+        if (!confirmation.confirmed) {
+          throw new UserRejectedRequestError(new Error("User rejected sign message request"));
+        }
+        if (id2 !== confirmation.id) {
+          throw new UserRejectedRequestError(new Error("User confirmation ids do not match"));
+        }
+      }
+      const sig = await this.sequenceWaas.signMessage({ message: params == null ? void 0 : params[0], network: this.currentNetwork.chainId });
+      return sig.data.signature;
+    }
+    return void 0;
+  }
+  async getTransaction(txHash) {
+    return await this.jsonRpcProvider.getTransaction(txHash);
+  }
+  detectNetwork() {
+    return Promise.resolve(this.currentNetwork);
+  }
+  getChainId() {
+    return this.currentNetwork.chainId;
+  }
+  async checkTransactionFeeOptions({ transactions: transactions2, chainId }) {
+    const resp = await this.sequenceWaas.feeOptions({
+      transactions: transactions2,
+      network: chainId
+    });
+    if (resp.data.feeQuote && resp.data.feeOptions) {
+      return { feeQuote: resp.data.feeQuote, feeOptions: resp.data.feeOptions, isSponsored: false };
+    }
+    return { feeQuote: resp.data.feeQuote, feeOptions: resp.data.feeOptions, isSponsored: true };
+  }
+}
+const DEVICE_EMOJIS = [
+  // 256 emojis for unsigned byte range 0 - 255
+  ..."🐶🐱🐭🐹🐰🦊🐻🐼🐨🐯🦁🐮🐷🐽🐸🐵🙈🙉🙊🐒🐔🐧🐦🐤🐣🐥🦆🦅🦉🦇🐺🐗🐴🦄🐝🐛🦋🐌🐞🐜🦟🦗🕷🕸🦂🐢🐍🦎🦖🦕🐙🦑🦐🦞🦀🐡🐠🐟🐬🐳🐋🦈🐊🐅🐆🦓🦍🦧🐘🦛🦏🐪🐫🦒🦘🐃🐂🐄🐎🐖🐏🐑🦙🐐🦌🐕🐩🦮🐈🐓🦃🦚🦜🦢🦩🕊🐇🦝🦨🦡🦦🦥🐁🐀🐿🦔🐾🐉🐲🌵🎄🌲🌳🌴🌱🌿🍀🎍🎋🍃👣🍂🍁🍄🐚🌾💐🌷🌹🥀🌺🌸🌼🌻🌞🌝🍏🍎🍐🍊🍋🍌🍉🍇🍓🍈🥭🍍🥥🥝🍅🥑🥦🥬🥒🌶🌽🥕🧄🧅🥔🍠🥐🥯🍞🥖🥨🧀🥚🍳🧈🥞🧇🥓🥩🍗🍖🦴🌭🍔🍟🍕🥪🥙🧆🌮🌯🥗🥘🥫🍝🍜🍲🍛🍣🍱🥟🦪🍤🍙🍚🍘🍥🥠🥮🍢🍡🍧🍨🍦🥧🧁🍰🎂🍮🍭🍬🍫🍿🍩🍪🌰🥜👀👂👃👄👅👆👇👈👉👊👋👌👍👎👏👐👑👒👓🎯🎰🎱🎲🎳👾👯👺👻👽🏂🏃🏄"
+];
+function randomName() {
+  const wordlistSize = 2048;
+  const words2 = wordlists.en;
+  const randomEmoji = DEVICE_EMOJIS[Math.floor(Math.random() * DEVICE_EMOJIS.length)];
+  const randomWord1 = words2.getWord(Math.floor(Math.random() * wordlistSize));
+  const randomWord2 = words2.getWord(Math.floor(Math.random() * wordlistSize));
+  return `${randomEmoji} ${randomWord1} ${randomWord2}`;
+}
+function normalizeChainId(chainId) {
+  if (typeof chainId === "object")
+    return normalizeChainId(chainId.chainId);
+  if (typeof chainId === "string")
+    return Number.parseInt(chainId, chainId.trim().substring(0, 2) === "0x" ? 16 : 10);
+  if (typeof chainId === "bigint")
+    return Number(chainId);
+  return chainId;
+}
+const getAppleLogo = ({ isDarkMode }) => {
+  const fillColor = isDarkMode ? "white" : "black";
+  const AppleLogo = (props) => {
+    return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 41 40", fill: "none", ...props, children: [jsxRuntimeExports$1.jsx("path", { d: "M27.166 20.8774C27.1338 17.335 30.0617 15.633 30.1936 15.5493C28.5463 13.1395 25.9852 12.8113 25.0714 12.7727C22.8932 12.5507 20.8179 14.0565 19.7111 14.0565C18.6043 14.0565 16.8991 12.8049 15.0909 12.8403C12.7131 12.8757 10.5221 14.2205 9.2962 16.3505C6.8284 20.6297 8.66557 26.9777 11.0722 30.4557C12.2498 32.1545 13.6494 34.0689 15.493 33.9981C17.2691 33.9273 17.9383 32.8495 20.0811 32.8495C22.224 32.8495 22.8289 33.9981 24.7014 33.9627C26.6094 33.9241 27.8191 32.2253 28.9871 30.5201C30.3352 28.5478 30.8918 26.6366 30.924 26.5369C30.8822 26.5208 27.2046 25.1116 27.166 20.8774Z", fill: fillColor }), jsxRuntimeExports$1.jsx("path", { d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z", fill: fillColor })] });
+  };
+  return AppleLogo;
+};
+const getAppleMonochromeLogo = ({ isDarkMode }) => {
+  const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
+  const AppleOtcLogo = (props) => {
+    return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 41 40", fill: "none", ...props, children: [jsxRuntimeExports$1.jsx("path", { d: "M27.166 20.8774C27.1338 17.335 30.0617 15.633 30.1936 15.5493C28.5463 13.1395 25.9852 12.8113 25.0714 12.7727C22.8932 12.5507 20.8179 14.0565 19.7111 14.0565C18.6043 14.0565 16.8991 12.8049 15.0909 12.8403C12.7131 12.8757 10.5221 14.2205 9.2962 16.3505C6.8284 20.6297 8.66557 26.9777 11.0722 30.4557C12.2498 32.1545 13.6494 34.0689 15.493 33.9981C17.2691 33.9273 17.9383 32.8495 20.0811 32.8495C22.224 32.8495 22.8289 33.9981 24.7014 33.9627C26.6094 33.9241 27.8191 32.2253 28.9871 30.5201C30.3352 28.5478 30.8918 26.6366 30.924 26.5369C30.8822 26.5208 27.2046 25.1116 27.166 20.8774Z", fill: fillColor }), jsxRuntimeExports$1.jsx("path", { d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z", fill: fillColor })] });
+  };
+  return AppleOtcLogo;
+};
+const apple = (options) => ({
+  id: "apple",
+  isSequenceBased: true,
+  logoDark: getAppleLogo({ isDarkMode: true }),
+  logoLight: getAppleLogo({ isDarkMode: false }),
+  monochromeLogoDark: getAppleMonochromeLogo({ isDarkMode: true }),
+  monochromeLogoLight: getAppleMonochromeLogo({ isDarkMode: false }),
+  // iconBackground: '#fff',
+  name: "Apple",
+  createConnector: (projectAccessKey2) => {
+    var _a2;
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        projectAccessKey: projectAccessKey2,
+        ...options == null ? void 0 : options.connect,
+        settings: {
+          ...(_a2 = options == null ? void 0 : options.connect) == null ? void 0 : _a2.settings,
+          signInWith: "apple"
+        }
+      }
+    });
+    return connector;
+  }
+});
 coinbaseWallet$1.type = "coinbaseWallet";
 function coinbaseWallet$1(parameters = {}) {
   if (parameters.version === "3" || parameters.headlessMode)
@@ -108601,7 +105214,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-BiVbDWpy.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-sCWfZHrl.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -108778,7 +105391,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-pztXHJkP.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CJfNl-Q7.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -109012,7 +105625,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DTuwqiIu.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-Ccnm476s.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -109209,576 +105822,8 @@ function walletConnect$1(parameters) {
     }
   }));
 }
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function(target) {
-    for (var i2 = 1; i2 < arguments.length; i2++) {
-      var source = arguments[i2];
-      for (var key2 in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key2)) {
-          target[key2] = source[key2];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends.apply(this, arguments);
-}
-sequenceWallet.type = "sequence";
-function sequenceWallet(params) {
-  const {
-    defaultNetwork,
-    connect: connect2,
-    walletAppURL
-  } = params;
-  const {
-    projectAccessKey: projectAccessKey2
-  } = connect2;
-  return createConnector((config2) => ({
-    id: "sequence",
-    name: "Sequence",
-    type: sequenceWallet.type,
-    params,
-    setEmail(email2) {
-      if (params.connect.settings) {
-        params.connect.settings.signInWithEmail = email2;
-      }
-    },
-    async setup() {
-      const provider2 = await this.getProvider();
-      provider2.on("chainChanged", (chainIdHex) => {
-        config2.emitter.emit("change", {
-          chainId: normalizeChainId$1(chainIdHex)
-        });
-      });
-      provider2.on("disconnect", () => {
-        this.onDisconnect();
-      });
-    },
-    async connect() {
-      const provider2 = await this.getProvider();
-      if (!provider2.isConnected()) {
-        var _config$storage, _await$config$storage, _config$storage2, _e$proof, _e$proof2;
-        const localStorageTheme = await ((_config$storage = config2.storage) == null ? void 0 : _config$storage.getItem(LocalStorageKey.Theme));
-        const ethAuthSettings = (_await$config$storage = await ((_config$storage2 = config2.storage) == null ? void 0 : _config$storage2.getItem(LocalStorageKey.EthAuthSettings))) != null ? _await$config$storage : {};
-        const connectOptionsWithTheme = _extends({
-          authorize: true
-        }, ethAuthSettings, connect2, {
-          settings: _extends({
-            theme: localStorageTheme || "dark"
-          }, connect2 == null ? void 0 : connect2.settings)
-        });
-        const e2 = await provider2.connect(connectOptionsWithTheme);
-        if (e2.error) {
-          throw new UserRejectedRequestError(new Error(e2.error));
-        }
-        if (!e2.connected) {
-          throw new UserRejectedRequestError(new Error("Wallet connection rejected"));
-        }
-        const proofString = (_e$proof = e2.proof) == null ? void 0 : _e$proof.proofString;
-        const proofTypedData = (_e$proof2 = e2.proof) == null ? void 0 : _e$proof2.typedData;
-        if (proofString && proofTypedData) {
-          var _config$storage3;
-          const jsonEthAuthProof = {
-            proofString,
-            typedData: proofTypedData
-          };
-          await ((_config$storage3 = config2.storage) == null ? void 0 : _config$storage3.setItem(LocalStorageKey.EthAuthProof, jsonEthAuthProof));
-        }
-      }
-      const accounts = await this.getAccounts();
-      return {
-        accounts: [...accounts],
-        chainId: provider2.getChainId()
-      };
-    },
-    async disconnect() {
-      const provider2 = await this.getProvider();
-      provider2.disconnect();
-    },
-    async getAccounts() {
-      const provider2 = await this.getProvider();
-      const signer2 = provider2.getSigner();
-      const account2 = getAddress(await signer2.getAddress());
-      return [account2];
-    },
-    async getProvider() {
-      try {
-        const provider2 = sequence$1.getWallet();
-        return provider2;
-      } catch (err) {
-        if (!projectAccessKey2) {
-          throw "projectAccessKey not found";
-        }
-        const provider2 = sequence$1.initWallet(projectAccessKey2, {
-          defaultNetwork,
-          transports: {
-            walletAppURL: walletAppURL || "https://sequence.app"
-          },
-          defaultEIP6492: true,
-          analytics: false
-        });
-        const chainId = provider2.getChainId();
-        config2.emitter.emit("change", {
-          chainId: normalizeChainId$1(chainId)
-        });
-        return provider2;
-      }
-    },
-    async isAuthorized() {
-      try {
-        const account2 = await this.getAccounts();
-        return !!account2;
-      } catch (e2) {
-        return false;
-      }
-    },
-    async switchChain({
-      chainId
-    }) {
-      const provider2 = await this.getProvider();
-      const chain = config2.chains.find((c2) => c2.id === chainId) || config2.chains[0];
-      provider2.setDefaultChainId(normalizeChainId$1(chainId));
-      config2.emitter.emit("change", {
-        chainId
-      });
-      return chain;
-    },
-    async getChainId() {
-      const provider2 = await this.getProvider();
-      const chainId = provider2.getChainId();
-      return chainId;
-    },
-    async onAccountsChanged(accounts) {
-      return {
-        account: accounts[0]
-      };
-    },
-    async onChainChanged(chain) {
-      const provider2 = await this.getProvider();
-      config2.emitter.emit("change", {
-        chainId: normalizeChainId$1(chain)
-      });
-      provider2.setDefaultChainId(normalizeChainId$1(chain));
-    },
-    async onConnect(_connectinfo) {
-    },
-    async onDisconnect() {
-      var _config$storage4;
-      await ((_config$storage4 = config2.storage) == null ? void 0 : _config$storage4.removeItem(LocalStorageKey.EthAuthProof));
-      config2.emitter.emit("disconnect");
-    }
-  }));
-}
-function normalizeChainId$1(chainId) {
-  if (typeof chainId === "object")
-    return normalizeChainId$1(chainId.chainId);
-  if (typeof chainId === "string")
-    return Number.parseInt(chainId, chainId.trim().substring(0, 2) === "0x" ? 16 : 10);
-  if (typeof chainId === "bigint")
-    return Number(chainId);
-  return chainId;
-}
-sequenceWaasWallet.type = "sequence-waas";
-function sequenceWaasWallet(params) {
-  var _params$enableConfirm, _params$network, _sequence$network$all;
-  const isDev = !!(params != null && params.isDev);
-  const nodesUrl = isDev ? "https://dev-nodes.sequence.app" : "https://nodes.sequence.app";
-  const showConfirmationModal = (_params$enableConfirm = params.enableConfirmationModal) != null ? _params$enableConfirm : false;
-  const initialChain = (_params$network = params.network) != null ? _params$network : 137;
-  const initialChainName = (_sequence$network$all = sequence$1.network.allNetworks.find((n2) => n2.chainId === initialChain || n2.name === initialChain)) == null ? void 0 : _sequence$network$all.name;
-  const initialJsonRpcProvider = new JsonRpcProvider$1(`${nodesUrl}/${initialChainName != null ? initialChainName : "polygon"}/${params.projectAccessKey}`);
-  const sequenceWaas = new SequenceWaaS({
-    network: initialChain,
-    projectAccessKey: params.projectAccessKey,
-    waasConfigKey: params.waasConfigKey
-  });
-  const sequenceWaasProvider = new SequenceWaasProvider(sequenceWaas, initialJsonRpcProvider, initialChain, showConfirmationModal);
-  const updateNetwork = async (chainId) => {
-    var _sequence$network$all2;
-    const networkName = (_sequence$network$all2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId || n2.name === initialChain)) == null ? void 0 : _sequence$network$all2.name;
-    const jsonRpcProvider = new JsonRpcProvider$1(`${nodesUrl}/${networkName}/${params.projectAccessKey}`);
-    sequenceWaasProvider.updateJsonRpcProvider(jsonRpcProvider);
-    sequenceWaasProvider.updateNetwork(getNetwork$1(chainId));
-  };
-  return createConnector((config2) => ({
-    id: `sequence-waas`,
-    name: "Sequence WaaS",
-    type: sequenceWaasWallet.type,
-    sequenceWaas,
-    sequenceWaasProvider,
-    params,
-    async setup() {
-      if (typeof window !== "object") {
-        return;
-      }
-      const provider2 = await this.getProvider();
-      if (params.googleClientId) {
-        var _config$storage;
-        await ((_config$storage = config2.storage) == null ? void 0 : _config$storage.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId));
-      }
-      if (params.appleClientId) {
-        var _config$storage2;
-        await ((_config$storage2 = config2.storage) == null ? void 0 : _config$storage2.setItem(LocalStorageKey.WaasAppleClientID, params.appleClientId));
-      }
-      if (params.appleRedirectURI) {
-        var _config$storage3;
-        await ((_config$storage3 = config2.storage) == null ? void 0 : _config$storage3.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI));
-      }
-      const isConnected = await provider2.sequenceWaas.isSignedIn();
-      if (!isConnected) {
-        var _config$storage4;
-        const sessionHash = await provider2.sequenceWaas.getSessionHash();
-        await ((_config$storage4 = config2.storage) == null ? void 0 : _config$storage4.setItem(LocalStorageKey.WaasSessionHash, sessionHash));
-      }
-      provider2.on("disconnect", () => {
-        this.onDisconnect();
-      });
-    },
-    async connect(_connectInfo) {
-      const provider2 = await this.getProvider();
-      const isSignedIn = await provider2.sequenceWaas.isSignedIn();
-      if (!isSignedIn) {
-        var _config$storage5, _config$storage6, _config$storage7, _config$storage9, _config$storage10, _config$storage11;
-        const googleIdToken = await ((_config$storage5 = config2.storage) == null ? void 0 : _config$storage5.getItem(LocalStorageKey.WaasGoogleIdToken));
-        const emailIdToken = await ((_config$storage6 = config2.storage) == null ? void 0 : _config$storage6.getItem(LocalStorageKey.WaasEmailIdToken));
-        const appleIdToken = await ((_config$storage7 = config2.storage) == null ? void 0 : _config$storage7.getItem(LocalStorageKey.WaasAppleIdToken));
-        let idToken;
-        if (params.loginType === "google" && googleIdToken) {
-          idToken = googleIdToken;
-        } else if (params.loginType === "email" && emailIdToken) {
-          idToken = emailIdToken;
-        } else if (params.loginType === "apple" && appleIdToken) {
-          idToken = appleIdToken;
-        }
-        if (idToken) {
-          try {
-            await provider2.sequenceWaas.signIn({
-              idToken
-            }, randomName());
-          } catch (e2) {
-            console.log(e2);
-            await this.disconnect();
-          }
-          const accounts = await this.getAccounts();
-          if (accounts.length) {
-            var _config$storage8;
-            await ((_config$storage8 = config2.storage) == null ? void 0 : _config$storage8.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType));
-          }
-        }
-        await ((_config$storage9 = config2.storage) == null ? void 0 : _config$storage9.removeItem(LocalStorageKey.WaasGoogleIdToken));
-        await ((_config$storage10 = config2.storage) == null ? void 0 : _config$storage10.removeItem(LocalStorageKey.WaasEmailIdToken));
-        await ((_config$storage11 = config2.storage) == null ? void 0 : _config$storage11.removeItem(LocalStorageKey.WaasAppleIdToken));
-      }
-      return {
-        accounts: await this.getAccounts(),
-        chainId: await this.getChainId()
-      };
-    },
-    async disconnect() {
-      var _config$storage12, _config$storage13, _config$storage14;
-      const provider2 = await this.getProvider();
-      try {
-        await provider2.sequenceWaas.dropSession({
-          sessionId: await provider2.sequenceWaas.getSessionId()
-        });
-      } catch (e2) {
-        console.log(e2);
-      }
-      await ((_config$storage12 = config2.storage) == null ? void 0 : _config$storage12.removeItem(LocalStorageKey.WaasSessionHash));
-      await ((_config$storage13 = config2.storage) == null ? void 0 : _config$storage13.removeItem(LocalStorageKey.WaasActiveLoginType));
-      const sessionHash = await provider2.sequenceWaas.getSessionHash();
-      await ((_config$storage14 = config2.storage) == null ? void 0 : _config$storage14.setItem(LocalStorageKey.WaasSessionHash, sessionHash));
-    },
-    async getAccounts() {
-      const provider2 = await this.getProvider();
-      try {
-        const isSignedIn = await provider2.sequenceWaas.isSignedIn();
-        if (isSignedIn) {
-          const address = await provider2.sequenceWaas.getAddress();
-          return [getAddress(address)];
-        }
-      } catch (err) {
-        return [];
-      }
-      return [];
-    },
-    async getProvider() {
-      return sequenceWaasProvider;
-    },
-    async isAuthorized() {
-      var _config$storage15;
-      const provider2 = await this.getProvider();
-      const activeWaasOption = await ((_config$storage15 = config2.storage) == null ? void 0 : _config$storage15.getItem(LocalStorageKey.WaasActiveLoginType));
-      if (params.loginType !== activeWaasOption) {
-        return false;
-      }
-      try {
-        return await provider2.sequenceWaas.isSignedIn();
-      } catch (e2) {
-        return false;
-      }
-    },
-    async switchChain({
-      chainId
-    }) {
-      const chain = config2.chains.find((c2) => c2.id === chainId) || config2.chains[0];
-      updateNetwork(chainId);
-      config2.emitter.emit("change", {
-        chainId
-      });
-      return chain;
-    },
-    async getChainId() {
-      const provider2 = await this.getProvider();
-      return provider2.getChainId();
-    },
-    async onAccountsChanged(accounts) {
-      return {
-        account: accounts[0]
-      };
-    },
-    async onChainChanged(chain) {
-      config2.emitter.emit("change", {
-        chainId: normalizeChainId(chain)
-      });
-    },
-    async onConnect(_connectInfo) {
-    },
-    async onDisconnect() {
-      await this.disconnect();
-    }
-  }));
-}
-class SequenceWaasProvider extends BaseProvider {
-  constructor(sequenceWaas, jsonRpcProvider, network2, showConfirmation) {
-    super(network2);
-    this.sequenceWaas = sequenceWaas;
-    this.jsonRpcProvider = jsonRpcProvider;
-    this.showConfirmation = showConfirmation;
-    this.requestConfirmationHandler = void 0;
-    this.feeConfirmationHandler = void 0;
-    this.currentNetwork = this.network;
-  }
-  updateJsonRpcProvider(jsonRpcProvider) {
-    this.jsonRpcProvider = jsonRpcProvider;
-  }
-  updateNetwork(network2) {
-    this.currentNetwork = network2;
-  }
-  async request({
-    method,
-    params
-  }) {
-    if (method === "eth_accounts") {
-      const address = await this.sequenceWaas.getAddress();
-      const account2 = getAddress(address);
-      return [account2];
-    }
-    if (method === "eth_sendTransaction") {
-      const txns = await resolveProperties$1(params == null ? void 0 : params[0]);
-      const chainId = this.getChainId();
-      const feeOptionsResponse = await this.checkTransactionFeeOptions({
-        transactions: [txns],
-        chainId
-      });
-      const feeOptions2 = feeOptionsResponse == null ? void 0 : feeOptionsResponse.feeOptions;
-      let selectedFeeOption;
-      if (!(feeOptionsResponse != null && feeOptionsResponse.isSponsored) && feeOptions2 && feeOptions2.length > 0) {
-        if (!this.feeConfirmationHandler) {
-          throw new TransactionRejectedRpcError(new Error("Unable to send transaction: please use UseWaasFeeOptions hook and pick a fee option"));
-        }
-        const id2 = v4();
-        const confirmation = await this.feeConfirmationHandler.confirmFeeOption(id2, feeOptions2, txns, chainId);
-        if (!confirmation.confirmed) {
-          throw new UserRejectedRequestError(new Error("User rejected send transaction request"));
-        }
-        if (id2 !== confirmation.id) {
-          throw new UserRejectedRequestError(new Error("User confirmation ids do not match"));
-        }
-        selectedFeeOption = feeOptions2.find((feeOption) => feeOption.token.contractAddress === confirmation.feeTokenAddress);
-      }
-      if (this.requestConfirmationHandler && this.showConfirmation) {
-        const id2 = v4();
-        const confirmation = await this.requestConfirmationHandler.confirmSignTransactionRequest(id2, txns, chainId);
-        if (!confirmation.confirmed) {
-          throw new UserRejectedRequestError(new Error("User rejected send transaction request"));
-        }
-        if (id2 !== confirmation.id) {
-          throw new UserRejectedRequestError(new Error("User confirmation ids do not match"));
-        }
-      }
-      const response = await this.sequenceWaas.sendTransaction({
-        transactions: [await resolveProperties$1(params == null ? void 0 : params[0])],
-        network: chainId,
-        transactionsFeeOption: selectedFeeOption,
-        transactionsFeeQuote: feeOptionsResponse == null ? void 0 : feeOptionsResponse.feeQuote
-      });
-      console.log("response", response);
-      if (response.code === "transactionFailed") {
-        throw new TransactionRejectedRpcError(new Error(`Unable to send transaction: ${response.data.error}`));
-      }
-      if (response.code === "transactionReceipt") {
-        const {
-          txHash
-        } = response.data;
-        return this.getTransaction(txHash);
-      }
-    }
-    if (method === "eth_sign" || method === "eth_signTypedData" || method === "eth_signTypedData_v4" || method === "personal_sign") {
-      if (this.requestConfirmationHandler && this.showConfirmation) {
-        const id2 = v4();
-        const confirmation = await this.requestConfirmationHandler.confirmSignMessageRequest(id2, params == null ? void 0 : params[0], this.currentNetwork.chainId);
-        if (!confirmation.confirmed) {
-          throw new UserRejectedRequestError(new Error("User rejected sign message request"));
-        }
-        if (id2 !== confirmation.id) {
-          throw new UserRejectedRequestError(new Error("User confirmation ids do not match"));
-        }
-      }
-      const sig = await this.sequenceWaas.signMessage({
-        message: params == null ? void 0 : params[0],
-        network: this.currentNetwork.chainId
-      });
-      return sig.data.signature;
-    }
-    return void 0;
-  }
-  async getTransaction(txHash) {
-    return await this.jsonRpcProvider.getTransaction(txHash);
-  }
-  detectNetwork() {
-    return Promise.resolve(this.currentNetwork);
-  }
-  getChainId() {
-    return this.currentNetwork.chainId;
-  }
-  async checkTransactionFeeOptions({
-    transactions: transactions2,
-    chainId
-  }) {
-    const resp = await this.sequenceWaas.feeOptions({
-      transactions: transactions2,
-      network: chainId
-    });
-    if (resp.data.feeQuote && resp.data.feeOptions) {
-      return {
-        feeQuote: resp.data.feeQuote,
-        feeOptions: resp.data.feeOptions,
-        isSponsored: false
-      };
-    }
-    return {
-      feeQuote: resp.data.feeQuote,
-      feeOptions: resp.data.feeOptions,
-      isSponsored: true
-    };
-  }
-}
-const DEVICE_EMOJIS = [
-  // 256 emojis for unsigned byte range 0 - 255
-  ..."🐶🐱🐭🐹🐰🦊🐻🐼🐨🐯🦁🐮🐷🐽🐸🐵🙈🙉🙊🐒🐔🐧🐦🐤🐣🐥🦆🦅🦉🦇🐺🐗🐴🦄🐝🐛🦋🐌🐞🐜🦟🦗🕷🕸🦂🐢🐍🦎🦖🦕🐙🦑🦐🦞🦀🐡🐠🐟🐬🐳🐋🦈🐊🐅🐆🦓🦍🦧🐘🦛🦏🐪🐫🦒🦘🐃🐂🐄🐎🐖🐏🐑🦙🐐🦌🐕🐩🦮🐈🐓🦃🦚🦜🦢🦩🕊🐇🦝🦨🦡🦦🦥🐁🐀🐿🦔🐾🐉🐲🌵🎄🌲🌳🌴🌱🌿🍀🎍🎋🍃👣🍂🍁🍄🐚🌾💐🌷🌹🥀🌺🌸🌼🌻🌞🌝🍏🍎🍐🍊🍋🍌🍉🍇🍓🍈🥭🍍🥥🥝🍅🥑🥦🥬🥒🌶🌽🥕🧄🧅🥔🍠🥐🥯🍞🥖🥨🧀🥚🍳🧈🥞🧇🥓🥩🍗🍖🦴🌭🍔🍟🍕🥪🥙🧆🌮🌯🥗🥘🥫🍝🍜🍲🍛🍣🍱🥟🦪🍤🍙🍚🍘🍥🥠🥮🍢🍡🍧🍨🍦🥧🧁🍰🎂🍮🍭🍬🍫🍿🍩🍪🌰🥜👀👂👃👄👅👆👇👈👉👊👋👌👍👎👏👐👑👒👓🎯🎰🎱🎲🎳👾👯👺👻👽🏂🏃🏄"
-];
-function randomName() {
-  const wordlistSize = 2048;
-  const words2 = wordlists.en;
-  const randomEmoji = DEVICE_EMOJIS[Math.floor(Math.random() * DEVICE_EMOJIS.length)];
-  const randomWord1 = words2.getWord(Math.floor(Math.random() * wordlistSize));
-  const randomWord2 = words2.getWord(Math.floor(Math.random() * wordlistSize));
-  return `${randomEmoji} ${randomWord1} ${randomWord2}`;
-}
-function normalizeChainId(chainId) {
-  if (typeof chainId === "object")
-    return normalizeChainId(chainId.chainId);
-  if (typeof chainId === "string")
-    return Number.parseInt(chainId, chainId.trim().substring(0, 2) === "0x" ? 16 : 10);
-  if (typeof chainId === "bigint")
-    return Number(chainId);
-  return chainId;
-}
-const getAppleLogo = ({
-  isDarkMode
-}) => {
-  const fillColor = isDarkMode ? "white" : "black";
-  const AppleLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 41 40",
-      fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
-      d: "M27.166 20.8774C27.1338 17.335 30.0617 15.633 30.1936 15.5493C28.5463 13.1395 25.9852 12.8113 25.0714 12.7727C22.8932 12.5507 20.8179 14.0565 19.7111 14.0565C18.6043 14.0565 16.8991 12.8049 15.0909 12.8403C12.7131 12.8757 10.5221 14.2205 9.2962 16.3505C6.8284 20.6297 8.66557 26.9777 11.0722 30.4557C12.2498 32.1545 13.6494 34.0689 15.493 33.9981C17.2691 33.9273 17.9383 32.8495 20.0811 32.8495C22.224 32.8495 22.8289 33.9981 24.7014 33.9627C26.6094 33.9241 27.8191 32.2253 28.9871 30.5201C30.3352 28.5478 30.8918 26.6366 30.924 26.5369C30.8822 26.5208 27.2046 25.1116 27.166 20.8774Z",
-      fill: fillColor
-    }), /* @__PURE__ */ React.createElement("path", {
-      d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z",
-      fill: fillColor
-    }));
-  };
-  return AppleLogo;
-};
-const getAppleMonochromeLogo = ({
-  isDarkMode
-}) => {
-  const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
-  const AppleOtcLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 41 40",
-      fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
-      d: "M27.166 20.8774C27.1338 17.335 30.0617 15.633 30.1936 15.5493C28.5463 13.1395 25.9852 12.8113 25.0714 12.7727C22.8932 12.5507 20.8179 14.0565 19.7111 14.0565C18.6043 14.0565 16.8991 12.8049 15.0909 12.8403C12.7131 12.8757 10.5221 14.2205 9.2962 16.3505C6.8284 20.6297 8.66557 26.9777 11.0722 30.4557C12.2498 32.1545 13.6494 34.0689 15.493 33.9981C17.2691 33.9273 17.9383 32.8495 20.0811 32.8495C22.224 32.8495 22.8289 33.9981 24.7014 33.9627C26.6094 33.9241 27.8191 32.2253 28.9871 30.5201C30.3352 28.5478 30.8918 26.6366 30.924 26.5369C30.8822 26.5208 27.2046 25.1116 27.166 20.8774Z",
-      fill: fillColor
-    }), /* @__PURE__ */ React.createElement("path", {
-      d: "M23.6429 10.4722C24.621 9.28822 25.2806 7.64089 25.1004 6C23.6911 6.05791 21.9859 6.93949 20.9756 8.12351C20.0715 9.16917 19.2768 10.8455 19.4923 12.4542C21.0592 12.5764 22.6648 11.653 23.6429 10.4722Z",
-      fill: fillColor
-    }));
-  };
-  return AppleOtcLogo;
-};
-const apple = (options) => ({
-  id: "apple",
-  isSequenceBased: true,
-  logoDark: getAppleLogo({
-    isDarkMode: true
-  }),
-  logoLight: getAppleLogo({
-    isDarkMode: false
-  }),
-  monochromeLogoDark: getAppleMonochromeLogo({
-    isDarkMode: true
-  }),
-  monochromeLogoLight: getAppleMonochromeLogo({
-    isDarkMode: false
-  }),
-  // iconBackground: '#fff',
-  name: "Apple",
-  createConnector: (projectAccessKey2) => {
-    var _options$connect;
-    const connector = sequenceWallet(_extends({}, options, {
-      connect: _extends({
-        projectAccessKey: projectAccessKey2
-      }, options == null ? void 0 : options.connect, {
-        settings: _extends({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
-          signInWith: "apple"
-        })
-      })
-    }));
-    return connector;
-  }
-});
 const CoinbaseWalletLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends({
-    viewBox: "0 0 28 28",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("rect", {
-    width: "28",
-    height: "28",
-    fill: "#2C5FF6"
-  }), /* @__PURE__ */ React.createElement("path", {
-    fillRule: "evenodd",
-    clipRule: "evenodd",
-    d: "M14 23.8C19.4124 23.8 23.8 19.4124 23.8 14C23.8 8.58761 19.4124 4.2 14 4.2C8.58761 4.2 4.2 8.58761 4.2 14C4.2 19.4124 8.58761 23.8 14 23.8ZM11.55 10.8C11.1358 10.8 10.8 11.1358 10.8 11.55V16.45C10.8 16.8642 11.1358 17.2 11.55 17.2H16.45C16.8642 17.2 17.2 16.8642 17.2 16.45V11.55C17.2 11.1358 16.8642 10.8 16.45 10.8H11.55Z",
-    fill: "white"
-  }));
+  return jsxRuntimeExports$1.jsxs("svg", { viewBox: "0 0 28 28", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [jsxRuntimeExports$1.jsx("rect", { width: "28", height: "28", fill: "#2C5FF6" }), jsxRuntimeExports$1.jsx("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M14 23.8C19.4124 23.8 23.8 19.4124 23.8 14C23.8 8.58761 19.4124 4.2 14 4.2C8.58761 4.2 4.2 8.58761 4.2 14C4.2 19.4124 8.58761 23.8 14 23.8ZM11.55 10.8C11.1358 10.8 10.8 11.1358 10.8 11.55V16.45C10.8 16.8642 11.1358 17.2 11.55 17.2H16.45C16.8642 17.2 17.2 16.8642 17.2 16.45V11.55C17.2 11.1358 16.8642 10.8 16.45 10.8H11.55Z", fill: "white" })] });
 };
 const coinbaseWallet = (params) => ({
   id: "coinbase-wallet",
@@ -109786,92 +105831,47 @@ const coinbaseWallet = (params) => ({
   logoLight: CoinbaseWalletLogo,
   name: "Coinbase Wallet",
   createConnector: () => {
-    const connector = coinbaseWallet$1(_extends({}, params));
+    const connector = coinbaseWallet$1({ ...params });
     return connector;
   }
 });
-const getEmailLogo = ({
-  isDarkMode
-}) => {
+const getEmailLogo = ({ isDarkMode }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const EmailLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 35 34",
-      fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
-      d: "M17.0826 16.3805C17.1802 16.4598 17.32 16.4598 17.4176 16.3805L30.1401 6.04341C30.5283 5.72801 30.3053 5.09985 29.8051 5.09985H4.69499C4.19482 5.09985 3.9718 5.72801 4.35998 6.04341L17.0826 16.3805Z",
-      fill: fillColor
-    }), /* @__PURE__ */ React.createElement("path", {
-      d: "M19.7626 19.2667L33.3838 8.19943C33.731 7.91735 34.2501 8.16441 34.2501 8.61174V24.2249C34.2501 26.5721 32.3473 28.4749 30.0001 28.4749H4.50006C2.15285 28.4749 0.250061 26.5721 0.250061 24.2249V8.61174C0.250061 8.16441 0.769134 7.91735 1.11631 8.19943L14.7375 19.2667C16.2014 20.4561 18.2987 20.4561 19.7626 19.2667Z",
-      fill: fillColor
-    }));
+    return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 35 34", fill: "none", ...props, children: [jsxRuntimeExports$1.jsx("path", { d: "M17.0826 16.3805C17.1802 16.4598 17.32 16.4598 17.4176 16.3805L30.1401 6.04341C30.5283 5.72801 30.3053 5.09985 29.8051 5.09985H4.69499C4.19482 5.09985 3.9718 5.72801 4.35998 6.04341L17.0826 16.3805Z", fill: fillColor }), jsxRuntimeExports$1.jsx("path", { d: "M19.7626 19.2667L33.3838 8.19943C33.731 7.91735 34.2501 8.16441 34.2501 8.61174V24.2249C34.2501 26.5721 32.3473 28.4749 30.0001 28.4749H4.50006C2.15285 28.4749 0.250061 26.5721 0.250061 24.2249V8.61174C0.250061 8.16441 0.769134 7.91735 1.11631 8.19943L14.7375 19.2667C16.2014 20.4561 18.2987 20.4561 19.7626 19.2667Z", fill: fillColor })] });
   };
   return EmailLogo;
 };
 const email = (options) => ({
   id: "email",
   isSequenceBased: true,
-  logoDark: getEmailLogo({
-    isDarkMode: true
-  }),
-  logoLight: getEmailLogo({
-    isDarkMode: false
-  }),
+  logoDark: getEmailLogo({ isDarkMode: true }),
+  logoLight: getEmailLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: "Email",
   createConnector: (projectAccessKey2) => {
-    var _options$connect;
-    const connector = sequenceWallet(_extends({}, options, {
-      connect: _extends({
-        projectAccessKey: projectAccessKey2
-      }, options == null ? void 0 : options.connect, {
-        settings: _extends({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+    var _a2;
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        projectAccessKey: projectAccessKey2,
+        ...options == null ? void 0 : options.connect,
+        settings: {
+          ...(_a2 = options == null ? void 0 : options.connect) == null ? void 0 : _a2.settings,
           signInOptions: ["email"]
-        })
-      })
-    }));
+        }
+      }
+    });
     return connector;
   }
 });
 const FacebookLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends({
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 41 40",
-    fill: "none"
-  }, props), /* @__PURE__ */ React.createElement("path", {
-    d: "M17.4214 36.9716C9.27855 35.5145 3.10712 28.4859 3.10712 20.0001C3.10712 10.5715 10.8214 2.85718 20.25 2.85718C29.6785 2.85718 37.3928 10.5715 37.3928 20.0001C37.3928 28.4859 31.2214 35.5145 23.0785 36.9716L22.1357 36.2002H18.3643L17.4214 36.9716Z",
-    fill: "url(#paint0_linear_193_14528)"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M26.9357 24.7999L27.7072 19.9999H23.1643V16.657C23.1643 15.2856 23.6786 14.257 25.7357 14.257H27.9643V9.88558C26.7643 9.71415 25.3929 9.54272 24.1929 9.54272C20.25 9.54272 17.5071 11.9427 17.5071 16.2285V19.9999H13.2214V24.7999H17.5071V36.8857C18.45 37.0571 19.3929 37.1429 20.3357 37.1429C21.2786 37.1429 22.2214 37.0571 23.1643 36.8857V24.7999H26.9357Z",
-    fill: "white"
-  }), /* @__PURE__ */ React.createElement("defs", null, /* @__PURE__ */ React.createElement("linearGradient", {
-    id: "paint0_linear_193_14528",
-    x1: "20.2508",
-    y1: "35.9507",
-    x2: "20.2508",
-    y2: "2.85086",
-    gradientUnits: "userSpaceOnUse"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    "stop-color": "#0062E0"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    offset: "1",
-    "stop-color": "#19AFFF"
-  }))));
+  return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 41 40", fill: "none", ...props, children: [jsxRuntimeExports$1.jsx("path", { d: "M17.4214 36.9716C9.27855 35.5145 3.10712 28.4859 3.10712 20.0001C3.10712 10.5715 10.8214 2.85718 20.25 2.85718C29.6785 2.85718 37.3928 10.5715 37.3928 20.0001C37.3928 28.4859 31.2214 35.5145 23.0785 36.9716L22.1357 36.2002H18.3643L17.4214 36.9716Z", fill: "url(#paint0_linear_193_14528)" }), jsxRuntimeExports$1.jsx("path", { d: "M26.9357 24.7999L27.7072 19.9999H23.1643V16.657C23.1643 15.2856 23.6786 14.257 25.7357 14.257H27.9643V9.88558C26.7643 9.71415 25.3929 9.54272 24.1929 9.54272C20.25 9.54272 17.5071 11.9427 17.5071 16.2285V19.9999H13.2214V24.7999H17.5071V36.8857C18.45 37.0571 19.3929 37.1429 20.3357 37.1429C21.2786 37.1429 22.2214 37.0571 23.1643 36.8857V24.7999H26.9357Z", fill: "white" }), jsxRuntimeExports$1.jsx("defs", { children: jsxRuntimeExports$1.jsxs("linearGradient", { id: "paint0_linear_193_14528", x1: "20.2508", y1: "35.9507", x2: "20.2508", y2: "2.85086", gradientUnits: "userSpaceOnUse", children: [jsxRuntimeExports$1.jsx("stop", { "stop-color": "#0062E0" }), jsxRuntimeExports$1.jsx("stop", { offset: "1", "stop-color": "#19AFFF" })] }) })] });
 };
-const getFacebookMonochromeLogo = ({
-  isDarkMode
-}) => {
+const getFacebookMonochromeLogo = ({ isDarkMode }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
   const FacebookMonochromeLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 41 40",
-      fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
-      d: "M25.8582 10.4398C24.1222 10.4398 23.6288 11.2098 23.6288 12.9073V15.709H28.246L27.791 20.2476H23.6279V34H18.1024V20.2468H14.375V15.7081H18.1042V12.9851C18.1042 8.40625 19.9399 6 25.0891 6C26.1942 6 27.5163 6.0875 28.3055 6.19775V10.459",
-      fill: fillColor
-    }));
+    return jsxRuntimeExports$1.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 41 40", fill: "none", ...props, children: jsxRuntimeExports$1.jsx("path", { d: "M25.8582 10.4398C24.1222 10.4398 23.6288 11.2098 23.6288 12.9073V15.709H28.246L27.791 20.2476H23.6279V34H18.1024V20.2468H14.375V15.7081H18.1042V12.9851C18.1042 8.40625 19.9399 6 25.0891 6C26.1942 6 27.5163 6.0875 28.3055 6.19775V10.459", fill: fillColor }) });
   };
   return FacebookMonochromeLogo;
 };
@@ -109880,70 +105880,33 @@ const facebook = (options) => ({
   isSequenceBased: true,
   logoDark: FacebookLogo,
   logoLight: FacebookLogo,
-  monochromeLogoDark: getFacebookMonochromeLogo({
-    isDarkMode: true
-  }),
-  monochromeLogoLight: getFacebookMonochromeLogo({
-    isDarkMode: false
-  }),
+  monochromeLogoDark: getFacebookMonochromeLogo({ isDarkMode: true }),
+  monochromeLogoLight: getFacebookMonochromeLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: "Facebook",
   createConnector: (projectAccessKey2) => {
-    var _options$connect;
-    const connector = sequenceWallet(_extends({}, options, {
-      connect: _extends({
-        projectAccessKey: projectAccessKey2
-      }, options == null ? void 0 : options.connect, {
-        settings: _extends({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+    var _a2;
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        projectAccessKey: projectAccessKey2,
+        ...options == null ? void 0 : options.connect,
+        settings: {
+          ...(_a2 = options == null ? void 0 : options.connect) == null ? void 0 : _a2.settings,
           signInWith: "facebook"
-        })
-      })
-    }));
+        }
+      }
+    });
     return connector;
   }
 });
 const GoogleLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends({
-    viewBox: "0 0 41 40",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("g", {
-    id: "Frame 2114"
-  }, /* @__PURE__ */ React.createElement("g", {
-    id: "Group"
-  }, /* @__PURE__ */ React.createElement("path", {
-    id: "Vector",
-    d: "M20.7497 16.8828V23.5218H29.9756C29.5705 25.6568 28.3548 27.4647 26.5314 28.6803L32.095 32.9972C35.3366 30.0051 37.2068 25.6102 37.2068 20.3895C37.2068 19.1739 37.0977 18.005 36.895 16.883L20.7497 16.8828Z",
-    fill: "#4285F4"
-  }), /* @__PURE__ */ React.createElement("path", {
-    id: "Vector_2",
-    d: "M11.1424 23.2627L9.88756 24.2232L5.44592 27.6829C8.2667 33.2777 14.0481 37.1427 20.7493 37.1427C25.3778 37.1427 29.2583 35.6154 32.0947 32.9973L26.5311 28.6803C25.0038 29.7089 23.0557 30.3324 20.7493 30.3324C16.2922 30.3324 12.5053 27.3246 11.1494 23.2726L11.1424 23.2627Z",
-    fill: "#34A853"
-  }), /* @__PURE__ */ React.createElement("path", {
-    id: "Vector_3",
-    d: "M5.44594 12.3169C4.27718 14.6233 3.60712 17.2259 3.60712 19.9999C3.60712 22.7739 4.27718 25.3765 5.44594 27.6829C5.44594 27.6984 11.1499 23.2569 11.1499 23.2569C10.8071 22.2284 10.6044 21.1375 10.6044 19.9997C10.6044 18.8619 10.8071 17.7711 11.1499 16.7425L5.44594 12.3169Z",
-    fill: "#FBBC05"
-  }), /* @__PURE__ */ React.createElement("path", {
-    id: "Vector_4",
-    d: "M20.7497 9.6829C23.2744 9.6829 25.5185 10.5556 27.3107 12.2387L32.2198 7.32972C29.2431 4.55574 25.3783 2.85693 20.7497 2.85693C14.0484 2.85693 8.2667 6.70628 5.44592 12.3167L11.1497 16.7427C12.5055 12.6907 16.2926 9.6829 20.7497 9.6829Z",
-    fill: "#EA4335"
-  }))));
+  return jsxRuntimeExports$1.jsx("svg", { viewBox: "0 0 41 40", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: jsxRuntimeExports$1.jsx("g", { id: "Frame 2114", children: jsxRuntimeExports$1.jsxs("g", { id: "Group", children: [jsxRuntimeExports$1.jsx("path", { id: "Vector", d: "M20.7497 16.8828V23.5218H29.9756C29.5705 25.6568 28.3548 27.4647 26.5314 28.6803L32.095 32.9972C35.3366 30.0051 37.2068 25.6102 37.2068 20.3895C37.2068 19.1739 37.0977 18.005 36.895 16.883L20.7497 16.8828Z", fill: "#4285F4" }), jsxRuntimeExports$1.jsx("path", { id: "Vector_2", d: "M11.1424 23.2627L9.88756 24.2232L5.44592 27.6829C8.2667 33.2777 14.0481 37.1427 20.7493 37.1427C25.3778 37.1427 29.2583 35.6154 32.0947 32.9973L26.5311 28.6803C25.0038 29.7089 23.0557 30.3324 20.7493 30.3324C16.2922 30.3324 12.5053 27.3246 11.1494 23.2726L11.1424 23.2627Z", fill: "#34A853" }), jsxRuntimeExports$1.jsx("path", { id: "Vector_3", d: "M5.44594 12.3169C4.27718 14.6233 3.60712 17.2259 3.60712 19.9999C3.60712 22.7739 4.27718 25.3765 5.44594 27.6829C5.44594 27.6984 11.1499 23.2569 11.1499 23.2569C10.8071 22.2284 10.6044 21.1375 10.6044 19.9997C10.6044 18.8619 10.8071 17.7711 11.1499 16.7425L5.44594 12.3169Z", fill: "#FBBC05" }), jsxRuntimeExports$1.jsx("path", { id: "Vector_4", d: "M20.7497 9.6829C23.2744 9.6829 25.5185 10.5556 27.3107 12.2387L32.2198 7.32972C29.2431 4.55574 25.3783 2.85693 20.7497 2.85693C14.0484 2.85693 8.2667 6.70628 5.44592 12.3167L11.1497 16.7427C12.5055 12.6907 16.2926 9.6829 20.7497 9.6829Z", fill: "#EA4335" })] }) }) });
 };
-const getMonochromeGoogleLogo = ({
-  isDarkMode
-}) => {
+const getMonochromeGoogleLogo = ({ isDarkMode }) => {
   const fillColor = isDarkMode ? "white" : "black";
   const GoogleMonochromeLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 41 40",
-      fill: "none"
-    }, props), /* @__PURE__ */ React.createElement("path", {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      d: "M25.8355 14.7613C24.5584 13.5329 22.9441 12.9032 21.1356 12.9032C17.9377 12.9032 15.2302 15.0813 14.2595 18.0232L14.2593 18.023C14.0142 18.7662 13.8712 19.5609 13.8712 20.3866C13.8712 21.2124 14.004 22.0072 14.2594 22.7504L14.2587 22.751H14.2595C15.2302 25.6929 17.9377 27.871 21.1356 27.871C22.7907 27.871 24.1904 27.4168 25.2939 26.6736V26.6732C26.5812 25.7958 27.4497 24.5055 27.746 22.9777H21.1355V18.3223H32.6808C32.8034 19.0758 32.875 19.85 32.875 20.6655C32.875 24.4332 31.5467 27.6126 29.2377 29.77L29.2378 29.7703C27.2148 31.6594 24.446 32.7742 21.1356 32.7742C16.3438 32.7742 12.2059 29.9871 10.1931 25.9407V25.94L10.193 25.9401C9.35521 24.2678 8.875 22.3891 8.875 20.3866C8.875 18.384 9.35521 16.5053 10.193 14.833H10.1934C12.2063 10.7869 16.344 8 21.1356 8C24.446 8 27.2148 9.22839 29.3298 11.231L25.8355 14.7613Z",
-      fill: fillColor
-    }));
+    return jsxRuntimeExports$1.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 41 40", fill: "none", ...props, children: jsxRuntimeExports$1.jsx("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M25.8355 14.7613C24.5584 13.5329 22.9441 12.9032 21.1356 12.9032C17.9377 12.9032 15.2302 15.0813 14.2595 18.0232L14.2593 18.023C14.0142 18.7662 13.8712 19.5609 13.8712 20.3866C13.8712 21.2124 14.004 22.0072 14.2594 22.7504L14.2587 22.751H14.2595C15.2302 25.6929 17.9377 27.871 21.1356 27.871C22.7907 27.871 24.1904 27.4168 25.2939 26.6736V26.6732C26.5812 25.7958 27.4497 24.5055 27.746 22.9777H21.1355V18.3223H32.6808C32.8034 19.0758 32.875 19.85 32.875 20.6655C32.875 24.4332 31.5467 27.6126 29.2377 29.77L29.2378 29.7703C27.2148 31.6594 24.446 32.7742 21.1356 32.7742C16.3438 32.7742 12.2059 29.9871 10.1931 25.9407V25.94L10.193 25.9401C9.35521 24.2678 8.875 22.3891 8.875 20.3866C8.875 18.384 9.35521 16.5053 10.193 14.833H10.1934C12.2063 10.7869 16.344 8 21.1356 8C24.446 8 27.2148 9.22839 29.3298 11.231L25.8355 14.7613Z", fill: fillColor }) });
   };
   return GoogleMonochromeLogo;
 };
@@ -109952,239 +105915,27 @@ const google = (options) => ({
   isSequenceBased: true,
   logoDark: GoogleLogo,
   logoLight: GoogleLogo,
-  monochromeLogoDark: getMonochromeGoogleLogo({
-    isDarkMode: true
-  }),
-  monochromeLogoLight: getMonochromeGoogleLogo({
-    isDarkMode: false
-  }),
+  monochromeLogoDark: getMonochromeGoogleLogo({ isDarkMode: true }),
+  monochromeLogoLight: getMonochromeGoogleLogo({ isDarkMode: false }),
   name: "Google",
   createConnector: (projectAccessKey2) => {
-    var _options$connect;
-    const connector = sequenceWallet(_extends({}, options, {
-      connect: _extends({
-        projectAccessKey: projectAccessKey2
-      }, options == null ? void 0 : options.connect, {
-        settings: _extends({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+    var _a2;
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        projectAccessKey: projectAccessKey2,
+        ...options == null ? void 0 : options.connect,
+        settings: {
+          ...(_a2 = options == null ? void 0 : options.connect) == null ? void 0 : _a2.settings,
           signInWith: "google"
-        })
-      })
-    }));
+        }
+      }
+    });
     return connector;
   }
 });
 const MetamaskLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends({
-    viewBox: "0 0 28 28",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("rect", {
-    width: "28",
-    height: "28"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M24.0891 3.1199L15.3446 9.61456L16.9617 5.7828L24.0891 3.1199Z",
-    fill: "#E2761B",
-    stroke: "#E2761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M3.90207 3.1199L12.5763 9.67608L11.0383 5.7828L3.90207 3.1199Z",
-    fill: "#E4761B",
-    stroke: "#E4761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M20.9429 18.1745L18.6139 21.7426L23.597 23.1136L25.0295 18.2536L20.9429 18.1745Z",
-    fill: "#E4761B",
-    stroke: "#E4761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M2.97929 18.2536L4.40301 23.1136L9.38607 21.7426L7.05713 18.1745L2.97929 18.2536Z",
-    fill: "#E4761B",
-    stroke: "#E4761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M9.10483 12.1456L7.71626 14.2461L12.6642 14.4658L12.4884 9.14877L9.10483 12.1456Z",
-    fill: "#E4761B",
-    stroke: "#E4761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M18.8864 12.1456L15.4589 9.08725L15.3446 14.4658L20.2837 14.2461L18.8864 12.1456Z",
-    fill: "#E4761B",
-    stroke: "#E4761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M9.38606 21.7426L12.3566 20.2925L9.79033 18.2888L9.38606 21.7426Z",
-    fill: "#E4761B",
-    stroke: "#E4761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M15.6347 20.2925L18.6139 21.7426L18.2009 18.2888L15.6347 20.2925Z",
-    fill: "#E4761B",
-    stroke: "#E4761B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M18.6139 21.7426L15.6347 20.2925L15.8719 22.2348L15.8456 23.0521L18.6139 21.7426Z",
-    fill: "#D7C1B3",
-    stroke: "#D7C1B3",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M9.38606 21.7426L12.1544 23.0521L12.1368 22.2348L12.3566 20.2925L9.38606 21.7426Z",
-    fill: "#D7C1B3",
-    stroke: "#D7C1B3",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M12.1984 17.0056L9.72002 16.2762L11.4689 15.4765L12.1984 17.0056Z",
-    fill: "#233447",
-    stroke: "#233447",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M15.7928 17.0056L16.5223 15.4765L18.28 16.2762L15.7928 17.0056Z",
-    fill: "#233447",
-    stroke: "#233447",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M9.38606 21.7426L9.80791 18.1745L7.05712 18.2536L9.38606 21.7426Z",
-    fill: "#CD6116",
-    stroke: "#CD6116",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M18.1921 18.1745L18.6139 21.7426L20.9429 18.2536L18.1921 18.1745Z",
-    fill: "#CD6116",
-    stroke: "#CD6116",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M20.2837 14.2461L15.3446 14.4658L15.8016 17.0057L16.5311 15.4765L18.2888 16.2762L20.2837 14.2461Z",
-    fill: "#CD6116",
-    stroke: "#CD6116",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M9.72002 16.2762L11.4777 15.4765L12.1984 17.0057L12.6642 14.4658L7.71626 14.2461L9.72002 16.2762Z",
-    fill: "#CD6116",
-    stroke: "#CD6116",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M7.71626 14.2461L9.79033 18.2888L9.72002 16.2762L7.71626 14.2461Z",
-    fill: "#E4751F",
-    stroke: "#E4751F",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M18.2888 16.2762L18.2009 18.2888L20.2837 14.2461L18.2888 16.2762Z",
-    fill: "#E4751F",
-    stroke: "#E4751F",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M12.6642 14.4658L12.1984 17.0057L12.7784 20.0025L12.9102 16.0565L12.6642 14.4658Z",
-    fill: "#E4751F",
-    stroke: "#E4751F",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M15.3446 14.4658L15.1073 16.0477L15.2128 20.0025L15.8016 17.0057L15.3446 14.4658Z",
-    fill: "#E4751F",
-    stroke: "#E4751F",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M15.8016 17.0056L15.2128 20.0025L15.6347 20.2925L18.2009 18.2888L18.2888 16.2762L15.8016 17.0056Z",
-    fill: "#F6851B",
-    stroke: "#F6851B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M9.72002 16.2762L9.79033 18.2888L12.3566 20.2925L12.7784 20.0025L12.1984 17.0056L9.72002 16.2762Z",
-    fill: "#F6851B",
-    stroke: "#F6851B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M15.8456 23.0521L15.8719 22.2348L15.6522 22.0414H12.339L12.1368 22.2348L12.1544 23.0521L9.38606 21.7426L10.3528 22.5336L12.3126 23.8958H15.6786L17.6472 22.5336L18.6139 21.7426L15.8456 23.0521Z",
-    fill: "#C0AD9E",
-    stroke: "#C0AD9E",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M15.6347 20.2925L15.2128 20.0025H12.7784L12.3566 20.2925L12.1368 22.2348L12.339 22.0414H15.6522L15.8719 22.2348L15.6347 20.2925Z",
-    fill: "#161616",
-    stroke: "#161616",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M24.4583 10.0364L25.2053 6.45072L24.0891 3.1199L15.6347 9.39485L18.8864 12.1456L23.4827 13.4903L24.5022 12.3038L24.0628 11.9874L24.7658 11.3459L24.221 10.924L24.924 10.3879L24.4583 10.0364Z",
-    fill: "#763D16",
-    stroke: "#763D16",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M2.79472 6.45072L3.54174 10.0364L3.06717 10.3879L3.77024 10.924L3.23415 11.3459L3.93722 11.9874L3.4978 12.3038L4.50847 13.4903L9.10483 12.1456L12.3566 9.39485L3.90207 3.1199L2.79472 6.45072Z",
-    fill: "#763D16",
-    stroke: "#763D16",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M23.4827 13.4903L18.8864 12.1456L20.2837 14.2461L18.2009 18.2888L20.9429 18.2536H25.0295L23.4827 13.4903Z",
-    fill: "#F6851B",
-    stroke: "#F6851B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M9.10484 12.1456L4.50848 13.4903L2.97929 18.2536H7.05713L9.79033 18.2888L7.71626 14.2461L9.10484 12.1456Z",
-    fill: "#F6851B",
-    stroke: "#F6851B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }), /* @__PURE__ */ React.createElement("path", {
-    d: "M15.3446 14.4658L15.6347 9.39485L16.9705 5.7828H11.0383L12.3566 9.39485L12.6642 14.4658L12.7696 16.0653L12.7784 20.0025H15.2128L15.2304 16.0653L15.3446 14.4658Z",
-    fill: "#F6851B",
-    stroke: "#F6851B",
-    strokeWidth: "0.0878845",
-    strokeLinecap: "round",
-    strokeLinejoin: "round"
-  }));
+  return jsxRuntimeExports$1.jsxs("svg", { viewBox: "0 0 28 28", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [jsxRuntimeExports$1.jsx("rect", { width: "28", height: "28" }), jsxRuntimeExports$1.jsx("path", { d: "M24.0891 3.1199L15.3446 9.61456L16.9617 5.7828L24.0891 3.1199Z", fill: "#E2761B", stroke: "#E2761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M3.90207 3.1199L12.5763 9.67608L11.0383 5.7828L3.90207 3.1199Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M20.9429 18.1745L18.6139 21.7426L23.597 23.1136L25.0295 18.2536L20.9429 18.1745Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M2.97929 18.2536L4.40301 23.1136L9.38607 21.7426L7.05713 18.1745L2.97929 18.2536Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.10483 12.1456L7.71626 14.2461L12.6642 14.4658L12.4884 9.14877L9.10483 12.1456Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.8864 12.1456L15.4589 9.08725L15.3446 14.4658L20.2837 14.2461L18.8864 12.1456Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.38606 21.7426L12.3566 20.2925L9.79033 18.2888L9.38606 21.7426Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.6347 20.2925L18.6139 21.7426L18.2009 18.2888L15.6347 20.2925Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.6139 21.7426L15.6347 20.2925L15.8719 22.2348L15.8456 23.0521L18.6139 21.7426Z", fill: "#D7C1B3", stroke: "#D7C1B3", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.38606 21.7426L12.1544 23.0521L12.1368 22.2348L12.3566 20.2925L9.38606 21.7426Z", fill: "#D7C1B3", stroke: "#D7C1B3", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M12.1984 17.0056L9.72002 16.2762L11.4689 15.4765L12.1984 17.0056Z", fill: "#233447", stroke: "#233447", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.7928 17.0056L16.5223 15.4765L18.28 16.2762L15.7928 17.0056Z", fill: "#233447", stroke: "#233447", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.38606 21.7426L9.80791 18.1745L7.05712 18.2536L9.38606 21.7426Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.1921 18.1745L18.6139 21.7426L20.9429 18.2536L18.1921 18.1745Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M20.2837 14.2461L15.3446 14.4658L15.8016 17.0057L16.5311 15.4765L18.2888 16.2762L20.2837 14.2461Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.72002 16.2762L11.4777 15.4765L12.1984 17.0057L12.6642 14.4658L7.71626 14.2461L9.72002 16.2762Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M7.71626 14.2461L9.79033 18.2888L9.72002 16.2762L7.71626 14.2461Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.2888 16.2762L18.2009 18.2888L20.2837 14.2461L18.2888 16.2762Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M12.6642 14.4658L12.1984 17.0057L12.7784 20.0025L12.9102 16.0565L12.6642 14.4658Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.3446 14.4658L15.1073 16.0477L15.2128 20.0025L15.8016 17.0057L15.3446 14.4658Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.8016 17.0056L15.2128 20.0025L15.6347 20.2925L18.2009 18.2888L18.2888 16.2762L15.8016 17.0056Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.72002 16.2762L9.79033 18.2888L12.3566 20.2925L12.7784 20.0025L12.1984 17.0056L9.72002 16.2762Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.8456 23.0521L15.8719 22.2348L15.6522 22.0414H12.339L12.1368 22.2348L12.1544 23.0521L9.38606 21.7426L10.3528 22.5336L12.3126 23.8958H15.6786L17.6472 22.5336L18.6139 21.7426L15.8456 23.0521Z", fill: "#C0AD9E", stroke: "#C0AD9E", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.6347 20.2925L15.2128 20.0025H12.7784L12.3566 20.2925L12.1368 22.2348L12.339 22.0414H15.6522L15.8719 22.2348L15.6347 20.2925Z", fill: "#161616", stroke: "#161616", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M24.4583 10.0364L25.2053 6.45072L24.0891 3.1199L15.6347 9.39485L18.8864 12.1456L23.4827 13.4903L24.5022 12.3038L24.0628 11.9874L24.7658 11.3459L24.221 10.924L24.924 10.3879L24.4583 10.0364Z", fill: "#763D16", stroke: "#763D16", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M2.79472 6.45072L3.54174 10.0364L3.06717 10.3879L3.77024 10.924L3.23415 11.3459L3.93722 11.9874L3.4978 12.3038L4.50847 13.4903L9.10483 12.1456L12.3566 9.39485L3.90207 3.1199L2.79472 6.45072Z", fill: "#763D16", stroke: "#763D16", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M23.4827 13.4903L18.8864 12.1456L20.2837 14.2461L18.2009 18.2888L20.9429 18.2536H25.0295L23.4827 13.4903Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.10484 12.1456L4.50848 13.4903L2.97929 18.2536H7.05713L9.79033 18.2888L7.71626 14.2461L9.10484 12.1456Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.3446 14.4658L15.6347 9.39485L16.9705 5.7828H11.0383L12.3566 9.39485L12.6642 14.4658L12.7696 16.0653L12.7784 20.0025H15.2128L15.2304 16.0653L15.3446 14.4658Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" })] });
 };
 const metamask = () => ({
   id: "metamask",
@@ -110193,259 +105944,12 @@ const metamask = () => ({
   // iconBackground: '#fff',
   name: "Metamask",
   createConnector: () => {
-    const connector = injected({
-      target: "metaMask"
-    });
+    const connector = injected({ target: "metaMask" });
     return connector;
   }
 });
 const SequenceLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends({
-    xmlns: "http://www.w3.org/2000/svg",
-    style: {
-      fill: "none"
-    },
-    id: "svg1316",
-    version: "1.1",
-    viewBox: "0 0 396 396"
-  }, props), /* @__PURE__ */ React.createElement("g", {
-    transform: "translate(0,38)",
-    id: "g1256",
-    clipPath: "url(#clip0_5_131)"
-  }, /* @__PURE__ */ React.createElement("g", {
-    id: "g1254",
-    clipPath: "url(#clip1_5_131)"
-  }, /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "#111111"
-    },
-    id: "path1232",
-    d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint0_linear_5_13"
-    },
-    id: "path1234",
-    d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint1_linear_5_131"
-    },
-    id: "path1236",
-    d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint2_linear_5_131)"
-    },
-    id: "path1238",
-    d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint3_linear_5_131)"
-    },
-    id: "path1240",
-    d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint4_linear_5_131)"
-    },
-    id: "path1242",
-    d: "m 98.9999,238.126 c 0,-10.965 -8.8648,-19.854 -19.8,-19.854 -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.966 8.8648,19.855 19.8,19.855 10.9352,0 19.8,-8.889 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint5_linear_5_131)"
-    },
-    id: "path1244",
-    d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint6_linear_5_131)"
-    },
-    id: "path1246",
-    d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint7_linear_5_131)"
-    },
-    id: "path1248",
-    d: "M 316.8,59.5632 H 158.4 c -10.935,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.865,19.8544 19.8,19.8544 h 158.4 c 10.935,0 19.8,-8.8892 19.8,-19.8544 0,-10.9653 -8.865,-19.8544 -19.8,-19.8544 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint8_linear_5_131)"
-    },
-    id: "path1250",
-    d: "M 316.8,218.272 H 158.4 c -10.935,0 -19.8,8.889 -19.8,19.854 0,10.966 8.865,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.889 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }), /* @__PURE__ */ React.createElement("path", {
-    style: {
-      fill: "url(#paint9_linear_5_131)"
-    },
-    id: "path1252",
-    d: "M 237.6,138.981 H 79.2 c -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.965 8.8648,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.89 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z"
-  }))), /* @__PURE__ */ React.createElement("defs", {
-    id: "defs1314"
-  }, /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "318",
-    x2: "198",
-    y1: "4.0585401e-05",
-    x1: "198",
-    id: "paint0_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1258",
-    stopColor: "#1D273D"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1260",
-    stopColor: "#0D0F13",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "63",
-    x2: "92.5",
-    y1: "99",
-    x1: "65.5",
-    id: "paint1_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1263",
-    stopColor: "#4462FE"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1265",
-    stopColor: "#7D69FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "97.591103",
-    x2: "96.137703",
-    y1: "99.291199",
-    x1: "62.879902",
-    id: "paint2_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1268",
-    stopColor: "#3757FD"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1270",
-    stopColor: "#6980FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "97.591103",
-    x2: "96.137703",
-    y1: "99.291199",
-    x1: "62.879902",
-    id: "paint3_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1273",
-    stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1275",
-    stopColor: "#6980FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "223.5",
-    x2: "91.5",
-    y1: "251.5",
-    x1: "65",
-    id: "paint4_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1278",
-    stopColor: "#BC3EE6"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1280",
-    stopColor: "#D972F1",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "146",
-    x2: "329.5",
-    y1: "172",
-    x1: "305",
-    id: "paint5_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1283",
-    stopColor: "#29BDFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1285",
-    stopColor: "#96E7FB",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "176.772",
-    x2: "334.56699",
-    y1: "178.418",
-    x1: "300.17999",
-    id: "paint6_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1288",
-    stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1290",
-    stopColor: "#85E7FF",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "60",
-    x2: "317.5",
-    y1: "99",
-    x1: "154.5",
-    id: "paint7_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1293",
-    stopColor: "#23BBFF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1295",
-    stopColor: "#85E7FF",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "218",
-    x2: "312.5",
-    y1: "258",
-    x1: "156",
-    id: "paint8_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1298",
-    stopColor: "#2447FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1300",
-    stopColor: "#6980FA",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("linearGradient", {
-    gradientUnits: "userSpaceOnUse",
-    y2: "139",
-    x2: "235.5",
-    y1: "179",
-    x1: "86.000099",
-    id: "paint9_linear_5_131"
-  }, /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1303",
-    stopColor: "#6634FF"
-  }), /* @__PURE__ */ React.createElement("stop", {
-    id: "stop1305",
-    stopColor: "#9C6DFF",
-    offset: "1"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
-    id: "clip0_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
-    style: {
-      fill: "#ffffff"
-    },
-    y: "0",
-    x: "0",
-    id: "rect1308",
-    height: "317.67001",
-    width: "396"
-  })), /* @__PURE__ */ React.createElement("clipPath", {
-    id: "clip1_5_131"
-  }, /* @__PURE__ */ React.createElement("rect", {
-    style: {
-      fill: "#ffffff"
-    },
-    y: "0",
-    x: "0",
-    id: "rect1311",
-    height: "317.67001",
-    width: "396"
-  }))));
+  return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", style: { fill: "none" }, id: "svg1316", version: "1.1", viewBox: "0 0 396 396", ...props, children: [jsxRuntimeExports$1.jsx("g", { transform: "translate(0,38)", id: "g1256", clipPath: "url(#clip0_5_131)", children: jsxRuntimeExports$1.jsxs("g", { id: "g1254", clipPath: "url(#clip1_5_131)", children: [jsxRuntimeExports$1.jsx("path", { style: { fill: "#111111" }, id: "path1232", d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint0_linear_5_13" }, id: "path1234", d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint1_linear_5_131" }, id: "path1236", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint2_linear_5_131)" }, id: "path1238", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint3_linear_5_131)" }, id: "path1240", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint4_linear_5_131)" }, id: "path1242", d: "m 98.9999,238.126 c 0,-10.965 -8.8648,-19.854 -19.8,-19.854 -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.966 8.8648,19.855 19.8,19.855 10.9352,0 19.8,-8.889 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint5_linear_5_131)" }, id: "path1244", d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint6_linear_5_131)" }, id: "path1246", d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint7_linear_5_131)" }, id: "path1248", d: "M 316.8,59.5632 H 158.4 c -10.935,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.865,19.8544 19.8,19.8544 h 158.4 c 10.935,0 19.8,-8.8892 19.8,-19.8544 0,-10.9653 -8.865,-19.8544 -19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint8_linear_5_131)" }, id: "path1250", d: "M 316.8,218.272 H 158.4 c -10.935,0 -19.8,8.889 -19.8,19.854 0,10.966 8.865,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.889 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint9_linear_5_131)" }, id: "path1252", d: "M 237.6,138.981 H 79.2 c -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.965 8.8648,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.89 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z" })] }) }), jsxRuntimeExports$1.jsxs("defs", { id: "defs1314", children: [jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "318", x2: "198", y1: "4.0585401e-05", x1: "198", id: "paint0_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1258", stopColor: "#1D273D" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1260", stopColor: "#0D0F13", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "63", x2: "92.5", y1: "99", x1: "65.5", id: "paint1_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1263", stopColor: "#4462FE" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1265", stopColor: "#7D69FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "97.591103", x2: "96.137703", y1: "99.291199", x1: "62.879902", id: "paint2_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1268", stopColor: "#3757FD" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1270", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "97.591103", x2: "96.137703", y1: "99.291199", x1: "62.879902", id: "paint3_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1273", stopColor: "#2447FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1275", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "223.5", x2: "91.5", y1: "251.5", x1: "65", id: "paint4_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1278", stopColor: "#BC3EE6" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1280", stopColor: "#D972F1", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "146", x2: "329.5", y1: "172", x1: "305", id: "paint5_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1283", stopColor: "#29BDFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1285", stopColor: "#96E7FB", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "176.772", x2: "334.56699", y1: "178.418", x1: "300.17999", id: "paint6_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1288", stopColor: "#23BBFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1290", stopColor: "#85E7FF", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "60", x2: "317.5", y1: "99", x1: "154.5", id: "paint7_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1293", stopColor: "#23BBFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1295", stopColor: "#85E7FF", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "218", x2: "312.5", y1: "258", x1: "156", id: "paint8_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1298", stopColor: "#2447FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1300", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "139", x2: "235.5", y1: "179", x1: "86.000099", id: "paint9_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1303", stopColor: "#6634FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1305", stopColor: "#9C6DFF", offset: "1" })] }), jsxRuntimeExports$1.jsx("clipPath", { id: "clip0_5_131", children: jsxRuntimeExports$1.jsx("rect", { style: { fill: "#ffffff" }, y: "0", x: "0", id: "rect1308", height: "317.67001", width: "396" }) }), jsxRuntimeExports$1.jsx("clipPath", { id: "clip1_5_131", children: jsxRuntimeExports$1.jsx("rect", { style: { fill: "#ffffff" }, y: "0", x: "0", id: "rect1311", height: "317.67001", width: "396" }) })] })] });
 };
 const mock = (options) => ({
   id: "mock",
@@ -110467,17 +105971,17 @@ const sequence = (options) => ({
   // iconBackground: '#777',
   name: "Sequence",
   createConnector: (projectAccessKey2) => {
-    const connector = sequenceWallet(_extends({}, options, {
-      connect: _extends({
-        projectAccessKey: projectAccessKey2
-      }, options.connect)
-    }));
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        projectAccessKey: projectAccessKey2,
+        ...options.connect
+      }
+    });
     return connector;
   }
 });
-const getTwitchLogo = ({
-  isDarkMode
-}) => {
+const getTwitchLogo = ({ isDarkMode }) => {
   let fillColor;
   if (isDarkMode === void 0) {
     fillColor = "#9146FF";
@@ -110485,32 +105989,7 @@ const getTwitchLogo = ({
     fillColor = isDarkMode ? "white" : "black";
   }
   const TwitchLogo = (props) => {
-    return /* @__PURE__ */ React.createElement("svg", _extends({
-      version: "1.1",
-      id: "Layer_1",
-      xmlns: "http://www.w3.org/2000/svg",
-      x: "0px",
-      y: "0px",
-      viewBox: "0 0 2400 2800",
-      transform: "scale(0.80)"
-    }, props), /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("g", {
-      id: "Layer_1-2"
-    }, /* @__PURE__ */ React.createElement("path", {
-      fill: fillColor,
-      d: "M500,0L0,500v1800h600v500l500-500h400l900-900V0H500z M2200,1300l-400,400h-400l-350,350v-350H600V200h1600 V1300z"
-    }), /* @__PURE__ */ React.createElement("rect", {
-      x: "1700",
-      y: "550",
-      fill: fillColor,
-      width: "200",
-      height: "600"
-    }), /* @__PURE__ */ React.createElement("rect", {
-      x: "1150",
-      y: "550",
-      fill: fillColor,
-      width: "200",
-      height: "600"
-    }))));
+    return jsxRuntimeExports$1.jsx("svg", { version: "1.1", id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", x: "0px", y: "0px", viewBox: "0 0 2400 2800", transform: "scale(0.80)", ...props, children: jsxRuntimeExports$1.jsx("g", { children: jsxRuntimeExports$1.jsxs("g", { id: "Layer_1-2", children: [jsxRuntimeExports$1.jsx("path", { fill: fillColor, d: "M500,0L0,500v1800h600v500l500-500h400l900-900V0H500z M2200,1300l-400,400h-400l-350,350v-350H600V200h1600\n                  V1300z" }), jsxRuntimeExports$1.jsx("rect", { x: "1700", y: "550", fill: fillColor, width: "200", height: "600" }), jsxRuntimeExports$1.jsx("rect", { x: "1150", y: "550", fill: fillColor, width: "200", height: "600" })] }) }) });
   };
   return TwitchLogo;
 };
@@ -110519,37 +105998,28 @@ const twitch = (options) => ({
   isSequenceBased: true,
   logoDark: getTwitchLogo({}),
   logoLight: getTwitchLogo({}),
-  monochromeLogoDark: getTwitchLogo({
-    isDarkMode: true
-  }),
-  monochromeLogoLight: getTwitchLogo({
-    isDarkMode: false
-  }),
+  monochromeLogoDark: getTwitchLogo({ isDarkMode: true }),
+  monochromeLogoLight: getTwitchLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: "Twitch",
   createConnector: (projectAccessKey2) => {
-    var _options$connect;
-    const connector = sequenceWallet(_extends({}, options, {
-      connect: _extends({
-        projectAccessKey: projectAccessKey2
-      }, options == null ? void 0 : options.connect, {
-        settings: _extends({}, options == null || (_options$connect = options.connect) == null ? void 0 : _options$connect.settings, {
+    var _a2;
+    const connector = sequenceWallet({
+      ...options,
+      connect: {
+        projectAccessKey: projectAccessKey2,
+        ...options == null ? void 0 : options.connect,
+        settings: {
+          ...(_a2 = options == null ? void 0 : options.connect) == null ? void 0 : _a2.settings,
           signInWith: "twitch"
-        })
-      })
-    }));
+        }
+      }
+    });
     return connector;
   }
 });
 const WalletConnectLogo = (props) => {
-  return /* @__PURE__ */ React.createElement("svg", _extends({
-    fill: "none",
-    viewBox: "0 0 480 332",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), /* @__PURE__ */ React.createElement("path", {
-    d: "m126.613 93.9842c62.622-61.3123 164.152-61.3123 226.775 0l7.536 7.3788c3.131 3.066 3.131 8.036 0 11.102l-25.781 25.242c-1.566 1.533-4.104 1.533-5.67 0l-10.371-10.154c-43.687-42.7734-114.517-42.7734-158.204 0l-11.107 10.874c-1.565 1.533-4.103 1.533-5.669 0l-25.781-25.242c-3.132-3.066-3.132-8.036 0-11.102zm280.093 52.2038 22.946 22.465c3.131 3.066 3.131 8.036 0 11.102l-103.463 101.301c-3.131 3.065-8.208 3.065-11.339 0l-73.432-71.896c-.783-.767-2.052-.767-2.835 0l-73.43 71.896c-3.131 3.065-8.208 3.065-11.339 0l-103.4657-101.302c-3.1311-3.066-3.1311-8.036 0-11.102l22.9456-22.466c3.1311-3.065 8.2077-3.065 11.3388 0l73.4333 71.897c.782.767 2.051.767 2.834 0l73.429-71.897c3.131-3.065 8.208-3.065 11.339 0l73.433 71.897c.783.767 2.052.767 2.835 0l73.431-71.895c3.132-3.066 8.208-3.066 11.339 0z",
-    fill: "#3396ff"
-  }));
+  return jsxRuntimeExports$1.jsx("svg", { fill: "none", viewBox: "0 0 480 332", xmlns: "http://www.w3.org/2000/svg", ...props, children: jsxRuntimeExports$1.jsx("path", { d: "m126.613 93.9842c62.622-61.3123 164.152-61.3123 226.775 0l7.536 7.3788c3.131 3.066 3.131 8.036 0 11.102l-25.781 25.242c-1.566 1.533-4.104 1.533-5.67 0l-10.371-10.154c-43.687-42.7734-114.517-42.7734-158.204 0l-11.107 10.874c-1.565 1.533-4.103 1.533-5.669 0l-25.781-25.242c-3.132-3.066-3.132-8.036 0-11.102zm280.093 52.2038 22.946 22.465c3.131 3.066 3.131 8.036 0 11.102l-103.463 101.301c-3.131 3.065-8.208 3.065-11.339 0l-73.432-71.896c-.783-.767-2.052-.767-2.835 0l-73.43 71.896c-3.131 3.065-8.208 3.065-11.339 0l-103.4657-101.302c-3.1311-3.066-3.1311-8.036 0-11.102l22.9456-22.466c3.1311-3.065 8.2077-3.065 11.3388 0l73.4333 71.897c.782.767 2.051.767 2.834 0l73.429-71.897c3.131-3.065 8.208-3.065 11.339 0l73.433 71.897c.783.767 2.052.767 2.835 0l73.431-71.895c3.132-3.066 8.208-3.066 11.339 0z", fill: "#3396ff" }) });
 };
 const walletConnect = (options) => ({
   id: "wallet-connect",
@@ -110558,45 +106028,37 @@ const walletConnect = (options) => ({
   // iconBackground: '#fff',
   name: "Walletconnect",
   createConnector: () => {
-    const connector = walletConnect$1(_extends({}, options));
+    const connector = walletConnect$1({
+      ...options
+    });
     return connector;
   }
 });
 const appleWaas = (options) => ({
   id: "apple-waas",
-  logoDark: getAppleLogo({
-    isDarkMode: true
-  }),
-  logoLight: getAppleLogo({
-    isDarkMode: false
-  }),
-  monochromeLogoDark: getAppleMonochromeLogo({
-    isDarkMode: true
-  }),
-  monochromeLogoLight: getAppleMonochromeLogo({
-    isDarkMode: false
-  }),
+  logoDark: getAppleLogo({ isDarkMode: true }),
+  logoLight: getAppleLogo({ isDarkMode: false }),
+  monochromeLogoDark: getAppleMonochromeLogo({ isDarkMode: true }),
+  monochromeLogoLight: getAppleMonochromeLogo({ isDarkMode: false }),
   name: "Apple",
   createConnector: () => {
-    const connector = sequenceWaasWallet(_extends({}, options, {
+    const connector = sequenceWaasWallet({
+      ...options,
       loginType: "apple"
-    }));
+    });
     return connector;
   }
 });
 const emailWaas = (options) => ({
   id: "email-waas",
-  logoDark: getEmailLogo({
-    isDarkMode: true
-  }),
-  logoLight: getEmailLogo({
-    isDarkMode: false
-  }),
+  logoDark: getEmailLogo({ isDarkMode: true }),
+  logoLight: getEmailLogo({ isDarkMode: false }),
   name: "Email",
   createConnector: () => {
-    const connector = sequenceWaasWallet(_extends({}, options, {
+    const connector = sequenceWaasWallet({
+      ...options,
       loginType: "email"
-    }));
+    });
     return connector;
   }
 });
@@ -110604,26 +106066,18 @@ const googleWaas = (options) => ({
   id: "google-waas",
   logoDark: GoogleLogo,
   logoLight: GoogleLogo,
-  monochromeLogoDark: getMonochromeGoogleLogo({
-    isDarkMode: true
-  }),
-  monochromeLogoLight: getMonochromeGoogleLogo({
-    isDarkMode: false
-  }),
+  monochromeLogoDark: getMonochromeGoogleLogo({ isDarkMode: true }),
+  monochromeLogoLight: getMonochromeGoogleLogo({ isDarkMode: false }),
   name: "Google",
   createConnector: () => {
-    const connector = sequenceWaasWallet(_extends({}, options, {
+    const connector = sequenceWaasWallet({
+      ...options,
       loginType: "google"
-    }));
+    });
     return connector;
   }
 });
-const getDefaultConnectors = ({
-  walletConnectProjectId,
-  defaultChainId,
-  projectAccessKey: projectAccessKey2,
-  appName
-}) => {
+const getDefaultConnectors = ({ walletConnectProjectId, defaultChainId, projectAccessKey: projectAccessKey2, appName }) => {
   const connectors = getKitConnectWallets(projectAccessKey2, [
     email({
       defaultNetwork: defaultChainId,
@@ -110671,29 +106125,23 @@ const getDefaultConnectors = ({
   ]);
   return connectors;
 };
-const getDefaultWaasConnectors = ({
-  projectAccessKey: projectAccessKey2,
-  waasConfigKey: waasConfigKey2,
-  googleClientId: googleClientId2,
-  appleClientId: appleClientId2,
-  appleRedirectURI: appleRedirectURI2,
-  walletConnectProjectId,
-  appName,
-  defaultChainId,
-  enableConfirmationModal,
-  isDev: _isDev = false
-}) => {
-  const wallets = [emailWaas({
-    projectAccessKey: projectAccessKey2,
-    waasConfigKey: waasConfigKey2,
-    enableConfirmationModal,
-    network: defaultChainId,
-    isDev: _isDev
-  }), coinbaseWallet({
-    appName
-  }), metamask(), walletConnect({
-    projectId: walletConnectProjectId
-  })];
+const getDefaultWaasConnectors = ({ projectAccessKey: projectAccessKey2, waasConfigKey: waasConfigKey2, googleClientId: googleClientId2, appleClientId: appleClientId2, appleRedirectURI: appleRedirectURI2, walletConnectProjectId, appName, defaultChainId, enableConfirmationModal, isDev = false }) => {
+  const wallets = [
+    emailWaas({
+      projectAccessKey: projectAccessKey2,
+      waasConfigKey: waasConfigKey2,
+      enableConfirmationModal,
+      network: defaultChainId,
+      isDev
+    }),
+    coinbaseWallet({
+      appName
+    }),
+    metamask(),
+    walletConnect({
+      projectId: walletConnectProjectId
+    })
+  ];
   if (googleClientId2) {
     wallets.push(googleWaas({
       projectAccessKey: projectAccessKey2,
@@ -110701,7 +106149,7 @@ const getDefaultWaasConnectors = ({
       waasConfigKey: waasConfigKey2,
       enableConfirmationModal,
       network: defaultChainId,
-      isDev: _isDev
+      isDev
     }));
   }
   if (appleClientId2 && appleRedirectURI2) {
@@ -110712,7 +106160,7 @@ const getDefaultWaasConnectors = ({
       waasConfigKey: waasConfigKey2,
       enableConfirmationModal,
       network: defaultChainId,
-      isDev: _isDev
+      isDev
     }));
   }
   const connectors = getKitConnectWallets(projectAccessKey2, wallets);
@@ -110939,13 +106387,13 @@ export {
   Buffer2 as B,
   HttpRequestError as H,
   __vitePreload as _,
-  getDefaultExportFromCjs$1 as a,
-  getAugmentedNamespace as b,
+  getAugmentedNamespace as a,
+  bnExports as b,
   commonjsGlobal as c,
-  bnExports as d,
+  require$$0$1 as d,
   eventemitter3Exports as e,
-  require$$2$1 as f,
-  global$1 as g,
+  global$1 as f,
+  getDefaultExportFromCjs$1 as g,
   BaseError$2 as h,
   inherits_browserExports as i,
   getUrl as j,
@@ -110956,7 +106404,7 @@ export {
   encodeAbiParameters as o,
   process$1 as p,
   isHex as q,
-  require$$0$1 as r,
+  require$$2$1 as r,
   stringify as s,
   tslib_es6$2 as t
 };
