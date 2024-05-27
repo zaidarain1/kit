@@ -1,5 +1,17 @@
 # @0xsequence/kit-example-react
 
+## 0.7.1
+
+### Patch Changes
+
+- Fix exports of email waas
+
+- Updated dependencies []:
+  - @0xsequence/kit-checkout@2.8.1
+  - @0xsequence/kit-connectors@2.8.1
+  - @0xsequence/kit@2.8.1
+  - @0xsequence/kit-wallet@2.8.1
+
 ## 0.7.0
 
 ### Minor Changes
