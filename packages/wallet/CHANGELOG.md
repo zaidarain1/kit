@@ -1,5 +1,14 @@
 # @0xsequence/kit-wallet
 
+## 2.8.1
+
+### Patch Changes
+
+- Fix exports of email waas
+
+- Updated dependencies []:
+  - @0xsequence/kit@2.8.1
+
 ## 2.8.0
 
 ### Minor Changes
