@@ -1,12 +1,13 @@
 import { SequenceAPIClient } from '@0xsequence/api'
 import { useMemo } from 'react'
 
-import { useProjectAccessKey } from './useProjectAccessKey'
 import { useKitConfig } from '../contexts/KitConfig'
+
+import { useProjectAccessKey } from './useProjectAccessKey'
 
 export const useAPIClient = () => {
   const projectAccessKey = useProjectAccessKey()
-  const { isDev = false } = useKitConfig() 
+  const { isDev = false } = useKitConfig()
 
   const clientUrl = isDev ? 'https://dev-api.sequence.app' : 'https://api.sequence.app'
 

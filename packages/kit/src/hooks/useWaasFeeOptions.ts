@@ -1,3 +1,5 @@
+'use client'
+
 import { FeeOption } from '@0xsequence/waas'
 import { ethers } from 'ethers'
 import { useState, useEffect } from 'react'

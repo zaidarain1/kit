@@ -1,5 +1,6 @@
 import { sequence } from '0xsequence'
 import { Box, CheckmarkIcon, Text } from '@0xsequence/design-system'
+import { ChainId } from '@0xsequence/network'
 import React, { useEffect } from 'react'
 
 import { TransactionSuccessNavigation } from '../contexts'
@@ -10,7 +11,7 @@ export const TransactionSuccess = () => {
   const nav = useNavigation()
   const navigation = nav.navigation as TransactionSuccessNavigation
 
-  const chainId = settings?.sardineCheckout?.chainId || 137
+  const chainId = settings?.sardineCheckout?.chainId || ChainId.POLYGON
   const network = sequence.network.allNetworks.find(n => n.chainId === chainId)
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import { Box, Text, Card, Button, Select, SignoutIcon } from '@0xsequence/design
 import { signEthAuthProof, useIndexerClient, useStorage, useWaasFeeOptions, validateEthProof } from '@0xsequence/kit'
 import { CheckoutSettings } from '@0xsequence/kit-checkout'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
-import { allNetworks } from '@0xsequence/network'
+import { ChainId, allNetworks } from '@0xsequence/network'
 import { ComponentProps, useEffect, useState } from 'react'
 import { formatUnits, parseUnits } from 'viem'
 import {
@@ -206,10 +206,10 @@ export const Connected = () => {
   // }
 
   const onSwitchNetwork = () => {
-    if (chainId === 421614) {
-      switchChain({ chainId: 42170 })
+    if (chainId === ChainId.ARBITRUM_SEPOLIA) {
+      switchChain({ chainId: ChainId.ARBITRUM_NOVA })
     } else {
-      switchChain({ chainId: 421614 })
+      switchChain({ chainId: ChainId.ARBITRUM_SEPOLIA })
     }
 
     setLastTxnDataHash(undefined)
@@ -486,7 +486,7 @@ export const Alert = ({ title, description, secondaryDescription, variant, butto
 export const getCheckoutSettings = (_address?: string) => {
   const checkoutSettings: CheckoutSettings = {
     cryptoCheckout: {
-      chainId: 137,
+      chainId: ChainId.POLYGON,
       triggerTransaction: async () => {
         console.log('triggered transaction')
       },
@@ -497,13 +497,13 @@ export const getCheckoutSettings = (_address?: string) => {
     },
     orderSummaryItems: [
       {
-        chainId: 137,
+        chainId: ChainId.POLYGON,
         contractAddress: '0x631998e91476da5b870d741192fc5cbc55f5a52e',
         tokenId: '66597',
         quantityRaw: '100'
       },
       {
-        chainId: 137,
+        chainId: ChainId.POLYGON,
         contractAddress: '0x624e4fa6980afcf8ea27bfe08e2fb5979b64df1c',
         tokenId: '1741',
         quantityRaw: '100'

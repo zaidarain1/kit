@@ -47,14 +47,15 @@ export const TxnDetails = ({ address, txs, chainId }: TxnDetailsProps) => {
 
   const getTxnProps = async () => {
     const decodedTxnDatas = await decodeTransactions(apiClient, address, txs)
+    const type = decodedTxnDatas[0]?.type
 
-    setDecodingType(decodedTxnDatas[0].type)
+    setDecodingType(type)
 
-    if (decodedTxnDatas[0].type === 'transfer') {
+    if (type === DecodingType.TRANSFER) {
       setTransferProps(decodedTxnDatas as TransferProps[])
     }
 
-    if (decodedTxnDatas[0].type === 'awardItem') {
+    if (type === DecodingType.AWARD_ITEM) {
       setAwardItemProps(decodedTxnDatas as AwardItemProps[])
     }
   }
@@ -71,27 +72,27 @@ export const TxnDetails = ({ address, txs, chainId }: TxnDetailsProps) => {
     return <></>
   }
 
-  if (transferProps.length >= 1) {
-    return <TransferItemInfo address={address} transferProps={transferProps} chainId={chainId} />
+  if (transferProps[0]) {
+    return <TransferItemInfo address={address} transferProps={transferProps[0]} chainId={chainId} />
   }
-  if (awardItemProps.length >= 1) {
+  if (awardItemProps[0]) {
     return <AwardItemInfo awardItemProps={awardItemProps[0]} />
   }
 }
 
 interface TransferItemInfoProps {
   address: string
-  transferProps: TransferProps[]
+  transferProps: TransferProps
   chainId: number
 }
 
 const TransferItemInfo = ({ address, transferProps, chainId }: TransferItemInfoProps) => {
   const { chains } = useConfig()
-  const contractAddress: string | undefined = transferProps[0]?.contractAddress
-  const toAddress: string | undefined = transferProps[0]?.to
+  const contractAddress = transferProps.contractAddress
+  const toAddress: string | undefined = transferProps.to
   const isNativeCoin = contractAddress ? compareAddress(contractAddress, ethers.constants.AddressZero) : true
-  const is1155 = transferProps[0]?.contractType === ContractType.ERC1155
-  const isNFT = transferProps[0]?.contractType === ContractType.ERC1155 || transferProps[0]?.contractType === ContractType.ERC721
+  const is1155 = transferProps.contractType === ContractType.ERC1155
+  const isNFT = transferProps.contractType === ContractType.ERC1155 || transferProps.contractType === ContractType.ERC721
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
 
   const { data: balances = [] } = useBalances({
@@ -100,7 +101,7 @@ const TransferItemInfo = ({ address, transferProps, chainId }: TransferItemInfoP
     contractAddress
   })
 
-  const { data: tokenMetadata } = useTokenMetadata(chainId, contractAddress, transferProps[0]?.tokenIds ?? [])
+  const { data: tokenMetadata } = useTokenMetadata(chainId, contractAddress, transferProps.tokenIds ?? [])
 
   const tokenBalance = contractAddress ? balances.find(b => compareAddress(b.contractAddress, contractAddress)) : undefined
   const decimals = isNativeCoin ? nativeTokenInfo.decimals : tokenBalance?.contractInfo?.decimals || 18
@@ -113,14 +114,14 @@ const TransferItemInfo = ({ address, transferProps, chainId }: TransferItemInfoP
   const name = isNativeCoin ? nativeTokenInfo.name : isNFT ? tokenMetadata?.[0]?.name : tokenBalance?.contractInfo?.name || ''
   const symbol = isNativeCoin ? nativeTokenInfo.symbol : isNFT ? '' : tokenBalance?.contractInfo?.symbol || ''
 
-  const amountSending = transferProps[0]?.amounts?.[0] ?? transferProps[0]?.value
+  const amountSending = transferProps.amounts[0] ?? transferProps.value
 
   const showSquareImage = isNFT
   return (
     <Card>
       <Box marginBottom="2">
         <Text variant="medium" color="text100">
-          {capitalize(transferProps[0]?.type ?? '')}
+          {capitalize(transferProps.type ?? '')}
         </Text>
       </Box>
 
