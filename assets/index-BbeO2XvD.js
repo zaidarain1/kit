@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-C8Zr5ncW.js","./hooks.module-DC-OdWQ1.js","./___vite-browser-external_commonjs-proxy-Dce9pLHe.js","./index-Cd7HwIDg.js","./index.es-BtX_eeTS.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-8N7Hy_q4.js","./hooks.module-DZJRiZIh.js","./___vite-browser-external_commonjs-proxy-DKrHXxC8.js","./index-Dcu77xT9.js","./index.es-DCRXBCZB.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -72044,7 +72044,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CJkprpsa.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Dk_i0zgZ.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84173,6 +84173,7 @@ const createGenericContext$1 = () => {
   };
   return [useGenericContext, genericContext.Provider];
 };
+const [useAddFundsModalContext, AddFundsContextProvider] = createGenericContext$1();
 const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericContext$1();
 const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
 const HEADER_HEIGHT$1 = "54px";
@@ -84264,6 +84265,10 @@ const fetchSardineOrderStatus = async (orderId, isDev, projectAccessKey2) => {
   const json = await response.json();
   console.log("json:", json);
   return json;
+};
+const useAddFundsModal = () => {
+  const { triggerAddFunds, closeAddFunds, addFundsSettings } = useAddFundsModalContext();
+  return { triggerAddFunds, closeAddFunds, addFundsSettings };
 };
 const useCheckoutModal = () => {
   const { triggerCheckout, closeCheckout, settings } = useCheckoutModalContext();
@@ -84518,6 +84523,36 @@ const CheckoutSelection = () => {
     height: "56px"
   }, width: "full", leftIcon: () => jsxRuntimeExports$1.jsx(TokenImage, { src: coinImageUrl, size: "sm" }), variant: "primary", label: `Pay with ${coinSymbol}`, rightIcon: SvgChevronRightIcon, onClick: onClickPayWithCrypto }), displayCryptoCheckout && (isInsufficientBalance || isPending) && jsxRuntimeExports$1.jsx(Button, { shape: "square", width: "full", variant: "glass", label: jsxRuntimeExports$1.jsxs(Box, { placeItems: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: coinImageUrl, size: "sm" }), jsxRuntimeExports$1.jsxs(Text, { children: ["Insufficient $", coinSymbol] })] }), onClick: onClickPayWithCrypto, disabled: true })] }), displayCryptoCheckout && jsxRuntimeExports$1.jsx(Box, { width: "full", justifyContent: "flex-end", children: isPending ? jsxRuntimeExports$1.jsx(Skeleton, { style: { width: "102px", height: "14px" } }) : jsxRuntimeExports$1.jsxs(Text, { fontWeight: "bold", fontSize: "small", color: "text50", children: ["Balance: ", `${formatDisplay$1(userBalance)} ${coinSymbol}`] }) })] });
 };
+const TRANSAK_API_KEY = "5911d9ec-46b5-48fa-a755-d59a715ff0cf";
+const getTransakLink = (addFundsSettings) => {
+  const defaultNetworks = "ethereum,mainnet,arbitrum,optimism,polygon,polygonzkevm,zksync,base,bnb,oasys,astar,avaxcchain";
+  const options = {
+    apiKey: TRANSAK_API_KEY,
+    referrerDomain: window.location.origin,
+    walletAddress: addFundsSettings.walletAddress,
+    fiatCurrency: addFundsSettings == null ? void 0 : addFundsSettings.fiatCurrency,
+    disableWalletAddressForm: "true",
+    defaultFiatAmount: (addFundsSettings == null ? void 0 : addFundsSettings.defaultFiatAmount) || "50",
+    defaultCryptoCurrency: (addFundsSettings == null ? void 0 : addFundsSettings.defaultCryptoCurrency) || "USDC",
+    networks: (addFundsSettings == null ? void 0 : addFundsSettings.networks) || defaultNetworks
+  };
+  const url = new URL("https://global.transak.com");
+  Object.keys(options).forEach((k2) => {
+    const option = options[k2];
+    if (option) {
+      url.searchParams.append(k2, option);
+    }
+  });
+  return url.href;
+};
+const AddFundsContent = () => {
+  const { addFundsSettings } = useAddFundsModal();
+  if (!addFundsSettings) {
+    return;
+  }
+  const link = getTransakLink(addFundsSettings);
+  return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", width: "full", paddingX: "4", paddingBottom: "4", height: "full", style: { height: "600px" }, children: jsxRuntimeExports$1.jsx(Box, { as: "iframe", width: "full", height: "full", borderWidth: "none", src: link }) });
+};
 const DEFAULT_LOCATION$1 = {
   location: "select-method-checkout"
 };
@@ -84528,7 +84563,9 @@ const KitCheckoutProvider = (props) => {
 const KitCheckoutContent = ({ children }) => {
   const { theme, position } = useTheme();
   const [openCheckoutModal, setOpenCheckoutModal] = reactExports.useState(false);
+  const [openAddFundsModal, setOpenAddFundsModal] = reactExports.useState(false);
   const [settings, setSettings] = reactExports.useState();
+  const [addFundsSettings, setAddFundsSettings] = reactExports.useState();
   const [history, setHistory] = reactExports.useState([]);
   const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
   const triggerCheckout = (settings2) => {
@@ -84538,7 +84575,14 @@ const KitCheckoutContent = ({ children }) => {
   const closeCheckout = () => {
     setOpenCheckoutModal(false);
   };
-  const getContent2 = () => {
+  const triggerAddFunds = (settings2) => {
+    setAddFundsSettings(settings2);
+    setOpenAddFundsModal(true);
+  };
+  const closeAddFunds = () => {
+    setOpenAddFundsModal(false);
+  };
+  const getCheckoutContent = () => {
     const { location: location2 } = navigation;
     switch (location2) {
       case "select-method-checkout":
@@ -84554,7 +84598,7 @@ const KitCheckoutContent = ({ children }) => {
         return jsxRuntimeExports$1.jsx(CheckoutSelection, {});
     }
   };
-  const getHeader2 = () => {
+  const getCheckoutHeader = () => {
     const { location: location2 } = navigation;
     switch (location2) {
       case "select-method-checkout":
@@ -84568,18 +84612,47 @@ const KitCheckoutContent = ({ children }) => {
         return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Pay with credit or debit card" });
     }
   };
+  const getAddFundsHeader = () => {
+    const { location: location2 } = navigation;
+    switch (location2) {
+      default:
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Add funds with credit card or debit card" });
+    }
+  };
+  const getAddFundsContent = () => {
+    const { location: location2 } = navigation;
+    switch (location2) {
+      default:
+        return jsxRuntimeExports$1.jsx(AddFundsContent, {});
+    }
+  };
   reactExports.useEffect(() => {
-    if (openCheckoutModal) {
+    if (openCheckoutModal || openAddFundsModal) {
       setHistory([]);
     }
-  }, [openCheckoutModal]);
-  return jsxRuntimeExports$1.jsx(CheckoutModalContextProvider, { value: { triggerCheckout, closeCheckout, settings, theme }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider$1, { value: { history, setHistory }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-checkout", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-checkout", scope: "kit", theme, children: jsxRuntimeExports$1.jsx(AnimatePresence, { children: openCheckoutModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+  }, [openCheckoutModal, openAddFundsModal]);
+  return jsxRuntimeExports$1.jsx(AddFundsContextProvider, { value: {
+    triggerAddFunds,
+    closeAddFunds,
+    addFundsSettings
+  }, children: jsxRuntimeExports$1.jsx(CheckoutModalContextProvider, { value: {
+    triggerCheckout,
+    closeCheckout,
+    settings,
+    theme
+  }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider$1, { value: { history, setHistory }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-checkout", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-checkout", scope: "kit", theme, children: jsxRuntimeExports$1.jsxs(AnimatePresence, { children: [openCheckoutModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
     style: {
       maxWidth: "400px",
       height: "auto",
       ...getModalPositionCss(position)
     }
-  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenCheckoutModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-checkout-content", children: [getHeader2(), getContent2()] }) }) }) }) }), children] }) });
+  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenCheckoutModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-checkout-content", children: [getCheckoutHeader(), getCheckoutContent()] }) }), openAddFundsModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+    style: {
+      maxWidth: "400px",
+      height: "auto",
+      ...getModalPositionCss(position)
+    }
+  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenAddFundsModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-add-funds-content", children: [getAddFundsHeader(), getAddFundsContent()] }) })] }) }) }), children] }) }) });
 };
 const ERC_1155_ABI = [
   {
@@ -93778,6 +93851,7 @@ const Homepage = () => {
   const { setOpenConnectModal } = useOpenConnectModal();
   const { setOpenWalletModal } = useOpenWalletModal();
   const { triggerCheckout } = useCheckoutModal();
+  const { triggerAddFunds } = useAddFundsModal();
   const { disconnect: disconnect2 } = useDisconnect();
   const { data: walletClient } = useWalletClient();
   const { switchChain: switchChain2 } = useSwitchChain();
@@ -93997,6 +94071,11 @@ const Homepage = () => {
       triggerCheckout(checkoutSettings);
     }
   };
+  const onClickAddFunds = () => {
+    triggerAddFunds({
+      walletAddress: address || ""
+    });
+  };
   const SwitchThemeButton = () => {
     return /* @__PURE__ */ jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickChangeTheme, icon: theme === "dark" ? SvgSunIcon : SvgMoonIcon });
   };
@@ -94075,6 +94154,14 @@ const Homepage = () => {
                 /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "code", children: isMessageValid.toString() })
               ] })
             ] }),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+              ClickableCard,
+              {
+                title: "Add Funds",
+                description: "Buy Cryptocurrency with a Credit Card",
+                onClick: () => onClickAddFunds()
+              }
+            ),
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(
               ClickableCard,
               {
@@ -105229,7 +105316,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-C8Zr5ncW.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-8N7Hy_q4.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105406,7 +105493,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-Cd7HwIDg.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-Dcu77xT9.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105640,7 +105727,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BtX_eeTS.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DCRXBCZB.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
