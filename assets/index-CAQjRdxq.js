@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DLUpNIYN.js","./hooks.module-Ds15DHyz.js","./___vite-browser-external_commonjs-proxy-CM2oIOH0.js","./index-D0a2AJEE.js","./index.es-Dyok2fkW.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-Z9Hh174u.js","./hooks.module-BPSxZIAI.js","./___vite-browser-external_commonjs-proxy-CVjSeLHo.js","./index-CRNHin4-.js","./index.es-CuiPHDcl.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -14500,6 +14500,12 @@ const text = {
     letterSpacing: "none",
     fontWeight: "normal"
   }
+};
+const breakpoints = {
+  sm: 0,
+  md: 480,
+  lg: 769,
+  xl: 1281
 };
 var colorSchemeVars = { colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
 var vars = { blur: { blur: "var(--seq-blur-blur)", none: "var(--seq-blur-none)" }, borderWidths: { none: "var(--seq-border-widths-none)", thin: "var(--seq-border-widths-thin)", thick: "var(--seq-border-widths-thick)" }, fonts: { inherit: "var(--seq-fonts-inherit)", body: "var(--seq-fonts-body)", mono: "var(--seq-fonts-mono)" }, fontSizes: { inherit: "var(--seq-font-sizes-inherit)", xsmall: "var(--seq-font-sizes-xsmall)", small: "var(--seq-font-sizes-small)", normal: "var(--seq-font-sizes-normal)", medium: "var(--seq-font-sizes-medium)", large: "var(--seq-font-sizes-large)", xlarge: "var(--seq-font-sizes-xlarge)" }, fontWeights: { inherit: "var(--seq-font-weights-inherit)", normal: "var(--seq-font-weights-normal)", medium: "var(--seq-font-weights-medium)", semibold: "var(--seq-font-weights-semibold)", bold: "var(--seq-font-weights-bold)" }, letterSpacings: { inherit: "var(--seq-letter-spacings-inherit)", none: "var(--seq-letter-spacings-none)", normal: "var(--seq-letter-spacings-normal)", wide: "var(--seq-letter-spacings-wide)" }, lineHeights: { "4": "var(--seq-line-heights-4)", "5": "var(--seq-line-heights-5)", "6": "var(--seq-line-heights-6)", "7": "var(--seq-line-heights-7)", "9": "var(--seq-line-heights-9)", inherit: "var(--seq-line-heights-inherit)" }, opacity: { "0": "var(--seq-opacity-0)", "50": "var(--seq-opacity-50)", "80": "var(--seq-opacity-80)", "100": "var(--seq-opacity-100)" }, radii: { none: "var(--seq-radii-none)", xs: "var(--seq-radii-xs)", sm: "var(--seq-radii-sm)", md: "var(--seq-radii-md)", lg: "var(--seq-radii-lg)", circle: "var(--seq-radii-circle)" }, space: { "0": "var(--seq-space-0)", "1": "var(--seq-space-1)", "2": "var(--seq-space-2)", "3": "var(--seq-space-3)", "4": "var(--seq-space-4)", "5": "var(--seq-space-5)", "6": "var(--seq-space-6)", "7": "var(--seq-space-7)", "8": "var(--seq-space-8)", "9": "var(--seq-space-9)", "10": "var(--seq-space-10)", "12": "var(--seq-space-12)", "14": "var(--seq-space-14)", "16": "var(--seq-space-16)", "0.25": "var(--seq-space-0_25)", "0.5": "var(--seq-space-0_5)", "1.5": "var(--seq-space-1_5)" }, colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
@@ -71940,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CrsmW8wt.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CEwz3Bi7.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -93494,7 +93500,7 @@ const Header = () => {
       justifyContent: "space-between",
       background: "backgroundOverlay",
       backdropFilter: "blur",
-      zIndex: "20",
+      zIndex: "1",
       style: { borderBottom: "1px solid #222" },
       children: [
         /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "3", children: [
@@ -93515,7 +93521,7 @@ const Header = () => {
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", children: [
           /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "flex-end", alignItems: "center", children: [
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(GradientAvatar, { address: String(address) }),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", fontSize: "normal", color: "text100", children: truncateAddress(String(address), 8) })
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: truncateAddress(String(address), 8) })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "flex-end", flexDirection: "row", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: connector == null ? void 0 : connector.name }) })
         ] }) })
@@ -93710,7 +93716,7 @@ const Connected = () => {
   };
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports$1.jsx(Header, {}),
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { paddingX: "4", flexDirection: "column", justifyContent: "center", alignItems: "center", style: { margin: "140px 0" }, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "4", children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { paddingX: "4", flexDirection: "column", justifyContent: "center", alignItems: "center", style: { margin: "140px 0" }, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "4", style: { maxWidth: breakpoints.md }, children: [
       /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", children: [
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "small", fontWeight: "medium", children: "Demos" }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
@@ -93996,8 +94002,8 @@ const CardButton = (props) => {
   const { title, description: description2, onClick } = props;
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Card, { clickable: true, onClick, children: [
     /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: title }),
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "p", variant: "small", color: "text50", children: description2 }),
-    props.isPending && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "div", variant: "normal", color: "text50", marginTop: "2", children: description2 }),
+    props.isPending && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", marginTop: "4", children: [
       /* @__PURE__ */ jsxRuntimeExports$1.jsx(Spinner, { size: "sm" }),
       /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Pending..." })
     ] })
@@ -94126,7 +94132,7 @@ const Homepage = () => {
         )
       ] }),
       /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "2", flexDirection: "row", alignItems: "center", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Button, { onClick: onClickConnect, variant: "feature", label: "Connect" }) }),
-      /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", flexDirection: "column", marginTop: "10", width: "1/2", children: [
+      /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", flexDirection: "column", paddingX: "4", marginTop: "10", width: "full", style: { maxWidth: breakpoints.md }, children: [
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
           ConnectionModeSelect,
           {
@@ -94140,7 +94146,7 @@ const Homepage = () => {
           ConnectionModeSelect,
           {
             mode: "universal",
-            title: "Universal",
+            title: "Universal Wallet",
             description: "Connect to the universal sequence wallet or EIP6963 Injected wallet providers (web extension wallets).",
             onClick: handleSwitchConnectionMode
           }
@@ -94156,6 +94162,7 @@ const ConnectionModeSelect = (props) => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
     Card,
     {
+      width: "full",
       clickable: true,
       outlined: true,
       borderWidth: "thick",
@@ -94165,9 +94172,9 @@ const ConnectionModeSelect = (props) => {
       },
       onClick: () => onClick(mode),
       children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { marginTop: "1", children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { children: [
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: isSelected ? "text100" : "text80", children: title }),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "p", variant: "normal", color: "text50", marginTop: "4", children: description2 })
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "div", variant: "normal", color: "text50", marginTop: "2", children: description2 })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(SvgCheckmarkIcon, { size: "md", style: { color: "rgb(127 59 200)" }, visibility: isSelected ? "visible" : "hidden" })
       ] })
@@ -105033,7 +105040,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DLUpNIYN.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-Z9Hh174u.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105210,7 +105217,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-D0a2AJEE.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CRNHin4-.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105444,7 +105451,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-Dyok2fkW.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CuiPHDcl.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
