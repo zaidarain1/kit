@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BBlUv3mg.js","./hooks.module-FFq0Laao.js","./___vite-browser-external_commonjs-proxy-CmpVI3HN.js","./index-Dh7qzsZq.js","./index.es-BKjvEFYk.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-leW8lRON.js","./hooks.module-Dfm_hVKM.js","./___vite-browser-external_commonjs-proxy-C_Mz4jyM.js","./index-BCLv5Lbp.js","./index.es-BhUXcmOC.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -14501,12 +14501,6 @@ const text = {
     fontWeight: "normal"
   }
 };
-const breakpoints = {
-  sm: 0,
-  md: 480,
-  lg: 769,
-  xl: 1281
-};
 var colorSchemeVars = { colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
 var vars = { blur: { blur: "var(--seq-blur-blur)", none: "var(--seq-blur-none)" }, borderWidths: { none: "var(--seq-border-widths-none)", thin: "var(--seq-border-widths-thin)", thick: "var(--seq-border-widths-thick)" }, fonts: { inherit: "var(--seq-fonts-inherit)", body: "var(--seq-fonts-body)", mono: "var(--seq-fonts-mono)" }, fontSizes: { inherit: "var(--seq-font-sizes-inherit)", xsmall: "var(--seq-font-sizes-xsmall)", small: "var(--seq-font-sizes-small)", normal: "var(--seq-font-sizes-normal)", medium: "var(--seq-font-sizes-medium)", large: "var(--seq-font-sizes-large)", xlarge: "var(--seq-font-sizes-xlarge)" }, fontWeights: { inherit: "var(--seq-font-weights-inherit)", normal: "var(--seq-font-weights-normal)", medium: "var(--seq-font-weights-medium)", semibold: "var(--seq-font-weights-semibold)", bold: "var(--seq-font-weights-bold)" }, letterSpacings: { inherit: "var(--seq-letter-spacings-inherit)", none: "var(--seq-letter-spacings-none)", normal: "var(--seq-letter-spacings-normal)", wide: "var(--seq-letter-spacings-wide)" }, lineHeights: { "4": "var(--seq-line-heights-4)", "5": "var(--seq-line-heights-5)", "6": "var(--seq-line-heights-6)", "7": "var(--seq-line-heights-7)", "9": "var(--seq-line-heights-9)", inherit: "var(--seq-line-heights-inherit)" }, opacity: { "0": "var(--seq-opacity-0)", "50": "var(--seq-opacity-50)", "80": "var(--seq-opacity-80)", "100": "var(--seq-opacity-100)" }, radii: { none: "var(--seq-radii-none)", xs: "var(--seq-radii-xs)", sm: "var(--seq-radii-sm)", md: "var(--seq-radii-md)", lg: "var(--seq-radii-lg)", circle: "var(--seq-radii-circle)" }, space: { "0": "var(--seq-space-0)", "1": "var(--seq-space-1)", "2": "var(--seq-space-2)", "3": "var(--seq-space-3)", "4": "var(--seq-space-4)", "5": "var(--seq-space-5)", "6": "var(--seq-space-6)", "7": "var(--seq-space-7)", "8": "var(--seq-space-8)", "9": "var(--seq-space-9)", "10": "var(--seq-space-10)", "12": "var(--seq-space-12)", "14": "var(--seq-space-14)", "16": "var(--seq-space-16)", "0.25": "var(--seq-space-0_25)", "0.5": "var(--seq-space-0_5)", "1.5": "var(--seq-space-1_5)" }, colors: { black: "var(--seq-colors-black)", white: "var(--seq-colors-white)", inherit: "var(--seq-colors-inherit)", transparent: "var(--seq-colors-transparent)", positive: "var(--seq-colors-positive)", negative: "var(--seq-colors-negative)", info: "var(--seq-colors-info)", warning: "var(--seq-colors-warning)", gradientBackdrop: "var(--seq-colors-gradient-backdrop)", gradientPrimary: "var(--seq-colors-gradient-primary)", gradientSecondary: "var(--seq-colors-gradient-secondary)", arbitrumDark: "var(--seq-colors-arbitrum-dark)", arbitrumLight: "var(--seq-colors-arbitrum-light)", avalanceDark: "var(--seq-colors-avalance-dark)", avalanceLight: "var(--seq-colors-avalance-light)", bscDark: "var(--seq-colors-bsc-dark)", bscLight: "var(--seq-colors-bsc-light)", ethereumDark: "var(--seq-colors-ethereum-dark)", ethereumLight: "var(--seq-colors-ethereum-light)", gnosisDark: "var(--seq-colors-gnosis-dark)", gnosisLight: "var(--seq-colors-gnosis-light)", polygonDark: "var(--seq-colors-polygon-dark)", polygonLight: "var(--seq-colors-polygon-light)", text100: "var(--seq-colors-text100)", text80: "var(--seq-colors-text80)", text50: "var(--seq-colors-text50)", textInverse100: "var(--seq-colors-text-inverse100)", backgroundPrimary: "var(--seq-colors-background-primary)", backgroundSecondary: "var(--seq-colors-background-secondary)", backgroundContrast: "var(--seq-colors-background-contrast)", backgroundMuted: "var(--seq-colors-background-muted)", backgroundControl: "var(--seq-colors-background-control)", backgroundInverse: "var(--seq-colors-background-inverse)", backgroundBackdrop: "var(--seq-colors-background-backdrop)", backgroundOverlay: "var(--seq-colors-background-overlay)", backgroundRaised: "var(--seq-colors-background-raised)", buttonGlass: "var(--seq-colors-button-glass)", buttonEmphasis: "var(--seq-colors-button-emphasis)", buttonInverse: "var(--seq-colors-button-inverse)", borderNormal: "var(--seq-colors-border-normal)", borderFocus: "var(--seq-colors-border-focus)" } };
 function _toPrimitive(input2, hint) {
@@ -24184,46 +24178,6 @@ const Tooltip = (props) => {
       }
     )
   ] }) });
-};
-const useMediaQuery = (queryInput, options = {}) => {
-  const bp = (/* @__PURE__ */ new Map()).set("isMobile", `@media screen and (max-width: ${breakpoints.lg - 1}px)`).set("isDesktop", `@media screen and (min-width: ${breakpoints.lg}px)`);
-  if (!queryInput.startsWith("@media")) {
-    const bpQuery = bp.get(queryInput);
-    if (!bpQuery || bpQuery === "") {
-      throw new Error(
-        `useMediaQuery failed to get breakpoint from theme for: ${queryInput}`
-      );
-    }
-    queryInput = bpQuery;
-  }
-  const query = queryInput.replace(/^@media( ?)/m, "");
-  const supportMatchMedia = typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
-  const { defaultMatches = false } = options;
-  const [match, setMatch] = reactExports.useState(() => {
-    if (supportMatchMedia) {
-      return window.matchMedia(query).matches;
-    }
-    return defaultMatches;
-  });
-  reactExports.useEffect(() => {
-    let active = true;
-    if (!supportMatchMedia) {
-      return void 0;
-    }
-    const queryList = window.matchMedia(query);
-    const updateMatch = () => {
-      if (active) {
-        setMatch(queryList.matches);
-      }
-    };
-    updateMatch();
-    queryList.addListener(updateMatch);
-    return () => {
-      active = false;
-      queryList.removeListener(updateMatch);
-    };
-  }, [query, supportMatchMedia]);
-  return match;
 };
 const abi$7 = [{
   inputs: [{
@@ -71986,7 +71940,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-xWJOGQwK.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BkEMIc-K.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -93406,6 +93360,57 @@ const KitWalletContent = ({ children }) => {
     }
   }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenWalletModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-wallet-content", children: [getHeader(navigation), displayScrollbar ? jsxRuntimeExports$1.jsx(Scroll, { style: { paddingTop: HEADER_HEIGHT, height: "min(800px, 80vh)" }, children: getContent(navigation) }) : getContent(navigation)] }) }) }) }) }), children] }) });
 };
+const abi = [
+  {
+    inputs: [
+      {
+        internalType: "uint256[]",
+        name: "_tokenIds",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_tokensBoughtAmounts",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256",
+        name: "_maxCurrency",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_deadline",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "_recipient",
+        type: "address"
+      },
+      {
+        internalType: "address[]",
+        name: "_extraFeeRecipients",
+        type: "address[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_extraFeeAmounts",
+        type: "uint256[]"
+      }
+    ],
+    name: "buyTokens",
+    outputs: [
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]"
+      }
+    ],
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
 const messageToSign = "Two roads diverged in a yellow wood";
 const bottomPageLinks = [
   {
@@ -93451,200 +93456,6 @@ const socialLinks = [
     icon: "img/social/github.svg"
   }
 ];
-const abi = [
-  { inputs: [], stateMutability: "nonpayable", type: "constructor" },
-  {
-    inputs: [
-      { internalType: "address", name: "sender", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "address", name: "owner", type: "address" }
-    ],
-    name: "ERC721IncorrectOwner",
-    type: "error"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "operator", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "ERC721InsufficientApproval",
-    type: "error"
-  },
-  { inputs: [{ internalType: "address", name: "approver", type: "address" }], name: "ERC721InvalidApprover", type: "error" },
-  { inputs: [{ internalType: "address", name: "operator", type: "address" }], name: "ERC721InvalidOperator", type: "error" },
-  { inputs: [{ internalType: "address", name: "owner", type: "address" }], name: "ERC721InvalidOwner", type: "error" },
-  { inputs: [{ internalType: "address", name: "receiver", type: "address" }], name: "ERC721InvalidReceiver", type: "error" },
-  { inputs: [{ internalType: "address", name: "sender", type: "address" }], name: "ERC721InvalidSender", type: "error" },
-  { inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }], name: "ERC721NonexistentToken", type: "error" },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "owner", type: "address" },
-      { indexed: true, internalType: "address", name: "approved", type: "address" },
-      { indexed: true, internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "Approval",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "owner", type: "address" },
-      { indexed: true, internalType: "address", name: "operator", type: "address" },
-      { indexed: false, internalType: "bool", name: "approved", type: "bool" }
-    ],
-    name: "ApprovalForAll",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: false, internalType: "uint256", name: "_fromTokenId", type: "uint256" },
-      { indexed: false, internalType: "uint256", name: "_toTokenId", type: "uint256" }
-    ],
-    name: "BatchMetadataUpdate",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [{ indexed: false, internalType: "uint256", name: "_tokenId", type: "uint256" }],
-    name: "MetadataUpdate",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "from", type: "address" },
-      { indexed: true, internalType: "address", name: "to", type: "address" },
-      { indexed: true, internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "Transfer",
-    type: "event"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "approve",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "player", type: "address" },
-      { internalType: "string", name: "tokenURI", type: "string" }
-    ],
-    name: "awardItem",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "address", name: "owner", type: "address" }],
-    name: "balanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "getApproved",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "owner", type: "address" },
-      { internalType: "address", name: "operator", type: "address" }
-    ],
-    name: "isApprovedForAll",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "name",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "ownerOf",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "bytes", name: "data", type: "bytes" }
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "operator", type: "address" },
-      { internalType: "bool", name: "approved", type: "bool" }
-    ],
-    name: "setApprovalForAll",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "bytes4", name: "interfaceId", type: "bytes4" }],
-    name: "supportsInterface",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "symbol",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "tokenURI",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "transferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  }
-];
 const delay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
@@ -93670,99 +93481,6 @@ const getCheckoutSettings = (blockchainNftId, recipientAddress, tokenContractAdd
     ]
   };
   return checkoutSettings;
-};
-const Alert = ({ title, description: description2, secondaryDescription, variant, buttonProps, children }) => {
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", background: variant, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
-    Box,
-    {
-      background: "backgroundOverlay",
-      borderRadius: "md",
-      paddingX: { sm: "4", md: "5" },
-      paddingY: "4",
-      width: "full",
-      flexDirection: "column",
-      gap: "3",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: { sm: "column", md: "row" }, gap: "2", justifyContent: "space-between", children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "1", children: [
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", fontWeight: "medium", children: title }),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", fontWeight: "medium", children: description2 }),
-            secondaryDescription && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text80", fontWeight: "medium", children: secondaryDescription })
-          ] }),
-          buttonProps ? /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { background: variant, borderRadius: "sm", width: "min", height: "min", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Button, { variant: "emphasis", shape: "square", flexShrink: "0", ...buttonProps }) }) : null
-        ] }),
-        children
-      ]
-    }
-  ) });
-};
-const Footer = () => {
-  const { theme } = useTheme$1();
-  const onClickLinkUrl = (url) => {
-    if (typeof window !== "undefined") {
-      window.open(url);
-    }
-  };
-  const Links = () => {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", gap: "4", children: bottomPageLinks.map((link, index2) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-      Box,
-      {
-        onClick: () => onClickLinkUrl(link.url),
-        opacity: { hover: "80" },
-        cursor: "pointer",
-        userSelect: "none",
-        gap: "4",
-        children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "small", color: "text50", children: link.label })
-      },
-      index2
-    )) });
-  };
-  const Socials = () => {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: socialLinks.map((socialLink, index2) => {
-      return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-        Box,
-        {
-          opacity: { hover: "80" },
-          cursor: "pointer",
-          userSelect: "none",
-          onClick: () => {
-            if (typeof window !== "undefined") {
-              window.open(socialLink.url);
-            }
-          },
-          children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-            Image$1,
-            {
-              height: "3",
-              src: socialLink.icon,
-              alt: socialLink.id,
-              style: {
-                filter: theme === "dark" ? "invert(0)" : "invert(1)"
-              }
-            }
-          )
-        },
-        index2
-      );
-    }) });
-  };
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
-    Box,
-    {
-      padding: "5",
-      style: { height: "60px", borderTop: "1px solid #222" },
-      position: "fixed",
-      bottom: "0",
-      width: "full",
-      justifyContent: "space-between",
-      background: "backgroundOverlay",
-      backdropFilter: "blur",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
-      ]
-    }
-  );
 };
 const Header = () => {
   const { address, connector } = useAccount();
@@ -93805,14 +93523,11 @@ const Header = () => {
     }
   );
 };
-const searchParams$1 = new URLSearchParams(location.search);
-const connectionMode$1 = searchParams$1.get("mode") === "universal" ? "universal" : "waas";
-const isDebugMode$1 = searchParams$1.has("debug");
-const Homepage = () => {
+const searchParams$2 = new URLSearchParams(location.search);
+const isDebugMode$1 = searchParams$2.has("debug");
+const Connected = () => {
   var _a2;
-  const { theme } = useTheme$1();
-  const { address, isConnected } = useAccount();
-  const { setOpenConnectModal } = useOpenConnectModal();
+  const { address } = useAccount();
   const { setOpenWalletModal } = useOpenWalletModal();
   const { triggerCheckout } = useCheckoutModal();
   const { triggerAddFunds } = useAddFundsModal();
@@ -93826,7 +93541,6 @@ const Homepage = () => {
   const [checkoutTokenId, setCheckoutTokenId] = React.useState("");
   const connections = useConnections();
   const isWaasConnection = connections.find((c2) => c2.connector.id.includes("waas")) !== void 0;
-  const isMobile = useMediaQuery("isMobile");
   const { data: txnData, sendTransaction: sendTransaction2, isPending: isPendingSendTxn, error } = useSendTransaction();
   const { data: txnData2, isPending: isPendingMintTxn, writeContract: writeContract2 } = useWriteContract();
   const [isSigningMessage, setIsSigningMessage] = React.useState(false);
@@ -93856,11 +93570,6 @@ const Homepage = () => {
   reactExports.useEffect(() => {
     checkTokenBalancesForFeeOptions();
   }, [pendingFeeOptionConfirmation]);
-  const handleSwitchConnectionMode = (mode) => {
-    const searchParams2 = new URLSearchParams();
-    searchParams2.set("mode", mode);
-    window.location.search = searchParams2.toString();
-  };
   const checkTokenBalancesForFeeOptions = async () => {
     if (pendingFeeOptionConfirmation && walletClient) {
       const [account2] = await walletClient.getAddresses();
@@ -93969,26 +93678,6 @@ const Homepage = () => {
       args: [account2, "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0.json"]
     });
   };
-  const ClickableCard = ({ title, description: description2, disabled, isPending, onClick }) => {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
-      Card,
-      {
-        style: { width: "332px" },
-        clickable: !disabled,
-        onClick: disabled ? () => {
-        } : onClick,
-        opacity: disabled ? "50" : "100",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { color: "text100", lineHeight: "5", fontSize: "normal", fontWeight: "bold", children: title }),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { marginTop: "1", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", lineHeight: "5", color: "text50", fontSize: "normal", children: description2 }) }),
-          isPending && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Spinner, { marginTop: "3", size: "sm", color: "text100" })
-        ]
-      }
-    );
-  };
-  const onClickConnect = () => {
-    setOpenConnectModal(true);
-  };
   const onCheckoutInfoConfirm = () => {
     setIsCheckoutInfoModalOpen(false);
     if (checkoutOrderId !== "" && checkoutTokenContractAddress !== "" && checkoutTokenId !== "") {
@@ -94019,13 +93708,13 @@ const Homepage = () => {
     setLastTxnDataHash2(void 0);
     setIsMessageValid(void 0);
   };
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { background: "backgroundPrimary", children: [
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports$1.jsx(Header, {}),
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { style: { margin: "140px 0" }, flexDirection: "column", justifyContent: "center", alignItems: "center", children: isConnected ? /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "4", children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", style: { margin: "140px 0" }, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "4", children: [
       /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", children: [
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { color: "text50", fontSize: "small", fontWeight: "medium", children: "Demos" }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ClickableCard,
+          CardButton,
           {
             title: "Inventory",
             description: "Connect a Sequence wallet to view, swap, send, and receive collections",
@@ -94033,7 +93722,7 @@ const Homepage = () => {
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ClickableCard,
+          CardButton,
           {
             title: "Send transaction",
             description: "Send a transaction with your wallet",
@@ -94058,7 +93747,7 @@ const Homepage = () => {
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ClickableCard,
+          CardButton,
           {
             title: "Sign message",
             description: "Sign a message with your wallet",
@@ -94076,16 +93765,9 @@ const Homepage = () => {
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "code", children: isMessageValid.toString() })
           ] })
         ] }),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(CardButton, { title: "Add Funds", description: "Buy Cryptocurrency with a Credit Card", onClick: () => onClickAddFunds() }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ClickableCard,
-          {
-            title: "Add Funds",
-            description: "Buy Cryptocurrency with a Credit Card",
-            onClick: () => onClickAddFunds()
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ClickableCard,
+          CardButton,
           {
             title: "Mint an NFT",
             description: "Test minting an NFT to your wallet",
@@ -94109,16 +93791,9 @@ const Homepage = () => {
             ]
           }
         ),
-        isDebugMode$1 && /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ClickableCard,
-          {
-            title: "Generate EthAuth proof",
-            description: "Generate EthAuth proof",
-            onClick: generateEthAuthProof
-          }
-        ),
+        isDebugMode$1 && /* @__PURE__ */ jsxRuntimeExports$1.jsx(CardButton, { title: "Generate EthAuth proof", description: "Generate EthAuth proof", onClick: generateEthAuthProof }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ClickableCard,
+          CardButton,
           {
             title: "Switch network",
             description: `Current network: ${networkForCurrentChainId.title}`,
@@ -94251,43 +93926,7 @@ const Homepage = () => {
           label: "Sign out"
         }
       ) })
-    ] }) : /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "5", children: [
-      /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "3", children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Image$1, { style: { width: "48px" }, src: "kit-logo.svg" }),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          Image$1,
-          {
-            style: {
-              width: "32px",
-              filter: theme === "dark" ? "invert(0)" : "invert(1)"
-            },
-            src: "kit-logo-text.svg"
-          }
-        )
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "2", flexDirection: "row", alignItems: "center", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Button, { onClick: onClickConnect, variant: "feature", label: "Connect" }) }),
-      /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", flexDirection: "column", marginTop: "10", width: "1/2", children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ConnectionModeSelect,
-          {
-            mode: "waas",
-            title: "Embedded Wallet (WaaS)",
-            description: "Connect to an embedded wallet for a seamless experience.",
-            onClick: handleSwitchConnectionMode
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          ConnectionModeSelect,
-          {
-            mode: "universal",
-            title: "Universal",
-            description: "Connect to the universal sequence wallet or EIP6963 Injected wallet providers (web extension wallets).",
-            onClick: handleSwitchConnectionMode
-          }
-        )
-      ] })
-    ] }) }) }),
-    !isMobile && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Footer, {}),
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports$1.jsx(AnimatePresence, { children: isCheckoutInfoModalOpen && /* @__PURE__ */ jsxRuntimeExports$1.jsx(
       Modal,
       {
@@ -94351,6 +93990,160 @@ const Homepage = () => {
         ] }) })
       }
     ) })
+  ] });
+};
+const CardButton = (props) => {
+  const { title, description: description2, onClick } = props;
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Card, { clickable: true, onClick, children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: title }),
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "p", variant: "small", color: "text50", children: description2 })
+  ] });
+};
+const Alert = ({ title, description: description2, secondaryDescription, variant, buttonProps, children }) => {
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", background: variant, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+    Box,
+    {
+      background: "backgroundOverlay",
+      borderRadius: "md",
+      paddingX: { sm: "4", md: "5" },
+      paddingY: "4",
+      width: "full",
+      flexDirection: "column",
+      gap: "3",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { width: "full", flexDirection: { sm: "column", md: "row" }, gap: "2", justifyContent: "space-between", children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "1", children: [
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", fontWeight: "medium", children: title }),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", fontWeight: "medium", children: description2 }),
+            secondaryDescription && /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text80", fontWeight: "medium", children: secondaryDescription })
+          ] }),
+          buttonProps ? /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { background: variant, borderRadius: "sm", width: "min", height: "min", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Button, { variant: "emphasis", shape: "square", flexShrink: "0", ...buttonProps }) }) : null
+        ] }),
+        children
+      ]
+    }
+  ) });
+};
+const Footer = () => {
+  const { theme } = useTheme$1();
+  const onClickLinkUrl = (url) => {
+    if (typeof window !== "undefined") {
+      window.open(url);
+    }
+  };
+  const Links = () => {
+    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", gap: "4", children: bottomPageLinks.map((link, index2) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+      Box,
+      {
+        onClick: () => onClickLinkUrl(link.url),
+        opacity: { hover: "80" },
+        cursor: "pointer",
+        userSelect: "none",
+        gap: "4",
+        children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "small", color: "text50", children: link.label })
+      },
+      index2
+    )) });
+  };
+  const Socials = () => {
+    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: socialLinks.map((socialLink, index2) => {
+      return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+        Box,
+        {
+          opacity: { hover: "80" },
+          cursor: "pointer",
+          userSelect: "none",
+          onClick: () => {
+            if (typeof window !== "undefined") {
+              window.open(socialLink.url);
+            }
+          },
+          children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+            Image$1,
+            {
+              height: "3",
+              src: socialLink.icon,
+              alt: socialLink.id,
+              style: {
+                filter: theme === "dark" ? "invert(0)" : "invert(1)"
+              }
+            }
+          )
+        },
+        index2
+      );
+    }) });
+  };
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+    Box,
+    {
+      padding: "5",
+      style: { height: "60px", borderTop: "1px solid #222" },
+      position: "fixed",
+      bottom: "0",
+      width: "full",
+      justifyContent: "space-between",
+      background: "backgroundOverlay",
+      backdropFilter: "blur",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
+      ]
+    }
+  );
+};
+const searchParams$1 = new URLSearchParams(location.search);
+const connectionMode$1 = searchParams$1.get("mode") === "universal" ? "universal" : "waas";
+const Homepage = () => {
+  const { theme } = useTheme$1();
+  const { isConnected } = useAccount();
+  const { setOpenConnectModal } = useOpenConnectModal();
+  const handleSwitchConnectionMode = (mode) => {
+    const searchParams2 = new URLSearchParams();
+    searchParams2.set("mode", mode);
+    window.location.search = searchParams2.toString();
+  };
+  const onClickConnect = () => {
+    setOpenConnectModal(true);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs("main", { children: [
+    !isConnected ? /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "5", height: "vh", children: [
+      /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "3", children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Image$1, { style: { width: "48px" }, src: "kit-logo.svg" }),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+          Image$1,
+          {
+            style: {
+              width: "32px",
+              filter: theme === "dark" ? "invert(0)" : "invert(1)"
+            },
+            src: "kit-logo-text.svg"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "2", flexDirection: "row", alignItems: "center", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Button, { onClick: onClickConnect, variant: "feature", label: "Connect" }) }),
+      /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", flexDirection: "column", marginTop: "10", width: "1/2", children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+          ConnectionModeSelect,
+          {
+            mode: "waas",
+            title: "Embedded Wallet (WaaS)",
+            description: "Connect to an embedded wallet for a seamless experience.",
+            onClick: handleSwitchConnectionMode
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+          ConnectionModeSelect,
+          {
+            mode: "universal",
+            title: "Universal",
+            description: "Connect to the universal sequence wallet or EIP6963 Injected wallet providers (web extension wallets).",
+            onClick: handleSwitchConnectionMode
+          }
+        )
+      ] })
+    ] }) : /* @__PURE__ */ jsxRuntimeExports$1.jsx(Connected, {}),
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Footer, {})
   ] });
 };
 const ConnectionModeSelect = (props) => {
@@ -105236,7 +105029,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-BBlUv3mg.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-leW8lRON.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105413,7 +105206,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-Dh7qzsZq.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-BCLv5Lbp.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105647,7 +105440,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BKjvEFYk.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BhUXcmOC.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
