@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-wIrxvelZ.js","./hooks.module-C91hZtMW.js","./___vite-browser-external_commonjs-proxy-D2fmxTD4.js","./index-D70SP_OW.js","./index.es-BSjLEZIq.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CZGXbaEi.js","./hooks.module-DgsQzz7U.js","./___vite-browser-external_commonjs-proxy-BdNQ1Nm8.js","./index-CPDDPdhj.js","./index.es-BPbiJyt7.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DXCkeFpZ.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Bqiufqz1.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84136,12 +84136,17 @@ const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMet
         imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://www.sequence.market/images/placeholder.png",
         network: networks[order.chainId].name,
         recipientAddress: order.recipientAddress,
-        platform: "horizon",
-        blockchainNftId: order.blockchainNftId,
         contractAddress: order.contractAddress,
+        platform: "calldata_execution",
         executionType: "smart_contract",
-        quantity: Number(order.quantity),
-        decimals: Number(order.decimals)
+        blockchainNftId: order.nftId,
+        quantity: Number(order.nftQuantity),
+        decimals: Number((order == null ? void 0 : order.nftDecimals) || 0),
+        tokenAmount: order.currencyQuantity,
+        tokenAddress: order.currencyAddress,
+        tokenSymbol: order.currencySymbol,
+        tokenDecimals: Number(order.currencyDecimals),
+        callData: order.calldata
       }
     })
   });
@@ -84184,13 +84189,13 @@ const PendingTransaction = () => {
   const { params: { authToken, orderId } } = nav.navigation;
   const { setNavigation } = nav;
   const projectAccessKey2 = useProjectAccessKey();
-  const isDev = ((_a2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a2.isDev) || false;
+  const isDev = ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.isDev) || false;
   const url = isDev ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true` : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`;
   const pollForOrderStatus = async () => {
     var _a3, _b2;
     try {
       console.log("Polling for transaction status");
-      const isDev2 = ((_a3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a3.isDev) || false;
+      const isDev2 = ((_a3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a3.isDev) || false;
       const pollResponse = await fetchSardineOrderStatus(orderId, isDev2, projectAccessKey2);
       const status = pollResponse.resp.status;
       const transactionHash = (_b2 = pollResponse.resp) == null ? void 0 : _b2.transactionHash;
@@ -84246,12 +84251,12 @@ const TransactionSuccess = () => {
   const { settings } = useCheckoutModal();
   const nav = useNavigation$1();
   const navigation = nav.navigation;
-  const chainId = ((_a2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a2.chainId) || ChainId.POLYGON;
+  const chainId = ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.chainId) || ChainId.POLYGON;
   const network2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId);
   reactExports.useEffect(() => {
     var _a3, _b3, _c3, _d2;
-    ((_a3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a3.onSuccess) && ((_b3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _b3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
-    ((_c3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _c3.onSuccess) && ((_d2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _d2.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.sardineCheckout));
+    ((_a3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a3.onSuccess) && ((_b3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _b3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.creditCardCheckout));
+    ((_c3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _c3.onSuccess) && ((_d2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _d2.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.creditCardCheckout));
   }, []);
   return jsxRuntimeExports$1.jsx(Box, { style: { height: "500px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationSuccessIcon, {}), jsxRuntimeExports$1.jsx(Text, { fontSize: "xlarge", children: "Success!" }), jsxRuntimeExports$1.jsx(Text, { textAlign: "center", variant: "normal", color: "text80", children: "Purchase was successful, item was sent to your wallet." }), navigation.params.transactionHash && jsxRuntimeExports$1.jsxs(Text, { as: "a", variant: "small", underline: true, marginTop: "6", color: "text100", href: `${(_b2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _b2.rootUrl}/tx/${navigation.params.transactionHash}`, target: "_blank", rel: "noreferrer", children: ["View on ", (_c2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _c2.name] })] }) });
 };
@@ -84264,7 +84269,7 @@ const TransactionError = () => {
     setTimeout(() => {
       var _a2, _b2;
       closeCheckout();
-      ((_a2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a2.onError) && ((_b2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _b2.onError(navigation.params.error, settings == null ? void 0 : settings.sardineCheckout));
+      ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.onError) && ((_b2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _b2.onError(navigation.params.error, settings == null ? void 0 : settings.creditCardCheckout));
     }, 3e3);
   }, []);
   return jsxRuntimeExports$1.jsx(Box, { style: { height: "500px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationErrorIcon, {}), jsxRuntimeExports$1.jsx(Text, { fontSize: "xlarge", children: "Error" }), jsxRuntimeExports$1.jsx(Text, { textAlign: "center", variant: "normal", color: "text80", children: "An error occurred while processing the transaction." })] }) });
@@ -84356,7 +84361,7 @@ const CheckoutSelection = () => {
   const { address: accountAddress } = useAccount();
   const projectAccessKey2 = useProjectAccessKey();
   const cryptoCheckoutSettings = settings == null ? void 0 : settings.cryptoCheckout;
-  const creditCardCheckoutSettings = settings == null ? void 0 : settings.sardineCheckout;
+  const creditCardCheckoutSettings = settings == null ? void 0 : settings.creditCardCheckout;
   const displayCreditCardCheckout = !!creditCardCheckoutSettings;
   const displayCryptoCheckout = !!cryptoCheckoutSettings;
   const { data: contractInfoData, isLoading: isPendingContractInfo } = useContractInfo((cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.chainId) || 1, ((_a2 = cryptoCheckoutSettings == null ? void 0 : cryptoCheckoutSettings.coinQuantity) == null ? void 0 : _a2.contractAddress) || "");
@@ -84380,15 +84385,15 @@ const CheckoutSelection = () => {
   const requestAmount = formatUnits$1(requestedAmountRaw, coinDecimals);
   const isInsufficientBalance = BigNumber.from(userBalanceRaw).lt(BigNumber.from(requestedAmountRaw));
   const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
-  const chainId = ((_d2 = settings == null ? void 0 : settings.cryptoCheckout) == null ? void 0 : _d2.chainId) || ((_e2 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _e2.chainId) || 1;
+  const chainId = ((_d2 = settings == null ? void 0 : settings.cryptoCheckout) == null ? void 0 : _d2.chainId) || ((_e2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _e2.chainId) || 1;
   const { data: tokensMetadata } = useTokenMetadata(chainId, orderSummaryItems[0].contractAddress, [orderSummaryItems[0].tokenId]);
   const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
   const triggerSardineTransaction = async () => {
     var _a3;
     console.log("trigger sardine transaction");
-    if (settings == null ? void 0 : settings.sardineCheckout) {
-      const isDev = ((_a3 = settings == null ? void 0 : settings.sardineCheckout) == null ? void 0 : _a3.isDev) || false;
-      const { token, orderId } = await fetchSardineClientToken(settings.sardineCheckout, isDev, projectAccessKey2, tokenMetadata);
+    if (settings == null ? void 0 : settings.creditCardCheckout) {
+      const isDev = ((_a3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a3.isDev) || false;
+      const { token, orderId } = await fetchSardineClientToken(settings.creditCardCheckout, isDev, projectAccessKey2, tokenMetadata);
       setNavigation({
         location: "transaction-pending",
         params: { orderId, authToken: token }
@@ -84396,7 +84401,7 @@ const CheckoutSelection = () => {
     }
   };
   const onClickPayWithCard = () => {
-    if (settings == null ? void 0 : settings.sardineCheckout) {
+    if (settings == null ? void 0 : settings.creditCardCheckout) {
       triggerSardineTransaction();
     } else {
       setNavigation({
@@ -93528,226 +93533,102 @@ const CardButton = (props) => {
     ] })
   ] });
 };
-const messageToSign = "Two roads diverged in a yellow wood";
 const abi = [
-  { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
     inputs: [
-      { internalType: "address", name: "sender", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "address", name: "owner", type: "address" }
+      {
+        internalType: "uint256[]",
+        name: "_tokenIds",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_tokensBoughtAmounts",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256",
+        name: "_maxCurrency",
+        type: "uint256"
+      },
+      {
+        internalType: "uint256",
+        name: "_deadline",
+        type: "uint256"
+      },
+      {
+        internalType: "address",
+        name: "_recipient",
+        type: "address"
+      },
+      {
+        internalType: "address[]",
+        name: "_extraFeeRecipients",
+        type: "address[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_extraFeeAmounts",
+        type: "uint256[]"
+      }
     ],
-    name: "ERC721IncorrectOwner",
-    type: "error"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "operator", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
+    name: "buyTokens",
+    outputs: [
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]"
+      }
     ],
-    name: "ERC721InsufficientApproval",
-    type: "error"
-  },
-  { inputs: [{ internalType: "address", name: "approver", type: "address" }], name: "ERC721InvalidApprover", type: "error" },
-  { inputs: [{ internalType: "address", name: "operator", type: "address" }], name: "ERC721InvalidOperator", type: "error" },
-  { inputs: [{ internalType: "address", name: "owner", type: "address" }], name: "ERC721InvalidOwner", type: "error" },
-  { inputs: [{ internalType: "address", name: "receiver", type: "address" }], name: "ERC721InvalidReceiver", type: "error" },
-  { inputs: [{ internalType: "address", name: "sender", type: "address" }], name: "ERC721InvalidSender", type: "error" },
-  { inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }], name: "ERC721NonexistentToken", type: "error" },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "owner", type: "address" },
-      { indexed: true, internalType: "address", name: "approved", type: "address" },
-      { indexed: true, internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "Approval",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "owner", type: "address" },
-      { indexed: true, internalType: "address", name: "operator", type: "address" },
-      { indexed: false, internalType: "bool", name: "approved", type: "bool" }
-    ],
-    name: "ApprovalForAll",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: false, internalType: "uint256", name: "_fromTokenId", type: "uint256" },
-      { indexed: false, internalType: "uint256", name: "_toTokenId", type: "uint256" }
-    ],
-    name: "BatchMetadataUpdate",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [{ indexed: false, internalType: "uint256", name: "_tokenId", type: "uint256" }],
-    name: "MetadataUpdate",
-    type: "event"
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "from", type: "address" },
-      { indexed: true, internalType: "address", name: "to", type: "address" },
-      { indexed: true, internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "Transfer",
-    type: "event"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "approve",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "player", type: "address" },
-      { internalType: "string", name: "tokenURI", type: "string" }
-    ],
-    name: "awardItem",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "address", name: "owner", type: "address" }],
-    name: "balanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "getApproved",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "owner", type: "address" },
-      { internalType: "address", name: "operator", type: "address" }
-    ],
-    name: "isApprovedForAll",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "name",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "ownerOf",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" },
-      { internalType: "bytes", name: "data", type: "bytes" }
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "operator", type: "address" },
-      { internalType: "bool", name: "approved", type: "bool" }
-    ],
-    name: "setApprovalForAll",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "bytes4", name: "interfaceId", type: "bytes4" }],
-    name: "supportsInterface",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [],
-    name: "symbol",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
-    name: "tokenURI",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "tokenId", type: "uint256" }
-    ],
-    name: "transferFrom",
-    outputs: [],
     stateMutability: "nonpayable",
     type: "function"
   }
 ];
+const messageToSign = "Two roads diverged in a yellow wood";
+const orderbookAbi = [{ "inputs": [{ "internalType": "uint256", "name": "requestId", "type": "uint256" }, { "internalType": "uint256", "name": "quantity", "type": "uint256" }, { "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256[]", "name": "additionalFees", "type": "uint256[]" }, { "internalType": "address[]", "name": "additionalFeeRecipients", "type": "address[]" }], "name": "acceptRequest", "outputs": [], "stateMutability": "nonpayable", "type": "function" }];
 const delay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
-const getCheckoutSettings = (blockchainNftId, recipientAddress, tokenContractAddress, tokenId, chainId, quantity, isDev) => {
+const getCheckoutSettings = (args) => {
   const checkoutSettings = {
-    sardineCheckout: {
-      chainId,
+    creditCardCheckout: {
       defaultPaymentMethodType: "us_debit",
-      platform: "horizon",
-      contractAddress: "0xB537a160472183f2150d42EB1c3DD6684A55f74c",
-      blockchainNftId,
-      recipientAddress,
-      quantity,
-      isDev
+      onSuccess: (hash2) => {
+        console.log("credit card checkout success", hash2);
+      },
+      onError: (e2) => {
+        console.log("credit card checkout error", e2);
+      },
+      ...args
     },
     orderSummaryItems: [
       {
-        chainId,
-        contractAddress: tokenContractAddress,
-        tokenId,
-        quantityRaw: String(quantity)
+        chainId: args.chainId,
+        contractAddress: args.nftAddress,
+        tokenId: args.nftId,
+        quantityRaw: String(args.nftQuantity)
       }
     ]
   };
   return checkoutSettings;
+};
+const getOrderbookCalldata = ({
+  orderId,
+  quantity,
+  recipient
+}) => {
+  const calldata = encodeFunctionData({
+    abi: orderbookAbi,
+    functionName: "acceptRequest",
+    args: [
+      BigInt(orderId),
+      BigInt(quantity),
+      recipient,
+      [],
+      []
+    ]
+  });
+  return calldata;
 };
 const searchParams$2 = new URLSearchParams(location.search);
 const isDebugMode$1 = searchParams$2.has("debug");
@@ -93904,18 +93785,34 @@ const Connected = () => {
       args: [account2, "https://dev-metadata.sequence.app/projects/277/collections/62/tokens/0.json"]
     });
   };
+  const onClickCheckout = () => {
+    setIsCheckoutInfoModalOpen(true);
+  };
   const onCheckoutInfoConfirm = () => {
     setIsCheckoutInfoModalOpen(false);
     if (checkoutOrderId !== "" && checkoutTokenContractAddress !== "" && checkoutTokenId !== "") {
-      const checkoutSettings = getCheckoutSettings(
-        checkoutOrderId,
-        address || "",
-        checkoutTokenContractAddress,
-        checkoutTokenId,
-        ChainId.POLYGON,
-        1,
-        true
-      );
+      const chainId2 = ChainId.POLYGON;
+      const orderbookAddress = "0xB537a160472183f2150d42EB1c3DD6684A55f74c";
+      const recipientAddress = address || "";
+      const nftQuantity = "1";
+      const checkoutSettings = getCheckoutSettings({
+        chainId: chainId2,
+        contractAddress: orderbookAddress,
+        recipientAddress,
+        currencyQuantity: "100000",
+        currencySymbol: "USDC",
+        currencyAddress: "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+        currencyDecimals: "6",
+        nftId: checkoutTokenId,
+        nftAddress: checkoutTokenContractAddress,
+        nftQuantity,
+        isDev: true,
+        calldata: getOrderbookCalldata({
+          orderId: checkoutOrderId,
+          quantity: nftQuantity,
+          recipient: recipientAddress
+        })
+      });
       triggerCheckout(checkoutSettings);
     }
   };
@@ -94017,7 +93914,17 @@ const Connected = () => {
             ]
           }
         ),
-        isDebugMode$1 && /* @__PURE__ */ jsxRuntimeExports$1.jsx(CardButton, { title: "Generate EthAuth proof", description: "Generate EthAuth proof", onClick: generateEthAuthProof }),
+        isDebugMode$1 && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(CardButton, { title: "Generate EthAuth proof", description: "Generate EthAuth proof", onClick: generateEthAuthProof }),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+            CardButton,
+            {
+              title: "NFT Checkout",
+              description: "Set orderbook order id, token contract address and token id to test checkout (on Polygon)",
+              onClick: onClickCheckout
+            }
+          )
+        ] }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
           CardButton,
           {
@@ -105181,7 +105088,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-wIrxvelZ.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CZGXbaEi.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105358,7 +105265,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-D70SP_OW.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CPDDPdhj.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105592,7 +105499,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BSjLEZIq.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BPbiJyt7.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
