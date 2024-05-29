@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CZGXbaEi.js","./hooks.module-DgsQzz7U.js","./___vite-browser-external_commonjs-proxy-BdNQ1Nm8.js","./index-CPDDPdhj.js","./index.es-BPbiJyt7.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-YbxUGrkV.js","./hooks.module-DElaRkR8.js","./___vite-browser-external_commonjs-proxy-CCsato3G.js","./index-CfDyxI2K.js","./index.es-DuAdkEa6.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Bqiufqz1.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Tlhou0Qw.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -82487,12 +82487,14 @@ const ConnectWalletContent = (props) => {
     return jsxRuntimeExports$1.jsxs(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: [connector._wallet.id === "google-waas" && jsxRuntimeExports$1.jsx(GoogleWaasConnectButton, { connector, onConnect }), connector._wallet.id === "apple-waas" && jsxRuntimeExports$1.jsx(AppleWaasConnectButton, { connector, onConnect }), !connector._wallet.id.includes("waas") && jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect })] }, connector.uid);
   }) })] }), walletConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [(emailConnector && showEmailInput || socialAuthConnectors.length > 0) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid)) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] })] });
 };
+const BUTTON_SIZE = "14";
+const ICON_SIZE = "10";
 const ConnectButton = (props) => {
   const { connector, label, onConnect } = props;
   const { theme } = useTheme$1();
   const walletProps = connector._wallet;
   const Logo = getLogo(theme, walletProps);
-  return jsxRuntimeExports$1.jsx(Tooltip, { message: label || walletProps.name, children: jsxRuntimeExports$1.jsx(Card, { clickable: true, width: "10", height: "10", padding: "2", borderRadius: "xs", justifyContent: "center", alignItems: "center", onClick: () => onConnect(connector), children: jsxRuntimeExports$1.jsx(Box, { as: Logo, width: "6", height: "6" }) }) });
+  return jsxRuntimeExports$1.jsx(Tooltip, { message: label || walletProps.name, children: jsxRuntimeExports$1.jsx(Card, { clickable: true, width: BUTTON_SIZE, height: BUTTON_SIZE, padding: "2", borderRadius: "xs", justifyContent: "center", alignItems: "center", onClick: () => onConnect(connector), children: jsxRuntimeExports$1.jsx(Box, { as: Logo, width: ICON_SIZE, height: ICON_SIZE }) }) });
 };
 const GoogleWaasConnectButton = (props) => {
   const { connector, onConnect } = props;
@@ -82507,15 +82509,14 @@ const GoogleWaasConnectButton = (props) => {
       setEnableGoogleTooltip(true);
     }, 300);
   });
-  return !isPendingNonce ? jsxRuntimeExports$1.jsx(Tooltip, { message: "Google", disabled: !enableGoogleTooltip, children: jsxRuntimeExports$1.jsxs(Card, { clickable: true, background: "transparent", borderRadius: "xs", padding: "0", width: "10", height: "10", position: "relative", children: [jsxRuntimeExports$1.jsx(Box, { width: "10", height: "10", overflow: "hidden", borderRadius: "sm", alignItems: "center", justifyContent: "center", style: { opacity: 1e-7 }, children: jsxRuntimeExports$1.jsx(GoogleLogin, { type: "icon", size: "large", width: 40, nonce: sessionHash, onSuccess: (credentialResponse) => {
+  return !isPendingNonce ? jsxRuntimeExports$1.jsx(Tooltip, { message: "Google", disabled: !enableGoogleTooltip, children: jsxRuntimeExports$1.jsxs(Card, { clickable: true, background: "transparent", borderRadius: "xs", padding: "0", width: BUTTON_SIZE, height: BUTTON_SIZE, position: "relative", children: [jsxRuntimeExports$1.jsx(Box, { width: "full", height: "full", overflow: "hidden", borderRadius: "sm", alignItems: "center", justifyContent: "center", style: { opacity: 1e-7, transform: "scale(1.4)" }, children: jsxRuntimeExports$1.jsx(GoogleLogin, { type: "icon", size: "large", width: "56", nonce: sessionHash, onSuccess: (credentialResponse) => {
     if (credentialResponse.credential) {
-      console.log(credentialResponse);
       storage == null ? void 0 : storage.setItem(LocalStorageKey.WaasGoogleIdToken, credentialResponse.credential);
       onConnect(connector);
     }
   }, onError: () => {
     console.log("Login Failed");
-  } }) }), jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", borderRadius: "xs", display: "flex", justifyContent: "center", alignItems: "center", position: "absolute", pointerEvents: "none", width: "10", height: "10", top: "0", right: "0", children: jsxRuntimeExports$1.jsx(Box, { as: Logo, width: "6", height: "6" }) })] }) }) : null;
+  } }) }), jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", borderRadius: "xs", display: "flex", justifyContent: "center", alignItems: "center", position: "absolute", pointerEvents: "none", width: "full", height: "full", top: "0", right: "0", children: jsxRuntimeExports$1.jsx(Box, { as: Logo, width: ICON_SIZE, height: ICON_SIZE }) })] }) }) : null;
 };
 const AppleWaasConnectButton = (props) => {
   const { connector, onConnect } = props;
@@ -105088,7 +105089,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CZGXbaEi.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-YbxUGrkV.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105265,7 +105266,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-CPDDPdhj.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CfDyxI2K.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105499,7 +105500,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BPbiJyt7.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DuAdkEa6.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
