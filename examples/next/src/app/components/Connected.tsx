@@ -20,7 +20,8 @@ import { isDebugMode } from '../../config'
 
 import { Header } from './Header'
 
-import { abi, messageToSign } from '@/constants'
+import { messageToSign } from '@/constants'
+import { abi } from '@/constants/nft-abi'
 
 export const Connected = () => {
   const { address } = useAccount()
@@ -418,7 +419,7 @@ interface CardButtonProps {
 }
 
 const CardButton = (props: CardButtonProps) => {
-  const { title, description, onClick } = props
+  const { title, description, onClick, isPending } = props
 
   return (
     <Card clickable onClick={onClick}>
@@ -429,7 +430,7 @@ const CardButton = (props: CardButtonProps) => {
         {description}
       </Text>
 
-      {props.isPending && (
+      {isPending && (
         <Box gap="2" alignItems="center" marginTop="4">
           <Spinner />
           <Text variant="small" color="text50">
