@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DIVU7ULv.js","./hooks.module-OhkW9I5r.js","./___vite-browser-external_commonjs-proxy-B10f9RhI.js","./index-D5USuYRN.js","./index.es-DTS-Npfc.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-wIrxvelZ.js","./hooks.module-C91hZtMW.js","./___vite-browser-external_commonjs-proxy-D2fmxTD4.js","./index-D70SP_OW.js","./index.es-BSjLEZIq.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-w2OUTWU2.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DXCkeFpZ.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -93366,7 +93366,47 @@ const KitWalletContent = ({ children }) => {
     }
   }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenWalletModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-wallet-content", children: [getHeader(navigation), displayScrollbar ? jsxRuntimeExports$1.jsx(Scroll, { style: { paddingTop: HEADER_HEIGHT, height: "min(800px, 80vh)" }, children: getContent(navigation) }) : getContent(navigation)] }) }) }) }) }), children] }) });
 };
-const messageToSign = "Two roads diverged in a yellow wood";
+const Header = () => {
+  const { address, connector } = useAccount();
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+    Box,
+    {
+      position: "fixed",
+      top: "0",
+      width: "full",
+      padding: "5",
+      justifyContent: "space-between",
+      background: "backgroundOverlay",
+      backdropFilter: "blur",
+      zIndex: "1",
+      style: { borderBottom: "1px solid #222" },
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "3", children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Image$1, { style: { width: "36px" }, src: "images/kit-logo.svg", alt: "Sequence kit", disableAnimation: true }),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+            Image$1,
+            {
+              style: {
+                width: "24px"
+                // filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
+              },
+              src: "images/kit-logo-text.svg",
+              alt: "Sequence Kit Text Logo",
+              disableAnimation: true
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "flex-end", alignItems: "center", children: [
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(GradientAvatar, { address: String(address) }),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: truncateAddress(String(address), 8) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "flex-end", flexDirection: "row", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: connector == null ? void 0 : connector.name }) })
+        ] }) })
+      ]
+    }
+  );
+};
 const bottomPageLinks = [
   {
     label: "Terms",
@@ -93393,24 +93433,102 @@ const socialLinks = [
   {
     id: "discord",
     url: "https://discord.gg/sequence",
-    icon: "img/social/discord.svg"
+    icon: "images/discord.svg"
   },
   {
     id: "twitter",
     url: "https://www.twitter.com/0xsequence",
-    icon: "img/social/twitter.svg"
+    icon: "images/twitter.svg"
   },
   {
     id: "youtube",
     url: "https://www.youtube.com/channel/UC1zHgUyV-doddTcnFNqt62Q",
-    icon: "img/social/youtube.svg"
+    icon: "images/youtube.svg"
   },
   {
     id: "github",
     url: "https://github.com/0xsequence",
-    icon: "img/social/github.svg"
+    icon: "images/github.svg"
   }
 ];
+const Footer = () => {
+  const { theme } = useTheme$1();
+  const onClickLinkUrl = (url) => {
+    if (typeof window !== "undefined") {
+      window.open(url);
+    }
+  };
+  const Links = () => {
+    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", gap: "4", children: bottomPageLinks.map((link, index2) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+      Button,
+      {
+        variant: "text",
+        onClick: () => onClickLinkUrl(link.url),
+        gap: "4",
+        label: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", children: link.label })
+      },
+      index2
+    )) });
+  };
+  const Socials = () => {
+    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: socialLinks.map((socialLink, index2) => {
+      return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+        Box,
+        {
+          cursor: "pointer",
+          opacity: { hover: "80" },
+          onClick: () => {
+            if (typeof window !== "undefined") {
+              window.open(socialLink.url);
+            }
+          },
+          children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+            Image$1,
+            {
+              height: "3",
+              src: socialLink.icon,
+              alt: socialLink.id,
+              style: {
+                filter: theme === "dark" ? "invert(0)" : "invert(1)"
+              },
+              disableAnimation: true
+            }
+          )
+        },
+        index2
+      );
+    }) });
+  };
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+    Box,
+    {
+      padding: "5",
+      style: { height: "60px", borderTop: "1px solid #222" },
+      position: "fixed",
+      bottom: "0",
+      width: "full",
+      justifyContent: "space-between",
+      background: "backgroundOverlay",
+      backdropFilter: "blur",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
+      ]
+    }
+  );
+};
+const CardButton = (props) => {
+  const { title, description: description2, onClick, isPending } = props;
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Card, { clickable: true, onClick, children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: title }),
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "div", variant: "normal", color: "text50", marginTop: "2", children: description2 }),
+    isPending && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", marginTop: "4", children: [
+      /* @__PURE__ */ jsxRuntimeExports$1.jsx(Spinner, { size: "sm" }),
+      /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Pending..." })
+    ] })
+  ] });
+};
+const messageToSign = "Two roads diverged in a yellow wood";
 const abi = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
@@ -93630,47 +93748,6 @@ const getCheckoutSettings = (blockchainNftId, recipientAddress, tokenContractAdd
     ]
   };
   return checkoutSettings;
-};
-const Header = () => {
-  const { address, connector } = useAccount();
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
-    Box,
-    {
-      position: "fixed",
-      top: "0",
-      width: "full",
-      padding: "5",
-      justifyContent: "space-between",
-      background: "backgroundOverlay",
-      backdropFilter: "blur",
-      zIndex: "1",
-      style: { borderBottom: "1px solid #222" },
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "3", children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Image$1, { style: { width: "36px" }, src: "kit-logo.svg", alt: "Sequence kit", disableAnimation: true }),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-            Image$1,
-            {
-              style: {
-                width: "24px"
-                // filter: theme === 'dark' ? 'invert(0)' : 'invert(1)'
-              },
-              src: "kit-logo-text.svg",
-              alt: "Sequence Kit Text Logo",
-              disableAnimation: true
-            }
-          )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "flex-end", alignItems: "center", children: [
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(GradientAvatar, { address: String(address) }),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: truncateAddress(String(address), 8) })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "flex-end", flexDirection: "row", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: connector == null ? void 0 : connector.name }) })
-        ] }) })
-      ]
-    }
-  );
 };
 const searchParams$2 = new URLSearchParams(location.search);
 const isDebugMode$1 = searchParams$2.has("debug");
@@ -94141,17 +94218,6 @@ const Connected = () => {
     ) })
   ] });
 };
-const CardButton = (props) => {
-  const { title, description: description2, onClick, isPending } = props;
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Card, { clickable: true, onClick, children: [
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: title }),
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "div", variant: "normal", color: "text50", marginTop: "2", children: description2 }),
-    isPending && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", marginTop: "4", children: [
-      /* @__PURE__ */ jsxRuntimeExports$1.jsx(Spinner, { size: "sm" }),
-      /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Pending..." })
-    ] })
-  ] });
-};
 const Alert = ({ title, description: description2, secondaryDescription, variant, buttonProps, children }) => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", background: variant, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
     Box,
@@ -94177,74 +94243,6 @@ const Alert = ({ title, description: description2, secondaryDescription, variant
     }
   ) });
 };
-const Footer = () => {
-  const { theme } = useTheme$1();
-  const onClickLinkUrl = (url) => {
-    if (typeof window !== "undefined") {
-      window.open(url);
-    }
-  };
-  const Links = () => {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", gap: "4", children: bottomPageLinks.map((link, index2) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-      Box,
-      {
-        onClick: () => onClickLinkUrl(link.url),
-        opacity: { hover: "80" },
-        cursor: "pointer",
-        userSelect: "none",
-        gap: "4",
-        children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { fontWeight: "normal", fontSize: "small", color: "text50", children: link.label })
-      },
-      index2
-    )) });
-  };
-  const Socials = () => {
-    return /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: socialLinks.map((socialLink, index2) => {
-      return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-        Box,
-        {
-          opacity: { hover: "80" },
-          cursor: "pointer",
-          userSelect: "none",
-          onClick: () => {
-            if (typeof window !== "undefined") {
-              window.open(socialLink.url);
-            }
-          },
-          children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-            Image$1,
-            {
-              height: "3",
-              src: socialLink.icon,
-              alt: socialLink.id,
-              style: {
-                filter: theme === "dark" ? "invert(0)" : "invert(1)"
-              }
-            }
-          )
-        },
-        index2
-      );
-    }) });
-  };
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
-    Box,
-    {
-      padding: "5",
-      style: { height: "60px", borderTop: "1px solid #222" },
-      position: "fixed",
-      bottom: "0",
-      width: "full",
-      justifyContent: "space-between",
-      background: "backgroundOverlay",
-      backdropFilter: "blur",
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Links, {}),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Socials, {})
-      ]
-    }
-  );
-};
 const searchParams$1 = new URLSearchParams(location.search);
 const connectionMode$1 = searchParams$1.get("mode") === "universal" ? "universal" : "waas";
 const Homepage = () => {
@@ -94262,7 +94260,7 @@ const Homepage = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs("main", { children: [
     !isConnected ? /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "5", height: "vh", children: [
       /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "3", children: [
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Image$1, { style: { width: "48px" }, src: "kit-logo.svg" }),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Image$1, { style: { width: "48px" }, src: "images/kit-logo.svg" }),
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
           Image$1,
           {
@@ -94270,7 +94268,7 @@ const Homepage = () => {
               width: "32px",
               filter: theme === "dark" ? "invert(0)" : "invert(1)"
             },
-            src: "kit-logo-text.svg"
+            src: "images/kit-logo-text.svg"
           }
         )
       ] }),
@@ -105183,7 +105181,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DIVU7ULv.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-wIrxvelZ.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105360,7 +105358,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-D5USuYRN.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-D70SP_OW.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105594,7 +105592,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DTS-Npfc.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BSjLEZIq.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
