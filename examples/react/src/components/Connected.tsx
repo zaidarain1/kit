@@ -1,16 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  Modal,
-  Select,
-  SignoutIcon,
-  Spinner,
-  Switch,
-  Text,
-  TextInput,
-  breakpoints
-} from '@0xsequence/design-system'
+import { Box, Button, Card, Modal, Select, SignoutIcon, Switch, Text, TextInput, breakpoints } from '@0xsequence/design-system'
 import {
   useStorage,
   useWaasFeeOptions,
@@ -20,6 +8,7 @@ import {
   getModalPositionCss
 } from '@0xsequence/kit'
 import { useCheckoutModal, useAddFundsModal } from '@0xsequence/kit-checkout'
+import { CardButton, Header } from '@0xsequence/kit-example-shared-components'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { allNetworks, ChainId } from '@0xsequence/network'
 import { ethers } from 'ethers'
@@ -41,8 +30,6 @@ import {
 import { messageToSign } from '../constants'
 import { abi } from '../constants/nft-abi'
 import { delay, getCheckoutSettings } from '../utils'
-
-import { Header } from './Header'
 
 // append ?debug to url to enable debug mode
 const searchParams = new URLSearchParams(location.search)
@@ -578,37 +565,6 @@ export const Connected = () => {
         )}
       </AnimatePresence>
     </>
-  )
-}
-
-interface CardButtonProps {
-  title: string
-  description: string
-  onClick: () => void
-  isPending?: boolean
-}
-
-const CardButton = (props: CardButtonProps) => {
-  const { title, description, onClick, isPending } = props
-
-  return (
-    <Card clickable onClick={onClick}>
-      <Text variant="normal" fontWeight="bold" color="text100">
-        {title}
-      </Text>
-      <Text as="div" variant="normal" color="text50" marginTop="2">
-        {description}
-      </Text>
-
-      {isPending && (
-        <Box gap="2" alignItems="center" marginTop="4">
-          <Spinner size="sm" />
-          <Text variant="small" color="text50">
-            Pending...
-          </Text>
-        </Box>
-      )}
-    </Card>
   )
 }
 
