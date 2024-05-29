@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-YbxUGrkV.js","./hooks.module-DElaRkR8.js","./___vite-browser-external_commonjs-proxy-CCsato3G.js","./index-CfDyxI2K.js","./index.es-DuAdkEa6.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-D-Mgzk2l.js","./hooks.module-Cujn3_ie.js","./___vite-browser-external_commonjs-proxy-DZNuUr2O.js","./index-DxeIu7eO.js","./index.es-Bs9gDgJO.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Tlhou0Qw.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DSYTZUC_.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -105089,7 +105089,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-YbxUGrkV.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-D-Mgzk2l.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105266,7 +105266,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-CfDyxI2K.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-DxeIu7eO.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105500,7 +105500,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DuAdkEa6.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-Bs9gDgJO.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -106238,7 +106238,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "0.7.2");
+console.log("VERSION:", "0.7.3");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
