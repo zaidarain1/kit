@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-TiedkiuB.js","./hooks.module-u_9s89zz.js","./___vite-browser-external_commonjs-proxy-0Oj7Ahnh.js","./index-fYWyVaHh.js","./index.es-CnDo1Ey_.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-ByI47DcX.js","./hooks.module-Iw98-nlO.js","./___vite-browser-external_commonjs-proxy-B2UZRYZB.js","./index-CvPpAGFk.js","./index.es-C4GqeODv.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-xxfgAIcu.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-5pFEQ6nc.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -93439,7 +93439,7 @@ const AccountMenu = () => {
   const { address, connector } = useAccount();
   const { disconnect: disconnect2 } = useDisconnect();
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs($cb5cc270b50c6fcd$export$be92b6f5f03c0fe9, { open: isOpen, onOpenChange: toggleOpen, children: [
-    /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$41fb9f06171c75f4, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$41fb9f06171c75f4, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
       Box,
       {
         borderColor: isOpen ? "borderFocus" : "borderNormal",
@@ -93449,14 +93449,18 @@ const AccountMenu = () => {
         paddingX: "4",
         paddingY: "3",
         cursor: "pointer",
+        gap: "2",
+        alignItems: "center",
+        userSelect: "none",
+        opacity: { hover: "80" },
         style: { height: 52 },
-        children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", children: [
+        children: [
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "flex-end", alignItems: "center", children: [
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(GradientAvatar, { address: String(address), size: "sm" }),
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: truncateAddress(String(address), 4) })
           ] }) }),
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { color: "text50", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(SvgChevronDownIcon, {}) })
-        ] })
+        ]
       }
     ) }),
     isOpen && /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$602eac185826482c, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$7c6e2c02157bb7d2, { side: "bottom", sideOffset: 8, align: "end", asChild: true, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
@@ -93495,22 +93499,59 @@ const AccountMenu = () => {
 const NetworkSelect = () => {
   const chainId = useChainId();
   const { switchChain: switchChain2 } = useSwitchChain();
-  return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-    Select,
-    {
-      name: "chainId",
-      labelLocation: "top",
-      onValueChange: (value) => switchChain2({ chainId: Number(value) }),
-      value: String(chainId),
-      options: Object.values(networks).map((network2) => ({
-        label: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", gap: "2", children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId: network2.chainId, size: "sm" }),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { display: { sm: "none", lg: "block" }, children: network2.title })
-        ] }),
-        value: String(network2.chainId)
-      }))
-    }
-  );
+  const [isOpen, toggleOpen] = reactExports.useState(false);
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs($cb5cc270b50c6fcd$export$be92b6f5f03c0fe9, { open: isOpen, onOpenChange: toggleOpen, children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$41fb9f06171c75f4, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+      Box,
+      {
+        borderColor: isOpen ? "borderFocus" : "borderNormal",
+        borderWidth: "thin",
+        borderStyle: "solid",
+        borderRadius: "md",
+        paddingX: "4",
+        paddingY: "3",
+        cursor: "pointer",
+        gap: "2",
+        alignItems: "center",
+        userSelect: "none",
+        opacity: { hover: "80" },
+        style: { height: 52 },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", gap: "2", children: [
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "sm" }),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { display: { sm: "none", lg: "block" }, variant: "normal", fontWeight: "bold", color: "text100", children: networks.find((x) => x.chainId === chainId).title })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { color: "text50", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(SvgChevronDownIcon, {}) })
+        ]
+      }
+    ) }),
+    isOpen && /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$602eac185826482c, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$7c6e2c02157bb7d2, { side: "bottom", sideOffset: 8, align: "end", asChild: true, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+      Card,
+      {
+        zIndex: "20",
+        background: "backgroundRaised",
+        backdropFilter: "blur",
+        position: "relative",
+        padding: "2",
+        flexDirection: "column",
+        gap: "2",
+        children: networks.map(({ chainId: chainId2, title }) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+          Button,
+          {
+            width: "full",
+            shape: "square",
+            onClick: () => {
+              switchChain2({ chainId: chainId2 });
+              toggleOpen(false);
+            },
+            leftIcon: () => /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId: chainId2, size: "sm" }),
+            label: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { alignItems: "center", gap: "2", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: title }) })
+          },
+          chainId2
+        ))
+      }
+    ) }) })
+  ] });
 };
 const bottomPageLinks = [
   {
@@ -105160,7 +105201,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-TiedkiuB.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-ByI47DcX.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105337,7 +105378,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-fYWyVaHh.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CvPpAGFk.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105571,7 +105612,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CnDo1Ey_.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C4GqeODv.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
