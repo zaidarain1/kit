@@ -1,10 +1,10 @@
 import type { Wallet } from '@0xsequence/kit'
 
-import { immutableConnector, BaseSequenceConnectorOptions } from '../wagmiConnectors'
+import { immutableConnector } from '../wagmiConnectors'
 
 import { ImmutableLogo } from './ImmutableLogo'
 
-export interface ImmutableOptions extends BaseSequenceConnectorOptions {}
+export interface ImmutableOptions {}
 
 export const immutable = (options: ImmutableOptions): Wallet => ({
   id: 'immutable',

@@ -5,14 +5,13 @@ export interface BaseImmutableConnectorOptions {}
 immutableConnector.type = 'immutable' as const
 
 export function immutableConnector(params: BaseImmutableConnectorOptions) {
-  type Provider = undefined
+  type Provider = any
   type Properties = {
     params: BaseImmutableConnectorOptions
-    setEmail: (email: string) => void
   }
   type StorageItem = {}
 
-  let provider = undefined
+  let provider: any = undefined
 
   return createConnector<Provider, Properties, StorageItem>(config => ({
     id: 'immutable',
@@ -26,6 +25,8 @@ export function immutableConnector(params: BaseImmutableConnectorOptions) {
 
     async connect() {
       const provider = await this.getProvider()
+
+      return { accounts: [], chainId: 1 }
     },
 
     async disconnect() {
@@ -46,7 +47,7 @@ export function immutableConnector(params: BaseImmutableConnectorOptions) {
       }
 
       // return the immutable passport provider
-      provider = undefined
+      provider = {}
     },
 
     async isAuthorized() {
