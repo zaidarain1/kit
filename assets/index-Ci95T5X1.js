@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-D-Mgzk2l.js","./hooks.module-Cujn3_ie.js","./___vite-browser-external_commonjs-proxy-DZNuUr2O.js","./index-DxeIu7eO.js","./index.es-Bs9gDgJO.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-TiedkiuB.js","./hooks.module-u_9s89zz.js","./___vite-browser-external_commonjs-proxy-0Oj7Ahnh.js","./index-fYWyVaHh.js","./index.es-CnDo1Ey_.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -19098,7 +19098,7 @@ const $cf1ac5d9fe0e8206$export$be92b6f5f03c0fe9$1 = $cf1ac5d9fe0e8206$export$bad
 const $cf1ac5d9fe0e8206$export$b688253958b8dfe7$1 = $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d$1;
 const $cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1 = $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1;
 const $cf1ac5d9fe0e8206$export$21b07c8f274aebd5 = $cf1ac5d9fe0e8206$export$79d62cd4e10a3fd0$1;
-const $f1701beae083dbae$export$602eac185826482c = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
+const $f1701beae083dbae$export$602eac185826482c$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   var _globalThis$document;
   const { container = globalThis === null || globalThis === void 0 ? void 0 : (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.body, ...portalProps } = props;
   return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, portalProps, {
@@ -20687,7 +20687,7 @@ const $5d3850c4d0b4e6c7$export$dad7c95542bacce0 = (props) => {
     children,
     (child) => /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
       present: forceMount || context2.open
-    }, /* @__PURE__ */ reactExports.createElement($f1701beae083dbae$export$602eac185826482c, {
+    }, /* @__PURE__ */ reactExports.createElement($f1701beae083dbae$export$602eac185826482c$1, {
       asChild: true,
       container
     }, child))
@@ -23385,7 +23385,7 @@ const $054eb8030ebde76e$var$ToastAnnounce = (props) => {
     );
     return () => window.clearTimeout(timer2);
   }, []);
-  return isAnnounced ? null : /* @__PURE__ */ reactExports.createElement($f1701beae083dbae$export$602eac185826482c, {
+  return isAnnounced ? null : /* @__PURE__ */ reactExports.createElement($f1701beae083dbae$export$602eac185826482c$1, {
     asChild: true
   }, /* @__PURE__ */ reactExports.createElement($ea1ef594cf570d83$export$439d29a4e110a164, announceProps, renderAnnounceText && /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, context2.label, " ", children)));
 };
@@ -43598,7 +43598,7 @@ const classicMordor = {
   name: "classicMordor",
   _defaultProvider: etcDefaultProvider("https://www.ethercluster.com/mordor", "classicMordor")
 };
-const networks$1 = {
+const networks$2 = {
   unspecified: { chainId: 0, name: "unspecified" },
   homestead,
   mainnet: homestead,
@@ -43667,8 +43667,8 @@ function getNetwork$1(network2) {
     return null;
   }
   if (typeof network2 === "number") {
-    for (const name2 in networks$1) {
-      const standard2 = networks$1[name2];
+    for (const name2 in networks$2) {
+      const standard2 = networks$2[name2];
       if (standard2.chainId === network2) {
         return {
           name: standard2.name,
@@ -43684,7 +43684,7 @@ function getNetwork$1(network2) {
     };
   }
   if (typeof network2 === "string") {
-    const standard2 = networks$1[network2];
+    const standard2 = networks$2[network2];
     if (standard2 == null) {
       return null;
     }
@@ -43695,7 +43695,7 @@ function getNetwork$1(network2) {
       _defaultProvider: standard2._defaultProvider || null
     };
   }
-  const standard = networks$1[network2.name];
+  const standard = networks$2[network2.name];
   if (!standard) {
     if (typeof network2.chainId !== "number") {
       logger$a.throwArgumentError("invalid network chainId", "network", network2);
@@ -48833,7 +48833,7 @@ let NetworkType = /* @__PURE__ */ function(NetworkType2) {
   NetworkType2["TESTNET"] = "testnet";
   return NetworkType2;
 }({});
-const networks = {
+const networks$1 = {
   [ChainId.MAINNET]: {
     chainId: ChainId.MAINNET,
     type: NetworkType.MAINNET,
@@ -49790,16 +49790,16 @@ const genUrls = (network2) => {
     indexerUrl: indexerURL(network2)
   };
 };
-const allNetworks = validateAndSortNetworks([_extends$f({}, networks[ChainId.POLYGON], genUrls("polygon"), {
+const allNetworks = validateAndSortNetworks([_extends$f({}, networks$1[ChainId.POLYGON], genUrls("polygon"), {
   isDefaultChain: true,
   isAuthChain: true
-}), _extends$f({}, networks[ChainId.MAINNET], genUrls("mainnet")), _extends$f({}, networks[ChainId.BSC], genUrls("bsc")), _extends$f({}, networks[ChainId.AVALANCHE], genUrls("avalanche")), _extends$f({}, networks[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$f({}, networks[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$f({}, networks[ChainId.OPTIMISM], genUrls("optimism")), _extends$f({}, networks[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$f({}, networks[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$f({}, networks[ChainId.GNOSIS], genUrls("gnosis")), _extends$f({}, networks[ChainId.RINKEBY], genUrls("rinkeby"), {
+}), _extends$f({}, networks$1[ChainId.MAINNET], genUrls("mainnet")), _extends$f({}, networks$1[ChainId.BSC], genUrls("bsc")), _extends$f({}, networks$1[ChainId.AVALANCHE], genUrls("avalanche")), _extends$f({}, networks$1[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$f({}, networks$1[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$f({}, networks$1[ChainId.OPTIMISM], genUrls("optimism")), _extends$f({}, networks$1[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$f({}, networks$1[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$f({}, networks$1[ChainId.GNOSIS], genUrls("gnosis")), _extends$f({}, networks$1[ChainId.RINKEBY], genUrls("rinkeby"), {
   disabled: true
-}), _extends$f({}, networks[ChainId.GOERLI], genUrls("goerli"), {
+}), _extends$f({}, networks$1[ChainId.GOERLI], genUrls("goerli"), {
   disabled: true
-}), _extends$f({}, networks[ChainId.SEPOLIA], genUrls("sepolia")), _extends$f({}, networks[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
+}), _extends$f({}, networks$1[ChainId.SEPOLIA], genUrls("sepolia")), _extends$f({}, networks$1[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
   disabled: true
-}), _extends$f({}, networks[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$f({}, networks[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$f({}, networks[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$f({}, networks[ChainId.BASE], genUrls("base")), _extends$f({}, networks[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$f({}, networks[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$f({}, networks[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$f({}, networks[ChainId.XAI], genUrls("xai")), _extends$f({}, networks[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$f({}, networks[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$f({}, networks[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$f({}, networks[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$f({}, networks[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$f({}, networks[ChainId.HARDHAT], {
+}), _extends$f({}, networks$1[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$f({}, networks$1[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$f({}, networks$1[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$f({}, networks$1[ChainId.BASE], genUrls("base")), _extends$f({}, networks$1[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$f({}, networks$1[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$f({}, networks$1[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$f({}, networks$1[ChainId.XAI], genUrls("xai")), _extends$f({}, networks$1[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$f({}, networks$1[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$f({}, networks$1[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$f({}, networks$1[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$f({}, networks$1[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$f({}, networks$1[ChainId.HARDHAT], {
   rpcUrl: "http://localhost:8545",
   relayer: {
     url: "http://localhost:3000",
@@ -49807,7 +49807,7 @@ const allNetworks = validateAndSortNetworks([_extends$f({}, networks[ChainId.POL
       url: "http://localhost:8545"
     }
   }
-}), _extends$f({}, networks[ChainId.HARDHAT_2], {
+}), _extends$f({}, networks$1[ChainId.HARDHAT_2], {
   rpcUrl: "http://localhost:9545",
   relayer: {
     url: "http://localhost:3000",
@@ -50344,7 +50344,7 @@ class JsonRpcProvider2 extends JsonRpcProvider$1 {
   async getNetwork() {
     const chainId = this._chainId;
     if (chainId) {
-      const network2 = networks[chainId];
+      const network2 = networks$1[chainId];
       const name2 = (network2 == null ? void 0 : network2.name) || "";
       const ensAddress = network2 == null ? void 0 : network2.ensAddress;
       return {
@@ -50401,7 +50401,7 @@ const network$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   loggingProviderMiddleware,
   maybeChainId,
   networkProviderMiddleware,
-  networks,
+  networks: networks$1,
   networksIndex,
   nodesURL,
   relayerURL,
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DSYTZUC_.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-xxfgAIcu.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -82598,7 +82598,7 @@ const getNetworkBackgroundColor = (chainId, mode = "light") => {
   }
 };
 const getNetwork = (chainId) => {
-  const network2 = networks[chainId];
+  const network2 = networks$1[chainId];
   if (!network2) {
     throw new Error(`Unknown network chainId: ${chainId}`);
   }
@@ -82636,7 +82636,7 @@ const useIndexerClient = (chainId) => {
   const indexerClients = reactExports.useMemo(() => {
     return /* @__PURE__ */ new Map();
   }, [projectAccessKey2, isDev]);
-  const network2 = networks[chainId];
+  const network2 = networks$1[chainId];
   const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
   if (!indexerClients.has(chainId)) {
     indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
@@ -82655,7 +82655,7 @@ const useIndexerClients = (chainIds) => {
   }, [projectAccessKey2, isDev]);
   const result = /* @__PURE__ */ new Map();
   for (const chainId of chainIds) {
-    const network2 = networks[chainId];
+    const network2 = networks$1[chainId];
     const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
     if (!indexerClients.has(chainId)) {
       indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
@@ -84116,7 +84116,7 @@ const NavigationHeader$1 = ({ secondaryText, primaryText, disableBack = false })
 const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMetadata) => {
   const randomNumber = Math.floor(Math.random() * 1e6);
   const timestamp = (/* @__PURE__ */ new Date()).getTime();
-  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
+  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks$1[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
   const accessKey = isDev ? "17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA" : projectAccessKey2;
   const url = isDev ? "https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutToken" : "https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken";
   const res = await fetch(url, {
@@ -84135,7 +84135,7 @@ const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMet
         },
         name: (tokenMetadata == null ? void 0 : tokenMetadata.name) || "Unknown",
         imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://www.sequence.market/images/placeholder.png",
-        network: networks[order.chainId].name,
+        network: networks$1[order.chainId].name,
         recipientAddress: order.recipientAddress,
         contractAddress: order.contractAddress,
         platform: "calldata_execution",
@@ -92082,6 +92082,13 @@ function $cf1ac5d9fe0e8206$var$getSideAndAlignFromPlacement(placement) {
 const $cf1ac5d9fe0e8206$export$be92b6f5f03c0fe9 = $cf1ac5d9fe0e8206$export$badac9ada3a0bdf9;
 const $cf1ac5d9fe0e8206$export$b688253958b8dfe7 = $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d;
 const $cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2 = $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc;
+const $f1701beae083dbae$export$602eac185826482c = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
+  var _globalThis$document;
+  const { container = globalThis === null || globalThis === void 0 ? void 0 : (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.body, ...portalProps } = props;
+  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({}, portalProps, {
+    ref: forwardedRef
+  })), container) : null;
+});
 function $fe963b355347cc68$export$3e6543de14f8614f(initialState, machine) {
   return reactExports.useReducer((state, event) => {
     const nextState = machine[state][event];
@@ -93043,6 +93050,19 @@ const $cb5cc270b50c6fcd$var$PORTAL_NAME = "PopoverPortal";
 const [$cb5cc270b50c6fcd$var$PortalProvider, $cb5cc270b50c6fcd$var$usePortalContext] = $cb5cc270b50c6fcd$var$createPopoverContext($cb5cc270b50c6fcd$var$PORTAL_NAME, {
   forceMount: void 0
 });
+const $cb5cc270b50c6fcd$export$dd679ffb4362d2d4 = (props) => {
+  const { __scopePopover, forceMount, children, container } = props;
+  const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$PORTAL_NAME, __scopePopover);
+  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PortalProvider, {
+    scope: __scopePopover,
+    forceMount
+  }, /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
+    present: forceMount || context2.open
+  }, /* @__PURE__ */ reactExports.createElement($f1701beae083dbae$export$602eac185826482c, {
+    asChild: true,
+    container
+  }, children)));
+};
 const $cb5cc270b50c6fcd$var$CONTENT_NAME = "PopoverContent";
 const $cb5cc270b50c6fcd$export$d7e1f420b25549ff = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const portalContext = $cb5cc270b50c6fcd$var$usePortalContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
@@ -93174,6 +93194,7 @@ function $cb5cc270b50c6fcd$var$getState(open) {
 const $cb5cc270b50c6fcd$export$be92b6f5f03c0fe9 = $cb5cc270b50c6fcd$export$5b6b19405a83ff9d;
 const $cb5cc270b50c6fcd$export$b688253958b8dfe7 = $cb5cc270b50c6fcd$export$96e5381f42521a79;
 const $cb5cc270b50c6fcd$export$41fb9f06171c75f4 = $cb5cc270b50c6fcd$export$7dacb05d26466c3;
+const $cb5cc270b50c6fcd$export$602eac185826482c = $cb5cc270b50c6fcd$export$dd679ffb4362d2d4;
 const $cb5cc270b50c6fcd$export$7c6e2c02157bb7d2 = $cb5cc270b50c6fcd$export$d7e1f420b25549ff;
 const AccountInformation = reactExports.forwardRef(({ onClickAccount }, ref) => {
   const { address } = useAccount();
@@ -93372,15 +93393,18 @@ const KitWalletContent = ({ children }) => {
     }
   }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenWalletModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-wallet-content", children: [getHeader(navigation), displayScrollbar ? jsxRuntimeExports$1.jsx(Scroll, { style: { paddingTop: HEADER_HEIGHT, height: "min(800px, 80vh)" }, children: getContent(navigation) }) : getContent(navigation)] }) }) }) }) }), children] }) });
 };
+const networks = [
+  { chainId: ChainId.ARBITRUM_SEPOLIA, title: "Arbitrum Sepolia" },
+  { chainId: ChainId.ARBITRUM_NOVA, title: "Arbitrum Nova" }
+];
 const Header = () => {
-  const { address, connector } = useAccount();
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
     Box,
     {
       position: "fixed",
       top: "0",
       width: "full",
-      padding: "5",
+      padding: "4",
       justifyContent: "space-between",
       background: "backgroundOverlay",
       backdropFilter: "blur",
@@ -93402,14 +93426,89 @@ const Header = () => {
             }
           )
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", children: [
-          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "flex-end", alignItems: "center", children: [
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(GradientAvatar, { address: String(address) }),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: truncateAddress(String(address), 8) })
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "flex-end", flexDirection: "row", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: connector == null ? void 0 : connector.name }) })
-        ] }) })
+        /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkSelect, {}),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(AccountMenu, {})
+        ] })
       ]
+    }
+  );
+};
+const AccountMenu = () => {
+  const [isOpen, toggleOpen] = reactExports.useState(false);
+  const { address, connector } = useAccount();
+  const { disconnect: disconnect2 } = useDisconnect();
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsxs($cb5cc270b50c6fcd$export$be92b6f5f03c0fe9, { open: isOpen, onOpenChange: toggleOpen, children: [
+    /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$41fb9f06171c75f4, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+      Box,
+      {
+        borderColor: isOpen ? "borderFocus" : "borderNormal",
+        borderWidth: "thin",
+        borderStyle: "solid",
+        borderRadius: "md",
+        paddingX: "4",
+        paddingY: "3",
+        cursor: "pointer",
+        style: { height: 52 },
+        children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", justifyContent: "flex-end", alignItems: "center", children: [
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(GradientAvatar, { address: String(address), size: "sm" }),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: truncateAddress(String(address), 4) })
+          ] }) }),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { color: "text50", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(SvgChevronDownIcon, {}) })
+        ] })
+      }
+    ) }),
+    isOpen && /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$602eac185826482c, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx($cb5cc270b50c6fcd$export$7c6e2c02157bb7d2, { side: "bottom", sideOffset: 8, align: "end", asChild: true, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
+      Card,
+      {
+        zIndex: "20",
+        background: "backgroundRaised",
+        backdropFilter: "blur",
+        position: "relative",
+        padding: "2",
+        style: { minWidth: 360 },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Card, { children: [
+            /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "space-between", children: [
+              /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: "Account" }),
+              /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: connector == null ? void 0 : connector.name })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { as: "div", marginTop: "2", variant: "normal", color: "text80", children: address })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { marginTop: "2", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+            Button,
+            {
+              width: "full",
+              shape: "square",
+              variant: "emphasis",
+              rightIcon: SvgSignoutIcon,
+              label: "Sign out",
+              onClick: () => disconnect2()
+            }
+          ) })
+        ]
+      }
+    ) }) })
+  ] });
+};
+const NetworkSelect = () => {
+  const chainId = useChainId();
+  const { switchChain: switchChain2 } = useSwitchChain();
+  return /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+    Select,
+    {
+      name: "chainId",
+      labelLocation: "top",
+      onValueChange: (value) => switchChain2({ chainId: Number(value) }),
+      value: String(chainId),
+      options: Object.values(networks).map((network2) => ({
+        label: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", gap: "2", children: [
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId: network2.chainId, size: "sm" }),
+          /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { display: { sm: "none", lg: "block" }, children: network2.title })
+        ] }),
+        value: String(network2.chainId)
+      }))
     }
   );
 };
@@ -93639,9 +93738,7 @@ const Connected = () => {
   const { setOpenWalletModal } = useOpenWalletModal();
   const { triggerCheckout } = useCheckoutModal();
   const { triggerAddFunds } = useAddFundsModal();
-  const { disconnect: disconnect2 } = useDisconnect();
   const { data: walletClient } = useWalletClient();
-  const { switchChain: switchChain2 } = useSwitchChain();
   const storage = useStorage();
   const [isCheckoutInfoModalOpen, setIsCheckoutInfoModalOpen] = React.useState(false);
   const [checkoutOrderId, setCheckoutOrderId] = React.useState("");
@@ -93822,16 +93919,11 @@ const Connected = () => {
       walletAddress: address || ""
     });
   };
-  const onSwitchNetwork = () => {
-    if (chainId === ChainId.ARBITRUM_SEPOLIA) {
-      switchChain2({ chainId: ChainId.ARBITRUM_NOVA });
-    } else {
-      switchChain2({ chainId: ChainId.ARBITRUM_SEPOLIA });
-    }
+  reactExports.useEffect(() => {
     setLastTxnDataHash(void 0);
     setLastTxnDataHash2(void 0);
     setIsMessageValid(void 0);
-  };
+  }, [chainId]);
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports$1.jsx(Header, {}),
     /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { paddingX: "4", flexDirection: "column", justifyContent: "center", alignItems: "center", style: { margin: "140px 0" }, children: /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "4", style: { maxWidth: breakpoints.md }, children: [
@@ -93925,15 +94017,7 @@ const Connected = () => {
               onClick: onClickCheckout
             }
           )
-        ] }),
-        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-          CardButton,
-          {
-            title: "Switch network",
-            description: `Current network: ${networkForCurrentChainId.title}`,
-            onClick: onSwitchNetwork
-          }
-        )
+        ] })
       ] }),
       pendingFeeOptionConfirmation && feeOptionBalances.length > 0 && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { marginY: "3", children: [
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
@@ -94046,20 +94130,7 @@ const Connected = () => {
             }
           }
         ) })
-      ] }) }),
-      /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { width: "full", gap: "2", flexDirection: "row", justifyContent: "flex-end", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(
-        Button,
-        {
-          onClick: () => {
-            disconnect2();
-            setLastTxnDataHash(void 0);
-            setLastTxnDataHash2(void 0);
-            setIsMessageValid(void 0);
-          },
-          leftIcon: SvgSignoutIcon,
-          label: "Sign out"
-        }
-      ) })
+      ] }) })
     ] }) }),
     /* @__PURE__ */ jsxRuntimeExports$1.jsx(AnimatePresence, { children: isCheckoutInfoModalOpen && /* @__PURE__ */ jsxRuntimeExports$1.jsx(
       Modal,
@@ -103787,7 +103858,7 @@ async function newSession(cryptoBackend, secureStoreBackend) {
     return newSECP256K1Session(secureStoreBackend);
   }
 }
-const nameToId = Object.entries(networks).reduce((acc, [key2, value]) => {
+const nameToId = Object.entries(networks$1).reduce((acc, [key2, value]) => {
   acc[value.name] = value.chainId;
   return acc;
 }, {});
@@ -105089,7 +105160,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-D-Mgzk2l.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-TiedkiuB.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105266,7 +105337,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-DxeIu7eO.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-fYWyVaHh.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105500,7 +105571,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-Bs9gDgJO.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CnDo1Ey_.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
