@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-8grpMzlp.js","./hooks.module-D6B_0NMC.js","./___vite-browser-external_commonjs-proxy-BmBCifpa.js","./index-CgrkgahC.js","./index.es-B1ORde5d.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CACqfHDW.js","./hooks.module-C1MxFELh.js","./___vite-browser-external_commonjs-proxy-pWOhMgQc.js","./index-CddTa4eH.js","./index.es-DdUPY9t1.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BC0KwXAp.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CddV9DNy.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -105344,7 +105344,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-8grpMzlp.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CACqfHDW.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105521,7 +105521,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-CgrkgahC.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CddTa4eH.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105755,7 +105755,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-B1ORde5d.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DdUPY9t1.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -106009,7 +106009,7 @@ const emailWaas = (options) => ({
   }
 });
 const FacebookLogo = (props) => {
-  return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 41 40", fill: "none", ...props, children: [jsxRuntimeExports$1.jsx("path", { d: "M17.4214 36.9716C9.27855 35.5145 3.10712 28.4859 3.10712 20.0001C3.10712 10.5715 10.8214 2.85718 20.25 2.85718C29.6785 2.85718 37.3928 10.5715 37.3928 20.0001C37.3928 28.4859 31.2214 35.5145 23.0785 36.9716L22.1357 36.2002H18.3643L17.4214 36.9716Z", fill: "url(#paint0_linear_193_14528)" }), jsxRuntimeExports$1.jsx("path", { d: "M26.9357 24.7999L27.7072 19.9999H23.1643V16.657C23.1643 15.2856 23.6786 14.257 25.7357 14.257H27.9643V9.88558C26.7643 9.71415 25.3929 9.54272 24.1929 9.54272C20.25 9.54272 17.5071 11.9427 17.5071 16.2285V19.9999H13.2214V24.7999H17.5071V36.8857C18.45 37.0571 19.3929 37.1429 20.3357 37.1429C21.2786 37.1429 22.2214 37.0571 23.1643 36.8857V24.7999H26.9357Z", fill: "white" }), jsxRuntimeExports$1.jsx("defs", { children: jsxRuntimeExports$1.jsxs("linearGradient", { id: "paint0_linear_193_14528", x1: "20.2508", y1: "35.9507", x2: "20.2508", y2: "2.85086", gradientUnits: "userSpaceOnUse", children: [jsxRuntimeExports$1.jsx("stop", { "stop-color": "#0062E0" }), jsxRuntimeExports$1.jsx("stop", { offset: "1", "stop-color": "#19AFFF" })] }) })] });
+  return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 41 40", fill: "none", ...props, children: [jsxRuntimeExports$1.jsx("path", { d: "M17.4214 36.9716C9.27855 35.5145 3.10712 28.4859 3.10712 20.0001C3.10712 10.5715 10.8214 2.85718 20.25 2.85718C29.6785 2.85718 37.3928 10.5715 37.3928 20.0001C37.3928 28.4859 31.2214 35.5145 23.0785 36.9716L22.1357 36.2002H18.3643L17.4214 36.9716Z", fill: "url(#paint0_linear_193_14528)" }), jsxRuntimeExports$1.jsx("path", { d: "M26.9357 24.7999L27.7072 19.9999H23.1643V16.657C23.1643 15.2856 23.6786 14.257 25.7357 14.257H27.9643V9.88558C26.7643 9.71415 25.3929 9.54272 24.1929 9.54272C20.25 9.54272 17.5071 11.9427 17.5071 16.2285V19.9999H13.2214V24.7999H17.5071V36.8857C18.45 37.0571 19.3929 37.1429 20.3357 37.1429C21.2786 37.1429 22.2214 37.0571 23.1643 36.8857V24.7999H26.9357Z", fill: "white" }), jsxRuntimeExports$1.jsx("defs", { children: jsxRuntimeExports$1.jsxs("linearGradient", { id: "paint0_linear_193_14528", x1: "20.2508", y1: "35.9507", x2: "20.2508", y2: "2.85086", gradientUnits: "userSpaceOnUse", children: [jsxRuntimeExports$1.jsx("stop", { stopColor: "#0062E0" }), jsxRuntimeExports$1.jsx("stop", { offset: "1", stopColor: "#19AFFF" })] }) })] });
 };
 const getFacebookMonochromeLogo = ({ isDarkMode }) => {
   const fillColor = isDarkMode ? "#FFFFFF" : "#000000";
