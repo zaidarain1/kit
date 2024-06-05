@@ -6,6 +6,7 @@
   "scripts": {
     "build": "turbo run build --filter={packages/*}",
     "build:clean": "turbo run build:clean",
+    "dev": "turbo run dev --filter={packages/*}",
     "reinstall": "rimraf -g ./**/node_modules && pnpm install",
     "test": "turbo run test",
     "lint": "eslint -c .eslintrc.js 'packages/**/src/**/*.{ts,tsx}'",
@@ -45,9 +46,10 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rimraf": "^5.0.7",
-    "turbo": "1.13.3",
+    "turbo": "2.0.1",
     "typescript": "~5.4.5",
     "wagmi": "^2.9.5"
   },
-  "resolutions": {}
+  "resolutions": {},
+  "packageManager": "pnpm@9.0.6"
 }
