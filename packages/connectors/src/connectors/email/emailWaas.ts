@@ -12,6 +12,7 @@ export const emailWaas = (options: EmailWaasOptions): Wallet => ({
   logoDark: getEmailLogo({ isDarkMode: true }),
   logoLight: getEmailLogo({ isDarkMode: false }),
   name: 'Email',
+  type: 'wallet',
   createConnector: () => {
     const connector = sequenceWaasWallet({
       ...options,
