@@ -92,9 +92,6 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
       } else if (connector.id === 'com.coinbase.wallet') {
         return !baseConnectors.find(connector => (connector as ExtendedConnector)?._wallet?.id === 'coinbase-wallet')
       }
-      // } else if (connector.id === 'app.sequence') {
-      //   return !baseConnectors.find(connector =>(connector as ExtendedConnector)?._wallet?.id === 'sequence')
-      // }
 
       return true
     })
@@ -111,8 +108,6 @@ export const ConnectWalletContent = (props: ConnectWalletContentProps) => {
           logoLight: Logo,
           logoDark: Logo,
           type: 'wallet',
-          /* @ts-ignore-next-line */
-          ...(connector?._wallet ? connector?._wallet : {})
         }
       }
     })
