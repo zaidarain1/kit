@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BWlBvCWG.js","./hooks.module-DoqBcIk1.js","./___vite-browser-external_commonjs-proxy-BMrhmanF.js","./index-DRWDRRTG.js","./index.es-D97mvlM1.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CC30NILl.js","./hooks.module-B86p4zZ8.js","./___vite-browser-external_commonjs-proxy-CTli1DlT.js","./index-CvMJLNtz.js","./index.es-BJYCZ4qw.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BYN3oyYm.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CY2kJIz2.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84182,6 +84182,67 @@ const useCheckoutModal = () => {
   const { triggerCheckout, closeCheckout, settings } = useCheckoutModalContext();
   return { triggerCheckout, closeCheckout, settings };
 };
+const compareAddress$1 = (a2, b2) => {
+  return a2.toLowerCase() === b2.toLowerCase();
+};
+var ValueType$1;
+(function(ValueType2) {
+  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
+  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
+  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
+  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
+})(ValueType$1 || (ValueType$1 = {}));
+const formatDisplay$1 = (_val) => {
+  if (isNaN(Number(_val))) {
+    console.error(`display format error ${_val} is not a number`);
+    return "NaN";
+  }
+  const val = Number(_val);
+  if (val === 0) {
+    return "0";
+  }
+  let valMode;
+  if (val > 1e8) {
+    valMode = ValueType$1.VERY_LARGE;
+  } else if (val < 1e-10) {
+    valMode = ValueType$1.VERY_TINY;
+  } else if (val < 1) {
+    valMode = ValueType$1.FRACTION;
+  } else {
+    valMode = ValueType$1.MIXED;
+  }
+  let notation = void 0;
+  let config2;
+  switch (valMode) {
+    case ValueType$1.VERY_LARGE:
+      notation = "compact";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType$1.VERY_TINY:
+      notation = "scientific";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType$1.FRACTION:
+      notation = "standard";
+      config2 = {
+        maximumSignificantDigits: 4
+      };
+      break;
+    default:
+      notation = "standard";
+      config2 = {
+        maximumFractionDigits: 2
+      };
+  }
+  return Intl.NumberFormat("en-US", {
+    notation,
+    ...config2
+  }).format(val);
+};
 const POLLING_TIME = 10 * 1e3;
 const PendingTransaction = () => {
   var _a2;
@@ -84276,67 +84337,6 @@ const TransactionError = () => {
   return jsxRuntimeExports$1.jsx(Box, { style: { height: "500px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationErrorIcon, {}), jsxRuntimeExports$1.jsx(Text, { fontSize: "xlarge", children: "Error" }), jsxRuntimeExports$1.jsx(Text, { textAlign: "center", variant: "normal", color: "text80", children: "An error occurred while processing the transaction." })] }) });
 };
 const NotificationErrorIcon = () => jsxRuntimeExports$1.jsx(Box, { color: "white", alignItems: "center", justifyContent: "center", width: "16", height: "16", borderRadius: "circle", marginBottom: "2", background: "negative", children: jsxRuntimeExports$1.jsx(SvgCloseIcon, { size: "xl" }) });
-const compareAddress$1 = (a2, b2) => {
-  return a2.toLowerCase() === b2.toLowerCase();
-};
-var ValueType$1;
-(function(ValueType2) {
-  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
-  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
-  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
-  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
-})(ValueType$1 || (ValueType$1 = {}));
-const formatDisplay$1 = (_val) => {
-  if (isNaN(Number(_val))) {
-    console.error(`display format error ${_val} is not a number`);
-    return "NaN";
-  }
-  const val = Number(_val);
-  if (val === 0) {
-    return "0";
-  }
-  let valMode;
-  if (val > 1e8) {
-    valMode = ValueType$1.VERY_LARGE;
-  } else if (val < 1e-10) {
-    valMode = ValueType$1.VERY_TINY;
-  } else if (val < 1) {
-    valMode = ValueType$1.FRACTION;
-  } else {
-    valMode = ValueType$1.MIXED;
-  }
-  let notation = void 0;
-  let config2;
-  switch (valMode) {
-    case ValueType$1.VERY_LARGE:
-      notation = "compact";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType$1.VERY_TINY:
-      notation = "scientific";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType$1.FRACTION:
-      notation = "standard";
-      config2 = {
-        maximumSignificantDigits: 4
-      };
-      break;
-    default:
-      notation = "standard";
-      config2 = {
-        maximumFractionDigits: 2
-      };
-  }
-  return Intl.NumberFormat("en-US", {
-    notation,
-    ...config2
-  }).format(val);
-};
 const OrderSummaryItem = ({ contractAddress, tokenId, quantityRaw, chainId }) => {
   const { data: tokenMetadata, isPending: isPendingTokenMetadata } = useTokenMetadata(chainId, contractAddress, [tokenId]);
   const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo(chainId, contractAddress);
@@ -105345,7 +105345,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-BWlBvCWG.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CC30NILl.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105522,7 +105522,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-DRWDRRTG.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CvMJLNtz.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105756,7 +105756,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-D97mvlM1.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BJYCZ4qw.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
