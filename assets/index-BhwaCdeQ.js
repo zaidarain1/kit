@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DSsi2wOK.js","./hooks.module-CJJFTgfX.js","./___vite-browser-external_commonjs-proxy-8wDYLuGp.js","./index-D6LfVH7_.js","./index.es-BJNxTLED.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-Ce_E7HIq.js","./hooks.module-BlYp93Im.js","./___vite-browser-external_commonjs-proxy-ymwXBvEE.js","./index-CN9rLT9X.js","./index.es-BdhNOjKb.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -15381,8 +15381,8 @@ function $921a889cee6df7e8$var$usePresence$1(present) {
 function $921a889cee6df7e8$var$getAnimationName$1(styles) {
   return (styles === null || styles === void 0 ? void 0 : styles.animationName) || "none";
 }
-function _extends$i() {
-  _extends$i = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$k() {
+  _extends$k = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -15393,7 +15393,7 @@ function _extends$i() {
     }
     return target;
   };
-  return _extends$i.apply(this, arguments);
+  return _extends$k.apply(this, arguments);
 }
 const $5e63c961fc1ce211$export$8c6ed5c666ac1360$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, ...slotProps } = props;
@@ -15409,11 +15409,11 @@ const $5e63c961fc1ce211$export$8c6ed5c666ac1360$1 = /* @__PURE__ */ reactExports
       } else
         return child;
     });
-    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$i({}, slotProps, {
+    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$k({}, slotProps, {
       ref: forwardedRef
     }), /* @__PURE__ */ reactExports.isValidElement(newElement) ? /* @__PURE__ */ reactExports.cloneElement(newElement, void 0, newChildren) : null);
   }
-  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$i({}, slotProps, {
+  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone$1, _extends$k({}, slotProps, {
     ref: forwardedRef
   }), children);
 });
@@ -16753,7 +16753,7 @@ const $5cb92bef7577960e$export$177fb62ff3ec1f22$1 = /* @__PURE__ */ reactExports
     document.addEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE$1, handleUpdate);
     return () => document.removeEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE$1, handleUpdate);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, layerProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({}, layerProps, {
     ref: composedRefs,
     style: {
       pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
@@ -17026,7 +17026,7 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6$1 = /* @__PURE__ */ reactExports
     trapped,
     focusScope.paused
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
     tabIndex: -1
   }, scopeProps, {
     ref: composedRefs,
@@ -18820,7 +18820,7 @@ function useFloating$1(options) {
 }
 const $7e8f5cd07187803e$export$21b07c8f274aebd5$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.svg, _extends$i({}, arrowProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.svg, _extends$k({}, arrowProps, {
     ref: forwardedRef,
     width,
     height,
@@ -18852,7 +18852,7 @@ const $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d$1 = /* @__PURE__ */ reactExports.
   reactExports.useEffect(() => {
     context2.onAnchorChange((virtualRef === null || virtualRef === void 0 ? void 0 : virtualRef.current) || ref.current);
   });
-  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, anchorProps, {
+  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({}, anchorProps, {
     ref: composedRefs
   }));
 });
@@ -18982,7 +18982,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc$1 = /* @__PURE__ */ reactExports.
     arrowX,
     arrowY,
     shouldHideArrow: cannotCenterArrow
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
     "data-side": placedSide,
     "data-align": placedAlign
   }, contentProps, {
@@ -19033,7 +19033,7 @@ const $cf1ac5d9fe0e8206$export$79d62cd4e10a3fd0$1 = /* @__PURE__ */ reactExports
         }[contentContext.placedSide],
         visibility: contentContext.shouldHideArrow ? "hidden" : void 0
       }
-    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9$1, _extends$i({}, arrowProps, {
+    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9$1, _extends$k({}, arrowProps, {
       ref: forwardedRef,
       style: {
         ...arrowProps.style,
@@ -19101,7 +19101,7 @@ const $cf1ac5d9fe0e8206$export$21b07c8f274aebd5 = $cf1ac5d9fe0e8206$export$79d62
 const $f1701beae083dbae$export$602eac185826482c$1 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   var _globalThis$document;
   const { container = globalThis === null || globalThis === void 0 ? void 0 : (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.body, ...portalProps } = props;
-  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, portalProps, {
+  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({}, portalProps, {
     ref: forwardedRef
   })), container) : null;
 });
@@ -20105,7 +20105,7 @@ const $6cc32821e9371a1c$export$2ce376c2cc3355c8 = /* @__PURE__ */ reactExports.f
         rootContext.onClose();
     }
   };
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends$i({}, itemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$MenuItemImpl, _extends$k({}, itemProps, {
     ref: composedRefs,
     disabled,
     onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10$1(props.onClick, handleSelect),
@@ -20151,11 +20151,11 @@ const $6cc32821e9371a1c$var$MenuItemImpl = /* @__PURE__ */ reactExports.forwardR
     scope: __scopeMenu,
     disabled,
     textValue: textValue !== null && textValue !== void 0 ? textValue : textContent
-  }, /* @__PURE__ */ reactExports.createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($d7bdfb9eb0fdf311$export$6d08773d2e66f8f2, _extends$k({
     asChild: true
   }, rovingFocusGroupScope, {
     focusable: !disabled
-  }), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+  }), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
     role: "menuitem",
     "data-highlighted": isFocused ? "" : void 0,
     "aria-disabled": disabled || void 0,
@@ -20191,7 +20191,7 @@ const $6cc32821e9371a1c$export$f6f243521332502d = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
     scope: props.__scopeMenu,
     checked
-  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$k({
     role: "menuitemcheckbox",
     "aria-checked": $6cc32821e9371a1c$var$isIndeterminate(checked) ? "mixed" : checked
   }, checkboxItemProps, {
@@ -20220,7 +20220,7 @@ const $6cc32821e9371a1c$export$69bd225e9817f6d0 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$var$ItemIndicatorProvider, {
     scope: props.__scopeMenu,
     checked
-  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$2ce376c2cc3355c8, _extends$k({
     role: "menuitemradio",
     "aria-checked": checked
   }, radioItemProps, {
@@ -20243,7 +20243,7 @@ const $6cc32821e9371a1c$export$a2593e23056970a3 = /* @__PURE__ */ reactExports.f
   const indicatorContext = $6cc32821e9371a1c$var$useItemIndicatorContext($6cc32821e9371a1c$var$ITEM_INDICATOR_NAME, __scopeMenu);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || $6cc32821e9371a1c$var$isIndeterminate(indicatorContext.checked) || indicatorContext.checked === true
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({}, itemIndicatorProps, {
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$k({}, itemIndicatorProps, {
     ref: forwardedRef,
     "data-state": $6cc32821e9371a1c$var$getCheckedState(indicatorContext.checked)
   })));
@@ -20271,21 +20271,21 @@ $d08ef79370b62062$var$createDropdownMenuContext($d08ef79370b62062$var$DROPDOWN_M
 const $d08ef79370b62062$export$53a69729da201fa9 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...checkboxItemProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends$i({}, menuScope, checkboxItemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$16ce288f89fa631c, _extends$k({}, menuScope, checkboxItemProps, {
     ref: forwardedRef
   }));
 });
 const $d08ef79370b62062$export$e4f69b41b1637536 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...radioItemProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends$i({}, menuScope, radioItemProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$371ab307eab489c0, _extends$k({}, menuScope, radioItemProps, {
     ref: forwardedRef
   }));
 });
 const $d08ef79370b62062$export$42355ae145153fb6 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...itemIndicatorProps } = props;
   const menuScope = $d08ef79370b62062$var$useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends$i({}, menuScope, itemIndicatorProps, {
+  return /* @__PURE__ */ reactExports.createElement($6cc32821e9371a1c$export$c3468e2714d175fa, _extends$k({}, menuScope, itemIndicatorProps, {
     ref: forwardedRef
   }));
 });
@@ -20700,7 +20700,7 @@ const $5d3850c4d0b4e6c7$export$bd1d06c79be19e17 = /* @__PURE__ */ reactExports.f
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$OVERLAY_NAME, props.__scopeDialog);
   return context2.modal ? /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends$i({}, overlayProps, {
+  }, /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogOverlayImpl, _extends$k({}, overlayProps, {
     ref: forwardedRef
   }))) : null;
 });
@@ -20716,7 +20716,7 @@ const $5d3850c4d0b4e6c7$var$DialogOverlayImpl = /* @__PURE__ */ reactExports.for
       shards: [
         context2.contentRef
       ]
-    }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+    }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
       "data-state": $5d3850c4d0b4e6c7$var$getState(context2.open)
     }, overlayProps, {
       ref: forwardedRef,
@@ -20734,9 +20734,9 @@ const $5d3850c4d0b4e6c7$export$b6d9565de1e068cf = /* @__PURE__ */ reactExports.f
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends$i({}, contentProps, {
+  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentModal, _extends$k({}, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends$i({}, contentProps, {
+  })) : /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentNonModal, _extends$k({}, contentProps, {
     ref: forwardedRef
   })));
 });
@@ -20749,7 +20749,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentModal = /* @__PURE__ */ reactExports.fo
     if (content2)
       return hideOthers$1(content2);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$i({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$k({}, props, {
     ref: composedRefs,
     trapFocus: context2.open,
     disableOutsidePointerEvents: true,
@@ -20775,7 +20775,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentNonModal = /* @__PURE__ */ reactExports
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CONTENT_NAME, props.__scopeDialog);
   const hasInteractedOutsideRef = reactExports.useRef(false);
   const hasPointerDownOutsideRef = reactExports.useRef(false);
-  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$i({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($5d3850c4d0b4e6c7$var$DialogContentImpl, _extends$k({}, props, {
     ref: forwardedRef,
     trapFocus: false,
     disableOutsidePointerEvents: false,
@@ -20820,7 +20820,7 @@ const $5d3850c4d0b4e6c7$var$DialogContentImpl = /* @__PURE__ */ reactExports.for
     trapped: trapFocus,
     onMountAutoFocus: onOpenAutoFocus,
     onUnmountAutoFocus: onCloseAutoFocus
-  }, /* @__PURE__ */ reactExports.createElement($5cb92bef7577960e$export$177fb62ff3ec1f22$1, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($5cb92bef7577960e$export$177fb62ff3ec1f22$1, _extends$k({
     role: "dialog",
     id: context2.contentId,
     "aria-describedby": context2.descriptionId,
@@ -20835,7 +20835,7 @@ const $5d3850c4d0b4e6c7$var$CLOSE_NAME = "DialogClose";
 const $5d3850c4d0b4e6c7$export$fba2fb7cd781b7ac = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDialog, ...closeProps } = props;
   const context2 = $5d3850c4d0b4e6c7$var$useDialogContext($5d3850c4d0b4e6c7$var$CLOSE_NAME, __scopeDialog);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$k({
     type: "button"
   }, closeProps, {
     ref: forwardedRef,
@@ -21673,7 +21673,7 @@ function $ae6933e535247d3d$export$7d15b64cf5a3a4c4(value, [min2, max2]) {
   return Math.min(max2, Math.max(min2, value));
 }
 const $ea1ef594cf570d83$export$439d29a4e110a164 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$k({}, props, {
     ref: forwardedRef,
     style: {
       // See: https://github.com/twbs/bootstrap/blob/master/scss/mixins/_screen-reader.scss
@@ -21806,9 +21806,9 @@ const $cc7e05a45900e73f$export$3ac1e88a1c0b9f1 = /* @__PURE__ */ reactExports.fo
       resetTypeahead();
     }
   };
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$i({
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$k({
     asChild: true
-  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
+  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$k({
     type: "button",
     role: "combobox",
     "aria-controls": context2.contentId,
@@ -21865,7 +21865,7 @@ const $cc7e05a45900e73f$export$e288731fd71264f0 = /* @__PURE__ */ reactExports.f
     onValueNodeHasChildrenChange,
     hasChildren
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({}, valueProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$k({}, valueProps, {
     ref: composedRefs,
     style: {
       pointerEvents: "none"
@@ -21874,7 +21874,7 @@ const $cc7e05a45900e73f$export$e288731fd71264f0 = /* @__PURE__ */ reactExports.f
 });
 const $cc7e05a45900e73f$export$99b400cabb58c515 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, children, ...iconProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$k({
     "aria-hidden": true
   }, iconProps, {
     ref: forwardedRef
@@ -21895,7 +21895,7 @@ const $cc7e05a45900e73f$export$c973a4b3cb86a03d = /* @__PURE__ */ reactExports.f
       scope: props.__scopeSelect
     }, /* @__PURE__ */ reactExports.createElement("div", null, props.children))), frag) : null;
   }
-  return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectContentImpl, _extends$i({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectContentImpl, _extends$k({}, props, {
     ref: forwardedRef
   }));
 });
@@ -22122,7 +22122,7 @@ const $cc7e05a45900e73f$var$SelectContentImpl = /* @__PURE__ */ reactExports.for
     onPointerDownOutside,
     onFocusOutside: (event) => event.preventDefault(),
     onDismiss: () => context2.onOpenChange(false)
-  }, /* @__PURE__ */ reactExports.createElement(SelectPosition, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement(SelectPosition, _extends$k({
     role: "listbox",
     id: context2.contentId,
     "data-state": context2.open ? "open" : "closed",
@@ -22316,7 +22316,7 @@ const $cc7e05a45900e73f$var$SelectItemAlignedPosition = /* @__PURE__ */ reactExp
       position: "fixed",
       zIndex: contentZIndex
     }
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({}, popperProps, {
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({}, popperProps, {
     ref: composedRefs,
     style: {
       // When we get the height of the content, it includes borders. If we were to set
@@ -22331,7 +22331,7 @@ const $cc7e05a45900e73f$var$SelectItemAlignedPosition = /* @__PURE__ */ reactExp
 const $cc7e05a45900e73f$var$SelectPopperPosition = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, align = "start", collisionPadding = $cc7e05a45900e73f$var$CONTENT_MARGIN, ...popperProps } = props;
   const popperScope = $cc7e05a45900e73f$var$usePopperScope(__scopeSelect);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$i({}, popperScope, popperProps, {
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$k({}, popperScope, popperProps, {
     ref: forwardedRef,
     align,
     collisionPadding,
@@ -22361,7 +22361,7 @@ const $cc7e05a45900e73f$export$9ed6e7b40248d36d = /* @__PURE__ */ reactExports.f
     }
   }), /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$Collection.Slot, {
     scope: __scopeSelect
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
     "data-radix-select-viewport": "",
     role: "presentation"
   }, viewportProps, {
@@ -22409,7 +22409,7 @@ const $cc7e05a45900e73f$export$ee25a334c55de1f4 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($cc7e05a45900e73f$var$SelectGroupContextProvider, {
     scope: __scopeSelect,
     id: groupId
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
     role: "group",
     "aria-labelledby": groupId
   }, groupProps, {
@@ -22455,7 +22455,7 @@ const $cc7e05a45900e73f$export$13ef48a934230896 = /* @__PURE__ */ reactExports.f
     value,
     disabled,
     textValue
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
     role: "option",
     "aria-labelledby": textId,
     "data-highlighted": isFocused ? "" : void 0,
@@ -22541,7 +22541,7 @@ const $cc7e05a45900e73f$export$3572fb0fb821ff49 = /* @__PURE__ */ reactExports.f
     onNativeOptionRemove,
     nativeOption
   ]);
-  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$i({
+  return /* @__PURE__ */ reactExports.createElement(reactExports.Fragment, null, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.span, _extends$k({
     id: itemContext.textId
   }, itemTextProps, {
     ref: composedRefs
@@ -22573,7 +22573,7 @@ const $cc7e05a45900e73f$var$BubbleSelect = /* @__PURE__ */ reactExports.forwardR
   ]);
   return /* @__PURE__ */ reactExports.createElement($ea1ef594cf570d83$export$439d29a4e110a164, {
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement("select", _extends$i({}, selectProps, {
+  }, /* @__PURE__ */ reactExports.createElement("select", _extends$k({}, selectProps, {
     ref: composedRefs,
     defaultValue: value
   })));
@@ -23255,7 +23255,7 @@ const $054eb8030ebde76e$var$ToastImpl = /* @__PURE__ */ reactExports.forwardRef(
         handleClose();
       context2.isFocusedToastEscapeKeyDownRef.current = false;
     })
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.li, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.li, _extends$k({
     // Ensure toasts are announced as status list or status when focused
     role: "status",
     "aria-live": "off",
@@ -23397,7 +23397,7 @@ const $054eb8030ebde76e$export$3019feecfda683d2 = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$var$ToastAnnounceExclude, {
     altText,
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$export$811e70f61c205839, _extends$i({}, actionProps, {
+  }, /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$export$811e70f61c205839, _extends$k({}, actionProps, {
     ref: forwardedRef
   })));
 });
@@ -23414,7 +23414,7 @@ const $054eb8030ebde76e$export$811e70f61c205839 = /* @__PURE__ */ reactExports.f
   const interactiveContext = $054eb8030ebde76e$var$useToastInteractiveContext($054eb8030ebde76e$var$CLOSE_NAME, __scopeToast);
   return /* @__PURE__ */ reactExports.createElement($054eb8030ebde76e$var$ToastAnnounceExclude, {
     asChild: true
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$k({
     type: "button"
   }, closeProps, {
     ref: forwardedRef,
@@ -23423,7 +23423,7 @@ const $054eb8030ebde76e$export$811e70f61c205839 = /* @__PURE__ */ reactExports.f
 });
 const $054eb8030ebde76e$var$ToastAnnounceExclude = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeToast, altText, ...announceExcludeProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$i({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.div, _extends$k({
     "data-radix-toast-announce-exclude": "",
     "data-radix-toast-announce-alt": altText || void 0
   }, announceExcludeProps, {
@@ -23793,9 +23793,9 @@ const $a093c7e1ec25a057$export$8c610744efcf8a1d = /* @__PURE__ */ reactExports.f
   }, [
     handlePointerUp
   ]);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$i({
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7$1, _extends$k({
     asChild: true
-  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$i({
+  }, popperScope), /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034$1.button, _extends$k({
     // We purposefully avoid adding `type=button` here because tooltip triggers are also
     // commonly anchors and the anchor `type` attribute signifies MIME type.
     "aria-describedby": context2.open ? context2.contentId : void 0,
@@ -23839,11 +23839,11 @@ const $a093c7e1ec25a057$export$e9003e2be37ec060 = /* @__PURE__ */ reactExports.f
   const context2 = $a093c7e1ec25a057$var$useTooltipContext($a093c7e1ec25a057$var$CONTENT_NAME, props.__scopeTooltip);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b$1, {
     present: forceMount || context2.open
-  }, context2.disableHoverableContent ? /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$i({
+  }, context2.disableHoverableContent ? /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$k({
     side
   }, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentHoverable, _extends$i({
+  })) : /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentHoverable, _extends$k({
     side
   }, contentProps, {
     ref: forwardedRef
@@ -23931,7 +23931,7 @@ const $a093c7e1ec25a057$var$TooltipContentHoverable = /* @__PURE__ */ reactExpor
     onClose,
     handleRemoveGraceArea
   ]);
-  return /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$i({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($a093c7e1ec25a057$var$TooltipContentImpl, _extends$k({}, props, {
     ref: composedRefs
   }));
 });
@@ -23974,7 +23974,7 @@ const $a093c7e1ec25a057$var$TooltipContentImpl = /* @__PURE__ */ reactExports.fo
     onPointerDownOutside,
     onFocusOutside: (event) => event.preventDefault(),
     onDismiss: onClose
-  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$i({
+  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2$1, _extends$k({
     "data-state": context2.stateAttribute
   }, popperScope, contentProps, {
     ref: forwardedRef,
@@ -23999,7 +23999,7 @@ const $a093c7e1ec25a057$export$c27ee0ad710f7559 = /* @__PURE__ */ reactExports.f
   const { __scopeTooltip, ...arrowProps } = props;
   const popperScope = $a093c7e1ec25a057$var$usePopperScope(__scopeTooltip);
   const visuallyHiddenContentContext = $a093c7e1ec25a057$var$useVisuallyHiddenContentContext($a093c7e1ec25a057$var$ARROW_NAME, __scopeTooltip);
-  return visuallyHiddenContentContext.isInside ? null : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$21b07c8f274aebd5, _extends$i({}, popperScope, arrowProps, {
+  return visuallyHiddenContentContext.isInside ? null : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$21b07c8f274aebd5, _extends$k({}, popperScope, arrowProps, {
     ref: forwardedRef
   }));
 });
@@ -24954,8 +24954,8 @@ const abi$1$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   walletContracts
 }, Symbol.toStringTag, { value: "Module" }));
 const global$1 = globalThis || void 0 || self;
-function _extends$h() {
-  _extends$h = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$j() {
+  _extends$j = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -24966,7 +24966,7 @@ function _extends$h() {
     }
     return target;
   };
-  return _extends$h.apply(this, arguments);
+  return _extends$j.apply(this, arguments);
 }
 const WebRPCVersion$3 = "v1";
 const WebRPCSchemaVersion$3 = "v0.4.0";
@@ -25562,7 +25562,7 @@ class API {
 const createHTTPRequest$7 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$h({}, headers, {
+    headers: _extends$j({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -25785,7 +25785,7 @@ class SequenceAPIClient extends API {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$h({}, init3.headers, headers);
+      init3.headers = _extends$j({}, init3.headers, headers);
       return fetch$5(input2, init3);
     };
     this.fetch = this._fetch;
@@ -30585,7 +30585,7 @@ var ErrorCode;
   ErrorCode2["ACTION_REJECTED"] = "ACTION_REJECTED";
 })(ErrorCode || (ErrorCode = {}));
 const HEX = "0123456789abcdef";
-let Logger$1 = class Logger {
+let Logger$2 = class Logger {
   constructor(version2) {
     Object.defineProperty(this, "version", {
       enumerable: true,
@@ -30805,8 +30805,8 @@ let Logger$1 = class Logger {
     return new Logger(version2);
   }
 };
-Logger$1.errors = ErrorCode;
-Logger$1.levels = LogLevel;
+Logger$2.errors = ErrorCode;
+Logger$2.levels = LogLevel;
 const lib_esm$k = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   get ErrorCode() {
@@ -30815,10 +30815,10 @@ const lib_esm$k = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   get LogLevel() {
     return LogLevel;
   },
-  Logger: Logger$1
+  Logger: Logger$2
 }, Symbol.toStringTag, { value: "Module" }));
 const version$v = "bytes/5.7.0";
-const logger$A = new Logger$1(version$v);
+const logger$A = new Logger$2(version$v);
 function isHexable(value) {
   return !!value.toHexString;
 }
@@ -31202,7 +31202,7 @@ const lib_esm$j = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
 }, Symbol.toStringTag, { value: "Module" }));
 const version$u = "bignumber/5.7.0";
 var BN = BN$1.BN;
-const logger$z = new Logger$1(version$u);
+const logger$z = new Logger$2(version$u);
 const _constructorGuard$4 = {};
 const MAX_SAFE = 9007199254740991;
 function isBigNumberish$1(value) {
@@ -31212,7 +31212,7 @@ let _warnedToStringRadix = false;
 class BigNumber {
   constructor(constructorGuard, hex2) {
     if (constructorGuard !== _constructorGuard$4) {
-      logger$z.throwError("cannot call constructor directly; use BigNumber.from", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$z.throwError("cannot call constructor directly; use BigNumber.from", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "new (BigNumber)"
       });
     }
@@ -31335,7 +31335,7 @@ class BigNumber {
       return BigInt(this.toString());
     } catch (e2) {
     }
-    return logger$z.throwError("this platform does not support BigInt", Logger$1.errors.UNSUPPORTED_OPERATION, {
+    return logger$z.throwError("this platform does not support BigInt", Logger$2.errors.UNSUPPORTED_OPERATION, {
       value: this.toString()
     });
   }
@@ -31347,9 +31347,9 @@ class BigNumber {
           logger$z.warn("BigNumber.toString does not accept any parameters; base-10 is assumed");
         }
       } else if (arguments[0] === 16) {
-        logger$z.throwError("BigNumber.toString does not accept any parameters; use bigNumber.toHexString()", Logger$1.errors.UNEXPECTED_ARGUMENT, {});
+        logger$z.throwError("BigNumber.toString does not accept any parameters; use bigNumber.toHexString()", Logger$2.errors.UNEXPECTED_ARGUMENT, {});
       } else {
-        logger$z.throwError("BigNumber.toString does not accept parameters", Logger$1.errors.UNEXPECTED_ARGUMENT, {});
+        logger$z.throwError("BigNumber.toString does not accept parameters", Logger$2.errors.UNEXPECTED_ARGUMENT, {});
       }
     }
     return toBN(this).toString(10);
@@ -31457,7 +31457,7 @@ function throwFault$1(fault, operation, value) {
   if (value != null) {
     params.value = value;
   }
-  return logger$z.throwError(fault, Logger$1.errors.NUMERIC_FAULT, params);
+  return logger$z.throwError(fault, Logger$2.errors.NUMERIC_FAULT, params);
 }
 function _base36To16(value) {
   return new BN(value, 36).toString(16);
@@ -31465,7 +31465,7 @@ function _base36To16(value) {
 function _base16To36(value) {
   return new BN(value, 16).toString(36);
 }
-const logger$y = new Logger$1(version$u);
+const logger$y = new Logger$2(version$u);
 const _constructorGuard$3 = {};
 const Zero$2 = BigNumber.from(0);
 const NegativeOne$2 = BigNumber.from(-1);
@@ -31474,7 +31474,7 @@ function throwFault(message, fault, operation, value) {
   if (value !== void 0) {
     params.value = value;
   }
-  return logger$y.throwError(message, Logger$1.errors.NUMERIC_FAULT, params);
+  return logger$y.throwError(message, Logger$2.errors.NUMERIC_FAULT, params);
 }
 let zeros = "0";
 while (zeros.length < 256) {
@@ -31567,7 +31567,7 @@ function parseFixed(value, decimals) {
 class FixedFormat {
   constructor(constructorGuard, signed2, width, decimals) {
     if (constructorGuard !== _constructorGuard$3) {
-      logger$y.throwError("cannot use FixedFormat constructor; use FixedFormat.from", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$y.throwError("cannot use FixedFormat constructor; use FixedFormat.from", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "new FixedFormat"
       });
     }
@@ -31628,7 +31628,7 @@ class FixedFormat {
 class FixedNumber {
   constructor(constructorGuard, hex2, value, format2) {
     if (constructorGuard !== _constructorGuard$3) {
-      logger$y.throwError("cannot use FixedNumber constructor; use FixedNumber.from", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$y.throwError("cannot use FixedNumber constructor; use FixedNumber.from", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "new FixedFormat"
       });
     }
@@ -31793,7 +31793,7 @@ class FixedNumber {
     try {
       return FixedNumber.fromValue(value, 0, format2);
     } catch (error) {
-      if (error.code !== Logger$1.errors.INVALID_ARGUMENT) {
+      if (error.code !== Logger$2.errors.INVALID_ARGUMENT) {
         throw error;
       }
     }
@@ -31833,7 +31833,7 @@ var __awaiter$e = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$x = new Logger$1(version$t);
+const logger$x = new Logger$2(version$t);
 function defineReadOnly$1(object, name2, value) {
   Object.defineProperty(object, name2, {
     enumerable: true,
@@ -31949,7 +31949,7 @@ const lib_esm$i = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   shallowCopy: shallowCopy$1
 }, Symbol.toStringTag, { value: "Module" }));
 const version$s = "abi/5.7.0";
-const logger$w = new Logger$1(version$s);
+const logger$w = new Logger$2(version$s);
 const _constructorGuard$2 = {};
 let ModifiersBytes = { calldata: true, memory: true, storage: true };
 let ModifiersNest = { calldata: true, memory: true };
@@ -32141,7 +32141,7 @@ const paramTypeArray = new RegExp(/^(.*)\[([0-9]*)\]$/);
 class ParamType {
   constructor(constructorGuard, params) {
     if (constructorGuard !== _constructorGuard$2) {
-      logger$w.throwError("use fromString", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$w.throwError("use fromString", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "new ParamType()"
       });
     }
@@ -32252,7 +32252,7 @@ function parseParams(value, allowIndex) {
 class Fragment {
   constructor(constructorGuard, params) {
     if (constructorGuard !== _constructorGuard$2) {
-      logger$w.throwError("use a static from method", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$w.throwError("use a static from method", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "new Fragment()"
       });
     }
@@ -32494,7 +32494,7 @@ class ConstructorFragment extends Fragment {
       });
     }
     if (format2 === FormatTypes.sighash) {
-      logger$w.throwError("cannot format a constructor for sighash", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$w.throwError("cannot format a constructor for sighash", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "format(sighash)"
       });
     }
@@ -32755,7 +32755,7 @@ function splitNesting(value) {
   }
   return result;
 }
-const logger$v = new Logger$1(version$s);
+const logger$v = new Logger$2(version$s);
 function checkResultErrors(result) {
   const errors2 = [];
   const checkErrors = function(path, object) {
@@ -32819,7 +32819,7 @@ class Writer {
   _getValue(value) {
     let bytes3 = arrayify(BigNumber.from(value));
     if (bytes3.length > this.wordSize) {
-      logger$v.throwError("value out-of-bounds", Logger$1.errors.BUFFER_OVERRUN, {
+      logger$v.throwError("value out-of-bounds", Logger$2.errors.BUFFER_OVERRUN, {
         length: this.wordSize,
         offset: bytes3.length
       });
@@ -32876,7 +32876,7 @@ class Reader {
       if (this.allowLoose && loose && this._offset + length <= this._data.length) {
         alignedLength = length;
       } else {
-        logger$v.throwError("data out-of-bounds", Logger$1.errors.BUFFER_OVERRUN, {
+        logger$v.throwError("data out-of-bounds", Logger$2.errors.BUFFER_OVERRUN, {
           length: this._data.length,
           offset: this._offset + alignedLength
         });
@@ -33707,7 +33707,7 @@ const lib_esm$h = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   keccak256: keccak256$2
 }, Symbol.toStringTag, { value: "Module" }));
 const version$r = "rlp/5.7.0";
-const logger$u = new Logger$1(version$r);
+const logger$u = new Logger$2(version$r);
 function arrayifyInteger(value) {
   const result = [];
   while (value) {
@@ -33761,46 +33761,46 @@ function _decodeChildren(data, offset2, childOffset, length) {
     result.push(decoded.result);
     childOffset += decoded.consumed;
     if (childOffset > offset2 + 1 + length) {
-      logger$u.throwError("child data too short", Logger$1.errors.BUFFER_OVERRUN, {});
+      logger$u.throwError("child data too short", Logger$2.errors.BUFFER_OVERRUN, {});
     }
   }
   return { consumed: 1 + length, result };
 }
 function _decode$1(data, offset2) {
   if (data.length === 0) {
-    logger$u.throwError("data too short", Logger$1.errors.BUFFER_OVERRUN, {});
+    logger$u.throwError("data too short", Logger$2.errors.BUFFER_OVERRUN, {});
   }
   if (data[offset2] >= 248) {
     const lengthLength = data[offset2] - 247;
     if (offset2 + 1 + lengthLength > data.length) {
-      logger$u.throwError("data short segment too short", Logger$1.errors.BUFFER_OVERRUN, {});
+      logger$u.throwError("data short segment too short", Logger$2.errors.BUFFER_OVERRUN, {});
     }
     const length = unarrayifyInteger(data, offset2 + 1, lengthLength);
     if (offset2 + 1 + lengthLength + length > data.length) {
-      logger$u.throwError("data long segment too short", Logger$1.errors.BUFFER_OVERRUN, {});
+      logger$u.throwError("data long segment too short", Logger$2.errors.BUFFER_OVERRUN, {});
     }
     return _decodeChildren(data, offset2, offset2 + 1 + lengthLength, lengthLength + length);
   } else if (data[offset2] >= 192) {
     const length = data[offset2] - 192;
     if (offset2 + 1 + length > data.length) {
-      logger$u.throwError("data array too short", Logger$1.errors.BUFFER_OVERRUN, {});
+      logger$u.throwError("data array too short", Logger$2.errors.BUFFER_OVERRUN, {});
     }
     return _decodeChildren(data, offset2, offset2 + 1, length);
   } else if (data[offset2] >= 184) {
     const lengthLength = data[offset2] - 183;
     if (offset2 + 1 + lengthLength > data.length) {
-      logger$u.throwError("data array too short", Logger$1.errors.BUFFER_OVERRUN, {});
+      logger$u.throwError("data array too short", Logger$2.errors.BUFFER_OVERRUN, {});
     }
     const length = unarrayifyInteger(data, offset2 + 1, lengthLength);
     if (offset2 + 1 + lengthLength + length > data.length) {
-      logger$u.throwError("data array too short", Logger$1.errors.BUFFER_OVERRUN, {});
+      logger$u.throwError("data array too short", Logger$2.errors.BUFFER_OVERRUN, {});
     }
     const result = hexlify(data.slice(offset2 + 1 + lengthLength, offset2 + 1 + lengthLength + length));
     return { consumed: 1 + lengthLength + length, result };
   } else if (data[offset2] >= 128) {
     const length = data[offset2] - 128;
     if (offset2 + 1 + length > data.length) {
-      logger$u.throwError("data too short", Logger$1.errors.BUFFER_OVERRUN, {});
+      logger$u.throwError("data too short", Logger$2.errors.BUFFER_OVERRUN, {});
     }
     const result = hexlify(data.slice(offset2 + 1, offset2 + 1 + length));
     return { consumed: 1 + length, result };
@@ -33821,7 +33821,7 @@ const lib_esm$g = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   encode: encode$3
 }, Symbol.toStringTag, { value: "Module" }));
 const version$q = "address/5.7.0";
-const logger$t = new Logger$1(version$q);
+const logger$t = new Logger$2(version$q);
 function getChecksumAddress(address) {
   if (!isHexString(address, 20)) {
     logger$t.throwArgumentError("invalid address", "address", address);
@@ -33977,7 +33977,7 @@ class AnonymousCoder extends Coder {
     return this.coder.decode(reader2);
   }
 }
-const logger$s = new Logger$1(version$s);
+const logger$s = new Logger$2(version$s);
 function pack$1(writer, coders2, values) {
   let arrayValues = null;
   if (Array.isArray(values)) {
@@ -33987,14 +33987,14 @@ function pack$1(writer, coders2, values) {
     arrayValues = coders2.map((coder) => {
       const name2 = coder.localName;
       if (!name2) {
-        logger$s.throwError("cannot encode object for signature with missing names", Logger$1.errors.INVALID_ARGUMENT, {
+        logger$s.throwError("cannot encode object for signature with missing names", Logger$2.errors.INVALID_ARGUMENT, {
           argument: "values",
           coder,
           value: values
         });
       }
       if (unique[name2]) {
-        logger$s.throwError("cannot encode object for signature with duplicate names", Logger$1.errors.INVALID_ARGUMENT, {
+        logger$s.throwError("cannot encode object for signature with duplicate names", Logger$2.errors.INVALID_ARGUMENT, {
           argument: "values",
           coder,
           value: values
@@ -34043,7 +34043,7 @@ function unpack(reader2, coders2) {
       try {
         value = coder.decode(offsetReader);
       } catch (error) {
-        if (error.code === Logger$1.errors.BUFFER_OVERRUN) {
+        if (error.code === Logger$2.errors.BUFFER_OVERRUN) {
           throw error;
         }
         value = error;
@@ -34055,7 +34055,7 @@ function unpack(reader2, coders2) {
       try {
         value = coder.decode(reader2);
       } catch (error) {
-        if (error.code === Logger$1.errors.BUFFER_OVERRUN) {
+        if (error.code === Logger$2.errors.BUFFER_OVERRUN) {
           throw error;
         }
         value = error;
@@ -34151,7 +34151,7 @@ class ArrayCoder extends Coder {
     if (count === -1) {
       count = reader2.readValue().toNumber();
       if (count * 32 > reader2._data.length) {
-        logger$s.throwError("insufficient data length", Logger$1.errors.BUFFER_OVERRUN, {
+        logger$s.throwError("insufficient data length", Logger$2.errors.BUFFER_OVERRUN, {
           length: reader2._data.length,
           count
         });
@@ -34284,7 +34284,7 @@ class NumberCoder extends Coder {
   }
 }
 const version$p = "strings/5.7.0";
-const logger$r = new Logger$1(version$p);
+const logger$r = new Logger$2(version$p);
 var UnicodeNormalizationForm;
 (function(UnicodeNormalizationForm2) {
   UnicodeNormalizationForm2["current"] = "";
@@ -34754,7 +34754,7 @@ class TupleCoder extends Coder {
     return reader2.coerce(this.name, unpack(reader2, this.coders));
   }
 }
-const logger$q = new Logger$1(version$s);
+const logger$q = new Logger$2(version$s);
 const paramTypeBytes = new RegExp(/^bytes([0-9]*)$/);
 const paramTypeNumber = new RegExp(/^(u?int)([0-9]*)$/);
 class AbiCoder {
@@ -34814,7 +34814,7 @@ class AbiCoder {
   }
   encode(types2, values) {
     if (types2.length !== values.length) {
-      logger$q.throwError("types/values length mismatch", Logger$1.errors.INVALID_ARGUMENT, {
+      logger$q.throwError("types/values length mismatch", Logger$2.errors.INVALID_ARGUMENT, {
         count: { types: types2.length, values: values.length },
         value: { types: types2, values }
       });
@@ -35173,7 +35173,7 @@ function consume_emoji_reversed(cps, eaten) {
   }
   return emoji;
 }
-const logger$p = new Logger$1(version$o);
+const logger$p = new Logger$2(version$o);
 const Zeros$1 = new Uint8Array(32);
 Zeros$1.fill(0);
 function checkComponent(comp) {
@@ -35272,7 +35272,7 @@ var __awaiter$d = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$o = new Logger$1(version$o);
+const logger$o = new Logger$2(version$o);
 const padding = new Uint8Array(32);
 padding.fill(0);
 const NegativeOne = BigNumber.from(-1);
@@ -35679,7 +35679,7 @@ const lib_esm$c = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   messagePrefix,
   namehash: namehash$1
 }, Symbol.toStringTag, { value: "Module" }));
-const logger$n = new Logger$1(version$s);
+const logger$n = new Logger$2(version$s);
 class LogDescription extends Description {
 }
 class TransactionDescription extends Description {
@@ -35985,7 +35985,7 @@ class Interface {
         break;
       }
     }
-    return logger$n.throwError("call revert exception" + message, Logger$1.errors.CALL_EXCEPTION, {
+    return logger$n.throwError("call revert exception" + message, Logger$2.errors.CALL_EXCEPTION, {
       method: functionFragment.format(),
       data: hexlify(data),
       errorArgs,
@@ -36007,7 +36007,7 @@ class Interface {
       eventFragment = this.getEvent(eventFragment);
     }
     if (values.length > eventFragment.inputs.length) {
-      logger$n.throwError("too many arguments for " + eventFragment.format(), Logger$1.errors.UNEXPECTED_ARGUMENT, {
+      logger$n.throwError("too many arguments for " + eventFragment.format(), Logger$2.errors.UNEXPECTED_ARGUMENT, {
         argument: "values",
         value: values
       });
@@ -36099,7 +36099,7 @@ class Interface {
     if (topics != null && !eventFragment.anonymous) {
       let topicHash = this.getEventTopic(eventFragment);
       if (!isHexString(topics[0], 32) || topics[0].toLowerCase() !== topicHash) {
-        logger$n.throwError("fragment/topic mismatch", Logger$1.errors.INVALID_ARGUMENT, { argument: "topics[0]", expected: topicHash, value: topics[0] });
+        logger$n.throwError("fragment/topic mismatch", Logger$2.errors.INVALID_ARGUMENT, { argument: "topics[0]", expected: topicHash, value: topics[0] });
       }
       topics = topics.slice(1);
     }
@@ -36278,7 +36278,7 @@ var __awaiter$c = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$m = new Logger$1(version$n);
+const logger$m = new Logger$2(version$n);
 class ForkEvent extends Description {
   static isForkEvent(value) {
     return !!(value && value._isForkEvent);
@@ -36346,7 +36346,7 @@ var __awaiter$b = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$l = new Logger$1(version$m);
+const logger$l = new Logger$2(version$m);
 const allowedTransactionKeys$2 = [
   "accessList",
   "ccipReadEnabled",
@@ -36364,9 +36364,9 @@ const allowedTransactionKeys$2 = [
   "value"
 ];
 const forwardErrors = [
-  Logger$1.errors.INSUFFICIENT_FUNDS,
-  Logger$1.errors.NONCE_EXPIRED,
-  Logger$1.errors.REPLACEMENT_UNDERPRICED
+  Logger$2.errors.INSUFFICIENT_FUNDS,
+  Logger$2.errors.NONCE_EXPIRED,
+  Logger$2.errors.REPLACEMENT_UNDERPRICED
 ];
 let Signer$1 = class Signer {
   ///////////////////
@@ -36526,7 +36526,7 @@ let Signer$1 = class Signer {
             }
           } else if (feeData.gasPrice != null) {
             if (hasEip1559) {
-              logger$l.throwError("network does not support EIP-1559", Logger$1.errors.UNSUPPORTED_OPERATION, {
+              logger$l.throwError("network does not support EIP-1559", Logger$2.errors.UNSUPPORTED_OPERATION, {
                 operation: "populateTransaction"
               });
             }
@@ -36535,7 +36535,7 @@ let Signer$1 = class Signer {
             }
             tx.type = 0;
           } else {
-            logger$l.throwError("failed to get consistent fee data", Logger$1.errors.UNSUPPORTED_OPERATION, {
+            logger$l.throwError("failed to get consistent fee data", Logger$2.errors.UNSUPPORTED_OPERATION, {
               operation: "signer.getFeeData"
             });
           }
@@ -36556,7 +36556,7 @@ let Signer$1 = class Signer {
           if (forwardErrors.indexOf(error.code) >= 0) {
             throw error;
           }
-          return logger$l.throwError("cannot estimate gas; transaction may fail or may require manual gas limit", Logger$1.errors.UNPREDICTABLE_GAS_LIMIT, {
+          return logger$l.throwError("cannot estimate gas; transaction may fail or may require manual gas limit", Logger$2.errors.UNPREDICTABLE_GAS_LIMIT, {
             error,
             tx
           });
@@ -36582,7 +36582,7 @@ let Signer$1 = class Signer {
   // Sub-classes SHOULD leave these alone
   _checkProvider(operation) {
     if (!this.provider) {
-      logger$l.throwError("missing provider", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$l.throwError("missing provider", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: operation || "_checkProvider"
       });
     }
@@ -36602,7 +36602,7 @@ class VoidSigner extends Signer$1 {
   }
   _fail(message, operation) {
     return Promise.resolve().then(() => {
-      logger$l.throwError(message, Logger$1.errors.UNSUPPORTED_OPERATION, { operation });
+      logger$l.throwError(message, Logger$2.errors.UNSUPPORTED_OPERATION, { operation });
     });
   }
   signMessage(message) {
@@ -40076,7 +40076,7 @@ var elliptic_1 = createCommonjsModule(function(module2, exports) {
 });
 var EC$1 = elliptic_1.ec;
 const version$l = "signing-key/5.7.0";
-const logger$k = new Logger$1(version$l);
+const logger$k = new Logger$2(version$l);
 let _curve = null;
 function getCurve() {
   if (!_curve) {
@@ -40156,7 +40156,7 @@ const lib_esm$a = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   recoverPublicKey
 }, Symbol.toStringTag, { value: "Module" }));
 const version$k = "transactions/5.7.0";
-const logger$j = new Logger$1(version$k);
+const logger$j = new Logger$2(version$k);
 var TransactionTypes;
 (function(TransactionTypes2) {
   TransactionTypes2[TransactionTypes2["legacy"] = 0] = "legacy";
@@ -40361,7 +40361,7 @@ function serialize$2(transaction2, signature2) {
     case 2:
       return _serializeEip1559(transaction2, signature2);
   }
-  return logger$j.throwError(`unsupported transaction type: ${transaction2.type}`, Logger$1.errors.UNSUPPORTED_OPERATION, {
+  return logger$j.throwError(`unsupported transaction type: ${transaction2.type}`, Logger$2.errors.UNSUPPORTED_OPERATION, {
     operation: "serializeTransaction",
     transactionType: transaction2.type
   });
@@ -40495,7 +40495,7 @@ function parse$2(rawTransaction) {
     case 2:
       return _parseEip1559(payload);
   }
-  return logger$j.throwError(`unsupported transaction type: ${payload[0]}`, Logger$1.errors.UNSUPPORTED_OPERATION, {
+  return logger$j.throwError(`unsupported transaction type: ${payload[0]}`, Logger$2.errors.UNSUPPORTED_OPERATION, {
     operation: "parseTransaction",
     transactionType: payload[0]
   });
@@ -40539,7 +40539,7 @@ var __awaiter$a = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$i = new Logger$1(version$j);
+const logger$i = new Logger$2(version$j);
 function resolveName(resolver, nameOrPromise) {
   return __awaiter$a(this, void 0, void 0, function* () {
     const name2 = yield nameOrPromise;
@@ -40551,7 +40551,7 @@ function resolveName(resolver, nameOrPromise) {
     } catch (error) {
     }
     if (!resolver) {
-      logger$i.throwError("a provider or signer is needed to resolve ENS names", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$i.throwError("a provider or signer is needed to resolve ENS names", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "resolveName"
       });
     }
@@ -40577,7 +40577,7 @@ function resolveAddresses(resolver, value, paramType) {
     }
     if (paramType.baseType === "array") {
       if (!Array.isArray(value)) {
-        return Promise.reject(logger$i.makeError("invalid value for array", Logger$1.errors.INVALID_ARGUMENT, {
+        return Promise.reject(logger$i.makeError("invalid value for array", Logger$2.errors.INVALID_ARGUMENT, {
           argument: "value",
           value
         }));
@@ -40601,7 +40601,7 @@ function populateTransaction(contract, fragment, args) {
           signer: contract.signer.getAddress()
         }).then((check) => __awaiter$a(this, void 0, void 0, function* () {
           if (getAddress$1(check.signer) !== check.override) {
-            logger$i.throwError("Contract with a Signer cannot override from", Logger$1.errors.UNSUPPORTED_OPERATION, {
+            logger$i.throwError("Contract with a Signer cannot override from", Logger$2.errors.UNSUPPORTED_OPERATION, {
               operation: "overrides.from"
             });
           }
@@ -40662,7 +40662,7 @@ function populateTransaction(contract, fragment, args) {
     if (ro.value) {
       const roValue = BigNumber.from(ro.value);
       if (!roValue.isZero() && !fragment.payable) {
-        logger$i.throwError("non-payable method cannot override value", Logger$1.errors.UNSUPPORTED_OPERATION, {
+        logger$i.throwError("non-payable method cannot override value", Logger$2.errors.UNSUPPORTED_OPERATION, {
           operation: "overrides.value",
           value: overrides.value
         });
@@ -40688,7 +40688,7 @@ function populateTransaction(contract, fragment, args) {
     delete overrides.ccipReadEnabled;
     const leftovers = Object.keys(overrides).filter((key2) => overrides[key2] != null);
     if (leftovers.length) {
-      logger$i.throwError(`cannot override ${leftovers.map((l2) => JSON.stringify(l2)).join(",")}`, Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$i.throwError(`cannot override ${leftovers.map((l2) => JSON.stringify(l2)).join(",")}`, Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "overrides",
         overrides: leftovers
       });
@@ -40706,7 +40706,7 @@ function buildEstimate(contract, fragment) {
   return function(...args) {
     return __awaiter$a(this, void 0, void 0, function* () {
       if (!signerOrProvider) {
-        logger$i.throwError("estimate require a provider or signer", Logger$1.errors.UNSUPPORTED_OPERATION, {
+        logger$i.throwError("estimate require a provider or signer", Logger$2.errors.UNSUPPORTED_OPERATION, {
           operation: "estimateGas"
         });
       }
@@ -40777,7 +40777,7 @@ function buildCall(contract, fragment, collapseSimple) {
         }
         return value;
       } catch (error) {
-        if (error.code === Logger$1.errors.CALL_EXCEPTION) {
+        if (error.code === Logger$2.errors.CALL_EXCEPTION) {
           error.address = contract.address;
           error.args = args;
           error.transaction = tx;
@@ -40791,7 +40791,7 @@ function buildSend(contract, fragment) {
   return function(...args) {
     return __awaiter$a(this, void 0, void 0, function* () {
       if (!contract.signer) {
-        logger$i.throwError("sending a transaction requires a signer", Logger$1.errors.UNSUPPORTED_OPERATION, {
+        logger$i.throwError("sending a transaction requires a signer", Logger$2.errors.UNSUPPORTED_OPERATION, {
           operation: "sendTransaction"
         });
       }
@@ -40992,7 +40992,7 @@ class BaseContract {
       try {
         defineReadOnly$1(this, "resolvedAddress", Promise.resolve(getAddress$1(addressOrName)));
       } catch (error) {
-        logger$i.throwError("provider is required to use ENS name as contract address", Logger$1.errors.UNSUPPORTED_OPERATION, {
+        logger$i.throwError("provider is required to use ENS name as contract address", Logger$2.errors.UNSUPPORTED_OPERATION, {
           operation: "new Contract"
         });
       }
@@ -41080,7 +41080,7 @@ class BaseContract {
       } else {
         this._deployedPromise = this.provider.getCode(this.address, blockTag).then((code2) => {
           if (code2 === "0x") {
-            logger$i.throwError("contract not deployed", Logger$1.errors.UNSUPPORTED_OPERATION, {
+            logger$i.throwError("contract not deployed", Logger$2.errors.UNSUPPORTED_OPERATION, {
               contractAddress: this.address,
               operation: "getDeployed"
             });
@@ -41097,14 +41097,14 @@ class BaseContract {
   // estimateDeploy(bytecode: string, ...args): Promise<BigNumber>
   fallback(overrides) {
     if (!this.signer) {
-      logger$i.throwError("sending a transactions require a signer", Logger$1.errors.UNSUPPORTED_OPERATION, { operation: "sendTransaction(fallback)" });
+      logger$i.throwError("sending a transactions require a signer", Logger$2.errors.UNSUPPORTED_OPERATION, { operation: "sendTransaction(fallback)" });
     }
     const tx = shallowCopy$1(overrides || {});
     ["from", "to"].forEach(function(key2) {
       if (tx[key2] == null) {
         return;
       }
-      logger$i.throwError("cannot override " + key2, Logger$1.errors.UNSUPPORTED_OPERATION, { operation: key2 });
+      logger$i.throwError("cannot override " + key2, Logger$2.errors.UNSUPPORTED_OPERATION, { operation: key2 });
     });
     tx.to = this.resolvedAddress;
     return this.deployed().then(() => {
@@ -41202,7 +41202,7 @@ class BaseContract {
   }
   _addEventListener(runningEvent, listener, once) {
     if (!this.provider) {
-      logger$i.throwError("events require a provider or a signer with a provider", Logger$1.errors.UNSUPPORTED_OPERATION, { operation: "once" });
+      logger$i.throwError("events require a provider or a signer with a provider", Logger$2.errors.UNSUPPORTED_OPERATION, { operation: "once" });
     }
     runningEvent.addListener(listener, once);
     this._runningEvents[runningEvent.tag] = runningEvent;
@@ -41403,7 +41403,7 @@ var SupportedAlgorithm;
   SupportedAlgorithm2["sha512"] = "sha512";
 })(SupportedAlgorithm || (SupportedAlgorithm = {}));
 const version$i = "sha2/5.7.0";
-const logger$h = new Logger$1(version$i);
+const logger$h = new Logger$2(version$i);
 function ripemd160(data) {
   return "0x" + hash$2.ripemd160().update(arrayify(data)).digest("hex");
 }
@@ -41415,7 +41415,7 @@ function sha512(data) {
 }
 function computeHmac(algorithm, key2, data) {
   if (!SupportedAlgorithm[algorithm]) {
-    logger$h.throwError("unsupported algorithm " + algorithm, Logger$1.errors.UNSUPPORTED_OPERATION, {
+    logger$h.throwError("unsupported algorithm " + algorithm, Logger$2.errors.UNSUPPORTED_OPERATION, {
       operation: "hmac",
       algorithm
     });
@@ -41467,7 +41467,7 @@ function pbkdf2$1(password, salt, iterations, keylen, hashAlgorithm) {
   return hexlify(DK);
 }
 const version$h = "wordlists/5.7.0";
-const logger$g = new Logger$1(version$h);
+const logger$g = new Logger$2(version$h);
 class Wordlist {
   constructor(locale) {
     logger$g.checkAbstract(new.target, Wordlist);
@@ -41529,7 +41529,7 @@ const wordlists = {
   en: langEn
 };
 const version$g = "hdnode/5.7.0";
-const logger$f = new Logger$1(version$g);
+const logger$f = new Logger$2(version$g);
 const N = BigNumber.from("0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141");
 const MasterSecret = toUtf8Bytes("Bitcoin seed");
 const HardenedBit = 2147483648;
@@ -41819,7 +41819,7 @@ const lib_esm$6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   mnemonicToSeed
 }, Symbol.toStringTag, { value: "Module" }));
 const version$f = "random/5.7.0";
-const logger$e = new Logger$1(version$f);
+const logger$e = new Logger$2(version$f);
 function getGlobal() {
   if (typeof self !== "undefined") {
     return self;
@@ -41838,7 +41838,7 @@ if (!crypto$2 || !crypto$2.getRandomValues) {
   logger$e.warn("WARNING: Missing strong random number source");
   crypto$2 = {
     getRandomValues: function(buffer2) {
-      return logger$e.throwError("no secure random source avaialble", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      return logger$e.throwError("no secure random source avaialble", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "crypto.getRandomValues"
       });
     }
@@ -42461,7 +42461,7 @@ function uuidV4(randomBytes2) {
     value.substring(22, 34)
   ].join("-");
 }
-const logger$d = new Logger$1(version$e);
+const logger$d = new Logger$2(version$e);
 class CrowdsaleAccount extends Description {
   isCrowdsaleAccount(value) {
     return !!(value && value._isCrowdsaleAccount);
@@ -43019,7 +43019,7 @@ var __awaiter$9 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$c = new Logger$1(version$e);
+const logger$c = new Logger$2(version$e);
 function hasMnemonic$1(value) {
   return value != null && value.mnemonic && value.mnemonic.phrase;
 }
@@ -43046,7 +43046,7 @@ function _getAccount(data, key2) {
   }
   const privateKey = _decrypt(data, key2.slice(0, 16), ciphertext);
   if (!privateKey) {
-    logger$c.throwError("unsupported cipher", Logger$1.errors.UNSUPPORTED_OPERATION, {
+    logger$c.throwError("unsupported cipher", Logger$2.errors.UNSUPPORTED_OPERATION, {
       operation: "decrypt"
     });
   }
@@ -43082,7 +43082,7 @@ function _getAccount(data, key2) {
       }
       account2.mnemonic = node.mnemonic;
     } catch (error) {
-      if (error.code !== Logger$1.errors.INVALID_ARGUMENT || error.argument !== "wordlist") {
+      if (error.code !== Logger$2.errors.INVALID_ARGUMENT || error.argument !== "wordlist") {
         throw error;
       }
     }
@@ -43339,7 +43339,7 @@ var __awaiter$8 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$b = new Logger$1(version$d);
+const logger$b = new Logger$2(version$d);
 function isAccount$1(value) {
   return value != null && isHexString(value.privateKey, 32) && value.address != null;
 }
@@ -43431,7 +43431,7 @@ let Wallet$1 = class Wallet extends Signer$1 {
     return __awaiter$8(this, void 0, void 0, function* () {
       const populated = yield TypedDataEncoder.resolveNames(domain2, types2, value, (name2) => {
         if (this.provider == null) {
-          logger$b.throwError("cannot resolve ENS names without a provider", Logger$1.errors.UNSUPPORTED_OPERATION, {
+          logger$b.throwError("cannot resolve ENS names without a provider", Logger$2.errors.UNSUPPORTED_OPERATION, {
             operation: "resolveName",
             value: name2
           });
@@ -43496,7 +43496,7 @@ const lib_esm$3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   verifyTypedData: verifyTypedData$1
 }, Symbol.toStringTag, { value: "Module" }));
 const version$c = "networks/5.7.1";
-const logger$a = new Logger$1(version$c);
+const logger$a = new Logger$2(version$c);
 function isRenetworkable(value) {
   return value && typeof value.renetwork === "function";
 }
@@ -43598,7 +43598,7 @@ const classicMordor = {
   name: "classicMordor",
   _defaultProvider: etcDefaultProvider("https://www.ethercluster.com/mordor", "classicMordor")
 };
-const networks$2 = {
+const networks$3 = {
   unspecified: { chainId: 0, name: "unspecified" },
   homestead,
   mainnet: homestead,
@@ -43667,8 +43667,8 @@ function getNetwork$1(network2) {
     return null;
   }
   if (typeof network2 === "number") {
-    for (const name2 in networks$2) {
-      const standard2 = networks$2[name2];
+    for (const name2 in networks$3) {
+      const standard2 = networks$3[name2];
       if (standard2.chainId === network2) {
         return {
           name: standard2.name,
@@ -43684,7 +43684,7 @@ function getNetwork$1(network2) {
     };
   }
   if (typeof network2 === "string") {
-    const standard2 = networks$2[network2];
+    const standard2 = networks$3[network2];
     if (standard2 == null) {
       return null;
     }
@@ -43695,7 +43695,7 @@ function getNetwork$1(network2) {
       _defaultProvider: standard2._defaultProvider || null
     };
   }
-  const standard = networks$2[network2.name];
+  const standard = networks$3[network2.name];
   if (!standard) {
     if (typeof network2.chainId !== "number") {
       logger$a.throwArgumentError("invalid network chainId", "network", network2);
@@ -43830,7 +43830,7 @@ var __awaiter$6 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$9 = new Logger$1(version$b);
+const logger$9 = new Logger$2(version$b);
 function staller(duration) {
   return new Promise((resolve) => {
     setTimeout(resolve, duration);
@@ -43894,7 +43894,7 @@ function _fetchData(connection, body, processFunc) {
     options.allowGzip = !!connection.allowGzip;
     if (connection.user != null && connection.password != null) {
       if (url.substring(0, 6) !== "https:" && connection.allowInsecureAuthentication !== true) {
-        logger$9.throwError("basic authentication requires a secure https url", Logger$1.errors.INVALID_ARGUMENT, { argument: "url", url, user: connection.user, password: "[REDACTED]" });
+        logger$9.throwError("basic authentication requires a secure https url", Logger$2.errors.INVALID_ARGUMENT, { argument: "url", url, user: connection.user, password: "[REDACTED]" });
       }
       const authorization = connection.user + ":" + connection.password;
       headers["authorization"] = {
@@ -43925,7 +43925,7 @@ function _fetchData(connection, body, processFunc) {
       }
       return Promise.resolve(result);
     } catch (error) {
-      logger$9.throwError("processing response error", Logger$1.errors.SERVER_ERROR, {
+      logger$9.throwError("processing response error", Logger$2.errors.SERVER_ERROR, {
         body: bodyify(dataMatch[1], dataMatch[2]),
         error,
         requestBody: null,
@@ -43959,7 +43959,7 @@ function _fetchData(connection, body, processFunc) {
             return;
           }
           timer2 = null;
-          reject(logger$9.makeError("timeout", Logger$1.errors.TIMEOUT, {
+          reject(logger$9.makeError("timeout", Logger$2.errors.TIMEOUT, {
             requestBody: bodyify(options.body, flatHeaders["content-type"]),
             requestMethod: options.method,
             timeout,
@@ -44012,7 +44012,7 @@ function _fetchData(connection, body, processFunc) {
           response = error.response;
           if (response == null) {
             runningTimeout.cancel();
-            logger$9.throwError("missing response", Logger$1.errors.SERVER_ERROR, {
+            logger$9.throwError("missing response", Logger$2.errors.SERVER_ERROR, {
               requestBody: bodyify(options.body, flatHeaders["content-type"]),
               requestMethod: options.method,
               serverError: error,
@@ -44025,7 +44025,7 @@ function _fetchData(connection, body, processFunc) {
           body2 = null;
         } else if (!errorPassThrough && (response.statusCode < 200 || response.statusCode >= 300)) {
           runningTimeout.cancel();
-          logger$9.throwError("bad response", Logger$1.errors.SERVER_ERROR, {
+          logger$9.throwError("bad response", Logger$2.errors.SERVER_ERROR, {
             status: response.statusCode,
             headers: response.headers,
             body: bodyify(body2, response.headers ? response.headers["content-type"] : null),
@@ -44052,7 +44052,7 @@ function _fetchData(connection, body, processFunc) {
               }
             }
             runningTimeout.cancel();
-            logger$9.throwError("processing response error", Logger$1.errors.SERVER_ERROR, {
+            logger$9.throwError("processing response error", Logger$2.errors.SERVER_ERROR, {
               body: bodyify(body2, response.headers ? response.headers["content-type"] : null),
               error,
               requestBody: bodyify(options.body, flatHeaders["content-type"]),
@@ -44064,7 +44064,7 @@ function _fetchData(connection, body, processFunc) {
         runningTimeout.cancel();
         return body2;
       }
-      return logger$9.throwError("failed response", Logger$1.errors.SERVER_ERROR, {
+      return logger$9.throwError("failed response", Logger$2.errors.SERVER_ERROR, {
         requestBody: bodyify(options.body, flatHeaders["content-type"]),
         requestMethod: options.method,
         url
@@ -44080,7 +44080,7 @@ function fetchJson(connection, json, processFunc) {
       try {
         result = JSON.parse(toUtf8String(value));
       } catch (error) {
-        logger$9.throwError("invalid JSON", Logger$1.errors.SERVER_ERROR, {
+        logger$9.throwError("invalid JSON", Logger$2.errors.SERVER_ERROR, {
           body: value,
           error
         });
@@ -44347,7 +44347,7 @@ var bech32 = {
 };
 const bech32$1 = /* @__PURE__ */ getDefaultExportFromCjs$1(bech32);
 const version$a = "providers/5.7.2";
-const logger$8 = new Logger$1(version$a);
+const logger$8 = new Logger$2(version$a);
 class Formatter {
   constructor() {
     this.formats = this.getDefaultFormats();
@@ -44777,7 +44777,7 @@ var __awaiter$5 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$7 = new Logger$1(version$a);
+const logger$7 = new Logger$2(version$a);
 const MAX_CCIP_REDIRECTS = 10;
 function checkTopic(topic) {
   if (topic == null) {
@@ -44991,7 +44991,7 @@ class Resolver {
       }).then((result) => {
         return BigNumber.from(result).eq(1);
       }).catch((error) => {
-        if (error.code === Logger$1.errors.CALL_EXCEPTION) {
+        if (error.code === Logger$2.errors.CALL_EXCEPTION) {
           return false;
         }
         this._supportsEip2544 = null;
@@ -45015,7 +45015,7 @@ class Resolver {
       try {
         let result = yield this.provider.call(tx);
         if (arrayify(result).length % 32 === 4) {
-          logger$7.throwError("resolver threw error", Logger$1.errors.CALL_EXCEPTION, {
+          logger$7.throwError("resolver threw error", Logger$2.errors.CALL_EXCEPTION, {
             transaction: tx,
             data: result
           });
@@ -45025,7 +45025,7 @@ class Resolver {
         }
         return result;
       } catch (error) {
-        if (error.code === Logger$1.errors.CALL_EXCEPTION) {
+        if (error.code === Logger$2.errors.CALL_EXCEPTION) {
           return null;
         }
         throw error;
@@ -45044,7 +45044,7 @@ class Resolver {
   _getAddress(coinType, hexBytes) {
     const coinInfo = coinInfos[String(coinType)];
     if (coinInfo == null) {
-      logger$7.throwError(`unsupported coin type: ${coinType}`, Logger$1.errors.UNSUPPORTED_OPERATION, {
+      logger$7.throwError(`unsupported coin type: ${coinType}`, Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: `getAddress(${coinType})`
       });
     }
@@ -45101,7 +45101,7 @@ class Resolver {
           }
           return this.provider.formatter.callAddress(result);
         } catch (error) {
-          if (error.code === Logger$1.errors.CALL_EXCEPTION) {
+          if (error.code === Logger$2.errors.CALL_EXCEPTION) {
             return null;
           }
           throw error;
@@ -45113,7 +45113,7 @@ class Resolver {
       }
       const address = this._getAddress(coinType, hexBytes);
       if (address == null) {
-        logger$7.throwError(`invalid or unsupported coin data`, Logger$1.errors.UNSUPPORTED_OPERATION, {
+        logger$7.throwError(`invalid or unsupported coin data`, Logger$2.errors.UNSUPPORTED_OPERATION, {
           operation: `getAddress(${coinType})`,
           coinType,
           data: hexBytes
@@ -45255,7 +45255,7 @@ class Resolver {
           return "sia://" + hash2;
         }
       }
-      return logger$7.throwError(`invalid or unsupported content hash data`, Logger$1.errors.UNSUPPORTED_OPERATION, {
+      return logger$7.throwError(`invalid or unsupported content hash data`, Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "getContentHash()",
         data: hexBytes
       });
@@ -45333,7 +45333,7 @@ class BaseProvider extends Provider {
           network2 = yield this.detectNetwork();
         }
         if (!network2) {
-          logger$7.throwError("no network detected", Logger$1.errors.UNKNOWN_ERROR, {});
+          logger$7.throwError("no network detected", Logger$2.errors.UNKNOWN_ERROR, {});
         }
         if (this._network == null) {
           if (this.anyNetwork) {
@@ -45355,7 +45355,7 @@ class BaseProvider extends Provider {
       return this._ready().then((network2) => {
         return network2;
       }, (error) => {
-        if (error.code === Logger$1.errors.NETWORK_ERROR && error.event === "noNetwork") {
+        if (error.code === Logger$2.errors.NETWORK_ERROR && error.event === "noNetwork") {
           return void 0;
         }
         throw error;
@@ -45394,11 +45394,11 @@ class BaseProvider extends Provider {
         }
         const errorMessage = result.message || "unknown error";
         if (result.status >= 400 && result.status < 500) {
-          return logger$7.throwError(`response not found during CCIP fetch: ${errorMessage}`, Logger$1.errors.SERVER_ERROR, { url, errorMessage });
+          return logger$7.throwError(`response not found during CCIP fetch: ${errorMessage}`, Logger$2.errors.SERVER_ERROR, { url, errorMessage });
         }
         errorMessages.push(errorMessage);
       }
-      return logger$7.throwError(`error encountered during CCIP fetch: ${errorMessages.map((m2) => JSON.stringify(m2)).join(", ")}`, Logger$1.errors.SERVER_ERROR, {
+      return logger$7.throwError(`error encountered during CCIP fetch: ${errorMessages.map((m2) => JSON.stringify(m2)).join(", ")}`, Logger$2.errors.SERVER_ERROR, {
         urls,
         errorMessages
       });
@@ -45476,7 +45476,7 @@ class BaseProvider extends Provider {
       }
       if (Math.abs(this._emitted.block - blockNumber) > 1e3) {
         logger$7.warn(`network block skew detected; skipping block events (emitted=${this._emitted.block} blockNumber${blockNumber})`);
-        this.emit("error", logger$7.makeError("network block skew detected", Logger$1.errors.NETWORK_ERROR, {
+        this.emit("error", logger$7.makeError("network block skew detected", Logger$2.errors.NETWORK_ERROR, {
           blockNumber,
           event: "blockSkew",
           previousBlockNumber: this._emitted.block
@@ -45584,7 +45584,7 @@ class BaseProvider extends Provider {
   // can change, such as when connected to a JSON-RPC backend
   detectNetwork() {
     return __awaiter$5(this, void 0, void 0, function* () {
-      return logger$7.throwError("provider does not support network detection", Logger$1.errors.UNSUPPORTED_OPERATION, {
+      return logger$7.throwError("provider does not support network detection", Logger$2.errors.UNSUPPORTED_OPERATION, {
         operation: "provider.detectNetwork"
       });
     });
@@ -45607,7 +45607,7 @@ class BaseProvider extends Provider {
           yield stall$1(0);
           return this._network;
         }
-        const error = logger$7.makeError("underlying network changed", Logger$1.errors.NETWORK_ERROR, {
+        const error = logger$7.makeError("underlying network changed", Logger$2.errors.NETWORK_ERROR, {
           event: "changed",
           network: network2,
           detectedNetwork: currentNetwork
@@ -45775,7 +45775,7 @@ class BaseProvider extends Provider {
                       } else if (tx.data === "0x" && tx.from === tx.to && tx.value.isZero()) {
                         reason = "cancelled";
                       }
-                      reject(logger$7.makeError("transaction was replaced", Logger$1.errors.TRANSACTION_REPLACED, {
+                      reject(logger$7.makeError("transaction was replaced", Logger$2.errors.TRANSACTION_REPLACED, {
                         cancelled: reason === "replaced" || reason === "cancelled",
                         reason,
                         replacement: this._wrapTransaction(tx),
@@ -45812,7 +45812,7 @@ class BaseProvider extends Provider {
             if (alreadyDone()) {
               return;
             }
-            reject(logger$7.makeError("timeout exceeded", Logger$1.errors.TIMEOUT, { timeout }));
+            reject(logger$7.makeError("timeout exceeded", Logger$2.errors.TIMEOUT, { timeout }));
           }, timeout);
           if (timer2.unref) {
             timer2.unref();
@@ -45836,7 +45836,7 @@ class BaseProvider extends Provider {
       try {
         return BigNumber.from(result);
       } catch (error) {
-        return logger$7.throwError("bad result from backend", Logger$1.errors.SERVER_ERROR, {
+        return logger$7.throwError("bad result from backend", Logger$2.errors.SERVER_ERROR, {
           method: "getGasPrice",
           result,
           error
@@ -45855,7 +45855,7 @@ class BaseProvider extends Provider {
       try {
         return BigNumber.from(result);
       } catch (error) {
-        return logger$7.throwError("bad result from backend", Logger$1.errors.SERVER_ERROR, {
+        return logger$7.throwError("bad result from backend", Logger$2.errors.SERVER_ERROR, {
           method: "getBalance",
           params,
           result,
@@ -45875,7 +45875,7 @@ class BaseProvider extends Provider {
       try {
         return BigNumber.from(result).toNumber();
       } catch (error) {
-        return logger$7.throwError("bad result from backend", Logger$1.errors.SERVER_ERROR, {
+        return logger$7.throwError("bad result from backend", Logger$2.errors.SERVER_ERROR, {
           method: "getTransactionCount",
           params,
           result,
@@ -45895,7 +45895,7 @@ class BaseProvider extends Provider {
       try {
         return hexlify(result);
       } catch (error) {
-        return logger$7.throwError("bad result from backend", Logger$1.errors.SERVER_ERROR, {
+        return logger$7.throwError("bad result from backend", Logger$2.errors.SERVER_ERROR, {
           method: "getCode",
           params,
           result,
@@ -45916,7 +45916,7 @@ class BaseProvider extends Provider {
       try {
         return hexlify(result);
       } catch (error) {
-        return logger$7.throwError("bad result from backend", Logger$1.errors.SERVER_ERROR, {
+        return logger$7.throwError("bad result from backend", Logger$2.errors.SERVER_ERROR, {
           method: "getStorageAt",
           params,
           result,
@@ -45932,7 +45932,7 @@ class BaseProvider extends Provider {
     }
     const result = tx;
     if (hash2 != null && tx.hash !== hash2) {
-      logger$7.throwError("Transaction hash mismatch from Provider.sendTransaction.", Logger$1.errors.UNKNOWN_ERROR, { expectedHash: tx.hash, returnedHash: hash2 });
+      logger$7.throwError("Transaction hash mismatch from Provider.sendTransaction.", Logger$2.errors.UNKNOWN_ERROR, { expectedHash: tx.hash, returnedHash: hash2 });
     }
     result.wait = (confirms, timeout) => __awaiter$5(this, void 0, void 0, function* () {
       if (confirms == null) {
@@ -45958,7 +45958,7 @@ class BaseProvider extends Provider {
       }
       this._emitted["t:" + tx.hash] = receipt.blockNumber;
       if (receipt.status === 0) {
-        logger$7.throwError("transaction failed", Logger$1.errors.CALL_EXCEPTION, {
+        logger$7.throwError("transaction failed", Logger$2.errors.CALL_EXCEPTION, {
           transactionHash: tx.hash,
           transaction: tx,
           receipt
@@ -46046,7 +46046,7 @@ class BaseProvider extends Provider {
   _call(transaction2, blockTag, attempt) {
     return __awaiter$5(this, void 0, void 0, function* () {
       if (attempt >= MAX_CCIP_REDIRECTS) {
-        logger$7.throwError("CCIP read exceeded maximum redirections", Logger$1.errors.SERVER_ERROR, {
+        logger$7.throwError("CCIP read exceeded maximum redirections", Logger$2.errors.SERVER_ERROR, {
           redirects: attempt,
           transaction: transaction2
         });
@@ -46058,7 +46058,7 @@ class BaseProvider extends Provider {
           const data = hexDataSlice(result, 4);
           const sender = hexDataSlice(data, 0, 32);
           if (!BigNumber.from(sender).eq(txSender)) {
-            logger$7.throwError("CCIP Read sender did not match", Logger$1.errors.CALL_EXCEPTION, {
+            logger$7.throwError("CCIP Read sender did not match", Logger$2.errors.CALL_EXCEPTION, {
               name: "OffchainLookup",
               signature: "OffchainLookup(address,string[],bytes,bytes4,bytes)",
               transaction: transaction2,
@@ -46072,7 +46072,7 @@ class BaseProvider extends Provider {
           for (let u2 = 0; u2 < urlsLength; u2++) {
             const url = _parseString(urlsData, u2 * 32);
             if (url == null) {
-              logger$7.throwError("CCIP Read contained corrupt URL string", Logger$1.errors.CALL_EXCEPTION, {
+              logger$7.throwError("CCIP Read contained corrupt URL string", Logger$2.errors.CALL_EXCEPTION, {
                 name: "OffchainLookup",
                 signature: "OffchainLookup(address,string[],bytes,bytes4,bytes)",
                 transaction: transaction2,
@@ -46083,7 +46083,7 @@ class BaseProvider extends Provider {
           }
           const calldata = _parseBytes(data, 64);
           if (!BigNumber.from(hexDataSlice(data, 100, 128)).isZero()) {
-            logger$7.throwError("CCIP Read callback selector included junk", Logger$1.errors.CALL_EXCEPTION, {
+            logger$7.throwError("CCIP Read callback selector included junk", Logger$2.errors.CALL_EXCEPTION, {
               name: "OffchainLookup",
               signature: "OffchainLookup(address,string[],bytes,bytes4,bytes)",
               transaction: transaction2,
@@ -46094,7 +46094,7 @@ class BaseProvider extends Provider {
           const extraData = _parseBytes(data, 128);
           const ccipResult = yield this.ccipReadFetch(transaction2, calldata, urls);
           if (ccipResult == null) {
-            logger$7.throwError("CCIP Read disabled or provided no URLs", Logger$1.errors.CALL_EXCEPTION, {
+            logger$7.throwError("CCIP Read disabled or provided no URLs", Logger$2.errors.CALL_EXCEPTION, {
               name: "OffchainLookup",
               signature: "OffchainLookup(address,string[],bytes,bytes4,bytes)",
               transaction: transaction2,
@@ -46107,7 +46107,7 @@ class BaseProvider extends Provider {
           };
           return this._call(tx, blockTag, attempt + 1);
         } catch (error) {
-          if (error.code === Logger$1.errors.SERVER_ERROR) {
+          if (error.code === Logger$2.errors.SERVER_ERROR) {
             throw error;
           }
         }
@@ -46115,7 +46115,7 @@ class BaseProvider extends Provider {
       try {
         return hexlify(result);
       } catch (error) {
-        return logger$7.throwError("bad result from backend", Logger$1.errors.SERVER_ERROR, {
+        return logger$7.throwError("bad result from backend", Logger$2.errors.SERVER_ERROR, {
           method: "call",
           params: { transaction: transaction2, blockTag },
           result,
@@ -46145,7 +46145,7 @@ class BaseProvider extends Provider {
       try {
         return BigNumber.from(result);
       } catch (error) {
-        return logger$7.throwError("bad result from backend", Logger$1.errors.SERVER_ERROR, {
+        return logger$7.throwError("bad result from backend", Logger$2.errors.SERVER_ERROR, {
           method: "estimateGas",
           params,
           result,
@@ -46162,7 +46162,7 @@ class BaseProvider extends Provider {
       }
       const address = yield this.resolveName(addressOrName);
       if (address == null) {
-        logger$7.throwError("ENS name not configured", Logger$1.errors.UNSUPPORTED_OPERATION, {
+        logger$7.throwError("ENS name not configured", Logger$2.errors.UNSUPPORTED_OPERATION, {
           operation: `resolveName(${JSON.stringify(addressOrName)})`
         });
       }
@@ -46359,7 +46359,7 @@ class BaseProvider extends Provider {
       }
       const network2 = yield this.getNetwork();
       if (!network2.ensAddress) {
-        logger$7.throwError("network does not support ENS", Logger$1.errors.UNSUPPORTED_OPERATION, { operation, network: network2.name });
+        logger$7.throwError("network does not support ENS", Logger$2.errors.UNSUPPORTED_OPERATION, { operation, network: network2.name });
       }
       try {
         const addrData = yield this.call({
@@ -46429,7 +46429,7 @@ class BaseProvider extends Provider {
             return avatar3.url;
           }
         } catch (error) {
-          if (error.code !== Logger$1.errors.CALL_EXCEPTION) {
+          if (error.code !== Logger$2.errors.CALL_EXCEPTION) {
             throw error;
           }
         }
@@ -46440,7 +46440,7 @@ class BaseProvider extends Provider {
           }), 0);
           resolver = yield this.getResolver(name2);
         } catch (error) {
-          if (error.code !== Logger$1.errors.CALL_EXCEPTION) {
+          if (error.code !== Logger$2.errors.CALL_EXCEPTION) {
             throw error;
           }
           return null;
@@ -46459,7 +46459,7 @@ class BaseProvider extends Provider {
     });
   }
   perform(method, params) {
-    return logger$7.throwError(method + " not implemented", Logger$1.errors.NOT_IMPLEMENTED, { operation: method });
+    return logger$7.throwError(method + " not implemented", Logger$2.errors.NOT_IMPLEMENTED, { operation: method });
   }
   _startEvent(event) {
     this.polling = this._events.filter((e2) => e2.pollable()).length > 0;
@@ -46589,7 +46589,7 @@ var __awaiter$4 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$6 = new Logger$1(version$a);
+const logger$6 = new Logger$2(version$a);
 const errorGas = ["call", "estimateGas"];
 function spelunk(value, requireData) {
   if (value == null) {
@@ -46625,7 +46625,7 @@ function checkError(method, error, params) {
     if (result) {
       return result.data;
     }
-    logger$6.throwError("missing revert data in call exception; Transaction reverted without a reason string", Logger$1.errors.CALL_EXCEPTION, {
+    logger$6.throwError("missing revert data in call exception; Transaction reverted without a reason string", Logger$2.errors.CALL_EXCEPTION, {
       data: "0x",
       transaction: transaction2,
       error
@@ -46637,7 +46637,7 @@ function checkError(method, error, params) {
       result = spelunk(error, false);
     }
     if (result) {
-      logger$6.throwError("cannot estimate gas; transaction may fail or may require manual gas limit", Logger$1.errors.UNPREDICTABLE_GAS_LIMIT, {
+      logger$6.throwError("cannot estimate gas; transaction may fail or may require manual gas limit", Logger$2.errors.UNPREDICTABLE_GAS_LIMIT, {
         reason: result.message,
         method,
         transaction: transaction2,
@@ -46646,7 +46646,7 @@ function checkError(method, error, params) {
     }
   }
   let message = error.message;
-  if (error.code === Logger$1.errors.SERVER_ERROR && error.error && typeof error.error.message === "string") {
+  if (error.code === Logger$2.errors.SERVER_ERROR && error.error && typeof error.error.message === "string") {
     message = error.error.message;
   } else if (typeof error.body === "string") {
     message = error.body;
@@ -46655,35 +46655,35 @@ function checkError(method, error, params) {
   }
   message = (message || "").toLowerCase();
   if (message.match(/insufficient funds|base fee exceeds gas limit|InsufficientFunds/i)) {
-    logger$6.throwError("insufficient funds for intrinsic transaction cost", Logger$1.errors.INSUFFICIENT_FUNDS, {
+    logger$6.throwError("insufficient funds for intrinsic transaction cost", Logger$2.errors.INSUFFICIENT_FUNDS, {
       error,
       method,
       transaction: transaction2
     });
   }
   if (message.match(/nonce (is )?too low/i)) {
-    logger$6.throwError("nonce has already been used", Logger$1.errors.NONCE_EXPIRED, {
+    logger$6.throwError("nonce has already been used", Logger$2.errors.NONCE_EXPIRED, {
       error,
       method,
       transaction: transaction2
     });
   }
   if (message.match(/replacement transaction underpriced|transaction gas price.*too low/i)) {
-    logger$6.throwError("replacement fee too low", Logger$1.errors.REPLACEMENT_UNDERPRICED, {
+    logger$6.throwError("replacement fee too low", Logger$2.errors.REPLACEMENT_UNDERPRICED, {
       error,
       method,
       transaction: transaction2
     });
   }
   if (message.match(/only replay-protected/i)) {
-    logger$6.throwError("legacy pre-eip-155 transactions not supported", Logger$1.errors.UNSUPPORTED_OPERATION, {
+    logger$6.throwError("legacy pre-eip-155 transactions not supported", Logger$2.errors.UNSUPPORTED_OPERATION, {
       error,
       method,
       transaction: transaction2
     });
   }
   if (errorGas.indexOf(method) >= 0 && message.match(/gas required exceeds allowance|always failing transaction|execution reverted|revert/)) {
-    logger$6.throwError("cannot estimate gas; transaction may fail or may require manual gas limit", Logger$1.errors.UNPREDICTABLE_GAS_LIMIT, {
+    logger$6.throwError("cannot estimate gas; transaction may fail or may require manual gas limit", Logger$2.errors.UNPREDICTABLE_GAS_LIMIT, {
       error,
       method,
       transaction: transaction2
@@ -46733,7 +46733,7 @@ class JsonRpcSigner extends Signer$1 {
     }
   }
   connect(provider2) {
-    return logger$6.throwError("cannot alter JSON-RPC Signer connection", Logger$1.errors.UNSUPPORTED_OPERATION, {
+    return logger$6.throwError("cannot alter JSON-RPC Signer connection", Logger$2.errors.UNSUPPORTED_OPERATION, {
       operation: "connect"
     });
   }
@@ -46746,7 +46746,7 @@ class JsonRpcSigner extends Signer$1 {
     }
     return this.provider.send("eth_accounts", []).then((accounts) => {
       if (accounts.length <= this._index) {
-        logger$6.throwError("unknown account #" + this._index, Logger$1.errors.UNSUPPORTED_OPERATION, {
+        logger$6.throwError("unknown account #" + this._index, Logger$2.errors.UNSUPPORTED_OPERATION, {
           operation: "getAddress"
         });
       }
@@ -46794,7 +46794,7 @@ class JsonRpcSigner extends Signer$1 {
         return hash2;
       }, (error) => {
         if (typeof error.message === "string" && error.message.match(/user denied/i)) {
-          logger$6.throwError("user rejected transaction", Logger$1.errors.ACTION_REJECTED, {
+          logger$6.throwError("user rejected transaction", Logger$2.errors.ACTION_REJECTED, {
             action: "sendTransaction",
             transaction: tx
           });
@@ -46804,7 +46804,7 @@ class JsonRpcSigner extends Signer$1 {
     });
   }
   signTransaction(transaction2) {
-    return logger$6.throwError("signing transactions is unsupported", Logger$1.errors.UNSUPPORTED_OPERATION, {
+    return logger$6.throwError("signing transactions is unsupported", Logger$2.errors.UNSUPPORTED_OPERATION, {
       operation: "signTransaction"
     });
   }
@@ -46834,7 +46834,7 @@ class JsonRpcSigner extends Signer$1 {
         return yield this.provider.send("personal_sign", [hexlify(data), address.toLowerCase()]);
       } catch (error) {
         if (typeof error.message === "string" && error.message.match(/user denied/i)) {
-          logger$6.throwError("user rejected signing", Logger$1.errors.ACTION_REJECTED, {
+          logger$6.throwError("user rejected signing", Logger$2.errors.ACTION_REJECTED, {
             action: "signMessage",
             from: address,
             messageData: message
@@ -46852,7 +46852,7 @@ class JsonRpcSigner extends Signer$1 {
         return yield this.provider.send("eth_sign", [address.toLowerCase(), hexlify(data)]);
       } catch (error) {
         if (typeof error.message === "string" && error.message.match(/user denied/i)) {
-          logger$6.throwError("user rejected signing", Logger$1.errors.ACTION_REJECTED, {
+          logger$6.throwError("user rejected signing", Logger$2.errors.ACTION_REJECTED, {
             action: "_legacySignMessage",
             from: address,
             messageData: message
@@ -46875,7 +46875,7 @@ class JsonRpcSigner extends Signer$1 {
         ]);
       } catch (error) {
         if (typeof error.message === "string" && error.message.match(/user denied/i)) {
-          logger$6.throwError("user rejected signing", Logger$1.errors.ACTION_REJECTED, {
+          logger$6.throwError("user rejected signing", Logger$2.errors.ACTION_REJECTED, {
             action: "_signTypedData",
             from: address,
             messageData: { domain: populated.domain, types: types2, value: populated.value }
@@ -46988,14 +46988,14 @@ let JsonRpcProvider$1 = class JsonRpcProvider extends BaseProvider {
         try {
           return getNetwork2(BigNumber.from(chainId).toNumber());
         } catch (error) {
-          return logger$6.throwError("could not detect network", Logger$1.errors.NETWORK_ERROR, {
+          return logger$6.throwError("could not detect network", Logger$2.errors.NETWORK_ERROR, {
             chainId,
             event: "invalidNetwork",
             serverError: error
           });
         }
       }
-      return logger$6.throwError("could not detect network", Logger$1.errors.NETWORK_ERROR, {
+      return logger$6.throwError("could not detect network", Logger$2.errors.NETWORK_ERROR, {
         event: "noNetwork"
       });
     });
@@ -47112,7 +47112,7 @@ let JsonRpcProvider$1 = class JsonRpcProvider extends BaseProvider {
       }
       const args = this.prepareRequest(method, params);
       if (args == null) {
-        logger$6.throwError(method + " not implemented", Logger$1.errors.NOT_IMPLEMENTED, { operation: method });
+        logger$6.throwError(method + " not implemented", Logger$2.errors.NOT_IMPLEMENTED, { operation: method });
       }
       try {
         return yield this.send(args[0], args[1]);
@@ -47245,7 +47245,7 @@ var __awaiter$3 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$5 = new Logger$1(version$a);
+const logger$5 = new Logger$2(version$a);
 class StaticJsonRpcProvider extends JsonRpcProvider$1 {
   detectNetwork() {
     const _super = Object.create(null, {
@@ -47256,7 +47256,7 @@ class StaticJsonRpcProvider extends JsonRpcProvider$1 {
       if (network2 == null) {
         network2 = yield _super.detectNetwork.call(this);
         if (!network2) {
-          logger$5.throwError("no network detected", Logger$1.errors.UNKNOWN_ERROR, {});
+          logger$5.throwError("no network detected", Logger$2.errors.UNKNOWN_ERROR, {});
         }
         if (this._network == null) {
           defineReadOnly$1(this, "_network", network2);
@@ -47294,7 +47294,7 @@ var __awaiter$2 = function(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 };
-const logger$4 = new Logger$1(version$a);
+const logger$4 = new Logger$2(version$a);
 function now() {
   return (/* @__PURE__ */ new Date()).getTime();
 }
@@ -47377,11 +47377,11 @@ function stall(duration) {
   return { cancel, getPromise, wait: wait2 };
 }
 const ForwardErrors = [
-  Logger$1.errors.CALL_EXCEPTION,
-  Logger$1.errors.INSUFFICIENT_FUNDS,
-  Logger$1.errors.NONCE_EXPIRED,
-  Logger$1.errors.REPLACEMENT_UNDERPRICED,
-  Logger$1.errors.UNPREDICTABLE_GAS_LIMIT
+  Logger$2.errors.CALL_EXCEPTION,
+  Logger$2.errors.INSUFFICIENT_FUNDS,
+  Logger$2.errors.NONCE_EXPIRED,
+  Logger$2.errors.REPLACEMENT_UNDERPRICED,
+  Logger$2.errors.UNPREDICTABLE_GAS_LIMIT
 ];
 const ForwardProperties = [
   "address",
@@ -47577,7 +47577,7 @@ function getRunner(config2, currentBlockNumber, method, params) {
         return provider2.getLogs(filter2);
       }
     }
-    return logger$4.throwError("unknown method error", Logger$1.errors.UNKNOWN_ERROR, {
+    return logger$4.throwError("unknown method error", Logger$2.errors.UNKNOWN_ERROR, {
       method,
       params
     });
@@ -47783,7 +47783,7 @@ class FallbackProvider extends BaseProvider {
         }
         c2.cancelled = true;
       });
-      return logger$4.throwError("failed to meet quorum", Logger$1.errors.SERVER_ERROR, {
+      return logger$4.throwError("failed to meet quorum", Logger$2.errors.SERVER_ERROR, {
         method,
         params,
         //results: configs.map((c) => c.result),
@@ -47794,7 +47794,7 @@ class FallbackProvider extends BaseProvider {
     });
   }
 }
-const logger$3 = new Logger$1(version$a);
+const logger$3 = new Logger$2(version$a);
 let _nextId$1 = 1;
 function buildWeb3LegacyFetcher(provider2, sendFunc) {
   const fetcher = "Web3LegacyFetcher";
@@ -47920,7 +47920,7 @@ const regexBytes = new RegExp("^bytes([0-9]+)$");
 const regexNumber = new RegExp("^(u?int)([0-9]*)$");
 const regexArray = new RegExp("^(.*)\\[([0-9]*)\\]$");
 const Zeros = "0000000000000000000000000000000000000000000000000000000000000000";
-const logger$2 = new Logger$1(version$9);
+const logger$2 = new Logger$2(version$9);
 function _pack(type, value, isArray2) {
   switch (type) {
     case "address":
@@ -48003,7 +48003,7 @@ const lib_esm$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   sha256: sha256$3
 }, Symbol.toStringTag, { value: "Module" }));
 const version$8 = "units/5.7.0";
-const logger$1 = new Logger$1(version$8);
+const logger$1 = new Logger$2(version$8);
 const names = [
   "wei",
   "kwei",
@@ -48098,7 +48098,7 @@ const utils$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   Indexed,
   Interface,
   LogDescription,
-  Logger: Logger$1,
+  Logger: Logger$2,
   ParamType,
   RLP: lib_esm$g,
   SigningKey,
@@ -48790,7 +48790,7 @@ var ETHAuth = (
     return ETHAuth2;
   }()
 );
-let ChainId = /* @__PURE__ */ function(ChainId2) {
+let ChainId$1 = /* @__PURE__ */ function(ChainId2) {
   ChainId2[ChainId2["MAINNET"] = 1] = "MAINNET";
   ChainId2[ChainId2["ROPSTEN"] = 3] = "ROPSTEN";
   ChainId2[ChainId2["RINKEBY"] = 4] = "RINKEBY";
@@ -48828,30 +48828,30 @@ let ChainId = /* @__PURE__ */ function(ChainId2) {
   ChainId2[ChainId2["HARDHAT_2"] = 31338] = "HARDHAT_2";
   return ChainId2;
 }({});
-let NetworkType = /* @__PURE__ */ function(NetworkType2) {
+let NetworkType$1 = /* @__PURE__ */ function(NetworkType2) {
   NetworkType2["MAINNET"] = "mainnet";
   NetworkType2["TESTNET"] = "testnet";
   return NetworkType2;
 }({});
-const networks$1 = {
-  [ChainId.MAINNET]: {
-    chainId: ChainId.MAINNET,
-    type: NetworkType.MAINNET,
+const networks$2 = {
+  [ChainId$1.MAINNET]: {
+    chainId: ChainId$1.MAINNET,
+    type: NetworkType$1.MAINNET,
     name: "mainnet",
     title: "Ethereum",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.MAINNET}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.MAINNET}.webp`,
     blockExplorer: {
       name: "Etherscan",
       rootUrl: "https://etherscan.io/"
     },
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
   },
-  [ChainId.ROPSTEN]: {
-    chainId: ChainId.ROPSTEN,
-    type: NetworkType.TESTNET,
+  [ChainId$1.ROPSTEN]: {
+    chainId: ChainId$1.ROPSTEN,
+    type: NetworkType$1.TESTNET,
     name: "ropsten",
     title: "Ropsten",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ROPSTEN}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.ROPSTEN}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Ropsten)",
@@ -48860,12 +48860,12 @@ const networks$1 = {
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     deprecated: true
   },
-  [ChainId.RINKEBY]: {
-    chainId: ChainId.RINKEBY,
-    type: NetworkType.TESTNET,
+  [ChainId$1.RINKEBY]: {
+    chainId: ChainId$1.RINKEBY,
+    type: NetworkType$1.TESTNET,
     name: "rinkeby",
     title: "Rinkeby",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.RINKEBY}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.RINKEBY}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Rinkeby)",
@@ -48874,12 +48874,12 @@ const networks$1 = {
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     deprecated: true
   },
-  [ChainId.GOERLI]: {
-    chainId: ChainId.GOERLI,
-    type: NetworkType.TESTNET,
+  [ChainId$1.GOERLI]: {
+    chainId: ChainId$1.GOERLI,
+    type: NetworkType$1.TESTNET,
     name: "goerli",
     title: "Goerli",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.GOERLI}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.GOERLI}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Goerli)",
@@ -48888,12 +48888,12 @@ const networks$1 = {
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     deprecated: true
   },
-  [ChainId.KOVAN]: {
-    chainId: ChainId.KOVAN,
-    type: NetworkType.TESTNET,
+  [ChainId$1.KOVAN]: {
+    chainId: ChainId$1.KOVAN,
+    type: NetworkType$1.TESTNET,
     name: "kovan",
     title: "Kovan",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.KOVAN}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.KOVAN}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Kovan)",
@@ -48901,35 +48901,35 @@ const networks$1 = {
     },
     deprecated: true
   },
-  [ChainId.SEPOLIA]: {
-    chainId: ChainId.SEPOLIA,
-    type: NetworkType.TESTNET,
+  [ChainId$1.SEPOLIA]: {
+    chainId: ChainId$1.SEPOLIA,
+    type: NetworkType$1.TESTNET,
     name: "sepolia",
     title: "Sepolia",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.SEPOLIA}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.SEPOLIA}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Sepolia)",
       rootUrl: "https://sepolia.etherscan.io/"
     }
   },
-  [ChainId.POLYGON]: {
-    chainId: ChainId.POLYGON,
-    type: NetworkType.MAINNET,
+  [ChainId$1.POLYGON]: {
+    chainId: ChainId$1.POLYGON,
+    type: NetworkType$1.MAINNET,
     name: "polygon",
     title: "Polygon",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.POLYGON}.webp`,
     blockExplorer: {
       name: "Polygonscan",
       rootUrl: "https://polygonscan.com/"
     }
   },
-  [ChainId.POLYGON_MUMBAI]: {
-    chainId: ChainId.POLYGON_MUMBAI,
-    type: NetworkType.TESTNET,
+  [ChainId$1.POLYGON_MUMBAI]: {
+    chainId: ChainId$1.POLYGON_MUMBAI,
+    type: NetworkType$1.TESTNET,
     name: "mumbai",
     title: "Polygon Mumbai",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON_MUMBAI}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.POLYGON_MUMBAI}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Polygonscan (Mumbai)",
@@ -48937,69 +48937,69 @@ const networks$1 = {
     },
     deprecated: true
   },
-  [ChainId.POLYGON_AMOY]: {
-    chainId: ChainId.POLYGON_AMOY,
-    type: NetworkType.TESTNET,
+  [ChainId$1.POLYGON_AMOY]: {
+    chainId: ChainId$1.POLYGON_AMOY,
+    type: NetworkType$1.TESTNET,
     name: "amoy",
     title: "Polygon Amoy",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON_AMOY}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.POLYGON_AMOY}.webp`,
     testnet: true,
     blockExplorer: {
       name: "OKLink (Amoy)",
       rootUrl: "https://www.oklink.com/amoy"
     }
   },
-  [ChainId.POLYGON_ZKEVM]: {
-    chainId: ChainId.POLYGON_ZKEVM,
-    type: NetworkType.MAINNET,
+  [ChainId$1.POLYGON_ZKEVM]: {
+    chainId: ChainId$1.POLYGON_ZKEVM,
+    type: NetworkType$1.MAINNET,
     name: "polygon-zkevm",
     title: "Polygon zkEVM",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON_ZKEVM}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.POLYGON_ZKEVM}.webp`,
     blockExplorer: {
       name: "Polygonscan (zkEVM)",
       rootUrl: "https://zkevm.polygonscan.com/"
     }
   },
-  [ChainId.BSC]: {
-    chainId: ChainId.BSC,
-    type: NetworkType.MAINNET,
+  [ChainId$1.BSC]: {
+    chainId: ChainId$1.BSC,
+    type: NetworkType$1.MAINNET,
     name: "bsc",
     title: "BNB Smart Chain",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BSC}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.BSC}.webp`,
     blockExplorer: {
       name: "BSCScan",
       rootUrl: "https://bscscan.com/"
     }
   },
-  [ChainId.BSC_TESTNET]: {
-    chainId: ChainId.BSC_TESTNET,
-    type: NetworkType.TESTNET,
+  [ChainId$1.BSC_TESTNET]: {
+    chainId: ChainId$1.BSC_TESTNET,
+    type: NetworkType$1.TESTNET,
     name: "bsc-testnet",
     title: "BNB Smart Chain Testnet",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BSC_TESTNET}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.BSC_TESTNET}.webp`,
     testnet: true,
     blockExplorer: {
       name: "BSCScan (Testnet)",
       rootUrl: "https://testnet.bscscan.com/"
     }
   },
-  [ChainId.OPTIMISM]: {
-    chainId: ChainId.OPTIMISM,
-    type: NetworkType.MAINNET,
+  [ChainId$1.OPTIMISM]: {
+    chainId: ChainId$1.OPTIMISM,
+    type: NetworkType$1.MAINNET,
     name: "optimism",
     title: "Optimism",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.OPTIMISM}.webp`,
     blockExplorer: {
       name: "Etherscan (Optimism)",
       rootUrl: "https://optimistic.etherscan.io/"
     }
   },
-  [ChainId.OPTIMISM_KOVAN]: {
-    chainId: ChainId.OPTIMISM_KOVAN,
-    type: NetworkType.TESTNET,
+  [ChainId$1.OPTIMISM_KOVAN]: {
+    chainId: ChainId$1.OPTIMISM_KOVAN,
+    type: NetworkType$1.TESTNET,
     name: "optimism-kovan",
     title: "Optimism Kovan",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_KOVAN}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.OPTIMISM_KOVAN}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Optimism Kovan)",
@@ -49007,12 +49007,12 @@ const networks$1 = {
     },
     deprecated: true
   },
-  [ChainId.OPTIMISM_GOERLI]: {
-    chainId: ChainId.OPTIMISM_GOERLI,
-    type: NetworkType.TESTNET,
+  [ChainId$1.OPTIMISM_GOERLI]: {
+    chainId: ChainId$1.OPTIMISM_GOERLI,
+    type: NetworkType$1.TESTNET,
     name: "optimism-goerli",
     title: "Optimism Goerli",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_GOERLI}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.OPTIMISM_GOERLI}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Optimism Goerli)",
@@ -49020,35 +49020,35 @@ const networks$1 = {
     },
     deprecated: true
   },
-  [ChainId.OPTIMISM_SEPOLIA]: {
-    chainId: ChainId.OPTIMISM_SEPOLIA,
-    type: NetworkType.TESTNET,
+  [ChainId$1.OPTIMISM_SEPOLIA]: {
+    chainId: ChainId$1.OPTIMISM_SEPOLIA,
+    type: NetworkType$1.TESTNET,
     name: "optimism-sepolia",
     title: "Optimism Sepolia",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_SEPOLIA}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.OPTIMISM_SEPOLIA}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Etherscan (Optimism Sepolia)",
       rootUrl: "https://sepolia-optimistic.etherscan.io/"
     }
   },
-  [ChainId.ARBITRUM]: {
-    chainId: ChainId.ARBITRUM,
-    type: NetworkType.MAINNET,
+  [ChainId$1.ARBITRUM]: {
+    chainId: ChainId$1.ARBITRUM,
+    type: NetworkType$1.MAINNET,
     name: "arbitrum",
     title: "Arbitrum One",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.ARBITRUM}.webp`,
     blockExplorer: {
       name: "Arbiscan",
       rootUrl: "https://arbiscan.io/"
     }
   },
-  [ChainId.ARBITRUM_GOERLI]: {
-    chainId: ChainId.ARBITRUM_GOERLI,
-    type: NetworkType.TESTNET,
+  [ChainId$1.ARBITRUM_GOERLI]: {
+    chainId: ChainId$1.ARBITRUM_GOERLI,
+    type: NetworkType$1.TESTNET,
     name: "arbitrum-goerli",
     title: "Arbitrum Goerli",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM_GOERLI}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.ARBITRUM_GOERLI}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Arbiscan (Goerli Testnet)",
@@ -49056,80 +49056,80 @@ const networks$1 = {
     },
     deprecated: true
   },
-  [ChainId.ARBITRUM_SEPOLIA]: {
-    chainId: ChainId.ARBITRUM_SEPOLIA,
-    type: NetworkType.TESTNET,
+  [ChainId$1.ARBITRUM_SEPOLIA]: {
+    chainId: ChainId$1.ARBITRUM_SEPOLIA,
+    type: NetworkType$1.TESTNET,
     name: "arbitrum-sepolia",
     title: "Arbitrum Sepolia",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM_SEPOLIA}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.ARBITRUM_SEPOLIA}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Arbiscan (Sepolia Testnet)",
       rootUrl: "https://sepolia.arbiscan.io/"
     }
   },
-  [ChainId.ARBITRUM_NOVA]: {
-    chainId: ChainId.ARBITRUM_NOVA,
-    type: NetworkType.MAINNET,
+  [ChainId$1.ARBITRUM_NOVA]: {
+    chainId: ChainId$1.ARBITRUM_NOVA,
+    type: NetworkType$1.MAINNET,
     name: "arbitrum-nova",
     title: "Arbitrum Nova",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM_NOVA}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.ARBITRUM_NOVA}.webp`,
     blockExplorer: {
       name: "Arbiscan Nova",
       rootUrl: "https://nova.arbiscan.io/"
     }
   },
-  [ChainId.AVALANCHE]: {
-    chainId: ChainId.AVALANCHE,
-    type: NetworkType.MAINNET,
+  [ChainId$1.AVALANCHE]: {
+    chainId: ChainId$1.AVALANCHE,
+    type: NetworkType$1.MAINNET,
     name: "avalanche",
     title: "Avalanche",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.AVALANCHE}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.AVALANCHE}.webp`,
     blockExplorer: {
       name: "Snowtrace",
       rootUrl: "https://subnets.avax.network/c-chain/"
     }
   },
-  [ChainId.AVALANCHE_TESTNET]: {
-    chainId: ChainId.AVALANCHE_TESTNET,
-    type: NetworkType.TESTNET,
+  [ChainId$1.AVALANCHE_TESTNET]: {
+    chainId: ChainId$1.AVALANCHE_TESTNET,
+    type: NetworkType$1.TESTNET,
     name: "avalanche-testnet",
     title: "Avalanche Testnet",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.AVALANCHE_TESTNET}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.AVALANCHE_TESTNET}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Snowtrace (Testnet)",
       rootUrl: "https://subnets-test.avax.network/c-chain/"
     }
   },
-  [ChainId.GNOSIS]: {
-    chainId: ChainId.GNOSIS,
-    type: NetworkType.MAINNET,
+  [ChainId$1.GNOSIS]: {
+    chainId: ChainId$1.GNOSIS,
+    type: NetworkType$1.MAINNET,
     name: "gnosis",
     title: "Gnosis Chain",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.GNOSIS}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.GNOSIS}.webp`,
     blockExplorer: {
       name: "Gnosis Chain Explorer",
       rootUrl: "https://blockscout.com/xdai/mainnet/"
     }
   },
-  [ChainId.BASE]: {
-    chainId: ChainId.BASE,
-    type: NetworkType.MAINNET,
+  [ChainId$1.BASE]: {
+    chainId: ChainId$1.BASE,
+    type: NetworkType$1.MAINNET,
     name: "base",
     title: "Base (Coinbase)",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BASE}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.BASE}.webp`,
     blockExplorer: {
       name: "Base Explorer",
       rootUrl: "https://basescan.org/"
     }
   },
-  [ChainId.BASE_GOERLI]: {
-    chainId: ChainId.BASE_GOERLI,
-    type: NetworkType.TESTNET,
+  [ChainId$1.BASE_GOERLI]: {
+    chainId: ChainId$1.BASE_GOERLI,
+    type: NetworkType$1.TESTNET,
     name: "base-goerli",
     title: "Base Goerli",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BASE_GOERLI}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.BASE_GOERLI}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Base Goerli Explorer",
@@ -49137,106 +49137,106 @@ const networks$1 = {
     },
     deprecated: true
   },
-  [ChainId.BASE_SEPOLIA]: {
-    chainId: ChainId.BASE_SEPOLIA,
-    type: NetworkType.TESTNET,
+  [ChainId$1.BASE_SEPOLIA]: {
+    chainId: ChainId$1.BASE_SEPOLIA,
+    type: NetworkType$1.TESTNET,
     name: "base-sepolia",
     title: "Base Sepolia",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BASE_SEPOLIA}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.BASE_SEPOLIA}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Base Sepolia Explorer",
       rootUrl: "https://base-sepolia.blockscout.com/"
     }
   },
-  [ChainId.HOMEVERSE]: {
-    chainId: ChainId.HOMEVERSE,
-    type: NetworkType.MAINNET,
+  [ChainId$1.HOMEVERSE]: {
+    chainId: ChainId$1.HOMEVERSE,
+    type: NetworkType$1.MAINNET,
     name: "homeverse",
     title: "Oasys Homeverse",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.HOMEVERSE}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.HOMEVERSE}.webp`,
     blockExplorer: {
       name: "Oasys Homeverse Explorer",
       rootUrl: "https://explorer.oasys.homeverse.games/"
     }
   },
-  [ChainId.HOMEVERSE_TESTNET]: {
-    chainId: ChainId.HOMEVERSE_TESTNET,
-    type: NetworkType.TESTNET,
+  [ChainId$1.HOMEVERSE_TESTNET]: {
+    chainId: ChainId$1.HOMEVERSE_TESTNET,
+    type: NetworkType$1.TESTNET,
     name: "homeverse-testnet",
     title: "Oasys Homeverse Testnet",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.HOMEVERSE_TESTNET}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.HOMEVERSE_TESTNET}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Oasys Homeverse Explorer (Testnet)",
       rootUrl: "https://explorer.testnet.oasys.homeverse.games/"
     }
   },
-  [ChainId.XAI]: {
-    chainId: ChainId.XAI,
-    type: NetworkType.MAINNET,
+  [ChainId$1.XAI]: {
+    chainId: ChainId$1.XAI,
+    type: NetworkType$1.MAINNET,
     name: "xai",
     title: "Xai",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.XAI}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.XAI}.webp`,
     blockExplorer: {
       name: "Xai Explorer",
       rootUrl: "https://explorer.xai-chain.net/"
     }
   },
-  [ChainId.XAI_SEPOLIA]: {
-    chainId: ChainId.XAI_SEPOLIA,
-    type: NetworkType.TESTNET,
+  [ChainId$1.XAI_SEPOLIA]: {
+    chainId: ChainId$1.XAI_SEPOLIA,
+    type: NetworkType$1.TESTNET,
     name: "xai-sepolia",
     title: "Xai Sepolia",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.XAI_SEPOLIA}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.XAI_SEPOLIA}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Xai Sepolia Explorer",
       rootUrl: "https://testnet-explorer-v2.xai-chain.net/"
     }
   },
-  [ChainId.ASTAR_ZKEVM]: {
-    chainId: ChainId.ASTAR_ZKEVM,
-    type: NetworkType.MAINNET,
+  [ChainId$1.ASTAR_ZKEVM]: {
+    chainId: ChainId$1.ASTAR_ZKEVM,
+    type: NetworkType$1.MAINNET,
     name: "astar-zkevm",
     title: "Astar zkEVM",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ASTAR_ZKEVM}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.ASTAR_ZKEVM}.webp`,
     blockExplorer: {
       name: "Astar zkEVM Explorer",
       rootUrl: "https://astar-zkevm.explorer.startale.com/"
     }
   },
-  [ChainId.ASTAR_ZKYOTO]: {
-    chainId: ChainId.ASTAR_ZKYOTO,
-    type: NetworkType.TESTNET,
+  [ChainId$1.ASTAR_ZKYOTO]: {
+    chainId: ChainId$1.ASTAR_ZKYOTO,
+    type: NetworkType$1.TESTNET,
     name: "astar-zkyoto",
     title: "Astar zKyoto Testnet",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ASTAR_ZKYOTO}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.ASTAR_ZKYOTO}.webp`,
     testnet: true,
     blockExplorer: {
       name: "Astar zKyoto Explorer",
       rootUrl: "https://astar-zkyoto.blockscout.com/"
     }
   },
-  [ChainId.XR_SEPOLIA]: {
-    chainId: ChainId.XR_SEPOLIA,
-    type: NetworkType.TESTNET,
+  [ChainId$1.XR_SEPOLIA]: {
+    chainId: ChainId$1.XR_SEPOLIA,
+    type: NetworkType$1.TESTNET,
     name: "xr-sepolia",
     title: "XR Sepolia",
-    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.XR_SEPOLIA}.webp`,
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId$1.XR_SEPOLIA}.webp`,
     testnet: true,
     blockExplorer: {
       name: "XR Sepolia Explorer",
       rootUrl: "https://xr-sepolia-testnet.explorer.caldera.xyz/"
     }
   },
-  [ChainId.HARDHAT]: {
-    chainId: ChainId.HARDHAT,
+  [ChainId$1.HARDHAT]: {
+    chainId: ChainId$1.HARDHAT,
     name: "hardhat",
     title: "Hardhat (local testnet)"
   },
-  [ChainId.HARDHAT_2]: {
-    chainId: ChainId.HARDHAT_2,
+  [ChainId$1.HARDHAT_2]: {
+    chainId: ChainId$1.HARDHAT_2,
     name: "hardhat2",
     title: "Hardhat (local testnet)"
   }
@@ -49291,8 +49291,8 @@ const jwtDecodeClaims = (jwt) => {
   const claims = JSON.parse(gBase64.decode(parts[1]));
   return claims;
 };
-function _extends$g() {
-  _extends$g = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$i() {
+  _extends$i = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -49303,42 +49303,42 @@ function _extends$g() {
     }
     return target;
   };
-  return _extends$g.apply(this, arguments);
+  return _extends$i.apply(this, arguments);
 }
-var logLevel = /* @__PURE__ */ function(logLevel2) {
+var logLevel$1 = /* @__PURE__ */ function(logLevel2) {
   logLevel2[logLevel2["DEBUG"] = 1] = "DEBUG";
   logLevel2[logLevel2["INFO"] = 2] = "INFO";
   logLevel2[logLevel2["WARN"] = 3] = "WARN";
   logLevel2[logLevel2["ERROR"] = 4] = "ERROR";
   logLevel2[logLevel2["DISABLED"] = 5] = "DISABLED";
   return logLevel2;
-}(logLevel || {});
-class Logger2 {
+}(logLevel$1 || {});
+let Logger$1 = class Logger2 {
   constructor(config2) {
     this.config = config2;
     this.logLevel = void 0;
     this.configure(config2);
   }
   configure(config2) {
-    this.config = _extends$g({}, this.config, config2);
+    this.config = _extends$i({}, this.config, config2);
     switch (this.config.logLevel) {
       case "DEBUG":
-        this.logLevel = logLevel.DEBUG;
+        this.logLevel = logLevel$1.DEBUG;
         break;
       case "INFO":
-        this.logLevel = logLevel.INFO;
+        this.logLevel = logLevel$1.INFO;
         break;
       case "WARN":
-        this.logLevel = logLevel.WARN;
+        this.logLevel = logLevel$1.WARN;
         break;
       case "ERROR":
-        this.logLevel = logLevel.ERROR;
+        this.logLevel = logLevel$1.ERROR;
         break;
       case "DISABLED":
-        this.logLevel = logLevel.DISABLED;
+        this.logLevel = logLevel$1.DISABLED;
         break;
       default:
-        this.logLevel = logLevel.INFO;
+        this.logLevel = logLevel$1.INFO;
         break;
     }
     if (this.config.silence === void 0) {
@@ -49348,21 +49348,21 @@ class Logger2 {
   debug(message, ...optionalParams) {
     if (this.config.silence === true)
       return;
-    if (this.logLevel === logLevel.DEBUG) {
+    if (this.logLevel === logLevel$1.DEBUG) {
       console.log(message, ...optionalParams);
     }
   }
   info(message, ...optionalParams) {
     if (this.config.silence === true)
       return;
-    if (this.logLevel <= logLevel.INFO) {
+    if (this.logLevel <= logLevel$1.INFO) {
       console.log(message, ...optionalParams);
     }
   }
   warn(message, ...optionalParams) {
     if (this.config.silence === true)
       return;
-    if (this.logLevel <= logLevel.WARN) {
+    if (this.logLevel <= logLevel$1.WARN) {
       console.warn(message, ...optionalParams);
       if (this.config.onwarn) {
         this.config.onwarn(message, optionalParams);
@@ -49372,15 +49372,15 @@ class Logger2 {
   error(message, ...optionalParams) {
     if (this.config.silence === true)
       return;
-    if (this.logLevel <= logLevel.ERROR) {
+    if (this.logLevel <= logLevel$1.ERROR) {
       console.error(message, ...optionalParams);
       if (this.config.onerror) {
         this.config.onerror(message, optionalParams);
       }
     }
   }
-}
-const logger = new Logger2({
+};
+const logger = new Logger$1({
   logLevel: "INFO",
   // By default we silence the logger. In tests we should call `configureLogger`
   // below to set silence: false.
@@ -49508,7 +49508,7 @@ const sleep$1 = (t2) => {
   });
 };
 const encodeTypedDataHash = (typedData) => {
-  const types2 = _extends$g({}, typedData.types);
+  const types2 = _extends$i({}, typedData.types);
   delete types2["EIP712Domain"];
   return TypedDataEncoder.hash(typedData.domain, types2, typedData.message);
 };
@@ -49526,7 +49526,7 @@ const {
 const urlClean = (url) => url.replace(/([^:]\/)\/+/g, "$1");
 const utils$1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  Logger: Logger2,
+  Logger: Logger$1,
   PromiseCache: PromiseCache$1,
   base64Decode,
   base64DecodeObject,
@@ -49560,8 +49560,8 @@ const utils$1$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   subDigestOf,
   urlClean
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$f() {
-  _extends$f = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$h() {
+  _extends$h = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -49572,7 +49572,7 @@ function _extends$f() {
     }
     return target;
   };
-  return _extends$f.apply(this, arguments);
+  return _extends$h.apply(this, arguments);
 }
 function isNetworkConfig(cand) {
   return cand && cand.chainId !== void 0 && cand.name !== void 0 && cand.rpcUrl !== void 0 && cand.relayer !== void 0;
@@ -49591,7 +49591,7 @@ const maybeChainId = (chainId) => {
     return void 0;
   return getChainId$2(chainId);
 };
-const isValidNetworkConfig = (networkConfig, raise = false, skipRelayerCheck = false) => {
+const isValidNetworkConfig$1 = (networkConfig, raise = false, skipRelayerCheck = false) => {
   if (!networkConfig)
     throw new Error(`invalid network config: empty config`);
   const configs = [];
@@ -49651,8 +49651,8 @@ const isValidNetworkConfig = (networkConfig, raise = false, skipRelayerCheck = f
   }
   return true;
 };
-const ensureValidNetworks = (networks2, skipRelayerCheck = false) => {
-  isValidNetworkConfig(networks2, true, skipRelayerCheck);
+const ensureValidNetworks$1 = (networks2, skipRelayerCheck = false) => {
+  isValidNetworkConfig$1(networks2, true, skipRelayerCheck);
   return networks2;
 };
 const ensureUniqueNetworks = (networks2, raise = true) => {
@@ -49685,8 +49685,8 @@ const updateNetworkConfig = (src, dest) => {
     dest.relayer = src.relayer;
   }
 };
-const validateAndSortNetworks = (networks2) => {
-  return ensureValidNetworks(sortNetworks(networks2));
+const validateAndSortNetworks$1 = (networks2) => {
+  return ensureValidNetworks$1(sortNetworks$1(networks2));
 };
 const findNetworkConfig = (networks2, chainId) => {
   if (typeof chainId === "string") {
@@ -49723,7 +49723,7 @@ const networksIndex = (networks2) => {
   }
   return index2;
 };
-const sortNetworks = (networks2) => {
+const sortNetworks$1 = (networks2) => {
   if (!networks2) {
     return [];
   }
@@ -49737,7 +49737,7 @@ const sortNetworks = (networks2) => {
     config2.splice(0, 0, config2.splice(defaultConfigIdx, 1)[0]);
   return config2;
 };
-const stringTemplate = (sTemplate, mData) => {
+const stringTemplate$1 = (sTemplate, mData) => {
   if (typeof sTemplate === "string") {
     mData = mData ? mData : {};
     return sTemplate.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, function(fullMath, grp) {
@@ -49756,13 +49756,13 @@ const stringTemplate = (sTemplate, mData) => {
   }
   return "";
 };
-const indexerURL = (network2) => stringTemplate("https://${network}-indexer.sequence.app", {
+const indexerURL$1 = (network2) => stringTemplate$1("https://${network}-indexer.sequence.app", {
   network: network2
 });
-const relayerURL = (network2) => stringTemplate("https://${network}-relayer.sequence.app", {
+const relayerURL$1 = (network2) => stringTemplate$1("https://${network}-relayer.sequence.app", {
   network: network2
 });
-const nodesURL = (network2) => stringTemplate("https://nodes.sequence.app/${network}", {
+const nodesURL$1 = (network2) => stringTemplate$1("https://nodes.sequence.app/${network}", {
   network: network2
 });
 function findSupportedNetwork(chainIdOrName) {
@@ -49777,29 +49777,29 @@ function toChainIdNumber(chainIdLike) {
   }
   return BigNumber.from(chainIdLike.chainId);
 }
-const genUrls = (network2) => {
-  const rpcUrl = nodesURL(network2);
+const genUrls$1 = (network2) => {
+  const rpcUrl = nodesURL$1(network2);
   return {
     rpcUrl,
     relayer: {
-      url: relayerURL(network2),
+      url: relayerURL$1(network2),
       provider: {
         url: rpcUrl
       }
     },
-    indexerUrl: indexerURL(network2)
+    indexerUrl: indexerURL$1(network2)
   };
 };
-const allNetworks = validateAndSortNetworks([_extends$f({}, networks$1[ChainId.POLYGON], genUrls("polygon"), {
+const allNetworks = validateAndSortNetworks$1([_extends$h({}, networks$2[ChainId$1.POLYGON], genUrls$1("polygon"), {
   isDefaultChain: true,
   isAuthChain: true
-}), _extends$f({}, networks$1[ChainId.MAINNET], genUrls("mainnet")), _extends$f({}, networks$1[ChainId.BSC], genUrls("bsc")), _extends$f({}, networks$1[ChainId.AVALANCHE], genUrls("avalanche")), _extends$f({}, networks$1[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$f({}, networks$1[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$f({}, networks$1[ChainId.OPTIMISM], genUrls("optimism")), _extends$f({}, networks$1[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$f({}, networks$1[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$f({}, networks$1[ChainId.GNOSIS], genUrls("gnosis")), _extends$f({}, networks$1[ChainId.RINKEBY], genUrls("rinkeby"), {
+}), _extends$h({}, networks$2[ChainId$1.MAINNET], genUrls$1("mainnet")), _extends$h({}, networks$2[ChainId$1.BSC], genUrls$1("bsc")), _extends$h({}, networks$2[ChainId$1.AVALANCHE], genUrls$1("avalanche")), _extends$h({}, networks$2[ChainId$1.ARBITRUM], genUrls$1("arbitrum")), _extends$h({}, networks$2[ChainId$1.ARBITRUM_NOVA], genUrls$1("arbitrum-nova")), _extends$h({}, networks$2[ChainId$1.OPTIMISM], genUrls$1("optimism")), _extends$h({}, networks$2[ChainId$1.OPTIMISM_SEPOLIA], genUrls$1("optimism-sepolia")), _extends$h({}, networks$2[ChainId$1.POLYGON_ZKEVM], genUrls$1("polygon-zkevm")), _extends$h({}, networks$2[ChainId$1.GNOSIS], genUrls$1("gnosis")), _extends$h({}, networks$2[ChainId$1.RINKEBY], genUrls$1("rinkeby"), {
   disabled: true
-}), _extends$f({}, networks$1[ChainId.GOERLI], genUrls("goerli"), {
+}), _extends$h({}, networks$2[ChainId$1.GOERLI], genUrls$1("goerli"), {
   disabled: true
-}), _extends$f({}, networks$1[ChainId.SEPOLIA], genUrls("sepolia")), _extends$f({}, networks$1[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
+}), _extends$h({}, networks$2[ChainId$1.SEPOLIA], genUrls$1("sepolia")), _extends$h({}, networks$2[ChainId$1.POLYGON_MUMBAI], genUrls$1("mumbai"), {
   disabled: true
-}), _extends$f({}, networks$1[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$f({}, networks$1[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$f({}, networks$1[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$f({}, networks$1[ChainId.BASE], genUrls("base")), _extends$f({}, networks$1[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$f({}, networks$1[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$f({}, networks$1[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$f({}, networks$1[ChainId.XAI], genUrls("xai")), _extends$f({}, networks$1[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$f({}, networks$1[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$f({}, networks$1[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$f({}, networks$1[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$f({}, networks$1[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$f({}, networks$1[ChainId.HARDHAT], {
+}), _extends$h({}, networks$2[ChainId$1.POLYGON_AMOY], genUrls$1("amoy")), _extends$h({}, networks$2[ChainId$1.BSC_TESTNET], genUrls$1("bsc-testnet")), _extends$h({}, networks$2[ChainId$1.ARBITRUM_SEPOLIA], genUrls$1("arbitrum-sepolia")), _extends$h({}, networks$2[ChainId$1.BASE], genUrls$1("base")), _extends$h({}, networks$2[ChainId$1.BASE_SEPOLIA], genUrls$1("base-sepolia")), _extends$h({}, networks$2[ChainId$1.HOMEVERSE], genUrls$1("homeverse")), _extends$h({}, networks$2[ChainId$1.HOMEVERSE_TESTNET], genUrls$1("homeverse-testnet")), _extends$h({}, networks$2[ChainId$1.XAI], genUrls$1("xai")), _extends$h({}, networks$2[ChainId$1.XAI_SEPOLIA], genUrls$1("xai-sepolia")), _extends$h({}, networks$2[ChainId$1.AVALANCHE_TESTNET], genUrls$1("avalanche-testnet")), _extends$h({}, networks$2[ChainId$1.ASTAR_ZKEVM], genUrls$1("astar-zkevm")), _extends$h({}, networks$2[ChainId$1.ASTAR_ZKYOTO], genUrls$1("astar-zkyoto")), _extends$h({}, networks$2[ChainId$1.XR_SEPOLIA], genUrls$1("xr-sepolia")), _extends$h({}, networks$2[ChainId$1.HARDHAT], {
   rpcUrl: "http://localhost:8545",
   relayer: {
     url: "http://localhost:3000",
@@ -49807,7 +49807,7 @@ const allNetworks = validateAndSortNetworks([_extends$f({}, networks$1[ChainId.P
       url: "http://localhost:8545"
     }
   }
-}), _extends$f({}, networks$1[ChainId.HARDHAT_2], {
+}), _extends$h({}, networks$2[ChainId$1.HARDHAT_2], {
   rpcUrl: "http://localhost:9545",
   relayer: {
     url: "http://localhost:3000",
@@ -50344,7 +50344,7 @@ class JsonRpcProvider2 extends JsonRpcProvider$1 {
   async getNetwork() {
     const chainId = this._chainId;
     if (chainId) {
-      const network2 = networks$1[chainId];
+      const network2 = networks$2[chainId];
       const name2 = (network2 == null ? void 0 : network2.name) || "";
       const ensAddress = network2 == null ? void 0 : network2.ensAddress;
       return {
@@ -50372,14 +50372,14 @@ const network$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   __proto__: null,
   AllowProvider,
   CachedProvider,
-  ChainId,
+  ChainId: ChainId$1,
   EagerProvider,
   JsonRpcExternalProvider,
   JsonRpcProvider: JsonRpcProvider2,
   JsonRpcRouter,
   JsonRpcSender,
   JsonRpcVersion,
-  NetworkType,
+  NetworkType: NetworkType$1,
   PublicProvider,
   SigningProvider,
   SingleflightMiddleware,
@@ -50388,31 +50388,31 @@ const network$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   checkNetworkConfig,
   createJsonRpcMiddlewareStack,
   ensureUniqueNetworks,
-  ensureValidNetworks,
+  ensureValidNetworks: ensureValidNetworks$1,
   exceptionProviderMiddleware,
   findNetworkConfig,
   findSupportedNetwork,
   getChainId: getChainId$2,
-  indexerURL,
+  indexerURL: indexerURL$1,
   isJsonRpcHandler,
   isJsonRpcProvider,
   isNetworkConfig,
-  isValidNetworkConfig,
+  isValidNetworkConfig: isValidNetworkConfig$1,
   loggingProviderMiddleware,
   maybeChainId,
   networkProviderMiddleware,
-  networks: networks$1,
+  networks: networks$2,
   networksIndex,
-  nodesURL,
-  relayerURL,
-  sortNetworks,
-  stringTemplate,
+  nodesURL: nodesURL$1,
+  relayerURL: relayerURL$1,
+  sortNetworks: sortNetworks$1,
+  stringTemplate: stringTemplate$1,
   toChainIdNumber,
   updateNetworkConfig,
-  validateAndSortNetworks
+  validateAndSortNetworks: validateAndSortNetworks$1
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$e() {
-  _extends$e = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$g() {
+  _extends$g = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -50423,7 +50423,7 @@ function _extends$e() {
     }
     return target;
   };
-  return _extends$e.apply(this, arguments);
+  return _extends$g.apply(this, arguments);
 }
 var config$2 = /* @__PURE__ */ Object.freeze({
   __proto__: null
@@ -50657,13 +50657,13 @@ function encodeSigners$1(config2, signatures, subdigests, _) {
     const bytes3 = arrayify(signature2.signature);
     weight = weight.add(s2.weight);
     if (signature2.isDynamic || bytes3.length !== 66) {
-      return _extends$e({}, s2, {
+      return _extends$g({}, s2, {
         isDynamic: true,
         signature: signature2.signature,
         address: s2.address
       });
     }
-    return _extends$e({}, s2, {
+    return _extends$g({}, s2, {
       isDynamic: false,
       signature: signature2.signature
     });
@@ -51341,7 +51341,7 @@ function decodeChainedSignature(signature2) {
     throw new Error(`Expected first link of chained signature to be a simple signature (not chained)`);
   }
   const suffix = chain.slice(1);
-  return _extends$e({}, main2, {
+  return _extends$g({}, main2, {
     suffix
   });
 }
@@ -51361,7 +51361,7 @@ async function recoverSignature(signature2, payload, provider2) {
       version: 2,
       type: signature2.type,
       subdigest,
-      config: _extends$e({
+      config: _extends$g({
         version: 2
       }, signature2.decoded, {
         tree
@@ -51373,20 +51373,20 @@ async function recoverSignature(signature2, payload, provider2) {
   }
   const result = [];
   let mutatedPayload = signedPayload;
-  for (const sig of [_extends$e({}, signature2, {
+  for (const sig of [_extends$g({}, signature2, {
     suffix: void 0
   }), ...signature2.suffix]) {
     const recovered = await recoverSignature(sig, mutatedPayload, provider2);
     result.unshift(recovered);
     const nextMessage = setImageHashStruct(imageHash(deepestConfigOfSignature(recovered)));
-    mutatedPayload = _extends$e({}, mutatedPayload, {
+    mutatedPayload = _extends$g({}, mutatedPayload, {
       message: nextMessage,
       digest: keccak256$2(nextMessage)
     });
   }
   const main2 = result[0];
   const suffix = result.slice(1);
-  return _extends$e({}, main2, {
+  return _extends$g({}, main2, {
     suffix
   });
 }
@@ -51499,7 +51499,7 @@ function subdigestsOfDecoded(utopology) {
 async function trimSignature(signature2) {
   const decoded = typeof signature2 === "string" ? decodeSignature(signature2) : signature2;
   if (isUnrecoveredChainedSignature(decoded)) {
-    const _trimmed = await Promise.all([trimSignature(_extends$e({}, decoded, {
+    const _trimmed = await Promise.all([trimSignature(_extends$g({}, decoded, {
       suffix: void 0
     })), ...decoded.suffix.map((s2) => trimSignature(s2))]);
     return encodeChain(_trimmed[0], _trimmed.slice(1));
@@ -51507,8 +51507,8 @@ async function trimSignature(signature2) {
   const {
     trimmed
   } = await trimUnrecoveredTree(decoded.decoded.tree);
-  return encodeSignature(_extends$e({}, decoded, {
-    decoded: _extends$e({}, decoded.decoded, {
+  return encodeSignature(_extends$g({}, decoded, {
+    decoded: _extends$g({}, decoded.decoded, {
       tree: trimmed
     })
   }));
@@ -51563,7 +51563,7 @@ async function trimUnrecoveredTree(tree, trimStaticDigest = true) {
   if (isNodeLeaf(tree) && isEncodedSignerLeaf(tree.nodeHash)) {
     return {
       weight: 0,
-      trimmed: _extends$e({}, decodeSignerLeaf(tree.nodeHash))
+      trimmed: _extends$g({}, decodeSignerLeaf(tree.nodeHash))
     };
   }
   if (isUnrecoveredSignatureLeaf(tree) || isSignerLeaf(tree) && tree.signature !== void 0) {
@@ -51924,7 +51924,7 @@ const ConfigCoder = {
   },
   fromSimple: (config2) => {
     var _config$subdigests;
-    return toWalletConfig(_extends$e({}, config2, {
+    return toWalletConfig(_extends$g({}, config2, {
       members: [...config2.signers, ...((_config$subdigests = config2.subdigests) != null ? _config$subdigests : []).map((subdigest) => ({
         subdigest
       }))]
@@ -52203,7 +52203,7 @@ const MetaTransactionsType = `tuple(
   bytes data
 )[]`;
 function intendTransactionBundle(bundle, wallet, chainId, id2) {
-  return _extends$e({}, bundle, {
+  return _extends$g({}, bundle, {
     chainId,
     intent: {
       id: id2,
@@ -52366,13 +52366,13 @@ const unwind = (wallet, transactions2) => {
     if (tx.to === wallet && hexlify(txData.slice(0, 4)) === selfExecuteSelector) {
       const data = txData.slice(4);
       const decoded = defaultAbiCoder.decode([selfExecuteAbi], data)[0];
-      unwound.push(...unwind(tx.to, decoded.map((d2) => _extends$e({}, d2, {
+      unwound.push(...unwind(tx.to, decoded.map((d2) => _extends$g({}, d2, {
         to: d2.target
       }))));
     } else {
       try {
         const innerTransactions = walletInterface.decodeFunctionData("execute", txData)[0];
-        const unwoundTransactions = unwind(wallet, innerTransactions.map((tx2) => _extends$e({}, tx2, {
+        const unwoundTransactions = unwind(wallet, innerTransactions.map((tx2) => _extends$g({}, tx2, {
           to: tx2.target
         })));
         unwound.push(...unwoundTransactions);
@@ -52613,8 +52613,8 @@ var index$6 = /* @__PURE__ */ Object.freeze({
   MIGRATION_NONCE_SPACE,
   v1v2
 });
-function _extends$d() {
-  _extends$d = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$f() {
+  _extends$f = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -52625,7 +52625,7 @@ function _extends$d() {
     }
     return target;
   };
-  return _extends$d.apply(this, arguments);
+  return _extends$f.apply(this, arguments);
 }
 function validateMigrations(migrations) {
   for (const [version2, migration2] of Object.entries(migrations)) {
@@ -52699,7 +52699,7 @@ class Migrator {
     }
     const unsignedMigration = migration2.buildTransaction(address, this.contexts, nextConfig);
     const signedBundle = await wallet.signTransactionBundle(unsignedMigration.tx);
-    return _extends$d({}, unsignedMigration, {
+    return _extends$f({}, unsignedMigration, {
       tx: signedBundle
     });
   }
@@ -52722,8 +52722,8 @@ const migration$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   migrator,
   version: version$5
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$c() {
-  _extends$c = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$e() {
+  _extends$e = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -52734,7 +52734,7 @@ function _extends$c() {
     }
     return target;
   };
-  return _extends$c.apply(this, arguments);
+  return _extends$e.apply(this, arguments);
 }
 const DEFAULT_GAS_LIMIT = BigNumber.from(8e5);
 const ProviderRelayerDefaults = {
@@ -52751,7 +52751,7 @@ class ProviderRelayer {
     this.waitPollRate = void 0;
     this.deltaBlocksLog = void 0;
     this.fromBlockLog = void 0;
-    const opts = _extends$c({}, ProviderRelayerDefaults, options);
+    const opts = _extends$e({}, ProviderRelayerDefaults, options);
     this.provider = opts.provider;
     this.waitPollRate = opts.waitPollRate;
     this.deltaBlocksLog = opts.deltaBlocksLog;
@@ -52850,7 +52850,7 @@ class ProviderRelayer {
         const found = txs.find((tx) => tx.logs.find((l2) => l2.topics.length === 0 && l2.data.replace("0x", "") === normalMetaTxnId || l2.topics.length === 1 && // TxFailed event topic
         l2.topics[0] === "0x3dbd1590ea96dd3253a91f24e64e3a502e1225d602a5731357bc12643070ccd7" && l2.data.length >= 64 && l2.data.replace("0x", "").startsWith(normalMetaTxnId)));
         if (found) {
-          return _extends$c({
+          return _extends$e({
             receipt: found
           }, await retry(() => _this2.provider.getTransaction(found.transactionHash), `unable to get transaction ${found.transactionHash}`));
         }
@@ -52877,7 +52877,7 @@ class LocalRelayer extends ProviderRelayer {
   constructor(options) {
     super(Signer$1.isSigner(options) ? {
       provider: options.provider
-    } : _extends$c({}, options, {
+    } : _extends$e({}, options, {
       provider: options.signer.provider
     }));
     this.signer = void 0;
@@ -52910,7 +52910,7 @@ class LocalRelayer extends ProviderRelayer {
       logger.warn(`LocalRelayer doesn't accept fee quotes`);
     }
     const data = index$1$2.transaction.encodeBundleExecData(signedTxs);
-    const responsePromise = this.signer.sendTransaction(_extends$c({
+    const responsePromise = this.signer.sendTransaction(_extends$e({
       to: signedTxs.entrypoint,
       data
     }, this.txnOptions, {
@@ -53378,7 +53378,7 @@ class Relayer {
 const createHTTPRequest$6 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$c({}, headers, {
+    headers: _extends$e({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -53640,7 +53640,7 @@ class RpcRelayer {
       if (projectAccessKey2 && projectAccessKey2.length > 0) {
         headers["X-Access-Key"] = projectAccessKey2;
       }
-      init3.headers = _extends$c({}, init3.headers, headers);
+      init3.headers = _extends$e({}, init3.headers, headers);
       return fetch$4(input2, init3);
     };
     this.service = new Relayer(options.url, this._fetch);
@@ -54057,8 +54057,8 @@ const signhub$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   isSignerStatusPending,
   signers: index$5
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$b() {
-  _extends$b = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$d() {
+  _extends$d = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -54069,7 +54069,7 @@ function _extends$b() {
     }
     return target;
   };
-  return _extends$b.apply(this, arguments);
+  return _extends$d.apply(this, arguments);
 }
 async function resolveArrayProperties$1(object) {
   if (Array.isArray(object)) {
@@ -54119,7 +54119,7 @@ class Wallet2 extends Signer$1 {
   }
   static newWallet(options) {
     const address = index$1$2.context.addressOf(options.context, options.coders.config.imageHashOf(options.config));
-    return new Wallet2(_extends$b({}, options, {
+    return new Wallet2(_extends$d({}, options, {
       address
     }));
   }
@@ -54190,7 +54190,7 @@ class Wallet2 extends Signer$1 {
     }
     if (!this.relayer)
       throw new Error("Wallet deploy requires a relayer");
-    return this.relayer.relay(_extends$b({}, deployTx, {
+    return this.relayer.relay(_extends$d({}, deployTx, {
       chainId: this.chainId,
       intent: {
         id: hexlify(randomBytes$1(32)),
@@ -54231,7 +54231,7 @@ class Wallet2 extends Signer$1 {
     if (this.coders.config.hasSubdigest(this.config, subdigest)) {
       return this.coders.signature.encodeSigners(this.config, /* @__PURE__ */ new Map(), [subdigest], this.chainId).encoded;
     }
-    const childMetadata = _extends$b({}, metadata2, {
+    const childMetadata = _extends$d({}, metadata2, {
       // Keep other metadata fields
       digest: digest9,
       chainId: this.chainId,
@@ -54245,7 +54245,7 @@ class Wallet2 extends Signer$1 {
       metadata: childMetadata,
       callback: (status, onNewMetadata) => {
         const parts2 = statusToSignatureParts(status);
-        const newMetadata = _extends$b({}, childMetadata, {
+        const newMetadata = _extends$d({}, childMetadata, {
           parts: parts2
         });
         onNewMetadata(newMetadata);
@@ -54303,7 +54303,7 @@ class Wallet2 extends Signer$1 {
     }
     const defaultedNonce = await this.fetchNonceOrSpace(nonce);
     const digest9 = index$1$2.transaction.digestOfTransactions(defaultedNonce, transactions2);
-    const meta = _extends$b({
+    const meta = _extends$d({
       digest: digest9,
       transactions: transactions2
     }, metadata2);
@@ -54356,7 +54356,7 @@ class Wallet2 extends Signer$1 {
     const simulations = await relayer2.simulate(this.address, ...transactions2);
     return transactions2.map((tx, i2) => {
       const gasLimit = tx.gasLimit ? BigNumber.from(tx.gasLimit).toNumber() : simulations[i2].gasLimit;
-      return _extends$b({}, tx, simulations[i2], {
+      return _extends$d({}, tx, simulations[i2], {
         gasLimit
       });
     });
@@ -54370,8 +54370,8 @@ class Wallet2 extends Signer$1 {
     throw new Error("Method not implemented.");
   }
 }
-function _extends$a() {
-  _extends$a = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$c() {
+  _extends$c = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -54382,7 +54382,7 @@ function _extends$a() {
     }
     return target;
   };
-  return _extends$a.apply(this, arguments);
+  return _extends$c.apply(this, arguments);
 }
 function isPromise(value) {
   return !!value && typeof value.then === "function";
@@ -54644,7 +54644,7 @@ class Account {
       throw new Error(`Relayer not found for chainId ${chainId}`);
     if (isRelayer(found.relayer))
       return found.relayer;
-    return new RpcRelayer(_extends$a({}, found.relayer, this.projectAccessKey ? {
+    return new RpcRelayer(_extends$c({}, found.relayer, this.projectAccessKey ? {
       projectAccessKey: this.projectAccessKey
     } : {
       jwtAuth: this.jwt
@@ -54763,7 +54763,7 @@ class Account {
     const counterfactualImageHash = await counterfactualImageHashPromise;
     const checkpoint = index$7.coderFor(lastVersion).config.checkpointOf(config2);
     return {
-      original: _extends$a({}, counterfactualImageHash, {
+      original: _extends$c({}, counterfactualImageHash, {
         version: await counterFactualVersionPromise
       }),
       onChain: {
@@ -54941,7 +54941,7 @@ class Account {
   }
   async editConfig(changes) {
     const currentConfig = await this.status(0).then((s2) => s2.config);
-    const newConfig = this.coders.config.editConfig(currentConfig, _extends$a({}, changes, {
+    const newConfig = this.coders.config.editConfig(currentConfig, _extends$c({}, changes, {
       checkpoint: this.coders.config.checkpointOf(currentConfig).add(1)
     }));
     return this.updateConfig(newConfig);
@@ -55016,7 +55016,7 @@ class Account {
   }
   async doBootstrap(chainId, feeQuote, prestatus) {
     const bootstrapTxs = await this.bootstrapTransactions(chainId, prestatus);
-    return this.relayer(chainId).relay(_extends$a({}, bootstrapTxs, {
+    return this.relayer(chainId).relay(_extends$c({}, bootstrapTxs, {
       chainId
     }), feeQuote);
   }
@@ -55044,7 +55044,7 @@ class Account {
       space: options.nonceSpace
     } : void 0;
     const signed2 = await wallet.signTransactions(txs, nonceOptions, metadata2);
-    return _extends$a({}, signed2, {
+    return _extends$c({}, signed2, {
       signature: await this.decorateSignature(signed2.signature, status)
     });
   }
@@ -55146,7 +55146,7 @@ class Account {
     const decoratedBundle = await this.decorateTransactions(signedBundle, wstatus);
     const data = index$1$2.transaction.encodeBundleExecData(decoratedBundle);
     const res = await this.relayer(chainId).getFeeOptionsRaw(decoratedBundle.entrypoint, data, options);
-    return _extends$a({}, res, {
+    return _extends$c({}, res, {
       decorated: decoratedBundle
     });
   }
@@ -55222,7 +55222,7 @@ class Account {
         }
         const coder = index$7.genericCoderFor(latestConfig.version);
         const signers = coder.config.signersOf(latestConfig);
-        return signers.map((signer2) => _extends$a({}, signer2, {
+        return signers.map((signer2) => _extends$c({}, signer2, {
           network: chainId
         }));
       } catch (error) {
@@ -55277,8 +55277,8 @@ const account$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   Account,
   isAccount
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$9() {
-  _extends$9 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$b() {
+  _extends$b = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -55289,7 +55289,7 @@ function _extends$9() {
     }
     return target;
   };
-  return _extends$9.apply(this, arguments);
+  return _extends$b.apply(this, arguments);
 }
 const WebRPCVersion$1 = "v1";
 const WebRPCSchemaVersion$1 = "v0.4.0";
@@ -55756,7 +55756,7 @@ const sseResponse = async (res, options, retryFetch) => {
 const createHTTPRequest$5 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$9({}, headers, {
+    headers: _extends$b({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -56019,7 +56019,7 @@ class SequenceIndexer extends Indexer {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$9({}, init3.headers, headers);
+      init3.headers = _extends$b({}, init3.headers, headers);
       return fetch$3(input2, init3);
     };
     this.fetch = this._fetch;
@@ -56067,8 +56067,8 @@ const indexer$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   WebrpcStreamLostError: WebrpcStreamLostError$5,
   errors: errors$1
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$8() {
-  _extends$8 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$a() {
+  _extends$a = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -56079,7 +56079,7 @@ function _extends$8() {
     }
     return target;
   };
-  return _extends$8.apply(this, arguments);
+  return _extends$a.apply(this, arguments);
 }
 const WebRPCVersion = "v1";
 const WebRPCSchemaVersion = "v0.4.0";
@@ -56681,7 +56681,7 @@ class Collections {
 const createHTTPRequest$4 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$8({}, headers, {
+    headers: _extends$a({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -56936,7 +56936,7 @@ class SequenceMetadata extends Metadata {
       if (projectAccessKey3 && projectAccessKey3.length > 0) {
         headers["X-Access-Key"] = projectAccessKey3;
       }
-      init3.headers = _extends$8({}, init3.headers, headers);
+      init3.headers = _extends$a({}, init3.headers, headers);
       return fetch$2(input2, init3);
     };
     this.fetch = this._fetch;
@@ -56952,7 +56952,7 @@ class SequenceCollections extends Collections {
       if (jwtAuth2 && jwtAuth2.length > 0) {
         headers["Authorization"] = `BEARER ${jwtAuth2}`;
       }
-      init3.headers = _extends$8({}, init3.headers, headers);
+      init3.headers = _extends$a({}, init3.headers, headers);
       return fetch$2(input2, init3);
     };
     this.fetch = this._fetch;
@@ -57392,8 +57392,8 @@ var debug$1 = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   DebugConfigTracker
 });
-function _extends$7() {
-  _extends$7 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$9() {
+  _extends$9 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -57404,7 +57404,7 @@ function _extends$7() {
     }
     return target;
   };
-  return _extends$7.apply(this, arguments);
+  return _extends$9.apply(this, arguments);
 }
 class MemoryTrackerStore {
   constructor() {
@@ -57809,7 +57809,7 @@ class LocalConfigTracker {
       const subdigestsOfSigner = await Promise.all(signers.map((s2) => _this.store.loadSubdigestsOfSigner(s2)));
       const subdigests = [...new Set(subdigestsOfSigner.flat())];
       const payloads = await Promise.all([...new Set(subdigests)].map(async function(s2) {
-        return _extends$7({}, await _this.payloadOfSubdigest({
+        return _extends$9({}, await _this.payloadOfSubdigest({
           subdigest: s2
         }), {
           subdigest: s2
@@ -58205,7 +58205,7 @@ class Sessions {
 const createHTTPRequest$3 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$7({}, headers, {
+    headers: _extends$9({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -58612,17 +58612,17 @@ function encodeV2ConfigTree(tree) {
       node: tree.nodeHash
     };
   } else {
-    return _extends$7({}, tree);
+    return _extends$9({}, tree);
   }
 }
 function decodeConfig(version2, config2) {
   switch (version2) {
     case 1:
-      return _extends$7({}, config2, {
+      return _extends$9({}, config2, {
         version: version2
       });
     case 2:
-      return _extends$7({}, config2, {
+      return _extends$9({}, config2, {
         version: version2,
         tree: decodeV2ConfigTree(config2.tree)
       });
@@ -58633,7 +58633,7 @@ function decodeConfig(version2, config2) {
 function decodeV2ConfigTree(tree) {
   switch (typeof tree) {
     case "object":
-      const tree_ = _extends$7({}, tree);
+      const tree_ = _extends$9({}, tree);
       if (tree_.left !== void 0) {
         tree_.left = decodeV2ConfigTree(tree_.left);
       }
@@ -59361,8 +59361,8 @@ class AuthError extends Error {
   }
 }
 const ErrAccountIsRequired = new AuthError("auth error: account address is empty");
-function _extends$6() {
-  _extends$6 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$8() {
+  _extends$8 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -59373,7 +59373,7 @@ function _extends$6() {
     }
     return target;
   };
-  return _extends$6.apply(this, arguments);
+  return _extends$8.apply(this, arguments);
 }
 function isSessionDumpV1(obj) {
   return obj.config && obj.metadata && obj.version === void 0;
@@ -59400,7 +59400,7 @@ class Session {
       address: this.account.address
     };
     if (this.services) {
-      return _extends$6({}, base2, await this.services.dump());
+      return _extends$8({}, base2, await this.services.dump());
     }
     return base2;
   }
@@ -59446,7 +59446,7 @@ class Session {
       }
       return void 0;
     };
-    return Session.open(_extends$6({}, args, {
+    return Session.open(_extends$8({}, args, {
       orchestrator,
       referenceSigner,
       threshold,
@@ -59473,8 +59473,8 @@ class Session {
       networks: networks2,
       tracker: tracker2,
       services
-    } = _extends$6({}, SessionSettingsDefault, settings);
-    const referenceChainId = (_findNetworkConfig$ch = (_findNetworkConfig = findNetworkConfig(networks2, (_settings$services$se = settings == null || (_settings$services = settings.services) == null ? void 0 : _settings$services.sequenceApiChainId) != null ? _settings$services$se : ChainId.MAINNET)) == null ? void 0 : _findNetworkConfig.chainId) != null ? _findNetworkConfig$ch : (_networks$ = networks2[0]) == null ? void 0 : _networks$.chainId;
+    } = _extends$8({}, SessionSettingsDefault, settings);
+    const referenceChainId = (_findNetworkConfig$ch = (_findNetworkConfig = findNetworkConfig(networks2, (_settings$services$se = settings == null || (_settings$services = settings.services) == null ? void 0 : _settings$services.sequenceApiChainId) != null ? _settings$services$se : ChainId$1.MAINNET)) == null ? void 0 : _findNetworkConfig.chainId) != null ? _findNetworkConfig$ch : (_networks$ = networks2[0]) == null ? void 0 : _networks$.chainId;
     if (!referenceChainId)
       throw Error("No reference chain found");
     const foundWallets = await tracker2.walletsOfSigner({
@@ -59590,11 +59590,11 @@ class Session {
       networks: networks2,
       tracker: tracker2,
       services
-    } = _extends$6({}, SessionSettingsDefault, settings);
+    } = _extends$8({}, SessionSettingsDefault, settings);
     let account2;
     if (isSessionDumpV1(dump)) {
       var _dump$jwt$expiration, _dump$jwt, _dump$jwt2;
-      const oldAddress = dump.config.address || index$1$2.context.addressOf(contexts[1], v1.config.ConfigCoder.imageHashOf(_extends$6({}, dump.config, {
+      const oldAddress = dump.config.address || index$1$2.context.addressOf(contexts[1], v1.config.ConfigCoder.imageHashOf(_extends$8({}, dump.config, {
         version: 1
       })));
       const jwtExpired = ((_dump$jwt$expiration = (_dump$jwt = dump.jwt) == null ? void 0 : _dump$jwt.expiration) != null ? _dump$jwt$expiration : 0) < Math.floor(Date.now() / 1e3);
@@ -59664,8 +59664,8 @@ const auth$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   isSessionDumpV2,
   signAuthorization
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$5() {
-  _extends$5 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$7() {
+  _extends$7 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -59676,7 +59676,7 @@ function _extends$5() {
     }
     return target;
   };
-  return _extends$5.apply(this, arguments);
+  return _extends$7.apply(this, arguments);
 }
 class Guard {
   constructor(hostname, fetch2) {
@@ -59881,7 +59881,7 @@ class Guard {
 const createHTTPRequest$2 = (body = {}, headers = {}, signal = null) => {
   return {
     method: "POST",
-    headers: _extends$5({}, headers, {
+    headers: _extends$7({}, headers, {
       "Content-Type": "application/json"
     }),
     body: JSON.stringify(body || {}),
@@ -60129,7 +60129,7 @@ class GuardSigner {
         }
       });
     }
-    return _extends$5({}, response, {
+    return _extends$7({}, response, {
       methods: response.methods.map(parseAuthMethod)
     });
   }
@@ -60335,8 +60335,8 @@ const guard$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   isSignedOwnershipProof,
   signOwnershipProof
 }, Symbol.toStringTag, { value: "Module" }));
-function _extends$4() {
-  _extends$4 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$6() {
+  _extends$6 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -60347,7 +60347,7 @@ function _extends$4() {
     }
     return target;
   };
-  return _extends$4.apply(this, arguments);
+  return _extends$6.apply(this, arguments);
 }
 let JsonRpcMethod = /* @__PURE__ */ function(JsonRpcMethod2) {
   JsonRpcMethod2["ethCall"] = "eth_call";
@@ -60620,7 +60620,7 @@ class Multicall {
         }
       });
     };
-    this.options = options ? _extends$4({}, Multicall.DefaultOptions, options) : Multicall.DefaultOptions;
+    this.options = options ? _extends$6({}, Multicall.DefaultOptions, options) : Multicall.DefaultOptions;
     if (this.options.batchSize <= 0)
       throw new Error(`Invalid batch size of ${this.options.batchSize}`);
   }
@@ -60638,7 +60638,7 @@ class Multicall {
     return cand !== void 0 && cand.batchSize !== void 0 && cand.timeWindow !== void 0 && cand.contract !== void 0;
   }
 }
-Multicall.DefaultOptions = _extends$4({}, DefaultMulticallOptions);
+Multicall.DefaultOptions = _extends$6({}, DefaultMulticallOptions);
 const ProxyMethods = ["getNetwork", "getBlockNumber", "getGasPrice", "getTransactionCount", "getStorageAt", "sendTransaction", "estimateGas", "getBlock", "getTransaction", "getTransactionReceipt", "getLogs", "emit", "litenerCount", "addListener", "removeListener", "waitForTransaction", "detectNetwork", "getBlockWithTransactions"];
 class MulticallProvider extends BaseProvider {
   constructor(provider2, multicall2) {
@@ -63116,8 +63116,8 @@ function isCreateContractCall(data) {
     return false;
   }
 }
-function _extends$3() {
-  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$5() {
+  _extends$5 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -63128,7 +63128,7 @@ function _extends$3() {
     }
     return target;
   };
-  return _extends$3.apply(this, arguments);
+  return _extends$5.apply(this, arguments);
 }
 function isProviderTransport(transport) {
   return transport && typeof transport === "object" && typeof transport.register === "function" && typeof transport.unregister === "function" && typeof transport.openWallet === "function" && typeof transport.closeWallet === "function" && typeof transport.isOpened === "function" && typeof transport.isConnected === "function" && typeof transport.on === "function";
@@ -63457,7 +63457,7 @@ class BaseProviderTransport {
     logger.info("closing wallet and flushing!");
     this.pendingMessageRequests.length = 0;
     this.responseCallbacks.forEach((responseCallback) => {
-      responseCallback(_extends$3({}, new Error("wallet closed"), {
+      responseCallback(_extends$5({}, new Error("wallet closed"), {
         code: 4001
       }));
     });
@@ -64875,7 +64875,7 @@ function toExtended(transactions2) {
     throw new Error("No transaction provided");
   }
   const [first, ...rest] = transactions2;
-  return _extends$3({}, first, {
+  return _extends$5({}, first, {
     auxiliary: rest
   });
 }
@@ -65211,7 +65211,7 @@ class WalletRequestHandler {
       } catch (err) {
         logger.error(err);
         response.result = null;
-        response.error = _extends$3({}, new Error(err), {
+        response.error = _extends$5({}, new Error(err), {
           code: 4001
         });
       }
@@ -65294,7 +65294,7 @@ class WalletRequestHandler {
         error: "unable to connect without signed in account"
       };
     }
-    const networkId = (_ref = (_options$networkId = options == null ? void 0 : options.networkId) != null ? _options$networkId : this.defaultChainId()) != null ? _ref : ChainId.MAINNET;
+    const networkId = (_ref = (_options$networkId = options == null ? void 0 : options.networkId) != null ? _options$networkId : this.defaultChainId()) != null ? _ref : ChainId$1.MAINNET;
     const chainId = findSupportedNetwork(networkId).chainId;
     const connectDetails = {
       connected: true,
@@ -65327,7 +65327,7 @@ class WalletRequestHandler {
   sendMessageRequest(message) {
     return new Promise((resolve) => {
       this.sendAsync(message.data, (error, response) => {
-        const responseMessage = _extends$3({}, message, {
+        const responseMessage = _extends$5({}, message, {
           data: response
         });
         resolve(responseMessage);
@@ -65370,7 +65370,7 @@ class WalletRequestHandler {
     }
     if (jsonRpcResponse) {
       return this.account.networks.map((n2) => {
-        const network2 = _extends$3({}, n2);
+        const network2 = _extends$5({}, n2);
         network2.provider = void 0;
         network2.relayer = void 0;
         return network2;
@@ -65387,7 +65387,7 @@ class WalletRequestHandler {
       walletContext: this.account.contexts,
       accountAddress: this.account.address,
       // The dapp shouldn't access the relayer directly, and the provider (as an object) is not serializable.
-      networks: this.account.networks.map((n2) => _extends$3({}, n2, {
+      networks: this.account.networks.map((n2) => _extends$5({}, n2, {
         provider: void 0,
         relayer: void 0
       }))
@@ -65788,7 +65788,7 @@ class SequenceProvider extends BaseProvider {
     });
   }
   authorize(options) {
-    return this.client.connect(_extends$3({}, options, {
+    return this.client.connect(_extends$5({}, options, {
       authorize: true
     }));
   }
@@ -66203,7 +66203,7 @@ class SequenceClient {
     this.transport.on("connect", (response) => {
       var _this$callbacks$conne;
       const chainIdHex = hexValue(this.getChainId());
-      (_this$callbacks$conne = this.callbacks.connect) == null || _this$callbacks$conne.forEach((cb2) => cb2(_extends$3({}, response, {
+      (_this$callbacks$conne = this.callbacks.connect) == null || _this$callbacks$conne.forEach((cb2) => cb2(_extends$5({}, response, {
         // Ignore the full connect response
         // use the chainId defined locally
         chainId: chainIdHex
@@ -66337,7 +66337,7 @@ class SequenceClient {
     }
     await this.openWallet(void 0, {
       type: "connect",
-      options: _extends$3({}, options, {
+      options: _extends$5({}, options, {
         networkId: this.getChainId(),
         clientVersion: packageJson.version
       })
@@ -66533,8 +66533,8 @@ const initWallet = (projectAccessKey2, partialConfig) => {
   if (sequenceWalletProvider) {
     return sequenceWalletProvider;
   }
-  const config2 = _extends$3({}, DefaultProviderConfig, partialConfig, {
-    transports: _extends$3({}, DefaultProviderConfig.transports, partialConfig == null ? void 0 : partialConfig.transports)
+  const config2 = _extends$5({}, DefaultProviderConfig, partialConfig, {
+    transports: _extends$5({}, DefaultProviderConfig.transports, partialConfig == null ? void 0 : partialConfig.transports)
   });
   const rpcProviders = {};
   const newNetworks = (_config$networks$filt = (_config$networks = config2.networks) == null ? void 0 : _config$networks.filter((n2) => {
@@ -66543,7 +66543,7 @@ const initWallet = (projectAccessKey2, partialConfig) => {
   const combinedNetworks = allNetworks.map((n2) => {
     var _config$networks2;
     const network2 = (_config$networks2 = config2.networks) == null ? void 0 : _config$networks2.find((cn) => cn.chainId === n2.chainId);
-    return network2 ? _extends$3({}, n2, network2) : n2;
+    return network2 ? _extends$5({}, n2, network2) : n2;
   }).concat(newNetworks).map((network2) => {
     if (network2.rpcUrl.includes(projectAccessKey2)) {
       return network2;
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DIIlaX98.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-D8Sm2iaW.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -81864,6 +81864,7 @@ var LocalStorageKey;
   LocalStorageKey2["WaasSessionHash"] = "@kit.waasSessionHash";
   LocalStorageKey2["WaasActiveLoginType"] = "@kit.waasActiveLoginType";
   LocalStorageKey2["WaasEmailIdToken"] = "@kit.waasEmailIdToken";
+  LocalStorageKey2["WaasSignInEmail"] = "@kit.waasSignInEmail";
 })(LocalStorageKey || (LocalStorageKey = {}));
 const defaultSignInOptions = {
   showEmailInput: true,
@@ -82128,8 +82129,8 @@ var _excluded$4 = ["onSuccess", "onError", "skipScript", "authOptions", "iconPro
 function _interopRequireDefault$1(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
-function _extends$2() {
-  _extends$2 = Object.assign || function(target) {
+function _extends$4() {
+  _extends$4 = Object.assign || function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -82140,7 +82141,7 @@ function _extends$2() {
     }
     return target;
   };
-  return _extends$2.apply(this, arguments);
+  return _extends$4.apply(this, arguments);
 }
 function ownKeys$1(object, enumerableOnly) {
   var keys = Object.keys(object);
@@ -82228,7 +82229,7 @@ var AppleSigninButton = function AppleSigninButton2(_ref) {
     });
   };
   var props = _objectSpread$1({
-    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$2({
+    children: /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("svg", _extends$4({
       width: "24px",
       height: "44px",
       viewBox: "0 0 24 44"
@@ -82253,7 +82254,7 @@ var AppleSigninButton = function AppleSigninButton2(_ref) {
   if (render) {
     return render(props);
   }
-  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$2({
+  return /* @__PURE__ */ _react$1.default.createElement(_react$1.default.Fragment, null, /* @__PURE__ */ _react$1.default.createElement("button", _extends$4({
     className: "".concat(noDefaultStyle ? "" : "react-apple-signin-auth-btn react-apple-signin-auth-btn-".concat(uiType)).concat(className ? " ".concat(className) : ""),
     type: "button",
     "aria-label": "Signin with apple ID"
@@ -82549,24 +82550,24 @@ const AppleWaasConnectButton = (props) => {
 const getLogo = (theme, walletProps) => theme === "dark" ? walletProps.logoDark || walletProps.monochromeLogoDark : walletProps.logoLight || walletProps.monochromeLogoLight;
 const getNetworkColor = (chainId, mode = "light") => {
   switch (chainId) {
-    case ChainId.MAINNET:
+    case ChainId$1.MAINNET:
       return mode === "light" ? "#abf" : "#abf";
-    case ChainId.POLYGON:
+    case ChainId$1.POLYGON:
       return mode === "light" ? "#c7a6ff" : "#c7a6ff";
-    case ChainId.ARBITRUM:
+    case ChainId$1.ARBITRUM:
       return mode === "light" ? "#52A7E6" : "#52A7E6";
-    case ChainId.OPTIMISM:
+    case ChainId$1.OPTIMISM:
       return mode === "light" ? "#DB3132" : "#DB3132";
-    case ChainId.BSC:
+    case ChainId$1.BSC:
       return mode === "light" ? "#CB9C1D" : "#EEB445";
-    case ChainId.AVALANCHE:
+    case ChainId$1.AVALANCHE:
       return mode === "light" ? "#E84142" : "#E84142";
-    case ChainId.GNOSIS:
+    case ChainId$1.GNOSIS:
       return mode === "light" ? "#00193C" : "#D8E8FF";
-    case ChainId.GOERLI:
+    case ChainId$1.GOERLI:
       return mode === "light" ? "#A77A00" : "#FFA700";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
+    case ChainId$1.POLYGON_MUMBAI:
+    case ChainId$1.POLYGON_AMOY:
       return mode === "light" ? "#D68828" : "#FFA700";
     default:
       return mode === "light" ? "#abf" : "#abf";
@@ -82574,31 +82575,31 @@ const getNetworkColor = (chainId, mode = "light") => {
 };
 const getNetworkBackgroundColor = (chainId, mode = "light") => {
   switch (chainId) {
-    case ChainId.MAINNET:
+    case ChainId$1.MAINNET:
       return mode === "light" ? "#132362" : "#132362";
-    case ChainId.POLYGON:
+    case ChainId$1.POLYGON:
       return mode === "light" ? "#350881" : "#350881";
-    case ChainId.ARBITRUM:
+    case ChainId$1.ARBITRUM:
       return mode === "light" ? "#EDF7FF" : "#0C3754";
-    case ChainId.OPTIMISM:
+    case ChainId$1.OPTIMISM:
       return mode === "light" ? "#FFEAE9" : "#390B0C";
-    case ChainId.BSC:
+    case ChainId$1.BSC:
       return mode === "light" ? "#FFE8AB" : "#554018";
-    case ChainId.AVALANCHE:
+    case ChainId$1.AVALANCHE:
       return mode === "light" ? "#FBDFDF" : "#390B0C";
-    case ChainId.GNOSIS:
+    case ChainId$1.GNOSIS:
       return mode === "light" ? "#D8E8FF" : "#00193C";
-    case ChainId.GOERLI:
+    case ChainId$1.GOERLI:
       return mode === "light" ? "#FFD871" : "#554018";
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.POLYGON_AMOY:
+    case ChainId$1.POLYGON_MUMBAI:
+    case ChainId$1.POLYGON_AMOY:
       return mode === "light" ? "#FFE8CD" : "#554018";
     default:
       return mode === "light" ? "#132362" : "#132362";
   }
 };
 const getNetwork = (chainId) => {
-  const network2 = networks$1[chainId];
+  const network2 = networks$2[chainId];
   if (!network2) {
     throw new Error(`Unknown network chainId: ${chainId}`);
   }
@@ -82636,7 +82637,7 @@ const useIndexerClient = (chainId) => {
   const indexerClients = reactExports.useMemo(() => {
     return /* @__PURE__ */ new Map();
   }, [projectAccessKey2, isDev]);
-  const network2 = networks$1[chainId];
+  const network2 = networks$2[chainId];
   const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
   if (!indexerClients.has(chainId)) {
     indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
@@ -82655,7 +82656,7 @@ const useIndexerClients = (chainIds) => {
   }, [projectAccessKey2, isDev]);
   const result = /* @__PURE__ */ new Map();
   for (const chainId of chainIds) {
-    const network2 = networks$1[chainId];
+    const network2 = networks$2[chainId];
     const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
     if (!indexerClients.has(chainId)) {
       indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
@@ -82907,7 +82908,7 @@ const useTransactionHistory = (args) => {
   });
 };
 const nativeTokenInfos = {
-  [ChainId.MAINNET]: {
+  [ChainId$1.MAINNET]: {
     name: "Ethereum",
     symbol: "ETH",
     logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
@@ -82915,7 +82916,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Etherscan",
     blockExplorerUrl: "https://etherscan.io"
   },
-  [ChainId.GOERLI]: {
+  [ChainId$1.GOERLI]: {
     name: "Goerli",
     symbol: "ETH",
     decimals: 18,
@@ -82923,7 +82924,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Etherscan (Goerli)",
     blockExplorerUrl: "https://goerli.etherscan.io"
   },
-  [ChainId.OPTIMISM]: {
+  [ChainId$1.OPTIMISM]: {
     name: "Optimism",
     symbol: "OP",
     logoURI: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
@@ -82931,7 +82932,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Etherscan (Optimism)",
     blockExplorerUrl: "https://optimistic.etherscan.io"
   },
-  [ChainId.BSC]: {
+  [ChainId$1.BSC]: {
     name: "BNB",
     symbol: "BNB",
     logoURI: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png",
@@ -82939,7 +82940,7 @@ const nativeTokenInfos = {
     blockExplorerName: "BscScan",
     blockExplorerUrl: "https://bscscan.com"
   },
-  [ChainId.GNOSIS]: {
+  [ChainId$1.GNOSIS]: {
     name: "Gnosis",
     symbol: "GNO",
     logoURI: "https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png",
@@ -82947,7 +82948,7 @@ const nativeTokenInfos = {
     blockExplorerUrl: "https://gnosisscan.io",
     blockExplorerName: "Gnosis Scan"
   },
-  [ChainId.POLYGON]: {
+  [ChainId$1.POLYGON]: {
     name: "Polygon",
     symbol: "MATIC",
     logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
@@ -82955,7 +82956,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Polyscan",
     blockExplorerUrl: "https://polygonscan.com"
   },
-  [ChainId.POLYGON_ZKEVM]: {
+  [ChainId$1.POLYGON_ZKEVM]: {
     name: "Polygon zkEVM",
     symbol: "ETH",
     logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
@@ -82963,7 +82964,7 @@ const nativeTokenInfos = {
     blockExplorerName: "PolygonScan",
     blockExplorerUrl: "https://zkevm.polygonscan.com"
   },
-  [ChainId.ARBITRUM]: {
+  [ChainId$1.ARBITRUM]: {
     name: "Arbitrum",
     symbol: "ARB",
     logoURI: "https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png",
@@ -82971,7 +82972,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Arbiscan",
     blockExplorerUrl: "https://arbiscan.io"
   },
-  [ChainId.AVALANCHE]: {
+  [ChainId$1.AVALANCHE]: {
     name: "Avalanche",
     symbol: "AVAX",
     logoURI: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png",
@@ -82979,7 +82980,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Snowtrace",
     blockExplorerUrl: "https://snowtrace.io"
   },
-  [ChainId.POLYGON_MUMBAI]: {
+  [ChainId$1.POLYGON_MUMBAI]: {
     name: "Mumbai",
     symbol: "MATIC",
     logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
@@ -82987,7 +82988,7 @@ const nativeTokenInfos = {
     blockExplorerName: "Polyscan (Mumbai)",
     blockExplorerUrl: "https://mumbai.polygonscan.com"
   },
-  [ChainId.POLYGON_AMOY]: {
+  [ChainId$1.POLYGON_AMOY]: {
     name: "Amoy",
     symbol: "MATIC",
     logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
@@ -83004,7 +83005,7 @@ const defaultNativeTokenInfo = (chainId, wagmiChains) => {
       name: foundChain.nativeCurrency.name,
       symbol: foundChain.nativeCurrency.symbol,
       decimals: foundChain.nativeCurrency.decimals,
-      logoURI: nativeTokenInfos[ChainId.MAINNET].logoURI,
+      logoURI: nativeTokenInfos[ChainId$1.MAINNET].logoURI,
       blockExplorerName: (_a2 = foundChain.blockExplorers) == null ? void 0 : _a2.default.name,
       blockExplorerUrl: (_b2 = foundChain.blockExplorers) == null ? void 0 : _b2.default.url
     };
@@ -83012,7 +83013,7 @@ const defaultNativeTokenInfo = (chainId, wagmiChains) => {
   return;
 };
 const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
-  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[ChainId.MAINNET];
+  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[ChainId$1.MAINNET];
 };
 var utils = {};
 const require$$0$2 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$b);
@@ -83926,7 +83927,7 @@ const KitProvider = (props) => {
     rejectPendingRequest("");
   }, children: jsxRuntimeExports$1.jsxs(Box, { paddingX: "4", paddingTop: "4", paddingBottom: "2", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
     marginTop: "4px"
-  }, children: [jsxRuntimeExports$1.jsxs(Text, { as: "h1", variant: "large", marginBottom: "5", children: ["Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"] }), pendingRequestConfirmation.type === "signMessage" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", children: "Message" }), jsxRuntimeExports$1.jsx(Card, { marginTop: "2", paddingY: "6", children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", marginBottom: "4", children: toUtf8String(pendingRequestConfirmation.message ?? "") }) })] }), pendingRequestConfirmation.type === "signTransaction" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(TxnDetails, { address: address ?? "", txs: pendingRequestConfirmation.txs ?? [], chainId: pendingRequestConfirmation.chainId ?? ChainId.POLYGON }), jsxRuntimeExports$1.jsx(Collapsible, { label: "Transaction data", marginTop: "4", children: jsxRuntimeExports$1.jsx(Card, { overflowX: "scroll", marginY: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "code", marginBottom: "4", children: JSON.stringify(pendingRequestConfirmation.txs, null, 2) }) }) })] }), pendingRequestConfirmation.chainId && jsxRuntimeExports$1.jsxs(Box, { width: "full", marginTop: "3", justifyContent: "flex-end", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-start", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Network" }) }), jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-end", children: jsxRuntimeExports$1.jsx(NetworkBadge$1, { chainId: pendingRequestConfirmation.chainId }) })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", width: "full", marginTop: "5", children: [jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", size: "lg", label: "Reject", onClick: () => {
+  }, children: [jsxRuntimeExports$1.jsxs(Text, { as: "h1", variant: "large", marginBottom: "5", children: ["Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"] }), pendingRequestConfirmation.type === "signMessage" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "normal", color: "text50", children: "Message" }), jsxRuntimeExports$1.jsx(Card, { marginTop: "2", paddingY: "6", children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", marginBottom: "4", children: toUtf8String(pendingRequestConfirmation.message ?? "") }) })] }), pendingRequestConfirmation.type === "signTransaction" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(TxnDetails, { address: address ?? "", txs: pendingRequestConfirmation.txs ?? [], chainId: pendingRequestConfirmation.chainId ?? ChainId$1.POLYGON }), jsxRuntimeExports$1.jsx(Collapsible, { label: "Transaction data", marginTop: "4", children: jsxRuntimeExports$1.jsx(Card, { overflowX: "scroll", marginY: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "code", marginBottom: "4", children: JSON.stringify(pendingRequestConfirmation.txs, null, 2) }) }) })] }), pendingRequestConfirmation.chainId && jsxRuntimeExports$1.jsxs(Box, { width: "full", marginTop: "3", justifyContent: "flex-end", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-start", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Network" }) }), jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-end", children: jsxRuntimeExports$1.jsx(NetworkBadge$1, { chainId: pendingRequestConfirmation.chainId }) })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", width: "full", marginTop: "5", children: [jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", size: "lg", label: "Reject", onClick: () => {
     rejectPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
   } }), jsxRuntimeExports$1.jsx(Button, { alignItems: "center", textAlign: "center", width: "full", shape: "square", size: "lg", label: "Confirm", variant: "primary", onClick: () => {
     confirmPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
@@ -84116,7 +84117,7 @@ const NavigationHeader$1 = ({ secondaryText, primaryText, disableBack = false })
 const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMetadata) => {
   const randomNumber = Math.floor(Math.random() * 1e6);
   const timestamp = (/* @__PURE__ */ new Date()).getTime();
-  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks$1[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
+  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks$2[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
   const accessKey = isDev ? "17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA" : projectAccessKey2;
   const url = isDev ? "https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutToken" : "https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken";
   const res = await fetch(url, {
@@ -84135,7 +84136,7 @@ const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMet
         },
         name: (tokenMetadata == null ? void 0 : tokenMetadata.name) || "Unknown",
         imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://www.sequence.market/images/placeholder.png",
-        network: networks$1[order.chainId].name,
+        network: networks$2[order.chainId].name,
         recipientAddress: order.recipientAddress,
         contractAddress: order.contractAddress,
         platform: "calldata_execution",
@@ -84313,7 +84314,7 @@ const TransactionSuccess = () => {
   const { settings } = useCheckoutModal();
   const nav = useNavigation$1();
   const navigation = nav.navigation;
-  const chainId = ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.chainId) || ChainId.POLYGON;
+  const chainId = ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.chainId) || ChainId$1.POLYGON;
   const network2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId);
   reactExports.useEffect(() => {
     var _a3, _b3, _c3, _d2;
@@ -89213,8 +89214,8 @@ const NavigationHeader = ({ secondaryText, primaryText }) => {
     width: "44px"
   } })] });
 };
-function _extends$1() {
-  _extends$1 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$3() {
+  _extends$3 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key2 in source) {
@@ -89225,7 +89226,7 @@ function _extends$1() {
     }
     return target;
   };
-  return _extends$1.apply(this, arguments);
+  return _extends$3.apply(this, arguments);
 }
 function $e42e1063c40fb3ef$export$b9ecd428b558ff10(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
   return function handleEvent(event) {
@@ -89356,11 +89357,11 @@ const $5e63c961fc1ce211$export$8c6ed5c666ac1360 = /* @__PURE__ */ reactExports.f
       } else
         return child;
     });
-    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$1({}, slotProps, {
+    return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
       ref: forwardedRef
     }), /* @__PURE__ */ reactExports.isValidElement(newElement) ? /* @__PURE__ */ reactExports.cloneElement(newElement, void 0, newChildren) : null);
   }
-  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$1({}, slotProps, {
+  return /* @__PURE__ */ reactExports.createElement($5e63c961fc1ce211$var$SlotClone, _extends$3({}, slotProps, {
     ref: forwardedRef
   }), children);
 });
@@ -89438,7 +89439,7 @@ const $8927f6f2acc4f386$export$250ffa63cdc0d034 = $8927f6f2acc4f386$var$NODES.re
     reactExports.useEffect(() => {
       window[Symbol.for("radix-ui")] = true;
     }, []);
-    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$1({}, primitiveProps, {
+    return /* @__PURE__ */ reactExports.createElement(Comp, _extends$3({}, primitiveProps, {
       ref: forwardedRef
     }));
   });
@@ -89586,7 +89587,7 @@ const $5cb92bef7577960e$export$177fb62ff3ec1f22 = /* @__PURE__ */ reactExports.f
     document.addEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
     return () => document.removeEventListener($5cb92bef7577960e$var$CONTEXT_UPDATE, handleUpdate);
   }, []);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({}, layerProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({}, layerProps, {
     ref: composedRefs,
     style: {
       pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
@@ -89858,7 +89859,7 @@ const $d3863c46a17e8a28$export$20e40289641fbbb6 = /* @__PURE__ */ reactExports.f
     trapped,
     focusScope.paused
   ]);
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({
     tabIndex: -1
   }, scopeProps, {
     ref: composedRefs,
@@ -91761,7 +91762,7 @@ const arrow = (options, deps) => ({
 });
 const $7e8f5cd07187803e$export$21b07c8f274aebd5 = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
-  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.svg, _extends$1({}, arrowProps, {
+  return /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.svg, _extends$3({}, arrowProps, {
     ref: forwardedRef,
     width,
     height,
@@ -91834,7 +91835,7 @@ const $cf1ac5d9fe0e8206$export$ecd4e1ccab6ed6d = /* @__PURE__ */ reactExports.fo
   reactExports.useEffect(() => {
     context2.onAnchorChange((virtualRef === null || virtualRef === void 0 ? void 0 : virtualRef.current) || ref.current);
   });
-  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({}, anchorProps, {
+  return virtualRef ? null : /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({}, anchorProps, {
     ref: composedRefs
   }));
 });
@@ -91964,7 +91965,7 @@ const $cf1ac5d9fe0e8206$export$bc4ae5855d3c4fc = /* @__PURE__ */ reactExports.fo
     arrowX,
     arrowY,
     shouldHideArrow: cannotCenterArrow
-  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({
+  }, /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({
     "data-side": placedSide,
     "data-align": placedAlign
   }, contentProps, {
@@ -92015,7 +92016,7 @@ const $cf1ac5d9fe0e8206$export$79d62cd4e10a3fd0 = /* @__PURE__ */ reactExports.f
         }[contentContext.placedSide],
         visibility: contentContext.shouldHideArrow ? "hidden" : void 0
       }
-    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9, _extends$1({}, arrowProps, {
+    }, /* @__PURE__ */ reactExports.createElement($7e8f5cd07187803e$export$be92b6f5f03c0fe9, _extends$3({}, arrowProps, {
       ref: forwardedRef,
       style: {
         ...arrowProps.style,
@@ -92085,7 +92086,7 @@ const $cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2 = $cf1ac5d9fe0e8206$export$bc4ae
 const $f1701beae083dbae$export$602eac185826482c = /* @__PURE__ */ reactExports.forwardRef((props, forwardedRef) => {
   var _globalThis$document;
   const { container = globalThis === null || globalThis === void 0 ? void 0 : (_globalThis$document = globalThis.document) === null || _globalThis$document === void 0 ? void 0 : _globalThis$document.body, ...portalProps } = props;
-  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$1({}, portalProps, {
+  return container ? /* @__PURE__ */ $7SXl2$reactdom.createPortal(/* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.div, _extends$3({}, portalProps, {
     ref: forwardedRef
   })), container) : null;
 });
@@ -93022,7 +93023,7 @@ const $cb5cc270b50c6fcd$export$96e5381f42521a79 = /* @__PURE__ */ reactExports.f
     onCustomAnchorAdd,
     onCustomAnchorRemove
   ]);
-  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$1({}, popperScope, anchorProps, {
+  return /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({}, popperScope, anchorProps, {
     ref: forwardedRef
   }));
 });
@@ -93032,7 +93033,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$TRIGGER_NAME, __scopePopover);
   const popperScope = $cb5cc270b50c6fcd$var$usePopperScope(__scopePopover);
   const composedTriggerRef = $6ed0406888f73fc4$export$c7b2cbe3552a0d05(forwardedRef, context2.triggerRef);
-  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$1({
+  const trigger2 = /* @__PURE__ */ reactExports.createElement($8927f6f2acc4f386$export$250ffa63cdc0d034.button, _extends$3({
     type: "button",
     "aria-haspopup": "dialog",
     "aria-expanded": context2.open,
@@ -93042,7 +93043,7 @@ const $cb5cc270b50c6fcd$export$7dacb05d26466c3 = /* @__PURE__ */ reactExports.fo
     ref: composedTriggerRef,
     onClick: $e42e1063c40fb3ef$export$b9ecd428b558ff10(props.onClick, context2.onOpenToggle)
   }));
-  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$1({
+  return context2.hasCustomAnchor ? trigger2 : /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$b688253958b8dfe7, _extends$3({
     asChild: true
   }, popperScope), trigger2);
 });
@@ -93070,9 +93071,9 @@ const $cb5cc270b50c6fcd$export$d7e1f420b25549ff = /* @__PURE__ */ reactExports.f
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   return /* @__PURE__ */ reactExports.createElement($921a889cee6df7e8$export$99c2b779aa4e8b8b, {
     present: forceMount || context2.open
-  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$1({}, contentProps, {
+  }, context2.modal ? /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentModal, _extends$3({}, contentProps, {
     ref: forwardedRef
-  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$1({}, contentProps, {
+  })) : /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentNonModal, _extends$3({}, contentProps, {
     ref: forwardedRef
   })));
 });
@@ -93089,7 +93090,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentModal = /* @__PURE__ */ reactExports.f
   return /* @__PURE__ */ reactExports.createElement(ReactRemoveScroll, {
     as: $5e63c961fc1ce211$export$8c6ed5c666ac1360,
     allowPinchZoom: true
-  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$1({}, props, {
+  }, /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
     ref: composedRefs,
     trapFocus: context2.open,
     disableOutsidePointerEvents: true,
@@ -93120,7 +93121,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentNonModal = /* @__PURE__ */ reactExport
   const context2 = $cb5cc270b50c6fcd$var$usePopoverContext($cb5cc270b50c6fcd$var$CONTENT_NAME, props.__scopePopover);
   const hasInteractedOutsideRef = reactExports.useRef(false);
   const hasPointerDownOutsideRef = reactExports.useRef(false);
-  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$1({}, props, {
+  return /* @__PURE__ */ reactExports.createElement($cb5cc270b50c6fcd$var$PopoverContentImpl, _extends$3({}, props, {
     ref: forwardedRef,
     trapFocus: false,
     disableOutsidePointerEvents: false,
@@ -93172,7 +93173,7 @@ const $cb5cc270b50c6fcd$var$PopoverContentImpl = /* @__PURE__ */ reactExports.fo
     onPointerDownOutside,
     onFocusOutside,
     onDismiss: () => context2.onOpenChange(false)
-  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$1({
+  }, /* @__PURE__ */ reactExports.createElement($cf1ac5d9fe0e8206$export$7c6e2c02157bb7d2, _extends$3({
     "data-state": $cb5cc270b50c6fcd$var$getState(context2.open),
     role: "dialog",
     id: context2.contentId
@@ -93393,9 +93394,9 @@ const KitWalletContent = ({ children }) => {
     }
   }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenWalletModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-wallet-content", children: [getHeader(navigation), displayScrollbar ? jsxRuntimeExports$1.jsx(Scroll, { style: { paddingTop: HEADER_HEIGHT, height: "min(800px, 80vh)" }, children: getContent(navigation) }) : getContent(navigation)] }) }) }) }) }), children] }) });
 };
-const networks = [
-  { chainId: ChainId.ARBITRUM_SEPOLIA, title: "Arbitrum Sepolia" },
-  { chainId: ChainId.ARBITRUM_NOVA, title: "Arbitrum Nova" }
+const networks$1 = [
+  { chainId: ChainId$1.ARBITRUM_SEPOLIA, title: "Arbitrum Sepolia" },
+  { chainId: ChainId$1.ARBITRUM_NOVA, title: "Arbitrum Nova" }
 ];
 const Header = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
@@ -93520,7 +93521,7 @@ const NetworkSelect = () => {
         children: [
           /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", gap: "2", children: [
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "sm" }),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { display: { sm: "none", lg: "block" }, variant: "normal", fontWeight: "bold", color: "text100", children: ((_a2 = networks.find((x) => x.chainId === chainId)) == null ? void 0 : _a2.title) || chainId })
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { display: { sm: "none", lg: "block" }, variant: "normal", fontWeight: "bold", color: "text100", children: ((_a2 = networks$1.find((x) => x.chainId === chainId)) == null ? void 0 : _a2.title) || chainId })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { color: "text50", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(SvgChevronDownIcon, {}) })
         ]
@@ -93536,7 +93537,7 @@ const NetworkSelect = () => {
         padding: "2",
         flexDirection: "column",
         gap: "2",
-        children: networks.map(({ chainId: chainId2, title }) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+        children: networks$1.map(({ chainId: chainId2, title }) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
           Button,
           {
             width: "full",
@@ -94074,7 +94075,7 @@ const Connected = () => {
   const onCheckoutInfoConfirm = () => {
     setIsCheckoutInfoModalOpen(false);
     if (checkoutOrderId !== "" && checkoutTokenContractAddress !== "" && checkoutTokenId !== "") {
-      const chainId2 = ChainId.POLYGON;
+      const chainId2 = ChainId$1.POLYGON;
       const orderbookAddress = "0xB537a160472183f2150d42EB1c3DD6684A55f74c";
       const recipientAddress = address || "";
       const nftQuantity = "1";
@@ -94665,6 +94666,726 @@ function canonicalize(obj) {
     serialize2(object[property]);
   }
 }
+let ChainId = /* @__PURE__ */ function(ChainId2) {
+  ChainId2[ChainId2["MAINNET"] = 1] = "MAINNET";
+  ChainId2[ChainId2["ROPSTEN"] = 3] = "ROPSTEN";
+  ChainId2[ChainId2["RINKEBY"] = 4] = "RINKEBY";
+  ChainId2[ChainId2["GOERLI"] = 5] = "GOERLI";
+  ChainId2[ChainId2["KOVAN"] = 42] = "KOVAN";
+  ChainId2[ChainId2["SEPOLIA"] = 11155111] = "SEPOLIA";
+  ChainId2[ChainId2["POLYGON"] = 137] = "POLYGON";
+  ChainId2[ChainId2["POLYGON_MUMBAI"] = 80001] = "POLYGON_MUMBAI";
+  ChainId2[ChainId2["POLYGON_ZKEVM"] = 1101] = "POLYGON_ZKEVM";
+  ChainId2[ChainId2["POLYGON_AMOY"] = 80002] = "POLYGON_AMOY";
+  ChainId2[ChainId2["BSC"] = 56] = "BSC";
+  ChainId2[ChainId2["BSC_TESTNET"] = 97] = "BSC_TESTNET";
+  ChainId2[ChainId2["OPTIMISM"] = 10] = "OPTIMISM";
+  ChainId2[ChainId2["OPTIMISM_KOVAN"] = 69] = "OPTIMISM_KOVAN";
+  ChainId2[ChainId2["OPTIMISM_GOERLI"] = 420] = "OPTIMISM_GOERLI";
+  ChainId2[ChainId2["OPTIMISM_SEPOLIA"] = 11155420] = "OPTIMISM_SEPOLIA";
+  ChainId2[ChainId2["ARBITRUM"] = 42161] = "ARBITRUM";
+  ChainId2[ChainId2["ARBITRUM_GOERLI"] = 421613] = "ARBITRUM_GOERLI";
+  ChainId2[ChainId2["ARBITRUM_SEPOLIA"] = 421614] = "ARBITRUM_SEPOLIA";
+  ChainId2[ChainId2["ARBITRUM_NOVA"] = 42170] = "ARBITRUM_NOVA";
+  ChainId2[ChainId2["AVALANCHE"] = 43114] = "AVALANCHE";
+  ChainId2[ChainId2["AVALANCHE_TESTNET"] = 43113] = "AVALANCHE_TESTNET";
+  ChainId2[ChainId2["GNOSIS"] = 100] = "GNOSIS";
+  ChainId2[ChainId2["BASE"] = 8453] = "BASE";
+  ChainId2[ChainId2["BASE_GOERLI"] = 84531] = "BASE_GOERLI";
+  ChainId2[ChainId2["BASE_SEPOLIA"] = 84532] = "BASE_SEPOLIA";
+  ChainId2[ChainId2["HOMEVERSE_TESTNET"] = 40875] = "HOMEVERSE_TESTNET";
+  ChainId2[ChainId2["HOMEVERSE"] = 19011] = "HOMEVERSE";
+  ChainId2[ChainId2["XAI"] = 660279] = "XAI";
+  ChainId2[ChainId2["XAI_SEPOLIA"] = 37714555429] = "XAI_SEPOLIA";
+  ChainId2[ChainId2["ASTAR_ZKEVM"] = 3776] = "ASTAR_ZKEVM";
+  ChainId2[ChainId2["ASTAR_ZKYOTO"] = 6038361] = "ASTAR_ZKYOTO";
+  ChainId2[ChainId2["XR_SEPOLIA"] = 2730] = "XR_SEPOLIA";
+  ChainId2[ChainId2["TELOS"] = 40] = "TELOS";
+  ChainId2[ChainId2["HARDHAT"] = 31337] = "HARDHAT";
+  ChainId2[ChainId2["HARDHAT_2"] = 31338] = "HARDHAT_2";
+  return ChainId2;
+}({});
+let NetworkType = /* @__PURE__ */ function(NetworkType2) {
+  NetworkType2["MAINNET"] = "mainnet";
+  NetworkType2["TESTNET"] = "testnet";
+  return NetworkType2;
+}({});
+const networks = {
+  [ChainId.MAINNET]: {
+    chainId: ChainId.MAINNET,
+    type: NetworkType.MAINNET,
+    name: "mainnet",
+    title: "Ethereum",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.MAINNET}.webp`,
+    blockExplorer: {
+      name: "Etherscan",
+      rootUrl: "https://etherscan.io/"
+    },
+    ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
+  },
+  [ChainId.ROPSTEN]: {
+    chainId: ChainId.ROPSTEN,
+    type: NetworkType.TESTNET,
+    name: "ropsten",
+    title: "Ropsten",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ROPSTEN}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Ropsten)",
+      rootUrl: "https://ropsten.etherscan.io/"
+    },
+    ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    deprecated: true
+  },
+  [ChainId.RINKEBY]: {
+    chainId: ChainId.RINKEBY,
+    type: NetworkType.TESTNET,
+    name: "rinkeby",
+    title: "Rinkeby",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.RINKEBY}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Rinkeby)",
+      rootUrl: "https://rinkeby.etherscan.io/"
+    },
+    ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    deprecated: true
+  },
+  [ChainId.GOERLI]: {
+    chainId: ChainId.GOERLI,
+    type: NetworkType.TESTNET,
+    name: "goerli",
+    title: "Goerli",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.GOERLI}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Goerli)",
+      rootUrl: "https://goerli.etherscan.io/"
+    },
+    ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    deprecated: true
+  },
+  [ChainId.KOVAN]: {
+    chainId: ChainId.KOVAN,
+    type: NetworkType.TESTNET,
+    name: "kovan",
+    title: "Kovan",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.KOVAN}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Kovan)",
+      rootUrl: "https://kovan.etherscan.io/"
+    },
+    deprecated: true
+  },
+  [ChainId.SEPOLIA]: {
+    chainId: ChainId.SEPOLIA,
+    type: NetworkType.TESTNET,
+    name: "sepolia",
+    title: "Sepolia",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.SEPOLIA}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Sepolia)",
+      rootUrl: "https://sepolia.etherscan.io/"
+    }
+  },
+  [ChainId.POLYGON]: {
+    chainId: ChainId.POLYGON,
+    type: NetworkType.MAINNET,
+    name: "polygon",
+    title: "Polygon",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON}.webp`,
+    blockExplorer: {
+      name: "Polygonscan",
+      rootUrl: "https://polygonscan.com/"
+    }
+  },
+  [ChainId.POLYGON_MUMBAI]: {
+    chainId: ChainId.POLYGON_MUMBAI,
+    type: NetworkType.TESTNET,
+    name: "mumbai",
+    title: "Polygon Mumbai",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON_MUMBAI}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Polygonscan (Mumbai)",
+      rootUrl: "https://mumbai.polygonscan.com/"
+    },
+    deprecated: true
+  },
+  [ChainId.POLYGON_AMOY]: {
+    chainId: ChainId.POLYGON_AMOY,
+    type: NetworkType.TESTNET,
+    name: "amoy",
+    title: "Polygon Amoy",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON_AMOY}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "OKLink (Amoy)",
+      rootUrl: "https://www.oklink.com/amoy/"
+    }
+  },
+  [ChainId.POLYGON_ZKEVM]: {
+    chainId: ChainId.POLYGON_ZKEVM,
+    type: NetworkType.MAINNET,
+    name: "polygon-zkevm",
+    title: "Polygon zkEVM",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.POLYGON_ZKEVM}.webp`,
+    blockExplorer: {
+      name: "Polygonscan (zkEVM)",
+      rootUrl: "https://zkevm.polygonscan.com/"
+    }
+  },
+  [ChainId.BSC]: {
+    chainId: ChainId.BSC,
+    type: NetworkType.MAINNET,
+    name: "bsc",
+    title: "BNB Smart Chain",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BSC}.webp`,
+    blockExplorer: {
+      name: "BSCScan",
+      rootUrl: "https://bscscan.com/"
+    }
+  },
+  [ChainId.BSC_TESTNET]: {
+    chainId: ChainId.BSC_TESTNET,
+    type: NetworkType.TESTNET,
+    name: "bsc-testnet",
+    title: "BNB Smart Chain Testnet",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BSC_TESTNET}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "BSCScan (Testnet)",
+      rootUrl: "https://testnet.bscscan.com/"
+    }
+  },
+  [ChainId.OPTIMISM]: {
+    chainId: ChainId.OPTIMISM,
+    type: NetworkType.MAINNET,
+    name: "optimism",
+    title: "Optimism",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM}.webp`,
+    blockExplorer: {
+      name: "Etherscan (Optimism)",
+      rootUrl: "https://optimistic.etherscan.io/"
+    }
+  },
+  [ChainId.OPTIMISM_KOVAN]: {
+    chainId: ChainId.OPTIMISM_KOVAN,
+    type: NetworkType.TESTNET,
+    name: "optimism-kovan",
+    title: "Optimism Kovan",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_KOVAN}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Optimism Kovan)",
+      rootUrl: "https://kovan-optimistic.etherscan.io/"
+    },
+    deprecated: true
+  },
+  [ChainId.OPTIMISM_GOERLI]: {
+    chainId: ChainId.OPTIMISM_GOERLI,
+    type: NetworkType.TESTNET,
+    name: "optimism-goerli",
+    title: "Optimism Goerli",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_GOERLI}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Optimism Goerli)",
+      rootUrl: "https://goerli-optimistic.etherscan.io/"
+    },
+    deprecated: true
+  },
+  [ChainId.OPTIMISM_SEPOLIA]: {
+    chainId: ChainId.OPTIMISM_SEPOLIA,
+    type: NetworkType.TESTNET,
+    name: "optimism-sepolia",
+    title: "Optimism Sepolia",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.OPTIMISM_SEPOLIA}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Etherscan (Optimism Sepolia)",
+      rootUrl: "https://sepolia-optimistic.etherscan.io/"
+    }
+  },
+  [ChainId.ARBITRUM]: {
+    chainId: ChainId.ARBITRUM,
+    type: NetworkType.MAINNET,
+    name: "arbitrum",
+    title: "Arbitrum One",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM}.webp`,
+    blockExplorer: {
+      name: "Arbiscan",
+      rootUrl: "https://arbiscan.io/"
+    }
+  },
+  [ChainId.ARBITRUM_GOERLI]: {
+    chainId: ChainId.ARBITRUM_GOERLI,
+    type: NetworkType.TESTNET,
+    name: "arbitrum-goerli",
+    title: "Arbitrum Goerli",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM_GOERLI}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Arbiscan (Goerli Testnet)",
+      rootUrl: "https://testnet.arbiscan.io/"
+    },
+    deprecated: true
+  },
+  [ChainId.ARBITRUM_SEPOLIA]: {
+    chainId: ChainId.ARBITRUM_SEPOLIA,
+    type: NetworkType.TESTNET,
+    name: "arbitrum-sepolia",
+    title: "Arbitrum Sepolia",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM_SEPOLIA}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Arbiscan (Sepolia Testnet)",
+      rootUrl: "https://sepolia.arbiscan.io/"
+    }
+  },
+  [ChainId.ARBITRUM_NOVA]: {
+    chainId: ChainId.ARBITRUM_NOVA,
+    type: NetworkType.MAINNET,
+    name: "arbitrum-nova",
+    title: "Arbitrum Nova",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ARBITRUM_NOVA}.webp`,
+    blockExplorer: {
+      name: "Arbiscan Nova",
+      rootUrl: "https://nova.arbiscan.io/"
+    }
+  },
+  [ChainId.AVALANCHE]: {
+    chainId: ChainId.AVALANCHE,
+    type: NetworkType.MAINNET,
+    name: "avalanche",
+    title: "Avalanche",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.AVALANCHE}.webp`,
+    blockExplorer: {
+      name: "Snowtrace",
+      rootUrl: "https://subnets.avax.network/c-chain/"
+    }
+  },
+  [ChainId.AVALANCHE_TESTNET]: {
+    chainId: ChainId.AVALANCHE_TESTNET,
+    type: NetworkType.TESTNET,
+    name: "avalanche-testnet",
+    title: "Avalanche Testnet",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.AVALANCHE_TESTNET}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Snowtrace (Testnet)",
+      rootUrl: "https://subnets-test.avax.network/c-chain/"
+    }
+  },
+  [ChainId.GNOSIS]: {
+    chainId: ChainId.GNOSIS,
+    type: NetworkType.MAINNET,
+    name: "gnosis",
+    title: "Gnosis Chain",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.GNOSIS}.webp`,
+    blockExplorer: {
+      name: "Gnosis Chain Explorer",
+      rootUrl: "https://blockscout.com/xdai/mainnet/"
+    }
+  },
+  [ChainId.BASE]: {
+    chainId: ChainId.BASE,
+    type: NetworkType.MAINNET,
+    name: "base",
+    title: "Base (Coinbase)",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BASE}.webp`,
+    blockExplorer: {
+      name: "Base Explorer",
+      rootUrl: "https://basescan.org/"
+    }
+  },
+  [ChainId.BASE_GOERLI]: {
+    chainId: ChainId.BASE_GOERLI,
+    type: NetworkType.TESTNET,
+    name: "base-goerli",
+    title: "Base Goerli",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BASE_GOERLI}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Base Goerli Explorer",
+      rootUrl: "https://goerli.basescan.org/"
+    },
+    deprecated: true
+  },
+  [ChainId.BASE_SEPOLIA]: {
+    chainId: ChainId.BASE_SEPOLIA,
+    type: NetworkType.TESTNET,
+    name: "base-sepolia",
+    title: "Base Sepolia",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.BASE_SEPOLIA}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Base Sepolia Explorer",
+      rootUrl: "https://base-sepolia.blockscout.com/"
+    }
+  },
+  [ChainId.HOMEVERSE]: {
+    chainId: ChainId.HOMEVERSE,
+    type: NetworkType.MAINNET,
+    name: "homeverse",
+    title: "Oasys Homeverse",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.HOMEVERSE}.webp`,
+    blockExplorer: {
+      name: "Oasys Homeverse Explorer",
+      rootUrl: "https://explorer.oasys.homeverse.games/"
+    }
+  },
+  [ChainId.HOMEVERSE_TESTNET]: {
+    chainId: ChainId.HOMEVERSE_TESTNET,
+    type: NetworkType.TESTNET,
+    name: "homeverse-testnet",
+    title: "Oasys Homeverse Testnet",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.HOMEVERSE_TESTNET}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Oasys Homeverse Explorer (Testnet)",
+      rootUrl: "https://explorer.testnet.oasys.homeverse.games/"
+    }
+  },
+  [ChainId.XAI]: {
+    chainId: ChainId.XAI,
+    type: NetworkType.MAINNET,
+    name: "xai",
+    title: "Xai",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.XAI}.webp`,
+    blockExplorer: {
+      name: "Xai Explorer",
+      rootUrl: "https://explorer.xai-chain.net/"
+    }
+  },
+  [ChainId.XAI_SEPOLIA]: {
+    chainId: ChainId.XAI_SEPOLIA,
+    type: NetworkType.TESTNET,
+    name: "xai-sepolia",
+    title: "Xai Sepolia",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.XAI_SEPOLIA}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Xai Sepolia Explorer",
+      rootUrl: "https://testnet-explorer-v2.xai-chain.net/"
+    }
+  },
+  [ChainId.ASTAR_ZKEVM]: {
+    chainId: ChainId.ASTAR_ZKEVM,
+    type: NetworkType.MAINNET,
+    name: "astar-zkevm",
+    title: "Astar zkEVM",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ASTAR_ZKEVM}.webp`,
+    blockExplorer: {
+      name: "Astar zkEVM Explorer",
+      rootUrl: "https://astar-zkevm.explorer.startale.com/"
+    }
+  },
+  [ChainId.ASTAR_ZKYOTO]: {
+    chainId: ChainId.ASTAR_ZKYOTO,
+    type: NetworkType.TESTNET,
+    name: "astar-zkyoto",
+    title: "Astar zKyoto Testnet",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.ASTAR_ZKYOTO}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Astar zKyoto Explorer",
+      rootUrl: "https://astar-zkyoto.blockscout.com/"
+    }
+  },
+  [ChainId.XR_SEPOLIA]: {
+    chainId: ChainId.XR_SEPOLIA,
+    type: NetworkType.TESTNET,
+    name: "xr-sepolia",
+    title: "XR Sepolia",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.XR_SEPOLIA}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "XR Sepolia Explorer",
+      rootUrl: "https://xr-sepolia-testnet.explorer.caldera.xyz/"
+    }
+  },
+  [ChainId.TELOS]: {
+    chainId: ChainId.TELOS,
+    type: NetworkType.MAINNET,
+    name: "telos",
+    title: "Telos",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.TELOS}.webp`,
+    blockExplorer: {
+      name: "Telos Explorer",
+      rootUrl: "https://explorer.telos.net/network/"
+    }
+  },
+  [ChainId.HARDHAT]: {
+    chainId: ChainId.HARDHAT,
+    name: "hardhat",
+    title: "Hardhat (local testnet)"
+  },
+  [ChainId.HARDHAT_2]: {
+    chainId: ChainId.HARDHAT_2,
+    name: "hardhat2",
+    title: "Hardhat (local testnet)"
+  }
+};
+function _extends$2() {
+  _extends$2 = Object.assign ? Object.assign.bind() : function(target) {
+    for (var i2 = 1; i2 < arguments.length; i2++) {
+      var source = arguments[i2];
+      for (var key2 in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key2)) {
+          target[key2] = source[key2];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$2.apply(this, arguments);
+}
+var logLevel = /* @__PURE__ */ function(logLevel2) {
+  logLevel2[logLevel2["DEBUG"] = 1] = "DEBUG";
+  logLevel2[logLevel2["INFO"] = 2] = "INFO";
+  logLevel2[logLevel2["WARN"] = 3] = "WARN";
+  logLevel2[logLevel2["ERROR"] = 4] = "ERROR";
+  logLevel2[logLevel2["DISABLED"] = 5] = "DISABLED";
+  return logLevel2;
+}(logLevel || {});
+class Logger3 {
+  constructor(config2) {
+    this.config = config2;
+    this.logLevel = void 0;
+    this.configure(config2);
+  }
+  configure(config2) {
+    this.config = _extends$2({}, this.config, config2);
+    switch (this.config.logLevel) {
+      case "DEBUG":
+        this.logLevel = logLevel.DEBUG;
+        break;
+      case "INFO":
+        this.logLevel = logLevel.INFO;
+        break;
+      case "WARN":
+        this.logLevel = logLevel.WARN;
+        break;
+      case "ERROR":
+        this.logLevel = logLevel.ERROR;
+        break;
+      case "DISABLED":
+        this.logLevel = logLevel.DISABLED;
+        break;
+      default:
+        this.logLevel = logLevel.INFO;
+        break;
+    }
+    if (this.config.silence === void 0) {
+      this.config.silence = false;
+    }
+  }
+  debug(message, ...optionalParams) {
+    if (this.config.silence === true)
+      return;
+    if (this.logLevel === logLevel.DEBUG) {
+      console.log(message, ...optionalParams);
+    }
+  }
+  info(message, ...optionalParams) {
+    if (this.config.silence === true)
+      return;
+    if (this.logLevel <= logLevel.INFO) {
+      console.log(message, ...optionalParams);
+    }
+  }
+  warn(message, ...optionalParams) {
+    if (this.config.silence === true)
+      return;
+    if (this.logLevel <= logLevel.WARN) {
+      console.warn(message, ...optionalParams);
+      if (this.config.onwarn) {
+        this.config.onwarn(message, optionalParams);
+      }
+    }
+  }
+  error(message, ...optionalParams) {
+    if (this.config.silence === true)
+      return;
+    if (this.logLevel <= logLevel.ERROR) {
+      console.error(message, ...optionalParams);
+      if (this.config.onerror) {
+        this.config.onerror(message, optionalParams);
+      }
+    }
+  }
+}
+new Logger3({
+  logLevel: "INFO",
+  // By default we silence the logger. In tests we should call `configureLogger`
+  // below to set silence: false.
+  silence: true
+});
+function _extends$1() {
+  _extends$1 = Object.assign ? Object.assign.bind() : function(target) {
+    for (var i2 = 1; i2 < arguments.length; i2++) {
+      var source = arguments[i2];
+      for (var key2 in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key2)) {
+          target[key2] = source[key2];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$1.apply(this, arguments);
+}
+const isValidNetworkConfig = (networkConfig, raise = false, skipRelayerCheck = false) => {
+  if (!networkConfig)
+    throw new Error(`invalid network config: empty config`);
+  const configs = [];
+  if (Array.isArray(networkConfig)) {
+    configs.push(...networkConfig);
+  } else {
+    configs.push(networkConfig);
+  }
+  if (configs.length === 0) {
+    if (raise)
+      throw new Error(`invalid network config: empty config`);
+    return false;
+  }
+  const chainIds = configs.map((c2) => c2.chainId).sort();
+  const dupes = chainIds.filter((c2, i2) => chainIds.indexOf(c2) !== i2);
+  if (dupes.length > 0) {
+    if (raise)
+      throw new Error(`invalid network config: duplicate chainIds ${dupes}`);
+    return false;
+  }
+  configs.forEach((c2) => c2.name = c2.name.toLowerCase());
+  const names2 = configs.map((c2) => c2.name).sort();
+  const nameDupes = names2.filter((c2, i2) => names2.indexOf(c2) !== i2);
+  if (nameDupes.length > 0) {
+    if (raise)
+      throw new Error(`invalid network config: duplicate network names ${nameDupes}`);
+    return false;
+  }
+  let defaultChain = false;
+  for (let i2 = 0; i2 < configs.length; i2++) {
+    const c2 = configs[i2];
+    if ((!c2.rpcUrl || c2.rpcUrl === "") && !c2.provider) {
+      if (raise)
+        throw new Error(`invalid network config for chainId ${c2.chainId}: rpcUrl or provider must be provided`);
+      return false;
+    }
+    if (!skipRelayerCheck) {
+      if (!c2.relayer) {
+        if (raise)
+          throw new Error(`invalid network config for chainId ${c2.chainId}: relayer must be provided`);
+        return false;
+      }
+    }
+    if (c2.isDefaultChain) {
+      if (defaultChain) {
+        if (raise)
+          throw new Error(`invalid network config for chainId ${c2.chainId}: DefaultChain is already set by another config`);
+        return false;
+      }
+      defaultChain = true;
+    }
+  }
+  if (!defaultChain) {
+    if (raise)
+      throw new Error(`invalid network config: DefaultChain must be set`);
+    return false;
+  }
+  return true;
+};
+const ensureValidNetworks = (networks2, skipRelayerCheck = false) => {
+  isValidNetworkConfig(networks2, true, skipRelayerCheck);
+  return networks2;
+};
+const validateAndSortNetworks = (networks2) => {
+  return ensureValidNetworks(sortNetworks(networks2));
+};
+const sortNetworks = (networks2) => {
+  if (!networks2) {
+    return [];
+  }
+  const config2 = networks2.sort((a2, b2) => {
+    if (a2.chainId === b2.chainId)
+      return 0;
+    return a2.chainId < b2.chainId ? -1 : 1;
+  });
+  const defaultConfigIdx = config2.findIndex((c2) => c2.isDefaultChain);
+  if (defaultConfigIdx > 0)
+    config2.splice(0, 0, config2.splice(defaultConfigIdx, 1)[0]);
+  return config2;
+};
+const stringTemplate = (sTemplate, mData) => {
+  if (typeof sTemplate === "string") {
+    mData = mData ? mData : {};
+    return sTemplate.replace(/\$\{\s*([$#@\-\d\w]+)\s*\}/gim, function(fullMath, grp) {
+      let val = mData[grp];
+      if (typeof val === "function") {
+        val = val();
+      } else if (val === null || val === void 0) {
+        val = "";
+      } else if (typeof val === "object" || typeof val === "symbol") {
+        val = val.toString();
+      } else {
+        val = val.valueOf();
+      }
+      return val;
+    });
+  }
+  return "";
+};
+const indexerURL = (network2) => stringTemplate("https://${network}-indexer.sequence.app", {
+  network: network2
+});
+const relayerURL = (network2) => stringTemplate("https://${network}-relayer.sequence.app", {
+  network: network2
+});
+const nodesURL = (network2) => stringTemplate("https://nodes.sequence.app/${network}", {
+  network: network2
+});
+const genUrls = (network2) => {
+  const rpcUrl = nodesURL(network2);
+  return {
+    rpcUrl,
+    relayer: {
+      url: relayerURL(network2),
+      provider: {
+        url: rpcUrl
+      }
+    },
+    indexerUrl: indexerURL(network2)
+  };
+};
+validateAndSortNetworks([_extends$1({}, networks[ChainId.POLYGON], genUrls("polygon"), {
+  isDefaultChain: true,
+  isAuthChain: true
+}), _extends$1({}, networks[ChainId.MAINNET], genUrls("mainnet")), _extends$1({}, networks[ChainId.BSC], genUrls("bsc")), _extends$1({}, networks[ChainId.AVALANCHE], genUrls("avalanche")), _extends$1({}, networks[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$1({}, networks[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$1({}, networks[ChainId.OPTIMISM], genUrls("optimism")), _extends$1({}, networks[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$1({}, networks[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$1({}, networks[ChainId.GNOSIS], genUrls("gnosis")), _extends$1({}, networks[ChainId.RINKEBY], genUrls("rinkeby"), {
+  disabled: true
+}), _extends$1({}, networks[ChainId.GOERLI], genUrls("goerli"), {
+  disabled: true
+}), _extends$1({}, networks[ChainId.SEPOLIA], genUrls("sepolia")), _extends$1({}, networks[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
+  disabled: true
+}), _extends$1({}, networks[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$1({}, networks[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$1({}, networks[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$1({}, networks[ChainId.BASE], genUrls("base")), _extends$1({}, networks[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$1({}, networks[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$1({}, networks[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$1({}, networks[ChainId.XAI], genUrls("xai")), _extends$1({}, networks[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$1({}, networks[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$1({}, networks[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$1({}, networks[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$1({}, networks[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$1({}, networks[ChainId.TELOS], genUrls("telos")), _extends$1({}, networks[ChainId.HARDHAT], {
+  rpcUrl: "http://localhost:8545",
+  relayer: {
+    url: "http://localhost:3000",
+    provider: {
+      url: "http://localhost:8545"
+    }
+  }
+}), _extends$1({}, networks[ChainId.HARDHAT_2], {
+  rpcUrl: "http://localhost:9545",
+  relayer: {
+    url: "http://localhost:3000",
+    provider: {
+      url: "http://localhost:9545"
+    }
+  }
+})]);
 class InvalidTokenError extends Error {
 }
 InvalidTokenError.prototype.name = "InvalidTokenError";
@@ -104043,7 +104764,7 @@ async function newSession(cryptoBackend, secureStoreBackend) {
     return newSECP256K1Session(secureStoreBackend);
   }
 }
-const nameToId = Object.entries(networks$1).reduce((acc, [key2, value]) => {
+const nameToId = Object.entries(networks).reduce((acc, [key2, value]) => {
   acc[value.name] = value.chainId;
   return acc;
 }, {});
@@ -104703,7 +105424,8 @@ class SequenceWaaS {
       });
       return {
         sessionId: res.session.id,
-        wallet: res.response.data.wallet
+        wallet: res.response.data.wallet,
+        email: res.session.identity.email
       };
     } catch (e2) {
       await this.waas.completeSignOut();
@@ -104979,7 +105701,7 @@ function sequenceWaasWallet(params) {
       });
     },
     async connect(_connectInfo) {
-      var _a3, _b2, _c2, _d2, _e2, _f2, _g2;
+      var _a3, _b2, _c2, _d2, _e2, _f2, _g2, _h2;
       const provider2 = await this.getProvider();
       const isSignedIn = await provider2.sequenceWaas.isSignedIn();
       if (!isSignedIn) {
@@ -104996,19 +105718,22 @@ function sequenceWaasWallet(params) {
         }
         if (idToken) {
           try {
-            await provider2.sequenceWaas.signIn({ idToken }, randomName());
+            const signInResponse = await provider2.sequenceWaas.signIn({ idToken }, randomName());
+            if (signInResponse == null ? void 0 : signInResponse.email) {
+              await ((_d2 = config2.storage) == null ? void 0 : _d2.setItem(LocalStorageKey.WaasSignInEmail, signInResponse.email));
+            }
           } catch (e2) {
             console.log(e2);
             await this.disconnect();
           }
           const accounts = await this.getAccounts();
           if (accounts.length) {
-            await ((_d2 = config2.storage) == null ? void 0 : _d2.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType));
+            await ((_e2 = config2.storage) == null ? void 0 : _e2.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType));
           }
         }
-        await ((_e2 = config2.storage) == null ? void 0 : _e2.removeItem(LocalStorageKey.WaasGoogleIdToken));
-        await ((_f2 = config2.storage) == null ? void 0 : _f2.removeItem(LocalStorageKey.WaasEmailIdToken));
-        await ((_g2 = config2.storage) == null ? void 0 : _g2.removeItem(LocalStorageKey.WaasAppleIdToken));
+        await ((_f2 = config2.storage) == null ? void 0 : _f2.removeItem(LocalStorageKey.WaasGoogleIdToken));
+        await ((_g2 = config2.storage) == null ? void 0 : _g2.removeItem(LocalStorageKey.WaasEmailIdToken));
+        await ((_h2 = config2.storage) == null ? void 0 : _h2.removeItem(LocalStorageKey.WaasAppleIdToken));
       }
       return {
         accounts: await this.getAccounts(),
@@ -105345,7 +106070,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DSsi2wOK.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-Ce_E7HIq.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -105522,7 +106247,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-D6LfVH7_.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CN9rLT9X.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -105756,7 +106481,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BJNxTLED.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BdhNOjKb.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -106494,7 +107219,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "0.7.4");
+console.log("VERSION:", "0.7.5");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
