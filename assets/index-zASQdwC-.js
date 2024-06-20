@@ -1,5 +1,5 @@
-const __vite__fileDeps=["./index-CGsIhQ7r.js","./index-B7i0J9Il.js","./index-Dso1Hl_w.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
-import { _ as __vitePreload } from "./index-B7i0J9Il.js";
+const __vite__fileDeps=["./index-BJN6NIty.js","./index-BcwCRJDw.js","./index-Dso1Hl_w.css"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+import { _ as __vitePreload } from "./index-BcwCRJDw.js";
 const t = Symbol();
 const s = Object.getPrototypeOf, c$1 = /* @__PURE__ */ new WeakMap(), l = (e) => e && (c$1.has(e) ? c$1.get(e) : s(e) === Object.prototype || s(e) === Array.prototype), y$1 = (e) => l(e) && e[t] || null, h = (e, t2 = true) => {
   c$1.set(e, t2);
@@ -487,7 +487,7 @@ class d {
   }
   async initUi() {
     if (typeof window < "u") {
-      await __vitePreload(() => import("./index-CGsIhQ7r.js"), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+      await __vitePreload(() => import("./index-BJN6NIty.js"), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
       const e = document.createElement("wcm-modal");
       document.body.insertAdjacentElement("beforeend", e), p.setIsUiLoaded(true);
     }

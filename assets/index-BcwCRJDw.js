@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-Dd7ba9Ug.js","./hooks.module-CUCzRMSa.js","./___vite-browser-external_commonjs-proxy-CEM77cv0.js","./index-BTXhzBtP.js","./index.es-C_850yj6.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-asMzzbp_.js","./hooks.module-1nznGcCG.js","./___vite-browser-external_commonjs-proxy-DakE1xxJ.js","./index-qZ1YEtrq.js","./index.es-pyvba28f.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-RJa2PHvy.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CUacC4e6.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84082,7 +84082,7 @@ const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericCon
 const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
 const HEADER_HEIGHT$1 = "54px";
 const useNavigation$1 = () => {
-  const { setHistory, history } = useNavigationContext$1();
+  const { setHistory, history, defaultLocation } = useNavigationContext$1();
   const setNavigation = (navigation2) => {
     const childElement = document.getElementById("sequence-kit-wallet-content");
     const parentElement = childElement == null ? void 0 : childElement.parentElement;
@@ -84095,7 +84095,7 @@ const useNavigation$1 = () => {
     newHistory.pop();
     setHistory(newHistory);
   };
-  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
+  const navigation = history.length > 0 ? history[history.length - 1] : defaultLocation;
   return { setNavigation, history, setHistory, goBack, navigation };
 };
 const NavigationHeader$1 = ({ secondaryText, primaryText, disableBack = false }) => {
@@ -84114,7 +84114,7 @@ const NavigationHeader$1 = ({ secondaryText, primaryText, disableBack = false })
     width: "44px"
   } })] });
 };
-const fetchSardineClientToken = async (order, isDev, projectAccessKey2, tokenMetadata) => {
+const fetchSardineClientToken = async ({ order, isDev, projectAccessKey: projectAccessKey2, tokenMetadata }) => {
   const randomNumber = Math.floor(Math.random() * 1e6);
   const timestamp = (/* @__PURE__ */ new Date()).getTime();
   const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks$2[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
@@ -84244,24 +84244,50 @@ const formatDisplay$1 = (_val) => {
     ...config2
   }).format(val);
 };
+const useSardineClientToken = (args, disabled) => {
+  return useQuery$1({
+    queryKey: ["useSardineClientToken", args],
+    queryFn: async () => {
+      const res = await fetchSardineClientToken(args);
+      return res;
+    },
+    retry: false,
+    staleTime: 0,
+    enabled: !disabled
+  });
+};
 const POLLING_TIME = 10 * 1e3;
 const PendingTransaction = () => {
   var _a2;
   const nav = useNavigation$1();
   const { settings } = useCheckoutModal();
-  const { params: { authToken, orderId } } = nav.navigation;
+  const { params: { creditCardCheckout } } = nav.navigation;
   const { setNavigation } = nav;
   const projectAccessKey2 = useProjectAccessKey();
+  const { data: tokensMetadata } = useTokenMetadata(creditCardCheckout.chainId, creditCardCheckout.nftAddress, [creditCardCheckout.nftId]);
+  const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
   const isDev = ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.isDev) || false;
+  const disableSardineClientTokenFetch = !tokenMetadata;
+  const { data, isLoading, isError } = useSardineClientToken({
+    order: creditCardCheckout,
+    isDev,
+    projectAccessKey: projectAccessKey2,
+    tokenMetadata
+  }, disableSardineClientTokenFetch);
+  const authToken = data == null ? void 0 : data.token;
   const url = isDev ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true` : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`;
   const pollForOrderStatus = async () => {
-    var _a3, _b2;
+    var _a3;
     try {
+      if (!data) {
+        return;
+      }
+      const { orderId } = data;
       console.log("Polling for transaction status");
-      const isDev2 = ((_a3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a3.isDev) || false;
+      const isDev2 = (creditCardCheckout == null ? void 0 : creditCardCheckout.isDev) || false;
       const pollResponse = await fetchSardineOrderStatus(orderId, isDev2, projectAccessKey2);
       const status = pollResponse.resp.status;
-      const transactionHash = (_b2 = pollResponse.resp) == null ? void 0 : _b2.transactionHash;
+      const transactionHash = (_a3 = pollResponse.resp) == null ? void 0 : _a3.transactionHash;
       console.log("transaction status poll response:", status);
       if (status === "Draft") {
         return;
@@ -84302,6 +84328,18 @@ const PendingTransaction = () => {
       clearInterval(interval);
     };
   }, []);
+  if (isError) {
+    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "6", style: {
+      height: "500px",
+      width: "380px"
+    }, children: jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "An error has occurred" }) }) });
+  }
+  if (isLoading || !authToken) {
+    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "6", style: {
+      height: "500px",
+      width: "380px"
+    }, children: jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Spinner, { size: "lg" }) }) });
+  }
   return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "center", style: { height: "620px" }, children: jsxRuntimeExports$1.jsx("iframe", { src: url, style: {
     maxHeight: "500px",
     height: "100%",
@@ -84361,7 +84399,7 @@ const CheckoutSelection = () => {
   const { setNavigation } = useNavigation$1();
   const { closeCheckout, settings } = useCheckoutModal();
   const { address: accountAddress } = useAccount();
-  const projectAccessKey2 = useProjectAccessKey();
+  useProjectAccessKey();
   const cryptoCheckoutSettings = settings == null ? void 0 : settings.cryptoCheckout;
   const creditCardCheckoutSettings = settings == null ? void 0 : settings.creditCardCheckout;
   const displayCreditCardCheckout = !!creditCardCheckoutSettings;
@@ -84388,17 +84426,14 @@ const CheckoutSelection = () => {
   const isInsufficientBalance = BigNumber.from(userBalanceRaw).lt(BigNumber.from(requestedAmountRaw));
   const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
   const chainId = ((_d2 = settings == null ? void 0 : settings.cryptoCheckout) == null ? void 0 : _d2.chainId) || ((_e2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _e2.chainId) || 1;
-  const { data: tokensMetadata } = useTokenMetadata(chainId, orderSummaryItems[0].contractAddress, [orderSummaryItems[0].tokenId]);
-  const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
   const triggerSardineTransaction = async () => {
-    var _a3;
     console.log("trigger sardine transaction");
     if (settings == null ? void 0 : settings.creditCardCheckout) {
-      const isDev = ((_a3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a3.isDev) || false;
-      const { token, orderId } = await fetchSardineClientToken(settings.creditCardCheckout, isDev, projectAccessKey2, tokenMetadata);
       setNavigation({
         location: "transaction-pending",
-        params: { orderId, authToken: token }
+        params: {
+          creditCardCheckout: settings.creditCardCheckout
+        }
       });
     }
   };
@@ -84462,9 +84497,6 @@ const AddFundsContent = () => {
   const link = getTransakLink(addFundsSettings);
   return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", width: "full", paddingX: "4", paddingBottom: "4", height: "full", style: { height: "600px" }, children: jsxRuntimeExports$1.jsx(Box, { as: "iframe", width: "full", height: "full", borderWidth: "none", src: link }) });
 };
-const DEFAULT_LOCATION$1 = {
-  location: "select-method-checkout"
-};
 const KitCheckoutProvider = (props) => {
   const queryClient2 = new QueryClient();
   return jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient2, children: jsxRuntimeExports$1.jsx(KitCheckoutContent, { ...props }) });
@@ -84476,7 +84508,23 @@ const KitCheckoutContent = ({ children }) => {
   const [settings, setSettings] = reactExports.useState();
   const [addFundsSettings, setAddFundsSettings] = reactExports.useState();
   const [history, setHistory] = reactExports.useState([]);
-  const navigation = history.length > 0 ? history[history.length - 1] : DEFAULT_LOCATION$1;
+  const getDefaultLocation = () => {
+    const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
+    const creditCardSettings = settings == null ? void 0 : settings.creditCardCheckout;
+    if (orderSummaryItems.length === 0 && creditCardSettings) {
+      return {
+        location: "transaction-pending",
+        params: {
+          creditCardCheckout: creditCardSettings
+        }
+      };
+    } else {
+      return {
+        location: "select-method-checkout"
+      };
+    }
+  };
+  const navigation = history.length > 0 ? history[history.length - 1] : getDefaultLocation();
   const triggerCheckout = (settings2) => {
     setSettings(settings2);
     setOpenCheckoutModal(true);
@@ -84549,7 +84597,7 @@ const KitCheckoutContent = ({ children }) => {
     closeCheckout,
     settings,
     theme
-  }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider$1, { value: { history, setHistory }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-checkout", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-checkout", scope: "kit", theme, children: jsxRuntimeExports$1.jsxs(AnimatePresence, { children: [openCheckoutModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+  }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider$1, { value: { history, setHistory, defaultLocation: getDefaultLocation() }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-checkout", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-checkout", scope: "kit", theme, children: jsxRuntimeExports$1.jsxs(AnimatePresence, { children: [openCheckoutModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
     style: {
       maxWidth: "400px",
       height: "auto",
@@ -93886,15 +93934,15 @@ const getCheckoutSettings = (args) => {
         console.log("credit card checkout error", e2);
       },
       ...args
-    },
-    orderSummaryItems: [
-      {
-        chainId: args.chainId,
-        contractAddress: args.nftAddress,
-        tokenId: args.nftId,
-        quantityRaw: String(args.nftQuantity)
-      }
-    ]
+    }
+    // orderSummaryItems: [
+    //   {
+    //     chainId: args.chainId,
+    //     contractAddress: args.nftAddress,
+    //     tokenId: args.nftId,
+    //     quantityRaw: String(args.nftQuantity)
+    //   }
+    // ]
   };
   return checkoutSettings;
 };
@@ -106070,7 +106118,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-Dd7ba9Ug.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-asMzzbp_.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -106247,7 +106295,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-BTXhzBtP.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-qZ1YEtrq.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -106481,7 +106529,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C_850yj6.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-pyvba28f.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -107219,7 +107267,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "0.7.6");
+console.log("VERSION:", "0.7.7");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
