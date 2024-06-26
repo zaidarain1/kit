@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-asMzzbp_.js","./hooks.module-1nznGcCG.js","./___vite-browser-external_commonjs-proxy-DakE1xxJ.js","./index-qZ1YEtrq.js","./index.es-pyvba28f.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DcOXB7b3.js","./hooks.module-cX-TS4_d.js","./___vite-browser-external_commonjs-proxy-CRJvA1Cm.js","./index-VF3CsvUM.js","./index.es-AFzvGVpS.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -71946,7 +71946,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CUacC4e6.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BsB9dpTx.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84115,9 +84115,6 @@ const NavigationHeader$1 = ({ secondaryText, primaryText, disableBack = false })
   } })] });
 };
 const fetchSardineClientToken = async ({ order, isDev, projectAccessKey: projectAccessKey2, tokenMetadata }) => {
-  const randomNumber = Math.floor(Math.random() * 1e6);
-  const timestamp = (/* @__PURE__ */ new Date()).getTime();
-  const referenceId = `sequence-kit-${randomNumber}-${timestamp}-${order.recipientAddress}-${networks$2[order.chainId].name}-${order.contractAddress}-${order.contractAddress}-${order.recipientAddress}`;
   const accessKey = isDev ? "17xhjK4yjRf1fr0am8kgKfICAAAAAAAAA" : projectAccessKey2;
   const url = isDev ? "https://dev-api.sequence.app/rpc/API/GetSardineNFTCheckoutToken" : "https://api.sequence.app/rpc/API/GetSardineNFTCheckoutToken";
   const res = await fetch(url, {
@@ -84128,19 +84125,12 @@ const fetchSardineClientToken = async ({ order, isDev, projectAccessKey: project
     },
     body: JSON.stringify({
       params: {
-        referenceId,
-        expiresIn: 3600,
-        paymentMethodTypeConfig: {
-          enabled: ["us_debit", "us_credit", "international_debit", "international_credit", "ach"],
-          default: order.defaultPaymentMethodType
-        },
         name: (tokenMetadata == null ? void 0 : tokenMetadata.name) || "Unknown",
-        imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://www.sequence.market/images/placeholder.png",
+        imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://sequence.market/images/placeholder.png",
         network: networks$2[order.chainId].name,
         recipientAddress: order.recipientAddress,
         contractAddress: order.contractAddress,
         platform: "calldata_execution",
-        executionType: "smart_contract",
         blockchainNftId: order.nftId,
         quantity: Number(order.nftQuantity),
         decimals: Number((order == null ? void 0 : order.nftDecimals) || 0),
@@ -84148,7 +84138,8 @@ const fetchSardineClientToken = async ({ order, isDev, projectAccessKey: project
         tokenAddress: order.currencyAddress,
         tokenSymbol: order.currencySymbol,
         tokenDecimals: Number(order.currencyDecimals),
-        callData: order.calldata
+        callData: order.calldata,
+        ...(order == null ? void 0 : order.approvedSpenderAddress) ? { approvedSpenderAddress: order.approvedSpenderAddress } : {}
       }
     })
   });
@@ -84264,10 +84255,10 @@ const PendingTransaction = () => {
   const { params: { creditCardCheckout } } = nav.navigation;
   const { setNavigation } = nav;
   const projectAccessKey2 = useProjectAccessKey();
-  const { data: tokensMetadata } = useTokenMetadata(creditCardCheckout.chainId, creditCardCheckout.nftAddress, [creditCardCheckout.nftId]);
+  const { data: tokensMetadata, isLoading: isLoadingTokenMetadata } = useTokenMetadata(creditCardCheckout.chainId, creditCardCheckout.nftAddress, [creditCardCheckout.nftId]);
   const tokenMetadata = tokensMetadata ? tokensMetadata[0] : void 0;
   const isDev = ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.isDev) || false;
-  const disableSardineClientTokenFetch = !tokenMetadata;
+  const disableSardineClientTokenFetch = isLoadingTokenMetadata;
   const { data, isLoading, isError } = useSardineClientToken({
     order: creditCardCheckout,
     isDev,
@@ -94139,6 +94130,7 @@ const Connected = () => {
         nftAddress: checkoutTokenContractAddress,
         nftQuantity,
         isDev: true,
+        approvedSpenderAddress: orderbookAddress,
         calldata: getOrderbookCalldata({
           orderId: checkoutOrderId,
           quantity: nftQuantity,
@@ -106118,7 +106110,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-asMzzbp_.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DcOXB7b3.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -106295,7 +106287,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-qZ1YEtrq.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-VF3CsvUM.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -106529,7 +106521,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-pyvba28f.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-AFzvGVpS.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -107267,7 +107259,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "0.7.7");
+console.log("VERSION:", "0.7.8");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
