@@ -17,7 +17,6 @@ interface OrderSummaryItem {
 }
 
 export interface CreditCardCheckout {
-  defaultPaymentMethodType: 'us_debit' | 'us_credit' | 'international_debit' | 'international_credit' | 'ach'
   chainId: number
   contractAddress: string
   recipientAddress: string
@@ -33,6 +32,7 @@ export interface CreditCardCheckout {
   onSuccess?: (transactionHash: string, settings: CreditCardCheckout) => void
   onError?: (error: Error, settings: CreditCardCheckout) => void
   isDev?: boolean
+  approvedSpenderAddress?: string
 }
 
 export interface CheckoutSettings {

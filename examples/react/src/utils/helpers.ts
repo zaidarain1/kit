@@ -33,6 +33,7 @@ export interface GetCheckoutSettings {
   nftAddress: string
   nftQuantity: string
   calldata: string
+  approvedSpenderAddress?: string
   nftDecimals?: string
   isDev?: boolean
 }
