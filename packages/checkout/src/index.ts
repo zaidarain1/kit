@@ -10,4 +10,4 @@ export { type CheckoutSettings } from './contexts/CheckoutModal'
 export { type AddFundsSettings } from './contexts/AddFundsModal'
 
 // utils
-export { fetchTransakSupportedCountries } from './utils/transak'
+export { fetchTransakSupportedCountries, getTransakLink } from './utils/transak'
