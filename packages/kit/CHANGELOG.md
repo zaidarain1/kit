@@ -1,5 +1,11 @@
 # @0xsequence/kit
 
+## 2.9.2
+
+### Patch Changes
+
+- Fixing Sequence Waas Provider methods
+
 ## 2.9.1
 
 ### Patch Changes
