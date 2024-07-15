@@ -1,5 +1,11 @@
 # @0xsequence/kit
 
+## 2.9.1
+
+### Patch Changes
+
+- Adding wallet_switchEthereumChain support to SequenceWaasProvider
+
 ## 2.9.0
 
 ### Minor Changes
