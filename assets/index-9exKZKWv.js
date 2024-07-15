@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CecTsOdJ.js","./hooks.module-C3Y13jW2.js","./___vite-browser-external_commonjs-proxy-oqeR_S5I.js","./index-BZnoQhaP.js","./index.es-zKxjBZAj.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-C0ZBQzep.js","./hooks.module-B62xtm2S.js","./___vite-browser-external_commonjs-proxy-lt5ZvR64.js","./index-DKugGRVA.js","./index.es-PIGPyA4o.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -73823,7 +73823,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-D5wfP5v-.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-TypmZvHA.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -96381,14 +96381,7 @@ function sequenceWaasWallet(params) {
     projectAccessKey: params.projectAccessKey,
     waasConfigKey: params.waasConfigKey
   });
-  const sequenceWaasProvider = new SequenceWaasProvider(sequenceWaas, initialJsonRpcProvider, initialChain, showConfirmationModal);
-  const updateNetwork = async (chainId) => {
-    var _a3;
-    const networkName = (_a3 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId || n2.name === initialChain)) == null ? void 0 : _a3.name;
-    const jsonRpcProvider = new JsonRpcProvider$1(`${nodesUrl}/${networkName}/${params.projectAccessKey}`);
-    sequenceWaasProvider.updateJsonRpcProvider(jsonRpcProvider);
-    sequenceWaasProvider.updateNetwork(getNetwork$1(chainId));
-  };
+  const sequenceWaasProvider = new SequenceWaasProvider(sequenceWaas, initialJsonRpcProvider, initialChain, showConfirmationModal, nodesUrl);
   return createConnector((config2) => ({
     id: `sequence-waas`,
     name: "Sequence WaaS",
@@ -96503,8 +96496,12 @@ function sequenceWaasWallet(params) {
       }
     },
     async switchChain({ chainId }) {
+      const provider2 = await this.getProvider();
       const chain = config2.chains.find((c2) => c2.id === chainId) || config2.chains[0];
-      updateNetwork(chainId);
+      await provider2.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: hexValue(chainId) }]
+      });
       config2.emitter.emit("change", { chainId });
       return chain;
     },
@@ -96526,17 +96523,19 @@ function sequenceWaasWallet(params) {
   }));
 }
 class SequenceWaasProvider extends BaseProvider {
-  constructor(sequenceWaas, jsonRpcProvider, network2, showConfirmation) {
+  constructor(sequenceWaas, jsonRpcProvider, network2, showConfirmation, nodesUrl) {
     super(network2);
     __publicField(this, "sequenceWaas");
     __publicField(this, "jsonRpcProvider");
     __publicField(this, "showConfirmation");
+    __publicField(this, "nodesUrl");
     __publicField(this, "requestConfirmationHandler");
     __publicField(this, "feeConfirmationHandler");
     __publicField(this, "currentNetwork", this.network);
     this.sequenceWaas = sequenceWaas;
     this.jsonRpcProvider = jsonRpcProvider;
     this.showConfirmation = showConfirmation;
+    this.nodesUrl = nodesUrl;
   }
   updateJsonRpcProvider(jsonRpcProvider) {
     this.jsonRpcProvider = jsonRpcProvider;
@@ -96545,6 +96544,15 @@ class SequenceWaasProvider extends BaseProvider {
     this.currentNetwork = network2;
   }
   async request({ method, params }) {
+    var _a2;
+    if (method === "wallet_switchEthereumChain") {
+      const chainId = normalizeChainId(params == null ? void 0 : params[0].chainId);
+      const networkName = (_a2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId)) == null ? void 0 : _a2.name;
+      const jsonRpcProvider = new JsonRpcProvider$1(`${this.nodesUrl}/${networkName}/${this.sequenceWaas.config.projectAccessKey}`);
+      this.updateJsonRpcProvider(jsonRpcProvider);
+      this.updateNetwork(getNetwork$1(chainId));
+      return null;
+    }
     if (method === "eth_accounts") {
       const address = await this.sequenceWaas.getAddress();
       const account2 = getAddress(address);
@@ -96790,7 +96798,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CecTsOdJ.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-C0ZBQzep.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -96967,7 +96975,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-BZnoQhaP.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-DKugGRVA.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97201,7 +97209,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-zKxjBZAj.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-PIGPyA4o.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
