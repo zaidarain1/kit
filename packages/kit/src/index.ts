@@ -15,6 +15,10 @@ export type {
   StorageItem
 } from './types'
 
+// Config
+export { getDefaultConnectors, getDefaultWaasConnectors } from './config/defaultConnectors'
+export { getDefaultChains } from './config/defaultChains'
+
 // Constants
 export { LocalStorageKey, defaultSignInOptions, DEFAULT_SESSION_EXPIRATION } from './constants'
 
@@ -57,9 +61,6 @@ export {
   type BaseSequenceWaasConnectorOptions
 } from './connectors/wagmiConnectors'
 
-// Config
-export { getDefaultConnectors, getDefaultWaasConnectors } from './config/defaultConnectors'
-
 // Hooks
 export { useOpenConnectModal } from './hooks/useOpenConnectModal'
 export { useTheme } from './hooks/useTheme'
@@ -71,6 +72,7 @@ export { useAPIClient } from './hooks/useAPIClient'
 export { useMetadataClient } from './hooks/useMetadataClient'
 export { useIndexerClient, useIndexerClients } from './hooks/useIndexerClient'
 export { useStorage, useStorageItem } from './hooks/useStorage'
+export { useChain } from './hooks/useChain'
 export {
   getNativeTokenBalance,
   getCollectionBalance,
