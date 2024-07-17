@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BKdOkbvi.js","./hooks.module-BFyt-vBh.js","./___vite-browser-external_commonjs-proxy-Bm3Fxmo9.js","./index-DwNxWb6h.js","./index.es-D3eXlmGp.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-D_RrYdP1.js","./hooks.module-DLP_Iagz.js","./___vite-browser-external_commonjs-proxy-DKBqX_5u.js","./index-CRdlQvsf.js","./index.es-DGEQGd-Y.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -20910,14 +20910,14 @@ function getNextMatch(values, search2, currentMatch) {
   );
   return nextMatch !== currentMatch ? nextMatch : void 0;
 }
-function isPointInPolygon$1(point3, polygon2) {
+function isPointInPolygon$1(point3, polygon) {
   const { x, y: y2 } = point3;
   let inside = false;
-  for (let i = 0, j2 = polygon2.length - 1; i < polygon2.length; j2 = i++) {
-    const xi2 = polygon2[i].x;
-    const yi2 = polygon2[i].y;
-    const xj2 = polygon2[j2].x;
-    const yj2 = polygon2[j2].y;
+  for (let i = 0, j2 = polygon.length - 1; i < polygon.length; j2 = i++) {
+    const xi2 = polygon[i].x;
+    const yi2 = polygon[i].y;
+    const xj2 = polygon[j2].x;
+    const yj2 = polygon[j2].y;
     const intersect = yi2 > y2 !== yj2 > y2 && x < (xj2 - xi2) * (y2 - yi2) / (yj2 - yi2) + xi2;
     if (intersect)
       inside = !inside;
@@ -25547,14 +25547,14 @@ function getPointsFromRect(rect) {
     { x: left, y: bottom }
   ];
 }
-function isPointInPolygon(point3, polygon2) {
+function isPointInPolygon(point3, polygon) {
   const { x, y: y2 } = point3;
   let inside = false;
-  for (let i = 0, j2 = polygon2.length - 1; i < polygon2.length; j2 = i++) {
-    const xi2 = polygon2[i].x;
-    const yi2 = polygon2[i].y;
-    const xj2 = polygon2[j2].x;
-    const yj2 = polygon2[j2].y;
+  for (let i = 0, j2 = polygon.length - 1; i < polygon.length; j2 = i++) {
+    const xi2 = polygon[i].x;
+    const yi2 = polygon[i].y;
+    const xj2 = polygon[j2].x;
+    const yj2 = polygon[j2].y;
     const intersect = yi2 > y2 !== yj2 > y2 && x < (xj2 - xi2) * (y2 - yi2) / (yj2 - yi2) + xi2;
     if (intersect)
       inside = !inside;
@@ -45062,7 +45062,7 @@ const classicMordor = {
   name: "classicMordor",
   _defaultProvider: etcDefaultProvider("https://www.ethercluster.com/mordor", "classicMordor")
 };
-const networks$2 = {
+const networks$1 = {
   unspecified: { chainId: 0, name: "unspecified" },
   homestead,
   mainnet: homestead,
@@ -45131,8 +45131,8 @@ function getNetwork$1(network2) {
     return null;
   }
   if (typeof network2 === "number") {
-    for (const name2 in networks$2) {
-      const standard2 = networks$2[name2];
+    for (const name2 in networks$1) {
+      const standard2 = networks$1[name2];
       if (standard2.chainId === network2) {
         return {
           name: standard2.name,
@@ -45148,7 +45148,7 @@ function getNetwork$1(network2) {
     };
   }
   if (typeof network2 === "string") {
-    const standard2 = networks$2[network2];
+    const standard2 = networks$1[network2];
     if (standard2 == null) {
       return null;
     }
@@ -45159,7 +45159,7 @@ function getNetwork$1(network2) {
       _defaultProvider: standard2._defaultProvider || null
     };
   }
-  const standard = networks$2[network2.name];
+  const standard = networks$1[network2.name];
   if (!standard) {
     if (typeof network2.chainId !== "number") {
       logger$a.throwArgumentError("invalid network chainId", "network", network2);
@@ -50298,7 +50298,7 @@ let NetworkType = /* @__PURE__ */ function(NetworkType2) {
   NetworkType2["TESTNET"] = "testnet";
   return NetworkType2;
 }({});
-const networks$1 = {
+const networks = {
   [ChainId.MAINNET]: {
     chainId: ChainId.MAINNET,
     type: NetworkType.MAINNET,
@@ -50308,6 +50308,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Etherscan",
       rootUrl: "https://etherscan.io/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     },
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
   },
@@ -50321,6 +50326,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Etherscan (Ropsten)",
       rootUrl: "https://ropsten.etherscan.io/"
+    },
+    nativeToken: {
+      symbol: "roETH",
+      name: "Ropsten Ether",
+      decimals: 18
     },
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     deprecated: true
@@ -50336,6 +50346,11 @@ const networks$1 = {
       name: "Etherscan (Rinkeby)",
       rootUrl: "https://rinkeby.etherscan.io/"
     },
+    nativeToken: {
+      symbol: "rETH",
+      name: "Rinkeby Ether",
+      decimals: 18
+    },
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     deprecated: true
   },
@@ -50349,6 +50364,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Etherscan (Goerli)",
       rootUrl: "https://goerli.etherscan.io/"
+    },
+    nativeToken: {
+      symbol: "gETH",
+      name: "Goerli Ether",
+      decimals: 18
     },
     ensAddress: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     deprecated: true
@@ -50364,6 +50384,11 @@ const networks$1 = {
       name: "Etherscan (Kovan)",
       rootUrl: "https://kovan.etherscan.io/"
     },
+    nativeToken: {
+      symbol: "kETH",
+      name: "Kovan Ether",
+      decimals: 18
+    },
     deprecated: true
   },
   [ChainId.SEPOLIA]: {
@@ -50376,6 +50401,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Etherscan (Sepolia)",
       rootUrl: "https://sepolia.etherscan.io/"
+    },
+    nativeToken: {
+      symbol: "sETH",
+      name: "Sepolia Ether",
+      decimals: 18
     }
   },
   [ChainId.POLYGON]: {
@@ -50387,6 +50417,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Polygonscan",
       rootUrl: "https://polygonscan.com/"
+    },
+    nativeToken: {
+      symbol: "MATIC",
+      name: "Polygon",
+      decimals: 18
     }
   },
   [ChainId.POLYGON_MUMBAI]: {
@@ -50400,6 +50435,11 @@ const networks$1 = {
       name: "Polygonscan (Mumbai)",
       rootUrl: "https://mumbai.polygonscan.com/"
     },
+    nativeToken: {
+      symbol: "mMATIC",
+      name: "Mumbai Polygon",
+      decimals: 18
+    },
     deprecated: true
   },
   [ChainId.POLYGON_AMOY]: {
@@ -50412,6 +50452,11 @@ const networks$1 = {
     blockExplorer: {
       name: "OKLink (Amoy)",
       rootUrl: "https://www.oklink.com/amoy/"
+    },
+    nativeToken: {
+      symbol: "aMATIC",
+      name: "Amoy Polygon",
+      decimals: 18
     }
   },
   [ChainId.POLYGON_ZKEVM]: {
@@ -50423,6 +50468,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Polygonscan (zkEVM)",
       rootUrl: "https://zkevm.polygonscan.com/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     }
   },
   [ChainId.BSC]: {
@@ -50434,6 +50484,11 @@ const networks$1 = {
     blockExplorer: {
       name: "BSCScan",
       rootUrl: "https://bscscan.com/"
+    },
+    nativeToken: {
+      symbol: "BNB",
+      name: "BNB",
+      decimals: 18
     }
   },
   [ChainId.BSC_TESTNET]: {
@@ -50446,6 +50501,11 @@ const networks$1 = {
     blockExplorer: {
       name: "BSCScan (Testnet)",
       rootUrl: "https://testnet.bscscan.com/"
+    },
+    nativeToken: {
+      symbol: "tBNB",
+      name: "Testnet BNB",
+      decimals: 18
     }
   },
   [ChainId.OPTIMISM]: {
@@ -50457,6 +50517,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Etherscan (Optimism)",
       rootUrl: "https://optimistic.etherscan.io/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     }
   },
   [ChainId.OPTIMISM_KOVAN]: {
@@ -50469,6 +50534,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Etherscan (Optimism Kovan)",
       rootUrl: "https://kovan-optimistic.etherscan.io/"
+    },
+    nativeToken: {
+      symbol: "kETH",
+      name: "Kovan Ether",
+      decimals: 18
     },
     deprecated: true
   },
@@ -50483,6 +50553,11 @@ const networks$1 = {
       name: "Etherscan (Optimism Goerli)",
       rootUrl: "https://goerli-optimistic.etherscan.io/"
     },
+    nativeToken: {
+      symbol: "gETH",
+      name: "Goerli Ether",
+      decimals: 18
+    },
     deprecated: true
   },
   [ChainId.OPTIMISM_SEPOLIA]: {
@@ -50495,6 +50570,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Etherscan (Optimism Sepolia)",
       rootUrl: "https://sepolia-optimistic.etherscan.io/"
+    },
+    nativeToken: {
+      symbol: "sETH",
+      name: "Sepolia Ether",
+      decimals: 18
     }
   },
   [ChainId.ARBITRUM]: {
@@ -50506,6 +50586,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Arbiscan",
       rootUrl: "https://arbiscan.io/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     }
   },
   [ChainId.ARBITRUM_GOERLI]: {
@@ -50519,6 +50604,11 @@ const networks$1 = {
       name: "Arbiscan (Goerli Testnet)",
       rootUrl: "https://testnet.arbiscan.io/"
     },
+    nativeToken: {
+      symbol: "gETH",
+      name: "Goerli Ether",
+      decimals: 18
+    },
     deprecated: true
   },
   [ChainId.ARBITRUM_SEPOLIA]: {
@@ -50531,6 +50621,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Arbiscan (Sepolia Testnet)",
       rootUrl: "https://sepolia.arbiscan.io/"
+    },
+    nativeToken: {
+      symbol: "sETH",
+      name: "Sepolia Ether",
+      decimals: 18
     }
   },
   [ChainId.ARBITRUM_NOVA]: {
@@ -50542,6 +50637,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Arbiscan Nova",
       rootUrl: "https://nova.arbiscan.io/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     }
   },
   [ChainId.AVALANCHE]: {
@@ -50553,6 +50653,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Snowtrace",
       rootUrl: "https://subnets.avax.network/c-chain/"
+    },
+    nativeToken: {
+      symbol: "AVAX",
+      name: "AVAX",
+      decimals: 18
     }
   },
   [ChainId.AVALANCHE_TESTNET]: {
@@ -50565,6 +50670,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Snowtrace (Testnet)",
       rootUrl: "https://subnets-test.avax.network/c-chain/"
+    },
+    nativeToken: {
+      symbol: "tAVAX",
+      name: "Testnet AVAX",
+      decimals: 18
     }
   },
   [ChainId.GNOSIS]: {
@@ -50576,6 +50686,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Gnosis Chain Explorer",
       rootUrl: "https://blockscout.com/xdai/mainnet/"
+    },
+    nativeToken: {
+      symbol: "XDAI",
+      name: "XDAI",
+      decimals: 18
     }
   },
   [ChainId.BASE]: {
@@ -50587,6 +50702,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Base Explorer",
       rootUrl: "https://basescan.org/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     }
   },
   [ChainId.BASE_GOERLI]: {
@@ -50600,6 +50720,11 @@ const networks$1 = {
       name: "Base Goerli Explorer",
       rootUrl: "https://goerli.basescan.org/"
     },
+    nativeToken: {
+      symbol: "gETH",
+      name: "Goerli Ether",
+      decimals: 18
+    },
     deprecated: true
   },
   [ChainId.BASE_SEPOLIA]: {
@@ -50612,6 +50737,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Base Sepolia Explorer",
       rootUrl: "https://base-sepolia.blockscout.com/"
+    },
+    nativeToken: {
+      symbol: "sETH",
+      name: "Sepolia Ether",
+      decimals: 18
     }
   },
   [ChainId.HOMEVERSE]: {
@@ -50623,6 +50753,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Oasys Homeverse Explorer",
       rootUrl: "https://explorer.oasys.homeverse.games/"
+    },
+    nativeToken: {
+      symbol: "OAS",
+      name: "OAS",
+      decimals: 18
     }
   },
   [ChainId.HOMEVERSE_TESTNET]: {
@@ -50635,6 +50770,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Oasys Homeverse Explorer (Testnet)",
       rootUrl: "https://explorer.testnet.oasys.homeverse.games/"
+    },
+    nativeToken: {
+      symbol: "tOAS",
+      name: "Testnet OAS",
+      decimals: 18
     }
   },
   [ChainId.XAI]: {
@@ -50646,6 +50786,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Xai Explorer",
       rootUrl: "https://explorer.xai-chain.net/"
+    },
+    nativeToken: {
+      symbol: "XAI",
+      name: "XAI",
+      decimals: 18
     }
   },
   [ChainId.XAI_SEPOLIA]: {
@@ -50658,6 +50803,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Xai Sepolia Explorer",
       rootUrl: "https://testnet-explorer-v2.xai-chain.net/"
+    },
+    nativeToken: {
+      symbol: "sXAI",
+      name: "Sepolia XAI",
+      decimals: 18
     }
   },
   [ChainId.ASTAR_ZKEVM]: {
@@ -50669,6 +50819,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Astar zkEVM Explorer",
       rootUrl: "https://astar-zkevm.explorer.startale.com/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     }
   },
   [ChainId.ASTAR_ZKYOTO]: {
@@ -50681,6 +50836,11 @@ const networks$1 = {
     blockExplorer: {
       name: "Astar zKyoto Explorer",
       rootUrl: "https://astar-zkyoto.blockscout.com/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
     }
   },
   [ChainId.XR_SEPOLIA]: {
@@ -50693,6 +50853,11 @@ const networks$1 = {
     blockExplorer: {
       name: "XR Sepolia Explorer",
       rootUrl: "https://xr-sepolia-testnet.explorer.caldera.xyz/"
+    },
+    nativeToken: {
+      symbol: "tXR",
+      name: "Sepolia XR",
+      decimals: 18
     }
   },
   [ChainId.TELOS]: {
@@ -50704,17 +50869,32 @@ const networks$1 = {
     blockExplorer: {
       name: "Telos Explorer",
       rootUrl: "https://explorer.telos.net/network/"
+    },
+    nativeToken: {
+      symbol: "TLOS",
+      name: "TLOS",
+      decimals: 18
     }
   },
   [ChainId.HARDHAT]: {
     chainId: ChainId.HARDHAT,
     name: "hardhat",
-    title: "Hardhat (local testnet)"
+    title: "Hardhat (local testnet)",
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
+    }
   },
   [ChainId.HARDHAT_2]: {
     chainId: ChainId.HARDHAT_2,
     name: "hardhat2",
-    title: "Hardhat (local testnet)"
+    title: "Hardhat (local testnet)",
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
+      decimals: 18
+    }
   }
 };
 const base64Encode = (val) => {
@@ -51518,16 +51698,16 @@ const genUrls = (network2) => {
     indexerUrl: indexerURL(network2)
   };
 };
-const allNetworks = validateAndSortNetworks([_extends$f({}, networks$1[ChainId.POLYGON], genUrls("polygon"), {
+const allNetworks = validateAndSortNetworks([_extends$f({}, networks[ChainId.POLYGON], genUrls("polygon"), {
   isDefaultChain: true,
   isAuthChain: true
-}), _extends$f({}, networks$1[ChainId.MAINNET], genUrls("mainnet")), _extends$f({}, networks$1[ChainId.BSC], genUrls("bsc")), _extends$f({}, networks$1[ChainId.AVALANCHE], genUrls("avalanche")), _extends$f({}, networks$1[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$f({}, networks$1[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$f({}, networks$1[ChainId.OPTIMISM], genUrls("optimism")), _extends$f({}, networks$1[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$f({}, networks$1[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$f({}, networks$1[ChainId.GNOSIS], genUrls("gnosis")), _extends$f({}, networks$1[ChainId.RINKEBY], genUrls("rinkeby"), {
+}), _extends$f({}, networks[ChainId.MAINNET], genUrls("mainnet")), _extends$f({}, networks[ChainId.BSC], genUrls("bsc")), _extends$f({}, networks[ChainId.AVALANCHE], genUrls("avalanche")), _extends$f({}, networks[ChainId.ARBITRUM], genUrls("arbitrum")), _extends$f({}, networks[ChainId.ARBITRUM_NOVA], genUrls("arbitrum-nova")), _extends$f({}, networks[ChainId.OPTIMISM], genUrls("optimism")), _extends$f({}, networks[ChainId.OPTIMISM_SEPOLIA], genUrls("optimism-sepolia")), _extends$f({}, networks[ChainId.POLYGON_ZKEVM], genUrls("polygon-zkevm")), _extends$f({}, networks[ChainId.GNOSIS], genUrls("gnosis")), _extends$f({}, networks[ChainId.RINKEBY], genUrls("rinkeby"), {
   disabled: true
-}), _extends$f({}, networks$1[ChainId.GOERLI], genUrls("goerli"), {
+}), _extends$f({}, networks[ChainId.GOERLI], genUrls("goerli"), {
   disabled: true
-}), _extends$f({}, networks$1[ChainId.SEPOLIA], genUrls("sepolia")), _extends$f({}, networks$1[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
+}), _extends$f({}, networks[ChainId.SEPOLIA], genUrls("sepolia")), _extends$f({}, networks[ChainId.POLYGON_MUMBAI], genUrls("mumbai"), {
   disabled: true
-}), _extends$f({}, networks$1[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$f({}, networks$1[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$f({}, networks$1[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$f({}, networks$1[ChainId.BASE], genUrls("base")), _extends$f({}, networks$1[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$f({}, networks$1[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$f({}, networks$1[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$f({}, networks$1[ChainId.XAI], genUrls("xai")), _extends$f({}, networks$1[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$f({}, networks$1[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$f({}, networks$1[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$f({}, networks$1[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$f({}, networks$1[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$f({}, networks$1[ChainId.TELOS], genUrls("telos")), _extends$f({}, networks$1[ChainId.HARDHAT], {
+}), _extends$f({}, networks[ChainId.POLYGON_AMOY], genUrls("amoy")), _extends$f({}, networks[ChainId.BSC_TESTNET], genUrls("bsc-testnet")), _extends$f({}, networks[ChainId.ARBITRUM_SEPOLIA], genUrls("arbitrum-sepolia")), _extends$f({}, networks[ChainId.BASE], genUrls("base")), _extends$f({}, networks[ChainId.BASE_SEPOLIA], genUrls("base-sepolia")), _extends$f({}, networks[ChainId.HOMEVERSE], genUrls("homeverse")), _extends$f({}, networks[ChainId.HOMEVERSE_TESTNET], genUrls("homeverse-testnet")), _extends$f({}, networks[ChainId.XAI], genUrls("xai")), _extends$f({}, networks[ChainId.XAI_SEPOLIA], genUrls("xai-sepolia")), _extends$f({}, networks[ChainId.AVALANCHE_TESTNET], genUrls("avalanche-testnet")), _extends$f({}, networks[ChainId.ASTAR_ZKEVM], genUrls("astar-zkevm")), _extends$f({}, networks[ChainId.ASTAR_ZKYOTO], genUrls("astar-zkyoto")), _extends$f({}, networks[ChainId.XR_SEPOLIA], genUrls("xr-sepolia")), _extends$f({}, networks[ChainId.TELOS], genUrls("telos")), _extends$f({}, networks[ChainId.HARDHAT], {
   rpcUrl: "http://localhost:8545",
   relayer: {
     url: "http://localhost:3000",
@@ -51535,7 +51715,7 @@ const allNetworks = validateAndSortNetworks([_extends$f({}, networks$1[ChainId.P
       url: "http://localhost:8545"
     }
   }
-}), _extends$f({}, networks$1[ChainId.HARDHAT_2], {
+}), _extends$f({}, networks[ChainId.HARDHAT_2], {
   rpcUrl: "http://localhost:9545",
   relayer: {
     url: "http://localhost:3000",
@@ -52072,7 +52252,7 @@ class JsonRpcProvider2 extends JsonRpcProvider$1 {
   async getNetwork() {
     const chainId = this._chainId;
     if (chainId) {
-      const network2 = networks$1[chainId];
+      const network2 = networks[chainId];
       const name2 = (network2 == null ? void 0 : network2.name) || "";
       const ensAddress = network2 == null ? void 0 : network2.ensAddress;
       return {
@@ -52129,7 +52309,7 @@ const network$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePro
   loggingProviderMiddleware,
   maybeChainId,
   networkProviderMiddleware,
-  networks: networks$1,
+  networks,
   networksIndex,
   nodesURL,
   relayerURL,
@@ -67937,7 +68117,7 @@ const setupAnalytics = (projectAccessKey2, server) => {
 };
 var packageJson = {
   name: "@0xsequence/provider",
-  version: "1.9.36",
+  version: "1.9.37",
   description: "provider sub-package for Sequence",
   repository: "https://github.com/0xsequence/sequence.js/tree/master/packages/provider",
   source: "src/index.ts",
@@ -73823,7 +74003,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-sn64C1UE.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DrDKiGFJ.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -78263,7 +78443,7 @@ function http(url, config2 = {}) {
     const { batchSize = 1e3, wait: wait2 = 0 } = typeof batch === "object" ? batch : {};
     const retryCount = config2.retryCount ?? retryCount_;
     const timeout = timeout_ ?? config2.timeout ?? 1e4;
-    const url_ = url || (chain == null ? void 0 : chain.rpcUrls.default.http[0]);
+    const url_ = chain == null ? void 0 : chain.rpcUrls.default.http[0];
     if (!url_)
       throw new UrlRequiredError();
     const rpcClient = getHttpRpcClient(url_, {
@@ -84482,7 +84662,7 @@ const getNetworkBackgroundColor = (chainId, mode = "light") => {
   }
 };
 const getNetwork = (chainId) => {
-  const network2 = networks$1[chainId];
+  const network2 = networks[chainId];
   if (!network2) {
     throw new Error(`Unknown network chainId: ${chainId}`);
   }
@@ -84520,7 +84700,7 @@ const useIndexerClient = (chainId) => {
   const indexerClients = reactExports.useMemo(() => {
     return /* @__PURE__ */ new Map();
   }, [projectAccessKey2, isDev]);
-  const network2 = networks$1[chainId];
+  const network2 = networks[chainId];
   const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
   if (!indexerClients.has(chainId)) {
     indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
@@ -84539,7 +84719,7 @@ const useIndexerClients = (chainIds) => {
   }, [projectAccessKey2, isDev]);
   const result = /* @__PURE__ */ new Map();
   for (const chainId of chainIds) {
-    const network2 = networks$1[chainId];
+    const network2 = networks[chainId];
     const clientUrl = isDev ? `https://dev-${network2.name}-indexer.sequence.app` : `https://${network2.name}-indexer.sequence.app`;
     if (!indexerClients.has(chainId)) {
       indexerClients.set(chainId, new SequenceIndexer(clientUrl, projectAccessKey2));
@@ -85815,81 +85995,6 @@ const KitProvider = (props) => {
   } }), jsxRuntimeExports$1.jsx(Button, { alignItems: "center", textAlign: "center", width: "full", shape: "square", size: "lg", label: "Confirm", variant: "primary", onClick: () => {
     confirmPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
   } })] })] }), jsxRuntimeExports$1.jsxs(Box, { gap: "1", marginTop: "4", flexDirection: "row", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontSize: "small", color: "text80", children: "Powered by Sequence" }), jsxRuntimeExports$1.jsx(Box, { height: "4", width: "4", marginTop: "1", children: jsxRuntimeExports$1.jsx(SequenceLogo$1, {}) })] })] }) }) })] }) }), children] }) }) }) }) }) });
-};
-const getKitConnectWallets = (projectAccessKey2, wallets) => {
-  const connectors = [];
-  wallets.forEach((wallet) => {
-    const { createConnector: createConnector2, ...metaProperties } = wallet;
-    const walletProperties = { ...metaProperties };
-    const createConnectorOverride = (config2) => {
-      const connector = createConnector2(projectAccessKey2);
-      const res = connector(config2);
-      res._wallet = { ...walletProperties };
-      return res;
-    };
-    connectors.push(createConnectorOverride);
-  });
-  return connectors;
-};
-function walletClientToSigner(walletClient) {
-  var _a2, _b2;
-  const { account: account2, chain, transport } = walletClient;
-  const network2 = {
-    chainId: chain.id,
-    name: chain.name,
-    ensAddress: (_b2 = (_a2 = chain.contracts) == null ? void 0 : _a2.ensRegistry) == null ? void 0 : _b2.address
-  };
-  const provider2 = new Web3Provider(transport, network2);
-  const signer2 = provider2.getSigner(account2.address);
-  return signer2;
-}
-function publicClientToProvider(publicClient) {
-  var _a2, _b2;
-  const { chain, transport } = publicClient;
-  const network2 = {
-    chainId: chain.id,
-    name: chain.name,
-    ensAddress: (_b2 = (_a2 = chain.contracts) == null ? void 0 : _a2.ensRegistry) == null ? void 0 : _b2.address
-  };
-  if (transport.type === "fallback")
-    return new FallbackProvider(transport.transports.map(({ value }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
-  return new JsonRpcProvider$1(transport.url, network2);
-}
-const signEthAuthProof = async (walletClient, storage) => {
-  const proofInformation = await storage.getItem(LocalStorageKey.EthAuthProof);
-  if (proofInformation) {
-    return proofInformation;
-  }
-  const proofSettings = await storage.getItem(LocalStorageKey.EthAuthSettings);
-  if (!proofSettings) {
-    throw new Error("No ETHAuth settings found");
-  }
-  const walletAddress = walletClient.account.address;
-  const proof = new Proof();
-  proof.address = walletAddress;
-  proof.claims.app = proofSettings.app || "app";
-  proof.claims.ogn = proofSettings.origin;
-  proof.claims.n = proofSettings.nonce;
-  proof.setExpiryIn(proofSettings.expiry ? Math.max(proofSettings.expiry, 200) : DEFAULT_SESSION_EXPIRATION);
-  const typedData = proof.messageTypedData();
-  typedData.domain.verifyingContract;
-  const signer2 = walletClientToSigner(walletClient);
-  const signature2 = await signer2._signTypedData(typedData.domain, typedData.types, typedData.message);
-  proof.signature = signature2;
-  const ethAuth = new ETHAuth();
-  const proofString = await ethAuth.encodeProof(proof, true);
-  return {
-    typedData,
-    proofString
-  };
-};
-const validateEthProof = async (walletClient, publicClient, proof) => {
-  const walletAddress = walletClient.account.address;
-  const ethAuth = new ETHAuth();
-  const decodedProof = await ethAuth.decodeProof(proof.proofString, true);
-  const provider2 = publicClientToProvider(publicClient);
-  const isValid2 = await sequence$1.utils.isValidTypedDataSignature(walletAddress, proof.typedData, decodedProof.signature, provider2);
-  return isValid2;
 };
 sequenceWallet.type = "sequence";
 function sequenceWallet(params) {
@@ -95448,7 +95553,7 @@ async function newSession(cryptoBackend, secureStoreBackend) {
     return newSECP256K1Session(secureStoreBackend);
   }
 }
-const nameToId = Object.entries(networks$1).reduce((acc, [key2, value]) => {
+const nameToId = Object.entries(networks).reduce((acc, [key2, value]) => {
   acc[value.name] = value.chainId;
   return acc;
 }, {});
@@ -96801,7 +96906,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-BKdOkbvi.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-D_RrYdP1.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -96978,7 +97083,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-DwNxWb6h.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CRdlQvsf.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97212,7 +97317,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-D3eXlmGp.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DGEQGd-Y.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -97566,18 +97671,6 @@ const metamask = () => ({
 const SequenceLogo = (props) => {
   return jsxRuntimeExports$1.jsxs("svg", { xmlns: "http://www.w3.org/2000/svg", style: { fill: "none" }, id: "svg1316", version: "1.1", viewBox: "0 0 396 396", ...props, children: [jsxRuntimeExports$1.jsx("g", { transform: "translate(0,38)", id: "g1256", clipPath: "url(#clip0_5_131)", children: jsxRuntimeExports$1.jsxs("g", { id: "g1254", clipPath: "url(#clip1_5_131)", children: [jsxRuntimeExports$1.jsx("path", { style: { fill: "#111111" }, id: "path1232", d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint0_linear_5_13" }, id: "path1234", d: "M 0,67.5049 V 250.165 c 0,37.282 30.1402,67.505 67.32,67.505 h 261.36 c 37.18,0 67.32,-30.223 67.32,-67.505 V 67.5049 C 396,30.223 365.86,0 328.68,0 H 67.32 C 30.1402,0 0,30.223 0,67.5049 Z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint1_linear_5_131" }, id: "path1236", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint2_linear_5_131)" }, id: "path1238", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint3_linear_5_131)" }, id: "path1240", d: "m 98.9999,79.4176 c 0,-10.9653 -8.8648,-19.8544 -19.8,-19.8544 -10.9352,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.8648,19.8544 19.8,19.8544 10.9352,0 19.8,-8.8892 19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint4_linear_5_131)" }, id: "path1242", d: "m 98.9999,238.126 c 0,-10.965 -8.8648,-19.854 -19.8,-19.854 -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.966 8.8648,19.855 19.8,19.855 10.9352,0 19.8,-8.889 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint5_linear_5_131)" }, id: "path1244", d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint6_linear_5_131)" }, id: "path1246", d: "m 336.6,158.835 c 0,-10.965 -8.865,-19.854 -19.8,-19.854 -10.935,0 -19.8,8.889 -19.8,19.854 0,10.965 8.865,19.855 19.8,19.855 10.935,0 19.8,-8.89 19.8,-19.855 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint7_linear_5_131)" }, id: "path1248", d: "M 316.8,59.5632 H 158.4 c -10.935,0 -19.8,8.8891 -19.8,19.8544 0,10.9652 8.865,19.8544 19.8,19.8544 h 158.4 c 10.935,0 19.8,-8.8892 19.8,-19.8544 0,-10.9653 -8.865,-19.8544 -19.8,-19.8544 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint8_linear_5_131)" }, id: "path1250", d: "M 316.8,218.272 H 158.4 c -10.935,0 -19.8,8.889 -19.8,19.854 0,10.966 8.865,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.889 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z" }), jsxRuntimeExports$1.jsx("path", { style: { fill: "url(#paint9_linear_5_131)" }, id: "path1252", d: "M 237.6,138.981 H 79.2 c -10.9352,0 -19.8,8.889 -19.8,19.854 0,10.965 8.8648,19.855 19.8,19.855 h 158.4 c 10.935,0 19.8,-8.89 19.8,-19.855 0,-10.965 -8.865,-19.854 -19.8,-19.854 z" })] }) }), jsxRuntimeExports$1.jsxs("defs", { id: "defs1314", children: [jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "318", x2: "198", y1: "4.0585401e-05", x1: "198", id: "paint0_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1258", stopColor: "#1D273D" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1260", stopColor: "#0D0F13", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "63", x2: "92.5", y1: "99", x1: "65.5", id: "paint1_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1263", stopColor: "#4462FE" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1265", stopColor: "#7D69FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "97.591103", x2: "96.137703", y1: "99.291199", x1: "62.879902", id: "paint2_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1268", stopColor: "#3757FD" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1270", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "97.591103", x2: "96.137703", y1: "99.291199", x1: "62.879902", id: "paint3_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1273", stopColor: "#2447FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1275", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "223.5", x2: "91.5", y1: "251.5", x1: "65", id: "paint4_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1278", stopColor: "#BC3EE6" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1280", stopColor: "#D972F1", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "146", x2: "329.5", y1: "172", x1: "305", id: "paint5_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1283", stopColor: "#29BDFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1285", stopColor: "#96E7FB", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "176.772", x2: "334.56699", y1: "178.418", x1: "300.17999", id: "paint6_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1288", stopColor: "#23BBFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1290", stopColor: "#85E7FF", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "60", x2: "317.5", y1: "99", x1: "154.5", id: "paint7_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1293", stopColor: "#23BBFF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1295", stopColor: "#85E7FF", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "218", x2: "312.5", y1: "258", x1: "156", id: "paint8_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1298", stopColor: "#2447FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1300", stopColor: "#6980FA", offset: "1" })] }), jsxRuntimeExports$1.jsxs("linearGradient", { gradientUnits: "userSpaceOnUse", y2: "139", x2: "235.5", y1: "179", x1: "86.000099", id: "paint9_linear_5_131", children: [jsxRuntimeExports$1.jsx("stop", { id: "stop1303", stopColor: "#6634FF" }), jsxRuntimeExports$1.jsx("stop", { id: "stop1305", stopColor: "#9C6DFF", offset: "1" })] }), jsxRuntimeExports$1.jsx("clipPath", { id: "clip0_5_131", children: jsxRuntimeExports$1.jsx("rect", { style: { fill: "#ffffff" }, y: "0", x: "0", id: "rect1308", height: "317.67001", width: "396" }) }), jsxRuntimeExports$1.jsx("clipPath", { id: "clip1_5_131", children: jsxRuntimeExports$1.jsx("rect", { style: { fill: "#ffffff" }, y: "0", x: "0", id: "rect1311", height: "317.67001", width: "396" }) })] })] });
 };
-const mock = (options) => ({
-  id: "mock",
-  isSequenceBased: true,
-  logoDark: SequenceLogo,
-  logoLight: SequenceLogo,
-  // iconBackground: '#777',
-  name: "Mock",
-  createConnector: () => {
-    const connector = mock$1(options);
-    return connector;
-  }
-});
 const sequence = (options) => ({
   id: "sequence",
   isSequenceBased: true,
@@ -97649,6 +97742,21 @@ const walletConnect = (options) => ({
     return connector;
   }
 });
+const getKitConnectWallets = (projectAccessKey2, wallets) => {
+  const connectors = [];
+  wallets.forEach((wallet) => {
+    const { createConnector: createConnector2, ...metaProperties } = wallet;
+    const walletProperties = { ...metaProperties };
+    const createConnectorOverride = (config2) => {
+      const connector = createConnector2(projectAccessKey2);
+      const res = connector(config2);
+      res._wallet = { ...walletProperties };
+      return res;
+    };
+    connectors.push(createConnectorOverride);
+  });
+  return connectors;
+};
 const getDefaultConnectors = ({ walletConnectProjectId, defaultChainId, projectAccessKey: projectAccessKey2, appName }) => {
   const connectors = getKitConnectWallets(projectAccessKey2, [
     email({
@@ -97738,6 +97846,122 @@ const getDefaultWaasConnectors = ({ projectAccessKey: projectAccessKey2, waasCon
   const connectors = getKitConnectWallets(projectAccessKey2, wallets);
   return connectors;
 };
+const chains$1 = allNetworks.reduce((acc, network2) => {
+  if (network2.deprecated) {
+    return acc;
+  }
+  if (network2.name.startsWith("hardhat")) {
+    return acc;
+  }
+  acc[network2.chainId] = defineChain({
+    id: network2.chainId,
+    name: network2.title,
+    shortName: network2.name,
+    nativeCurrency: {
+      name: network2.nativeToken.name,
+      symbol: network2.nativeToken.symbol,
+      decimals: network2.nativeToken.decimals
+    },
+    rpcUrls: {
+      default: {
+        http: [network2.rpcUrl]
+      }
+    },
+    ...network2.blockExplorer ? {
+      blockExplorers: {
+        default: {
+          name: network2.blockExplorer.name,
+          url: network2.blockExplorer.rootUrl
+        }
+      }
+    } : void 0
+  });
+  return acc;
+}, {});
+const getDefaultChains = (chainIdsFilter) => {
+  if (chainIdsFilter) {
+    return chainIdsFilter.map((chainId) => {
+      const chain = chains$1[chainId];
+      if (!chain) {
+        throw new Error(`Chain with id ${chainId} not supported by Sequence`);
+      }
+      return chain;
+    });
+  }
+  return Object.values(chains$1);
+};
+function walletClientToSigner(walletClient) {
+  var _a2, _b2;
+  const { account: account2, chain, transport } = walletClient;
+  const network2 = {
+    chainId: chain.id,
+    name: chain.name,
+    ensAddress: (_b2 = (_a2 = chain.contracts) == null ? void 0 : _a2.ensRegistry) == null ? void 0 : _b2.address
+  };
+  const provider2 = new Web3Provider(transport, network2);
+  const signer2 = provider2.getSigner(account2.address);
+  return signer2;
+}
+function publicClientToProvider(publicClient) {
+  var _a2, _b2;
+  const { chain, transport } = publicClient;
+  const network2 = {
+    chainId: chain.id,
+    name: chain.name,
+    ensAddress: (_b2 = (_a2 = chain.contracts) == null ? void 0 : _a2.ensRegistry) == null ? void 0 : _b2.address
+  };
+  if (transport.type === "fallback")
+    return new FallbackProvider(transport.transports.map(({ value }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
+  return new JsonRpcProvider$1(transport.url, network2);
+}
+const signEthAuthProof = async (walletClient, storage) => {
+  const proofInformation = await storage.getItem(LocalStorageKey.EthAuthProof);
+  if (proofInformation) {
+    return proofInformation;
+  }
+  const proofSettings = await storage.getItem(LocalStorageKey.EthAuthSettings);
+  if (!proofSettings) {
+    throw new Error("No ETHAuth settings found");
+  }
+  const walletAddress = walletClient.account.address;
+  const proof = new Proof();
+  proof.address = walletAddress;
+  proof.claims.app = proofSettings.app || "app";
+  proof.claims.ogn = proofSettings.origin;
+  proof.claims.n = proofSettings.nonce;
+  proof.setExpiryIn(proofSettings.expiry ? Math.max(proofSettings.expiry, 200) : DEFAULT_SESSION_EXPIRATION);
+  const typedData = proof.messageTypedData();
+  typedData.domain.verifyingContract;
+  const signer2 = walletClientToSigner(walletClient);
+  const signature2 = await signer2._signTypedData(typedData.domain, typedData.types, typedData.message);
+  proof.signature = signature2;
+  const ethAuth = new ETHAuth();
+  const proofString = await ethAuth.encodeProof(proof, true);
+  return {
+    typedData,
+    proofString
+  };
+};
+const validateEthProof = async (walletClient, publicClient, proof) => {
+  const walletAddress = walletClient.account.address;
+  const ethAuth = new ETHAuth();
+  const decodedProof = await ethAuth.decodeProof(proof.proofString, true);
+  const provider2 = publicClientToProvider(publicClient);
+  const isValid2 = await sequence$1.utils.isValidTypedDataSignature(walletAddress, proof.typedData, decodedProof.signature, provider2);
+  return isValid2;
+};
+const mock = (options) => ({
+  id: "mock",
+  isSequenceBased: true,
+  logoDark: SequenceLogo,
+  logoLight: SequenceLogo,
+  // iconBackground: '#777',
+  name: "Mock",
+  createConnector: () => {
+    const connector = mock$1(options);
+    return connector;
+  }
+});
 const useOpenConnectModal = () => {
   const { setOpenConnectModal, openConnectModalState } = useConnectModalContext();
   return { setOpenConnectModal, openConnectModalState };
@@ -97857,7 +98081,7 @@ const fetchSardineClientToken = async ({ order, isDev, projectAccessKey: project
       params: {
         name: (tokenMetadata == null ? void 0 : tokenMetadata.name) || "Unknown",
         imageUrl: (tokenMetadata == null ? void 0 : tokenMetadata.image) || "https://sequence.market/images/placeholder.png",
-        network: networks$1[order.chainId].name,
+        network: networks[order.chainId].name,
         recipientAddress: order.recipientAddress,
         contractAddress: order.contractAddress,
         platform: "calldata_execution",
@@ -107167,10 +107391,6 @@ const KitWalletContent = ({ children }) => {
     }
   }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenWalletModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-wallet-content", children: [getHeader(navigation), displayScrollbar ? jsxRuntimeExports$1.jsx(Scroll, { style: { paddingTop: HEADER_HEIGHT, height: "min(800px, 80vh)" }, children: getContent(navigation) }) : getContent(navigation)] }) }) }) }) }), children] }) });
 };
-const networks = [
-  { chainId: ChainId.ARBITRUM_SEPOLIA, title: "Arbitrum Sepolia" },
-  { chainId: ChainId.ARBITRUM_NOVA, title: "Arbitrum Nova" }
-];
 const Header = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsxs(
     Box,
@@ -107272,6 +107492,7 @@ const AccountMenu = () => {
 };
 const NetworkSelect = () => {
   var _a2;
+  const chains2 = useChains();
   const chainId = useChainId();
   const { switchChain: switchChain2 } = useSwitchChain();
   const [isOpen, toggleOpen] = reactExports.useState(false);
@@ -107294,7 +107515,7 @@ const NetworkSelect = () => {
         children: [
           /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", gap: "2", children: [
             /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "sm" }),
-            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { display: { sm: "none", lg: "block" }, variant: "normal", fontWeight: "bold", color: "text100", children: ((_a2 = networks.find((x) => x.chainId === chainId)) == null ? void 0 : _a2.title) || chainId })
+            /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { display: { sm: "none", lg: "block" }, variant: "normal", fontWeight: "bold", color: "text100", children: ((_a2 = chains2.find((chain) => chain.id === chainId)) == null ? void 0 : _a2.name) || chainId })
           ] }),
           /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { color: "text50", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(SvgChevronDownIcon, {}) })
         ]
@@ -107310,19 +107531,19 @@ const NetworkSelect = () => {
         padding: "2",
         flexDirection: "column",
         gap: "2",
-        children: networks.map(({ chainId: chainId2, title }) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+        children: chains2.map((chain) => /* @__PURE__ */ jsxRuntimeExports$1.jsx(
           Button,
           {
             width: "full",
             shape: "square",
             onClick: () => {
-              switchChain2({ chainId: chainId2 });
+              switchChain2({ chainId: chain.id });
               toggleOpen(false);
             },
-            leftIcon: () => /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId: chainId2, size: "sm" }),
-            label: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { alignItems: "center", gap: "2", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: title }) })
+            leftIcon: () => /* @__PURE__ */ jsxRuntimeExports$1.jsx(NetworkImage, { chainId: chain.id, size: "sm" }),
+            label: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Box, { alignItems: "center", gap: "2", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", children: chain.name }) })
           },
-          chainId2
+          chain.id
         ))
       }
     ) }) })
@@ -108261,128 +108482,15 @@ const ConnectionModeSelect = (props) => {
     }
   );
 };
-const arbitrumNova = /* @__PURE__ */ defineChain({
-  id: 42170,
-  name: "Arbitrum Nova",
-  nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-  rpcUrls: {
-    default: {
-      http: ["https://nova.arbitrum.io/rpc"]
-    }
-  },
-  blockExplorers: {
-    default: {
-      name: "Arbiscan",
-      url: "https://nova.arbiscan.io",
-      apiUrl: "https://api-nova.arbiscan.io/api"
-    }
-  },
-  contracts: {
-    multicall3: {
-      address: "0xca11bde05977b3631167028862be2a173976ca11",
-      blockCreated: 1746963
-    }
-  }
-});
-const arbitrumSepolia = /* @__PURE__ */ defineChain({
-  id: 421614,
-  name: "Arbitrum Sepolia",
-  nativeCurrency: {
-    name: "Arbitrum Sepolia Ether",
-    symbol: "ETH",
-    decimals: 18
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://sepolia-rollup.arbitrum.io/rpc"]
-    }
-  },
-  blockExplorers: {
-    default: {
-      name: "Arbiscan",
-      url: "https://sepolia.arbiscan.io",
-      apiUrl: "https://api-sepolia.arbiscan.io/api"
-    }
-  },
-  contracts: {
-    multicall3: {
-      address: "0xca11bde05977b3631167028862be2a173976ca11",
-      blockCreated: 81930
-    }
-  },
-  testnet: true
-});
-const mainnet = /* @__PURE__ */ defineChain({
-  id: 1,
-  name: "Ethereum",
-  nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-  rpcUrls: {
-    default: {
-      http: ["https://cloudflare-eth.com"]
-    }
-  },
-  blockExplorers: {
-    default: {
-      name: "Etherscan",
-      url: "https://etherscan.io",
-      apiUrl: "https://api.etherscan.io/api"
-    }
-  },
-  contracts: {
-    ensRegistry: {
-      address: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
-    },
-    ensUniversalResolver: {
-      address: "0xce01f8eee7E479C928F8919abD53E553a36CeF67",
-      blockCreated: 19258213
-    },
-    multicall3: {
-      address: "0xca11bde05977b3631167028862be2a173976ca11",
-      blockCreated: 14353601
-    }
-  }
-});
-const polygon = /* @__PURE__ */ defineChain({
-  id: 137,
-  name: "Polygon",
-  nativeCurrency: { name: "MATIC", symbol: "MATIC", decimals: 18 },
-  rpcUrls: {
-    default: {
-      http: ["https://polygon-rpc.com"]
-    }
-  },
-  blockExplorers: {
-    default: {
-      name: "PolygonScan",
-      url: "https://polygonscan.com",
-      apiUrl: "https://api.polygonscan.com/api"
-    }
-  },
-  contracts: {
-    multicall3: {
-      address: "0xca11bde05977b3631167028862be2a173976ca11",
-      blockCreated: 25770160
-    }
-  }
-});
 const searchParams = new URLSearchParams(location.search);
 const connectionMode = searchParams.get("mode") === "universal" ? "universal" : "waas";
 const isDebugMode = searchParams.has("debug");
 const projectAccessKey = isDebugMode ? "AQAAAAAAAAK2JvvZhWqZ51riasWBftkrVXE" : "AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI";
-const chains = [arbitrumNova, arbitrumSepolia, mainnet, polygon];
+const chains = getDefaultChains([ChainId.ARBITRUM_NOVA, ChainId.ARBITRUM_SEPOLIA]);
 const transports = chains.reduce((acc, chain) => {
-  const network2 = findNetworkConfig(allNetworks, chain.id);
-  if (network2) {
-    acc[chain.id] = http(network2.rpcUrl);
-  }
+  acc[chain.id] = http();
   return acc;
 }, {});
-chains.forEach((chain) => {
-  const network2 = findNetworkConfig(allNetworks, chain.id);
-  if (!network2)
-    return;
-  transports[chain.id] = http(network2.rpcUrl);
-});
 const waasConfigKey = isDebugMode ? "eyJwcm9qZWN0SWQiOjY5NCwicnBjU2VydmVyIjoiaHR0cHM6Ly9kZXYtd2Fhcy5zZXF1ZW5jZS5hcHAiLCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI1NGF0bjV1cGk2M3FjNTlhMWVtM3ZiaHJzbiJ9" : "eyJwcm9qZWN0SWQiOjE2ODE1LCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI2N2V2NXVvc3ZxMzVmcGI2OXI3NnJoYnVoIiwicnBjU2VydmVyIjoiaHR0cHM6Ly93YWFzLnNlcXVlbmNlLmFwcCJ9";
 const googleClientId = isDebugMode ? "603294233249-6h5saeg2uiu8akpcbar3r2aqjp6j7oem.apps.googleusercontent.com" : "970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com";
 const appleClientId = "com.horizon.sequence.waas";
@@ -108391,7 +108499,7 @@ const getWaasConnectors = () => {
   const connectors = [
     ...getDefaultWaasConnectors({
       walletConnectProjectId: "c65a6cb1aa83c4e24500130f23a437d8",
-      defaultChainId: arbitrumNova.id,
+      defaultChainId: ChainId.ARBITRUM_NOVA,
       waasConfigKey,
       googleClientId,
       appleClientId,
@@ -108415,7 +108523,7 @@ const getUniversalConnectors = () => {
   const connectors = [
     ...getDefaultConnectors({
       walletConnectProjectId: "c65a6cb1aa83c4e24500130f23a437d8",
-      defaultChainId: arbitrumNova.id,
+      defaultChainId: ChainId.ARBITRUM_NOVA,
       appName: "demo app",
       projectAccessKey
     }),
@@ -108445,27 +108553,27 @@ const kitConfig = {
     // Native token
     {
       contractAddress: zeroAddress,
-      chainId: arbitrumNova.id
+      chainId: ChainId.ARBITRUM_NOVA
     },
     // Native token
     {
       contractAddress: zeroAddress,
-      chainId: arbitrumSepolia.id
+      chainId: ChainId.ARBITRUM_SEPOLIA
     },
     // Waas demo NFT
     {
       contractAddress: "0x0d402c63cae0200f0723b3e6fa0914627a48462e",
-      chainId: arbitrumNova.id
+      chainId: ChainId.ARBITRUM_NOVA
     },
     // Waas demo NFT
     {
       contractAddress: "0x0d402c63cae0200f0723b3e6fa0914627a48462e",
-      chainId: arbitrumSepolia.id
+      chainId: ChainId.ARBITRUM_SEPOLIA
     },
     // Skyweaver assets
     {
       contractAddress: "0x631998e91476da5b870d741192fc5cbc55f5a52e",
-      chainId: polygon.id
+      chainId: ChainId.POLYGON
     }
   ]
 };
