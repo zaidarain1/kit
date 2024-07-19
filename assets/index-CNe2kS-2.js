@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-D_RrYdP1.js","./hooks.module-DLP_Iagz.js","./___vite-browser-external_commonjs-proxy-DKBqX_5u.js","./index-CRdlQvsf.js","./index.es-DGEQGd-Y.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DLnMMMNs.js","./hooks.module-BiTlpRnt.js","./___vite-browser-external_commonjs-proxy-Djjo9xOr.js","./index-D2ki8AyR.js","./index.es-CHVuEHk1.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -74003,7 +74003,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DrDKiGFJ.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CX10RYa4.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84707,7 +84707,7 @@ const useIndexerClient = (chainId) => {
   }
   const indexerClient = indexerClients.get(chainId);
   if (!indexerClient) {
-    throw new Error("Indexer client not found");
+    throw new Error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
   }
   return indexerClient;
 };
@@ -84726,7 +84726,7 @@ const useIndexerClients = (chainIds) => {
     }
     const indexerClient = indexerClients.get(chainId);
     if (!indexerClient) {
-      throw new Error("Indexer client not found");
+      throw new Error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
     }
     result.set(chainId, indexerClient);
   }
@@ -96906,7 +96906,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-D_RrYdP1.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DLnMMMNs.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97083,7 +97083,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-CRdlQvsf.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-D2ki8AyR.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97317,7 +97317,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DGEQGd-Y.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CHVuEHk1.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -98791,6 +98791,7 @@ const sampleSize = (collection, n2) => {
   }
   return sampled;
 };
+const isTruthy = (value) => Boolean(value);
 const getPercentageColor = (value) => {
   if (value > 0) {
     return vars.colors.positive;
@@ -98884,15 +98885,29 @@ const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClient
         otherAssetsByChainId[asset.chainId].push(asset);
       });
       tokenBalances = (await Promise.all([
-        ...Object.keys(nativeTokensByChainId).map((chainId) => getNativeTokenBalance(indexerClients.get(Number(chainId)), Number(chainId), accountAddress)),
-        ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => getTokenBalances(indexerClients.get(Number(chainId)), {
-          accountAddress,
-          contractAddress: asset.contractAddress,
-          includeMetadata: false,
-          hideCollectibles,
-          verifiedOnly
-        }))).flat()
-      ])).flat();
+        ...Object.keys(nativeTokensByChainId).map((chainId) => {
+          const indexerClient = indexerClients.get(Number(chainId));
+          if (!indexerClient) {
+            console.error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
+            return null;
+          }
+          return getNativeTokenBalance(indexerClient, Number(chainId), accountAddress);
+        }),
+        ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => {
+          const indexerClient = indexerClients.get(Number(chainId));
+          if (!indexerClient) {
+            console.error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
+            return [];
+          }
+          return getTokenBalances(indexerClient, {
+            accountAddress,
+            contractAddress: asset.contractAddress,
+            includeMetadata: false,
+            hideCollectibles,
+            verifiedOnly
+          });
+        })).flat()
+      ])).flat().filter(isTruthy);
     } else {
       tokenBalances = (await Promise.all([
         ...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)),
@@ -98921,7 +98936,11 @@ const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClient
       if (customDisplayAssets) {
         return collectionBalance;
       }
-      const balance = await getCollectionBalance(indexerClients.get(collectionBalance.chainId), {
+      const indexerClient = indexerClients.get(collectionBalance.chainId);
+      if (!indexerClient) {
+        throw new Error(`Indexer client not found for chainId: ${collectionBalance.chainId}, did you forget to add this Chain?`);
+      }
+      const balance = await getCollectionBalance(indexerClient, {
         accountAddress,
         chainId: collectionBalance.chainId,
         contractAddress: collectionBalance.contractAddress,
@@ -108486,7 +108505,7 @@ const searchParams = new URLSearchParams(location.search);
 const connectionMode = searchParams.get("mode") === "universal" ? "universal" : "waas";
 const isDebugMode = searchParams.has("debug");
 const projectAccessKey = isDebugMode ? "AQAAAAAAAAK2JvvZhWqZ51riasWBftkrVXE" : "AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI";
-const chains = getDefaultChains([ChainId.ARBITRUM_NOVA, ChainId.ARBITRUM_SEPOLIA]);
+const chains = getDefaultChains([ChainId.ARBITRUM_NOVA, ChainId.ARBITRUM_SEPOLIA, ChainId.POLYGON]);
 const transports = chains.reduce((acc, chain) => {
   acc[chain.id] = http();
   return acc;
