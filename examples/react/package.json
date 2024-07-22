@@ -1,6 +1,6 @@
 {
   "name": "@0xsequence/kit-example-react",
-  "version": "0.7.14",
+  "version": "0.7.13",
   "private": true,
   "homepage": "kit",
   "type": "module",
@@ -11,13 +11,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@0xsequence/design-system": "^1.7.1",
+    "@0xsequence/design-system": "^1.7.3",
     "@0xsequence/kit": "workspace:*",
     "@0xsequence/kit-checkout": "workspace:*",
-    "@0xsequence/kit-connectors": "workspace:*",
     "@0xsequence/kit-wallet": "workspace:*",
     "@0xsequence/kit-example-shared-components": "workspace:*",
-    "@0xsequence/network": "^1.9.34",
+    "@0xsequence/network": "^1.9.37",
     "@tanstack/react-query": "^5.37.1",
     "framer-motion": "^8.5.2",
     "react": "^18.3.1",

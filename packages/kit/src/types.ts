@@ -18,7 +18,8 @@ export interface WalletProperties {
   name: string
   iconBackground?: string
   hideConnectorId?: string | null
-  isSequenceBased?: boolean
+  isSequenceBased?: boolean,
+  type?: 'social' | 'wallet'
 }
 
 export type Wallet = WalletProperties & {
@@ -68,9 +69,6 @@ export interface KitConfig {
   signIn?: {
     logoUrl?: string
     projectName?: string
-    showEmailInput?: boolean
-    socialAuthOptions?: string[]
-    walletAuthOptions?: string[]
     useMock?: boolean
   }
   displayedAssets?: DisplayedAsset[]

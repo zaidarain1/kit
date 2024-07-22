@@ -15,8 +15,12 @@ export type {
   StorageItem
 } from './types'
 
+// Config
+export { getDefaultConnectors, getDefaultWaasConnectors } from './config/defaultConnectors'
+export { getDefaultChains } from './config/defaultChains'
+
 // Constants
-export { LocalStorageKey, defaultSignInOptions, DEFAULT_SESSION_EXPIRATION } from './constants'
+export { LocalStorageKey, DEFAULT_SESSION_EXPIRATION } from './constants'
 
 // Utils
 export { getKitConnectWallets } from './utils/getKitConnectWallets'
@@ -34,6 +38,27 @@ export { useConnectModalContext, ConnectModalContextProvider } from './contexts/
 export { useThemeContext, ThemeContextProvider } from './contexts/Theme'
 export { useWalletConfigContext, WalletConfigContextProvider } from './contexts/WalletSettings'
 
+// Connectors
+export { apple, type AppleOptions } from './connectors/apple'
+export { appleWaas, type AppleWaasOptions } from './connectors/apple/appleWaas'
+export { coinbaseWallet } from './connectors/coinbaseWallet'
+export { discord, type DiscordOptions } from './connectors/discord'
+export { email, type EmailOptions } from './connectors/email'
+export { emailWaas, type EmailWaasOptions } from './connectors/email/emailWaas'
+export { facebook, type FacebookOptions } from './connectors/facebook'
+export { google, type GoogleOptions } from './connectors/google'
+export { googleWaas, type GoogleWaasOptions } from './connectors/google/googleWaas'
+export { mock } from './connectors/mock'
+export { sequence, type SequenceOptions } from './connectors/sequence'
+export { twitch, type TwitchOptions } from './connectors/twitch'
+export { walletConnect } from './connectors/walletConnect'
+export {
+  sequenceWallet,
+  sequenceWaasWallet,
+  type BaseSequenceConnectorOptions,
+  type BaseSequenceWaasConnectorOptions
+} from './connectors/wagmiConnectors'
+
 // Hooks
 export { useOpenConnectModal } from './hooks/useOpenConnectModal'
 export { useTheme } from './hooks/useTheme'
@@ -45,6 +70,7 @@ export { useAPIClient } from './hooks/useAPIClient'
 export { useMetadataClient } from './hooks/useMetadataClient'
 export { useIndexerClient, useIndexerClients } from './hooks/useIndexerClient'
 export { useStorage, useStorageItem } from './hooks/useStorage'
+export { useChain } from './hooks/useChain'
 export {
   getNativeTokenBalance,
   getCollectionBalance,

@@ -1,22 +1,15 @@
 # @0xsequence/kit-connectors
 
-## 2.9.2
+## 2.10.0
+
+### Minor Changes
+
+- Merged kit-connectors package into kit
 
 ### Patch Changes
 
-- Fixing Sequence Waas Provider methods
-
 - Updated dependencies []:
-  - @0xsequence/kit@2.9.2
-
-## 2.9.1
-
-### Patch Changes
-
-- Adding wallet_switchEthereumChain support to SequenceWaasProvider
-
-- Updated dependencies []:
-  - @0xsequence/kit@2.9.1
+  - @0xsequence/kit@2.10.0
 
 ## 2.9.0
 
