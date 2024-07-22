@@ -1,5 +1,14 @@
 # @0xsequence/kit-example-react
 
+## 0.7.13
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @0xsequence/kit-checkout@2.10.0
+  - @0xsequence/kit@2.10.0
+  - @0xsequence/kit-wallet@2.10.0
+
 ## 0.7.12
 
 ### Patch Changes

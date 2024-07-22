@@ -1,5 +1,16 @@
 # @0xsequence/kit-wallet
 
+## 2.10.0
+
+### Minor Changes
+
+- Merged kit-connectors package into kit
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @0xsequence/kit@2.10.0
+
 ## 2.9.0
 
 ### Minor Changes
