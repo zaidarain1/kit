@@ -1,5 +1,11 @@
 # @0xsequence/kit
 
+## 2.10.0
+
+### Minor Changes
+
+- Merged kit-connectors package into kit
+
 ## 2.9.0
 
 ### Minor Changes
