@@ -20,7 +20,7 @@ export { getDefaultConnectors, getDefaultWaasConnectors } from './config/default
 export { getDefaultChains } from './config/defaultChains'
 
 // Constants
-export { LocalStorageKey, defaultSignInOptions, DEFAULT_SESSION_EXPIRATION } from './constants'
+export { LocalStorageKey, DEFAULT_SESSION_EXPIRATION } from './constants'
 
 // Utils
 export { getKitConnectWallets } from './utils/getKitConnectWallets'
@@ -48,8 +48,6 @@ export { emailWaas, type EmailWaasOptions } from './connectors/email/emailWaas'
 export { facebook, type FacebookOptions } from './connectors/facebook'
 export { google, type GoogleOptions } from './connectors/google'
 export { googleWaas, type GoogleWaasOptions } from './connectors/google/googleWaas'
-export { injected } from './connectors/injected'
-export { metamask } from './connectors/metamask'
 export { mock } from './connectors/mock'
 export { sequence, type SequenceOptions } from './connectors/sequence'
 export { twitch, type TwitchOptions } from './connectors/twitch'

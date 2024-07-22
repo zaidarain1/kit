@@ -12,6 +12,7 @@ export const email = (options: EmailOptions): Wallet => ({
   logoLight: getEmailLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: 'Email',
+  type: 'social',
   createConnector: projectAccessKey => {
     const connector = sequenceWallet({
       ...options,
