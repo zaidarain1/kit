@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DLnMMMNs.js","./hooks.module-BiTlpRnt.js","./___vite-browser-external_commonjs-proxy-Djjo9xOr.js","./index-D2ki8AyR.js","./index.es-CHVuEHk1.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CbTvWdCb.js","./hooks.module-BtiWKmDu.js","./___vite-browser-external_commonjs-proxy-CGeMU8sh.js","./index-Dnb2bQnW.js","./index.es-ngtT-Lhg.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -74003,7 +74003,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CX10RYa4.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CTH-mCJZ.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -83923,11 +83923,6 @@ var LocalStorageKey;
   LocalStorageKey2["WaasEmailIdToken"] = "@kit.waasEmailIdToken";
   LocalStorageKey2["WaasSignInEmail"] = "@kit.waasSignInEmail";
 })(LocalStorageKey || (LocalStorageKey = {}));
-const defaultSignInOptions = {
-  showEmailInput: true,
-  walletAuthOptions: ["sequence", "sequence-waas", "metamask", "wallet-connect", "coinbase-wallet"],
-  socialAuthOptions: ["google", "facebook", "twitch", "apple", "google-waas", "apple-waas"]
-};
 const DEFAULT_SESSION_EXPIRATION = 60 * 60 * 24 * 7;
 const createGenericContext$2 = () => {
   const genericContext = reactExports.createContext(void 0);
@@ -84433,14 +84428,43 @@ const ConnectWalletContent = (props) => {
   const { isConnected } = useAccount();
   const { config: config2 = {} } = props;
   const { signIn: signIn3 = {} } = config2;
-  const { showEmailInput: showEmailConnector = defaultSignInOptions.showEmailInput, socialAuthOptions = defaultSignInOptions.socialAuthOptions, walletAuthOptions = defaultSignInOptions.walletAuthOptions } = signIn3;
   const { openConnectModal, setOpenConnectModal } = props;
   const [email2, setEmail] = reactExports.useState("");
   const [showEmailInput, setShowEmailInput] = reactExports.useState(false);
   const [showEmailWaasPinInput, setShowEmailWaasPinInput] = reactExports.useState(false);
   const [waasEmailPinCode, setWaasEmailPinCode] = reactExports.useState([]);
   const { connectors: baseConnectors, connect: connect2 } = useConnect();
-  const injectedConnectors = baseConnectors.filter((c2) => c2.type === "injected" && !c2.hasOwnProperty("_wallet")).map((connector) => {
+  const injectedSequenceConnector = baseConnectors.find((c2) => c2.id === "app.sequence");
+  const baseWalletConnectors = baseConnectors.filter((c2) => {
+    var _a2, _b2;
+    const isWalletProperties = !!(c2 == null ? void 0 : c2._wallet);
+    const isWallet = (((_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.type) || "wallet") === "wallet";
+    const displayEmailConnector = ((_b2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _b2.id) === "email";
+    return isWalletProperties && (isWallet || displayEmailConnector);
+  }).filter((c2) => {
+    var _a2;
+    if (((_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.id) === "sequence" && injectedSequenceConnector) {
+      return false;
+    }
+    return true;
+  });
+  const [showExtendedList, setShowExtendedList] = reactExports.useState(false);
+  const mockConnector = baseWalletConnectors.find((connector) => {
+    return connector._wallet.id === "mock";
+  });
+  const emailConnector = baseConnectors.find((c2) => {
+    var _a2;
+    return (_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.id.includes("email");
+  });
+  const injectedConnectors = baseConnectors.filter((c2) => c2.type === "injected").filter((connector) => {
+    if (connector.id === "com.coinbase.wallet") {
+      return !baseConnectors.find((connector2) => {
+        var _a2;
+        return ((_a2 = connector2 == null ? void 0 : connector2._wallet) == null ? void 0 : _a2.id) === "coinbase-wallet";
+      });
+    }
+    return true;
+  }).map((connector) => {
     const Logo = (props2) => {
       return jsxRuntimeExports$1.jsx(Image$1, { src: connector.icon, alt: connector.name, disableAnimation: true, ...props2 });
     };
@@ -84450,30 +84474,21 @@ const ConnectWalletContent = (props) => {
         id: connector.id,
         name: connector.name,
         logoLight: Logo,
-        logoDark: Logo
+        logoDark: Logo,
+        type: "wallet"
       }
     };
   });
-  const connectors = baseConnectors.filter((c2) => !!(c2 == null ? void 0 : c2._wallet));
-  const [showExtendedList, setShowExtendedList] = reactExports.useState(false);
-  const mockConnector = connectors.find((connector) => {
-    return connector._wallet.id === "mock";
-  });
-  const emailConnector = showEmailConnector ? connectors.find((c2) => c2._wallet.id.includes("email")) : void 0;
   const walletConnectors = [
-    ...connectors.filter((connector) => {
-      const foundOption = walletAuthOptions.find((authOption) => authOption === connector._wallet.id) && !injectedConnectors.some((injected2) => injected2.name === connector.name);
-      return !!foundOption;
-    }).sort((a2, b2) => {
-      return walletAuthOptions.indexOf(a2._wallet.id) - walletAuthOptions.indexOf(b2._wallet.id);
-    }),
+    ...baseWalletConnectors,
     ...injectedConnectors
   ];
-  const socialAuthConnectors = connectors.filter((connector) => {
-    const foundOption = socialAuthOptions.find((authOption) => authOption === connector._wallet.id);
-    return !!foundOption;
-  }).sort((a2, b2) => {
-    return socialAuthOptions.indexOf(a2._wallet.id) - socialAuthOptions.indexOf(b2._wallet.id);
+  const socialAuthConnectors = baseConnectors.filter((c2) => {
+    var _a2;
+    return ((_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.type) === "social";
+  }).filter((c2) => {
+    var _a2, _b2;
+    return !((_b2 = (_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.id) == null ? void 0 : _b2.includes("email"));
   });
   const isEmailOnly = emailConnector && socialAuthConnectors.length === 0 && walletConnectors.length === 0;
   const displayExtendedListButton = walletConnectors.length > 7;
@@ -84481,7 +84496,7 @@ const ConnectWalletContent = (props) => {
     setEmail(ev.target.value);
   };
   const { inProgress: emailAuthInProgress, loading: emailAuthLoading, initiateAuth: initiateEmailAuth, sendChallengeAnswer } = useEmailAuth({
-    connector: connectors.find((c2) => c2._wallet.id === "email-waas"),
+    connector: baseWalletConnectors.find((c2) => c2._wallet.id === "email-waas"),
     onSuccess: async (idToken) => {
       storage == null ? void 0 : storage.setItem(LocalStorageKey.WaasEmailIdToken, idToken);
       if (emailConnector) {
@@ -84495,7 +84510,6 @@ const ConnectWalletContent = (props) => {
     }
   }, [isConnected, openConnectModal]);
   const onConnect = (connector) => {
-    var _a2;
     if (signIn3.useMock && mockConnector) {
       connect2({ connector: mockConnector });
       return;
@@ -84504,13 +84518,6 @@ const ConnectWalletContent = (props) => {
       const email3 = prompt("Auto-email login, please specify the email address:");
       if ("setEmail" in connector) {
         connector.setEmail(email3);
-      }
-    }
-    if (connector._wallet.id === "metamask" && typeof window !== "undefined") {
-      const isMetamaskFound = !!((_a2 = window == null ? void 0 : window.ethereum) == null ? void 0 : _a2._metamask);
-      if (!isMetamaskFound) {
-        window.open("https://metamask.io/download/");
-        return;
       }
     }
     connect2({ connector });
@@ -84545,7 +84552,12 @@ const ConnectWalletContent = (props) => {
   }
   return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Banner, { config: config2 }), jsxRuntimeExports$1.jsx(Box, { marginTop: "6", children: emailConnector && (showEmailInput || isEmailOnly) ? jsxRuntimeExports$1.jsxs("form", { onSubmit: onConnectInlineEmail, children: [jsxRuntimeExports$1.jsx(TextInput, { onChange: onChangeEmail, value: email2, name: "email", placeholder: "Enter email", "data-1p-ignore": true }), jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "center", marginTop: "4", children: [!emailAuthInProgress && jsxRuntimeExports$1.jsxs(Box, { gap: "2", width: "full", children: [!isEmailOnly && jsxRuntimeExports$1.jsx(Button, { label: "Back", width: "full", onClick: () => setShowEmailInput(false) }), jsxRuntimeExports$1.jsx(Button, { type: "submit", variant: "primary", disabled: !isEmailValid(email2), width: "full", label: "Continue", rightIcon: SvgChevronRightIcon })] }), emailAuthInProgress && jsxRuntimeExports$1.jsx(Spinner, {})] })] }) : jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [(emailConnector || socialAuthConnectors.length > 0) && jsxRuntimeExports$1.jsxs(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap", children: [socialAuthConnectors.map((connector) => {
     return jsxRuntimeExports$1.jsxs(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: [connector._wallet.id === "google-waas" && jsxRuntimeExports$1.jsx(GoogleWaasConnectButton, { connector, onConnect }), connector._wallet.id === "apple-waas" && jsxRuntimeExports$1.jsx(AppleWaasConnectButton, { connector, onConnect }), !connector._wallet.id.includes("waas") && jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect })] }, connector.uid);
-  }), emailConnector && jsxRuntimeExports$1.jsx(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: jsxRuntimeExports$1.jsx(EmailConnectButton, { onClick: () => setShowEmailInput(true) }) })] }), walletConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [(emailConnector || socialAuthConnectors.length > 0) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid)) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] }) })] });
+  }), emailConnector && jsxRuntimeExports$1.jsx(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: jsxRuntimeExports$1.jsx(EmailConnectButton, { onClick: () => setShowEmailInput(true) }) })] }), walletConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [(emailConnector || socialAuthConnectors.length > 0) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => {
+    if (connector._wallet.id === "email" || connector._wallet.id === "email-waas") {
+      return null;
+    }
+    return jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid);
+  }) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] }) })] });
 };
 const BUTTON_SIZE = "14";
 const ICON_SIZE = "10";
@@ -96791,6 +96803,7 @@ const apple = (options) => ({
   monochromeLogoLight: getAppleMonochromeLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: "Apple",
+  type: "social",
   createConnector: (projectAccessKey2) => {
     var _a2;
     const connector = sequenceWallet({
@@ -96814,6 +96827,7 @@ const appleWaas = (options) => ({
   monochromeLogoDark: getAppleMonochromeLogo({ isDarkMode: true }),
   monochromeLogoLight: getAppleMonochromeLogo({ isDarkMode: false }),
   name: "Apple",
+  type: "social",
   createConnector: () => {
     const connector = sequenceWaasWallet({
       ...options,
@@ -96906,7 +96920,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DLnMMMNs.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CbTvWdCb.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97083,7 +97097,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-D2ki8AyR.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-Dnb2bQnW.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97317,7 +97331,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CHVuEHk1.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-ngtT-Lhg.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -97522,6 +97536,7 @@ const coinbaseWallet = (params) => ({
   logoDark: CoinbaseWalletLogo,
   logoLight: CoinbaseWalletLogo,
   name: "Coinbase Wallet",
+  type: "wallet",
   createConnector: () => {
     const connector = coinbaseWallet$1({ ...params });
     return connector;
@@ -97541,6 +97556,7 @@ const email = (options) => ({
   logoLight: getEmailLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: "Email",
+  type: "social",
   createConnector: (projectAccessKey2) => {
     var _a2;
     const connector = sequenceWallet({
@@ -97562,6 +97578,7 @@ const emailWaas = (options) => ({
   logoDark: getEmailLogo({ isDarkMode: true }),
   logoLight: getEmailLogo({ isDarkMode: false }),
   name: "Email",
+  type: "social",
   createConnector: () => {
     const connector = sequenceWaasWallet({
       ...options,
@@ -97589,6 +97606,7 @@ const facebook = (options) => ({
   monochromeLogoLight: getFacebookMonochromeLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: "Facebook",
+  type: "social",
   createConnector: (projectAccessKey2) => {
     var _a2;
     const connector = sequenceWallet({
@@ -97623,6 +97641,7 @@ const google = (options) => ({
   monochromeLogoDark: getMonochromeGoogleLogo({ isDarkMode: true }),
   monochromeLogoLight: getMonochromeGoogleLogo({ isDarkMode: false }),
   name: "Google",
+  type: "social",
   createConnector: (projectAccessKey2) => {
     var _a2;
     const connector = sequenceWallet({
@@ -97646,25 +97665,12 @@ const googleWaas = (options) => ({
   monochromeLogoDark: getMonochromeGoogleLogo({ isDarkMode: true }),
   monochromeLogoLight: getMonochromeGoogleLogo({ isDarkMode: false }),
   name: "Google",
+  type: "social",
   createConnector: () => {
     const connector = sequenceWaasWallet({
       ...options,
       loginType: "google"
     });
-    return connector;
-  }
-});
-const MetamaskLogo = (props) => {
-  return jsxRuntimeExports$1.jsxs("svg", { viewBox: "0 0 28 28", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...props, children: [jsxRuntimeExports$1.jsx("rect", { width: "28", height: "28" }), jsxRuntimeExports$1.jsx("path", { d: "M24.0891 3.1199L15.3446 9.61456L16.9617 5.7828L24.0891 3.1199Z", fill: "#E2761B", stroke: "#E2761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M3.90207 3.1199L12.5763 9.67608L11.0383 5.7828L3.90207 3.1199Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M20.9429 18.1745L18.6139 21.7426L23.597 23.1136L25.0295 18.2536L20.9429 18.1745Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M2.97929 18.2536L4.40301 23.1136L9.38607 21.7426L7.05713 18.1745L2.97929 18.2536Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.10483 12.1456L7.71626 14.2461L12.6642 14.4658L12.4884 9.14877L9.10483 12.1456Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.8864 12.1456L15.4589 9.08725L15.3446 14.4658L20.2837 14.2461L18.8864 12.1456Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.38606 21.7426L12.3566 20.2925L9.79033 18.2888L9.38606 21.7426Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.6347 20.2925L18.6139 21.7426L18.2009 18.2888L15.6347 20.2925Z", fill: "#E4761B", stroke: "#E4761B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.6139 21.7426L15.6347 20.2925L15.8719 22.2348L15.8456 23.0521L18.6139 21.7426Z", fill: "#D7C1B3", stroke: "#D7C1B3", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.38606 21.7426L12.1544 23.0521L12.1368 22.2348L12.3566 20.2925L9.38606 21.7426Z", fill: "#D7C1B3", stroke: "#D7C1B3", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M12.1984 17.0056L9.72002 16.2762L11.4689 15.4765L12.1984 17.0056Z", fill: "#233447", stroke: "#233447", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.7928 17.0056L16.5223 15.4765L18.28 16.2762L15.7928 17.0056Z", fill: "#233447", stroke: "#233447", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.38606 21.7426L9.80791 18.1745L7.05712 18.2536L9.38606 21.7426Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.1921 18.1745L18.6139 21.7426L20.9429 18.2536L18.1921 18.1745Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M20.2837 14.2461L15.3446 14.4658L15.8016 17.0057L16.5311 15.4765L18.2888 16.2762L20.2837 14.2461Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.72002 16.2762L11.4777 15.4765L12.1984 17.0057L12.6642 14.4658L7.71626 14.2461L9.72002 16.2762Z", fill: "#CD6116", stroke: "#CD6116", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M7.71626 14.2461L9.79033 18.2888L9.72002 16.2762L7.71626 14.2461Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M18.2888 16.2762L18.2009 18.2888L20.2837 14.2461L18.2888 16.2762Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M12.6642 14.4658L12.1984 17.0057L12.7784 20.0025L12.9102 16.0565L12.6642 14.4658Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.3446 14.4658L15.1073 16.0477L15.2128 20.0025L15.8016 17.0057L15.3446 14.4658Z", fill: "#E4751F", stroke: "#E4751F", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.8016 17.0056L15.2128 20.0025L15.6347 20.2925L18.2009 18.2888L18.2888 16.2762L15.8016 17.0056Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.72002 16.2762L9.79033 18.2888L12.3566 20.2925L12.7784 20.0025L12.1984 17.0056L9.72002 16.2762Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.8456 23.0521L15.8719 22.2348L15.6522 22.0414H12.339L12.1368 22.2348L12.1544 23.0521L9.38606 21.7426L10.3528 22.5336L12.3126 23.8958H15.6786L17.6472 22.5336L18.6139 21.7426L15.8456 23.0521Z", fill: "#C0AD9E", stroke: "#C0AD9E", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.6347 20.2925L15.2128 20.0025H12.7784L12.3566 20.2925L12.1368 22.2348L12.339 22.0414H15.6522L15.8719 22.2348L15.6347 20.2925Z", fill: "#161616", stroke: "#161616", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M24.4583 10.0364L25.2053 6.45072L24.0891 3.1199L15.6347 9.39485L18.8864 12.1456L23.4827 13.4903L24.5022 12.3038L24.0628 11.9874L24.7658 11.3459L24.221 10.924L24.924 10.3879L24.4583 10.0364Z", fill: "#763D16", stroke: "#763D16", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M2.79472 6.45072L3.54174 10.0364L3.06717 10.3879L3.77024 10.924L3.23415 11.3459L3.93722 11.9874L3.4978 12.3038L4.50847 13.4903L9.10483 12.1456L12.3566 9.39485L3.90207 3.1199L2.79472 6.45072Z", fill: "#763D16", stroke: "#763D16", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M23.4827 13.4903L18.8864 12.1456L20.2837 14.2461L18.2009 18.2888L20.9429 18.2536H25.0295L23.4827 13.4903Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M9.10484 12.1456L4.50848 13.4903L2.97929 18.2536H7.05713L9.79033 18.2888L7.71626 14.2461L9.10484 12.1456Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" }), jsxRuntimeExports$1.jsx("path", { d: "M15.3446 14.4658L15.6347 9.39485L16.9705 5.7828H11.0383L12.3566 9.39485L12.6642 14.4658L12.7696 16.0653L12.7784 20.0025H15.2128L15.2304 16.0653L15.3446 14.4658Z", fill: "#F6851B", stroke: "#F6851B", strokeWidth: "0.0878845", strokeLinecap: "round", strokeLinejoin: "round" })] });
-};
-const metamask = () => ({
-  id: "metamask",
-  logoDark: MetamaskLogo,
-  logoLight: MetamaskLogo,
-  // iconBackground: '#fff',
-  name: "Metamask",
-  createConnector: () => {
-    const connector = injected({ target: "metaMask" });
     return connector;
   }
 });
@@ -97678,6 +97684,7 @@ const sequence = (options) => ({
   logoLight: SequenceLogo,
   // iconBackground: '#777',
   name: "Sequence",
+  type: "wallet",
   createConnector: (projectAccessKey2) => {
     const connector = sequenceWallet({
       ...options,
@@ -97710,6 +97717,7 @@ const twitch = (options) => ({
   monochromeLogoLight: getTwitchLogo({ isDarkMode: false }),
   // iconBackground: '#fff',
   name: "Twitch",
+  type: "social",
   createConnector: (projectAccessKey2) => {
     var _a2;
     const connector = sequenceWallet({
@@ -97735,6 +97743,7 @@ const walletConnect = (options) => ({
   logoLight: WalletConnectLogo,
   // iconBackground: '#fff',
   name: "Walletconnect",
+  type: "wallet",
   createConnector: () => {
     const connector = walletConnect$1({
       ...options
@@ -97797,11 +97806,7 @@ const getDefaultConnectors = ({ walletConnectProjectId, defaultChainId, projectA
     }),
     walletConnect({
       projectId: walletConnectProjectId
-    }),
-    metamask()
-    // coinbaseWallet({
-    //   appName
-    // })
+    })
   ]);
   return connectors;
 };
@@ -97817,7 +97822,6 @@ const getDefaultWaasConnectors = ({ projectAccessKey: projectAccessKey2, waasCon
     coinbaseWallet({
       appName
     }),
-    metamask(),
     walletConnect({
       projectId: walletConnectProjectId
     })
@@ -97957,6 +97961,7 @@ const mock = (options) => ({
   logoLight: SequenceLogo,
   // iconBackground: '#777',
   name: "Mock",
+  type: "wallet",
   createConnector: () => {
     const connector = mock$1(options);
     return connector;
