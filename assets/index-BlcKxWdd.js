@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-6EC68s6N.js","./hooks.module-CinlGc11.js","./___vite-browser-external_commonjs-proxy-oQVq30mu.js","./index-dICBphlT.js","./index.es-DUc2iOhs.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DioC5A7I.js","./hooks.module-CR94OmzB.js","./___vite-browser-external_commonjs-proxy-B6QDVg13.js","./index-CRaiCr6n.js","./index.es-C5wqqseb.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -74003,7 +74003,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Boe4tIR1.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BwdTI8P7.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -84356,12 +84356,21 @@ function useEmailAuth({ connector, onSuccess }) {
   const [error, setError] = reactExports.useState();
   const [loading, setLoading] = reactExports.useState(false);
   const [instance, setInstance] = reactExports.useState("");
+  const getSequenceWaas = () => {
+    if (!connector) {
+      throw new Error("Connector is not defined");
+    }
+    const sequenceWaas = connector.sequenceWaas;
+    if (!sequenceWaas) {
+      throw new Error("Connector does not support SequenceWaaS");
+    }
+    return sequenceWaas;
+  };
   const initiateAuth = async (email3) => {
-    var _a2;
+    const waas = getSequenceWaas();
     setLoading(true);
     try {
-      const connectorAny = connector;
-      const { instance: instance2 } = await ((_a2 = connectorAny.sequenceWaas) == null ? void 0 : _a2.email.initiateAuth({ email: email3 }));
+      const { instance: instance2 } = await waas.email.initiateAuth({ email: email3 });
       setInstance(instance2);
       setEmail(email3);
     } catch (e2) {
@@ -84371,12 +84380,11 @@ function useEmailAuth({ connector, onSuccess }) {
     }
   };
   const sendChallengeAnswer = async (answer) => {
-    var _a2, _b2;
+    const waas = getSequenceWaas();
     setLoading(true);
     try {
-      const connectorAny = connector;
-      const sessionHash = await ((_a2 = connectorAny.sequenceWaas) == null ? void 0 : _a2.getSessionHash());
-      const { idToken } = await ((_b2 = connectorAny.sequenceWaas) == null ? void 0 : _b2.email.finalizeAuth({ instance, answer, email: email2, sessionHash }));
+      const sessionHash = await waas.getSessionHash();
+      const { idToken } = await waas.email.finalizeAuth({ instance, answer, email: email2, sessionHash });
       onSuccess(idToken);
     } catch (e2) {
       setError(e2.message || "Unknown error");
@@ -84407,160 +84415,9 @@ var ValueType$2;
 const capitalize$1 = (word) => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
-const Banner = ({ config: config2 = {} }) => {
-  const { signIn: signIn3 = {} } = config2;
-  const { logoUrl } = signIn3;
-  return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: logoUrl && jsxRuntimeExports$1.jsx(Box, { marginTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Image$1, { src: logoUrl, style: { height: "110px" } }) }) });
-};
-const ExtendedWalletList = ({ onConnect, connectors }) => {
-  const { theme } = useTheme$1();
-  const { isPending } = useConnect();
-  return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", marginTop: "5", children: connectors.map((connector) => {
-    const Logo = theme === "dark" ? connector._wallet.logoDark : connector._wallet.logoLight;
-    const walletName = connector._wallet.name;
-    const connectorId = connector._wallet.id;
-    return jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", leftIcon: () => jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", style: { backgroundColor: connector._wallet.iconBackground }, width: "8", height: "8", overflow: "hidden", children: jsxRuntimeExports$1.jsx(Logo, { style: { width: 30 } }) }), onClick: () => onConnect(connector), label: jsxRuntimeExports$1.jsxs(Text, { children: [walletName, isPending] }) }, connectorId);
-  }) });
-};
-const ConnectWalletContent = (props) => {
-  dist.useScript(dist.appleAuthHelpers.APPLE_SCRIPT_SRC);
-  const storage = useStorage();
-  const { isConnected } = useAccount();
-  const { config: config2 = {} } = props;
-  const { signIn: signIn3 = {} } = config2;
-  const { openConnectModal, setOpenConnectModal } = props;
-  const [email2, setEmail] = reactExports.useState("");
-  const [showEmailInput, setShowEmailInput] = reactExports.useState(false);
-  const [showEmailWaasPinInput, setShowEmailWaasPinInput] = reactExports.useState(false);
-  const [waasEmailPinCode, setWaasEmailPinCode] = reactExports.useState([]);
-  const { connectors: baseConnectors, connect: connect2 } = useConnect();
-  const injectedSequenceConnector = baseConnectors.find((c2) => c2.id === "app.sequence");
-  const baseWalletConnectors = baseConnectors.filter((c2) => {
-    var _a2, _b2;
-    const isWalletProperties = !!(c2 == null ? void 0 : c2._wallet);
-    const isWallet = (((_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.type) || "wallet") === "wallet";
-    const displayEmailConnector = ((_b2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _b2.id) === "email";
-    return isWalletProperties && (isWallet || displayEmailConnector);
-  }).filter((c2) => {
-    var _a2;
-    if (((_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.id) === "sequence" && injectedSequenceConnector) {
-      return false;
-    }
-    return true;
-  });
-  const [showExtendedList, setShowExtendedList] = reactExports.useState(false);
-  const mockConnector = baseWalletConnectors.find((connector) => {
-    return connector._wallet.id === "mock";
-  });
-  const emailConnector = baseConnectors.find((c2) => {
-    var _a2;
-    return (_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.id.includes("email");
-  });
-  const injectedConnectors = baseConnectors.filter((c2) => c2.type === "injected").filter((connector) => {
-    if (connector.id === "com.coinbase.wallet") {
-      return !baseConnectors.find((connector2) => {
-        var _a2;
-        return ((_a2 = connector2 == null ? void 0 : connector2._wallet) == null ? void 0 : _a2.id) === "coinbase-wallet";
-      });
-    }
-    return true;
-  }).map((connector) => {
-    const Logo = (props2) => {
-      return jsxRuntimeExports$1.jsx(Image$1, { src: connector.icon, alt: connector.name, disableAnimation: true, ...props2 });
-    };
-    return {
-      ...connector,
-      _wallet: {
-        id: connector.id,
-        name: connector.name,
-        logoLight: Logo,
-        logoDark: Logo,
-        type: "wallet"
-      }
-    };
-  });
-  const walletConnectors = [
-    ...baseWalletConnectors,
-    ...injectedConnectors
-  ];
-  const socialAuthConnectors = baseConnectors.filter((c2) => {
-    var _a2;
-    return ((_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.type) === "social";
-  }).filter((c2) => {
-    var _a2, _b2;
-    return !((_b2 = (_a2 = c2 == null ? void 0 : c2._wallet) == null ? void 0 : _a2.id) == null ? void 0 : _b2.includes("email"));
-  });
-  const isEmailOnly = emailConnector && socialAuthConnectors.length === 0 && walletConnectors.length === 0;
-  const displayExtendedListButton = walletConnectors.length > 7;
-  const onChangeEmail = (ev) => {
-    setEmail(ev.target.value);
-  };
-  const { inProgress: emailAuthInProgress, loading: emailAuthLoading, initiateAuth: initiateEmailAuth, sendChallengeAnswer } = useEmailAuth({
-    connector: baseWalletConnectors.find((c2) => c2._wallet.id === "email-waas"),
-    onSuccess: async (idToken) => {
-      storage == null ? void 0 : storage.setItem(LocalStorageKey.WaasEmailIdToken, idToken);
-      if (emailConnector) {
-        connect2({ connector: emailConnector });
-      }
-    }
-  });
-  reactExports.useEffect(() => {
-    if (isConnected && openConnectModal) {
-      setOpenConnectModal(false);
-    }
-  }, [isConnected, openConnectModal]);
-  const onConnect = (connector) => {
-    if (signIn3.useMock && mockConnector) {
-      connect2({ connector: mockConnector });
-      return;
-    }
-    if (connector._wallet.id === "email") {
-      const email3 = prompt("Auto-email login, please specify the email address:");
-      if ("setEmail" in connector) {
-        connector.setEmail(email3);
-      }
-    }
-    connect2({ connector });
-  };
-  const onConnectInlineEmail = async (e2) => {
-    e2.preventDefault();
-    if (signIn3.useMock && mockConnector) {
-      connect2({ connector: mockConnector });
-      return;
-    }
-    if (emailConnector) {
-      if ("setEmail" in emailConnector) {
-        emailConnector.setEmail(email2);
-      }
-      if (emailConnector._wallet.id === "email-waas") {
-        try {
-          await initiateEmailAuth(email2);
-          setShowEmailWaasPinInput(true);
-        } catch (e3) {
-          console.log(e3);
-        }
-      } else {
-        connect2({ connector: emailConnector });
-      }
-    }
-  };
-  if (showEmailWaasPinInput) {
-    return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: jsxRuntimeExports$1.jsxs(Box, { paddingY: "6", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { marginTop: "5", marginBottom: "4", variant: "normal", color: "text80", children: "Enter code received in email." }), jsxRuntimeExports$1.jsx(PINCodeInput, { value: waasEmailPinCode, digits: 6, onChange: setWaasEmailPinCode }), jsxRuntimeExports$1.jsx(Box, { gap: "2", marginY: "4", alignItems: "center", justifyContent: "center", style: { height: "44px" }, children: emailAuthLoading ? jsxRuntimeExports$1.jsx(Spinner, {}) : jsxRuntimeExports$1.jsx(Button, { variant: "primary", disabled: waasEmailPinCode.includes(""), label: "Verify", onClick: () => sendChallengeAnswer == null ? void 0 : sendChallengeAnswer(waasEmailPinCode.join("")), "data-id": "verifyButton" }) })] }) });
-  }
-  if (showExtendedList) {
-    return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Box, { position: "absolute", top: "4", children: jsxRuntimeExports$1.jsx(IconButton, { icon: SvgChevronLeftIcon, onClick: () => setShowExtendedList(false), size: "xs" }) }), jsxRuntimeExports$1.jsx(ExtendedWalletList, { connectors: walletConnectors, onConnect })] });
-  }
-  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Banner, { config: config2 }), jsxRuntimeExports$1.jsx(Box, { marginTop: "6", children: emailConnector && (showEmailInput || isEmailOnly) ? jsxRuntimeExports$1.jsxs("form", { onSubmit: onConnectInlineEmail, children: [jsxRuntimeExports$1.jsx(TextInput, { onChange: onChangeEmail, value: email2, name: "email", placeholder: "Enter email", "data-1p-ignore": true }), jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "center", marginTop: "4", children: [!emailAuthInProgress && jsxRuntimeExports$1.jsxs(Box, { gap: "2", width: "full", children: [!isEmailOnly && jsxRuntimeExports$1.jsx(Button, { label: "Back", width: "full", onClick: () => setShowEmailInput(false) }), jsxRuntimeExports$1.jsx(Button, { type: "submit", variant: "primary", disabled: !isEmailValid(email2), width: "full", label: "Continue", rightIcon: SvgChevronRightIcon })] }), emailAuthInProgress && jsxRuntimeExports$1.jsx(Spinner, {})] })] }) : jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [(emailConnector || socialAuthConnectors.length > 0) && jsxRuntimeExports$1.jsxs(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap", children: [socialAuthConnectors.map((connector) => {
-    return jsxRuntimeExports$1.jsxs(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: [connector._wallet.id === "google-waas" && jsxRuntimeExports$1.jsx(GoogleWaasConnectButton, { connector, onConnect }), connector._wallet.id === "apple-waas" && jsxRuntimeExports$1.jsx(AppleWaasConnectButton, { connector, onConnect }), !connector._wallet.id.includes("waas") && jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect })] }, connector.uid);
-  }), emailConnector && jsxRuntimeExports$1.jsx(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: jsxRuntimeExports$1.jsx(EmailConnectButton, { onClick: () => setShowEmailInput(true) }) })] }), walletConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [(emailConnector || socialAuthConnectors.length > 0) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => {
-    if (connector._wallet.id === "email" || connector._wallet.id === "email-waas") {
-      return null;
-    }
-    return jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid);
-  }) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] }) })] });
-};
 const BUTTON_SIZE = "14";
 const ICON_SIZE = "10";
+const getLogo = (theme, walletProps) => theme === "dark" ? walletProps.logoDark || walletProps.monochromeLogoDark : walletProps.logoLight || walletProps.monochromeLogoLight;
 const ConnectButton = (props) => {
   const { connector, label, onConnect } = props;
   const { theme } = useTheme$1();
@@ -84622,7 +84479,142 @@ const EmailConnectButton = (props) => {
   const { onClick } = props;
   return jsxRuntimeExports$1.jsx(Tooltip, { message: "Email", children: jsxRuntimeExports$1.jsx(Card, { clickable: true, width: BUTTON_SIZE, height: BUTTON_SIZE, padding: "2", borderRadius: "xs", justifyContent: "center", alignItems: "center", onClick, children: jsxRuntimeExports$1.jsx(SvgEmailIcon, { size: "xl", color: "text100" }) }) });
 };
-const getLogo = (theme, walletProps) => theme === "dark" ? walletProps.logoDark || walletProps.monochromeLogoDark : walletProps.logoLight || walletProps.monochromeLogoLight;
+const Banner = ({ config: config2 = {} }) => {
+  const { signIn: signIn3 = {} } = config2;
+  const { logoUrl } = signIn3;
+  return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: logoUrl && jsxRuntimeExports$1.jsx(Box, { marginTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Image$1, { src: logoUrl, style: { height: "110px" } }) }) });
+};
+const ExtendedWalletList = ({ onConnect, connectors }) => {
+  const { theme } = useTheme$1();
+  const { isPending } = useConnect();
+  return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", marginTop: "5", children: connectors.map((connector) => {
+    const Logo = theme === "dark" ? connector._wallet.logoDark : connector._wallet.logoLight;
+    const walletName = connector._wallet.name;
+    const connectorId = connector._wallet.id;
+    return jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", leftIcon: () => jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", style: { backgroundColor: connector._wallet.iconBackground }, width: "8", height: "8", overflow: "hidden", children: jsxRuntimeExports$1.jsx(Logo, { style: { width: 30 } }) }), onClick: () => onConnect(connector), label: jsxRuntimeExports$1.jsxs(Text, { children: [walletName, isPending] }) }, connectorId);
+  }) });
+};
+const ConnectWalletContent = (props) => {
+  dist.useScript(dist.appleAuthHelpers.APPLE_SCRIPT_SRC);
+  const storage = useStorage();
+  const { isConnected } = useAccount();
+  const { config: config2 = {} } = props;
+  const { signIn: signIn3 = {} } = config2;
+  const { openConnectModal, setOpenConnectModal } = props;
+  const [email2, setEmail] = reactExports.useState("");
+  const [showEmailInput, setShowEmailInput] = reactExports.useState(false);
+  const [showEmailWaasPinInput, setShowEmailWaasPinInput] = reactExports.useState(false);
+  const [showExtendedList, setShowExtendedList] = reactExports.useState(false);
+  const [waasEmailPinCode, setWaasEmailPinCode] = reactExports.useState([]);
+  const { connectors, connect: connect2 } = useConnect();
+  const hasInjectedSequenceConnector = connectors.some((c2) => c2.id === "app.sequence");
+  const baseWalletConnectors = connectors.filter((c2) => {
+    return c2._wallet && (c2._wallet.type === "wallet" || c2._wallet.type === void 0);
+  }).filter((c2) => {
+    var _a2;
+    if (((_a2 = c2._wallet) == null ? void 0 : _a2.id) === "sequence" && hasInjectedSequenceConnector) {
+      return false;
+    }
+    return true;
+  });
+  const mockConnector = baseWalletConnectors.find((connector) => {
+    return connector._wallet.id === "mock";
+  });
+  const injectedConnectors = connectors.filter((c2) => c2.type === "injected").filter((connector) => {
+    if (connector.id === "com.coinbase.wallet") {
+      return !connectors.find((connector2) => {
+        var _a2;
+        return ((_a2 = connector2 == null ? void 0 : connector2._wallet) == null ? void 0 : _a2.id) === "coinbase-wallet";
+      });
+    }
+    return true;
+  }).map((connector) => {
+    const Logo = (props2) => {
+      return jsxRuntimeExports$1.jsx(Image$1, { src: connector.icon, alt: connector.name, disableAnimation: true, ...props2 });
+    };
+    return {
+      ...connector,
+      _wallet: {
+        id: connector.id,
+        name: connector.name,
+        logoLight: Logo,
+        logoDark: Logo,
+        type: "wallet"
+      }
+    };
+  });
+  const socialAuthConnectors = connectors.filter((c2) => {
+    var _a2;
+    return ((_a2 = c2._wallet) == null ? void 0 : _a2.type) === "social";
+  });
+  const walletConnectors = [...baseWalletConnectors, ...injectedConnectors];
+  const emailConnector = socialAuthConnectors.find((c2) => c2._wallet.id.includes("email"));
+  const isEmailOnly = emailConnector && socialAuthConnectors.length === 1 && walletConnectors.length === 0;
+  const displayExtendedListButton = walletConnectors.length > 7;
+  const onChangeEmail = (ev) => {
+    setEmail(ev.target.value);
+  };
+  const { inProgress: emailAuthInProgress, loading: emailAuthLoading, initiateAuth: initiateEmailAuth, sendChallengeAnswer } = useEmailAuth({
+    connector: socialAuthConnectors.find((c2) => c2._wallet.id === "email-waas"),
+    onSuccess: async (idToken) => {
+      storage == null ? void 0 : storage.setItem(LocalStorageKey.WaasEmailIdToken, idToken);
+      if (emailConnector) {
+        connect2({ connector: emailConnector });
+      }
+    }
+  });
+  reactExports.useEffect(() => {
+    if (isConnected && openConnectModal) {
+      setOpenConnectModal(false);
+    }
+  }, [isConnected, openConnectModal]);
+  const onConnect = (connector) => {
+    if (signIn3.useMock && mockConnector) {
+      connect2({ connector: mockConnector });
+      return;
+    }
+    if (connector._wallet.id === "email") {
+      const email3 = prompt("Auto-email login, please specify the email address:");
+      if ("setEmail" in connector) {
+        connector.setEmail(email3);
+      }
+    }
+    connect2({ connector });
+  };
+  const onConnectInlineEmail = async (e2) => {
+    e2.preventDefault();
+    if (signIn3.useMock && mockConnector) {
+      connect2({ connector: mockConnector });
+      return;
+    }
+    if (emailConnector) {
+      if ("setEmail" in emailConnector) {
+        emailConnector.setEmail(email2);
+      }
+      if (emailConnector._wallet.id === "email-waas") {
+        try {
+          await initiateEmailAuth(email2);
+          setShowEmailWaasPinInput(true);
+        } catch (e3) {
+          console.log(e3);
+        }
+      } else {
+        connect2({ connector: emailConnector });
+      }
+    }
+  };
+  if (showEmailWaasPinInput) {
+    return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: jsxRuntimeExports$1.jsxs(Box, { paddingY: "6", alignItems: "center", justifyContent: "center", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { marginTop: "5", marginBottom: "4", variant: "normal", color: "text80", children: "Enter code received in email." }), jsxRuntimeExports$1.jsx(PINCodeInput, { value: waasEmailPinCode, digits: 6, onChange: setWaasEmailPinCode }), jsxRuntimeExports$1.jsx(Box, { gap: "2", marginY: "4", alignItems: "center", justifyContent: "center", style: { height: "44px" }, children: emailAuthLoading ? jsxRuntimeExports$1.jsx(Spinner, {}) : jsxRuntimeExports$1.jsx(Button, { variant: "primary", disabled: waasEmailPinCode.includes(""), label: "Verify", onClick: () => sendChallengeAnswer == null ? void 0 : sendChallengeAnswer(waasEmailPinCode.join("")), "data-id": "verifyButton" }) })] }) });
+  }
+  if (showExtendedList) {
+    return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Box, { position: "absolute", top: "4", children: jsxRuntimeExports$1.jsx(IconButton, { icon: SvgChevronLeftIcon, onClick: () => setShowExtendedList(false), size: "xs" }) }), jsxRuntimeExports$1.jsx(ExtendedWalletList, { connectors: walletConnectors, onConnect })] });
+  }
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Banner, { config: config2 }), jsxRuntimeExports$1.jsx(Box, { marginTop: "6", children: emailConnector && (showEmailInput || isEmailOnly) ? jsxRuntimeExports$1.jsxs("form", { onSubmit: onConnectInlineEmail, children: [jsxRuntimeExports$1.jsx(TextInput, { onChange: onChangeEmail, value: email2, name: "email", placeholder: "Enter email", "data-1p-ignore": true }), jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "center", marginTop: "4", children: [!emailAuthInProgress && jsxRuntimeExports$1.jsxs(Box, { gap: "2", width: "full", children: [!isEmailOnly && jsxRuntimeExports$1.jsx(Button, { label: "Back", width: "full", onClick: () => setShowEmailInput(false) }), jsxRuntimeExports$1.jsx(Button, { type: "submit", variant: "primary", disabled: !isEmailValid(email2), width: "full", label: "Continue", rightIcon: SvgChevronRightIcon })] }), emailAuthInProgress && jsxRuntimeExports$1.jsx(Spinner, {})] })] }) : jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [socialAuthConnectors.length > 0 && jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap", children: socialAuthConnectors.map((connector) => {
+    return jsxRuntimeExports$1.jsx(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: connector._wallet.id === "google-waas" ? jsxRuntimeExports$1.jsx(GoogleWaasConnectButton, { connector, onConnect }) : connector._wallet.id === "apple-waas" ? jsxRuntimeExports$1.jsx(AppleWaasConnectButton, { connector, onConnect }) : connector._wallet.id.includes("email") ? jsxRuntimeExports$1.jsx(EmailConnectButton, { onClick: () => setShowEmailInput(true) }) : jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }) }, connector.uid);
+  }) }), walletConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [socialAuthConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => {
+    return jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid);
+  }) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] }) })] });
+};
 const getNetworkColor = (chainId, mode = "light") => {
   switch (chainId) {
     case ChainId.MAINNET:
@@ -96920,7 +96912,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-6EC68s6N.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DioC5A7I.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97097,7 +97089,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-dICBphlT.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CRaiCr6n.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97331,7 +97323,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DUc2iOhs.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C5wqqseb.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -108605,7 +108597,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "0.7.13");
+console.log("VERSION:", "0.7.14");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
