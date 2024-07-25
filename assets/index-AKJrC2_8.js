@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DioC5A7I.js","./hooks.module-CR94OmzB.js","./___vite-browser-external_commonjs-proxy-B6QDVg13.js","./index-CRaiCr6n.js","./index.es-C5wqqseb.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CTZHiPZI.js","./hooks.module-B5_EMLad.js","./___vite-browser-external_commonjs-proxy-yoAa9Tua.js","./index-crXdCf-3.js","./index.es-DmpytjZ4.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -74003,7 +74003,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BwdTI8P7.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-B_0qp9C5.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -96912,7 +96912,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DioC5A7I.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CTZHiPZI.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97089,7 +97089,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-CRaiCr6n.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-crXdCf-3.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97323,7 +97323,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C5wqqseb.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DmpytjZ4.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -98342,7 +98342,6 @@ const CheckoutSelection = () => {
   const { setNavigation } = useNavigation$1();
   const { closeCheckout, settings } = useCheckoutModal();
   const { address: accountAddress } = useAccount();
-  useProjectAccessKey();
   const cryptoCheckoutSettings = settings == null ? void 0 : settings.cryptoCheckout;
   const creditCardCheckoutSettings = settings == null ? void 0 : settings.creditCardCheckout;
   const displayCreditCardCheckout = !!creditCardCheckoutSettings;
@@ -107881,7 +107880,21 @@ const abi = [
     type: "function"
   }
 ];
-const orderbookAbi = [{ "inputs": [{ "internalType": "uint256", "name": "requestId", "type": "uint256" }, { "internalType": "uint256", "name": "quantity", "type": "uint256" }, { "internalType": "address", "name": "recipient", "type": "address" }, { "internalType": "uint256[]", "name": "additionalFees", "type": "uint256[]" }, { "internalType": "address[]", "name": "additionalFeeRecipients", "type": "address[]" }], "name": "acceptRequest", "outputs": [], "stateMutability": "nonpayable", "type": "function" }];
+const orderbookAbi = [
+  {
+    inputs: [
+      { internalType: "uint256", name: "requestId", type: "uint256" },
+      { internalType: "uint256", name: "quantity", type: "uint256" },
+      { internalType: "address", name: "recipient", type: "address" },
+      { internalType: "uint256[]", name: "additionalFees", type: "uint256[]" },
+      { internalType: "address[]", name: "additionalFeeRecipients", type: "address[]" }
+    ],
+    name: "acceptRequest",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
 const delay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
@@ -107908,21 +107921,11 @@ const getCheckoutSettings = (args) => {
   };
   return checkoutSettings;
 };
-const getOrderbookCalldata = ({
-  orderId,
-  quantity,
-  recipient
-}) => {
+const getOrderbookCalldata = ({ orderId, quantity, recipient }) => {
   const calldata = encodeFunctionData({
     abi: orderbookAbi,
     functionName: "acceptRequest",
-    args: [
-      BigInt(orderId),
-      BigInt(quantity),
-      recipient,
-      [],
-      []
-    ]
+    args: [BigInt(orderId), BigInt(quantity), recipient, [], []]
   });
   return calldata;
 };
