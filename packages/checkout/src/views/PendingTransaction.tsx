@@ -42,8 +42,8 @@ export const PendingTransaction = () => {
   const authToken = data?.token
 
   const url = isDev
-    ? `https://crypto.sandbox.sardine.ai/?client_token=${authToken}&show_features=true`
-    : `https://crypto.sardine.ai/?client_token=${authToken}&show_features=true`
+    ? `https://sardine-checkout-sandbox.sequence.info/?client_token=${authToken}&show_features=true`
+    : `https://sardine-checkout.sequence.info/?client_token=${authToken}&show_features=true`
 
   const pollForOrderStatus = async () => {
     try {
