@@ -28,7 +28,6 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
     params: BaseSequenceWaasConnectorOptions
   }
   type StorageItem = {
-    [LocalStorageKey.WaasSessionHash]: string
     [LocalStorageKey.WaasActiveLoginType]: string
     [LocalStorageKey.WaasGoogleIdToken]: string
     [LocalStorageKey.WaasEmailIdToken]: string
@@ -44,26 +43,13 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
 
   const showConfirmationModal = params.enableConfirmationModal ?? false
 
-  const initialChain = params.network ?? 137
-  const initialChainName = sequence.network.allNetworks.find(n => n.chainId === initialChain || n.name === initialChain)?.name
-
-  const initialJsonRpcProvider = new ethers.providers.JsonRpcProvider(
-    `${nodesUrl}/${initialChainName ?? 'polygon'}/${params.projectAccessKey}`
-  )
-
   const sequenceWaas = new SequenceWaaS({
-    network: initialChain,
+    waasConfigKey: params.waasConfigKey,
     projectAccessKey: params.projectAccessKey,
-    waasConfigKey: params.waasConfigKey
+    network: params.network ?? 137
   })
 
-  const sequenceWaasProvider = new SequenceWaasProvider(
-    sequenceWaas,
-    initialJsonRpcProvider,
-    initialChain,
-    showConfirmationModal,
-    nodesUrl
-  )
+  const sequenceWaasProvider = new SequenceWaasProvider(sequenceWaas, showConfirmationModal, nodesUrl)
 
   return createConnector<Provider, Properties, StorageItem>(config => ({
     id: `sequence-waas`,
@@ -91,12 +77,6 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
         await config.storage?.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI)
       }
 
-      const isConnected = await provider.sequenceWaas.isSignedIn()
-      if (!isConnected) {
-        const sessionHash = await provider.sequenceWaas.getSessionHash()
-        await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
-      }
-
       provider.on('disconnect', () => {
         this.onDisconnect()
       })
@@ -121,6 +101,10 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
           idToken = appleIdToken
         }
 
+        await config.storage?.removeItem(LocalStorageKey.WaasGoogleIdToken)
+        await config.storage?.removeItem(LocalStorageKey.WaasEmailIdToken)
+        await config.storage?.removeItem(LocalStorageKey.WaasAppleIdToken)
+
         if (idToken) {
           try {
             const signInResponse = await provider.sequenceWaas.signIn({ idToken }, randomName())
@@ -130,22 +114,21 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
           } catch (e) {
             console.log(e)
             await this.disconnect()
-          }
-
-          const accounts = await this.getAccounts()
-
-          if (accounts.length) {
-            await config.storage?.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType)
+            throw e
           }
         }
+      }
 
-        await config.storage?.removeItem(LocalStorageKey.WaasGoogleIdToken)
-        await config.storage?.removeItem(LocalStorageKey.WaasEmailIdToken)
-        await config.storage?.removeItem(LocalStorageKey.WaasAppleIdToken)
+      const accounts = await this.getAccounts()
+
+      if (accounts.length) {
+        await config.storage?.setItem(LocalStorageKey.WaasActiveLoginType, params.loginType)
+      } else {
+        throw new Error('No accounts found')
       }
 
       return {
-        accounts: await this.getAccounts(),
+        accounts,
         chainId: await this.getChainId()
       }
     },
@@ -159,11 +142,7 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
         console.log(e)
       }
 
-      await config.storage?.removeItem(LocalStorageKey.WaasSessionHash)
       await config.storage?.removeItem(LocalStorageKey.WaasActiveLoginType)
-
-      const sessionHash = await provider.sequenceWaas.getSessionHash()
-      await config.storage?.setItem(LocalStorageKey.WaasSessionHash, sessionHash)
     },
 
     async getAccounts() {
@@ -241,27 +220,25 @@ export function sequenceWaasWallet(params: BaseSequenceWaasConnectorOptions) {
 }
 
 export class SequenceWaasProvider extends ethers.providers.BaseProvider implements sequence.provider.EIP1193Provider {
+  jsonRpcProvider: ethers.providers.JsonRpcProvider
+  requestConfirmationHandler: WaasRequestConfirmationHandler | undefined
+  feeConfirmationHandler: WaasFeeOptionConfirmationHandler | undefined
+  currentNetwork: ethers.providers.Network = this.network
+
   constructor(
     public sequenceWaas: SequenceWaaS,
-    public jsonRpcProvider: ethers.providers.JsonRpcProvider,
-    network: ethers.providers.Networkish,
     public showConfirmation: boolean,
     public nodesUrl: string
   ) {
-    super(network)
-  }
+    super(sequenceWaas.config.network)
 
-  requestConfirmationHandler: WaasRequestConfirmationHandler | undefined
-  feeConfirmationHandler: WaasFeeOptionConfirmationHandler | undefined
+    const initialChain = sequenceWaas.config.network
+    const initialChainName = sequence.network.allNetworks.find(n => n.chainId === initialChain || n.name === initialChain)?.name
+    const initialJsonRpcProvider = new ethers.providers.JsonRpcProvider(
+      `${nodesUrl}/${initialChainName}/${sequenceWaas.config.projectAccessKey}`
+    )
 
-  currentNetwork: ethers.providers.Network = this.network
-
-  updateJsonRpcProvider(jsonRpcProvider: ethers.providers.JsonRpcProvider) {
-    this.jsonRpcProvider = jsonRpcProvider
-  }
-
-  updateNetwork(network: ethers.providers.Network) {
-    this.currentNetwork = network
+    this.jsonRpcProvider = initialJsonRpcProvider
   }
 
   async request({ method, params }: { method: string; params?: any[] }) {
@@ -273,8 +250,8 @@ export class SequenceWaasProvider extends ethers.providers.BaseProvider implemen
         `${this.nodesUrl}/${networkName}/${this.sequenceWaas.config.projectAccessKey}`
       )
 
-      this.updateJsonRpcProvider(jsonRpcProvider)
-      this.updateNetwork(ethers.providers.getNetwork(chainId))
+      this.jsonRpcProvider = jsonRpcProvider
+      this.currentNetwork = ethers.providers.getNetwork(chainId)
 
       return null
     }

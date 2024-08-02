@@ -19,13 +19,14 @@ import { ThemeContextProvider } from '../../contexts/Theme'
 import { WalletConfigContextProvider } from '../../contexts/WalletSettings'
 import { useStorage } from '../../hooks/useStorage'
 import { useWaasConfirmationHandler } from '../../hooks/useWaasConfirmationHandler'
+import { useEmailConflict } from '../../hooks/useWaasEmailConflict'
 import { ExtendedConnector, DisplayedAsset, EthAuthSettings, KitConfig, Theme, ModalPosition } from '../../types'
 import { getModalPositionCss } from '../../utils/styling'
-
-import { ConnectWalletContent } from './ConnectWalletContent'
-import { NetworkBadge } from './NetworkBadge'
-import { SequenceLogo } from './SequenceLogo'
-import { TxnDetails } from './TxnDetails'
+import { Connect } from '../Connect'
+import { NetworkBadge } from '../NetworkBadge'
+import { PageHeading } from '../PageHeading'
+import { PoweredBySequence } from '../SequenceLogo'
+import { TxnDetails } from '../TxnDetails'
 
 export type KitConnectProviderProps = {
   children: React.ReactNode
@@ -83,12 +84,6 @@ export const KitProvider = (props: KitConnectProviderProps) => {
     }
   }, [analytics, address, isConnected])
 
-  const poweredBySequenceOnClick = () => {
-    if (typeof window !== 'undefined') {
-      window.open('https://sequence.xyz')
-    }
-  }
-
   useEffect(() => {
     if (!disableAnalytics) {
       setupAnalytics(config.projectAccessKey)
@@ -130,6 +125,8 @@ export const KitProvider = (props: KitConnectProviderProps) => {
   useEffect(() => {
     setDisplayedAssets(displayedAssets)
   }, [displayedAssetsSetting])
+
+  const { isEmailConflictOpen, emailConflictInfo, toggleEmailConflictModal } = useEmailConflict()
 
   return (
     <KitConfigContextProvider value={config}>
@@ -173,34 +170,17 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                             >
                               <Text>Sign in {projectName ? `to ${projectName}` : ''}</Text>
                             </Box>
-                            <ConnectWalletContent
-                              openConnectModal={openConnectModal}
-                              setOpenConnectModal={setOpenConnectModal}
+                            <Connect
+                              onClose={() => {
+                                setOpenConnectModal(false)
+                              }}
                               {...props}
+                              emailConflictInfo={emailConflictInfo}
                             />
-                            <Box
-                              onClick={poweredBySequenceOnClick}
-                              gap="1"
-                              marginTop="4"
-                              flexDirection="row"
-                              alignItems="center"
-                              justifyContent="center"
-                              userSelect="none"
-                              cursor="pointer"
-                              opacity={{ hover: '80' }}
-                            >
-                              <Text fontSize="small" color="text100">
-                                Powered by Sequence
-                              </Text>
-                              <Box height="5" width="5">
-                                <SequenceLogo />
-                              </Box>
-                            </Box>
                           </Box>
                         </Modal>
                       )}
-                    </AnimatePresence>
-                    <AnimatePresence>
+
                       {pendingRequestConfirmation && (
                         <Modal
                           scroll={false}
@@ -300,12 +280,24 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                                 />
                               </Box>
                             </Box>
-                            <Box gap="1" marginTop="4" flexDirection="row" alignItems="center" justifyContent="center">
-                              <Text fontSize="small" color="text80">
-                                Powered by Sequence
+
+                            <PoweredBySequence />
+                          </Box>
+                        </Modal>
+                      )}
+
+                      {isEmailConflictOpen && emailConflictInfo && (
+                        <Modal size="sm" scroll={false} onClose={() => toggleEmailConflictModal(false)}>
+                          <Box padding="4">
+                            <PageHeading>Email already in use</PageHeading>
+                            <Box>
+                              <Text variant="normal" color="text80" textAlign="center">
+                                Another account with this email address <Text color="text100">({emailConflictInfo.email})</Text>{' '}
+                                already exists with account type <Text color="text100">({emailConflictInfo.type})</Text>. Please
+                                sign in again with the correct account.
                               </Text>
-                              <Box height="4" width="4" marginTop="1">
-                                <SequenceLogo />
+                              <Box marginTop="4" gap="2" alignItems="center" justifyContent="center">
+                                <Button label="OK" onClick={() => toggleEmailConflictModal(false)} />
                               </Box>
                             </Box>
                           </Box>
