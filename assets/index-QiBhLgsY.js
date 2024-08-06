@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-sBcVdXj3.js","./hooks.module-CRoZMYmT.js","./___vite-browser-external_commonjs-proxy-Dx3U7pOb.js","./index-HJ9-axNk.js","./index.es-DtdLDraR.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-BIKT5yla.js","./hooks.module-oQhvMlVp.js","./___vite-browser-external_commonjs-proxy-w52G4zHZ.js","./index-l3XLtm4P.js","./index.es-DNjTQ7Rd.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -14657,6 +14657,7 @@ const truncateAddress = (address, minPrefix = 20, minSuffix = 3) => {
     return `${address.substring(0, 2 + minPrefix)}…${address.substring(address.length - minSuffix)}`;
   }
 };
+const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 const SEQUENCE_ASSETS_URL_PREFIX = "https://assets.sequence.info/";
 const VERSION$3 = 3;
 const sizes = {
@@ -14670,6 +14671,10 @@ const getSize = (size2) => size2 ? sizes[size2] || size2 : "medium";
 const replaceSize = (url, size2) => {
   return url.replace(/\/(small|medium|large)\//, `/${getSize(size2)}/`);
 };
+const tokenImageUrl = (chainId, contractAddress, size2) => {
+  return SEQUENCE_ASSETS_URL_PREFIX + `images/tokens/${getSize(size2)}/${chainId}/${contractAddress.toLowerCase()}.webp?v${VERSION$3}`;
+};
+const nativeTokenImageUrl = (chainId, size2) => tokenImageUrl(chainId, ZERO_ADDRESS, size2);
 const networkImageUrl = (chainId, size2) => {
   return SEQUENCE_ASSETS_URL_PREFIX + `images/networks/${getSize(size2)}/${chainId}.webp?v${VERSION$3}`;
 };
@@ -74263,7 +74268,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CEdIBWpM.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CPzQpqt_.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -96592,113 +96597,59 @@ const useTransactionHistory = (args) => {
     enabled: !!args.chainId && !!args.accountAddress
   });
 };
-const nativeTokenInfos = {
-  [ChainId.MAINNET]: {
-    name: "Ethereum",
-    symbol: "ETH",
-    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
-    decimals: 18,
-    blockExplorerName: "Etherscan",
-    blockExplorerUrl: "https://etherscan.io"
-  },
-  [ChainId.GOERLI]: {
-    name: "Goerli",
-    symbol: "ETH",
-    decimals: 18,
-    logoURI: "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
-    blockExplorerName: "Etherscan (Goerli)",
-    blockExplorerUrl: "https://goerli.etherscan.io"
-  },
-  [ChainId.OPTIMISM]: {
-    name: "Optimism",
-    symbol: "OP",
-    logoURI: "https://assets.coingecko.com/coins/images/25244/small/Optimism.png",
-    decimals: 18,
-    blockExplorerName: "Etherscan (Optimism)",
-    blockExplorerUrl: "https://optimistic.etherscan.io"
-  },
-  [ChainId.BSC]: {
-    name: "BNB",
-    symbol: "BNB",
-    logoURI: "https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png",
-    decimals: 18,
-    blockExplorerName: "BscScan",
-    blockExplorerUrl: "https://bscscan.com"
-  },
-  [ChainId.GNOSIS]: {
-    name: "Gnosis",
-    symbol: "GNO",
-    logoURI: "https://assets.coingecko.com/coins/images/662/small/logo_square_simple_300px.png",
-    decimals: 18,
-    blockExplorerUrl: "https://gnosisscan.io",
-    blockExplorerName: "Gnosis Scan"
-  },
-  [ChainId.POLYGON]: {
-    name: "Polygon",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan",
-    blockExplorerUrl: "https://polygonscan.com"
-  },
-  [ChainId.POLYGON_ZKEVM]: {
-    name: "Polygon zkEVM",
-    symbol: "ETH",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "PolygonScan",
-    blockExplorerUrl: "https://zkevm.polygonscan.com"
-  },
-  [ChainId.ARBITRUM]: {
-    name: "Arbitrum",
-    symbol: "ARB",
-    logoURI: "https://assets.coingecko.com/asset_platforms/images/33/small/arbitrum-one.png",
-    decimals: 18,
-    blockExplorerName: "Arbiscan",
-    blockExplorerUrl: "https://arbiscan.io"
-  },
-  [ChainId.AVALANCHE]: {
-    name: "Avalanche",
-    symbol: "AVAX",
-    logoURI: "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png",
-    decimals: 18,
-    blockExplorerName: "Snowtrace",
-    blockExplorerUrl: "https://snowtrace.io"
-  },
-  [ChainId.POLYGON_MUMBAI]: {
-    name: "Mumbai",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan (Mumbai)",
-    blockExplorerUrl: "https://mumbai.polygonscan.com"
-  },
-  [ChainId.POLYGON_AMOY]: {
-    name: "Amoy",
-    symbol: "MATIC",
-    logoURI: "https://assets.coingecko.com/coins/images/4713/thumb/matic-token-icon.png",
-    decimals: 18,
-    blockExplorerName: "Polyscan (Amoy)",
-    blockExplorerUrl: "https://amoy.polygonscan.com"
+const chains$1 = allNetworks.reduce((acc, network2) => {
+  if (network2.deprecated) {
+    return acc;
   }
-};
-const defaultNativeTokenInfo = (chainId, wagmiChains) => {
+  if (network2.name.startsWith("hardhat")) {
+    return acc;
+  }
+  acc[network2.chainId] = defineChain({
+    id: network2.chainId,
+    name: network2.title,
+    shortName: network2.name,
+    nativeCurrency: {
+      name: network2.nativeToken.name,
+      symbol: network2.nativeToken.symbol,
+      decimals: network2.nativeToken.decimals
+    },
+    rpcUrls: {
+      default: {
+        http: [network2.rpcUrl]
+      }
+    },
+    ...network2.blockExplorer ? {
+      blockExplorers: {
+        default: {
+          name: network2.blockExplorer.name,
+          url: network2.blockExplorer.rootUrl
+        }
+      }
+    } : void 0
+  });
+  return acc;
+}, {});
+const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
   var _a2, _b2;
-  const foundChain = wagmiChains.find((chain) => chain.id === chainId);
-  if (foundChain) {
+  const chain = wagmiChains.find((chain2) => chain2.id === chainId) || chains$1[chainId];
+  if (chain) {
     return {
-      name: foundChain.nativeCurrency.name,
-      symbol: foundChain.nativeCurrency.symbol,
-      decimals: foundChain.nativeCurrency.decimals,
-      logoURI: nativeTokenInfos[ChainId.MAINNET].logoURI,
-      blockExplorerName: (_a2 = foundChain.blockExplorers) == null ? void 0 : _a2.default.name,
-      blockExplorerUrl: (_b2 = foundChain.blockExplorers) == null ? void 0 : _b2.default.url
+      chainId: chain.id,
+      name: chain.nativeCurrency.name,
+      symbol: chain.nativeCurrency.symbol,
+      decimals: chain.nativeCurrency.decimals,
+      logoURI: nativeTokenImageUrl(chain.id),
+      blockExplorerName: (_a2 = chain.blockExplorers) == null ? void 0 : _a2.default.name,
+      blockExplorerUrl: (_b2 = chain.blockExplorers) == null ? void 0 : _b2.default.url
     };
   }
-  return;
-};
-const getNativeTokenInfoByChainId = (chainId, wagmiChains) => {
-  return nativeTokenInfos[chainId] || defaultNativeTokenInfo(chainId, wagmiChains) || nativeTokenInfos[ChainId.MAINNET];
+  return {
+    chainId,
+    name: "Unknown",
+    symbol: "???",
+    decimals: 18,
+    logoURI: ""
+  };
 };
 var utils = {};
 const require$$0 = /* @__PURE__ */ getAugmentedNamespace(lib_esm$b);
@@ -97756,7 +97707,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-sBcVdXj3.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-BIKT5yla.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97933,7 +97884,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-HJ9-axNk.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-l3XLtm4P.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -98167,7 +98118,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DtdLDraR.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DNjTQ7Rd.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -98688,38 +98639,6 @@ const getDefaultWaasConnectors = ({ projectAccessKey: projectAccessKey2, waasCon
   const connectors = getKitConnectWallets(projectAccessKey2, wallets);
   return connectors;
 };
-const chains$1 = allNetworks.reduce((acc, network2) => {
-  if (network2.deprecated) {
-    return acc;
-  }
-  if (network2.name.startsWith("hardhat")) {
-    return acc;
-  }
-  acc[network2.chainId] = defineChain({
-    id: network2.chainId,
-    name: network2.title,
-    shortName: network2.name,
-    nativeCurrency: {
-      name: network2.nativeToken.name,
-      symbol: network2.nativeToken.symbol,
-      decimals: network2.nativeToken.decimals
-    },
-    rpcUrls: {
-      default: {
-        http: [network2.rpcUrl]
-      }
-    },
-    ...network2.blockExplorer ? {
-      blockExplorers: {
-        default: {
-          name: network2.blockExplorer.name,
-          url: network2.blockExplorer.rootUrl
-        }
-      }
-    } : void 0
-  });
-  return acc;
-}, {});
 const getDefaultChains = (chainIdsFilter) => {
   if (chainIdsFilter) {
     return chainIdsFilter.map((chainId) => {
