@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-BIKT5yla.js","./hooks.module-oQhvMlVp.js","./___vite-browser-external_commonjs-proxy-w52G4zHZ.js","./index-l3XLtm4P.js","./index.es-DNjTQ7Rd.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-BbhAPoD5.js","./hooks.module-BFvs3ywp.js","./___vite-browser-external_commonjs-proxy-DJj0alCw.js","./index-D1Jk4CLF.js","./index.es-D-bWrom9.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -74268,7 +74268,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CPzQpqt_.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-XpGvwVMC.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -95936,7 +95936,7 @@ function useEmailAuth({ connector, onSuccess }) {
     const waas = getSequenceWaas();
     setLoading(true);
     setError(void 0);
-    if (params.emailAuthVersion === 1) {
+    if (params.legacyEmailAuth) {
       try {
         const { instance: instance2 } = await waas.email.initiateAuth({ email: email3 });
         setInstance(instance2);
@@ -95966,7 +95966,7 @@ function useEmailAuth({ connector, onSuccess }) {
     const waas = getSequenceWaas();
     setLoading(true);
     setError(void 0);
-    if (params.emailAuthVersion === 1) {
+    if (params.legacyEmailAuth) {
       try {
         const sessionHash = await waas.getSessionHash();
         const { idToken } = await waas.email.finalizeAuth({ instance, answer, email: email2, sessionHash });
@@ -97707,7 +97707,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-BIKT5yla.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-BbhAPoD5.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97884,7 +97884,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-l3XLtm4P.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-D1Jk4CLF.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -98118,7 +98118,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DNjTQ7Rd.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-D-bWrom9.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -98360,14 +98360,14 @@ const email = (options) => ({
     return connector;
   }
 });
-const emailWaas = ({ emailAuthVersion = 2, ...rest }) => ({
+const emailWaas = ({ legacyEmailAuth = false, ...rest }) => ({
   id: "email-waas",
   logoDark: getEmailLogo({ isDarkMode: true }),
   logoLight: getEmailLogo({ isDarkMode: false }),
   name: "Email",
   type: "social",
   createConnector: () => {
-    const options = { emailAuthVersion, ...rest };
+    const options = { legacyEmailAuth, ...rest };
     const connector = sequenceWaasWallet({
       ...options,
       loginType: "email"
@@ -98598,14 +98598,14 @@ const getDefaultConnectors = ({ walletConnectProjectId, defaultChainId, projectA
   ]);
   return connectors;
 };
-const getDefaultWaasConnectors = ({ projectAccessKey: projectAccessKey2, waasConfigKey: waasConfigKey2, googleClientId: googleClientId2, appleClientId: appleClientId2, appleRedirectURI: appleRedirectURI2, walletConnectProjectId, appName, defaultChainId, enableConfirmationModal, emailAuthVersion, isDev = false }) => {
+const getDefaultWaasConnectors = ({ projectAccessKey: projectAccessKey2, waasConfigKey: waasConfigKey2, googleClientId: googleClientId2, appleClientId: appleClientId2, appleRedirectURI: appleRedirectURI2, walletConnectProjectId, appName, defaultChainId, enableConfirmationModal, legacyEmailAuth = false, isDev = false }) => {
   const wallets = [
     emailWaas({
-      emailAuthVersion,
       projectAccessKey: projectAccessKey2,
       waasConfigKey: waasConfigKey2,
       enableConfirmationModal,
       network: defaultChainId,
+      legacyEmailAuth,
       isDev
     }),
     coinbaseWallet({
@@ -109290,7 +109290,7 @@ const getWaasConnectors = () => {
       appleRedirectURI,
       appName: "Kit Demo",
       projectAccessKey,
-      // emailAuthVersion: 1,
+      // legacyEmailAuth: true,
       enableConfirmationModal: localStorage.getItem("confirmationEnabled") === "true",
       isDev: isDebugMode
     })
