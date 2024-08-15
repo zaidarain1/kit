@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CGlCRdtE.js","./hooks.module-D7xiHpQ7.js","./___vite-browser-external_commonjs-proxy-BnYrKVZb.js","./index-DdRCW_9B.js","./index.es-Dy5ZYcqJ.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-mr8XnH7i.js","./hooks.module-DOhMGwgJ.js","./___vite-browser-external_commonjs-proxy-ZuBcucCU.js","./index-D0lTsVQm.js","./index.es-BkA44tv-.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, { enumerable: true, configurable: true, writable: true, value }) : obj[key2] = value;
 var __publicField = (obj, key2, value) => {
@@ -74268,7 +74268,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-84GImTea.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-UK74pquM.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -96242,6 +96242,14 @@ const Connect = (props) => {
     return jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid);
   }) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] }) }), jsxRuntimeExports$1.jsx(PoweredBySequence, {})] });
 };
+const ConnectWalletContent = (props) => {
+  var _a2;
+  const { emailConflictInfo, config: config2 } = props;
+  const projectName = (_a2 = config2 == null ? void 0 : config2.signIn) == null ? void 0 : _a2.projectName;
+  return jsxRuntimeExports$1.jsxs(Box, { padding: "4", children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
+    marginTop: "4px"
+  }, children: jsxRuntimeExports$1.jsxs(Text, { children: ["Sign in ", projectName ? `to ${projectName}` : ""] }) }), jsxRuntimeExports$1.jsx(Connect, { emailConflictInfo, ...props })] });
+};
 const getNetworkColor = (chainId, mode = "light") => {
   switch (chainId) {
     case ChainId.MAINNET:
@@ -97483,7 +97491,6 @@ const KitProvider = (props) => {
   const { defaultTheme = "dark", signIn: signIn3 = {}, position = "center", displayedAssets: displayedAssetsSetting = [], ethAuth = {}, disableAnalytics = false } = config2;
   const defaultAppName = signIn3.projectName || "app";
   const { expiry = DEFAULT_SESSION_EXPIRATION, app = defaultAppName, origin, nonce } = ethAuth;
-  const { projectName } = signIn3;
   const [openConnectModal, setOpenConnectModal] = reactExports.useState(false);
   const [theme, setTheme] = reactExports.useState(defaultTheme || "dark");
   const [modalPosition, setModalPosition] = reactExports.useState(position);
@@ -97553,11 +97560,7 @@ const KitProvider = (props) => {
       maxWidth: "364px",
       ...getModalPositionCss(position)
     }
-  }, onClose: () => setOpenConnectModal(false), children: jsxRuntimeExports$1.jsxs(Box, { padding: "4", children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
-    marginTop: "4px"
-  }, children: jsxRuntimeExports$1.jsxs(Text, { children: ["Sign in ", projectName ? `to ${projectName}` : ""] }) }), jsxRuntimeExports$1.jsx(Connect, { onClose: () => {
-    setOpenConnectModal(false);
-  }, ...props, emailConflictInfo })] }) }), pendingRequestConfirmation && jsxRuntimeExports$1.jsx(Modal, { scroll: false, backdropColor: "backgroundBackdrop", size: "sm", contentProps: {
+  }, onClose: () => setOpenConnectModal(false), children: jsxRuntimeExports$1.jsx(ConnectWalletContent, { onClose: () => setOpenConnectModal(false), emailConflictInfo, ...props }) }), pendingRequestConfirmation && jsxRuntimeExports$1.jsx(Modal, { scroll: false, backdropColor: "backgroundBackdrop", size: "sm", contentProps: {
     style: {
       maxWidth: "364px",
       ...getModalPositionCss(position)
@@ -97712,7 +97715,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CGlCRdtE.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-mr8XnH7i.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97889,7 +97892,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-DdRCW_9B.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-D0lTsVQm.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -98123,7 +98126,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x) => x.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-Dy5ZYcqJ.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-BkA44tv-.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,

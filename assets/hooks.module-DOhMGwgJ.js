@@ -1,5 +1,5 @@
-import { r as require$$2$1, p as process$1, c as commonjsGlobal, i as inherits_browserExports, B as Buffer$7, a as getAugmentedNamespace } from "./index-BV8zhePt.js";
-import { e as eventsExports, r as require$$3 } from "./___vite-browser-external_commonjs-proxy-BnYrKVZb.js";
+import { r as require$$2$1, p as process$1, c as commonjsGlobal, i as inherits_browserExports, B as Buffer$7, a as getAugmentedNamespace } from "./index-BIBs7AbM.js";
+import { e as eventsExports, r as require$$3 } from "./___vite-browser-external_commonjs-proxy-ZuBcucCU.js";
 var readableBrowser = { exports: {} };
 var streamBrowser = eventsExports.EventEmitter;
 var buffer_list;
