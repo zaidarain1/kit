@@ -1,7 +1,8 @@
-import { r as require$$2$1, p as process$1, c as commonjsGlobal, i as inherits_browserExports, B as Buffer$7, a as getAugmentedNamespace } from "./index-DCygkcku.js";
-import { e as eventsExports, r as require$$3 } from "./___vite-browser-external_commonjs-proxy-BdFtQzmY.js";
+import { a as getAugmentedNamespace, d as dist, p as process$1, c as commonjsGlobal, B as Buffer$7 } from "./index-KVypw9kT.js";
+import { e as eventsExports, r as require$$3 } from "./___vite-browser-external_commonjs-proxy-Chcb9njP.js";
 var readableBrowser = { exports: {} };
 var streamBrowser = eventsExports.EventEmitter;
+const require$$0$1 = /* @__PURE__ */ getAugmentedNamespace(dist);
 var buffer_list;
 var hasRequiredBuffer_list;
 function requireBuffer_list() {
@@ -75,7 +76,7 @@ function requireBuffer_list() {
     }
     return (hint === "string" ? String : Number)(input);
   }
-  var _require = require$$2$1, Buffer2 = _require.Buffer;
+  var _require = require$$0$1, Buffer2 = _require.Buffer;
   var _require2 = require$$3, inspect = _require2.inspect;
   var custom = inspect && inspect.custom || "inspect";
   function copyBuffer(src, target, offset) {
@@ -468,6 +469,34 @@ function getHighWaterMark(state2, options, duplexKey, isDuplex) {
 var state = {
   getHighWaterMark
 };
+var inherits_browser = { exports: {} };
+if (typeof Object.create === "function") {
+  inherits_browser.exports = function inherits2(ctor, superCtor) {
+    if (superCtor) {
+      ctor.super_ = superCtor;
+      ctor.prototype = Object.create(superCtor.prototype, {
+        constructor: {
+          value: ctor,
+          enumerable: false,
+          writable: true,
+          configurable: true
+        }
+      });
+    }
+  };
+} else {
+  inherits_browser.exports = function inherits2(ctor, superCtor) {
+    if (superCtor) {
+      ctor.super_ = superCtor;
+      var TempCtor = function() {
+      };
+      TempCtor.prototype = superCtor.prototype;
+      ctor.prototype = new TempCtor();
+      ctor.prototype.constructor = ctor;
+    }
+  };
+}
+var inherits_browserExports = inherits_browser.exports;
 var browser = deprecate;
 function deprecate(fn, msg) {
   if (config("noDeprecation")) {
@@ -522,7 +551,7 @@ function require_stream_writable() {
     deprecate: browser
   };
   var Stream = streamBrowser;
-  var Buffer2 = require$$2$1.Buffer;
+  var Buffer2 = require$$0$1.Buffer;
   var OurUint8Array = (typeof commonjsGlobal !== "undefined" ? commonjsGlobal : typeof window !== "undefined" ? window : typeof self !== "undefined" ? self : {}).Uint8Array || function() {
   };
   function _uint8ArrayToBuffer(chunk) {
@@ -1094,7 +1123,7 @@ var string_decoder = {};
 var safeBuffer = { exports: {} };
 /*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 (function(module, exports2) {
-  var buffer = require$$2$1;
+  var buffer = require$$0$1;
   var Buffer2 = buffer.Buffer;
   function copyProps(src, dst) {
     for (var key in src) {
@@ -1713,7 +1742,7 @@ function require_stream_readable() {
     return emitter.listeners(type).length;
   };
   var Stream = streamBrowser;
-  var Buffer2 = require$$2$1.Buffer;
+  var Buffer2 = require$$0$1.Buffer;
   var OurUint8Array = (typeof commonjsGlobal !== "undefined" ? commonjsGlobal : typeof window !== "undefined" ? window : typeof self !== "undefined" ? self : {}).Uint8Array || function() {
   };
   function _uint8ArrayToBuffer(chunk) {
@@ -4468,6 +4497,7 @@ const require$$2 = /* @__PURE__ */ getAugmentedNamespace(hooks_module);
 export {
   require$$1 as a,
   require$$2 as b,
+  require$$0$1 as c,
   js as j,
   require$$0 as r,
   sha_jsExports as s
