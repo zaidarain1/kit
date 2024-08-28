@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CoE5N2Re.js","./hooks.module-O5W83_CE.js","./___vite-browser-external_commonjs-proxy-9SljRvHY.js","./index-CJHG5yGQ.js","./index.es-B9UOcMse.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DGc7KQMv.js","./hooks.module-4gQF3uIo.js","./___vite-browser-external_commonjs-proxy-BA08z7Rd.js","./index-BkjgRqxe.js","./index.es-C5JigH_-.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
@@ -13845,8 +13845,8 @@ function __extends$1(d2, b2) {
   }
   d2.prototype = b2 === null ? Object.create(b2) : (__.prototype = b2.prototype, new __());
 }
-var __assign$4 = function() {
-  __assign$4 = Object.assign || function __assign2(t2) {
+var __assign$3 = function() {
+  __assign$3 = Object.assign || function __assign2(t2) {
     for (var s2, i = 1, n2 = arguments.length; i < n2; i++) {
       s2 = arguments[i];
       for (var p2 in s2)
@@ -13855,7 +13855,7 @@ var __assign$4 = function() {
     }
     return t2;
   };
-  return __assign$4.apply(this, arguments);
+  return __assign$3.apply(this, arguments);
 };
 function __rest$2(s2, e2) {
   var t2 = {};
@@ -13947,7 +13947,7 @@ function __metadata$1(metadataKey, metadataValue) {
   if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
     return Reflect.metadata(metadataKey, metadataValue);
 }
-function __awaiter$3(thisArg, _arguments, P2, generator) {
+function __awaiter$2(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
       resolve(value);
@@ -13974,7 +13974,7 @@ function __awaiter$3(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 }
-function __generator$3(thisArg, body) {
+function __generator$2(thisArg, body) {
   var _ = { label: 0, sent: function() {
     if (t2[0] & 1)
       throw t2[1];
@@ -14303,13 +14303,13 @@ function __disposeResources(env) {
 }
 const tslib_es6$1 = {
   __extends: __extends$1,
-  __assign: __assign$4,
+  __assign: __assign$3,
   __rest: __rest$2,
   __decorate: __decorate$1,
   __param: __param$1,
   __metadata: __metadata$1,
-  __awaiter: __awaiter$3,
-  __generator: __generator$3,
+  __awaiter: __awaiter$2,
+  __generator: __generator$2,
   __createBinding: __createBinding$1,
   __exportStar: __exportStar$1,
   __values: __values$1,
@@ -14334,13 +14334,13 @@ const tslib_es6$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   __proto__: null,
   __addDisposableResource,
   get __assign() {
-    return __assign$4;
+    return __assign$3;
   },
   __asyncDelegator: __asyncDelegator$1,
   __asyncGenerator: __asyncGenerator$1,
   __asyncValues: __asyncValues$1,
   __await: __await$1,
-  __awaiter: __awaiter$3,
+  __awaiter: __awaiter$2,
   __classPrivateFieldGet: __classPrivateFieldGet$5,
   __classPrivateFieldIn,
   __classPrivateFieldSet: __classPrivateFieldSet$4,
@@ -14350,7 +14350,7 @@ const tslib_es6$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineP
   __esDecorate,
   __exportStar: __exportStar$1,
   __extends: __extends$1,
-  __generator: __generator$3,
+  __generator: __generator$2,
   __importDefault: __importDefault$1,
   __importStar: __importStar$1,
   __makeTemplateObject: __makeTemplateObject$1,
@@ -19485,8 +19485,8 @@ var hideOthers$1 = function(originalTarget, parentNode, markerName) {
   targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live]")));
   return applyAttributeToOthers$1(targets, activeParentNode, markerName, "aria-hidden");
 };
-var __assign$3 = function() {
-  __assign$3 = Object.assign || function __assign2(t2) {
+var __assign$2 = function() {
+  __assign$2 = Object.assign || function __assign2(t2) {
     for (var s2, i = 1, n2 = arguments.length; i < n2; i++) {
       s2 = arguments[i];
       for (var p2 in s2)
@@ -19495,7 +19495,7 @@ var __assign$3 = function() {
     }
     return t2;
   };
-  return __assign$3.apply(this, arguments);
+  return __assign$2.apply(this, arguments);
 };
 function __rest$1(s2, e2) {
   var t2 = {};
@@ -19670,7 +19670,7 @@ function createSidecarMedium$1(options) {
     options = {};
   }
   var medium = innerCreateMedium$1(null);
-  medium.options = __assign$3({ async: true, ssr: false }, options);
+  medium.options = __assign$2({ async: true, ssr: false }, options);
   return medium;
 }
 var SideCar$1$1 = function(_a2) {
@@ -19682,7 +19682,7 @@ var SideCar$1$1 = function(_a2) {
   if (!Target) {
     throw new Error("Sidecar medium not found");
   }
-  return reactExports.createElement(Target, __assign$3({}, rest));
+  return reactExports.createElement(Target, __assign$2({}, rest));
 };
 SideCar$1$1.isSideCarExport = true;
 function exportSidecar$1(medium, exported) {
@@ -19703,12 +19703,12 @@ var RemoveScroll$1 = reactExports.forwardRef(function(props, parentRef) {
   var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b2 = props.as, Container = _b2 === void 0 ? "div" : _b2, gapMode = props.gapMode, rest = __rest$1(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs$1([ref, parentRef]);
-  var containerProps = __assign$3(__assign$3({}, rest), callbacks);
+  var containerProps = __assign$2(__assign$2({}, rest), callbacks);
   return reactExports.createElement(
     reactExports.Fragment,
     null,
     enabled && reactExports.createElement(SideCar2, { sideCar: effectCar$1, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
-    forwardProps ? reactExports.cloneElement(reactExports.Children.only(children), __assign$3(__assign$3({}, containerProps), { ref: containerRef })) : reactExports.createElement(Container, __assign$3({}, containerProps, { className, ref: containerRef }), children)
+    forwardProps ? reactExports.cloneElement(reactExports.Children.only(children), __assign$2(__assign$2({}, containerProps), { ref: containerRef })) : reactExports.createElement(Container, __assign$2({}, containerProps, { className, ref: containerRef }), children)
   );
 });
 RemoveScroll$1.defaultProps = {
@@ -20137,7 +20137,7 @@ function getOutermostShadowParent(node) {
 }
 const SideCar$2 = exportSidecar$1(effectCar$1, RemoveScrollSideCar$1);
 var ReactRemoveScroll$1 = reactExports.forwardRef(function(props, ref) {
-  return reactExports.createElement(RemoveScroll$1, __assign$3({}, props, { ref, sideCar: SideCar$2 }));
+  return reactExports.createElement(RemoveScroll$1, __assign$2({}, props, { ref, sideCar: SideCar$2 }));
 });
 ReactRemoveScroll$1.classNames = RemoveScroll$1.classNames;
 var SELECTION_KEYS$1 = ["Enter", " "];
@@ -52044,8 +52044,8 @@ const gBase64 = {
   extendUint8Array,
   extendBuiltins
 };
-var __assign$2 = function() {
-  __assign$2 = Object.assign || function __assign2(t2) {
+var __assign$1 = function() {
+  __assign$1 = Object.assign || function __assign2(t2) {
     for (var s2, i = 1, n2 = arguments.length; i < n2; i++) {
       s2 = arguments[i];
       for (var p2 in s2)
@@ -52054,9 +52054,9 @@ var __assign$2 = function() {
     }
     return t2;
   };
-  return __assign$2.apply(this, arguments);
+  return __assign$1.apply(this, arguments);
 };
-function __awaiter$2(thisArg, _arguments, P2, generator) {
+function __awaiter$1(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
       resolve(value);
@@ -52083,7 +52083,7 @@ function __awaiter$2(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, [])).next());
   });
 }
-function __generator$2(thisArg, body) {
+function __generator$1(thisArg, body) {
   var _ = { label: 0, sent: function() {
     if (t2[0] & 1)
       throw t2[1];
@@ -52159,22 +52159,22 @@ function __generator$2(thisArg, body) {
     return { value: op[0] ? op[1] : void 0, done: true };
   }
 }
-var encodeTypedDataHash$2 = function(typedData) {
+var encodeTypedDataHash$1 = function(typedData) {
   return TypedDataEncoder.hash(typedData.domain, typedData.types, typedData.message);
 };
-var ETHAuthVersion$1 = "1";
-var ETHAuthPrefix$1 = "eth";
-var ETHAuthEIP712Domain$1 = {
+var ETHAuthVersion = "1";
+var ETHAuthPrefix = "eth";
+var ETHAuthEIP712Domain = {
   name: "ETHAuth",
-  version: ETHAuthVersion$1
+  version: ETHAuthVersion
 };
-var Proof$1 = (
+var Proof = (
   /** @class */
   function() {
     function Proof2(args) {
-      this.prefix = ETHAuthPrefix$1;
+      this.prefix = ETHAuthPrefix;
       this.address = (args === null || args === void 0 ? void 0 : args.address) ? args.address.toLowerCase() : "";
-      this.claims = (args === null || args === void 0 ? void 0 : args.claims) ? args.claims : { app: "", iat: 0, exp: 0, v: ETHAuthVersion$1 };
+      this.claims = (args === null || args === void 0 ? void 0 : args.claims) ? args.claims : { app: "", iat: 0, exp: 0, v: ETHAuthVersion };
       this.signature = (args === null || args === void 0 ? void 0 : args.signature) ? args.signature : "";
       this.extra = (args === null || args === void 0 ? void 0 : args.extra) ? args.extra : "";
     }
@@ -52185,17 +52185,17 @@ var Proof$1 = (
       this.claims.exp = Math.round((/* @__PURE__ */ new Date()).getTime() / 1e3) + seconds;
     };
     Proof2.prototype.validateClaims = function() {
-      return validateClaims$1(this.claims);
+      return validateClaims(this.claims);
     };
     Proof2.prototype.messageDigest = function() {
       var isValid2 = this.validateClaims();
       if (isValid2.err) {
         throw isValid2.err;
       }
-      return getBytes(encodeTypedDataHash$2(this.messageTypedData()));
+      return getBytes(encodeTypedDataHash$1(this.messageTypedData()));
     };
     Proof2.prototype.messageTypedData = function() {
-      var domain2 = __assign$2({}, ETHAuthEIP712Domain$1);
+      var domain2 = __assign$1({}, ETHAuthEIP712Domain);
       var types2 = {
         Claims: []
       };
@@ -52234,7 +52234,7 @@ var Proof$1 = (
     return Proof2;
   }()
 );
-var validateClaims$1 = function(claims) {
+var validateClaims = function(claims) {
   if (claims.app === "") {
     return { ok: false, err: new Error("claims: app is empty") };
   }
@@ -52252,10 +52252,10 @@ var validateClaims$1 = function(claims) {
   }
   return { ok: true };
 };
-var ValidateEOAProof$1 = function(provider2, chainId, proof) {
-  return __awaiter$2(void 0, void 0, void 0, function() {
+var ValidateEOAProof = function(provider2, chainId, proof) {
+  return __awaiter$1(void 0, void 0, void 0, function() {
     var messageDigest, address;
-    return __generator$2(this, function(_a2) {
+    return __generator$1(this, function(_a2) {
       messageDigest = proof.messageDigest();
       address = verifyMessage$1(messageDigest, proof.signature);
       if (address.slice(0, 2) === "0x" && address.length === 42 && address.toLowerCase() === proof.address.toLowerCase()) {
@@ -52266,10 +52266,10 @@ var ValidateEOAProof$1 = function(provider2, chainId, proof) {
     });
   });
 };
-var ValidateContractAccountProof$1 = function(provider2, chainId, proof) {
-  return __awaiter$2(void 0, void 0, void 0, function() {
+var ValidateContractAccountProof = function(provider2, chainId, proof) {
+  return __awaiter$1(void 0, void 0, void 0, function() {
     var messageDigest, walletCode, abi2, contract, isValidSignature2;
-    return __generator$2(this, function(_a2) {
+    return __generator$1(this, function(_a2) {
       switch (_a2.label) {
         case 0:
           if (!provider2 || provider2 === void 0) {
@@ -52287,7 +52287,7 @@ var ValidateContractAccountProof$1 = function(provider2, chainId, proof) {
           return [4, contract.isValidSignature(messageDigest, getBytes(proof.signature))];
         case 2:
           isValidSignature2 = _a2.sent();
-          if (isValidSignature2 === IsValidSignatureBytes32MagicValue$1) {
+          if (isValidSignature2 === IsValidSignatureBytes32MagicValue) {
             return [2, { isValid: true, address: proof.address }];
           } else {
             return [2, { isValid: false }];
@@ -52296,8 +52296,8 @@ var ValidateContractAccountProof$1 = function(provider2, chainId, proof) {
     });
   });
 };
-var IsValidSignatureBytes32MagicValue$1 = "0x1626ba7e";
-var ETHAuth$1 = (
+var IsValidSignatureBytes32MagicValue = "0x1626ba7e";
+var ETHAuth = (
   /** @class */
   /* @__PURE__ */ function() {
     function ETHAuth2() {
@@ -52307,9 +52307,9 @@ var ETHAuth$1 = (
       }
       var _this = this;
       this.configJsonRpcProvider = function(ethereumJsonRpcURL) {
-        return __awaiter$2(_this, void 0, void 0, function() {
+        return __awaiter$1(_this, void 0, void 0, function() {
           var netVersion;
-          return __generator$2(this, function(_a2) {
+          return __generator$1(this, function(_a2) {
             switch (_a2.label) {
               case 0:
                 this.provider = new JsonRpcProvider$1(ethereumJsonRpcURL);
@@ -52343,9 +52343,9 @@ var ETHAuth$1 = (
         if (skipSignatureValidation === void 0) {
           skipSignatureValidation = false;
         }
-        return __awaiter$2(_this, void 0, void 0, function() {
+        return __awaiter$1(_this, void 0, void 0, function() {
           var isValid2, claimsJSON, proofString;
-          return __generator$2(this, function(_a2) {
+          return __generator$1(this, function(_a2) {
             switch (_a2.label) {
               case 0:
                 if (proof.address.length !== 42 || proof.address.slice(0, 2) !== "0x") {
@@ -52364,7 +52364,7 @@ var ETHAuth$1 = (
                   throw new Error("ethauth: proof is invalid");
                 }
                 claimsJSON = JSON.stringify(proof.claims);
-                proofString = ETHAuthPrefix$1 + "." + proof.address.toLowerCase() + "." + gBase64.encode(claimsJSON, true) + "." + proof.signature;
+                proofString = ETHAuthPrefix + "." + proof.address.toLowerCase() + "." + gBase64.encode(claimsJSON, true) + "." + proof.signature;
                 if (proof.extra && proof.extra.length > 0) {
                   proofString += "." + proof.extra;
                 }
@@ -52377,9 +52377,9 @@ var ETHAuth$1 = (
         if (skipSignatureValidation === void 0) {
           skipSignatureValidation = false;
         }
-        return __awaiter$2(_this, void 0, void 0, function() {
+        return __awaiter$1(_this, void 0, void 0, function() {
           var parts, prefix, address, messageBase64, signature2, extra, message, claims, proof, isValid2;
-          return __generator$2(this, function(_a2) {
+          return __generator$1(this, function(_a2) {
             switch (_a2.label) {
               case 0:
                 parts = proofString.split(".");
@@ -52387,12 +52387,12 @@ var ETHAuth$1 = (
                   throw new Error("ethauth: invalid proof string");
                 }
                 prefix = parts[0], address = parts[1], messageBase64 = parts[2], signature2 = parts[3], extra = parts[4];
-                if (prefix !== ETHAuthPrefix$1) {
+                if (prefix !== ETHAuthPrefix) {
                   throw new Error("ethauth: not an ethauth proof");
                 }
                 message = gBase64.decode(messageBase64);
                 claims = JSON.parse(message);
-                proof = new Proof$1({ address, claims, signature: signature2, extra });
+                proof = new Proof({ address, claims, signature: signature2, extra });
                 return [4, this.validateProof(proof, skipSignatureValidation)];
               case 1:
                 isValid2 = _a2.sent();
@@ -52408,9 +52408,9 @@ var ETHAuth$1 = (
         if (skipSignatureValidation === void 0) {
           skipSignatureValidation = false;
         }
-        return __awaiter$2(_this, void 0, void 0, function() {
+        return __awaiter$1(_this, void 0, void 0, function() {
           var isValidClaims, isValidSig;
-          return __generator$2(this, function(_a2) {
+          return __generator$1(this, function(_a2) {
             switch (_a2.label) {
               case 0:
                 isValidClaims = this.validateProofClaims(proof);
@@ -52433,9 +52433,9 @@ var ETHAuth$1 = (
         });
       };
       this.validateProofSignature = function(proof) {
-        return __awaiter$2(_this, void 0, void 0, function() {
+        return __awaiter$1(_this, void 0, void 0, function() {
           var retIsValid, i, validator, isValid2, i;
-          return __generator$2(this, function(_a2) {
+          return __generator$1(this, function(_a2) {
             switch (_a2.label) {
               case 0:
                 retIsValid = [];
@@ -52478,7 +52478,7 @@ var ETHAuth$1 = (
         return proof.validateClaims();
       };
       if (validators.length == 0) {
-        this.validators = [ValidateEOAProof$1, ValidateContractAccountProof$1];
+        this.validators = [ValidateEOAProof, ValidateContractAccountProof];
       } else {
         this.validators = validators;
       }
@@ -53947,13 +53947,13 @@ const sleep$1 = (t2) => {
     }, t2);
   });
 };
-const encodeTypedDataHash$1 = (typedData) => {
+const encodeTypedDataHash = (typedData) => {
   const types2 = _extends$f({}, typedData.types);
   delete types2["EIP712Domain"];
   return TypedDataEncoder.hash(typedData.domain, types2, typedData.message);
 };
 const encodeTypedDataDigest = (typedData) => {
-  return getBytes(encodeTypedDataHash$1(typedData));
+  return getBytes(encodeTypedDataHash(typedData));
 };
 const {
   defineProperties,
@@ -53974,7 +53974,7 @@ const utils$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   defineProperties,
   encodeMessageDigest,
   encodeTypedDataDigest,
-  encodeTypedDataHash: encodeTypedDataHash$1,
+  encodeTypedDataHash,
   extractProjectIdFromAccessKey,
   formatEther: formatEther$1,
   formatUnits: formatUnits$1,
@@ -64042,7 +64042,7 @@ class Services {
   }
   async isProofStringValid(proofString) {
     try {
-      const ethAuth = new ETHAuth$1();
+      const ethAuth = new ETHAuth();
       const chainId = BigInt(this.settings.sequenceApiChainId);
       const found = findNetworkConfig(this.account.networks, chainId);
       if (!found) {
@@ -64101,7 +64101,7 @@ class Services {
       }
       this.proofStrings.delete(key);
     }
-    const proof = new Proof$1({
+    const proof = new Proof({
       address: this.account.address
     });
     proof.claims.app = this.settings.metadata.name;
@@ -64109,7 +64109,7 @@ class Services {
       proof.claims.ogn = window.location.origin;
     }
     proof.setExpiryIn(this.expiration);
-    const ethAuth = new ETHAuth$1();
+    const ethAuth = new ETHAuth();
     const chainId = BigInt(this.settings.sequenceApiChainId);
     const found = findNetworkConfig(this.account.networks, chainId);
     if (!found) {
@@ -64151,7 +64151,7 @@ const signAuthorization = async (signer2, chainId, options) => {
   if (!address || address === "" || address === "0x") {
     throw ErrAccountIsRequired;
   }
-  const proof = new Proof$1();
+  const proof = new Proof();
   proof.address = address;
   if (!options || !options.app || options.app === "") {
     throw new AuthError("authorization options requires app to be set");
@@ -64166,7 +64166,7 @@ const signAuthorization = async (signer2, chainId, options) => {
     // Account can sign EIP-6492 signatures, so it doesn't require deploying the wallet
     signer2.signTypedData(typedData.domain, typedData.types, typedData.message, chainIdNumber, "eip6492")
   ) : signer2.signTypedData(typedData.domain, typedData.types, typedData.message, chainIdNumber));
-  const ethAuth = new ETHAuth$1();
+  const ethAuth = new ETHAuth();
   const proofString = await ethAuth.encodeProof(proof, true);
   return {
     typedData,
@@ -75853,7 +75853,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Fe_hit4u.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CGYV8bRT.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -88198,8 +88198,8 @@ function __extends(d2, b2) {
   }
   d2.prototype = b2 === null ? Object.create(b2) : (__.prototype = b2.prototype, new __());
 }
-var __assign$1 = function() {
-  __assign$1 = Object.assign || function __assign2(t2) {
+var __assign = function() {
+  __assign = Object.assign || function __assign2(t2) {
     for (var s2, i = 1, n2 = arguments.length; i < n2; i++) {
       s2 = arguments[i];
       for (var p2 in s2)
@@ -88208,7 +88208,7 @@ var __assign$1 = function() {
     }
     return t2;
   };
-  return __assign$1.apply(this, arguments);
+  return __assign.apply(this, arguments);
 };
 function __rest(s2, e2) {
   var t2 = {};
@@ -88241,7 +88241,7 @@ function __metadata(metadataKey, metadataValue) {
   if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
     return Reflect.metadata(metadataKey, metadataValue);
 }
-function __awaiter$1(thisArg, _arguments, P2, generator) {
+function __awaiter(thisArg, _arguments, P2, generator) {
   function adopt(value) {
     return value instanceof P2 ? value : new P2(function(resolve) {
       resolve(value);
@@ -88268,7 +88268,7 @@ function __awaiter$1(thisArg, _arguments, P2, generator) {
     step((generator = generator.apply(thisArg, _arguments || [])).next());
   });
 }
-function __generator$1(thisArg, body) {
+function __generator(thisArg, body) {
   var _ = { label: 0, sent: function() {
     if (t2[0] & 1)
       throw t2[1];
@@ -88513,20 +88513,20 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 const tslib_es6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   get __assign() {
-    return __assign$1;
+    return __assign;
   },
   __asyncDelegator,
   __asyncGenerator,
   __asyncValues,
   __await,
-  __awaiter: __awaiter$1,
+  __awaiter,
   __classPrivateFieldGet,
   __classPrivateFieldSet,
   __createBinding,
   __decorate,
   __exportStar,
   __extends,
-  __generator: __generator$1,
+  __generator,
   __importDefault,
   __importStar,
   __makeTemplateObject,
@@ -97402,7 +97402,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CoE5N2Re.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DGc7KQMv.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97579,7 +97579,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-CJHG5yGQ.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-BkjgRqxe.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97813,7 +97813,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x2) => x2.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-B9UOcMse.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C5JigH_-.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -98370,448 +98370,6 @@ const publicClientToProvider = (publicClient) => {
     return new FallbackProvider(transport.transports.map(({ value }) => new JsonRpcProvider$1(value == null ? void 0 : value.url, network2)));
   return new JsonRpcProvider$1(transport.url, network2);
 };
-var __assign = function() {
-  __assign = Object.assign || function __assign2(t2) {
-    for (var s2, i = 1, n2 = arguments.length; i < n2; i++) {
-      s2 = arguments[i];
-      for (var p2 in s2)
-        if (Object.prototype.hasOwnProperty.call(s2, p2))
-          t2[p2] = s2[p2];
-    }
-    return t2;
-  };
-  return __assign.apply(this, arguments);
-};
-function __awaiter(thisArg, _arguments, P2, generator) {
-  function adopt(value) {
-    return value instanceof P2 ? value : new P2(function(resolve) {
-      resolve(value);
-    });
-  }
-  return new (P2 || (P2 = Promise))(function(resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e2) {
-        reject(e2);
-      }
-    }
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e2) {
-        reject(e2);
-      }
-    }
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-    step((generator = generator.apply(thisArg, [])).next());
-  });
-}
-function __generator(thisArg, body) {
-  var _ = { label: 0, sent: function() {
-    if (t2[0] & 1)
-      throw t2[1];
-    return t2[1];
-  }, trys: [], ops: [] }, f2, y2, t2, g2;
-  return g2 = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g2[Symbol.iterator] = function() {
-    return this;
-  }), g2;
-  function verb(n2) {
-    return function(v3) {
-      return step([n2, v3]);
-    };
-  }
-  function step(op) {
-    if (f2)
-      throw new TypeError("Generator is already executing.");
-    while (g2 && (g2 = 0, op[0] && (_ = 0)), _)
-      try {
-        if (f2 = 1, y2 && (t2 = op[0] & 2 ? y2["return"] : op[0] ? y2["throw"] || ((t2 = y2["return"]) && t2.call(y2), 0) : y2.next) && !(t2 = t2.call(y2, op[1])).done)
-          return t2;
-        if (y2 = 0, t2)
-          op = [op[0] & 2, t2.value];
-        switch (op[0]) {
-          case 0:
-          case 1:
-            t2 = op;
-            break;
-          case 4:
-            _.label++;
-            return { value: op[1], done: false };
-          case 5:
-            _.label++;
-            y2 = op[1];
-            op = [0];
-            continue;
-          case 7:
-            op = _.ops.pop();
-            _.trys.pop();
-            continue;
-          default:
-            if (!(t2 = _.trys, t2 = t2.length > 0 && t2[t2.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-              _ = 0;
-              continue;
-            }
-            if (op[0] === 3 && (!t2 || op[1] > t2[0] && op[1] < t2[3])) {
-              _.label = op[1];
-              break;
-            }
-            if (op[0] === 6 && _.label < t2[1]) {
-              _.label = t2[1];
-              t2 = op;
-              break;
-            }
-            if (t2 && _.label < t2[2]) {
-              _.label = t2[2];
-              _.ops.push(op);
-              break;
-            }
-            if (t2[2])
-              _.ops.pop();
-            _.trys.pop();
-            continue;
-        }
-        op = body.call(thisArg, _);
-      } catch (e2) {
-        op = [6, e2];
-        y2 = 0;
-      } finally {
-        f2 = t2 = 0;
-      }
-    if (op[0] & 5)
-      throw op[1];
-    return { value: op[0] ? op[1] : void 0, done: true };
-  }
-}
-var encodeTypedDataHash = function(typedData) {
-  return (void 0)._TypedDataEncoder.hash(typedData.domain, typedData.types, typedData.message);
-};
-var Proof = (
-  /** @class */
-  function() {
-    function Proof2(args) {
-      this.prefix = ETHAuthPrefix;
-      this.address = (args === null || args === void 0 ? void 0 : args.address) ? args.address.toLowerCase() : "";
-      this.claims = (args === null || args === void 0 ? void 0 : args.claims) ? args.claims : { app: "", iat: 0, exp: 0, v: ETHAuthVersion };
-      this.signature = (args === null || args === void 0 ? void 0 : args.signature) ? args.signature : "";
-      this.extra = (args === null || args === void 0 ? void 0 : args.extra) ? args.extra : "";
-    }
-    Proof2.prototype.setIssuedAtNow = function() {
-      this.claims.iat = Math.round((/* @__PURE__ */ new Date()).getTime() / 1e3);
-    };
-    Proof2.prototype.setExpiryIn = function(seconds) {
-      this.claims.exp = Math.round((/* @__PURE__ */ new Date()).getTime() / 1e3) + seconds;
-    };
-    Proof2.prototype.validateClaims = function() {
-      return validateClaims(this.claims);
-    };
-    Proof2.prototype.messageDigest = function() {
-      var isValid2 = this.validateClaims();
-      if (isValid2.err) {
-        throw isValid2.err;
-      }
-      return (void 0).arrayify(encodeTypedDataHash(this.messageTypedData()));
-    };
-    Proof2.prototype.messageTypedData = function() {
-      var domain2 = __assign({}, ETHAuthEIP712Domain);
-      var types2 = {
-        "Claims": []
-      };
-      var message = {};
-      var typedData = { domain: domain2, types: types2, message };
-      if (this.claims.app && this.claims.app.length > 0) {
-        typedData.types.Claims.push({ name: "app", type: "string" });
-        typedData.message["app"] = this.claims.app;
-      }
-      if (this.claims.iat && this.claims.iat > 0) {
-        typedData.types.Claims.push({ name: "iat", type: "int64" });
-        typedData.message["iat"] = this.claims.iat;
-      }
-      if (this.claims.exp && this.claims.exp > 0) {
-        typedData.types.Claims.push({ name: "exp", type: "int64" });
-        typedData.message["exp"] = this.claims.exp;
-      }
-      if (this.claims.n && this.claims.n > 0) {
-        typedData.types.Claims.push({ name: "n", type: "uint64" });
-        typedData.message["n"] = this.claims.n;
-      }
-      if (this.claims.typ && this.claims.typ.length > 0) {
-        typedData.types.Claims.push({ name: "typ", type: "string" });
-        typedData.message["typ"] = this.claims.typ;
-      }
-      if (this.claims.ogn && this.claims.ogn.length > 0) {
-        typedData.types.Claims.push({ name: "ogn", type: "string" });
-        typedData.message["ogn"] = this.claims.ogn;
-      }
-      if (this.claims.v && this.claims.v.length > 0) {
-        typedData.types.Claims.push({ name: "v", type: "string" });
-        typedData.message["v"] = this.claims.v;
-      }
-      return typedData;
-    };
-    return Proof2;
-  }()
-);
-var validateClaims = function(claims) {
-  if (claims.app === "") {
-    return { ok: false, err: new Error("claims: app is empty") };
-  }
-  var now = Math.round((/* @__PURE__ */ new Date()).getTime() / 1e3);
-  var drift = 5 * 60;
-  var max2 = 60 * 60 * 24 * 365 + drift;
-  if (claims.v === "") {
-    return { ok: false, err: new Error("claims: ethauth version is empty") };
-  }
-  if (claims.iat && claims.iat !== 0 && (claims.iat > now + drift || claims.iat < now - max2)) {
-    return { ok: false, err: new Error("claims: iat is invalid") };
-  }
-  if (claims.exp < now - drift || claims.exp > now + max2) {
-    return { ok: false, err: new Error("claims: token has expired") };
-  }
-  return { ok: true };
-};
-var ValidateEOAProof = function(provider2, chainId, proof) {
-  return __awaiter(void 0, void 0, void 0, function() {
-    var messageDigest, address;
-    return __generator(this, function(_a2) {
-      messageDigest = proof.messageDigest();
-      address = (void 0).verifyMessage(messageDigest, proof.signature);
-      if (address.slice(0, 2) === "0x" && address.length === 42 && address.toLowerCase() === proof.address.toLowerCase()) {
-        return [2, { isValid: true, address: proof.address }];
-      } else {
-        return [2, { isValid: false }];
-      }
-    });
-  });
-};
-var ValidateContractAccountProof = function(provider2, chainId, proof) {
-  return __awaiter(void 0, void 0, void 0, function() {
-    var messageDigest, walletCode, abi2, contract, isValidSignature2;
-    return __generator(this, function(_a2) {
-      switch (_a2.label) {
-        case 0:
-          if (!provider2 || provider2 === void 0) {
-            return [2, { isValid: false }];
-          }
-          messageDigest = proof.messageDigest();
-          return [4, provider2.getCode(proof.address)];
-        case 1:
-          walletCode = _a2.sent();
-          if (walletCode === "0x" || walletCode.length <= 2) {
-            throw new Error("ValidateContractAccountProof failed. unable to fetch wallet contract code");
-          }
-          abi2 = ["function isValidSignature(bytes32, bytes) public view returns (bytes4)"];
-          contract = new Contract(proof.address, abi2, provider2);
-          return [4, contract.isValidSignature(messageDigest, (void 0).arrayify(proof.signature))];
-        case 2:
-          isValidSignature2 = _a2.sent();
-          if (isValidSignature2 === IsValidSignatureBytes32MagicValue) {
-            return [2, { isValid: true, address: proof.address }];
-          } else {
-            return [2, { isValid: false }];
-          }
-      }
-    });
-  });
-};
-var IsValidSignatureBytes32MagicValue = "0x1626ba7e";
-var ETHAuthVersion = "1";
-var ETHAuthPrefix = "eth";
-var ETHAuthEIP712Domain = {
-  name: "ETHAuth",
-  version: ETHAuthVersion
-};
-var ETHAuth = (
-  /** @class */
-  /* @__PURE__ */ function() {
-    function ETHAuth2() {
-      var validators = [];
-      for (var _i2 = 0; _i2 < arguments.length; _i2++) {
-        validators[_i2] = arguments[_i2];
-      }
-      var _this = this;
-      this.configJsonRpcProvider = function(ethereumJsonRpcURL) {
-        return __awaiter(_this, void 0, void 0, function() {
-          var netVersion;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
-              case 0:
-                this.provider = new (void 0).JsonRpcProvider(ethereumJsonRpcURL);
-                return [4, this.provider.send("net_version", [])];
-              case 1:
-                netVersion = _a2.sent();
-                this.chainId = parseInt(netVersion);
-                if (!this.chainId || this.chainId === 0 || this.chainId === NaN) {
-                  throw new Error("ethauth: unable to get chainId");
-                }
-                this.ethereumJsonRpcURL = ethereumJsonRpcURL;
-                return [
-                  2
-                  /*return*/
-                ];
-            }
-          });
-        });
-      };
-      this.configValidators = function() {
-        var validators2 = [];
-        for (var _i3 = 0; _i3 < arguments.length; _i3++) {
-          validators2[_i3] = arguments[_i3];
-        }
-        if (validators2.length == 0) {
-          throw new Error("validators list is empty");
-        }
-        _this.validators = validators2;
-      };
-      this.encodeProof = function(proof, skipSignatureValidation) {
-        if (skipSignatureValidation === void 0) {
-          skipSignatureValidation = false;
-        }
-        return __awaiter(_this, void 0, void 0, function() {
-          var isValid2, claimsJSON, proofString;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
-              case 0:
-                if (proof.address.length !== 42 || proof.address.slice(0, 2) !== "0x") {
-                  throw new Error("ethauth: invalid address");
-                }
-                if (proof.signature === "" || proof.signature.slice(0, 2) !== "0x") {
-                  throw new Error("ethauth: invalid signature");
-                }
-                if (proof.extra && proof.extra.slice(0, 2) !== "0x") {
-                  throw new Error("ethauth: invalid extra encoding, expecting hex data");
-                }
-                return [4, this.validateProof(proof, skipSignatureValidation)];
-              case 1:
-                isValid2 = _a2.sent();
-                if (!isValid2) {
-                  throw new Error("ethauth: proof is invalid");
-                }
-                claimsJSON = JSON.stringify(proof.claims);
-                proofString = ETHAuthPrefix + "." + proof.address.toLowerCase() + "." + gBase64.encode(claimsJSON, true) + "." + proof.signature;
-                if (proof.extra && proof.extra.length > 0) {
-                  proofString += "." + proof.extra;
-                }
-                return [2, proofString];
-            }
-          });
-        });
-      };
-      this.decodeProof = function(proofString, skipSignatureValidation) {
-        if (skipSignatureValidation === void 0) {
-          skipSignatureValidation = false;
-        }
-        return __awaiter(_this, void 0, void 0, function() {
-          var parts, prefix, address, messageBase64, signature2, extra, message, claims, proof, isValid2;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
-              case 0:
-                parts = proofString.split(".");
-                if (parts.length < 4 || parts.length > 5) {
-                  throw new Error("ethauth: invalid proof string");
-                }
-                prefix = parts[0], address = parts[1], messageBase64 = parts[2], signature2 = parts[3], extra = parts[4];
-                if (prefix !== ETHAuthPrefix) {
-                  throw new Error("ethauth: not an ethauth proof");
-                }
-                message = gBase64.decode(messageBase64);
-                claims = JSON.parse(message);
-                proof = new Proof({ address, claims, signature: signature2, extra });
-                return [4, this.validateProof(proof, skipSignatureValidation)];
-              case 1:
-                isValid2 = _a2.sent();
-                if (!isValid2) {
-                  throw new Error("ethauth: proof is invalid");
-                }
-                return [2, proof];
-            }
-          });
-        });
-      };
-      this.validateProof = function(proof, skipSignatureValidation) {
-        if (skipSignatureValidation === void 0) {
-          skipSignatureValidation = false;
-        }
-        return __awaiter(_this, void 0, void 0, function() {
-          var isValidClaims, isValidSig;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
-              case 0:
-                isValidClaims = this.validateProofClaims(proof);
-                if (isValidClaims.err) {
-                  throw new Error("ethauth: proof claims are invalid ".concat(isValidClaims.err));
-                }
-                if (!(skipSignatureValidation !== true))
-                  return [3, 2];
-                return [4, this.validateProofSignature(proof)];
-              case 1:
-                isValidSig = _a2.sent();
-                if (isValidSig !== true) {
-                  throw new Error("ethauth: proof signature is invalid");
-                }
-                _a2.label = 2;
-              case 2:
-                return [2, true];
-            }
-          });
-        });
-      };
-      this.validateProofSignature = function(proof) {
-        return __awaiter(_this, void 0, void 0, function() {
-          var retIsValid, i, validator, isValid2, i;
-          return __generator(this, function(_a2) {
-            switch (_a2.label) {
-              case 0:
-                retIsValid = [];
-                i = 0;
-                _a2.label = 1;
-              case 1:
-                if (!(i < this.validators.length))
-                  return [3, 6];
-                _a2.label = 2;
-              case 2:
-                _a2.trys.push([2, 4, , 5]);
-                validator = this.validators[i];
-                return [4, validator(this.provider, this.chainId, proof)];
-              case 3:
-                isValid2 = _a2.sent().isValid;
-                if (isValid2 === true) {
-                  return [2, true];
-                }
-                retIsValid.push(isValid2);
-                return [3, 5];
-              case 4:
-                _a2.sent();
-                retIsValid.push(false);
-                return [3, 5];
-              case 5:
-                i++;
-                return [3, 1];
-              case 6:
-                for (i = 0; i < retIsValid.length; i++) {
-                  if (retIsValid[i]) {
-                    return [2, true];
-                  }
-                }
-                return [2, false];
-            }
-          });
-        });
-      };
-      this.validateProofClaims = function(proof) {
-        return proof.validateClaims();
-      };
-      if (validators.length == 0) {
-        this.validators = [ValidateEOAProof, ValidateContractAccountProof];
-      } else {
-        this.validators = validators;
-      }
-    }
-    return ETHAuth2;
-  }()
-);
 const signEthAuthProof = async (walletClient, storage) => {
   const proofInformation = await storage.getItem(LocalStorageKey.EthAuthProof);
   if (proofInformation) {
@@ -107418,7 +106976,7 @@ function createSidecarMedium(options) {
     options = {};
   }
   var medium = innerCreateMedium(null);
-  medium.options = __assign$4({ async: true, ssr: false }, options);
+  medium.options = __assign$3({ async: true, ssr: false }, options);
   return medium;
 }
 var SideCar$1 = function(_a2) {
@@ -107430,7 +106988,7 @@ var SideCar$1 = function(_a2) {
   if (!Target) {
     throw new Error("Sidecar medium not found");
   }
-  return reactExports.createElement(Target, __assign$4({}, rest));
+  return reactExports.createElement(Target, __assign$3({}, rest));
 };
 SideCar$1.isSideCarExport = true;
 function exportSidecar(medium, exported) {
@@ -107451,12 +107009,12 @@ var RemoveScroll = reactExports.forwardRef(function(props, parentRef) {
   var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b2 = props.as, Container = _b2 === void 0 ? "div" : _b2, rest = __rest$2(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noIsolation", "inert", "allowPinchZoom", "as"]);
   var SideCar2 = sideCar;
   var containerRef = useMergeRefs([ref, parentRef]);
-  var containerProps = __assign$4(__assign$4({}, rest), callbacks);
+  var containerProps = __assign$3(__assign$3({}, rest), callbacks);
   return reactExports.createElement(
     reactExports.Fragment,
     null,
     enabled && reactExports.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref }),
-    forwardProps ? reactExports.cloneElement(reactExports.Children.only(children), __assign$4(__assign$4({}, containerProps), { ref: containerRef })) : reactExports.createElement(Container, __assign$4({}, containerProps, { className, ref: containerRef }), children)
+    forwardProps ? reactExports.cloneElement(reactExports.Children.only(children), __assign$3(__assign$3({}, containerProps), { ref: containerRef })) : reactExports.createElement(Container, __assign$3({}, containerProps, { className, ref: containerRef }), children)
   );
 });
 RemoveScroll.defaultProps = {
@@ -107871,7 +107429,7 @@ function RemoveScrollSideCar(props) {
 }
 const SideCar = exportSidecar(effectCar, RemoveScrollSideCar);
 var ReactRemoveScroll = reactExports.forwardRef(function(props, ref) {
-  return reactExports.createElement(RemoveScroll, __assign$4({}, props, { ref, sideCar: SideCar }));
+  return reactExports.createElement(RemoveScroll, __assign$3({}, props, { ref, sideCar: SideCar }));
 });
 ReactRemoveScroll.classNames = RemoveScroll.classNames;
 const $cb5cc270b50c6fcd$var$POPOVER_NAME = "Popover";
@@ -109495,7 +109053,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "1.0.0");
+console.log("VERSION:", "1.0.1");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
