@@ -18,6 +18,9 @@ code {
 }
 *, *::before, *::after {
   box-sizing: border-box;
+}
+.seq-root *, .seq-root *::before, .seq-root *::after {
+  box-sizing: border-box;
 }:root {
   --seq-blur-blur: blur(12.5px);
   --seq-blur-none: none;

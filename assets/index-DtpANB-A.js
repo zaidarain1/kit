@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DGc7KQMv.js","./hooks.module-4gQF3uIo.js","./___vite-browser-external_commonjs-proxy-BA08z7Rd.js","./index-BkjgRqxe.js","./index.es-C5JigH_-.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DBXOsOi6.js","./hooks.module-BMQ1awSz.js","./___vite-browser-external_commonjs-proxy-8-bnqWu7.js","./index-DpMfz2em.js","./index.es-C3_avkoR.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
@@ -14659,7 +14659,7 @@ const truncateAddress = (address, minPrefix = 20, minSuffix = 3) => {
 };
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
 const SEQUENCE_ASSETS_URL_PREFIX = "https://assets.sequence.info/";
-const VERSION$3 = 3;
+const VERSION$3 = 5;
 const sizes = {
   xs: "small",
   sm: "small",
@@ -14672,7 +14672,9 @@ const replaceSize = (url, size2) => {
   return url.replace(/\/(small|medium|large)\//, `/${getSize(size2)}/`);
 };
 const tokenImageUrl = (chainId, contractAddress, size2) => {
-  return SEQUENCE_ASSETS_URL_PREFIX + `images/tokens/${getSize(size2)}/${chainId}/${contractAddress.toLowerCase()}.webp?v${VERSION$3}`;
+  return SEQUENCE_ASSETS_URL_PREFIX + `images/tokens/${getSize(
+    size2
+  )}/${chainId}/${contractAddress.toLowerCase()}.webp?v${VERSION$3}`;
 };
 const nativeTokenImageUrl = (chainId, size2) => tokenImageUrl(chainId, ZERO_ADDRESS, size2);
 const networkImageUrl = (chainId, size2) => {
@@ -21983,6 +21985,9 @@ const ThemeProvider = (props) => {
           colors: theme
         });
       }
+      if (props.root) {
+        rootEl.classList.add("seq-root");
+      }
     }
   }, [theme, props.root]);
   const value = reactExports.useMemo(() => {
@@ -22022,83 +22027,91 @@ const Modal = (props) => {
     scroll: scroll2 = true,
     size: size2 = "lg",
     overlayProps,
-    contentProps
+    contentProps,
+    rootProps = {}
   } = props;
   const { root: root2 } = useTheme$1();
   const [container, setContainer] = reactExports.useState(null);
   reactExports.useEffect(() => {
     setContainer(document.querySelector(root2 || "body"));
   }, [root2]);
-  return container ? /* @__PURE__ */ jsxRuntimeExports.jsx(Root$3, { modal: true, defaultOpen: true, onOpenChange: onClose, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { forceMount: true, container, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Box, { className: root$3, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Box,
-      {
-        as: Overlay,
-        asChild: true,
-        background: backdropColor,
-        className: overlay,
-        forceMount: true,
-        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          motion.div,
+  return container ? /* @__PURE__ */ jsxRuntimeExports.jsx(Root$3, { modal: true, defaultOpen: true, onOpenChange: onClose, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { forceMount: true, container, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    Box,
+    {
+      ...rootProps,
+      className: clsx$1("seq-root", root$3, rootProps == null ? void 0 : rootProps.className),
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Box,
           {
-            initial: disableAnimation ? false : { opacity: 0 },
-            animate: disableAnimation ? false : { opacity: 1 },
-            exit: disableAnimation ? void 0 : { opacity: 0 },
-            transition: {
-              type: "tween",
-              ease: "linear"
+            as: Overlay,
+            asChild: true,
+            background: backdropColor,
+            className: overlay,
+            forceMount: true,
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              motion.div,
+              {
+                initial: disableAnimation ? false : { opacity: 0 },
+                animate: disableAnimation ? false : { opacity: 1 },
+                exit: disableAnimation ? void 0 : { opacity: 0 },
+                transition: {
+                  type: "tween",
+                  ease: "linear"
+                },
+                ...overlayProps
+              },
+              "modal-overlay"
+            )
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Content$1,
+          {
+            asChild: true,
+            className: contentVariants({ autoHeight, size: size2 }),
+            forceMount: true,
+            onEscapeKeyDown: (ev) => {
+              if (isDismissible) {
+                onClose == null ? void 0 : onClose();
+              } else {
+                ev.preventDefault();
+              }
             },
-            ...overlayProps
-          },
-          "modal-overlay"
-        )
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Content$1,
-      {
-        asChild: true,
-        className: contentVariants({ autoHeight, size: size2 }),
-        forceMount: true,
-        onEscapeKeyDown: (ev) => {
-          if (isDismissible) {
-            onClose == null ? void 0 : onClose();
-          } else {
-            ev.preventDefault();
+            onInteractOutside: (ev) => {
+              if (!isDismissible) {
+                ev.preventDefault();
+              }
+            },
+            children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              motion.div,
+              {
+                initial: disableAnimation ? false : { y: "100%", opacity: size2 === "sm" ? 0 : 1 },
+                animate: disableAnimation ? false : { y: 0, opacity: size2 === "sm" ? 1 : 1 },
+                exit: disableAnimation ? void 0 : { y: "100%", opacity: size2 === "sm" ? 0 : 1 },
+                transition: { type: "tween", ease: "easeOut" },
+                ...contentProps,
+                children: [
+                  scroll2 ? /* @__PURE__ */ jsxRuntimeExports.jsx(Scroll, { children }) : children,
+                  isDismissible && /* @__PURE__ */ jsxRuntimeExports.jsx(Close$1, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    IconButton,
+                    {
+                      icon: SvgCloseIcon,
+                      backdropFilter: "blur",
+                      size: "xs",
+                      className: close,
+                      "aria-label": "Close"
+                    }
+                  ) })
+                ]
+              },
+              "modal-content"
+            )
           }
-        },
-        onInteractOutside: (ev) => {
-          if (!isDismissible) {
-            ev.preventDefault();
-          }
-        },
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          motion.div,
-          {
-            initial: disableAnimation ? false : { y: "100%", opacity: size2 === "sm" ? 0 : 1 },
-            animate: disableAnimation ? false : { y: 0, opacity: size2 === "sm" ? 1 : 1 },
-            exit: disableAnimation ? void 0 : { y: "100%", opacity: size2 === "sm" ? 0 : 1 },
-            transition: { type: "tween", ease: "easeOut" },
-            ...contentProps,
-            children: [
-              scroll2 ? /* @__PURE__ */ jsxRuntimeExports.jsx(Scroll, { children }) : children,
-              isDismissible && /* @__PURE__ */ jsxRuntimeExports.jsx(Close$1, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                IconButton,
-                {
-                  icon: SvgCloseIcon,
-                  backdropFilter: "blur",
-                  size: "xs",
-                  className: close,
-                  "aria-label": "Close"
-                }
-              ) })
-            ]
-          },
-          "modal-content"
         )
-      }
-    )
-  ] }) }) }) : null;
+      ]
+    }
+  ) }) }) : null;
 };
 var wrap$2 = "_1acm19y1 _1acm19y0 fyvr11d4 fyvr11ds fyvr11bs fyvr11cg fyvr1ww fyvr1ys fyvr11hc fyvr11ko fyvr11od fyvr12s1 fyvr1g0 fyvr118g";
 var wrapVariants = createRuntimeFn({ defaultClassName: "_1acm19y5", variantClassNames: { borderRadius: { xs: "_1acm19y6 _1acm19y2 fyvr11cw fyvr11dk fyvr11bk fyvr11c8", sm: "_1acm19y7 _1acm19y3 fyvr11d0 fyvr11do fyvr11bo fyvr11cc", md: "_1acm19y8 _1acm19y4 fyvr11d4 fyvr11ds fyvr11bs fyvr11cg" } }, defaultVariants: {}, compoundVariants: [] });
@@ -75853,7 +75866,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CGYV8bRT.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Ch1D1_mc.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -97402,7 +97415,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DGc7KQMv.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DBXOsOi6.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97579,7 +97592,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-BkjgRqxe.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-DpMfz2em.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97813,7 +97826,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x2) => x2.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C5JigH_-.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C3_avkoR.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
