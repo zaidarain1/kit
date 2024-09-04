@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DBXOsOi6.js","./hooks.module-BMQ1awSz.js","./___vite-browser-external_commonjs-proxy-8-bnqWu7.js","./index-DpMfz2em.js","./index.es-C3_avkoR.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-CKTa-Wqf.js","./hooks.module-Gt_UBnF4.js","./___vite-browser-external_commonjs-proxy-5e59GdWQ.js","./index--cVnnVXZ.js","./index.es-DEYs7vDC.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
@@ -27443,10 +27443,10 @@ const webrpcErrorByCode$7 = {
   [2003]: QueryFailedError$5,
   [3e3]: NotFoundError$6
 };
-const fetch$5 = globalThis.fetch;
+const fetch$6 = globalThis.fetch;
 class SequenceAPIClient extends API {
   constructor(hostname, projectAccessKey2, jwtAuth) {
-    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$5);
+    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$6);
     this.projectAccessKey = projectAccessKey2;
     this.jwtAuth = jwtAuth;
     this._fetch = (input2, init2) => {
@@ -27460,7 +27460,7 @@ class SequenceAPIClient extends API {
         headers["X-Access-Key"] = projectAccessKey3;
       }
       init2.headers = _extends$g({}, init2.headers, headers);
-      return fetch$5(input2, init2);
+      return fetch$6(input2, init2);
     };
     this.fetch = this._fetch;
   }
@@ -53407,27 +53407,6 @@ const extractProjectIdFromAccessKey = (accessKey) => {
   const projectId = projectIdBytes[7] | projectIdBytes[6] << 8 | projectIdBytes[5] << 16 | projectIdBytes[4] << 24 | projectIdBytes[3] << 32 | projectIdBytes[2] << 40 | projectIdBytes[1] << 48 | projectIdBytes[0] << 56;
   return projectId;
 };
-const base64Encode = (val) => {
-  return gBase64.encode(val, true);
-};
-const base64EncodeObject = (obj) => {
-  return gBase64.encode(JSON.stringify(obj), true);
-};
-const base64Decode = (encodedString) => {
-  if (encodedString === null || encodedString === void 0) {
-    return void 0;
-  }
-  return gBase64.decode(encodedString);
-};
-const base64DecodeObject = (encodedObject) => {
-  if (encodedObject === null || encodedObject === void 0) {
-    return void 0;
-  }
-  return JSON.parse(gBase64.decode(encodedObject));
-};
-BigInt.prototype.toJSON = function() {
-  return this.toString();
-};
 const MAX_UINT_256 = BigInt("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 const isBigNumberish = (value) => {
   return value != null && (typeof value === "number" && value % 1 === 0 || typeof value === "string" && !!value.match(/^-?[0-9]+$/) || isHexString(value) || typeof value === "bigint");
@@ -53478,6 +53457,41 @@ const formatUnits$1 = (value, decimals = 18) => {
   return `${negative ? "-" : ""}${integer || "0"}${fraction ? `.${fraction}` : ""}`;
 };
 const formatEther$1 = (value) => formatUnits$1(value, 18);
+const bigintReplacer = (key, value) => {
+  if (typeof value === "bigint") {
+    return {
+      $bigint: value.toString()
+    };
+  }
+  return value;
+};
+const bigintReviver = (key, value) => {
+  if (value !== null && typeof value === "object" && "$bigint" in value && typeof value.$bigint === "string") {
+    return BigInt(value.$bigint);
+  }
+  if (value !== null && typeof value === "object" && value.type === "BigNumber" && isHexString(value.hex)) {
+    return BigInt(value.hex);
+  }
+  return value;
+};
+const base64Encode = (val) => {
+  return gBase64.encode(val, true);
+};
+const base64EncodeObject = (obj) => {
+  return gBase64.encode(JSON.stringify(obj, bigintReplacer), true);
+};
+const base64Decode = (encodedString) => {
+  if (encodedString === null || encodedString === void 0) {
+    return void 0;
+  }
+  return gBase64.decode(encodedString);
+};
+const base64DecodeObject = (encodedObject) => {
+  if (encodedObject === null || encodedObject === void 0) {
+    return void 0;
+  }
+  return JSON.parse(gBase64.decode(encodedObject), bigintReviver);
+};
 const encodeMessageDigest = (message) => {
   if (typeof message === "string") {
     return getBytes(id$1(message));
@@ -53983,6 +53997,8 @@ const utils$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePrope
   base64DecodeObject,
   base64Encode,
   base64EncodeObject,
+  bigintReplacer,
+  bigintReviver,
   configureLogger,
   defineProperties,
   encodeMessageDigest,
@@ -56965,7 +56981,7 @@ var index$6 = /* @__PURE__ */ Object.freeze({
   coderFor,
   genericCoderFor
 });
-const VERSION$1 = "2.0.0";
+const VERSION$1 = "2.0.1";
 const allVersions = [v1, v2];
 const core$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -58073,7 +58089,7 @@ const FAILED_STATUSES = [ETHTxnStatus.DROPPED, ETHTxnStatus.PARTIALLY_FAILED, ET
 function isRpcRelayerOptions(obj) {
   return obj.url !== void 0 && typeof obj.url === "string" && obj.provider !== void 0 && obj.provider instanceof AbstractProvider;
 }
-const fetch$4 = globalThis.fetch;
+const fetch$5 = globalThis.fetch;
 class RpcRelayer {
   constructor(options) {
     this.options = options;
@@ -58092,7 +58108,7 @@ class RpcRelayer {
         headers["X-Access-Key"] = projectAccessKey2;
       }
       init2.headers = _extends$b({}, init2.headers, headers);
-      return fetch$4(input2, init2);
+      return fetch$5(input2, init2);
     };
     this.service = new Relayer(options.url, this._fetch);
     if (options.provider instanceof AbstractProvider) {
@@ -58168,7 +58184,7 @@ class RpcRelayer {
           nonce
         })
       });
-      logger.info(`[rpc-relayer/getFeeOptions] got refund options ${JSON.stringify(options)}`);
+      logger.info(`[rpc-relayer/getFeeOptions] got refund options ${JSON.stringify(options, bigintReplacer)}`);
       return {
         options,
         quote: {
@@ -58221,7 +58237,7 @@ class RpcRelayer {
   }
   async relay(signedTxs, quote, waitForReceipt = true) {
     var _this = this;
-    logger.info(`[rpc-relayer/relay] relaying signed meta-transactions ${JSON.stringify(signedTxs)} with quote ${JSON.stringify(quote)}`);
+    logger.info(`[rpc-relayer/relay] relaying signed meta-transactions ${JSON.stringify(signedTxs, bigintReplacer)} with quote ${JSON.stringify(quote, bigintReplacer)}`);
     let typecheckedQuote;
     if (quote !== void 0) {
       if (typeof quote._quote === "string") {
@@ -58243,7 +58259,7 @@ class RpcRelayer {
       },
       quote: typecheckedQuote
     });
-    logger.info(`[rpc-relayer/relay] got relay result ${JSON.stringify(metaTxn)}`);
+    logger.info(`[rpc-relayer/relay] got relay result ${JSON.stringify(metaTxn, bigintReplacer)}`);
     if (waitForReceipt) {
       return this.wait(signedTxs.intent.id);
     } else {
@@ -60530,10 +60546,10 @@ const webrpcErrorByCode$5 = {
   [3002]: ProjectNotFoundError$1,
   [3003]: MetadataCallFailedError
 };
-const fetch$3 = globalThis.fetch;
+const fetch$4 = globalThis.fetch;
 class SequenceIndexer extends Indexer {
   constructor(hostname, projectAccessKey2, jwtAuth) {
-    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$3);
+    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$4);
     this.projectAccessKey = projectAccessKey2;
     this.jwtAuth = jwtAuth;
     this._fetch = (input2, init2) => {
@@ -60547,7 +60563,7 @@ class SequenceIndexer extends Indexer {
         headers["X-Access-Key"] = projectAccessKey3;
       }
       init2.headers = _extends$8({}, init2.headers, headers);
-      return fetch$3(input2, init2);
+      return fetch$4(input2, init2);
     };
     this.fetch = this._fetch;
   }
@@ -61741,10 +61757,10 @@ const webrpcErrorByCode$4 = {
   [3003]: ChainNotFoundError$1,
   [4001]: TokenDirectoryDisabledError
 };
-const fetch$2 = globalThis.fetch;
+const fetch$3 = globalThis.fetch;
 class SequenceMetadata extends Metadata {
   constructor(hostname = "https://metadata.sequence.app", projectAccessKey2, jwtAuth) {
-    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$2);
+    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$3);
     this.projectAccessKey = projectAccessKey2;
     this.jwtAuth = jwtAuth;
     this._fetch = (input2, init2) => {
@@ -61758,14 +61774,14 @@ class SequenceMetadata extends Metadata {
         headers["X-Access-Key"] = projectAccessKey3;
       }
       init2.headers = _extends$7({}, init2.headers, headers);
-      return fetch$2(input2, init2);
+      return fetch$3(input2, init2);
     };
     this.fetch = this._fetch;
   }
 }
 class SequenceCollections extends Collections {
   constructor(hostname = "https://metadata.sequence.app", jwtAuth) {
-    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$2);
+    super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, fetch$3);
     this.jwtAuth = jwtAuth;
     this._fetch = (input2, init2) => {
       const headers = {};
@@ -61774,7 +61790,7 @@ class SequenceCollections extends Collections {
         headers["Authorization"] = `BEARER ${jwtAuth2}`;
       }
       init2.headers = _extends$7({}, init2.headers, headers);
-      return fetch$2(input2, init2);
+      return fetch$3(input2, init2);
     };
     this.fetch = this._fetch;
   }
@@ -62211,7 +62227,7 @@ function debug(value, prefix = "") {
       console.debug(prefix + "undefined");
       break;
     default:
-      JSON.stringify(value, void 0, 2).split("\n").map((line) => prefix + line).forEach((line) => console.debug(line));
+      JSON.stringify(value, bigintReplacer, 2).split("\n").map((line) => prefix + line).forEach((line) => console.debug(line));
       break;
   }
   return value;
@@ -64911,14 +64927,14 @@ const webrpcErrorByCode$2 = {
   [2004]: ValidationFailedError2,
   [3e3]: NotFoundError$1
 };
-const fetch$1 = globalThis.fetch;
+const fetch$2 = globalThis.fetch;
 class GuardSigner {
   constructor(address, url, appendSuffix = false) {
     this.address = address;
     this.url = url;
     this.appendSuffix = appendSuffix;
     this.guard = void 0;
-    this.guard = new Guard(url, fetch$1);
+    this.guard = new Guard(url, fetch$2);
   }
   async getAddress() {
     return this.address;
@@ -68728,7 +68744,7 @@ class UnrealMessageProvider extends BaseProviderTransport {
   // all lowercase is an annoying limitation of Unreal CEF BindUObject
   sendMessage(message) {
     var _window$ue3;
-    const postedMessage = typeof message !== "string" ? JSON.stringify(message) : message;
+    const postedMessage = typeof message !== "string" ? JSON.stringify(message, bigintReplacer) : message;
     console.log("Sending message to wallet:", postedMessage);
     (_window$ue3 = window.ue) == null || (_window$ue3 = _window$ue3.sequencewallettransport) == null || _window$ue3.sendmessagetowallet(postedMessage);
   }
@@ -68804,7 +68820,7 @@ class UnrealMessageHandler extends BaseWalletTransport {
       logger.error("impossible state, should not be calling postMessage until inited");
       return;
     }
-    const payload = JSON.stringify(message);
+    const payload = JSON.stringify(message, bigintReplacer);
     (_window$ue3 = window.ue) == null || (_window$ue3 = _window$ue3.sequencewallettransport) == null || _window$ue3.sendmessagetosequencejs(payload);
   }
 }
@@ -69009,7 +69025,7 @@ class WindowMessageProvider extends BaseProviderTransport {
       }
       let message;
       try {
-        message = JSON.parse(event.data);
+        message = JSON.parse(event.data, bigintReviver);
       } catch (err) {
         return;
       }
@@ -69030,7 +69046,7 @@ class WindowMessageProvider extends BaseProviderTransport {
       logger.warn("WindowMessageProvider: sendMessage failed as walletWindow is unavailable");
       return;
     }
-    const postedMessage = typeof message !== "string" ? JSON.stringify(message) : message;
+    const postedMessage = typeof message !== "string" ? JSON.stringify(message, bigintReplacer) : message;
     this.walletWindow.postMessage(postedMessage, this.walletURL.origin);
   }
 }
@@ -69050,12 +69066,7 @@ class WindowMessageHandler extends BaseWalletTransport {
       }
       let request;
       try {
-        request = JSON.parse(event.data, (key, value) => {
-          if (isBigNumberSerialized(value)) {
-            return BigInt(value.hex);
-          }
-          return value;
-        });
+        request = JSON.parse(event.data, bigintReviver);
       } catch (err) {
         return;
       }
@@ -69126,7 +69137,7 @@ class WindowMessageHandler extends BaseWalletTransport {
   }
   // postMessage sends message to the dapp window
   sendMessage(message) {
-    const payload = JSON.stringify(message);
+    const payload = JSON.stringify(message, bigintReplacer);
     if (message.type === EventType.INIT) {
       this.postMessage(payload, true);
     } else {
@@ -69152,9 +69163,6 @@ class WindowMessageHandler extends BaseWalletTransport {
     }
   }
 }
-const isBigNumberSerialized = (value) => {
-  return typeof value === "object" && value.type === "BigNumber" && isHexString(value.hex);
-};
 function isMuxTransportTemplate(obj) {
   return obj && typeof obj === "object" && (obj.windowTransport && typeof obj.windowTransport === "object" || obj.proxyTransport && typeof obj.proxyTransport === "object" || obj.extensionTransport && typeof obj.extensionTransport === "object" || obj.unrealTransport && typeof obj.unrealTransport === "object") && // One of the transports must be enabled
   (obj.windowTransport && obj.windowTransport.enabled || obj.proxyTransport && obj.proxyTransport.enabled || obj.extensionTransport && obj.extensionTransport.enabled || obj.unrealTransport && obj.unrealTransport.enabled);
@@ -70833,7 +70841,8 @@ class SequenceClient {
   // Higher level API
   async request(request) {
     request.method = this.mapSignMethod(request.method);
-    return this.transport.request(request);
+    const result = await this.transport.request(request);
+    return unwrapJsonRpcResponse(result);
   }
   async getNetworks(pull) {
     const connectedSession = this.session.connectedSession();
@@ -70950,6 +70959,12 @@ class SequenceClient {
   // wallet-webapp does implement them, but this client is meant to be
   // exclusively used for Sequence specific methods
 }
+const unwrapJsonRpcResponse = (response) => {
+  if (response && typeof response === "object" && "jsonrpc" in response && "result" in response) {
+    return response.result;
+  }
+  return response;
+};
 const DefaultProviderConfig = {
   transports: {
     walletAppURL: "https://sequence.app",
@@ -75866,7 +75881,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-Ch1D1_mc.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BpL4z2WI.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -93650,8 +93665,11 @@ class WindowSubtleCryptoBackend {
       throw new Error("window.crypto.subtle is not available");
     }
   }
-  async generateKey(algorithm, extractable, keyUsages) {
+  generateKey(algorithm, extractable, keyUsages) {
     return window.crypto.subtle.generateKey(algorithm, extractable, keyUsages);
+  }
+  importKey(format2, keyData, algorithm, extractable, keyUsages) {
+    return window.crypto.subtle.importKey(format2, keyData, algorithm, extractable, keyUsages);
   }
   async exportKey(format2, key) {
     const keyData = await window.crypto.subtle.exportKey(format2, key);
@@ -93665,7 +93683,7 @@ class WindowSubtleCryptoBackend {
     const signature2 = await window.crypto.subtle.sign(algorithm, key, data);
     return new Uint8Array(signature2);
   }
-  async verify(algorithm, key, signature2, data) {
+  verify(algorithm, key, signature2, data) {
     return window.crypto.subtle.verify(algorithm, key, signature2, data);
   }
   getRandomValues(len) {
@@ -94657,8 +94675,30 @@ function defaultArgsOrFail(config2) {
   }
   return preconfig;
 }
+const fetch$1 = globalThis.fetch;
+const jwksDev = {
+  keys: [{
+    alg: "RS256",
+    e: "AQAB",
+    kid: "9LkLZyHdNq1N2aeHMlC5jw",
+    kty: "RSA",
+    n: "qllUB_ERsOjbKx4SirGow4XDov05lQyhiF7Duo4sPkH9CwMN11OqhLuIqeIXPq0rPNIXGP99A7riXTcpRNk-5ZNL29zs-Xjj3idp7nZQZLIU1CBQErTcbxbwUYp8Q46k7lJXVlMmwoLQvQAgH8BZLuSe-Xk1tye0mDC-bHvmrMfqm2zmuWeDnZercU3Jg2iYwyPrjKWx7YSBSMTXTKPGndws4m3s3XIEpI2alLcLLWsPQk2UjIlux6I7vLwvjM_BgjFhYHqgg1tgZUPn_Xxt4wvhobF8UIacRVmGcuyYBnhRxKnBQhEClGSBVtnFYYBSvRjTgliOwf3DhFoXdnmyPQ",
+    use: "sig"
+  }]
+};
+const jwksProd = {
+  keys: [{
+    alg: "RS256",
+    e: "AQAB",
+    kid: "nWh-_3nQ1lnhhI1ZSQTQmw",
+    kty: "RSA",
+    n: "pECaEq2k0k22J9e7hFLAFmKbzPLlWToUJJmFeWAdEiU4zpW17EUEOyfjRzjgBewc7KFJQEblC3eTD7Vc5bh9-rafPEj8LaKyZzzS5Y9ZATXhlMo5Pnlar3BrTm48XcnT6HnLsvDeJHUVbrYd1JyE1kqeTjUKWvgKX4mgIJiuYhpdzbOC22cPaWb1dYCVhArDVAPHGqaEwRjX7JneETdY5hLJ6JhsAws706W7fwfNKddPQo2mY95S9q8HFxMr5EaXEMmhwxk8nT5k-Ouar2dobMXRMmQiEZSt9fJaGKlK7KWJSnbPOVa2cZud1evs1Rz2SdCSA2bhuZ6NnZCxkqnagw",
+    use: "sig"
+  }]
+};
 class SequenceWaaS {
   constructor(config2, store = new LocalStore(), cryptoBackend = getDefaultSubtleCryptoBackend(), secureStoreBackend = getDefaultSecureStoreBackend()) {
+    var _this = this;
     this.store = store;
     this.cryptoBackend = cryptoBackend;
     this.secureStoreBackend = secureStoreBackend;
@@ -94672,11 +94712,75 @@ class SequenceWaaS {
     this.deviceName = void 0;
     this.emailClient = void 0;
     this.lastDate = void 0;
+    this.signatureVerificationFailed = false;
+    this._fetch = (input2, init2) => {
+      if (this.signatureVerificationFailed) {
+        throw new Error("Signature verification failed");
+      }
+      if (this.cryptoBackend && this.config.disableHttpSignatureCheck !== true && init2 != null && init2.headers) {
+        const headers = {};
+        headers["Accept-Signature"] = 'sig=();alg="rsa-v1_5-sha256"';
+        init2.headers = _extends$2({}, init2.headers, headers);
+      }
+      const response = fetch$1(input2, init2);
+      if (this.cryptoBackend && this.config.disableHttpSignatureCheck !== true) {
+        response.then(async function(r2) {
+          try {
+            var _contentDigest$match, _signature$match;
+            const clone = r2.clone();
+            const responseBodyText = await clone.text();
+            const contentDigest = r2.headers.get("Content-Digest");
+            const signatureInput = r2.headers.get("Signature-Input");
+            const signature2 = r2.headers.get("Signature");
+            if (!contentDigest) {
+              throw new Error("Content-Digest header not set");
+            }
+            if (!signatureInput) {
+              throw new Error("Signature-Input header not set");
+            }
+            if (!signature2) {
+              throw new Error("Signature header not set");
+            }
+            const contentDigestSha = (_contentDigest$match = contentDigest.match(":(.*):")) == null ? void 0 : _contentDigest$match[1];
+            if (!contentDigestSha) {
+              throw new Error("Content digest not found");
+            }
+            const responseBodyTextUint8Array = new TextEncoder().encode(responseBodyText);
+            const responseBodyTextDigest = await _this.cryptoBackend.digest("SHA-256", responseBodyTextUint8Array);
+            const base64EncodedDigest = btoa(String.fromCharCode(...responseBodyTextDigest));
+            if (contentDigestSha !== base64EncodedDigest) {
+              throw new Error("Digest mismatch");
+            }
+            const message = `"content-digest": ${contentDigest}
+"@signature-params": ${signatureInput.substring(4)}`;
+            const algo = {
+              name: "RSASSA-PKCS1-v1_5",
+              hash: "SHA-256"
+            };
+            const jwks = r2.url.includes("dev-waas") ? jwksDev : jwksProd;
+            const key = await _this.cryptoBackend.importKey("jwk", jwks.keys[0], algo, false, ["verify"]);
+            const sig = (_signature$match = signature2.match(":(.*):")) == null ? void 0 : _signature$match[1];
+            if (!sig) {
+              throw new Error("Signature not found");
+            }
+            const signatureBuffer = Uint8Array.from(atob(sig), (c2) => c2.charCodeAt(0));
+            const verifyResult = await _this.cryptoBackend.verify(algo, key, signatureBuffer, new TextEncoder().encode(message));
+            if (!verifyResult) {
+              throw new Error("Signature verification failed, consequent requests will fail");
+            }
+          } catch (e2) {
+            _this.signatureVerificationFailed = true;
+            throw e2;
+          }
+        });
+      }
+      return response;
+    };
     this.config = defaultArgsOrFail(config2);
     this.waas = new SequenceWaaSBase(_extends$2({
       network: 1
     }, config2), this.store, this.cryptoBackend, this.secureStoreBackend);
-    this.client = new WaasAuthenticator(this.config.rpcServer, this.fetch.bind(this));
+    this.client = new WaasAuthenticator(this.config.rpcServer, this._fetch);
     this.deviceName = new StoreObj(this.store, "@0xsequence.waas.auth.deviceName", void 0);
   }
   get email() {
@@ -94758,7 +94862,7 @@ class SequenceWaaS {
     return this.waas.isSignedIn();
   }
   signIn(creds, sessionName) {
-    var _this = this;
+    var _this2 = this;
     const isEmailAuth = "email" in creds;
     if (isEmailAuth && this.emailAuthCodeRequiredCallback.length == 0) {
       return Promise.reject("Missing emailAuthCodeRequired callback");
@@ -94766,13 +94870,13 @@ class SequenceWaaS {
     return new Promise(async function(resolve, reject) {
       let challenge;
       try {
-        challenge = await _this.initAuth(creds);
+        challenge = await _this2.initAuth(creds);
       } catch (e2) {
         return reject(e2);
       }
       const respondToChallenge = async function respondToChallenge2(answer) {
         try {
-          const res = await _this.completeAuth(challenge.withAnswer(answer), {
+          const res = await _this2.completeAuth(challenge.withAnswer(answer), {
             sessionName
           });
           resolve(res);
@@ -94782,7 +94886,7 @@ class SequenceWaaS {
           } else if (e2 instanceof EmailAlreadyInUseError) {
             const forceCreate = async function forceCreate2() {
               try {
-                const res = await _this.completeAuth(challenge.withAnswer(answer), {
+                const res = await _this2.completeAuth(challenge.withAnswer(answer), {
                   sessionName,
                   forceCreateAccount: true
                 });
@@ -94806,7 +94910,7 @@ class SequenceWaaS {
                 info.issuer = parts[2];
               }
             }
-            for (const callback of _this.emailConflictCallback) {
+            for (const callback of _this2.emailConflictCallback) {
               callback(info, forceCreate);
             }
           } else {
@@ -94815,7 +94919,7 @@ class SequenceWaaS {
         }
       };
       if (isEmailAuth) {
-        for (const callback of _this.emailAuthCodeRequiredCallback) {
+        for (const callback of _this2.emailAuthCodeRequiredCallback) {
           callback(respondToChallenge);
         }
       } else {
@@ -97415,7 +97519,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DBXOsOi6.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CKTa-Wqf.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97592,7 +97696,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-DpMfz2em.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index--cVnnVXZ.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97826,7 +97930,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x2) => x2.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C3_avkoR.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DEYs7vDC.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -109066,7 +109170,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "1.0.1");
+console.log("VERSION:", "1.0.2");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
