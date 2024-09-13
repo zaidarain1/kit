@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-CKTa-Wqf.js","./hooks.module-Gt_UBnF4.js","./___vite-browser-external_commonjs-proxy-5e59GdWQ.js","./index--cVnnVXZ.js","./index.es-DEYs7vDC.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-DhrVQl1N.js","./hooks.module-B0yPPEfe.js","./___vite-browser-external_commonjs-proxy-BBNlhQUO.js","./index-CyfTH7LX.js","./index.es-C_0Ilmtr.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
@@ -52539,6 +52539,7 @@ let ChainId = /* @__PURE__ */ function(ChainId2) {
   ChainId2[ChainId2["BLAST"] = 81457] = "BLAST";
   ChainId2[ChainId2["BLAST_SEPOLIA"] = 168587773] = "BLAST_SEPOLIA";
   ChainId2[ChainId2["BORNE_TESTNET"] = 94984] = "BORNE_TESTNET";
+  ChainId2[ChainId2["SKALE_NEBULA_TESTNET"] = 37084624] = "SKALE_NEBULA_TESTNET";
   ChainId2[ChainId2["HARDHAT"] = 31337] = "HARDHAT";
   ChainId2[ChainId2["HARDHAT_2"] = 31338] = "HARDHAT_2";
   return ChainId2;
@@ -52669,8 +52670,8 @@ const networks = {
       rootUrl: "https://polygonscan.com/"
     },
     nativeToken: {
-      symbol: "MATIC",
-      name: "Polygon",
+      symbol: "POL",
+      name: "POL",
       decimals: 18
     }
   },
@@ -52704,8 +52705,8 @@ const networks = {
       rootUrl: "https://www.oklink.com/amoy/"
     },
     nativeToken: {
-      symbol: "aMATIC",
-      name: "Amoy Polygon",
+      symbol: "aPOL",
+      name: "Amoy POL",
       decimals: 18
     }
   },
@@ -53207,6 +53208,23 @@ const networks = {
     nativeToken: {
       symbol: "BORNE",
       name: "BORNE",
+      decimals: 18
+    }
+  },
+  [ChainId.SKALE_NEBULA_TESTNET]: {
+    chainId: ChainId.SKALE_NEBULA_TESTNET,
+    type: NetworkType.TESTNET,
+    name: "skale-nebula-testnet",
+    title: "Skale Nebula Gaming Hub Testnet",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.SKALE_NEBULA_TESTNET}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Skale Nebula Gaming Hub Testnet Explorer",
+      rootUrl: "https://lanky-ill-funny-testnet.explorer.testnet.skalenodes.com/"
+    },
+    nativeToken: {
+      symbol: "sFUEL",
+      name: "SKALE Fuel",
       decimals: 18
     }
   },
@@ -54290,7 +54308,7 @@ const allNetworks = validateAndSortNetworks([_extends$e({}, createNetworkConfig(
   disabled: true
 }), createNetworkConfig(ChainId.SEPOLIA), createNetworkConfig(ChainId.POLYGON_MUMBAI, {
   disabled: true
-}), createNetworkConfig(ChainId.POLYGON_AMOY), createNetworkConfig(ChainId.BSC_TESTNET), createNetworkConfig(ChainId.ARBITRUM_SEPOLIA), createNetworkConfig(ChainId.BASE), createNetworkConfig(ChainId.BASE_SEPOLIA), createNetworkConfig(ChainId.HOMEVERSE), createNetworkConfig(ChainId.HOMEVERSE_TESTNET), createNetworkConfig(ChainId.XAI), createNetworkConfig(ChainId.XAI_SEPOLIA), createNetworkConfig(ChainId.AVALANCHE_TESTNET), createNetworkConfig(ChainId.ASTAR_ZKEVM), createNetworkConfig(ChainId.ASTAR_ZKYOTO), createNetworkConfig(ChainId.XR_SEPOLIA), createNetworkConfig(ChainId.B3_SEPOLIA), createNetworkConfig(ChainId.APECHAIN_TESTNET), createNetworkConfig(ChainId.BLAST), createNetworkConfig(ChainId.BLAST_SEPOLIA), createNetworkConfig(ChainId.TELOS), createNetworkConfig(ChainId.BORNE_TESTNET), ...hardhatNetworks]);
+}), createNetworkConfig(ChainId.POLYGON_AMOY), createNetworkConfig(ChainId.BSC_TESTNET), createNetworkConfig(ChainId.ARBITRUM_SEPOLIA), createNetworkConfig(ChainId.BASE), createNetworkConfig(ChainId.BASE_SEPOLIA), createNetworkConfig(ChainId.HOMEVERSE), createNetworkConfig(ChainId.HOMEVERSE_TESTNET), createNetworkConfig(ChainId.XAI), createNetworkConfig(ChainId.XAI_SEPOLIA), createNetworkConfig(ChainId.AVALANCHE_TESTNET), createNetworkConfig(ChainId.ASTAR_ZKEVM), createNetworkConfig(ChainId.ASTAR_ZKYOTO), createNetworkConfig(ChainId.XR_SEPOLIA), createNetworkConfig(ChainId.B3_SEPOLIA), createNetworkConfig(ChainId.APECHAIN_TESTNET), createNetworkConfig(ChainId.BLAST), createNetworkConfig(ChainId.BLAST_SEPOLIA), createNetworkConfig(ChainId.TELOS), createNetworkConfig(ChainId.BORNE_TESTNET), createNetworkConfig(ChainId.SKALE_NEBULA_TESTNET), ...hardhatNetworks]);
 class JsonRpcRouter {
   constructor(middlewares, sender) {
     this.sender = void 0;
@@ -56981,7 +56999,7 @@ var index$6 = /* @__PURE__ */ Object.freeze({
   coderFor,
   genericCoderFor
 });
-const VERSION$1 = "2.0.1";
+const VERSION$1 = "2.0.6";
 const allVersions = [v1, v2];
 const core$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -62328,7 +62346,7 @@ function recreateBigNumbers(object2) {
   for (const key of Object.keys(object2)) {
     const val = object2[key];
     if (val._isBigNumber === true && val._hex !== void 0 && typeof val._hex === "string" && val._hex.length !== "") {
-      result[key] = BigInt(val);
+      result[key] = BigInt(val._hex);
     } else if (Array.isArray(val)) {
       result[key] = val.map((v3) => recreateBigNumbers(v3));
     } else if (typeof val === "object" && val !== null) {
@@ -67107,7 +67125,7 @@ var webrpcErrorByCode$1 = {
 };
 var DatabeatRpcClient = class extends Databeat {
   constructor(hostname, auth2) {
-    const globalFetch = typeof global$1 === "object" ? global$1.fetch.bind(global$1) : window.fetch.bind(window);
+    const globalFetch = globalThis.fetch.bind(globalThis);
     super(hostname.endsWith("/") ? hostname.slice(0, -1) : hostname, globalFetch);
     __publicField(this, "_globalFetch");
     __publicField(this, "_fetch", (input2, init2) => {
@@ -67437,6 +67455,9 @@ var getDefaultProps = () => {
   }
   if (params.get("gclid") && params.get("gclid") !== "") {
     props["gclid"] = params.get("gclid") || "";
+  }
+  if (params.get("wbraid") && params.get("wbraid") !== "") {
+    props["wbraid"] = params.get("wbraid") || "";
   }
   return props;
 };
@@ -75881,7 +75902,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-BpL4z2WI.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DWFRyvlP.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -94858,7 +94879,25 @@ class SequenceWaaS {
       throw e2;
     }
   }
+  async updateSessionStatus() {
+    if (await this.waas.isSignedIn() === false) {
+      return;
+    }
+    try {
+      await this.listSessions();
+    } catch (error) {
+      if (error instanceof WebrpcEndpointError7 && error.cause === "session invalid or not found") {
+        await this.dropSession({
+          sessionId: await this.waas.getSessionId(),
+          strict: false
+        });
+      } else {
+        throw error;
+      }
+    }
+  }
   async isSignedIn() {
+    await this.updateSessionStatus();
     return this.waas.isSignedIn();
   }
   signIn(creds, sessionName) {
@@ -97519,7 +97558,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-CKTa-Wqf.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DhrVQl1N.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97696,7 +97735,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index--cVnnVXZ.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-CyfTH7LX.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97930,7 +97969,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x2) => x2.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DEYs7vDC.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C_0Ilmtr.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -98874,7 +98913,7 @@ const TransactionSuccess = () => {
   const nav = useNavigation$1();
   const navigation = nav.navigation;
   const chainId = ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.chainId) || ChainId.POLYGON;
-  const network2 = sequence$1.network.allNetworks.find((n2) => n2.chainId === chainId);
+  const network2 = allNetworks.find((n2) => n2.chainId === chainId);
   reactExports.useEffect(() => {
     var _a3, _b3, _c3, _d2;
     ((_a3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a3.onSuccess) && ((_b3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _b3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.creditCardCheckout));
@@ -109170,7 +109209,7 @@ const queryClient = new QueryClient();
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(WagmiProvider, { config: wagmiConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitProvider, { config: kitConfig, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx("div", { id: "app", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#app", scope: "app", theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) }) }) }) });
 };
-console.log("VERSION:", "1.0.2");
+console.log("VERSION:", "1.0.3");
 const root = client.createRoot(document.getElementById("root"));
 root.render(
   /* @__PURE__ */ jsxRuntimeExports$1.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(App, {}) })
