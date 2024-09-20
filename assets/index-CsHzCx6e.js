@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-DhrVQl1N.js","./hooks.module-B0yPPEfe.js","./___vite-browser-external_commonjs-proxy-BBNlhQUO.js","./index-CyfTH7LX.js","./index.es-C_0Ilmtr.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-03y2NvI2.js","./hooks.module-DH-Wk4N-.js","./___vite-browser-external_commonjs-proxy-BKpD9f8m.js","./index-DGLMhC4E.js","./index.es-DMLMwzgY.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
@@ -25666,6 +25666,46 @@ const Tooltip = (props) => {
       }
     )
   ] }) });
+};
+const useMediaQuery = (queryInput, options = {}) => {
+  const bp = (/* @__PURE__ */ new Map()).set("isMobile", `@media screen and (max-width: ${breakpoints.lg - 1}px)`).set("isDesktop", `@media screen and (min-width: ${breakpoints.lg}px)`);
+  if (!queryInput.startsWith("@media")) {
+    const bpQuery = bp.get(queryInput);
+    if (!bpQuery || bpQuery === "") {
+      throw new Error(
+        `useMediaQuery failed to get breakpoint from theme for: ${queryInput}`
+      );
+    }
+    queryInput = bpQuery;
+  }
+  const query = queryInput.replace(/^@media( ?)/m, "");
+  const supportMatchMedia = typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
+  const { defaultMatches = false } = options;
+  const [match, setMatch] = reactExports.useState(() => {
+    if (supportMatchMedia) {
+      return window.matchMedia(query).matches;
+    }
+    return defaultMatches;
+  });
+  reactExports.useEffect(() => {
+    let active = true;
+    if (!supportMatchMedia) {
+      return void 0;
+    }
+    const queryList = window.matchMedia(query);
+    const updateMatch = () => {
+      if (active) {
+        setMatch(queryList.matches);
+      }
+    };
+    updateMatch();
+    queryList.addListener(updateMatch);
+    return () => {
+      active = false;
+      queryList.removeListener(updateMatch);
+    };
+  }, [query, supportMatchMedia]);
+  return match;
 };
 const abi$7 = [{
   inputs: [{
@@ -75902,7 +75942,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-DWFRyvlP.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CI9Y3o6i.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -75990,7 +76030,7 @@ function getRevertErrorData(err) {
   const error = err.walk();
   return typeof (error == null ? void 0 : error.data) === "object" ? (_a2 = error.data) == null ? void 0 : _a2.data : error.data;
 }
-async function readContract(client2, parameters) {
+async function readContract$1(client2, parameters) {
   const { abi: abi2, address, args, functionName, ...rest } = parameters;
   const calldata = encodeFunctionData({
     abi: abi2,
@@ -76044,7 +76084,7 @@ async function getEnsAddress(client2, { blockNumber, blockTag, coinType, name: n
       blockNumber,
       blockTag
     };
-    const readContractAction = getAction$1(client2, readContract, "readContract");
+    const readContractAction = getAction$1(client2, readContract$1, "readContract");
     const res = gatewayUrls ? await readContractAction({
       ...readContractParameters,
       args: [...readContractParameters.args, gatewayUrls]
@@ -76256,7 +76296,7 @@ function parseNftUri(uri_) {
 }
 async function getNftTokenUri(client2, { nft }) {
   if (nft.namespace === "erc721") {
-    return readContract(client2, {
+    return readContract$1(client2, {
       address: nft.contractAddress,
       abi: [
         {
@@ -76272,7 +76312,7 @@ async function getNftTokenUri(client2, { nft }) {
     });
   }
   if (nft.namespace === "erc1155") {
-    return readContract(client2, {
+    return readContract$1(client2, {
       address: nft.contractAddress,
       abi: [
         {
@@ -76344,7 +76384,7 @@ async function getEnsText(client2, { blockNumber, blockTag, name: name2, key, ga
       blockNumber,
       blockTag
     };
-    const readContractAction = getAction$1(client2, readContract, "readContract");
+    const readContractAction = getAction$1(client2, readContract$1, "readContract");
     const res = gatewayUrls ? await readContractAction({
       ...readContractParameters,
       args: [...readContractParameters.args, gatewayUrls]
@@ -76407,7 +76447,7 @@ async function getEnsName(client2, { address, blockNumber, blockTag, gatewayUrls
       blockNumber,
       blockTag
     };
-    const readContractAction = getAction$1(client2, readContract, "readContract");
+    const readContractAction = getAction$1(client2, readContract$1, "readContract");
     const [name2, resolvedAddress] = gatewayUrls ? await readContractAction({
       ...readContractParameters,
       args: [...readContractParameters.args, gatewayUrls]
@@ -76434,7 +76474,7 @@ async function getEnsResolver(client2, { blockNumber, blockTag, name: name2, uni
       contract: "ensUniversalResolver"
     });
   }
-  const [resolverAddress] = await getAction$1(client2, readContract, "readContract")({
+  const [resolverAddress] = await getAction$1(client2, readContract$1, "readContract")({
     address: universalResolverAddress,
     abi: [
       {
@@ -77072,7 +77112,7 @@ async function multicall(client2, parameters) {
       ];
     }
   }
-  const aggregate3Results = await Promise.allSettled(chunkedCalls.map((calls) => getAction$1(client2, readContract, "readContract")({
+  const aggregate3Results = await Promise.allSettled(chunkedCalls.map((calls) => getAction$1(client2, readContract$1, "readContract")({
     abi: multicall3Abi,
     address: multicallAddress,
     args: [calls],
@@ -78966,7 +79006,7 @@ function publicActions(client2) {
     getTransactionReceipt: (args) => getTransactionReceipt$1(client2, args),
     multicall: (args) => multicall(client2, args),
     prepareTransactionRequest: (args) => prepareTransactionRequest(client2, args),
-    readContract: (args) => readContract(client2, args),
+    readContract: (args) => readContract$1(client2, args),
     sendRawTransaction: (args) => sendRawTransaction(client2, args),
     simulateContract: (args) => simulateContract$1(client2, args),
     verifyMessage: (args) => verifyMessage(client2, args),
@@ -80769,6 +80809,12 @@ function getAccount(config2) {
         status
       };
   }
+}
+function readContract(config2, parameters) {
+  const { chainId, ...rest } = parameters;
+  const client2 = config2.getClient({ chainId });
+  const action = getAction(client2, readContract$1, "readContract");
+  return action(rest);
 }
 function getChainId(config2) {
   return config2.state.chainId;
@@ -84002,6 +84048,11 @@ function useAccount(parameters = {}) {
   const config2 = useConfig(parameters);
   return useSyncExternalStoreWithTracked((onChange) => watchAccount(config2, { onChange }), () => getAccount(config2));
 }
+function structuralSharing(oldData, newData) {
+  if (deepEqual$1(oldData, newData))
+    return oldData;
+  return replaceEqualDeep(oldData, newData);
+}
 function hashFn(queryKey) {
   return JSON.stringify(queryKey, (_, value) => {
     if (isPlainObject(value))
@@ -84049,7 +84100,7 @@ function filterQueryOptions(options) {
     queryKeyHashFn,
     retry,
     retryDelay,
-    structuralSharing,
+    structuralSharing: structuralSharing2,
     // import('@tanstack/query-core').InfiniteQueryObserverOptions
     // biome-ignore lint/correctness/noUnusedVariables: remove properties
     getPreviousPageParam: getPreviousPageParam2,
@@ -84115,6 +84166,35 @@ function getWalletClientQueryKey(options = {}) {
     "walletClient",
     { ...filterQueryOptions(parameters), connectorUid: connector == null ? void 0 : connector.uid }
   ];
+}
+function readContractQueryOptions(config2, options = {}) {
+  return {
+    // TODO: Support `signal` once Viem actions allow passthrough
+    // https://tkdodo.eu/blog/why-you-want-react-query#bonus-cancellation
+    async queryFn({ queryKey }) {
+      const abi2 = options.abi;
+      if (!abi2)
+        throw new Error("abi is required");
+      const { address, functionName, scopeKey: _, ...parameters } = queryKey[1];
+      if (!address)
+        throw new Error("address is required");
+      if (!functionName)
+        throw new Error("functionName is required");
+      const args = parameters.args;
+      return readContract(config2, {
+        abi: abi2,
+        address,
+        functionName,
+        args,
+        ...parameters
+      });
+    },
+    queryKey: readContractQueryKey(options)
+  };
+}
+function readContractQueryKey(options = {}) {
+  const { abi: _, ...rest } = options;
+  return ["readContract", filterQueryOptions(rest)];
 }
 function sendTransactionMutationOptions(config2) {
   return {
@@ -84204,6 +84284,19 @@ function useDisconnect(parameters = {}) {
 function usePublicClient(parameters = {}) {
   const config2 = useConfig(parameters);
   return withSelectorExports.useSyncExternalStoreWithSelector((onChange) => watchPublicClient(config2, { onChange }), () => getPublicClient(config2, parameters), () => getPublicClient(config2, parameters), (x2) => x2, (a2, b2) => (a2 == null ? void 0 : a2.uid) === (b2 == null ? void 0 : b2.uid));
+}
+function useReadContract(parameters = {}) {
+  const { abi: abi2, address, functionName, query = {} } = parameters;
+  const config2 = useConfig(parameters);
+  const chainId = useChainId({ config: config2 });
+  const options = readContractQueryOptions(config2, { ...parameters, chainId: parameters.chainId ?? chainId });
+  const enabled = Boolean(address && abi2 && functionName && (query.enabled ?? true));
+  return useQuery({
+    ...query,
+    ...options,
+    enabled,
+    structuralSharing: query.structuralSharing ?? structuralSharing
+  });
 }
 function useSendTransaction(parameters = {}) {
   const { mutation } = parameters;
@@ -84295,6 +84388,7 @@ var LocalStorageKey;
   LocalStorageKey2["WaasSignInEmail"] = "@kit.waasSignInEmail";
 })(LocalStorageKey || (LocalStorageKey = {}));
 const DEFAULT_SESSION_EXPIRATION = 60 * 60 * 24 * 7;
+const TRANSACTION_CONFIRMATIONS_DEFAULT = 4;
 const createGenericContext$2 = () => {
   const genericContext = reactExports.createContext(void 0);
   const useGenericContext = () => {
@@ -93178,7 +93272,7 @@ function feeOptions({
     })
   });
 }
-function sendTransactions({
+function sendTransactions$1({
   lifespan,
   wallet,
   identifier,
@@ -93266,7 +93360,7 @@ function sendERC20(_ref) {
     to,
     value
   } = _ref, args = _objectWithoutPropertiesLoose$2(_ref, _excluded$1$1);
-  return sendTransactions(_extends$2({
+  return sendTransactions$1(_extends$2({
     transactions: [erc20({
       tokenAddress: token,
       to,
@@ -93282,7 +93376,7 @@ function sendERC721(_ref2) {
     safe,
     data
   } = _ref2, args = _objectWithoutPropertiesLoose$2(_ref2, _excluded2$1);
-  return sendTransactions(_extends$2({
+  return sendTransactions$1(_extends$2({
     transactions: [erc721({
       tokenAddress: token,
       to,
@@ -93303,7 +93397,7 @@ function sendERC1155(_ref3) {
     id: v3.id,
     amount: BigInt(v3.amount).toString()
   }));
-  return sendTransactions(_extends$2({
+  return sendTransactions$1(_extends$2({
     transactions: [erc1155({
       tokenAddress: token,
       to,
@@ -93320,7 +93414,7 @@ function sendDelayedEncode(_ref4) {
     func,
     args
   } = _ref4, otherArgs = _objectWithoutPropertiesLoose$2(_ref4, _excluded4);
-  return sendTransactions(_extends$2({
+  return sendTransactions$1(_extends$2({
     transactions: [delayedEncode({
       to,
       value: BigInt(value).toString(),
@@ -94059,7 +94153,7 @@ class SequenceWaaSBase {
    * @returns a payload that must be sent to the waas API to complete the transaction
    */
   async sendTransaction(args) {
-    const intent = sendTransactions(await this.commonArgs(args));
+    const intent = sendTransactions$1(await this.commonArgs(args));
     return this.signIntent(intent);
   }
   async getTransactionReceipt(args) {
@@ -96825,6 +96919,67 @@ const useTransactionHistory = (args) => {
     enabled: !!args.chainId && !!args.accountAddress
   });
 };
+const getSwapQuotes = async (apiClient, metadataClient, indexerClient, args) => {
+  if (!args.chainId || !args.userAddress || !args.currencyAddress || !args.currencyAmount || args.currencyAmount === "0") {
+    return [];
+  }
+  const res = await apiClient.getSwapQuotes({
+    ...args,
+    includeApprove: true
+  });
+  if (res.swapQuotes === null) {
+    return [];
+  }
+  const currencyInfoMap = /* @__PURE__ */ new Map();
+  if (args.withContractInfo) {
+    res == null ? void 0 : res.swapQuotes.forEach((quote) => {
+      const { currencyAddress } = quote;
+      if (currencyAddress && !currencyInfoMap.has(currencyAddress)) {
+        currencyInfoMap.set(currencyAddress, metadataClient.getContractInfo({
+          chainID: String(args.chainId),
+          contractAddress: currencyAddress
+        }).then((data) => data.contractInfo));
+      }
+    });
+  }
+  const currencyBalanceInfoMap = /* @__PURE__ */ new Map();
+  res == null ? void 0 : res.swapQuotes.forEach((quote) => {
+    const { currencyAddress } = quote;
+    if (currencyAddress && !currencyBalanceInfoMap.has(currencyAddress)) {
+      currencyBalanceInfoMap.set(currencyAddress, indexerClient.getTokenBalances({
+        accountAddress: args.userAddress,
+        contractAddress: currencyAddress,
+        includeMetadata: true,
+        metadataOptions: {
+          verifiedOnly: true
+        }
+      }).then((balances) => {
+        var _a2;
+        return ((_a2 = balances.balances) == null ? void 0 : _a2[0]) || [];
+      }));
+    }
+  });
+  return Promise.all((res == null ? void 0 : res.swapQuotes.map(async (quote) => ({
+    quote,
+    info: await currencyInfoMap.get(quote.currencyAddress) || void 0,
+    balance: await currencyBalanceInfoMap.get(quote.currencyAddress) || void 0
+  }))) || []);
+};
+const useSwapQuotes = (args) => {
+  const apiClient = useAPIClient();
+  const metadataClient = useMetadataClient();
+  const indexerClient = useIndexerClient(args.chainId);
+  const enabled = !!args.chainId && !!args.userAddress && !!args.currencyAddress && !!args.currencyAmount && args.currencyAmount !== "0";
+  return useQuery$1({
+    queryKey: ["swapQuotes", args],
+    queryFn: () => getSwapQuotes(apiClient, metadataClient, indexerClient, args),
+    retry: true,
+    // We must keep a long staletime to avoid the list of quotes being refreshed while the user is doing the transactions
+    // Instead, we will invalidate the query manually
+    staleTime: time$1.oneHour,
+    enabled
+  });
+};
 const chains$1 = allNetworks.reduce((acc, network2) => {
   if (network2.deprecated) {
     return acc;
@@ -97558,7 +97713,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-DhrVQl1N.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-03y2NvI2.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97735,7 +97890,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-CyfTH7LX.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-DGLMhC4E.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -97969,7 +98124,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x2) => x2.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-C_0Ilmtr.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DMLMwzgY.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -98562,6 +98717,64 @@ const validateEthProof = async (walletClient, publicClient, proof) => {
   const isValid2 = await sequence$1.utils.isValidTypedDataSignature(walletAddress, proof.typedData, decodedProof.signature, provider2);
   return isValid2;
 };
+const sendTransactions = async ({ chainId, senderAddress, publicClient, walletClient, connector, transactions: transactions2, transactionConfirmations = TRANSACTION_CONFIRMATIONS_DEFAULT }) => {
+  var _a2;
+  const walletClientChainId = await walletClient.getChainId();
+  if (walletClientChainId !== chainId) {
+    await walletClient.switchChain({ id: chainId });
+  }
+  const sequenceWaaS = connector == null ? void 0 : connector["sequenceWaas"];
+  const isEmbeddedWallet = !!sequenceWaaS;
+  const isSequenceUniversalWallet = !!((_a2 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _a2.isSequenceBased);
+  if (isEmbeddedWallet) {
+    const resp = await sequenceWaaS.feeOptions({
+      transactions: transactions2,
+      network: chainId
+    });
+    const transactionsFeeOption = resp.data.feeOptions[0];
+    const transactionsFeeQuote = resp.data.feeQuote;
+    const response = await sequenceWaaS.sendTransaction({
+      transactions: transactions2,
+      transactionsFeeOption,
+      transactionsFeeQuote
+    });
+    if (response.code === "transactionFailed") {
+      throw new Error(response.data.error);
+    }
+    const txnHash = response.data.txHash;
+    await publicClient.waitForTransactionReceipt({
+      hash: txnHash,
+      confirmations: transactionConfirmations
+    });
+    return txnHash;
+  } else if (isSequenceUniversalWallet) {
+    const wallet = sequence$1.getWallet();
+    const signer2 = wallet.getSigner();
+    const response = await signer2.sendTransaction(transactions2);
+    await publicClient.waitForTransactionReceipt({
+      hash: response.hash,
+      confirmations: transactionConfirmations
+    });
+    return response.hash;
+  } else {
+    let txHash = "";
+    for (const transaction2 of transactions2) {
+      const txnHash = await walletClient.sendTransaction({
+        account: senderAddress,
+        to: transaction2.to,
+        value: transaction2 == null ? void 0 : transaction2.value,
+        data: transaction2 == null ? void 0 : transaction2.data,
+        chain: void 0
+      });
+      await publicClient.waitForTransactionReceipt({
+        hash: txnHash,
+        confirmations: transactionConfirmations
+      });
+      txHash = txnHash;
+    }
+    return txHash;
+  }
+};
 const mock = (options) => ({
   id: "mock",
   isSequenceBased: true,
@@ -98647,7 +98860,11 @@ const createGenericContext$1 = () => {
 const [useAddFundsModalContext, AddFundsContextProvider] = createGenericContext$1();
 const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericContext$1();
 const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
+const [useSelectPaymentContext, SelectPaymentContextProvider] = createGenericContext$1();
+const [useTransferFundsModalContext, TransferFundsContextProvider] = createGenericContext$1();
 const HEADER_HEIGHT$1 = "54px";
+const CARD_HEIGHT = "130px";
+const CARD_HEIGHT_MOBILE = "180px";
 const useNavigation$1 = () => {
   const { setHistory, history, defaultLocation } = useNavigationContext$1();
   const setNavigation = (navigation2) => {
@@ -98815,6 +99032,71 @@ const useSardineClientToken = (args, disabled) => {
     enabled: !disabled,
     refetchOnWindowFocus: false
   });
+};
+const useSelectPaymentModal = () => {
+  const { openSelectPaymentModal, closeSelectPaymentModal, selectPaymentSettings } = useSelectPaymentContext();
+  return { openSelectPaymentModal, closeSelectPaymentModal, selectPaymentSettings };
+};
+const getERC1155SaleContractConfig = ({ chain, price, currencyAddress = ZeroAddress, recipientAddress, tokenId, collectionAddress, nftQuantity, isDev = false, ...restProps }) => {
+  const erc1155SalesContractAbi = [
+    {
+      type: "function",
+      name: "mint",
+      inputs: [
+        { name: "to", type: "address", internalType: "address" },
+        { name: "tokenIds", type: "uint256[]", internalType: "uint256[]" },
+        { name: "amounts", type: "uint256[]", internalType: "uint256[]" },
+        { name: "data", type: "bytes", internalType: "bytes" },
+        { name: "expectedPaymentToken", type: "address", internalType: "address" },
+        { name: "maxTotal", type: "uint256", internalType: "uint256" },
+        { name: "proof", type: "bytes32[]", internalType: "bytes32[]" }
+      ],
+      outputs: [],
+      stateMutability: "payable"
+    }
+  ];
+  const purchaseTransactionData = encodeFunctionData({
+    abi: erc1155SalesContractAbi,
+    functionName: "mint",
+    args: [recipientAddress, [BigInt(tokenId)], [BigInt(nftQuantity)], toHex$1(0), currencyAddress, price, [toHex$1(0, { size: 32 })]]
+  });
+  return {
+    chain,
+    price,
+    currencyAddress,
+    recipientAddress,
+    tokenId,
+    collectionAddress,
+    nftQuantity,
+    isDev,
+    txData: purchaseTransactionData,
+    ...restProps
+  };
+};
+const useERC1155SaleContractPaymentModal = () => {
+  const { openSelectPaymentModal, closeSelectPaymentModal, selectPaymentSettings } = useSelectPaymentModal();
+  const openERC1155SaleContractPaymentModal = (saleContractSettings) => {
+    openSelectPaymentModal(getERC1155SaleContractConfig(saleContractSettings));
+  };
+  return {
+    openERC1155SaleContractPaymentModal,
+    closeERC1155SaleContractPaymentModal: closeSelectPaymentModal,
+    selectPaymentSettings
+  };
+};
+const useClearCachedBalances = () => {
+  const queryClient2 = useQueryClient();
+  return {
+    clearCachedBalances: () => {
+      queryClient2.invalidateQueries({
+        queryKey: ["balances"]
+      });
+    }
+  };
+};
+const useTransferFundsModal = () => {
+  const { openTransferFundsModal, closeTransferFundsModal, transferFundsSettings } = useTransferFundsModalContext();
+  return { openTransferFundsModal, closeTransferFundsModal, transferFundsSettings };
 };
 const POLLING_TIME = 10 * 1e3;
 const PendingTransaction = () => {
@@ -99054,838 +99336,399 @@ const AddFundsContent = () => {
     return;
   }
   const link = getTransakLink(addFundsSettings);
-  return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", width: "full", paddingX: "4", paddingBottom: "4", height: "full", style: { height: "600px" }, children: jsxRuntimeExports$1.jsx(Box, { as: "iframe", width: "full", height: "full", borderWidth: "none", src: link }) });
+  return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", width: "full", paddingX: "4", paddingBottom: "4", height: "full", style: {
+    height: "600px",
+    paddingTop: HEADER_HEIGHT$1
+  }, children: jsxRuntimeExports$1.jsx(Box, { as: "iframe", width: "full", height: "full", borderWidth: "none", src: link }) });
 };
-const KitCheckoutProvider = (props) => {
-  const queryClient2 = new QueryClient();
-  return jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient2, children: jsxRuntimeExports$1.jsx(KitCheckoutContent, { ...props }) });
+const getCardHeight = (isMobile) => {
+  if (isMobile) {
+    return CARD_HEIGHT_MOBILE;
+  }
+  return CARD_HEIGHT;
 };
-const KitCheckoutContent = ({ children }) => {
-  const { theme, position } = useTheme();
-  const [openCheckoutModal, setOpenCheckoutModal] = reactExports.useState(false);
-  const [openAddFundsModal, setOpenAddFundsModal] = reactExports.useState(false);
-  const [settings, setSettings] = reactExports.useState();
-  const [addFundsSettings, setAddFundsSettings] = reactExports.useState();
-  const [history, setHistory] = reactExports.useState([]);
-  const getDefaultLocation = () => {
-    const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
-    const creditCardSettings = settings == null ? void 0 : settings.creditCardCheckout;
-    if (orderSummaryItems.length === 0 && creditCardSettings) {
-      return {
-        location: "transaction-pending",
-        params: {
-          creditCardCheckout: creditCardSettings
+const ERC_20_CONTRACT_ABI = [
+  {
+    type: "function",
+    name: "allowance",
+    inputs: [
+      { name: "owner", type: "address", internalType: "address" },
+      { name: "spender", type: "address", internalType: "address" }
+    ],
+    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "approve",
+    inputs: [
+      { name: "spender", type: "address", internalType: "address" },
+      { name: "amount", type: "uint256", internalType: "uint256" }
+    ],
+    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    stateMutability: "nonpayable"
+  }
+];
+const PayWithMainCurrency = ({ settings, disableButtons, setDisableButtons }) => {
+  const { chain, currencyAddress, targetContractAddress, price, txData, transactionConfirmations = TRANSACTION_CONFIRMATIONS_DEFAULT, onSuccess = () => {
+  }, onError = () => {
+  } } = settings;
+  const { address: userAddress, connector } = useAccount();
+  const isMobile = useMediaQuery("isMobile");
+  const { data: walletClient } = useWalletClient();
+  const publicClient = usePublicClient();
+  const [purchaseInProgress, setPurchaseInProgress] = reactExports.useState(false);
+  const { clearCachedBalances } = useClearCachedBalances();
+  const { closeSelectPaymentModal } = useSelectPaymentModal();
+  const network2 = findSupportedNetwork(chain);
+  const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
+  const { data: allowanceData, isLoading: allowanceIsLoading, refetch: refechAllowance } = useReadContract({
+    abi: ERC_20_CONTRACT_ABI,
+    functionName: "allowance",
+    chainId,
+    address: currencyAddress,
+    args: [userAddress, targetContractAddress],
+    query: {
+      enabled: !!userAddress
+    }
+  });
+  const { data: currencyBalanceData, isLoading: currencyBalanceIsLoading } = useBalances({
+    chainIds: [chainId],
+    contractAddress: currencyAddress,
+    accountAddress: userAddress || "",
+    // includeMetadata must be false to work around a bug
+    includeMetadata: false
+  });
+  const { data: currencyInfoData, isLoading: isLoadingCurrencyInfo } = useContractInfo(chainId, currencyAddress);
+  const isLoading = allowanceIsLoading || currencyBalanceIsLoading || isLoadingCurrencyInfo;
+  if (isLoading) {
+    return jsxRuntimeExports$1.jsx(Card, { width: "full", flexDirection: "column", alignItems: "center", justifyContent: "center", style: {
+      minHeight: getCardHeight(isMobile)
+    }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
+  }
+  const priceFormatted = formatUnits(BigInt(price), (currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0);
+  const isApproved = allowanceData >= BigInt(price);
+  const balanceInfo = currencyBalanceData == null ? void 0 : currencyBalanceData.find((balanceData) => compareAddress$2(currencyAddress, balanceData.contractAddress));
+  const balance = BigInt((balanceInfo == null ? void 0 : balanceInfo.balance) || "0");
+  let balanceFormatted = Number(formatUnits(balance, (currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0));
+  balanceFormatted = Math.trunc(Number(balanceFormatted) * 1e4) / 1e4;
+  const isNotEnoughFunds = BigInt(price) > balance;
+  const onClickPurchase = async () => {
+    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector) {
+      return;
+    }
+    setPurchaseInProgress(true);
+    setDisableButtons(true);
+    try {
+      const walletClientChainId = await walletClient.getChainId();
+      if (walletClientChainId !== chainId) {
+        await walletClient.switchChain({ id: chainId });
+      }
+      const approveTxData = encodeFunctionData({
+        abi: ERC_20_CONTRACT_ABI,
+        functionName: "approve",
+        args: [targetContractAddress, price]
+      });
+      const transactions2 = [
+        ...isApproved ? [] : [
+          {
+            to: currencyAddress,
+            data: approveTxData,
+            chainId
+          }
+        ],
+        {
+          to: targetContractAddress,
+          data: txData,
+          chainId
         }
-      };
-    } else {
-      return {
-        location: "select-method-checkout"
-      };
+      ];
+      const txHash = await sendTransactions({
+        chainId,
+        senderAddress: userAddress,
+        publicClient,
+        walletClient,
+        connector,
+        transactions: transactions2,
+        transactionConfirmations
+      });
+      closeSelectPaymentModal();
+      refechAllowance();
+      clearCachedBalances();
+      onSuccess(txHash);
+    } catch (e2) {
+      console.error("Failed to purchase...", e2);
+      onError(e2);
     }
+    setPurchaseInProgress(false);
+    setDisableButtons(false);
   };
-  const navigation = history.length > 0 ? history[history.length - 1] : getDefaultLocation();
-  const triggerCheckout = (settings2) => {
-    setSettings(settings2);
-    setOpenCheckoutModal(true);
-  };
-  const closeCheckout = () => {
-    setOpenCheckoutModal(false);
-  };
-  const triggerAddFunds = (settings2) => {
-    setAddFundsSettings(settings2);
-    setOpenAddFundsModal(true);
-  };
-  const closeAddFunds = () => {
-    setOpenAddFundsModal(false);
-  };
-  const getCheckoutContent = () => {
-    const { location: location2 } = navigation;
-    switch (location2) {
-      case "select-method-checkout":
-        return jsxRuntimeExports$1.jsx(CheckoutSelection, {});
-      case "transaction-pending":
-        return jsxRuntimeExports$1.jsx(PendingTransaction, {});
-      case "transaction-success":
-        return jsxRuntimeExports$1.jsx(TransactionSuccess, {});
-      case "transaction-error":
-        return jsxRuntimeExports$1.jsx(TransactionError, {});
-      case "transaction-form":
-      default:
-        return jsxRuntimeExports$1.jsx(CheckoutSelection, {});
+  const StatusMessage = () => {
+    if (isNotEnoughFunds) {
+      return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "negative", children: "Not enough funds" }), jsxRuntimeExports$1.jsx(Box, { style: { height: "22px", width: "22px" } })] });
     }
-  };
-  const getCheckoutHeader = () => {
-    const { location: location2 } = navigation;
-    switch (location2) {
-      case "select-method-checkout":
-        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Checkout" });
-      case "transaction-success":
-      case "transaction-error":
-      case "transaction-pending":
-        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { disableBack: true, primaryText: "Pay with credit or debit card" });
-      case "transaction-form":
-      default:
-        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Pay with credit or debit card" });
+    if (purchaseInProgress) {
+      return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text100", children: "In progress..." }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", style: { height: "22px", width: "22px" }, children: jsxRuntimeExports$1.jsx(Spinner, { size: "sm" }) })] });
     }
+    return null;
   };
-  const getAddFundsHeader = () => {
-    const { location: location2 } = navigation;
-    switch (location2) {
-      default:
-        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Add funds with credit card or debit card" });
+  return jsxRuntimeExports$1.jsxs(Card, { width: "full", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? "2" : "0", style: {
+    minHeight: getCardHeight(isMobile)
+  }, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: isMobile ? "center" : "flex-start", children: jsxRuntimeExports$1.jsxs(Text, { variant: "normal", color: "text100", children: ["Buy With ", currencyInfoData == null ? void 0 : currencyInfoData.name] }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text100", children: `Price: ${priceFormatted} ${currencyInfoData == null ? void 0 : currencyInfoData.symbol}` }), jsxRuntimeExports$1.jsx(TokenImage, { size: "xs", src: currencyInfoData == null ? void 0 : currencyInfoData.logoURI })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text100", children: `Balance: ${balanceFormatted} ${currencyInfoData == null ? void 0 : currencyInfoData.symbol}` }), jsxRuntimeExports$1.jsx(TokenImage, { size: "xs", src: currencyInfoData == null ? void 0 : currencyInfoData.logoURI })] }), jsxRuntimeExports$1.jsx(StatusMessage, {})] }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", alignItems: isMobile ? "center" : "flex-start", style: { ...isMobile ? { width: "200px" } : {} }, children: jsxRuntimeExports$1.jsx(Button, { label: "Purchase", onClick: onClickPurchase, disabled: purchaseInProgress || isNotEnoughFunds || disableButtons, variant: "primary", shape: "square", pending: purchaseInProgress }) })] });
+};
+const SwapAndPay = ({ settings, disableButtons, setDisableButtons }) => {
+  const { chain, currencyAddress, targetContractAddress, price: priceRaw, txData, transactionConfirmations = TRANSACTION_CONFIRMATIONS_DEFAULT, onSuccess = () => {
+  }, onError = () => {
+  } } = settings;
+  const isMobile = useMediaQuery("isMobile");
+  const { address: userAddress, connector } = useAccount();
+  const { clearCachedBalances } = useClearCachedBalances();
+  const { data: walletClient } = useWalletClient();
+  const publicClient = usePublicClient();
+  const [swapsInProgress, setSwapsInProgress] = reactExports.useState([]);
+  const { closeSelectPaymentModal } = useSelectPaymentModal();
+  const network2 = findSupportedNetwork(chain);
+  const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
+  const { data: allowanceData, isLoading: allowanceIsLoading, refetch: refechAllowance } = useReadContract({
+    abi: ERC_20_CONTRACT_ABI,
+    functionName: "allowance",
+    chainId,
+    address: targetContractAddress,
+    args: [userAddress, targetContractAddress],
+    query: {
+      enabled: !!userAddress
     }
-  };
-  const getAddFundsContent = () => {
-    const { location: location2 } = navigation;
-    switch (location2) {
-      default:
-        return jsxRuntimeExports$1.jsx(AddFundsContent, {});
+  });
+  const price = BigInt(priceRaw) || 0n;
+  const isApproved = allowanceData >= BigInt(price);
+  const { data: swapQuotes, isLoading: swapQuotesIsLoading } = useSwapQuotes({
+    userAddress: userAddress ?? "",
+    currencyAddress: settings == null ? void 0 : settings.currencyAddress,
+    chainId,
+    currencyAmount: priceRaw,
+    withContractInfo: true
+  });
+  const StatusMessage = ({ purchaseInProgress }) => {
+    if (purchaseInProgress) {
+      return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text100", children: "In progress..." }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", style: { height: "22px", width: "22px" }, children: jsxRuntimeExports$1.jsx(Spinner, { size: "sm" }) })] });
     }
+    return null;
   };
   reactExports.useEffect(() => {
-    if (openCheckoutModal || openAddFundsModal) {
-      setHistory([]);
+    clearCachedBalances();
+    setSwapsInProgress([]);
+  }, []);
+  const isLoading = swapQuotesIsLoading || allowanceIsLoading;
+  if (isLoading) {
+    return jsxRuntimeExports$1.jsx(Card, { width: "full", flexDirection: "column", alignItems: "center", justifyContent: "center", style: {
+      minHeight: getCardHeight(isMobile)
+    }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
+  }
+  const onClickPurchase = async (swapQuote) => {
+    var _a2;
+    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector) {
+      return;
     }
-  }, [openCheckoutModal, openAddFundsModal]);
-  return jsxRuntimeExports$1.jsx(AddFundsContextProvider, { value: {
-    triggerAddFunds,
-    closeAddFunds,
-    addFundsSettings
-  }, children: jsxRuntimeExports$1.jsx(CheckoutModalContextProvider, { value: {
-    triggerCheckout,
-    closeCheckout,
-    settings,
-    theme
-  }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider$1, { value: { history, setHistory, defaultLocation: getDefaultLocation() }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-checkout", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-checkout", scope: "kit", theme, children: jsxRuntimeExports$1.jsxs(AnimatePresence, { children: [openCheckoutModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
-    style: {
-      maxWidth: "400px",
-      height: "auto",
-      ...getModalPositionCss(position)
-    }
-  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenCheckoutModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-checkout-content", children: [getCheckoutHeader(), getCheckoutContent()] }) }), openAddFundsModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
-    style: {
-      maxWidth: "400px",
-      height: "auto",
-      ...getModalPositionCss(position)
-    }
-  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenAddFundsModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-add-funds-content", children: [getAddFundsHeader(), getAddFundsContent()] }) })] }) }) }), children] }) }) });
-};
-const ERC_1155_ABI = [
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_from",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "_to",
-        type: "address"
-      },
-      {
-        internalType: "uint256[]",
-        name: "_ids",
-        type: "uint256[]"
-      },
-      {
-        internalType: "uint256[]",
-        name: "_amounts",
-        type: "uint256[]"
-      },
-      {
-        internalType: "bytes",
-        name: "_data",
-        type: "bytes"
-      }
-    ],
-    name: "safeBatchTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  }
-];
-const ERC_20_ABI = [
-  {
-    constant: false,
-    inputs: [
-      {
-        internalType: "address",
-        name: "recipient",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256"
-      }
-    ],
-    name: "transfer",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool"
-      }
-    ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-  }
-];
-const ERC_721_ABI = [
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "from",
-        type: "address"
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address"
-      },
-      {
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256"
-      }
-    ],
-    name: "safeTransferFrom",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function"
-  }
-];
-const supportedFiatCurrencies = [
-  { symbol: "USD", sign: "$", name: { message: "US Dollar" }, decimals: 2 },
-  { symbol: "CAD", sign: "$", name: { message: "Canadian Dollar" }, decimals: 2 },
-  { symbol: "GBP", sign: "£", name: { message: "British Pound Sterling" }, decimals: 2 },
-  { symbol: "EUR", sign: "€", name: { message: "Euro" }, decimals: 2 },
-  { symbol: "CNY", sign: "¥", name: { message: "Chinese Yuan" }, decimals: 2 },
-  { symbol: "JPY", sign: "¥", name: { message: "Japanese Yen" }, decimals: 2 },
-  { symbol: "KRW", sign: "₩", name: { message: "South Korean Won" }, decimals: 2 },
-  { symbol: "SGD", sign: "$", name: { message: "Singapore Dollar" }, decimals: 2 },
-  { symbol: "CHF", sign: "CHF ", name: { message: "Swiss Franc" }, decimals: 2 },
-  { symbol: "AUD", sign: "$", name: { message: "Australian Dollar" }, decimals: 2 },
-  { symbol: "NZD", sign: "$", name: { message: "New Zealand Dollar" }, decimals: 2 },
-  { symbol: "SEK", sign: "kr ", name: { message: "Swedish Krona" }, decimals: 2 },
-  { symbol: "NOK", sign: "kr ", name: { message: "Norwegian Krone" }, decimals: 2 },
-  { symbol: "MXN", sign: "$", name: { message: "Mexican Peso" }, decimals: 2 },
-  { symbol: "INR", sign: "₹", name: { message: "Indian Rupee" }, decimals: 2 },
-  { symbol: "ZAR", sign: "R ", name: { message: "South African Rand" }, decimals: 2 },
-  { symbol: "TRY", sign: "₺", name: { message: "Turkish Lira" }, decimals: 2 },
-  { symbol: "BRL", sign: "R$", name: { message: "Brazilian Real" }, decimals: 2 },
-  { symbol: "DKK", sign: "kr ", name: { message: "Danish Krone" }, decimals: 2 },
-  { symbol: "PLN", sign: "zł ", name: { message: "Polish Zloty" }, decimals: 2 },
-  { symbol: "THB", sign: "฿", name: { message: "Thai Baht" }, decimals: 2 },
-  { symbol: "IDR", sign: "Rp", name: { message: "Indonesian Rupiah" }, decimals: 2 }
-];
-const defaultFiatCurrency = supportedFiatCurrencies[0];
-const HEADER_HEIGHT = "54px";
-const createGenericContext = () => {
-  const genericContext = reactExports.createContext(void 0);
-  const useGenericContext = () => {
-    const contextIsDefined = reactExports.useContext(genericContext);
-    if (!contextIsDefined) {
-      throw new Error("useGenericContext must be used within a Provider");
-    }
-    return contextIsDefined;
-  };
-  return [useGenericContext, genericContext.Provider];
-};
-const [useWalletModalContext, WalletModalContextProvider] = createGenericContext();
-const [useNavigationContext, NavigationContextProvider] = createGenericContext();
-const useOpenWalletModal = () => {
-  const { setOpenWalletModal, openWalletModalState } = useWalletModalContext();
-  return { setOpenWalletModal, openWalletModalState };
-};
-const compareAddress = (a2, b2) => {
-  return a2.toLowerCase() === b2.toLowerCase();
-};
-const truncateAtMiddle = (text2, truncateAt) => {
-  let finalText = text2;
-  if (text2.length >= truncateAt) {
-    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
-  }
-  return finalText;
-};
-const formatAddress = (text2) => {
-  return `0x${truncateAtMiddle((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
-};
-var ValueType;
-(function(ValueType2) {
-  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
-  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
-  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
-  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
-})(ValueType || (ValueType = {}));
-const formatDisplay = (_val2) => {
-  if (isNaN(Number(_val2))) {
-    console.error(`display format error ${_val2} is not a number`);
-    return "NaN";
-  }
-  const val = Number(_val2);
-  if (val === 0) {
-    return "0";
-  }
-  let valMode;
-  if (val > 1e8) {
-    valMode = ValueType.VERY_LARGE;
-  } else if (val < 1e-10) {
-    valMode = ValueType.VERY_TINY;
-  } else if (val < 1) {
-    valMode = ValueType.FRACTION;
-  } else {
-    valMode = ValueType.MIXED;
-  }
-  let notation = void 0;
-  let config2;
-  switch (valMode) {
-    case ValueType.VERY_LARGE:
-      notation = "compact";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType.VERY_TINY:
-      notation = "scientific";
-      config2 = {
-        maximumFractionDigits: 4
-      };
-      break;
-    case ValueType.FRACTION:
-      notation = "standard";
-      config2 = {
-        maximumSignificantDigits: 4
-      };
-      break;
-    default:
-      notation = "standard";
-      config2 = {
-        maximumFractionDigits: 2
-      };
-  }
-  return Intl.NumberFormat("en-US", {
-    notation,
-    ...config2
-  }).format(val);
-};
-const limitDecimals = (value, decimals) => {
-  const splitValue = value.split(".");
-  if (splitValue.length === 1) {
-    return value;
-  }
-  return `${splitValue[0]}.${splitValue[1].slice(0, decimals)}`;
-};
-const isEthAddress = (value) => {
-  const ethAddressRegEx = /0x[a-fA-F0-9]{40}/;
-  const isEthAddress2 = ethAddressRegEx.test(value);
-  return isEthAddress2;
-};
-const sampleSize = (collection, n2) => {
-  const length = collection.length;
-  if (!length || n2 < 1) {
-    return [];
-  }
-  n2 = n2 > length ? length : n2;
-  const sampled = new Array(n2);
-  const indexes = /* @__PURE__ */ new Set();
-  while (indexes.size < n2) {
-    indexes.add(Math.floor(Math.random() * length));
-  }
-  let index2 = 0;
-  for (const i of indexes) {
-    sampled[index2++] = collection[i];
-  }
-  return sampled;
-};
-const isTruthy = (value) => Boolean(value);
-const getPercentageColor = (value) => {
-  if (value > 0) {
-    return vars.colors.positive;
-  } else if (value < 0) {
-    return vars.colors.negative;
-  } else {
-    return vars.colors.text50;
-  }
-};
-const getPercentagePriceChange = (balance, prices) => {
-  var _a2;
-  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
-  if (!priceForToken) {
-    return 0;
-  }
-  const price24HourChange = ((_a2 = priceForToken == null ? void 0 : priceForToken.price24hChange) == null ? void 0 : _a2.value) || 0;
-  return price24HourChange;
-};
-const computeBalanceFiat = ({ balance, prices, decimals, conversionRate }) => {
-  var _a2;
-  let totalUsd = 0;
-  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
-  if (!priceForToken) {
-    return "0.00";
-  }
-  const priceFiat = ((_a2 = priceForToken.price) == null ? void 0 : _a2.value) || 0;
-  const valueFormatted = formatUnits$2(balance.balance, decimals);
-  const usdValue = parseFloat(valueFormatted) * priceFiat;
-  totalUsd += usdValue;
-  const fiatValue = totalUsd * conversionRate;
-  return `${fiatValue.toFixed(2)}`;
-};
-const compareTokenBalanceIds = (a2, b2) => {
-  return (a2.tokenID || "").localeCompare(b2.tokenID || "");
-};
-const sortBalancesByType = (balances) => {
-  const nativeTokens = [];
-  const erc20Tokens = [];
-  const collectibles = [];
-  balances.forEach((balance) => {
-    if (balance.contractAddress === ZeroAddress) {
-      nativeTokens.push(balance);
-    } else if (balance.contractType === "ERC20") {
-      erc20Tokens.push(balance);
-    } else if (balance.contractType === "ERC721" || balance.contractType === "ERC1155") {
-      collectibles.push(balance);
-    }
-  });
-  const sortedNativeTokens = nativeTokens.sort(compareTokenBalanceIds);
-  const sortedErc20Tokens = erc20Tokens.sort(compareTokenBalanceIds);
-  const sortedCollectibles = collectibles.sort(compareTokenBalanceIds);
-  return {
-    nativeTokens: sortedNativeTokens,
-    erc20Tokens: sortedErc20Tokens,
-    collectibles: sortedCollectibles
-  };
-};
-const flattenPaginatedTransactionHistory = (transactionHistoryData) => {
-  const transactionHistory = [];
-  transactionHistoryData == null ? void 0 : transactionHistoryData.pages.forEach((page) => {
-    transactionHistory.push(...page.transactions);
-  });
-  return transactionHistory;
-};
-const time = {
-  oneSecond: 1 * 1e3,
-  oneMinute: 60 * 1e3,
-  oneHour: 60 * 60 * 1e3
-};
-const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClients, { accountAddress, displayAssets, hideCollectibles, verifiedOnly }) => {
-  const indexerClientsArr = Array.from(indexerClients.entries());
-  const MAX_COLLECTIBLES_AMOUNTS = 10;
-  let tokenBalances = [];
-  const customDisplayAssets = displayAssets.length > 0;
-  try {
-    if (customDisplayAssets) {
-      const nativeTokens2 = displayAssets.filter((asset) => compareAddress(asset.contractAddress, ZeroAddress));
-      const otherAssets = displayAssets.filter((asset) => !compareAddress(asset.contractAddress, ZeroAddress));
-      const nativeTokensByChainId = {};
-      const otherAssetsByChainId = {};
-      nativeTokens2.forEach((asset) => {
-        if (!nativeTokensByChainId[asset.chainId]) {
-          nativeTokensByChainId[asset.chainId] = [];
-        }
-        nativeTokensByChainId[asset.chainId].push(asset);
-      });
-      otherAssets.forEach((asset) => {
-        if (!otherAssetsByChainId[asset.chainId]) {
-          otherAssetsByChainId[asset.chainId] = [];
-        }
-        otherAssetsByChainId[asset.chainId].push(asset);
-      });
-      tokenBalances = (await Promise.all([
-        ...Object.keys(nativeTokensByChainId).map((chainId) => {
-          const indexerClient = indexerClients.get(Number(chainId));
-          if (!indexerClient) {
-            console.error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
-            return null;
-          }
-          return getNativeTokenBalance(indexerClient, Number(chainId), accountAddress);
-        }),
-        ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => {
-          const indexerClient = indexerClients.get(Number(chainId));
-          if (!indexerClient) {
-            console.error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
-            return [];
-          }
-          return getTokenBalances(indexerClient, {
-            accountAddress,
-            contractAddress: asset.contractAddress,
-            includeMetadata: false,
-            hideCollectibles,
-            verifiedOnly
-          });
-        })).flat()
-      ])).flat().filter(isTruthy);
-    } else {
-      tokenBalances = (await Promise.all([
-        ...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)),
-        ...indexerClientsArr.map(([_chainId4, indexerClient]) => getTokenBalances(indexerClient, {
-          accountAddress,
-          hideCollectibles,
-          includeMetadata: false,
-          verifiedOnly
-        }))
-      ])).flat();
-    }
-    const { nativeTokens, erc20Tokens, collectibles: collectionBalances } = sortBalancesByType(tokenBalances);
-    const fetchPricesPromise = new Promise(async (resolve) => {
-      if (erc20Tokens.length > 0) {
-        const tokens = erc20Tokens.map((token) => ({
-          chainId: token.chainId,
-          contractAddress: token.contractAddress
-        }));
-        const prices2 = await getCoinPrices(apiClient, tokens) || [];
-        resolve(prices2);
-      } else {
-        resolve([]);
-      }
-    });
-    const fetchCollectiblesPromises = collectionBalances.map(async (collectionBalance) => {
-      if (customDisplayAssets) {
-        return collectionBalance;
-      }
-      const indexerClient = indexerClients.get(collectionBalance.chainId);
-      if (!indexerClient) {
-        throw new Error(`Indexer client not found for chainId: ${collectionBalance.chainId}, did you forget to add this Chain?`);
-      }
-      const balance = await getCollectionBalance(indexerClient, {
-        accountAddress,
-        chainId: collectionBalance.chainId,
-        contractAddress: collectionBalance.contractAddress,
-        includeMetadata: false
-      });
-      return balance;
-    });
-    const fetchErc20ContractInfoPromise = async () => {
-      const contractInfoMapByChainId2 = {};
-      const erc20BalanceByChainId = {};
-      erc20Tokens.forEach((erc20Token) => {
-        if (!erc20BalanceByChainId[erc20Token.chainId]) {
-          erc20BalanceByChainId[erc20Token.chainId] = [erc20Token];
-        } else {
-          erc20BalanceByChainId[erc20Token.chainId].push(erc20Token);
-        }
-      });
-      const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async (chainId) => {
-        const tokenBalances2 = erc20BalanceByChainId[Number(chainId)];
-        const contractAddresses = tokenBalances2.map((balance) => balance.contractAddress);
-        const result = await metadataClient.getContractInfoBatch({
-          chainID: String(chainId),
-          contractAddresses
-        });
-        contractInfoMapByChainId2[Number(chainId)] = result;
-      });
-      await Promise.all([...contractInfoPromises]);
-      return contractInfoMapByChainId2;
-    };
-    const [prices, contractInfoMapByChainId, ...collectionCollectibles] = await Promise.all([
-      fetchPricesPromise,
-      fetchErc20ContractInfoPromise(),
-      ...fetchCollectiblesPromises
-    ]);
-    const erc20HighestValue = erc20Tokens.sort((a2, b2) => {
-      var _a2, _b2;
-      const aPriceData = prices.find((price) => compareAddress(price.token.contractAddress, a2.contractAddress));
-      const bPriceData = prices.find((price) => compareAddress(price.token.contractAddress, b2.contractAddress));
-      const aPrice = (aPriceData == null ? void 0 : aPriceData.price) ? aPriceData.price.value : 0;
-      const bPrice = (bPriceData == null ? void 0 : bPriceData.price) ? bPriceData.price.value : 0;
-      const aDecimals = (_a2 = contractInfoMapByChainId[a2.chainId].contractInfoMap[a2.contractAddress]) == null ? void 0 : _a2.decimals;
-      const bDecimals = (_b2 = contractInfoMapByChainId[b2.chainId].contractInfoMap[b2.contractAddress]) == null ? void 0 : _b2.decimals;
-      const aFormattedBalance = aDecimals === void 0 ? 0 : Number(formatUnits$2(a2.balance, aDecimals));
-      const bFormattedBalance = bDecimals === void 0 ? 0 : Number(formatUnits$2(b2.balance, bDecimals));
-      const aValue = aFormattedBalance * aPrice;
-      const bValue = bFormattedBalance * bPrice;
-      return bValue - aValue;
-    });
-    const collectibles = sampleSize(collectionCollectibles.flat(), MAX_COLLECTIBLES_AMOUNTS).sort((a2, b2) => {
-      return a2.contractAddress.localeCompare(b2.contractAddress);
-    });
-    if (hideCollectibles) {
-      const summaryBalances2 = [
-        ...nativeTokens.length > 0 ? [nativeTokens[0]] : [],
-        // the spots normally occupied by collectibles will be filled by erc20 tokens
-        ...erc20HighestValue.length > 0 ? erc20HighestValue.slice(0, MAX_COLLECTIBLES_AMOUNTS + 1) : []
-      ];
-      return summaryBalances2;
-    }
-    const summaryBalances = [
-      ...nativeTokens.length > 0 ? [nativeTokens[0]] : [],
-      ...erc20HighestValue.length > 0 ? [erc20HighestValue[0]] : [],
-      ...collectibles.length > 0 ? [...collectibles] : []
-    ];
-    return summaryBalances;
-  } catch (e2) {
-    console.error(e2);
-    return [];
-  }
-};
-const useBalancesAssetsSummary = (args) => {
-  const apiClient = useAPIClient();
-  const metadataClient = useMetadataClient();
-  const indexerClients = useIndexerClients(args.chainIds);
-  return useQuery$1({
-    queryKey: ["balancesAssetsSummary", args],
-    queryFn: () => getBalancesAssetsSummary(apiClient, metadataClient, indexerClients, args),
-    retry: true,
-    refetchInterval: time.oneSecond * 4,
-    refetchOnMount: true,
-    staleTime: time.oneSecond,
-    enabled: args.chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const getTransactionHistorySummary = async (indexerClients, { accountAddress }) => {
-  const histories = await Promise.all(Array.from(indexerClients.values()).map((indexerClient) => getTransactionHistory(indexerClient, {
-    accountAddress,
-    page: {
-      page: 1
-    }
-  })));
-  const unorderedTransactions = histories.map((history) => history.transactions).flat();
-  const orderedTransactions = unorderedTransactions.sort((a2, b2) => {
-    const firstDate = new Date(a2.timestamp).getTime();
-    const secondDate = new Date(b2.timestamp).getTime();
-    return secondDate - firstDate;
-  });
-  return orderedTransactions;
-};
-const useTransactionHistorySummary = (args) => {
-  const indexerClients = useIndexerClients(args.chainIds);
-  return useQuery$1({
-    queryKey: ["transactionHistorySummary", args],
-    queryFn: () => getTransactionHistorySummary(indexerClients, args),
-    retry: true,
-    staleTime: time.oneSecond,
-    refetchOnMount: true,
-    enabled: args.chainIds.length > 0 && !!args.accountAddress
-  });
-};
-const useNavigation = () => {
-  const { setHistory, history } = useNavigationContext();
-  const setNavigation = (navigation) => {
-    const childElement = document.getElementById("sequence-kit-wallet-content");
-    const parentElement = childElement == null ? void 0 : childElement.parentElement;
-    parentElement == null ? void 0 : parentElement.scrollTo(0, 0);
-    const newHistory = navigation.location === "home" ? [] : [...history, navigation];
-    setHistory(newHistory);
-  };
-  const goBack = () => {
-    const newHistory = [...history];
-    newHistory.pop();
-    setHistory(newHistory);
-  };
-  return { setNavigation, history, setHistory, goBack };
-};
-const useSettings = () => {
-  const { chains: chains2 } = useConfig();
-  const getSettingsFromStorage = () => {
-    let hideUnlistedTokens = true;
-    let hideCollectibles = false;
-    let fiatCurrency = defaultFiatCurrency;
-    let selectedNetworks = chains2.map((chain) => chain.id);
+    const swapQuoteAddress = ((_a2 = swapQuote.info) == null ? void 0 : _a2.address) || "";
+    setDisableButtons(true);
+    setSwapsInProgress([...swapsInProgress.filter((address) => compareAddress$2(address, swapQuoteAddress)), swapQuoteAddress]);
     try {
-      const settingsStorage = localStorage.getItem(LocalStorageKey.Settings);
-      const settings2 = JSON.parse(settingsStorage || "{}");
-      if ((settings2 == null ? void 0 : settings2.hideUnlistedTokens) !== void 0) {
-        hideUnlistedTokens = settings2 == null ? void 0 : settings2.hideUnlistedTokens;
+      const walletClientChainId = await walletClient.getChainId();
+      if (walletClientChainId !== chainId) {
+        await walletClient.switchChain({ id: chainId });
       }
-      if ((settings2 == null ? void 0 : settings2.hideCollectibles) !== void 0) {
-        hideCollectibles = settings2 == null ? void 0 : settings2.hideCollectibles;
-      }
-      if ((settings2 == null ? void 0 : settings2.fiatCurrency) !== void 0) {
-        fiatCurrency = settings2 == null ? void 0 : settings2.fiatCurrency;
-      }
-      if ((settings2 == null ? void 0 : settings2.selectedNetworks) !== void 0) {
-        let areSelectedNetworksValid = true;
-        settings2.selectedNetworks.forEach((chainId) => {
-          if (chains2.find((chain) => chain.id === chainId) === void 0) {
-            areSelectedNetworksValid = false;
+      const approveTxData = encodeFunctionData({
+        abi: ERC_20_CONTRACT_ABI,
+        functionName: "approve",
+        args: [targetContractAddress, price]
+      });
+      const transactions2 = [
+        // Swap quote optional approve step
+        ...swapQuote.quote.approveData ? [
+          {
+            to: swapQuote.quote.currencyAddress,
+            data: swapQuote.quote.approveData,
+            chain: chainId
           }
-        });
-        if (areSelectedNetworksValid) {
-          selectedNetworks = settings2 == null ? void 0 : settings2.selectedNetworks;
+        ] : [],
+        // Swap quote tx
+        {
+          to: swapQuote.quote.to,
+          data: swapQuote.quote.transactionData,
+          chain: chainId
+        },
+        // Actual transaction optional approve step
+        ...isApproved ? [] : [
+          {
+            to: currencyAddress,
+            data: approveTxData,
+            chainId
+          }
+        ],
+        // transaction on the contract
+        {
+          to: targetContractAddress,
+          data: txData,
+          chainId
         }
-      }
+      ];
+      const txHash = await sendTransactions({
+        chainId,
+        senderAddress: userAddress,
+        publicClient,
+        walletClient,
+        connector,
+        transactions: transactions2,
+        transactionConfirmations
+      });
+      closeSelectPaymentModal();
+      refechAllowance();
+      clearCachedBalances();
+      onSuccess(txHash);
     } catch (e2) {
-      console.error(e2, "Failed to fetch settings");
+      console.error("Failed to purchase...", e2);
+      onError(e2);
     }
-    return {
-      hideUnlistedTokens,
-      hideCollectibles,
-      fiatCurrency,
-      selectedNetworks
-    };
+    setDisableButtons(false);
+    setSwapsInProgress([...swapsInProgress.filter((address) => compareAddress$2(address, swapQuoteAddress))]);
   };
-  const defaultSettings = getSettingsFromStorage();
-  const [settings, setSettings] = reactExports.useState(defaultSettings);
-  const setHideUnlistedTokens = (newState) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = {
-      ...oldSettings,
-      hideUnlistedTokens: newState
-    };
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  const setHideCollectibles = (newState) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = {
-      ...oldSettings,
-      hideCollectibles: newState
-    };
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  const setFiatCurrency = (newFiatCurrency) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = {
-      ...oldSettings,
-      fiatCurrency: newFiatCurrency
-    };
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  const setSelectedNetworks = (newSelectedNetworks) => {
-    const oldSettings = getSettingsFromStorage();
-    const newSettings = {
-      ...oldSettings,
-      selectedNetworks: newSelectedNetworks
-    };
-    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
-    setSettings(newSettings);
-  };
-  return {
-    ...settings,
-    setFiatCurrency,
-    setHideCollectibles,
-    setHideUnlistedTokens,
-    setSelectedNetworks
-  };
-};
-const CoinTileContent = ({ logoUrl, tokenName, balance, balanceFiat, priceChangePercentage, symbol, chainId }) => {
-  const { fiatCurrency } = useSettings();
-  const priceChangeSymbol = priceChangePercentage > 0 ? "+" : "";
-  return jsxRuntimeExports$1.jsxs(Box, { background: "backgroundSecondary", width: "full", height: "full", borderRadius: "md", padding: "4", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", gap: "1", children: [jsxRuntimeExports$1.jsx(Box, { marginBottom: "1", children: jsxRuntimeExports$1.jsx(TokenImage, { src: logoUrl, symbol, size: "xl" }) }), jsxRuntimeExports$1.jsxs(Box, { marginBottom: "3", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", justifyContent: "flex-start", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", whiteSpace: "nowrap", color: "text100", style: { maxWidth: "130px", textOverflow: "ellipsis", overflow: "hidden" }, children: tokenName }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" })] }), jsxRuntimeExports$1.jsx(Text, { color: "text50", whiteSpace: "nowrap", style: { display: "block", maxWidth: "150px", textOverflow: "ellipsis", overflow: "hidden" }, children: `${balance} ${symbol}` })] }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", color: "text100", children: `${fiatCurrency.sign}${balanceFiat}` }) }), jsxRuntimeExports$1.jsx(Text, { style: { color: getPercentageColor(priceChangePercentage) }, children: `${priceChangeSymbol}${priceChangePercentage.toFixed(2)}%` })] })] });
-};
-const CoinTile = ({ balance }) => {
-  const { chains: chains2 } = useConfig();
-  const { fiatCurrency } = useSettings();
-  const isNativeToken = compareAddress(balance.contractAddress, ZeroAddress);
-  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
-  const { data: dataCoinPrices = [], isPending: isPendingCoinPrice } = useCoinPrices([
-    {
-      chainId: balance.chainId,
-      contractAddress: balance.contractAddress
+  return swapQuotes == null ? void 0 : swapQuotes.map((swapQuote, index2) => {
+    var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2, _k2, _l2;
+    const swapQuotePriceFormatted = formatUnits(BigInt(swapQuote.quote.price), ((_a2 = swapQuote.info) == null ? void 0 : _a2.decimals) || 18);
+    const balanceFormatted = formatUnits(BigInt(((_b2 = swapQuote.balance) == null ? void 0 : _b2.balance) || 0), ((_c2 = swapQuote.info) == null ? void 0 : _c2.decimals) || 18);
+    const swapQuoteAddress = ((_d2 = swapQuote.info) == null ? void 0 : _d2.address) || "";
+    const purchaseInProgress = swapsInProgress.includes(swapQuoteAddress);
+    const currencyInfoNotFound = !swapQuote.info || ((_e2 = swapQuote == null ? void 0 : swapQuote.info) == null ? void 0 : _e2.decimals) === void 0 || !((_f2 = swapQuote.balance) == null ? void 0 : _f2.balance);
+    if (currencyInfoNotFound) {
+      return null;
     }
-  ]);
-  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
-  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo(balance.chainId, balance.contractAddress);
-  const isPending = isPendingCoinPrice || isPendingConversionRate || isPendingContractInfo;
-  if (isPending) {
-    return jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", width: "full", height: "full", borderRadius: "md" });
+    return jsxRuntimeExports$1.jsxs(Card, { width: "full", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? "2" : "0", style: {
+      minHeight: getCardHeight(isMobile)
+    }, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: isMobile ? "center" : "flex-start", children: jsxRuntimeExports$1.jsxs(Text, { variant: "normal", color: "text100", children: ["Buy With ", ((_g2 = swapQuote.info) == null ? void 0 : _g2.name) || "Unknown"] }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text100", children: `Price: ${swapQuotePriceFormatted} ${(_h2 = swapQuote.info) == null ? void 0 : _h2.symbol}` }), jsxRuntimeExports$1.jsx(TokenImage, { size: "xs", src: (_i2 = swapQuote.info) == null ? void 0 : _i2.logoURI })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", alignItems: "center", justifyContent: isMobile ? "center" : "flex-start", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text100", children: `Balance: ${balanceFormatted} ${(_j2 = swapQuote.info) == null ? void 0 : _j2.symbol}` }), jsxRuntimeExports$1.jsx(TokenImage, { size: "xs", src: (_k2 = swapQuote.info) == null ? void 0 : _k2.logoURI })] }), jsxRuntimeExports$1.jsx(StatusMessage, { purchaseInProgress })] }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", alignItems: isMobile ? "center" : "flex-start", style: { ...isMobile ? { width: "200px" } : {} }, children: jsxRuntimeExports$1.jsx(Button, { label: "Purchase", onClick: () => onClickPurchase(swapQuote), disabled: purchaseInProgress || disableButtons, variant: "primary", shape: "square", pending: purchaseInProgress }) })] }, ((_l2 = swapQuote.info) == null ? void 0 : _l2.address) || index2);
+  });
+};
+const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
+  const { enableSwapPayments } = settings;
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(PayWithMainCurrency, { settings, disableButtons, setDisableButtons }), enableSwapPayments && jsxRuntimeExports$1.jsx(SwapAndPay, { settings, disableButtons, setDisableButtons })] });
+};
+const PayWithCreditCard = ({ settings, disableButtons }) => {
+  const { chain, currencyAddress, targetContractAddress, price, txData, tokenId, collectionAddress, nftQuantity, nftDecimals = "0", isDev = false, onSuccess = () => {
+  }, onError = () => {
+  } } = settings;
+  const { address: userAddress } = useAccount();
+  const isMobile = useMediaQuery("isMobile");
+  const { clearCachedBalances } = useClearCachedBalances();
+  const { closeSelectPaymentModal } = useSelectPaymentModal();
+  const { triggerCheckout } = useCheckoutModal();
+  const network2 = findSupportedNetwork(chain);
+  const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
+  const { data: currencyInfoData, isLoading: isLoadingContractInfo } = useContractInfo(chainId, currencyAddress);
+  const isLoading = isLoadingContractInfo;
+  const onClickPurchase = () => {
+    if (!userAddress || !currencyInfoData) {
+      return;
+    }
+    const checkoutSettings = {
+      creditCardCheckout: {
+        onSuccess: (txHash) => {
+          clearCachedBalances();
+          onSuccess(txHash);
+        },
+        onError,
+        chainId,
+        recipientAddress: userAddress,
+        contractAddress: targetContractAddress,
+        currencyQuantity: price,
+        currencySymbol: currencyInfoData.symbol,
+        currencyAddress,
+        currencyDecimals: String((currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0),
+        nftId: tokenId,
+        nftAddress: collectionAddress,
+        nftQuantity,
+        nftDecimals,
+        isDev,
+        calldata: txData,
+        approvedSpenderAddress: targetContractAddress
+      }
+    };
+    closeSelectPaymentModal();
+    triggerCheckout(checkoutSettings);
+  };
+  if (isLoading) {
+    return jsxRuntimeExports$1.jsx(Card, { width: "full", flexDirection: "column", alignItems: "center", justifyContent: "center", style: {
+      minHeight: getCardHeight(isMobile)
+    }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
   }
-  if (isNativeToken) {
-    const computedBalance2 = computeBalanceFiat({
-      balance,
-      prices: dataCoinPrices,
-      conversionRate,
-      decimals: nativeTokenInfo.decimals
+  return jsxRuntimeExports$1.jsxs(Card, { width: "full", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? "2" : "0", style: {
+    minHeight: getCardHeight(isMobile)
+  }, children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: isMobile ? "center" : "flex-start", children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", children: "Buy With Credit Card" }) }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", alignItems: isMobile ? "center" : "flex-start", style: { ...isMobile ? { width: "200px" } : {} }, children: jsxRuntimeExports$1.jsx(Button, { disabled: disableButtons, label: "Purchase", onClick: onClickPurchase, variant: "primary", shape: "square" }) })] });
+};
+const TransferFunds = ({ disableButtons }) => {
+  const isMobile = useMediaQuery("isMobile");
+  const { openTransferFundsModal } = useTransferFundsModal();
+  const { address: userAddress } = useAccount();
+  const { closeSelectPaymentModal, openSelectPaymentModal, selectPaymentSettings } = useSelectPaymentModal();
+  const onClickTransfer = () => {
+    if (!userAddress) {
+      return;
+    }
+    closeSelectPaymentModal();
+    openTransferFundsModal({
+      walletAddress: userAddress,
+      onClose: () => {
+        setTimeout(() => {
+          if (selectPaymentSettings) {
+            openSelectPaymentModal(selectPaymentSettings);
+          }
+        }, 500);
+      }
     });
-    const priceChangePercentage2 = getPercentagePriceChange(balance, dataCoinPrices);
-    const formattedBalance2 = formatUnits$2(balance.balance, nativeTokenInfo.decimals);
-    const balanceDisplayed2 = formatDisplay(formattedBalance2);
-    return jsxRuntimeExports$1.jsx(CoinTileContent, { chainId: balance.chainId, logoUrl: nativeTokenInfo.logoURI, tokenName: nativeTokenInfo.name, balance: balanceDisplayed2, balanceFiat: computedBalance2, priceChangePercentage: priceChangePercentage2, symbol: nativeTokenInfo.symbol });
-  }
-  const decimals = (contractInfo == null ? void 0 : contractInfo.decimals) ?? 18;
-  const computedBalance = computeBalanceFiat({
-    balance,
-    prices: dataCoinPrices,
-    conversionRate,
-    decimals
-  });
-  const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
-  const formattedBalance = formatUnits$2(balance.balance, decimals);
-  const balanceDisplayed = formatDisplay(formattedBalance);
-  const name2 = (contractInfo == null ? void 0 : contractInfo.name) || "Unknown";
-  const symbol = (contractInfo == null ? void 0 : contractInfo.name) || "TOKEN";
-  const url = contractInfo == null ? void 0 : contractInfo.logoURI;
-  return jsxRuntimeExports$1.jsx(CoinTileContent, { chainId: balance.chainId, logoUrl: url, tokenName: name2, balance: balanceDisplayed, balanceFiat: computedBalance, priceChangePercentage, symbol });
-};
-const CollectibleTileImage = ({ imageUrl }) => {
-  return jsxRuntimeExports$1.jsx(Card, { padding: "0", aspectRatio: "1/1", justifyContent: "center", alignItems: "center", overflow: "hidden", borderRadius: "sm", background: "backgroundSecondary", children: jsxRuntimeExports$1.jsx(Image$1, { style: { height: "100%" }, src: imageUrl }) });
-};
-const CollectibleTile = ({ balance }) => {
-  var _a2;
-  const { data: tokenMetadata } = useTokenMetadata(balance.chainId, balance.contractAddress, [balance.tokenID || ""]);
-  const imageUrl = (_a2 = tokenMetadata == null ? void 0 : tokenMetadata[0]) == null ? void 0 : _a2.image;
-  return jsxRuntimeExports$1.jsx(CollectibleTileImage, { imageUrl });
-};
-const SkeletonTiles = () => {
-  return jsxRuntimeExports$1.jsx(Box, { style: {
-    display: "grid",
-    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
-    gap: vars.space[2]
-  }, children: Array(12).fill(null).map((_, i) => jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Skeleton, { height: "full", width: "full", aspectRatio: "1/1" }) }, i)) });
-};
-const AssetSummary = () => {
-  const { address } = useAccount();
-  const { setNavigation } = useNavigation();
-  const { displayedAssets } = useWalletSettings();
-  const { hideUnlistedTokens, hideCollectibles, selectedNetworks } = useSettings();
-  const { data: balances = [], isPending: isPendingBalances } = useBalancesAssetsSummary({
-    accountAddress: address || "",
-    chainIds: selectedNetworks,
-    displayAssets: displayedAssets,
-    hideCollectibles,
-    verifiedOnly: hideUnlistedTokens
-  });
-  if (isPendingBalances) {
-    return jsxRuntimeExports$1.jsx(SkeletonTiles, {});
-  }
-  const { nativeTokens, erc20Tokens, collectibles } = sortBalancesByType(balances);
-  const onClickItem = (balance) => {
-    if (balance.contractType === "ERC1155" || balance.contractType === "ERC721") {
-      setNavigation && setNavigation({
-        location: "collectible-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId,
-          tokenId: balance.tokenID || ""
-        }
-      });
-    } else if (balance.contractType === "ERC20") {
-      setNavigation && setNavigation({
-        location: "coin-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId
-        }
-      });
-    } else {
-      setNavigation && setNavigation({
-        location: "coin-details",
-        params: {
-          contractAddress: balance.contractAddress,
-          chainId: balance.chainId
-        }
-      });
-    }
   };
-  return jsxRuntimeExports$1.jsxs(Box, { style: {
-    display: "grid",
-    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
-    gap: vars.space[2]
-  }, children: [nativeTokens.map((balance, index2) => {
-    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CoinTile, { balance }) }, index2);
-  }), erc20Tokens.map((balance, index2) => {
-    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CoinTile, { balance }) }, index2);
-  }), collectibles.map((balance, index2) => {
-    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CollectibleTile, { balance }) }, index2);
-  })] });
+  return jsxRuntimeExports$1.jsxs(Card, { width: "full", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? "2" : "0", style: {
+    minHeight: getCardHeight(isMobile)
+  }, children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: isMobile ? "center" : "flex-start", children: jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "Transfer Funds to Wallet" }) }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", alignItems: isMobile ? "center" : "flex-start", style: { ...isMobile ? { width: "200px" } : {} }, children: jsxRuntimeExports$1.jsx(Button, { disabled: disableButtons, label: "Transfer", onClick: onClickTransfer, variant: "primary", shape: "square" }) })] });
 };
-const Home = () => {
-  return jsxRuntimeExports$1.jsx(Box, { paddingX: "4", paddingBottom: "5", gap: "4", flexDirection: "column", children: jsxRuntimeExports$1.jsx(AssetSummary, {}) });
+const FiatOnRamp = ({ disableButtons }) => {
+  const isMobile = useMediaQuery("isMobile");
+  const { closeSelectPaymentModal, openSelectPaymentModal, selectPaymentSettings } = useSelectPaymentModal();
+  const { triggerAddFunds } = useAddFundsModal();
+  const { address: userAddress } = useAccount();
+  const onClickPurchase = () => {
+    closeSelectPaymentModal();
+    triggerAddFunds({
+      walletAddress: userAddress || "",
+      onClose: () => {
+        setTimeout(() => {
+          if (selectPaymentSettings) {
+            openSelectPaymentModal(selectPaymentSettings);
+          }
+        }, 500);
+      }
+    });
+  };
+  return jsxRuntimeExports$1.jsxs(Card, { width: "full", flexDirection: isMobile ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: isMobile ? "2" : "0", style: {
+    minHeight: getCardHeight(isMobile)
+  }, children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: isMobile ? "center" : "flex-start", children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", children: "Purchase Crypto" }) }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", alignItems: isMobile ? "center" : "flex-start", style: { ...isMobile ? { width: "200px" } : {} }, children: jsxRuntimeExports$1.jsx(Button, { disabled: disableButtons, label: "Purchase", onClick: onClickPurchase, variant: "primary", shape: "square" }) })] });
+};
+const PaymentSelection = () => {
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(PaymentSelectionHeader, {}), jsxRuntimeExports$1.jsx(PaymentSelectionContent, {})] });
+};
+const PaymentSelectionHeader = () => {
+  return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Select Payment Method" });
+};
+const PaymentSelectionContent = () => {
+  const { selectPaymentSettings } = useSelectPaymentModal();
+  const [disableButtons, setDisableButtons] = reactExports.useState(false);
+  if (!selectPaymentSettings) {
+    return null;
+  }
+  const enableMainCurrencyPayment = (selectPaymentSettings == null ? void 0 : selectPaymentSettings.enableMainCurrencyPayment) === void 0;
+  const enableSwapPayments = (selectPaymentSettings == null ? void 0 : selectPaymentSettings.enableSwapPayments) === void 0;
+  const enableCreditCardPayments = (selectPaymentSettings == null ? void 0 : selectPaymentSettings.enableCreditCardPayments) ?? true;
+  const enableTransferFunds = (selectPaymentSettings == null ? void 0 : selectPaymentSettings.enableTransferFunds) ?? true;
+  const enableFiatOnRamp = (selectPaymentSettings == null ? void 0 : selectPaymentSettings.enableFiatOnRamp) ?? true;
+  const noPaymentOptionFound = !enableMainCurrencyPayment && !enableSwapPayments && !enableTransferFunds && !enableFiatOnRamp && !enableCreditCardPayments;
+  return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", width: "full", paddingX: "4", paddingBottom: "4", height: "full", style: { height: "600px", paddingTop: HEADER_HEIGHT$1 }, children: [enableCreditCardPayments && jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, setDisableButtons }), enableTransferFunds && jsxRuntimeExports$1.jsx(TransferFunds, { disableButtons }), enableFiatOnRamp && jsxRuntimeExports$1.jsx(FiatOnRamp, { disableButtons }), noPaymentOptionFound && jsxRuntimeExports$1.jsx(Box, { width: "full", justifyContent: "center", alignItems: "center", marginTop: "10", children: jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "No Payment Option Found" }) })] });
 };
 var __defProp2 = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -100734,7 +100577,7 @@ function QRCodeSVG(props) {
     shapeRendering: "crispEdges"
   }), image);
 }
-var QRCode = (props) => {
+var QRCode$1 = (props) => {
   const _a2 = props, { renderAs } = _a2, otherProps = __objRest(_a2, ["renderAs"]);
   if (renderAs === "svg") {
     return /* @__PURE__ */ React.createElement(QRCodeSVG, __spreadValues({}, otherProps));
@@ -101074,6 +100917,906 @@ _defineProperty(CopyToClipboard$1, "defaultProps", {
 var _require = Component, CopyToClipboard = _require.CopyToClipboard;
 CopyToClipboard.CopyToClipboard = CopyToClipboard;
 var lib = CopyToClipboard;
+const CopyButton$1 = (props) => {
+  const { text: text2, size: size2 = "xs", inline = false, ...rest } = props;
+  const [isCopied, setCopy] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    if (isCopied) {
+      setTimeout(() => {
+        setCopy(false);
+      }, 4e3);
+    }
+  }, [isCopied]);
+  const handleCopy = () => {
+    setCopy(true);
+  };
+  return jsxRuntimeExports$1.jsx(lib.CopyToClipboard, { text: text2, onCopy: handleCopy, children: inline ? jsxRuntimeExports$1.jsx(Button, { size: size2, variant: "text", leftIcon: isCopied ? SvgCheckmarkIcon : SvgCopyIcon }) : jsxRuntimeExports$1.jsx(Button, { size: size2, leftIcon: isCopied ? SvgCheckmarkIcon : SvgCopyIcon, label: isCopied ? "Copied" : "Copy", ...rest }) });
+};
+const QRCode = (props) => {
+  const { value } = props;
+  return jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", flexDirection: "column", gap: "4", children: [value ? jsxRuntimeExports$1.jsx(Box, { background: "white", padding: "4", borderRadius: "sm", style: { width: 232, height: 232 }, children: jsxRuntimeExports$1.jsx(QRCode$1, { value, size: 200, bgColor: "white", fgColor: "black", "data-id": "qr-code" }) }) : jsxRuntimeExports$1.jsx(Skeleton, { style: { width: 232, height: 232 } }), jsxRuntimeExports$1.jsx(CopyButton$1, { text: value || "", disabled: !value })] });
+};
+const TransferToWallet = () => {
+  const { address: userAddress } = useAccount();
+  const { transferFundsSettings } = useTransferFundsModal();
+  const address = (transferFundsSettings == null ? void 0 : transferFundsSettings.walletAddress) || userAddress || "";
+  return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", gap: "2", alignItems: "center", justifyContent: "center", width: "full", paddingX: "4", paddingBottom: "4", height: "full", style: { paddingTop: HEADER_HEIGHT$1 }, children: jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", alignItems: "center", paddingX: "4", paddingBottom: "4", minHeight: "full", children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", placeItems: "center", width: "full", children: [jsxRuntimeExports$1.jsx(Text, { as: "p", variant: "normal", color: "text50", textAlign: "center", children: "Share your wallet address to receive coins" }), jsxRuntimeExports$1.jsx(Box, { marginY: "4", children: jsxRuntimeExports$1.jsx(QRCode, { value: address, "data-id": "receiveQR" }) }), jsxRuntimeExports$1.jsx(Text, { as: "div", width: "full", variant: "normal", color: "text50", textAlign: "center", "data-id": "receiveAddress", children: address })] }) }) });
+};
+const KitCheckoutProvider = (props) => {
+  const queryClient2 = new QueryClient();
+  return jsxRuntimeExports$1.jsx(QueryClientProvider, { client: queryClient2, children: jsxRuntimeExports$1.jsx(KitCheckoutContent, { ...props }) });
+};
+const KitCheckoutContent = ({ children }) => {
+  const { theme, position } = useTheme();
+  const [openCheckoutModal, setOpenCheckoutModal] = reactExports.useState(false);
+  const [openAddFundsModal, setOpenAddFundsModal] = reactExports.useState(false);
+  const [openTransferFundsModal, setOpenTransferFundsModal] = reactExports.useState(false);
+  const [openPaymentSelectionModal, setOpenPaymentSelectionModal] = reactExports.useState(false);
+  const [settings, setSettings] = reactExports.useState();
+  const [selectPaymentSettings, setSelectPaymentSettings] = reactExports.useState();
+  const [addFundsSettings, setAddFundsSettings] = reactExports.useState();
+  const [transferFundsSettings, setTransferFundsSettings] = reactExports.useState();
+  const [history, setHistory] = reactExports.useState([]);
+  const getDefaultLocation = () => {
+    const orderSummaryItems = (settings == null ? void 0 : settings.orderSummaryItems) || [];
+    const creditCardSettings = settings == null ? void 0 : settings.creditCardCheckout;
+    if (orderSummaryItems.length === 0 && creditCardSettings) {
+      return {
+        location: "transaction-pending",
+        params: {
+          creditCardCheckout: creditCardSettings
+        }
+      };
+    } else {
+      return {
+        location: "select-method-checkout"
+      };
+    }
+  };
+  const navigation = history.length > 0 ? history[history.length - 1] : getDefaultLocation();
+  const triggerCheckout = (settings2) => {
+    setSettings(settings2);
+    setOpenCheckoutModal(true);
+  };
+  const closeCheckout = () => {
+    setOpenCheckoutModal(false);
+  };
+  const triggerAddFunds = (settings2) => {
+    setAddFundsSettings(settings2);
+    setOpenAddFundsModal(true);
+  };
+  const closeAddFunds = () => {
+    setOpenAddFundsModal(false);
+    if (addFundsSettings == null ? void 0 : addFundsSettings.onClose) {
+      addFundsSettings.onClose();
+    }
+  };
+  const openTransferFunds = (settings2) => {
+    setTransferFundsSettings(settings2);
+    setOpenTransferFundsModal(true);
+  };
+  const closeTransferFunds = () => {
+    if (openTransferFundsModal) {
+      setOpenTransferFundsModal(false);
+      if (transferFundsSettings == null ? void 0 : transferFundsSettings.onClose) {
+        transferFundsSettings.onClose();
+      }
+    }
+  };
+  const openSelectPaymentModal = (settings2) => {
+    setSelectPaymentSettings(settings2);
+    setOpenPaymentSelectionModal(true);
+  };
+  const closeSelectPaymentModal = () => {
+    setOpenPaymentSelectionModal(false);
+  };
+  const getCheckoutContent = () => {
+    const { location: location2 } = navigation;
+    switch (location2) {
+      case "select-method-checkout":
+        return jsxRuntimeExports$1.jsx(CheckoutSelection, {});
+      case "transaction-pending":
+        return jsxRuntimeExports$1.jsx(PendingTransaction, {});
+      case "transaction-success":
+        return jsxRuntimeExports$1.jsx(TransactionSuccess, {});
+      case "transaction-error":
+        return jsxRuntimeExports$1.jsx(TransactionError, {});
+      case "transaction-form":
+      default:
+        return jsxRuntimeExports$1.jsx(CheckoutSelection, {});
+    }
+  };
+  const getCheckoutHeader = () => {
+    const { location: location2 } = navigation;
+    switch (location2) {
+      case "select-method-checkout":
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Checkout" });
+      case "transaction-success":
+      case "transaction-error":
+      case "transaction-pending":
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { disableBack: true, primaryText: "Pay with credit or debit card" });
+      case "transaction-form":
+      default:
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Pay with credit or debit card" });
+    }
+  };
+  const getAddFundsHeader = () => {
+    const { location: location2 } = navigation;
+    switch (location2) {
+      default:
+        return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Add funds with credit card or debit card" });
+    }
+  };
+  const getAddFundsContent = () => {
+    const { location: location2 } = navigation;
+    switch (location2) {
+      default:
+        return jsxRuntimeExports$1.jsx(AddFundsContent, {});
+    }
+  };
+  reactExports.useEffect(() => {
+    if (openCheckoutModal || openAddFundsModal || openPaymentSelectionModal) {
+      setHistory([]);
+    }
+  }, [openCheckoutModal, openAddFundsModal, openPaymentSelectionModal]);
+  return jsxRuntimeExports$1.jsx(SelectPaymentContextProvider, { value: {
+    openSelectPaymentModal,
+    closeSelectPaymentModal,
+    selectPaymentSettings
+  }, children: jsxRuntimeExports$1.jsx(AddFundsContextProvider, { value: {
+    triggerAddFunds,
+    closeAddFunds,
+    addFundsSettings
+  }, children: jsxRuntimeExports$1.jsx(CheckoutModalContextProvider, { value: {
+    triggerCheckout,
+    closeCheckout,
+    settings,
+    theme
+  }, children: jsxRuntimeExports$1.jsx(TransferFundsContextProvider, { value: {
+    openTransferFundsModal: openTransferFunds,
+    closeTransferFundsModal: closeTransferFunds,
+    transferFundsSettings
+  }, children: jsxRuntimeExports$1.jsxs(NavigationContextProvider$1, { value: { history, setHistory, defaultLocation: getDefaultLocation() }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-checkout", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-checkout", scope: "kit", theme, children: jsxRuntimeExports$1.jsxs(AnimatePresence, { children: [openCheckoutModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+    style: {
+      maxWidth: "400px",
+      height: "auto",
+      ...getModalPositionCss(position)
+    }
+  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: () => setOpenCheckoutModal(false), children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-checkout-content", children: [getCheckoutHeader(), getCheckoutContent()] }) }), openAddFundsModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+    style: {
+      maxWidth: "400px",
+      height: "auto",
+      ...getModalPositionCss(position)
+    }
+  }, scroll: false, backdropColor: "backgroundBackdrop", onClose: closeAddFunds, children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-add-funds-content", children: [getAddFundsHeader(), getAddFundsContent()] }) }), openPaymentSelectionModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+    style: {
+      height: "auto",
+      ...getModalPositionCss(position)
+    }
+  }, backdropColor: "backgroundBackdrop", onClose: () => setOpenPaymentSelectionModal(false), children: jsxRuntimeExports$1.jsx(Box, { id: "sequence-kit-payment-selection-content", children: jsxRuntimeExports$1.jsx(PaymentSelection, {}) }) }), openTransferFundsModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
+    style: {
+      height: "auto",
+      ...getModalPositionCss(position)
+    }
+  }, backdropColor: "backgroundBackdrop", onClose: closeTransferFunds, children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-transfer-funds-modal", children: [jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Receive" }), jsxRuntimeExports$1.jsx(TransferToWallet, {})] }) })] }) }) }), children] }) }) }) }) });
+};
+const ERC_1155_ABI = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_from",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "_to",
+        type: "address"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_ids",
+        type: "uint256[]"
+      },
+      {
+        internalType: "uint256[]",
+        name: "_amounts",
+        type: "uint256[]"
+      },
+      {
+        internalType: "bytes",
+        name: "_data",
+        type: "bytes"
+      }
+    ],
+    name: "safeBatchTransferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
+const ERC_20_ABI = [
+  {
+    constant: false,
+    inputs: [
+      {
+        internalType: "address",
+        name: "recipient",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256"
+      }
+    ],
+    name: "transfer",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool"
+      }
+    ],
+    payable: false,
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
+const ERC_721_ABI = [
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "from",
+        type: "address"
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address"
+      },
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256"
+      }
+    ],
+    name: "safeTransferFrom",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function"
+  }
+];
+const supportedFiatCurrencies = [
+  { symbol: "USD", sign: "$", name: { message: "US Dollar" }, decimals: 2 },
+  { symbol: "CAD", sign: "$", name: { message: "Canadian Dollar" }, decimals: 2 },
+  { symbol: "GBP", sign: "£", name: { message: "British Pound Sterling" }, decimals: 2 },
+  { symbol: "EUR", sign: "€", name: { message: "Euro" }, decimals: 2 },
+  { symbol: "CNY", sign: "¥", name: { message: "Chinese Yuan" }, decimals: 2 },
+  { symbol: "JPY", sign: "¥", name: { message: "Japanese Yen" }, decimals: 2 },
+  { symbol: "KRW", sign: "₩", name: { message: "South Korean Won" }, decimals: 2 },
+  { symbol: "SGD", sign: "$", name: { message: "Singapore Dollar" }, decimals: 2 },
+  { symbol: "CHF", sign: "CHF ", name: { message: "Swiss Franc" }, decimals: 2 },
+  { symbol: "AUD", sign: "$", name: { message: "Australian Dollar" }, decimals: 2 },
+  { symbol: "NZD", sign: "$", name: { message: "New Zealand Dollar" }, decimals: 2 },
+  { symbol: "SEK", sign: "kr ", name: { message: "Swedish Krona" }, decimals: 2 },
+  { symbol: "NOK", sign: "kr ", name: { message: "Norwegian Krone" }, decimals: 2 },
+  { symbol: "MXN", sign: "$", name: { message: "Mexican Peso" }, decimals: 2 },
+  { symbol: "INR", sign: "₹", name: { message: "Indian Rupee" }, decimals: 2 },
+  { symbol: "ZAR", sign: "R ", name: { message: "South African Rand" }, decimals: 2 },
+  { symbol: "TRY", sign: "₺", name: { message: "Turkish Lira" }, decimals: 2 },
+  { symbol: "BRL", sign: "R$", name: { message: "Brazilian Real" }, decimals: 2 },
+  { symbol: "DKK", sign: "kr ", name: { message: "Danish Krone" }, decimals: 2 },
+  { symbol: "PLN", sign: "zł ", name: { message: "Polish Zloty" }, decimals: 2 },
+  { symbol: "THB", sign: "฿", name: { message: "Thai Baht" }, decimals: 2 },
+  { symbol: "IDR", sign: "Rp", name: { message: "Indonesian Rupiah" }, decimals: 2 }
+];
+const defaultFiatCurrency = supportedFiatCurrencies[0];
+const HEADER_HEIGHT = "54px";
+const createGenericContext = () => {
+  const genericContext = reactExports.createContext(void 0);
+  const useGenericContext = () => {
+    const contextIsDefined = reactExports.useContext(genericContext);
+    if (!contextIsDefined) {
+      throw new Error("useGenericContext must be used within a Provider");
+    }
+    return contextIsDefined;
+  };
+  return [useGenericContext, genericContext.Provider];
+};
+const [useWalletModalContext, WalletModalContextProvider] = createGenericContext();
+const [useNavigationContext, NavigationContextProvider] = createGenericContext();
+const useOpenWalletModal = () => {
+  const { setOpenWalletModal, openWalletModalState } = useWalletModalContext();
+  return { setOpenWalletModal, openWalletModalState };
+};
+const compareAddress = (a2, b2) => {
+  return a2.toLowerCase() === b2.toLowerCase();
+};
+const truncateAtMiddle = (text2, truncateAt) => {
+  let finalText = text2;
+  if (text2.length >= truncateAt) {
+    finalText = text2.slice(0, truncateAt / 2) + "..." + text2.slice(text2.length - truncateAt / 2, text2.length);
+  }
+  return finalText;
+};
+const formatAddress = (text2) => {
+  return `0x${truncateAtMiddle((text2 == null ? void 0 : text2.substring(2)) || "", 8)}`;
+};
+var ValueType;
+(function(ValueType2) {
+  ValueType2[ValueType2["VERY_LARGE"] = 0] = "VERY_LARGE";
+  ValueType2[ValueType2["FRACTION"] = 1] = "FRACTION";
+  ValueType2[ValueType2["VERY_TINY"] = 2] = "VERY_TINY";
+  ValueType2[ValueType2["MIXED"] = 3] = "MIXED";
+})(ValueType || (ValueType = {}));
+const formatDisplay = (_val2) => {
+  if (isNaN(Number(_val2))) {
+    console.error(`display format error ${_val2} is not a number`);
+    return "NaN";
+  }
+  const val = Number(_val2);
+  if (val === 0) {
+    return "0";
+  }
+  let valMode;
+  if (val > 1e8) {
+    valMode = ValueType.VERY_LARGE;
+  } else if (val < 1e-10) {
+    valMode = ValueType.VERY_TINY;
+  } else if (val < 1) {
+    valMode = ValueType.FRACTION;
+  } else {
+    valMode = ValueType.MIXED;
+  }
+  let notation = void 0;
+  let config2;
+  switch (valMode) {
+    case ValueType.VERY_LARGE:
+      notation = "compact";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType.VERY_TINY:
+      notation = "scientific";
+      config2 = {
+        maximumFractionDigits: 4
+      };
+      break;
+    case ValueType.FRACTION:
+      notation = "standard";
+      config2 = {
+        maximumSignificantDigits: 4
+      };
+      break;
+    default:
+      notation = "standard";
+      config2 = {
+        maximumFractionDigits: 2
+      };
+  }
+  return Intl.NumberFormat("en-US", {
+    notation,
+    ...config2
+  }).format(val);
+};
+const limitDecimals = (value, decimals) => {
+  const splitValue = value.split(".");
+  if (splitValue.length === 1) {
+    return value;
+  }
+  return `${splitValue[0]}.${splitValue[1].slice(0, decimals)}`;
+};
+const isEthAddress = (value) => {
+  const ethAddressRegEx = /0x[a-fA-F0-9]{40}/;
+  const isEthAddress2 = ethAddressRegEx.test(value);
+  return isEthAddress2;
+};
+const sampleSize = (collection, n2) => {
+  const length = collection.length;
+  if (!length || n2 < 1) {
+    return [];
+  }
+  n2 = n2 > length ? length : n2;
+  const sampled = new Array(n2);
+  const indexes = /* @__PURE__ */ new Set();
+  while (indexes.size < n2) {
+    indexes.add(Math.floor(Math.random() * length));
+  }
+  let index2 = 0;
+  for (const i of indexes) {
+    sampled[index2++] = collection[i];
+  }
+  return sampled;
+};
+const isTruthy = (value) => Boolean(value);
+const getPercentageColor = (value) => {
+  if (value > 0) {
+    return vars.colors.positive;
+  } else if (value < 0) {
+    return vars.colors.negative;
+  } else {
+    return vars.colors.text50;
+  }
+};
+const getPercentagePriceChange = (balance, prices) => {
+  var _a2;
+  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
+  if (!priceForToken) {
+    return 0;
+  }
+  const price24HourChange = ((_a2 = priceForToken == null ? void 0 : priceForToken.price24hChange) == null ? void 0 : _a2.value) || 0;
+  return price24HourChange;
+};
+const computeBalanceFiat = ({ balance, prices, decimals, conversionRate }) => {
+  var _a2;
+  let totalUsd = 0;
+  const priceForToken = prices.find((p2) => compareAddress(p2.token.contractAddress, balance.contractAddress));
+  if (!priceForToken) {
+    return "0.00";
+  }
+  const priceFiat = ((_a2 = priceForToken.price) == null ? void 0 : _a2.value) || 0;
+  const valueFormatted = formatUnits$2(balance.balance, decimals);
+  const usdValue = parseFloat(valueFormatted) * priceFiat;
+  totalUsd += usdValue;
+  const fiatValue = totalUsd * conversionRate;
+  return `${fiatValue.toFixed(2)}`;
+};
+const compareTokenBalanceIds = (a2, b2) => {
+  return (a2.tokenID || "").localeCompare(b2.tokenID || "");
+};
+const sortBalancesByType = (balances) => {
+  const nativeTokens = [];
+  const erc20Tokens = [];
+  const collectibles = [];
+  balances.forEach((balance) => {
+    if (balance.contractAddress === ZeroAddress) {
+      nativeTokens.push(balance);
+    } else if (balance.contractType === "ERC20") {
+      erc20Tokens.push(balance);
+    } else if (balance.contractType === "ERC721" || balance.contractType === "ERC1155") {
+      collectibles.push(balance);
+    }
+  });
+  const sortedNativeTokens = nativeTokens.sort(compareTokenBalanceIds);
+  const sortedErc20Tokens = erc20Tokens.sort(compareTokenBalanceIds);
+  const sortedCollectibles = collectibles.sort(compareTokenBalanceIds);
+  return {
+    nativeTokens: sortedNativeTokens,
+    erc20Tokens: sortedErc20Tokens,
+    collectibles: sortedCollectibles
+  };
+};
+const flattenPaginatedTransactionHistory = (transactionHistoryData) => {
+  const transactionHistory = [];
+  transactionHistoryData == null ? void 0 : transactionHistoryData.pages.forEach((page) => {
+    transactionHistory.push(...page.transactions);
+  });
+  return transactionHistory;
+};
+const time = {
+  oneSecond: 1 * 1e3,
+  oneMinute: 60 * 1e3,
+  oneHour: 60 * 60 * 1e3
+};
+const getBalancesAssetsSummary = async (apiClient, metadataClient, indexerClients, { accountAddress, displayAssets, hideCollectibles, verifiedOnly }) => {
+  const indexerClientsArr = Array.from(indexerClients.entries());
+  const MAX_COLLECTIBLES_AMOUNTS = 10;
+  let tokenBalances = [];
+  const customDisplayAssets = displayAssets.length > 0;
+  try {
+    if (customDisplayAssets) {
+      const nativeTokens2 = displayAssets.filter((asset) => compareAddress(asset.contractAddress, ZeroAddress));
+      const otherAssets = displayAssets.filter((asset) => !compareAddress(asset.contractAddress, ZeroAddress));
+      const nativeTokensByChainId = {};
+      const otherAssetsByChainId = {};
+      nativeTokens2.forEach((asset) => {
+        if (!nativeTokensByChainId[asset.chainId]) {
+          nativeTokensByChainId[asset.chainId] = [];
+        }
+        nativeTokensByChainId[asset.chainId].push(asset);
+      });
+      otherAssets.forEach((asset) => {
+        if (!otherAssetsByChainId[asset.chainId]) {
+          otherAssetsByChainId[asset.chainId] = [];
+        }
+        otherAssetsByChainId[asset.chainId].push(asset);
+      });
+      tokenBalances = (await Promise.all([
+        ...Object.keys(nativeTokensByChainId).map((chainId) => {
+          const indexerClient = indexerClients.get(Number(chainId));
+          if (!indexerClient) {
+            console.error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
+            return null;
+          }
+          return getNativeTokenBalance(indexerClient, Number(chainId), accountAddress);
+        }),
+        ...Object.keys(otherAssetsByChainId).map((chainId) => otherAssetsByChainId[Number(chainId)].map((asset) => {
+          const indexerClient = indexerClients.get(Number(chainId));
+          if (!indexerClient) {
+            console.error(`Indexer client not found for chainId: ${chainId}, did you forget to add this Chain?`);
+            return [];
+          }
+          return getTokenBalances(indexerClient, {
+            accountAddress,
+            contractAddress: asset.contractAddress,
+            includeMetadata: false,
+            hideCollectibles,
+            verifiedOnly
+          });
+        })).flat()
+      ])).flat().filter(isTruthy);
+    } else {
+      tokenBalances = (await Promise.all([
+        ...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)),
+        ...indexerClientsArr.map(([_chainId4, indexerClient]) => getTokenBalances(indexerClient, {
+          accountAddress,
+          hideCollectibles,
+          includeMetadata: false,
+          verifiedOnly
+        }))
+      ])).flat();
+    }
+    const { nativeTokens, erc20Tokens, collectibles: collectionBalances } = sortBalancesByType(tokenBalances);
+    const fetchPricesPromise = new Promise(async (resolve) => {
+      if (erc20Tokens.length > 0) {
+        const tokens = erc20Tokens.map((token) => ({
+          chainId: token.chainId,
+          contractAddress: token.contractAddress
+        }));
+        const prices2 = await getCoinPrices(apiClient, tokens) || [];
+        resolve(prices2);
+      } else {
+        resolve([]);
+      }
+    });
+    const fetchCollectiblesPromises = collectionBalances.map(async (collectionBalance) => {
+      if (customDisplayAssets) {
+        return collectionBalance;
+      }
+      const indexerClient = indexerClients.get(collectionBalance.chainId);
+      if (!indexerClient) {
+        throw new Error(`Indexer client not found for chainId: ${collectionBalance.chainId}, did you forget to add this Chain?`);
+      }
+      const balance = await getCollectionBalance(indexerClient, {
+        accountAddress,
+        chainId: collectionBalance.chainId,
+        contractAddress: collectionBalance.contractAddress,
+        includeMetadata: false
+      });
+      return balance;
+    });
+    const fetchErc20ContractInfoPromise = async () => {
+      const contractInfoMapByChainId2 = {};
+      const erc20BalanceByChainId = {};
+      erc20Tokens.forEach((erc20Token) => {
+        if (!erc20BalanceByChainId[erc20Token.chainId]) {
+          erc20BalanceByChainId[erc20Token.chainId] = [erc20Token];
+        } else {
+          erc20BalanceByChainId[erc20Token.chainId].push(erc20Token);
+        }
+      });
+      const contractInfoPromises = Object.keys(erc20BalanceByChainId).map(async (chainId) => {
+        const tokenBalances2 = erc20BalanceByChainId[Number(chainId)];
+        const contractAddresses = tokenBalances2.map((balance) => balance.contractAddress);
+        const result = await metadataClient.getContractInfoBatch({
+          chainID: String(chainId),
+          contractAddresses
+        });
+        contractInfoMapByChainId2[Number(chainId)] = result;
+      });
+      await Promise.all([...contractInfoPromises]);
+      return contractInfoMapByChainId2;
+    };
+    const [prices, contractInfoMapByChainId, ...collectionCollectibles] = await Promise.all([
+      fetchPricesPromise,
+      fetchErc20ContractInfoPromise(),
+      ...fetchCollectiblesPromises
+    ]);
+    const erc20HighestValue = erc20Tokens.sort((a2, b2) => {
+      var _a2, _b2;
+      const aPriceData = prices.find((price) => compareAddress(price.token.contractAddress, a2.contractAddress));
+      const bPriceData = prices.find((price) => compareAddress(price.token.contractAddress, b2.contractAddress));
+      const aPrice = (aPriceData == null ? void 0 : aPriceData.price) ? aPriceData.price.value : 0;
+      const bPrice = (bPriceData == null ? void 0 : bPriceData.price) ? bPriceData.price.value : 0;
+      const aDecimals = (_a2 = contractInfoMapByChainId[a2.chainId].contractInfoMap[a2.contractAddress]) == null ? void 0 : _a2.decimals;
+      const bDecimals = (_b2 = contractInfoMapByChainId[b2.chainId].contractInfoMap[b2.contractAddress]) == null ? void 0 : _b2.decimals;
+      const aFormattedBalance = aDecimals === void 0 ? 0 : Number(formatUnits$2(a2.balance, aDecimals));
+      const bFormattedBalance = bDecimals === void 0 ? 0 : Number(formatUnits$2(b2.balance, bDecimals));
+      const aValue = aFormattedBalance * aPrice;
+      const bValue = bFormattedBalance * bPrice;
+      return bValue - aValue;
+    });
+    const collectibles = sampleSize(collectionCollectibles.flat(), MAX_COLLECTIBLES_AMOUNTS).sort((a2, b2) => {
+      return a2.contractAddress.localeCompare(b2.contractAddress);
+    });
+    if (hideCollectibles) {
+      const summaryBalances2 = [
+        ...nativeTokens.length > 0 ? [nativeTokens[0]] : [],
+        // the spots normally occupied by collectibles will be filled by erc20 tokens
+        ...erc20HighestValue.length > 0 ? erc20HighestValue.slice(0, MAX_COLLECTIBLES_AMOUNTS + 1) : []
+      ];
+      return summaryBalances2;
+    }
+    const summaryBalances = [
+      ...nativeTokens.length > 0 ? [nativeTokens[0]] : [],
+      ...erc20HighestValue.length > 0 ? [erc20HighestValue[0]] : [],
+      ...collectibles.length > 0 ? [...collectibles] : []
+    ];
+    return summaryBalances;
+  } catch (e2) {
+    console.error(e2);
+    return [];
+  }
+};
+const useBalancesAssetsSummary = (args) => {
+  const apiClient = useAPIClient();
+  const metadataClient = useMetadataClient();
+  const indexerClients = useIndexerClients(args.chainIds);
+  return useQuery$1({
+    queryKey: ["balancesAssetsSummary", args],
+    queryFn: () => getBalancesAssetsSummary(apiClient, metadataClient, indexerClients, args),
+    retry: true,
+    refetchInterval: time.oneSecond * 4,
+    refetchOnMount: true,
+    staleTime: time.oneSecond,
+    enabled: args.chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const getTransactionHistorySummary = async (indexerClients, { accountAddress }) => {
+  const histories = await Promise.all(Array.from(indexerClients.values()).map((indexerClient) => getTransactionHistory(indexerClient, {
+    accountAddress,
+    page: {
+      page: 1
+    }
+  })));
+  const unorderedTransactions = histories.map((history) => history.transactions).flat();
+  const orderedTransactions = unorderedTransactions.sort((a2, b2) => {
+    const firstDate = new Date(a2.timestamp).getTime();
+    const secondDate = new Date(b2.timestamp).getTime();
+    return secondDate - firstDate;
+  });
+  return orderedTransactions;
+};
+const useTransactionHistorySummary = (args) => {
+  const indexerClients = useIndexerClients(args.chainIds);
+  return useQuery$1({
+    queryKey: ["transactionHistorySummary", args],
+    queryFn: () => getTransactionHistorySummary(indexerClients, args),
+    retry: true,
+    staleTime: time.oneSecond,
+    refetchOnMount: true,
+    enabled: args.chainIds.length > 0 && !!args.accountAddress
+  });
+};
+const useNavigation = () => {
+  const { setHistory, history } = useNavigationContext();
+  const setNavigation = (navigation) => {
+    const childElement = document.getElementById("sequence-kit-wallet-content");
+    const parentElement = childElement == null ? void 0 : childElement.parentElement;
+    parentElement == null ? void 0 : parentElement.scrollTo(0, 0);
+    const newHistory = navigation.location === "home" ? [] : [...history, navigation];
+    setHistory(newHistory);
+  };
+  const goBack = () => {
+    const newHistory = [...history];
+    newHistory.pop();
+    setHistory(newHistory);
+  };
+  return { setNavigation, history, setHistory, goBack };
+};
+const useSettings = () => {
+  const { chains: chains2 } = useConfig();
+  const getSettingsFromStorage = () => {
+    let hideUnlistedTokens = true;
+    let hideCollectibles = false;
+    let fiatCurrency = defaultFiatCurrency;
+    let selectedNetworks = chains2.map((chain) => chain.id);
+    try {
+      const settingsStorage = localStorage.getItem(LocalStorageKey.Settings);
+      const settings2 = JSON.parse(settingsStorage || "{}");
+      if ((settings2 == null ? void 0 : settings2.hideUnlistedTokens) !== void 0) {
+        hideUnlistedTokens = settings2 == null ? void 0 : settings2.hideUnlistedTokens;
+      }
+      if ((settings2 == null ? void 0 : settings2.hideCollectibles) !== void 0) {
+        hideCollectibles = settings2 == null ? void 0 : settings2.hideCollectibles;
+      }
+      if ((settings2 == null ? void 0 : settings2.fiatCurrency) !== void 0) {
+        fiatCurrency = settings2 == null ? void 0 : settings2.fiatCurrency;
+      }
+      if ((settings2 == null ? void 0 : settings2.selectedNetworks) !== void 0) {
+        let areSelectedNetworksValid = true;
+        settings2.selectedNetworks.forEach((chainId) => {
+          if (chains2.find((chain) => chain.id === chainId) === void 0) {
+            areSelectedNetworksValid = false;
+          }
+        });
+        if (areSelectedNetworksValid) {
+          selectedNetworks = settings2 == null ? void 0 : settings2.selectedNetworks;
+        }
+      }
+    } catch (e2) {
+      console.error(e2, "Failed to fetch settings");
+    }
+    return {
+      hideUnlistedTokens,
+      hideCollectibles,
+      fiatCurrency,
+      selectedNetworks
+    };
+  };
+  const defaultSettings = getSettingsFromStorage();
+  const [settings, setSettings] = reactExports.useState(defaultSettings);
+  const setHideUnlistedTokens = (newState) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      hideUnlistedTokens: newState
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  const setHideCollectibles = (newState) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      hideCollectibles: newState
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  const setFiatCurrency = (newFiatCurrency) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      fiatCurrency: newFiatCurrency
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  const setSelectedNetworks = (newSelectedNetworks) => {
+    const oldSettings = getSettingsFromStorage();
+    const newSettings = {
+      ...oldSettings,
+      selectedNetworks: newSelectedNetworks
+    };
+    localStorage.setItem(LocalStorageKey.Settings, JSON.stringify(newSettings));
+    setSettings(newSettings);
+  };
+  return {
+    ...settings,
+    setFiatCurrency,
+    setHideCollectibles,
+    setHideUnlistedTokens,
+    setSelectedNetworks
+  };
+};
+const CoinTileContent = ({ logoUrl, tokenName, balance, balanceFiat, priceChangePercentage, symbol, chainId }) => {
+  const { fiatCurrency } = useSettings();
+  const priceChangeSymbol = priceChangePercentage > 0 ? "+" : "";
+  return jsxRuntimeExports$1.jsxs(Box, { background: "backgroundSecondary", width: "full", height: "full", borderRadius: "md", padding: "4", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", gap: "1", children: [jsxRuntimeExports$1.jsx(Box, { marginBottom: "1", children: jsxRuntimeExports$1.jsx(TokenImage, { src: logoUrl, symbol, size: "xl" }) }), jsxRuntimeExports$1.jsxs(Box, { marginBottom: "3", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "1", justifyContent: "flex-start", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", whiteSpace: "nowrap", color: "text100", style: { maxWidth: "130px", textOverflow: "ellipsis", overflow: "hidden" }, children: tokenName }), jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "xs" })] }), jsxRuntimeExports$1.jsx(Text, { color: "text50", whiteSpace: "nowrap", style: { display: "block", maxWidth: "150px", textOverflow: "ellipsis", overflow: "hidden" }, children: `${balance} ${symbol}` })] }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { fontWeight: "bold", color: "text100", children: `${fiatCurrency.sign}${balanceFiat}` }) }), jsxRuntimeExports$1.jsx(Text, { style: { color: getPercentageColor(priceChangePercentage) }, children: `${priceChangeSymbol}${priceChangePercentage.toFixed(2)}%` })] })] });
+};
+const CoinTile = ({ balance }) => {
+  const { chains: chains2 } = useConfig();
+  const { fiatCurrency } = useSettings();
+  const isNativeToken = compareAddress(balance.contractAddress, ZeroAddress);
+  const nativeTokenInfo = getNativeTokenInfoByChainId(balance.chainId, chains2);
+  const { data: dataCoinPrices = [], isPending: isPendingCoinPrice } = useCoinPrices([
+    {
+      chainId: balance.chainId,
+      contractAddress: balance.contractAddress
+    }
+  ]);
+  const { data: conversionRate = 1, isPending: isPendingConversionRate } = useExchangeRate(fiatCurrency.symbol);
+  const { data: contractInfo, isPending: isPendingContractInfo } = useContractInfo(balance.chainId, balance.contractAddress);
+  const isPending = isPendingCoinPrice || isPendingConversionRate || isPendingContractInfo;
+  if (isPending) {
+    return jsxRuntimeExports$1.jsx(Box, { background: "backgroundSecondary", width: "full", height: "full", borderRadius: "md" });
+  }
+  if (isNativeToken) {
+    const computedBalance2 = computeBalanceFiat({
+      balance,
+      prices: dataCoinPrices,
+      conversionRate,
+      decimals: nativeTokenInfo.decimals
+    });
+    const priceChangePercentage2 = getPercentagePriceChange(balance, dataCoinPrices);
+    const formattedBalance2 = formatUnits$2(balance.balance, nativeTokenInfo.decimals);
+    const balanceDisplayed2 = formatDisplay(formattedBalance2);
+    return jsxRuntimeExports$1.jsx(CoinTileContent, { chainId: balance.chainId, logoUrl: nativeTokenInfo.logoURI, tokenName: nativeTokenInfo.name, balance: balanceDisplayed2, balanceFiat: computedBalance2, priceChangePercentage: priceChangePercentage2, symbol: nativeTokenInfo.symbol });
+  }
+  const decimals = (contractInfo == null ? void 0 : contractInfo.decimals) ?? 18;
+  const computedBalance = computeBalanceFiat({
+    balance,
+    prices: dataCoinPrices,
+    conversionRate,
+    decimals
+  });
+  const priceChangePercentage = getPercentagePriceChange(balance, dataCoinPrices);
+  const formattedBalance = formatUnits$2(balance.balance, decimals);
+  const balanceDisplayed = formatDisplay(formattedBalance);
+  const name2 = (contractInfo == null ? void 0 : contractInfo.name) || "Unknown";
+  const symbol = (contractInfo == null ? void 0 : contractInfo.name) || "TOKEN";
+  const url = contractInfo == null ? void 0 : contractInfo.logoURI;
+  return jsxRuntimeExports$1.jsx(CoinTileContent, { chainId: balance.chainId, logoUrl: url, tokenName: name2, balance: balanceDisplayed, balanceFiat: computedBalance, priceChangePercentage, symbol });
+};
+const CollectibleTileImage = ({ imageUrl }) => {
+  return jsxRuntimeExports$1.jsx(Card, { padding: "0", aspectRatio: "1/1", justifyContent: "center", alignItems: "center", overflow: "hidden", borderRadius: "sm", background: "backgroundSecondary", children: jsxRuntimeExports$1.jsx(Image$1, { style: { height: "100%" }, src: imageUrl }) });
+};
+const CollectibleTile = ({ balance }) => {
+  var _a2;
+  const { data: tokenMetadata } = useTokenMetadata(balance.chainId, balance.contractAddress, [balance.tokenID || ""]);
+  const imageUrl = (_a2 = tokenMetadata == null ? void 0 : tokenMetadata[0]) == null ? void 0 : _a2.image;
+  return jsxRuntimeExports$1.jsx(CollectibleTileImage, { imageUrl });
+};
+const SkeletonTiles = () => {
+  return jsxRuntimeExports$1.jsx(Box, { style: {
+    display: "grid",
+    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+    gap: vars.space[2]
+  }, children: Array(12).fill(null).map((_, i) => jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Skeleton, { height: "full", width: "full", aspectRatio: "1/1" }) }, i)) });
+};
+const AssetSummary = () => {
+  const { address } = useAccount();
+  const { setNavigation } = useNavigation();
+  const { displayedAssets } = useWalletSettings();
+  const { hideUnlistedTokens, hideCollectibles, selectedNetworks } = useSettings();
+  const { data: balances = [], isPending: isPendingBalances } = useBalancesAssetsSummary({
+    accountAddress: address || "",
+    chainIds: selectedNetworks,
+    displayAssets: displayedAssets,
+    hideCollectibles,
+    verifiedOnly: hideUnlistedTokens
+  });
+  if (isPendingBalances) {
+    return jsxRuntimeExports$1.jsx(SkeletonTiles, {});
+  }
+  const { nativeTokens, erc20Tokens, collectibles } = sortBalancesByType(balances);
+  const onClickItem = (balance) => {
+    if (balance.contractType === "ERC1155" || balance.contractType === "ERC721") {
+      setNavigation && setNavigation({
+        location: "collectible-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId,
+          tokenId: balance.tokenID || ""
+        }
+      });
+    } else if (balance.contractType === "ERC20") {
+      setNavigation && setNavigation({
+        location: "coin-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId
+        }
+      });
+    } else {
+      setNavigation && setNavigation({
+        location: "coin-details",
+        params: {
+          contractAddress: balance.contractAddress,
+          chainId: balance.chainId
+        }
+      });
+    }
+  };
+  return jsxRuntimeExports$1.jsxs(Box, { style: {
+    display: "grid",
+    gridTemplateColumns: `calc(50% - ${vars.space[1]}) calc(50% - ${vars.space[1]})`,
+    gap: vars.space[2]
+  }, children: [nativeTokens.map((balance, index2) => {
+    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CoinTile, { balance }) }, index2);
+  }), erc20Tokens.map((balance, index2) => {
+    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CoinTile, { balance }) }, index2);
+  }), collectibles.map((balance, index2) => {
+    return jsxRuntimeExports$1.jsx(Box, { userSelect: "none", cursor: "pointer", opacity: { hover: "80" }, aspectRatio: "1/1", onClick: () => onClickItem(balance), children: jsxRuntimeExports$1.jsx(CollectibleTile, { balance }) }, index2);
+  })] });
+};
+const Home = () => {
+  return jsxRuntimeExports$1.jsx(Box, { paddingX: "4", paddingBottom: "5", gap: "4", flexDirection: "column", children: jsxRuntimeExports$1.jsx(AssetSummary, {}) });
+};
 const Receive = () => {
   const { address, chain } = useAccount();
   const { chains: chains2 } = useConfig();
@@ -101094,7 +101837,7 @@ const Receive = () => {
       window.open(`https://twitter.com/intent/tweet?text=Here%20is%20my%20address%20${address}`);
     }
   };
-  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { padding: "5", paddingTop: "3", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "4", children: [jsxRuntimeExports$1.jsx(Box, { marginTop: "1", width: "fit", background: "white", borderRadius: "md", alignItems: "center", justifyContent: "center", padding: "4", children: jsxRuntimeExports$1.jsx(QRCode, { value: address || "", size: 200, bgColor: "white", fgColor: "black", "data-id": "receiveQR" }) }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", textAlign: "center", lineHeight: "inherit", style: { fontWeight: "700" }, children: "My Wallet" }), jsxRuntimeExports$1.jsx(Image$1, { width: "5", src: nativeTokenInfo.logoURI, alt: "icon" })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", style: { maxWidth: "180px", textAlign: "center" }, children: jsxRuntimeExports$1.jsx(Text, { textAlign: "center", color: "text50", style: {
+  return jsxRuntimeExports$1.jsx(Box, { style: { paddingTop: HEADER_HEIGHT }, children: jsxRuntimeExports$1.jsxs(Box, { padding: "5", paddingTop: "3", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "4", children: [jsxRuntimeExports$1.jsx(Box, { marginTop: "1", width: "fit", background: "white", borderRadius: "md", alignItems: "center", justifyContent: "center", padding: "4", children: jsxRuntimeExports$1.jsx(QRCode$1, { value: address || "", size: 200, bgColor: "white", fgColor: "black", "data-id": "receiveQR" }) }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: "2", children: [jsxRuntimeExports$1.jsx(Text, { variant: "medium", color: "text100", textAlign: "center", lineHeight: "inherit", style: { fontWeight: "700" }, children: "My Wallet" }), jsxRuntimeExports$1.jsx(Image$1, { width: "5", src: nativeTokenInfo.logoURI, alt: "icon" })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", style: { maxWidth: "180px", textAlign: "center" }, children: jsxRuntimeExports$1.jsx(Text, { textAlign: "center", color: "text50", style: {
     fontSize: "14px",
     maxWidth: "180px",
     overflowWrap: "anywhere"
@@ -108545,6 +109288,7 @@ const Connected = () => {
   const { setOpenWalletModal } = useOpenWalletModal();
   const { triggerCheckout } = useCheckoutModal();
   const { triggerAddFunds } = useAddFundsModal();
+  const { openERC1155SaleContractPaymentModal } = useERC1155SaleContractPaymentModal();
   const { data: walletClient } = useWalletClient();
   const storage = useStorage();
   const [isCheckoutInfoModalOpen, setIsCheckoutInfoModalOpen] = React.useState(false);
@@ -108693,6 +109437,35 @@ const Connected = () => {
   const onClickCheckout = () => {
     setIsCheckoutInfoModalOpen(true);
   };
+  const onClickSelectPayment = () => {
+    if (!address) {
+      return;
+    }
+    const currencyAddress = "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359";
+    const salesContractAddress = "0xe65b75eb7c58ffc0bf0e671d64d0e1c6cd0d3e5b";
+    const price = "20000";
+    const chainId2 = 137;
+    const tokenId = "1";
+    const nftQuantity = "1";
+    const collectionAddress = "0xdeb398f41ccd290ee5114df7e498cf04fac916cb";
+    openERC1155SaleContractPaymentModal({
+      chain: chainId2,
+      price,
+      targetContractAddress: salesContractAddress,
+      recipientAddress: address,
+      currencyAddress,
+      tokenId,
+      collectionAddress,
+      nftQuantity,
+      isDev: true,
+      onSuccess: (txnHash) => {
+        console.log("success!", txnHash);
+      },
+      onError: (error2) => {
+        console.error(error2);
+      }
+    });
+  };
   const onCheckoutInfoConfirm = () => {
     setIsCheckoutInfoModalOpen(false);
     if (checkoutOrderId !== "" && checkoutTokenContractAddress !== "" && checkoutTokenId !== "") {
@@ -108825,7 +109598,15 @@ const Connected = () => {
               onClick: onClickCheckout
             }
           )
-        ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports$1.jsx(
+          CardButton,
+          {
+            title: "Select Payment Method",
+            description: "Purchase an NFT through various purchase methods",
+            onClick: onClickSelectPayment
+          }
+        )
       ] }),
       pendingFeeOptionConfirmation && feeOptionBalances.length > 0 && /* @__PURE__ */ jsxRuntimeExports$1.jsxs(Box, { marginY: "3", children: [
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
@@ -109173,9 +109954,9 @@ const kitConfig = {
   projectAccessKey,
   defaultTheme: "dark",
   signIn: {
-    projectName: "Kit Demo",
+    projectName: "Kit Demo"
     // logoUrl: 'sw-logo-white.svg',
-    useMock: isDebugMode
+    // useMock: isDebugMode
   },
   displayedAssets: [
     // Native token
