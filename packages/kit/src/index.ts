@@ -21,7 +21,7 @@ export { getDefaultConnectors, getDefaultWaasConnectors } from './config/default
 export { getDefaultChains } from './config/defaultChains'
 
 // Constants
-export { LocalStorageKey, DEFAULT_SESSION_EXPIRATION } from './constants'
+export { LocalStorageKey, DEFAULT_SESSION_EXPIRATION, TRANSACTION_CONFIRMATIONS_DEFAULT } from './constants'
 
 // Utils
 export { getKitConnectWallets } from './utils/getKitConnectWallets'
@@ -31,6 +31,7 @@ export { getModalPositionCss } from './utils/styling'
 export { getNetwork, getNetworkColor, getNetworkBackgroundColor } from './utils/networks'
 export { walletClientToSigner, publicClientToProvider } from './utils/adapters'
 export { signEthAuthProof, validateEthProof } from './utils/ethAuth'
+export { sendTransactions } from './utils/transactions'
 
 // Contexts
 export { useKitConfig, KitConfigContextProvider } from './contexts/KitConfig'
@@ -87,5 +88,8 @@ export {
   useCollectiblePrices,
   useTokenMetadata,
   useContractInfo,
-  useTransactionHistory
+  useTransactionHistory,
+  useSwapQuotes
 } from './hooks/data'
+
+export type { SwapQuotesWithCurrencyInfo } from './hooks/data'

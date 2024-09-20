@@ -7,14 +7,18 @@ import {
   validateEthProof,
   getModalPositionCss
 } from '@0xsequence/kit'
-import { useCheckoutModal, useAddFundsModal } from '@0xsequence/kit-checkout'
+import {
+  useCheckoutModal,
+  useAddFundsModal,
+  useERC1155SaleContractPaymentModal
+} from '@0xsequence/kit-checkout'
 import { CardButton, Header } from '@0xsequence/kit-example-shared-components'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { allNetworks, ChainId } from '@0xsequence/network'
 import { ethers } from 'ethers'
 import { AnimatePresence } from 'framer-motion'
 import React, { ComponentProps, useEffect } from 'react'
-import { formatUnits, parseUnits } from 'viem'
+import { formatUnits, parseUnits, toHex } from 'viem'
 import {
   useAccount,
   useChainId,
@@ -38,6 +42,7 @@ export const Connected = () => {
   const { setOpenWalletModal } = useOpenWalletModal()
   const { triggerCheckout } = useCheckoutModal()
   const { triggerAddFunds } = useAddFundsModal()
+  const { openERC1155SaleContractPaymentModal } = useERC1155SaleContractPaymentModal()
   const { data: walletClient } = useWalletClient()
   const storage = useStorage()
 
@@ -242,6 +247,33 @@ export const Connected = () => {
     setIsCheckoutInfoModalOpen(true)
   }
 
+  const onClickSelectPayment = () => {
+    if (!address) {
+      return
+    }
+    const currencyAddress = '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359'
+    const salesContractAddress = '0xe65b75eb7c58ffc0bf0e671d64d0e1c6cd0d3e5b'
+    const price = '20000'
+    const chainId = 137
+    const tokenId = '1'
+    const nftQuantity = '1'
+    const collectionAddress = '0xdeb398f41ccd290ee5114df7e498cf04fac916cb'
+
+    openERC1155SaleContractPaymentModal({
+      chain: chainId,
+      price,
+      targetContractAddress: salesContractAddress,
+      recipientAddress: address,
+      currencyAddress,
+      tokenId,
+      collectionAddress,
+      nftQuantity,
+      isDev: true,
+      onSuccess: (txnHash: string) => { console.log('success!', txnHash) },
+      onError: (error: Error) => { console.error(error) }
+    })
+  }
+
   const onCheckoutInfoConfirm = () => {
     setIsCheckoutInfoModalOpen(false)
     if (checkoutOrderId !== '' && checkoutTokenContractAddress !== '' && checkoutTokenId !== '') {
@@ -376,8 +408,14 @@ export const Connected = () => {
                   description="Set orderbook order id, token contract address and token id to test checkout (on Polygon)"
                   onClick={onClickCheckout}
                 />
+
               </>
             )}
+            <CardButton
+              title="Select Payment Method"
+              description="Purchase an NFT through various purchase methods"
+              onClick={onClickSelectPayment}
+            />
           </Box>
 
           {pendingFeeOptionConfirmation && feeOptionBalances.length > 0 && (
