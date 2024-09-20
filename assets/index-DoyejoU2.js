@@ -1,4 +1,4 @@
-const __vite__fileDeps=["./index-03y2NvI2.js","./hooks.module-DH-Wk4N-.js","./___vite-browser-external_commonjs-proxy-BKpD9f8m.js","./index-DGLMhC4E.js","./index.es-DMLMwzgY.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
+const __vite__fileDeps=["./index-9SXbAM1A.js","./hooks.module-DQmAfwwm.js","./___vite-browser-external_commonjs-proxy-BlGmLw4I.js","./index-ChCrEDKP.js","./index.es-CD1jjWvf.js"],__vite__mapDeps=i=>i.map(i=>__vite__fileDeps[i]);
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
@@ -75942,7 +75942,7 @@ async function call(client2, args) {
     return { data: response };
   } catch (err) {
     const data2 = getRevertErrorData(err);
-    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-CI9Y3o6i.js"), true ? [] : void 0, import.meta.url);
+    const { offchainLookup, offchainLookupSignature } = await __vitePreload(() => import("./ccip-D3mAUtVz.js"), true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
       return { data: await offchainLookup(client2, { data: data2, to }) };
     throw getCallError(err, {
@@ -97713,7 +97713,7 @@ function version4(parameters) {
     },
     async getProvider() {
       if (!walletProvider) {
-        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-03y2NvI2.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
+        const { default: CoinbaseSDK_ } = await __vitePreload(() => import("./index-9SXbAM1A.js").then((n2) => n2.i), true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
         const CoinbaseSDK = (() => {
           if (typeof CoinbaseSDK_ !== "function" && typeof CoinbaseSDK_.default === "function")
             return CoinbaseSDK_.default;
@@ -97890,7 +97890,7 @@ function version3(parameters) {
     async getProvider() {
       var _a2;
       if (!walletProvider) {
-        const { default: SDK_ } = await __vitePreload(() => import("./index-DGLMhC4E.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
+        const { default: SDK_ } = await __vitePreload(() => import("./index-ChCrEDKP.js").then((n2) => n2.i), true ? __vite__mapDeps([3,1,2]) : void 0, import.meta.url);
         let SDK;
         if (typeof SDK_ !== "function" && typeof SDK_.default === "function")
           SDK = SDK_.default;
@@ -98124,7 +98124,7 @@ function walletConnect$1(parameters) {
         const optionalChains = config2.chains.map((x2) => x2.id);
         if (!optionalChains.length)
           return;
-        const { EthereumProvider } = await __vitePreload(() => import("./index.es-DMLMwzgY.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
+        const { EthereumProvider } = await __vitePreload(() => import("./index.es-CD1jjWvf.js"), true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
           ...parameters,
           disableProviderPing: true,
@@ -101315,6 +101315,7 @@ const isEthAddress = (value) => {
   return isEthAddress2;
 };
 const sampleSize = (collection, n2) => {
+  const random = seededRandom(1);
   const length = collection.length;
   if (!length || n2 < 1) {
     return [];
@@ -101323,15 +101324,21 @@ const sampleSize = (collection, n2) => {
   const sampled = new Array(n2);
   const indexes = /* @__PURE__ */ new Set();
   while (indexes.size < n2) {
-    indexes.add(Math.floor(Math.random() * length));
+    indexes.add(Math.floor(random() * length));
   }
-  let index2 = 0;
-  for (const i of indexes) {
-    sampled[index2++] = collection[i];
+  for (const [idx, value] of Array.from(indexes).entries()) {
+    console.log(value, idx);
+    sampled[idx] = collection[value];
   }
   return sampled;
 };
 const isTruthy = (value) => Boolean(value);
+const seededRandom = (seed) => {
+  return () => {
+    const x2 = Math.sin(seed++) * 1e4;
+    return x2 - Math.floor(x2);
+  };
+};
 const getPercentageColor = (value) => {
   if (value > 0) {
     return vars.colors.positive;
