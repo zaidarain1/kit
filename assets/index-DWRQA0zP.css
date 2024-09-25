@@ -79,6 +79,15 @@ code {
   --seq-space-0_25: 0.0625rem;
   --seq-space-0_5: 0.125rem;
   --seq-space-1_5: 0.375rem;
+  --seq-z-index-0: 0;
+  --seq-z-index-1: 1;
+  --seq-z-index-10: 10;
+  --seq-z-index-20: 20;
+  --seq-z-index-30: 30;
+  --seq-z-index-40: 40;
+  --seq-z-index-50: 50;
+  --seq-z-index--1: -1;
+  --seq-z-index-auto: auto;
 }
 :root {
   --seq-colors-black: #000000;
@@ -1821,31 +1830,31 @@ code {
   word-wrap: inherit;
 }
 .fyvr11nh {
-  z-index: 0;
+  z-index: var(--seq-z-index-0);
 }
 .fyvr11ni {
-  z-index: 1;
+  z-index: var(--seq-z-index-1);
 }
 .fyvr11nj {
-  z-index: 10;
+  z-index: var(--seq-z-index-10);
 }
 .fyvr11nk {
-  z-index: 20;
+  z-index: var(--seq-z-index-20);
 }
 .fyvr11nl {
-  z-index: 30;
+  z-index: var(--seq-z-index-30);
 }
 .fyvr11nm {
-  z-index: 40;
+  z-index: var(--seq-z-index-40);
 }
 .fyvr11nn {
-  z-index: 50;
+  z-index: var(--seq-z-index-50);
 }
 .fyvr11no {
-  z-index: -1;
+  z-index: var(--seq-z-index--1);
 }
 .fyvr11np {
-  z-index: auto;
+  z-index: var(--seq-z-index-auto);
 }
 .fyvr11nq {
   aspect-ratio: 1 / 1;
@@ -12186,6 +12195,18 @@ code {
 }
 .bnrreb9 {
   font-size: inherit;
+}
+.bnrreba {
+  -webkit-mask-image: radial-gradient(
+circle at 82% 82%,
+transparent 22%,
+black 0
+);
+          mask-image: radial-gradient(
+circle at 82% 82%,
+transparent 22%,
+black 0
+);
 }.q888p21 {
   fill: var(--seq-colors-background-raised);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
