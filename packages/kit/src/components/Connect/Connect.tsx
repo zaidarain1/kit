@@ -31,12 +31,14 @@ import { ExtendedWalletList } from './ExtendedWalletList'
 interface ConnectWalletContentProps extends KitConnectProviderProps {
   emailConflictInfo?: FormattedEmailConflictInfo | null
   onClose: () => void
+  googleUseRedirectMode?: boolean
+  googleRedirectModeLoginUri?: string
 }
 
 export const Connect = (props: ConnectWalletContentProps) => {
   useScript(appleAuthHelpers.APPLE_SCRIPT_SRC)
 
-  const { onClose, emailConflictInfo, config = {} } = props
+  const { onClose, emailConflictInfo, config = {}, googleUseRedirectMode, googleRedirectModeLoginUri } = props
   const { signIn = {} } = config as KitConfig
   const { isConnected } = useAccount()
   const storage = useStorage()
@@ -233,7 +235,12 @@ export const Connect = (props: ConnectWalletContentProps) => {
                   return (
                     <Box key={connector.uid} aspectRatio="1/1" alignItems="center" justifyContent="center">
                       {connector._wallet.id === 'google-waas' ? (
-                        <GoogleWaasConnectButton connector={connector} onConnect={onConnect} />
+                        <GoogleWaasConnectButton
+                          connector={connector}
+                          onConnect={onConnect}
+                          googleUseRedirectMode={googleUseRedirectMode}
+                          googleRedirectModeLoginUri={googleRedirectModeLoginUri}
+                        />
                       ) : connector._wallet.id === 'apple-waas' ? (
                         <AppleWaasConnectButton connector={connector} onConnect={onConnect} />
                       ) : connector._wallet.id.includes('email') ? (

@@ -160,6 +160,8 @@ export const KitProvider = (props: KitConnectProviderProps) => {
                           <ConnectWalletContent
                             onClose={() => setOpenConnectModal(false)}
                             emailConflictInfo={emailConflictInfo}
+                            googleUseRedirectMode={props.config.googleUseRedirectMode}
+                            googleRedirectModeLoginUri={props.config.googleRedirectModeLoginUri}
                             {...props}
                           />
                         </Modal>

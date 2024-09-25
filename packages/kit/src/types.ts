@@ -76,6 +76,8 @@ export interface KitConfig {
   displayedAssets?: DisplayedAsset[]
   ethAuth?: EthAuthSettings
   isDev?: boolean
+  googleUseRedirectMode?: boolean
+  googleRedirectModeLoginUri?: string
 }
 
 export type StorageItem = {

@@ -11,6 +11,8 @@ interface ConnectWalletContent extends KitConnectProviderProps {
   emailConflictInfo?: FormattedEmailConflictInfo | null
   onClose: () => void
   isPreview?: boolean
+  googleUseRedirectMode?: boolean
+  googleRedirectModeLoginUri?: string
 }
 
 export const ConnectWalletContent = (props: ConnectWalletContent) => {

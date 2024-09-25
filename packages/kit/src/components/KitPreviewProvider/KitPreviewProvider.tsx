@@ -127,6 +127,8 @@ export const KitPreviewProvider = (props: KitConnectProviderProps) => {
                       onClose={() => setOpenConnectModal(false)}
                       emailConflictInfo={emailConflictInfo}
                       isPreview
+                      googleUseRedirectMode={props.config.googleUseRedirectMode}
+                      googleRedirectModeLoginUri={props.config.googleRedirectModeLoginUri}
                       {...props}
                     />
                   </ThemeProvider>

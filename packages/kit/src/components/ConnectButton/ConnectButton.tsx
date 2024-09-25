@@ -19,6 +19,8 @@ interface ConnectButtonProps {
   connector: ExtendedConnector
   label?: string
   onConnect: (connector: ExtendedConnector) => void
+  googleUseRedirectMode?: boolean
+  googleRedirectModeLoginUri?: string
 }
 
 export const ConnectButton = (props: ConnectButtonProps) => {
@@ -47,7 +49,7 @@ export const ConnectButton = (props: ConnectButtonProps) => {
 }
 
 export const GoogleWaasConnectButton = (props: ConnectButtonProps) => {
-  const { connector, onConnect } = props
+  const { connector, onConnect, googleUseRedirectMode, googleRedirectModeLoginUri } = props
   const storage = useStorage()
 
   const [enableGoogleTooltip, setEnableGoogleTooltip] = useState(false)
@@ -95,6 +97,8 @@ export const GoogleWaasConnectButton = (props: ConnectButtonProps) => {
             onError={() => {
               console.log('Login Failed')
             }}
+            ux_mode={googleUseRedirectMode ? 'redirect' : 'popup'}
+            login_uri={googleRedirectModeLoginUri}
           />
         </Box>
         <Box
