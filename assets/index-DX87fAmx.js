@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-y90SEXEF.js","./hooks.module-DZvYlVx6.js","./inherits_browser-BcX-GPgN.js","./index-79trrsIX.js","./index.es-BvnCo_HZ.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-BFmSzpsI.js","./hooks.module-BEXQXwYa.js","./inherits_browser-BpAQDRs8.js","./index-jpYXo58g.js","./index.es-DHocNUqU.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -75849,7 +75849,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BHK40_G8.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-CquQtYb9.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -97501,7 +97501,7 @@ const Connect = (props) => {
   });
   const walletConnectors = [...baseWalletConnectors, ...injectedConnectors];
   const emailConnector = socialAuthConnectors.find((c2) => c2._wallet.id.includes("email"));
-  const isEmailOnly = emailConnector && socialAuthConnectors.length === 1 && walletConnectors.length === 0;
+  const isEmailOnly = emailConnector && socialAuthConnectors.length === 1;
   const displayExtendedListButton = walletConnectors.length > 7;
   const onChangeEmail = (ev) => {
     setEmail(ev.target.value);
@@ -97569,11 +97569,11 @@ const Connect = (props) => {
   if (showExtendedList) {
     return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Box, { position: "absolute", top: "4", children: jsxRuntimeExports$1.jsx(IconButton, { icon: SvgChevronLeftIcon, onClick: () => setShowExtendedList(false), size: "xs" }) }), jsxRuntimeExports$1.jsx(ExtendedWalletList, { connectors: walletConnectors, onConnect })] });
   }
-  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Banner, { config: config2 }), jsxRuntimeExports$1.jsx(Box, { marginTop: "6", children: emailConnector && (showEmailInput || isEmailOnly) ? jsxRuntimeExports$1.jsxs("form", { onSubmit: onConnectInlineEmail, children: [jsxRuntimeExports$1.jsx(TextInput, { onChange: onChangeEmail, value: email2, name: "email", placeholder: "Enter email", "data-1p-ignore": true }), jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "center", marginTop: "4", children: [!emailAuthInProgress && jsxRuntimeExports$1.jsxs(Box, { gap: "2", width: "full", children: [!isEmailOnly && jsxRuntimeExports$1.jsx(Button, { label: "Back", width: "full", onClick: () => setShowEmailInput(false) }), jsxRuntimeExports$1.jsx(Button, { type: "submit", variant: "primary", disabled: !isEmailValid(email2), width: "full", label: "Continue", rightIcon: SvgChevronRightIcon })] }), emailAuthInProgress && jsxRuntimeExports$1.jsx(Spinner, {})] })] }) : jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [socialAuthConnectors.length > 0 && jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap", children: socialAuthConnectors.map((connector) => {
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Banner, { config: config2 }), jsxRuntimeExports$1.jsxs(Box, { marginTop: "6", children: [emailConnector && (showEmailInput || isEmailOnly) ? jsxRuntimeExports$1.jsxs("form", { onSubmit: onConnectInlineEmail, children: [jsxRuntimeExports$1.jsx(TextInput, { onChange: onChangeEmail, value: email2, name: "email", placeholder: "Enter email", "data-1p-ignore": true }), jsxRuntimeExports$1.jsxs(Box, { alignItems: "center", justifyContent: "center", marginTop: "4", children: [!emailAuthInProgress && jsxRuntimeExports$1.jsxs(Box, { gap: "2", width: "full", children: [!isEmailOnly && jsxRuntimeExports$1.jsx(Button, { label: "Back", width: "full", onClick: () => setShowEmailInput(false) }), jsxRuntimeExports$1.jsx(Button, { type: "submit", variant: "primary", disabled: !isEmailValid(email2), width: "full", label: "Continue", rightIcon: SvgChevronRightIcon })] }), emailAuthInProgress && jsxRuntimeExports$1.jsx(Spinner, {})] })] }) : jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: socialAuthConnectors.length > 0 && jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", flexWrap: "wrap", children: socialAuthConnectors.map((connector) => {
     return jsxRuntimeExports$1.jsx(Box, { aspectRatio: "1/1", alignItems: "center", justifyContent: "center", children: connector._wallet.id === "google-waas" ? jsxRuntimeExports$1.jsx(GoogleWaasConnectButton, { connector, onConnect }) : connector._wallet.id === "apple-waas" ? jsxRuntimeExports$1.jsx(AppleWaasConnectButton, { connector, onConnect }) : connector._wallet.id.includes("email") ? jsxRuntimeExports$1.jsx(EmailConnectButton, { onClick: () => setShowEmailInput(true) }) : jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }) }, connector.uid);
-  }) }), walletConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [socialAuthConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => {
+  }) }) }), walletConnectors.length > 0 && !showEmailInput && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [socialAuthConnectors.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { color: "backgroundSecondary" }), jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "or select a wallet" }) })] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "2", gap: "2", flexDirection: "row", justifyContent: "center", alignItems: "center", children: walletConnectors.slice(0, 7).map((connector) => {
     return jsxRuntimeExports$1.jsx(ConnectButton, { connector, onConnect }, connector.uid);
-  }) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] }) }), jsxRuntimeExports$1.jsx(PoweredBySequence, {})] });
+  }) }), displayExtendedListButton && jsxRuntimeExports$1.jsx(Box, { marginTop: "4", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { shape: "square", size: "xs", onClick: () => setShowExtendedList(true), label: "More options", rightIcon: SvgChevronRightIcon }) })] })] }), jsxRuntimeExports$1.jsx(PoweredBySequence, {})] });
 };
 const ConnectWalletContent = (props) => {
   var _a2;
@@ -98751,7 +98751,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-y90SEXEF.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-BFmSzpsI.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98933,7 +98933,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-79trrsIX.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-jpYXo58g.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99169,7 +99169,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-BvnCo_HZ.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DHocNUqU.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
