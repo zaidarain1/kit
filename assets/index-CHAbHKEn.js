@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CIbxgGL7.js","./hooks.module-BYEzUAFY.js","./inherits_browser-CyqTQTZf.js","./index-CEx1-7kk.js","./index.es-DJ7rxs5l.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-B60lVrE1.js","./hooks.module-D-B1fDAy.js","./inherits_browser-D5y2HSaK.js","./index-Dn1C-AOC.js","./index.es-DdzqDdTW.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -75849,7 +75849,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-CgjAtUMe.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-C4yf1D5U.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -96979,7 +96979,6 @@ function sequenceWaasWallet(params) {
       if (typeof window !== "object") {
         return;
       }
-      const provider2 = await this.getProvider();
       if (params.googleClientId) {
         await ((_a2 = config2.storage) == null ? void 0 : _a2.setItem(LocalStorageKey.WaasGoogleClientID, params.googleClientId));
       }
@@ -96989,9 +96988,6 @@ function sequenceWaasWallet(params) {
       if (params.appleRedirectURI) {
         await ((_c2 = config2.storage) == null ? void 0 : _c2.setItem(LocalStorageKey.WaasAppleRedirectURI, params.appleRedirectURI));
       }
-      provider2.on("disconnect", () => {
-        this.onDisconnect();
-      });
     },
     async connect(_connectInfo) {
       var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2;
@@ -98751,7 +98747,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CIbxgGL7.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-B60lVrE1.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98933,7 +98929,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CEx1-7kk.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-Dn1C-AOC.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99169,7 +99165,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DJ7rxs5l.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DdzqDdTW.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
