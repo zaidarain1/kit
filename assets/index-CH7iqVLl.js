@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-B60lVrE1.js","./hooks.module-D-B1fDAy.js","./inherits_browser-D5y2HSaK.js","./index-Dn1C-AOC.js","./index.es-DdzqDdTW.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-dC3K3UlB.js","./hooks.module-O2Z7o-D7.js","./inherits_browser-Br70F8kd.js","./index-DHGqsKDv.js","./index.es-DQtsQzor.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -52288,11 +52288,11 @@ const networks = {
     chainId: ChainId.SKALE_NEBULA_TESTNET,
     type: NetworkType.TESTNET,
     name: "skale-nebula-testnet",
-    title: "Skale Nebula Gaming Hub Testnet",
+    title: "SKALE Nebula Gaming Hub Testnet",
     logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.SKALE_NEBULA_TESTNET}.webp`,
     testnet: true,
     blockExplorer: {
-      name: "Skale Nebula Gaming Hub Testnet Explorer",
+      name: "SKALE Nebula Gaming Hub Testnet Explorer",
       rootUrl: "https://lanky-ill-funny-testnet.explorer.testnet.skalenodes.com/"
     },
     nativeToken: {
@@ -56040,7 +56040,7 @@ var index$6 = /* @__PURE__ */ Object.freeze({
   coderFor,
   genericCoderFor
 });
-const VERSION$1 = "2.0.8";
+const VERSION$1 = "2.0.9";
 const allVersions = [v1, v2];
 const core$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -75849,7 +75849,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-C4yf1D5U.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BVDl0YPE.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98747,7 +98747,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-B60lVrE1.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-dC3K3UlB.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98929,7 +98929,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-Dn1C-AOC.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-DHGqsKDv.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99165,7 +99165,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DdzqDdTW.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DQtsQzor.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
