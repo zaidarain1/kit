@@ -14,7 +14,7 @@ import { allNetworks, ChainId } from '@0xsequence/network'
 import { ethers } from 'ethers'
 import { AnimatePresence } from 'framer-motion'
 import React, { ComponentProps, useEffect } from 'react'
-import { formatUnits, parseUnits, toHex } from 'viem'
+import { formatUnits, parseUnits } from 'viem'
 import {
   useAccount,
   useChainId,
@@ -78,7 +78,7 @@ export const Connected = () => {
 
   useEffect(() => {
     if (error?.message) {
-      console.log(error?.message)
+      console.log(error.message)
     }
   }, [error])
 

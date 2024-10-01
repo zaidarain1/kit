@@ -11,98 +11,54 @@ import { googleWaas } from '../connectors/google/googleWaas'
 import { sequence } from '../connectors/sequence'
 import { twitch } from '../connectors/twitch'
 import { walletConnect } from '../connectors/walletConnect'
+import { WalletType } from '../types'
 import { getKitConnectWallets } from '../utils/getKitConnectWallets'
 
-interface GetDefaultConnectors {
-  walletConnectProjectId: string
-  projectAccessKey: string
+export interface CommonConnectorOptions {
   appName: string
+  projectAccessKey: string
+  walletConnectProjectId: string
   defaultChainId?: number
 }
 
-export const getDefaultConnectors = ({
-  walletConnectProjectId,
-  defaultChainId,
-  projectAccessKey,
-  appName
-}: GetDefaultConnectors): CreateConnectorFn[] => {
-  const connectors = getKitConnectWallets(projectAccessKey, [
-    email({
-      defaultNetwork: defaultChainId,
-      connect: {
-        app: appName
-      }
-    }),
-    google({
-      defaultNetwork: defaultChainId,
-      connect: {
-        app: appName
-      }
-    }),
-    facebook({
-      defaultNetwork: defaultChainId,
-      connect: {
-        app: appName
-      }
-    }),
-    twitch({
-      defaultNetwork: defaultChainId,
-      connect: {
-        app: appName
-      }
-    }),
-    apple({
-      defaultNetwork: defaultChainId,
-      connect: {
-        app: appName
-      }
-    }),
-    sequence({
-      defaultNetwork: defaultChainId,
-      connect: {
-        app: appName
-      }
-    }),
-    walletConnect({
-      projectId: walletConnectProjectId
-    })
-  ])
-
-  return connectors
-}
-
-interface GetDefaultWaasConnectors {
-  projectAccessKey: string
+export interface DefaultWaasConnectorOptions extends CommonConnectorOptions {
   waasConfigKey: string
   googleClientId?: string
   appleClientId?: string
   appleRedirectURI?: string
-
-  walletConnectProjectId: string
-
-  appName: string
-  defaultChainId?: number
-
-  legacyEmailAuth?: boolean
-
   enableConfirmationModal?: boolean
-
+  legacyEmailAuth?: boolean
   isDev?: boolean
 }
 
+export interface DefaultUniversalConnectorOptions extends CommonConnectorOptions {}
+
+export type DefaultConnectorOptions<T extends WalletType> = T extends 'waas'
+  ? DefaultWaasConnectorOptions
+  : DefaultUniversalConnectorOptions
+
+export const getDefaultConnectors = <T extends WalletType>(walletType: T, options: DefaultConnectorOptions<T>) => {
+  if (walletType === 'waas') {
+    return getDefaultWaasConnectors(options as DefaultWaasConnectorOptions)
+  } else if (walletType === 'universal') {
+    return getDefaultUniversalConnectors(options as DefaultUniversalConnectorOptions)
+  }
+}
+
 export const getDefaultWaasConnectors = ({
+  appName,
   projectAccessKey,
+  walletConnectProjectId,
+  defaultChainId,
+
   waasConfigKey,
   googleClientId,
   appleClientId,
   appleRedirectURI,
-  walletConnectProjectId,
-  appName,
-  defaultChainId,
   enableConfirmationModal,
   legacyEmailAuth = false,
   isDev = false
-}: GetDefaultWaasConnectors): CreateConnectorFn[] => {
+}: DefaultWaasConnectorOptions): CreateConnectorFn[] => {
   const wallets: any[] = [
     emailWaas({
       projectAccessKey,
@@ -146,6 +102,57 @@ export const getDefaultWaasConnectors = ({
   }
 
   const connectors = getKitConnectWallets(projectAccessKey, wallets)
+
+  return connectors
+}
+
+export const getDefaultUniversalConnectors = ({
+  appName,
+  projectAccessKey,
+  walletConnectProjectId,
+  defaultChainId
+}: DefaultUniversalConnectorOptions): CreateConnectorFn[] => {
+  const connectors = getKitConnectWallets(projectAccessKey, [
+    email({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    google({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    facebook({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    twitch({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    apple({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    sequence({
+      defaultNetwork: defaultChainId,
+      connect: {
+        app: appName
+      }
+    }),
+    walletConnect({
+      projectId: walletConnectProjectId
+    })
+  ])
 
   return connectors
 }
