@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-v31B8dIJ.js","./hooks.module-zIJgOU8N.js","./inherits_browser-Bu10m9W3.js","./index-DBsKT1hm.js","./index.es-CT8UgEJc.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CnSoKQxV.js","./hooks.module-D1qE_AJG.js","./inherits_browser-Dwap8BoW.js","./index-CeEs98iF.js","./index.es-B9PQPdl4.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -75849,7 +75849,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-CrQ-A9-Q.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BUGx8scz.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98747,7 +98747,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-v31B8dIJ.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CnSoKQxV.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98929,7 +98929,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-DBsKT1hm.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CeEs98iF.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99165,7 +99165,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-CT8UgEJc.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-B9PQPdl4.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -100084,7 +100084,7 @@ const useSelectPaymentModal = () => {
   const { openSelectPaymentModal, closeSelectPaymentModal, selectPaymentSettings } = useSelectPaymentContext();
   return { openSelectPaymentModal, closeSelectPaymentModal, selectPaymentSettings };
 };
-const getERC1155SaleContractConfig = ({ chain, price, currencyAddress = ZeroAddress, recipientAddress, tokenId, collectionAddress, nftQuantity, isDev = false, ...restProps }) => {
+const getERC1155SaleContractConfig = ({ chain, price, currencyAddress = ZeroAddress, recipientAddress, collectibles, collectionAddress, isDev = false, ...restProps }) => {
   const erc1155SalesContractAbi = [
     {
       type: "function",
@@ -100105,16 +100105,15 @@ const getERC1155SaleContractConfig = ({ chain, price, currencyAddress = ZeroAddr
   const purchaseTransactionData = encodeFunctionData({
     abi: erc1155SalesContractAbi,
     functionName: "mint",
-    args: [recipientAddress, [BigInt(tokenId)], [BigInt(nftQuantity)], toHex$1(0), currencyAddress, price, [toHex$1(0, { size: 32 })]]
+    args: [recipientAddress, collectibles.map((c2) => BigInt(c2.tokenId)), collectibles.map((c2) => BigInt(c2.quantity)), toHex$1(0), currencyAddress, price, [toHex$1(0, { size: 32 })]]
   });
   return {
     chain,
     price,
     currencyAddress,
     recipientAddress,
-    tokenId,
+    collectibles,
     collectionAddress,
-    nftQuantity,
     isDev,
     txData: purchaseTransactionData,
     ...restProps
@@ -100389,21 +100388,19 @@ const AddFundsContent = () => {
   }, children: jsxRuntimeExports$1.jsx(Box, { as: "iframe", width: "full", height: "full", borderWidth: "none", src: link }) });
 };
 const Footer$1 = () => {
-  return jsxRuntimeExports$1.jsx(Box, { position: "fixed", height: "7", marginTop: "2", width: "full", style: { bottom: "4px" }, children: jsxRuntimeExports$1.jsxs(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsxs(Box, { as: "a", href: "https://sequence.xyz/", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, gap: "1", justifyContent: "center", alignItems: "center", cursor: "pointer", children: [jsxRuntimeExports$1.jsx(SvgSequenceIcon, { color: "text50" }), jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Sequence" })] }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/privacy", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Privacy" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/terms", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Terms" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://docs.sequence.xyz/", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Help" }) })] }) });
+  return jsxRuntimeExports$1.jsx(Box, { paddingBottom: "8", height: "7", marginTop: "1", width: "full", style: { bottom: "4px" }, children: jsxRuntimeExports$1.jsxs(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsxs(Box, { as: "a", href: "https://sequence.xyz/", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, gap: "1", justifyContent: "center", alignItems: "center", cursor: "pointer", children: [jsxRuntimeExports$1.jsx(SvgSequenceIcon, { color: "text50" }), jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Sequence" })] }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/privacy", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Privacy" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/terms", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Terms" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://docs.sequence.xyz/", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Help" }) })] }) });
 };
-const ItemDescription = () => {
+const ItemDescription = ({ tokenId, nftQuantity }) => {
   const { selectPaymentSettings } = useSelectPaymentModal();
-  const nftQuantity = selectPaymentSettings.nftQuantity;
   const chain = selectPaymentSettings.chain;
   const network2 = findSupportedNetwork(chain);
   const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
   const collectionAddress = selectPaymentSettings.collectionAddress;
-  const tokenId = selectPaymentSettings.tokenId;
   const { data: tokenMetadatas, isLoading: isLoadingTokenMetadatas } = useTokenMetadata(chainId, collectionAddress, [tokenId]);
   const tokenMetadata = tokenMetadatas == null ? void 0 : tokenMetadatas[0];
   const isLoading = isLoadingTokenMetadatas;
   if (isLoading) {
-    jsxRuntimeExports$1.jsx(Box, { marginBottom: "2", paddingX: "6", gap: "3", style: { height: "72px" }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
+    return jsxRuntimeExports$1.jsx(Box, { marginBottom: "2", paddingX: "6", gap: "3", style: { height: "72px" }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
   }
   return jsxRuntimeExports$1.jsxs(Box, { marginBottom: "2", paddingX: "6", gap: "5", alignItems: "center", children: [jsxRuntimeExports$1.jsxs(Box, { position: "relative", children: [jsxRuntimeExports$1.jsx(Box, { background: "backgroundControl", borderRadius: "md", style: {
     height: "60px",
@@ -100431,9 +100428,9 @@ const SardineLogo = () => {
   return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: jsxRuntimeExports$1.jsxs("svg", { style: { borderRadius: vars.radii.md }, width: "42", height: "42", viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [jsxRuntimeExports$1.jsx("rect", { width: "24", height: "24", fill: "#2D29D7" }), jsxRuntimeExports$1.jsx("path", { d: "M19.6675 12.2188L13.9751 17.9112C13.8567 18.0296 13.649 18.0296 13.5306 17.9112L9.72601 14.1053C9.5485 13.9291 9.45219 13.6938 9.45219 13.4448C9.45219 13.1957 9.54988 12.9604 9.72601 12.7843L9.88975 12.6206C9.90213 12.6068 9.92002 12.5999 9.93653 12.5999C9.95442 12.5999 9.97093 12.6068 9.98332 12.6192L13.5788 16.216C13.6723 16.3082 13.8333 16.3082 13.9269 16.216L17.9709 12.1706C18.0659 12.0757 18.0659 11.9188 17.9709 11.8239L13.9269 7.77847C13.8333 7.68627 13.6723 7.6849 13.5802 7.77847L4.89078 16.4651C4.82336 16.5325 4.72979 16.5504 4.64173 16.5146C4.55366 16.4775 4.5 16.3963 4.5 16.3013V7.6904C4.5 7.59546 4.55366 7.51428 4.64173 7.4785C4.72841 7.44135 4.82473 7.46061 4.89216 7.52804L7.2506 9.88648C7.42673 10.0626 7.52442 10.2979 7.52442 10.547C7.52442 10.796 7.42673 11.0327 7.2506 11.2088L7.08824 11.3712C7.06484 11.3946 7.01944 11.3946 6.99467 11.3712L5.95855 10.3351C5.91314 10.2896 5.85397 10.2896 5.81545 10.3062C5.77554 10.3227 5.73289 10.3639 5.73289 10.4286V13.5617C5.73289 13.6264 5.77554 13.6677 5.81545 13.6842C5.85397 13.6993 5.91314 13.7007 5.95855 13.6553L13.5306 6.08462C13.6434 5.97179 13.8622 5.97179 13.9751 6.08462L19.6675 11.7771C19.79 11.8982 19.79 12.0977 19.6675 12.2202V12.2188Z", fill: "white" })] }) });
 };
 const PayWithCreditCard = ({ settings, disableButtons }) => {
-  const { chain, currencyAddress, targetContractAddress, price, txData, tokenId, collectionAddress, nftQuantity, nftDecimals = "0", isDev = false, onSuccess = () => {
+  const { chain, currencyAddress, targetContractAddress, price, txData, collectibles, collectionAddress, isDev = false, onSuccess = () => {
   }, onError = () => {
-  } } = settings;
+  }, creditCardProviders = [] } = settings;
   const { address: userAddress } = useAccount();
   const isMobile = useMediaQuery("isMobile");
   const { clearCachedBalances } = useClearCachedBalances();
@@ -100457,6 +100454,7 @@ const PayWithCreditCard = ({ settings, disableButtons }) => {
     if (!userAddress || !currencyInfoData) {
       return;
     }
+    const collectible = collectibles[0];
     const checkoutSettings = {
       creditCardCheckout: {
         onSuccess: (txHash) => {
@@ -100471,10 +100469,10 @@ const PayWithCreditCard = ({ settings, disableButtons }) => {
         currencySymbol: currencyInfoData.symbol,
         currencyAddress,
         currencyDecimals: String((currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0),
-        nftId: tokenId,
+        nftId: collectible.tokenId,
         nftAddress: collectionAddress,
-        nftQuantity,
-        nftDecimals,
+        nftQuantity: collectible.quantity,
+        nftDecimals: collectible.decimals,
         isDev,
         calldata: txData,
         approvedSpenderAddress: targetContractAddress
@@ -100489,11 +100487,18 @@ const PayWithCreditCard = ({ settings, disableButtons }) => {
     }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
   }
   const Options = () => {
-    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2", width: "full", children: jsxRuntimeExports$1.jsx(PaymentProviderOption, { name: "Sardine", logo: SardineLogo(), onClick: () => {
-      setSelecterPaymentProvider("sardine");
-    }, isSelected: selectedPaymentProvider === "sardine", isRecommended: true }) });
+    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2", width: "full", children: creditCardProviders.map((creditCardProvider) => {
+      switch (creditCardProvider) {
+        case "sardine":
+          return jsxRuntimeExports$1.jsx(PaymentProviderOption, { name: "Sardine", logo: SardineLogo(), onClick: () => {
+            setSelecterPaymentProvider("sardine");
+          }, isSelected: selectedPaymentProvider === "sardine", isRecommended: true });
+        default:
+          return null;
+      }
+    }) });
   };
-  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { marginTop: "3", flexDirection: "column", gap: "1", children: [jsxRuntimeExports$1.jsx(Text, { variant: "medium", fontWeight: "medium", color: "text80", children: "Debit and credit card" }), jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a payment provider to purchase crypto directly" })] }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "312px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedPaymentProvider, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
+  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { marginTop: "3", flexDirection: "column", gap: "1", children: [jsxRuntimeExports$1.jsx(Text, { variant: "medium", fontWeight: "medium", color: "text80", children: "Debit and credit card" }), jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a payment provider to purchase crypto directly" })] }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "302px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedPaymentProvider, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
 };
 function isArray(value) {
   return !Array.isArray ? getTag(value) === "[object Array]" : Array.isArray(value);
@@ -102103,7 +102108,7 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
       }
     }
   };
-  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(TextInput, { autoFocus: true, name: "Search", leftIcon: SvgSearchIcon, value: search2, onChange: (ev) => setSearch(ev.target.value), placeholder: "Search your wallet", "data-1p-ignore": true }) }), jsxRuntimeExports$1.jsx(Box, { marginTop: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "269px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
+  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(TextInput, { autoFocus: true, name: "Search", leftIcon: SvgSearchIcon, value: search2, onChange: (ev) => setSearch(ev.target.value), placeholder: "Search your coins", "data-1p-ignore": true }) }), jsxRuntimeExports$1.jsx(Box, { marginTop: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "259px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
 };
 const Price = () => {
   var _a2;
@@ -102150,7 +102155,7 @@ const PaymentSelectionContent = () => {
   const isNativeToken = compareAddress$2(selectPaymentSettings.currencyAddress, zeroAddress);
   const enableMainCurrencyPayment = selectPaymentSettings.enableMainCurrencyPayment ?? true;
   const enableSwapPayments = !isNativeToken && (selectPaymentSettings.enableSwapPayments ?? true);
-  const enableCreditCardPayments = selectPaymentSettings.enableCreditCardPayments ?? true;
+  const creditCardProviders = selectPaymentSettings.creditCardProviders ?? [];
   const tabs = [
     ...enableMainCurrencyPayment || enableSwapPayments ? [
       {
@@ -102158,7 +102163,7 @@ const PaymentSelectionContent = () => {
         value: "crypto"
       }
     ] : [],
-    ...enableCreditCardPayments ? [
+    ...creditCardProviders.length > 0 ? [
       {
         label: jsxRuntimeExports$1.jsxs(Box, { gap: "1", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(SvgPaymentsIcon, {}), "Credit card"] }),
         value: "credit_card"
@@ -102168,7 +102173,9 @@ const PaymentSelectionContent = () => {
   const isOneTab = tabs.length === 1;
   const defaultTab = ((_a2 = tabs[0]) == null ? void 0 : _a2.value) || "crypto";
   const [selectedTab, setSelectedTab] = reactExports.useState(defaultTab);
-  return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", width: "full", paddingBottom: "4", height: "full", style: { height: PAYMENT_SELECTION_MODAL_HEIGHT, paddingTop: HEADER_HEIGHT$1 }, children: [jsxRuntimeExports$1.jsx(ItemDescription, {}), jsxRuntimeExports$1.jsx(Divider, { width: "full", color: "backgroundSecondary", marginY: "1" }), jsxRuntimeExports$1.jsx(Price, {}), jsxRuntimeExports$1.jsx(Divider, { width: "full", color: "backgroundSecondary", marginY: "1" }), jsxRuntimeExports$1.jsxs(Box, { marginY: "2", width: "full", paddingX: "6", gap: "3", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { display: isOneTab ? "none" : "block", variant: "small", color: "text50", children: "Select a payment method" }), jsxRuntimeExports$1.jsxs(TabsRoot, { value: selectedTab, onValueChange: (value) => setSelectedTab(value), children: [!isOneTab && jsxRuntimeExports$1.jsx(TabsHeader, { value: selectedTab, tabs }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsx(TabsContent, { value: "crypto", children: jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, setDisableButtons }) }), enableCreditCardPayments && jsxRuntimeExports$1.jsx(TabsContent, { value: "credit_card", children: jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons }) })] })] }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
+  return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", width: "full", paddingBottom: "4", height: "full", style: { height: PAYMENT_SELECTION_MODAL_HEIGHT, paddingTop: HEADER_HEIGHT$1 }, children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", width: "full", gap: "2", children: selectPaymentSettings.collectibles.map((collectible) => {
+    return jsxRuntimeExports$1.jsx(ItemDescription, { tokenId: collectible.tokenId, nftQuantity: collectible.quantity }, collectible.tokenId);
+  }) }), jsxRuntimeExports$1.jsx(Divider, { width: "full", color: "backgroundSecondary", marginY: "1" }), jsxRuntimeExports$1.jsx(Price, {}), jsxRuntimeExports$1.jsx(Divider, { width: "full", color: "backgroundSecondary", marginY: "1" }), jsxRuntimeExports$1.jsxs(Box, { marginY: "2", width: "full", paddingX: "6", gap: "3", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { display: isOneTab ? "none" : "block", variant: "small", color: "text50", children: "Select a payment method" }), jsxRuntimeExports$1.jsxs(TabsRoot, { value: selectedTab, onValueChange: (value) => setSelectedTab(value), children: [!isOneTab && jsxRuntimeExports$1.jsx(TabsHeader, { value: selectedTab, tabs }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsx(TabsContent, { value: "crypto", children: jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, setDisableButtons }) }), creditCardProviders.length > 0 && jsxRuntimeExports$1.jsx(TabsContent, { value: "credit_card", children: jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons }) })] })] }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
 };
 var __defProp2 = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -110755,17 +110762,20 @@ const Connected = () => {
     const collectionAddress = "0xdeb398f41ccd290ee5114df7e498cf04fac916cb";
     const price = "20000";
     const chainId2 = 137;
-    const tokenId = "1";
-    const nftQuantity = "1";
     openERC1155SaleContractPaymentModal({
+      collectibles: [
+        {
+          tokenId: "1",
+          quantity: "1"
+        }
+      ],
       chain: chainId2,
       price,
       targetContractAddress: salesContractAddress,
       recipientAddress: address,
       currencyAddress,
-      tokenId,
       collectionAddress,
-      nftQuantity,
+      creditCardProviders: ["sardine"],
       isDev: true,
       onSuccess: (txnHash) => {
         console.log("success!", txnHash);
