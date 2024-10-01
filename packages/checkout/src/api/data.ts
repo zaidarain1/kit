@@ -1,5 +1,10 @@
+import { useProjectAccessKey, useKitConfig } from '@0xsequence/kit'
 import { TokenMetadata } from '@0xsequence/metadata'
 import { ChainId, networks } from '@0xsequence/network'
+import { findSupportedNetwork } from '@0xsequence/network'
+import { useMemo } from 'react'
+
+import { Marketplace } from '../utils/marketplaceApi'
 
 import { CreditCardCheckout } from '../contexts'
 
@@ -193,3 +198,21 @@ export const fetchSupportedCountryCodes = async (): Promise<Country[]> => {
 
   return supportedCountries.map(countryCode => ({ code: countryCode }))
 }
+
+// export const useMarketplaceClient = (chainId: number) => {
+//   const projectAccessKey = useProjectAccessKey()
+
+//   const { isDev = false } = useKitConfig()
+
+//   const network = findSupportedNetwork(chainId)
+
+//   if (!network) {
+//     throw 'network not found'
+//   }
+
+//   const clientUrl = isDev ? `https://dev-marketplace-api.sequence.app/${network.name}` : `https://marketplace-api.sequence.app/${network.name}`
+
+//   const metadataClient = new Marketplace(clientUrl, )
+
+//   return metadataClient
+// }
