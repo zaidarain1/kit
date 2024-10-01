@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-dC3K3UlB.js","./hooks.module-O2Z7o-D7.js","./inherits_browser-Br70F8kd.js","./index-DHGqsKDv.js","./index.es-DQtsQzor.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-v31B8dIJ.js","./hooks.module-zIJgOU8N.js","./inherits_browser-Bu10m9W3.js","./index-DBsKT1hm.js","./index.es-CT8UgEJc.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -75849,7 +75849,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BVDl0YPE.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-CrQ-A9-Q.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98747,7 +98747,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-dC3K3UlB.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-v31B8dIJ.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98929,7 +98929,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-DHGqsKDv.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-DBsKT1hm.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99165,7 +99165,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DQtsQzor.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-CT8UgEJc.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -101878,18 +101878,20 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
     includeMetadata: false
   });
   const { data: currencyInfoData, isLoading: isLoadingCurrencyInfo } = useContractInfo(chainId, currencyAddress);
-  const { data: swapQuotes = [], isLoading: swapQuotesIsLoading } = useSwapQuotes({
+  const { data: swapQuotes = [], isLoading: swapQuotesIsLoading, isError: swapQuotesIsError } = useSwapQuotes({
     userAddress: userAddress ?? "",
     currencyAddress: settings == null ? void 0 : settings.currencyAddress,
     chainId,
     currencyAmount: price,
     withContractInfo: true
   });
-  const tokens = [
+  const nativeToken = [
     {
       chainId,
       contractAddress: currencyAddress
-    },
+    }
+  ];
+  const swapTokens = [
     ...swapQuotes.map((quote) => {
       var _a2;
       return {
@@ -101898,9 +101900,11 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
       };
     })
   ];
+  const { data: mainCoinPrice = [], isLoading: mainCoinsPricesIsLoading } = useCoinPrices([...nativeToken]);
   const disableCoinPricesQuery = swapQuotesIsLoading;
-  const { data: coinPrices = [], isLoading: coinPricesIsLoading } = useCoinPrices([...tokens], disableCoinPricesQuery);
-  const isLoading = allowanceIsLoading || currencyBalanceIsLoading || isLoadingCurrencyInfo || swapQuotesIsLoading || coinPricesIsLoading;
+  const { data: swapTokensPrices = [], isLoading: swapTokensPricesIsLoading } = useCoinPrices([...swapTokens], disableCoinPricesQuery);
+  const isLoading = allowanceIsLoading || currencyBalanceIsLoading || isLoadingCurrencyInfo || mainCoinsPricesIsLoading;
+  const swapsIsLoading = swapQuotesIsLoading || swapTokensPricesIsLoading;
   const indexedCoins = [
     {
       index: 0,
@@ -102057,28 +102061,30 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
   };
   const Options = () => {
     return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2", width: "full", children: foundCoins.map((coin) => {
-      var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2;
-      const foundCoinPrice = coinPrices.find((coinPrice) => compareAddress$2(coinPrice.token.contractAddress, coin.currencyAddress));
-      const exchangeRate = ((_a2 = foundCoinPrice == null ? void 0 : foundCoinPrice.price) == null ? void 0 : _a2.value) || 0;
+      var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2, _k2;
       if (compareAddress$2(coin.currencyAddress, currencyAddress) && enableMainCurrencyPayment) {
+        const coinPrice = mainCoinPrice[0];
+        const exchangeRate = ((_a2 = coinPrice == null ? void 0 : coinPrice.price) == null ? void 0 : _a2.value) || 0;
         const priceFiat = (exchangeRate * Number(priceFormatted)).toFixed(2);
-        return jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: (currencyInfoData == null ? void 0 : currencyInfoData.name) || "Unknown", chainId, iconUrl: currencyInfoData == null ? void 0 : currencyInfoData.logoURI, symbol: (currencyInfoData == null ? void 0 : currencyInfoData.symbol) || "", onClick: () => {
+        return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: (currencyInfoData == null ? void 0 : currencyInfoData.name) || "Unknown", chainId, iconUrl: currencyInfoData == null ? void 0 : currencyInfoData.logoURI, symbol: (currencyInfoData == null ? void 0 : currencyInfoData.symbol) || "", onClick: () => {
           setSelectedCurrency(currencyAddress);
-        }, balance: String(balanceFormatted), price: priceFormatted, fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", currencyAddress), isInsufficientFunds: isNotEnoughFunds }, currencyAddress);
+        }, balance: String(balanceFormatted), price: priceFormatted, fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", currencyAddress), isInsufficientFunds: isNotEnoughFunds }, currencyAddress), swapsIsLoading && jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(Spinner, {}) })] });
       } else {
+        const foundCoinPrice = swapTokensPrices.find((coinPrice) => compareAddress$2(coinPrice.token.contractAddress, coin.currencyAddress));
+        const exchangeRate = ((_b2 = foundCoinPrice == null ? void 0 : foundCoinPrice.price) == null ? void 0 : _b2.value) || 0;
         const swapQuote = swapQuotes == null ? void 0 : swapQuotes.find((quote) => {
           var _a3;
           return compareAddress$2(((_a3 = quote.info) == null ? void 0 : _a3.address) || "", coin.currencyAddress);
         });
-        const currencyInfoNotFound = !swapQuote || !swapQuote.info || ((_b2 = swapQuote == null ? void 0 : swapQuote.info) == null ? void 0 : _b2.decimals) === void 0 || !((_c2 = swapQuote.balance) == null ? void 0 : _c2.balance);
+        const currencyInfoNotFound = !swapQuote || !swapQuote.info || ((_c2 = swapQuote == null ? void 0 : swapQuote.info) == null ? void 0 : _c2.decimals) === void 0 || !((_d2 = swapQuote.balance) == null ? void 0 : _d2.balance);
         if (currencyInfoNotFound || !enableSwapPayments) {
           return null;
         }
-        const swapQuotePriceFormatted = formatUnits(BigInt(swapQuote.quote.price), ((_d2 = swapQuote.info) == null ? void 0 : _d2.decimals) || 18);
-        const balanceFormatted2 = formatUnits(BigInt(((_e2 = swapQuote.balance) == null ? void 0 : _e2.balance) || 0), ((_f2 = swapQuote.info) == null ? void 0 : _f2.decimals) || 18);
-        const swapQuoteAddress = ((_g2 = swapQuote.info) == null ? void 0 : _g2.address) || "";
+        const swapQuotePriceFormatted = formatUnits(BigInt(swapQuote.quote.price), ((_e2 = swapQuote.info) == null ? void 0 : _e2.decimals) || 18);
+        const balanceFormatted2 = formatUnits(BigInt(((_f2 = swapQuote.balance) == null ? void 0 : _f2.balance) || 0), ((_g2 = swapQuote.info) == null ? void 0 : _g2.decimals) || 18);
+        const swapQuoteAddress = ((_h2 = swapQuote.info) == null ? void 0 : _h2.address) || "";
         const priceFiat = (exchangeRate * Number(swapQuotePriceFormatted)).toFixed(2);
-        return jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: ((_h2 = swapQuote.info) == null ? void 0 : _h2.name) || "Unknown", chainId, iconUrl: (_i2 = swapQuote.info) == null ? void 0 : _i2.logoURI, symbol: ((_j2 = swapQuote.info) == null ? void 0 : _j2.symbol) || "", onClick: () => {
+        return jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: ((_i2 = swapQuote.info) == null ? void 0 : _i2.name) || "Unknown", chainId, iconUrl: (_j2 = swapQuote.info) == null ? void 0 : _j2.logoURI, symbol: ((_k2 = swapQuote.info) == null ? void 0 : _k2.symbol) || "", onClick: () => {
           setSelectedCurrency(swapQuoteAddress);
         }, balance: String(Number(balanceFormatted2).toPrecision(4)), price: String(Number(swapQuotePriceFormatted).toPrecision(4)), fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", swapQuoteAddress), isInsufficientFunds: false }, swapQuoteAddress);
       }
