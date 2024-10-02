@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-wr_HNsXy.js","./hooks.module-BnzzsFhJ.js","./inherits_browser-D3e42oki.js","./index-BT7PrVMP.js","./index.es-cfKIWXoD.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-D2U_GLHi.js","./hooks.module-DwKr4YEl.js","./inherits_browser-DgGu3QDl.js","./index-CGSWxPxs.js","./index.es-_Rk8O_FW.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32993,7 +32993,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BD4-E_uZ.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-XgLXf-gm.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98461,7 +98461,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-wr_HNsXy.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-D2U_GLHi.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98643,7 +98643,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-BT7PrVMP.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CGSWxPxs.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98879,7 +98879,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-cfKIWXoD.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-_Rk8O_FW.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -99327,7 +99327,7 @@ const getDefaultConnectors = (walletType2, options) => {
     return getDefaultUniversalConnectors(options);
   }
 };
-const getDefaultWaasConnectors = ({ appName, projectAccessKey: projectAccessKey2, walletConnectProjectId: walletConnectProjectId2, defaultChainId, waasConfigKey, googleClientId, appleClientId, appleRedirectURI, enableConfirmationModal, legacyEmailAuth = false, isDev = false }) => {
+const getDefaultWaasConnectors = ({ appName, projectAccessKey: projectAccessKey2, defaultChainId, walletConnectProjectId: walletConnectProjectId2, waasConfigKey, googleClientId, appleClientId, appleRedirectURI, enableConfirmationModal, legacyEmailAuth = false, isDev = false }) => {
   const wallets = [
     emailWaas({
       projectAccessKey: projectAccessKey2,
@@ -99339,11 +99339,13 @@ const getDefaultWaasConnectors = ({ appName, projectAccessKey: projectAccessKey2
     }),
     coinbaseWallet({
       appName
-    }),
-    walletConnect({
-      projectId: walletConnectProjectId2
     })
   ];
+  if (walletConnectProjectId2) {
+    wallets.push(walletConnect({
+      projectId: walletConnectProjectId2
+    }));
+  }
   if (googleClientId) {
     wallets.push(googleWaas({
       projectAccessKey: projectAccessKey2,
@@ -99365,11 +99367,10 @@ const getDefaultWaasConnectors = ({ appName, projectAccessKey: projectAccessKey2
       isDev
     }));
   }
-  const connectors = getKitConnectWallets(projectAccessKey2, wallets);
-  return connectors;
+  return getKitConnectWallets(projectAccessKey2, wallets);
 };
-const getDefaultUniversalConnectors = ({ appName, projectAccessKey: projectAccessKey2, walletConnectProjectId: walletConnectProjectId2, defaultChainId }) => {
-  const connectors = getKitConnectWallets(projectAccessKey2, [
+const getDefaultUniversalConnectors = ({ appName, projectAccessKey: projectAccessKey2, defaultChainId, walletConnectProjectId: walletConnectProjectId2 }) => {
+  const wallets = [
     email({
       defaultNetwork: defaultChainId,
       connect: {
@@ -99405,12 +99406,14 @@ const getDefaultUniversalConnectors = ({ appName, projectAccessKey: projectAcces
       connect: {
         app: appName
       }
-    }),
-    walletConnect({
-      projectId: walletConnectProjectId2
     })
-  ]);
-  return connectors;
+  ];
+  if (walletConnectProjectId2) {
+    wallets.push(walletConnect({
+      projectId: walletConnectProjectId2
+    }));
+  }
+  return getKitConnectWallets(projectAccessKey2, wallets);
 };
 const getDefaultTransports = (chains2) => {
   return Object.fromEntries(chains2.map((chain) => [chain.id, http()]));
