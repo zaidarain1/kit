@@ -1,5 +1,5 @@
-import { B as Buffer, c as commonjsGlobal, e as eventemitter3Exports, g as getDefaultExportFromCjs } from "./index-CWBAsnr3.js";
-import { j as js, s as sha_jsExports, r as require$$0, a as require$$1, b as require$$2 } from "./hooks.module-DwKr4YEl.js";
+import { B as Buffer, c as commonjsGlobal, e as eventemitter3Exports, g as getDefaultExportFromCjs } from "./index-BhMw1gK2.js";
+import { j as js, s as sha_jsExports, r as require$$0, a as require$$1, b as require$$2 } from "./hooks.module-BrgRyP7Z.js";
 var dist = {};
 var CoinbaseWalletSDK$1 = {};
 var walletLogo$1 = {};

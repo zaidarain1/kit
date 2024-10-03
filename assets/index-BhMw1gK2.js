@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-D2U_GLHi.js","./hooks.module-DwKr4YEl.js","./inherits_browser-DgGu3QDl.js","./index-CGSWxPxs.js","./index.es-_Rk8O_FW.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-w36ed5XJ.js","./hooks.module-BrgRyP7Z.js","./inherits_browser-DTGd2Otu.js","./index-DU4nszWG.js","./index.es-DUtzAiMf.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32993,7 +32993,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-XgLXf-gm.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-CxL6bFVJ.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98461,7 +98461,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-D2U_GLHi.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-w36ed5XJ.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98643,7 +98643,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CGSWxPxs.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-DU4nszWG.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98879,7 +98879,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-_Rk8O_FW.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DUtzAiMf.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -99327,90 +99327,113 @@ const getDefaultConnectors = (walletType2, options) => {
     return getDefaultUniversalConnectors(options);
   }
 };
-const getDefaultWaasConnectors = ({ appName, projectAccessKey: projectAccessKey2, defaultChainId, walletConnectProjectId: walletConnectProjectId2, waasConfigKey, googleClientId, appleClientId, appleRedirectURI, enableConfirmationModal, legacyEmailAuth = false, isDev = false }) => {
-  const wallets = [
-    emailWaas({
+const getDefaultWaasConnectors = (options) => {
+  var _a2;
+  const { projectAccessKey: projectAccessKey2, waasConfigKey, appName, enableConfirmationModal, defaultChainId, isDev } = options;
+  const wallets = [];
+  if (options.email !== false) {
+    wallets.push(emailWaas({
       projectAccessKey: projectAccessKey2,
       waasConfigKey,
       enableConfirmationModal,
       network: defaultChainId,
-      legacyEmailAuth,
+      legacyEmailAuth: typeof options.email === "object" && options.email.legacyEmailAuth || options.legacyEmailAuth,
       isDev
-    }),
-    coinbaseWallet({
-      appName
-    })
-  ];
-  if (walletConnectProjectId2) {
-    wallets.push(walletConnect({
-      projectId: walletConnectProjectId2
     }));
   }
-  if (googleClientId) {
+  if (options.google || options.googleClientId) {
+    const googleClientId = options.google && options.google.clientId || options.googleClientId;
     wallets.push(googleWaas({
       projectAccessKey: projectAccessKey2,
-      googleClientId,
       waasConfigKey,
+      googleClientId,
       enableConfirmationModal,
       network: defaultChainId,
       isDev
     }));
   }
-  if (appleClientId && appleRedirectURI) {
+  if (options.apple || options.appleClientId && options.appleRedirectURI) {
+    const appleClientId = options.apple && options.apple.clientId || options.appleClientId;
+    const appleRedirectURI = options.apple && options.apple.redirectURI || options.appleRedirectURI;
     wallets.push(appleWaas({
       projectAccessKey: projectAccessKey2,
+      waasConfigKey,
       appleClientId,
       appleRedirectURI,
-      waasConfigKey,
       enableConfirmationModal,
       network: defaultChainId,
       isDev
+    }));
+  }
+  if (options.coinbase !== false) {
+    wallets.push(coinbaseWallet({
+      appName
+    }));
+  }
+  if (options.walletConnect || options.walletConnectProjectId) {
+    const projectId = options.walletConnect && ((_a2 = options.walletConnect) == null ? void 0 : _a2.projectId) || options.walletConnectProjectId;
+    wallets.push(walletConnect({
+      projectId
     }));
   }
   return getKitConnectWallets(projectAccessKey2, wallets);
 };
-const getDefaultUniversalConnectors = ({ appName, projectAccessKey: projectAccessKey2, defaultChainId, walletConnectProjectId: walletConnectProjectId2 }) => {
-  const wallets = [
-    email({
+const getDefaultUniversalConnectors = (options) => {
+  var _a2;
+  const { projectAccessKey: projectAccessKey2, appName, defaultChainId } = options;
+  const wallets = [];
+  if (options.email !== false) {
+    wallets.push(email({
       defaultNetwork: defaultChainId,
       connect: {
         app: appName
       }
-    }),
-    google({
+    }));
+  }
+  if (options.google !== false) {
+    wallets.push(google({
       defaultNetwork: defaultChainId,
       connect: {
         app: appName
       }
-    }),
-    facebook({
+    }));
+  }
+  if (options.facebook !== false) {
+    wallets.push(facebook({
       defaultNetwork: defaultChainId,
       connect: {
         app: appName
       }
-    }),
-    twitch({
+    }));
+  }
+  if (options.twitch !== false) {
+    wallets.push(twitch({
       defaultNetwork: defaultChainId,
       connect: {
         app: appName
       }
-    }),
-    apple({
+    }));
+  }
+  if (options.apple !== false) {
+    wallets.push(apple({
       defaultNetwork: defaultChainId,
       connect: {
         app: appName
       }
-    }),
-    sequence({
+    }));
+  }
+  if (options.sequence !== false) {
+    wallets.push(sequence({
       defaultNetwork: defaultChainId,
       connect: {
         app: appName
       }
-    })
-  ];
-  if (walletConnectProjectId2) {
+    }));
+  }
+  if (options.walletConnect || options.walletConnectProjectId) {
+    const projectId = options.walletConnect && ((_a2 = options.walletConnect) == null ? void 0 : _a2.projectId) || options.walletConnectProjectId;
     wallets.push(walletConnect({
-      projectId: walletConnectProjectId2
+      projectId
     }));
   }
   return getKitConnectWallets(projectAccessKey2, wallets);
@@ -110973,20 +110996,28 @@ const kitConfig = {
 const config = walletType === "waas" ? createConfig("waas", {
   ...kitConfig,
   appName: "Kit Demo",
-  walletConnectProjectId,
   chainIds: [ChainId.ARBITRUM_NOVA, ChainId.ARBITRUM_SEPOLIA, ChainId.POLYGON],
   defaultChainId: ChainId.ARBITRUM_NOVA,
   waasConfigKey: isDebugMode ? "eyJwcm9qZWN0SWQiOjY5NCwicnBjU2VydmVyIjoiaHR0cHM6Ly9kZXYtd2Fhcy5zZXF1ZW5jZS5hcHAiLCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI1NGF0bjV1cGk2M3FjNTlhMWVtM3ZiaHJzbiJ9" : "eyJwcm9qZWN0SWQiOjE2ODE1LCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI2N2V2NXVvc3ZxMzVmcGI2OXI3NnJoYnVoIiwicnBjU2VydmVyIjoiaHR0cHM6Ly93YWFzLnNlcXVlbmNlLmFwcCJ9",
-  googleClientId: isDebugMode ? "603294233249-6h5saeg2uiu8akpcbar3r2aqjp6j7oem.apps.googleusercontent.com" : "970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com",
-  appleClientId: "com.horizon.sequence.waas",
-  appleRedirectURI: window.location.origin + window.location.pathname,
-  enableConfirmationModal: localStorage.getItem("confirmationEnabled") === "true"
+  enableConfirmationModal: localStorage.getItem("confirmationEnabled") === "true",
+  google: {
+    clientId: isDebugMode ? "603294233249-6h5saeg2uiu8akpcbar3r2aqjp6j7oem.apps.googleusercontent.com" : "970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com"
+  },
+  apple: {
+    clientId: "com.horizon.sequence.waas",
+    redirectURI: window.location.origin + window.location.pathname
+  },
+  walletConnect: {
+    projectId: walletConnectProjectId
+  }
 }) : createConfig("universal", {
   ...kitConfig,
   appName: "Kit Demo",
-  walletConnectProjectId,
   chainIds: [ChainId.ARBITRUM_NOVA, ChainId.ARBITRUM_SEPOLIA, ChainId.POLYGON],
-  defaultChainId: ChainId.ARBITRUM_NOVA
+  defaultChainId: ChainId.ARBITRUM_NOVA,
+  walletConnect: {
+    projectId: walletConnectProjectId
+  }
 });
 const App = () => {
   return /* @__PURE__ */ jsxRuntimeExports$1.jsx(ThemeProvider, { theme: "dark", children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(SequenceKit, { config, children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitWalletProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(KitCheckoutProvider, { children: /* @__PURE__ */ jsxRuntimeExports$1.jsx(Homepage, {}) }) }) }) });
