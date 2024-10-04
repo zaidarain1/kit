@@ -1,6 +1,6 @@
-import { c as commonjsGlobal, B as Buffer, a as getAugmentedNamespace, p as process$1, t as tslib_es6, e as eventemitter3Exports, g as getDefaultExportFromCjs } from "./index-BhMw1gK2.js";
-import { r as require$$0$1, e as eventsExports } from "./inherits_browser-DTGd2Otu.js";
-import { s as sha_jsExports, a as require$$1$1, b as require$$2, r as require$$0$2, j as js } from "./hooks.module-BrgRyP7Z.js";
+import { c as commonjsGlobal, B as Buffer, a as getAugmentedNamespace, p as process$1, t as tslib_es6, e as eventemitter3Exports, g as getDefaultExportFromCjs } from "./index-qtkFYpX9.js";
+import { r as require$$0$1, e as eventsExports } from "./inherits_browser-DsFG-T5v.js";
+import { s as sha_jsExports, a as require$$1$1, b as require$$2, r as require$$0$2, j as js } from "./hooks.module-C6EqfYmR.js";
 var dist$5 = {};
 var CoinbaseWalletSDK$1 = {};
 var walletLogo$1 = {};

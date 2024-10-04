@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-w36ed5XJ.js","./hooks.module-BrgRyP7Z.js","./inherits_browser-DTGd2Otu.js","./index-DU4nszWG.js","./index.es-DUtzAiMf.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-z7JiFndq.js","./hooks.module-C6EqfYmR.js","./inherits_browser-DsFG-T5v.js","./index-CpUV3A2c.js","./index.es-BE4WWad9.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -21144,10 +21144,34 @@ var DescriptionWarning = ({ contentRef, descriptionId }) => {
   return null;
 };
 var Root$3 = Dialog;
+var Trigger$3 = DialogTrigger;
 var Portal$1$1 = DialogPortal;
 var Overlay = DialogOverlay;
 var Content$1 = DialogContent;
+var Title$1 = DialogTitle;
+var Description$1 = DialogDescription;
 var Close$1 = DialogClose;
+const index$2$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  Close: Close$1,
+  Content: Content$1,
+  Description: Description$1,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+  Overlay,
+  Portal: Portal$1$1,
+  Root: Root$3,
+  Title: Title$1,
+  Trigger: Trigger$3,
+  WarningProvider,
+  createDialogScope
+}, Symbol.toStringTag, { value: "Module" }));
 var scroll = createRuntimeFn({ defaultClassName: "_1vqx0w91 _1vqx0w90 fyvr12g fyvr164", variantClassNames: { direction: { vertical: "_1vqx0w92", horizontal: "_1vqx0w93" } }, defaultVariants: {}, compoundVariants: [] });
 var overlay$1 = createRuntimeFn({ defaultClassName: "_1vqx0w94", variantClassNames: { shadows: { true: "_1vqx0w95", false: "_1vqx0w96" }, direction: { vertical: "_1vqx0w97", horizontal: "_1vqx0w98" } }, defaultVariants: {}, compoundVariants: [] });
 const Scroll = (props) => {
@@ -24871,7 +24895,7 @@ function getHullPresorted(points) {
 }
 var Provider = TooltipProvider;
 var Root3 = Tooltip$1;
-var Trigger$3 = TooltipTrigger;
+var Trigger$4 = TooltipTrigger;
 var Content2$2 = TooltipContent;
 var Arrow2 = TooltipArrow;
 var content = "q888p21 q888p20 fyvr11h8 fyvr11hw fyvr11fw fyvr11gk fyvr1zk fyvr111o fyvr11r0 fyvr11xx fyvr1xc fyvr1v4";
@@ -24887,7 +24911,7 @@ const Tooltip = (props) => {
     vOffset = 0
   } = props;
   return disabled ? /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Provider, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Root3, { delayDuration, children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$3, { asChild: true, children }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$4, { asChild: true, children }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       Content2$2,
       {
@@ -32993,7 +33017,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-CxL6bFVJ.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-DljrSzsd.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -97273,7 +97297,7 @@ const ConnectWalletContent = (props) => {
   const projectName = (_a2 = config2 == null ? void 0 : config2.signIn) == null ? void 0 : _a2.projectName;
   return jsxRuntimeExports$1.jsxs(Box, { padding: "4", children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
     marginTop: "4px"
-  }, children: jsxRuntimeExports$1.jsxs(Text, { children: ["Sign in ", projectName ? `to ${projectName}` : ""] }) }), jsxRuntimeExports$1.jsx(Connect, { emailConflictInfo, ...props })] });
+  }, children: jsxRuntimeExports$1.jsx(index$2$1.Title, { asChild: true, children: jsxRuntimeExports$1.jsxs(Text, { children: ["Sign in ", projectName ? `to ${projectName}` : ""] }) }) }), jsxRuntimeExports$1.jsx(Connect, { emailConflictInfo, ...props })] });
 };
 const getNetworkColor = (chainId, mode = "light") => {
   switch (chainId) {
@@ -98295,11 +98319,11 @@ const KitProvider = (props) => {
     rejectPendingRequest("");
   }, children: jsxRuntimeExports$1.jsxs(Box, { paddingX: "4", paddingTop: "4", paddingBottom: "2", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
     marginTop: "4px"
-  }, children: [jsxRuntimeExports$1.jsxs(Text, { as: "h1", variant: "large", marginBottom: "5", children: ["Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"] }), pendingRequestConfirmation.type === "signMessage" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", fontWeight: "medium", children: "Message" }), jsxRuntimeExports$1.jsx(Card, { marginTop: "2", paddingY: "6", children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", marginBottom: "4", children: toUtf8String(pendingRequestConfirmation.message ?? "") }) })] }), pendingRequestConfirmation.type === "signTransaction" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(TxnDetails, { address: address ?? "", txs: pendingRequestConfirmation.txs ?? [], chainId: pendingRequestConfirmation.chainId ?? ChainId.POLYGON }), jsxRuntimeExports$1.jsx(Collapsible, { label: "Transaction data", marginTop: "4", children: jsxRuntimeExports$1.jsx(Card, { overflowX: "scroll", marginY: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "code", marginBottom: "4", children: JSON.stringify(pendingRequestConfirmation.txs, null, 2) }) }) })] }), pendingRequestConfirmation.chainId && jsxRuntimeExports$1.jsxs(Box, { width: "full", marginTop: "3", justifyContent: "flex-end", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-start", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Network" }) }), jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-end", children: jsxRuntimeExports$1.jsx(NetworkBadge$1, { chainId: pendingRequestConfirmation.chainId }) })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", width: "full", marginTop: "5", children: [jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", size: "lg", label: "Reject", onClick: () => {
+  }, children: [jsxRuntimeExports$1.jsx(index$2$1.Title, { asChild: true, children: jsxRuntimeExports$1.jsxs(Text, { as: "h1", variant: "large", marginBottom: "5", children: ["Confirm ", pendingRequestConfirmation.type === "signMessage" ? "signing message" : "transaction"] }) }), pendingRequestConfirmation.type === "signMessage" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", fontWeight: "medium", children: "Message" }), jsxRuntimeExports$1.jsx(Card, { marginTop: "2", paddingY: "6", children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", marginBottom: "4", children: toUtf8String(pendingRequestConfirmation.message ?? "") }) })] }), pendingRequestConfirmation.type === "signTransaction" && jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", width: "full", children: [jsxRuntimeExports$1.jsx(TxnDetails, { address: address ?? "", txs: pendingRequestConfirmation.txs ?? [], chainId: pendingRequestConfirmation.chainId ?? ChainId.POLYGON }), jsxRuntimeExports$1.jsx(Collapsible, { label: "Transaction data", marginTop: "4", children: jsxRuntimeExports$1.jsx(Card, { overflowX: "scroll", marginY: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "code", marginBottom: "4", children: JSON.stringify(pendingRequestConfirmation.txs, null, 2) }) }) })] }), pendingRequestConfirmation.chainId && jsxRuntimeExports$1.jsxs(Box, { width: "full", marginTop: "3", justifyContent: "flex-end", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-start", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", children: "Network" }) }), jsxRuntimeExports$1.jsx(Box, { width: "1/2", justifyContent: "flex-end", children: jsxRuntimeExports$1.jsx(NetworkBadge$1, { chainId: pendingRequestConfirmation.chainId }) })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", width: "full", marginTop: "5", children: [jsxRuntimeExports$1.jsx(Button, { width: "full", shape: "square", size: "lg", label: "Reject", onClick: () => {
     rejectPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
   } }), jsxRuntimeExports$1.jsx(Button, { alignItems: "center", textAlign: "center", width: "full", shape: "square", size: "lg", label: "Confirm", variant: "primary", onClick: () => {
     confirmPendingRequest(pendingRequestConfirmation == null ? void 0 : pendingRequestConfirmation.id);
-  } })] })] }), jsxRuntimeExports$1.jsx(PoweredBySequence, {})] }) }), isEmailConflictOpen && emailConflictInfo && jsxRuntimeExports$1.jsx(Modal, { size: "sm", scroll: false, onClose: () => toggleEmailConflictModal(false), children: jsxRuntimeExports$1.jsxs(Box, { padding: "4", children: [jsxRuntimeExports$1.jsx(PageHeading, { children: "Email already in use" }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Text, { variant: "normal", color: "text80", textAlign: "center", children: ["Another account with this email address ", jsxRuntimeExports$1.jsxs(Text, { color: "text100", children: ["(", emailConflictInfo.email, ")"] }), " ", "already exists with account type ", jsxRuntimeExports$1.jsxs(Text, { color: "text100", children: ["(", emailConflictInfo.type, ")"] }), ". Please sign in again with the correct account."] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "4", gap: "2", alignItems: "center", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { label: "OK", onClick: () => toggleEmailConflictModal(false) }) })] })] }) })] }) }) }), children] }) }) }) }) }) });
+  } })] })] }), jsxRuntimeExports$1.jsx(PoweredBySequence, {})] }) }), isEmailConflictOpen && emailConflictInfo && jsxRuntimeExports$1.jsx(Modal, { size: "sm", scroll: false, onClose: () => toggleEmailConflictModal(false), children: jsxRuntimeExports$1.jsxs(Box, { padding: "4", children: [jsxRuntimeExports$1.jsx(index$2$1.Title, { asChild: true, children: jsxRuntimeExports$1.jsx(PageHeading, { children: "Email already in use" }) }), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Text, { variant: "normal", color: "text80", textAlign: "center", children: ["Another account with this email address ", jsxRuntimeExports$1.jsxs(Text, { color: "text100", children: ["(", emailConflictInfo.email, ")"] }), " ", "already exists with account type ", jsxRuntimeExports$1.jsxs(Text, { color: "text100", children: ["(", emailConflictInfo.type, ")"] }), ". Please sign in again with the correct account."] }), jsxRuntimeExports$1.jsx(Box, { marginTop: "4", gap: "2", alignItems: "center", justifyContent: "center", children: jsxRuntimeExports$1.jsx(Button, { label: "OK", onClick: () => toggleEmailConflictModal(false) }) })] })] }) })] }) }) }), children] }) }) }) }) }) });
 };
 const defaultQueryClient = new QueryClient();
 const SequenceKit = (props) => {
@@ -98461,7 +98485,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-w36ed5XJ.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-z7JiFndq.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98643,7 +98667,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-DU4nszWG.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CpUV3A2c.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98879,7 +98903,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DUtzAiMf.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-BE4WWad9.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -99685,7 +99709,7 @@ const NavigationHeader$1 = ({ secondaryText, primaryText, disableBack = false })
   }, children: [history.length > 0 && !disableBack ? jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickBack, icon: SvgChevronLeftIcon, size: "sm", style: {
     background: "rgba(0,0,0,0)",
     width: "44px"
-  } }) : jsxRuntimeExports$1.jsx(Box, {}), jsxRuntimeExports$1.jsxs(Box, { width: "full", alignItems: "center", justifyContent: "center", style: { marginLeft: "40px" }, children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text50", children: secondaryText }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text100", children: primaryText })] }), jsxRuntimeExports$1.jsx(Box, { style: {
+  } }) : jsxRuntimeExports$1.jsx(Box, {}), jsxRuntimeExports$1.jsxs(Box, { width: "full", alignItems: "center", justifyContent: "center", style: { marginLeft: "40px" }, children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text50", children: secondaryText }), jsxRuntimeExports$1.jsx(index$2$1.Title, { asChild: true, children: jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text100", children: primaryText }) })] }), jsxRuntimeExports$1.jsx(Box, { style: {
     width: "44px"
   } })] });
 };
@@ -100235,7 +100259,7 @@ const PayWithCreditCard = ({ settings, disableButtons }) => {
         case "sardine":
           return jsxRuntimeExports$1.jsx(PaymentProviderOption, { name: "Sardine", logo: SardineLogo(), onClick: () => {
             setSelecterPaymentProvider("sardine");
-          }, isSelected: selectedPaymentProvider === "sardine", isRecommended: true });
+          }, isSelected: selectedPaymentProvider === "sardine", isRecommended: true }, creditCardProvider);
         default:
           return null;
       }
@@ -101814,9 +101838,9 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
         const coinPrice = mainCoinPrice[0];
         const exchangeRate = ((_a2 = coinPrice == null ? void 0 : coinPrice.price) == null ? void 0 : _a2.value) || 0;
         const priceFiat = (exchangeRate * Number(priceFormatted)).toFixed(2);
-        return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: (currencyInfoData == null ? void 0 : currencyInfoData.name) || "Unknown", chainId, iconUrl: currencyInfoData == null ? void 0 : currencyInfoData.logoURI, symbol: (currencyInfoData == null ? void 0 : currencyInfoData.symbol) || "", onClick: () => {
+        return jsxRuntimeExports$1.jsxs(reactExports.Fragment, { children: [jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: (currencyInfoData == null ? void 0 : currencyInfoData.name) || "Unknown", chainId, iconUrl: currencyInfoData == null ? void 0 : currencyInfoData.logoURI, symbol: (currencyInfoData == null ? void 0 : currencyInfoData.symbol) || "", onClick: () => {
           setSelectedCurrency(currencyAddress);
-        }, balance: String(balanceFormatted), price: priceFormatted, fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", currencyAddress), isInsufficientFunds: isNotEnoughFunds }, currencyAddress), swapsIsLoading && jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(Spinner, {}) })] });
+        }, balance: String(balanceFormatted), price: priceFormatted, fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", currencyAddress), isInsufficientFunds: isNotEnoughFunds }), swapsIsLoading && jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(Spinner, {}) })] }, currencyAddress);
       } else {
         const foundCoinPrice = swapTokensPrices.find((coinPrice) => compareAddress$2(coinPrice.token.contractAddress, coin.currencyAddress));
         const exchangeRate = ((_b2 = foundCoinPrice == null ? void 0 : foundCoinPrice.price) == null ? void 0 : _b2.value) || 0;
@@ -105653,7 +105677,7 @@ const NavigationHeader = ({ secondaryText, primaryText }) => {
   return jsxRuntimeExports$1.jsxs(Box, { background: "backgroundPrimary", zIndex: "20", position: "fixed", width: "full", flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingX: "4", style: {
     height: HEADER_HEIGHT,
     paddingTop: "6px"
-  }, children: [history.length > 0 ? jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickBack, icon: SvgChevronLeftIcon, size: "xs" }) : jsxRuntimeExports$1.jsx(Box, {}), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text50", children: secondaryText }), jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text100", children: primaryText })] }), jsxRuntimeExports$1.jsx(Box, { style: {
+  }, children: [history.length > 0 ? jsxRuntimeExports$1.jsx(IconButton, { onClick: onClickBack, icon: SvgChevronLeftIcon, size: "xs" }) : jsxRuntimeExports$1.jsx(Box, {}), jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text50", children: secondaryText }), jsxRuntimeExports$1.jsx(index$2$1.Title, { asChild: true, children: jsxRuntimeExports$1.jsx(Text, { fontWeight: "medium", variant: "small", color: "text100", children: primaryText }) })] }), jsxRuntimeExports$1.jsx(Box, { style: {
     width: "44px"
   } })] });
 };
