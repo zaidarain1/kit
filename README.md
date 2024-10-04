@@ -60,26 +60,26 @@ interface CreateConfigOptions {
 
   wagmiConfig?: WagmiConfig // optional wagmiConfig overrides
 
-  waasConfigKey: string
+  waasConfigKey?: string
   enableConfirmationModal?: boolean
 
   walletConnect?:
-    | boolean
+    | false
     | {
         projectId: string
       }
 
   google?:
-    | boolean
+    | false
     | {
         clientId: string
       }
 
   apple?:
-    | boolean
+    | false
     | {
         clientId: string
-        rediretURI: string
+        redirectURI: string
       }
 
   email?:
