@@ -1,5 +1,14 @@
 # @0xsequence/kit-connectors
 
+## 4.3.1
+
+### Patch Changes
+
+- Fixing css export
+
+- Updated dependencies []:
+  - @0xsequence/kit@4.3.1
+
 ## 4.3.0
 
 ### Minor Changes
