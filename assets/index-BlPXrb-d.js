@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-z7JiFndq.js","./hooks.module-C6EqfYmR.js","./inherits_browser-DsFG-T5v.js","./index-CpUV3A2c.js","./index.es-BE4WWad9.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CHL0ui3c.js","./hooks.module-CotichkU.js","./inherits_browser-7uSc9W6h.js","./index-IGrFLIi_.js","./index.es-DjjT2d08.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -33017,7 +33017,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-DljrSzsd.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-l2hDF_fX.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -41362,11 +41362,25 @@ function _extends$f() {
 }
 const WebRPCVersion$3 = "v1";
 const WebRPCSchemaVersion$3 = "v0.4.0";
-const WebRPCSchemaHash$3 = "d3f5f1338693d60d58f87bc408a076218201a097";
+const WebRPCSchemaHash$3 = "470a0f88ea399c2a57ff8c22da54358c033ed5f0";
 let SortOrder$2 = /* @__PURE__ */ function(SortOrder2) {
   SortOrder2["DESC"] = "DESC";
   SortOrder2["ASC"] = "ASC";
   return SortOrder2;
+}({});
+let SardinePaymentType = /* @__PURE__ */ function(SardinePaymentType2) {
+  SardinePaymentType2["ach"] = "ach";
+  SardinePaymentType2["debit"] = "debit";
+  SardinePaymentType2["credit"] = "credit";
+  SardinePaymentType2["us_debit"] = "us_debit";
+  SardinePaymentType2["international_debit"] = "international_debit";
+  SardinePaymentType2["international_credit"] = "international_credit";
+  return SardinePaymentType2;
+}({});
+let SardineQuoteType = /* @__PURE__ */ function(SardineQuoteType2) {
+  SardineQuoteType2["buy"] = "buy";
+  SardineQuoteType2["sell"] = "sell";
+  return SardineQuoteType2;
 }({});
 let TokenType = /* @__PURE__ */ function(TokenType2) {
   TokenType2["ERC20"] = "ERC20";
@@ -41675,45 +41689,6 @@ class API {
         });
       });
     };
-    this.getSardineClientToken = (headers, signal) => {
-      return this.fetch(this.url("GetSardineClientToken"), createHTTPRequest$7({}, headers, signal)).then((res) => {
-        return buildResponse$7(res).then((_data6) => {
-          return {
-            token: _data6.token
-          };
-        });
-      }, (error) => {
-        throw WebrpcRequestFailedError$7.new({
-          cause: `fetch(): ${error.message || ""}`
-        });
-      });
-    };
-    this.getSardineNFTCheckoutToken = (args, headers, signal) => {
-      return this.fetch(this.url("GetSardineNFTCheckoutToken"), createHTTPRequest$7(args, headers, signal)).then((res) => {
-        return buildResponse$7(res).then((_data6) => {
-          return {
-            resp: _data6.resp
-          };
-        });
-      }, (error) => {
-        throw WebrpcRequestFailedError$7.new({
-          cause: `fetch(): ${error.message || ""}`
-        });
-      });
-    };
-    this.getSardineNFTCheckoutOrderStatus = (args, headers, signal) => {
-      return this.fetch(this.url("GetSardineNFTCheckoutOrderStatus"), createHTTPRequest$7(args, headers, signal)).then((res) => {
-        return buildResponse$7(res).then((_data6) => {
-          return {
-            resp: _data6.resp
-          };
-        });
-      }, (error) => {
-        throw WebrpcRequestFailedError$7.new({
-          cause: `fetch(): ${error.message || ""}`
-        });
-      });
-    };
     this.resolveENSAddress = (args, headers, signal) => {
       return this.fetch(this.url("ResolveENSAddress"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
@@ -41772,6 +41747,149 @@ class API {
         return buildResponse$7(res).then((_data6) => {
           return {
             isValid: _data6.isValid
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetClientToken = (headers, signal) => {
+      return this.fetch(this.url("SardineGetClientToken"), createHTTPRequest$7({}, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            token: _data6.token
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetNFTCheckoutToken = (args, headers, signal) => {
+      return this.fetch(this.url("SardineGetNFTCheckoutToken"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            resp: _data6.resp
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetNFTCheckoutOrderStatus = (args, headers, signal) => {
+      return this.fetch(this.url("SardineGetNFTCheckoutOrderStatus"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            resp: _data6.resp
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetSupportedRegions = (headers, signal) => {
+      return this.fetch(this.url("SardineGetSupportedRegions"), createHTTPRequest$7({}, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            regions: _data6.regions
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetSupportedFiatCurrencies = (headers, signal) => {
+      return this.fetch(this.url("SardineGetSupportedFiatCurrencies"), createHTTPRequest$7({}, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            tokens: _data6.tokens
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetSupportedTokens = (headers, signal) => {
+      return this.fetch(this.url("SardineGetSupportedTokens"), createHTTPRequest$7({}, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            tokens: _data6.tokens
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetEnabledTokens = (headers, signal) => {
+      return this.fetch(this.url("SardineGetEnabledTokens"), createHTTPRequest$7({}, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            tokens: _data6.tokens
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.sardineGetQuote = (args, headers, signal) => {
+      return this.fetch(this.url("SardineGetQuote"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            quote: _data6.quote
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.getSardineClientToken = (headers, signal) => {
+      return this.fetch(this.url("GetSardineClientToken"), createHTTPRequest$7({}, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            token: _data6.token
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.getSardineNFTCheckoutToken = (args, headers, signal) => {
+      return this.fetch(this.url("GetSardineNFTCheckoutToken"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            resp: _data6.resp
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.getSardineNFTCheckoutOrderStatus = (args, headers, signal) => {
+      return this.fetch(this.url("GetSardineNFTCheckoutOrderStatus"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            resp: _data6.resp
           };
         });
       }, (error) => {
@@ -41927,8 +42045,7 @@ class API {
       return this.fetch(this.url("LinkWallet"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
-            status: _data6.status,
-            linkedWalletAddress: _data6.linkedWalletAddress
+            status: _data6.status
           };
         });
       }, (error) => {
@@ -41990,11 +42107,11 @@ class API {
         });
       });
     };
-    this.getSwapQuotes = (args, headers, signal) => {
-      return this.fetch(this.url("GetSwapQuotes"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.getSwapPrices = (args, headers, signal) => {
+      return this.fetch(this.url("GetSwapPrices"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
-            swapQuotes: _data6.swapQuotes
+            swapPrices: _data6.swapPrices
           };
         });
       }, (error) => {
@@ -42003,23 +42120,12 @@ class API {
         });
       });
     };
-    this.addCurrencyGroup = (args, headers, signal) => {
-      return this.fetch(this.url("AddCurrencyGroup"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.getSwapQuote = (args, headers, signal) => {
+      return this.fetch(this.url("GetSwapQuote"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
-            groupId: _data6.groupId
+            swapQuote: _data6.swapQuote
           };
-        });
-      }, (error) => {
-        throw WebrpcRequestFailedError$7.new({
-          cause: `fetch(): ${error.message || ""}`
-        });
-      });
-    };
-    this.updateCurrencyGroup = (args, headers, signal) => {
-      return this.fetch(this.url("UpdateCurrencyGroup"), createHTTPRequest$7(args, headers, signal)).then((res) => {
-        return buildResponse$7(res).then((_data6) => {
-          return {};
         });
       }, (error) => {
         throw WebrpcRequestFailedError$7.new({
@@ -42040,11 +42146,11 @@ class API {
         });
       });
     };
-    this.deleteCurrencyGroup = (args, headers, signal) => {
-      return this.fetch(this.url("DeleteCurrencyGroup"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.addOffchainInventory = (args, headers, signal) => {
+      return this.fetch(this.url("AddOffchainInventory"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
-            ok: _data6.ok
+            inventoryId: _data6.inventoryId
           };
         });
       }, (error) => {
@@ -42053,11 +42159,11 @@ class API {
         });
       });
     };
-    this.addInventoryPaymentConfig = (args, headers, signal) => {
-      return this.fetch(this.url("AddInventoryPaymentConfig"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.getOffchainInventory = (args, headers, signal) => {
+      return this.fetch(this.url("GetOffchainInventory"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
-            configId: _data6.configId
+            inventory: _data6.inventory
           };
         });
       }, (error) => {
@@ -42066,11 +42172,11 @@ class API {
         });
       });
     };
-    this.getInventoryPaymentConfig = (args, headers, signal) => {
-      return this.fetch(this.url("GetInventoryPaymentConfig"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.listOffchainInventories = (args, headers, signal) => {
+      return this.fetch(this.url("ListOffchainInventories"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
-            config: _data6.config
+            inventory: _data6.inventory
           };
         });
       }, (error) => {
@@ -42079,21 +42185,8 @@ class API {
         });
       });
     };
-    this.listInventoryPaymentConfigs = (args, headers, signal) => {
-      return this.fetch(this.url("ListInventoryPaymentConfigs"), createHTTPRequest$7(args, headers, signal)).then((res) => {
-        return buildResponse$7(res).then((_data6) => {
-          return {
-            configs: _data6.configs
-          };
-        });
-      }, (error) => {
-        throw WebrpcRequestFailedError$7.new({
-          cause: `fetch(): ${error.message || ""}`
-        });
-      });
-    };
-    this.updateInventoryPaymentConfig = (args, headers, signal) => {
-      return this.fetch(this.url("UpdateInventoryPaymentConfig"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.updateOffchainInventory = (args, headers, signal) => {
+      return this.fetch(this.url("UpdateOffchainInventory"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {};
         });
@@ -42103,8 +42196,8 @@ class API {
         });
       });
     };
-    this.deleteInventoryPaymentConfig = (args, headers, signal) => {
-      return this.fetch(this.url("DeleteInventoryPaymentConfig"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.deleteOffchainInventory = (args, headers, signal) => {
+      return this.fetch(this.url("DeleteOffchainInventory"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
             ok: _data6.ok
@@ -42116,11 +42209,25 @@ class API {
         });
       });
     };
-    this.requestInventoryPayment = (args, headers, signal) => {
-      return this.fetch(this.url("RequestInventoryPayment"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+    this.requestOffchainPayment = (args, headers, signal) => {
+      return this.fetch(this.url("RequestOffchainPayment"), createHTTPRequest$7(args, headers, signal)).then((res) => {
         return buildResponse$7(res).then((_data6) => {
           return {
             payment: _data6.payment
+          };
+        });
+      }, (error) => {
+        throw WebrpcRequestFailedError$7.new({
+          cause: `fetch(): ${error.message || ""}`
+        });
+      });
+    };
+    this.listOffchainPayments = (args, headers, signal) => {
+      return this.fetch(this.url("ListOffchainPayments"), createHTTPRequest$7(args, headers, signal)).then((res) => {
+        return buildResponse$7(res).then((_data6) => {
+          return {
+            page: _data6.page,
+            payments: _data6.payments
           };
         });
       }, (error) => {
@@ -42385,6 +42492,8 @@ const api$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePropert
   NotFoundError: NotFoundError$6,
   PermissionDeniedError: PermissionDeniedError$4,
   QueryFailedError: QueryFailedError$5,
+  SardinePaymentType,
+  SardineQuoteType,
   SequenceAPIClient,
   SessionExpiredError: SessionExpiredError$4,
   SortOrder: SortOrder$2,
@@ -67247,6 +67356,7 @@ let ChainId = /* @__PURE__ */ function(ChainId2) {
   ChainId2[ChainId2["BLAST_SEPOLIA"] = 168587773] = "BLAST_SEPOLIA";
   ChainId2[ChainId2["BORNE_TESTNET"] = 94984] = "BORNE_TESTNET";
   ChainId2[ChainId2["SKALE_NEBULA_TESTNET"] = 37084624] = "SKALE_NEBULA_TESTNET";
+  ChainId2[ChainId2["SONEIUM_MINATO"] = 1946] = "SONEIUM_MINATO";
   ChainId2[ChainId2["HARDHAT"] = 31337] = "HARDHAT";
   ChainId2[ChainId2["HARDHAT_2"] = 31338] = "HARDHAT_2";
   return ChainId2;
@@ -67932,6 +68042,23 @@ const networks = {
     nativeToken: {
       symbol: "sFUEL",
       name: "SKALE Fuel",
+      decimals: 18
+    }
+  },
+  [ChainId.SONEIUM_MINATO]: {
+    chainId: ChainId.SONEIUM_MINATO,
+    type: NetworkType.TESTNET,
+    name: "soneium-minato",
+    title: "Soneium Minato (Testnet)",
+    logoURI: `https://assets.sequence.info/images/networks/medium/${ChainId.SONEIUM_MINATO}.webp`,
+    testnet: true,
+    blockExplorer: {
+      name: "Soneium Minato Explorer",
+      rootUrl: "https://explorer-testnet.soneium.org/"
+    },
+    nativeToken: {
+      symbol: "ETH",
+      name: "Ether",
       decimals: 18
     }
   },
@@ -68989,7 +69116,7 @@ const allNetworks = validateAndSortNetworks([_extends$d({}, createNetworkConfig(
   disabled: true
 }), createNetworkConfig(ChainId.SEPOLIA), createNetworkConfig(ChainId.POLYGON_MUMBAI, {
   disabled: true
-}), createNetworkConfig(ChainId.POLYGON_AMOY), createNetworkConfig(ChainId.BSC_TESTNET), createNetworkConfig(ChainId.ARBITRUM_SEPOLIA), createNetworkConfig(ChainId.BASE), createNetworkConfig(ChainId.BASE_SEPOLIA), createNetworkConfig(ChainId.HOMEVERSE), createNetworkConfig(ChainId.HOMEVERSE_TESTNET), createNetworkConfig(ChainId.XAI), createNetworkConfig(ChainId.XAI_SEPOLIA), createNetworkConfig(ChainId.AVALANCHE_TESTNET), createNetworkConfig(ChainId.ASTAR_ZKEVM), createNetworkConfig(ChainId.ASTAR_ZKYOTO), createNetworkConfig(ChainId.XR_SEPOLIA), createNetworkConfig(ChainId.B3_SEPOLIA), createNetworkConfig(ChainId.APECHAIN_TESTNET), createNetworkConfig(ChainId.BLAST), createNetworkConfig(ChainId.BLAST_SEPOLIA), createNetworkConfig(ChainId.TELOS), createNetworkConfig(ChainId.BORNE_TESTNET), createNetworkConfig(ChainId.SKALE_NEBULA_TESTNET), ...hardhatNetworks]);
+}), createNetworkConfig(ChainId.POLYGON_AMOY), createNetworkConfig(ChainId.BSC_TESTNET), createNetworkConfig(ChainId.ARBITRUM_SEPOLIA), createNetworkConfig(ChainId.BASE), createNetworkConfig(ChainId.BASE_SEPOLIA), createNetworkConfig(ChainId.HOMEVERSE), createNetworkConfig(ChainId.HOMEVERSE_TESTNET), createNetworkConfig(ChainId.XAI), createNetworkConfig(ChainId.XAI_SEPOLIA), createNetworkConfig(ChainId.AVALANCHE_TESTNET), createNetworkConfig(ChainId.ASTAR_ZKEVM), createNetworkConfig(ChainId.ASTAR_ZKYOTO), createNetworkConfig(ChainId.XR_SEPOLIA), createNetworkConfig(ChainId.B3_SEPOLIA), createNetworkConfig(ChainId.APECHAIN_TESTNET), createNetworkConfig(ChainId.BLAST), createNetworkConfig(ChainId.BLAST_SEPOLIA), createNetworkConfig(ChainId.TELOS), createNetworkConfig(ChainId.BORNE_TESTNET), createNetworkConfig(ChainId.SKALE_NEBULA_TESTNET), createNetworkConfig(ChainId.SONEIUM_MINATO), ...hardhatNetworks]);
 class JsonRpcRouter {
   constructor(middlewares, sender) {
     this.sender = void 0;
@@ -71674,7 +71801,7 @@ var index$6 = /* @__PURE__ */ Object.freeze({
   coderFor,
   genericCoderFor
 });
-const VERSION$1 = "2.0.9";
+const VERSION$1 = "2.0.12";
 const allVersions = [v1, v2];
 const core$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -97667,22 +97794,22 @@ const useTransactionHistory = (args) => {
     enabled: !!args.chainId && !!args.accountAddress
   });
 };
-const getSwapQuotes = async (apiClient, metadataClient, indexerClient, args) => {
-  if (!args.chainId || !args.userAddress || !args.currencyAddress || !args.currencyAmount || args.currencyAmount === "0") {
+const getSwapPrices = async (apiClient, metadataClient, indexerClient, args) => {
+  if (!args.chainId || !args.userAddress || !args.buyCurrencyAddress || !args.buyAmount || args.buyAmount === "0") {
     return [];
   }
   try {
-    const res = await apiClient.getSwapQuotes({
-      ...args,
-      includeApprove: true
+    const { withContractInfo, ...swapPricesArgs } = args;
+    const res = await apiClient.getSwapPrices({
+      ...swapPricesArgs
     });
-    if (res.swapQuotes === null) {
+    if (res.swapPrices === null) {
       return [];
     }
     const currencyInfoMap = /* @__PURE__ */ new Map();
-    if (args.withContractInfo) {
-      res == null ? void 0 : res.swapQuotes.forEach((quote) => {
-        const { currencyAddress } = quote;
+    if (withContractInfo) {
+      res == null ? void 0 : res.swapPrices.forEach((price) => {
+        const { currencyAddress } = price;
         if (currencyAddress && !currencyInfoMap.has(currencyAddress)) {
           currencyInfoMap.set(currencyAddress, metadataClient.getContractInfo({
             chainID: String(args.chainId),
@@ -97692,8 +97819,8 @@ const getSwapQuotes = async (apiClient, metadataClient, indexerClient, args) => 
       });
     }
     const currencyBalanceInfoMap = /* @__PURE__ */ new Map();
-    res == null ? void 0 : res.swapQuotes.forEach((quote) => {
-      const { currencyAddress } = quote;
+    res == null ? void 0 : res.swapPrices.forEach((price) => {
+      const { currencyAddress } = price;
       if (currencyAddress && !currencyBalanceInfoMap.has(currencyAddress)) {
         currencyBalanceInfoMap.set(currencyAddress, indexerClient.getTokenBalances({
           accountAddress: args.userAddress,
@@ -97708,29 +97835,43 @@ const getSwapQuotes = async (apiClient, metadataClient, indexerClient, args) => 
         }));
       }
     });
-    return Promise.all((res == null ? void 0 : res.swapQuotes.map(async (quote) => ({
-      quote,
-      info: await currencyInfoMap.get(quote.currencyAddress) || void 0,
-      balance: await currencyBalanceInfoMap.get(quote.currencyAddress) || void 0
+    return Promise.all((res == null ? void 0 : res.swapPrices.map(async (price) => ({
+      price,
+      info: await currencyInfoMap.get(price.currencyAddress) || void 0,
+      balance: await currencyBalanceInfoMap.get(price.currencyAddress) || void 0
     }))) || []);
   } catch (e2) {
     console.error(e2);
     return [];
   }
 };
-const useSwapQuotes = (args) => {
+const useSwapPrices = (args) => {
   const apiClient = useAPIClient();
   const metadataClient = useMetadataClient();
   const indexerClient = useIndexerClient(args.chainId);
-  const enabled = !!args.chainId && !!args.userAddress && !!args.currencyAddress && !!args.currencyAmount && args.currencyAmount !== "0";
+  const enabled = !!args.chainId && !!args.userAddress && !!args.buyCurrencyAddress && !!args.buyAmount && args.buyAmount !== "0";
   return useQuery$1({
-    queryKey: ["swapQuotes", args],
-    queryFn: () => getSwapQuotes(apiClient, metadataClient, indexerClient, args),
+    queryKey: ["swapPrices", args],
+    queryFn: () => getSwapPrices(apiClient, metadataClient, indexerClient, args),
     retry: true,
     // We must keep a long staletime to avoid the list of quotes being refreshed while the user is doing the transactions
     // Instead, we will invalidate the query manually
     staleTime: time$1.oneHour,
     enabled
+  });
+};
+const useSwapQuote = (args, options) => {
+  const apiClient = useAPIClient();
+  const { disabled = false } = options;
+  return useQuery$1({
+    queryKey: ["useSwapQuote", args],
+    queryFn: async () => {
+      const res = await apiClient.getSwapQuote(args);
+      return res.swapQuote;
+    },
+    retry: true,
+    staleTime: time$1.oneMinute * 1,
+    enabled: !disabled || !args.userAddress || !args.chainId || !args.buyCurrencyAddress
   });
 };
 const chains = allNetworks.reduce((acc, network2) => {
@@ -98485,7 +98626,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-z7JiFndq.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CHL0ui3c.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98667,7 +98808,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CpUV3A2c.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-IGrFLIi_.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98903,7 +99044,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-BE4WWad9.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DjjT2d08.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -101650,12 +101791,23 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
     includeMetadata: false
   });
   const { data: currencyInfoData, isLoading: isLoadingCurrencyInfo } = useContractInfo(chainId, currencyAddress);
-  const { data: swapQuotes = [], isLoading: swapQuotesIsLoading, isError: swapQuotesIsError } = useSwapQuotes({
+  const { data: swapPrices = [], isLoading: swapPricesIsLoading } = useSwapPrices({
     userAddress: userAddress ?? "",
-    currencyAddress: settings == null ? void 0 : settings.currencyAddress,
+    buyCurrencyAddress: settings == null ? void 0 : settings.currencyAddress,
     chainId,
-    currencyAmount: price,
+    buyAmount: price,
     withContractInfo: true
+  });
+  const disableSwapQuote = !selectedCurrency || compareAddress$2(settings.currencyAddress, selectedCurrency || "");
+  const { data: swapQuote, isLoading: isLoadingSwapQuote } = useSwapQuote({
+    userAddress: userAddress ?? "",
+    buyCurrencyAddress: settings == null ? void 0 : settings.currencyAddress,
+    buyAmount: price,
+    chainId,
+    sellCurrencyAddress: selectedCurrency || "",
+    includeApprove: true
+  }, {
+    disabled: !selectedCurrency
   });
   const nativeToken = [
     {
@@ -101664,19 +101816,19 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
     }
   ];
   const swapTokens = [
-    ...swapQuotes.map((quote) => {
+    ...swapPrices.map((price2) => {
       var _a2;
       return {
         chainId,
-        contractAddress: ((_a2 = quote.info) == null ? void 0 : _a2.address) || ""
+        contractAddress: ((_a2 = price2.info) == null ? void 0 : _a2.address) || ""
       };
     })
   ];
   const { data: mainCoinPrice = [], isLoading: mainCoinsPricesIsLoading } = useCoinPrices([...nativeToken]);
-  const disableCoinPricesQuery = swapQuotesIsLoading;
+  const disableCoinPricesQuery = swapPricesIsLoading;
   const { data: swapTokensPrices = [], isLoading: swapTokensPricesIsLoading } = useCoinPrices([...swapTokens], disableCoinPricesQuery);
   const isLoading = allowanceIsLoading || currencyBalanceIsLoading || isLoadingCurrencyInfo || mainCoinsPricesIsLoading;
-  const swapsIsLoading = swapQuotesIsLoading || swapTokensPricesIsLoading;
+  const swapsIsLoading = swapPricesIsLoading || swapTokensPricesIsLoading;
   const indexedCoins = [
     {
       index: 0,
@@ -101684,13 +101836,13 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
       symbol: (currencyInfoData == null ? void 0 : currencyInfoData.symbol) || "",
       currencyAddress
     },
-    ...swapQuotes.map((quote, index2) => {
+    ...swapPrices.map((price2, index2) => {
       var _a2, _b2, _c2;
       return {
         index: index2 + 1,
-        name: ((_a2 = quote.info) == null ? void 0 : _a2.name) || "Unknown",
-        symbol: ((_b2 = quote.info) == null ? void 0 : _b2.symbol) || "",
-        currencyAddress: ((_c2 = quote.info) == null ? void 0 : _c2.address) || ""
+        name: ((_a2 = price2.info) == null ? void 0 : _a2.name) || "Unknown",
+        symbol: ((_b2 = price2.info) == null ? void 0 : _b2.symbol) || "",
+        currencyAddress: ((_c2 = price2.info) == null ? void 0 : _c2.address) || ""
       };
     })
   ];
@@ -101760,8 +101912,8 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
     }
     setDisableButtons(false);
   };
-  const onClickPurchaseSwap = async (swapQuote) => {
-    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector) {
+  const onClickPurchaseSwap = async (swapPrice) => {
+    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector || !swapQuote) {
       return;
     }
     setDisableButtons(true);
@@ -101775,23 +101927,23 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
         functionName: "approve",
         args: [targetContractAddress, price]
       });
-      const isSwapNativeToken = compareAddress$2(currencyAddress, swapQuote.quote.currencyAddress);
+      const isSwapNativeToken = compareAddress$2(currencyAddress, swapPrice.price.currencyAddress);
       const transactions2 = [
         // Swap quote optional approve step
-        ...swapQuote.quote.approveData && !isSwapNativeToken ? [
+        ...(swapQuote == null ? void 0 : swapQuote.approveData) && !isSwapNativeToken ? [
           {
-            to: swapQuote.quote.currencyAddress,
-            data: swapQuote.quote.approveData,
+            to: swapPrice.price.currencyAddress,
+            data: swapQuote.approveData,
             chain: chainId
           }
         ] : [],
         // Swap quote tx
         {
-          to: swapQuote.quote.to,
-          data: swapQuote.quote.transactionData,
+          to: swapQuote.to,
+          data: swapQuote.transactionData,
           chain: chainId,
           ...isSwapNativeToken ? {
-            value: BigInt(swapQuote.quote.price)
+            value: BigInt(swapQuote.price)
           } : {}
         },
         // Actual transaction optional approve step
@@ -101844,38 +101996,38 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
       } else {
         const foundCoinPrice = swapTokensPrices.find((coinPrice) => compareAddress$2(coinPrice.token.contractAddress, coin.currencyAddress));
         const exchangeRate = ((_b2 = foundCoinPrice == null ? void 0 : foundCoinPrice.price) == null ? void 0 : _b2.value) || 0;
-        const swapQuote = swapQuotes == null ? void 0 : swapQuotes.find((quote) => {
+        const swapPrice = swapPrices == null ? void 0 : swapPrices.find((price2) => {
           var _a3;
-          return compareAddress$2(((_a3 = quote.info) == null ? void 0 : _a3.address) || "", coin.currencyAddress);
+          return compareAddress$2(((_a3 = price2.info) == null ? void 0 : _a3.address) || "", coin.currencyAddress);
         });
-        const currencyInfoNotFound = !swapQuote || !swapQuote.info || ((_c2 = swapQuote == null ? void 0 : swapQuote.info) == null ? void 0 : _c2.decimals) === void 0 || !((_d2 = swapQuote.balance) == null ? void 0 : _d2.balance);
+        const currencyInfoNotFound = !swapPrice || !swapPrice.info || ((_c2 = swapPrice == null ? void 0 : swapPrice.info) == null ? void 0 : _c2.decimals) === void 0 || !((_d2 = swapPrice.balance) == null ? void 0 : _d2.balance);
         if (currencyInfoNotFound || !enableSwapPayments) {
           return null;
         }
-        const swapQuotePriceFormatted = formatUnits$2(BigInt(swapQuote.quote.price), ((_e2 = swapQuote.info) == null ? void 0 : _e2.decimals) || 18);
-        const balanceFormatted2 = formatUnits$2(BigInt(((_f2 = swapQuote.balance) == null ? void 0 : _f2.balance) || 0), ((_g2 = swapQuote.info) == null ? void 0 : _g2.decimals) || 18);
-        const swapQuoteAddress = ((_h2 = swapQuote.info) == null ? void 0 : _h2.address) || "";
+        const swapQuotePriceFormatted = formatUnits$2(BigInt(swapPrice.price.price), ((_e2 = swapPrice.info) == null ? void 0 : _e2.decimals) || 18);
+        const balanceFormatted2 = formatUnits$2(BigInt(((_f2 = swapPrice.balance) == null ? void 0 : _f2.balance) || 0), ((_g2 = swapPrice.info) == null ? void 0 : _g2.decimals) || 18);
+        const swapQuoteAddress = ((_h2 = swapPrice.info) == null ? void 0 : _h2.address) || "";
         const priceFiat = (exchangeRate * Number(swapQuotePriceFormatted)).toFixed(2);
-        return jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: ((_i2 = swapQuote.info) == null ? void 0 : _i2.name) || "Unknown", chainId, iconUrl: (_j2 = swapQuote.info) == null ? void 0 : _j2.logoURI, symbol: ((_k2 = swapQuote.info) == null ? void 0 : _k2.symbol) || "", onClick: () => {
+        return jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: ((_i2 = swapPrice.info) == null ? void 0 : _i2.name) || "Unknown", chainId, iconUrl: (_j2 = swapPrice.info) == null ? void 0 : _j2.logoURI, symbol: ((_k2 = swapPrice.info) == null ? void 0 : _k2.symbol) || "", onClick: () => {
           setSelectedCurrency(swapQuoteAddress);
         }, balance: String(Number(balanceFormatted2).toPrecision(4)), price: String(Number(swapQuotePriceFormatted).toPrecision(4)), fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", swapQuoteAddress), isInsufficientFunds: false }, swapQuoteAddress);
       }
     }) });
   };
   const onClickPurchase = () => {
-    if (selectedCurrency === currencyAddress) {
+    if (compareAddress$2(selectedCurrency || "", currencyAddress)) {
       onPurchaseMainCurrency();
     } else {
-      const foundSwap = swapQuotes == null ? void 0 : swapQuotes.find((quote) => {
+      const foundSwap = swapPrices == null ? void 0 : swapPrices.find((price2) => {
         var _a2;
-        return ((_a2 = quote.info) == null ? void 0 : _a2.address) === selectedCurrency;
+        return ((_a2 = price2.info) == null ? void 0 : _a2.address) === selectedCurrency;
       });
       if (foundSwap) {
         onClickPurchaseSwap(foundSwap);
       }
     }
   };
-  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(TextInput, { autoFocus: true, name: "Search", leftIcon: SvgSearchIcon, value: search2, onChange: (ev) => setSearch(ev.target.value), placeholder: "Search your coins", "data-1p-ignore": true }) }), jsxRuntimeExports$1.jsx(Box, { marginTop: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "259px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
+  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(TextInput, { autoFocus: true, name: "Search", leftIcon: SvgSearchIcon, value: search2, onChange: (ev) => setSearch(ev.target.value), placeholder: "Search your coins", "data-1p-ignore": true }) }), jsxRuntimeExports$1.jsx(Box, { marginTop: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "259px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency || !disableSwapQuote && isLoadingSwapQuote, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
 };
 const Price = () => {
   var _a2;
