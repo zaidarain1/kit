@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CHL0ui3c.js","./hooks.module-CotichkU.js","./inherits_browser-7uSc9W6h.js","./index-IGrFLIi_.js","./index.es-DjjT2d08.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CZPhIPxY.js","./hooks.module-BzRliAzy.js","./inherits_browser-CFQdjtxd.js","./index-BnirkJtN.js","./index.es-dFBAXTmN.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -15451,34 +15451,6 @@ const SvgSendIcon = ({ size: size2 = "sm", ...props }) => /* @__PURE__ */ jsxRun
     ...props
   }
 );
-const Svg$f = (props) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-  "svg",
-  {
-    xmlns: "http://www.w3.org/2000/svg",
-    fill: "none",
-    viewBox: "0 0 20 20",
-    ...props,
-    children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "path",
-      {
-        fill: "currentColor",
-        fillRule: "evenodd",
-        d: "M2.418 6.374v7.252c0 1.48 1.218 2.68 2.72 2.68h10.56c1.503 0 2.72-1.2 2.72-2.68V6.374c0-1.48-1.217-2.68-2.72-2.68H5.138c-1.502 0-2.72 1.2-2.72 2.68Zm4 .473a.794.794 0 0 0-.8-.789c-.442 0-.8.353-.8.789 0 .435.359.788.8.788.442 0 .8-.353.8-.788Zm-.8 5.513c.442 0 .8.353.8.788a.794.794 0 0 1-.8.789.794.794 0 0 1-.8-.789c0-.435.359-.788.8-.788Zm10.4-2.36a.794.794 0 0 0-.8-.788c-.441 0-.8.353-.8.788 0 .435.359.788.8.788.442 0 .8-.353.8-.788Zm-7.2-3.942h6.4c.442 0 .8.353.8.789a.794.794 0 0 1-.8.788h-6.4a.794.794 0 0 1-.8-.788c0-.436.359-.789.8-.789Zm6.4 6.302h-6.4c-.441 0-.8.353-.8.788 0 .436.359.789.8.789h6.4c.442 0 .8-.353.8-.789a.794.794 0 0 0-.8-.788Zm-9.6-3.148h6.4c.442 0 .8.353.8.788a.794.794 0 0 1-.8.788h-6.4a.794.794 0 0 1-.8-.788c0-.435.359-.788.8-.788Z",
-        clipRule: "evenodd"
-      }
-    )
-  }
-);
-const SvgSequenceIcon = ({ size: size2 = "sm", ...props }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-  Box,
-  {
-    as: Svg$f,
-    className: iconVariants({
-      size: size2
-    }),
-    ...props
-  }
-);
 const Svg$e = (props) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "svg",
   {
@@ -15615,34 +15587,6 @@ const SvgTransactionIcon = ({ size: size2 = "sm", ...props }) => /* @__PURE__ */
   Box,
   {
     as: Svg$7,
-    className: iconVariants({
-      size: size2
-    }),
-    ...props
-  }
-);
-const Svg$1 = (props) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-  "svg",
-  {
-    xmlns: "http://www.w3.org/2000/svg",
-    fill: "none",
-    viewBox: "0 0 20 20",
-    ...props,
-    children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "path",
-      {
-        fill: "currentColor",
-        fillRule: "evenodd",
-        d: "M5 6.05c0 .443.39.802.87.802H17V16H5.495C4.117 16 3 14.97 3 13.698V6.302C3 5.031 4.117 4 5.495 4H14.5v1.247H5.87c-.48 0-.87.36-.87.802Zm7 5.45a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z",
-        clipRule: "evenodd"
-      }
-    )
-  }
-);
-const SvgWalletIcon = ({ size: size2 = "sm", ...props }) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-  Box,
-  {
-    as: Svg$1,
     className: iconVariants({
       size: size2
     }),
@@ -33017,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-l2hDF_fX.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BAAITngB.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -86043,6 +85987,7 @@ var LocalStorageKey;
 })(LocalStorageKey || (LocalStorageKey = {}));
 const DEFAULT_SESSION_EXPIRATION = 60 * 60 * 24 * 7;
 const TRANSACTION_CONFIRMATIONS_DEFAULT = 4;
+const NATIVE_TOKEN_ADDRESS_0X = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 const createGenericContext$2 = () => {
   const genericContext = reactExports.createContext(void 0);
   const useGenericContext = () => {
@@ -97799,6 +97744,7 @@ const getSwapPrices = async (apiClient, metadataClient, indexerClient, args) => 
     return [];
   }
   try {
+    const network2 = findSupportedNetwork(args.chainId);
     const { withContractInfo, ...swapPricesArgs } = args;
     const res = await apiClient.getSwapPrices({
       ...swapPricesArgs
@@ -97810,46 +97756,62 @@ const getSwapPrices = async (apiClient, metadataClient, indexerClient, args) => 
     if (withContractInfo) {
       res == null ? void 0 : res.swapPrices.forEach((price) => {
         const { currencyAddress } = price;
+        const isNativeToken = compareAddress$2(currencyAddress, NATIVE_TOKEN_ADDRESS_0X);
         if (currencyAddress && !currencyInfoMap.has(currencyAddress)) {
           currencyInfoMap.set(currencyAddress, metadataClient.getContractInfo({
             chainID: String(args.chainId),
             contractAddress: currencyAddress
-          }).then((data) => data.contractInfo));
+          }).then((data) => {
+            return {
+              ...data.contractInfo,
+              ...isNativeToken ? {
+                ...network2 == null ? void 0 : network2.nativeToken,
+                logoURI: (network2 == null ? void 0 : network2.logoURI) || ""
+              } : {}
+            };
+          }));
         }
       });
     }
     const currencyBalanceInfoMap = /* @__PURE__ */ new Map();
     res == null ? void 0 : res.swapPrices.forEach((price) => {
       const { currencyAddress } = price;
+      const isNativeToken = compareAddress$2(currencyAddress, NATIVE_TOKEN_ADDRESS_0X);
       if (currencyAddress && !currencyBalanceInfoMap.has(currencyAddress)) {
-        currencyBalanceInfoMap.set(currencyAddress, indexerClient.getTokenBalances({
+        currencyBalanceInfoMap.set(currencyAddress, isNativeToken ? indexerClient.getEtherBalance({
+          accountAddress: args.userAddress
+        }).then((res2) => ({
+          balance: res2.balance.balanceWei
+        })) : indexerClient.getTokenBalances({
           accountAddress: args.userAddress,
           contractAddress: currencyAddress,
-          includeMetadata: true,
+          includeMetadata: false,
           metadataOptions: {
             verifiedOnly: true
           }
         }).then((balances) => {
           var _a2;
-          return ((_a2 = balances.balances) == null ? void 0 : _a2[0]) || [];
+          return {
+            balance: ((_a2 = balances.balances) == null ? void 0 : _a2[0].balance) || "0"
+          };
         }));
       }
     });
     return Promise.all((res == null ? void 0 : res.swapPrices.map(async (price) => ({
       price,
       info: await currencyInfoMap.get(price.currencyAddress) || void 0,
-      balance: await currencyBalanceInfoMap.get(price.currencyAddress) || void 0
+      balance: await currencyBalanceInfoMap.get(price.currencyAddress) || { balance: "0" }
     }))) || []);
   } catch (e2) {
     console.error(e2);
     return [];
   }
 };
-const useSwapPrices = (args) => {
+const useSwapPrices = (args, options) => {
   const apiClient = useAPIClient();
   const metadataClient = useMetadataClient();
   const indexerClient = useIndexerClient(args.chainId);
-  const enabled = !!args.chainId && !!args.userAddress && !!args.buyCurrencyAddress && !!args.buyAmount && args.buyAmount !== "0";
+  const enabled = !!args.chainId && !!args.userAddress && !!args.buyCurrencyAddress && !!args.buyAmount && args.buyAmount !== "0" && !options.disabled;
   return useQuery$1({
     queryKey: ["swapPrices", args],
     queryFn: () => getSwapPrices(apiClient, metadataClient, indexerClient, args),
@@ -98626,7 +98588,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CHL0ui3c.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CZPhIPxY.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98808,7 +98770,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-IGrFLIi_.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-BnirkJtN.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99044,7 +99006,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DjjT2d08.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-dFBAXTmN.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -99800,10 +99762,6 @@ function useWaasFeeOptions() {
   });
   return [pendingFeeOptionConfirmation, confirmPendingFeeOption, rejectPendingFeeOption];
 }
-const HEADER_HEIGHT$1 = "54px";
-const CARD_HEIGHT = "130px";
-const CARD_HEIGHT_MOBILE = "180px";
-const PAYMENT_SELECTION_MODAL_HEIGHT = "786px";
 const createGenericContext$1 = () => {
   const genericContext = reactExports.createContext(void 0);
   const useGenericContext = () => {
@@ -99820,6 +99778,7 @@ const [useCheckoutModalContext, CheckoutModalContextProvider] = createGenericCon
 const [useNavigationContext$1, NavigationContextProvider$1] = createGenericContext$1();
 const [useSelectPaymentContext, SelectPaymentContextProvider] = createGenericContext$1();
 const [useTransferFundsModalContext, TransferFundsContextProvider] = createGenericContext$1();
+const HEADER_HEIGHT$1 = "54px";
 const useNavigation$1 = () => {
   const { setHistory, history, defaultLocation } = useNavigationContext$1();
   const setNavigation = (navigation2) => {
@@ -100296,60 +100255,66 @@ const AddFundsContent = () => {
   }, children: jsxRuntimeExports$1.jsx(Box, { as: "iframe", width: "full", height: "full", borderWidth: "none", src: link }) });
 };
 const Footer$1 = () => {
-  return jsxRuntimeExports$1.jsx(Box, { paddingBottom: "8", height: "7", marginTop: "1", width: "full", style: { bottom: "4px" }, children: jsxRuntimeExports$1.jsxs(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsxs(Box, { as: "a", href: "https://sequence.xyz/", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, gap: "1", justifyContent: "center", alignItems: "center", cursor: "pointer", children: [jsxRuntimeExports$1.jsx(SvgSequenceIcon, { color: "text50" }), jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Sequence" })] }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/privacy", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Privacy" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/terms", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Terms" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://docs.sequence.xyz/", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "xsmall", children: "Help" }) })] }) });
+  const { selectPaymentSettings } = useSelectPaymentModal();
+  return jsxRuntimeExports$1.jsxs(Box, { paddingBottom: "6", paddingTop: "5", marginTop: "1", width: "full", justifyContent: "center", alignItems: "center", flexDirection: "column", children: [(selectPaymentSettings == null ? void 0 : selectPaymentSettings.copyrightText) && jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "normal", fontWeight: "bold", children: selectPaymentSettings.copyrightText }), jsxRuntimeExports$1.jsxs(Box, { gap: "4", justifyContent: "center", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://support.sequence.xyz/en/", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "normal", fontWeight: "bold", children: "Help" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/privacy", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "normal", fontWeight: "bold", children: "Privacy Policy" }) }), jsxRuntimeExports$1.jsx(Box, { as: "a", href: "https://sequence.xyz/terms", rel: "noopener noreferrer", target: "_blank", textDecoration: "none", opacity: { hover: "80" }, cursor: "pointer", children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "normal", fontWeight: "bold", children: "Terms of Service" }) })] })] });
 };
-const ItemDescription = ({ tokenId, nftQuantity }) => {
+const OrderSummary = () => {
+  var _a2;
   const { selectPaymentSettings } = useSelectPaymentModal();
   const chain = selectPaymentSettings.chain;
   const network2 = findSupportedNetwork(chain);
   const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
   const collectionAddress = selectPaymentSettings.collectionAddress;
-  const { data: tokenMetadatas, isLoading: isLoadingTokenMetadatas } = useTokenMetadata(chainId, collectionAddress, [tokenId]);
-  const tokenMetadata = tokenMetadatas == null ? void 0 : tokenMetadatas[0];
-  const isLoading = isLoadingTokenMetadatas;
+  const tokenIds = (selectPaymentSettings == null ? void 0 : selectPaymentSettings.collectibles.map((c2) => c2.tokenId)) || [];
+  const { data: tokenMetadatas, isLoading: isLoadingTokenMetadatas } = useTokenMetadata(chainId, collectionAddress, tokenIds);
+  const { data: dataCollectionInfo, isLoading: isLoadingCollectionInfo } = useContractInfo(chainId, selectPaymentSettings.collectionAddress);
+  const { data: dataCurrencyInfo, isLoading: isLoadingCurrencyInfo } = useContractInfo(chainId, selectPaymentSettings.currencyAddress);
+  const { data: dataCoinPrices, isLoading: isLoadingCoinPrices } = useCoinPrices([
+    {
+      chainId,
+      contractAddress: selectPaymentSettings.currencyAddress
+    }
+  ]);
+  const isLoading = isLoadingTokenMetadatas || isLoadingCollectionInfo || isLoadingCurrencyInfo || isLoadingCoinPrices;
   if (isLoading) {
-    return jsxRuntimeExports$1.jsx(Box, { marginBottom: "2", paddingX: "6", gap: "3", style: { height: "72px" }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
+    return jsxRuntimeExports$1.jsx(Box, { marginBottom: "2", gap: "3", style: { height: "72px" }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
   }
-  return jsxRuntimeExports$1.jsxs(Box, { marginBottom: "2", paddingX: "6", gap: "5", alignItems: "center", children: [jsxRuntimeExports$1.jsxs(Box, { position: "relative", children: [jsxRuntimeExports$1.jsx(Box, { background: "backgroundControl", borderRadius: "md", style: {
-    height: "60px",
-    width: "60px",
-    transform: "rotate(-15deg)"
-  } }), jsxRuntimeExports$1.jsx(Box, { position: "absolute", borderRadius: "md", style: {
-    height: "60px",
-    width: "60px",
-    bottom: "0"
-  }, children: jsxRuntimeExports$1.jsx(CollectibleTileImage$1, { imageUrl: tokenMetadata == null ? void 0 : tokenMetadata.image }) })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "0.5", children: [jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text100", fontWeight: "bold", children: (tokenMetadata == null ? void 0 : tokenMetadata.name) || "Unknown" }), jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", fontWeight: "medium", children: Number(nftQuantity) === 1 ? `${nftQuantity} item` : `${nftQuantity} items` }), jsxRuntimeExports$1.jsx(Box, { marginTop: "1", children: jsxRuntimeExports$1.jsx(NetworkBadge$1, { chainId }) })] })] });
-};
-const getCardHeight = (isMobile) => {
-  if (isMobile) {
-    return CARD_HEIGHT_MOBILE;
-  }
-  return CARD_HEIGHT;
-};
-const PaymentProviderOption = ({ name: name2, onClick, isSelected, isRecommended, logo }) => {
-  return jsxRuntimeExports$1.jsx(Card, { borderColor: isSelected ? "backgroundRaised" : "transparent", borderWidth: "thick", borderStyle: "solid", justifyContent: "space-between", padding: "4", onClick, opacity: {
-    hover: "80",
-    base: "100"
-  }, cursor: "pointer", children: jsxRuntimeExports$1.jsxs(Box, { justifyContent: "space-between", width: "full", children: [jsxRuntimeExports$1.jsxs(Box, { justifyContent: "space-between", alignItems: "center", gap: "3", children: [jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", children: logo }), jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text80", children: name2 })] }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "3", children: isRecommended && jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "small", children: "Recommended" }) })] }) });
-};
-const SardineLogo = () => {
-  return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children: jsxRuntimeExports$1.jsxs("svg", { style: { borderRadius: vars.radii.md }, width: "42", height: "42", viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [jsxRuntimeExports$1.jsx("rect", { width: "24", height: "24", fill: "#2D29D7" }), jsxRuntimeExports$1.jsx("path", { d: "M19.6675 12.2188L13.9751 17.9112C13.8567 18.0296 13.649 18.0296 13.5306 17.9112L9.72601 14.1053C9.5485 13.9291 9.45219 13.6938 9.45219 13.4448C9.45219 13.1957 9.54988 12.9604 9.72601 12.7843L9.88975 12.6206C9.90213 12.6068 9.92002 12.5999 9.93653 12.5999C9.95442 12.5999 9.97093 12.6068 9.98332 12.6192L13.5788 16.216C13.6723 16.3082 13.8333 16.3082 13.9269 16.216L17.9709 12.1706C18.0659 12.0757 18.0659 11.9188 17.9709 11.8239L13.9269 7.77847C13.8333 7.68627 13.6723 7.6849 13.5802 7.77847L4.89078 16.4651C4.82336 16.5325 4.72979 16.5504 4.64173 16.5146C4.55366 16.4775 4.5 16.3963 4.5 16.3013V7.6904C4.5 7.59546 4.55366 7.51428 4.64173 7.4785C4.72841 7.44135 4.82473 7.46061 4.89216 7.52804L7.2506 9.88648C7.42673 10.0626 7.52442 10.2979 7.52442 10.547C7.52442 10.796 7.42673 11.0327 7.2506 11.2088L7.08824 11.3712C7.06484 11.3946 7.01944 11.3946 6.99467 11.3712L5.95855 10.3351C5.91314 10.2896 5.85397 10.2896 5.81545 10.3062C5.77554 10.3227 5.73289 10.3639 5.73289 10.4286V13.5617C5.73289 13.6264 5.77554 13.6677 5.81545 13.6842C5.85397 13.6993 5.91314 13.7007 5.95855 13.6553L13.5306 6.08462C13.6434 5.97179 13.8622 5.97179 13.9751 6.08462L19.6675 11.7771C19.79 11.8982 19.79 12.0977 19.6675 12.2202V12.2188Z", fill: "white" })] }) });
+  const formattedPrice = formatUnits$2(BigInt(selectPaymentSettings.price), (dataCurrencyInfo == null ? void 0 : dataCurrencyInfo.decimals) || 0);
+  const totalQuantity = (selectPaymentSettings == null ? void 0 : selectPaymentSettings.collectibles.reduce((accumulator, collectible) => {
+    const quantity = formatUnits$2(BigInt(collectible.quantity), Number(collectible.decimals || 0));
+    return accumulator + Number(quantity);
+  }, 0)) || 0;
+  const fiatExchangeRate = ((_a2 = dataCoinPrices == null ? void 0 : dataCoinPrices[0].price) == null ? void 0 : _a2.value) || 0;
+  const priceFiat = (fiatExchangeRate * Number(formattedPrice)).toFixed(2);
+  return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "5", children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "bold", color: "text100", children: `${totalQuantity} ${totalQuantity > 1 ? "items" : "item"}` }) }), jsxRuntimeExports$1.jsx(Box, { flexDirection: "row", gap: "1", children: selectPaymentSettings.collectibles.map((collectible) => {
+    const collectibleQuantity = Number(formatUnits$2(BigInt(collectible.quantity), Number(collectible.decimals || 0)));
+    const tokenMetadata = tokenMetadatas == null ? void 0 : tokenMetadatas.find((tokenMetadata2) => tokenMetadata2.tokenId === collectible.tokenId);
+    return jsxRuntimeExports$1.jsxs(Box, { gap: "3", alignItems: "center", children: [jsxRuntimeExports$1.jsx(Box, { borderRadius: "md", style: {
+      height: "36px",
+      width: "36px"
+    }, children: jsxRuntimeExports$1.jsx(CollectibleTileImage$1, { imageUrl: tokenMetadata == null ? void 0 : tokenMetadata.image }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "0.5", children: [jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text80", fontWeight: "medium", children: (dataCollectionInfo == null ? void 0 : dataCollectionInfo.name) || null }), jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text100", fontWeight: "bold", children: `${(tokenMetadata == null ? void 0 : tokenMetadata.name) || "Collectible"} ${collectibleQuantity > 1 ? `x${collectibleQuantity}` : null}` })] })] }, collectible.tokenId);
+  }) }), jsxRuntimeExports$1.jsxs(Box, { gap: "1", flexDirection: "column", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "2", alignItems: "center", children: [jsxRuntimeExports$1.jsx(NetworkImage, { chainId, size: "sm" }), jsxRuntimeExports$1.jsx(Text, { color: "white", variant: "large", fontWeight: "bold", children: `${formattedPrice} ${dataCurrencyInfo == null ? void 0 : dataCurrencyInfo.symbol}` })] }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "normal", fontWeight: "normal", children: `$${priceFiat} estimated total` }) })] }), jsxRuntimeExports$1.jsx(NetworkBadge$1, { chainId })] });
 };
 const PayWithCreditCard = ({ settings, disableButtons }) => {
   const { chain, currencyAddress, targetContractAddress, price, txData, collectibles, collectionAddress, isDev = false, onSuccess = () => {
   }, onError = () => {
   }, creditCardProviders = [] } = settings;
   const { address: userAddress } = useAccount();
-  const isMobile = useMediaQuery("isMobile");
+  useMediaQuery("isMobile");
   const { clearCachedBalances } = useClearCachedBalances();
   const { closeSelectPaymentModal } = useSelectPaymentModal();
   const { triggerCheckout } = useCheckoutModal();
   const network2 = findSupportedNetwork(chain);
   const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
   const { data: currencyInfoData, isLoading: isLoadingContractInfo } = useContractInfo(chainId, currencyAddress);
-  const [selectedPaymentProvider, setSelecterPaymentProvider] = reactExports.useState();
+  const [selectedPaymentProvider, setSelectedPaymentProvider] = reactExports.useState();
   const isLoading = isLoadingContractInfo;
-  const onClickPurchase = () => {
+  reactExports.useEffect(() => {
+    if (selectedPaymentProvider) {
+      payWithSelectedProvider();
+    }
+  }, [selectedPaymentProvider]);
+  const payWithSelectedProvider = () => {
     switch (selectedPaymentProvider) {
       case "sardine":
         onPurchaseSardine();
@@ -100389,1400 +100354,53 @@ const PayWithCreditCard = ({ settings, disableButtons }) => {
     closeSelectPaymentModal();
     triggerCheckout(checkoutSettings);
   };
-  if (isLoading) {
-    return jsxRuntimeExports$1.jsx(Card, { width: "full", flexDirection: "column", alignItems: "center", justifyContent: "center", style: {
-      minHeight: getCardHeight(isMobile)
-    }, children: jsxRuntimeExports$1.jsx(Spinner, {}) });
-  }
   const Options = () => {
     return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2", width: "full", children: creditCardProviders.map((creditCardProvider) => {
       switch (creditCardProvider) {
         case "sardine":
-          return jsxRuntimeExports$1.jsx(PaymentProviderOption, { name: "Sardine", logo: SardineLogo(), onClick: () => {
-            setSelecterPaymentProvider("sardine");
-          }, isSelected: selectedPaymentProvider === "sardine", isRecommended: true }, creditCardProvider);
+          return jsxRuntimeExports$1.jsxs(Card, { justifyContent: "space-between", alignItems: "center", padding: "4", onClick: () => {
+            setSelectedPaymentProvider("sardine");
+          }, opacity: {
+            hover: "80",
+            base: "100"
+          }, cursor: "pointer", disabled: disableButtons, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "3", alignItems: "center", children: [jsxRuntimeExports$1.jsx(SvgPaymentsIcon, { color: "white" }), jsxRuntimeExports$1.jsx(Text, { color: "text100", variant: "normal", fontWeight: "bold", children: "Pay with credit or debit card" })] }), jsxRuntimeExports$1.jsx(Box, { style: { transform: "rotate(-45deg)" }, children: jsxRuntimeExports$1.jsx(SvgArrowRightIcon, { color: "white" }) })] });
         default:
           return null;
       }
     }) });
   };
-  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsxs(Box, { marginTop: "3", flexDirection: "column", gap: "1", children: [jsxRuntimeExports$1.jsx(Text, { variant: "medium", fontWeight: "medium", color: "text80", children: "Debit and credit card" }), jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a payment provider to purchase crypto directly" })] }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "302px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedPaymentProvider, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
+  return jsxRuntimeExports$1.jsx(Box, { width: "full", children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) });
 };
-function isArray(value) {
-  return !Array.isArray ? getTag(value) === "[object Array]" : Array.isArray(value);
-}
-const INFINITY = 1 / 0;
-function baseToString(value) {
-  if (typeof value == "string") {
-    return value;
-  }
-  let result = value + "";
-  return result == "0" && 1 / value == -INFINITY ? "-0" : result;
-}
-function toString(value) {
-  return value == null ? "" : baseToString(value);
-}
-function isString(value) {
-  return typeof value === "string";
-}
-function isNumber(value) {
-  return typeof value === "number";
-}
-function isBoolean(value) {
-  return value === true || value === false || isObjectLike(value) && getTag(value) == "[object Boolean]";
-}
-function isObject(value) {
-  return typeof value === "object";
-}
-function isObjectLike(value) {
-  return isObject(value) && value !== null;
-}
-function isDefined(value) {
-  return value !== void 0 && value !== null;
-}
-function isBlank(value) {
-  return !value.trim().length;
-}
-function getTag(value) {
-  return value == null ? value === void 0 ? "[object Undefined]" : "[object Null]" : Object.prototype.toString.call(value);
-}
-const EXTENDED_SEARCH_UNAVAILABLE = "Extended search is not available";
-const INCORRECT_INDEX_TYPE = "Incorrect 'index' type";
-const LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY = (key) => `Invalid value for key ${key}`;
-const PATTERN_LENGTH_TOO_LARGE = (max2) => `Pattern length exceeds max of ${max2}.`;
-const MISSING_KEY_PROPERTY = (name2) => `Missing ${name2} property in key`;
-const INVALID_KEY_WEIGHT_VALUE = (key) => `Property 'weight' in key '${key}' must be a positive integer`;
-const hasOwn = Object.prototype.hasOwnProperty;
-class KeyStore {
-  constructor(keys) {
-    this._keys = [];
-    this._keyMap = {};
-    let totalWeight = 0;
-    keys.forEach((key) => {
-      let obj = createKey(key);
-      totalWeight += obj.weight;
-      this._keys.push(obj);
-      this._keyMap[obj.id] = obj;
-      totalWeight += obj.weight;
-    });
-    this._keys.forEach((key) => {
-      key.weight /= totalWeight;
-    });
-  }
-  get(keyId) {
-    return this._keyMap[keyId];
-  }
-  keys() {
-    return this._keys;
-  }
-  toJSON() {
-    return JSON.stringify(this._keys);
-  }
-}
-function createKey(key) {
-  let path = null;
-  let id2 = null;
-  let src = null;
-  let weight = 1;
-  let getFn = null;
-  if (isString(key) || isArray(key)) {
-    src = key;
-    path = createKeyPath(key);
-    id2 = createKeyId(key);
-  } else {
-    if (!hasOwn.call(key, "name")) {
-      throw new Error(MISSING_KEY_PROPERTY("name"));
-    }
-    const name2 = key.name;
-    src = name2;
-    if (hasOwn.call(key, "weight")) {
-      weight = key.weight;
-      if (weight <= 0) {
-        throw new Error(INVALID_KEY_WEIGHT_VALUE(name2));
-      }
-    }
-    path = createKeyPath(name2);
-    id2 = createKeyId(name2);
-    getFn = key.getFn;
-  }
-  return { path, id: id2, weight, src, getFn };
-}
-function createKeyPath(key) {
-  return isArray(key) ? key : key.split(".");
-}
-function createKeyId(key) {
-  return isArray(key) ? key.join(".") : key;
-}
-function get(obj, path) {
-  let list2 = [];
-  let arr = false;
-  const deepGet = (obj2, path2, index2) => {
-    if (!isDefined(obj2)) {
-      return;
-    }
-    if (!path2[index2]) {
-      list2.push(obj2);
-    } else {
-      let key = path2[index2];
-      const value = obj2[key];
-      if (!isDefined(value)) {
-        return;
-      }
-      if (index2 === path2.length - 1 && (isString(value) || isNumber(value) || isBoolean(value))) {
-        list2.push(toString(value));
-      } else if (isArray(value)) {
-        arr = true;
-        for (let i = 0, len = value.length; i < len; i += 1) {
-          deepGet(value[i], path2, index2 + 1);
-        }
-      } else if (path2.length) {
-        deepGet(value, path2, index2 + 1);
-      }
-    }
-  };
-  deepGet(obj, isString(path) ? path.split(".") : path, 0);
-  return arr ? list2 : list2[0];
-}
-const MatchOptions = {
-  // Whether the matches should be included in the result set. When `true`, each record in the result
-  // set will include the indices of the matched characters.
-  // These can consequently be used for highlighting purposes.
-  includeMatches: false,
-  // When `true`, the matching function will continue to the end of a search pattern even if
-  // a perfect match has already been located in the string.
-  findAllMatches: false,
-  // Minimum number of characters that must be matched before a result is considered a match
-  minMatchCharLength: 1
-};
-const BasicOptions = {
-  // When `true`, the algorithm continues searching to the end of the input even if a perfect
-  // match is found before the end of the same input.
-  isCaseSensitive: false,
-  // When true, the matching function will continue to the end of a search pattern even if
-  includeScore: false,
-  // List of properties that will be searched. This also supports nested properties.
-  keys: [],
-  // Whether to sort the result list, by score
-  shouldSort: true,
-  // Default sort function: sort by ascending score, ascending index
-  sortFn: (a2, b2) => a2.score === b2.score ? a2.idx < b2.idx ? -1 : 1 : a2.score < b2.score ? -1 : 1
-};
-const FuzzyOptions = {
-  // Approximately where in the text is the pattern expected to be found?
-  location: 0,
-  // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match
-  // (of both letters and location), a threshold of '1.0' would match anything.
-  threshold: 0.6,
-  // Determines how close the match must be to the fuzzy location (specified above).
-  // An exact letter match which is 'distance' characters away from the fuzzy location
-  // would score as a complete mismatch. A distance of '0' requires the match be at
-  // the exact location specified, a threshold of '1000' would require a perfect match
-  // to be within 800 characters of the fuzzy location to be found using a 0.8 threshold.
-  distance: 100
-};
-const AdvancedOptions = {
-  // When `true`, it enables the use of unix-like search commands
-  useExtendedSearch: false,
-  // The get function to use when fetching an object's properties.
-  // The default will search nested paths *ie foo.bar.baz*
-  getFn: get,
-  // When `true`, search will ignore `location` and `distance`, so it won't matter
-  // where in the string the pattern appears.
-  // More info: https://fusejs.io/concepts/scoring-theory.html#fuzziness-score
-  ignoreLocation: false,
-  // When `true`, the calculation for the relevance score (used for sorting) will
-  // ignore the field-length norm.
-  // More info: https://fusejs.io/concepts/scoring-theory.html#field-length-norm
-  ignoreFieldNorm: false,
-  // The weight to determine how much field length norm effects scoring.
-  fieldNormWeight: 1
-};
-var Config = {
-  ...BasicOptions,
-  ...MatchOptions,
-  ...FuzzyOptions,
-  ...AdvancedOptions
-};
-const SPACE = /[^ ]+/g;
-function norm(weight = 1, mantissa = 3) {
-  const cache2 = /* @__PURE__ */ new Map();
-  const m2 = Math.pow(10, mantissa);
-  return {
-    get(value) {
-      const numTokens = value.match(SPACE).length;
-      if (cache2.has(numTokens)) {
-        return cache2.get(numTokens);
-      }
-      const norm2 = 1 / Math.pow(numTokens, 0.5 * weight);
-      const n2 = parseFloat(Math.round(norm2 * m2) / m2);
-      cache2.set(numTokens, n2);
-      return n2;
-    },
-    clear() {
-      cache2.clear();
-    }
-  };
-}
-class FuseIndex {
-  constructor({
-    getFn = Config.getFn,
-    fieldNormWeight = Config.fieldNormWeight
-  } = {}) {
-    this.norm = norm(fieldNormWeight, 3);
-    this.getFn = getFn;
-    this.isCreated = false;
-    this.setIndexRecords();
-  }
-  setSources(docs = []) {
-    this.docs = docs;
-  }
-  setIndexRecords(records = []) {
-    this.records = records;
-  }
-  setKeys(keys = []) {
-    this.keys = keys;
-    this._keysMap = {};
-    keys.forEach((key, idx) => {
-      this._keysMap[key.id] = idx;
-    });
-  }
-  create() {
-    if (this.isCreated || !this.docs.length) {
-      return;
-    }
-    this.isCreated = true;
-    if (isString(this.docs[0])) {
-      this.docs.forEach((doc, docIndex) => {
-        this._addString(doc, docIndex);
-      });
-    } else {
-      this.docs.forEach((doc, docIndex) => {
-        this._addObject(doc, docIndex);
-      });
-    }
-    this.norm.clear();
-  }
-  // Adds a doc to the end of the index
-  add(doc) {
-    const idx = this.size();
-    if (isString(doc)) {
-      this._addString(doc, idx);
-    } else {
-      this._addObject(doc, idx);
-    }
-  }
-  // Removes the doc at the specified index of the index
-  removeAt(idx) {
-    this.records.splice(idx, 1);
-    for (let i = idx, len = this.size(); i < len; i += 1) {
-      this.records[i].i -= 1;
-    }
-  }
-  getValueForItemAtKeyId(item2, keyId) {
-    return item2[this._keysMap[keyId]];
-  }
-  size() {
-    return this.records.length;
-  }
-  _addString(doc, docIndex) {
-    if (!isDefined(doc) || isBlank(doc)) {
-      return;
-    }
-    let record = {
-      v: doc,
-      i: docIndex,
-      n: this.norm.get(doc)
-    };
-    this.records.push(record);
-  }
-  _addObject(doc, docIndex) {
-    let record = { i: docIndex, $: {} };
-    this.keys.forEach((key, keyIndex) => {
-      let value = key.getFn ? key.getFn(doc) : this.getFn(doc, key.path);
-      if (!isDefined(value)) {
-        return;
-      }
-      if (isArray(value)) {
-        let subRecords = [];
-        const stack = [{ nestedArrIndex: -1, value }];
-        while (stack.length) {
-          const { nestedArrIndex, value: value2 } = stack.pop();
-          if (!isDefined(value2)) {
-            continue;
-          }
-          if (isString(value2) && !isBlank(value2)) {
-            let subRecord = {
-              v: value2,
-              i: nestedArrIndex,
-              n: this.norm.get(value2)
-            };
-            subRecords.push(subRecord);
-          } else if (isArray(value2)) {
-            value2.forEach((item2, k2) => {
-              stack.push({
-                nestedArrIndex: k2,
-                value: item2
-              });
-            });
-          } else ;
-        }
-        record.$[keyIndex] = subRecords;
-      } else if (isString(value) && !isBlank(value)) {
-        let subRecord = {
-          v: value,
-          n: this.norm.get(value)
-        };
-        record.$[keyIndex] = subRecord;
-      }
-    });
-    this.records.push(record);
-  }
-  toJSON() {
-    return {
-      keys: this.keys,
-      records: this.records
-    };
-  }
-}
-function createIndex(keys, docs, { getFn = Config.getFn, fieldNormWeight = Config.fieldNormWeight } = {}) {
-  const myIndex = new FuseIndex({ getFn, fieldNormWeight });
-  myIndex.setKeys(keys.map(createKey));
-  myIndex.setSources(docs);
-  myIndex.create();
-  return myIndex;
-}
-function parseIndex(data, { getFn = Config.getFn, fieldNormWeight = Config.fieldNormWeight } = {}) {
-  const { keys, records } = data;
-  const myIndex = new FuseIndex({ getFn, fieldNormWeight });
-  myIndex.setKeys(keys);
-  myIndex.setIndexRecords(records);
-  return myIndex;
-}
-function computeScore$1(pattern, {
-  errors: errors2 = 0,
-  currentLocation = 0,
-  expectedLocation = 0,
-  distance: distance2 = Config.distance,
-  ignoreLocation = Config.ignoreLocation
-} = {}) {
-  const accuracy = errors2 / pattern.length;
-  if (ignoreLocation) {
-    return accuracy;
-  }
-  const proximity = Math.abs(expectedLocation - currentLocation);
-  if (!distance2) {
-    return proximity ? 1 : accuracy;
-  }
-  return accuracy + proximity / distance2;
-}
-function convertMaskToIndices(matchmask = [], minMatchCharLength = Config.minMatchCharLength) {
-  let indices = [];
-  let start = -1;
-  let end = -1;
-  let i = 0;
-  for (let len = matchmask.length; i < len; i += 1) {
-    let match = matchmask[i];
-    if (match && start === -1) {
-      start = i;
-    } else if (!match && start !== -1) {
-      end = i - 1;
-      if (end - start + 1 >= minMatchCharLength) {
-        indices.push([start, end]);
-      }
-      start = -1;
-    }
-  }
-  if (matchmask[i - 1] && i - start >= minMatchCharLength) {
-    indices.push([start, i - 1]);
-  }
-  return indices;
-}
-const MAX_BITS = 32;
-function search(text2, pattern, patternAlphabet, {
-  location: location2 = Config.location,
-  distance: distance2 = Config.distance,
-  threshold = Config.threshold,
-  findAllMatches = Config.findAllMatches,
-  minMatchCharLength = Config.minMatchCharLength,
-  includeMatches = Config.includeMatches,
-  ignoreLocation = Config.ignoreLocation
-} = {}) {
-  if (pattern.length > MAX_BITS) {
-    throw new Error(PATTERN_LENGTH_TOO_LARGE(MAX_BITS));
-  }
-  const patternLen = pattern.length;
-  const textLen = text2.length;
-  const expectedLocation = Math.max(0, Math.min(location2, textLen));
-  let currentThreshold = threshold;
-  let bestLocation = expectedLocation;
-  const computeMatches = minMatchCharLength > 1 || includeMatches;
-  const matchMask = computeMatches ? Array(textLen) : [];
-  let index2;
-  while ((index2 = text2.indexOf(pattern, bestLocation)) > -1) {
-    let score = computeScore$1(pattern, {
-      currentLocation: index2,
-      expectedLocation,
-      distance: distance2,
-      ignoreLocation
-    });
-    currentThreshold = Math.min(score, currentThreshold);
-    bestLocation = index2 + patternLen;
-    if (computeMatches) {
-      let i = 0;
-      while (i < patternLen) {
-        matchMask[index2 + i] = 1;
-        i += 1;
-      }
-    }
-  }
-  bestLocation = -1;
-  let lastBitArr = [];
-  let finalScore = 1;
-  let binMax = patternLen + textLen;
-  const mask2 = 1 << patternLen - 1;
-  for (let i = 0; i < patternLen; i += 1) {
-    let binMin = 0;
-    let binMid = binMax;
-    while (binMin < binMid) {
-      const score2 = computeScore$1(pattern, {
-        errors: i,
-        currentLocation: expectedLocation + binMid,
-        expectedLocation,
-        distance: distance2,
-        ignoreLocation
-      });
-      if (score2 <= currentThreshold) {
-        binMin = binMid;
-      } else {
-        binMax = binMid;
-      }
-      binMid = Math.floor((binMax - binMin) / 2 + binMin);
-    }
-    binMax = binMid;
-    let start = Math.max(1, expectedLocation - binMid + 1);
-    let finish = findAllMatches ? textLen : Math.min(expectedLocation + binMid, textLen) + patternLen;
-    let bitArr = Array(finish + 2);
-    bitArr[finish + 1] = (1 << i) - 1;
-    for (let j2 = finish; j2 >= start; j2 -= 1) {
-      let currentLocation = j2 - 1;
-      let charMatch = patternAlphabet[text2.charAt(currentLocation)];
-      if (computeMatches) {
-        matchMask[currentLocation] = +!!charMatch;
-      }
-      bitArr[j2] = (bitArr[j2 + 1] << 1 | 1) & charMatch;
-      if (i) {
-        bitArr[j2] |= (lastBitArr[j2 + 1] | lastBitArr[j2]) << 1 | 1 | lastBitArr[j2 + 1];
-      }
-      if (bitArr[j2] & mask2) {
-        finalScore = computeScore$1(pattern, {
-          errors: i,
-          currentLocation,
-          expectedLocation,
-          distance: distance2,
-          ignoreLocation
-        });
-        if (finalScore <= currentThreshold) {
-          currentThreshold = finalScore;
-          bestLocation = currentLocation;
-          if (bestLocation <= expectedLocation) {
-            break;
-          }
-          start = Math.max(1, 2 * expectedLocation - bestLocation);
-        }
-      }
-    }
-    const score = computeScore$1(pattern, {
-      errors: i + 1,
-      currentLocation: expectedLocation,
-      expectedLocation,
-      distance: distance2,
-      ignoreLocation
-    });
-    if (score > currentThreshold) {
-      break;
-    }
-    lastBitArr = bitArr;
-  }
-  const result = {
-    isMatch: bestLocation >= 0,
-    // Count exact matches (those with a score of 0) to be "almost" exact
-    score: Math.max(1e-3, finalScore)
-  };
-  if (computeMatches) {
-    const indices = convertMaskToIndices(matchMask, minMatchCharLength);
-    if (!indices.length) {
-      result.isMatch = false;
-    } else if (includeMatches) {
-      result.indices = indices;
-    }
-  }
-  return result;
-}
-function createPatternAlphabet(pattern) {
-  let mask2 = {};
-  for (let i = 0, len = pattern.length; i < len; i += 1) {
-    const char = pattern.charAt(i);
-    mask2[char] = (mask2[char] || 0) | 1 << len - i - 1;
-  }
-  return mask2;
-}
-class BitapSearch {
-  constructor(pattern, {
-    location: location2 = Config.location,
-    threshold = Config.threshold,
-    distance: distance2 = Config.distance,
-    includeMatches = Config.includeMatches,
-    findAllMatches = Config.findAllMatches,
-    minMatchCharLength = Config.minMatchCharLength,
-    isCaseSensitive = Config.isCaseSensitive,
-    ignoreLocation = Config.ignoreLocation
-  } = {}) {
-    this.options = {
-      location: location2,
-      threshold,
-      distance: distance2,
-      includeMatches,
-      findAllMatches,
-      minMatchCharLength,
-      isCaseSensitive,
-      ignoreLocation
-    };
-    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
-    this.chunks = [];
-    if (!this.pattern.length) {
-      return;
-    }
-    const addChunk = (pattern2, startIndex) => {
-      this.chunks.push({
-        pattern: pattern2,
-        alphabet: createPatternAlphabet(pattern2),
-        startIndex
-      });
-    };
-    const len = this.pattern.length;
-    if (len > MAX_BITS) {
-      let i = 0;
-      const remainder = len % MAX_BITS;
-      const end = len - remainder;
-      while (i < end) {
-        addChunk(this.pattern.substr(i, MAX_BITS), i);
-        i += MAX_BITS;
-      }
-      if (remainder) {
-        const startIndex = len - MAX_BITS;
-        addChunk(this.pattern.substr(startIndex), startIndex);
-      }
-    } else {
-      addChunk(this.pattern, 0);
-    }
-  }
-  searchIn(text2) {
-    const { isCaseSensitive, includeMatches } = this.options;
-    if (!isCaseSensitive) {
-      text2 = text2.toLowerCase();
-    }
-    if (this.pattern === text2) {
-      let result2 = {
-        isMatch: true,
-        score: 0
-      };
-      if (includeMatches) {
-        result2.indices = [[0, text2.length - 1]];
-      }
-      return result2;
-    }
-    const {
-      location: location2,
-      distance: distance2,
-      threshold,
-      findAllMatches,
-      minMatchCharLength,
-      ignoreLocation
-    } = this.options;
-    let allIndices = [];
-    let totalScore = 0;
-    let hasMatches = false;
-    this.chunks.forEach(({ pattern, alphabet, startIndex }) => {
-      const { isMatch, score, indices } = search(text2, pattern, alphabet, {
-        location: location2 + startIndex,
-        distance: distance2,
-        threshold,
-        findAllMatches,
-        minMatchCharLength,
-        includeMatches,
-        ignoreLocation
-      });
-      if (isMatch) {
-        hasMatches = true;
-      }
-      totalScore += score;
-      if (isMatch && indices) {
-        allIndices = [...allIndices, ...indices];
-      }
-    });
-    let result = {
-      isMatch: hasMatches,
-      score: hasMatches ? totalScore / this.chunks.length : 1
-    };
-    if (hasMatches && includeMatches) {
-      result.indices = allIndices;
-    }
-    return result;
-  }
-}
-class BaseMatch {
-  constructor(pattern) {
-    this.pattern = pattern;
-  }
-  static isMultiMatch(pattern) {
-    return getMatch(pattern, this.multiRegex);
-  }
-  static isSingleMatch(pattern) {
-    return getMatch(pattern, this.singleRegex);
-  }
-  search() {
-  }
-}
-function getMatch(pattern, exp) {
-  const matches = pattern.match(exp);
-  return matches ? matches[1] : null;
-}
-class ExactMatch extends BaseMatch {
-  constructor(pattern) {
-    super(pattern);
-  }
-  static get type() {
-    return "exact";
-  }
-  static get multiRegex() {
-    return /^="(.*)"$/;
-  }
-  static get singleRegex() {
-    return /^=(.*)$/;
-  }
-  search(text2) {
-    const isMatch = text2 === this.pattern;
-    return {
-      isMatch,
-      score: isMatch ? 0 : 1,
-      indices: [0, this.pattern.length - 1]
-    };
-  }
-}
-class InverseExactMatch extends BaseMatch {
-  constructor(pattern) {
-    super(pattern);
-  }
-  static get type() {
-    return "inverse-exact";
-  }
-  static get multiRegex() {
-    return /^!"(.*)"$/;
-  }
-  static get singleRegex() {
-    return /^!(.*)$/;
-  }
-  search(text2) {
-    const index2 = text2.indexOf(this.pattern);
-    const isMatch = index2 === -1;
-    return {
-      isMatch,
-      score: isMatch ? 0 : 1,
-      indices: [0, text2.length - 1]
-    };
-  }
-}
-class PrefixExactMatch extends BaseMatch {
-  constructor(pattern) {
-    super(pattern);
-  }
-  static get type() {
-    return "prefix-exact";
-  }
-  static get multiRegex() {
-    return /^\^"(.*)"$/;
-  }
-  static get singleRegex() {
-    return /^\^(.*)$/;
-  }
-  search(text2) {
-    const isMatch = text2.startsWith(this.pattern);
-    return {
-      isMatch,
-      score: isMatch ? 0 : 1,
-      indices: [0, this.pattern.length - 1]
-    };
-  }
-}
-class InversePrefixExactMatch extends BaseMatch {
-  constructor(pattern) {
-    super(pattern);
-  }
-  static get type() {
-    return "inverse-prefix-exact";
-  }
-  static get multiRegex() {
-    return /^!\^"(.*)"$/;
-  }
-  static get singleRegex() {
-    return /^!\^(.*)$/;
-  }
-  search(text2) {
-    const isMatch = !text2.startsWith(this.pattern);
-    return {
-      isMatch,
-      score: isMatch ? 0 : 1,
-      indices: [0, text2.length - 1]
-    };
-  }
-}
-class SuffixExactMatch extends BaseMatch {
-  constructor(pattern) {
-    super(pattern);
-  }
-  static get type() {
-    return "suffix-exact";
-  }
-  static get multiRegex() {
-    return /^"(.*)"\$$/;
-  }
-  static get singleRegex() {
-    return /^(.*)\$$/;
-  }
-  search(text2) {
-    const isMatch = text2.endsWith(this.pattern);
-    return {
-      isMatch,
-      score: isMatch ? 0 : 1,
-      indices: [text2.length - this.pattern.length, text2.length - 1]
-    };
-  }
-}
-class InverseSuffixExactMatch extends BaseMatch {
-  constructor(pattern) {
-    super(pattern);
-  }
-  static get type() {
-    return "inverse-suffix-exact";
-  }
-  static get multiRegex() {
-    return /^!"(.*)"\$$/;
-  }
-  static get singleRegex() {
-    return /^!(.*)\$$/;
-  }
-  search(text2) {
-    const isMatch = !text2.endsWith(this.pattern);
-    return {
-      isMatch,
-      score: isMatch ? 0 : 1,
-      indices: [0, text2.length - 1]
-    };
-  }
-}
-class FuzzyMatch extends BaseMatch {
-  constructor(pattern, {
-    location: location2 = Config.location,
-    threshold = Config.threshold,
-    distance: distance2 = Config.distance,
-    includeMatches = Config.includeMatches,
-    findAllMatches = Config.findAllMatches,
-    minMatchCharLength = Config.minMatchCharLength,
-    isCaseSensitive = Config.isCaseSensitive,
-    ignoreLocation = Config.ignoreLocation
-  } = {}) {
-    super(pattern);
-    this._bitapSearch = new BitapSearch(pattern, {
-      location: location2,
-      threshold,
-      distance: distance2,
-      includeMatches,
-      findAllMatches,
-      minMatchCharLength,
-      isCaseSensitive,
-      ignoreLocation
-    });
-  }
-  static get type() {
-    return "fuzzy";
-  }
-  static get multiRegex() {
-    return /^"(.*)"$/;
-  }
-  static get singleRegex() {
-    return /^(.*)$/;
-  }
-  search(text2) {
-    return this._bitapSearch.searchIn(text2);
-  }
-}
-class IncludeMatch extends BaseMatch {
-  constructor(pattern) {
-    super(pattern);
-  }
-  static get type() {
-    return "include";
-  }
-  static get multiRegex() {
-    return /^'"(.*)"$/;
-  }
-  static get singleRegex() {
-    return /^'(.*)$/;
-  }
-  search(text2) {
-    let location2 = 0;
-    let index2;
-    const indices = [];
-    const patternLen = this.pattern.length;
-    while ((index2 = text2.indexOf(this.pattern, location2)) > -1) {
-      location2 = index2 + patternLen;
-      indices.push([index2, location2 - 1]);
-    }
-    const isMatch = !!indices.length;
-    return {
-      isMatch,
-      score: isMatch ? 0 : 1,
-      indices
-    };
-  }
-}
-const searchers = [
-  ExactMatch,
-  IncludeMatch,
-  PrefixExactMatch,
-  InversePrefixExactMatch,
-  InverseSuffixExactMatch,
-  SuffixExactMatch,
-  InverseExactMatch,
-  FuzzyMatch
-];
-const searchersLen = searchers.length;
-const SPACE_RE = / +(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)/;
-const OR_TOKEN = "|";
-function parseQuery(pattern, options = {}) {
-  return pattern.split(OR_TOKEN).map((item2) => {
-    let query = item2.trim().split(SPACE_RE).filter((item3) => item3 && !!item3.trim());
-    let results2 = [];
-    for (let i = 0, len = query.length; i < len; i += 1) {
-      const queryItem = query[i];
-      let found = false;
-      let idx = -1;
-      while (!found && ++idx < searchersLen) {
-        const searcher = searchers[idx];
-        let token = searcher.isMultiMatch(queryItem);
-        if (token) {
-          results2.push(new searcher(token, options));
-          found = true;
-        }
-      }
-      if (found) {
-        continue;
-      }
-      idx = -1;
-      while (++idx < searchersLen) {
-        const searcher = searchers[idx];
-        let token = searcher.isSingleMatch(queryItem);
-        if (token) {
-          results2.push(new searcher(token, options));
-          break;
-        }
-      }
-    }
-    return results2;
-  });
-}
-const MultiMatchSet = /* @__PURE__ */ new Set([FuzzyMatch.type, IncludeMatch.type]);
-class ExtendedSearch {
-  constructor(pattern, {
-    isCaseSensitive = Config.isCaseSensitive,
-    includeMatches = Config.includeMatches,
-    minMatchCharLength = Config.minMatchCharLength,
-    ignoreLocation = Config.ignoreLocation,
-    findAllMatches = Config.findAllMatches,
-    location: location2 = Config.location,
-    threshold = Config.threshold,
-    distance: distance2 = Config.distance
-  } = {}) {
-    this.query = null;
-    this.options = {
-      isCaseSensitive,
-      includeMatches,
-      minMatchCharLength,
-      findAllMatches,
-      ignoreLocation,
-      location: location2,
-      threshold,
-      distance: distance2
-    };
-    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
-    this.query = parseQuery(this.pattern, this.options);
-  }
-  static condition(_, options) {
-    return options.useExtendedSearch;
-  }
-  searchIn(text2) {
-    const query = this.query;
-    if (!query) {
-      return {
-        isMatch: false,
-        score: 1
-      };
-    }
-    const { includeMatches, isCaseSensitive } = this.options;
-    text2 = isCaseSensitive ? text2 : text2.toLowerCase();
-    let numMatches = 0;
-    let allIndices = [];
-    let totalScore = 0;
-    for (let i = 0, qLen = query.length; i < qLen; i += 1) {
-      const searchers2 = query[i];
-      allIndices.length = 0;
-      numMatches = 0;
-      for (let j2 = 0, pLen = searchers2.length; j2 < pLen; j2 += 1) {
-        const searcher = searchers2[j2];
-        const { isMatch, indices, score } = searcher.search(text2);
-        if (isMatch) {
-          numMatches += 1;
-          totalScore += score;
-          if (includeMatches) {
-            const type = searcher.constructor.type;
-            if (MultiMatchSet.has(type)) {
-              allIndices = [...allIndices, ...indices];
-            } else {
-              allIndices.push(indices);
-            }
-          }
-        } else {
-          totalScore = 0;
-          numMatches = 0;
-          allIndices.length = 0;
-          break;
-        }
-      }
-      if (numMatches) {
-        let result = {
-          isMatch: true,
-          score: totalScore / numMatches
-        };
-        if (includeMatches) {
-          result.indices = allIndices;
-        }
-        return result;
-      }
-    }
-    return {
-      isMatch: false,
-      score: 1
-    };
-  }
-}
-const registeredSearchers = [];
-function register(...args) {
-  registeredSearchers.push(...args);
-}
-function createSearcher(pattern, options) {
-  for (let i = 0, len = registeredSearchers.length; i < len; i += 1) {
-    let searcherClass = registeredSearchers[i];
-    if (searcherClass.condition(pattern, options)) {
-      return new searcherClass(pattern, options);
-    }
-  }
-  return new BitapSearch(pattern, options);
-}
-const LogicalOperator = {
-  AND: "$and",
-  OR: "$or"
-};
-const KeyType = {
-  PATH: "$path",
-  PATTERN: "$val"
-};
-const isExpression = (query) => !!(query[LogicalOperator.AND] || query[LogicalOperator.OR]);
-const isPath = (query) => !!query[KeyType.PATH];
-const isLeaf = (query) => !isArray(query) && isObject(query) && !isExpression(query);
-const convertToExplicit = (query) => ({
-  [LogicalOperator.AND]: Object.keys(query).map((key) => ({
-    [key]: query[key]
-  }))
-});
-function parse$1(query, options, { auto: auto2 = true } = {}) {
-  const next = (query2) => {
-    let keys = Object.keys(query2);
-    const isQueryPath = isPath(query2);
-    if (!isQueryPath && keys.length > 1 && !isExpression(query2)) {
-      return next(convertToExplicit(query2));
-    }
-    if (isLeaf(query2)) {
-      const key = isQueryPath ? query2[KeyType.PATH] : keys[0];
-      const pattern = isQueryPath ? query2[KeyType.PATTERN] : query2[key];
-      if (!isString(pattern)) {
-        throw new Error(LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY(key));
-      }
-      const obj = {
-        keyId: createKeyId(key),
-        pattern
-      };
-      if (auto2) {
-        obj.searcher = createSearcher(pattern, options);
-      }
-      return obj;
-    }
-    let node = {
-      children: [],
-      operator: keys[0]
-    };
-    keys.forEach((key) => {
-      const value = query2[key];
-      if (isArray(value)) {
-        value.forEach((item2) => {
-          node.children.push(next(item2));
-        });
-      }
-    });
-    return node;
-  };
-  if (!isExpression(query)) {
-    query = convertToExplicit(query);
-  }
-  return next(query);
-}
-function computeScore(results2, { ignoreFieldNorm = Config.ignoreFieldNorm }) {
-  results2.forEach((result) => {
-    let totalScore = 1;
-    result.matches.forEach(({ key, norm: norm2, score }) => {
-      const weight = key ? key.weight : null;
-      totalScore *= Math.pow(
-        score === 0 && weight ? Number.EPSILON : score,
-        (weight || 1) * (ignoreFieldNorm ? 1 : norm2)
-      );
-    });
-    result.score = totalScore;
-  });
-}
-function transformMatches(result, data) {
-  const matches = result.matches;
-  data.matches = [];
-  if (!isDefined(matches)) {
-    return;
-  }
-  matches.forEach((match) => {
-    if (!isDefined(match.indices) || !match.indices.length) {
-      return;
-    }
-    const { indices, value } = match;
-    let obj = {
-      indices,
-      value
-    };
-    if (match.key) {
-      obj.key = match.key.src;
-    }
-    if (match.idx > -1) {
-      obj.refIndex = match.idx;
-    }
-    data.matches.push(obj);
-  });
-}
-function transformScore(result, data) {
-  data.score = result.score;
-}
-function format$1(results2, docs, {
-  includeMatches = Config.includeMatches,
-  includeScore = Config.includeScore
-} = {}) {
-  const transformers = [];
-  if (includeMatches) transformers.push(transformMatches);
-  if (includeScore) transformers.push(transformScore);
-  return results2.map((result) => {
-    const { idx } = result;
-    const data = {
-      item: docs[idx],
-      refIndex: idx
-    };
-    if (transformers.length) {
-      transformers.forEach((transformer) => {
-        transformer(result, data);
-      });
-    }
-    return data;
-  });
-}
-class Fuse {
-  constructor(docs, options = {}, index2) {
-    this.options = { ...Config, ...options };
-    if (this.options.useExtendedSearch && false) {
-      throw new Error(EXTENDED_SEARCH_UNAVAILABLE);
-    }
-    this._keyStore = new KeyStore(this.options.keys);
-    this.setCollection(docs, index2);
-  }
-  setCollection(docs, index2) {
-    this._docs = docs;
-    if (index2 && !(index2 instanceof FuseIndex)) {
-      throw new Error(INCORRECT_INDEX_TYPE);
-    }
-    this._myIndex = index2 || createIndex(this.options.keys, this._docs, {
-      getFn: this.options.getFn,
-      fieldNormWeight: this.options.fieldNormWeight
-    });
-  }
-  add(doc) {
-    if (!isDefined(doc)) {
-      return;
-    }
-    this._docs.push(doc);
-    this._myIndex.add(doc);
-  }
-  remove(predicate = () => false) {
-    const results2 = [];
-    for (let i = 0, len = this._docs.length; i < len; i += 1) {
-      const doc = this._docs[i];
-      if (predicate(doc, i)) {
-        this.removeAt(i);
-        i -= 1;
-        len -= 1;
-        results2.push(doc);
-      }
-    }
-    return results2;
-  }
-  removeAt(idx) {
-    this._docs.splice(idx, 1);
-    this._myIndex.removeAt(idx);
-  }
-  getIndex() {
-    return this._myIndex;
-  }
-  search(query, { limit = -1 } = {}) {
-    const {
-      includeMatches,
-      includeScore,
-      shouldSort,
-      sortFn,
-      ignoreFieldNorm
-    } = this.options;
-    let results2 = isString(query) ? isString(this._docs[0]) ? this._searchStringList(query) : this._searchObjectList(query) : this._searchLogical(query);
-    computeScore(results2, { ignoreFieldNorm });
-    if (shouldSort) {
-      results2.sort(sortFn);
-    }
-    if (isNumber(limit) && limit > -1) {
-      results2 = results2.slice(0, limit);
-    }
-    return format$1(results2, this._docs, {
-      includeMatches,
-      includeScore
-    });
-  }
-  _searchStringList(query) {
-    const searcher = createSearcher(query, this.options);
-    const { records } = this._myIndex;
-    const results2 = [];
-    records.forEach(({ v: text2, i: idx, n: norm2 }) => {
-      if (!isDefined(text2)) {
-        return;
-      }
-      const { isMatch, score, indices } = searcher.searchIn(text2);
-      if (isMatch) {
-        results2.push({
-          item: text2,
-          idx,
-          matches: [{ score, value: text2, norm: norm2, indices }]
-        });
-      }
-    });
-    return results2;
-  }
-  _searchLogical(query) {
-    const expression = parse$1(query, this.options);
-    const evaluate2 = (node, item2, idx) => {
-      if (!node.children) {
-        const { keyId, searcher } = node;
-        const matches = this._findMatches({
-          key: this._keyStore.get(keyId),
-          value: this._myIndex.getValueForItemAtKeyId(item2, keyId),
-          searcher
-        });
-        if (matches && matches.length) {
-          return [
-            {
-              idx,
-              item: item2,
-              matches
-            }
-          ];
-        }
-        return [];
-      }
-      const res = [];
-      for (let i = 0, len = node.children.length; i < len; i += 1) {
-        const child = node.children[i];
-        const result = evaluate2(child, item2, idx);
-        if (result.length) {
-          res.push(...result);
-        } else if (node.operator === LogicalOperator.AND) {
-          return [];
-        }
-      }
-      return res;
-    };
-    const records = this._myIndex.records;
-    const resultMap = {};
-    const results2 = [];
-    records.forEach(({ $: item2, i: idx }) => {
-      if (isDefined(item2)) {
-        let expResults = evaluate2(expression, item2, idx);
-        if (expResults.length) {
-          if (!resultMap[idx]) {
-            resultMap[idx] = { idx, item: item2, matches: [] };
-            results2.push(resultMap[idx]);
-          }
-          expResults.forEach(({ matches }) => {
-            resultMap[idx].matches.push(...matches);
-          });
-        }
-      }
-    });
-    return results2;
-  }
-  _searchObjectList(query) {
-    const searcher = createSearcher(query, this.options);
-    const { keys, records } = this._myIndex;
-    const results2 = [];
-    records.forEach(({ $: item2, i: idx }) => {
-      if (!isDefined(item2)) {
-        return;
-      }
-      let matches = [];
-      keys.forEach((key, keyIndex) => {
-        matches.push(
-          ...this._findMatches({
-            key,
-            value: item2[keyIndex],
-            searcher
-          })
-        );
-      });
-      if (matches.length) {
-        results2.push({
-          idx,
-          item: item2,
-          matches
-        });
-      }
-    });
-    return results2;
-  }
-  _findMatches({ key, value, searcher }) {
-    if (!isDefined(value)) {
-      return [];
-    }
-    let matches = [];
-    if (isArray(value)) {
-      value.forEach(({ v: text2, i: idx, n: norm2 }) => {
-        if (!isDefined(text2)) {
-          return;
-        }
-        const { isMatch, score, indices } = searcher.searchIn(text2);
-        if (isMatch) {
-          matches.push({
-            score,
-            key,
-            value: text2,
-            idx,
-            norm: norm2,
-            indices
-          });
-        }
-      });
-    } else {
-      const { v: text2, n: norm2 } = value;
-      const { isMatch, score, indices } = searcher.searchIn(text2);
-      if (isMatch) {
-        matches.push({ score, key, value: text2, norm: norm2, indices });
-      }
-    }
-    return matches;
-  }
-}
-Fuse.version = "6.6.2";
-Fuse.createIndex = createIndex;
-Fuse.parseIndex = parseIndex;
-Fuse.config = Config;
-{
-  Fuse.parseQuery = parse$1;
-}
-{
-  register(ExtendedSearch);
-}
-const ERC_20_CONTRACT_ABI = [
-  {
-    type: "function",
-    name: "allowance",
-    inputs: [
-      { name: "owner", type: "address", internalType: "address" },
-      { name: "spender", type: "address", internalType: "address" }
-    ],
-    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
-    stateMutability: "view"
-  },
-  {
-    type: "function",
-    name: "approve",
-    inputs: [
-      { name: "spender", type: "address", internalType: "address" },
-      { name: "amount", type: "uint256", internalType: "uint256" }
-    ],
-    outputs: [{ name: "", type: "bool", internalType: "bool" }],
-    stateMutability: "nonpayable"
-  }
-];
 const SelectedIndicator$1 = (props) => {
   const { selected } = props;
-  return jsxRuntimeExports$1.jsx(Box, { borderStyle: "solid", borderColor: "text50", position: "relative", alignItems: "center", justifyContent: "center", flexShrink: "0", borderRadius: "circle", width: "7", height: "7", style: {
+  return jsxRuntimeExports$1.jsx(Box, { borderStyle: "solid", borderColor: selected ? "white" : "text50", background: selected ? "white" : "transparent", position: "relative", alignItems: "center", justifyContent: "center", flexShrink: "0", borderRadius: "circle", width: "7", height: "7", style: {
     borderWidth: "2px"
-  }, children: jsxRuntimeExports$1.jsx(Box, { background: selected ? "text80" : "transparent", position: "absolute", borderRadius: "circle", width: "4", height: "4", justifyContent: "center", alignItems: "center" }) });
+  }, children: selected && jsxRuntimeExports$1.jsx(SvgCheckmarkIcon, { color: "black", size: "md" }) });
 };
-const CryptoOption = ({ currencyName, chainId, iconUrl, symbol, balance, price, fiatPrice, onClick, isSelected, isInsufficientFunds, disabled }) => {
+const CryptoOption = ({ currencyName, chainId, iconUrl, symbol, price, onClick, isSelected, isInsufficientFunds, disabled }) => {
   const onClickCard = () => {
     if (!isInsufficientFunds && !disabled) {
       onClick();
     }
   };
-  return jsxRuntimeExports$1.jsxs(Card, { justifyContent: "space-between", padding: "4", onClick: onClickCard, opacity: {
+  return jsxRuntimeExports$1.jsxs(Card, { width: "full", justifyContent: "space-between", padding: "4", onClick: onClickCard, opacity: {
     hover: disabled || isInsufficientFunds ? "50" : "80",
     base: disabled || isInsufficientFunds ? "50" : "100"
-  }, cursor: "pointer", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "3", children: [jsxRuntimeExports$1.jsx(Box, { width: "fit", children: jsxRuntimeExports$1.jsx(TokenImage, { src: iconUrl, symbol, withNetwork: chainId, disableAnimation: true }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", whiteSpace: "nowrap", ellipsis: true, style: {
+  }, cursor: "pointer", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "3", children: [jsxRuntimeExports$1.jsx(Box, { width: "fit", children: jsxRuntimeExports$1.jsx(TokenImage, { src: iconUrl, size: "lg", symbol, withNetwork: chainId, disableAnimation: true }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "space-between", children: [jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text100", whiteSpace: "nowrap", ellipsis: true, style: {
     overflow: "hidden",
     width: "100px"
   }, children: currencyName }), jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", whiteSpace: "nowrap", ellipsis: true, style: {
     overflow: "hidden",
     width: "100px"
-  }, children: `${balance} ${symbol}` })] })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "3", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "space-between", alignItems: "flex-end", children: [jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", children: `${price} ${symbol}` }), isInsufficientFunds ? jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "negative", children: "Insufficient funds" }) : jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "text50", children: `$${fiatPrice}` })] }), jsxRuntimeExports$1.jsx(SelectedIndicator$1, { selected: isSelected })] })] });
+  }, children: `${price} ${symbol}` })] })] }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", justifyContent: "center", alignItems: "center", gap: "3", children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "space-between", alignItems: "flex-end", children: isInsufficientFunds ? jsxRuntimeExports$1.jsx(Text, { variant: "normal", color: "negative", children: "Insufficient funds" }) : null }), jsxRuntimeExports$1.jsx(SelectedIndicator$1, { selected: isSelected })] })] });
 };
-const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
+const PayWithCrypto = ({ settings, disableButtons, selectedCurrency, setSelectedCurrency, isLoading }) => {
   const { enableSwapPayments = true, enableMainCurrencyPayment = true } = settings;
-  const [search2, setSearch] = reactExports.useState("");
-  const [selectedCurrency, setSelectedCurrency] = reactExports.useState();
-  const { chain, currencyAddress, targetContractAddress, price, txData, transactionConfirmations = TRANSACTION_CONFIRMATIONS_DEFAULT, onSuccess = () => {
-  }, onError = () => {
-  } } = settings;
-  const { address: userAddress, connector } = useAccount();
-  const { data: walletClient } = useWalletClient();
-  const publicClient = usePublicClient();
+  const { chain, currencyAddress, price } = settings;
+  const { address: userAddress } = useAccount();
   const { clearCachedBalances } = useClearCachedBalances();
-  const { closeSelectPaymentModal } = useSelectPaymentModal();
   const network2 = findSupportedNetwork(chain);
   const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
-  const { data: allowanceData, isLoading: allowanceIsLoading, refetch: refechAllowance } = useReadContract({
-    abi: ERC_20_CONTRACT_ABI,
-    functionName: "allowance",
-    chainId,
-    address: currencyAddress,
-    args: [userAddress, targetContractAddress],
-    query: {
-      enabled: !!userAddress
-    }
-  });
   const { data: currencyBalanceData, isLoading: currencyBalanceIsLoading } = useBalances({
     chainIds: [chainId],
     contractAddress: currencyAddress,
@@ -101791,45 +100409,17 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
     includeMetadata: false
   });
   const { data: currencyInfoData, isLoading: isLoadingCurrencyInfo } = useContractInfo(chainId, currencyAddress);
+  const buyCurrencyAddress = compareAddress$2(settings == null ? void 0 : settings.currencyAddress, zeroAddress) ? NATIVE_TOKEN_ADDRESS_0X : settings == null ? void 0 : settings.currencyAddress;
   const { data: swapPrices = [], isLoading: swapPricesIsLoading } = useSwapPrices({
     userAddress: userAddress ?? "",
-    buyCurrencyAddress: settings == null ? void 0 : settings.currencyAddress,
+    buyCurrencyAddress,
     chainId,
     buyAmount: price,
     withContractInfo: true
-  });
-  const disableSwapQuote = !selectedCurrency || compareAddress$2(settings.currencyAddress, selectedCurrency || "");
-  const { data: swapQuote, isLoading: isLoadingSwapQuote } = useSwapQuote({
-    userAddress: userAddress ?? "",
-    buyCurrencyAddress: settings == null ? void 0 : settings.currencyAddress,
-    buyAmount: price,
-    chainId,
-    sellCurrencyAddress: selectedCurrency || "",
-    includeApprove: true
-  }, {
-    disabled: !selectedCurrency
-  });
-  const nativeToken = [
-    {
-      chainId,
-      contractAddress: currencyAddress
-    }
-  ];
-  const swapTokens = [
-    ...swapPrices.map((price2) => {
-      var _a2;
-      return {
-        chainId,
-        contractAddress: ((_a2 = price2.info) == null ? void 0 : _a2.address) || ""
-      };
-    })
-  ];
-  const { data: mainCoinPrice = [], isLoading: mainCoinsPricesIsLoading } = useCoinPrices([...nativeToken]);
-  const disableCoinPricesQuery = swapPricesIsLoading;
-  const { data: swapTokensPrices = [], isLoading: swapTokensPricesIsLoading } = useCoinPrices([...swapTokens], disableCoinPricesQuery);
-  const isLoading = allowanceIsLoading || currencyBalanceIsLoading || isLoadingCurrencyInfo || mainCoinsPricesIsLoading;
-  const swapsIsLoading = swapPricesIsLoading || swapTokensPricesIsLoading;
-  const indexedCoins = [
+  }, { disabled: !enableSwapPayments });
+  const isLoadingOptions = currencyBalanceIsLoading || isLoadingCurrencyInfo || isLoading;
+  const swapsIsLoading = swapPricesIsLoading;
+  const coins = [
     {
       index: 0,
       name: (currencyInfoData == null ? void 0 : currencyInfoData.name) || "Unknown",
@@ -101846,256 +100436,367 @@ const PayWithCrypto = ({ settings, disableButtons, setDisableButtons }) => {
       };
     })
   ];
-  const fuzzySearchCoins = new Fuse(indexedCoins, {
-    keys: ["name", "symbol", "currencyAddress"]
-  });
-  const foundCoins = search2 === "" ? indexedCoins : fuzzySearchCoins.search(search2).map((result) => result.item);
   const priceFormatted = formatUnits$2(BigInt(price), (currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0);
-  const isNativeToken = compareAddress$2(currencyAddress, zeroAddress);
-  const isApproved = allowanceData >= BigInt(price) || isNativeToken;
   const balanceInfo = currencyBalanceData == null ? void 0 : currencyBalanceData.find((balanceData) => compareAddress$2(currencyAddress, balanceData.contractAddress));
   const balance = BigInt((balanceInfo == null ? void 0 : balanceInfo.balance) || "0");
-  let balanceFormatted = Number(formatUnits$2(balance, (currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0));
-  balanceFormatted = Math.trunc(Number(balanceFormatted) * 1e4) / 1e4;
+  Number(formatUnits$2(balance, (currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0));
   const isNotEnoughFunds = BigInt(price) > balance;
   reactExports.useEffect(() => {
     clearCachedBalances();
   }, []);
-  const onPurchaseMainCurrency = async () => {
-    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector) {
-      return;
-    }
-    setDisableButtons(true);
-    try {
-      const walletClientChainId = await walletClient.getChainId();
-      if (walletClientChainId !== chainId) {
-        await walletClient.switchChain({ id: chainId });
-      }
-      const approveTxData = encodeFunctionData({
-        abi: ERC_20_CONTRACT_ABI,
-        functionName: "approve",
-        args: [targetContractAddress, price]
-      });
-      const transactions2 = [
-        ...isApproved ? [] : [
-          {
-            to: currencyAddress,
-            data: approveTxData,
-            chainId
-          }
-        ],
-        {
-          to: targetContractAddress,
-          data: txData,
-          chainId,
-          ...isNativeToken ? {
-            value: BigInt(settings.price)
-          } : {}
-        }
-      ];
-      const txHash = await sendTransactions({
-        chainId,
-        senderAddress: userAddress,
-        publicClient,
-        walletClient,
-        connector,
-        transactions: transactions2,
-        transactionConfirmations
-      });
-      closeSelectPaymentModal();
-      refechAllowance();
-      clearCachedBalances();
-      onSuccess(txHash);
-    } catch (e2) {
-      console.error("Failed to purchase...", e2);
-      onError(e2);
-    }
-    setDisableButtons(false);
-  };
-  const onClickPurchaseSwap = async (swapPrice) => {
-    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector || !swapQuote) {
-      return;
-    }
-    setDisableButtons(true);
-    try {
-      const walletClientChainId = await walletClient.getChainId();
-      if (walletClientChainId !== chainId) {
-        await walletClient.switchChain({ id: chainId });
-      }
-      const approveTxData = encodeFunctionData({
-        abi: ERC_20_CONTRACT_ABI,
-        functionName: "approve",
-        args: [targetContractAddress, price]
-      });
-      const isSwapNativeToken = compareAddress$2(currencyAddress, swapPrice.price.currencyAddress);
-      const transactions2 = [
-        // Swap quote optional approve step
-        ...(swapQuote == null ? void 0 : swapQuote.approveData) && !isSwapNativeToken ? [
-          {
-            to: swapPrice.price.currencyAddress,
-            data: swapQuote.approveData,
-            chain: chainId
-          }
-        ] : [],
-        // Swap quote tx
-        {
-          to: swapQuote.to,
-          data: swapQuote.transactionData,
-          chain: chainId,
-          ...isSwapNativeToken ? {
-            value: BigInt(swapQuote.price)
-          } : {}
-        },
-        // Actual transaction optional approve step
-        ...isApproved ? [] : [
-          {
-            to: currencyAddress,
-            data: approveTxData,
-            chainId
-          }
-        ],
-        // transaction on the contract
-        {
-          to: targetContractAddress,
-          data: txData,
-          chainId,
-          ...isNativeToken ? {
-            value: BigInt(settings.price)
-          } : {}
-        }
-      ];
-      const txHash = await sendTransactions({
-        chainId,
-        senderAddress: userAddress,
-        publicClient,
-        walletClient,
-        connector,
-        transactions: transactions2,
-        transactionConfirmations
-      });
-      closeSelectPaymentModal();
-      refechAllowance();
-      clearCachedBalances();
-      onSuccess(txHash);
-    } catch (e2) {
-      console.error("Failed to purchase...", e2);
-      onError(e2);
-    }
-    setDisableButtons(false);
-  };
   const Options = () => {
-    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2", width: "full", children: foundCoins.map((coin) => {
-      var _a2, _b2, _c2, _d2, _e2, _f2, _g2, _h2, _i2, _j2, _k2;
+    return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "2", width: "full", children: coins.map((coin) => {
+      var _a2, _b2, _c2, _d2, _e2, _f2, _g2;
       if (compareAddress$2(coin.currencyAddress, currencyAddress) && enableMainCurrencyPayment) {
-        const coinPrice = mainCoinPrice[0];
-        const exchangeRate = ((_a2 = coinPrice == null ? void 0 : coinPrice.price) == null ? void 0 : _a2.value) || 0;
-        const priceFiat = (exchangeRate * Number(priceFormatted)).toFixed(2);
         return jsxRuntimeExports$1.jsxs(reactExports.Fragment, { children: [jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: (currencyInfoData == null ? void 0 : currencyInfoData.name) || "Unknown", chainId, iconUrl: currencyInfoData == null ? void 0 : currencyInfoData.logoURI, symbol: (currencyInfoData == null ? void 0 : currencyInfoData.symbol) || "", onClick: () => {
           setSelectedCurrency(currencyAddress);
-        }, balance: String(balanceFormatted), price: priceFormatted, fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", currencyAddress), isInsufficientFunds: isNotEnoughFunds }), swapsIsLoading && jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(Spinner, {}) })] }, currencyAddress);
+        }, price: priceFormatted, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", currencyAddress), isInsufficientFunds: isNotEnoughFunds }), swapsIsLoading && jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", alignItems: "center", width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(Spinner, {}) })] }, currencyAddress);
       } else {
-        const foundCoinPrice = swapTokensPrices.find((coinPrice) => compareAddress$2(coinPrice.token.contractAddress, coin.currencyAddress));
-        const exchangeRate = ((_b2 = foundCoinPrice == null ? void 0 : foundCoinPrice.price) == null ? void 0 : _b2.value) || 0;
         const swapPrice = swapPrices == null ? void 0 : swapPrices.find((price2) => {
           var _a3;
           return compareAddress$2(((_a3 = price2.info) == null ? void 0 : _a3.address) || "", coin.currencyAddress);
         });
-        const currencyInfoNotFound = !swapPrice || !swapPrice.info || ((_c2 = swapPrice == null ? void 0 : swapPrice.info) == null ? void 0 : _c2.decimals) === void 0 || !((_d2 = swapPrice.balance) == null ? void 0 : _d2.balance);
+        const currencyInfoNotFound = !swapPrice || !swapPrice.info || ((_a2 = swapPrice == null ? void 0 : swapPrice.info) == null ? void 0 : _a2.decimals) === void 0 || !((_b2 = swapPrice.balance) == null ? void 0 : _b2.balance);
         if (currencyInfoNotFound || !enableSwapPayments) {
           return null;
         }
-        const swapQuotePriceFormatted = formatUnits$2(BigInt(swapPrice.price.price), ((_e2 = swapPrice.info) == null ? void 0 : _e2.decimals) || 18);
-        const balanceFormatted2 = formatUnits$2(BigInt(((_f2 = swapPrice.balance) == null ? void 0 : _f2.balance) || 0), ((_g2 = swapPrice.info) == null ? void 0 : _g2.decimals) || 18);
-        const swapQuoteAddress = ((_h2 = swapPrice.info) == null ? void 0 : _h2.address) || "";
-        const priceFiat = (exchangeRate * Number(swapQuotePriceFormatted)).toFixed(2);
-        return jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: ((_i2 = swapPrice.info) == null ? void 0 : _i2.name) || "Unknown", chainId, iconUrl: (_j2 = swapPrice.info) == null ? void 0 : _j2.logoURI, symbol: ((_k2 = swapPrice.info) == null ? void 0 : _k2.symbol) || "", onClick: () => {
+        const swapQuotePriceFormatted = formatUnits$2(BigInt(swapPrice.price.price), ((_c2 = swapPrice.info) == null ? void 0 : _c2.decimals) || 18);
+        const swapQuoteAddress = ((_d2 = swapPrice.info) == null ? void 0 : _d2.address) || "";
+        return jsxRuntimeExports$1.jsx(CryptoOption, { currencyName: ((_e2 = swapPrice.info) == null ? void 0 : _e2.name) || "Unknown", chainId, iconUrl: (_f2 = swapPrice.info) == null ? void 0 : _f2.logoURI, symbol: ((_g2 = swapPrice.info) == null ? void 0 : _g2.symbol) || "", onClick: () => {
           setSelectedCurrency(swapQuoteAddress);
-        }, balance: String(Number(balanceFormatted2).toPrecision(4)), price: String(Number(swapQuotePriceFormatted).toPrecision(4)), fiatPrice: priceFiat, disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", swapQuoteAddress), isInsufficientFunds: false }, swapQuoteAddress);
+        }, price: String(Number(swapQuotePriceFormatted).toPrecision(4)), disabled: disableButtons, isSelected: compareAddress$2(selectedCurrency || "", swapQuoteAddress), isInsufficientFunds: false }, swapQuoteAddress);
       }
     }) });
   };
-  const onClickPurchase = () => {
-    if (compareAddress$2(selectedCurrency || "", currencyAddress)) {
-      onPurchaseMainCurrency();
-    } else {
-      const foundSwap = swapPrices == null ? void 0 : swapPrices.find((price2) => {
-        var _a2;
-        return ((_a2 = price2.info) == null ? void 0 : _a2.address) === selectedCurrency;
+  const gutterHeight = 8;
+  const optionHeight = 72;
+  const displayedOptionsAmount = Math.min(coins.length, 3);
+  const displayedGuttersAmount = displayedOptionsAmount - 1;
+  const viewheight = swapsIsLoading ? "174px" : `${24 + optionHeight * displayedOptionsAmount + gutterHeight * displayedGuttersAmount}px`;
+  return jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "white", children: "Pay with crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingY: "3", style: { height: viewheight, marginBottom: "-12px" }, children: isLoadingOptions ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) })] });
+};
+var Component = {};
+var toggleSelection = function() {
+  var selection = document.getSelection();
+  if (!selection.rangeCount) {
+    return function() {
+    };
+  }
+  var active = document.activeElement;
+  var ranges = [];
+  for (var i = 0; i < selection.rangeCount; i++) {
+    ranges.push(selection.getRangeAt(i));
+  }
+  switch (active.tagName.toUpperCase()) {
+    case "INPUT":
+    case "TEXTAREA":
+      active.blur();
+      break;
+    default:
+      active = null;
+      break;
+  }
+  selection.removeAllRanges();
+  return function() {
+    selection.type === "Caret" && selection.removeAllRanges();
+    if (!selection.rangeCount) {
+      ranges.forEach(function(range2) {
+        selection.addRange(range2);
       });
-      if (foundSwap) {
-        onClickPurchaseSwap(foundSwap);
-      }
     }
+    active && active.focus();
   };
-  return jsxRuntimeExports$1.jsxs(Box, { children: [jsxRuntimeExports$1.jsx(Box, { width: "full", marginTop: "4", children: jsxRuntimeExports$1.jsx(TextInput, { autoFocus: true, name: "Search", leftIcon: SvgSearchIcon, value: search2, onChange: (ev) => setSearch(ev.target.value), placeholder: "Search your coins", "data-1p-ignore": true }) }), jsxRuntimeExports$1.jsx(Box, { marginTop: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "text50", children: "Select a crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingTop: "3", style: { height: "259px" }, children: isLoading ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) }), jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency || !disableSwapQuote && isLoadingSwapQuote, marginTop: "2", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" })] });
 };
-const Price = () => {
-  var _a2;
-  const { selectPaymentSettings } = useSelectPaymentModal();
-  const price = selectPaymentSettings.price;
-  const chain = selectPaymentSettings.chain;
-  const network2 = findSupportedNetwork(chain);
-  const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
-  const currencyAddress = selectPaymentSettings.currencyAddress;
-  const { data: currencyInfo, isLoading: isLoadingCurrencyInfo } = useContractInfo(chainId, currencyAddress);
-  const fullPrice = BigInt(price);
-  const { data: coinPricesData, isLoading: isLoadingCoinPrice } = useCoinPrices([
-    {
-      chainId,
-      contractAddress: currencyAddress
+var deselectCurrent = toggleSelection;
+var clipboardToIE11Formatting = {
+  "text/plain": "Text",
+  "text/html": "Url",
+  "default": "Text"
+};
+var defaultMessage = "Copy to clipboard: #{key}, Enter";
+function format$1(message) {
+  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
+  return message.replace(/#{\s*key\s*}/g, copyKey);
+}
+function copy(text2, options) {
+  var debug2, message, reselectPrevious, range2, selection, mark, success = false;
+  if (!options) {
+    options = {};
+  }
+  debug2 = options.debug || false;
+  try {
+    reselectPrevious = deselectCurrent();
+    range2 = document.createRange();
+    selection = document.getSelection();
+    mark = document.createElement("span");
+    mark.textContent = text2;
+    mark.ariaHidden = "true";
+    mark.style.all = "unset";
+    mark.style.position = "fixed";
+    mark.style.top = 0;
+    mark.style.clip = "rect(0, 0, 0, 0)";
+    mark.style.whiteSpace = "pre";
+    mark.style.webkitUserSelect = "text";
+    mark.style.MozUserSelect = "text";
+    mark.style.msUserSelect = "text";
+    mark.style.userSelect = "text";
+    mark.addEventListener("copy", function(e2) {
+      e2.stopPropagation();
+      if (options.format) {
+        e2.preventDefault();
+        if (typeof e2.clipboardData === "undefined") {
+          debug2 && console.warn("unable to use e.clipboardData");
+          debug2 && console.warn("trying IE specific stuff");
+          window.clipboardData.clearData();
+          var format2 = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"];
+          window.clipboardData.setData(format2, text2);
+        } else {
+          e2.clipboardData.clearData();
+          e2.clipboardData.setData(options.format, text2);
+        }
+      }
+      if (options.onCopy) {
+        e2.preventDefault();
+        options.onCopy(e2.clipboardData);
+      }
+    });
+    document.body.appendChild(mark);
+    range2.selectNodeContents(mark);
+    selection.addRange(range2);
+    var successful = document.execCommand("copy");
+    if (!successful) {
+      throw new Error("copy command was unsuccessful");
     }
-  ]);
-  const isLoading = isLoadingCurrencyInfo || isLoadingCoinPrice;
-  if (isLoading) {
-    return jsxRuntimeExports$1.jsx(Box, { marginY: "2", paddingX: "6", justifyContent: "center", alignItems: "center", width: "full", height: "12", children: jsxRuntimeExports$1.jsx(Spinner, {}) });
-  }
-  const tokenLogo = currencyInfo == null ? void 0 : currencyInfo.logoURI;
-  const tokenSymbol = currencyInfo == null ? void 0 : currencyInfo.symbol;
-  const tokenDecimals = currencyInfo == null ? void 0 : currencyInfo.decimals;
-  const formattedPrice = formatUnits$2(fullPrice, tokenDecimals || 0);
-  const fiatConversionRate = ((_a2 = coinPricesData == null ? void 0 : coinPricesData[0].price) == null ? void 0 : _a2.value) || 0;
-  const priceFiat = fiatConversionRate * Number(formattedPrice);
-  const priceFiatFormatted = `~${Number(priceFiat).toFixed(2)} USD`;
-  return jsxRuntimeExports$1.jsxs(Box, { paddingX: "6", justifyContent: "space-between", alignItems: "center", width: "full", height: "12", children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { variant: "small", color: "text50", fontWeight: "medium", children: "Price" }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "space-between", alignItems: "flex-end", children: [jsxRuntimeExports$1.jsxs(Box, { gap: "2", alignItems: "center", children: [jsxRuntimeExports$1.jsx(TokenImage, { src: tokenLogo, width: "5" }), jsxRuntimeExports$1.jsx(Text, { variant: "large", fontWeight: "bold", color: "text100", children: `${formattedPrice} ${tokenSymbol}` })] }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "medium", color: "text50", children: priceFiatFormatted }) })] })] });
-};
-const PaymentSelection = () => {
-  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(PaymentSelectionHeader, {}), jsxRuntimeExports$1.jsx(PaymentSelectionContent, {})] });
-};
-const PaymentSelectionHeader = () => {
-  return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Checkout" });
-};
-const PaymentSelectionContent = () => {
-  var _a2;
-  const { selectPaymentSettings } = useSelectPaymentModal();
-  const [disableButtons, setDisableButtons] = reactExports.useState(false);
-  if (!selectPaymentSettings) {
-    return null;
-  }
-  const isNativeToken = compareAddress$2(selectPaymentSettings.currencyAddress, zeroAddress);
-  const enableMainCurrencyPayment = selectPaymentSettings.enableMainCurrencyPayment ?? true;
-  const enableSwapPayments = !isNativeToken && (selectPaymentSettings.enableSwapPayments ?? true);
-  const creditCardProviders = selectPaymentSettings.creditCardProviders ?? [];
-  const tabs = [
-    ...enableMainCurrencyPayment || enableSwapPayments ? [
-      {
-        label: jsxRuntimeExports$1.jsxs(Box, { gap: "1", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(SvgWalletIcon, {}), "Crypto"] }),
-        value: "crypto"
+    success = true;
+  } catch (err) {
+    debug2 && console.error("unable to copy using execCommand: ", err);
+    debug2 && console.warn("trying IE specific stuff");
+    try {
+      window.clipboardData.setData(options.format || "text", text2);
+      options.onCopy && options.onCopy(window.clipboardData);
+      success = true;
+    } catch (err2) {
+      debug2 && console.error("unable to copy using clipboardData: ", err2);
+      debug2 && console.error("falling back to prompt");
+      message = format$1("message" in options ? options.message : defaultMessage);
+      window.prompt(message, text2);
+    }
+  } finally {
+    if (selection) {
+      if (typeof selection.removeRange == "function") {
+        selection.removeRange(range2);
+      } else {
+        selection.removeAllRanges();
       }
-    ] : [],
-    ...creditCardProviders.length > 0 ? [
-      {
-        label: jsxRuntimeExports$1.jsxs(Box, { gap: "1", alignItems: "center", justifyContent: "center", children: [jsxRuntimeExports$1.jsx(SvgPaymentsIcon, {}), "Credit card"] }),
-        value: "credit_card"
+    }
+    if (mark) {
+      document.body.removeChild(mark);
+    }
+    reselectPrevious();
+  }
+  return success;
+}
+var copyToClipboard = copy;
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
+    return typeof obj2;
+  } : function(obj2) {
+    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof(obj);
+}
+Object.defineProperty(Component, "__esModule", {
+  value: true
+});
+Component.CopyToClipboard = void 0;
+var _react = _interopRequireDefault(reactExports);
+var _copyToClipboard = _interopRequireDefault(copyToClipboard);
+var _excluded = ["text", "onCopy", "options", "children"];
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { "default": obj };
+}
+function ownKeys(object2, enumerableOnly) {
+  var keys = Object.keys(object2);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object2);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object2, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2 ? ownKeys(Object(source), true).forEach(function(key) {
+      _defineProperty(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = _objectWithoutPropertiesLoose(source, excluded);
+  var key, i;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  Object.defineProperty(Constructor, "prototype", { writable: false });
+  return Constructor;
+}
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
+  Object.defineProperty(subClass, "prototype", { writable: false });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+function _setPrototypeOf(o2, p2) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
+    o3.__proto__ = p3;
+    return o3;
+  };
+  return _setPrototypeOf(o2, p2);
+}
+function _createSuper(Derived) {
+  var hasNativeReflectConstruct = _isNativeReflectConstruct();
+  return function _createSuperInternal() {
+    var Super = _getPrototypeOf(Derived), result;
+    if (hasNativeReflectConstruct) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+    return _possibleConstructorReturn(this, result);
+  };
+}
+function _possibleConstructorReturn(self2, call2) {
+  if (call2 && (_typeof(call2) === "object" || typeof call2 === "function")) {
+    return call2;
+  } else if (call2 !== void 0) {
+    throw new TypeError("Derived constructors may only return object or undefined");
+  }
+  return _assertThisInitialized(self2);
+}
+function _assertThisInitialized(self2) {
+  if (self2 === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return self2;
+}
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+    }));
+    return true;
+  } catch (e2) {
+    return false;
+  }
+}
+function _getPrototypeOf(o2) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o3) {
+    return o3.__proto__ || Object.getPrototypeOf(o3);
+  };
+  return _getPrototypeOf(o2);
+}
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+var CopyToClipboard$1 = /* @__PURE__ */ function(_React$PureComponent) {
+  _inherits(CopyToClipboard2, _React$PureComponent);
+  var _super = _createSuper(CopyToClipboard2);
+  function CopyToClipboard2() {
+    var _this;
+    _classCallCheck(this, CopyToClipboard2);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    _this = _super.call.apply(_super, [this].concat(args));
+    _defineProperty(_assertThisInitialized(_this), "onClick", function(event) {
+      var _this$props = _this.props, text2 = _this$props.text, onCopy = _this$props.onCopy, children = _this$props.children, options = _this$props.options;
+      var elem = _react["default"].Children.only(children);
+      var result = (0, _copyToClipboard["default"])(text2, options);
+      if (onCopy) {
+        onCopy(text2, result);
       }
-    ] : []
-  ];
-  const isOneTab = tabs.length === 1;
-  const defaultTab = ((_a2 = tabs[0]) == null ? void 0 : _a2.value) || "crypto";
-  const [selectedTab, setSelectedTab] = reactExports.useState(defaultTab);
-  return jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", width: "full", paddingBottom: "4", height: "full", style: { height: PAYMENT_SELECTION_MODAL_HEIGHT, paddingTop: HEADER_HEIGHT$1 }, children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", width: "full", gap: "2", children: selectPaymentSettings.collectibles.map((collectible) => {
-    return jsxRuntimeExports$1.jsx(ItemDescription, { tokenId: collectible.tokenId, nftQuantity: collectible.quantity }, collectible.tokenId);
-  }) }), jsxRuntimeExports$1.jsx(Divider, { width: "full", color: "backgroundSecondary", marginY: "1" }), jsxRuntimeExports$1.jsx(Price, {}), jsxRuntimeExports$1.jsx(Divider, { width: "full", color: "backgroundSecondary", marginY: "1" }), jsxRuntimeExports$1.jsxs(Box, { marginY: "2", width: "full", paddingX: "6", gap: "3", flexDirection: "column", children: [jsxRuntimeExports$1.jsx(Text, { display: isOneTab ? "none" : "block", variant: "small", color: "text50", children: "Select a payment method" }), jsxRuntimeExports$1.jsxs(TabsRoot, { value: selectedTab, onValueChange: (value) => setSelectedTab(value), children: [!isOneTab && jsxRuntimeExports$1.jsx(TabsHeader, { value: selectedTab, tabs }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsx(TabsContent, { value: "crypto", children: jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, setDisableButtons }) }), creditCardProviders.length > 0 && jsxRuntimeExports$1.jsx(TabsContent, { value: "credit_card", children: jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons }) })] })] }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
-};
+      if (elem && elem.props && typeof elem.props.onClick === "function") {
+        elem.props.onClick(event);
+      }
+    });
+    return _this;
+  }
+  _createClass(CopyToClipboard2, [{
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props;
+      _this$props2.text;
+      _this$props2.onCopy;
+      _this$props2.options;
+      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded);
+      var elem = _react["default"].Children.only(children);
+      return /* @__PURE__ */ _react["default"].cloneElement(elem, _objectSpread(_objectSpread({}, props), {}, {
+        onClick: this.onClick
+      }));
+    }
+  }]);
+  return CopyToClipboard2;
+}(_react["default"].PureComponent);
+Component.CopyToClipboard = CopyToClipboard$1;
+_defineProperty(CopyToClipboard$1, "defaultProps", {
+  onCopy: void 0,
+  options: void 0
+});
+var _require = Component, CopyToClipboard = _require.CopyToClipboard;
+CopyToClipboard.CopyToClipboard = CopyToClipboard;
+var lib = CopyToClipboard;
 var __defProp2 = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
@@ -103186,328 +101887,252 @@ var QRCodeSVG = React.forwardRef(
   }
 );
 QRCodeSVG.displayName = "QRCodeSVG";
-var Component = {};
-var toggleSelection = function() {
-  var selection = document.getSelection();
-  if (!selection.rangeCount) {
-    return function() {
-    };
-  }
-  var active = document.activeElement;
-  var ranges = [];
-  for (var i = 0; i < selection.rangeCount; i++) {
-    ranges.push(selection.getRangeAt(i));
-  }
-  switch (active.tagName.toUpperCase()) {
-    case "INPUT":
-    case "TEXTAREA":
-      active.blur();
-      break;
-    default:
-      active = null;
-      break;
-  }
-  selection.removeAllRanges();
-  return function() {
-    selection.type === "Caret" && selection.removeAllRanges();
-    if (!selection.rangeCount) {
-      ranges.forEach(function(range2) {
-        selection.addRange(range2);
-      });
+const TransferFunds = () => {
+  const { address: userAddress } = useAccount();
+  const [isCopied, setCopy] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    if (isCopied) {
+      setTimeout(() => {
+        setCopy(false);
+      }, 4e3);
     }
-    active && active.focus();
+  }, [isCopied]);
+  const handleCopy = () => {
+    setCopy(true);
   };
+  return jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Box, { marginBottom: "3", children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "white", children: "Transfer funds to your connected wallet" }) }), jsxRuntimeExports$1.jsxs(Card, { width: "full", justifyContent: "space-between", padding: "4", children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "3", children: [jsxRuntimeExports$1.jsx(Box, { background: "white", padding: "4", borderRadius: "xs", style: { width: 40, height: 40 }, children: jsxRuntimeExports$1.jsx(QRCodeCanvas, { value: userAddress || "", size: 36, bgColor: "white", fgColor: "black", "data-id": "qr-code", style: { position: "relative", top: "-14px", left: "-14px" } }) }), jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", justifyContent: "center", alignItems: "flex-start", children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { variant: "normal", fontWeight: "bold", color: "text80", children: "Transfer Funds" }) }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { color: "text50", variant: "normal", fontSize: "small", children: truncateAddress(userAddress || "", 12, 4) }) })] })] }), jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(lib.CopyToClipboard, { text: userAddress || "", onCopy: handleCopy, children: jsxRuntimeExports$1.jsx(IconButton, { color: "text50", variant: "base", size: "md", icon: isCopied ? () => jsxRuntimeExports$1.jsx(SvgCheckmarkIcon, { size: "lg" }) : () => jsxRuntimeExports$1.jsx(SvgCopyIcon, { size: "lg" }) }) }) })] })] });
 };
-var deselectCurrent = toggleSelection;
-var clipboardToIE11Formatting = {
-  "text/plain": "Text",
-  "text/html": "Url",
-  "default": "Text"
-};
-var defaultMessage = "Copy to clipboard: #{key}, Enter";
-function format(message) {
-  var copyKey = (/mac os x/i.test(navigator.userAgent) ? "⌘" : "Ctrl") + "+C";
-  return message.replace(/#{\s*key\s*}/g, copyKey);
-}
-function copy(text2, options) {
-  var debug2, message, reselectPrevious, range2, selection, mark, success = false;
-  if (!options) {
-    options = {};
+const ERC_20_CONTRACT_ABI = [
+  {
+    type: "function",
+    name: "allowance",
+    inputs: [
+      { name: "owner", type: "address", internalType: "address" },
+      { name: "spender", type: "address", internalType: "address" }
+    ],
+    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view"
+  },
+  {
+    type: "function",
+    name: "approve",
+    inputs: [
+      { name: "spender", type: "address", internalType: "address" },
+      { name: "amount", type: "uint256", internalType: "uint256" }
+    ],
+    outputs: [{ name: "", type: "bool", internalType: "bool" }],
+    stateMutability: "nonpayable"
   }
-  debug2 = options.debug || false;
-  try {
-    reselectPrevious = deselectCurrent();
-    range2 = document.createRange();
-    selection = document.getSelection();
-    mark = document.createElement("span");
-    mark.textContent = text2;
-    mark.ariaHidden = "true";
-    mark.style.all = "unset";
-    mark.style.position = "fixed";
-    mark.style.top = 0;
-    mark.style.clip = "rect(0, 0, 0, 0)";
-    mark.style.whiteSpace = "pre";
-    mark.style.webkitUserSelect = "text";
-    mark.style.MozUserSelect = "text";
-    mark.style.msUserSelect = "text";
-    mark.style.userSelect = "text";
-    mark.addEventListener("copy", function(e2) {
-      e2.stopPropagation();
-      if (options.format) {
-        e2.preventDefault();
-        if (typeof e2.clipboardData === "undefined") {
-          debug2 && console.warn("unable to use e.clipboardData");
-          debug2 && console.warn("trying IE specific stuff");
-          window.clipboardData.clearData();
-          var format2 = clipboardToIE11Formatting[options.format] || clipboardToIE11Formatting["default"];
-          window.clipboardData.setData(format2, text2);
-        } else {
-          e2.clipboardData.clearData();
-          e2.clipboardData.setData(options.format, text2);
-        }
-      }
-      if (options.onCopy) {
-        e2.preventDefault();
-        options.onCopy(e2.clipboardData);
-      }
-    });
-    document.body.appendChild(mark);
-    range2.selectNodeContents(mark);
-    selection.addRange(range2);
-    var successful = document.execCommand("copy");
-    if (!successful) {
-      throw new Error("copy command was unsuccessful");
+];
+const PaymentSelection = () => {
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(PaymentSelectionHeader, {}), jsxRuntimeExports$1.jsx(PaymentSelectionContent, {})] });
+};
+const PaymentSelectionHeader = () => {
+  return jsxRuntimeExports$1.jsx(NavigationHeader$1, { primaryText: "Checkout" });
+};
+const PaymentSelectionContent = () => {
+  const { selectPaymentSettings } = useSelectPaymentModal();
+  const [disableButtons, setDisableButtons] = reactExports.useState(false);
+  if (!selectPaymentSettings) {
+    return null;
+  }
+  const { chain, currencyAddress, targetContractAddress, price, txData, enableTransferFunds = true, enableMainCurrencyPayment = true, enableSwapPayments = true, creditCardProviders = [], transactionConfirmations = TRANSACTION_CONFIRMATIONS_DEFAULT, onSuccess = () => {
+  }, onError = () => {
+  } } = selectPaymentSettings;
+  const isNativeToken = compareAddress$2(currencyAddress, zeroAddress);
+  const [selectedCurrency, setSelectedCurrency] = reactExports.useState();
+  const { address: userAddress, connector } = useAccount();
+  const { data: walletClient } = useWalletClient();
+  const publicClient = usePublicClient();
+  const { clearCachedBalances } = useClearCachedBalances();
+  const { closeSelectPaymentModal } = useSelectPaymentModal();
+  const network2 = findSupportedNetwork(chain);
+  const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
+  const { data: allowanceData, isLoading: allowanceIsLoading, refetch: refechAllowance } = useReadContract({
+    abi: ERC_20_CONTRACT_ABI,
+    functionName: "allowance",
+    chainId,
+    address: currencyAddress,
+    args: [userAddress, targetContractAddress],
+    query: {
+      enabled: !!userAddress
     }
-    success = true;
-  } catch (err) {
-    debug2 && console.error("unable to copy using execCommand: ", err);
-    debug2 && console.warn("trying IE specific stuff");
+  });
+  const { data: currencyBalanceData, isLoading: currencyBalanceIsLoading } = useBalances({
+    chainIds: [chainId],
+    contractAddress: currencyAddress,
+    accountAddress: userAddress || "",
+    // includeMetadata must be false to work around a bug
+    includeMetadata: false
+  });
+  const { data: currencyInfoData, isLoading: isLoadingCurrencyInfo } = useContractInfo(chainId, currencyAddress);
+  const buyCurrencyAddress = compareAddress$2(currencyAddress, zeroAddress) ? NATIVE_TOKEN_ADDRESS_0X : currencyAddress;
+  const { data: swapPrices = [], isLoading: swapPricesIsLoading } = useSwapPrices({
+    userAddress: userAddress ?? "",
+    buyCurrencyAddress,
+    chainId,
+    buyAmount: price,
+    withContractInfo: true
+  }, { disabled: !enableSwapPayments });
+  const disableSwapQuote = !selectedCurrency || compareAddress$2(currencyAddress, selectedCurrency || "");
+  const swapQuotesBuyCurrency = compareAddress$2(currencyAddress || "", zeroAddress) ? NATIVE_TOKEN_ADDRESS_0X : selectedCurrency || "";
+  const { data: swapQuote, isLoading: isLoadingSwapQuote } = useSwapQuote({
+    userAddress: userAddress ?? "",
+    buyCurrencyAddress: swapQuotesBuyCurrency,
+    buyAmount: price,
+    chainId,
+    sellCurrencyAddress: selectedCurrency || "",
+    includeApprove: true
+  }, {
+    disabled: !selectedCurrency
+  });
+  const isLoading = allowanceIsLoading || currencyBalanceIsLoading || isLoadingCurrencyInfo;
+  const isApproved = allowanceData >= BigInt(price) || isNativeToken;
+  const balanceInfo = currencyBalanceData == null ? void 0 : currencyBalanceData.find((balanceData) => compareAddress$2(currencyAddress, balanceData.contractAddress));
+  const balance = BigInt((balanceInfo == null ? void 0 : balanceInfo.balance) || "0");
+  Number(formatUnits$2(balance, (currencyInfoData == null ? void 0 : currencyInfoData.decimals) || 0));
+  reactExports.useEffect(() => {
+    clearCachedBalances();
+  }, []);
+  const onPurchaseMainCurrency = async () => {
+    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector) {
+      return;
+    }
+    setDisableButtons(true);
     try {
-      window.clipboardData.setData(options.format || "text", text2);
-      options.onCopy && options.onCopy(window.clipboardData);
-      success = true;
-    } catch (err2) {
-      debug2 && console.error("unable to copy using clipboardData: ", err2);
-      debug2 && console.error("falling back to prompt");
-      message = format("message" in options ? options.message : defaultMessage);
-      window.prompt(message, text2);
-    }
-  } finally {
-    if (selection) {
-      if (typeof selection.removeRange == "function") {
-        selection.removeRange(range2);
-      } else {
-        selection.removeAllRanges();
+      const walletClientChainId = await walletClient.getChainId();
+      if (walletClientChainId !== chainId) {
+        await walletClient.switchChain({ id: chainId });
       }
+      const approveTxData = encodeFunctionData({
+        abi: ERC_20_CONTRACT_ABI,
+        functionName: "approve",
+        args: [targetContractAddress, price]
+      });
+      const transactions2 = [
+        ...isApproved ? [] : [
+          {
+            to: currencyAddress,
+            data: approveTxData,
+            chainId
+          }
+        ],
+        {
+          to: targetContractAddress,
+          data: txData,
+          chainId,
+          ...isNativeToken ? {
+            value: BigInt(price)
+          } : {}
+        }
+      ];
+      const txHash = await sendTransactions({
+        chainId,
+        senderAddress: userAddress,
+        publicClient,
+        walletClient,
+        connector,
+        transactions: transactions2,
+        transactionConfirmations
+      });
+      closeSelectPaymentModal();
+      refechAllowance();
+      clearCachedBalances();
+      onSuccess(txHash);
+    } catch (e2) {
+      console.error("Failed to purchase...", e2);
+      onError(e2);
     }
-    if (mark) {
-      document.body.removeChild(mark);
-    }
-    reselectPrevious();
-  }
-  return success;
-}
-var copyToClipboard = copy;
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(obj2) {
-    return typeof obj2;
-  } : function(obj2) {
-    return obj2 && "function" == typeof Symbol && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-  }, _typeof(obj);
-}
-Object.defineProperty(Component, "__esModule", {
-  value: true
-});
-Component.CopyToClipboard = void 0;
-var _react = _interopRequireDefault(reactExports);
-var _copyToClipboard = _interopRequireDefault(copyToClipboard);
-var _excluded = ["text", "onCopy", "options", "children"];
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { "default": obj };
-}
-function ownKeys(object2, enumerableOnly) {
-  var keys = Object.keys(object2);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object2);
-    enumerableOnly && (symbols = symbols.filter(function(sym) {
-      return Object.getOwnPropertyDescriptor(object2, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys(Object(source), true).forEach(function(key) {
-      _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-  var key, i;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-  return target;
-}
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  Object.defineProperty(Constructor, "prototype", { writable: false });
-  return Constructor;
-}
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });
-  Object.defineProperty(subClass, "prototype", { writable: false });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-function _setPrototypeOf(o2, p2) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o3, p3) {
-    o3.__proto__ = p3;
-    return o3;
+    setDisableButtons(false);
   };
-  return _setPrototypeOf(o2, p2);
-}
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived), result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
+  const onClickPurchaseSwap = async (swapPrice) => {
+    if (!walletClient || !userAddress || !publicClient || !userAddress || !connector || !swapQuote) {
+      return;
+    }
+    setDisableButtons(true);
+    try {
+      const walletClientChainId = await walletClient.getChainId();
+      if (walletClientChainId !== chainId) {
+        await walletClient.switchChain({ id: chainId });
+      }
+      const approveTxData = encodeFunctionData({
+        abi: ERC_20_CONTRACT_ABI,
+        functionName: "approve",
+        args: [targetContractAddress, price]
+      });
+      const isSwapNativeToken = compareAddress$2(NATIVE_TOKEN_ADDRESS_0X, swapPrice.price.currencyAddress);
+      const transactions2 = [
+        // Swap quote optional approve step
+        ...(swapQuote == null ? void 0 : swapQuote.approveData) && !isSwapNativeToken ? [
+          {
+            to: swapPrice.price.currencyAddress,
+            data: swapQuote.approveData,
+            chain: chainId
+          }
+        ] : [],
+        // Swap quote tx
+        {
+          to: swapQuote.to,
+          data: swapQuote.transactionData,
+          chain: chainId,
+          ...isSwapNativeToken ? {
+            value: BigInt(swapQuote.transactionValue)
+          } : {}
+        },
+        // Actual transaction optional approve step
+        ...isApproved || isNativeToken ? [] : [
+          {
+            to: currencyAddress,
+            data: approveTxData,
+            chainId
+          }
+        ],
+        // transaction on the contract
+        {
+          to: targetContractAddress,
+          data: txData,
+          chainId,
+          ...isNativeToken ? {
+            value: BigInt(price)
+          } : {}
+        }
+      ];
+      const txHash = await sendTransactions({
+        chainId,
+        senderAddress: userAddress,
+        publicClient,
+        walletClient,
+        connector,
+        transactions: transactions2,
+        transactionConfirmations
+      });
+      closeSelectPaymentModal();
+      refechAllowance();
+      clearCachedBalances();
+      onSuccess(txHash);
+    } catch (e2) {
+      console.error("Failed to purchase...", e2);
+      onError(e2);
+    }
+    setDisableButtons(false);
+  };
+  const onClickPurchase = () => {
+    if (compareAddress$2(selectedCurrency || "", currencyAddress)) {
+      onPurchaseMainCurrency();
     } else {
-      result = Super.apply(this, arguments);
-    }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-function _possibleConstructorReturn(self2, call2) {
-  if (call2 && (_typeof(call2) === "object" || typeof call2 === "function")) {
-    return call2;
-  } else if (call2 !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return _assertThisInitialized(self2);
-}
-function _assertThisInitialized(self2) {
-  if (self2 === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self2;
-}
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
-    }));
-    return true;
-  } catch (e2) {
-    return false;
-  }
-}
-function _getPrototypeOf(o2) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf2(o3) {
-    return o3.__proto__ || Object.getPrototypeOf(o3);
-  };
-  return _getPrototypeOf(o2);
-}
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-var CopyToClipboard$1 = /* @__PURE__ */ function(_React$PureComponent) {
-  _inherits(CopyToClipboard2, _React$PureComponent);
-  var _super = _createSuper(CopyToClipboard2);
-  function CopyToClipboard2() {
-    var _this;
-    _classCallCheck(this, CopyToClipboard2);
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "onClick", function(event) {
-      var _this$props = _this.props, text2 = _this$props.text, onCopy = _this$props.onCopy, children = _this$props.children, options = _this$props.options;
-      var elem = _react["default"].Children.only(children);
-      var result = (0, _copyToClipboard["default"])(text2, options);
-      if (onCopy) {
-        onCopy(text2, result);
+      const foundSwap = swapPrices == null ? void 0 : swapPrices.find((price2) => {
+        var _a2;
+        return ((_a2 = price2.info) == null ? void 0 : _a2.address) === selectedCurrency;
+      });
+      if (foundSwap) {
+        onClickPurchaseSwap(foundSwap);
       }
-      if (elem && elem.props && typeof elem.props.onClick === "function") {
-        elem.props.onClick(event);
-      }
-    });
-    return _this;
-  }
-  _createClass(CopyToClipboard2, [{
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props;
-      _this$props2.text;
-      _this$props2.onCopy;
-      _this$props2.options;
-      var children = _this$props2.children, props = _objectWithoutProperties(_this$props2, _excluded);
-      var elem = _react["default"].Children.only(children);
-      return /* @__PURE__ */ _react["default"].cloneElement(elem, _objectSpread(_objectSpread({}, props), {}, {
-        onClick: this.onClick
-      }));
     }
-  }]);
-  return CopyToClipboard2;
-}(_react["default"].PureComponent);
-Component.CopyToClipboard = CopyToClipboard$1;
-_defineProperty(CopyToClipboard$1, "defaultProps", {
-  onCopy: void 0,
-  options: void 0
-});
-var _require = Component, CopyToClipboard = _require.CopyToClipboard;
-CopyToClipboard.CopyToClipboard = CopyToClipboard;
-var lib = CopyToClipboard;
+  };
+  return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", width: "full", paddingBottom: "0", paddingX: "6", height: "full", style: {
+    paddingTop: HEADER_HEIGHT$1
+  }, children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", width: "full", gap: "2", children: jsxRuntimeExports$1.jsx(OrderSummary, {}) }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, selectedCurrency, setSelectedCurrency, isLoading })] }), creditCardProviders.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons })] }), enableTransferFunds && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(TransferFunds, {})] }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency || !disableSwapQuote && isLoadingSwapQuote, marginTop: "6", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" }), jsxRuntimeExports$1.jsxs(Box, { width: "full", justifyContent: "center", alignItems: "center", gap: "0.5", marginY: "2", children: [jsxRuntimeExports$1.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "13", height: "12", viewBox: "0 0 13 12", fill: "none", children: jsxRuntimeExports$1.jsx("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.82807 5.24497V3.52873C8.82807 2.24258 7.78549 1.19995 6.49934 1.19995C5.21319 1.19995 4.17057 2.24258 4.17057 3.52873L4.17057 5.24497H3.9832C3.32046 5.24497 2.7832 5.78223 2.7832 6.44497V9.49529C2.7832 10.158 3.32046 10.6953 3.9832 10.6953H9.01546C9.6782 10.6953 10.2155 10.158 10.2155 9.49529V6.44497C10.2155 5.78223 9.6782 5.24497 9.01546 5.24497H8.82807ZM6.49934 2.06705C5.69209 2.06705 5.03769 2.72144 5.03766 3.52867L5.03767 5.24497H7.96097V3.52867C7.96094 2.72144 7.30658 2.06705 6.49934 2.06705Z", fill: "#6D6D6D" }) }), jsxRuntimeExports$1.jsx(Text, { variant: "xsmall", color: "text50", marginTop: "0.5", children: "Secure Checkout" })] })] })] }), jsxRuntimeExports$1.jsx(Divider, { marginY: "0" }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
+};
 const CopyButton$1 = (props) => {
   const { text: text2, size: size2 = "xs", inline = false, ...rest } = props;
   const [isCopied, setCopy] = reactExports.useState(false);
@@ -103681,7 +102306,6 @@ const KitCheckoutContent = ({ children }) => {
     }
   }, scroll: false, backdropColor: "backgroundBackdrop", onClose: closeAddFunds, children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-add-funds-content", children: [getAddFundsHeader(), getAddFundsContent()] }) }), openPaymentSelectionModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
     style: {
-      maxHeight: PAYMENT_SELECTION_MODAL_HEIGHT,
       maxWidth: "420px",
       ...getModalPositionCss(position)
     }
@@ -105218,6 +103842,1312 @@ const History = () => {
   });
   return jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Box, { paddingX: "4", paddingBottom: "5", paddingTop: "3", children: jsxRuntimeExports$1.jsx(TransactionHistoryList, { transactions: transactionHistory, isPending: isPendingTransactionHistory, isFetchingNextPage: false }) }) });
 };
+function isArray(value) {
+  return !Array.isArray ? getTag(value) === "[object Array]" : Array.isArray(value);
+}
+const INFINITY = 1 / 0;
+function baseToString(value) {
+  if (typeof value == "string") {
+    return value;
+  }
+  let result = value + "";
+  return result == "0" && 1 / value == -INFINITY ? "-0" : result;
+}
+function toString(value) {
+  return value == null ? "" : baseToString(value);
+}
+function isString(value) {
+  return typeof value === "string";
+}
+function isNumber(value) {
+  return typeof value === "number";
+}
+function isBoolean(value) {
+  return value === true || value === false || isObjectLike(value) && getTag(value) == "[object Boolean]";
+}
+function isObject(value) {
+  return typeof value === "object";
+}
+function isObjectLike(value) {
+  return isObject(value) && value !== null;
+}
+function isDefined(value) {
+  return value !== void 0 && value !== null;
+}
+function isBlank(value) {
+  return !value.trim().length;
+}
+function getTag(value) {
+  return value == null ? value === void 0 ? "[object Undefined]" : "[object Null]" : Object.prototype.toString.call(value);
+}
+const EXTENDED_SEARCH_UNAVAILABLE = "Extended search is not available";
+const INCORRECT_INDEX_TYPE = "Incorrect 'index' type";
+const LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY = (key) => `Invalid value for key ${key}`;
+const PATTERN_LENGTH_TOO_LARGE = (max2) => `Pattern length exceeds max of ${max2}.`;
+const MISSING_KEY_PROPERTY = (name2) => `Missing ${name2} property in key`;
+const INVALID_KEY_WEIGHT_VALUE = (key) => `Property 'weight' in key '${key}' must be a positive integer`;
+const hasOwn = Object.prototype.hasOwnProperty;
+class KeyStore {
+  constructor(keys) {
+    this._keys = [];
+    this._keyMap = {};
+    let totalWeight = 0;
+    keys.forEach((key) => {
+      let obj = createKey(key);
+      totalWeight += obj.weight;
+      this._keys.push(obj);
+      this._keyMap[obj.id] = obj;
+      totalWeight += obj.weight;
+    });
+    this._keys.forEach((key) => {
+      key.weight /= totalWeight;
+    });
+  }
+  get(keyId) {
+    return this._keyMap[keyId];
+  }
+  keys() {
+    return this._keys;
+  }
+  toJSON() {
+    return JSON.stringify(this._keys);
+  }
+}
+function createKey(key) {
+  let path = null;
+  let id2 = null;
+  let src = null;
+  let weight = 1;
+  let getFn = null;
+  if (isString(key) || isArray(key)) {
+    src = key;
+    path = createKeyPath(key);
+    id2 = createKeyId(key);
+  } else {
+    if (!hasOwn.call(key, "name")) {
+      throw new Error(MISSING_KEY_PROPERTY("name"));
+    }
+    const name2 = key.name;
+    src = name2;
+    if (hasOwn.call(key, "weight")) {
+      weight = key.weight;
+      if (weight <= 0) {
+        throw new Error(INVALID_KEY_WEIGHT_VALUE(name2));
+      }
+    }
+    path = createKeyPath(name2);
+    id2 = createKeyId(name2);
+    getFn = key.getFn;
+  }
+  return { path, id: id2, weight, src, getFn };
+}
+function createKeyPath(key) {
+  return isArray(key) ? key : key.split(".");
+}
+function createKeyId(key) {
+  return isArray(key) ? key.join(".") : key;
+}
+function get(obj, path) {
+  let list2 = [];
+  let arr = false;
+  const deepGet = (obj2, path2, index2) => {
+    if (!isDefined(obj2)) {
+      return;
+    }
+    if (!path2[index2]) {
+      list2.push(obj2);
+    } else {
+      let key = path2[index2];
+      const value = obj2[key];
+      if (!isDefined(value)) {
+        return;
+      }
+      if (index2 === path2.length - 1 && (isString(value) || isNumber(value) || isBoolean(value))) {
+        list2.push(toString(value));
+      } else if (isArray(value)) {
+        arr = true;
+        for (let i = 0, len = value.length; i < len; i += 1) {
+          deepGet(value[i], path2, index2 + 1);
+        }
+      } else if (path2.length) {
+        deepGet(value, path2, index2 + 1);
+      }
+    }
+  };
+  deepGet(obj, isString(path) ? path.split(".") : path, 0);
+  return arr ? list2 : list2[0];
+}
+const MatchOptions = {
+  // Whether the matches should be included in the result set. When `true`, each record in the result
+  // set will include the indices of the matched characters.
+  // These can consequently be used for highlighting purposes.
+  includeMatches: false,
+  // When `true`, the matching function will continue to the end of a search pattern even if
+  // a perfect match has already been located in the string.
+  findAllMatches: false,
+  // Minimum number of characters that must be matched before a result is considered a match
+  minMatchCharLength: 1
+};
+const BasicOptions = {
+  // When `true`, the algorithm continues searching to the end of the input even if a perfect
+  // match is found before the end of the same input.
+  isCaseSensitive: false,
+  // When true, the matching function will continue to the end of a search pattern even if
+  includeScore: false,
+  // List of properties that will be searched. This also supports nested properties.
+  keys: [],
+  // Whether to sort the result list, by score
+  shouldSort: true,
+  // Default sort function: sort by ascending score, ascending index
+  sortFn: (a2, b2) => a2.score === b2.score ? a2.idx < b2.idx ? -1 : 1 : a2.score < b2.score ? -1 : 1
+};
+const FuzzyOptions = {
+  // Approximately where in the text is the pattern expected to be found?
+  location: 0,
+  // At what point does the match algorithm give up. A threshold of '0.0' requires a perfect match
+  // (of both letters and location), a threshold of '1.0' would match anything.
+  threshold: 0.6,
+  // Determines how close the match must be to the fuzzy location (specified above).
+  // An exact letter match which is 'distance' characters away from the fuzzy location
+  // would score as a complete mismatch. A distance of '0' requires the match be at
+  // the exact location specified, a threshold of '1000' would require a perfect match
+  // to be within 800 characters of the fuzzy location to be found using a 0.8 threshold.
+  distance: 100
+};
+const AdvancedOptions = {
+  // When `true`, it enables the use of unix-like search commands
+  useExtendedSearch: false,
+  // The get function to use when fetching an object's properties.
+  // The default will search nested paths *ie foo.bar.baz*
+  getFn: get,
+  // When `true`, search will ignore `location` and `distance`, so it won't matter
+  // where in the string the pattern appears.
+  // More info: https://fusejs.io/concepts/scoring-theory.html#fuzziness-score
+  ignoreLocation: false,
+  // When `true`, the calculation for the relevance score (used for sorting) will
+  // ignore the field-length norm.
+  // More info: https://fusejs.io/concepts/scoring-theory.html#field-length-norm
+  ignoreFieldNorm: false,
+  // The weight to determine how much field length norm effects scoring.
+  fieldNormWeight: 1
+};
+var Config = {
+  ...BasicOptions,
+  ...MatchOptions,
+  ...FuzzyOptions,
+  ...AdvancedOptions
+};
+const SPACE = /[^ ]+/g;
+function norm(weight = 1, mantissa = 3) {
+  const cache2 = /* @__PURE__ */ new Map();
+  const m2 = Math.pow(10, mantissa);
+  return {
+    get(value) {
+      const numTokens = value.match(SPACE).length;
+      if (cache2.has(numTokens)) {
+        return cache2.get(numTokens);
+      }
+      const norm2 = 1 / Math.pow(numTokens, 0.5 * weight);
+      const n2 = parseFloat(Math.round(norm2 * m2) / m2);
+      cache2.set(numTokens, n2);
+      return n2;
+    },
+    clear() {
+      cache2.clear();
+    }
+  };
+}
+class FuseIndex {
+  constructor({
+    getFn = Config.getFn,
+    fieldNormWeight = Config.fieldNormWeight
+  } = {}) {
+    this.norm = norm(fieldNormWeight, 3);
+    this.getFn = getFn;
+    this.isCreated = false;
+    this.setIndexRecords();
+  }
+  setSources(docs = []) {
+    this.docs = docs;
+  }
+  setIndexRecords(records = []) {
+    this.records = records;
+  }
+  setKeys(keys = []) {
+    this.keys = keys;
+    this._keysMap = {};
+    keys.forEach((key, idx) => {
+      this._keysMap[key.id] = idx;
+    });
+  }
+  create() {
+    if (this.isCreated || !this.docs.length) {
+      return;
+    }
+    this.isCreated = true;
+    if (isString(this.docs[0])) {
+      this.docs.forEach((doc, docIndex) => {
+        this._addString(doc, docIndex);
+      });
+    } else {
+      this.docs.forEach((doc, docIndex) => {
+        this._addObject(doc, docIndex);
+      });
+    }
+    this.norm.clear();
+  }
+  // Adds a doc to the end of the index
+  add(doc) {
+    const idx = this.size();
+    if (isString(doc)) {
+      this._addString(doc, idx);
+    } else {
+      this._addObject(doc, idx);
+    }
+  }
+  // Removes the doc at the specified index of the index
+  removeAt(idx) {
+    this.records.splice(idx, 1);
+    for (let i = idx, len = this.size(); i < len; i += 1) {
+      this.records[i].i -= 1;
+    }
+  }
+  getValueForItemAtKeyId(item2, keyId) {
+    return item2[this._keysMap[keyId]];
+  }
+  size() {
+    return this.records.length;
+  }
+  _addString(doc, docIndex) {
+    if (!isDefined(doc) || isBlank(doc)) {
+      return;
+    }
+    let record = {
+      v: doc,
+      i: docIndex,
+      n: this.norm.get(doc)
+    };
+    this.records.push(record);
+  }
+  _addObject(doc, docIndex) {
+    let record = { i: docIndex, $: {} };
+    this.keys.forEach((key, keyIndex) => {
+      let value = key.getFn ? key.getFn(doc) : this.getFn(doc, key.path);
+      if (!isDefined(value)) {
+        return;
+      }
+      if (isArray(value)) {
+        let subRecords = [];
+        const stack = [{ nestedArrIndex: -1, value }];
+        while (stack.length) {
+          const { nestedArrIndex, value: value2 } = stack.pop();
+          if (!isDefined(value2)) {
+            continue;
+          }
+          if (isString(value2) && !isBlank(value2)) {
+            let subRecord = {
+              v: value2,
+              i: nestedArrIndex,
+              n: this.norm.get(value2)
+            };
+            subRecords.push(subRecord);
+          } else if (isArray(value2)) {
+            value2.forEach((item2, k2) => {
+              stack.push({
+                nestedArrIndex: k2,
+                value: item2
+              });
+            });
+          } else ;
+        }
+        record.$[keyIndex] = subRecords;
+      } else if (isString(value) && !isBlank(value)) {
+        let subRecord = {
+          v: value,
+          n: this.norm.get(value)
+        };
+        record.$[keyIndex] = subRecord;
+      }
+    });
+    this.records.push(record);
+  }
+  toJSON() {
+    return {
+      keys: this.keys,
+      records: this.records
+    };
+  }
+}
+function createIndex(keys, docs, { getFn = Config.getFn, fieldNormWeight = Config.fieldNormWeight } = {}) {
+  const myIndex = new FuseIndex({ getFn, fieldNormWeight });
+  myIndex.setKeys(keys.map(createKey));
+  myIndex.setSources(docs);
+  myIndex.create();
+  return myIndex;
+}
+function parseIndex(data, { getFn = Config.getFn, fieldNormWeight = Config.fieldNormWeight } = {}) {
+  const { keys, records } = data;
+  const myIndex = new FuseIndex({ getFn, fieldNormWeight });
+  myIndex.setKeys(keys);
+  myIndex.setIndexRecords(records);
+  return myIndex;
+}
+function computeScore$1(pattern, {
+  errors: errors2 = 0,
+  currentLocation = 0,
+  expectedLocation = 0,
+  distance: distance2 = Config.distance,
+  ignoreLocation = Config.ignoreLocation
+} = {}) {
+  const accuracy = errors2 / pattern.length;
+  if (ignoreLocation) {
+    return accuracy;
+  }
+  const proximity = Math.abs(expectedLocation - currentLocation);
+  if (!distance2) {
+    return proximity ? 1 : accuracy;
+  }
+  return accuracy + proximity / distance2;
+}
+function convertMaskToIndices(matchmask = [], minMatchCharLength = Config.minMatchCharLength) {
+  let indices = [];
+  let start = -1;
+  let end = -1;
+  let i = 0;
+  for (let len = matchmask.length; i < len; i += 1) {
+    let match = matchmask[i];
+    if (match && start === -1) {
+      start = i;
+    } else if (!match && start !== -1) {
+      end = i - 1;
+      if (end - start + 1 >= minMatchCharLength) {
+        indices.push([start, end]);
+      }
+      start = -1;
+    }
+  }
+  if (matchmask[i - 1] && i - start >= minMatchCharLength) {
+    indices.push([start, i - 1]);
+  }
+  return indices;
+}
+const MAX_BITS = 32;
+function search(text2, pattern, patternAlphabet, {
+  location: location2 = Config.location,
+  distance: distance2 = Config.distance,
+  threshold = Config.threshold,
+  findAllMatches = Config.findAllMatches,
+  minMatchCharLength = Config.minMatchCharLength,
+  includeMatches = Config.includeMatches,
+  ignoreLocation = Config.ignoreLocation
+} = {}) {
+  if (pattern.length > MAX_BITS) {
+    throw new Error(PATTERN_LENGTH_TOO_LARGE(MAX_BITS));
+  }
+  const patternLen = pattern.length;
+  const textLen = text2.length;
+  const expectedLocation = Math.max(0, Math.min(location2, textLen));
+  let currentThreshold = threshold;
+  let bestLocation = expectedLocation;
+  const computeMatches = minMatchCharLength > 1 || includeMatches;
+  const matchMask = computeMatches ? Array(textLen) : [];
+  let index2;
+  while ((index2 = text2.indexOf(pattern, bestLocation)) > -1) {
+    let score = computeScore$1(pattern, {
+      currentLocation: index2,
+      expectedLocation,
+      distance: distance2,
+      ignoreLocation
+    });
+    currentThreshold = Math.min(score, currentThreshold);
+    bestLocation = index2 + patternLen;
+    if (computeMatches) {
+      let i = 0;
+      while (i < patternLen) {
+        matchMask[index2 + i] = 1;
+        i += 1;
+      }
+    }
+  }
+  bestLocation = -1;
+  let lastBitArr = [];
+  let finalScore = 1;
+  let binMax = patternLen + textLen;
+  const mask2 = 1 << patternLen - 1;
+  for (let i = 0; i < patternLen; i += 1) {
+    let binMin = 0;
+    let binMid = binMax;
+    while (binMin < binMid) {
+      const score2 = computeScore$1(pattern, {
+        errors: i,
+        currentLocation: expectedLocation + binMid,
+        expectedLocation,
+        distance: distance2,
+        ignoreLocation
+      });
+      if (score2 <= currentThreshold) {
+        binMin = binMid;
+      } else {
+        binMax = binMid;
+      }
+      binMid = Math.floor((binMax - binMin) / 2 + binMin);
+    }
+    binMax = binMid;
+    let start = Math.max(1, expectedLocation - binMid + 1);
+    let finish = findAllMatches ? textLen : Math.min(expectedLocation + binMid, textLen) + patternLen;
+    let bitArr = Array(finish + 2);
+    bitArr[finish + 1] = (1 << i) - 1;
+    for (let j2 = finish; j2 >= start; j2 -= 1) {
+      let currentLocation = j2 - 1;
+      let charMatch = patternAlphabet[text2.charAt(currentLocation)];
+      if (computeMatches) {
+        matchMask[currentLocation] = +!!charMatch;
+      }
+      bitArr[j2] = (bitArr[j2 + 1] << 1 | 1) & charMatch;
+      if (i) {
+        bitArr[j2] |= (lastBitArr[j2 + 1] | lastBitArr[j2]) << 1 | 1 | lastBitArr[j2 + 1];
+      }
+      if (bitArr[j2] & mask2) {
+        finalScore = computeScore$1(pattern, {
+          errors: i,
+          currentLocation,
+          expectedLocation,
+          distance: distance2,
+          ignoreLocation
+        });
+        if (finalScore <= currentThreshold) {
+          currentThreshold = finalScore;
+          bestLocation = currentLocation;
+          if (bestLocation <= expectedLocation) {
+            break;
+          }
+          start = Math.max(1, 2 * expectedLocation - bestLocation);
+        }
+      }
+    }
+    const score = computeScore$1(pattern, {
+      errors: i + 1,
+      currentLocation: expectedLocation,
+      expectedLocation,
+      distance: distance2,
+      ignoreLocation
+    });
+    if (score > currentThreshold) {
+      break;
+    }
+    lastBitArr = bitArr;
+  }
+  const result = {
+    isMatch: bestLocation >= 0,
+    // Count exact matches (those with a score of 0) to be "almost" exact
+    score: Math.max(1e-3, finalScore)
+  };
+  if (computeMatches) {
+    const indices = convertMaskToIndices(matchMask, minMatchCharLength);
+    if (!indices.length) {
+      result.isMatch = false;
+    } else if (includeMatches) {
+      result.indices = indices;
+    }
+  }
+  return result;
+}
+function createPatternAlphabet(pattern) {
+  let mask2 = {};
+  for (let i = 0, len = pattern.length; i < len; i += 1) {
+    const char = pattern.charAt(i);
+    mask2[char] = (mask2[char] || 0) | 1 << len - i - 1;
+  }
+  return mask2;
+}
+class BitapSearch {
+  constructor(pattern, {
+    location: location2 = Config.location,
+    threshold = Config.threshold,
+    distance: distance2 = Config.distance,
+    includeMatches = Config.includeMatches,
+    findAllMatches = Config.findAllMatches,
+    minMatchCharLength = Config.minMatchCharLength,
+    isCaseSensitive = Config.isCaseSensitive,
+    ignoreLocation = Config.ignoreLocation
+  } = {}) {
+    this.options = {
+      location: location2,
+      threshold,
+      distance: distance2,
+      includeMatches,
+      findAllMatches,
+      minMatchCharLength,
+      isCaseSensitive,
+      ignoreLocation
+    };
+    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
+    this.chunks = [];
+    if (!this.pattern.length) {
+      return;
+    }
+    const addChunk = (pattern2, startIndex) => {
+      this.chunks.push({
+        pattern: pattern2,
+        alphabet: createPatternAlphabet(pattern2),
+        startIndex
+      });
+    };
+    const len = this.pattern.length;
+    if (len > MAX_BITS) {
+      let i = 0;
+      const remainder = len % MAX_BITS;
+      const end = len - remainder;
+      while (i < end) {
+        addChunk(this.pattern.substr(i, MAX_BITS), i);
+        i += MAX_BITS;
+      }
+      if (remainder) {
+        const startIndex = len - MAX_BITS;
+        addChunk(this.pattern.substr(startIndex), startIndex);
+      }
+    } else {
+      addChunk(this.pattern, 0);
+    }
+  }
+  searchIn(text2) {
+    const { isCaseSensitive, includeMatches } = this.options;
+    if (!isCaseSensitive) {
+      text2 = text2.toLowerCase();
+    }
+    if (this.pattern === text2) {
+      let result2 = {
+        isMatch: true,
+        score: 0
+      };
+      if (includeMatches) {
+        result2.indices = [[0, text2.length - 1]];
+      }
+      return result2;
+    }
+    const {
+      location: location2,
+      distance: distance2,
+      threshold,
+      findAllMatches,
+      minMatchCharLength,
+      ignoreLocation
+    } = this.options;
+    let allIndices = [];
+    let totalScore = 0;
+    let hasMatches = false;
+    this.chunks.forEach(({ pattern, alphabet, startIndex }) => {
+      const { isMatch, score, indices } = search(text2, pattern, alphabet, {
+        location: location2 + startIndex,
+        distance: distance2,
+        threshold,
+        findAllMatches,
+        minMatchCharLength,
+        includeMatches,
+        ignoreLocation
+      });
+      if (isMatch) {
+        hasMatches = true;
+      }
+      totalScore += score;
+      if (isMatch && indices) {
+        allIndices = [...allIndices, ...indices];
+      }
+    });
+    let result = {
+      isMatch: hasMatches,
+      score: hasMatches ? totalScore / this.chunks.length : 1
+    };
+    if (hasMatches && includeMatches) {
+      result.indices = allIndices;
+    }
+    return result;
+  }
+}
+class BaseMatch {
+  constructor(pattern) {
+    this.pattern = pattern;
+  }
+  static isMultiMatch(pattern) {
+    return getMatch(pattern, this.multiRegex);
+  }
+  static isSingleMatch(pattern) {
+    return getMatch(pattern, this.singleRegex);
+  }
+  search() {
+  }
+}
+function getMatch(pattern, exp) {
+  const matches = pattern.match(exp);
+  return matches ? matches[1] : null;
+}
+class ExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return "exact";
+  }
+  static get multiRegex() {
+    return /^="(.*)"$/;
+  }
+  static get singleRegex() {
+    return /^=(.*)$/;
+  }
+  search(text2) {
+    const isMatch = text2 === this.pattern;
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, this.pattern.length - 1]
+    };
+  }
+}
+class InverseExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return "inverse-exact";
+  }
+  static get multiRegex() {
+    return /^!"(.*)"$/;
+  }
+  static get singleRegex() {
+    return /^!(.*)$/;
+  }
+  search(text2) {
+    const index2 = text2.indexOf(this.pattern);
+    const isMatch = index2 === -1;
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, text2.length - 1]
+    };
+  }
+}
+class PrefixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return "prefix-exact";
+  }
+  static get multiRegex() {
+    return /^\^"(.*)"$/;
+  }
+  static get singleRegex() {
+    return /^\^(.*)$/;
+  }
+  search(text2) {
+    const isMatch = text2.startsWith(this.pattern);
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, this.pattern.length - 1]
+    };
+  }
+}
+class InversePrefixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return "inverse-prefix-exact";
+  }
+  static get multiRegex() {
+    return /^!\^"(.*)"$/;
+  }
+  static get singleRegex() {
+    return /^!\^(.*)$/;
+  }
+  search(text2) {
+    const isMatch = !text2.startsWith(this.pattern);
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, text2.length - 1]
+    };
+  }
+}
+class SuffixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return "suffix-exact";
+  }
+  static get multiRegex() {
+    return /^"(.*)"\$$/;
+  }
+  static get singleRegex() {
+    return /^(.*)\$$/;
+  }
+  search(text2) {
+    const isMatch = text2.endsWith(this.pattern);
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [text2.length - this.pattern.length, text2.length - 1]
+    };
+  }
+}
+class InverseSuffixExactMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return "inverse-suffix-exact";
+  }
+  static get multiRegex() {
+    return /^!"(.*)"\$$/;
+  }
+  static get singleRegex() {
+    return /^!(.*)\$$/;
+  }
+  search(text2) {
+    const isMatch = !text2.endsWith(this.pattern);
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices: [0, text2.length - 1]
+    };
+  }
+}
+class FuzzyMatch extends BaseMatch {
+  constructor(pattern, {
+    location: location2 = Config.location,
+    threshold = Config.threshold,
+    distance: distance2 = Config.distance,
+    includeMatches = Config.includeMatches,
+    findAllMatches = Config.findAllMatches,
+    minMatchCharLength = Config.minMatchCharLength,
+    isCaseSensitive = Config.isCaseSensitive,
+    ignoreLocation = Config.ignoreLocation
+  } = {}) {
+    super(pattern);
+    this._bitapSearch = new BitapSearch(pattern, {
+      location: location2,
+      threshold,
+      distance: distance2,
+      includeMatches,
+      findAllMatches,
+      minMatchCharLength,
+      isCaseSensitive,
+      ignoreLocation
+    });
+  }
+  static get type() {
+    return "fuzzy";
+  }
+  static get multiRegex() {
+    return /^"(.*)"$/;
+  }
+  static get singleRegex() {
+    return /^(.*)$/;
+  }
+  search(text2) {
+    return this._bitapSearch.searchIn(text2);
+  }
+}
+class IncludeMatch extends BaseMatch {
+  constructor(pattern) {
+    super(pattern);
+  }
+  static get type() {
+    return "include";
+  }
+  static get multiRegex() {
+    return /^'"(.*)"$/;
+  }
+  static get singleRegex() {
+    return /^'(.*)$/;
+  }
+  search(text2) {
+    let location2 = 0;
+    let index2;
+    const indices = [];
+    const patternLen = this.pattern.length;
+    while ((index2 = text2.indexOf(this.pattern, location2)) > -1) {
+      location2 = index2 + patternLen;
+      indices.push([index2, location2 - 1]);
+    }
+    const isMatch = !!indices.length;
+    return {
+      isMatch,
+      score: isMatch ? 0 : 1,
+      indices
+    };
+  }
+}
+const searchers = [
+  ExactMatch,
+  IncludeMatch,
+  PrefixExactMatch,
+  InversePrefixExactMatch,
+  InverseSuffixExactMatch,
+  SuffixExactMatch,
+  InverseExactMatch,
+  FuzzyMatch
+];
+const searchersLen = searchers.length;
+const SPACE_RE = / +(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)/;
+const OR_TOKEN = "|";
+function parseQuery(pattern, options = {}) {
+  return pattern.split(OR_TOKEN).map((item2) => {
+    let query = item2.trim().split(SPACE_RE).filter((item3) => item3 && !!item3.trim());
+    let results2 = [];
+    for (let i = 0, len = query.length; i < len; i += 1) {
+      const queryItem = query[i];
+      let found = false;
+      let idx = -1;
+      while (!found && ++idx < searchersLen) {
+        const searcher = searchers[idx];
+        let token = searcher.isMultiMatch(queryItem);
+        if (token) {
+          results2.push(new searcher(token, options));
+          found = true;
+        }
+      }
+      if (found) {
+        continue;
+      }
+      idx = -1;
+      while (++idx < searchersLen) {
+        const searcher = searchers[idx];
+        let token = searcher.isSingleMatch(queryItem);
+        if (token) {
+          results2.push(new searcher(token, options));
+          break;
+        }
+      }
+    }
+    return results2;
+  });
+}
+const MultiMatchSet = /* @__PURE__ */ new Set([FuzzyMatch.type, IncludeMatch.type]);
+class ExtendedSearch {
+  constructor(pattern, {
+    isCaseSensitive = Config.isCaseSensitive,
+    includeMatches = Config.includeMatches,
+    minMatchCharLength = Config.minMatchCharLength,
+    ignoreLocation = Config.ignoreLocation,
+    findAllMatches = Config.findAllMatches,
+    location: location2 = Config.location,
+    threshold = Config.threshold,
+    distance: distance2 = Config.distance
+  } = {}) {
+    this.query = null;
+    this.options = {
+      isCaseSensitive,
+      includeMatches,
+      minMatchCharLength,
+      findAllMatches,
+      ignoreLocation,
+      location: location2,
+      threshold,
+      distance: distance2
+    };
+    this.pattern = isCaseSensitive ? pattern : pattern.toLowerCase();
+    this.query = parseQuery(this.pattern, this.options);
+  }
+  static condition(_, options) {
+    return options.useExtendedSearch;
+  }
+  searchIn(text2) {
+    const query = this.query;
+    if (!query) {
+      return {
+        isMatch: false,
+        score: 1
+      };
+    }
+    const { includeMatches, isCaseSensitive } = this.options;
+    text2 = isCaseSensitive ? text2 : text2.toLowerCase();
+    let numMatches = 0;
+    let allIndices = [];
+    let totalScore = 0;
+    for (let i = 0, qLen = query.length; i < qLen; i += 1) {
+      const searchers2 = query[i];
+      allIndices.length = 0;
+      numMatches = 0;
+      for (let j2 = 0, pLen = searchers2.length; j2 < pLen; j2 += 1) {
+        const searcher = searchers2[j2];
+        const { isMatch, indices, score } = searcher.search(text2);
+        if (isMatch) {
+          numMatches += 1;
+          totalScore += score;
+          if (includeMatches) {
+            const type = searcher.constructor.type;
+            if (MultiMatchSet.has(type)) {
+              allIndices = [...allIndices, ...indices];
+            } else {
+              allIndices.push(indices);
+            }
+          }
+        } else {
+          totalScore = 0;
+          numMatches = 0;
+          allIndices.length = 0;
+          break;
+        }
+      }
+      if (numMatches) {
+        let result = {
+          isMatch: true,
+          score: totalScore / numMatches
+        };
+        if (includeMatches) {
+          result.indices = allIndices;
+        }
+        return result;
+      }
+    }
+    return {
+      isMatch: false,
+      score: 1
+    };
+  }
+}
+const registeredSearchers = [];
+function register(...args) {
+  registeredSearchers.push(...args);
+}
+function createSearcher(pattern, options) {
+  for (let i = 0, len = registeredSearchers.length; i < len; i += 1) {
+    let searcherClass = registeredSearchers[i];
+    if (searcherClass.condition(pattern, options)) {
+      return new searcherClass(pattern, options);
+    }
+  }
+  return new BitapSearch(pattern, options);
+}
+const LogicalOperator = {
+  AND: "$and",
+  OR: "$or"
+};
+const KeyType = {
+  PATH: "$path",
+  PATTERN: "$val"
+};
+const isExpression = (query) => !!(query[LogicalOperator.AND] || query[LogicalOperator.OR]);
+const isPath = (query) => !!query[KeyType.PATH];
+const isLeaf = (query) => !isArray(query) && isObject(query) && !isExpression(query);
+const convertToExplicit = (query) => ({
+  [LogicalOperator.AND]: Object.keys(query).map((key) => ({
+    [key]: query[key]
+  }))
+});
+function parse$1(query, options, { auto: auto2 = true } = {}) {
+  const next = (query2) => {
+    let keys = Object.keys(query2);
+    const isQueryPath = isPath(query2);
+    if (!isQueryPath && keys.length > 1 && !isExpression(query2)) {
+      return next(convertToExplicit(query2));
+    }
+    if (isLeaf(query2)) {
+      const key = isQueryPath ? query2[KeyType.PATH] : keys[0];
+      const pattern = isQueryPath ? query2[KeyType.PATTERN] : query2[key];
+      if (!isString(pattern)) {
+        throw new Error(LOGICAL_SEARCH_INVALID_QUERY_FOR_KEY(key));
+      }
+      const obj = {
+        keyId: createKeyId(key),
+        pattern
+      };
+      if (auto2) {
+        obj.searcher = createSearcher(pattern, options);
+      }
+      return obj;
+    }
+    let node = {
+      children: [],
+      operator: keys[0]
+    };
+    keys.forEach((key) => {
+      const value = query2[key];
+      if (isArray(value)) {
+        value.forEach((item2) => {
+          node.children.push(next(item2));
+        });
+      }
+    });
+    return node;
+  };
+  if (!isExpression(query)) {
+    query = convertToExplicit(query);
+  }
+  return next(query);
+}
+function computeScore(results2, { ignoreFieldNorm = Config.ignoreFieldNorm }) {
+  results2.forEach((result) => {
+    let totalScore = 1;
+    result.matches.forEach(({ key, norm: norm2, score }) => {
+      const weight = key ? key.weight : null;
+      totalScore *= Math.pow(
+        score === 0 && weight ? Number.EPSILON : score,
+        (weight || 1) * (ignoreFieldNorm ? 1 : norm2)
+      );
+    });
+    result.score = totalScore;
+  });
+}
+function transformMatches(result, data) {
+  const matches = result.matches;
+  data.matches = [];
+  if (!isDefined(matches)) {
+    return;
+  }
+  matches.forEach((match) => {
+    if (!isDefined(match.indices) || !match.indices.length) {
+      return;
+    }
+    const { indices, value } = match;
+    let obj = {
+      indices,
+      value
+    };
+    if (match.key) {
+      obj.key = match.key.src;
+    }
+    if (match.idx > -1) {
+      obj.refIndex = match.idx;
+    }
+    data.matches.push(obj);
+  });
+}
+function transformScore(result, data) {
+  data.score = result.score;
+}
+function format(results2, docs, {
+  includeMatches = Config.includeMatches,
+  includeScore = Config.includeScore
+} = {}) {
+  const transformers = [];
+  if (includeMatches) transformers.push(transformMatches);
+  if (includeScore) transformers.push(transformScore);
+  return results2.map((result) => {
+    const { idx } = result;
+    const data = {
+      item: docs[idx],
+      refIndex: idx
+    };
+    if (transformers.length) {
+      transformers.forEach((transformer) => {
+        transformer(result, data);
+      });
+    }
+    return data;
+  });
+}
+class Fuse {
+  constructor(docs, options = {}, index2) {
+    this.options = { ...Config, ...options };
+    if (this.options.useExtendedSearch && false) {
+      throw new Error(EXTENDED_SEARCH_UNAVAILABLE);
+    }
+    this._keyStore = new KeyStore(this.options.keys);
+    this.setCollection(docs, index2);
+  }
+  setCollection(docs, index2) {
+    this._docs = docs;
+    if (index2 && !(index2 instanceof FuseIndex)) {
+      throw new Error(INCORRECT_INDEX_TYPE);
+    }
+    this._myIndex = index2 || createIndex(this.options.keys, this._docs, {
+      getFn: this.options.getFn,
+      fieldNormWeight: this.options.fieldNormWeight
+    });
+  }
+  add(doc) {
+    if (!isDefined(doc)) {
+      return;
+    }
+    this._docs.push(doc);
+    this._myIndex.add(doc);
+  }
+  remove(predicate = () => false) {
+    const results2 = [];
+    for (let i = 0, len = this._docs.length; i < len; i += 1) {
+      const doc = this._docs[i];
+      if (predicate(doc, i)) {
+        this.removeAt(i);
+        i -= 1;
+        len -= 1;
+        results2.push(doc);
+      }
+    }
+    return results2;
+  }
+  removeAt(idx) {
+    this._docs.splice(idx, 1);
+    this._myIndex.removeAt(idx);
+  }
+  getIndex() {
+    return this._myIndex;
+  }
+  search(query, { limit = -1 } = {}) {
+    const {
+      includeMatches,
+      includeScore,
+      shouldSort,
+      sortFn,
+      ignoreFieldNorm
+    } = this.options;
+    let results2 = isString(query) ? isString(this._docs[0]) ? this._searchStringList(query) : this._searchObjectList(query) : this._searchLogical(query);
+    computeScore(results2, { ignoreFieldNorm });
+    if (shouldSort) {
+      results2.sort(sortFn);
+    }
+    if (isNumber(limit) && limit > -1) {
+      results2 = results2.slice(0, limit);
+    }
+    return format(results2, this._docs, {
+      includeMatches,
+      includeScore
+    });
+  }
+  _searchStringList(query) {
+    const searcher = createSearcher(query, this.options);
+    const { records } = this._myIndex;
+    const results2 = [];
+    records.forEach(({ v: text2, i: idx, n: norm2 }) => {
+      if (!isDefined(text2)) {
+        return;
+      }
+      const { isMatch, score, indices } = searcher.searchIn(text2);
+      if (isMatch) {
+        results2.push({
+          item: text2,
+          idx,
+          matches: [{ score, value: text2, norm: norm2, indices }]
+        });
+      }
+    });
+    return results2;
+  }
+  _searchLogical(query) {
+    const expression = parse$1(query, this.options);
+    const evaluate2 = (node, item2, idx) => {
+      if (!node.children) {
+        const { keyId, searcher } = node;
+        const matches = this._findMatches({
+          key: this._keyStore.get(keyId),
+          value: this._myIndex.getValueForItemAtKeyId(item2, keyId),
+          searcher
+        });
+        if (matches && matches.length) {
+          return [
+            {
+              idx,
+              item: item2,
+              matches
+            }
+          ];
+        }
+        return [];
+      }
+      const res = [];
+      for (let i = 0, len = node.children.length; i < len; i += 1) {
+        const child = node.children[i];
+        const result = evaluate2(child, item2, idx);
+        if (result.length) {
+          res.push(...result);
+        } else if (node.operator === LogicalOperator.AND) {
+          return [];
+        }
+      }
+      return res;
+    };
+    const records = this._myIndex.records;
+    const resultMap = {};
+    const results2 = [];
+    records.forEach(({ $: item2, i: idx }) => {
+      if (isDefined(item2)) {
+        let expResults = evaluate2(expression, item2, idx);
+        if (expResults.length) {
+          if (!resultMap[idx]) {
+            resultMap[idx] = { idx, item: item2, matches: [] };
+            results2.push(resultMap[idx]);
+          }
+          expResults.forEach(({ matches }) => {
+            resultMap[idx].matches.push(...matches);
+          });
+        }
+      }
+    });
+    return results2;
+  }
+  _searchObjectList(query) {
+    const searcher = createSearcher(query, this.options);
+    const { keys, records } = this._myIndex;
+    const results2 = [];
+    records.forEach(({ $: item2, i: idx }) => {
+      if (!isDefined(item2)) {
+        return;
+      }
+      let matches = [];
+      keys.forEach((key, keyIndex) => {
+        matches.push(
+          ...this._findMatches({
+            key,
+            value: item2[keyIndex],
+            searcher
+          })
+        );
+      });
+      if (matches.length) {
+        results2.push({
+          idx,
+          item: item2,
+          matches
+        });
+      }
+    });
+    return results2;
+  }
+  _findMatches({ key, value, searcher }) {
+    if (!isDefined(value)) {
+      return [];
+    }
+    let matches = [];
+    if (isArray(value)) {
+      value.forEach(({ v: text2, i: idx, n: norm2 }) => {
+        if (!isDefined(text2)) {
+          return;
+        }
+        const { isMatch, score, indices } = searcher.searchIn(text2);
+        if (isMatch) {
+          matches.push({
+            score,
+            key,
+            value: text2,
+            idx,
+            norm: norm2,
+            indices
+          });
+        }
+      });
+    } else {
+      const { v: text2, n: norm2 } = value;
+      const { isMatch, score, indices } = searcher.searchIn(text2);
+      if (isMatch) {
+        matches.push({ score, key, value: text2, norm: norm2, indices });
+      }
+    }
+    return matches;
+  }
+}
+Fuse.version = "6.6.2";
+Fuse.createIndex = createIndex;
+Fuse.parseIndex = parseIndex;
+Fuse.config = Config;
+{
+  Fuse.parseQuery = parse$1;
+}
+{
+  register(ExtendedSearch);
+}
 const BalanceItem = ({ balance }) => {
   var _a2, _b2, _c2;
   const { chains: chains2 } = useConfig();
@@ -110696,6 +110626,7 @@ const Connected = () => {
       collectionAddress,
       creditCardProviders: ["sardine"],
       isDev: true,
+      copyrightText: "ⓒ2024 Sequence",
       onSuccess: (txnHash) => {
         console.log("success!", txnHash);
       },
@@ -110840,7 +110771,7 @@ const Connected = () => {
         /* @__PURE__ */ jsxRuntimeExports$1.jsx(
           CardButton,
           {
-            title: "Select Payment Method",
+            title: "Checkout with Sequence Pay",
             description: "Purchase an NFT through various purchase methods",
             onClick: onClickSelectPayment
           }
