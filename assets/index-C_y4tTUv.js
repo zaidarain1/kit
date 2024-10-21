@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CZPhIPxY.js","./hooks.module-BzRliAzy.js","./inherits_browser-CFQdjtxd.js","./index-BnirkJtN.js","./index.es-dFBAXTmN.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-DBYxCXn_.js","./hooks.module-BkzlSG6a.js","./inherits_browser-Cg5oDkr_.js","./index-BN3oU3Ud.js","./index.es-NeE9ZgVb.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32961,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BAAITngB.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-Djne1PTv.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -97365,11 +97365,17 @@ const Connect = (props) => {
 };
 const ConnectWalletContent = (props) => {
   var _a2;
-  const { emailConflictInfo, config: config2 } = props;
+  const { emailConflictInfo, config: config2, isPreview = false } = props;
   const projectName = (_a2 = config2 == null ? void 0 : config2.signIn) == null ? void 0 : _a2.projectName;
   return jsxRuntimeExports$1.jsxs(Box, { padding: "4", children: [jsxRuntimeExports$1.jsx(Box, { justifyContent: "center", color: "text100", alignItems: "center", fontWeight: "medium", style: {
     marginTop: "4px"
-  }, children: jsxRuntimeExports$1.jsx(index$2$1.Title, { asChild: true, children: jsxRuntimeExports$1.jsxs(Text, { children: ["Sign in ", projectName ? `to ${projectName}` : ""] }) }) }), jsxRuntimeExports$1.jsx(Connect, { emailConflictInfo, ...props })] });
+  }, children: jsxRuntimeExports$1.jsx(TitleWrapper, { isPreview, children: jsxRuntimeExports$1.jsxs(Text, { children: ["Sign in ", projectName ? `to ${projectName}` : ""] }) }) }), jsxRuntimeExports$1.jsx(Connect, { emailConflictInfo, ...props })] });
+};
+const TitleWrapper = ({ children, isPreview }) => {
+  if (isPreview) {
+    return jsxRuntimeExports$1.jsx(jsxRuntimeExports$1.Fragment, { children });
+  }
+  return jsxRuntimeExports$1.jsx(index$2$1.Title, { asChild: true, children });
 };
 const getNetworkColor = (chainId, mode = "light") => {
   switch (chainId) {
@@ -98588,7 +98594,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CZPhIPxY.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-DBYxCXn_.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98770,7 +98776,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-BnirkJtN.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-BN3oU3Ud.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99006,7 +99012,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-dFBAXTmN.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-NeE9ZgVb.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
