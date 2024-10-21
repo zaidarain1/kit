@@ -273,6 +273,7 @@ export const Connected = () => {
       collectionAddress,
       creditCardProviders: ['sardine'],
       isDev: true,
+      copyrightText: 'ⓒ2024 Sequence',
       onSuccess: (txnHash: string) => {
         console.log('success!', txnHash)
       },
@@ -419,7 +420,7 @@ export const Connected = () => {
               </>
             )}
             <CardButton
-              title="Select Payment Method"
+              title="Checkout with Sequence Pay"
               description="Purchase an NFT through various purchase methods"
               onClick={onClickSelectPayment}
             />

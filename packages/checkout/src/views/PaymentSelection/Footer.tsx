@@ -1,24 +1,36 @@
-import { Box, Text, SequenceIcon } from '@0xsequence/design-system'
+import { Box, Text } from '@0xsequence/design-system'
+import { useSelectPaymentModal } from '../../hooks'
 
 export const Footer = () => {
+  const { selectPaymentSettings } = useSelectPaymentModal()
+
   return (
-    <Box paddingBottom="8" height="7" marginTop="1" width="full" style={{ bottom: '4px' }}>
+    <Box
+      paddingBottom="6"
+      paddingTop="5"
+      marginTop="1"
+      width="full"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+    >
+      {selectPaymentSettings?.copyrightText && (
+        <Text color="text50" variant="normal" fontWeight="bold">
+          {selectPaymentSettings.copyrightText}
+        </Text>
+      )}
       <Box gap="4" justifyContent="center" alignItems="center">
         <Box
           as="a"
-          href="https://sequence.xyz/"
+          href="https://support.sequence.xyz/en/"
           rel="noopener noreferrer"
           target="_blank"
           textDecoration="none"
           opacity={{ hover: '80' }}
-          gap="1"
-          justifyContent="center"
-          alignItems="center"
           cursor="pointer"
         >
-          <SequenceIcon color="text50" />
-          <Text color="text50" variant="xsmall">
-            Sequence
+          <Text color="text50" variant="normal" fontWeight="bold">
+            Help
           </Text>
         </Box>
         <Box
@@ -30,8 +42,8 @@ export const Footer = () => {
           opacity={{ hover: '80' }}
           cursor="pointer"
         >
-          <Text color="text50" variant="xsmall">
-            Privacy
+          <Text color="text50" variant="normal" fontWeight="bold">
+            Privacy Policy
           </Text>
         </Box>
         <Box
@@ -43,21 +55,8 @@ export const Footer = () => {
           opacity={{ hover: '80' }}
           cursor="pointer"
         >
-          <Text color="text50" variant="xsmall">
-            Terms
-          </Text>
-        </Box>
-        <Box
-          as="a"
-          href="https://docs.sequence.xyz/"
-          rel="noopener noreferrer"
-          target="_blank"
-          textDecoration="none"
-          opacity={{ hover: '80' }}
-          cursor="pointer"
-        >
-          <Text color="text50" variant="xsmall">
-            Help
+          <Text color="text50" variant="normal" fontWeight="bold">
+            Terms of Service
           </Text>
         </Box>
       </Box>
