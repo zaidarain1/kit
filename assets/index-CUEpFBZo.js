@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-M52Wwcsr.js","./hooks.module-CV9nxEqh.js","./inherits_browser-Bbjpt7kz.js","./index-DT6MrKaO.js","./index.es-CwAVkYrf.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-19zyLO84.js","./hooks.module-Bx4aH0JK.js","./inherits_browser-BX8mfVTA.js","./index-CTcPveXT.js","./index.es-pwrsUKES.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32961,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-D4RS8mNc.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-fo1NJZMK.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98595,7 +98595,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-M52Wwcsr.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-19zyLO84.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98777,7 +98777,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-DT6MrKaO.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CTcPveXT.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99013,7 +99013,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-CwAVkYrf.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-pwrsUKES.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -100480,7 +100480,12 @@ const PayWithCrypto = ({ settings, disableButtons, selectedCurrency, setSelected
   const displayedOptionsAmount = Math.min(coins.length, 3);
   const displayedGuttersAmount = displayedOptionsAmount - 1;
   const viewheight = swapsIsLoading ? "174px" : `${24 + optionHeight * displayedOptionsAmount + gutterHeight * displayedGuttersAmount}px`;
-  return jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "white", children: "Pay with crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingY: "3", style: { height: viewheight, marginBottom: "-12px" }, children: isLoadingOptions ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) })] });
+  return jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { variant: "small", fontWeight: "medium", color: "white", children: "Pay with crypto" }) }), jsxRuntimeExports$1.jsx(Scroll, { paddingY: "3", style: {
+    height: viewheight,
+    marginBottom: "-12px",
+    scrollbarColor: "gray black",
+    scrollbarWidth: "thin"
+  }, children: isLoadingOptions ? jsxRuntimeExports$1.jsx(Box, { width: "full", paddingTop: "5", justifyContent: "center", alignItems: "center", children: jsxRuntimeExports$1.jsx(Spinner, {}) }) : jsxRuntimeExports$1.jsx(Options, {}) })] });
 };
 var Component = {};
 var toggleSelection = function() {
@@ -101982,13 +101987,13 @@ const PaymentSelectionContent = () => {
     withContractInfo: true
   }, { disabled: !enableSwapPayments });
   const disableSwapQuote = !selectedCurrency || compareAddress$2(currencyAddress, selectedCurrency || "");
-  const swapQuotesBuyCurrency = compareAddress$2(currencyAddress || "", zeroAddress) ? NATIVE_TOKEN_ADDRESS_0X : selectedCurrency || "";
+  const swapQuotesSellCurrency = compareAddress$2(currencyAddress || "", zeroAddress) ? NATIVE_TOKEN_ADDRESS_0X : selectedCurrency || "";
   const { data: swapQuote, isLoading: isLoadingSwapQuote } = useSwapQuote({
     userAddress: userAddress ?? "",
-    buyCurrencyAddress: swapQuotesBuyCurrency,
+    buyCurrencyAddress: currencyAddress,
     buyAmount: price,
     chainId,
-    sellCurrencyAddress: selectedCurrency || "",
+    sellCurrencyAddress: swapQuotesSellCurrency,
     includeApprove: true
   }, {
     disabled: !selectedCurrency
@@ -102314,7 +102319,9 @@ const KitCheckoutContent = ({ children }) => {
   }, scroll: false, backdropColor: "backgroundBackdrop", onClose: closeAddFunds, children: jsxRuntimeExports$1.jsxs(Box, { id: "sequence-kit-add-funds-content", children: [getAddFundsHeader(), getAddFundsContent()] }) }), openPaymentSelectionModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
     style: {
       maxWidth: "420px",
-      ...getModalPositionCss(position)
+      ...getModalPositionCss(position),
+      scrollbarColor: "gray black",
+      scrollbarWidth: "thin"
     }
   }, backdropColor: "backgroundBackdrop", onClose: () => setOpenPaymentSelectionModal(false), children: jsxRuntimeExports$1.jsx(Box, { id: "sequence-kit-payment-selection-content", children: jsxRuntimeExports$1.jsx(PaymentSelection, {}) }) }), openTransferFundsModal && jsxRuntimeExports$1.jsx(Modal, { contentProps: {
     style: {
