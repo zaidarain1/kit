@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-DBYxCXn_.js","./hooks.module-BkzlSG6a.js","./inherits_browser-Cg5oDkr_.js","./index-BN3oU3Ud.js","./index.es-NeE9ZgVb.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-M52Wwcsr.js","./hooks.module-CV9nxEqh.js","./inherits_browser-Bbjpt7kz.js","./index-DT6MrKaO.js","./index.es-CwAVkYrf.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32961,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-Djne1PTv.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-D4RS8mNc.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98417,6 +98417,7 @@ const KitProvider = (props) => {
   }, children: jsxRuntimeExports$1.jsx(GoogleOAuthProvider, { clientId: googleClientId, children: jsxRuntimeExports$1.jsx(ConnectModalContextProvider, { value: { setOpenConnectModal, openConnectModalState: openConnectModal }, children: jsxRuntimeExports$1.jsx(WalletConfigContextProvider, { value: { setDisplayedAssets, displayedAssets }, children: jsxRuntimeExports$1.jsxs(AnalyticsContextProvider, { value: { setAnalytics, analytics }, children: [jsxRuntimeExports$1.jsx("div", { id: "kit-provider", children: jsxRuntimeExports$1.jsx(ThemeProvider, { root: "#kit-provider", scope: "kit", theme, children: jsxRuntimeExports$1.jsxs(AnimatePresence, { children: [openConnectModal && jsxRuntimeExports$1.jsx(Modal, { scroll: false, backdropColor: "backgroundBackdrop", size: "sm", contentProps: {
     style: {
       maxWidth: "364px",
+      overflow: "visible",
       ...getModalPositionCss(position)
     }
   }, onClose: () => setOpenConnectModal(false), children: jsxRuntimeExports$1.jsx(ConnectWalletContent, { onClose: () => setOpenConnectModal(false), emailConflictInfo, ...props }) }), pendingRequestConfirmation && jsxRuntimeExports$1.jsx(Modal, { scroll: false, backdropColor: "backgroundBackdrop", size: "sm", contentProps: {
@@ -98594,7 +98595,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-DBYxCXn_.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-M52Wwcsr.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98776,7 +98777,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-BN3oU3Ud.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-DT6MrKaO.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99012,7 +99013,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-NeE9ZgVb.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-CwAVkYrf.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
