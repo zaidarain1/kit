@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-19zyLO84.js","./hooks.module-Bx4aH0JK.js","./inherits_browser-BX8mfVTA.js","./index-CTcPveXT.js","./index.es-pwrsUKES.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CN-tLhug.js","./hooks.module-dyHEF4Sw.js","./inherits_browser-DPOykE6X.js","./index-BIS99HBy.js","./index.es-Bczb6q4X.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32961,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-fo1NJZMK.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-DDWIGFNF.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -98595,7 +98595,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-19zyLO84.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CN-tLhug.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -98777,7 +98777,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CTcPveXT.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-BIS99HBy.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99013,7 +99013,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-pwrsUKES.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-Bczb6q4X.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -99654,14 +99654,17 @@ const validateEthProof = async (walletClient, publicClient, proof) => {
   return isValid2;
 };
 const sendTransactions = async ({ chainId, senderAddress, publicClient, walletClient, connector, transactions: transactions2, transactionConfirmations = TRANSACTION_CONFIRMATIONS_DEFAULT }) => {
-  var _a2;
+  var _a2, _b2;
   const walletClientChainId = await walletClient.getChainId();
   if (walletClientChainId !== chainId) {
-    await walletClient.switchChain({ id: chainId });
+    throw new Error("The Wallet Client is using the wrong network");
+  }
+  if (((_a2 = publicClient.chain) == null ? void 0 : _a2.id) !== chainId) {
+    throw new Error("The Public Client is using the wrong network");
   }
   const sequenceWaaS = connector == null ? void 0 : connector["sequenceWaas"];
   const isEmbeddedWallet = !!sequenceWaaS;
-  const isSequenceUniversalWallet = !!((_a2 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _a2.isSequenceBased);
+  const isSequenceUniversalWallet = !!((_b2 = connector == null ? void 0 : connector._wallet) == null ? void 0 : _b2.isSequenceBased);
   if (isEmbeddedWallet) {
     const resp = await sequenceWaaS.feeOptions({
       transactions: transactions2,
@@ -99672,7 +99675,8 @@ const sendTransactions = async ({ chainId, senderAddress, publicClient, walletCl
     const response = await sequenceWaaS.sendTransaction({
       transactions: transactions2,
       transactionsFeeOption,
-      transactionsFeeQuote
+      transactionsFeeQuote,
+      network: chainId
     });
     if (response.code === "transactionFailed") {
       throw new Error(response.data.error);
@@ -100370,7 +100374,7 @@ const PayWithCreditCard = ({ settings, disableButtons }) => {
           }, opacity: {
             hover: "80",
             base: "100"
-          }, cursor: "pointer", disabled: disableButtons, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "3", alignItems: "center", children: [jsxRuntimeExports$1.jsx(SvgPaymentsIcon, { color: "white" }), jsxRuntimeExports$1.jsx(Text, { color: "text100", variant: "normal", fontWeight: "bold", children: "Pay with credit or debit card" })] }), jsxRuntimeExports$1.jsx(Box, { style: { transform: "rotate(-45deg)" }, children: jsxRuntimeExports$1.jsx(SvgArrowRightIcon, { color: "white" }) })] });
+          }, cursor: "pointer", disabled: disableButtons, children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "row", gap: "3", alignItems: "center", children: [jsxRuntimeExports$1.jsx(SvgPaymentsIcon, { color: "white" }), jsxRuntimeExports$1.jsx(Text, { color: "text100", variant: "normal", fontWeight: "bold", children: "Pay with credit or debit card" })] }), jsxRuntimeExports$1.jsx(Box, { style: { transform: "rotate(-45deg)" }, children: jsxRuntimeExports$1.jsx(SvgArrowRightIcon, { color: "white" }) })] }, "sardine");
         default:
           return null;
       }
@@ -101945,6 +101949,7 @@ const PaymentSelectionHeader = () => {
 const PaymentSelectionContent = () => {
   const { selectPaymentSettings } = useSelectPaymentModal();
   const [disableButtons, setDisableButtons] = reactExports.useState(false);
+  const [isError2, setIsError] = reactExports.useState(false);
   if (!selectPaymentSettings) {
     return null;
   }
@@ -101953,13 +101958,15 @@ const PaymentSelectionContent = () => {
   } } = selectPaymentSettings;
   const isNativeToken = compareAddress$2(currencyAddress, zeroAddress);
   const [selectedCurrency, setSelectedCurrency] = reactExports.useState();
-  const { address: userAddress, connector } = useAccount();
-  const { data: walletClient } = useWalletClient();
-  const publicClient = usePublicClient();
-  const { clearCachedBalances } = useClearCachedBalances();
-  const { closeSelectPaymentModal } = useSelectPaymentModal();
   const network2 = findSupportedNetwork(chain);
   const chainId = (network2 == null ? void 0 : network2.chainId) || 137;
+  const { address: userAddress, connector } = useAccount();
+  const { data: walletClient } = useWalletClient();
+  const publicClient = usePublicClient({
+    chainId
+  });
+  const { clearCachedBalances } = useClearCachedBalances();
+  const { closeSelectPaymentModal } = useSelectPaymentModal();
   const { data: allowanceData, isLoading: allowanceIsLoading, refetch: refechAllowance } = useReadContract({
     abi: ERC_20_CONTRACT_ABI,
     functionName: "allowance",
@@ -102010,6 +102017,7 @@ const PaymentSelectionContent = () => {
     if (!walletClient || !userAddress || !publicClient || !userAddress || !connector) {
       return;
     }
+    setIsError(false);
     setDisableButtons(true);
     try {
       const walletClientChainId = await walletClient.getChainId();
@@ -102054,6 +102062,7 @@ const PaymentSelectionContent = () => {
     } catch (e2) {
       console.error("Failed to purchase...", e2);
       onError(e2);
+      setIsError(true);
     }
     setDisableButtons(false);
   };
@@ -102061,6 +102070,7 @@ const PaymentSelectionContent = () => {
     if (!walletClient || !userAddress || !publicClient || !userAddress || !connector || !swapQuote) {
       return;
     }
+    setIsError(false);
     setDisableButtons(true);
     try {
       const walletClientChainId = await walletClient.getChainId();
@@ -102125,6 +102135,7 @@ const PaymentSelectionContent = () => {
     } catch (e2) {
       console.error("Failed to purchase...", e2);
       onError(e2);
+      setIsError(true);
     }
     setDisableButtons(false);
   };
@@ -102143,7 +102154,7 @@ const PaymentSelectionContent = () => {
   };
   return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", width: "full", paddingBottom: "0", paddingX: "6", height: "full", style: {
     paddingTop: HEADER_HEIGHT$1
-  }, children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", width: "full", gap: "2", children: jsxRuntimeExports$1.jsx(OrderSummary, {}) }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, selectedCurrency, setSelectedCurrency, isLoading })] }), creditCardProviders.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons })] }), enableTransferFunds && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(TransferFunds, {})] }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency || !disableSwapQuote && isLoadingSwapQuote, marginTop: "6", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" }), jsxRuntimeExports$1.jsxs(Box, { width: "full", justifyContent: "center", alignItems: "center", gap: "0.5", marginY: "2", children: [jsxRuntimeExports$1.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "13", height: "12", viewBox: "0 0 13 12", fill: "none", children: jsxRuntimeExports$1.jsx("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.82807 5.24497V3.52873C8.82807 2.24258 7.78549 1.19995 6.49934 1.19995C5.21319 1.19995 4.17057 2.24258 4.17057 3.52873L4.17057 5.24497H3.9832C3.32046 5.24497 2.7832 5.78223 2.7832 6.44497V9.49529C2.7832 10.158 3.32046 10.6953 3.9832 10.6953H9.01546C9.6782 10.6953 10.2155 10.158 10.2155 9.49529V6.44497C10.2155 5.78223 9.6782 5.24497 9.01546 5.24497H8.82807ZM6.49934 2.06705C5.69209 2.06705 5.03769 2.72144 5.03766 3.52867L5.03767 5.24497H7.96097V3.52867C7.96094 2.72144 7.30658 2.06705 6.49934 2.06705Z", fill: "#6D6D6D" }) }), jsxRuntimeExports$1.jsx(Text, { variant: "xsmall", color: "text50", marginTop: "0.5", children: "Secure Checkout" })] })] })] }), jsxRuntimeExports$1.jsx(Divider, { marginY: "0" }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
+  }, children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", width: "full", gap: "2", children: jsxRuntimeExports$1.jsx(OrderSummary, {}) }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, selectedCurrency, setSelectedCurrency, isLoading })] }), creditCardProviders.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons })] }), enableTransferFunds && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(TransferFunds, {})] }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [isError2 && jsxRuntimeExports$1.jsx(Box, { width: "full", style: { marginBottom: "-18px" }, children: jsxRuntimeExports$1.jsx(Text, { color: "negative", variant: "small", children: "A problem occurred while executing the transaction." }) }), jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency || !disableSwapQuote && isLoadingSwapQuote, marginTop: "6", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" }), jsxRuntimeExports$1.jsxs(Box, { width: "full", justifyContent: "center", alignItems: "center", gap: "0.5", marginY: "2", children: [jsxRuntimeExports$1.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "13", height: "12", viewBox: "0 0 13 12", fill: "none", children: jsxRuntimeExports$1.jsx("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.82807 5.24497V3.52873C8.82807 2.24258 7.78549 1.19995 6.49934 1.19995C5.21319 1.19995 4.17057 2.24258 4.17057 3.52873L4.17057 5.24497H3.9832C3.32046 5.24497 2.7832 5.78223 2.7832 6.44497V9.49529C2.7832 10.158 3.32046 10.6953 3.9832 10.6953H9.01546C9.6782 10.6953 10.2155 10.158 10.2155 9.49529V6.44497C10.2155 5.78223 9.6782 5.24497 9.01546 5.24497H8.82807ZM6.49934 2.06705C5.69209 2.06705 5.03769 2.72144 5.03766 3.52867L5.03767 5.24497H7.96097V3.52867C7.96094 2.72144 7.30658 2.06705 6.49934 2.06705Z", fill: "#6D6D6D" }) }), jsxRuntimeExports$1.jsx(Text, { variant: "xsmall", color: "text50", marginTop: "0.5", children: "Secure Checkout" })] })] })] })] }), jsxRuntimeExports$1.jsx(Divider, { marginY: "0" }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
 };
 const CopyButton$1 = (props) => {
   const { text: text2, size: size2 = "xs", inline = false, ...rest } = props;
