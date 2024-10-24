@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CsGWBHRp.js","./hooks.module-VdJ2zm4F.js","./inherits_browser-D3Cnc5rc.js","./index-D3x7dEqk.js","./index.es-BxVh4uRB.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-BoA9xPVB.js","./hooks.module-DvUpvWJ_.js","./inherits_browser-DwiN4Dat.js","./index-BBcloJGt.js","./index.es-DMc7tKlV.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32961,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-LiVw5vLE.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-C_xLT0vY.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -99272,7 +99272,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-CsGWBHRp.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-BoA9xPVB.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99454,7 +99454,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-D3x7dEqk.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-BBcloJGt.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99690,7 +99690,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-BxVh4uRB.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DMc7tKlV.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -100773,18 +100773,18 @@ const PendingTransaction = () => {
   }, []);
   if (isError2) {
     return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "6", style: {
-      height: "500px",
+      height: "650px",
       width: "380px"
     }, children: jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Text, { color: "text100", children: "An error has occurred" }) }) });
   }
   if (isLoading || !authToken) {
     return jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", justifyContent: "center", alignItems: "center", gap: "6", style: {
-      height: "500px",
+      height: "650px",
       width: "380px"
     }, children: jsxRuntimeExports$1.jsx(Box, { children: jsxRuntimeExports$1.jsx(Spinner, { size: "lg" }) }) });
   }
-  return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "center", style: { height: "620px" }, children: jsxRuntimeExports$1.jsx("iframe", { src: url, style: {
-    maxHeight: "500px",
+  return jsxRuntimeExports$1.jsx(Box, { alignItems: "center", justifyContent: "center", style: { height: "770px" }, children: jsxRuntimeExports$1.jsx("iframe", { src: url, style: {
+    maxHeight: "650px",
     height: "100%",
     maxWidth: "380px",
     width: "100%"
@@ -100802,7 +100802,7 @@ const TransactionSuccess = () => {
     ((_a3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a3.onSuccess) && ((_b3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _b3.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.creditCardCheckout));
     ((_c3 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _c3.onSuccess) && ((_d2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _d2.onSuccess(navigation.params.transactionHash, settings == null ? void 0 : settings.creditCardCheckout));
   }, []);
-  return jsxRuntimeExports$1.jsx(Box, { style: { height: "500px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationSuccessIcon, {}), jsxRuntimeExports$1.jsx(Text, { variant: "xlarge", children: "Success!" }), jsxRuntimeExports$1.jsx(Text, { variant: "normal", textAlign: "center", color: "text80", children: "Purchase was successful, item was sent to your wallet." }), navigation.params.transactionHash && jsxRuntimeExports$1.jsxs(Text, { as: "a", variant: "small", underline: true, marginTop: "6", color: "text100", href: `${(_b2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _b2.rootUrl}/tx/${navigation.params.transactionHash}`, target: "_blank", rel: "noreferrer", children: ["View on ", (_c2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _c2.name] })] }) });
+  return jsxRuntimeExports$1.jsx(Box, { style: { height: "650px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationSuccessIcon, {}), jsxRuntimeExports$1.jsx(Text, { variant: "xlarge", children: "Success!" }), jsxRuntimeExports$1.jsx(Text, { variant: "normal", textAlign: "center", color: "text80", children: "Purchase was successful, item was sent to your wallet." }), navigation.params.transactionHash && jsxRuntimeExports$1.jsxs(Text, { as: "a", variant: "small", underline: true, marginTop: "6", color: "text100", href: `${(_b2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _b2.rootUrl}/tx/${navigation.params.transactionHash}`, target: "_blank", rel: "noreferrer", children: ["View on ", (_c2 = network2 == null ? void 0 : network2.blockExplorer) == null ? void 0 : _c2.name] })] }) });
 };
 const NotificationSuccessIcon = () => jsxRuntimeExports$1.jsx(Box, { color: "white", background: "positive", alignItems: "center", justifyContent: "center", width: "16", height: "16", borderRadius: "circle", marginBottom: "2", children: jsxRuntimeExports$1.jsx(SvgCheckmarkIcon, { size: "xl" }) });
 const TransactionError = () => {
@@ -100816,7 +100816,7 @@ const TransactionError = () => {
       ((_a2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _a2.onError) && ((_b2 = settings == null ? void 0 : settings.creditCardCheckout) == null ? void 0 : _b2.onError(navigation.params.error, settings == null ? void 0 : settings.creditCardCheckout));
     }, 3e3);
   }, []);
-  return jsxRuntimeExports$1.jsx(Box, { style: { height: "500px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationErrorIcon, {}), jsxRuntimeExports$1.jsx(Text, { variant: "xlarge", children: "Error" }), jsxRuntimeExports$1.jsx(Text, { variant: "normal", textAlign: "center", color: "text80", children: "An error occurred while processing the transaction." })] }) });
+  return jsxRuntimeExports$1.jsx(Box, { style: { height: "650px" }, children: jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", alignItems: "center", position: "absolute", style: { top: "50%", right: "50%", transform: "translate(50%, -50%)" }, children: [jsxRuntimeExports$1.jsx(NotificationErrorIcon, {}), jsxRuntimeExports$1.jsx(Text, { variant: "xlarge", children: "Error" }), jsxRuntimeExports$1.jsx(Text, { variant: "normal", textAlign: "center", color: "text80", children: "An error occurred while processing the transaction." })] }) });
 };
 const NotificationErrorIcon = () => jsxRuntimeExports$1.jsx(Box, { color: "white", alignItems: "center", justifyContent: "center", width: "16", height: "16", borderRadius: "circle", marginBottom: "2", background: "negative", children: jsxRuntimeExports$1.jsx(SvgCloseIcon, { size: "xl" }) });
 const OrderSummaryItem = ({ contractAddress, tokenId, quantityRaw, chainId }) => {
