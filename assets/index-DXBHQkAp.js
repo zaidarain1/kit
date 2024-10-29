@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-BoA9xPVB.js","./hooks.module-DvUpvWJ_.js","./inherits_browser-DwiN4Dat.js","./index-BBcloJGt.js","./index.es-DMc7tKlV.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-Cah8zYou.js","./hooks.module-C9LslW8t.js","./inherits_browser-By6rvJoW.js","./index-DVmfYUeh.js","./index.es-Bn0-Lfni.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32961,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-C_xLT0vY.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-D0MmoeFy.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -99272,7 +99272,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-BoA9xPVB.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-Cah8zYou.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99454,7 +99454,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-BBcloJGt.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-DVmfYUeh.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99690,7 +99690,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-DMc7tKlV.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-Bn0-Lfni.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
@@ -102831,7 +102831,7 @@ const PaymentSelectionContent = () => {
   };
   return jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsxs(Box, { flexDirection: "column", gap: "2", alignItems: "flex-start", width: "full", paddingBottom: "0", paddingX: "6", height: "full", style: {
     paddingTop: HEADER_HEIGHT$1
-  }, children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", width: "full", gap: "2", children: jsxRuntimeExports$1.jsx(OrderSummary, {}) }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, selectedCurrency, setSelectedCurrency, isLoading })] }), creditCardProviders.length > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons })] }), enableTransferFunds && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(TransferFunds, {})] }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [isError2 && jsxRuntimeExports$1.jsx(Box, { width: "full", style: { marginBottom: "-18px" }, children: jsxRuntimeExports$1.jsx(Text, { color: "negative", variant: "small", children: "A problem occurred while executing the transaction." }) }), jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency || !disableSwapQuote && isLoadingSwapQuote, marginTop: "6", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" }), jsxRuntimeExports$1.jsxs(Box, { width: "full", justifyContent: "center", alignItems: "center", gap: "0.5", marginY: "2", children: [jsxRuntimeExports$1.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "13", height: "12", viewBox: "0 0 13 12", fill: "none", children: jsxRuntimeExports$1.jsx("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.82807 5.24497V3.52873C8.82807 2.24258 7.78549 1.19995 6.49934 1.19995C5.21319 1.19995 4.17057 2.24258 4.17057 3.52873L4.17057 5.24497H3.9832C3.32046 5.24497 2.7832 5.78223 2.7832 6.44497V9.49529C2.7832 10.158 3.32046 10.6953 3.9832 10.6953H9.01546C9.6782 10.6953 10.2155 10.158 10.2155 9.49529V6.44497C10.2155 5.78223 9.6782 5.24497 9.01546 5.24497H8.82807ZM6.49934 2.06705C5.69209 2.06705 5.03769 2.72144 5.03766 3.52867L5.03767 5.24497H7.96097V3.52867C7.96094 2.72144 7.30658 2.06705 6.49934 2.06705Z", fill: "#6D6D6D" }) }), jsxRuntimeExports$1.jsx(Text, { variant: "xsmall", color: "text50", marginTop: "0.5", children: "Secure Checkout" })] })] })] })] }), jsxRuntimeExports$1.jsx(Divider, { marginY: "0" }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
+  }, children: [jsxRuntimeExports$1.jsx(Box, { flexDirection: "column", width: "full", gap: "2", children: jsxRuntimeExports$1.jsx(OrderSummary, {}) }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCrypto, { settings: selectPaymentSettings, disableButtons, selectedCurrency, setSelectedCurrency, isLoading })] }), (creditCardProviders == null ? void 0 : creditCardProviders.length) > 0 && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(PayWithCreditCard, { settings: selectPaymentSettings, disableButtons })] }), enableTransferFunds && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [jsxRuntimeExports$1.jsx(Divider, { width: "full", marginY: "3" }), jsxRuntimeExports$1.jsx(TransferFunds, {})] }), (enableMainCurrencyPayment || enableSwapPayments) && jsxRuntimeExports$1.jsxs(jsxRuntimeExports$1.Fragment, { children: [isError2 && jsxRuntimeExports$1.jsx(Box, { width: "full", style: { marginBottom: "-18px" }, children: jsxRuntimeExports$1.jsx(Text, { color: "negative", variant: "small", children: "A problem occurred while executing the transaction." }) }), jsxRuntimeExports$1.jsxs(Box, { width: "full", children: [jsxRuntimeExports$1.jsx(Button, { onClick: onClickPurchase, disabled: isLoading || disableButtons || !selectedCurrency || !disableSwapQuote && isLoadingSwapQuote, marginTop: "6", shape: "square", variant: "primary", width: "full", label: "Complete Purchase" }), jsxRuntimeExports$1.jsxs(Box, { width: "full", justifyContent: "center", alignItems: "center", gap: "0.5", marginY: "2", children: [jsxRuntimeExports$1.jsx("svg", { xmlns: "http://www.w3.org/2000/svg", width: "13", height: "12", viewBox: "0 0 13 12", fill: "none", children: jsxRuntimeExports$1.jsx("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.82807 5.24497V3.52873C8.82807 2.24258 7.78549 1.19995 6.49934 1.19995C5.21319 1.19995 4.17057 2.24258 4.17057 3.52873L4.17057 5.24497H3.9832C3.32046 5.24497 2.7832 5.78223 2.7832 6.44497V9.49529C2.7832 10.158 3.32046 10.6953 3.9832 10.6953H9.01546C9.6782 10.6953 10.2155 10.158 10.2155 9.49529V6.44497C10.2155 5.78223 9.6782 5.24497 9.01546 5.24497H8.82807ZM6.49934 2.06705C5.69209 2.06705 5.03769 2.72144 5.03766 3.52867L5.03767 5.24497H7.96097V3.52867C7.96094 2.72144 7.30658 2.06705 6.49934 2.06705Z", fill: "#6D6D6D" }) }), jsxRuntimeExports$1.jsx(Text, { variant: "xsmall", color: "text50", marginTop: "0.5", children: "Secure Checkout" })] })] })] })] }), jsxRuntimeExports$1.jsx(Divider, { marginY: "0" }), jsxRuntimeExports$1.jsx(Footer$1, {})] });
 };
 const CopyButton$1 = (props) => {
   const { text: text2, size: size2 = "xs", inline = false, ...rest } = props;
