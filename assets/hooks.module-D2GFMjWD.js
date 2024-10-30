@@ -1,5 +1,5 @@
-import { p as process$1, c as commonjsGlobal, B as Buffer$7, a as getAugmentedNamespace } from "./index-C2oeUtnd.js";
-import { e as eventsExports, r as require$$0$1, a as require$$0$2, i as inherits_browserExports } from "./inherits_browser-DDgf63Lc.js";
+import { p as process$1, c as commonjsGlobal, B as Buffer$7, a as getAugmentedNamespace } from "./index-Q4Iep-Ee.js";
+import { e as eventsExports, r as require$$0$1, a as require$$0$2, i as inherits_browserExports } from "./inherits_browser-C9npxwRG.js";
 var readableBrowser = { exports: {} };
 var streamBrowser = eventsExports.EventEmitter;
 var buffer_list;

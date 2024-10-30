@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-dFSvgbvM.js","./hooks.module-BtdrwyMn.js","./inherits_browser-DDgf63Lc.js","./index-Lo0rLHIQ.js","./index.es-CXcCbixk.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./index-CT7htynR.js","./hooks.module-D2GFMjWD.js","./inherits_browser-C9npxwRG.js","./index-BE7fuU30.js","./index.es-Mgm5-TKN.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -32961,7 +32961,7 @@ async function call(client2, args) {
   } catch (err) {
     const data2 = getRevertErrorData(err);
     const { offchainLookup, offchainLookupSignature } = await __vitePreload(async () => {
-      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-BYHFtqVR.js");
+      const { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 } = await import("./ccip-1-9qVS1a.js");
       return { offchainLookup: offchainLookup2, offchainLookupSignature: offchainLookupSignature2 };
     }, true ? [] : void 0, import.meta.url);
     if (client2.ccipRead !== false && (data2 == null ? void 0 : data2.slice(0, 10)) === offchainLookupSignature && to)
@@ -86633,6 +86633,7 @@ var LocalStorageKey;
   LocalStorageKey2["WaasActiveLoginType"] = "@kit.waasActiveLoginType";
   LocalStorageKey2["WaasEmailIdToken"] = "@kit.waasEmailIdToken";
   LocalStorageKey2["WaasSignInEmail"] = "@kit.waasSignInEmail";
+  LocalStorageKey2["SignInEmail"] = "@kit.signInEmail";
 })(LocalStorageKey || (LocalStorageKey = {}));
 const DEFAULT_SESSION_EXPIRATION = 60 * 60 * 24 * 7;
 const TRANSACTION_CONFIRMATIONS_DEFAULT = 4;
@@ -99280,7 +99281,7 @@ function version4(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-dFSvgbvM.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-CT7htynR.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([0,1,2]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99462,7 +99463,7 @@ function version3(parameters) {
       if (!walletProvider) {
         const CoinbaseWalletSDK = await (async () => {
           const { default: SDK } = await __vitePreload(async () => {
-            const { default: SDK2 } = await import("./index-Lo0rLHIQ.js").then((n2) => n2.i);
+            const { default: SDK2 } = await import("./index-BE7fuU30.js").then((n2) => n2.i);
             return { default: SDK2 };
           }, true ? __vite__mapDeps([3,2,1]) : void 0, import.meta.url);
           if (typeof SDK !== "function" && typeof SDK.default === "function")
@@ -99698,7 +99699,7 @@ function walletConnect$1(parameters) {
         if (!optionalChains.length)
           return;
         const { EthereumProvider } = await __vitePreload(async () => {
-          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-CXcCbixk.js");
+          const { EthereumProvider: EthereumProvider2 } = await import("./index.es-Mgm5-TKN.js");
           return { EthereumProvider: EthereumProvider2 };
         }, true ? __vite__mapDeps([4,2]) : void 0, import.meta.url);
         return await EthereumProvider.init({
