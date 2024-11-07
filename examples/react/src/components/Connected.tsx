@@ -7,7 +7,8 @@ import {
   validateEthProof,
   getModalPositionCss
 } from '@0xsequence/kit'
-import { useCheckoutModal, useAddFundsModal, useERC1155SaleContractPaymentModal } from '@0xsequence/kit-checkout'
+import { useCheckoutModal, useAddFundsModal, useERC1155SaleContractPaymentModal, useSwapModal } from '@0xsequence/kit-checkout'
+import type { SwapModalSettings } from '@0xsequence/kit-checkout'
 import { CardButton, Header } from '@0xsequence/kit-example-shared-components'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { allNetworks, ChainId } from '@0xsequence/network'
@@ -35,6 +36,7 @@ const isDebugMode = searchParams.has('debug')
 
 export const Connected = () => {
   const { address } = useAccount()
+  const { openSwapModal } = useSwapModal()
   const { setOpenWalletModal } = useOpenWalletModal()
   const { triggerCheckout } = useCheckoutModal()
   const { triggerAddFunds } = useAddFundsModal()
@@ -249,6 +251,35 @@ export const Connected = () => {
     setIsCheckoutInfoModalOpen(true)
   }
 
+  const onClickSwap = () => {
+    const chainId = 137
+    const currencyAddress = '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359'
+    const currencyAmount = '20000'
+
+    const contractAbiInterface = new ethers.Interface(['function demo()'])
+
+    const data = contractAbiInterface.encodeFunctionData('demo', []) as `0x${string}`
+
+    const swapModalSettings: SwapModalSettings = {
+      onSuccess: () => {
+        console.log('swap successful!')
+      },
+      chainId,
+      currencyAddress,
+      currencyAmount,
+      postSwapTransactions: [
+        {
+          to: '0x37470dac8a0255141745906c972e414b1409b470',
+          data
+        }
+      ],
+      title: 'Swap and Pay',
+      description: 'Customizable swap and pay flow. This text is customizable.'
+    }
+
+    openSwapModal(swapModalSettings)
+  }
+
   const onClickSelectPayment = () => {
     if (!address) {
       return
@@ -429,6 +460,12 @@ export const Connected = () => {
                 />
               </>
             )}
+            <CardButton
+              title="Customizable Swapping with Sequence Pay"
+              description="Swap between currencies and send transactions"
+              onClick={onClickSwap}
+            />
+
             <CardButton
               title="Checkout with Sequence Pay"
               description="Purchase an NFT through various purchase methods"
