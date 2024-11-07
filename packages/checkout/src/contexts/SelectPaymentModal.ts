@@ -7,7 +7,8 @@ export type CreditCardProviders = 'sardine' | 'transak'
 export interface Collectible {
   tokenId: string
   quantity: string
-  decimals?: string
+  decimals?: number
+  price?: string
  }
 
 export interface SelectPaymentSettings {
@@ -19,6 +20,7 @@ export interface SelectPaymentSettings {
   txData: Hex
   collectionAddress: string | Hex
   recipientAddress: string | Hex
+  approvedSpenderAddress?: string
   isDev?: boolean
   transactionConfirmations?: number
   onSuccess?: (txHash: string) => void

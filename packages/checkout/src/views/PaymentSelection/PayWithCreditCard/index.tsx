@@ -17,7 +17,7 @@ import { useAccount } from 'wagmi'
 
 import { SelectPaymentSettings } from '../../../contexts'
 import { CheckoutSettings } from '../../../contexts/CheckoutModal'
-import { useClearCachedBalances, useCheckoutModal, useSelectPaymentModal } from '../../../hooks'
+import { useClearCachedBalances, useCheckoutModal, useSelectPaymentModal, useTransactionStatusModal } from '../../../hooks'
 
 interface PayWithCreditCardProps {
   settings: SelectPaymentSettings
@@ -35,6 +35,7 @@ export const PayWithCreditCard = ({ settings, disableButtons }: PayWithCreditCar
     txData,
     collectibles,
     collectionAddress,
+    approvedSpenderAddress,
     isDev = false,
     onSuccess = () => {},
     onError = () => {},
@@ -42,7 +43,6 @@ export const PayWithCreditCard = ({ settings, disableButtons }: PayWithCreditCar
   } = settings
 
   const { address: userAddress } = useAccount()
-  const isMobile = useMediaQuery('isMobile')
   const { clearCachedBalances } = useClearCachedBalances()
   const { closeSelectPaymentModal } = useSelectPaymentModal()
   const { triggerCheckout } = useCheckoutModal()
@@ -92,10 +92,10 @@ export const PayWithCreditCard = ({ settings, disableButtons }: PayWithCreditCar
         nftId: collectible.tokenId,
         nftAddress: collectionAddress,
         nftQuantity: collectible.quantity,
-        nftDecimals: collectible.decimals,
+        nftDecimals: collectible.decimals === undefined ? undefined : String(collectible.decimals),
         isDev,
         calldata: txData,
-        approvedSpenderAddress: targetContractAddress
+        approvedSpenderAddress: approvedSpenderAddress || targetContractAddress
       }
     }
 
