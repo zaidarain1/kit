@@ -4,11 +4,12 @@ import { CheckoutSettings } from '@0xsequence/kit-checkout'
 import { CardButton, Header } from '@0xsequence/kit-example-shared-components'
 import { useOpenWalletModal } from '@0xsequence/kit-wallet'
 import { ChainId, allNetworks } from '@0xsequence/network'
+import { ethers } from 'ethers'
 import { ComponentProps, useEffect, useState } from 'react'
 import { formatUnits, parseUnits } from 'viem'
 import { useAccount, useChainId, usePublicClient, useSendTransaction, useWalletClient, useWriteContract } from 'wagmi'
 
-import { isDebugMode } from '../../config'
+import { isDebugMode, sponsoredContractAddresses } from '../../config'
 
 import { messageToSign } from '@/constants'
 import { abi } from '@/constants/nft-abi'
@@ -23,6 +24,12 @@ export const Connected = () => {
 
   const { data: txnData, sendTransaction, isPending: isPendingSendTxn, error: sendTransactionError } = useSendTransaction()
   const { data: txnData2, isPending: isPendingMintTxn, writeContract } = useWriteContract()
+  const {
+    data: txnData3,
+    sendTransaction: sendUnsponsoredTransaction,
+    isPending: isPendingSendUnsponsoredTxn,
+    error: sendUnsponsoredTransactionError
+  } = useSendTransaction()
 
   const [isSigningMessage, setIsSigningMessage] = useState(false)
   const [isMessageValid, setIsMessageValid] = useState<boolean | undefined>()
@@ -30,6 +37,7 @@ export const Connected = () => {
 
   const [lastTxnDataHash, setLastTxnDataHash] = useState<string | undefined>()
   const [lastTxnDataHash2, setLastTxnDataHash2] = useState<string | undefined>()
+  const [lastTxnDataHash3, setLastTxnDataHash3] = useState<string | undefined>()
 
   const [pendingFeeOptionConfirmation, confirmPendingFeeOption] = useWaasFeeOptions()
 
@@ -42,16 +50,23 @@ export const Connected = () => {
   }, [pendingFeeOptionConfirmation])
 
   useEffect(() => {
-    if (!sendTransactionError) {
-      return
+    if (sendTransactionError) {
+      if (sendTransactionError instanceof Error) {
+        console.error(sendTransactionError.cause)
+      } else {
+        console.error(sendTransactionError)
+      }
+    }
+    if (sendUnsponsoredTransactionError) {
+      if (sendUnsponsoredTransactionError instanceof Error) {
+        console.error(sendUnsponsoredTransactionError.cause)
+      } else {
+        console.error(sendUnsponsoredTransactionError)
+      }
     }
 
-    if (sendTransactionError instanceof Error) {
-      console.error(sendTransactionError.cause)
-    } else {
-      console.error(sendTransactionError)
-    }
-  }, [sendTransactionError])
+    return
+  }, [sendTransactionError, sendUnsponsoredTransactionError])
 
   const chainId = useChainId()
 
@@ -127,9 +142,12 @@ export const Connected = () => {
       setLastTxnDataHash((txnData as any).hash ?? txnData)
     }
     if (txnData2) {
-      setLastTxnDataHash2((txnData2 as any).hash ?? txnData)
+      setLastTxnDataHash2((txnData2 as any).hash ?? txnData2)
     }
-  }, [txnData, txnData2])
+    if (txnData3) {
+      setLastTxnDataHash3((txnData3 as any).hash ?? txnData3)
+    }
+  }, [txnData, txnData2, txnData3])
 
   const signMessage = async () => {
     if (!walletClient || !publicClient) {
@@ -178,9 +196,32 @@ export const Connected = () => {
       return
     }
 
+    if (networkForCurrentChainId.testnet) {
+      const [account] = await walletClient.getAddresses()
+
+      sendTransaction({ to: account, value: BigInt(0), gas: null })
+    } else {
+      const sponsoredContractAddress = sponsoredContractAddresses[chainId]
+
+      const contractAbiInterface = new ethers.Interface(['function demo()'])
+      const data = contractAbiInterface.encodeFunctionData('demo', []) as `0x${string}`
+
+      sendTransaction({
+        to: sponsoredContractAddress,
+        data,
+        gas: null
+      })
+    }
+  }
+
+  const runSendUnsponsoredTransaction = async () => {
+    if (!walletClient) {
+      return
+    }
+
     const [account] = await walletClient.getAddresses()
 
-    sendTransaction({ to: account, value: BigInt(0), gas: null })
+    sendUnsponsoredTransaction({ to: account, value: BigInt(0), gas: null })
   }
 
   const runMintNFT = async () => {
@@ -209,6 +250,7 @@ export const Connected = () => {
   useEffect(() => {
     setLastTxnDataHash(undefined)
     setLastTxnDataHash2(undefined)
+    setLastTxnDataHash3(undefined)
     setIsMessageValid(undefined)
   }, [chainId])
 
@@ -232,13 +274,14 @@ export const Connected = () => {
                 description="Checkout screen before placing a purchase on coins or collections"
                 onClick={onClickCheckout}
               /> */}
-            <CardButton
-              title="Send transaction"
-              description="Send a transaction with your wallet"
-              isPending={isPendingSendTxn}
-              onClick={runSendTransaction}
-            />
-
+            {(sponsoredContractAddresses[chainId] || networkForCurrentChainId.testnet) && (
+              <CardButton
+                title="Send sponsored transaction"
+                description="Send a transaction with your wallet without paying any fees"
+                isPending={isPendingSendTxn}
+                onClick={runSendTransaction}
+              />
+            )}
             {networkForCurrentChainId.blockExplorer && lastTxnDataHash && ((txnData as any)?.chainId === chainId || txnData) && (
               <Text
                 as="a"
@@ -252,6 +295,30 @@ export const Connected = () => {
                 View on {networkForCurrentChainId.blockExplorer.name}
               </Text>
             )}
+
+            {networkForCurrentChainId.testnet && (
+              <CardButton
+                title="Send unsponsored transaction"
+                description="Send an unsponsored transaction with your wallet"
+                isPending={isPendingSendUnsponsoredTxn}
+                onClick={runSendUnsponsoredTransaction}
+              />
+            )}
+            {networkForCurrentChainId.blockExplorer &&
+              lastTxnDataHash3 &&
+              ((txnData3 as any)?.chainId === chainId || txnData3) && (
+                <Text
+                  as="a"
+                  marginLeft="4"
+                  variant="small"
+                  underline
+                  href={`${networkForCurrentChainId.blockExplorer.rootUrl}/tx/${(txnData3 as any).hash ?? txnData3}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View on {networkForCurrentChainId.blockExplorer.name}
+                </Text>
+              )}
 
             <CardButton
               title="Sign message"
