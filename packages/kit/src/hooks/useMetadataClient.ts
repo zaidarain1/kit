@@ -5,6 +5,8 @@ import { useKitConfig } from '../contexts/KitConfig'
 
 import { useProjectAccessKey } from './useProjectAccessKey'
 
+import { DEVMODE } from '../env'
+
 export const useMetadataClient = () => {
   const projectAccessKey = useProjectAccessKey()
 

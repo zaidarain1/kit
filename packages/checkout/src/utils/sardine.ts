@@ -1,6 +1,8 @@
 import { ChainId, networks } from '@0xsequence/network'
 import { ethers } from 'ethers'
 
+import { DEVMODE } from '@0xsequence/kit'
+
 export interface CheckSardineWhitelistStatusArgs {
   isDev: boolean
   chainId: number

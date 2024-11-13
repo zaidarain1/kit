@@ -20,6 +20,8 @@ import { createConnector } from 'wagmi'
 
 import { LocalStorageKey } from '../../constants/localStorage'
 
+import { DEVMODE } from '../../env'
+
 export interface SequenceWaasConnectConfig {
   googleClientId?: string
   appleClientId?: string

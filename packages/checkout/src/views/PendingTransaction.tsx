@@ -6,6 +6,8 @@ import { fetchSardineOrderStatus } from '../api'
 import { TransactionPendingNavigation } from '../contexts'
 import { useNavigation, useCheckoutModal, useSardineClientToken, useTransactionStatusModal } from '../hooks'
 
+import { DEVMODE } from '@0xsequence/kit'
+
 const POLLING_TIME = 10 * 1000
 
 export const PendingTransaction = () => {

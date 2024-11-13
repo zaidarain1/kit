@@ -3,6 +3,8 @@ import { ChainId, networks } from '@0xsequence/network'
 
 import { CreditCardCheckout } from '../contexts'
 
+import { DEVMODE } from '@0xsequence/kit'
+
 export interface FetchSardineClientTokenReturn {
   token: string
   orderId: string

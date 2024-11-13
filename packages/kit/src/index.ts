@@ -115,3 +115,5 @@ export {
 // Components
 export { NetworkBadge } from './components/NetworkBadge'
 export { CollectibleTileImage } from './components/CollectibleTileImage'
+
+export { DEVMODE } from './env'

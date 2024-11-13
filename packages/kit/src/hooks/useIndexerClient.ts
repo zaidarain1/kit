@@ -6,6 +6,8 @@ import { useKitConfig } from '../contexts/KitConfig'
 
 import { useProjectAccessKey } from './useProjectAccessKey'
 
+import { DEVMODE } from '../env'
+
 export const useIndexerClient = (chainId: ChainId) => {
   const projectAccessKey = useProjectAccessKey()
 
