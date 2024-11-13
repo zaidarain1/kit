@@ -1,4 +1,4 @@
-import type { Wallet } from '@0xsequence/kit'
+import { Wallet } from '../../types'
 
 import { immutableConnector } from '../wagmiConnectors'
 
