@@ -11,7 +11,7 @@ export const immutable = (options: ImmutableOptions): Wallet => ({
   isSequenceBased: false,
   logoDark: ImmutableLogo,
   logoLight: ImmutableLogo,
-  name: 'Sequence',
+  name: 'Immutable',
   createConnector: () => {
     const connector = immutableConnector({
       ...options
