@@ -1,4 +1,5 @@
 import { createConnector } from 'wagmi'
+import { passport, config } from '@imtbl/sdk'
 
 export interface BaseImmutableConnectorOptions {}
 
@@ -20,7 +21,19 @@ export function immutableConnector(params: BaseImmutableConnectorOptions) {
     params,
 
     async setup() {
-      const provider = await this.getProvider()
+      const passportInstance = new passport.Passport({
+        baseConfig: {
+          // latest immutable SDK is missing the environment config from the docs
+          // @ts-ignore-next-line
+          environment: 'sandbox',
+          publishableKey: 'pk_imapik-test-lnUqNu5uDYfKDz_stwpN'
+        },
+        clientId: '420lberPuiZaO6SBX6Anoa7C9kpcsuer',
+        redirectUri: 'http://localhost:4444', // replace with one of your redirect URIs from Hub
+        logoutRedirectUri: 'http://localhost:4444', // replace with one of your logout URIs from Hub
+        audience: 'platform_api',
+        scope: 'openid offline_access email transact',
+      });
     },
 
     async connect() {
