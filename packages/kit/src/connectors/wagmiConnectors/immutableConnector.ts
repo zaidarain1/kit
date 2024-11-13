@@ -51,12 +51,13 @@ export function immutableConnector(params: BaseImmutableConnectorOptions) {
     },
 
     async isAuthorized() {
-      try {
-        const account = await this.getAccounts()
-        return !!account
-      } catch (e) {
-        return false
-      }
+      return false
+      // try {
+      //   const account = await this.getAccounts()
+      //   return !!account
+      // } catch (e) {
+      //   return false
+      // }
     },
 
     async switchChain({ chainId }) {

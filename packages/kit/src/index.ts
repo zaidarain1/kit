@@ -78,6 +78,7 @@ export {
   type BaseSequenceConnectorOptions,
   type BaseSequenceWaasConnectorOptions
 } from './connectors/wagmiConnectors'
+export { immutable, type ImmutableOptions } from './connectors/immutable'
 
 // Hooks
 export { useOpenConnectModal } from './hooks/useOpenConnectModal'

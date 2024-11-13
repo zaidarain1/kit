@@ -1,3 +1,4 @@
+import { immutable, getKitConnectWallets } from '@0xsequence/kit'
 import { KitConfig, createConfig, WalletType } from '@0xsequence/kit'
 import { ChainId } from '@0xsequence/network'
 import { zeroAddress } from 'viem'
@@ -86,5 +87,6 @@ export const config =
 
         walletConnect: {
           projectId: walletConnectProjectId
-        }
+        },
+        immutable: {}
       })
