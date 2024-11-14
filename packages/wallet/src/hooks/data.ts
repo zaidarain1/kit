@@ -96,7 +96,7 @@ export const getBalancesAssetsSummary = async (
                 return getTokenBalances(indexerClient, {
                   accountAddress,
                   contractAddress: asset.contractAddress,
-                  includeMetadata: false,
+                  includeMetadata: true,
                   hideCollectibles,
                   verifiedOnly
                 })
@@ -115,7 +115,7 @@ export const getBalancesAssetsSummary = async (
             getTokenBalances(indexerClient, {
               accountAddress,
               hideCollectibles,
-              includeMetadata: false,
+              includeMetadata: true,
               verifiedOnly
             })
           )
