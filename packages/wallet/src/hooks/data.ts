@@ -233,8 +233,8 @@ export const getBalancesAssetsSummary = async (
     }
 
     const summaryBalances: TokenBalance[] = [
-      ...(nativeTokens.length > 0 ? [nativeTokens[0]] : []),
-      ...(erc20HighestValue.length > 0 ? [erc20HighestValue[0]] : []),
+      ...(nativeTokens.length > 0 ? [...nativeTokens] : []),
+      ...(erc20HighestValue.length > 0 ? [...erc20HighestValue] : []),
       ...(collectibles.length > 0 ? [...collectibles] : [])
     ]
 

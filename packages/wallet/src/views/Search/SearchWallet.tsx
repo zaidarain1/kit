@@ -135,29 +135,6 @@ export const SearchWallet = () => {
           toLocation={{
             location: 'search-view-all',
             params: {
-              defaultTab: 'collections'
-            }
-          }}
-          label={`Collections (${collectionBalancesAmount})`}
-        />
-        {isPending ? (
-          Array(5)
-            .fill(null)
-            .map((_, i) => <Skeleton key={i} width="full" height="8" />)
-        ) : foundCollectionBalances.length === 0 ? (
-          <Text color="text100">No collections found</Text>
-        ) : (
-          foundCollectionBalances.map((indexedItem, index) => {
-            const balance = collectionBalances[indexedItem.index]
-            return <BalanceItem key={index} balance={balance} />
-          })
-        )}
-      </Box>
-      <Box width="full" flexDirection="column" alignItems="center" justifyContent="center" gap="5">
-        <WalletLink
-          toLocation={{
-            location: 'search-view-all',
-            params: {
               defaultTab: 'coins'
             }
           }}
@@ -172,6 +149,29 @@ export const SearchWallet = () => {
         ) : (
           foundCoinBalances.map((indexItem, index) => {
             const balance = coinBalances[indexItem.index]
+            return <BalanceItem key={index} balance={balance} />
+          })
+        )}
+      </Box>
+      <Box width="full" flexDirection="column" alignItems="center" justifyContent="center" gap="5">
+        <WalletLink
+          toLocation={{
+            location: 'search-view-all',
+            params: {
+              defaultTab: 'collections'
+            }
+          }}
+          label={`Collections (${collectionBalancesAmount})`}
+        />
+        {isPending ? (
+          Array(5)
+            .fill(null)
+            .map((_, i) => <Skeleton key={i} width="full" height="8" />)
+        ) : foundCollectionBalances.length === 0 ? (
+          <Text color="text100">No collections found</Text>
+        ) : (
+          foundCollectionBalances.map((indexedItem, index) => {
+            const balance = collectionBalances[indexedItem.index]
             return <BalanceItem key={index} balance={balance} />
           })
         )}
