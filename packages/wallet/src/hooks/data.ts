@@ -93,6 +93,7 @@ export const getBalancesAssetsSummary = async (
                   return []
                 }
 
+                // ATTENTION: switch to new api
                 return getTokenBalances(indexerClient, {
                   accountAddress,
                   contractAddress: asset.contractAddress,
@@ -112,6 +113,7 @@ export const getBalancesAssetsSummary = async (
         await Promise.all([
           ...indexerClientsArr.map(([chainId, indexerClient]) => getNativeTokenBalance(indexerClient, chainId, accountAddress)),
           ...indexerClientsArr.map(([_chainId, indexerClient]) =>
+            // ATTENTION: switch to new api
             getTokenBalances(indexerClient, {
               accountAddress,
               hideCollectibles,
