@@ -7,7 +7,6 @@ import {
   ContractVerificationStatus
 } from '@0xsequence/kit'
 import { ethers } from 'ethers'
-import React from 'react'
 import { useAccount } from 'wagmi'
 
 import { HEADER_HEIGHT } from '../../constants'

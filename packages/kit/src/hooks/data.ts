@@ -67,32 +67,17 @@ export const getTokenBalances = async (indexerClient: SequenceIndexer, args: Get
 }
 
 export const getTokenBalancesSummary = async (indexerClient: SequenceIndexer, args: GetTokenBalancesSummaryArgs) => {
-  const res = await indexerClient.getTokenBalancesSummary({
-    filter: args.filter,
-    omitMetadata: args.omitMetadata,
-    page: args.page
-  })
-
+  const res = await indexerClient.getTokenBalancesSummary(args)
   return res?.balances || []
 }
 
 export const getTokenBalancesDetails = async (indexerClient: SequenceIndexer, args: GetTokenBalancesDetailsArgs) => {
-  const res = await indexerClient.getTokenBalancesDetails({
-    filter: args.filter,
-    omitMetadata: args.omitMetadata,
-    page: args.page
-  })
-
+  const res = await indexerClient.getTokenBalancesDetails(args)
   return res?.balances || []
 }
 
 export const getTokenBalancesByContract = async (indexerClient: SequenceIndexer, args: GetTokenBalancesByContractArgs) => {
-  const res = await indexerClient.getTokenBalancesByContract({
-    filter: args.filter,
-    omitMetadata: args.omitMetadata,
-    page: args.page
-  })
-
+  const res = await indexerClient.getTokenBalancesByContract(args)
   return res?.balances || []
 }
 
@@ -105,14 +90,7 @@ export const getBalances = async (indexerClient: SequenceIndexer, chainId: numbe
   const balances = (
     await Promise.allSettled([
       getNativeTokenBalance(indexerClient, chainId, args.filter.accountAddresses[0]),
-      getTokenBalancesSummary(indexerClient, {
-        filter: {
-          accountAddresses: args.filter.accountAddresses,
-          contractStatus: args.filter.contractStatus,
-          contractWhitelist: args.filter.contractWhitelist,
-          contractBlacklist: args.filter.contractBlacklist
-        }
-      })
+      getTokenBalancesSummary(indexerClient, args)
     ])
   )
     .map(res => (res.status === 'fulfilled' ? res.value : []))
@@ -196,24 +174,13 @@ export const useCollectibleBalance = (args: UseCollectibleBalanceArgs) => {
 }
 
 export const getCollectionBalance = async (indexerClient: SequenceIndexer, args: UseCollectionBalanceArgs) => {
-  const res = await indexerClient.getTokenBalancesDetails({
-    filter: {
-      accountAddresses: [args.accountAddress],
-      contractStatus: args.verifiedOnly ? ContractVerificationStatus.VERIFIED : ContractVerificationStatus.ALL,
-      contractWhitelist: [args.contractAddress],
-      contractBlacklist: []
-    }
-  })
+  const res = await indexerClient.getTokenBalancesDetails(args)
 
   return res?.balances || []
 }
 
-interface UseCollectionBalanceArgs {
+interface UseCollectionBalanceArgs extends GetTokenBalancesDetailsArgs {
   chainId: number
-  accountAddress: string
-  contractAddress: string
-  includeMetadata?: boolean
-  verifiedOnly?: boolean
 }
 
 export const useCollectionBalance = (args: UseCollectionBalanceArgs) => {
@@ -224,7 +191,7 @@ export const useCollectionBalance = (args: UseCollectionBalanceArgs) => {
     queryFn: () => getCollectionBalance(indexerClient, args),
     retry: true,
     staleTime: time.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress
+    enabled: !!args.chainId && !!args.filter.accountAddresses[0] && !!args.filter.contractWhitelist[0]
   })
 }
 

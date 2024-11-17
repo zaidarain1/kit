@@ -154,10 +154,14 @@ export const getBalancesAssetsSummary = async (
       }
 
       const balance = await getCollectionBalance(indexerClient, {
-        accountAddress,
+        filter: {
+          accountAddresses: [accountAddress],
+          contractStatus: ContractVerificationStatus.ALL,
+          contractWhitelist: [collectionBalance.contractAddress],
+          contractBlacklist: []
+        },
         chainId: collectionBalance.chainId,
-        contractAddress: collectionBalance.contractAddress,
-        includeMetadata: false
+        omitMetadata: false
       })
 
       return balance
