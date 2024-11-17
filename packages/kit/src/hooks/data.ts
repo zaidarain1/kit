@@ -3,7 +3,7 @@ import { ContractType, Page, SequenceIndexer, TokenBalance } from '@0xsequence/i
 import { ContractInfo, SequenceMetadata } from '@0xsequence/metadata'
 import { findSupportedNetwork } from '@0xsequence/network'
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
-import { blobsToProofsErrorType, zeroAddress } from 'viem'
+import { zeroAddress } from 'viem'
 
 import { compareAddress } from '../utils/helpers'
 import { NATIVE_TOKEN_ADDRESS_0X } from '../constants'
@@ -11,7 +11,13 @@ import { NATIVE_TOKEN_ADDRESS_0X } from '../constants'
 import { useAPIClient } from './useAPIClient'
 import { useIndexerClient, useIndexerClients } from './useIndexerClient'
 import { useMetadataClient } from './useMetadataClient'
-import { indexer } from '0xsequence/dist/declarations/src/sequence'
+
+import {
+  ContractVerificationStatus,
+  GetTokenBalancesSummaryArgs,
+  GetTokenBalancesDetailsArgs,
+  GetTokenBalancesByContractArgs
+} from '@0xsequence/indexer'
 
 export const time = {
   oneSecond: 1 * 1000,
@@ -21,13 +27,13 @@ export const time = {
 
 export const getNativeTokenBalance = async (indexerClient: SequenceIndexer, chainId: number, accountAddress: string) => {
   // ATTENTION: switch to new api
-  const res = await indexerClient.getEtherBalance({ accountAddress })
+  const res = await indexerClient.getNativeTokenBalance({ accountAddress })
 
   const tokenBalance: TokenBalance = {
     chainId,
     contractAddress: zeroAddress,
     accountAddress,
-    balance: res?.balance.balanceWei || '0',
+    balance: res?.balance.balance || '0',
     contractType: ContractType.UNKNOWN,
     blockHash: '',
     blockNumber: 0,
@@ -48,7 +54,6 @@ interface GetTokenBalancesArgs {
 }
 
 export const getTokenBalances = async (indexerClient: SequenceIndexer, args: GetTokenBalancesArgs) => {
-  // ATTENTION: switch to new api
   const res = await indexerClient.getTokenBalances({
     accountAddress: args.accountAddress,
     includeMetadata: args.includeMetadata ?? true,
@@ -61,16 +66,53 @@ export const getTokenBalances = async (indexerClient: SequenceIndexer, args: Get
   return res?.balances || []
 }
 
-export const getBalances = async (indexerClient: SequenceIndexer, chainId: number, args: GetTokenBalancesArgs) => {
+export const getTokenBalancesSummary = async (indexerClient: SequenceIndexer, args: GetTokenBalancesSummaryArgs) => {
+  const res = await indexerClient.getTokenBalancesSummary({
+    filter: args.filter,
+    omitMetadata: args.omitMetadata,
+    page: args.page
+  })
+
+  return res?.balances || []
+}
+
+export const getTokenBalancesDetails = async (indexerClient: SequenceIndexer, args: GetTokenBalancesDetailsArgs) => {
+  const res = await indexerClient.getTokenBalancesDetails({
+    filter: args.filter,
+    omitMetadata: args.omitMetadata,
+    page: args.page
+  })
+
+  return res?.balances || []
+}
+
+export const getTokenBalancesByContract = async (indexerClient: SequenceIndexer, args: GetTokenBalancesByContractArgs) => {
+  const res = await indexerClient.getTokenBalancesByContract({
+    filter: args.filter,
+    omitMetadata: args.omitMetadata,
+    page: args.page
+  })
+
+  return res?.balances || []
+}
+
+export const getBalances = async (indexerClient: SequenceIndexer, chainId: number, args: GetTokenBalancesSummaryArgs) => {
   // ATTENTION: switch to new api
-  if (!args.accountAddress) {
+  if (!args.filter.accountAddresses[0]) {
     return []
   }
 
   const balances = (
     await Promise.allSettled([
-      getNativeTokenBalance(indexerClient, chainId, args.accountAddress),
-      getTokenBalances(indexerClient, args)
+      getNativeTokenBalance(indexerClient, chainId, args.filter.accountAddresses[0]),
+      getTokenBalancesSummary(indexerClient, {
+        filter: {
+          accountAddresses: args.filter.accountAddresses,
+          contractStatus: args.filter.contractStatus,
+          contractWhitelist: args.filter.contractWhitelist,
+          contractBlacklist: args.filter.contractBlacklist
+        }
+      })
     ])
   )
     .map(res => (res.status === 'fulfilled' ? res.value : []))
@@ -79,7 +121,7 @@ export const getBalances = async (indexerClient: SequenceIndexer, chainId: numbe
   return balances
 }
 
-interface UseBalancesArgs extends GetTokenBalancesArgs {
+interface UseBalancesArgs extends GetTokenBalancesSummaryArgs {
   chainIds: number[]
 }
 
@@ -100,11 +142,11 @@ export const useBalances = ({ chainIds, ...args }: UseBalancesArgs) => {
     },
     retry: true,
     staleTime: time.oneSecond * 30,
-    enabled: chainIds.length > 0 && !!args.accountAddress
+    enabled: chainIds.length > 0 && !!args.filter.accountAddresses[0]
   })
 }
 
-interface UseCoinBalanceArgs extends GetTokenBalancesArgs {
+interface UseCoinBalanceArgs extends GetTokenBalancesSummaryArgs {
   chainId: number
 }
 
@@ -115,26 +157,23 @@ export const useCoinBalance = (args: UseCoinBalanceArgs) => {
   return useQuery({
     queryKey: ['coinBalance', args],
     queryFn: async () => {
-      if (compareAddress(args?.contractAddress || '', zeroAddress)) {
-        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.accountAddress)
+      if (compareAddress(args?.filter.accountAddresses[0] || '', zeroAddress)) {
+        const res = await getNativeTokenBalance(indexerClient, args.chainId, args.filter.accountAddresses[0] || '')
         return res
       } else {
-        const res = await getTokenBalances(indexerClient, args)
+        const res = await getTokenBalancesSummary(indexerClient, args)
         return res[0]
       }
     },
     retry: true,
     staleTime: time.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress
+    enabled: !!args.chainId && !!args.filter.accountAddresses[0]
   })
 }
 
-interface UseCollectibleBalanceArgs {
-  accountAddress: string
+interface UseCollectibleBalanceArgs extends GetTokenBalancesDetailsArgs {
   chainId: number
-  contractAddress: string
   tokenId: string
-  verifiedOnly?: boolean
 }
 
 export const useCollectibleBalance = (args: UseCollectibleBalanceArgs) => {
@@ -144,32 +183,25 @@ export const useCollectibleBalance = (args: UseCollectibleBalanceArgs) => {
   return useQuery({
     queryKey: ['collectibleBalance', args],
     queryFn: async () => {
-      const res = await indexerClient.getTokenBalances({
-        accountAddress: args.accountAddress,
-        contractAddress: args.contractAddress,
-        tokenID: args.tokenId,
-        includeMetadata: true,
-        metadataOptions: {
-          verifiedOnly: args.verifiedOnly ?? true
-        }
-      })
+      const res = await indexerClient.getTokenBalancesDetails(args)
 
-      return res.balances[0]
+      const balance = res.balances.find(balance => balance.tokenID === args.tokenId)
+
+      return balance
     },
     retry: true,
     staleTime: time.oneSecond * 30,
-    enabled: !!args.chainId && !!args.accountAddress && !!args.contractAddress && !!args.tokenId
+    enabled: !!args.chainId && !!args.filter.accountAddresses[0] && !!args.filter.contractWhitelist[0] && !!args.tokenId
   })
 }
 
 export const getCollectionBalance = async (indexerClient: SequenceIndexer, args: UseCollectionBalanceArgs) => {
-  // ATTENTION: switch to new api
-  const res = await indexerClient.getTokenBalances({
-    accountAddress: args.accountAddress,
-    contractAddress: args.contractAddress,
-    includeMetadata: args.includeMetadata ?? true,
-    metadataOptions: {
-      verifiedOnly: args.verifiedOnly ?? true
+  const res = await indexerClient.getTokenBalancesDetails({
+    filter: {
+      accountAddresses: [args.accountAddress],
+      contractStatus: args.verifiedOnly ? ContractVerificationStatus.VERIFIED : ContractVerificationStatus.ALL,
+      contractWhitelist: [args.contractAddress],
+      contractBlacklist: []
     }
   })
 
@@ -450,26 +482,25 @@ const getSwapPrices = async (
           currencyAddress,
           isNativeToken
             ? indexerClient
-                .getEtherBalance({
+                .getNativeTokenBalance({
                   accountAddress: args.userAddress
                 })
                 .then(res => ({
-                  balance: res.balance.balanceWei
+                  balance: res.balance.balance
                 }))
             : indexerClient
-                .getTokenBalances({
-                  accountAddress: args.userAddress,
-                  contractAddress: currencyAddress,
-                  includeMetadata: false,
-                  metadataOptions: {
-                    verifiedOnly: true
-                  }
+                .getTokenBalancesSummary({
+                  filter: {
+                    accountAddresses: [args.userAddress],
+                    contractStatus: ContractVerificationStatus.VERIFIED,
+                    contractWhitelist: [currencyAddress],
+                    contractBlacklist: []
+                  },
+                  omitMetadata: true
                 })
-                .then(balances => {
-                  return {
-                    balance: balances.balances?.[0].balance || '0'
-                  }
-                })
+                .then(res => ({
+                  balance: res.balances?.[0].balance || '0'
+                }))
         )
       }
     })

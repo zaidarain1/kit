@@ -72,8 +72,8 @@ export const BalanceItem = ({ balance }: BalanceItemProps) => {
           {tokenName}
         </Text>
       </Box>
-      <Box flexDirection="row" alignItems="center" justifyContent="center" gap="1">
-        <Text variant="normal" color="text50" fontWeight="bold" textAlign="right" whiteSpace="nowrap">
+      <Box flexDirection="row" alignItems="center" justifyContent="center" gap="1" maxWidth="1/2">
+        <Text variant="normal" color="text50" fontWeight="bold" textAlign="right" whiteSpace="nowrap" ellipsis>
           {getQuantity()}
         </Text>
         <ChevronRightIcon color="text50" />

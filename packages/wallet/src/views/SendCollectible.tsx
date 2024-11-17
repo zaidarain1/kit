@@ -15,9 +15,15 @@ import {
   Card
 } from '@0xsequence/design-system'
 import { TokenBalance } from '@0xsequence/indexer'
-import { getNativeTokenInfoByChainId, useAnalyticsContext, ExtendedConnector, useCollectibleBalance } from '@0xsequence/kit'
+import {
+  getNativeTokenInfoByChainId,
+  useAnalyticsContext,
+  ExtendedConnector,
+  useCollectibleBalance,
+  ContractVerificationStatus
+} from '@0xsequence/kit'
 import { ethers } from 'ethers'
-import React, { useRef, useState, ChangeEvent, useEffect } from 'react'
+import { useRef, useState, ChangeEvent, useEffect } from 'react'
 import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
 
 import { ERC_1155_ABI, ERC_721_ABI, HEADER_HEIGHT } from '../constants'
@@ -48,11 +54,14 @@ export const SendCollectible = ({ chainId, contractAddress, tokenId }: SendColle
   const { sendTransaction } = useSendTransaction()
   const [isSendTxnPending, setIsSendTxnPending] = useState(false)
   const { data: tokenBalance, isPending: isPendingBalances } = useCollectibleBalance({
-    accountAddress,
+    filter: {
+      accountAddresses: [accountAddress],
+      contractStatus: ContractVerificationStatus.ALL,
+      contractWhitelist: [contractAddress],
+      contractBlacklist: []
+    },
     chainId,
-    contractAddress,
-    tokenId,
-    verifiedOnly: false
+    tokenId
   })
   const { contractType } = tokenBalance as TokenBalance
 

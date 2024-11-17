@@ -19,10 +19,11 @@ import {
   ExtendedConnector,
   useExchangeRate,
   useCoinPrices,
-  useBalances
+  useBalances,
+  ContractVerificationStatus
 } from '@0xsequence/kit'
 import { ethers } from 'ethers'
-import React, { useState, ChangeEvent, useRef } from 'react'
+import { useState, ChangeEvent, useRef } from 'react'
 import { useAccount, useChainId, useSwitchChain, useConfig, useSendTransaction } from 'wagmi'
 
 import { ERC_20_ABI, HEADER_HEIGHT } from '../constants'
@@ -53,8 +54,12 @@ export const SendCoin = ({ chainId, contractAddress }: SendCoinProps) => {
   const [isSendTxnPending, setIsSendTxnPending] = useState(false)
   const { data: balances = [], isPending: isPendingBalances } = useBalances({
     chainIds: [chainId],
-    accountAddress: accountAddress,
-    contractAddress
+    filter: {
+      accountAddresses: [accountAddress],
+      contractStatus: ContractVerificationStatus.ALL,
+      contractWhitelist: [contractAddress],
+      contractBlacklist: []
+    }
   })
   const nativeTokenInfo = getNativeTokenInfoByChainId(chainId, chains)
   const tokenBalance = (balances as TokenBalance[]).find(b => b.contractAddress === contractAddress)

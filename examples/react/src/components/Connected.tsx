@@ -31,6 +31,8 @@ import { messageToSign } from '../constants'
 import { abi } from '../constants/nft-abi'
 import { delay, getCheckoutSettings, getOrderbookCalldata } from '../utils'
 
+import { ContractVerificationStatus } from '@0xsequence/kit'
+
 // append ?debug to url to enable debug mode
 const searchParams = new URLSearchParams(location.search)
 const isDebugMode = searchParams.has('debug')
@@ -133,11 +135,16 @@ export const Connected = () => {
     if (pendingFeeOptionConfirmation && walletClient) {
       const [account] = await walletClient.getAddresses()
       // ATTENTION: switch to new api
-      const nativeTokenBalance = await indexerClient.getEtherBalance({ accountAddress: account })
+      const nativeTokenBalance = await indexerClient.getNativeTokenBalance({ accountAddress: account })
 
       // ATTENTION: switch to new api
-      const tokenBalances = await indexerClient.getTokenBalances({
-        accountAddress: account
+      const tokenBalances = await indexerClient.getTokenBalancesSummary({
+        filter: {
+          accountAddresses: [account],
+          contractStatus: ContractVerificationStatus.ALL,
+          contractWhitelist: [],
+          contractBlacklist: []
+        }
       })
 
       const balances = pendingFeeOptionConfirmation.options.map(option => {
@@ -145,7 +152,7 @@ export const Connected = () => {
           return {
             tokenName: option.token.name,
             decimals: option.token.decimals || 0,
-            balance: nativeTokenBalance.balance.balanceWei
+            balance: nativeTokenBalance.balance.balance
           }
         } else {
           return {
