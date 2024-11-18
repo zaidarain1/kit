@@ -352,7 +352,6 @@ export const Connected = () => {
       currencyAddress,
       collectionAddress,
       creditCardProviders: ['sardine'],
-      isDev: true,
       copyrightText: 'ⓒ2024 Sequence',
       onSuccess: (txnHash: string) => {
         console.log('success!', txnHash)
@@ -382,7 +381,6 @@ export const Connected = () => {
         nftId: checkoutTokenId,
         nftAddress: checkoutTokenContractAddress,
         nftQuantity,
-        isDev: true,
         approvedSpenderAddress: orderbookAddress,
         calldata: getOrderbookCalldata({
           orderId: checkoutOrderId,

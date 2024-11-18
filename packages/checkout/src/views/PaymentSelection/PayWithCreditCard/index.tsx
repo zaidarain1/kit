@@ -36,7 +36,6 @@ export const PayWithCreditCard = ({ settings, disableButtons }: PayWithCreditCar
     collectibles,
     collectionAddress,
     approvedSpenderAddress,
-    isDev = false,
     onSuccess = () => {},
     onError = () => {},
     creditCardProviders = []
@@ -93,7 +92,6 @@ export const PayWithCreditCard = ({ settings, disableButtons }: PayWithCreditCar
         nftAddress: collectionAddress,
         nftQuantity: collectible.quantity,
         nftDecimals: collectible.decimals === undefined ? undefined : String(collectible.decimals),
-        isDev,
         calldata: txData,
         approvedSpenderAddress: approvedSpenderAddress || targetContractAddress
       }

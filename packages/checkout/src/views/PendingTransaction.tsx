@@ -28,14 +28,11 @@ export const PendingTransaction = () => {
   )
   const tokenMetadata = tokensMetadata ? tokensMetadata[0] : undefined
 
-  const isDev = settings?.creditCardCheckout?.isDev || false
-
   const disableSardineClientTokenFetch = isLoadingTokenMetadata
 
   const { data, isLoading, isError } = useSardineClientToken(
     {
       order: creditCardCheckout,
-      isDev,
       projectAccessKey: projectAccessKey,
       tokenMetadata: tokenMetadata
     },
@@ -44,7 +41,7 @@ export const PendingTransaction = () => {
 
   const authToken = data?.token
 
-  const url = isDev
+  const url = DEVMODE
     ? `https://sardine-checkout-sandbox.sequence.info?api_url=https://sardine-api-sandbox.sequence.info&client_token=${authToken}&show_features=true`
     : `https://sardine-checkout.sequence.info?api_url=https://sardine-api.sequence.info&client_token=${authToken}&show_features=true`
 
@@ -57,9 +54,8 @@ export const PendingTransaction = () => {
       const { orderId } = data
 
       console.log('Polling for transaction status')
-      const isDev = creditCardCheckout?.isDev || false
 
-      const pollResponse = await fetchSardineOrderStatus(orderId, isDev, projectAccessKey)
+      const pollResponse = await fetchSardineOrderStatus(orderId, projectAccessKey)
       const status = pollResponse.resp.status
       const transactionHash = pollResponse.resp?.transactionHash
 

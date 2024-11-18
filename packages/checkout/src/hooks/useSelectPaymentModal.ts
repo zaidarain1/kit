@@ -19,7 +19,6 @@ export const getERC1155SaleContractConfig = ({
   recipientAddress,
   collectibles,
   collectionAddress,
-  isDev = false,
   ...restProps
 }: ERC1155SaleContractSettings): SelectPaymentSettings => {
   const erc1155SalesContractAbi = [
@@ -43,7 +42,15 @@ export const getERC1155SaleContractConfig = ({
   const purchaseTransactionData = encodeFunctionData({
     abi: erc1155SalesContractAbi,
     functionName: 'mint',
-    args: [recipientAddress, collectibles.map(c => BigInt(c.tokenId)), collectibles.map(c => BigInt(c.quantity)), toHex(0), currencyAddress, price, [toHex(0, { size: 32 })]]
+    args: [
+      recipientAddress,
+      collectibles.map(c => BigInt(c.tokenId)),
+      collectibles.map(c => BigInt(c.quantity)),
+      toHex(0),
+      currencyAddress,
+      price,
+      [toHex(0, { size: 32 })]
+    ]
   })
 
   return {
@@ -53,7 +60,6 @@ export const getERC1155SaleContractConfig = ({
     recipientAddress,
     collectibles,
     collectionAddress,
-    isDev,
     txData: purchaseTransactionData,
     ...restProps
   }

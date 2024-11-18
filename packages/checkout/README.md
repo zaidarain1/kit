@@ -116,7 +116,6 @@ const creditCardCheckout = {
       nftId: checkoutTokenId,
       nftAddress: checkoutTokenContractAddress,
       nftQuantity,
-      isDev: true,
       calldata: getOrderbookCalldata({
         orderId: checkoutOrderId,
         quantity: nftQuantity,

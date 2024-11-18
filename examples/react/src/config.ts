@@ -23,7 +23,6 @@ export const kitConfig: KitConfig = {
     projectName: 'Kit Demo',
     useMock: isDebugMode
   },
-  isDev: isDebugMode,
   displayedAssets: [
     // Native token
     {

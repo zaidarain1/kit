@@ -31,7 +31,6 @@ export interface CreditCardCheckout {
   calldata: string
   onSuccess?: (transactionHash: string, settings: CreditCardCheckout) => void
   onError?: (error: Error, settings: CreditCardCheckout) => void
-  isDev?: boolean
   approvedSpenderAddress?: string
 }
 
