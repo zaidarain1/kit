@@ -16,7 +16,8 @@ export type {
   Theme,
   ModalPosition,
   KitConfig,
-  StorageItem
+  StorageItem,
+  LogoProps
 } from './types'
 export type { SwapPricesWithCurrencyInfo } from './hooks/data'
 
@@ -78,7 +79,6 @@ export {
   type BaseSequenceConnectorOptions,
   type BaseSequenceWaasConnectorOptions
 } from './connectors/wagmiConnectors'
-export { immutable, type ImmutableOptions } from './connectors/immutable'
 
 // Hooks
 export { useOpenConnectModal } from './hooks/useOpenConnectModal'

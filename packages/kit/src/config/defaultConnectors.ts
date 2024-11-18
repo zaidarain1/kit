@@ -7,7 +7,6 @@ import { email } from '../connectors/email'
 import { emailWaas } from '../connectors/email/emailWaas'
 import { facebook } from '../connectors/facebook'
 import { google } from '../connectors/google'
-import { immutable, ImmutableOptions } from '../connectors/immutable'
 import { googleWaas } from '../connectors/google/googleWaas'
 import { sequence } from '../connectors/sequence'
 import { twitch } from '../connectors/twitch'
@@ -45,6 +44,8 @@ export interface DefaultWaasConnectorOptions extends CommonConnectorOptions {
     | {
         projectId: string
       }
+  additionalWallets?: Wallet[]
+
 
   /**
    * @deprecated use connectors.walletConnect.projectId instead
@@ -79,12 +80,11 @@ export interface DefaultUniversalConnectorOptions extends CommonConnectorOptions
     | {
         projectId: string
       }
-  immutable?: ImmutableOptions
-
   /**
    * @deprecated, use connectors.walletConnect.projectId instead
    */
   walletConnectProjectId?: string
+  additionalWallets?: Wallet[]
 }
 
 export type DefaultConnectorOptions<T extends WalletType> = T extends 'waas'
@@ -164,6 +164,11 @@ export const getDefaultWaasConnectors = (options: DefaultWaasConnectorOptions): 
         projectId
       })
     )
+  }
+
+
+  if (options?.additionalWallets && options?.additionalWallets.length > 0) {
+    wallets.push(...options.additionalWallets)
   }
 
   return getKitConnectWallets(projectAccessKey, wallets)
@@ -250,8 +255,8 @@ export const getDefaultUniversalConnectors = (options: DefaultUniversalConnector
     )
   }
 
-  if (options.immutable) {
-    wallets.push(immutable(options.immutable))
+  if (options?.additionalWallets && options?.additionalWallets.length > 0) {
+    wallets.push(...options.additionalWallets)
   }
 
   return getKitConnectWallets(projectAccessKey, wallets)

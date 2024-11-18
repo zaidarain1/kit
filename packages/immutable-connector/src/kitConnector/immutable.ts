@@ -1,7 +1,8 @@
-import { Wallet } from '../../types'
-import { immutableConnector } from '../wagmiConnectors'
+import type { Wallet } from '@0xsequence/kit'
+
 import { ImmutableLogo } from './ImmutableLogo'
-import { BaseImmutableConnectorOptions } from '../wagmiConnectors'
+
+import { immutableConnector, type BaseImmutableConnectorOptions } from '../wagmiConnector'
 
 export interface ImmutableOptions extends BaseImmutableConnectorOptions {}
 
