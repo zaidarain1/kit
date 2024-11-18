@@ -6,7 +6,7 @@
 
 [![npm version](https://badge.fury.io/js/@0xsequence%2Fkit.svg)](https://badge.fury.io/js/@0xsequence%2Fkit)
 
-Sequence Kit 🧰 is a library enabling developers to easily integrate web3 wallets in their app. It is based on [wagmi](https://wagmi.sh/) and supports all wagmi features.
+Easily integrate web3 wallets in your app with Sequence Kit 🧰. Based on [wagmi](https://wagmi.sh/), and supporting all wagmi features.
 
 - Connect via social logins eg: facebook, google, discord, etc...! 🔐🪪
 - Connect to popular web3 wallets eg: walletConnect, metamask ! 🦊 ⛓️
