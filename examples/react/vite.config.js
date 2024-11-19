@@ -12,9 +12,9 @@ export default defineConfig(() => {
     plugins: [
       react(),
       nodePolyfills({
-        include: ['buffer'],
+        include: ['_stream_readable'],
         globals: {
-          Buffer: true
+          Buffer: false,
         }
       }),
       viteTsconfigPaths(),
